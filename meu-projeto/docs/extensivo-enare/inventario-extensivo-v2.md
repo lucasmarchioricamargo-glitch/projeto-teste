@@ -91,7 +91,7 @@ Provas disponíveis no projeto cobrem **4 das 14 áreas específicas** (Enfermag
 | Arquivo | Cobertura | Status | Atenção |
 |---------|-----------|--------|---------|
 | `fontes/gabarito-2024-definitivo.pdf` | Todas as 14 áreas — DEFINITIVO | ✅ | Q1 anulada em múltiplas áreas (INAMPS); Educação Física teve ~9 anulações em 2024 |
-| `fontes/gabarito-2025-definitivo.pdf` | Todas as 14 áreas — DEFINITIVO | ✅ | Q17 corrigida em Biomedicina e Ciências Biológicas; Q66 anulada em Ciências Biológicas |
+| `fontes/gabarito-2025-definitivo.pdf` | Todas as 14 áreas — DEFINITIVO | ✅ | Q17 corrigida em **todas as áreas** (questão de Competências Gerais — gabarito idêntico para todos); Q66 anulada em Ciências Biológicas |
 
 > Gabarito preliminar 2025 arquivado em `_arquivo-pre-reset/` para comparação se necessário.
 
