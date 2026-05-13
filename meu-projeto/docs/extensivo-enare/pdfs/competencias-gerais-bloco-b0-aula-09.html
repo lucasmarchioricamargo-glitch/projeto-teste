@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Competências Gerais · Bloco B0 · Aula 09 — Extensivo ENARE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Bricolage+Grotesque:wght@400;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --creme:          #F6F4ED;
+      --verde-lima:     #C6D834;
+      --verde-floresta: #1F5C23;
+      --teal:           #0D8A8D;
+      --preto:          #070707;
+      --cinza:          #9E9B94;
+      --cinza-borda:    #DDD9D1;
+      --creme-escuro:   #EDEAE2;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #CCC;
+      font-family: 'Bricolage Grotesque', sans-serif;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    @page { size: A4; margin: 0; }
+    .page {
+      width: 210mm; height: 297mm; position: relative; overflow: hidden;
+      page-break-after: always; background: var(--creme);
+      display: flex; flex-direction: column;
+    }
+    @media screen { .page { margin: 24px auto; box-shadow: 0 4px 32px rgba(0,0,0,0.18); } }
+    .page-header {
+      height: 14mm; background: var(--creme); border-bottom: 2px solid var(--teal);
+      display: flex; align-items: center; padding: 0 18mm; flex-shrink: 0;
+    }
+    .page-header-label { font-family: 'Barlow Condensed', sans-serif; font-size: 8pt; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--cinza); }
+    .page-header-title { font-family: 'Space Grotesk', sans-serif; font-size: 7.5pt; font-weight: 300; color: var(--cinza); margin-left: auto; }
+    .page-footer {
+      height: 11mm; border-top: 0.5px solid var(--teal);
+      display: flex; align-items: center; padding: 0 18mm; flex-shrink: 0;
+    }
+    .page-footer-brand { font-family: 'Space Grotesk', sans-serif; font-size: 7pt; font-weight: 300; color: var(--cinza); }
+    .page-footer-brand span { color: var(--teal); font-weight: 400; }
+    .page-footer-num { font-family: 'Barlow Condensed', sans-serif; font-size: 9pt; font-weight: 600; color: var(--cinza); margin-left: auto; }
+    .page-body { flex: 1; padding: 10mm 18mm 8mm; overflow: hidden; }
+    .h1 { font-family: 'Barlow Condensed', sans-serif; font-size: 22pt; font-weight: 800; text-transform: uppercase; color: var(--verde-floresta); letter-spacing: 0.5px; line-height: 1.05; margin-bottom: 7mm; }
+    .h2 { font-family: 'Barlow Condensed', sans-serif; font-size: 16pt; font-weight: 700; text-transform: uppercase; color: var(--verde-floresta); letter-spacing: 0.5px; margin-bottom: 4mm; margin-top: 6mm; }
+    .h2:first-child { margin-top: 0; }
+    .h3 { font-family: 'Bricolage Grotesque', sans-serif; font-size: 11pt; font-weight: 600; color: var(--preto); margin-bottom: 2mm; margin-top: 4mm; }
+    p { font-size: 10.5pt; color: var(--preto); line-height: 1.55; margin-bottom: 3mm; }
+    .rule { border: none; border-top: 1px solid var(--cinza-borda); margin: 4mm 0; }
+    .box { border-radius: 6px; padding: 4mm 5mm; margin: 4mm 0; }
+    .box-title { font-family: 'Barlow Condensed', sans-serif; font-size: 9pt; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 1.5mm; display: block; }
+    .box-body { font-size: 10pt; line-height: 1.5; }
+    .box-pega  { background: var(--verde-lima); color: var(--verde-floresta); }
+    .box-pega .box-title { color: var(--verde-floresta); }
+    .box-dica  { background: var(--teal); color: var(--creme); }
+    .box-dica .box-title { color: var(--creme); }
+    .box-conceito { background: var(--verde-floresta); color: var(--creme); }
+    .box-conceito .box-title { color: var(--creme); }
+    table { width: 100%; border-collapse: collapse; margin: 3mm 0; font-size: 9.5pt; }
+    thead tr { background: var(--verde-floresta); color: var(--creme); }
+    thead th { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; padding: 3mm 4mm; text-align: left; font-size: 9pt; }
+    tbody tr:nth-child(odd)  { background: var(--creme); }
+    tbody tr:nth-child(even) { background: var(--creme-escuro); }
+    tbody td { padding: 2.5mm 4mm; border-bottom: 0.5px solid var(--cinza-borda); line-height: 1.4; color: var(--preto); }
+    td.highlight { font-weight: 600; color: var(--verde-floresta); }
+    .lista { list-style: none; margin: 2mm 0 3mm; }
+    .lista li { font-size: 10.5pt; line-height: 1.55; color: var(--preto); padding-left: 5mm; margin-bottom: 2mm; position: relative; }
+    .lista li::before { content: ''; position: absolute; left: 0; top: 5px; width: 5px; height: 5px; background: var(--verde-lima); border-radius: 50%; }
+    .objective-item { display: flex; gap: 4mm; margin-bottom: 4mm; align-items: flex-start; }
+    .objective-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 20pt; color: var(--verde-lima); line-height: 1; flex-shrink: 0; width: 8mm; }
+    .objective-text { font-size: 11pt; font-weight: 600; color: var(--preto); line-height: 1.4; padding-top: 1mm; }
+    .prereq-card { background: var(--creme-escuro); border-left: 4px solid var(--teal); border-radius: 0 6px 6px 0; padding: 3.5mm 5mm; margin-top: 5mm; }
+    .prereq-label { font-family: 'Barlow Condensed', sans-serif; font-size: 8pt; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--teal); margin-bottom: 1mm; }
+    .prereq-text { font-size: 10pt; color: var(--preto); line-height: 1.45; }
+    .seq-grid { display: flex; gap: 3mm; margin: 3mm 0; }
+    .seq-step { flex: 1; background: var(--creme-escuro); border-top: 3px solid var(--verde-floresta); border-radius: 0 0 6px 6px; padding: 3mm 3.5mm; }
+    .seq-step.active { border-top-color: var(--verde-lima); background: var(--verde-floresta); }
+    .seq-step.done { border-top-color: var(--teal); background: var(--creme-escuro); opacity: 0.7; }
+    .seq-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 14pt; color: var(--verde-lima); line-height: 1; }
+    .seq-step:not(.active) .seq-num { color: var(--verde-floresta); }
+    .seq-name { font-size: 8pt; font-weight: 600; color: var(--creme); margin-top: 1mm; line-height: 1.3; }
+    .seq-step:not(.active) .seq-name { color: var(--preto); }
+    .seq-desc { font-size: 7pt; color: rgba(246,244,237,0.75); margin-top: 0.5mm; line-height: 1.3; }
+    .seq-step:not(.active) .seq-desc { color: var(--cinza); }
+    .question-num { font-family: 'Barlow Condensed', sans-serif; font-size: 9pt; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--teal); margin-bottom: 2mm; }
+    .question-stem { font-size: 10.5pt; line-height: 1.6; color: var(--preto); background: var(--creme-escuro); border-radius: 6px; padding: 4mm 5mm; margin-bottom: 4mm; }
+    .question-stem strong { font-weight: 600; }
+    .alternatives { margin-bottom: 5mm; }
+    .alt { display: flex; gap: 3mm; padding: 2mm 0; border-bottom: 0.5px solid var(--cinza-borda); align-items: flex-start; }
+    .alt:last-child { border-bottom: none; }
+    .alt-letter { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 11pt; color: var(--cinza); flex-shrink: 0; width: 5mm; line-height: 1.4; }
+    .alt.correct .alt-letter { color: var(--verde-floresta); }
+    .alt-text { font-size: 10pt; color: var(--preto); line-height: 1.45; }
+    .alt.correct .alt-text { color: var(--verde-floresta); font-weight: 600; }
+    .correct-badge { display: inline-block; background: var(--verde-lima); color: var(--verde-floresta); font-family: 'Barlow Condensed', sans-serif; font-size: 7pt; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 1px 5px; border-radius: 3px; margin-left: 2mm; vertical-align: middle; }
+    .gabarito-title { font-family: 'Barlow Condensed', sans-serif; font-size: 10pt; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--verde-floresta); border-top: 2px solid var(--verde-floresta); padding-top: 3mm; margin-top: 2mm; margin-bottom: 2mm; }
+    .gabarito-body { font-size: 9.5pt; line-height: 1.55; color: var(--preto); }
+    .gabarito-body strong { color: var(--verde-floresta); font-weight: 600; }
+    .gabarito-alt { margin-bottom: 2mm; padding-left: 4mm; border-left: 2px solid var(--cinza-borda); }
+    .gabarito-alt.correta { border-left-color: var(--verde-lima); }
+    .gabarito-alt strong { display: block; margin-bottom: 0.5mm; }
+    .ref-list { list-style: none; margin-top: 2mm; }
+    .ref-list li { font-size: 9pt; line-height: 1.55; color: var(--preto); margin-bottom: 3mm; padding-left: 6mm; text-indent: -6mm; }
+    .annotation-area { margin-top: 5mm; border-top: 1px solid var(--cinza-borda); padding-top: 3mm; }
+    .annotation-label { font-family: 'Barlow Condensed', sans-serif; font-size: 8pt; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--cinza); margin-bottom: 3mm; }
+    .annotation-lines { display: flex; flex-direction: column; gap: 7mm; }
+    .annotation-line { border-bottom: 0.5px solid var(--cinza-borda); height: 0; }
+    .cover { background: var(--verde-floresta); display: flex; flex-direction: column; padding: 0; }
+    .cover-inner { flex: 1; display: flex; flex-direction: column; padding: 14mm 18mm 0; }
+    .cover-logo { margin-bottom: auto; }
+    .cover-meta { font-family: 'Space Grotesk', sans-serif; font-size: 8pt; font-weight: 400; letter-spacing: 3px; text-transform: uppercase; color: rgba(198,216,52,0.8); margin-bottom: 5mm; }
+    .cover-block-label { font-family: 'Barlow Condensed', sans-serif; font-size: 11pt; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: rgba(246,244,237,0.55); margin-bottom: 4mm; }
+    .cover-title { font-family: 'Barlow Condensed', sans-serif; font-size: 32pt; font-weight: 800; text-transform: uppercase; color: var(--creme); line-height: 1; margin-bottom: 3mm; }
+    .cover-subtitle { font-family: 'Barlow Condensed', sans-serif; font-size: 20pt; font-weight: 700; text-transform: uppercase; color: var(--verde-lima); line-height: 1.1; margin-bottom: 10mm; }
+    .cover-deco { font-family: 'Barlow Condensed', sans-serif; font-size: 180pt; font-weight: 800; color: rgba(246,244,237,0.05); line-height: 0.85; text-align: right; margin-right: -8mm; margin-bottom: -10mm; letter-spacing: -4px; flex-shrink: 0; }
+    .cover-bottom-strip { height: 4mm; background: var(--verde-lima); flex-shrink: 0; }
+    .recall-section { margin-bottom: 5mm; }
+    .recall-title { font-family: 'Barlow Condensed', sans-serif; font-size: 11pt; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--verde-floresta); border-bottom: 2px solid var(--verde-floresta); padding-bottom: 2mm; margin-bottom: 3mm; }
+    .sintese-item { display: flex; gap: 3mm; margin-bottom: 3mm; align-items: flex-start; }
+    .sintese-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 16pt; color: var(--verde-lima); line-height: 1; flex-shrink: 0; width: 7mm; }
+    .sintese-text { font-size: 10pt; color: var(--preto); line-height: 1.5; padding-top: 1mm; }
+    .recall-q { font-size: 10pt; color: var(--preto); line-height: 1.5; padding: 2mm 0 2mm 4mm; border-left: 2px solid var(--cinza-borda); margin-bottom: 2.5mm; }
+    .recall-q-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 9pt; color: var(--teal); display: inline; margin-right: 2mm; }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PÁGINA 1 — CAPA
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="page cover">
+    <div class="cover-inner">
+      <div class="cover-logo">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210 90" width="210" height="90">
+          <rect x="0" y="8" width="3" height="74" rx="1.5" fill="#C6D834"/>
+          <text x="12" y="26" font-family="'Playfair Display',Georgia,serif" font-style="italic" font-size="11" fill="#C6D834">extensivo</text>
+          <text x="11" y="70" font-family="'Barlow Condensed','Arial Narrow',sans-serif" font-weight="800" font-size="52" fill="#F6F4ED">ENARE</text>
+          <text x="12" y="88" font-family="'Space Grotesk','Helvetica Neue',sans-serif" font-weight="300" font-size="9" fill="rgba(246,244,237,0.5)">by Residência PRO</text>
+        </svg>
+      </div>
+      <div class="cover-meta">Competências Gerais · Módulo 3</div>
+      <div class="cover-block-label">Bloco B0 · Aula 09</div>
+      <div class="cover-title">Populações<br>Específicas<br>no SUS</div>
+      <div class="cover-subtitle">ECR, Ribeirinha,<br>Transexualizador e Indígena</div>
+    </div>
+    <div class="cover-deco">09</div>
+    <div class="cover-bottom-strip"></div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PÁGINA 2 — OBJETIVOS
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="page">
+    <div class="page-header">
+      <span class="page-header-label">Competências Gerais · Bloco B0 · Aula 09</span>
+      <span class="page-header-title">Extensivo ENARE</span>
+    </div>
+    <div class="page-body">
+      <div class="h1">O que você vai aprender</div>
+
+      <div class="objective-item">
+        <div class="objective-num">01</div>
+        <div class="objective-text">Caracterizar as Equipes de Consultório na Rua (ECR), identificando sua base normativa, composição e o princípio central que dispensa comprovante de endereço ou residência para atendimento</div>
+      </div>
+      <div class="objective-item">
+        <div class="objective-num">02</div>
+        <div class="objective-text">Distinguir os dois componentes do Processo Transexualizador no SUS (ambulatorial e hospitalar), reconhecendo quais ações pertencem a cada um conforme a Portaria nº 2.803/2013</div>
+      </div>
+      <div class="objective-item">
+        <div class="objective-num">03</div>
+        <div class="objective-text">Aplicar o conhecimento sobre estratégias diferenciadas do SUS — ECR, ESFR e SESAI — para identificar a política correta em cenários práticos envolvendo populações vulneráveis de difícil acesso</div>
+      </div>
+
+      <hr class="rule" style="margin-top: 6mm;">
+
+      <div class="prereq-card">
+        <div class="prereq-label">Pré-requisito</div>
+        <div class="prereq-text">
+          <strong>Aula 08 (NR-32):</strong> A lógica de proteção a grupos vulneráveis que fundamenta a NR-32 para trabalhadores se complementa com as estratégias de acesso a populações em situação de vulnerabilidade social. Ambas exigem adaptação do modelo padrão da Atenção Básica.
+        </div>
+      </div>
+
+      <div class="seq-grid" style="margin-top: 5mm;">
+        <div class="seq-step done">
+          <div class="seq-num">A01–08</div>
+          <div class="seq-name">Concluídas</div>
+          <div class="seq-desc">Legislação, RAS, APS, NR-32</div>
+        </div>
+        <div class="seq-step active">
+          <div class="seq-num">A09</div>
+          <div class="seq-name">Populações</div>
+          <div class="seq-desc">Você está aqui</div>
+        </div>
+        <div class="seq-step">
+          <div class="seq-num">A10</div>
+          <div class="seq-name">PNH</div>
+          <div class="seq-desc">Humanização e clínica ampliada</div>
+        </div>
+        <div class="seq-step">
+          <div class="seq-num">A11–12</div>
+          <div class="seq-name">Vig. → Revisão</div>
+          <div class="seq-desc">2 aulas finais do bloco</div>
+        </div>
+      </div>
+
+      <p style="margin-top: 4mm; font-size: 9pt; color: var(--cinza);">
+        <strong style="color: var(--preto);">Duração estimada:</strong> 35 min &nbsp;·&nbsp;
+        <strong style="color: var(--preto);">Questões de fixação:</strong> 3 &nbsp;·&nbsp;
+        <strong style="color: var(--preto);">Aula:</strong> 9 de 12 do Bloco
+      </p>
+    </div>
+    <div class="page-footer">
+      <span class="page-footer-brand"><span>Extensivo ENARE</span> &nbsp;·&nbsp; by Residência PRO</span>
+      <span class="page-footer-num">02</span>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PÁGINA 3 — PANORAMA DAS POPULAÇÕES ESPECÍFICAS
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="page">
+    <div class="page-header">
+      <span class="page-header-label">Competências Gerais · Bloco B0 · Aula 09</span>
+      <span class="page-header-title">Extensivo ENARE</span>
+    </div>
+    <div class="page-body">
+      <div class="h2">Populações Específicas — Panorama das Estratégias</div>
+
+      <p>O SUS reconhece que grupos populacionais em situação de vulnerabilidade social, cultural ou geográfica exigem estratégias diferenciadas de atenção à saúde. Cada política possui base normativa própria e características que a distinguem do modelo padrão das equipes de Saúde da Família.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th style="width:22%">População</th>
+            <th style="width:28%">Estratégia / Equipe</th>
+            <th>Base Normativa e Diferencial Central</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="highlight">Em situação de rua</td>
+            <td>Equipe de Consultório na Rua (ECR)</td>
+            <td>Portaria nº 122/2013 · Atendimento nos locais de permanência, sem exigência de endereço ou documentação</td>
+          </tr>
+          <tr>
+            <td class="highlight">Ribeirinha</td>
+            <td>Equipe de Saúde da Família Ribeirinha (ESFR)</td>
+            <td>Portaria nº 837/2014 · Território fluvial, itinerância programada por embarcação</td>
+          </tr>
+          <tr>
+            <td class="highlight">Travestis e transexuais</td>
+            <td>Processo Transexualizador no SUS</td>
+            <td>Portaria nº 2.803/2013 · Atenção integral: componente ambulatorial e componente hospitalar</td>
+          </tr>
+          <tr>
+            <td class="highlight">Indígena</td>
+            <td>SESAI / Distritos Sanitários (DSEI)</td>
+            <td>Lei nº 9.836/1999 (Lei Arouca) · 34 DSEIs, APS adaptada à realidade cultural</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="box box-pega" style="margin-top: 3mm;">
+        <span class="box-title">⚠️ Distrator — ECR não é exclusiva para usuários de drogas</span>
+        <span class="box-body">A ECR atende <strong>toda a população em situação de rua</strong>, não apenas usuários de álcool e drogas. A vinculação ao CAPS é possível quando necessário, mas não é condição obrigatória. O atributo central é a <strong>dispensa de comprovante de endereço</strong> e a abordagem nos próprios espaços de permanência.</span>
+      </div>
+
+      <div class="box box-dica" style="margin-top: 3mm;">
+        <span class="box-title">💡 Chave de diferenciação nas questões</span>
+        <span class="box-body">Identifique a população no cenário e aplique diretamente: <strong>rua → ECR (122/2013) · rio → ESFR (837/2014) · indígena → DSEI/SESAI · trans → Portaria 2.803/2013.</strong> O erro mais comum é confundir ECR com NASF-AB ou com estratégia de saúde mental.</span>
+      </div>
+    </div>
+    <div class="page-footer">
+      <span class="page-footer-brand"><span>Extensivo ENARE</span> &nbsp;·&nbsp; by Residência PRO</span>
+      <span class="page-footer-num">03</span>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PÁGINA 4 — CONSULTÓRIO NA RUA (ECR)
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="page">
+    <div class="page-header">
+      <span class="page-header-label">Competências Gerais · Bloco B0 · Aula 09</span>
+      <span class="page-header-title">Extensivo ENARE</span>
+    </div>
+    <div class="page-body">
+      <div class="h2">Consultório na Rua — ECR (Portaria 122/2013)</div>
+
+      <p>A ECR é uma equipe multiprofissional da Atenção Básica criada para ampliar o acesso à saúde de pessoas em situação de rua (PSR). Integra a Rede de Atenção Psicossocial (RAPS) e atua em articulação com CAPS, CRAS e demais pontos da rede.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th style="width:35%">Característica</th>
+            <th>Detalhe</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="highlight">Público</td>
+            <td>Pessoas em situação de rua — independentemente de documentação ou endereço fixo</td>
+          </tr>
+          <tr>
+            <td class="highlight">Local de atendimento</td>
+            <td>Nos próprios espaços de permanência da PSR: ruas, praças, albergues, abrigos</td>
+          </tr>
+          <tr>
+            <td class="highlight">Modalidade I</td>
+            <td>Sem veículo; mínimo: médico ou enfermeiro + técnico de enfermagem + profissional de nível superior (psicólogo, assistente social ou terapeuta ocupacional)</td>
+          </tr>
+          <tr>
+            <td class="highlight">Modalidade II</td>
+            <td>Com veículo ou embarcação; equipe ampliada, permite itinerância em área de maior extensão</td>
+          </tr>
+          <tr>
+            <td class="highlight">Documentação</td>
+            <td><strong>Dispensa</strong> comprovante de endereço, residência ou documentação civil para atendimento</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="box box-conceito" style="margin-top: 3mm;">
+        <span class="box-title">Princípio Central da ECR</span>
+        <span class="box-body">A ECR inverte o modelo tradicional: <strong>a equipe vai até a pessoa</strong>, não exige que ela vá à UBS. Isso garante equidade de acesso a uma população historicamente excluída dos serviços de saúde. A exigência de qualquer documento ou endereço como condição de atendimento constitui barreira de acesso, vedada pela Portaria 122/2013 e pelo princípio da universalidade do SUS.</span>
+      </div>
+
+      <div class="box box-pega" style="margin-top: 3mm;">
+        <span class="box-title">⚠️ Ponto de atenção — ECR vs. Saúde Mental</span>
+        <span class="box-body">A ECR não substitui o CAPS: ela <strong>articula</strong> com o CAPS quando necessário. A ECR resolve demandas de AB e encaminha para saúde mental especializada. Em questões de nível Análise, identificar essa distinção é o que diferencia as alternativas.</span>
+      </div>
+    </div>
+    <div class="page-footer">
+      <span class="page-footer-brand"><span>Extensivo ENARE</span> &nbsp;·&nbsp; by Residência PRO</span>
+      <span class="page-footer-num">04</span>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PÁGINA 5 — PROCESSO TRANSEXUALIZADOR E SAÚDE RIBEIRINHA
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="page">
+    <div class="page-header">
+      <span class="page-header-label">Competências Gerais · Bloco B0 · Aula 09</span>
+      <span class="page-header-title">Extensivo ENARE</span>
+    </div>
+    <div class="page-body">
+      <div class="h2">Processo Transexualizador (Portaria 2.803/2013)</div>
+
+      <p>A Portaria nº 2.803/2013 redefine e amplia o Processo Transexualizador no SUS, garantindo atenção integral à saúde de travestis e transexuais em dois componentes complementares.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th style="width:32%">Componente</th>
+            <th>Ações Incluídas</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="highlight">Ambulatorial</td>
+            <td>Hormonioterapia, acompanhamento clínico, acompanhamento psicossocial e de saúde mental, atenção às demandas gerais de saúde</td>
+          </tr>
+          <tr>
+            <td class="highlight">Hospitalar</td>
+            <td>Cirurgia de redesignação sexual (transgenitalização), mamoplastia masculinizadora, tireoplastia (feminilização da voz) e demais procedimentos cirúrgicos de adequação corporal</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="box box-pega" style="margin-top: 2mm;">
+        <span class="box-title">⚠️ Distrator — Laudo psiquiátrico não é requisito obrigatório</span>
+        <span class="box-body">A Portaria 2.803/2013 estrutura o cuidado em equipe multiprofissional, mas <strong>não exige laudo psiquiátrico prévio</strong> como barreira de acesso. O foco é na atenção integral. Em questões de cenário, alternativas que impõem laudo como pré-requisito absoluto contradizem a portaria.</span>
+      </div>
+
+      <hr class="rule" style="margin: 4mm 0;">
+
+      <div class="h2" style="margin-top: 0;">Saúde Ribeirinha — ESFR (Portaria 837/2014)</div>
+
+      <p>A Portaria nº 837/2014 institui as Equipes de Saúde da Família Ribeirinha (ESFR), voltadas às comunidades que habitam às margens de rios da Amazônia Legal e do Pantanal Sul-Mato-Grossense.</p>
+
+      <ul class="lista">
+        <li><strong>Território:</strong> calhas de rios — acesso exclusivamente fluvial</li>
+        <li><strong>Itinerância:</strong> cronograma programado de visitas às comunidades por embarcação</li>
+        <li><strong>Composição:</strong> equipe multiprofissional com médico, enfermeiro, técnico de enfermagem e ACS adaptados à realidade ribeirinha</li>
+        <li><strong>Saúde Indígena (SESAI):</strong> 34 Distritos Sanitários Especiais Indígenas (DSEI) com Casas de Saúde Indígena (CASAI) para referência de média/alta complexidade</li>
+      </ul>
+    </div>
+    <div class="page-footer">
+      <span class="page-footer-brand"><span>Extensivo ENARE</span> &nbsp;·&nbsp; by Residência PRO</span>
+      <span class="page-footer-num">05</span>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PÁGINA 6 — QUESTÃO 01
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="page">
+    <div class="page-header">
+      <span class="page-header-label">Fixação · Aula 09</span>
+      <span class="page-header-title">Extensivo ENARE</span>
+    </div>
+    <div class="page-body">
+      <div class="question-num">Questão 01 de 03 &nbsp;·&nbsp; CG-POP &nbsp;·&nbsp; Consultório na Rua (Memorização)</div>
+
+      <div class="question-stem">
+        A Portaria nº 122/2013 instituiu as Equipes de Consultório na Rua (ECR) como estratégia da Atenção Básica voltada à população em situação de rua. Entre as características que diferenciam o modelo de atendimento das ECR das demais equipes de Saúde da Família, está:
+      </div>
+
+      <div class="alternatives">
+        <div class="alt">
+          <div class="alt-letter">A</div>
+          <div class="alt-text">Exigência de cadastro municipal com comprovante de domicílio para acesso ao atendimento inicial</div>
+        </div>
+        <div class="alt">
+          <div class="alt-letter">B</div>
+          <div class="alt-text">Atuação exclusiva em Unidades Básicas de Saúde de referência, em horário comercial, com agendamento prévio</div>
+        </div>
+        <div class="alt">
+          <div class="alt-letter">C</div>
+          <div class="alt-text">Encaminhamento obrigatório ao CAPS antes de qualquer procedimento clínico ou avaliação de saúde</div>
+        </div>
+        <div class="alt correct">
+          <div class="alt-letter">D</div>
+          <div class="alt-text">Dispensa de comprovante de endereço ou residência e atendimento nos próprios locais de permanência da população em situação de rua <span class="correct-badge">Correta</span></div>
+        </div>
+      </div>
+
+      <div class="gabarito-title">Gabarito Comentado — B: D</div>
+      <div class="gabarito-body">
+
+        <div class="gabarito-alt correta">
+          <strong>D — Correta</strong>
+          A ECR foi criada para superar as barreiras de acesso impostas pelo modelo territorial convencional. A Portaria 122/2013 estabelece que o atendimento ocorre nos espaços de permanência da PSR (ruas, praças, albergues) e dispensa qualquer documentação como condição para o cuidado — princípio diretamente derivado da universalidade do SUS.
+        </div>
+
+        <div class="gabarito-alt">
+          <strong>A — Incorreta</strong>
+          A exigência de comprovante de domicílio é precisamente a barreira que a ECR elimina. A alternativa descreve o modelo convencional da AB, incompatível com a realidade de pessoas sem endereço fixo.
+        </div>
+
+        <div class="gabarito-alt">
+          <strong>B — Incorreta</strong>
+          A ECR é itinerante e trabalha nos locais de permanência da PSR, não em unidades fixas. Aguardar que a população vá à UBS contraria o propósito da estratégia.
+        </div>
+
+        <div class="gabarito-alt">
+          <strong>C — Incorreta</strong>
+          A ECR articula com o CAPS, mas não há encaminhamento prévio obrigatório. A equipe avalia e decide o fluxo adequado conforme a necessidade de cada pessoa.
+        </div>
+
+      </div>
+    </div>
+    <div class="page-footer">
+      <span class="page-footer-brand"><span>Extensivo ENARE</span> &nbsp;·&nbsp; by Residência PRO</span>
+      <span class="page-footer-num">06</span>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PÁGINA 7 — QUESTÃO 02
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="page">
+    <div class="page-header">
+      <span class="page-header-label">Fixação · Aula 09</span>
+      <span class="page-header-title">Extensivo ENARE</span>
+    </div>
+    <div class="page-body">
+      <div class="question-num">Questão 02 de 03 &nbsp;·&nbsp; CG-POP &nbsp;·&nbsp; Processo Transexualizador (Memorização)</div>
+
+      <div class="question-stem">
+        De acordo com a Portaria nº 2.803/2013, o Processo Transexualizador no SUS organiza-se em dois componentes. Assinale a alternativa que descreve <strong>corretamente</strong> a divisão de responsabilidades entre esses componentes:
+      </div>
+
+      <div class="alternatives">
+        <div class="alt">
+          <div class="alt-letter">A</div>
+          <div class="alt-text">O componente ambulatorial inclui a cirurgia de transgenitalização; o componente hospitalar é responsável pela hormonioterapia de manutenção</div>
+        </div>
+        <div class="alt">
+          <div class="alt-letter">B</div>
+          <div class="alt-text">Ambos os componentes funcionam exclusivamente em serviços de saúde mental, vinculados obrigatoriamente ao CAPS III</div>
+        </div>
+        <div class="alt correct">
+          <div class="alt-letter">C</div>
+          <div class="alt-text">O componente ambulatorial abrange hormonioterapia e acompanhamento psicossocial; o componente hospitalar inclui procedimentos cirúrgicos de adequação corporal <span class="correct-badge">Correta</span></div>
+        </div>
+        <div class="alt">
+          <div class="alt-letter">D</div>
+          <div class="alt-text">O componente hospitalar abrange apenas o acompanhamento psiquiátrico, exigido como pré-requisito para ingresso no componente ambulatorial</div>
+        </div>
+      </div>
+
+      <div class="gabarito-title">Gabarito Comentado — B: C</div>
+      <div class="gabarito-body">
+
+        <div class="gabarito-alt correta">
+          <strong>C — Correta</strong>
+          A Portaria 2.803/2013 organiza o Processo Transexualizador em: (1) componente <strong>ambulatorial</strong> — hormonioterapia, acompanhamento clínico e psicossocial; (2) componente <strong>hospitalar</strong> — procedimentos cirúrgicos (transgenitalização, mamoplastia, tireoplastia). A distinção ambulatorial/hospitalar segue a lógica de complexidade e não de especialidade exclusiva.
+        </div>
+
+        <div class="gabarito-alt">
+          <strong>A — Incorreta</strong>
+          Inverte os componentes: a cirurgia pertence ao componente hospitalar, não ambulatorial. A hormonioterapia de manutenção é ambulatorial.
+        </div>
+
+        <div class="gabarito-alt">
+          <strong>B — Incorreta</strong>
+          O Processo Transexualizador não é restrito à saúde mental nem ao CAPS. Integra diferentes serviços do SUS com abordagem multiprofissional.
+        </div>
+
+        <div class="gabarito-alt">
+          <strong>D — Incorreta</strong>
+          O acompanhamento psiquiátrico como barreira obrigatória de acesso contradiz a lógica da Portaria 2.803/2013, que prioriza integralidade e não impõe laudo diagnóstico como pré-requisito absoluto.
+        </div>
+
+      </div>
+    </div>
+    <div class="page-footer">
+      <span class="page-footer-brand"><span>Extensivo ENARE</span> &nbsp;·&nbsp; by Residência PRO</span>
+      <span class="page-footer-num">07</span>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PÁGINA 8 — QUESTÃO 03 (ÂNCORA — APLICAÇÃO)
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="page">
+    <div class="page-header">
+      <span class="page-header-label">Fixação · Aula 09</span>
+      <span class="page-header-title">Extensivo ENARE</span>
+    </div>
+    <div class="page-body">
+      <div class="question-num">Questão 03 de 03 &nbsp;·&nbsp; CG-POP &nbsp;·&nbsp; Estratégia Ribeirinha em Cenário (Aplicação)</div>
+
+      <div class="question-stem">
+        Um gestor municipal de saúde recebe relatório indicando que famílias que habitam às margens de rios na Amazônia Legal têm cobertura de Atenção Básica inferior a 20%, pois o acesso terrestre à UBS mais próxima é inviável. Após análise das políticas do Ministério da Saúde, decide solicitar a implantação de estratégia específica regulamentada pela Portaria nº 837/2014. Assinale a alternativa que identifica <strong>corretamente</strong> essa estratégia e seu diferencial operacional:
+      </div>
+
+      <div class="alternatives">
+        <div class="alt">
+          <div class="alt-letter">A</div>
+          <div class="alt-text">Equipes de Consultório na Rua (ECR) com modalidade de embarcação, voltadas à população em situação de rua nas margens dos rios</div>
+        </div>
+        <div class="alt">
+          <div class="alt-letter">B</div>
+          <div class="alt-text">Núcleo Ampliado de Saúde da Família e Atenção Básica (NASF-AB) com extensão de cobertura para regiões de difícil acesso geográfico</div>
+        </div>
+        <div class="alt correct">
+          <div class="alt-letter">C</div>
+          <div class="alt-text">Equipes de Saúde da Família Ribeirinha (ESFR), com itinerância programada por transporte fluvial para atendimento periódico às comunidades ribeirinhas <span class="correct-badge">Correta</span></div>
+        </div>
+        <div class="alt">
+          <div class="alt-letter">D</div>
+          <div class="alt-text">Distritos Sanitários Especiais Indígenas (DSEI), vinculados à SESAI, responsáveis pela atenção à saúde de todas as populações em território amazônico</div>
+        </div>
+      </div>
+    </div>
+    <div class="page-footer">
+      <span class="page-footer-brand"><span>Extensivo ENARE</span> &nbsp;·&nbsp; by Residência PRO</span>
+      <span class="page-footer-num">08</span>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PÁGINA 9 — GABARITO Q3 + RECUPERAÇÃO ATIVA
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="page">
+    <div class="page-header">
+      <span class="page-header-label">Fixação · Aula 09</span>
+      <span class="page-header-title">Extensivo ENARE</span>
+    </div>
+    <div class="page-body">
+      <div class="gabarito-title" style="margin-top: 0;">Gabarito Comentado Q3 — B: C</div>
+      <div class="gabarito-body">
+
+        <div class="gabarito-alt correta">
+          <strong>C — Correta</strong>
+          A Portaria 837/2014 institui as ESFR especificamente para comunidades ribeirinhas da Amazônia Legal e do Pantanal. O diferencial operacional é a <strong>itinerância fluvial programada</strong>: a equipe desloca-se por embarcação em cronograma regular, levando a AB até comunidades inacessíveis por via terrestre.
+        </div>
+
+        <div class="gabarito-alt">
+          <strong>A — Incorreta</strong>
+          A ECR atende <strong>população em situação de rua</strong>, não comunidades ribeirinhas. Apesar de existir modalidade com veículo/embarcação na ECR, seu público-alvo e regulamentação são distintos da ESFR.
+        </div>
+
+        <div class="gabarito-alt">
+          <strong>B — Incorreta</strong>
+          O NASF-AB é equipe de apoio matricial à ESF — não possui atribuição territorial própria nem estratégia específica para populações ribeirinhas.
+        </div>
+
+        <div class="gabarito-alt">
+          <strong>D — Incorreta</strong>
+          Os DSEI/SESAI atendem <strong>exclusivamente populações indígenas</strong>, não todas as populações amazônicas. Comunidades ribeirinhas não indígenas são atendidas pelas ESFR.
+        </div>
+
+      </div>
+
+      <hr class="rule" style="margin: 5mm 0;">
+
+      <div class="recall-section">
+        <div class="recall-title">Recuperação Ativa — Aula 09</div>
+
+        <div class="recall-title" style="font-size: 9pt; border-bottom: none; padding: 0; margin-bottom: 2mm;">3 Sínteses Essenciais</div>
+
+        <div class="sintese-item">
+          <div class="sintese-num">1</div>
+          <div class="sintese-text"><strong>ECR (Portaria 122/2013):</strong> equipe da AB que atende população em situação de rua nos próprios locais de permanência, dispensando endereço ou documentação — equidade pelo acesso proativo.</div>
+        </div>
+        <div class="sintese-item">
+          <div class="sintese-num">2</div>
+          <div class="sintese-text"><strong>Processo Transexualizador (Portaria 2.803/2013):</strong> componente ambulatorial = hormonioterapia + psicossocial; componente hospitalar = procedimentos cirúrgicos. Sem laudo psiquiátrico como barreira obrigatória.</div>
+        </div>
+        <div class="sintese-item">
+          <div class="sintese-num">3</div>
+          <div class="sintese-text"><strong>ESFR (Portaria 837/2014):</strong> Equipe ribeirinha com itinerância fluvial programada para Amazônia Legal e Pantanal. DSEI/SESAI ≠ ESFR — cada um tem público-alvo distinto.</div>
+        </div>
+      </div>
+    </div>
+    <div class="page-footer">
+      <span class="page-footer-brand"><span>Extensivo ENARE</span> &nbsp;·&nbsp; by Residência PRO</span>
+      <span class="page-footer-num">09</span>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PÁGINA 10 — TESTE-SE + REFERÊNCIAS
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="page">
+    <div class="page-header">
+      <span class="page-header-label">Recuperação Ativa · Aula 09</span>
+      <span class="page-header-title">Extensivo ENARE</span>
+    </div>
+    <div class="page-body">
+      <div class="recall-title">Teste-se — 5 Perguntas</div>
+
+      <div class="recall-q"><span class="recall-q-num">Q1</span> Qual portaria regulamenta as Equipes de Consultório na Rua e o que ela dispensa para o atendimento?</div>
+      <div class="recall-q"><span class="recall-q-num">Q2</span> Cite os dois componentes do Processo Transexualizador e uma ação incluída em cada um.</div>
+      <div class="recall-q"><span class="recall-q-num">Q3</span> Qual a diferença entre ECR e ESFR quanto ao público-alvo e à base normativa?</div>
+      <div class="recall-q"><span class="recall-q-num">Q4</span> Por que alternativas que exigem laudo psiquiátrico como barreira obrigatória no Processo Transexualizador estão incorretas?</div>
+      <div class="recall-q"><span class="recall-q-num">Q5</span> Em que situação se aplica o DSEI/SESAI e em que situação se aplica a ESFR? O que os diferencia?</div>
+
+      <hr class="rule" style="margin: 5mm 0;">
+
+      <div class="h2" style="margin-top: 0; margin-bottom: 3mm;">Referências Bibliográficas</div>
+      <ul class="ref-list">
+        <li>BRASIL. Ministério da Saúde. <strong>Portaria nº 122, de 25 de janeiro de 2013</strong>. Define as diretrizes de organização e funcionamento das Equipes de Consultório na Rua. Brasília: MS, 2013.</li>
+        <li>BRASIL. Ministério da Saúde. <strong>Portaria nº 837, de 23 de abril de 2014</strong>. Define as modalidades e as normas de implantação e funcionamento das Equipes de Saúde da Família Ribeirinha. Brasília: MS, 2014.</li>
+        <li>BRASIL. Ministério da Saúde. <strong>Portaria nº 2.803, de 19 de novembro de 2013</strong>. Redefine e amplia o Processo Transexualizador no Sistema Único de Saúde (SUS). Brasília: MS, 2013.</li>
+        <li>BRASIL. Lei nº 9.836, de 23 de setembro de 1999 <strong>(Lei Arouca)</strong>. Acrescenta dispositivos à Lei no 8.080/1990, que dispõe sobre as condições para a promoção, proteção e recuperação da saúde, com vistas à atenção dos povos indígenas. Brasília: Presidência da República, 1999.</li>
+        <li>FUNDAÇÃO GETULIO VARGAS (FGV). <strong>ENARE 2024 — Prova e Gabarito Definitivo</strong>. Rio de Janeiro: EBSERH/FGV, 2024.</li>
+        <li>FUNDAÇÃO GETULIO VARGAS (FGV). <strong>ENARE 2025 — Prova e Gabarito Definitivo</strong>. Rio de Janeiro: EBSERH/FGV, 2025.</li>
+      </ul>
+
+      <div class="annotation-area">
+        <div class="annotation-label">Anotações</div>
+        <div class="annotation-lines">
+          <div class="annotation-line"></div>
+          <div class="annotation-line"></div>
+          <div class="annotation-line"></div>
+          <div class="annotation-line"></div>
+          <div class="annotation-line"></div>
+        </div>
+      </div>
+    </div>
+    <div class="page-footer">
+      <span class="page-footer-brand"><span>Extensivo ENARE</span> &nbsp;·&nbsp; by Residência PRO</span>
+      <span class="page-footer-num">10</span>
+    </div>
+  </div>
+
+</body>
+</html>
