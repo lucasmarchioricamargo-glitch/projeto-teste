@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>B6 · Aula 01 — AVC: Espasticidade, Marcha e CIF</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Bricolage+Grotesque:wght@400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap');
+  @page{size:A4;margin:0;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{-webkit-print-color-adjust:exact;print-color-adjust:exact;font-family:'Bricolage Grotesque',sans-serif;}
+  :root{
+    --creme:#F6F4ED;--teal:#0D8A8D;--verde:#1F5C23;--lima:#C6D834;--preto:#070707;
+    --cinza:#6B6B6B;--cinza-claro:#E8E6DF;--branco:#FFFFFF;
+  }
+  .page{width:210mm;height:297mm;display:flex;flex-direction:column;overflow:hidden;page-break-after:always;background:var(--creme);}
+  .ph{height:14mm;flex-shrink:0;}
+  .pf{height:9mm;flex-shrink:0;}
+  .pc{flex:1;padding:7mm 16mm 5mm;overflow:hidden;}
+  .pc-sm{flex:1;padding:5mm 16mm 4mm;overflow:hidden;}
+
+  .page-header{height:14mm;display:flex;align-items:center;padding:0 16mm;border-bottom:0.6pt solid var(--teal);flex-shrink:0;}
+  .page-header-label{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:7.5pt;letter-spacing:1.5px;text-transform:uppercase;color:var(--teal);}
+  .page-header-title{font-family:'Space Grotesk',sans-serif;font-size:7.5pt;font-weight:300;color:var(--cinza);margin-left:auto;}
+
+  .page-footer{height:9mm;display:flex;align-items:center;padding:0 16mm;border-top:0.4pt solid var(--cinza-claro);flex-shrink:0;}
+  .page-footer-left{font-family:'Space Grotesk',sans-serif;font-size:6.5pt;font-weight:300;color:var(--cinza);}
+  .page-footer-right{margin-left:auto;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:9pt;color:var(--teal);letter-spacing:1px;}
+
+  .cover-page{background:var(--preto);color:var(--creme);}
+  .cover-inner{flex:1;display:flex;flex-direction:column;padding:16mm 16mm 0;}
+  .cover-band{height:2mm;background:var(--teal);flex-shrink:0;}
+  .cover-meta{font-family:'Space Grotesk',sans-serif;font-weight:300;font-size:7.5pt;letter-spacing:2px;text-transform:uppercase;color:var(--cinza);margin-bottom:10mm;}
+  .cover-title{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:54pt;line-height:0.9;text-transform:uppercase;color:var(--creme);margin-bottom:4mm;}
+  .cover-title span{color:var(--teal);}
+  .cover-sub{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:14pt;letter-spacing:2px;text-transform:uppercase;color:var(--lima);margin-bottom:10mm;}
+  .cover-desc{font-size:8.5pt;color:#AAAAAA;line-height:1.5;max-width:120mm;margin-bottom:auto;}
+  .cover-footer-bar{height:14mm;display:flex;align-items:center;border-top:0.4pt solid #333;}
+  .cover-footer-logo{font-family:'Playfair Display',serif;font-style:italic;font-size:10pt;color:var(--cinza);}
+  .cover-footer-logo span{font-family:'Space Grotesk',sans-serif;font-style:normal;font-weight:300;font-size:7pt;letter-spacing:2px;margin-left:4px;color:#555;}
+  .cover-aula{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:9pt;letter-spacing:3px;text-transform:uppercase;color:var(--teal);margin-left:auto;}
+
+  h2{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:17pt;color:var(--teal);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:3mm;line-height:1.1;}
+  h3{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11pt;color:var(--preto);text-transform:uppercase;letter-spacing:0.3px;margin-bottom:1.5mm;margin-top:3mm;line-height:1.1;}
+  p{font-size:8pt;line-height:1.45;margin-bottom:1.5mm;color:var(--preto);}
+  strong{font-weight:600;}
+
+  .div-teal{border:none;border-top:1.5pt solid var(--teal);margin-bottom:3mm;}
+  .div-thin{border:none;border-top:0.4pt solid var(--cinza-claro);margin:2mm 0;}
+
+  table{width:100%;border-collapse:collapse;font-size:7.5pt;margin-bottom:2.5mm;}
+  th{background:var(--teal);color:var(--branco);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:7.5pt;text-transform:uppercase;letter-spacing:0.3px;padding:1.5mm 2mm;text-align:left;}
+  td{padding:1.5mm 2mm;border-bottom:0.4pt solid var(--cinza-claro);vertical-align:top;}
+  tr:nth-child(even) td{background:#F0EEE8;}
+  td strong{color:var(--teal);}
+
+  ul,ol{padding-left:4mm;margin-bottom:1.5mm;}
+  li{font-size:7.5pt;line-height:1.45;margin-bottom:0.8mm;color:var(--preto);}
+  li strong{color:var(--preto);}
+
+  .box{border:0.5pt solid var(--teal);border-radius:2pt;padding:2.5mm 3mm;margin-bottom:2.5mm;background:var(--branco);}
+  .box-title{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:8.5pt;text-transform:uppercase;letter-spacing:0.5px;color:var(--teal);margin-bottom:1.5mm;}
+  .box-warn{border-color:var(--verde);background:#F0F5F0;}
+  .box-warn .box-title{color:var(--verde);}
+  .box-alert{border-color:#B85C00;background:#FFF5EE;}
+  .box-alert .box-title{color:#B85C00;}
+
+  .tag{display:inline-block;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:7pt;letter-spacing:0.5px;text-transform:uppercase;padding:0.5mm 1.5mm;border-radius:1pt;margin-right:1mm;}
+  .tag-teal{background:var(--teal);color:var(--branco);}
+  .tag-verde{background:var(--verde);color:var(--branco);}
+  .tag-alert{background:#B85C00;color:var(--branco);}
+
+  .q-header{background:var(--teal);color:var(--branco);padding:2.5mm 3mm;border-radius:2pt 2pt 0 0;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:8pt;text-transform:uppercase;letter-spacing:1px;margin-bottom:0;}
+  .q-body{border:0.5pt solid var(--teal);border-top:none;border-radius:0 0 2pt 2pt;padding:3mm;background:var(--branco);margin-bottom:3mm;}
+  .q-stem{font-size:8pt;line-height:1.5;margin-bottom:2.5mm;color:var(--preto);}
+  .q-opt{font-size:7.5pt;line-height:1.45;margin-bottom:1.5mm;padding-left:1mm;}
+  .q-opt.correta{font-weight:600;color:var(--verde);}
+  .q-gabarito{border:0.5pt solid var(--cinza-claro);border-radius:2pt;padding:2.5mm 3mm;background:#F0EEE8;margin-top:1mm;}
+  .q-gabarito-title{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:7.5pt;text-transform:uppercase;color:var(--cinza);letter-spacing:0.5px;margin-bottom:1mm;}
+  .q-gabarito p{font-size:7.5pt;line-height:1.45;margin-bottom:0;}
+  .correta-tag{display:inline-block;background:var(--verde);color:var(--branco);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:6.5pt;letter-spacing:0.5px;text-transform:uppercase;padding:0.4mm 2mm;border-radius:1pt;margin-left:2mm;vertical-align:middle;}
+
+  .ra-title{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:26pt;text-transform:uppercase;color:var(--preto);line-height:1;margin-bottom:4mm;}
+  .ra-item{display:flex;align-items:flex-start;gap:2mm;margin-bottom:2mm;}
+  .ra-star{color:var(--teal);font-size:9pt;margin-top:0.3mm;flex-shrink:0;}
+  .ra-text{font-size:7.5pt;line-height:1.45;color:var(--preto);}
+  .tss-title{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:9pt;text-transform:uppercase;letter-spacing:1px;color:var(--teal);margin:3mm 0 2mm;border-bottom:0.5pt solid var(--teal);padding-bottom:1mm;}
+  .tss-item{display:flex;gap:3mm;margin-bottom:1.5mm;align-items:flex-start;}
+  .tss-num{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:10pt;color:var(--teal);flex-shrink:0;line-height:1.2;}
+  .tss-dash{font-weight:700;color:var(--teal);flex-shrink:0;}
+  .tss-q{font-size:7.5pt;line-height:1.4;color:var(--preto);}
+
+  .ref-item{font-size:7pt;line-height:1.5;margin-bottom:2mm;color:var(--cinza);}
+  .ref-item em{font-style:italic;}
+  .nota-box{border:0.5pt dashed var(--cinza-claro);border-radius:2pt;padding:2.5mm 3mm;background:var(--branco);margin-top:3mm;}
+  .nota-label{font-size:6.5pt;color:var(--cinza);font-style:italic;text-align:center;}
+
+  .cols2{display:grid;grid-template-columns:1fr 1fr;gap:4mm;}
+
+  /* CIF diagram */
+  .cif-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2mm;margin:2mm 0;}
+  .cif-box{border:0.5pt solid var(--teal);border-radius:2pt;padding:2mm 2.5mm;background:var(--branco);text-align:center;}
+  .cif-box-title{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:8pt;text-transform:uppercase;color:var(--teal);margin-bottom:1mm;}
+  .cif-box p{font-size:6.5pt;margin-bottom:0;text-align:left;}
+  .cif-bottom{display:grid;grid-template-columns:1fr 1fr;gap:2mm;margin-top:2mm;}
+  .cif-box-cinza{border:0.5pt solid var(--cinza-claro);border-radius:2pt;padding:2mm 2.5mm;background:#F8F7F2;text-align:center;}
+  .cif-box-cinza .cif-box-title{color:var(--cinza);}
+
+  /* Intro page */
+  .intro-eixo{display:flex;gap:3mm;align-items:flex-start;margin-bottom:2mm;}
+  .intro-num{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:20pt;color:var(--teal);line-height:1;flex-shrink:0;width:10mm;}
+  .intro-content{}
+  .intro-title{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:9pt;text-transform:uppercase;color:var(--preto);letter-spacing:0.3px;margin-bottom:1mm;}
+  .intro-text{font-size:7pt;color:var(--cinza);line-height:1.45;}
+</style>
+</head>
+<body>
+
+<!-- PAGE 01 — CAPA -->
+<div class="page cover-page">
+  <div class="cover-band"></div>
+  <div class="cover-inner">
+    <div class="cover-meta">Extensivo ENARE · Bloco B6 · Fisioterapia</div>
+    <div class="cover-title">AVC</div>
+    <div class="cover-sub">Espasticidade · Marcha · CIF</div>
+    <div class="cover-desc">
+      Fisiopatologia do AVC, fases de recuperação motora, espasticidade (escala de
+      Ashworth, condutas corretas e incorretas), treino de marcha pós-AVC e
+      Classificação Internacional de Funcionalidade (CIF) — estrutura cobrada
+      diretamente em Q99/2025.
+    </div>
+    <div class="cover-footer-bar">
+      <div class="cover-footer-logo">Residência PRO <span>by ELITE TREINAMENTOS</span></div>
+      <div class="cover-aula">Aula 01 · FT-Neuro</div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 02 — COMPETÊNCIAS E ESTRUTURA DO BLOCO -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-label">Competências · Aula 01</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="pc-sm">
+    <h2>O que você vai dominar</h2>
+    <hr class="div-teal">
+    <div class="intro-eixo">
+      <div class="intro-num">01</div>
+      <div class="intro-content">
+        <div class="intro-title">AVC — Fisiopatologia e Classificação</div>
+        <div class="intro-text">Isquêmico vs hemorrágico, territórios vasculares e sequelas funcionais. Fases de recuperação: flacidez inicial → espasticidade. Base para entender por que cada intervenção funciona.</div>
+      </div>
+    </div>
+    <div class="intro-eixo">
+      <div class="intro-num">02</div>
+      <div class="intro-content">
+        <div class="intro-title">Espasticidade — Avaliação e Manejo</div>
+        <div class="intro-text">Definição (aumento velocidade-dependente do tônus), Escala de Ashworth Modificada (0–4), condutas eficazes e a conduta explicitamente contraindicada — <strong>TENS em MMII espástico</strong> (Q85/2025).</div>
+      </div>
+    </div>
+    <div class="intro-eixo">
+      <div class="intro-num">03</div>
+      <div class="intro-content">
+        <div class="intro-title">Marcha Pós-AVC</div>
+        <div class="intro-text">Padrão hemiplégico, treino em esteira vs solo (Q98/2025), velocidade como desfecho funcional e resistência cardiovascular como componente obrigatório da reabilitação.</div>
+      </div>
+    </div>
+    <div class="intro-eixo">
+      <div class="intro-num">04</div>
+      <div class="intro-content">
+        <div class="intro-title">CIF — Classificação Internacional de Funcionalidade</div>
+        <div class="intro-text">Estrutura triaxial: Função/Estrutura → Atividade → Participação, com fatores contextuais (ambientais + pessoais). Cobrada diretamente em Q99/2025 no contexto de AVC hemorrágico.</div>
+      </div>
+    </div>
+
+    <hr class="div-thin" style="margin-top:3mm;">
+    <div class="box" style="margin-top:3mm;">
+      <div class="box-title">Peso na prova FGV — FT-NEURO</div>
+      <p style="font-size:7.5pt;">FT-NEURO <strong>dobrou</strong> de 11 para 22 questões entre 2024 e 2025 — maior crescimento absoluto de qualquer tema na prova de Fisioterapia. Em 2025, tornou-se o maior bloco específico (27,5% da prova). AVC respondeu por 4 questões diretas nas duas edições. A FGV passou de casos-conduta para questões de <strong>mecanismo</strong> e <strong>análise de conduta incorreta</strong> — o formato desta aula está calibrado para esse novo padrão.</p>
+    </div>
+    <div class="box-alert box" style="margin-top:1.5mm;">
+      <div class="box-title">Mudança de NC — o que a prova cobrou de diferente em 2025</div>
+      <p style="font-size:7.5pt;">2024: <em>"Dado este paciente com AVC, qual conduta?"</em> (Aplicação). 2025: <em>"Qual conduta está contraindicada no paciente espástico?"</em> e <em>"Classifique o caso pela CIF"</em> (Análise). Esta aula treina os dois formatos.</p>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-left">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-right">02</span>
+  </div>
+</div>
+
+<!-- PAGE 03 — AVC: FISIOPATOLOGIA E FASES -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-label">FT-Neuro · Aula 01</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="pc-sm">
+    <h2>AVC — Fisiopatologia e Fases de Recuperação</h2>
+    <hr class="div-teal">
+    <div class="cols2">
+      <div>
+        <h3>Classificação do AVC</h3>
+        <table>
+          <tr><th>Tipo</th><th>Frequência</th><th>Mecanismo</th></tr>
+          <tr><td><strong>Isquêmico</strong></td><td>~80%</td><td>Trombótico ou embólico; privação de O₂ ao neurônio</td></tr>
+          <tr><td><strong>Hemorrágico</strong></td><td>~20%</td><td>Ruptura vascular; sangramento intra ou extra-axial</td></tr>
+        </table>
+        <h3>Territórios Vasculares e Sequelas</h3>
+        <table>
+          <tr><th>Artéria</th><th>Território</th><th>Déficit típico</th></tr>
+          <tr><td><strong>ACM</strong></td><td>Córtex motor MMSS, face</td><td>Hemiplegia contralateral + espasticidade MMSS</td></tr>
+          <tr><td><strong>ACA</strong></td><td>Córtex motor MMII</td><td>Monoplegia MMII contralateral</td></tr>
+          <tr><td><strong>PICA/vertebro-basilar</strong></td><td>Cerebelo + tronco</td><td>Ataxia, disfagia, síndrome de Wallenberg</td></tr>
+        </table>
+        <h3 style="margin-top:2mm;">Fases de Recuperação Motora</h3>
+        <ul>
+          <li><strong>Fase aguda (0–7 dias):</strong> flacidez muscular — inibição descendente perdida; SNC em choque medular/cerebral</li>
+          <li><strong>Fase subaguda (dias–semanas):</strong> surgimento da espasticidade — hiper-reflexia, tônus aumentado, padrão sinérgico flexor MMSS e extensor MMII</li>
+          <li><strong>Fase crônica (&gt; 6 meses):</strong> espasticidade estabelecida; janela de neuroplasticidade aberta por meses — reabilitação intensiva mantém ganhos</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Padrão Motor Hemiplégico</h3>
+        <div class="box">
+          <div class="box-title">MMSS — Padrão Flexor</div>
+          <p style="font-size:7.5pt;"><strong>Ombro:</strong> aduzido + rodado internamente · <strong>Cotovelo:</strong> fletido · <strong>Punho/dedos:</strong> em flexão. Músculos hipertônicos: bíceps, flexores de punho e dedos.</p>
+        </div>
+        <div class="box" style="margin-top:1.5mm;">
+          <div class="box-title">MMII — Padrão Extensor</div>
+          <p style="font-size:7.5pt;"><strong>Quadril:</strong> aduzido + rodado internamente · <strong>Joelho:</strong> extendido · <strong>Tornozelo:</strong> plantiflexão + inversão (equinovaro). Marcha ceifante (circumdução do quadril).</p>
+        </div>
+        <h3 style="margin-top:2mm;">Neuroplasticidade — Base da Reabilitação</h3>
+        <ul>
+          <li><strong>LTP (Potenciação de Longo Prazo):</strong> fortalecimento sináptico por estimulação repetitiva — base do aprendizado motor</li>
+          <li><strong>Reorganização cortical:</strong> áreas adjacentes assumem funções da área lesada</li>
+          <li><strong>Prática específica:</strong> treino orientado a tarefa promove reorganização mais eficiente</li>
+          <li>Quanto mais precoce e intensa a reabilitação, maior o potencial de recuperação</li>
+        </ul>
+        <div class="box-warn box" style="margin-top:1.5mm;">
+          <div class="box-title">Regra de ouro</div>
+          <p style="font-size:7pt;">A espasticidade <em>não é simplesmente</em> fraqueza exacerbada — é hiperatividade do reflexo de estiramento por perda do controle inibitório descendente. A abordagem terapêutica é diferente da reabilitação de paresia isolada.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-left">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-right">03</span>
+  </div>
+</div>
+
+<!-- PAGE 04 — ESPASTICIDADE: AVALIAÇÃO E MANEJO -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-label">FT-Neuro · Aula 01</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="pc-sm">
+    <h2>Espasticidade — Avaliação e Manejo</h2>
+    <hr class="div-teal">
+    <div class="cols2">
+      <div>
+        <h3>Definição e Mecanismo</h3>
+        <p><strong>Espasticidade</strong> = aumento velocidade-dependente do tônus muscular, mediado por hiperatividade do arco reflexo de estiramento — componente da síndrome do neurônio motor superior (SNMS).</p>
+        <p>SNMS inclui: espasticidade + hiper-reflexia + clônus + sinal de Babinski + fraqueza muscular.</p>
+
+        <h3>Escala de Ashworth Modificada (EAM)</h3>
+        <table>
+          <tr><th>Grau</th><th>Descrição</th></tr>
+          <tr><td><strong>0</strong></td><td>Sem aumento do tônus muscular</td></tr>
+          <tr><td><strong>1</strong></td><td>Leve resistência ao final da ADM</td></tr>
+          <tr><td><strong>1+</strong></td><td>Resistência leve em menos de metade da ADM</td></tr>
+          <tr><td><strong>2</strong></td><td>Aumento marcado, mas movimento passivo possível</td></tr>
+          <tr><td><strong>3</strong></td><td>Aumento considerável; movimentação passiva difícil</td></tr>
+          <tr><td><strong>4</strong></td><td>Rigidez em flexão ou extensão</td></tr>
+        </table>
+
+        <h3>Condutas Fisioterapêuticas — CORRETAS</h3>
+        <ul>
+          <li><strong>Alongamento passivo e ativo-assistido:</strong> reduz espasticidade agudamente (mecanismo: inibição autogênica + autoinibição dos fusos)</li>
+          <li><strong>Fortalecimento muscular funcional:</strong> não piora espasticidade — aumenta controle motor voluntário</li>
+          <li><strong>Imobilização seriada:</strong> indica-se para espasticidade severa em posição não funcional</li>
+          <li><strong>Toxina botulínica + fisioterapia:</strong> combinação mais eficaz — BTx reduz tônus, fisioterapia reintegra o padrão motor</li>
+          <li><strong>EEF/FES (Estimulação Elétrica Funcional):</strong> indicada para músculo <em>antagonista</em> (ex.: dorsiflexores no equinovaro) — recruta músculos fracos sem excitar os espásticos</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Conduta Contraindicada — FGV Q85/2025</h3>
+        <div class="box-alert box">
+          <div class="box-title">TENS em MMII espástico = CONTRAINDICADO</div>
+          <p style="font-size:7.5pt;"><strong>Por que a FGV cobra:</strong> TENS aplicado sobre músculos espásticos dos MMII pode aumentar a excitabilidade cortical e do reflexo de estiramento — potencializando a espasticidade, não reduzindo-a. A questão Q85/2025 perguntou qual conduta estava <em>contraindicada</em> no paciente espástico pós-AVC — TENS em MMII era a resposta incorreta (que deveria ser identificada como errada).</p>
+          <p style="font-size:7.5pt;margin-top:1.5mm;"><strong>Regra prática:</strong> TENS pode ser usado para analgesia em outras condições, mas <em>nunca</em> como técnica principal para espasticidade — especialmente sobre os músculos espásticos diretamente.</p>
+        </div>
+
+        <h3 style="margin-top:2mm;">Manejo Interdisciplinar</h3>
+        <ul>
+          <li><strong>Baclofeno oral:</strong> agente GABAérgico — agonista GABA-B; indicado em espasticidade generalizada</li>
+          <li><strong>Toxina botulínica tipo A:</strong> bloqueio neuromuscular focado; efeito 3–4 meses; janela para fisioterapia intensiva</li>
+          <li><strong>Bomba de baclofeno intratecal:</strong> casos refratários com espasticidade grave e difusa</li>
+        </ul>
+        <div class="box-warn box" style="margin-top:2mm;">
+          <div class="box-title">Memória rápida — Ashworth</div>
+          <p style="font-size:7pt;">0 = normal · 1/1+ = leve · 2 = moderado (mas move) · 3 = difícil · 4 = rígido. A FGV usa grau 3–4 em casos de indicação para BTx ou imobilização.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-left">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-right">04</span>
+  </div>
+</div>
+
+<!-- PAGE 05 — MARCHA PÓS-AVC E CIF -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-label">FT-Neuro · Aula 01</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="pc-sm">
+    <h2>Marcha Pós-AVC e CIF</h2>
+    <hr class="div-teal">
+    <div class="cols2">
+      <div>
+        <h3>Marcha Hemiplégica — Padrão e Avaliação</h3>
+        <ul>
+          <li><strong>Padrão de marcha ceifante:</strong> quadril com circumdução para compensar equinovaro</li>
+          <li>Redução de velocidade, assimetria temporal (apoio prolongado no lado são), menor comprimento do passo</li>
+          <li>Risco de queda aumentado — BESTest e escala de Berg são instrumentos utilizados para avaliação de equilíbrio na marcha</li>
+        </ul>
+
+        <h3>Treino de Marcha — Evidências (Q98/2025)</h3>
+        <div class="box">
+          <div class="box-title">Esteira com suporte de peso</div>
+          <p style="font-size:7.5pt;">Permite prática precoce mesmo com comprometimento motor severo. Facilita o padrão rítmico e a descarga de peso simétrica. Eficácia equivalente ao treino no solo para ganho de velocidade.</p>
+        </div>
+        <div class="box" style="margin-top:1.5mm;">
+          <div class="box-title">Treino no solo</div>
+          <p style="font-size:7.5pt;">Mais ecológico — transfere diretamente para as AVDs. Combina marcha + obstáculos + dupla tarefa. <strong>A FGV (Q98/2025) cobrou que velocidade, esteira, solo e resistência cardiovascular são todos componentes do programa de reabilitação da marcha.</strong></p>
+        </div>
+        <p style="font-size:7.5pt;margin-top:1.5mm;"><strong>Resistência cardiovascular</strong> é componente obrigatório: AVC deixa pacientes descondicionados — treino aeróbico reduz fadiga e melhora o desempenho funcional geral.</p>
+      </div>
+      <div>
+        <h3>CIF — Classificação Internacional de Funcionalidade</h3>
+        <p style="font-size:7.5pt;margin-bottom:2mm;">A CIF (OMS, 2001) é o framework diagnóstico da Fisioterapia. Cobrada em Q99/2025 no contexto de AVC hemorrágico.</p>
+        <div class="cif-grid">
+          <div class="cif-box">
+            <div class="cif-box-title">Função e Estrutura</div>
+            <p>Funções fisiológicas e psicológicas dos sistemas + estruturas anatômicas. Ex.: hemiparesia espástica grau 3 (Ashworth), afasia de Broca.</p>
+          </div>
+          <div class="cif-box">
+            <div class="cif-box-title">Atividade</div>
+            <p>Execução de tarefas pelo indivíduo. Ex.: incapacidade de subir escadas, dificuldade para vestir-se sem assistência.</p>
+          </div>
+          <div class="cif-box">
+            <div class="cif-box-title">Participação</div>
+            <p>Envolvimento em situações de vida. Ex.: afastamento do trabalho, restrição de atividades sociais e lazer.</p>
+          </div>
+        </div>
+        <div class="cif-bottom">
+          <div class="cif-box-cinza">
+            <div class="cif-box-title" style="color:var(--cinza);">Fatores Ambientais</div>
+            <p style="font-size:6.5pt;">Ambiente físico/social. Ex.: ausência de rampa, suporte familiar, políticas de saúde.</p>
+          </div>
+          <div class="cif-box-cinza">
+            <div class="cif-box-title" style="color:var(--cinza);">Fatores Pessoais</div>
+            <p style="font-size:6.5pt;">Características do indivíduo. Ex.: motivação, idade, comorbidades, histórico de atividade física.</p>
+          </div>
+        </div>
+        <div class="box-warn box" style="margin-top:2mm;">
+          <div class="box-title">Aplicando a CIF ao AVC (Q99/2025)</div>
+          <p style="font-size:7pt;">Paciente com AVC hemorrágico → <strong>Função/Estrutura:</strong> hemiparesia + afasia. <strong>Atividade:</strong> limitação nas transferências e na comunicação. <strong>Participação:</strong> restrição ao trabalho e às relações sociais. O diagnóstico fisioterapêutico opera na CIF — não substitui o diagnóstico médico, mas o complementa funcionalmente.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-left">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-right">05</span>
+  </div>
+</div>
+
+<!-- PAGE 06 — QUESTÃO 01 (MEMORIZAÇÃO) -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-label">Fixação · Aula 01</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="pc">
+    <div class="q-header">Questão 01 de 03 · B6 AVC — Escala de Ashworth / Memorização</div>
+    <div class="q-body">
+      <p class="q-stem">Qual dos graus da <strong>Escala de Ashworth Modificada</strong> descreve corretamente a situação em que o examinador consegue realizar o movimento passivo, mas encontra aumento considerável na resistência ao longo de toda a amplitude de movimento?</p>
+      <p class="q-opt"><strong>A</strong>&nbsp;&nbsp;Grau 1+ — leve aumento do tônus com resistência predominante no início do movimento.</p>
+      <p class="q-opt"><strong>B</strong>&nbsp;&nbsp;Grau 2 — aumento marcado do tônus em toda a ADM, mas o movimento passivo ainda é possível.</p>
+      <p class="q-opt correta"><strong>C</strong>&nbsp;&nbsp;Grau 3 — aumento considerável do tônus; o movimento passivo é difícil, mas realizável. <span class="correta-tag">CORRETA</span></p>
+      <p class="q-opt"><strong>D</strong>&nbsp;&nbsp;Grau 4 — parte afetada está rígida em flexão ou extensão; movimento passivo impossível.</p>
+    </div>
+    <div class="q-gabarito">
+      <div class="q-gabarito-title">Gabarito Comentado — C</div>
+      <p>A EAM classifica: <strong>Grau 2</strong> = aumento marcado, mas movimento passível; <strong>Grau 3</strong> = aumento considerável + movimento difícil (ainda possível); <strong>Grau 4</strong> = rigidez completa. O enunciado descreve "aumento considerável com movimento ainda realizável" — Grau 3. A distinção 2 vs 3 é frequente nas provas: Grau 2 = possível sem dificuldade; Grau 3 = possível <em>com</em> dificuldade. Grau 4 = impossível.</p>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-left">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-right">06</span>
+  </div>
+</div>
+
+<!-- PAGE 07 — QUESTÃO 02 (APLICAÇÃO) -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-label">Fixação · Aula 01</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="pc">
+    <div class="q-header">Questão 02 de 03 · B6 AVC — Marcha e Reabilitação / Aplicação</div>
+    <div class="q-body">
+      <p class="q-stem">Paciente de 58 anos, 4 meses após AVC isquêmico em território da artéria cerebral média esquerda, apresenta hemiparesia espástica à direita, padrão equinovaro e marcha ceifante. O fisioterapeuta planeja o programa de reabilitação da marcha. De acordo com as evidências atuais, qual conjunto de estratégias é mais adequado?</p>
+      <p class="q-opt"><strong>A</strong>&nbsp;&nbsp;Treino de marcha exclusivamente em esteira com suporte de peso, pois apresenta maior eficácia que o treino no solo para ganho de velocidade.</p>
+      <p class="q-opt"><strong>B</strong>&nbsp;&nbsp;Suspender o treino de marcha até resolução completa do equinovaro, pois o padrão anormal de marcha consolida compensações inadequadas.</p>
+      <p class="q-opt correta"><strong>C</strong>&nbsp;&nbsp;Combinar treino de marcha no solo, esteira com suporte de peso e condicionamento cardiovascular aeróbico, pois os três componentes contribuem para a recuperação funcional. <span class="correta-tag">CORRETA</span></p>
+      <p class="q-opt"><strong>D</strong>&nbsp;&nbsp;Priorizar fortalecimento muscular isolado dos extensores do quadril antes de iniciar qualquer treino de marcha, para garantir base de apoio adequada.</p>
+    </div>
+    <div class="q-gabarito">
+      <div class="q-gabarito-title">Gabarito Comentado — C</div>
+      <p>Q98/2025 (FGV) cobrou explicitamente que o programa de reabilitação da marcha pós-AVC inclui velocidade, treino em esteira, treino no solo e resistência cardiovascular como componentes complementares — não mutuamente exclusivos. A → esteira e solo têm eficácia equivalente para velocidade; não há superioridade isolada da esteira. B → aguardar resolução do equinovaro retarda a reabilitação; o treino precoce usa compensações como ponto de partida. D → fortalecimento isolado sem tarefa funcional integrada tem transferência limitada para a marcha.</p>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-left">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-right">07</span>
+  </div>
+</div>
+
+<!-- PAGE 08 — QUESTÃO 03 (ÂNCORA / ANÁLISE) -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-label">Fixação · Aula 01</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="pc">
+    <div class="q-header">Questão 03 de 03 · B6 AVC — Espasticidade e CIF · Análise (An)</div>
+    <div class="q-body">
+      <p class="q-stem">Paciente de 64 anos, 8 meses após AVC hemorrágico, apresenta hemiplegia espástica à esquerda (EAM grau 3 em flexores de cotovelo), equinovaro e marcha ceifante. Está em tratamento com toxina botulínica e fisioterapia. O fisioterapeuta elabora o diagnóstico fisioterapêutico pela CIF e planeja as intervenções. Sobre o caso, analise as afirmativas:</p>
+      <p class="q-stem"><strong>I</strong> — A hemiplegia espástica com EAM grau 3 e equinovaro são classificados na CIF no componente <em>Funções e Estruturas do Corpo</em>.<br>
+      <strong>II</strong> — A dificuldade para vestir-se sem assistência e a limitação para escadas são classificadas no componente <em>Atividade</em> da CIF.<br>
+      <strong>III</strong> — O uso de TENS sobre os flexores espásticos de cotovelo é conduta indicada para redução aguda da espasticidade, pois promove inibição recíproca.<br>
+      <strong>IV</strong> — A combinação de toxina botulínica com fisioterapia intensiva é a estratégia mais eficaz para espasticidade focal, pois o bloqueio neuromuscular cria janela para o aprendizado motor.</p>
+      <p class="q-opt"><strong>A</strong>&nbsp;&nbsp;Apenas I e II estão corretas.</p>
+      <p class="q-opt"><strong>B</strong>&nbsp;&nbsp;Apenas I, II e III estão corretas.</p>
+      <p class="q-opt correta"><strong>C</strong>&nbsp;&nbsp;Apenas I, II e IV estão corretas. <span class="correta-tag">CORRETA</span></p>
+      <p class="q-opt"><strong>D</strong>&nbsp;&nbsp;I, II, III e IV estão corretas.</p>
+    </div>
+    <div class="q-gabarito">
+      <div class="q-gabarito-title">Gabarito Comentado — C</div>
+      <p><strong>I — CORRETA:</strong> Alterações neuromusculares (espasticidade, paresia) e estruturais (tônus anormal) são classificadas em Funções e Estruturas do Corpo. <strong>II — CORRETA:</strong> Limitações na execução de atividades da vida diária correspondem ao componente Atividade. <strong>III — ERRADA:</strong> TENS sobre músculos espásticos é <em>contraindicado</em> — pode aumentar a excitabilidade do reflexo de estiramento (Q85/2025). Inibição recíproca exige estimulação do músculo <em>antagonista</em> (agonista fraco), não do músculo espástico diretamente. <strong>IV — CORRETA:</strong> BTx + fisioterapia = combinação padrão para espasticidade focal — redução do tônus cria janela de plasticidade para o aprendizado motor.</p>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-left">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-right">08</span>
+  </div>
+</div>
+
+<!-- PAGE 09 — RECUPERAÇÃO ATIVA -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-label">Recuperação Ativa · Aula 01</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="pc-sm">
+    <div class="ra-title">SE ESQUECER TUDO,<br>LEMBRE DISTO</div>
+    <div class="ra-item"><span class="ra-star">★</span><div class="ra-text"><strong>AVC isquêmico = 80%.</strong> ACM → hemiplegia contralateral + padrão espástico: flexor MMSS, extensor MMII (equinovaro).</div></div>
+    <div class="ra-item"><span class="ra-star">★</span><div class="ra-text"><strong>Espasticidade = aumento velocidade-dependente do tônus</strong> por perda do controle inibitório descendente. Grau 3 Ashworth = movimento difícil mas possível. Grau 4 = rígido.</div></div>
+    <div class="ra-item"><span class="ra-star">★</span><div class="ra-text"><strong>TENS em MMII espástico = CONTRAINDICADO</strong> (Q85/2025). Pode aumentar excitabilidade do reflexo de estiramento. FES/EEF no antagonista = correto.</div></div>
+    <div class="ra-item"><span class="ra-star">★</span><div class="ra-text"><strong>Marcha pós-AVC:</strong> esteira + solo + resistência cardiovascular são complementares, não concorrentes (Q98/2025). Não aguardar "resolução" antes de treinar.</div></div>
+    <div class="ra-item"><span class="ra-star">★</span><div class="ra-text"><strong>CIF — 3 componentes:</strong> Função/Estrutura (espasticidade, paresia) → Atividade (dificuldade em AVDs) → Participação (restrição social/trabalho) + fatores contextuais.</div></div>
+    <div class="ra-item"><span class="ra-star">★</span><div class="ra-text"><strong>BTx + fisioterapia = melhor combinação</strong> para espasticidade focal. Toxina cria janela para aprendizado motor; fisioterapia a aproveita.</div></div>
+
+    <div class="tss-title">Teste-se sem olhar</div>
+    <div class="tss-item"><span class="tss-num">01</span><span class="tss-dash">—</span><span class="tss-q">Por que a TENS está contraindicada em músculos espásticos dos MMII? Qual é o mecanismo de piora?</span></div>
+    <div class="tss-item"><span class="tss-num">02</span><span class="tss-dash">—</span><span class="tss-q">Na Escala de Ashworth Modificada, qual a diferença entre grau 2 e grau 3?</span></div>
+    <div class="tss-item"><span class="tss-num">03</span><span class="tss-dash">—</span><span class="tss-q">Classifique pela CIF: "paciente afastado do trabalho após AVC" — em qual componente isso se encaixa?</span></div>
+    <div class="tss-item"><span class="tss-num">04</span><span class="tss-dash">—</span><span class="tss-q">Quais são os três componentes do programa de reabilitação da marcha pós-AVC segundo a FGV 2025?</span></div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-left">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-right">09</span>
+  </div>
+</div>
+
+<!-- PAGE 10 — REFERÊNCIAS -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-label">Referências · Aula 01</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="pc-sm">
+    <h2>Referências — Bloco B6 · Aula 01</h2>
+    <hr class="div-teal">
+    <div class="ref-item">WORLD HEALTH ORGANIZATION. <em>International Classification of Functioning, Disability and Health (ICF).</em> Geneva: WHO, 2001.</div>
+    <div class="ref-item">BOHANNON, R.W.; SMITH, M.B. Interrater reliability of a modified Ashworth scale of muscle spasticity. <em>Physical Therapy,</em> v. 67, n. 2, p. 206–207, 1987.</div>
+    <div class="ref-item">MEHRHOLZ, J. et al. Electromechanical-assisted training for walking after stroke. <em>Cochrane Database of Systematic Reviews,</em> 2020.</div>
+    <div class="ref-item">CLINICAL EXCELLENCE COMMISSION (NSW). <em>Stroke: Spasticity Management.</em> Sydney, 2020.</div>
+    <div class="ref-item">WINSTEIN, C.J. et al. Guidelines for Adult Stroke Rehabilitation and Recovery. <em>Stroke,</em> v. 47, n. 6, 2016.</div>
+    <div class="ref-item">COFFITO. <em>Código de Ética e Deontologia da Fisioterapia e da Terapia Ocupacional.</em> Brasília, 2021.</div>
+    <div class="ref-item">CARR, J.H.; SHEPHERD, R.B. <em>Reabilitação Neurológica — Otimizando o Desempenho Motor.</em> Barueri: Manole, 2008.</div>
+    <div class="nota-box"><span class="nota-label">Espaço para anotações</span></div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-left">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-right">10</span>
+  </div>
+</div>
+
+</body>
+</html>
