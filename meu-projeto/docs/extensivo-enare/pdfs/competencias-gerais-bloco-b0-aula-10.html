@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Competências Gerais · Bloco B0 · Aula 10 — Extensivo ENARE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Bricolage+Grotesque:wght@400;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --creme:          #F6F4ED;
+      --verde-lima:     #C6D834;
+      --verde-floresta: #1F5C23;
+      --teal:           #0D8A8D;
+      --preto:          #070707;
+      --cinza:          #9E9B94;
+      --cinza-borda:    #DDD9D1;
+      --creme-escuro:   #EDEAE2;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #CCC; font-family: 'Bricolage Grotesque', sans-serif; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    @page { size: A4; margin: 0; }
+    .page { width: 210mm; height: 297mm; position: relative; overflow: hidden; page-break-after: always; background: var(--creme); display: flex; flex-direction: column; }
+    @media screen { .page { margin: 24px auto; box-shadow: 0 4px 32px rgba(0,0,0,0.18); } }
+    .page-header { height: 14mm; background: var(--creme); border-bottom: 2px solid var(--teal); display: flex; align-items: center; padding: 0 18mm; flex-shrink: 0; }
+    .page-header-label { font-family: 'Barlow Condensed', sans-serif; font-size: 8pt; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--cinza); }
+    .page-header-title { font-family: 'Space Grotesk', sans-serif; font-size: 7.5pt; font-weight: 300; color: var(--cinza); margin-left: auto; }
+    .page-footer { height: 11mm; border-top: 0.5px solid var(--teal); display: flex; align-items: center; padding: 0 18mm; flex-shrink: 0; }
+    .page-footer-brand { font-family: 'Space Grotesk', sans-serif; font-size: 7pt; font-weight: 300; color: var(--cinza); }
+    .page-footer-brand span { color: var(--teal); font-weight: 400; }
+    .page-footer-num { font-family: 'Barlow Condensed', sans-serif; font-size: 9pt; font-weight: 600; color: var(--cinza); margin-left: auto; }
+    .page-body { flex: 1; padding: 10mm 18mm 8mm; overflow: hidden; }
+    .h1 { font-family: 'Barlow Condensed', sans-serif; font-size: 22pt; font-weight: 800; text-transform: uppercase; color: var(--verde-floresta); letter-spacing: 0.5px; line-height: 1.05; margin-bottom: 7mm; }
+    .h2 { font-family: 'Barlow Condensed', sans-serif; font-size: 16pt; font-weight: 700; text-transform: uppercase; color: var(--verde-floresta); letter-spacing: 0.5px; margin-bottom: 4mm; margin-top: 6mm; }
+    .h2:first-child { margin-top: 0; }
+    .h3 { font-family: 'Bricolage Grotesque', sans-serif; font-size: 11pt; font-weight: 600; color: var(--preto); margin-bottom: 2mm; margin-top: 4mm; }
+    p { font-size: 10.5pt; color: var(--preto); line-height: 1.55; margin-bottom: 3mm; }
+    .rule { border: none; border-top: 1px solid var(--cinza-borda); margin: 4mm 0; }
+    .box { border-radius: 6px; padding: 4mm 5mm; margin: 4mm 0; }
+    .box-title { font-family: 'Barlow Condensed', sans-serif; font-size: 9pt; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 1.5mm; display: block; }
+    .box-body { font-size: 10pt; line-height: 1.5; }
+    .box-pega  { background: var(--verde-lima); color: var(--verde-floresta); }
+    .box-pega .box-title { color: var(--verde-floresta); }
+    .box-dica  { background: var(--teal); color: var(--creme); }
+    .box-dica .box-title { color: var(--creme); }
+    .box-conceito { background: var(--verde-floresta); color: var(--creme); }
+    .box-conceito .box-title { color: var(--creme); }
+    table { width: 100%; border-collapse: collapse; margin: 3mm 0; font-size: 9.5pt; }
+    thead tr { background: var(--verde-floresta); color: var(--creme); }
+    thead th { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; padding: 3mm 4mm; text-align: left; font-size: 9pt; }
+    tbody tr:nth-child(odd)  { background: var(--creme); }
+    tbody tr:nth-child(even) { background: var(--creme-escuro); }
+    tbody td { padding: 2.5mm 4mm; border-bottom: 0.5px solid var(--cinza-borda); line-height: 1.4; color: var(--preto); }
+    td.highlight { font-weight: 600; color: var(--verde-floresta); }
+    .lista { list-style: none; margin: 2mm 0 3mm; }
+    .lista li { font-size: 10.5pt; line-height: 1.55; color: var(--preto); padding-left: 5mm; margin-bottom: 2mm; position: relative; }
+    .lista li::before { content: ''; position: absolute; left: 0; top: 5px; width: 5px; height: 5px; background: var(--verde-lima); border-radius: 50%; }
+    .objective-item { display: flex; gap: 4mm; margin-bottom: 4mm; align-items: flex-start; }
+    .objective-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 20pt; color: var(--verde-lima); line-height: 1; flex-shrink: 0; width: 8mm; }
+    .objective-text { font-size: 11pt; font-weight: 600; color: var(--preto); line-height: 1.4; padding-top: 1mm; }
+    .prereq-card { background: var(--creme-escuro); border-left: 4px solid var(--teal); border-radius: 0 6px 6px 0; padding: 3.5mm 5mm; margin-top: 5mm; }
+    .prereq-label { font-family: 'Barlow Condensed', sans-serif; font-size: 8pt; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--teal); margin-bottom: 1mm; }
+    .prereq-text { font-size: 10pt; color: var(--preto); line-height: 1.45; }
+    .seq-grid { display: flex; gap: 3mm; margin: 3mm 0; }
+    .seq-step { flex: 1; background: var(--creme-escuro); border-top: 3px solid var(--verde-floresta); border-radius: 0 0 6px 6px; padding: 3mm 3.5mm; }
+    .seq-step.active { border-top-color: var(--verde-lima); background: var(--verde-floresta); }
+    .seq-step.done { border-top-color: var(--teal); background: var(--creme-escuro); opacity: 0.7; }
+    .seq-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 14pt; color: var(--verde-lima); line-height: 1; }
+    .seq-step:not(.active) .seq-num { color: var(--verde-floresta); }
+    .seq-name { font-size: 8pt; font-weight: 600; color: var(--creme); margin-top: 1mm; line-height: 1.3; }
+    .seq-step:not(.active) .seq-name { color: var(--preto); }
+    .seq-desc { font-size: 7pt; color: rgba(246,244,237,0.75); margin-top: 0.5mm; line-height: 1.3; }
+    .seq-step:not(.active) .seq-desc { color: var(--cinza); }
+    .question-num { font-family: 'Barlow Condensed', sans-serif; font-size: 9pt; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--teal); margin-bottom: 2mm; }
+    .question-stem { font-size: 10.5pt; line-height: 1.6; color: var(--preto); background: var(--creme-escuro); border-radius: 6px; padding: 4mm 5mm; margin-bottom: 4mm; }
+    .question-stem strong { font-weight: 600; }
+    .alternatives { margin-bottom: 5mm; }
+    .alt { display: flex; gap: 3mm; padding: 2mm 0; border-bottom: 0.5px solid var(--cinza-borda); align-items: flex-start; }
+    .alt:last-child { border-bottom: none; }
+    .alt-letter { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 11pt; color: var(--cinza); flex-shrink: 0; width: 5mm; line-height: 1.4; }
+    .alt.correct .alt-letter { color: var(--verde-floresta); }
+    .alt-text { font-size: 10pt; color: var(--preto); line-height: 1.45; }
+    .alt.correct .alt-text { color: var(--verde-floresta); font-weight: 600; }
+    .correct-badge { display: inline-block; background: var(--verde-lima); color: var(--verde-floresta); font-family: 'Barlow Condensed', sans-serif; font-size: 7pt; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 1px 5px; border-radius: 3px; margin-left: 2mm; vertical-align: middle; }
+    .gabarito-title { font-family: 'Barlow Condensed', sans-serif; font-size: 10pt; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--verde-floresta); border-top: 2px solid var(--verde-floresta); padding-top: 3mm; margin-top: 2mm; margin-bottom: 2mm; }
+    .gabarito-body { font-size: 9.5pt; line-height: 1.55; color: var(--preto); }
+    .gabarito-body strong { color: var(--verde-floresta); font-weight: 600; }
+    .gabarito-alt { margin-bottom: 2mm; padding-left: 4mm; border-left: 2px solid var(--cinza-borda); }
+    .gabarito-alt.correta { border-left-color: var(--verde-lima); }
+    .gabarito-alt strong { display: block; margin-bottom: 0.5mm; }
+    .ref-list { list-style: none; margin-top: 2mm; }
+    .ref-list li { font-size: 9pt; line-height: 1.55; color: var(--preto); margin-bottom: 3mm; padding-left: 6mm; text-indent: -6mm; }
+    .annotation-area { margin-top: 5mm; border-top: 1px solid var(--cinza-borda); padding-top: 3mm; }
+    .annotation-label { font-family: 'Barlow Condensed', sans-serif; font-size: 8pt; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--cinza); margin-bottom: 3mm; }
+    .annotation-lines { display: flex; flex-direction: column; gap: 7mm; }
+    .annotation-line { border-bottom: 0.5px solid var(--cinza-borda); height: 0; }
+    .cover { background: var(--verde-floresta); display: flex; flex-direction: column; padding: 0; }
+    .cover-inner { flex: 1; display: flex; flex-direction: column; padding: 14mm 18mm 0; }
+    .cover-logo { margin-bottom: auto; }
+    .cover-meta { font-family: 'Space Grotesk', sans-serif; font-size: 8pt; font-weight: 400; letter-spacing: 3px; text-transform: uppercase; color: rgba(198,216,52,0.8); margin-bottom: 5mm; }
+    .cover-block-label { font-family: 'Barlow Condensed', sans-serif; font-size: 11pt; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: rgba(246,244,237,0.55); margin-bottom: 4mm; }
+    .cover-title { font-family: 'Barlow Condensed', sans-serif; font-size: 32pt; font-weight: 800; text-transform: uppercase; color: var(--creme); line-height: 1; margin-bottom: 3mm; }
+    .cover-subtitle { font-family: 'Barlow Condensed', sans-serif; font-size: 20pt; font-weight: 700; text-transform: uppercase; color: var(--verde-lima); line-height: 1.1; margin-bottom: 10mm; }
+    .cover-deco { font-family: 'Barlow Condensed', sans-serif; font-size: 180pt; font-weight: 800; color: rgba(246,244,237,0.05); line-height: 0.85; text-align: right; margin-right: -8mm; margin-bottom: -10mm; letter-spacing: -4px; flex-shrink: 0; }
+    .cover-bottom-strip { height: 4mm; background: var(--verde-lima); flex-shrink: 0; }
+    .recall-section { margin-bottom: 5mm; }
+    .recall-title { font-family: 'Barlow Condensed', sans-serif; font-size: 11pt; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--verde-floresta); border-bottom: 2px solid var(--verde-floresta); padding-bottom: 2mm; margin-bottom: 3mm; }
+    .sintese-item { display: flex; gap: 3mm; margin-bottom: 3mm; align-items: flex-start; }
+    .sintese-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 16pt; color: var(--verde-lima); line-height: 1; flex-shrink: 0; width: 7mm; }
+    .sintese-text { font-size: 10pt; color: var(--preto); line-height: 1.5; padding-top: 1mm; }
+    .recall-q { font-size: 10pt; color: var(--preto); line-height: 1.5; padding: 2mm 0 2mm 4mm; border-left: 2px solid var(--cinza-borda); margin-bottom: 2.5mm; }
+    .recall-q-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 9pt; color: var(--teal); display: inline; margin-right: 2mm; }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PÁGINA 1 — CAPA
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="page cover">
+    <div class="cover-inner">
+      <div class="cover-logo">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210 90" width="210" height="90">
+          <rect x="0" y="8" width="3" height="74" rx="1.5" fill="#C6D834"/>
+          <text x="12" y="26" font-family="'Playfair Display',Georgia,serif" font-style="italic" font-size="11" fill="#C6D834">extensivo</text>
+          <text x="11" y="70" font-family="'Barlow Condensed','Arial Narrow',sans-serif" font-weight="800" font-size="52" fill="#F6F4ED">ENARE</text>
+          <text x="12" y="88" font-family="'Space Grotesk','Helvetica Neue',sans-serif" font-weight="300" font-size="9" fill="rgba(246,244,237,0.5)">by Residência PRO</text>
+        </svg>
+      </div>
+      <div class="cover-meta">Competências Gerais · Módulo 3</div>
+      <div class="cover-block-label">Bloco B0 · Aula 10</div>
+      <div class="cover-title">Política Nacional<br>de Humanização</div>
+      <div class="cover-subtitle">Princípios, Dispositivos<br>e Clínica Ampliada</div>
+    </div>
+    <div class="cover-deco">10</div>
+    <div class="cover-bottom-strip"></div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PÁGINA 2 — OBJETIVOS
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="page">
+    <div class="page-header">
+      <span class="page-header-label">Competências Gerais · Bloco B0 · Aula 10</span>
+      <span class="page-header-title">Extensivo ENARE</span>
+    </div>
+    <div class="page-body">
+      <div class="h1">O que você vai aprender</div>
+
+      <div class="objective-item">
+        <div class="objective-num">01</div>
+        <div class="objective-text">Reconhecer a PNH como política transversal — não um programa —, identificando seus três princípios estruturantes: transversalidade, indissociabilidade atenção/gestão e protagonismo dos sujeitos</div>
+      </div>
+      <div class="objective-item">
+        <div class="objective-num">02</div>
+        <div class="objective-text">Distinguir os principais dispositivos da PNH — Acolhimento, Clínica Ampliada, Projeto Terapêutico Singular, Equipe de Referência, Apoio Matricial e Cogestão — e reconhecer a função de cada um</div>
+      </div>
+      <div class="objective-item">
+        <div class="objective-num">03</div>
+        <div class="objective-text">Aplicar os dispositivos da PNH em cenários clínicos, identificando qual mecanismo está sendo utilizado quando a equipe elabora um plano de cuidado individualizado e multiprofissional</div>
+      </div>
+
+      <hr class="rule" style="margin-top: 6mm;">
+
+      <div class="prereq-card">
+        <div class="prereq-label">Pré-requisito</div>
+        <div class="prereq-text">
+          <strong>Aulas 06–07 (APS) e Aula 09 (Populações):</strong> O Apoio Matricial, visto com o NASF-AB na Aula 07, é também um dispositivo da PNH. A compreensão da equipe multiprofissional e da lógica do cuidado centrado no usuário, construída nas aulas anteriores, é base direta para esta aula.
+        </div>
+      </div>
+
+      <div class="seq-grid" style="margin-top: 5mm;">
+        <div class="seq-step done">
+          <div class="seq-num">A01–09</div>
+          <div class="seq-name">Concluídas</div>
+          <div class="seq-desc">Legislação, RAS, APS, NR-32, Pop.</div>
+        </div>
+        <div class="seq-step active">
+          <div class="seq-num">A10</div>
+          <div class="seq-name">PNH</div>
+          <div class="seq-desc">Você está aqui</div>
+        </div>
+        <div class="seq-step">
+          <div class="seq-num">A11</div>
+          <div class="seq-name">Vigilância</div>
+          <div class="seq-desc">Vig. Saúde, Seg. Paciente, Bioética</div>
+        </div>
+        <div class="seq-step">
+          <div class="seq-num">A12</div>
+          <div class="seq-name">Revisão</div>
+          <div class="seq-desc">Síntese geral do Bloco B0</div>
+        </div>
+      </div>
+
+      <p style="margin-top: 4mm; font-size: 9pt; color: var(--cinza);">
+        <strong style="color: var(--preto);">Duração estimada:</strong> 35 min &nbsp;·&nbsp;
+        <strong style="color: var(--preto);">Questões de fixação:</strong> 3 &nbsp;·&nbsp;
+        <strong style="color: var(--preto);">Aula:</strong> 10 de 12 do Bloco
+      </p>
+    </div>
+    <div class="page-footer">
+      <span class="page-footer-brand"><span>Extensivo ENARE</span> &nbsp;·&nbsp; by Residência PRO</span>
+      <span class="page-footer-num">02</span>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PÁGINA 3 — PNH: NATUREZA E PRINCÍPIOS
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="page">
+    <div class="page-header">
+      <span class="page-header-label">Competências Gerais · Bloco B0 · Aula 10</span>
+      <span class="page-header-title">Extensivo ENARE</span>
+    </div>
+    <div class="page-body">
+      <div class="h2">PNH — Natureza e Princípios Estruturantes</div>
+
+      <p>A Política Nacional de Humanização (PNH — HumanizaSUS), lançada em 2003, é uma <strong>política pública transversal</strong> do Ministério da Saúde. Não é um programa com prazo definido nem restrita a um nível de atenção: atravessa toda a rede do SUS, da Atenção Básica à Alta Complexidade.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th style="width:35%">Princípio</th>
+            <th>O que significa na prática</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="highlight">Transversalidade</td>
+            <td>A PNH não pertence a um serviço ou nível de atenção: percorre todos os pontos da rede SUS, integrando diferentes saberes e práticas de cuidado</td>
+          </tr>
+          <tr>
+            <td class="highlight">Indissociabilidade atenção/gestão</td>
+            <td>Modos de gerir e modos de cuidar são inseparáveis — a qualidade do cuidado depende da qualidade da gestão e vice-versa</td>
+          </tr>
+          <tr>
+            <td class="highlight">Protagonismo dos sujeitos</td>
+            <td>Usuários, trabalhadores e gestores são <em>sujeitos ativos</em> do processo de saúde, não apenas receptores de ações — corresponsabilidade e autonomia são centrais</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="box box-pega" style="margin-top: 3mm;">
+        <span class="box-title">⚠️ PNH não é programa — é política</span>
+        <span class="box-body">Alternativas que descrevem a PNH como "programa ministerial com metas e prazo definido" estão incorretas. <strong>Política</strong> implica caráter permanente, transversal e estruturante; programa implica temporalidade e focalização. A distinção é o ponto mais cobrado sobre a natureza da PNH.</span>
+      </div>
+
+      <div class="box box-conceito" style="margin-top: 3mm;">
+        <span class="box-title">Tríade da PNH — sujeitos envolvidos</span>
+        <span class="box-body">A PNH organiza sua atuação em torno de três atores: <strong>usuários</strong> (autonomia e direitos), <strong>trabalhadores</strong> (valorização e condições de trabalho) e <strong>gestores</strong> (cogestão e espaços coletivos de decisão). Humanização não é apenas "tratar bem o paciente" — envolve também reorganização da gestão e das relações de trabalho.</span>
+      </div>
+    </div>
+    <div class="page-footer">
+      <span class="page-footer-brand"><span>Extensivo ENARE</span> &nbsp;·&nbsp; by Residência PRO</span>
+      <span class="page-footer-num">03</span>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PÁGINA 4 — DISPOSITIVOS DA PNH
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="page">
+    <div class="page-header">
+      <span class="page-header-label">Competências Gerais · Bloco B0 · Aula 10</span>
+      <span class="page-header-title">Extensivo ENARE</span>
+    </div>
+    <div class="page-body">
+      <div class="h2">Dispositivos da PNH — Tabela de Referência</div>
+
+      <p>Os dispositivos são as ferramentas concretas que operacionalizam a PNH nos serviços de saúde. Identificar qual dispositivo está sendo utilizado em um cenário é o principal tipo de questão de aplicação sobre este tema.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th style="width:32%">Dispositivo</th>
+            <th>Definição e Função Central</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="highlight">Acolhimento</td>
+            <td>Receber, ouvir e responsabilizar-se pelo usuário em qualquer ponto da rede — não é triagem nem consultório fixo; é postura ética de toda a equipe</td>
+          </tr>
+          <tr>
+            <td class="highlight">Clínica Ampliada</td>
+            <td>Vai além do diagnóstico e da doença: considera as dimensões subjetivas, familiares e sociais do sujeito; transforma o objeto de trabalho do profissional</td>
+          </tr>
+          <tr>
+            <td class="highlight">Projeto Terapêutico Singular (PTS)</td>
+            <td>Conjunto de propostas de condutas articuladas por equipe multiprofissional para um sujeito individual (ou coletivo), considerando suas singularidades</td>
+          </tr>
+          <tr>
+            <td class="highlight">Equipe de Referência</td>
+            <td>Equipe multiprofissional responsável por acompanhar o caso do usuário, garantindo longitudinalidade e vínculo ao longo do tempo</td>
+          </tr>
+          <tr>
+            <td class="highlight">Apoio Matricial</td>
+            <td>Suporte especializado oferecido por profissional externo à equipe de referência (ex.: psiquiatra para equipe de AB) — já visto com o NASF-AB</td>
+          </tr>
+          <tr>
+            <td class="highlight">Cogestão / Gestão Participativa</td>
+            <td>Espaços coletivos de decisão que incluem trabalhadores, gestores e usuários: colegiados gestores, rodas de conversa, assembleias</td>
+          </tr>
+          <tr>
+            <td class="highlight">Ambiência</td>
+            <td>Organização do espaço físico como componente terapêutico — conforto, privacidade, confiança e produção de subjetividade</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="page-footer">
+      <span class="page-footer-brand"><span>Extensivo ENARE</span> &nbsp;·&nbsp; by Residência PRO</span>
+      <span class="page-footer-num">04</span>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PÁGINA 5 — ACOLHIMENTO E CLÍNICA AMPLIADA
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="page">
+    <div class="page-header">
+      <span class="page-header-label">Competências Gerais · Bloco B0 · Aula 10</span>
+      <span class="page-header-title">Extensivo ENARE</span>
+    </div>
+    <div class="page-body">
+      <div class="h2">Acolhimento e Clínica Ampliada — Aprofundamento</div>
+
+      <div class="h3">Acolhimento</div>
+      <p>O Acolhimento é frequentemente confundido com triagem ou com atendimento inicial. A diferença é fundamental: triagem classifica por gravidade clínica; acolhimento <strong>escuta, vincula e responsabiliza</strong>. Não exige espaço físico específico nem profissional exclusivo — é uma diretriz ética que deve permear toda a relação serviço-usuário.</p>
+
+      <ul class="lista">
+        <li>Não é sinônimo de triagem de enfermagem</li>
+        <li>Não exige consultório ou sala separada</li>
+        <li>Pode ocorrer em qualquer momento do contato usuário-equipe</li>
+        <li>Pressupõe escuta qualificada e responsabilização pelo problema</li>
+      </ul>
+
+      <div class="h3" style="margin-top: 3mm;">Clínica Ampliada</div>
+      <p>A Clínica Ampliada propõe que o profissional de saúde amplie seu objeto de trabalho: do corpo-doença para o <strong>sujeito em sua complexidade</strong>. Incorpora dimensões biológicas, psicológicas, sociais e culturais na elaboração do diagnóstico e do plano terapêutico.</p>
+
+      <div class="box box-dica" style="margin-top: 2mm;">
+        <span class="box-title">💡 Como diferenciar PTS de Clínica Ampliada em cenário</span>
+        <span class="box-body"><strong>Clínica Ampliada</strong> = postura do profissional diante do sujeito (olhar ampliado). <strong>PTS</strong> = produto concreto dessa abordagem: o plano de cuidado multiprofissional elaborado coletivamente para aquele sujeito específico. O PTS é o resultado prático da Clínica Ampliada em equipe.</span>
+      </div>
+
+      <div class="box box-pega" style="margin-top: 3mm;">
+        <span class="box-title">⚠️ Distrator — Apoio Matricial ≠ Encaminhamento</span>
+        <span class="box-body">O Apoio Matricial mantém a <strong>equipe de referência como responsável</strong> pelo caso — o especialista apoia sem assumir o vínculo principal. Em cenários onde um psiquiatra "orienta a equipe de AB sobre um caso", o dispositivo é Apoio Matricial, não encaminhamento. Encaminhar transfere a responsabilidade; apoiar matricialmente a compartilha.</span>
+      </div>
+    </div>
+    <div class="page-footer">
+      <span class="page-footer-brand"><span>Extensivo ENARE</span> &nbsp;·&nbsp; by Residência PRO</span>
+      <span class="page-footer-num">05</span>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PÁGINA 6 — QUESTÃO 01
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="page">
+    <div class="page-header">
+      <span class="page-header-label">Fixação · Aula 10</span>
+      <span class="page-header-title">Extensivo ENARE</span>
+    </div>
+    <div class="page-body">
+      <div class="question-num">Questão 01 de 03 &nbsp;·&nbsp; CG-PNH &nbsp;·&nbsp; PNH como Política (Memorização)</div>
+
+      <div class="question-stem">
+        A Política Nacional de Humanização (PNH — HumanizaSUS), instituída pelo Ministério da Saúde em 2003, distingue-se de iniciativas anteriores de humanização por uma característica fundamental de sua natureza. Assinale a alternativa que a descreve <strong>corretamente</strong>:
+      </div>
+
+      <div class="alternatives">
+        <div class="alt">
+          <div class="alt-letter">A</div>
+          <div class="alt-text">É um programa ministerial com prazo definido, metas mensuráveis e coordenação centralizada no nível federal, voltado exclusivamente à atenção hospitalar</div>
+        </div>
+        <div class="alt">
+          <div class="alt-letter">B</div>
+          <div class="alt-text">Aplica-se apenas à Atenção Básica, com foco na melhoria do relacionamento interpessoal entre profissionais e usuários nas Unidades Básicas de Saúde</div>
+        </div>
+        <div class="alt">
+          <div class="alt-letter">C</div>
+          <div class="alt-text">Seu principal objetivo é a capacitação técnica de profissionais de saúde em habilidades de comunicação, empatia e escuta ativa</div>
+        </div>
+        <div class="alt correct">
+          <div class="alt-letter">D</div>
+          <div class="alt-text">É uma política transversal que atravessa todos os níveis de atenção e gestão do SUS, baseada na indissociabilidade entre atenção e gestão e no protagonismo dos sujeitos <span class="correct-badge">Correta</span></div>
+        </div>
+      </div>
+
+      <div class="gabarito-title">Gabarito Comentado — B: D</div>
+      <div class="gabarito-body">
+        <div class="gabarito-alt correta">
+          <strong>D — Correta</strong>
+          A PNH é definida por três atributos essenciais: (1) <strong>política</strong> — caráter permanente e estruturante, não programa temporário; (2) <strong>transversalidade</strong> — atravessa todos os níveis da rede SUS; (3) <strong>indissociabilidade atenção/gestão</strong> — modos de cuidar e modos de gerir são inseparáveis.
+        </div>
+        <div class="gabarito-alt">
+          <strong>A — Incorreta</strong>
+          A PNH não é programa e não tem prazo definido. Não se restringe à atenção hospitalar — é transversal a toda a rede.
+        </div>
+        <div class="gabarito-alt">
+          <strong>B — Incorreta</strong>
+          A PNH não se restringe à AB. Atravessa atenção básica, média e alta complexidade, urgência e emergência.
+        </div>
+        <div class="gabarito-alt">
+          <strong>C — Incorreta</strong>
+          Reduz a PNH a treinamento comportamental, ignorando sua dimensão política, organizacional e de gestão. Humanização não é apenas "ser simpático" — envolve reorganização de processos e relações de poder.
+        </div>
+      </div>
+    </div>
+    <div class="page-footer">
+      <span class="page-footer-brand"><span>Extensivo ENARE</span> &nbsp;·&nbsp; by Residência PRO</span>
+      <span class="page-footer-num">06</span>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PÁGINA 7 — QUESTÃO 02
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="page">
+    <div class="page-header">
+      <span class="page-header-label">Fixação · Aula 10</span>
+      <span class="page-header-title">Extensivo ENARE</span>
+    </div>
+    <div class="page-body">
+      <div class="question-num">Questão 02 de 03 &nbsp;·&nbsp; CG-PNH &nbsp;·&nbsp; Dispositivos da PNH (Memorização)</div>
+
+      <div class="question-stem">
+        Sobre os dispositivos da Política Nacional de Humanização, assinale a alternativa <strong>correta</strong>:
+      </div>
+
+      <div class="alternatives">
+        <div class="alt">
+          <div class="alt-letter">A</div>
+          <div class="alt-text">O Acolhimento é sinônimo de triagem clínica e deve ocorrer em sala específica, conduzido obrigatoriamente por profissional de nível superior no início de cada atendimento</div>
+        </div>
+        <div class="alt">
+          <div class="alt-letter">B</div>
+          <div class="alt-text">O Projeto Terapêutico Singular (PTS) aplica-se exclusivamente a usuários com transtornos mentais graves, sendo elaborado pelo psiquiatra responsável pelo caso</div>
+        </div>
+        <div class="alt correct">
+          <div class="alt-letter">C</div>
+          <div class="alt-text">A Clínica Ampliada propõe que o cuidado vá além do diagnóstico e da doença, incorporando as dimensões subjetivas, familiares e sociais do sujeito no plano terapêutico <span class="correct-badge">Correta</span></div>
+        </div>
+        <div class="alt">
+          <div class="alt-letter">D</div>
+          <div class="alt-text">A Cogestão é um dispositivo restrito ao nível hospitalar, operacionalizado pelos conselhos de administração das unidades de saúde</div>
+        </div>
+      </div>
+
+      <div class="gabarito-title">Gabarito Comentado — B: C</div>
+      <div class="gabarito-body">
+        <div class="gabarito-alt correta">
+          <strong>C — Correta</strong>
+          A Clínica Ampliada transforma o objeto de trabalho do profissional: da doença para o sujeito em sua complexidade biopsicossocial. Não substitui o diagnóstico clínico — o complementa com as dimensões que influenciam o processo saúde-doença e a adesão ao tratamento.
+        </div>
+        <div class="gabarito-alt">
+          <strong>A — Incorreta</strong>
+          Acolhimento não é triagem. Não exige sala específica nem profissional exclusivo. É uma postura ética de toda a equipe, que pode ocorrer em qualquer momento do contato com o usuário.
+        </div>
+        <div class="gabarito-alt">
+          <strong>B — Incorreta</strong>
+          O PTS não se restringe a transtornos mentais nem a um único profissional. É construído coletivamente por equipe multiprofissional para qualquer sujeito com necessidade de cuidado singularizado — físico, mental ou social.
+        </div>
+        <div class="gabarito-alt">
+          <strong>D — Incorreta</strong>
+          A Cogestão é transversal a todos os níveis: AB, média e alta complexidade. Inclui colegiados gestores, rodas de conversa e assembleias, não apenas conselhos hospitalares.
+        </div>
+      </div>
+    </div>
+    <div class="page-footer">
+      <span class="page-footer-brand"><span>Extensivo ENARE</span> &nbsp;·&nbsp; by Residência PRO</span>
+      <span class="page-footer-num">07</span>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PÁGINA 8 — QUESTÃO 03 (ÂNCORA — APLICAÇÃO)
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="page">
+    <div class="page-header">
+      <span class="page-header-label">Fixação · Aula 10</span>
+      <span class="page-header-title">Extensivo ENARE</span>
+    </div>
+    <div class="page-body">
+      <div class="question-num">Questão 03 de 03 &nbsp;·&nbsp; CG-PNH &nbsp;·&nbsp; Identificação de Dispositivo em Cenário (Aplicação)</div>
+
+      <div class="question-stem">
+        Uma equipe de Saúde da Família acompanha um paciente de 58 anos com diabetes mellitus tipo 2, hipertensão arterial e histórico de depressão. O médico de família convoca reunião com enfermeiro, psicólogo e assistente social para elaborar um plano de cuidado que contemple, de forma articulada, o controle metabólico, o suporte emocional e a situação de isolamento social do paciente. O plano resultante será registrado em prontuário e revisado periodicamente pela equipe. Com base na PNH, qual dispositivo está sendo utilizado?
+      </div>
+
+      <div class="alternatives">
+        <div class="alt">
+          <div class="alt-letter">A</div>
+          <div class="alt-text">Acolhimento, pois envolve escuta qualificada e responsabilização da equipe pelo conjunto de necessidades do usuário</div>
+        </div>
+        <div class="alt">
+          <div class="alt-letter">B</div>
+          <div class="alt-text">Apoio Matricial, pois um profissional de psicologia está sendo incorporado ao cuidado de um caso clínico da equipe de referência</div>
+        </div>
+        <div class="alt">
+          <div class="alt-letter">C</div>
+          <div class="alt-text">Clínica Ampliada, pois o profissional expande seu olhar para além do diagnóstico ao considerar as dimensões subjetivas e sociais do paciente</div>
+        </div>
+        <div class="alt correct">
+          <div class="alt-letter">D</div>
+          <div class="alt-text">Projeto Terapêutico Singular (PTS), pois constitui conjunto de propostas de condutas terapêuticas articuladas por equipe multiprofissional para um sujeito específico, com revisão periódica <span class="correct-badge">Correta</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="page-footer">
+      <span class="page-footer-brand"><span>Extensivo ENARE</span> &nbsp;·&nbsp; by Residência PRO</span>
+      <span class="page-footer-num">08</span>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PÁGINA 9 — GABARITO Q3 + RECUPERAÇÃO ATIVA
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="page">
+    <div class="page-header">
+      <span class="page-header-label">Fixação · Aula 10</span>
+      <span class="page-header-title">Extensivo ENARE</span>
+    </div>
+    <div class="page-body">
+      <div class="gabarito-title" style="margin-top: 0;">Gabarito Comentado Q3 — B: D</div>
+      <div class="gabarito-body">
+        <div class="gabarito-alt correta">
+          <strong>D — Correta</strong>
+          O PTS é reconhecido por três marcadores no cenário: (1) <strong>equipe multiprofissional reunida</strong> para construir o plano; (2) <strong>sujeito específico</strong> como foco das propostas; (3) <strong>revisão periódica</strong> registrada em prontuário. A singularidade do plano — feito para aquele paciente, considerando diabetes + depressão + isolamento — é o que caracteriza o PTS.
+        </div>
+        <div class="gabarito-alt">
+          <strong>A — Incorreta</strong>
+          Acolhimento é a postura de escuta e responsabilização — não produz um plano estruturado e registrado. O cenário descreve uma ação organizada com produto concreto (o plano), não apenas uma atitude de recepção.
+        </div>
+        <div class="gabarito-alt">
+          <strong>B — Incorreta</strong>
+          No Apoio Matricial, o especialista <em>apoia</em> a equipe de referência sem integrar o cotidiano do caso. No cenário, o psicólogo é <em>membro da equipe</em> que constrói o plano coletivamente — característica da Equipe de Referência e do PTS.
+        </div>
+        <div class="gabarito-alt">
+          <strong>C — Parcialmente correta, mas incompleta</strong>
+          A Clínica Ampliada descreve a <em>postura</em> do profissional, não o <em>produto</em> que a equipe gera. O PTS é o resultado concreto e multiprofissional dessa abordagem — e é o dispositivo que melhor nomeia o cenário.
+        </div>
+      </div>
+
+      <hr class="rule" style="margin: 4mm 0;">
+
+      <div class="recall-section">
+        <div class="recall-title">Recuperação Ativa — Aula 10</div>
+        <div class="recall-title" style="font-size: 9pt; border-bottom: none; padding: 0; margin-bottom: 2mm;">3 Sínteses Essenciais</div>
+        <div class="sintese-item">
+          <div class="sintese-num">1</div>
+          <div class="sintese-text"><strong>PNH = política transversal</strong> (não programa): atravessa todos os níveis do SUS com três princípios — transversalidade, indissociabilidade atenção/gestão e protagonismo dos sujeitos.</div>
+        </div>
+        <div class="sintese-item">
+          <div class="sintese-num">2</div>
+          <div class="sintese-text"><strong>Acolhimento ≠ triagem:</strong> é postura ética de escuta e responsabilização, sem exigência de espaço físico específico ou profissional exclusivo.</div>
+        </div>
+        <div class="sintese-item">
+          <div class="sintese-num">3</div>
+          <div class="sintese-text"><strong>PTS:</strong> plano multiprofissional para sujeito específico — resultado concreto da Clínica Ampliada. Diferente do Apoio Matricial, em que o especialista apoia sem assumir o vínculo principal.</div>
+        </div>
+      </div>
+    </div>
+    <div class="page-footer">
+      <span class="page-footer-brand"><span>Extensivo ENARE</span> &nbsp;·&nbsp; by Residência PRO</span>
+      <span class="page-footer-num">09</span>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PÁGINA 10 — TESTE-SE + REFERÊNCIAS
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="page">
+    <div class="page-header">
+      <span class="page-header-label">Recuperação Ativa · Aula 10</span>
+      <span class="page-header-title">Extensivo ENARE</span>
+    </div>
+    <div class="page-body">
+      <div class="recall-title">Teste-se — 5 Perguntas</div>
+
+      <div class="recall-q"><span class="recall-q-num">Q1</span> Por que a PNH é classificada como política e não como programa? Cite dois atributos que sustentam essa distinção.</div>
+      <div class="recall-q"><span class="recall-q-num">Q2</span> Qual a diferença entre Acolhimento e triagem? Por que alternativas que os equiparam estão incorretas?</div>
+      <div class="recall-q"><span class="recall-q-num">Q3</span> Descreva o Projeto Terapêutico Singular e cite três elementos que permitem identificá-lo em um cenário de questão.</div>
+      <div class="recall-q"><span class="recall-q-num">Q4</span> Como o Apoio Matricial se distingue do encaminhamento? Qual permanece como responsável pelo vínculo com o usuário?</div>
+      <div class="recall-q"><span class="recall-q-num">Q5</span> Cite os três sujeitos que a PNH coloca como protagonistas do processo de saúde e o que essa protagonismo implica para cada um.</div>
+
+      <hr class="rule" style="margin: 5mm 0;">
+
+      <div class="h2" style="margin-top: 0; margin-bottom: 3mm;">Referências Bibliográficas</div>
+      <ul class="ref-list">
+        <li>BRASIL. Ministério da Saúde. <strong>HumanizaSUS: Política Nacional de Humanização — a humanização como eixo norteador das práticas de atenção e gestão em todas as instâncias do SUS</strong>. Brasília: MS, 2004. (Série B. Textos Básicos de Saúde).</li>
+        <li>BRASIL. Ministério da Saúde. <strong>Clínica Ampliada e Compartilhada</strong>. Brasília: MS, 2009. (Série B. Textos Básicos de Saúde).</li>
+        <li>BRASIL. Ministério da Saúde. <strong>Acolhimento nas Práticas de Produção de Saúde</strong>. 2. ed. Brasília: MS, 2006.</li>
+        <li>BRASIL. Ministério da Saúde. <strong>Projeto Terapêutico Singular</strong>. In: HumanizaSUS — Documento Base. 4. ed. Brasília: MS, 2008.</li>
+        <li>FUNDAÇÃO GETULIO VARGAS (FGV). <strong>ENARE 2024 — Prova e Gabarito Definitivo</strong>. Rio de Janeiro: EBSERH/FGV, 2024.</li>
+        <li>FUNDAÇÃO GETULIO VARGAS (FGV). <strong>ENARE 2025 — Prova e Gabarito Definitivo</strong>. Rio de Janeiro: EBSERH/FGV, 2025.</li>
+      </ul>
+
+      <div class="annotation-area">
+        <div class="annotation-label">Anotações</div>
+        <div class="annotation-lines">
+          <div class="annotation-line"></div>
+          <div class="annotation-line"></div>
+          <div class="annotation-line"></div>
+          <div class="annotation-line"></div>
+        </div>
+      </div>
+    </div>
+    <div class="page-footer">
+      <span class="page-footer-brand"><span>Extensivo ENARE</span> &nbsp;·&nbsp; by Residência PRO</span>
+      <span class="page-footer-num">10</span>
+    </div>
+  </div>
+
+</body>
+</html>
