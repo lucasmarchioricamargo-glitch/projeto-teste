@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B4 · Aula 21 — Semiologia e Urgências do Adulto</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  @page{size:A4;margin:0;}
+  body{-webkit-print-color-adjust:exact;print-color-adjust:exact;font-family:'Bricolage Grotesque',sans-serif;}
+  .page{width:210mm;height:297mm;display:flex;flex-direction:column;overflow:hidden;page-break-after:always;}
+  .ph{height:14mm;flex-shrink:0;}
+  .pf{height:9mm;flex-shrink:0;}
+  .pc{flex:1;padding:7mm 16mm 5mm;overflow:hidden;}
+  .pc-sm{flex:1;padding:5mm 16mm 4mm;overflow:hidden;}
+
+  /* CAPA */
+  .cover{background:#0D8A8D;display:flex;flex-direction:column;padding:14mm 16mm;}
+  .cover-logo{margin-bottom:6mm;}
+  .cover-logo .ext{font-family:'Playfair Display',serif;font-style:italic;color:#C6D834;font-size:9pt;letter-spacing:1px;}
+  .cover-logo .brand{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:34pt;color:#F6F4ED;line-height:1;letter-spacing:1px;}
+  .cover-logo .sub{font-family:'Space Grotesk',sans-serif;font-weight:300;font-size:7pt;color:#F6F4ED;letter-spacing:3px;margin-top:1mm;}
+  .cover-tag{margin:6mm 0 10mm;}
+  .cover-tag p{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:7.5pt;color:#C6D834;letter-spacing:2.5px;}
+  .cover-title{flex:1;display:flex;flex-direction:column;justify-content:center;}
+  .cover-title h1{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:52pt;color:#F6F4ED;line-height:.9;letter-spacing:-1px;text-transform:uppercase;}
+  .cover-title .sub2{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:12pt;color:#C6D834;letter-spacing:2.5px;margin-top:5mm;text-transform:uppercase;}
+  .cover-num{text-align:right;}
+  .cover-num span{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:72pt;color:rgba(246,244,237,.15);line-height:1;}
+
+  /* HEADER */
+  .header{background:#F6F4ED;display:flex;align-items:center;justify-content:space-between;padding:0 16mm;border-bottom:1.5px solid #0D8A8D;}
+  .header-left{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:7pt;color:#0D8A8D;letter-spacing:2px;text-transform:uppercase;}
+  .header-right{font-family:'Playfair Display',serif;font-style:italic;font-size:8pt;color:#555;}
+
+  /* FOOTER */
+  .footer{background:#F6F4ED;display:flex;align-items:center;justify-content:space-between;padding:0 16mm;border-top:1px solid #ddd;}
+  .footer-left{font-family:'Bricolage Grotesque',sans-serif;font-size:7pt;color:#888;}
+  .footer-right{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11pt;color:#0D8A8D;}
+
+  /* TIPOGRAFIA */
+  h2{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:15pt;color:#0D8A8D;letter-spacing:1.5px;text-transform:uppercase;border-bottom:2px solid #0D8A8D;padding-bottom:1.5mm;margin-bottom:4mm;}
+  h3{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:10pt;color:#1F5C23;letter-spacing:1px;text-transform:uppercase;margin-bottom:2mm;}
+  p,li{font-size:8.5pt;line-height:1.45;color:#222;}
+  ul{padding-left:4mm;margin-bottom:2mm;}
+  li{margin-bottom:1mm;}
+  strong{font-weight:600;color:#070707;}
+
+  /* OBJETIVOS */
+  .obj-list{display:flex;flex-direction:column;gap:3mm;margin-bottom:4mm;}
+  .obj-item{display:flex;gap:3mm;align-items:flex-start;}
+  .obj-num{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:22pt;color:#0D8A8D;line-height:1;flex-shrink:0;width:7mm;}
+  .obj-text{font-size:8.5pt;line-height:1.45;color:#222;padding-top:1.5mm;}
+  .prereq{border-left:3px solid #0D8A8D;padding:2.5mm 4mm;background:#f0fafa;font-size:7.5pt;color:#333;margin-bottom:4mm;}
+  .meta-row{display:flex;gap:10mm;margin-top:2mm;}
+  .meta-col{display:flex;flex-direction:column;gap:0.5mm;}
+  .meta-label{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:6.5pt;color:#999;letter-spacing:1.5px;text-transform:uppercase;}
+  .meta-val{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:9pt;color:#0D8A8D;}
+
+  /* TABELAS */
+  table{width:100%;border-collapse:collapse;margin-bottom:3mm;font-size:7.5pt;}
+  th{background:#0D8A8D;color:#F6F4ED;font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:2mm 3mm;text-align:left;font-size:7.5pt;}
+  td{padding:2mm 3mm;border-bottom:1px solid #e5e5e5;vertical-align:top;font-size:7.5pt;line-height:1.35;}
+  tr:nth-child(even) td{background:#f7f7f5;}
+
+  /* CARDS */
+  .card-grid{display:grid;grid-template-columns:1fr 1fr;gap:3mm;margin-bottom:3mm;}
+  .card-grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2.5mm;margin-bottom:3mm;}
+  .card{background:#f7f7f5;border-radius:2mm;padding:3mm;border-top:3px solid #0D8A8D;}
+  .card.verde{border-top-color:#1F5C23;}
+  .card.lima{border-top-color:#C6D834;}
+  .card.warn{border-top-color:#c0392b;}
+  .card h4{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:8.5pt;color:#0D8A8D;letter-spacing:1px;text-transform:uppercase;margin-bottom:1.5mm;}
+  .card.verde h4{color:#1F5C23;}
+  .card.warn h4{color:#c0392b;}
+  .card p,.card li{font-size:7.5pt;line-height:1.35;}
+
+  /* CAIXAS */
+  .box{border-left:3px solid #0D8A8D;padding:2.5mm 4mm;background:#f0fafa;margin-bottom:3mm;font-size:7.8pt;line-height:1.4;}
+  .box.verde{border-left-color:#1F5C23;background:#f0f7f0;}
+  .box.warn{border-left-color:#c0392b;background:#fdf0f0;}
+  .box strong{color:#0D8A8D;}
+  .box.verde strong{color:#1F5C23;}
+  .box.warn strong{color:#c0392b;}
+
+  /* ABCDE */
+  .abcde-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:2mm;margin-bottom:3mm;}
+  .abcde-card{border-radius:2mm;padding:2.5mm;text-align:center;}
+  .abcde-card .letter{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:20pt;line-height:1;}
+  .abcde-card .label{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:7pt;letter-spacing:.5px;margin-top:1mm;}
+  .abcde-card .desc{font-size:6.5pt;line-height:1.3;margin-top:1mm;color:#333;}
+  .a-c{background:#fde8e8;} .a-c .letter{color:#c0392b;} .a-c .label{color:#c0392b;}
+  .b-c{background:#fff3e0;} .b-c .letter{color:#e67e22;} .b-c .label{color:#e67e22;}
+  .c-c{background:#fdecea;} .c-c .letter{color:#c0392b;} .c-c .label{color:#c0392b;}
+  .d-c{background:#e8f0fe;} .d-c .letter{color:#2c5fa8;} .d-c .label{color:#2c5fa8;}
+  .e-c{background:#f3e8ff;} .e-c .letter{color:#6b3fa0;} .e-c .label{color:#6b3fa0;}
+
+  /* QUESTÃO */
+  .q-header{background:#0D8A8D;color:#F6F4ED;padding:2mm 4mm;border-radius:2mm 2mm 0 0;}
+  .q-header span{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:7pt;letter-spacing:2px;text-transform:uppercase;}
+  .q-body{border:1.5px solid #0D8A8D;border-top:none;border-radius:0 0 2mm 2mm;padding:3mm 4mm;margin-bottom:3mm;background:#fff;}
+  .q-stem{font-size:8.2pt;line-height:1.5;color:#222;margin-bottom:3mm;}
+  .q-opts{display:flex;flex-direction:column;gap:1.5mm;}
+  .q-opt{display:flex;gap:2mm;align-items:flex-start;font-size:8pt;line-height:1.4;color:#222;}
+  .q-opt .ol{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:9pt;color:#0D8A8D;flex-shrink:0;width:4mm;}
+  .q-opt.correta .ol{color:#1F5C23;}
+  .q-opt.correta{color:#1F5C23;font-weight:600;}
+  .gabarito{background:#f0f7f0;border:1.5px solid #1F5C23;border-radius:2mm;padding:3mm 4mm;font-size:7.5pt;line-height:1.5;color:#222;}
+  .gabarito .gt{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:8pt;color:#1F5C23;letter-spacing:1px;margin-bottom:1mm;}
+  .badge{display:inline-block;background:#1F5C23;color:#F6F4ED;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:6.5pt;letter-spacing:1.5px;padding:0.5mm 2mm;border-radius:1mm;vertical-align:middle;margin-left:1mm;}
+
+  /* RECUPERAÇÃO */
+  .rec-list{display:flex;flex-direction:column;gap:2mm;margin-bottom:3mm;}
+  .rec-item{display:flex;gap:2.5mm;align-items:flex-start;}
+  .rec-star{color:#C6D834;font-size:10pt;flex-shrink:0;line-height:1.3;}
+  .rec-text{font-size:8pt;line-height:1.4;color:#222;}
+  .tso{margin-top:3mm;}
+  .tso h3{font-size:8.5pt;margin-bottom:2mm;}
+  .tso-list{display:flex;flex-direction:column;gap:1.5mm;}
+  .tso-item{display:flex;gap:2mm;}
+  .tso-num{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:8.5pt;color:#0D8A8D;flex-shrink:0;width:5mm;}
+  .tso-text{font-size:7.8pt;line-height:1.4;color:#333;}
+</style>
+</head>
+<body>
+
+<!-- PÁGINA 1 — CAPA -->
+<div class="page">
+  <div class="cover">
+    <div class="cover-logo">
+      <div class="ext">extensivo</div>
+      <div class="brand">ENARE</div>
+      <div class="sub">BY RESIDÊNCIA PRO</div>
+    </div>
+    <div class="cover-tag">
+      <p>ENFERMAGEM · MÓDULO ESPECÍFICO</p>
+      <p>BLOCO B4 · AULA 21</p>
+    </div>
+    <div class="cover-title">
+      <h1>SEMIOLOGIA<br>E<br>URGÊNCIAS<br>DO ADULTO</h1>
+      <div class="sub2">Padrões Respiratórios,<br>Anafilaxia e Trauma (ABCDE)</div>
+    </div>
+    <div class="cover-num"><span>21</span></div>
+  </div>
+</div>
+
+<!-- PÁGINA 2 — OBJETIVOS -->
+<div class="page">
+  <div class="header ph"><span class="header-left">ENFERMAGEM · BLOCO B4 · AULA 21</span><span class="header-right">Extensivo ENARE</span></div>
+  <div class="pc">
+    <h2>Objetivos de Aprendizagem</h2>
+    <div class="obj-list">
+      <div class="obj-item">
+        <div class="obj-num">1</div>
+        <div class="obj-text">Identificar e interpretar os principais padrões respiratórios anormais (Cheyne-Stokes, Kussmaul, Biot) e os ruídos adventícios na ausculta pulmonar, associando-os às causas e diagnósticos NANDA-I.</div>
+      </div>
+      <div class="obj-item">
+        <div class="obj-num">2</div>
+        <div class="obj-text">Reconhecer os sinais de alerta e descrever as condutas de enfermagem nas urgências clínicas do adulto: anafilaxia, crise hipertensiva, tromboembolismo pulmonar (TEP) e sepse.</div>
+      </div>
+      <div class="obj-item">
+        <div class="obj-num">3</div>
+        <div class="obj-text">Aplicar a avaliação primária (ABCDE) no politraumatizado e classificar o choque hemorrágico em classes I–IV, identificando as intervenções prioritárias de enfermagem em cada classe.</div>
+      </div>
+    </div>
+    <div class="prereq"><strong>Pré-requisito:</strong> Saúde da Criança II — Semiologia Pediátrica (Aula 19). NANDA-I 2024–2026 (Aula 16). IRAS e biossegurança (Aula 17).</div>
+    <div class="meta-row">
+      <div class="meta-col"><span class="meta-label">Bloco</span><span class="meta-val">B4 — Enfermagem</span></div>
+      <div class="meta-col"><span class="meta-label">Aula</span><span class="meta-val">21 de 24</span></div>
+      <div class="meta-col"><span class="meta-label">Tema</span><span class="meta-val">ENF-Semiologia &amp; Urgências Adulto</span></div>
+      <div class="meta-col"><span class="meta-label">Nível Cognitivo</span><span class="meta-val">Ap → An</span></div>
+    </div>
+  </div>
+  <div class="footer pf"><span class="footer-left">Extensivo ENARE · by Residência PRO</span><span class="footer-right">02</span></div>
+</div>
+
+<!-- PÁGINA 3 — SEMIOLOGIA RESPIRATÓRIA -->
+<div class="page">
+  <div class="header ph"><span class="header-left">CONTEÚDO PRINCIPAL · AULA 21</span><span class="header-right">Extensivo ENARE</span></div>
+  <div class="pc-sm">
+    <h2>Semiologia Respiratória — Padrões e Ausculta</h2>
+
+    <h3>Padrões Respiratórios Anormais</h3>
+    <table>
+      <thead><tr><th>Padrão</th><th>Característica</th><th>Causa Típica</th><th>NANDA-I</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Cheyne-Stokes</strong></td><td>Ciclos crescente-decrescente + apneia</td><td>ICC grave, HIC, uremia, AVC</td><td>00032 Padrão respiratório ineficaz</td></tr>
+        <tr><td><strong>Kussmaul</strong></td><td>FR alta, amplitude profunda e regular</td><td>Acidose metabólica grave (CAD, IRC)</td><td>00032; 00030 Troca de gases prejudicada</td></tr>
+        <tr><td><strong>Biot (atáxico)</strong></td><td>Irregular, amplitude variável + apneia súbita</td><td>Lesão bulbar, meningite grave</td><td>00032; risco de parada respiratória</td></tr>
+        <tr><td><strong>Taquipneia</strong></td><td>FR &gt;20 irpm adulto; superficial</td><td>Pneumonia, TEP, dor, ansiedade</td><td>00032; 00030</td></tr>
+        <tr><td><strong>Bradipneia</strong></td><td>FR &lt;12 irpm adulto</td><td>Depressão SNC (opioide, TCE)</td><td>00032; 00267 Risco de ventilação mecânica</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Ruídos Adventícios na Ausculta Pulmonar</h3>
+    <div class="card-grid">
+      <div class="card">
+        <h4>Crepitações (estertores finos)</h4>
+        <p>Som: crepitação seca ao fim da inspiração<br>
+        Causa: edema alveolar, fibrose, pneumonia<br>
+        NANDA-I: <strong>00030</strong> Troca de gases prejudicada</p>
+      </div>
+      <div class="card">
+        <h4>Roncos (estertores grossos)</h4>
+        <p>Som: ronco grave inspiratório + expiratório<br>
+        Causa: secreção em vias aéreas centrais<br>
+        Intervenção: aspiração; tosse assistida</p>
+      </div>
+      <div class="card verde">
+        <h4>Sibilos (wheezing)</h4>
+        <p>Som: musical agudo, expiratório (&gt; inspiratório)<br>
+        Causa: broncoespasmo (asma, DPOC)<br>
+        NANDA-I: <strong>00031</strong> Desobstrução ineficaz das vias aéreas</p>
+      </div>
+      <div class="card warn">
+        <h4>Atrito Pleural</h4>
+        <p>Som: couro amassado; inspiração + expiração<br>
+        Causa: pleurite, embolia pulmonar<br>
+        Piora com respiração; alivia com pressão</p>
+      </div>
+    </div>
+
+    <div class="box verde">NANDA-I prioritários na semiologia respiratória: <strong>00032</strong> Padrão respiratório ineficaz · <strong>00030</strong> Troca de gases prejudicada · <strong>00031</strong> Desobstrução ineficaz das vias aéreas · <strong>00029</strong> Débito cardíaco diminuído (se ICC).</div>
+  </div>
+  <div class="footer pf"><span class="footer-left">Extensivo ENARE · by Residência PRO</span><span class="footer-right">03</span></div>
+</div>
+
+<!-- PÁGINA 4 — URGÊNCIAS CLÍNICAS DO ADULTO -->
+<div class="page">
+  <div class="header ph"><span class="header-left">CONTEÚDO PRINCIPAL · AULA 21</span><span class="header-right">Extensivo ENARE</span></div>
+  <div class="pc-sm">
+    <h2>Urgências Clínicas do Adulto</h2>
+    <table>
+      <thead><tr><th>Urgência</th><th>Sinais de Alerta</th><th>Conduta de Enfermagem (1ª linha)</th><th>Destaque</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Anafilaxia</strong></td>
+          <td>Urticária + angioedema + hipotensão + broncoespasmo de início rápido (pele, resp., cardio)</td>
+          <td><strong>Adrenalina 0,3–0,5 mg IM vasto lateral IMEDIATAMENTE</strong>; decúbito dorsal + MMII elevados; O₂; acesso IV; anti-histamínico e corticoide como adjuvantes</td>
+          <td>Adrenalina = 1ª linha SEMPRE. Anti-histamínico NÃO substitui adrenalina</td>
+        </tr>
+        <tr>
+          <td><strong>Crise hipertensiva</strong><br>(emergência)</td>
+          <td>PA ≥180/120 mmHg + lesão aguda de órgão-alvo (AVC, EAP, IAM, encefalopatia)</td>
+          <td>Decúbito elevado 30–45°; O₂; acesso IV; monitorização contínua; <strong>reduzir PA em 25% na 1ª hora</strong> (nitroprussiato, labetalol IV — prescrição médica)</td>
+          <td>Urgência (sem LOA): reduzir em 24–48 h VO. Emergência: reduzir em 1 h IV</td>
+        </tr>
+        <tr>
+          <td><strong>TEP (suspeita)</strong></td>
+          <td>Tríade: dispneia súbita + dor pleurítica + hemoptise. Taquicardia, hipoxemia, D-dímero ↑, Wells ≥5</td>
+          <td>O₂ alto fluxo; acesso IV; monitorização; coleta de D-dímero + gasometria; posição semifowler; aguardar anticoagulação conforme prescrição</td>
+          <td>NANDA-I: 00030 + 00029. Mobilização: CONTRAINDICADA enquanto instável</td>
+        </tr>
+        <tr>
+          <td><strong>Sepse</strong><br>(Bundle 1h — SSC 2021)</td>
+          <td>qSOFA ≥2: FR ≥22, Glasgow ≤13, PAS ≤100. Lactato ≥2 mmol/L = sepse grave</td>
+          <td><strong>1 h:</strong> coletar hemoculturas (2 pares) → antibiótico IV → SF 0,9% 30 mL/kg se hipotensão → dosar lactato → vasopressor se PAM &lt;65</td>
+          <td>Noradrenalina = vasopressor 1ª escolha. Lactato &gt;4 = choque séptico</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="box warn"><strong>Erro frequente FGV:</strong> na anafilaxia, administrar anti-histamínico antes da adrenalina — errado. Na sepse, colher hemoculturas ANTES do antibiótico, mas não atrasar o antibiótico por mais de 1 hora esperando cultura.</div>
+  </div>
+  <div class="footer pf"><span class="footer-left">Extensivo ENARE · by Residência PRO</span><span class="footer-right">04</span></div>
+</div>
+
+<!-- PÁGINA 5 — TRAUMA: ABCDE + CHOQUE HEMORRÁGICO -->
+<div class="page">
+  <div class="header ph"><span class="header-left">CONTEÚDO PRINCIPAL · AULA 21</span><span class="header-right">Extensivo ENARE</span></div>
+  <div class="pc-sm">
+    <h2>Trauma — Avaliação Primária (ABCDE) e Choque Hemorrágico</h2>
+
+    <div class="abcde-grid">
+      <div class="abcde-card a-c">
+        <div class="letter">A</div>
+        <div class="label">Airway</div>
+        <div class="desc">Via aérea + controle cervical. Colar cervical. Jaw thrust se inconsciente</div>
+      </div>
+      <div class="abcde-card b-c">
+        <div class="letter">B</div>
+        <div class="label">Breathing</div>
+        <div class="desc">Ventilação + oxigenação. FR, simetria, SpO₂. O₂ alto fluxo</div>
+      </div>
+      <div class="abcde-card c-c">
+        <div class="letter">C</div>
+        <div class="label">Circulation</div>
+        <div class="desc">Controle hemorragia. PA, FC, enchim. capilar. 2 acessos calibrosos. SF 0,9%</div>
+      </div>
+      <div class="abcde-card d-c">
+        <div class="letter">D</div>
+        <div class="label">Disability</div>
+        <div class="desc">Glasgow, pupilas (PERLA), glicemia capilar. Imobilização coluna</div>
+      </div>
+      <div class="abcde-card e-c">
+        <div class="letter">E</div>
+        <div class="label">Exposure</div>
+        <div class="desc">Exposição total + prevenção hipotermia (cobertor). Temperatura</div>
+      </div>
+    </div>
+
+    <h3>Choque Hemorrágico — Classes (ATLS)</h3>
+    <table>
+      <thead><tr><th>Classe</th><th>Perda (mL / %)</th><th>FC (bpm)</th><th>PA Sistólica</th><th>Glasgow</th><th>Conduta</th></tr></thead>
+      <tbody>
+        <tr><td><strong>I</strong></td><td>&lt;750 mL / &lt;15%</td><td>&lt;100</td><td>Normal</td><td>14–15</td><td>Cristaloide VO/IV; observação</td></tr>
+        <tr><td><strong>II</strong></td><td>750–1500 / 15–30%</td><td>100–120</td><td>Normal-baixa</td><td>13–14</td><td>SF 0,9% ou RL 1–2 L IV; monitorar</td></tr>
+        <tr><td><strong>III</strong></td><td>1500–2000 / 30–40%</td><td>120–140</td><td>↓</td><td>12–13</td><td>Cristaloide + hemotransfusão; vasopressor</td></tr>
+        <tr><td><strong>IV</strong></td><td>&gt;2000 / &gt;40%</td><td>&gt;140</td><td>↓↓</td><td>&lt;12</td><td>Hemotransfusão urgente + cirurgia; risco de vida imediato</td></tr>
+      </tbody>
+    </table>
+
+    <div class="box verde">NANDA-I no trauma: <strong>00029</strong> Débito cardíaco diminuído · <strong>00030</strong> Troca de gases prejudicada · <strong>00007</strong> Hipertermia (se hipotermia: 00006) · <strong>00004</strong> Risco de infecção (feridas abertas) · <strong>00132</strong> Dor aguda.</div>
+  </div>
+  <div class="footer pf"><span class="footer-left">Extensivo ENARE · by Residência PRO</span><span class="footer-right">05</span></div>
+</div>
+
+<!-- PÁGINA 6 — QUESTÃO 01 (Memorização) -->
+<div class="page">
+  <div class="header ph"><span class="header-left">FIXAÇÃO · AULA 21</span><span class="header-right">Extensivo ENARE</span></div>
+  <div class="pc">
+    <div class="q-header"><span>QUESTÃO 01 DE 03 · B4 SEMIOLOGIA — PADRÕES RESPIRATÓRIOS · MEMORIZAÇÃO</span></div>
+    <div class="q-body">
+      <p class="q-stem">Paciente com diabete melito tipo 1 em cetoacidose diabética (CAD) grave apresenta respiração profunda, rápida e regular, visivelmente ampla ao exame físico. Qual é o padrão respiratório descrito e qual é sua finalidade fisiológica?</p>
+      <div class="q-opts">
+        <div class="q-opt"><span class="ol">A</span><span>Respiração de Cheyne-Stokes — resposta à hipóxia encefálica com alternância entre hiperpneia e apneia para tentar estabilizar a PaO₂.</span></div>
+        <div class="q-opt"><span class="ol">B</span><span>Respiração de Biot — padrão irregular resultante de lesão direta do centro respiratório bulbar pela hiperglicemia.</span></div>
+        <div class="q-opt correta"><span class="ol">C</span><span><strong>Respiração de Kussmaul — hiperventilação compensatória da acidose metabólica grave (pH baixo), visando eliminar CO₂ e aumentar o pH sanguíneo. NANDA-I: 00032 Padrão respiratório ineficaz.</strong> <span class="badge">CORRETA</span></span></div>
+        <div class="q-opt"><span class="ol">D</span><span>Taquipneia superficial — resposta reflexa à dor abdominal pela cetoacidose, sem relação com o estado ácido-base.</span></div>
+      </div>
+    </div>
+    <div class="gabarito">
+      <div class="gt">GABARITO COMENTADO — C</div>
+      CAD → acúmulo de ácidos cetônicos → <strong>acidose metabólica</strong> → quimiorreceptores centrais detectam pH ↓ → estímulo ao centro respiratório → <strong>Kussmaul</strong>: respiração profunda + rápida + regular para ↑ eliminação de CO₂ → ↓ pCO₂ → compensação respiratória. Cheyne-Stokes (A) = ICC/HIC — ciclos de hiperpneia e apneia. Biot (B) = lesão bulbar — irregular. Taquipneia superficial (D) pode coexistir com dor, mas o padrão clássico da CAD com acidose grave é Kussmaul, não superficial.
+    </div>
+  </div>
+  <div class="footer pf"><span class="footer-left">Extensivo ENARE · by Residência PRO</span><span class="footer-right">06</span></div>
+</div>
+
+<!-- PÁGINA 7 — QUESTÃO 02 (Aplicação) -->
+<div class="page">
+  <div class="header ph"><span class="header-left">FIXAÇÃO · AULA 21</span><span class="header-right">Extensivo ENARE</span></div>
+  <div class="pc">
+    <div class="q-header"><span>QUESTÃO 02 DE 03 · B4 URGÊNCIAS — ANAFILAXIA · APLICAÇÃO</span></div>
+    <div class="q-body">
+      <p class="q-stem">Paciente de 28 anos recebe penicilina IV em UBS e, minutos após o início da infusão, desenvolve urticária generalizada, angioedema de lábios, dispneia com sibilos difusos e PA 80/50 mmHg. O enfermeiro está presente. Qual deve ser a sequência correta de condutas imediatas?</p>
+      <div class="q-opts">
+        <div class="q-opt"><span class="ol">A</span><span>Interromper a infusão → administrar difenidramina 50 mg IM → corticoide IV → chamar médico → adrenalina se não melhorar em 10 min.</span></div>
+        <div class="q-opt"><span class="ol">B</span><span>Interromper a infusão → acionar SAMU → aguardar médico para prescrever adrenalina → oferecer O₂ enquanto aguarda.</span></div>
+        <div class="q-opt correta"><span class="ol">C</span><span><strong>Interromper imediatamente a infusão → adrenalina 0,3–0,5 mg IM no vasto lateral → posição decúbito dorsal + MMII elevados → O₂ alto fluxo → acesso IV → anti-histamínico e corticoide como adjuvantes.</strong> <span class="badge">CORRETA</span></span></div>
+        <div class="q-opt"><span class="ol">D</span><span>Interromper a infusão → nebulização com salbutamol para broncoespasmo → adrenalina SC 0,5 mg → monitoração.</span></div>
+      </div>
+    </div>
+    <div class="gabarito">
+      <div class="gt">GABARITO COMENTADO — C</div>
+      Anafilaxia com comprometimento respiratório + hipotensão = <strong>emergência</strong>. Regra: <strong>adrenalina IM vasto lateral = 1ª conduta sempre</strong>, antes de anti-histamínico e corticoide. A → anti-histamínico primeiro e adrenalina adiada = errado; anti-histamínico é adjuvante, não trata o broncoespasmo e hipotensão agudos. B → esperar médico atrasa a adrenalina — o enfermeiro pode e deve administrá-la em emergência protocolada. D → nebulização com salbutamol não trata hipotensão; adrenalina SC tem absorção mais lenta e é inferior à IM.
+    </div>
+  </div>
+  <div class="footer pf"><span class="footer-left">Extensivo ENARE · by Residência PRO</span><span class="footer-right">07</span></div>
+</div>
+
+<!-- PÁGINA 8 — QUESTÃO 03 (Âncora) -->
+<div class="page">
+  <div class="header ph"><span class="header-left">FIXAÇÃO · AULA 21</span><span class="header-right">Extensivo ENARE</span></div>
+  <div class="pc">
+    <div class="q-header"><span>QUESTÃO 03 DE 03 · B4 TRAUMA — CHOQUE HEMORRÁGICO · ANÁLISE (AN)</span></div>
+    <div class="q-body">
+      <p class="q-stem">Vítima de acidente automobilístico, 35 anos, admitida na UE com: FC 128 bpm, PA 90/60 mmHg, FR 26 irpm, Glasgow 13, enchimento capilar 3 s, pele fria e pálida. Estimativa de perda sanguínea pela equipe de resgate: 1.800 mL. Conforme o ATLS, qual é a classificação do choque e quais são as prioridades imediatas de enfermagem?</p>
+      <div class="q-opts">
+        <div class="q-opt"><span class="ol">A</span><span>Classe I — perda controlada; cristaloide VO e observação são suficientes.</span></div>
+        <div class="q-opt"><span class="ol">B</span><span>Classe II — cristaloide IV 1–2 L; monitorar diurese; preparar hemotransfusão somente se não responder.</span></div>
+        <div class="q-opt correta"><span class="ol">C</span><span><strong>Classe III (1.500–2.000 mL, 30–40%) — cristaloide IV + hemotransfusão indicada; 2 acessos venosos calibrosos; monitorização contínua; controle de hemorragia; NANDA-I: 00029 Débito cardíaco diminuído + 00030 Troca de gases prejudicada.</strong> <span class="badge">CORRETA</span></span></div>
+        <div class="q-opt"><span class="ol">D</span><span>Classe IV — hemotransfusão urgente e cirurgia imediata; Glasgow inviabiliza qualquer outra intervenção prévia.</span></div>
+      </div>
+    </div>
+    <div class="gabarito">
+      <div class="gt">GABARITO COMENTADO — C</div>
+      Perda estimada 1.800 mL = 30–40% da volemia (classe III). Marcadores: FC 128 (100–140), PA 90/60 ↓, FR 26 ↑, Glasgow 13 (12–13), enchimento capilar &gt;2 s. Classe III = cristaloide + hemotransfusão indicada. A (Classe I) = perda &lt;750 mL, PA/FC normais. B (Classe II) = 750–1500 mL, FC 100–120, PA normal-baixa — não inclui hemotransfusão inicial. D (Classe IV) = perda &gt;2.000 mL, FC &gt;140, Glasgow &lt;12, risco imediato de morte — mais grave do que o descrito. Prioridades: 2 acessos IV de grosso calibre, SF ou RL, preparo de hemoderivados, controle do foco de sangramento.
+    </div>
+  </div>
+  <div class="footer pf"><span class="footer-left">Extensivo ENARE · by Residência PRO</span><span class="footer-right">08</span></div>
+</div>
+
+<!-- PÁGINA 9 — RECUPERAÇÃO ATIVA -->
+<div class="page">
+  <div class="header ph"><span class="header-left">RECUPERAÇÃO ATIVA · AULA 21</span><span class="header-right">Extensivo ENARE</span></div>
+  <div class="pc">
+    <h2>Se Esquecer Tudo, Lembre Disto</h2>
+    <div class="rec-list">
+      <div class="rec-item"><span class="rec-star">★</span><span class="rec-text"><strong>Kussmaul:</strong> acidose metabólica (CAD, IRC) → profunda + rápida + regular → elimina CO₂. Cheyne-Stokes: ICC/HIC → ciclos hiperpneia-apneia. Biot: lesão bulbar → irregular + apneia súbita.</span></div>
+      <div class="rec-item"><span class="rec-star">★</span><span class="rec-text"><strong>Anafilaxia:</strong> adrenalina 0,3–0,5 mg IM vasto lateral = SEMPRE 1ª linha. Anti-histamínico e corticoide = adjuvantes. SC = inferior ao IM.</span></div>
+      <div class="rec-item"><span class="rec-star">★</span><span class="rec-text"><strong>Sepse — bundle 1h (SSC 2021):</strong> hemoculturas → antibiótico IV → SF 30 mL/kg se hipotensão → lactato → noradrenalina se PAM &lt;65. Lactato &gt;4 = choque séptico.</span></div>
+      <div class="rec-item"><span class="rec-star">★</span><span class="rec-text"><strong>ABCDE trauma:</strong> A (via aérea + colar) → B (respiração + O₂) → C (circulação + hemorragia) → D (Glasgow + pupilas) → E (exposição + hipotermia). Sequência não pode ser invertida.</span></div>
+      <div class="rec-item"><span class="rec-star">★</span><span class="rec-text"><strong>Choque hemorrágico Classe III:</strong> 1.500–2.000 mL, FC 120–140, PA ↓, Glasgow 12–13 → cristaloide + hemotransfusão. Classe IV: &gt;2.000 mL → cirurgia + hemotransfusão urgente.</span></div>
+      <div class="rec-item"><span class="rec-star">★</span><span class="rec-text"><strong>TEP:</strong> tríade dispneia + dor pleurítica + hemoptise. O₂ alto fluxo, semifowler, D-dímero + gasometria. Mobilização contraindicada enquanto instável.</span></div>
+    </div>
+    <div class="tso">
+      <h3>TESTE-SE SEM OLHAR</h3>
+      <div class="tso-list">
+        <div class="tso-item"><span class="tso-num">01 —</span><span class="tso-text">Qual padrão respiratório ocorre na ICC grave e como diferenciá-lo do Biot?</span></div>
+        <div class="tso-item"><span class="tso-num">02 —</span><span class="tso-text">Por que o anti-histamínico não é suficiente como única conduta na anafilaxia?</span></div>
+        <div class="tso-item"><span class="tso-num">03 —</span><span class="tso-text">Qual a diferença entre urgência e emergência hipertensiva e como o tempo de redução da PA difere entre elas?</span></div>
+        <div class="tso-item"><span class="tso-num">04 —</span><span class="tso-text">Em choque Classe IV, qual a principal diferença de conduta em relação à Classe III?</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="footer pf"><span class="footer-left">Extensivo ENARE · by Residência PRO</span><span class="footer-right">09</span></div>
+</div>
+
+<!-- PÁGINA 10 — REFERÊNCIAS -->
+<div class="page">
+  <div class="header ph"><span class="header-left">REFERÊNCIAS · AULA 21</span><span class="header-right">Extensivo ENARE</span></div>
+  <div class="pc">
+    <h2>Referências — Bloco B4 · Aula 21</h2>
+    <p style="margin-bottom:3mm;">AMERICAN COLLEGE OF SURGEONS. <em>Advanced Trauma Life Support (ATLS)</em>. 10. ed. Chicago: ACS, 2018.</p>
+    <p style="margin-bottom:3mm;">EVANS, L. et al. Surviving Sepsis Campaign: International Guidelines for Management of Sepsis and Septic Shock 2021. <em>Critical Care Medicine</em>, v. 49, n. 11, p. e1063–e1143, 2021.</p>
+    <p style="margin-bottom:3mm;">SAMPSON, H.A. et al. Second symposium on the definition and management of anaphylaxis. <em>Journal of Allergy and Clinical Immunology</em>, v. 117, n. 2, p. 391–397, 2006.</p>
+    <p style="margin-bottom:3mm;">SOCIEDADE BRASILEIRA DE CARDIOLOGIA (SBC). <em>7ª Diretriz Brasileira de Hipertensão Arterial</em>. Arq. Bras. Cardiol., v. 107, n. 3, Supl. 3, 2016.</p>
+    <p style="margin-bottom:3mm;">PORTO, C.C. <em>Semiologia Médica</em>. 7. ed. Rio de Janeiro: Guanabara Koogan, 2014.</p>
+    <p style="margin-bottom:3mm;">HERDMAN, T.H.; KAMITSURU, S.; LOPES, C.T. (Eds.). <em>NANDA International — Diagnósticos de Enfermagem 2024–2026</em>. 13. ed. Porto Alegre: Artmed, 2024.</p>
+    <div style="margin-top:6mm;border:1px dashed #ccc;border-radius:2mm;padding:4mm;color:#aaa;font-size:8pt;text-align:center;font-style:italic;">Espaço para anotações</div>
+  </div>
+  <div class="footer pf"><span class="footer-left">Extensivo ENARE · by Residência PRO</span><span class="footer-right">10</span></div>
+</div>
+
+</body>
+</html>
