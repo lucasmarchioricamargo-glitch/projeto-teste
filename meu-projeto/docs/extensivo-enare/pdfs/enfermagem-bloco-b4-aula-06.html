@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Enfermagem · Bloco B4 · Aula 06 — Extensivo ENARE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Bricolage+Grotesque:wght@400;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root{--creme:#F6F4ED;--verde-lima:#C6D834;--verde-floresta:#1F5C23;--teal:#0D8A8D;--preto:#070707;--cinza:#9E9B94;--cinza-borda:#DDD9D1;--creme-escuro:#EDEAE2;}
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{background:#CCC;font-family:'Bricolage Grotesque',sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    @page{size:A4;margin:0;}
+    .page{width:210mm;height:297mm;position:relative;overflow:hidden;page-break-after:always;background:var(--creme);display:flex;flex-direction:column;}
+    @media screen{.page{margin:24px auto;box-shadow:0 4px 32px rgba(0,0,0,0.18);}}
+    .page-header{height:14mm;background:var(--creme);border-bottom:2px solid var(--teal);display:flex;align-items:center;padding:0 18mm;flex-shrink:0;}
+    .page-header-label{font-family:'Barlow Condensed',sans-serif;font-size:8pt;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--cinza);}
+    .page-header-title{font-family:'Space Grotesk',sans-serif;font-size:7.5pt;font-weight:300;color:var(--cinza);margin-left:auto;}
+    .page-footer{height:10mm;background:var(--creme);border-top:1px solid var(--cinza-borda);display:flex;align-items:center;padding:0 18mm;flex-shrink:0;}
+    .page-footer-brand{font-family:'Space Grotesk',sans-serif;font-size:7pt;font-weight:300;color:var(--cinza);}
+    .page-footer-num{font-family:'Barlow Condensed',sans-serif;font-size:9pt;font-weight:700;color:var(--teal);margin-left:auto;}
+    .page-content{flex:1;padding:10mm 18mm;overflow:hidden;}
+    .section-tag{font-family:'Barlow Condensed',sans-serif;font-size:7.5pt;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--teal);margin-bottom:4mm;}
+    .section-rule{width:100%;height:2px;background:var(--teal);margin-bottom:6mm;}
+    .capa{background:var(--teal);width:100%;height:100%;display:flex;flex-direction:column;padding:14mm 16mm 12mm;}
+    .capa-logo-ext{font-family:'Playfair Display',serif;font-style:italic;font-size:10pt;color:var(--verde-lima);letter-spacing:1px;}
+    .capa-logo-enare{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:38pt;color:var(--creme);line-height:0.85;letter-spacing:-1px;}
+    .capa-logo-sub{font-family:'Space Grotesk',sans-serif;font-weight:300;font-size:8.5pt;color:rgba(246,244,237,0.6);margin-top:2mm;}
+    .capa-area{font-family:'Barlow Condensed',sans-serif;font-size:7.5pt;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:rgba(246,244,237,0.55);margin-bottom:2mm;}
+    .capa-codigo{font-family:'Barlow Condensed',sans-serif;font-size:9pt;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--verde-lima);margin-bottom:5mm;}
+    .capa-titulo{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:46pt;color:var(--creme);line-height:0.88;text-transform:uppercase;letter-spacing:-1px;margin-bottom:4mm;}
+    .capa-subtitulo{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:14pt;color:var(--verde-lima);text-transform:uppercase;letter-spacing:1px;line-height:1.25;}
+    .capa-watermark{position:absolute;bottom:12mm;right:12mm;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:110pt;color:rgba(246,244,237,0.08);line-height:1;pointer-events:none;}
+    .obj-list{list-style:none;display:flex;flex-direction:column;gap:4mm;margin-bottom:6mm;}
+    .obj-item{display:flex;gap:3mm;align-items:flex-start;}
+    .obj-num{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:18pt;color:var(--teal);line-height:1;flex-shrink:0;width:8mm;}
+    .obj-text{font-size:9.5pt;line-height:1.5;color:var(--preto);padding-top:1mm;}
+    .obj-prereq{background:var(--creme-escuro);border-left:3px solid var(--cinza-borda);padding:3mm 4mm;border-radius:0 3px 3px 0;margin-top:4mm;}
+    .obj-prereq-label{font-family:'Barlow Condensed',sans-serif;font-size:7pt;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--cinza);margin-bottom:1mm;}
+    .obj-prereq-text{font-size:8.5pt;color:var(--preto);line-height:1.4;}
+    .meta-row{display:flex;gap:8mm;margin-top:5mm;padding-top:4mm;border-top:1px solid var(--cinza-borda);}
+    .meta-item{display:flex;flex-direction:column;gap:0.5mm;}
+    .meta-label{font-family:'Barlow Condensed',sans-serif;font-size:6.5pt;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--cinza);}
+    .meta-value{font-size:8pt;font-weight:600;color:var(--preto);}
+    h2{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:17pt;color:var(--teal);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:3mm;line-height:1.1;}
+    h3{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:10pt;color:var(--preto);text-transform:uppercase;letter-spacing:1px;margin:3mm 0 1.5mm;}
+    p{font-size:9pt;line-height:1.55;color:var(--preto);margin-bottom:3mm;}
+    table{width:100%;border-collapse:collapse;font-size:8pt;margin-bottom:4mm;}
+    th{background:var(--teal);color:var(--creme);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:7.5pt;letter-spacing:1px;text-transform:uppercase;padding:2mm 3mm;text-align:left;}
+    td{padding:2mm 3mm;border-bottom:1px solid var(--cinza-borda);vertical-align:top;line-height:1.4;}
+    tr:nth-child(even) td{background:var(--creme-escuro);}
+    .td-dest{font-weight:600;}
+    .box{padding:3.5mm 4mm;border-radius:4px;margin-bottom:4mm;}
+    .box-conceito{background:#e8f4e8;border-left:4px solid var(--verde-floresta);}
+    .box-conceito .box-label{color:var(--verde-floresta);}
+    .box-dica{background:#e5f4f4;border-left:4px solid var(--teal);}
+    .box-dica .box-label{color:var(--teal);}
+    .box-pega{background:#f5f9d4;border-left:4px solid var(--verde-lima);}
+    .box-pega .box-label{color:#7a8a00;}
+    .box-alerta{background:#fce8e8;border-left:4px solid #b03030;}
+    .box-alerta .box-label{color:#b03030;}
+    .box-label{font-family:'Barlow Condensed',sans-serif;font-size:7pt;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:1.5mm;display:block;}
+    .box p{font-size:8.5pt;margin-bottom:0;}
+    .box p+p{margin-top:2mm;}
+    .q-header{font-family:'Barlow Condensed',sans-serif;font-size:8pt;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--teal);margin-bottom:3mm;}
+    .q-stem{font-size:9.5pt;line-height:1.6;color:var(--preto);background:var(--creme-escuro);padding:4mm 5mm;border-radius:4px;margin-bottom:4mm;}
+    .q-opts{list-style:none;display:flex;flex-direction:column;gap:2.5mm;margin-bottom:4mm;}
+    .q-opt{display:flex;gap:3mm;align-items:flex-start;padding:2.5mm 3mm;border-radius:3px;border:1px solid var(--cinza-borda);font-size:9pt;line-height:1.45;}
+    .q-opt.correta{background:#e8f4e8;border-color:var(--verde-floresta);font-weight:600;}
+    .opt-letter{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:11pt;color:var(--teal);flex-shrink:0;line-height:1.2;}
+    .q-opt.correta .opt-letter{color:var(--verde-floresta);}
+    .badge-correta{background:var(--verde-floresta);color:var(--creme);font-family:'Barlow Condensed',sans-serif;font-size:6.5pt;font-weight:700;letter-spacing:1.5px;padding:1px 5px;border-radius:2px;margin-left:3mm;vertical-align:middle;text-transform:uppercase;}
+    .gabarito-box{background:var(--creme-escuro);border-top:2px solid var(--teal);padding:3.5mm 4mm;border-radius:0 0 4px 4px;}
+    .gabarito-title{font-family:'Barlow Condensed',sans-serif;font-size:7.5pt;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:2mm;}
+    .gabarito-text{font-size:8pt;line-height:1.55;color:var(--preto);}
+    .distrator{font-size:7.5pt;color:#555;margin-top:1.5mm;line-height:1.4;}
+    .distrator strong{color:var(--preto);}
+    .rec-box{background:var(--creme-escuro);border-radius:4px;padding:4mm 5mm;margin-bottom:4mm;}
+    .rec-item{display:flex;gap:2.5mm;align-items:flex-start;margin-bottom:2.5mm;font-size:9pt;line-height:1.5;}
+    .rec-star{color:var(--teal);font-weight:800;flex-shrink:0;}
+    .teste-list{list-style:none;display:flex;flex-direction:column;gap:3mm;}
+    .teste-item{font-size:8.5pt;line-height:1.5;padding-left:4mm;border-left:2px solid var(--cinza-borda);color:var(--preto);}
+    .teste-item strong{font-family:'Barlow Condensed',sans-serif;font-size:9pt;color:var(--teal);font-weight:700;letter-spacing:0.5px;}
+    .ref-list{list-style:none;display:flex;flex-direction:column;gap:2mm;}
+    .ref-item{font-size:7.5pt;line-height:1.55;color:var(--preto);padding-left:3mm;border-left:2px solid var(--cinza-borda);}
+    .anot-box{margin-top:5mm;border:1.5px dashed var(--cinza-borda);border-radius:4px;padding:4mm;height:52mm;display:flex;align-items:center;justify-content:center;}
+    .anot-label{font-family:'Barlow Condensed',sans-serif;font-size:8pt;letter-spacing:2px;text-transform:uppercase;color:var(--cinza-borda);}
+    /* ASA */
+    .asa-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:1.5mm;margin-bottom:4mm;}
+    .asa-card{border-radius:3px;padding:2mm;text-align:center;}
+    .asa-class{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:11pt;line-height:1;}
+    .asa-desc{font-size:6.5pt;line-height:1.35;margin-top:1mm;color:var(--preto);}
+    .asa-card.a1{background:#e8f4e8;border-top:3px solid var(--verde-floresta);}
+    .asa-card.a1 .asa-class{color:var(--verde-floresta);}
+    .asa-card.a2{background:#f0f9f0;border-top:3px solid #5a9a5a;}
+    .asa-card.a2 .asa-class{color:#5a9a5a;}
+    .asa-card.a3{background:#fff9e6;border-top:3px solid #d4a000;}
+    .asa-card.a3 .asa-class{color:#d4a000;}
+    .asa-card.a4{background:#fef0e8;border-top:3px solid #e07020;}
+    .asa-card.a4 .asa-class{color:#e07020;}
+    .asa-card.a5{background:#fce8e8;border-top:3px solid #b03030;}
+    .asa-card.a5 .asa-class{color:#b03030;}
+    .asa-card.a6{background:var(--creme-escuro);border-top:3px solid var(--cinza);}
+    .asa-card.a6 .asa-class{color:var(--cinza);}
+    /* Jejum */
+    .jejum-grid{display:grid;grid-template-columns:1fr auto;gap:0;margin-bottom:4mm;border:1px solid var(--cinza-borda);border-radius:4px;overflow:hidden;}
+    .jejum-row{display:contents;}
+    .jejum-cel{padding:2.5mm 3mm;border-bottom:1px solid var(--cinza-borda);font-size:8.5pt;line-height:1.4;display:flex;align-items:center;}
+    .jejum-cel.head{background:var(--teal);color:var(--creme);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:7.5pt;letter-spacing:1px;text-transform:uppercase;}
+    .jejum-cel.tempo{background:var(--creme-escuro);font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:14pt;color:var(--teal);justify-content:center;width:16mm;text-align:center;border-left:1px solid var(--cinza-borda);}
+    .jejum-cel.tempo.head{font-size:7.5pt;color:var(--creme);background:var(--teal);}
+    .jejum-cel:last-child{border-bottom:none;}
+    /* OMS Checklist */
+    .oms-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2mm;margin-bottom:3mm;}
+    .oms-card{border-radius:4px;padding:2.5mm 3mm;}
+    .oms-card.signin{background:#e5f4f4;border-top:3px solid var(--teal);}
+    .oms-card.timeout{background:#fff9e6;border-top:3px solid #d4a000;}
+    .oms-card.signout{background:#e8f4e8;border-top:3px solid var(--verde-floresta);}
+    .oms-titulo{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:8.5pt;text-transform:uppercase;letter-spacing:1px;margin-bottom:1.5mm;}
+    .oms-card.signin .oms-titulo{color:var(--teal);}
+    .oms-card.timeout .oms-titulo{color:#d4a000;}
+    .oms-card.signout .oms-titulo{color:var(--verde-floresta);}
+    .oms-quando{font-family:'Barlow Condensed',sans-serif;font-size:7pt;letter-spacing:0.5px;color:#555;margin-bottom:2mm;}
+    .oms-text{font-size:7.5pt;line-height:1.45;color:var(--preto);}
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════
+     P01 — CAPA
+     ═══════════════════════════════════════════════════════════ -->
+<div class="page" id="p01">
+  <div class="capa">
+    <div style="margin-bottom:auto;">
+      <span class="capa-logo-ext">extensivo</span><br>
+      <span class="capa-logo-enare">ENARE</span><br>
+      <span class="capa-logo-sub">by Residência PRO</span>
+    </div>
+    <div style="padding-bottom:2mm;">
+      <div class="capa-area">Enfermagem · Módulo Específico</div>
+      <div class="capa-codigo">Bloco B4 · Aula 06</div>
+      <div class="capa-titulo">Periop I</div>
+      <div class="capa-subtitulo">Pré-operatório:<br>Avaliação, Jejum<br>e Fármacos Críticos</div>
+    </div>
+  </div>
+  <div class="capa-watermark">06</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     P02 — OBJETIVOS
+     ═══════════════════════════════════════════════════════════ -->
+<div class="page" id="p02">
+  <div class="page-header">
+    <span class="page-header-label">Enfermagem · Bloco B4 · Aula 06</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <div class="section-tag">Objetivos de Aprendizagem</div>
+    <div class="section-rule"></div>
+
+    <ul class="obj-list">
+      <li class="obj-item">
+        <span class="obj-num">1</span>
+        <span class="obj-text">Conduzir a avaliação pré-operatória de enfermagem — identificando os elementos obrigatórios do checklist, a classificação ASA de risco anestésico e o consentimento informado.</span>
+      </li>
+      <li class="obj-item">
+        <span class="obj-num">2</span>
+        <span class="obj-text">Aplicar as regras de jejum pré-operatório por tipo de alimento (2h, 4h, 6h, 8h), prevenindo a Síndrome de Mendelson e reconhecendo as situações que permitem exceções.</span>
+      </li>
+      <li class="obj-item">
+        <span class="obj-num">3</span>
+        <span class="obj-text">Orientar o manejo dos fármacos críticos no pré-operatório (anticoagulantes, metformina, corticoides, AAS) e identificar os três momentos do Checklist Cirúrgico Seguro da OMS (Sign In, Time Out, Sign Out).</span>
+      </li>
+    </ul>
+
+    <div class="obj-prereq">
+      <div class="obj-prereq-label">Pré-Requisito</div>
+      <div class="obj-prereq-text">Aula 05 — Contraindicações de fármacos no perioperatório cardíaco. Aula 09 (próxima) — Res. COFEN 564/2017: autonomia do enfermeiro para suspender medicamentos em protocolo.</div>
+    </div>
+
+    <div class="meta-row">
+      <div class="meta-item"><span class="meta-label">Bloco</span><span class="meta-value">B4 — Enfermagem</span></div>
+      <div class="meta-item"><span class="meta-label">Aula</span><span class="meta-value">06 de 24</span></div>
+      <div class="meta-item"><span class="meta-label">Tema</span><span class="meta-value">ENF-PERIO I</span></div>
+      <div class="meta-item"><span class="meta-label">Nível Cognitivo</span><span class="meta-value">M → An</span></div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">02</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     P03 — AVALIAÇÃO PRÉ-OPERATÓRIA + ASA
+     ═══════════════════════════════════════════════════════════ -->
+<div class="page" id="p03">
+  <div class="page-header">
+    <span class="page-header-label">Conteúdo Principal · Aula 06</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <h2>Avaliação Pré-Operatória de Enfermagem</h2>
+
+    <table>
+      <thead><tr><th>Domínio</th><th>O que verificar</th></tr></thead>
+      <tbody>
+        <tr><td class="td-dest">Identificação e segurança</td><td>Dois identificadores (nome completo + data de nascimento); pulseira de identificação; alergias documentadas; sítio cirúrgico marcado pelo cirurgião</td></tr>
+        <tr><td class="td-dest">Histórico</td><td>Cirurgias e anestesias anteriores; intercorrências (hipertermia maligna, despertar intraoperatório); doenças crônicas; tabagismo/etilismo</td></tr>
+        <tr><td class="td-dest">Medicamentos</td><td>Lista completa incluindo fitoterápicos e AINEs; verificar suspensões obrigatórias (ver P05); confirmação da última dose</td></tr>
+        <tr><td class="td-dest">Exames</td><td>Hemograma, coagulograma (INR/KTTP), glicemia, função renal (creatinina/ureia), ECG (≥40 anos ou cardiopatas), raio-X de tórax se indicado</td></tr>
+        <tr><td class="td-dest">Consentimento</td><td>Termo de consentimento informado assinado pelo paciente (ou responsável legal); verificar compreensão do procedimento</td></tr>
+        <tr><td class="td-dest">Jejum</td><td>Confirmação do horário da última ingestão por tipo de alimento (ver P04)</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Classificação ASA de Risco Anestésico</h3>
+    <div class="asa-grid">
+      <div class="asa-card a1">
+        <div class="asa-class">ASA I</div>
+        <div class="asa-desc">Paciente saudável sem doença sistêmica</div>
+      </div>
+      <div class="asa-card a2">
+        <div class="asa-class">ASA II</div>
+        <div class="asa-desc">Doença sistêmica leve (HAS controlada, DM sem complicação)</div>
+      </div>
+      <div class="asa-card a3">
+        <div class="asa-class">ASA III</div>
+        <div class="asa-desc">Doença sistêmica grave sem risco à vida (ICC compensada)</div>
+      </div>
+      <div class="asa-card a4">
+        <div class="asa-class">ASA IV</div>
+        <div class="asa-desc">Doença sistêmica grave com risco à vida (IAM recente)</div>
+      </div>
+      <div class="asa-card a5">
+        <div class="asa-class">ASA V</div>
+        <div class="asa-desc">Moribundo; não sobrevive 24h sem a cirurgia</div>
+      </div>
+      <div class="asa-card a6">
+        <div class="asa-class">ASA VI</div>
+        <div class="asa-desc">Morte encefálica — doação de órgãos</div>
+      </div>
+    </div>
+
+    <div class="box box-dica">
+      <span class="box-label">Tricotomia — Diretriz Atual</span>
+      <p>A tricotomia com lâmina está <strong>contraindicada</strong> (aumenta colonização por S. aureus e infecção de sítio cirúrgico). Quando indicada, realizar com <strong>aparador elétrico</strong> na área cirúrgica imediatamente antes do procedimento — nunca na véspera.</p>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">03</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     P04 — JEJUM PRÉ-OPERATÓRIO
+     ═══════════════════════════════════════════════════════════ -->
+<div class="page" id="p04">
+  <div class="page-header">
+    <span class="page-header-label">Conteúdo Principal · Aula 06</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <h2>Jejum Pré-Operatório</h2>
+
+    <div class="jejum-grid">
+      <div class="jejum-cel head">Tipo de Ingestão</div>
+      <div class="jejum-cel head tempo">Mín.</div>
+      <div class="jejum-cel">Líquidos claros — água, chá sem leite, sucos sem polpa, isotônicos claros</div>
+      <div class="jejum-cel tempo">2h</div>
+      <div class="jejum-cel">Leite materno</div>
+      <div class="jejum-cel tempo">4h</div>
+      <div class="jejum-cel">Fórmula infantil, leite não-materno, refeição leve (torrada + chá com leite)</div>
+      <div class="jejum-cel tempo">6h</div>
+      <div class="jejum-cel">Refeição sólida completa, carnes, frituras, alimentos gordurosos</div>
+      <div class="jejum-cel tempo">8h</div>
+    </div>
+
+    <div class="box box-alerta">
+      <span class="box-label">Síndrome de Mendelson — Broncoaspiração</span>
+      <p>Aspiração de conteúdo gástrico durante a indução anestésica → pneumonite química grave (pH gástrico &lt;2,5 + volume &gt;25 mL). Fatores de risco: obesidade, gestantes, refluxo gastroesofágico, urgência cirúrgica, trauma. Jejum adequado é a principal prevenção de competência do enfermeiro.</p>
+    </div>
+
+    <div class="box box-pega">
+      <span class="box-label">Pegadinha — O que NÃO é líquido claro</span>
+      <p>Leite (qualquer tipo), sucos com polpa, bebidas alcoólicas, café com leite e iogurte <strong>não</strong> são líquidos claros e exigem jejum de 6–8h. A água com limão (sem polpa) e chá puro são líquidos claros: jejum de 2h apenas.</p>
+    </div>
+
+    <div class="box box-conceito">
+      <span class="box-label">Profilaxia de TVP no Perioperatório</span>
+      <p>Heparina subcutânea (HNF 5.000 UI 2x/dia ou HBPM) — indicada em pacientes de moderado/alto risco (Caprini score ≥3). Iniciar 12h antes ou 6–12h após a cirurgia. Associar meias de compressão graduada (MCG) e deambulação precoce em todas as categorias de risco.</p>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">04</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     P05 — FÁRMACOS CRÍTICOS + CHECKLIST OMS
+     ═══════════════════════════════════════════════════════════ -->
+<div class="page" id="p05">
+  <div class="page-header">
+    <span class="page-header-label">Conteúdo Principal · Aula 06</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <h2>Fármacos Críticos no Pré-Operatório</h2>
+
+    <table style="margin-bottom:5mm;">
+      <thead><tr><th>Fármaco</th><th>Conduta</th><th>Motivo</th></tr></thead>
+      <tbody>
+        <tr><td class="td-dest">Warfarina</td><td>Suspender 5 dias antes; verificar INR &lt;1,5</td><td>Risco de sangramento intraoperatório</td></tr>
+        <tr><td class="td-dest">NOACs (rivaroxabana, apixabana)</td><td>Suspender 24–48h antes (conforme função renal)</td><td>Sem antídoto universal; risco de sangramento</td></tr>
+        <tr><td class="td-dest">Metformina</td><td>Suspender 24–48h antes (procedimentos com contraste iodado)</td><td>Contraste → risco de IRA → acúmulo → acidose láctica</td></tr>
+        <tr><td class="td-dest">AAS (antiagregante)</td><td><strong>Manter</strong> na maioria dos casos eletivos</td><td>Benefício cardiovascular supera risco hemorrágico</td></tr>
+        <tr><td class="td-dest">Corticoides crônicos</td><td><strong>Não suspender</strong> + dose de estresse perioperatória</td><td>Supressão do eixo HHA → insuficiência adrenal aguda</td></tr>
+        <tr><td class="td-dest">IECA/ARA-II</td><td>Suspender no dia da cirurgia</td><td>Hipotensão refratária intraoperatória</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Checklist Cirúrgico Seguro — OMS</h2>
+    <div class="oms-grid">
+      <div class="oms-card signin">
+        <div class="oms-titulo">Sign In</div>
+        <div class="oms-quando">Antes da indução anestésica</div>
+        <div class="oms-text">Confirmação de identidade, sítio e procedimento · Consentimento assinado · Alergias · Equipamento de anestesia · Monitorização (oxímetro, PA, ECG) · Acesso venoso patente</div>
+      </div>
+      <div class="oms-card timeout">
+        <div class="oms-titulo">Time Out</div>
+        <div class="oms-quando">Antes da incisão — equipe para</div>
+        <div class="oms-text">Toda a equipe confirma: paciente, procedimento, sítio · Antibioticoprofilaxia nos últimos 60 min · Revisão de alergias · Imagens disponíveis · Eventos críticos previstos</div>
+      </div>
+      <div class="oms-card signout">
+        <div class="oms-titulo">Sign Out</div>
+        <div class="oms-quando">Antes do paciente sair da sala</div>
+        <div class="oms-text">Contagem de instrumentos, agulhas e compressas · Rotulação de espécimes cirúrgicos · Registro de intercorrências · Plano de cuidados pós-operatórios comunicado</div>
+      </div>
+    </div>
+
+    <div class="box box-dica" style="margin-bottom:0;">
+      <span class="box-label">Antibioticoprofilaxia Cirúrgica</span>
+      <p>Administrar <strong>nos 60 minutos anteriores à incisão</strong> (cefazolina é o padrão para a maioria das cirurgias). Dose única em cirurgias &lt;2h. Repetir se cirurgia &gt;4h ou sangramento &gt;1.500 mL. Suspender em até 24h do pós-operatório.</p>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">05</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     P06 — QUESTÃO 01
+     ═══════════════════════════════════════════════════════════ -->
+<div class="page" id="p06">
+  <div class="page-header">
+    <span class="page-header-label">Fixação · Aula 06</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <div class="q-header">Questão 01 de 03 · B4 Periop I · Jejum Pré-Operatório · Memorização</div>
+
+    <div class="q-stem">
+      Paciente adulta, 42 anos, agendada para colecistectomia videolaparoscópica eletiva às 8h. O enfermeiro orienta o jejum pré-operatório conforme as diretrizes da Sociedade Brasileira de Anestesiologia (SBA). Qual a orientação correta?
+    </div>
+
+    <ul class="q-opts">
+      <li class="q-opt">
+        <span class="opt-letter">A</span>
+        A paciente deve manter jejum completo de sólidos e líquidos a partir da meia-noite anterior à cirurgia, sem exceções.
+      </li>
+      <li class="q-opt">
+        <span class="opt-letter">B</span>
+        É permitida a ingestão de leite integral até 4 horas antes do procedimento, pois se trata de líquido.
+      </li>
+      <li class="q-opt correta">
+        <span class="opt-letter">C</span>
+        A paciente pode ingerir líquidos claros (água, chá puro, suco sem polpa) até 2 horas antes; sólidos e refeições completas devem ser suspensos 8 horas antes da cirurgia. <span class="badge-correta">Correta</span>
+      </li>
+      <li class="q-opt">
+        <span class="opt-letter">D</span>
+        O jejum de 6 horas é suficiente para todos os tipos de alimentos em adultos sem fatores de risco para broncoaspiração.
+      </li>
+    </ul>
+
+    <div class="gabarito-box">
+      <div class="gabarito-title">Gabarito Comentado — C</div>
+      <div class="gabarito-text">As diretrizes atuais (SBA/ASA) recomendam <strong>2h para líquidos claros</strong> e <strong>8h para sólidos/alimentos gordurosos</strong>. A liberação de líquidos claros próxima à cirurgia reduz desconforto, hipoglicemia e resistência à insulina sem aumentar risco de broncoaspiração.</div>
+      <div class="distrator"><strong>A —</strong> Jejum desde a meia-noite é conduta ultrapassada; para cirurgia às 8h isso seria ≥8h — correto para sólidos mas excessivo para líquidos. <strong>B —</strong> Leite não é líquido claro; exige jejum de 6h (leite materno) ou 6h (leite não-materno/fórmula). <strong>D —</strong> 6h é insuficiente para refeições gordurosas; para sólidos completos o mínimo é 8h.</div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">06</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     P07 — QUESTÃO 02
+     ═══════════════════════════════════════════════════════════ -->
+<div class="page" id="p07">
+  <div class="page-header">
+    <span class="page-header-label">Fixação · Aula 06</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <div class="q-header">Questão 02 de 03 · B4 Periop I · Fármacos Críticos · Aplicação</div>
+
+    <div class="q-stem">
+      Paciente feminina, 58 anos, diabética tipo 2, em uso de metformina 850 mg 2x/dia, atorvastatina e enalapril. Será submetida a arteriografia de membros inferiores com contraste iodado, procedimento eletivo programado para o dia seguinte. Qual a orientação pré-operatória de enfermagem mais adequada em relação à metformina?
+    </div>
+
+    <ul class="q-opts">
+      <li class="q-opt">
+        <span class="opt-letter">A</span>
+        Manter a metformina no esquema habitual, pois a interrupção abrupta pode causar hiperglicemia de rebote grave no perioperatório.
+      </li>
+      <li class="q-opt">
+        <span class="opt-letter">B</span>
+        Substituir a metformina por insulina NPH nas 12 horas anteriores ao procedimento, mantendo a dose habitual de atorvastatina e enalapril.
+      </li>
+      <li class="q-opt correta">
+        <span class="opt-letter">C</span>
+        Suspender a metformina 24–48 horas antes do procedimento com contraste iodado: o contraste pode precipitar lesão renal aguda, reduzindo a excreção do fármaco e aumentando o risco de acidose láctica. <span class="badge-correta">Correta</span>
+      </li>
+      <li class="q-opt">
+        <span class="opt-letter">D</span>
+        Reduzir a dose de metformina à metade (425 mg 2x/dia) nas 24 horas anteriores ao contraste, sem necessidade de suspensão completa.
+      </li>
+    </ul>
+
+    <div class="gabarito-box">
+      <div class="gabarito-title">Gabarito Comentado — C</div>
+      <div class="gabarito-text">O contraste iodado pode causar nefropatia aguda → redução da filtração glomerular → acúmulo de metformina → inibição da cadeia respiratória mitocondrial → <strong>acidose láctica</strong>, potencialmente fatal. A suspensão 24–48h antes (e manutenção por 48h após) é a conduta padrão. O reinício só ocorre após confirmação da função renal estável.</div>
+      <div class="distrator"><strong>A —</strong> A manutenção da metformina com contraste é contraindicada pelo risco de acidose láctica. <strong>B —</strong> Não há indicação de substituição rotineira por insulina NPH; a suspensão da metformina é suficiente. <strong>D —</strong> Redução de dose não elimina o risco — a suspensão completa é obrigatória.</div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">07</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     P08 — QUESTÃO 03 (ÂNCORA)
+     ═══════════════════════════════════════════════════════════ -->
+<div class="page" id="p08">
+  <div class="page-header">
+    <span class="page-header-label">Fixação · Aula 06</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <div class="q-header">Questão 03 de 03 · B4 Periop I · Checklist OMS + Corticoide · Análise</div>
+
+    <div class="q-stem">
+      Paciente masculino, 67 anos, portador de doença pulmonar obstrutiva crônica (DPOC) em uso crônico de prednisona 10 mg/dia há 3 anos, será submetido a herniorrafia inguinal eletiva sob anestesia geral. O enfermeiro da sala cirúrgica acompanha o procedimento. Logo antes da incisão, toda a equipe interrompe as atividades para uma verificação conjunta. Sobre o manejo pré-operatório e o momento do checklist, assinale a alternativa correta:
+    </div>
+
+    <ul class="q-opts">
+      <li class="q-opt">
+        <span class="opt-letter">A</span>
+        A prednisona deve ser suspensa 5 dias antes da cirurgia para evitar complicações de cicatrização; a pausa realizada antes da incisão corresponde ao Sign In do checklist da OMS.
+      </li>
+      <li class="q-opt">
+        <span class="opt-letter">B</span>
+        A prednisona pode ser mantida sem ajuste de dose, pois apenas corticoides inalatórios causam supressão do eixo hipotálamo-hipófise-adrenal (HHA); a pausa descrita é o Sign Out.
+      </li>
+      <li class="q-opt correta">
+        <span class="opt-letter">C</span>
+        A prednisona não deve ser suspensa: o uso crônico causa supressão do eixo HHA e a suspensão abrupta precipita insuficiência adrenal aguda; o paciente deve receber dose de estresse perioperatória. A pausa descrita — toda a equipe confirma paciente, procedimento, sítio e antibioticoprofilaxia antes da incisão — é o Time Out. <span class="badge-correta">Correta</span>
+      </li>
+      <li class="q-opt">
+        <span class="opt-letter">D</span>
+        A prednisona deve ser substituída por hidrocortisona IV nas 48h anteriores à cirurgia; a pausa descrita é o Sign In, realizado logo antes da indução anestésica.
+      </li>
+    </ul>
+
+    <div class="gabarito-box">
+      <div class="gabarito-title">Gabarito Comentado — C</div>
+      <div class="gabarito-text">Duas respostas integradas: (1) Corticoide crônico → supressão do eixo HHA → <strong>nunca suspender abruptamente</strong>; a dose de estresse (hidrocortisona 25–75 mg IV no intraoperatório) previne crise addisoniana. (2) O <strong>Time Out</strong> ocorre imediatamente antes da incisão — é o momento em que toda a equipe para e confirma coletivamente os dados críticos.</div>
+      <div class="distrator"><strong>A —</strong> Suspensão do corticoide é contraindicada; Sign In ocorre antes da indução, não da incisão. <strong>B —</strong> Corticoides sistêmicos em doses ≥5–7,5 mg/dia de prednisona por &gt;3 semanas suprimem o eixo HHA. <strong>D —</strong> A substituição rotineira por hidrocortisona IV 48h antes não é indicada; o corticoide habitual pode ser mantido; Sign In ≠ Time Out.</div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">08</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     P09 — RECUPERAÇÃO ATIVA
+     ═══════════════════════════════════════════════════════════ -->
+<div class="page" id="p09">
+  <div class="page-header">
+    <span class="page-header-label">Recuperação Ativa · Aula 06</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <div class="section-tag">Se Esquecer Tudo, Lembre Disto</div>
+    <div class="section-rule"></div>
+
+    <div class="rec-box">
+      <div class="rec-item">
+        <span class="rec-star">★</span>
+        <span>Jejum pré-op: <strong>2h líquidos claros · 4h leite materno · 6h leite/refeição leve · 8h sólidos/gordurosos</strong>. Leite não é líquido claro. Jejum desde meia-noite é conduta ultrapassada.</span>
+      </div>
+      <div class="rec-item">
+        <span class="rec-star">★</span>
+        <span>Metformina + contraste iodado = <strong>suspender 24–48h antes</strong> (risco de acidose láctica por acúmulo). AAS antiagregante = <strong>manter</strong> na maioria dos casos. Corticoide crônico = <strong>nunca suspender</strong> + dose de estresse.</span>
+      </div>
+      <div class="rec-item">
+        <span class="rec-star">★</span>
+        <span>Checklist OMS: <strong>Sign In</strong> (antes da indução) → <strong>Time Out</strong> (antes da incisão — equipe para) → <strong>Sign Out</strong> (antes de sair da sala: contagem + espécimes). Antibioticoprofilaxia deve ser confirmada no <em>Time Out</em>.</span>
+      </div>
+    </div>
+
+    <div class="section-tag" style="margin-top:2mm;">Teste-se Sem Olhar</div>
+    <div class="section-rule"></div>
+
+    <ul class="teste-list">
+      <li class="teste-item"><strong>Q1 —</strong> Um copo de leite com café é líquido claro? Qual o jejum mínimo exigido?</li>
+      <li class="teste-item"><strong>Q2 —</strong> Por que a metformina deve ser suspensa antes de procedimentos com contraste iodado?</li>
+      <li class="teste-item"><strong>Q3 —</strong> O que diferencia o Sign In do Time Out no Checklist Cirúrgico Seguro da OMS?</li>
+      <li class="teste-item"><strong>Q4 —</strong> Por que o paciente em uso crônico de corticoide não deve suspender o fármaco antes de uma cirurgia?</li>
+    </ul>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">09</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     P10 — REFERÊNCIAS
+     ═══════════════════════════════════════════════════════════ -->
+<div class="page" id="p10">
+  <div class="page-header">
+    <span class="page-header-label">Referências · Aula 06</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <div class="section-tag">Referências — Bloco B4 · Aula 06</div>
+    <div class="section-rule"></div>
+
+    <ul class="ref-list">
+      <li class="ref-item">SOCIEDADE BRASILEIRA DE ANESTESIOLOGIA (SBA). <em>Recomendações para o Jejum Pré-Operatório</em>. Rev. Bras. Anestesiol. 2021; 71(6):590–600.</li>
+      <li class="ref-item">ORGANIZAÇÃO MUNDIAL DA SAÚDE (OMS). <em>Checklist Cirúrgico Seguro da OMS</em>. Genebra: OMS, 2009. Adaptado pelo Ministério da Saúde do Brasil, 2013.</li>
+      <li class="ref-item">BRASIL. Conselho Federal de Enfermagem. <em>Resolução COFEN n.º 564/2017</em>. Código de Ética dos Profissionais de Enfermagem. Brasília: COFEN, 2017.</li>
+      <li class="ref-item">SOCIEDADE BRASILEIRA DE DIABETES (SBD). <em>Diretrizes da SBD 2022–2023</em>. Cap. Perioperatório e hiperglicemia. São Paulo: CLANNAD, 2023.</li>
+      <li class="ref-item">ROTHROCK, J.C. <em>Alexander — Cuidados de Enfermagem ao Paciente Cirúrgico</em>. 15. ed. Rio de Janeiro: Elsevier, 2015. cap. 1 (Avaliação pré-operatória) e cap. 2 (Segurança cirúrgica).</li>
+      <li class="ref-item">SMELTZER, S.C.; BARE, B.G. <em>Brunner e Suddarth</em>. 14. ed. Rio de Janeiro: Guanabara Koogan, 2019. cap. 17 (Cuidados pré-operatórios de enfermagem) e cap. 19 (Cuidados pós-operatórios).</li>
+    </ul>
+
+    <div class="anot-box">
+      <span class="anot-label">Espaço para Anotações</span>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">10</span>
+  </div>
+</div>
+
+</body>
+</html>
