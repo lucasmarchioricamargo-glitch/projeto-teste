@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Enfermagem · Bloco B4 · Aula 12 — Extensivo ENARE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Bricolage+Grotesque:wght@400;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --creme: #F6F4ED; --verde-lima: #C6D834; --verde-floresta: #1F5C23;
+      --teal: #0D8A8D; --preto: #070707; --cinza: #9E9B94;
+      --cinza-borda: #DDD9D1; --creme-escuro: #EDEAE2;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { background:#CCC; font-family:'Bricolage Grotesque',sans-serif; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    @page { size:A4; margin:0; }
+    .page { width:210mm; height:297mm; position:relative; overflow:hidden; page-break-after:always; background:var(--creme); display:flex; flex-direction:column; }
+    @media screen { .page { margin:24px auto; box-shadow:0 4px 32px rgba(0,0,0,0.18); } }
+
+    .page-header { height:14mm; background:var(--creme); border-bottom:2px solid var(--teal); display:flex; align-items:center; padding:0 18mm; flex-shrink:0; }
+    .page-header-label { font-family:'Barlow Condensed',sans-serif; font-size:8pt; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:var(--cinza); }
+    .page-header-title { font-family:'Space Grotesk',sans-serif; font-size:7.5pt; font-weight:300; color:var(--cinza); margin-left:auto; }
+    .page-footer { height:10mm; background:var(--creme); border-top:1px solid var(--cinza-borda); display:flex; align-items:center; padding:0 18mm; flex-shrink:0; }
+    .page-footer-brand { font-family:'Space Grotesk',sans-serif; font-size:7pt; font-weight:300; color:var(--cinza); }
+    .page-footer-num { font-family:'Barlow Condensed',sans-serif; font-size:9pt; font-weight:700; color:var(--teal); margin-left:auto; }
+    .page-content { flex:1; padding:10mm 18mm; overflow:hidden; }
+
+    .section-tag { font-family:'Barlow Condensed',sans-serif; font-size:7.5pt; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--teal); margin-bottom:4mm; }
+    .section-rule { width:100%; height:2px; background:var(--teal); margin-bottom:6mm; }
+
+    .capa { background:var(--teal); width:100%; height:100%; display:flex; flex-direction:column; padding:14mm 16mm 12mm; }
+    .capa-logo-ext { font-family:'Playfair Display',serif; font-style:italic; font-size:10pt; color:var(--verde-lima); letter-spacing:1px; }
+    .capa-logo-enare { font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:38pt; color:var(--creme); line-height:0.85; letter-spacing:-1px; }
+    .capa-logo-sub { font-family:'Space Grotesk',sans-serif; font-weight:300; font-size:8.5pt; color:rgba(246,244,237,0.6); margin-top:2mm; margin-bottom:auto; }
+    .capa-area { font-family:'Barlow Condensed',sans-serif; font-size:7.5pt; font-weight:600; letter-spacing:4px; text-transform:uppercase; color:rgba(246,244,237,0.55); margin-bottom:2mm; }
+    .capa-codigo { font-family:'Barlow Condensed',sans-serif; font-size:9pt; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--verde-lima); margin-bottom:5mm; }
+    .capa-titulo { font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:40pt; color:var(--creme); line-height:0.9; text-transform:uppercase; letter-spacing:-1px; margin-bottom:4mm; }
+    .capa-subtitulo { font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:15pt; color:var(--verde-lima); text-transform:uppercase; letter-spacing:1px; line-height:1.2; }
+    .capa-watermark { position:absolute; bottom:12mm; right:12mm; font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:110pt; color:rgba(246,244,237,0.08); line-height:1; pointer-events:none; }
+
+    .obj-list { list-style:none; display:flex; flex-direction:column; gap:4mm; margin-bottom:6mm; }
+    .obj-item { display:flex; gap:3mm; align-items:flex-start; }
+    .obj-num { font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:18pt; color:var(--teal); line-height:1; flex-shrink:0; width:8mm; }
+    .obj-text { font-size:9.5pt; line-height:1.5; color:var(--preto); padding-top:1mm; }
+    .obj-prereq { background:var(--creme-escuro); border-left:3px solid var(--cinza-borda); padding:3mm 4mm; border-radius:0 3px 3px 0; margin-top:4mm; }
+    .obj-prereq-label { font-family:'Barlow Condensed',sans-serif; font-size:7pt; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--cinza); margin-bottom:1mm; }
+    .obj-prereq-text { font-size:8.5pt; color:var(--preto); line-height:1.4; }
+    .meta-row { display:flex; gap:8mm; margin-top:5mm; padding-top:4mm; border-top:1px solid var(--cinza-borda); }
+    .meta-item { display:flex; flex-direction:column; gap:0.5mm; }
+    .meta-label { font-family:'Barlow Condensed',sans-serif; font-size:6.5pt; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--cinza); }
+    .meta-value { font-size:8pt; font-weight:600; color:var(--preto); }
+
+    h2 { font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:17pt; color:var(--teal); text-transform:uppercase; letter-spacing:0.5px; margin-bottom:3mm; line-height:1.1; }
+    h3 { font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:10.5pt; color:var(--preto); text-transform:uppercase; letter-spacing:1px; margin:4mm 0 2mm; }
+
+    table { width:100%; border-collapse:collapse; font-size:8.3pt; margin-bottom:4mm; }
+    th { background:var(--teal); color:var(--creme); font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:8pt; letter-spacing:1px; text-transform:uppercase; padding:2.5mm 3mm; text-align:left; }
+    td { padding:2mm 3mm; border-bottom:1px solid var(--cinza-borda); vertical-align:top; line-height:1.4; }
+    tr:nth-child(even) td { background:var(--creme-escuro); }
+    .td-dest { font-weight:600; }
+
+    .box { padding:3.5mm 4mm; border-radius:4px; margin-bottom:4mm; }
+    .box-alerta { background:#fff3cd; border-left:4px solid #e6a817; }
+    .box-conceito { background:#e8f4e8; border-left:4px solid var(--verde-floresta); }
+    .box-erro { background:#fdecea; border-left:4px solid #c0392b; }
+    .box-label { font-family:'Barlow Condensed',sans-serif; font-size:7pt; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--cinza); margin-bottom:1.5mm; }
+    .box-text { font-size:8.5pt; line-height:1.5; color:var(--preto); }
+
+    /* 9 certos grid */
+    .certos-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:2mm; margin-bottom:4mm; }
+    .certo-item { background:var(--teal); border-radius:4px; padding:2mm 2.5mm; text-align:center; }
+    .certo-num { font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:13pt; color:var(--verde-lima); line-height:1; }
+    .certo-label { font-family:'Barlow Condensed',sans-serif; font-size:6.5pt; font-weight:700; color:var(--creme); text-transform:uppercase; letter-spacing:0.5px; margin-top:0.5mm; line-height:1.2; }
+
+    /* flebite scale */
+    .flebite-table th { background:var(--preto); }
+    .fl-0 td { background:#f0f8f0; }
+    .fl-1 td { background:#fffde7; }
+    .fl-2 td { background:#fff3cd; }
+    .fl-3 td { background:#fddfc0; }
+    .fl-4 td { background:#fdd5cc; }
+    .fl-5 td { background:#f5c6c6; }
+
+    /* CVC tipos */
+    .cvc-grid { display:grid; grid-template-columns:1fr 1fr; gap:3mm; margin-bottom:4mm; }
+    .cvc-card { background:var(--creme-escuro); border-radius:4px; padding:3mm 3.5mm; border-top:3px solid var(--teal); }
+    .cvc-card-title { font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:9pt; text-transform:uppercase; color:var(--teal); margin-bottom:2mm; }
+    .cvc-item { font-size:7.8pt; line-height:1.45; color:var(--preto); margin-bottom:0.8mm; }
+
+    /* bundle */
+    .bundle-list { list-style:none; display:flex; flex-direction:column; gap:2mm; margin-bottom:4mm; }
+    .bundle-item { display:flex; gap:3mm; align-items:flex-start; font-size:8.5pt; line-height:1.45; color:var(--preto); }
+    .bundle-num { font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:12pt; color:var(--teal); flex-shrink:0; width:6mm; line-height:1; }
+
+    /* calculo box */
+    .calc-box { background:var(--preto); color:var(--creme); border-radius:4px; padding:4mm 5mm; margin-bottom:4mm; }
+    .calc-title { font-family:'Barlow Condensed',sans-serif; font-size:8pt; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--verde-lima); margin-bottom:2mm; }
+    .calc-formula { font-family:'Barlow Condensed',sans-serif; font-size:14pt; font-weight:700; color:var(--creme); text-align:center; margin:3mm 0; letter-spacing:0.5px; }
+    .calc-exemplo { font-size:8pt; color:rgba(246,244,237,0.8); line-height:1.5; }
+
+    /* questões */
+    .q-header { font-family:'Barlow Condensed',sans-serif; font-size:7.5pt; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; color:var(--teal); margin-bottom:3mm; }
+    .q-enunciado { background:var(--creme-escuro); border-radius:4px; padding:4mm 5mm; font-size:9pt; line-height:1.6; color:var(--preto); margin-bottom:4mm; }
+    .q-alternativas { display:flex; flex-direction:column; gap:2.5mm; margin-bottom:4mm; }
+    .q-alt { display:flex; gap:3mm; padding:2.5mm 3.5mm; border-radius:4px; background:white; border:1px solid var(--cinza-borda); font-size:9pt; line-height:1.5; color:var(--preto); }
+    .q-alt.correta { background:#e8f4e8; border-color:var(--verde-floresta); font-weight:600; }
+    .q-alt-letra { font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:11pt; color:var(--teal); flex-shrink:0; line-height:1.2; }
+    .q-alt.correta .q-alt-letra { color:var(--verde-floresta); }
+    .correta-badge { display:inline-block; font-family:'Barlow Condensed',sans-serif; font-size:7pt; font-weight:700; letter-spacing:1px; text-transform:uppercase; background:var(--verde-floresta); color:white; padding:0.5mm 2mm; border-radius:2px; margin-left:2mm; vertical-align:middle; }
+    .gabarito-box { background:var(--preto); color:var(--creme); border-radius:4px; padding:3.5mm 4mm; font-size:8pt; line-height:1.55; }
+    .gabarito-box-title { font-family:'Barlow Condensed',sans-serif; font-size:8pt; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--verde-lima); margin-bottom:2mm; }
+    .gabarito-distratores { font-size:7.5pt; line-height:1.4; color:rgba(246,244,237,0.75); margin-top:2mm; }
+
+    .ra-items { list-style:none; display:flex; flex-direction:column; gap:3mm; }
+    .ra-item { display:flex; gap:3mm; align-items:flex-start; font-size:9pt; line-height:1.5; color:var(--preto); }
+    .ra-num { font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:10pt; color:var(--teal); flex-shrink:0; width:6mm; }
+    .ra-sub { font-family:'Barlow Condensed',sans-serif; font-size:7.5pt; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--cinza); margin-bottom:3mm; }
+
+    .ref-list { list-style:none; display:flex; flex-direction:column; gap:2.5mm; }
+    .ref-item { font-size:8pt; line-height:1.5; color:var(--preto); border-left:3px solid var(--cinza-borda); padding-left:3mm; }
+    .ref-item cite { font-style:italic; }
+    .notas-box { margin-top:6mm; border:1.5px dashed var(--cinza-borda); border-radius:4px; padding:4mm; flex:1; display:flex; align-items:center; justify-content:center; }
+    .notas-label { font-family:'Barlow Condensed',sans-serif; font-size:8pt; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--cinza-borda); }
+  </style>
+</head>
+<body>
+
+<!-- ══ P01 CAPA ══ -->
+<div class="page">
+  <div class="capa">
+    <div>
+      <span class="capa-logo-ext">extensivo</span><br>
+      <span class="capa-logo-enare">ENARE</span><br>
+      <span class="capa-logo-sub">by Residência PRO</span>
+    </div>
+    <div style="margin-top:auto;">
+      <div class="capa-area">Enfermagem · Módulo Específico</div>
+      <div class="capa-codigo">Bloco B4 · Aula 12</div>
+      <div class="capa-titulo">Farmaco-<br>logia I</div>
+      <div class="capa-subtitulo">Terapia IV,<br>CVC e Capital<br>Venoso</div>
+    </div>
+    <div class="capa-watermark">12</div>
+  </div>
+</div>
+
+<!-- ══ P02 OBJETIVOS ══ -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-label">Enfermagem · Bloco B4 · Aula 12</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <div class="section-tag">Objetivos de Aprendizagem</div>
+    <div class="section-rule"></div>
+    <ul class="obj-list">
+      <li class="obj-item">
+        <span class="obj-num">1</span>
+        <span class="obj-text">Aplicar os 9 certos da administração de medicamentos, identificar e graduar complicações da terapia intravenosa pela Escala de Flebite Visual (graus 0–5) e definir a conduta para cada grau.</span>
+      </li>
+      <li class="obj-item">
+        <span class="obj-num">2</span>
+        <span class="obj-text">Calcular gotejamento e microgotas/min com as fórmulas padrão (macrogotas 20 gt/mL e microgotas 60 gt/mL) e aplicar em cenários de prescrição de soro e medicamentos.</span>
+      </li>
+      <li class="obj-item">
+        <span class="obj-num">3</span>
+        <span class="obj-text">Descrever os tipos de cateter venoso central (CVC, PICC, Port-a-cath), aplicar o bundle de prevenção de ICSRC e identificar o diagnóstico NANDA-I pertinente em cenários de infecção relacionada a cateter.</span>
+      </li>
+    </ul>
+    <div class="obj-prereq">
+      <div class="obj-prereq-label">Pré-requisito</div>
+      <div class="obj-prereq-text">Aula 08/09 — COFEN I/II: prescrição de medicamentos (Res. 680/2021) e responsabilidade profissional na administração. Matemática básica para cálculo de gotejamento.</div>
+    </div>
+    <div class="meta-row">
+      <div class="meta-item"><div class="meta-label">Bloco</div><div class="meta-value">B4 — Enfermagem</div></div>
+      <div class="meta-item"><div class="meta-label">Aula</div><div class="meta-value">12 de 24</div></div>
+      <div class="meta-item"><div class="meta-label">Tema</div><div class="meta-value">ENF-Farmacologia I</div></div>
+      <div class="meta-item"><div class="meta-label">Nível cognitivo</div><div class="meta-value">M → An</div></div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">02</span>
+  </div>
+</div>
+
+<!-- ══ P03 VIAS DE ACESSO + 9 CERTOS ══ -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-label">Conteúdo Principal · Aula 12</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <h2>Terapia IV — Acessos e Seguranças</h2>
+    <table>
+      <thead><tr><th style="width:22%">Tipo</th><th style="width:30%">Indicação</th><th style="width:24%">Tempo máximo</th><th style="width:24%">Sítio preferencial</th></tr></thead>
+      <tbody>
+        <tr><td class="td-dest">CVP (periférico)</td><td>Hidratação, medicamentos de curta duração, coleta</td><td><strong>72–96h</strong> (trocar se sinais de flebite antes)</td><td>Antebraço; preservar dobra do cotovelo</td></tr>
+        <tr><td class="td-dest">CVC convencional</td><td>Nutrição parenteral, drogas vasoativas, monitorização PVC</td><td>Revisão diária de necessidade</td><td>Subclávia (menor risco ICSRC)</td></tr>
+        <tr><td class="td-dest">PICC</td><td>ATB prolongado, quimioterapia, NP de longa duração</td><td>Semanas a meses</td><td>Veia basílica/cefálica → ponta: VCS distal</td></tr>
+        <tr><td class="td-dest">Port-a-cath</td><td>Quimioterapia cíclica, uso intermitente prolongado</td><td>Anos (com manutenção)</td><td>Implantado cirurgicamente, subcutâneo</td></tr>
+      </tbody>
+    </table>
+
+    <h3>9 Certos da Administração de Medicamentos</h3>
+    <div class="certos-grid">
+      <div class="certo-item"><div class="certo-num">1</div><div class="certo-label">Paciente certo</div></div>
+      <div class="certo-item"><div class="certo-num">2</div><div class="certo-label">Medicamento certo</div></div>
+      <div class="certo-item"><div class="certo-num">3</div><div class="certo-label">Dose certa</div></div>
+      <div class="certo-item"><div class="certo-num">4</div><div class="certo-label">Via certa</div></div>
+      <div class="certo-item"><div class="certo-num">5</div><div class="certo-label">Hora certa</div></div>
+      <div class="certo-item"><div class="certo-num">6</div><div class="certo-label">Registro certo</div></div>
+      <div class="certo-item"><div class="certo-num">7</div><div class="certo-label">Ação certa</div></div>
+      <div class="certo-item"><div class="certo-num">8</div><div class="certo-label">Forma certa</div></div>
+      <div class="certo-item"><div class="certo-num">9</div><div class="certo-label">Resposta certa</div></div>
+    </div>
+
+    <div class="box box-alerta">
+      <div class="box-label">Preservação do capital venoso — regra da distância</div>
+      <div class="box-text">Sempre iniciar a punção venosa pelas veias mais <strong>distais</strong> (dorso da mão → antebraço → fossa antecubital). Preservar as veias proximais para uso futuro. Evitar repetir punção no mesmo sítio. Em pacientes oncológicos e renais crônicos (candidatos a fístula), preservar veias do membro não dominante.</div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">03</span>
+  </div>
+</div>
+
+<!-- ══ P04 ESCALA DE FLEBITE + COMPLICAÇÕES ══ -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-label">Conteúdo Principal · Aula 12</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <h2>Escala de Flebite Visual (VIS) e Complicações IV</h2>
+    <table class="flebite-table">
+      <thead><tr><th style="width:8%">Grau</th><th style="width:42%">Sinais e sintomas</th><th style="width:50%">Conduta</th></tr></thead>
+      <tbody>
+        <tr class="fl-0"><td class="td-dest">0</td><td>Sem sinais de flebite — sítio normal</td><td>Manter cateter; monitorar conforme protocolo</td></tr>
+        <tr class="fl-1"><td class="td-dest">1</td><td>Dor leve + eritema pequeno (≤2cm) ao redor do sítio</td><td>Possível 1º sinal de flebite; monitorar com atenção; considerar retirada</td></tr>
+        <tr class="fl-2"><td class="td-dest">2</td><td>Dor + eritema + enduração ao longo da veia</td><td><strong>Retirar cateter</strong>; compressa morna; monitorar progressão</td></tr>
+        <tr class="fl-3"><td class="td-dest">3</td><td>Dor intensa + eritema + enduração + estrias vermelhas ao longo da veia</td><td>Retirar cateter; compressa morna; notificar; avaliar antibioticoterapia</td></tr>
+        <tr class="fl-4"><td class="td-dest">4</td><td>Todos acima + cordão venoso palpável e endurecido &gt;5 cm</td><td>Retirar cateter; tratamento médico; notificar; documentar</td></tr>
+        <tr class="fl-5"><td class="td-dest">5</td><td>Todos acima + tecido necrótico, ulceração ou ruptura de pele</td><td>Retirar cateter; cuidados de ferida; avaliação cirúrgica; notificação obrigatória</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Outras Complicações da Terapia IV</h3>
+    <table>
+      <thead><tr><th style="width:22%">Complicação</th><th style="width:40%">Sinais</th><th style="width:38%">Conduta imediata</th></tr></thead>
+      <tbody>
+        <tr><td class="td-dest">Infiltração</td><td>Edema, esfriamento, palidez ao redor do sítio (solução não vesicante)</td><td>Parar infusão; retirar cateter; elevar membro; compressa morna</td></tr>
+        <tr><td class="td-dest">Extravasamento</td><td>Edema + ardência + eritema (solução vesicante/quimioterápico)</td><td>Parar imediatamente; não retirar cateter antes de aspirar; antídoto específico; notificar</td></tr>
+        <tr><td class="td-dest">Embolia gasosa</td><td>Dispneia súbita, hipotensão, cianose, sinal "moinho de vento"</td><td>Decúbito lateral esquerdo + Trendelenburg; O₂ 100%; chamar médico</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">04</span>
+  </div>
+</div>
+
+<!-- ══ P05 CVC + BUNDLE ICSRC ══ -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-label">Conteúdo Principal · Aula 12</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <h2>CVC — Cuidados e Bundle de Prevenção de ICSRC</h2>
+
+    <h3>Bundle ICSRC — 5 Elementos (IHI / ANVISA)</h3>
+    <ul class="bundle-list">
+      <li class="bundle-item"><span class="bundle-num">1</span><span><strong>Higiene das mãos</strong> — antes e após qualquer manipulação do cateter (água + sabão ou álcool gel 70%)</span></li>
+      <li class="bundle-item"><span class="bundle-num">2</span><span><strong>Barreira máxima de precaução</strong> durante a inserção — gorro, máscara, avental estéril, luvas estéreis, campo estéril amplo</span></li>
+      <li class="bundle-item"><span class="bundle-num">3</span><span><strong>Antissepsia da pele com clorexidina alcoólica 0,5–2%</strong> — aguardar secar antes de puncionar (não usar PVPI como primeira escolha em adultos)</span></li>
+      <li class="bundle-item"><span class="bundle-num">4</span><span><strong>Sítio de inserção preferencial: subclávia</strong> — menor risco de ICSRC e TVP (jugular = risco intermediário; femoral = maior risco)</span></li>
+      <li class="bundle-item"><span class="bundle-num">5</span><span><strong>Revisão diária da necessidade do cateter</strong> — remover o quanto antes; manter registro da data de inserção e condições do sítio</span></li>
+    </ul>
+
+    <div class="cvc-grid">
+      <div class="cvc-card">
+        <div class="cvc-card-title">PICC</div>
+        <div class="cvc-item">· Inserção periférica (basílica/cefálica/braquial)</div>
+        <div class="cvc-item">· Ponta: terço distal da VCS ou junção VCS-AD</div>
+        <div class="cvc-item">· Confirmar posição por RX tórax antes de usar</div>
+        <div class="cvc-item">· Indicação: ATB &gt;7 dias, quimio, NP domiciliar</div>
+        <div class="cvc-item">· Curativo: troca a cada 7 dias (filme transparente)</div>
+      </div>
+      <div class="cvc-card">
+        <div class="cvc-card-title">Port-a-cath (Cateter Totalmente Implantável)</div>
+        <div class="cvc-item">· Implantado cirurgicamente (câmara subcutânea)</div>
+        <div class="cvc-item">· Acesso com agulha de Huber (não convencional)</div>
+        <div class="cvc-item">· Flush com SF 0,9% após cada uso; anticoagulante para manutenção</div>
+        <div class="cvc-item">· Ideal para quimioterapia cíclica prolongada</div>
+        <div class="cvc-item">· Menor risco de infecção entre os CVC de longa duração</div>
+      </div>
+    </div>
+
+    <div class="box box-erro">
+      <div class="box-label">Suspeita de ICSRC — conduta imediata</div>
+      <div class="box-text">Febre + calafrios + sem foco infeccioso aparente + CVC → suspeitar de ICSRC. Conduta: <strong>coletar hemoculturas pareadas</strong> (sangue periférico + sangue pelo cateter, antes do antibiótico) → <strong>remover o cateter</strong> (se possível) → encaminhar a ponta para cultura → iniciar antibioticoterapia empírica (vancomicina IV para cobertura de S. aureus).</div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">05</span>
+  </div>
+</div>
+
+<!-- ══ P06 Q1 MEMORIZAÇÃO ══ -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-label">Fixação · Aula 12</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <div class="q-header">Questão 01 de 03 · B4 Farmacologia I · Escala de Flebite — Memorização</div>
+    <div class="q-enunciado">
+      Técnico de enfermagem avalia sítio de punção venosa periférica de paciente internado em uso de antibioticoterapia endovenosa há 72 horas. Observa: dor intensa à palpação, eritema extenso, enduração ao longo da veia e presença de estrias avermelhadas se estendendo 4 cm acima do sítio. Sem cordão palpável além de 5 cm e sem necrose. Sobre a classificação e conduta conforme a Escala de Flebite Visual (VIS), assinale a alternativa correta:
+    </div>
+    <div class="q-alternativas">
+      <div class="q-alt">
+        <span class="q-alt-letra">A</span>
+        <span>Grau 2 — eritema + enduração sem estrias. Conduta: monitorar por mais 24h antes de retirar o cateter.</span>
+      </div>
+      <div class="q-alt">
+        <span class="q-alt-letra">B</span>
+        <span>Grau 4 — todos os sinais incluindo cordão palpável &gt;5 cm. Conduta: retirar o cateter e acionar avaliação médica imediata.</span>
+      </div>
+      <div class="q-alt correta">
+        <span class="q-alt-letra">C</span>
+        <span>Grau 3 — dor intensa + eritema + enduração + estrias avermelhadas ao longo da veia. Conduta: retirar o cateter imediatamente, aplicar compressa morna, notificar e avaliar necessidade de antibioticoterapia. <span class="correta-badge">Correta</span></span>
+      </div>
+      <div class="q-alt">
+        <span class="q-alt-letra">D</span>
+        <span>Grau 1 — dor leve e eritema pequeno. Conduta: monitorar com atenção e trocar o cateter apenas se os sinais progredirem.</span>
+      </div>
+    </div>
+    <div class="gabarito-box">
+      <div class="gabarito-box-title">Gabarito Comentado — C</div>
+      Os achados (dor intensa + eritema + enduração + <strong>estrias avermelhadas</strong>) configuram <strong>Grau 3</strong> na VIS. O cordão palpável &gt;5 cm seria Grau 4; necrose/ulceração seria Grau 5. Estrias são o marcador diferencial do Grau 3. Conduta: <strong>retirar imediatamente</strong> + compressa morna + notificar + avaliar antibiótico.
+      <div class="gabarito-distratores"><strong>A —</strong> Grau 2: eritema + enduração, sem estrias — conduta já inclui retirada. <strong>B —</strong> Grau 4: requer cordão &gt;5 cm, que o enunciado nega explicitamente. <strong>D —</strong> Grau 1: apenas dor leve e eritema pequeno — muito menos grave que o descrito.</div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">06</span>
+  </div>
+</div>
+
+<!-- ══ P07 Q2 APLICAÇÃO ══ -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-label">Fixação · Aula 12</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <div class="q-header">Questão 02 de 03 · B4 Farmacologia I · Cálculo de Gotejamento · Aplicação</div>
+
+    <div class="calc-box">
+      <div class="calc-title">Fórmulas de Gotejamento</div>
+      <div class="calc-formula">Macrogotas (20 gt/mL): gotas/min = Volume (mL) ÷ [Tempo (h) × 3]</div>
+      <div class="calc-formula">Microgotas (60 gt/mL): microgotas/min = Volume (mL) ÷ Tempo (h) = mL/h</div>
+      <div class="calc-exemplo">Regra prática: microgotas/min = mL/h (numericamente iguais). Macrogotas/min = mL/h ÷ 3.</div>
+    </div>
+
+    <div class="q-enunciado">
+      Médico prescreve: "Dipirona sódica 1g IV lento — diluir em SF 0,9% 100mL — infundir em 30 minutos — macrogotas". O equipo macrogotas disponível tem fator de gotejamento de 20 gotas/mL. Qual o gotejamento correto em gotas por minuto?
+    </div>
+    <div class="q-alternativas">
+      <div class="q-alt">
+        <span class="q-alt-letra">A</span>
+        <span>21 gotas/min</span>
+      </div>
+      <div class="q-alt">
+        <span class="q-alt-letra">B</span>
+        <span>33 gotas/min</span>
+      </div>
+      <div class="q-alt correta">
+        <span class="q-alt-letra">C</span>
+        <span>67 gotas/min <span class="correta-badge">Correta</span></span>
+      </div>
+      <div class="q-alt">
+        <span class="q-alt-letra">D</span>
+        <span>100 gotas/min</span>
+      </div>
+    </div>
+    <div class="gabarito-box">
+      <div class="gabarito-box-title">Gabarito Comentado — C</div>
+      Usando a fórmula direta: gotas/min = Volume(mL) × fator ÷ tempo(min)<br>
+      = 100 × 20 ÷ 30 = 2000 ÷ 30 = <strong>66,7 ≈ 67 gotas/min</strong><br><br>
+      Ou pela fórmula simplificada: gotas/min = Volume ÷ [Tempo(h) × 3] = 100 ÷ [0,5 × 3] = 100 ÷ 1,5 = 66,7 ≈ 67 gotas/min.
+      <div class="gabarito-distratores"><strong>A —</strong> 21 gt/min = erro de cálculo (100÷4,8). <strong>B —</strong> 33 gt/min corresponderia a 100mL em 1h, não em 30 min. <strong>D —</strong> 100 gt/min corresponderia a microgotas (100mL/h = 100 microgotas/min), não macrogotas em 30 minutos.</div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">07</span>
+  </div>
+</div>
+
+<!-- ══ P08 Q3 ANÁLISE ÂNCORA ══ -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-label">Fixação · Aula 12</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <div class="q-header">Questão 03 de 03 · B4 Farmacologia I · ICSRC + Bundle + NANDA-I · Análise</div>
+    <div class="q-enunciado">
+      Paciente de 58 anos, internado em UTI há 7 dias, em uso de CVC subclávia direita inserido há 6 dias para administração de drogas vasoativas. Evolui com febre 39,2°C, calafrios, hipotensão (PA 88/52 mmHg) e taquicardia (FC 118 bpm) sem foco infeccioso identificado. Sítio do cateter com discreta hiperemia ao redor. Exames: leucocitose 24.000. Sobre o diagnóstico NANDA-I mais prioritário, o item do bundle que foi descumprido e a conduta correta, assinale a alternativa correta:
+    </div>
+    <div class="q-alternativas">
+      <div class="q-alt">
+        <span class="q-alt-letra">A</span>
+        <span>NANDA-I: Hipertermia. Conduta: trocar o CVC por um novo cateter no mesmo sítio (guiado por fio-guia) e iniciar antibioticoterapia empírica após resultado das hemoculturas.</span>
+      </div>
+      <div class="q-alt">
+        <span class="q-alt-letra">B</span>
+        <span>NANDA-I: Risco de infecção. Conduta: aumentar a frequência de curativos no sítio, manter o CVC atual e aguardar resultado das hemoculturas antes de iniciar antibiótico.</span>
+      </div>
+      <div class="q-alt correta">
+        <span class="q-alt-letra">C</span>
+        <span>NANDA-I: Proteção ineficaz (ICSRC suspeita). O item descumprido é a revisão diária da necessidade do cateter (6 dias). Conduta: coletar hemoculturas pareadas (periférica + pelo cateter) → remover o CVC → enviar a ponta para cultura → iniciar vancomicina empírica. <span class="correta-badge">Correta</span></span>
+      </div>
+      <div class="q-alt">
+        <span class="q-alt-letra">D</span>
+        <span>NANDA-I: Débito cardíaco diminuído. Conduta: repor volume e vasopressor; manter o CVC para monitorização de PVC; hemoculturas após estabilização hemodinâmica.</span>
+      </div>
+    </div>
+    <div class="gabarito-box">
+      <div class="gabarito-box-title">Gabarito Comentado — C</div>
+      Quadro de sepse por provável ICSRC (febre + hipotensão + taquicardia + leucocitose + CVC 6 dias sem revisão de necessidade). O NANDA-I <strong>Proteção ineficaz</strong> engloba comprometimento imune e risco infeccioso sistêmico. O bundle foi descumprido no elemento 5 (revisão diária = remover o quanto antes). Conduta: hemoculturas <strong>antes</strong> do antibiótico → remover o CVC → vancomicina empírica (S. aureus, CoNS).
+      <div class="gabarito-distratores"><strong>A —</strong> Nunca trocar CVC por fio-guia quando há suspeita de ICSRC — aumenta o risco de contaminação. <strong>B —</strong> Aguardar resultado antes do antibiótico em sepse é conduta incorreta (antibiótico deve ser iniciado em até 1h); manter CVC suspeito perpetua o foco. <strong>D —</strong> O problema principal é infeccioso, não cardiogênico; as hemoculturas não devem aguardar estabilização — devem ser coletadas imediatamente.</div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">08</span>
+  </div>
+</div>
+
+<!-- ══ P09 RECUPERAÇÃO ATIVA ══ -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-label">Recuperação Ativa · Aula 12</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <div class="section-tag">Se esquecer tudo, lembre disto</div>
+    <div class="section-rule"></div>
+    <ul class="obj-list" style="margin-bottom:8mm;">
+      <li class="obj-item">
+        <span class="obj-num" style="font-size:14pt;">★</span>
+        <span class="obj-text">Escala de Flebite: <strong>Grau 3 = estrias</strong> (retirar + compressa + notificar). Grau ≥2 = retirar cateter. Grau 5 = necrose = notificação obrigatória. CVP: trocar a cada 72–96h.</span>
+      </li>
+      <li class="obj-item">
+        <span class="obj-num" style="font-size:14pt;">★</span>
+        <span class="obj-text">Cálculo: <strong>macrogotas/min = Volume ÷ (Tempo em h × 3)</strong>. Microgotas/min = Volume ÷ Tempo em h = mL/h (numericamente iguais). Lembre: 20 gt/mL (macro); 60 gt/mL (micro).</span>
+      </li>
+      <li class="obj-item">
+        <span class="obj-num" style="font-size:14pt;">★</span>
+        <span class="obj-text">Bundle ICSRC: higiene das mãos + barreira máxima + clorexidina + subclávia + revisão diária. Suspeita ICSRC: <strong>hemoculturas pareadas → remover CVC → vancomicina</strong>. Nunca trocar por fio-guia em infecção.</span>
+      </li>
+    </ul>
+    <div class="ra-sub">Teste-se sem olhar</div>
+    <ul class="ra-items">
+      <li class="ra-item"><span class="ra-num">01 —</span>Quais são os 9 certos da administração de medicamentos?</li>
+      <li class="ra-item"><span class="ra-num">02 —</span>Qual a fórmula para calcular macrogotas/min? E microgotas/min?</li>
+      <li class="ra-item"><span class="ra-num">03 —</span>Quais os 5 elementos do bundle de prevenção de ICSRC?</li>
+      <li class="ra-item"><span class="ra-num">04 —</span>Paciente com CVC e febre sem foco: qual conduta antes de iniciar antibiótico e por quê?</li>
+    </ul>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">09</span>
+  </div>
+</div>
+
+<!-- ══ P10 REFERÊNCIAS ══ -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-label">Referências · Aula 12</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <div class="section-tag">Referências — Bloco B4 · Aula 12</div>
+    <div class="section-rule"></div>
+    <ul class="ref-list">
+      <li class="ref-item">BRASIL. Agência Nacional de Vigilância Sanitária. <cite>RDC n.º 36/2013.</cite> Institui ações para a segurança do paciente em serviços de saúde. Brasília: ANVISA, 2013.</li>
+      <li class="ref-item">BRASIL. Agência Nacional de Vigilância Sanitária. <cite>Medidas de Prevenção de Infecção Relacionada à Assistência à Saúde.</cite> Série Segurança do Paciente e Qualidade em Serviços de Saúde. 2. ed. Brasília: ANVISA, 2017.</li>
+      <li class="ref-item">INSTITUTE FOR HEALTHCARE IMPROVEMENT (IHI). <cite>How-to Guide: Prevent Central Line-Associated Bloodstream Infections (CLABSI).</cite> Cambridge, MA: IHI, 2012.</li>
+      <li class="ref-item">INFUSION NURSES SOCIETY (INS). <cite>Infusion Therapy Standards of Practice.</cite> Journal of Infusion Nursing, v. 44, Suppl. 1, 2021.</li>
+      <li class="ref-item">BRASIL. Conselho Federal de Enfermagem. <cite>Resolução COFEN n.º 736/2024.</cite> Regulamenta a execução do Processo de Enfermagem. Brasília: COFEN, 2024.</li>
+      <li class="ref-item">HERDMAN, T.H.; KAMITSURU, S.; LOPES, C.T. (Eds.). <cite>NANDA International — Diagnósticos de Enfermagem 2024–2026.</cite> 13. ed. Porto Alegre: Artmed, 2024.</li>
+    </ul>
+    <div class="notas-box">
+      <span class="notas-label">Espaço para anotações</span>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">10</span>
+  </div>
+</div>
+
+</body>
+</html>
