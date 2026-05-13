@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>B4 · Aula 24 — Revisão Geral: Bloco B4 Enfermagem</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Bricolage+Grotesque:wght@400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap');
+  @page{size:A4;margin:0;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{-webkit-print-color-adjust:exact;print-color-adjust:exact;font-family:'Bricolage Grotesque',sans-serif;}
+  :root{
+    --creme:#F6F4ED;--teal:#0D8A8D;--verde:#1F5C23;--lima:#C6D834;--preto:#070707;
+    --cinza:#6B6B6B;--cinza-claro:#E8E6DF;--branco:#FFFFFF;
+  }
+  .page{width:210mm;height:297mm;display:flex;flex-direction:column;overflow:hidden;page-break-after:always;background:var(--creme);}
+  .ph{height:14mm;flex-shrink:0;}
+  .pf{height:9mm;flex-shrink:0;}
+  .pc{flex:1;padding:7mm 16mm 5mm;overflow:hidden;}
+  .pc-sm{flex:1;padding:5mm 16mm 4mm;overflow:hidden;}
+
+  /* HEADER */
+  .page-header{height:14mm;display:flex;align-items:center;padding:0 16mm;border-bottom:0.6pt solid var(--teal);flex-shrink:0;}
+  .page-header-label{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:7.5pt;letter-spacing:1.5px;text-transform:uppercase;color:var(--teal);}
+  .page-header-title{font-family:'Space Grotesk',sans-serif;font-size:7.5pt;font-weight:300;color:var(--cinza);margin-left:auto;}
+
+  /* FOOTER */
+  .page-footer{height:9mm;display:flex;align-items:center;padding:0 16mm;border-top:0.4pt solid var(--cinza-claro);flex-shrink:0;}
+  .page-footer-left{font-family:'Space Grotesk',sans-serif;font-size:6.5pt;font-weight:300;color:var(--cinza);}
+  .page-footer-right{margin-left:auto;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:9pt;color:var(--teal);letter-spacing:1px;}
+
+  /* COVER */
+  .cover-page{background:var(--preto);color:var(--creme);}
+  .cover-inner{flex:1;display:flex;flex-direction:column;padding:16mm 16mm 0;}
+  .cover-band{height:2mm;background:var(--teal);flex-shrink:0;}
+  .cover-meta{font-family:'Space Grotesk',sans-serif;font-weight:300;font-size:7.5pt;letter-spacing:2px;text-transform:uppercase;color:var(--cinza);margin-bottom:10mm;}
+  .cover-title{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:48pt;line-height:0.92;text-transform:uppercase;color:var(--creme);margin-bottom:4mm;}
+  .cover-title span{color:var(--teal);}
+  .cover-sub{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:16pt;letter-spacing:2px;text-transform:uppercase;color:var(--lima);margin-bottom:10mm;}
+  .cover-desc{font-size:8.5pt;color:#AAAAAA;line-height:1.5;max-width:120mm;margin-bottom:auto;}
+  .cover-footer-bar{height:14mm;display:flex;align-items:center;border-top:0.4pt solid #333;}
+  .cover-footer-logo{font-family:'Playfair Display',serif;font-style:italic;font-size:10pt;color:var(--cinza);}
+  .cover-footer-logo span{font-family:'Space Grotesk',sans-serif;font-style:normal;font-weight:300;font-size:7pt;letter-spacing:2px;margin-left:4px;color:#555;}
+  .cover-aula{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:9pt;letter-spacing:3px;text-transform:uppercase;color:var(--teal);margin-left:auto;}
+
+  /* SECTION TITLE */
+  h2{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:16pt;color:var(--teal);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:3mm;line-height:1.1;}
+  h3{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11pt;color:var(--preto);text-transform:uppercase;letter-spacing:0.3px;margin-bottom:1.5mm;margin-top:3mm;line-height:1.1;}
+  p{font-size:8pt;line-height:1.45;margin-bottom:1.5mm;color:var(--preto);}
+  strong{font-weight:600;}
+
+  /* DIVIDER */
+  .div-teal{border:none;border-top:1.5pt solid var(--teal);margin-bottom:3mm;}
+  .div-thin{border:none;border-top:0.4pt solid var(--cinza-claro);margin:2mm 0;}
+
+  /* MAPA DO BLOCO */
+  .mapa-grid{display:grid;grid-template-columns:1fr 1fr;gap:3mm;margin-top:2mm;}
+  .eixo-card{background:var(--branco);border-left:3pt solid var(--teal);padding:2.5mm 3mm;border-radius:1pt;}
+  .eixo-card.verde{border-left-color:var(--verde);}
+  .eixo-card.lima{border-left-color:var(--lima);}
+  .eixo-card.cinza{border-left-color:var(--cinza);}
+  .eixo-title{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:8pt;text-transform:uppercase;letter-spacing:0.5px;color:var(--teal);margin-bottom:1.5mm;}
+  .eixo-card.verde .eixo-title{color:var(--verde);}
+  .eixo-card.lima .eixo-title{color:#6B7A1A;}
+  .eixo-card.cinza .eixo-title{color:var(--cinza);}
+  .eixo-item{font-size:7pt;line-height:1.5;color:var(--preto);}
+  .eixo-item span{font-weight:600;color:var(--teal);}
+  .eixo-card.verde .eixo-item span{color:var(--verde);}
+
+  /* TABLE */
+  table{width:100%;border-collapse:collapse;font-size:7.5pt;margin-bottom:2.5mm;}
+  th{background:var(--teal);color:var(--branco);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:7.5pt;text-transform:uppercase;letter-spacing:0.3px;padding:1.5mm 2mm;text-align:left;}
+  td{padding:1.5mm 2mm;border-bottom:0.4pt solid var(--cinza-claro);vertical-align:top;}
+  tr:nth-child(even) td{background:#F0EEE8;}
+  td strong{color:var(--teal);}
+
+  /* LISTS */
+  ul,ol{padding-left:4mm;margin-bottom:1.5mm;}
+  li{font-size:7.5pt;line-height:1.45;margin-bottom:0.8mm;color:var(--preto);}
+  li strong{color:var(--preto);}
+
+  /* HIGHLIGHT BOX */
+  .box{border:0.5pt solid var(--teal);border-radius:2pt;padding:2.5mm 3mm;margin-bottom:2.5mm;background:var(--branco);}
+  .box-title{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:8.5pt;text-transform:uppercase;letter-spacing:0.5px;color:var(--teal);margin-bottom:1.5mm;}
+  .box-warn{border-color:var(--verde);background:#F0F5F0;}
+  .box-warn .box-title{color:var(--verde);}
+  .box-alert{border-color:#B85C00;background:#FFF5EE;}
+  .box-alert .box-title{color:#B85C00;}
+
+  /* INLINE TAG */
+  .tag{display:inline-block;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:7pt;letter-spacing:0.5px;text-transform:uppercase;padding:0.5mm 1.5mm;border-radius:1pt;margin-right:1mm;}
+  .tag-teal{background:var(--teal);color:var(--branco);}
+  .tag-verde{background:var(--verde);color:var(--branco);}
+  .tag-lima{background:var(--lima);color:var(--preto);}
+  .tag-cinza{background:var(--cinza);color:var(--branco);}
+
+  /* QUESTÃO */
+  .q-header{background:var(--teal);color:var(--branco);padding:2.5mm 3mm;border-radius:2pt 2pt 0 0;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:8pt;text-transform:uppercase;letter-spacing:1px;margin-bottom:0;}
+  .q-body{border:0.5pt solid var(--teal);border-top:none;border-radius:0 0 2pt 2pt;padding:3mm;background:var(--branco);margin-bottom:3mm;}
+  .q-stem{font-size:8pt;line-height:1.5;margin-bottom:2.5mm;color:var(--preto);}
+  .q-opt{font-size:7.5pt;line-height:1.45;margin-bottom:1.5mm;padding-left:1mm;}
+  .q-opt.correta{font-weight:600;color:var(--verde);}
+  .q-gabarito{border:0.5pt solid var(--cinza-claro);border-radius:2pt;padding:2.5mm 3mm;background:#F0EEE8;margin-top:1mm;}
+  .q-gabarito-title{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:7.5pt;text-transform:uppercase;color:var(--cinza);letter-spacing:0.5px;margin-bottom:1mm;}
+  .q-gabarito p{font-size:7.5pt;line-height:1.45;margin-bottom:0;}
+  .correta-tag{display:inline-block;background:var(--verde);color:var(--branco);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:6.5pt;letter-spacing:0.5px;text-transform:uppercase;padding:0.4mm 2mm;border-radius:1pt;margin-left:2mm;vertical-align:middle;}
+
+  /* RECUPERAÇÃO ATIVA */
+  .ra-title{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:26pt;text-transform:uppercase;color:var(--preto);line-height:1;margin-bottom:4mm;}
+  .ra-item{display:flex;align-items:flex-start;gap:2mm;margin-bottom:2mm;}
+  .ra-star{color:var(--teal);font-size:9pt;margin-top:0.3mm;flex-shrink:0;}
+  .ra-text{font-size:7.5pt;line-height:1.45;color:var(--preto);}
+  .ra-text strong{color:var(--preto);}
+  .tss-title{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:9pt;text-transform:uppercase;letter-spacing:1px;color:var(--teal);margin:3mm 0 2mm;border-bottom:0.5pt solid var(--teal);padding-bottom:1mm;}
+  .tss-item{display:flex;gap:3mm;margin-bottom:1.5mm;align-items:flex-start;}
+  .tss-num{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:10pt;color:var(--teal);flex-shrink:0;line-height:1.2;}
+  .tss-dash{font-weight:700;color:var(--teal);flex-shrink:0;}
+  .tss-q{font-size:7.5pt;line-height:1.4;color:var(--preto);}
+
+  /* REFERÊNCIAS */
+  .ref-title{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:22pt;text-transform:uppercase;color:var(--preto);line-height:1;margin-bottom:4mm;}
+  .ref-item{font-size:7pt;line-height:1.5;margin-bottom:2mm;color:var(--cinza);}
+  .ref-item em{font-style:italic;}
+  .nota-box{border:0.5pt dashed var(--cinza-claro);border-radius:2pt;padding:2.5mm 3mm;background:var(--branco);margin-top:3mm;}
+  .nota-label{font-size:6.5pt;color:var(--cinza);font-style:italic;text-align:center;}
+
+  /* COL LAYOUT */
+  .cols2{display:grid;grid-template-columns:1fr 1fr;gap:4mm;}
+  .cols3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:3mm;}
+</style>
+</head>
+<body>
+
+<!-- PAGE 01 — CAPA -->
+<div class="page cover-page">
+  <div class="cover-band"></div>
+  <div class="cover-inner">
+    <div class="cover-meta">Extensivo ENARE · Bloco B4 · Enfermagem</div>
+    <div class="cover-title">REVISÃO<br><span>GERAL</span><br>B4</div>
+    <div class="cover-sub">Síntese dos 4 Eixos Temáticos · 23 Aulas</div>
+    <div class="cover-desc">
+      Integração dos conteúdos do Bloco B4: SAE/NANDA-I/Ética, UTI e Urgências,
+      Procedimentos e Biossegurança, Ciclo de Vida e Saúde Pública. Questões
+      de memorização, aplicação e âncora (análise integrativa).
+    </div>
+    <div class="cover-footer-bar">
+      <div class="cover-footer-logo">Residência PRO <span>by ELITE TREINAMENTOS</span></div>
+      <div class="cover-aula">Aula 24 · Revisão Geral</div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 02 — MAPA DO BLOCO B4 -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-label">Mapa do Bloco · Aula 24</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="pc-sm">
+    <h2>Mapa do Bloco B4 — 23 Aulas · 4 Eixos</h2>
+    <hr class="div-teal">
+    <div class="mapa-grid">
+      <div class="eixo-card">
+        <div class="eixo-title">Eixo I — SAE, NANDA-I e Legislação</div>
+        <div class="eixo-item"><span>A01</span> · Processo de Enfermagem e NANDA-I 2024–2026</div>
+        <div class="eixo-item"><span>A08</span> · Res. 736/2024 — PE e Res. 564/2017 — Ética</div>
+        <div class="eixo-item"><span>A09</span> · Penalidades Éticas e Responsabilidade Profissional</div>
+        <div class="eixo-item"><span>A16</span> · NANDA-I: Diagnósticos Críticos + NNN (NOC/NIC)</div>
+      </div>
+      <div class="eixo-card verde">
+        <div class="eixo-title">Eixo II — UTI e Urgências do Adulto</div>
+        <div class="eixo-item"><span>A02</span> · Classificação do Choque e Bundle Séptico</div>
+        <div class="eixo-item"><span>A03</span> · TOT × Traqueostomia e Gasometria Arterial</div>
+        <div class="eixo-item"><span>A04</span> · Glasgow, TCE e Hipertensão Intracraniana</div>
+        <div class="eixo-item"><span>A05</span> · SCA e IAM — Protocolo de Enfermagem</div>
+        <div class="eixo-item"><span>A13</span> · Fármacos de Alto Risco e DVA em UTI</div>
+        <div class="eixo-item"><span>A21</span> · Semiologia e Urgências do Adulto</div>
+      </div>
+      <div class="eixo-card lima">
+        <div class="eixo-title">Eixo III — Procedimentos, Biossegurança e CME</div>
+        <div class="eixo-item"><span>A06</span> · Avaliação Pré-Operatória e Jejum</div>
+        <div class="eixo-item"><span>A07</span> · Posicionamentos Cirúrgicos e Intraoperatório</div>
+        <div class="eixo-item"><span>A12</span> · Terapia IV, Flebite VIS e PICC/CVC</div>
+        <div class="eixo-item"><span>A17</span> · IRAS, Biossegurança e Precauções (KPC/MRSA)</div>
+        <div class="eixo-item"><span>A20</span> · CME: Spaulding, RDC 15/2012 e Indicadores</div>
+      </div>
+      <div class="eixo-card cinza">
+        <div class="eixo-title">Eixo IV — Ciclo de Vida e Saúde Pública</div>
+        <div class="eixo-item"><span>A10</span> · PHPN, Pré-natal e Exames de Rotina</div>
+        <div class="eixo-item"><span>A11</span> · Aleitamento Materno: Técnica e Contraindicações</div>
+        <div class="eixo-item"><span>A14</span> · Síndromes Geriátricas — 5Is e Fragilidade</div>
+        <div class="eixo-item"><span>A15</span> · Avaliação Funcional: Katz, Barthel, Lawton-Brody</div>
+        <div class="eixo-item"><span>A18</span> · Saúde da Criança I: PNI, Puericultura, Nutrição</div>
+        <div class="eixo-item"><span>A19</span> · Saúde da Criança II: IM, Semiologia e Urgências</div>
+        <div class="eixo-item"><span>A22</span> · Gestão, Saúde Mental e PCR (AHA 2020)</div>
+        <div class="eixo-item"><span>A23</span> · Feridas, Nutrição Enteral/Parenteral, Saúde do Homem</div>
+      </div>
+    </div>
+    <div class="box" style="margin-top:3mm;">
+      <div class="box-title">Distribuição temática nas provas ENARE (FGV)</div>
+      <p style="font-size:7.5pt;">Os Eixos II e IV concentram o maior volume de questões. Eixo II (UTI/Urgências) exige domínio de protocolos numéricos (Glasgow, ATLS, bundle sepse). Eixo IV (Ciclo de Vida) cobra AIDPI, PNI e PNAISH com frequência crescente. Eixo I é base — diagnóstico NANDA-I aparece em quase todas as questões discursivas.</p>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-left">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-right">02</span>
+  </div>
+</div>
+
+<!-- PAGE 03 — EIXO I: SAE, NANDA-I, ÉTICA E GESTÃO -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-label">Eixo I · Aula 24</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="pc-sm">
+    <h2>Eixo I — SAE, NANDA-I, Ética e Gestão</h2>
+    <hr class="div-teal">
+    <div class="cols2">
+      <div>
+        <h3>SAE — Res. 736/2024 (COFEN)</h3>
+        <ul>
+          <li>PE obrigatório em <strong>todos os ambientes</strong> de saúde</li>
+          <li><strong>5 etapas:</strong> Histórico → Diagnóstico → Planejamento (NOC) → Implementação (NIC) → Avaliação</li>
+          <li>Etapa mais cobrada em prova: <strong>diagnóstico de enfermagem (NANDA-I)</strong></li>
+          <li>Registros em prontuário = responsabilidade do enfermeiro</li>
+          <li>Res. 358/2009 consolidada na 736/2024 — não há retroatividade</li>
+        </ul>
+        <h3 style="margin-top:2mm;">NANDA-I 2024–2026 — Prioritários</h3>
+        <table>
+          <tr><th>Código</th><th>Diagnóstico</th></tr>
+          <tr><td><strong>00004</strong></td><td>Risco de infecção</td></tr>
+          <tr><td><strong>00027</strong></td><td>Déficit de volume de líquidos</td></tr>
+          <tr><td><strong>00031</strong></td><td>Desobstrução ineficaz das vias aéreas</td></tr>
+          <tr><td><strong>00085</strong></td><td>Mobilidade física prejudicada</td></tr>
+          <tr><td><strong>00132</strong></td><td>Dor aguda</td></tr>
+          <tr><td><strong>00155</strong></td><td>Risco de quedas</td></tr>
+          <tr><td><strong>00044</strong></td><td>Integridade tissular prejudicada</td></tr>
+        </table>
+        <h3>NNN — Ligação Triaxial</h3>
+        <p><strong>NOC</strong> (resultado esperado, escala 1–5) + <strong>NIC</strong> (intervenção prescrita) vinculados ao diagnóstico NANDA-I — forma a tríade NNN.</p>
+      </div>
+      <div>
+        <h3>Ética — Res. 564/2017</h3>
+        <ul>
+          <li>Infrações éticas: <strong>advertência oral → censura pública → suspensão → cassação</strong></li>
+          <li>Sigilo profissional: exceto perigo público, notificação compulsória ou determinação judicial</li>
+          <li>Responsabilidade <strong>civil</strong>: dano + ação/omissão + nexo causal (indenização)</li>
+          <li>Responsabilidade <strong>penal</strong>: dolo (intenção) ou culpa (imprudência/negligência/imperícia)</li>
+          <li>Responsabilidade <strong>ética</strong>: apurada pelo COREN/CFEn — independente das demais</li>
+          <li>Delegação: enfermeiro pode delegar ao técnico/auxiliar atos <em>sem complexidade técnica</em></li>
+        </ul>
+        <h3 style="margin-top:2mm;">Dimensionamento — COFEN 543/2017</h3>
+        <table>
+          <tr><th>Unidade</th><th>Enfermeiro</th><th>Técnico/Aux</th></tr>
+          <tr><td>Internação geral (mínimo)</td><td>1 / 10 pac</td><td>1 / 3–4 pac</td></tr>
+          <tr><td>Semi-intensivo</td><td>1 / 5 pac</td><td>1 / 2,5 pac</td></tr>
+          <tr><td><strong>UTI adulto</strong></td><td><strong>1 / 2 pac</strong></td><td><strong>1 / 1 pac</strong></td></tr>
+          <tr><td>UTI neonatal/pediátrico</td><td>1 / 2 pac</td><td>1 / 1 pac</td></tr>
+          <tr><td>Pronto-socorro geral</td><td>1 / 10 pac</td><td>1 / 5 pac</td></tr>
+        </table>
+        <div class="box-warn box" style="margin-top:2mm;">
+          <div class="box-title">Pegadinha frequente</div>
+          <p style="font-size:7pt;">UTI = 1 enf/2 pac (não 1/5). Semi-intensivo = 1 enf/5 pac (não 1/10). Confundir as categorias é o erro mais comum em questões de gestão.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-left">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-right">03</span>
+  </div>
+</div>
+
+<!-- PAGE 04 — EIXO II: UTI E URGÊNCIAS DO ADULTO -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-label">Eixo II · Aula 24</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="pc-sm">
+    <h2>Eixo II — UTI e Urgências do Adulto</h2>
+    <hr class="div-teal">
+    <div class="cols2">
+      <div>
+        <h3>Choque e Bundle Séptico</h3>
+        <ul>
+          <li>Choque <strong>distributivo/séptico</strong> = mais comum em UTI; PA &lt; 90 + lactato &gt; 2 + foco</li>
+          <li><strong>Bundle 1h SSC 2021:</strong> ① dosagem lactato ② hemoculturas (antes de ATB) ③ ATB IV amplo espectro ④ cristal 30 mL/kg se PA baixa/lactato ≥ 4 ⑤ noradrenalina se PA não responde</li>
+          <li>Noradrenalina = vasopressor 1ª linha sepse; dobutamina = inotrópico (IC)</li>
+          <li>Choque hemorrágico Classe III (1.500–2.000 mL): cristal + hemotransfusão</li>
+        </ul>
+        <h3>Vias Aéreas — TOT e Traqueostomia</h3>
+        <ul>
+          <li>TOT: cuff 20–25 mmHg; troca a cada 7 dias; máx. <strong>21 dias</strong></li>
+          <li>Traqueostomia: indicada &gt; 21 dias ou obstrução alta de via aérea</li>
+          <li><strong>Bundle PAVM:</strong> cabeceira 30–45°, higiene oral clorexidina 0,12%, circuito ventilatório 7 dias, fisioterapia diária</li>
+          <li>Aspiração traqueal: PRN (sob demanda) + SF 0,9% + monitorizar SpO₂</li>
+        </ul>
+        <h3>Gasometria — Passo a Passo</h3>
+        <table>
+          <tr><th>Parâmetro</th><th>Normal</th><th>Distúrbio</th></tr>
+          <tr><td>pH</td><td>7,35–7,45</td><td>&lt;7,35 acidose · &gt;7,45 alcalose</td></tr>
+          <tr><td>PaCO₂</td><td>35–45 mmHg</td><td>↑ = acidose resp · ↓ = alcalose resp</td></tr>
+          <tr><td>HCO₃</td><td>22–26 mEq/L</td><td>↓ = acidose metab · ↑ = alcalose metab</td></tr>
+          <tr><td>BE</td><td>±2</td><td>Negativo = perda de bases</td></tr>
+        </table>
+        <p style="font-size:7pt;"><strong>Regra:</strong> alterar o parâmetro "responsável" (PaCO₂ = respiratório; HCO₃ = metabólico). Compensação sempre <em>parcial</em> e <em>oposta</em>.</p>
+      </div>
+      <div>
+        <h3>Neurológico — Glasgow e TCE</h3>
+        <ul>
+          <li>Glasgow: Ocular (1–4) + Verbal (1–5) + Motor (1–6) = 3–15</li>
+          <li><strong>≤ 8 = grave → indicação de intubação orotraqueal</strong></li>
+          <li>9–12 = moderado; 13–15 = leve (ATLS)</li>
+          <li>PIC normal &lt; 15 mmHg; HIC &gt; 20 mmHg → 30°, normocapnia PaCO₂ 35–40, manitol</li>
+          <li><strong>Tríade de Cushing:</strong> HAS + bradicardia + bradipneia = herniação iminente</li>
+        </ul>
+        <h3>IAM e SCA</h3>
+        <ul>
+          <li>STEMI: ≥ 1 mm supra ST em 2 derivações contíguas + troponina ↑ em 2–4h</li>
+          <li><strong>MONA:</strong> Morfina (dor refratária) · O₂ (sat &lt; 94%) · Nitrato (CI: hipotensão, sildenafil) · AAS 300 mg</li>
+          <li>PCI primária em &lt; 90 min (meta); trombolítico em &lt; 12 h se PCI indisponível</li>
+        </ul>
+        <h3>Fármacos de Alto Risco e DVA</h3>
+        <ul>
+          <li><strong>KCl:</strong> nunca EV puro → diluir, máx. 10 mEq/h em veia periférica; preferir CVC</li>
+          <li><strong>Heparina:</strong> monitorar TTPA a cada 6h; antídoto = sulfato de protamina</li>
+          <li><strong>DVA sempre por CVC</strong> (necrose tissular em periférico)</li>
+          <li>Noradrenalina (vasopressor) · Dobutamina (inotrópico) · Adrenalina (PCR + anafilaxia)</li>
+          <li>Insulina UTI: alvo glicemia <strong>140–180 mg/dL</strong> (hipoglicemia &lt; 70 = risco letal)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-left">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-right">04</span>
+  </div>
+</div>
+
+<!-- PAGE 05 — EIXO III: PROCEDIMENTOS, BIOSSEGURANÇA E CME -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-label">Eixo III · Aula 24</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="pc-sm">
+    <h2>Eixo III — Procedimentos, Biossegurança e CME</h2>
+    <hr class="div-teal">
+    <div class="cols2">
+      <div>
+        <h3>Terapia Intravenosa</h3>
+        <ul>
+          <li>Periférico: 18–20G adulto; troca a cada <strong>72–96 h</strong></li>
+          <li><strong>Escala VIS grau 3–4 → remover imediatamente</strong></li>
+          <li>PICC: indicado &gt; 6 sem ou drogas irritantes/pH extremos; confirmar posição (RX) antes de usar</li>
+          <li>CVC: complicações = pneumotórax, IPCSL, trombose; curativo com clorexidina 2%</li>
+        </ul>
+        <h3>Cirurgia — Pré, Intra e Pós-Operatório</h3>
+        <ul>
+          <li><strong>Jejum pré-op (ERAS):</strong> sólidos 6 h; líquidos claros 2 h</li>
+          <li>Posições: dorsal (geral), litotomia (ginecológica), Trendelenburg (pélvica), prona (tórax posterior)</li>
+          <li>Contagem cirúrgica (compressas/instrumentais): abertura → fechamento de cavidade</li>
+          <li>Avaliação pré-op: ASA, alergias, anticoagulantes (suspender warfarin 5 dias antes)</li>
+        </ul>
+        <h3>Biossegurança — Precauções</h3>
+        <table>
+          <tr><th>Tipo</th><th>Situação</th><th>EPI</th></tr>
+          <tr><td><strong>Padrão</strong></td><td>Todo paciente, SEMPRE</td><td>Luva, máscara, avental</td></tr>
+          <tr><td><strong>Contato</strong></td><td>ESBL, KPC, MRSA, C. difficile</td><td>Avental + luva + quarto privativo</td></tr>
+          <tr><td><strong>Gotículas</strong></td><td>Influenza, meningococo, coqueluche</td><td>Máscara cirúrgica a 1 m</td></tr>
+          <tr><td><strong>Aéreo</strong></td><td>TB, sarampo, varicela, COVID grave</td><td>N95 + quarto pressão negativa</td></tr>
+        </table>
+      </div>
+      <div>
+        <h3>CME — Esterilização e Controle (RDC 15/2012)</h3>
+        <h3 style="font-size:9pt;margin-top:2mm;">Classificação de Spaulding</h3>
+        <table>
+          <tr><th>Categoria</th><th>Artigo</th><th>Processo</th></tr>
+          <tr><td><strong>Crítico</strong></td><td>Tecido estéril / sangue</td><td>Esterilização</td></tr>
+          <tr><td><strong>Semicrítico</strong></td><td>Mucosa íntegra</td><td>DAN (2% glut. 30 min)</td></tr>
+          <tr><td><strong>Não crítico</strong></td><td>Pele íntegra</td><td>Desinfecção baixo nível</td></tr>
+        </table>
+        <h3 style="margin-top:2mm;">Métodos de Esterilização</h3>
+        <ul>
+          <li><strong>Autoclave:</strong> 134 °C/3 min ou 121 °C/15 min — metais, tecidos, borracha</li>
+          <li><strong>EtO (óxido de etileno):</strong> termossensíveis com lúmen longo; ciclo 6–8 h + aeração</li>
+          <li><strong>Plasma H₂O₂:</strong> termossensíveis (endoscópios rígidos, câmeras); não forma resíduos tóxicos</li>
+          <li><strong>Calor seco (forno Pasteur):</strong> óleos, vaselinas, vidros — 180 °C/30 min ou 160 °C/2 h</li>
+        </ul>
+        <h3 style="margin-top:2mm;">Indicadores de Qualidade</h3>
+        <ul>
+          <li><strong>Físico:</strong> printout (temperatura, pressão, tempo) — monitoramento contínuo</li>
+          <li><strong>Químico:</strong> fita adesiva, integrador, Bowie-Dick (purga de ar)</li>
+          <li><strong>Biológico (Geobacillus stearothermophilus):</strong> padrão ouro; resultado em 24–48 h</li>
+          <li>Biológico positivo → <strong>recolher lote + acionar CCIH + rastrear pacientes expostos</strong></li>
+        </ul>
+        <div class="box-warn box" style="margin-top:1.5mm;">
+          <div class="box-title">Regra Spaulding aplicada</div>
+          <p style="font-size:7pt;">Endoscópio flexível (mucosa) → semicrítico → DAN. Bisturi (sangue) → crítico → autoclave ou plasma. Estetoscópio (pele) → não crítico → álcool 70%.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-left">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-right">05</span>
+  </div>
+</div>
+
+<!-- PAGE 06 — EIXO IV: CICLO DE VIDA E SAÚDE PÚBLICA -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-label">Eixo IV · Aula 24</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="pc-sm">
+    <h2>Eixo IV — Ciclo de Vida e Saúde Pública</h2>
+    <hr class="div-teal">
+    <div class="cols2">
+      <div>
+        <h3>Saúde da Mulher — Pré-natal e Puerpério</h3>
+        <ul>
+          <li><strong>7 consultas:</strong> 6 pré-natal + 1 puerpério (7–10 dias pós-parto); início ≤ 12 semanas</li>
+          <li>Exames obrigatórios: ABO-Rh (1ª consulta), VDRL (1ª + 28 sem), glicemia (1ª + 28 sem), Toxoplasmose IgM/IgG</li>
+          <li><strong>Aleitamento:</strong> livre demanda; pega correta = areola + mamilo; contraindicação absoluta: HIV, HTLV, quimioterapia ativa</li>
+          <li>Mastite: <strong>não suspender AME</strong> — amoxicilina + compressa morna + esvaziamento</li>
+        </ul>
+        <h3>Saúde da Criança — PNI e AIDPI</h3>
+        <ul>
+          <li><strong>BCG:</strong> ao nascer · <strong>DTP:</strong> 2, 4, 6 m + reforços 15 m e 4 anos · <strong>MMR:</strong> 12 m · <strong>Tetraviral:</strong> 15 m</li>
+          <li>AIDPI pneumonia grave (FR ↑ + tiragem) → <strong>internar + penicilina IV</strong></li>
+          <li>Desidratação Plano C → SRO EV: 100 mL/kg/3 h (&lt; 12 m) ou 2 h (&gt; 12 m)</li>
+          <li>Febre sem foco &lt; 28 dias = sepse neonatal presumida → internação urgência</li>
+        </ul>
+        <h3>Saúde do Idoso — Avaliação Funcional</h3>
+        <ul>
+          <li><strong>Katz:</strong> 6 AVDs (banho, vestuário, higiene íntima, transferência, continência, alimentação)</li>
+          <li><strong>Barthel:</strong> 0–100 · &lt; 20 = dependência total · &gt; 60 = dependência leve</li>
+          <li><strong>5Is:</strong> Imobilidade, Instabilidade, Incontinência, Iatrogenia, Insuficiência cognitiva</li>
+          <li>Delirium: agudo + flutuante + distúrbio atenção — precipitante comum: imobilização + infecção + medicamentos</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Saúde Mental — Lei 10.216/2001 e RAPS</h3>
+        <ul>
+          <li>Internação psiquiátrica = <strong>ÚLTIMA opção</strong> → priorizar CAPS</li>
+          <li><strong>Involuntária:</strong> médico assina + comunicar MP em 72 h</li>
+          <li><strong>Compulsória:</strong> determinação judicial exclusivamente</li>
+          <li>CAPS III = 24 h; CAPS ad = álcool/drogas; CAPS i = infância</li>
+          <li>SRT (Serviço Residencial Terapêutico) = moradia para egressos de longa internação</li>
+        </ul>
+        <h3>PCR — AHA 2020</h3>
+        <ul>
+          <li>Cadeia de sobrevivência: reconhecimento → SAMU → RCP precoce → DEA → SBV avançado → pós-PCR</li>
+          <li><strong>CAB:</strong> compressões 100–120/min, 5–6 cm, relação 30:2</li>
+          <li><strong>FV/TV sem pulso = CHOCÁVEL:</strong> 200 J bifásico → RCP 2 min → verificar ritmo</li>
+          <li>3º choque sem reversão: <strong>adrenalina 1 mg</strong> (a cada 3–5 min) + <strong>amiodarona 300 mg</strong> (depois 150 mg)</li>
+          <li><strong>Vasopressina REMOVIDA</strong> do protocolo AHA 2020</li>
+          <li>AESP/Assistolia = NÃO chocável → adrenalina 1 mg a cada 3–5 min + investigar 5H5T</li>
+        </ul>
+        <h3>Feridas, NE e Saúde do Homem</h3>
+        <ul>
+          <li>Coberturas: granulação + baixo exsudato → <strong>hidrocoloide</strong> · alto exsudato → <strong>alginato</strong> · médio → <strong>foam</strong> · infectada → <strong>prata/PHMB</strong></li>
+          <li>NE: cabeceira <strong>30–45° SEMPRE</strong>; suspender se resíduo gástrico &gt; 500 mL</li>
+          <li>PNAISH: homens 20–59 anos · Ca próstata: 50 anos (geral), <strong>45 anos</strong> (negro OU familiar 1º grau)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-left">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-right">06</span>
+  </div>
+</div>
+
+<!-- PAGE 07 — QUESTÃO 01 (MEMORIZAÇÃO) -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-label">Fixação · Aula 24</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="pc">
+    <div class="q-header">Questão 01 de 03 · B4 Revisão Geral — Dimensionamento / Memorização</div>
+    <div class="q-body">
+      <p class="q-stem">De acordo com a Resolução COFEN 543/2017, qual é o dimensionamento mínimo de profissionais de enfermagem exigido para uma <strong>Unidade de Terapia Intensiva adulto</strong>?</p>
+      <p class="q-opt"><strong>A</strong>&nbsp;&nbsp;1 enfermeiro para cada 5 pacientes e 1 técnico de enfermagem para cada 3 pacientes.</p>
+      <p class="q-opt"><strong>B</strong>&nbsp;&nbsp;1 enfermeiro para cada 3 pacientes e 1 técnico de enfermagem para cada 2 pacientes.</p>
+      <p class="q-opt correta"><strong>C</strong>&nbsp;&nbsp;1 enfermeiro para cada 2 pacientes e 1 técnico de enfermagem para cada 1 paciente. <span class="correta-tag">CORRETA</span></p>
+      <p class="q-opt"><strong>D</strong>&nbsp;&nbsp;1 enfermeiro para cada 10 pacientes e 1 técnico de enfermagem para cada 5 pacientes.</p>
+    </div>
+    <div class="q-gabarito">
+      <div class="q-gabarito-title">Gabarito Comentado — C</div>
+      <p>A Res. 543/2017 classifica os cuidados de enfermagem em 5 graus. A UTI corresponde a <strong>cuidados intensivos</strong>: 1 enfermeiro/2 pacientes + 1 técnico ou auxiliar/1 paciente. Semi-intensivo: 1 enf/5 pac + 1 tec/2,5 pac. Internação geral (cuidados mínimos): 1 enf/10 pac. A → valores do semi-intensivo invertidos. B → não corresponde a nenhuma categoria. D → valores da internação geral/mínimo. <strong>UTI exige o maior quantitativo por paciente</strong> — memorize: 1:2 para enfermeiro e 1:1 para técnico.</p>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-left">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-right">07</span>
+  </div>
+</div>
+
+<!-- PAGE 08 — QUESTÃO 02 (APLICAÇÃO) -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-label">Fixação · Aula 24</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="pc">
+    <div class="q-header">Questão 02 de 03 · B4 Revisão Geral — Bundle Séptico / Aplicação</div>
+    <div class="q-body">
+      <p class="q-stem">Paciente em UTI, 2º dia de pós-operatório de cirurgia abdominal, evolui com temperatura 39,1 °C, PA 78/48 mmHg, FC 128 bpm, lactato arterial 4,3 mmol/L e leucocitose 26.000/mm³. O enfermeiro reconhece o quadro de sepse grave e inicia o <em>bundle</em> da hora 1 (SSC 2021). Qual das ações abaixo <strong>NÃO</strong> faz parte desse <em>bundle</em>?</p>
+      <p class="q-opt"><strong>A</strong>&nbsp;&nbsp;Coletar duas amostras de hemoculturas de sítios diferentes antes de iniciar antibioticoterapia.</p>
+      <p class="q-opt"><strong>B</strong>&nbsp;&nbsp;Iniciar antibioticoterapia intravenosa de amplo espectro o mais precocemente possível.</p>
+      <p class="q-opt"><strong>C</strong>&nbsp;&nbsp;Infundir cristaloide 30 mL/kg nas primeiras 3 horas diante de hipotensão e lactato ≥ 4 mmol/L.</p>
+      <p class="q-opt correta"><strong>D</strong>&nbsp;&nbsp;Realizar ecocardiograma à beira do leito imediatamente para avaliação da função cardíaca. <span class="correta-tag">CORRETA</span></p>
+    </div>
+    <div class="q-gabarito">
+      <div class="q-gabarito-title">Gabarito Comentado — D</div>
+      <p>O <em>bundle</em> hora 1 da SSC 2021 inclui 5 ações obrigatórias: ① dosar lactato, ② hemoculturas antes do ATB, ③ ATB IV precoce, ④ cristal 30 mL/kg se PA baixa ou lactato ≥ 4, ⑤ iniciar noradrenalina se PA não responder à ressuscitação volêmica. O ecocardiograma pode orientar o manejo do choque refratário, mas <strong>não integra o bundle da hora 1</strong> — é ferramenta diagnóstica adicional. A, B, C estão todas corretas e obrigatórias no protocolo.</p>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-left">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-right">08</span>
+  </div>
+</div>
+
+<!-- PAGE 09 — QUESTÃO 03 (ÂNCORA / ANÁLISE) -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-label">Fixação · Aula 24</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="pc">
+    <div class="q-header">Questão 03 de 03 · B4 Revisão Geral — PAVM / CME / Biossegurança · Análise (An)</div>
+    <div class="q-body">
+      <p class="q-stem">Paciente internado há 12 dias em UTI, em ventilação mecânica invasiva por pneumonia grave, apresenta novo infiltrado pulmonar lobar direito, temperatura 39,4 °C e secreção traqueal purulenta abundante. A gasometria mostra: pH 7,31 · PaCO₂ 54 mmHg · HCO₃ 27 mEq/L. A cultura do aspirado traqueal isola <em>Klebsiella pneumoniae</em> carbapenemase (KPC). Analise as afirmativas:</p>
+      <p class="q-stem"><strong>I</strong> — A gasometria revela <em>acidose metabólica</em> com compensação respiratória parcial (hiperventilação compensatória).<br>
+      <strong>II</strong> — A KPC exige precaução de <em>contato</em>: avental, luvas e quarto privativo, além de precauções padrão.<br>
+      <strong>III</strong> — Novo infiltrado + secreção purulenta + febre em paciente em VM por mais de 48 h configura PAVM (Pneumonia Associada à Ventilação Mecânica).<br>
+      <strong>IV</strong> — Manter cabeceira a 30–45° e realizar higiene oral com clorexidina 0,12% são intervenções do bundle de prevenção de PAVM.</p>
+      <p class="q-opt"><strong>A</strong>&nbsp;&nbsp;Apenas I e III estão corretas.</p>
+      <p class="q-opt"><strong>B</strong>&nbsp;&nbsp;Apenas II e IV estão corretas.</p>
+      <p class="q-opt correta"><strong>C</strong>&nbsp;&nbsp;Apenas II, III e IV estão corretas. <span class="correta-tag">CORRETA</span></p>
+      <p class="q-opt"><strong>D</strong>&nbsp;&nbsp;I, II, III e IV estão corretas.</p>
+    </div>
+    <div class="q-gabarito">
+      <div class="q-gabarito-title">Gabarito Comentado — C</div>
+      <p><strong>I — ERRADA:</strong> pH 7,31 (acidose) + PaCO₂ 54 (↑, primariamente alterado) = <strong>acidose respiratória</strong>, não metabólica. HCO₃ 27 representa compensação metabólica renal (retenção de bicarbonato, compensação parcial). <strong>II — CORRETA:</strong> KPC = germe multirresistente → precaução de contato obrigatória. <strong>III — CORRETA:</strong> critério diagnóstico clínico de PAVM = VM &gt; 48 h + novo infiltrado + sinais infecciosos. <strong>IV — CORRETA:</strong> bundle PAVM inclui cabeceira 30–45°, higiene oral com clorexidina, fisioterapia respiratória e revisão diária de sedação.</p>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-left">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-right">09</span>
+  </div>
+</div>
+
+<!-- PAGE 10 — RECUPERAÇÃO ATIVA + REFERÊNCIAS -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-label">Recuperação Ativa · Aula 24</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="pc-sm">
+    <div class="ra-title">SE ESQUECER TUDO,<br>LEMBRE DISTO</div>
+    <div class="ra-item"><span class="ra-star">★</span><div class="ra-text"><strong>SAE e dimensionamento:</strong> 5 etapas (Histórico → NANDA → NOC → NIC → Avaliação). UTI = 1 enf/2 pac + 1 tec/1 pac. Diagnóstico é a etapa mais cobrada.</div></div>
+    <div class="ra-item"><span class="ra-star">★</span><div class="ra-text"><strong>Bundle sepse 1h:</strong> lactato → hemoculturas → ATB IV → cristal 30 mL/kg → noradrenalina. Noradrenalina = vasopressor 1ª linha. Dobutamina ≠ vasopressor (é inotrópico).</div></div>
+    <div class="ra-item"><span class="ra-star">★</span><div class="ra-text"><strong>Glasgow ≤ 8 = intubar. Tríade de Cushing = herniação iminente.</strong> PIC &gt; 20 mmHg: cabeceira 30°, normocapnia, manitol.</div></div>
+    <div class="ra-item"><span class="ra-star">★</span><div class="ra-text"><strong>Precauções:</strong> contato (KPC, MRSA) = avental + luva + quarto. Aéreo (TB, sarampo, varicela) = N95 + pressão negativa. Gotículas = máscara cirúrgica a 1 m.</div></div>
+    <div class="ra-item"><span class="ra-star">★</span><div class="ra-text"><strong>Spaulding + CME:</strong> crítico → esterilização; semicrítico (mucosa) → DAN; não crítico → baixo nível. Biológico positivo = recolher lote + CCIH.</div></div>
+    <div class="ra-item"><span class="ra-star">★</span><div class="ra-text"><strong>PCR AHA 2020:</strong> CAB. FV/TV = chocável (200 J). 3º choque: adrenalina 1 mg + amiodarona 300 mg. Vasopressina REMOVIDA. AESP/assistolia = não chocável.</div></div>
+    <div class="ra-item"><span class="ra-star">★</span><div class="ra-text"><strong>Pré-natal:</strong> 7 consultas; início ≤ 12 sem. Ca próstata: 50 anos (geral), 45 anos (negro/familiar 1º grau). AIDPI pneumonia grave → internar + penicilina IV.</div></div>
+
+    <div class="tss-title">Teste-se sem olhar</div>
+    <div class="tss-item"><span class="tss-num">01</span><span class="tss-dash">—</span><span class="tss-q">Qual o dimensionamento mínimo de enfermagem para UTI segundo a COFEN 543/2017?</span></div>
+    <div class="tss-item"><span class="tss-num">02</span><span class="tss-dash">—</span><span class="tss-q">Quais são as 5 ações do bundle da hora 1 para sepse (SSC 2021)?</span></div>
+    <div class="tss-item"><span class="tss-num">03</span><span class="tss-dash">—</span><span class="tss-q">Um endoscópio flexível, após uso em mucosa, exige que nível de processamento pela Classificação de Spaulding?</span></div>
+    <div class="tss-item"><span class="tss-num">04</span><span class="tss-dash">—</span><span class="tss-q">Gasometria: pH 7,31, PaCO₂ 54, HCO₃ 27 — qual o distúrbio primário e o mecanismo compensatório?</span></div>
+
+    <hr class="div-thin" style="margin-top:3mm;">
+    <div style="margin-top:2mm;">
+      <div class="ref-item">COFEN. <em>Resolução 736/2024 — Processo de Enfermagem.</em> Brasília: COFEN, 2024.</div>
+      <div class="ref-item">COFEN. <em>Resolução 543/2017 — Dimensionamento de pessoal de enfermagem.</em> Brasília: COFEN, 2017.</div>
+      <div class="ref-item">HERDMAN, T.H.; KAMITSURU, S.; LOPES, C.T. (Eds.). <em>NANDA International — Diagnósticos de Enfermagem 2024–2026.</em> 13. ed. Porto Alegre: Artmed, 2024.</div>
+      <div class="ref-item">SURVIVING SEPSIS CAMPAIGN. <em>International Guidelines for Management of Sepsis and Septic Shock 2021.</em> Crit Care Med, 2021.</div>
+      <div class="ref-item">AMERICAN HEART ASSOCIATION. <em>2020 AHA Guidelines for CPR and ECC.</em> Circulation, 2020.</div>
+    </div>
+    <div class="nota-box"><span class="nota-label">Espaço para anotações</span></div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-left">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-right">10</span>
+  </div>
+</div>
+
+</body>
+</html>
