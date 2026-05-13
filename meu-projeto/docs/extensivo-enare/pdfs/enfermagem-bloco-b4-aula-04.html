@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Enfermagem · Bloco B4 · Aula 04 — Extensivo ENARE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Bricolage+Grotesque:wght@400;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root{--creme:#F6F4ED;--verde-lima:#C6D834;--verde-floresta:#1F5C23;--teal:#0D8A8D;--preto:#070707;--cinza:#9E9B94;--cinza-borda:#DDD9D1;--creme-escuro:#EDEAE2;}
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{background:#CCC;font-family:'Bricolage Grotesque',sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    @page{size:A4;margin:0;}
+    .page{width:210mm;height:297mm;position:relative;overflow:hidden;page-break-after:always;background:var(--creme);display:flex;flex-direction:column;}
+    @media screen{.page{margin:24px auto;box-shadow:0 4px 32px rgba(0,0,0,0.18);}}
+    .page-header{height:14mm;background:var(--creme);border-bottom:2px solid var(--teal);display:flex;align-items:center;padding:0 18mm;flex-shrink:0;}
+    .page-header-label{font-family:'Barlow Condensed',sans-serif;font-size:8pt;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--cinza);}
+    .page-header-title{font-family:'Space Grotesk',sans-serif;font-size:7.5pt;font-weight:300;color:var(--cinza);margin-left:auto;}
+    .page-footer{height:10mm;background:var(--creme);border-top:1px solid var(--cinza-borda);display:flex;align-items:center;padding:0 18mm;flex-shrink:0;}
+    .page-footer-brand{font-family:'Space Grotesk',sans-serif;font-size:7pt;font-weight:300;color:var(--cinza);}
+    .page-footer-num{font-family:'Barlow Condensed',sans-serif;font-size:9pt;font-weight:700;color:var(--teal);margin-left:auto;}
+    .page-content{flex:1;padding:10mm 18mm;overflow:hidden;}
+    .section-tag{font-family:'Barlow Condensed',sans-serif;font-size:7.5pt;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--teal);margin-bottom:4mm;}
+    .section-rule{width:100%;height:2px;background:var(--teal);margin-bottom:6mm;}
+    .capa{background:var(--teal);width:100%;height:100%;display:flex;flex-direction:column;padding:14mm 16mm 12mm;}
+    .capa-logo-ext{font-family:'Playfair Display',serif;font-style:italic;font-size:10pt;color:var(--verde-lima);letter-spacing:1px;}
+    .capa-logo-enare{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:38pt;color:var(--creme);line-height:0.85;letter-spacing:-1px;}
+    .capa-logo-sub{font-family:'Space Grotesk',sans-serif;font-weight:300;font-size:8.5pt;color:rgba(246,244,237,0.6);margin-top:2mm;}
+    .capa-area{font-family:'Barlow Condensed',sans-serif;font-size:7.5pt;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:rgba(246,244,237,0.55);margin-bottom:2mm;}
+    .capa-codigo{font-family:'Barlow Condensed',sans-serif;font-size:9pt;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--verde-lima);margin-bottom:5mm;}
+    .capa-titulo{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:46pt;color:var(--creme);line-height:0.88;text-transform:uppercase;letter-spacing:-1px;margin-bottom:4mm;}
+    .capa-subtitulo{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:14pt;color:var(--verde-lima);text-transform:uppercase;letter-spacing:1px;line-height:1.25;}
+    .capa-watermark{position:absolute;bottom:12mm;right:12mm;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:110pt;color:rgba(246,244,237,0.08);line-height:1;pointer-events:none;}
+    .obj-list{list-style:none;display:flex;flex-direction:column;gap:4mm;margin-bottom:6mm;}
+    .obj-item{display:flex;gap:3mm;align-items:flex-start;}
+    .obj-num{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:18pt;color:var(--teal);line-height:1;flex-shrink:0;width:8mm;}
+    .obj-text{font-size:9.5pt;line-height:1.5;color:var(--preto);padding-top:1mm;}
+    .obj-prereq{background:var(--creme-escuro);border-left:3px solid var(--cinza-borda);padding:3mm 4mm;border-radius:0 3px 3px 0;margin-top:4mm;}
+    .obj-prereq-label{font-family:'Barlow Condensed',sans-serif;font-size:7pt;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--cinza);margin-bottom:1mm;}
+    .obj-prereq-text{font-size:8.5pt;color:var(--preto);line-height:1.4;}
+    .meta-row{display:flex;gap:8mm;margin-top:5mm;padding-top:4mm;border-top:1px solid var(--cinza-borda);}
+    .meta-item{display:flex;flex-direction:column;gap:0.5mm;}
+    .meta-label{font-family:'Barlow Condensed',sans-serif;font-size:6.5pt;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--cinza);}
+    .meta-value{font-size:8pt;font-weight:600;color:var(--preto);}
+    h2{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:17pt;color:var(--teal);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:3mm;line-height:1.1;}
+    h3{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11pt;color:var(--preto);text-transform:uppercase;letter-spacing:1px;margin:4mm 0 2mm;}
+    p{font-size:9pt;line-height:1.55;color:var(--preto);margin-bottom:3mm;}
+    table{width:100%;border-collapse:collapse;font-size:8.5pt;margin-bottom:4mm;}
+    th{background:var(--teal);color:var(--creme);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:8pt;letter-spacing:1px;text-transform:uppercase;padding:2.5mm 3mm;text-align:left;}
+    td{padding:2mm 3mm;border-bottom:1px solid var(--cinza-borda);vertical-align:top;line-height:1.4;}
+    tr:nth-child(even) td{background:var(--creme-escuro);}
+    .td-dest{font-weight:600;}
+    .box{padding:3.5mm 4mm;border-radius:4px;margin-bottom:4mm;}
+    .box-conceito{background:#e8f4e8;border-left:4px solid var(--verde-floresta);}
+    .box-conceito .box-label{color:var(--verde-floresta);}
+    .box-dica{background:#e5f4f4;border-left:4px solid var(--teal);}
+    .box-dica .box-label{color:var(--teal);}
+    .box-pega{background:#f5f9d4;border-left:4px solid var(--verde-lima);}
+    .box-pega .box-label{color:#7a8a00;}
+    .box-label{font-family:'Barlow Condensed',sans-serif;font-size:7pt;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:1.5mm;display:block;}
+    .box p{font-size:8.5pt;margin-bottom:0;}
+    .box p+p{margin-top:2mm;}
+    .q-header{font-family:'Barlow Condensed',sans-serif;font-size:8pt;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--teal);margin-bottom:3mm;}
+    .q-stem{font-size:9.5pt;line-height:1.6;color:var(--preto);background:var(--creme-escuro);padding:4mm 5mm;border-radius:4px;margin-bottom:4mm;}
+    .q-opts{list-style:none;display:flex;flex-direction:column;gap:2.5mm;margin-bottom:4mm;}
+    .q-opt{display:flex;gap:3mm;align-items:flex-start;padding:2.5mm 3mm;border-radius:3px;border:1px solid var(--cinza-borda);font-size:9pt;line-height:1.45;}
+    .q-opt.correta{background:#e8f4e8;border-color:var(--verde-floresta);font-weight:600;}
+    .opt-letter{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:11pt;color:var(--teal);flex-shrink:0;line-height:1.2;}
+    .q-opt.correta .opt-letter{color:var(--verde-floresta);}
+    .badge-correta{background:var(--verde-floresta);color:var(--creme);font-family:'Barlow Condensed',sans-serif;font-size:6.5pt;font-weight:700;letter-spacing:1.5px;padding:1px 5px;border-radius:2px;margin-left:3mm;vertical-align:middle;text-transform:uppercase;}
+    .gabarito-box{background:var(--creme-escuro);border-top:2px solid var(--teal);padding:3.5mm 4mm;border-radius:0 0 4px 4px;}
+    .gabarito-title{font-family:'Barlow Condensed',sans-serif;font-size:7.5pt;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:2mm;}
+    .gabarito-text{font-size:8pt;line-height:1.55;color:var(--preto);}
+    .distrator{font-size:7.5pt;color:#555;margin-top:1.5mm;line-height:1.4;}
+    .distrator strong{color:var(--preto);}
+    .rec-box{background:var(--creme-escuro);border-radius:4px;padding:4mm 5mm;margin-bottom:4mm;}
+    .rec-item{display:flex;gap:2.5mm;align-items:flex-start;margin-bottom:2.5mm;font-size:9pt;line-height:1.5;}
+    .rec-star{color:var(--teal);font-weight:800;flex-shrink:0;}
+    .teste-list{list-style:none;display:flex;flex-direction:column;gap:3mm;}
+    .teste-item{font-size:8.5pt;line-height:1.5;padding-left:4mm;border-left:2px solid var(--cinza-borda);color:var(--preto);}
+    .teste-item strong{font-family:'Barlow Condensed',sans-serif;font-size:9pt;color:var(--teal);font-weight:700;letter-spacing:0.5px;}
+    .ref-list{list-style:none;display:flex;flex-direction:column;gap:2mm;}
+    .ref-item{font-size:7.5pt;line-height:1.55;color:var(--preto);padding-left:3mm;border-left:2px solid var(--cinza-borda);}
+    .anot-box{margin-top:5mm;border:1.5px dashed var(--cinza-borda);border-radius:4px;padding:4mm;height:52mm;display:flex;align-items:center;justify-content:center;}
+    .anot-label{font-family:'Barlow Condensed',sans-serif;font-size:8pt;letter-spacing:2px;text-transform:uppercase;color:var(--cinza-borda);}
+    /* GLASGOW */
+    .glasgow-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2.5mm;margin-bottom:4mm;}
+    .glasgow-card{background:var(--creme-escuro);border:1px solid var(--cinza-borda);border-radius:4px;padding:3mm;}
+    .glasgow-titulo{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:9pt;color:var(--teal);text-transform:uppercase;margin-bottom:2mm;}
+    .glasgow-text{font-size:7.5pt;line-height:1.5;color:var(--preto);}
+    .glasgow-score{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:11pt;color:var(--teal);}
+    /* TCE COLS */
+    .cols2{display:grid;grid-template-columns:1fr 1fr;gap:3mm;margin-bottom:4mm;}
+    .neuro-card{background:var(--creme-escuro);border:1px solid var(--cinza-borda);border-radius:4px;padding:3mm 4mm;}
+    .neuro-titulo{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:9.5pt;color:var(--teal);text-transform:uppercase;margin-bottom:2mm;}
+    .neuro-text{font-size:7.5pt;line-height:1.45;color:var(--preto);}
+    /* AVC */
+    .avc-seq{display:flex;flex-direction:column;gap:2mm;margin-bottom:4mm;}
+    .avc-step{display:flex;gap:3mm;align-items:flex-start;background:var(--creme-escuro);border-radius:4px;padding:2.5mm 3mm;}
+    .avc-num{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:13pt;color:var(--teal);flex-shrink:0;line-height:1;}
+    .avc-text{font-size:8pt;line-height:1.45;color:var(--preto);}
+  </style>
+</head>
+<body>
+
+<!-- P01 — CAPA -->
+<div class="page" id="p01">
+  <div class="capa">
+    <div style="margin-bottom:auto;">
+      <span class="capa-logo-ext">extensivo</span><br>
+      <span class="capa-logo-enare">ENARE</span><br>
+      <span class="capa-logo-sub">by Residência PRO</span>
+    </div>
+    <div style="padding-bottom:2mm;">
+      <div class="capa-area">Enfermagem · Módulo Específico</div>
+      <div class="capa-codigo">Bloco B4 · Aula 04</div>
+      <div class="capa-titulo">UTI III</div>
+      <div class="capa-subtitulo">Neurológico Crítico:<br>TCE, Glasgow,<br>Cushing e AVC</div>
+    </div>
+  </div>
+  <div class="capa-watermark">04</div>
+</div>
+
+<!-- P02 — OBJETIVOS -->
+<div class="page" id="p02">
+  <div class="page-header">
+    <span class="page-header-label">Enfermagem · Bloco B4 · Aula 04</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <div class="section-tag">Objetivos de Aprendizagem</div>
+    <div class="section-rule"></div>
+    <ol class="obj-list">
+      <li class="obj-item">
+        <span class="obj-num">1</span>
+        <span class="obj-text">Aplicar a Escala de Coma de Glasgow (ECG) em cenários clínicos, identificando os três componentes (ocular, verbal e motor), pontuação total e graus de comprometimento, distinguindo Glasgow de instrumentos de triagem de delirium.</span>
+      </li>
+      <li class="obj-item">
+        <span class="obj-num">2</span>
+        <span class="obj-text">Reconhecer a Tríade de Cushing (bradicardia + hipertensão + alteração respiratória) como sinal de hipertensão intracraniana grave e selecionar o diagnóstico NANDA-I 2024–2026 prioritário (Perfusão cerebral ineficaz) no TCE grave com anisocoria.</span>
+      </li>
+      <li class="obj-item">
+        <span class="obj-num">3</span>
+        <span class="obj-text">Descrever a sequência de ações do enfermeiro no AVC isquêmico agudo, incluindo posicionamento (cabeceira 30°), registro do horário de início dos sintomas e acionamento do protocolo institucional, conforme diretrizes SBraVC 2023.</span>
+      </li>
+    </ol>
+    <div class="obj-prereq">
+      <div class="obj-prereq-label">Pré-requisito</div>
+      <div class="obj-prereq-text">Aula 01 — NANDA-I 2024–2026 (Perfusão cerebral ineficaz já introduzida). Aula 02 — Monitorização hemodinâmica e NEWS.</div>
+    </div>
+    <div class="meta-row">
+      <div class="meta-item"><span class="meta-label">Bloco</span><span class="meta-value">B4 — Enfermagem</span></div>
+      <div class="meta-item"><span class="meta-label">Aula</span><span class="meta-value">04 de 24</span></div>
+      <div class="meta-item"><span class="meta-label">Tema</span><span class="meta-value">ENF-UTI III</span></div>
+      <div class="meta-item"><span class="meta-label">Nível cognitivo</span><span class="meta-value">M → An</span></div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">02</span>
+  </div>
+</div>
+
+<!-- P03 — ESCALA DE GLASGOW -->
+<div class="page" id="p03">
+  <div class="page-header">
+    <span class="page-header-label">Conteúdo Principal · Aula 04</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <h2>Escala de Coma de Glasgow (ECG)</h2>
+    <p>A ECG avalia o nível de consciência por meio de três componentes independentes. É o instrumento padrão em UTI e emergência para monitoramento neurológico e classificação de TCE.</p>
+
+    <div class="glasgow-grid">
+      <div class="glasgow-card">
+        <div class="glasgow-titulo">Abertura Ocular (O)</div>
+        <div class="glasgow-text">
+          <span class="glasgow-score">4</span> — Espontânea<br>
+          <span class="glasgow-score">3</span> — À voz<br>
+          <span class="glasgow-score">2</span> — À dor<br>
+          <span class="glasgow-score">1</span> — Ausente
+        </div>
+      </div>
+      <div class="glasgow-card">
+        <div class="glasgow-titulo">Resposta Verbal (V)</div>
+        <div class="glasgow-text">
+          <span class="glasgow-score">5</span> — Orientado<br>
+          <span class="glasgow-score">4</span> — Confuso<br>
+          <span class="glasgow-score">3</span> — Palavras inapropriadas<br>
+          <span class="glasgow-score">2</span> — Sons incompreensíveis<br>
+          <span class="glasgow-score">1</span> — Ausente
+        </div>
+      </div>
+      <div class="glasgow-card">
+        <div class="glasgow-titulo">Resposta Motora (M)</div>
+        <div class="glasgow-text">
+          <span class="glasgow-score">6</span> — Obedece comandos<br>
+          <span class="glasgow-score">5</span> — Localiza dor<br>
+          <span class="glasgow-score">4</span> — Retirada inespecífica<br>
+          <span class="glasgow-score">3</span> — Decorticação (flex.)<br>
+          <span class="glasgow-score">2</span> — Descerebração (ext.)<br>
+          <span class="glasgow-score">1</span> — Ausente
+        </div>
+      </div>
+    </div>
+
+    <table>
+      <thead><tr><th>Pontuação Total</th><th>Grau do TCE</th><th>Interpretação clínica</th></tr></thead>
+      <tbody>
+        <tr><td class="td-dest">13 – 15</td><td>Leve</td><td>Orientado ou levemente confuso; mantém reflexos protetores</td></tr>
+        <tr><td class="td-dest">9 – 12</td><td>Moderado</td><td>Comprometimento significativo; monitorar evolução rigorosamente</td></tr>
+        <tr><td class="td-dest">≤ 8</td><td>Grave</td><td>Indica intubação orotraqueal — incapaz de proteger via aérea</td></tr>
+        <tr><td class="td-dest">3</td><td>Morte encefálica funcional</td><td>Sem respostas em todos os componentes (coma grau IV)</td></tr>
+      </tbody>
+    </table>
+
+    <div class="box box-pega">
+      <span class="box-label">Atenção — Distinção frequente na prova</span>
+      <p>A ECG avalia <strong>nível de consciência</strong> — não é instrumento de triagem de delirium (para isso existe o CAM-ICU). O sono fisiológico normal <strong>não produz Glasgow &lt; 15</strong> — um paciente dormindo desperta completamente ao chamado. Isso foi cobrado diretamente na Q60/2024.</p>
+    </div>
+
+    <h3>Posturas Anormais — TCE Grave</h3>
+    <p style="font-size:8.5pt;"><strong>Decorticação (M=3):</strong> flexão dos MMSS e extensão dos MMII → lesão cortical bilateral acima do tronco. <strong>Descerebração (M=2):</strong> extensão e hiperpronação de MMSS + extensão de MMII → lesão do tronco cerebral (hipertensão intracraniana grave).</p>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">03</span>
+  </div>
+</div>
+
+<!-- P04 — TCE GRAVE + TRÍADE DE CUSHING -->
+<div class="page" id="p04">
+  <div class="page-header">
+    <span class="page-header-label">Conteúdo Principal · Aula 04</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <h2>TCE Grave e Hipertensão Intracraniana</h2>
+
+    <div class="cols2">
+      <div class="neuro-card">
+        <div class="neuro-titulo">Tríade de Cushing</div>
+        <div class="neuro-text">
+          Sinal de <strong>hipertensão intracraniana grave e iminente herniação</strong>:<br><br>
+          <strong>1. Bradicardia</strong> — FC &lt; 60 bpm<br>
+          <strong>2. Hipertensão arterial</strong> — PA sistólica elevada<br>
+          <strong>3. Alteração respiratória</strong> — irregular, Cheyne-Stokes ou apneia<br><br>
+          Quando presente, indica herniação uncal iminente — é emergência neurocirúrgica. O enfermeiro aciona imediatamente o médico.
+        </div>
+      </div>
+      <div class="neuro-card">
+        <div class="neuro-titulo">Anisocoria</div>
+        <div class="neuro-text">
+          Diferença de diâmetro entre as pupilas.<br><br>
+          <strong>Midríase unilateral não reagente</strong> → compressão do 3.º nervo craniano = sinal de herniação uncal ipsilateral.<br><br>
+          No TCE: midríase + hematoma temporal ipsilateral → herniação do uncus comprimindo o III par.<br><br>
+          A FGV cobrou esse dado em Q85/2025: Glasgow 9 + bradicardia + anisocoria → NANDA-I "Perfusão cerebral ineficaz".
+        </div>
+      </div>
+    </div>
+
+    <h3>Cuidados de Enfermagem no TCE Grave</h3>
+    <table>
+      <thead><tr><th>Cuidado</th><th>Fundamentação</th></tr></thead>
+      <tbody>
+        <tr><td class="td-dest">Cabeceira 30° (linha média)</td><td>Facilita drenagem venosa cerebral → reduz PIC</td></tr>
+        <tr><td class="td-dest">Aspirar vias aéreas superiores</td><td>Hipercapnia por obstrução eleva PIC — manter pCO₂ 35–45</td></tr>
+        <tr><td class="td-dest">Monitorar nível de consciência (ECG)</td><td>Queda de ≥ 2 pontos = alerta imediato — acionar médico</td></tr>
+        <tr><td class="td-dest">Monitorar pupila e sinais vitais</td><td>Tríade de Cushing + anisocoria = herniação iminente</td></tr>
+        <tr><td class="td-dest">Contraindicar SNG nasal</td><td>Em fratura de base do crânio → risco de penetração intracraniana</td></tr>
+        <tr><td class="td-dest">Controle glicêmico</td><td>Hiperglicemia agrava lesão neuronal secundária</td></tr>
+      </tbody>
+    </table>
+
+    <div class="box box-conceito">
+      <span class="box-label">Coma Grau IV (Dépassé)</span>
+      <p>Coma com "funções vegetativas apenas sob suporte artificial" — sem resposta a nenhum estímulo, sem reflexos protetores, manutenção da PA e FC apenas por drogas/VM. É a descrição clínica da morte encefálica funcional, cobrada na Q77/2024 em contexto de AVC hemorrágico grave.</p>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">04</span>
+  </div>
+</div>
+
+<!-- P05 — AVC ISQUÊMICO -->
+<div class="page" id="p05">
+  <div class="page-header">
+    <span class="page-header-label">Conteúdo Principal · Aula 04</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <h2>AVC Isquêmico Agudo — Protocolo de Enfermagem</h2>
+    <p>O AVC isquêmico é cronodependente: cada minuto sem reperfusão representa perda de 1,9 milhão de neurônios. A conduta do enfermeiro nos primeiros minutos determina a elegibilidade para trombólise (janela de 4,5 horas). Diretrizes: <strong>SBraVC 2023 + Res. COFEN 564/2017</strong>.</p>
+
+    <h3>Sequência de Ações — Primeiros 25 Minutos</h3>
+    <div class="avc-seq">
+      <div class="avc-step">
+        <div class="avc-num">①</div>
+        <div class="avc-text"><strong>Elevar cabeceira a 30°</strong> — melhora drenagem venosa cerebral sem comprometer a perfusão. Não colocar em decúbito lateral neste momento.</div>
+      </div>
+      <div class="avc-step">
+        <div class="avc-num">②</div>
+        <div class="avc-text"><strong>Registrar hora exata do início dos sintomas</strong> — essencial para calcular a janela de trombólise. Se o paciente acordou com déficit, usar a hora em que foi visto normal pela última vez.</div>
+      </div>
+      <div class="avc-step">
+        <div class="avc-num">③</div>
+        <div class="avc-text"><strong>Acionar o protocolo de AVC institucional</strong> (via Res. 564/2017 — o enfermeiro age protocolado, sem aguardar prescrição individual) e notificar equipe médica imediatamente.</div>
+      </div>
+      <div class="avc-step">
+        <div class="avc-num">④</div>
+        <div class="avc-text"><strong>Garantir acesso venoso periférico</strong> calibroso. Verificar sinais vitais, glicemia capilar (hipoglicemia mimetiza AVC) e nível de consciência (ECG).</div>
+      </div>
+      <div class="avc-step">
+        <div class="avc-num">⑤</div>
+        <div class="avc-text"><strong>Não administrar anti-hipertensivo</strong> sem prescrição médica — hipertensão é reflexo protetor da penumbra isquêmica. Exceção: PA > 220/120 ou se trombolítico indicado.</div>
+      </div>
+    </div>
+
+    <div class="box box-pega">
+      <span class="box-label">AVC × TCE — Distinção clínica</span>
+      <p>No AVC hemorrágico, a cefaleia é descrita como "a pior da vida", de início súbito. No isquêmico, a cefaleia pode estar ausente — o quadro típico é déficit neurológico focal súbito (hemiparesia, afasia, diplopia). A FGV usa a palavra "início súbito" + déficit focal como pistas do isquêmico. O protocolo de enfermagem é o mesmo nos primeiros minutos — a diferença é na terapêutica médica.</p>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">05</span>
+  </div>
+</div>
+
+<!-- P06 — Q1 -->
+<div class="page" id="p06">
+  <div class="page-header">
+    <span class="page-header-label">Fixação · Aula 04</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <div class="q-header">Questão 01 de 03 · B4 UTI III · Escala de Glasgow · Memorização/Compreensão</div>
+    <div class="q-stem">
+      Um paciente de 58 anos é trazido ao pronto-socorro após queda de moto. Ao exame neurológico: abre os olhos ao chamado verbal, emite sons incompreensíveis e retira o membro à estimulação dolorosa de forma inespecífica. Com base na Escala de Coma de Glasgow, qual a pontuação total e a classificação do TCE?
+    </div>
+    <ul class="q-opts">
+      <li class="q-opt">
+        <span class="opt-letter">A</span>
+        Glasgow 9 (O3/V3/M3) — TCE moderado; indicação de intubação orotraqueal imediata.
+      </li>
+      <li class="q-opt correta">
+        <span class="opt-letter">B</span>
+        Glasgow 9 (O3/V2/M4) — TCE moderado; monitoramento neurológico rigoroso e reavaliação frequente. <span class="badge-correta">Correta</span>
+      </li>
+      <li class="q-opt">
+        <span class="opt-letter">C</span>
+        Glasgow 7 (O2/V2/M3) — TCE grave; indicação de intubação orotraqueal imediata por incapacidade de proteger a via aérea.
+      </li>
+      <li class="q-opt">
+        <span class="opt-letter">D</span>
+        Glasgow 11 (O3/V4/M4) — TCE leve; alta hospitalar com observação domiciliar nas próximas 24 horas.
+      </li>
+    </ul>
+    <div class="gabarito-box">
+      <div class="gabarito-title">Gabarito Comentado — B</div>
+      <div class="gabarito-text">Abre olhos ao chamado verbal = O3. Sons incompreensíveis = V2. Retirada inespecífica à dor = M4. Total = <strong>9 pontos — TCE moderado</strong> (9–12). Não indica intubação imediata (que seria para Glasgow ≤ 8). A conduta é monitoramento neurológico rigoroso com reavaliação seriada do ECG — qualquer queda de ≥ 2 pontos exige acionamento médico imediato.</div>
+      <div class="distrator"><strong>A —</strong> Incorreta: sons incompreensíveis = V2 (não V3, que seriam palavras inapropriadas); o cálculo está errado. <strong>C —</strong> Incorreta: a pontuação dos componentes não corresponde ao enunciado. <strong>D —</strong> Incorreta: Glasgow 11 não se obtém com os dados descritos; além disso, TCE moderado não recebe alta imediata.</div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">06</span>
+  </div>
+</div>
+
+<!-- P07 — Q2 -->
+<div class="page" id="p07">
+  <div class="page-header">
+    <span class="page-header-label">Fixação · Aula 04</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <div class="q-header">Questão 02 de 03 · B4 UTI III · TCE + AVC · Aplicação</div>
+    <div class="q-stem">
+      Paciente masculino, 45 anos, admitido em UTI após AVC isquêmico com início dos sintomas há 25 minutos. Apresenta hemiparesia esquerda, afasia e PA 178/98 mmHg. Glasgow 13. A TC de crânio sem contraste não evidenciou sangramento. O enfermeiro plantonista avalia o paciente. Qual a sequência de condutas imediatas correta?
+    </div>
+    <ul class="q-opts">
+      <li class="q-opt">
+        <span class="opt-letter">A</span>
+        Administrar anti-hipertensivo IV para reduzir PA imediatamente, pois hipertensão agrava o AVC isquêmico.
+      </li>
+      <li class="q-opt">
+        <span class="opt-letter">B</span>
+        Posicionar em decúbito lateral esquerdo, colher hemocultura e aguardar prescrição médica antes de qualquer outra ação.
+      </li>
+      <li class="q-opt correta">
+        <span class="opt-letter">C</span>
+        Elevar a cabeceira a 30°, registrar a hora exata do início dos sintomas, acionar o protocolo de AVC, garantir acesso venoso e monitorar nível de consciência com ECG seriado. <span class="badge-correta">Correta</span>
+      </li>
+      <li class="q-opt">
+        <span class="opt-letter">D</span>
+        Posicionar em Trendelenburg para aumentar a perfusão cerebral e colher gasometria arterial como exame prioritário.
+      </li>
+    </ul>
+    <div class="gabarito-box">
+      <div class="gabarito-title">Gabarito Comentado — C</div>
+      <div class="gabarito-text">A sequência correta no AVC isquêmico agudo: <strong>cabeceira 30°</strong> (drenagem venosa sem comprometer perfusão), <strong>registro da hora dos sintomas</strong> (janela para trombólise), <strong>acionamento do protocolo</strong> (Res. 564/2017), acesso venoso e monitorização do ECG. A hipertensão de PA 178/98 é reflexo protetor da penumbra — <strong>não se trata sem prescrição</strong> exceto se PA > 220/120 ou para uso de trombolítico.</div>
+      <div class="distrator"><strong>A —</strong> Incorreta: anti-hipertensivo sem prescrição pode eliminar o gradiente de perfusão da penumbra, ampliando o infarto. <strong>B —</strong> Incorreta: hemocultura não tem indicação aqui; o decúbito lateral não é a posição inicial no AVC; aguardar é negligência. <strong>D —</strong> Incorreta: Trendelenburg está contraindicado pois aumenta a PIC; gasometria não é o exame prioritário neste momento.</div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">07</span>
+  </div>
+</div>
+
+<!-- P08 — Q3 ÂNCORA -->
+<div class="page" id="p08">
+  <div class="page-header">
+    <span class="page-header-label">Fixação · Aula 04</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <div class="q-header">Questão 03 de 03 · B4 UTI III · TCE + NANDA-I + Tríade de Cushing · Análise (Âncora)</div>
+    <div class="q-stem">
+      Paciente feminina, 38 anos, admitida na UTI neurológica após TCE grave por acidente automobilístico. Parâmetros atuais: Glasgow 8 (O2/V2/M4), FC 52 bpm, PA 185/100 mmHg, FR irregular (padrão Cheyne-Stokes), midríase à direita não reagente. TC evidencia hematoma extradural temporal direito com desvio de linha média de 9 mm. O enfermeiro elabora o plano de cuidados com base na NANDA-I 2024–2026. Qual o diagnóstico prioritário e a conduta mais urgente?
+    </div>
+    <ul class="q-opts">
+      <li class="q-opt">
+        <span class="opt-letter">A</span>
+        Confusão aguda — a desorientação e o rebaixamento do nível de consciência são as manifestações principais; conduta: reorientação e controle de estímulos.
+      </li>
+      <li class="q-opt">
+        <span class="opt-letter">B</span>
+        Padrão respiratório ineficaz — o Cheyne-Stokes indica comprometimento do drive respiratório como problema central; conduta: VNI imediata.
+      </li>
+      <li class="q-opt correta">
+        <span class="opt-letter">C</span>
+        Perfusão cerebral ineficaz — a Tríade de Cushing completa (bradicardia + hipertensão + alteração respiratória) associada à anisocoria e ao desvio de linha média confirma HIC com herniação iminente; conduta: cabeceira 30°, aspirar VAS, comunicar equipe para intervenção neurocirúrgica urgente. <span class="badge-correta">Correta</span>
+      </li>
+      <li class="q-opt">
+        <span class="opt-letter">D</span>
+        Risco de perfusão cerebral ineficaz — o hematoma ainda não causou déficit irreversível; a postura é de monitoramento aguardando decisão médica.
+      </li>
+    </ul>
+    <div class="gabarito-box">
+      <div class="gabarito-title">Gabarito Comentado — C</div>
+      <div class="gabarito-text">A Tríade de Cushing <em>completa</em> (bradicardia 52 bpm + hipertensão 185/100 + Cheyne-Stokes) com anisocoria direita e desvio de linha média de 9 mm confirma HIC com herniação uncal iminente. O diagnóstico NANDA-I 2024–2026 é <strong>Perfusão cerebral ineficaz</strong> — não "risco de" (o comprometimento é real e documentado). As ações imediatas do enfermeiro: elevar cabeceira, aspirar VAS, comunicar emergência neurocirúrgica (Res. 564/2017).</div>
+      <div class="distrator"><strong>A —</strong> Incorreta: confusão aguda é diagnóstico superficial; não nomeia a causa — HIC e herniação. <strong>B —</strong> Incorreta: o padrão respiratório alterado é consequência da HIC, não o problema central. <strong>D —</strong> Incorreta: com Tríade de Cushing e anisocoria, o comprometimento é real — o diagnóstico de "risco de" seria inadequado.</div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">08</span>
+  </div>
+</div>
+
+<!-- P09 — RECUPERAÇÃO ATIVA -->
+<div class="page" id="p09">
+  <div class="page-header">
+    <span class="page-header-label">Recuperação Ativa · Aula 04</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <div class="section-tag">Se Esquecer Tudo, Lembre Disto</div>
+    <div class="section-rule"></div>
+    <div class="rec-box">
+      <div class="rec-item">
+        <span class="rec-star">★</span>
+        <span>Glasgow ≤ 8 → intubação (incapaz de proteger via aérea). Queda de ≥ 2 pontos na ECG = alerta imediato. ECG avalia consciência — <strong>não é instrumento de delirium</strong>.</span>
+      </div>
+      <div class="rec-item">
+        <span class="rec-star">★</span>
+        <span><strong>Tríade de Cushing</strong> = bradicardia + hipertensão + alteração respiratória → herniação iminente → NANDA-I: <strong>Perfusão cerebral ineficaz</strong> (não "risco de"). Midríase unilateral fixa = compressão do III par ipsilateral.</span>
+      </div>
+      <div class="rec-item">
+        <span class="rec-star">★</span>
+        <span>AVC isquêmico: <strong>cabeceira 30°</strong> → <strong>registrar hora dos sintomas</strong> → <strong>acionar protocolo</strong> → acesso venoso. <strong>Não</strong> tratar hipertensão sem prescrição — é reflexo protetor da penumbra.</span>
+      </div>
+    </div>
+    <div class="section-tag" style="margin-top:4mm;">Teste-se sem Olhar</div>
+    <div class="section-rule"></div>
+    <ul class="teste-list">
+      <li class="teste-item"><strong>Q1 —</strong> Paciente abre olhos à dor, emite sons incompreensíveis e faz decorticação. Qual o Glasgow? Qual o grau do TCE?</li>
+      <li class="teste-item"><strong>Q2 —</strong> O que é a Tríade de Cushing e o que ela indica clinicamente?</li>
+      <li class="teste-item"><strong>Q3 —</strong> Por que não se administra anti-hipertensivo no AVC isquêmico sem prescrição específica?</li>
+      <li class="teste-item"><strong>Q4 —</strong> Qual a diferença entre "Perfusão cerebral ineficaz" e "Risco de perfusão cerebral ineficaz" na NANDA-I 2024–2026?</li>
+    </ul>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">09</span>
+  </div>
+</div>
+
+<!-- P10 — REFERÊNCIAS -->
+<div class="page" id="p10">
+  <div class="page-header">
+    <span class="page-header-label">Referências · Aula 04</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <div class="section-tag">Referências — Bloco B4 · Aula 04</div>
+    <div class="section-rule"></div>
+    <ul class="ref-list">
+      <li class="ref-item">SOCIEDADE BRASILEIRA DE DOENÇAS CEREBROVASCULARES (SBraVC). <em>Diretrizes Brasileiras para o Manejo do AVC Isquêmico Agudo.</em> 2023. Disponível em: sbdcv.org.br.</li>
+      <li class="ref-item">BRASIL. Conselho Federal de Enfermagem. <em>Resolução COFEN n.º 564/2017.</em> Código de Ética dos Profissionais de Enfermagem. Brasília: COFEN, 2017.</li>
+      <li class="ref-item">TEASDALE, G.; JENNETT, B. Assessment of coma and impaired consciousness. <em>Lancet</em>, v. 2, n. 7872, p. 81–84, 1974. (Escala de Glasgow — artigo original).</li>
+      <li class="ref-item">HERDMAN, T.H.; KAMITSURU, S.; LOPES, C.T. (Eds.). <em>NANDA International — Diagnósticos de Enfermagem 2024–2026.</em> 13. ed. Porto Alegre: Artmed, 2024. (Perfusão cerebral ineficaz — diagnóstico 00201).</li>
+      <li class="ref-item">HICKEY, J.V.; STRAYER, A.L. <em>The Clinical Practice of Neurological and Neurosurgical Nursing.</em> 8. ed. Philadelphia: Wolters Kluwer, 2020. cap. 12 (Neuroassessment) e cap. 18 (Head Injury).</li>
+      <li class="ref-item">MORTON, P.G.; FONTAINE, D.K. <em>Cuidados Críticos de Enfermagem.</em> 10. ed. Rio de Janeiro: Guanabara Koogan, 2013. cap. 36 (Traumatismo Cranioencefálico) e cap. 37 (AVC).</li>
+      <li class="ref-item">SMELTZER, S.C.; BARE, B.G. <em>Brunner e Suddarth.</em> 14. ed. Rio de Janeiro: Guanabara Koogan, 2019. cap. 66 (Disfunção neurológica).</li>
+    </ul>
+    <div class="anot-box">
+      <span class="anot-label">Espaço para anotações</span>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">10</span>
+  </div>
+</div>
+
+</body>
+</html>
