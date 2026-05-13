@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Enfermagem · Bloco B4 · Aula 09 — Extensivo ENARE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Bricolage+Grotesque:wght@400;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --creme:          #F6F4ED;
+      --verde-lima:     #C6D834;
+      --verde-floresta: #1F5C23;
+      --teal:           #0D8A8D;
+      --preto:          #070707;
+      --cinza:          #9E9B94;
+      --cinza-borda:    #DDD9D1;
+      --creme-escuro:   #EDEAE2;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #CCC; font-family: 'Bricolage Grotesque', sans-serif; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    @page { size: A4; margin: 0; }
+    .page { width: 210mm; height: 297mm; position: relative; overflow: hidden; page-break-after: always; background: var(--creme); display: flex; flex-direction: column; }
+    @media screen { .page { margin: 24px auto; box-shadow: 0 4px 32px rgba(0,0,0,0.18); } }
+
+    /* HEADER/FOOTER */
+    .page-header { height: 14mm; background: var(--creme); border-bottom: 2px solid var(--teal); display: flex; align-items: center; padding: 0 18mm; flex-shrink: 0; }
+    .page-header-label { font-family: 'Barlow Condensed', sans-serif; font-size: 8pt; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--cinza); }
+    .page-header-title { font-family: 'Space Grotesk', sans-serif; font-size: 7.5pt; font-weight: 300; color: var(--cinza); margin-left: auto; }
+    .page-footer { height: 10mm; background: var(--creme); border-top: 1px solid var(--cinza-borda); display: flex; align-items: center; padding: 0 18mm; flex-shrink: 0; }
+    .page-footer-brand { font-family: 'Space Grotesk', sans-serif; font-size: 7pt; font-weight: 300; color: var(--cinza); }
+    .page-footer-num { font-family: 'Barlow Condensed', sans-serif; font-size: 9pt; font-weight: 700; color: var(--teal); margin-left: auto; }
+
+    /* CONTENT */
+    .page-content { flex: 1; padding: 10mm 18mm; overflow: hidden; }
+
+    /* SECTION TITLE */
+    .section-tag { font-family: 'Barlow Condensed', sans-serif; font-size: 7.5pt; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--teal); margin-bottom: 4mm; }
+    .section-rule { width: 100%; height: 2px; background: var(--teal); margin-bottom: 6mm; }
+
+    /* CAPA */
+    .capa { background: var(--teal); width: 100%; height: 100%; display: flex; flex-direction: column; padding: 14mm 16mm 12mm; }
+    .capa-logo { display: flex; flex-direction: column; gap: 0; margin-bottom: auto; }
+    .capa-logo-ext { font-family: 'Playfair Display', serif; font-style: italic; font-size: 10pt; color: var(--verde-lima); letter-spacing: 1px; }
+    .capa-logo-enare { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 38pt; color: var(--creme); line-height: 0.85; letter-spacing: -1px; }
+    .capa-logo-sub { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 8.5pt; color: rgba(246,244,237,0.6); margin-top: 2mm; }
+    .capa-area { font-family: 'Barlow Condensed', sans-serif; font-size: 7.5pt; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: rgba(246,244,237,0.55); margin-bottom: 2mm; }
+    .capa-codigo { font-family: 'Barlow Condensed', sans-serif; font-size: 9pt; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--verde-lima); margin-bottom: 5mm; }
+    .capa-titulo { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 44pt; color: var(--creme); line-height: 0.9; text-transform: uppercase; letter-spacing: -1px; margin-bottom: 4mm; }
+    .capa-subtitulo { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 15pt; color: var(--verde-lima); text-transform: uppercase; letter-spacing: 1px; line-height: 1.2; }
+    .capa-watermark { position: absolute; bottom: 12mm; right: 12mm; font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 110pt; color: rgba(246,244,237,0.08); line-height: 1; pointer-events: none; }
+
+    /* OBJETIVOS */
+    .obj-list { list-style: none; display: flex; flex-direction: column; gap: 4mm; margin-bottom: 6mm; }
+    .obj-item { display: flex; gap: 3mm; align-items: flex-start; }
+    .obj-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 18pt; color: var(--teal); line-height: 1; flex-shrink: 0; width: 8mm; }
+    .obj-text { font-size: 9.5pt; line-height: 1.5; color: var(--preto); padding-top: 1mm; }
+    .obj-prereq { background: var(--creme-escuro); border-left: 3px solid var(--cinza-borda); padding: 3mm 4mm; border-radius: 0 3px 3px 0; margin-top: 4mm; }
+    .obj-prereq-label { font-family: 'Barlow Condensed', sans-serif; font-size: 7pt; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--cinza); margin-bottom: 1mm; }
+    .obj-prereq-text { font-size: 8.5pt; color: var(--preto); line-height: 1.4; }
+    .meta-row { display: flex; gap: 8mm; margin-top: 5mm; padding-top: 4mm; border-top: 1px solid var(--cinza-borda); }
+    .meta-item { display: flex; flex-direction: column; gap: 0.5mm; }
+    .meta-label { font-family: 'Barlow Condensed', sans-serif; font-size: 6.5pt; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--cinza); }
+    .meta-value { font-size: 8pt; font-weight: 600; color: var(--preto); }
+
+    /* CONTEÚDO */
+    h2 { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 17pt; color: var(--teal); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 3mm; line-height: 1.1; }
+    h3 { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 11pt; color: var(--preto); text-transform: uppercase; letter-spacing: 1px; margin: 4mm 0 2mm; }
+    p { font-size: 9pt; line-height: 1.55; color: var(--preto); margin-bottom: 3mm; }
+
+    /* TABELAS */
+    table { width: 100%; border-collapse: collapse; font-size: 8.5pt; margin-bottom: 4mm; }
+    th { background: var(--teal); color: var(--creme); font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 8pt; letter-spacing: 1px; text-transform: uppercase; padding: 2.5mm 3mm; text-align: left; }
+    td { padding: 2mm 3mm; border-bottom: 1px solid var(--cinza-borda); vertical-align: top; line-height: 1.4; }
+    tr:nth-child(even) td { background: var(--creme-escuro); }
+    .td-dest { font-weight: 600; }
+
+    /* BOXES */
+    .box { padding: 3.5mm 4mm; border-radius: 4px; margin-bottom: 4mm; }
+    .box-alerta { background: #fff3cd; border-left: 4px solid #e6a817; }
+    .box-conceito { background: #e8f4e8; border-left: 4px solid var(--verde-floresta); }
+    .box-erro { background: #fdecea; border-left: 4px solid #c0392b; }
+    .box-label { font-family: 'Barlow Condensed', sans-serif; font-size: 7pt; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--cinza); margin-bottom: 1.5mm; }
+    .box-text { font-size: 8.5pt; line-height: 1.5; color: var(--preto); }
+
+    /* PENALIDADES — escala cromática */
+    .pen-table th { background: var(--preto); }
+    .pen-1 td { background: #f0f8f0; }
+    .pen-2 td { background: #fff8e0; }
+    .pen-3 td { background: #fde8cc; }
+    .pen-4 td { background: #fdd5cc; }
+    .pen-5 td { background: #f5c6c6; }
+    .pen-badge { display: inline-block; font-family: 'Barlow Condensed', sans-serif; font-size: 7.5pt; font-weight: 700; padding: 0.5mm 2mm; border-radius: 3px; letter-spacing: 0.5px; text-transform: uppercase; }
+    .pen-leve   { background: #d4edda; color: #155724; }
+    .pen-media  { background: #fff3cd; color: #856404; }
+    .pen-grave  { background: #fddfc0; color: #7a4100; }
+    .pen-graviss { background: #f5c6c6; color: #721c24; }
+
+    /* RESPONSABILIDADE CARDS */
+    .resp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; margin-bottom: 4mm; }
+    .resp-card { border-radius: 4px; padding: 3mm 3.5mm; }
+    .resp-civil { background: #e8f0fe; border-top: 3px solid #4a6fa5; }
+    .resp-penal { background: #fdecea; border-top: 3px solid #c0392b; }
+    .resp-card-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 10pt; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2mm; }
+    .resp-civil .resp-card-title { color: #4a6fa5; }
+    .resp-penal .resp-card-title { color: #c0392b; }
+    .resp-item { font-size: 8pt; line-height: 1.45; margin-bottom: 1mm; color: var(--preto); }
+    .resp-item strong { font-weight: 700; }
+
+    /* DOCUMENTAÇÃO */
+    .doc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; margin-bottom: 4mm; }
+    .doc-card { background: var(--creme-escuro); border-radius: 4px; padding: 3mm 3.5mm; border-top: 3px solid var(--teal); }
+    .doc-card-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 9pt; text-transform: uppercase; letter-spacing: 0.5px; color: var(--teal); margin-bottom: 2mm; }
+    .doc-item { font-size: 8pt; line-height: 1.45; color: var(--preto); margin-bottom: 1mm; }
+
+    /* QUESTÕES */
+    .q-header { font-family: 'Barlow Condensed', sans-serif; font-size: 7.5pt; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--teal); margin-bottom: 3mm; }
+    .q-enunciado { background: var(--creme-escuro); border-radius: 4px; padding: 4mm 5mm; font-size: 9pt; line-height: 1.6; color: var(--preto); margin-bottom: 4mm; }
+    .q-alternativas { display: flex; flex-direction: column; gap: 2.5mm; margin-bottom: 4mm; }
+    .q-alt { display: flex; gap: 3mm; padding: 2.5mm 3.5mm; border-radius: 4px; background: white; border: 1px solid var(--cinza-borda); font-size: 9pt; line-height: 1.5; color: var(--preto); }
+    .q-alt.correta { background: #e8f4e8; border-color: var(--verde-floresta); font-weight: 600; }
+    .q-alt-letra { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 11pt; color: var(--teal); flex-shrink: 0; line-height: 1.2; }
+    .q-alt.correta .q-alt-letra { color: var(--verde-floresta); }
+    .correta-badge { display: inline-block; font-family: 'Barlow Condensed', sans-serif; font-size: 7pt; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; background: var(--verde-floresta); color: white; padding: 0.5mm 2mm; border-radius: 2px; margin-left: 2mm; vertical-align: middle; }
+    .gabarito-box { background: var(--preto); color: var(--creme); border-radius: 4px; padding: 3.5mm 4mm; font-size: 8pt; line-height: 1.55; }
+    .gabarito-box-title { font-family: 'Barlow Condensed', sans-serif; font-size: 8pt; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--verde-lima); margin-bottom: 2mm; }
+    .gabarito-distratores { font-size: 7.5pt; line-height: 1.4; color: rgba(246,244,237,0.75); margin-top: 2mm; }
+
+    /* RECUPERAÇÃO ATIVA */
+    .ra-stars { display: flex; gap: 2mm; margin-bottom: 4mm; }
+    .ra-star { width: 5mm; height: 5mm; background: var(--verde-lima); clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); }
+    .ra-items { list-style: none; display: flex; flex-direction: column; gap: 3mm; }
+    .ra-item { display: flex; gap: 3mm; align-items: flex-start; font-size: 9pt; line-height: 1.5; color: var(--preto); }
+    .ra-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 10pt; color: var(--teal); flex-shrink: 0; width: 6mm; }
+    .ra-sub { font-family: 'Barlow Condensed', sans-serif; font-size: 7.5pt; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--cinza); margin-bottom: 3mm; }
+
+    /* REFERÊNCIAS */
+    .ref-list { list-style: none; display: flex; flex-direction: column; gap: 2.5mm; }
+    .ref-item { font-size: 8pt; line-height: 1.5; color: var(--preto); border-left: 3px solid var(--cinza-borda); padding-left: 3mm; }
+    .ref-item cite { font-style: italic; }
+    .notas-box { margin-top: 6mm; border: 1.5px dashed var(--cinza-borda); border-radius: 4px; padding: 4mm; flex: 1; display: flex; align-items: center; justify-content: center; }
+    .notas-label { font-family: 'Barlow Condensed', sans-serif; font-size: 8pt; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--cinza-borda); }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PÁGINA 01 — CAPA
+     ═══════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="capa">
+    <div class="capa-logo">
+      <span class="capa-logo-ext">extensivo</span>
+      <span class="capa-logo-enare">ENARE</span>
+      <span class="capa-logo-sub">by Residência PRO</span>
+    </div>
+    <div>
+      <div class="capa-area">Enfermagem · Módulo Específico</div>
+      <div class="capa-codigo">Bloco B4 · Aula 09</div>
+      <div class="capa-titulo">COFEN II</div>
+      <div class="capa-subtitulo">Responsabilidade,<br>Penalidades<br>e Documentação</div>
+    </div>
+    <div class="capa-watermark">09</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PÁGINA 02 — OBJETIVOS
+     ═══════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-label">Enfermagem · Bloco B4 · Aula 09</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <div class="section-tag">Objetivos de Aprendizagem</div>
+    <div class="section-rule"></div>
+    <ul class="obj-list">
+      <li class="obj-item">
+        <span class="obj-num">1</span>
+        <span class="obj-text">Identificar as cinco penalidades éticas previstas na Res. COFEN 564/2017 em ordem crescente de gravidade e o órgão competente para aplicação em primeira e segunda instância.</span>
+      </li>
+      <li class="obj-item">
+        <span class="obj-num">2</span>
+        <span class="obj-text">Distinguir responsabilidade civil (culpa: negligência, imprudência, imperícia) de responsabilidade penal (dolo) e aplicar o princípio da responsabilidade solidária na delegação ao técnico de enfermagem.</span>
+      </li>
+      <li class="obj-item">
+        <span class="obj-num">3</span>
+        <span class="obj-text">Aplicar as normas de documentação de enfermagem (Res. 429/2012 e SAE — Res. 358/2009) para identificar quando a ausência ou omissão de registro configura infração ética.</span>
+      </li>
+    </ul>
+    <div class="obj-prereq">
+      <div class="obj-prereq-label">Pré-requisito</div>
+      <div class="obj-prereq-text">Aula 08 — COFEN I: PE (Res. 736/2024) e etapas exclusivas do enfermeiro. Aula 08 — Res. 564/2017: princípios, deveres e autonomia em emergências já introduzidos.</div>
+    </div>
+    <div class="meta-row">
+      <div class="meta-item"><div class="meta-label">Bloco</div><div class="meta-value">B4 — Enfermagem</div></div>
+      <div class="meta-item"><div class="meta-label">Aula</div><div class="meta-value">09 de 24</div></div>
+      <div class="meta-item"><div class="meta-label">Tema</div><div class="meta-value">ENF-COFEN II</div></div>
+      <div class="meta-item"><div class="meta-label">Nível cognitivo</div><div class="meta-value">M → An</div></div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">02</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PÁGINA 03 — PENALIDADES ÉTICAS (RES. 564/2017)
+     ═══════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-label">Conteúdo Principal · Aula 09</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <h2>Res. 564/2017 — Penalidades Éticas</h2>
+    <table class="pen-table">
+      <thead>
+        <tr>
+          <th style="width:5%">#</th>
+          <th style="width:30%">Penalidade</th>
+          <th style="width:25%">Natureza</th>
+          <th style="width:40%">Critério de aplicação</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="pen-1">
+          <td class="td-dest">1</td>
+          <td class="td-dest">Advertência verbal <span class="pen-badge pen-leve">Leve</span></td>
+          <td>Particular, formal. Registrada no COREN.</td>
+          <td>Infração leve, primeira ocorrência, sem dano ao paciente.</td>
+        </tr>
+        <tr class="pen-2">
+          <td class="td-dest">2</td>
+          <td class="td-dest">Multa <span class="pen-badge pen-media">Média</span></td>
+          <td>Financeira. Valor definido pelo COREN.</td>
+          <td>Infração com prejuízo ou reincidência após advertência.</td>
+        </tr>
+        <tr class="pen-3">
+          <td class="td-dest">3</td>
+          <td class="td-dest">Censura pública <span class="pen-badge pen-media">Média</span></td>
+          <td>Publicada em órgão oficial. Caráter expositivo.</td>
+          <td>Infração grave que demanda conhecimento da classe profissional.</td>
+        </tr>
+        <tr class="pen-4">
+          <td class="td-dest">4</td>
+          <td class="td-dest">Suspensão do exercício <span class="pen-badge pen-grave">Grave</span></td>
+          <td>Temporária: 15–90 dias. Impede o exercício profissional.</td>
+          <td>Infração grave com risco ao paciente; reincidência após multa.</td>
+        </tr>
+        <tr class="pen-5">
+          <td class="td-dest">5</td>
+          <td class="td-dest">Cassação do registro <span class="pen-badge pen-graviss">Gravíssima</span></td>
+          <td>Definitiva. Perde o direito ao exercício profissional.</td>
+          <td>Infração gravíssima com dolo comprovado e dano grave ao paciente.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="box box-conceito">
+      <div class="box-label">Instâncias — quem aplica e quem julga recurso</div>
+      <div class="box-text">O <strong>COREN</strong> é o órgão de <strong>1ª instância</strong>: instaura o processo ético-disciplinar e aplica a penalidade. O <strong>COFEN</strong> é o órgão de <strong>2ª instância</strong>: julga os recursos interpostos pelo profissional. A cassação definitiva exige julgamento em plenário do COFEN.</div>
+    </div>
+
+    <div class="box box-alerta">
+      <div class="box-label">Pegadinha FGV — "advertência verbal não é formal"</div>
+      <div class="box-text">A advertência verbal é a penalidade mais leve, mas <strong>tem caráter formal</strong> e fica registrada no prontuário profissional no COREN. Não confundir com uma simples orientação verbal do supervisor — a penalidade ética é sempre documentada.</div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">03</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PÁGINA 04 — RESPONSABILIDADE PROFISSIONAL
+     ═══════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-label">Conteúdo Principal · Aula 09</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <h2>Responsabilidade Profissional do Enfermeiro</h2>
+    <div class="resp-grid">
+      <div class="resp-card resp-civil">
+        <div class="resp-card-title">Responsabilidade Civil</div>
+        <div class="resp-item"><strong>Culpa</strong> (não intencional)</div>
+        <div class="resp-item">· <strong>Negligência:</strong> omissão de cuidado que cabia ao profissional prestar (ex.: não monitorar sinais vitais conforme protocolo)</div>
+        <div class="resp-item">· <strong>Imprudência:</strong> ação precipitada sem cautela adequada (ex.: administrar medicamento sem conferir os 9 certos)</div>
+        <div class="resp-item">· <strong>Imperícia:</strong> falta de aptidão técnica para o ato realizado (ex.: realizar procedimento sem competência)</div>
+        <div class="resp-item" style="margin-top:2mm; font-size:7.5pt; color:#4a6fa5;">Responsabilidade solidária com a instituição empregadora.</div>
+      </div>
+      <div class="resp-card resp-penal">
+        <div class="resp-card-title">Responsabilidade Penal</div>
+        <div class="resp-item"><strong>Dolo</strong> (intenção de causar dano)</div>
+        <div class="resp-item">· <strong>Art. 135 CP:</strong> omissão de socorro — não prestar assistência a pessoa em risco iminente de vida quando possível fazê-lo sem risco pessoal</div>
+        <div class="resp-item">· <strong>Art. 282 CP:</strong> exercício ilegal da medicina — realizar atos privativos de médico</div>
+        <div class="resp-item">· <strong>Homicídio culposo:</strong> morte resultante de negligência, imprudência ou imperícia grave</div>
+        <div class="resp-item" style="margin-top:2mm; font-size:7.5pt; color:#c0392b;">Ação penal independe da ética ou civil.</div>
+      </div>
+    </div>
+
+    <h3>Delegação e Supervisão — Responsabilidade Compartilhada</h3>
+    <table>
+      <thead>
+        <tr>
+          <th style="width:28%">Situação</th>
+          <th style="width:36%">Quem executa</th>
+          <th style="width:36%">Responsabilidade ética</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="td-dest">Delegação correta + supervisão</td>
+          <td>Técnico de enfermagem com supervisão do enfermeiro</td>
+          <td>Técnico responde pelo ato; enfermeiro responde pela supervisão</td>
+        </tr>
+        <tr>
+          <td class="td-dest">Delegação de ato privativo</td>
+          <td>Técnico executa ato que é privativo do enfermeiro</td>
+          <td><strong>Enfermeiro responde por negligência</strong> — delegação indevida. Técnico pode responder por exercício ilegal</td>
+        </tr>
+        <tr>
+          <td class="td-dest">Delegação sem supervisão</td>
+          <td>Técnico executa ato delegável sem supervisão</td>
+          <td><strong>Enfermeiro responde por negligência</strong> na supervisão, independente do desfecho</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="box box-erro">
+      <div class="box-label">Regra de ouro — delegação não elimina responsabilidade</div>
+      <div class="box-text">Ao delegar, o enfermeiro <strong>não se exime da responsabilidade de supervisão</strong>. A delegação transfere a execução, não a responsabilidade pela adequação e segurança do ato. O técnico que executa corretamente o ato delegado não carrega a responsabilidade pela delegação indevida — essa é do enfermeiro.</div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">04</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PÁGINA 05 — DOCUMENTAÇÃO DE ENFERMAGEM
+     ═══════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-label">Conteúdo Principal · Aula 09</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <h2>Documentação de Enfermagem — Res. 429/2012 + Res. 358/2009</h2>
+    <div class="doc-grid">
+      <div class="doc-card">
+        <div class="doc-card-title">Anotações de Enfermagem</div>
+        <div class="doc-item">· Registro de todas as ações realizadas e observações clínicas relevantes</div>
+        <div class="doc-item">· Obrigatórias: legíveis, com data, hora, assinatura e nº do COREN</div>
+        <div class="doc-item">· Podem ser feitas por técnico de enfermagem (atos delegados)</div>
+        <div class="doc-item">· Rasuras são vedadas — erro: traçar linha e assinar</div>
+        <div class="doc-item">· Registros eletrônicos com assinatura digital equivalem ao manuscrito</div>
+      </div>
+      <div class="doc-card">
+        <div class="doc-card-title">Prescrição de Enfermagem</div>
+        <div class="doc-item">· Atividade <strong>privativa do enfermeiro</strong> (Res. 358/2009 + Lei 7.498/86)</div>
+        <div class="doc-item">· Decorre do diagnóstico de enfermagem (NANDA-I 2024–2026)</div>
+        <div class="doc-item">· Deve ser baseada no PE: sem diagnóstico, não há prescrição válida</div>
+        <div class="doc-item">· Técnico NÃO pode formular prescrição de enfermagem</div>
+        <div class="doc-item">· Distinto da prescrição médica (ato médico exclusivo)</div>
+      </div>
+      <div class="doc-card">
+        <div class="doc-card-title">Prontuário do Paciente</div>
+        <div class="doc-item">· <strong>Propriedade do paciente</strong>; guarda e conservação sob responsabilidade da instituição</div>
+        <div class="doc-item">· Mínimo 20 anos de guarda (ou 5 anos após a morte do paciente)</div>
+        <div class="doc-item">· Acesso garantido ao paciente, responsável legal e autoridade judicial</div>
+        <div class="doc-item">· Sigilo: terceiros só acessam com autorização escrita ou determinação judicial</div>
+      </div>
+      <div class="doc-card">
+        <div class="doc-card-title">SAE — Sistematização (Res. 358/2009)</div>
+        <div class="doc-item">· SAE = método que organiza o trabalho de enfermagem por meio do PE</div>
+        <div class="doc-item">· Obrigatória em <strong>todos os ambientes</strong> onde o cuidado de enfermagem é praticado</div>
+        <div class="doc-item">· Registro do PE integra o prontuário e tem valor legal</div>
+        <div class="doc-item">· Ausência de registro do PE = infração ética por omissão documental</div>
+      </div>
+    </div>
+
+    <div class="box box-alerta">
+      <div class="box-label">Omissão de registro = infração ética</div>
+      <div class="box-text">A Res. 564/2017 (art. 35, IV) estabelece como <strong>dever</strong> do enfermeiro: "registrar corretamente todas as ações realizadas". Não registrar cuidado prestado, não documentar avaliação clínica ou omitir intercorrência no prontuário configura <strong>negligência documental</strong> — passível de processo ético-disciplinar no COREN, independente de dano físico ao paciente.</div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">05</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PÁGINA 06 — Q1 MEMORIZAÇÃO
+     ═══════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-label">Fixação · Aula 09</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <div class="q-header">Questão 01 de 03 · B4 COFEN II · Res. 564/2017 — Penalidades · Memorização</div>
+    <div class="q-enunciado">
+      O Código de Ética dos Profissionais de Enfermagem (Res. COFEN 564/2017) estabelece cinco penalidades éticas, aplicadas pelo COREN em primeira instância. Sobre as penalidades e sua aplicação, assinale a alternativa correta:
+    </div>
+    <div class="q-alternativas">
+      <div class="q-alt">
+        <span class="q-alt-letra">A</span>
+        <span>A suspensão temporária do exercício profissional é a penalidade máxima prevista no Código de Ética, aplicável nos casos de infração gravíssima com dolo comprovado.</span>
+      </div>
+      <div class="q-alt">
+        <span class="q-alt-letra">B</span>
+        <span>A advertência verbal, por ser informal e não documentada, não produz efeitos jurídicos no histórico profissional do enfermeiro no COREN.</span>
+      </div>
+      <div class="q-alt correta">
+        <span class="q-alt-letra">C</span>
+        <span>A cassação do registro profissional é a penalidade máxima, de caráter definitivo, aplicável nos casos de infração gravíssima com dolo comprovado e dano grave ao paciente; o recurso é julgado em segunda instância pelo COFEN. <span class="correta-badge">Correta</span></span>
+      </div>
+      <div class="q-alt">
+        <span class="q-alt-letra">D</span>
+        <span>A censura pública, por seu caráter de divulgação externa, só pode ser aplicada pelo COFEN em grau de recurso, jamais pelo COREN em primeira instância.</span>
+      </div>
+    </div>
+    <div class="gabarito-box">
+      <div class="gabarito-box-title">Gabarito Comentado — C</div>
+      A Res. 564/2017 prevê cinco penalidades em gradação crescente: advertência verbal → multa → censura pública → suspensão temporária → <strong>cassação do registro</strong> (máxima, definitiva). A cassação exige dolo comprovado e dano grave; o COREN aplica em 1ª instância e o COFEN julga o recurso em 2ª instância.
+      <div class="gabarito-distratores"><strong>A —</strong> Errado: a suspensão é penalidade grave, mas não a máxima — a cassação é a penalidade máxima. <strong>B —</strong> Errado: a advertência verbal, mesmo leve, tem caráter formal e é registrada no prontuário do profissional no COREN. <strong>D —</strong> Errado: o COREN aplica todas as penalidades previstas em 1ª instância, incluindo a censura pública.</div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">06</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PÁGINA 07 — Q2 APLICAÇÃO
+     ═══════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-label">Fixação · Aula 09</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <div class="q-header">Questão 02 de 03 · B4 COFEN II · Delegação + Responsabilidade · Aplicação</div>
+    <div class="q-enunciado">
+      Enfermeiro de clínica cirúrgica, com elevada demanda assistencial, delega ao técnico de enfermagem a avaliação da ferida operatória de paciente no 2º PO de colectomia, orientando-o a "verificar se está tudo bem e anotar no prontuário". O técnico registra "curativo sem alterações" sem realizar descrição clínica. No dia seguinte, o paciente evolui com deiscência parcial e sinais de infecção local. O enfermeiro é acionado pelo COREN. Sobre a responsabilidade ética do enfermeiro, é correto afirmar:
+    </div>
+    <div class="q-alternativas">
+      <div class="q-alt">
+        <span class="q-alt-letra">A</span>
+        <span>O técnico de enfermagem assume plena responsabilidade ética pelo desfecho, pois aceitou a delegação e realizou o procedimento sem questionar.</span>
+      </div>
+      <div class="q-alt">
+        <span class="q-alt-letra">B</span>
+        <span>O enfermeiro não tem responsabilidade ética, pois a alta demanda assistencial é causa excludente de culpa reconhecida pelo COFEN.</span>
+      </div>
+      <div class="q-alt correta">
+        <span class="q-alt-letra">C</span>
+        <span>O enfermeiro responde por negligência: a avaliação clínica de ferida operatória é ato privativo do enfermeiro — sua delegação ao técnico é indevida, configurando infração ética independentemente da intenção. <span class="correta-badge">Correta</span></span>
+      </div>
+      <div class="q-alt">
+        <span class="q-alt-letra">D</span>
+        <span>A responsabilidade ética do enfermeiro depende de comprovação de que ele sabia do estado real da ferida e optou deliberadamente por não intervir — sem dolo, não há infração.</span>
+      </div>
+    </div>
+    <div class="gabarito-box">
+      <div class="gabarito-box-title">Gabarito Comentado — C</div>
+      A <strong>avaliação clínica</strong> (julgamento sobre condição da ferida operatória) é componente do PE — integra coleta e diagnóstico — sendo ato privativo do enfermeiro. Delegar avaliação clínica a técnico é delegação indevida de ato privativo, configurando <strong>negligência</strong> (não imperícia, que implica execução inadequada). Alta demanda não é excludente de culpa na ética profissional.
+      <div class="gabarito-distratores"><strong>A —</strong> A delegação não transfere a responsabilidade integral; o técnico pode responder pelo registro inadequado, mas o enfermeiro responde pela delegação indevida. <strong>B —</strong> Alta demanda é circunstância atenuante, não excludente. <strong>D —</strong> Negligência não exige dolo — a culpa (imprudência, negligência, imperícia) é suficiente para a responsabilidade ética e civil.</div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">07</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PÁGINA 08 — Q3 ANÁLISE (ÂNCORA)
+     ═══════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-label">Fixação · Aula 09</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <div class="q-header">Questão 03 de 03 · B4 COFEN II · Res. 564/2017 + Documentação · Análise</div>
+    <div class="q-enunciado">
+      Enfermeiro de UTI identifica, durante avaliação neurológica, que paciente em pós-operatório de craniotomia apresenta anisocoria nova e queda de 3 pontos no Glasgow em relação à avaliação anterior. Realiza imediatamente os cuidados cabíveis, comunica o plantonista e eleva a cabeceira a 30°. No entanto, por sobrecarga, não registra a intercorrência no prontuário naquele plantão. O médico é avisado verbalmente e realiza TC de crânio de emergência, que confirma hematoma subdural agudo. O paciente sobrevive sem sequelas graves. Sobre a conduta do enfermeiro e suas implicações éticas e documentais:
+    </div>
+    <div class="q-alternativas">
+      <div class="q-alt">
+        <span class="q-alt-letra">A</span>
+        <span>O enfermeiro agiu de forma eticamente correta em todas as dimensões: a comunicação verbal ao médico substitui o registro no prontuário quando há urgência clínica documentada pelo próprio médico.</span>
+      </div>
+      <div class="q-alt">
+        <span class="q-alt-letra">B</span>
+        <span>O enfermeiro cometeu infração ética gravíssima — a não comunicação escrita ao médico em caso de emergência neurológica configura abandono de paciente em risco iminente, sujeito à cassação do registro.</span>
+      </div>
+      <div class="q-alt correta">
+        <span class="q-alt-letra">C</span>
+        <span>A conduta assistencial do enfermeiro foi adequada; porém, a omissão do registro no prontuário configura infração ética por negligência documental (Res. 564/2017), sujeita a processo ético-disciplinar pelo COREN, ainda que sem dano permanente ao paciente. <span class="correta-badge">Correta</span></span>
+      </div>
+      <div class="q-alt">
+        <span class="q-alt-letra">D</span>
+        <span>Como não houve dano permanente ao paciente e a equipe médica foi avisada verbalmente, a omissão documental é considerada irregularidade administrativa, não infração ética, não cabendo processo no COREN.</span>
+      </div>
+    </div>
+    <div class="gabarito-box">
+      <div class="gabarito-box-title">Gabarito Comentado — C</div>
+      A conduta assistencial foi correta: identificou sinal de alerta (anisocoria + queda no Glasgow → Perfusão cerebral ineficaz), agiu, comunicou. Porém, a <strong>Res. 564/2017 (art. 35, IV)</strong> impõe dever de "registrar corretamente todas as ações realizadas" — a omissão configura <strong>negligência documental</strong>, infração ética independente de dano. A ausência de dano permanente é atenuante, mas não extingue a infração.
+      <div class="gabarito-distratores"><strong>A —</strong> A comunicação verbal ao médico não substitui o registro de enfermagem — são obrigações independentes. <strong>B —</strong> Abandono exige omissão assistencial total; aqui houve cuidado correto — a infração é documental, não assistencial; cassação seria desproporcional. <strong>D —</strong> Negligência documental é infração ética, não mera irregularidade administrativa — sujeita a processo no COREN.</div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">08</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PÁGINA 09 — RECUPERAÇÃO ATIVA
+     ═══════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-label">Recuperação Ativa · Aula 09</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <div class="section-tag">Se esquecer tudo, lembre disto</div>
+    <div class="section-rule"></div>
+    <ul class="obj-list" style="margin-bottom:8mm;">
+      <li class="obj-item">
+        <span class="obj-num" style="font-size:14pt;">★</span>
+        <span class="obj-text">Penalidades em ordem crescente (Res. 564/2017): <strong>advertência verbal → multa → censura pública → suspensão → cassação</strong>. COREN aplica (1ª instância); COFEN julga recurso (2ª instância). Cassação = dolo + dano grave = definitiva.</span>
+      </li>
+      <li class="obj-item">
+        <span class="obj-num" style="font-size:14pt;">★</span>
+        <span class="obj-text">Delegação não elimina responsabilidade de supervisão. Delegar ato privativo do enfermeiro ao técnico = <strong>negligência</strong> do enfermeiro. Alta demanda não é excludente de culpa.</span>
+      </li>
+      <li class="obj-item">
+        <span class="obj-num" style="font-size:14pt;">★</span>
+        <span class="obj-text">Não registrar no prontuário = <strong>negligência documental</strong> = infração ética (Res. 564/2017 + Res. 429/2012). Comunicação verbal ao médico <strong>não substitui</strong> o registro de enfermagem. Infração existe mesmo sem dano permanente ao paciente.</span>
+      </li>
+    </ul>
+    <div class="ra-sub">Teste-se sem olhar</div>
+    <ul class="ra-items">
+      <li class="ra-item"><span class="ra-num">01 —</span>Quais são as cinco penalidades éticas da Res. 564/2017 em ordem crescente de gravidade?</li>
+      <li class="ra-item"><span class="ra-num">02 —</span>Qual a diferença entre negligência, imprudência e imperícia no contexto da responsabilidade civil do enfermeiro?</li>
+      <li class="ra-item"><span class="ra-num">03 —</span>Um enfermeiro delega curativo de ferida operatória a um técnico e não supervisiona. Quem responde eticamente e por qual modalidade de culpa?</li>
+      <li class="ra-item"><span class="ra-num">04 —</span>A comunicação verbal ao médico sobre uma intercorrência dispensa o registro no prontuário de enfermagem? Qual resolução fundamenta a resposta?</li>
+    </ul>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">09</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PÁGINA 10 — REFERÊNCIAS
+     ═══════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-label">Referências · Aula 09</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <div class="section-tag">Referências — Bloco B4 · Aula 09</div>
+    <div class="section-rule"></div>
+    <ul class="ref-list">
+      <li class="ref-item">BRASIL. Conselho Federal de Enfermagem. <cite>Resolução COFEN n.º 564/2017.</cite> Aprova o novo Código de Ética dos Profissionais de Enfermagem. Brasília: COFEN, 2017.</li>
+      <li class="ref-item">BRASIL. Conselho Federal de Enfermagem. <cite>Resolução COFEN n.º 429/2012.</cite> Dispõe sobre o registro das ações profissionais no prontuário do paciente. Brasília: COFEN, 2012.</li>
+      <li class="ref-item">BRASIL. Conselho Federal de Enfermagem. <cite>Resolução COFEN n.º 358/2009.</cite> Dispõe sobre a Sistematização da Assistência de Enfermagem — SAE. Brasília: COFEN, 2009.</li>
+      <li class="ref-item">BRASIL. Conselho Federal de Enfermagem. <cite>Resolução COFEN n.º 736/2024.</cite> Regulamenta a execução do Processo de Enfermagem. Brasília: COFEN, 2024.</li>
+      <li class="ref-item">BRASIL. <cite>Lei n.º 7.498/1986.</cite> Dispõe sobre a regulamentação do exercício da Enfermagem e dá outras providências. Brasília: Congresso Nacional, 1986.</li>
+      <li class="ref-item">BRASIL. <cite>Decreto-Lei n.º 2.848/1940.</cite> Código Penal Brasileiro. Art. 135 (omissão de socorro) e art. 282 (exercício ilegal da medicina). Brasília: Congresso Nacional, 1940.</li>
+      <li class="ref-item">HERDMAN, T.H.; KAMITSURU, S.; LOPES, C.T. (Eds.). <cite>NANDA International — Diagnósticos de Enfermagem 2024–2026.</cite> 13. ed. Porto Alegre: Artmed, 2024.</li>
+    </ul>
+    <div class="notas-box">
+      <span class="notas-label">Espaço para anotações</span>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">10</span>
+  </div>
+</div>
+
+</body>
+</html>
