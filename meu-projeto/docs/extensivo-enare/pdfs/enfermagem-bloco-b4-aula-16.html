@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B4 · Aula 16 — NANDA-I 2024–2026: Diagnósticos Críticos + NNN</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap');
+  @page { size:A4; margin:0; }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  body{ font-family:'Bricolage Grotesque',sans-serif; background:#fff; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  .page{ width:210mm; height:297mm; display:flex; flex-direction:column; overflow:hidden; page-break-after:always; }
+  /* header/footer */
+  .ph{ height:14mm; flex-shrink:0; display:flex; align-items:center; padding:0 16mm; border-bottom:1.5px solid #0D8A8D; }
+  .ph-label{ font-family:'Bricolage Grotesque',sans-serif; font-size:7.5pt; font-weight:500; letter-spacing:.12em; text-transform:uppercase; color:#555; }
+  .ph-right{ margin-left:auto; font-family:'Playfair Display',serif; font-style:italic; font-size:8pt; color:#888; }
+  .pf{ height:9mm; flex-shrink:0; display:flex; align-items:center; padding:0 16mm; border-top:1px solid #ddd; }
+  .pf-left{ font-size:7pt; color:#aaa; }
+  .pf-right{ margin-left:auto; font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:9pt; color:#bbb; }
+  /* content areas */
+  .pc{ flex:1; padding:7mm 16mm 5mm; overflow:hidden; }
+  .pc-sm{ flex:1; padding:5mm 16mm 4mm; overflow:hidden; }
+  /* cover */
+  .cover{ background:#0D8A8D; width:210mm; height:297mm; display:flex; flex-direction:column; padding:18mm 16mm 14mm; overflow:hidden; page-break-after:always; }
+  .cover-logo-ext{ font-family:'Playfair Display',serif; font-style:italic; font-size:9pt; color:rgba(255,255,255,.7); margin-bottom:1mm; }
+  .cover-logo-main{ font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:36pt; color:#fff; line-height:1; }
+  .cover-logo-sub{ font-family:'Space Grotesk',sans-serif; font-weight:300; font-size:7pt; letter-spacing:.18em; text-transform:uppercase; color:rgba(255,255,255,.65); margin-top:1.5mm; }
+  .cover-module{ font-family:'Bricolage Grotesque',sans-serif; font-weight:600; font-size:7.5pt; letter-spacing:.18em; text-transform:uppercase; color:#C6D834; margin-top:5mm; }
+  .cover-aula{ font-family:'Bricolage Grotesque',sans-serif; font-weight:600; font-size:7.5pt; letter-spacing:.18em; text-transform:uppercase; color:rgba(255,255,255,.55); margin-top:1mm; }
+  .cover-title{ font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:54pt; color:#fff; line-height:1; margin-top:10mm; }
+  .cover-subtitle{ font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:11.5pt; letter-spacing:.06em; text-transform:uppercase; color:#C6D834; margin-top:5mm; line-height:1.35; }
+  .cover-num{ font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:90pt; color:rgba(255,255,255,.13); position:absolute; bottom:10mm; right:12mm; line-height:1; }
+  .cover-wrap{ position:relative; flex:1; }
+  /* typography */
+  h2{ font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:16pt; color:#0D8A8D; text-transform:uppercase; letter-spacing:.04em; margin-bottom:3mm; }
+  h3{ font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:8.5pt; letter-spacing:.1em; text-transform:uppercase; color:#0D8A8D; margin-bottom:2mm; }
+  h4{ font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:7.5pt; letter-spacing:.08em; text-transform:uppercase; color:#555; margin-bottom:1.5mm; }
+  p{ font-size:8pt; line-height:1.45; color:#222; margin-bottom:2mm; }
+  strong{ font-weight:600; }
+  /* labels */
+  .label{ font-family:'Bricolage Grotesque',sans-serif; font-weight:600; font-size:6.5pt; letter-spacing:.12em; text-transform:uppercase; }
+  /* section rule */
+  .rule{ border:none; border-top:1.5px solid #0D8A8D; margin-bottom:4mm; }
+  /* obj page */
+  .obj-list{ list-style:none; margin-top:2mm; }
+  .obj-list li{ display:flex; gap:3mm; margin-bottom:3.5mm; font-size:8.5pt; line-height:1.4; color:#222; }
+  .obj-num{ font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:22pt; color:#0D8A8D; line-height:1; min-width:8mm; }
+  .prereq-box{ background:#f7f7f5; border-left:3px solid #0D8A8D; padding:3mm 4mm; margin-top:3mm; }
+  .prereq-box p{ margin:0; font-size:7.5pt; color:#444; }
+  .meta-row{ display:flex; gap:10mm; margin-top:4mm; padding-top:3mm; border-top:1px solid #eee; }
+  .meta-item label{ display:block; font-size:6.5pt; letter-spacing:.12em; text-transform:uppercase; color:#aaa; margin-bottom:.5mm; }
+  .meta-item span{ font-size:8pt; font-weight:600; color:#333; }
+  /* tables */
+  table{ width:100%; border-collapse:collapse; font-size:7.2pt; }
+  th{ background:#0D8A8D; color:#fff; font-family:'Bricolage Grotesque',sans-serif; font-weight:600; font-size:7pt; letter-spacing:.06em; text-transform:uppercase; padding:2.5mm 3mm; text-align:left; }
+  td{ padding:2mm 3mm; border-bottom:1px solid #eee; vertical-align:top; line-height:1.35; color:#222; }
+  tr:nth-child(even) td{ background:#f9f9f7; }
+  /* cards */
+  .card-grid{ display:grid; gap:3mm; }
+  .card-grid-2{ grid-template-columns:1fr 1fr; }
+  .card-grid-3{ grid-template-columns:1fr 1fr 1fr; }
+  .card{ background:#f7f7f5; border-radius:2mm; padding:3mm 4mm; }
+  .card-teal{ background:#0D8A8D; color:#fff; border-radius:2mm; padding:3mm 4mm; }
+  .card-lime{ background:#C6D834; border-radius:2mm; padding:3mm 4mm; }
+  .card-title{ font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:9pt; text-transform:uppercase; letter-spacing:.05em; margin-bottom:1.5mm; }
+  .card-teal .card-title{ color:#fff; }
+  .card-lime .card-title{ color:#1F5C23; }
+  .card p{ font-size:7.5pt; margin:0; }
+  .card-teal p{ color:rgba(255,255,255,.9); }
+  .card-lime p{ color:#1F5C23; }
+  /* nanda box */
+  .nanda-box{ border:1.5px solid #0D8A8D; border-radius:2mm; padding:2.5mm 3.5mm; margin-top:2mm; }
+  .nanda-tag{ display:inline-block; background:#0D8A8D; color:#fff; font-size:6pt; font-weight:700; letter-spacing:.1em; text-transform:uppercase; padding:1px 4px; border-radius:1mm; margin-right:2mm; }
+  .nanda-row{ font-size:7.5pt; color:#222; line-height:1.4; margin-bottom:1mm; }
+  /* domain strip */
+  .domain-strip{ background:#0D8A8D; color:#fff; padding:2mm 3.5mm; border-radius:1.5mm; margin-bottom:2mm; }
+  .domain-strip span{ font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:8pt; text-transform:uppercase; letter-spacing:.06em; }
+  /* alert box */
+  .alert{ background:#fff3cd; border-left:3px solid #C6D834; padding:2.5mm 3.5mm; margin-top:2mm; }
+  .alert p{ font-size:7.5pt; color:#333; margin:0; }
+  /* nn-row */
+  .nn-mini{ font-size:6.8pt; color:#555; font-style:italic; }
+  /* questão */
+  .q-header{ font-family:'Bricolage Grotesque',sans-serif; font-weight:600; font-size:6.5pt; letter-spacing:.14em; text-transform:uppercase; color:#0D8A8D; margin-bottom:2.5mm; }
+  .q-stem{ background:#f5f5f3; border-left:3px solid #0D8A8D; padding:3.5mm 4mm; font-size:8pt; line-height:1.45; color:#222; margin-bottom:3mm; }
+  .opt{ display:flex; gap:2mm; align-items:flex-start; margin-bottom:2mm; font-size:8pt; color:#222; line-height:1.4; }
+  .opt-letter{ font-weight:700; min-width:4mm; }
+  .opt.correct .opt-letter{ color:#0D8A8D; }
+  .opt.correct{ font-weight:600; }
+  .badge-correta{ display:inline-block; background:#0D8A8D; color:#fff; font-size:6pt; font-weight:700; letter-spacing:.1em; padding:1px 5px; border-radius:1mm; margin-left:2mm; text-transform:uppercase; }
+  .gab-box{ background:#f0f8f8; border:1.5px solid #0D8A8D; border-radius:2mm; padding:3mm 4mm; margin-top:3mm; }
+  .gab-title{ font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:7pt; letter-spacing:.12em; text-transform:uppercase; color:#0D8A8D; margin-bottom:1.5mm; }
+  .gab-box p{ font-size:7.5pt; line-height:1.45; color:#222; margin:0; }
+  /* recall */
+  .recall-item{ display:flex; gap:2.5mm; align-items:flex-start; margin-bottom:2mm; }
+  .recall-star{ color:#C6D834; font-size:9pt; line-height:1.2; flex-shrink:0; }
+  .recall-item p{ font-size:8pt; line-height:1.4; color:#222; margin:0; }
+  .self-list{ list-style:none; margin-top:2mm; }
+  .self-list li{ font-size:8pt; color:#333; padding:2mm 0; border-bottom:1px solid #eee; line-height:1.35; }
+  .self-list li::before{ content:'0'counter(self-c)' — '; counter-increment:self-c; font-weight:700; color:#0D8A8D; font-size:7.5pt; }
+  .self-list{ counter-reset:self-c; }
+  /* refs */
+  .ref-item{ font-size:7.5pt; color:#333; line-height:1.4; margin-bottom:2.5mm; border-left:2px solid #eee; padding-left:3mm; }
+  .notes-box{ border:1px dashed #ccc; border-radius:2mm; padding:4mm; margin-top:3mm; }
+  .notes-box p{ font-size:8pt; color:#bbb; text-align:center; font-style:italic; margin:0; }
+</style>
+</head>
+<body>
+
+<!-- P01 CAPA -->
+<div class="cover">
+  <div>
+    <div class="cover-logo-ext">extensivo</div>
+    <div class="cover-logo-main">ENARE</div>
+    <div class="cover-logo-sub">by Residência PRO</div>
+    <div class="cover-module">Enfermagem · Módulo Específico</div>
+    <div class="cover-aula">Bloco B4 · Aula 16</div>
+  </div>
+  <div class="cover-wrap">
+    <div class="cover-title">NANDA-I<br>2024–26</div>
+    <div class="cover-subtitle">Diagnósticos Críticos<br>+ Linkagem NNN</div>
+    <div class="cover-num">16</div>
+  </div>
+</div>
+
+<!-- P02 OBJETIVOS -->
+<div class="page">
+  <div class="ph"><span class="ph-label">Enfermagem · Bloco B4 · Aula 16</span><span class="ph-right">Extensivo ENARE</span></div>
+  <div class="pc">
+    <h3>Objetivos de Aprendizagem</h3>
+    <hr class="rule">
+    <ul class="obj-list">
+      <li><span class="obj-num">1</span><span>Identificar os diagnósticos NANDA-I 2024–2026 mais frequentes nas provas FGV/EBSERH, reconhecendo domínio, classe, componentes (P-E-S) e o código correto de cada diagnóstico crítico.</span></li>
+      <li><span class="obj-num">2</span><span>Aplicar a linkagem NNN — relacionando Diagnóstico NANDA-I ao NOC (resultado esperado) e ao NIC (intervenção) — para construir o Plano de Cuidados de Enfermagem completo.</span></li>
+      <li><span class="obj-num">3</span><span>Discriminar diagnósticos de risco vs. real vs. promoção da saúde e selecionar o diagnóstico prioritário segundo os Critérios de Maslow/Kalish aplicados a cenários clínicos de UTI, cirurgia, geriatria e saúde mental.</span></li>
+    </ul>
+    <div class="prereq-box"><p><strong>Pré-requisito:</strong> Processo de Enfermagem e SAE (Aula 08). Conhecimento básico dos domínios NANDA-I. Fundamentos de fisiologia cardiorrespiratória.</p></div>
+    <div class="meta-row">
+      <div class="meta-item"><label>Bloco</label><span>B4 — Enfermagem</span></div>
+      <div class="meta-item"><label>Aula</label><span>16 de 24</span></div>
+      <div class="meta-item"><label>Tema</label><span>ENF-NANDA-I Crítico</span></div>
+      <div class="meta-item"><label>Nível cognitivo</label><span>Ap → An</span></div>
+    </div>
+  </div>
+  <div class="pf"><span class="pf-left">Extensivo ENARE · by Residência PRO</span><span class="pf-right">02</span></div>
+</div>
+
+<!-- P03 DOMÍNIOS E DIAGNÓSTICOS CRÍTICOS I -->
+<div class="page">
+  <div class="ph"><span class="ph-label">Conteúdo Principal · Aula 16</span><span class="ph-right">Extensivo ENARE</span></div>
+  <div class="pc-sm">
+    <h2>NANDA-I: Domínios e Diagnósticos Críticos</h2>
+    <h4>Domínios 1–6 — mais cobrados em FGV/EBSERH</h4>
+    <table>
+      <thead>
+        <tr><th>Código</th><th>Diagnóstico NANDA-I</th><th>Domínio/Classe</th><th>Tipo</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>00032</strong></td><td>Padrão respiratório ineficaz</td><td>D4 Ativ./Repouso · C4 Resp. cardiovascular</td><td>Real</td></tr>
+        <tr><td><strong>00030</strong></td><td>Troca de gases prejudicada</td><td>D4 · C4</td><td>Real</td></tr>
+        <tr><td><strong>00031</strong></td><td>Desobstrução ineficaz das vias aéreas</td><td>D4 · C2 Atividade/exercício</td><td>Real</td></tr>
+        <tr><td><strong>00029</strong></td><td>Débito cardíaco diminuído</td><td>D4 · C4</td><td>Real</td></tr>
+        <tr><td><strong>00268</strong></td><td>Risco de débito cardíaco diminuído</td><td>D4 · C4</td><td>Risco</td></tr>
+        <tr><td><strong>00228</strong></td><td>Risco de perfusão tissular periférica ineficaz</td><td>D4 · C4</td><td>Risco</td></tr>
+        <tr><td><strong>00014</strong></td><td>Incontinência fecal</td><td>D3 Eliminação · C2 Func. gastrointestinal</td><td>Real</td></tr>
+        <tr><td><strong>00016</strong></td><td>Eliminação urinária prejudicada</td><td>D3 · C1 Func. urinária</td><td>Real</td></tr>
+        <tr><td><strong>00013</strong></td><td>Diarreia</td><td>D3 · C2</td><td>Real</td></tr>
+        <tr><td><strong>00011</strong></td><td>Constipação</td><td>D3 · C2</td><td>Real</td></tr>
+      </tbody>
+    </table>
+    <div class="alert" style="margin-top:2mm;"><p><strong>Regra FGV:</strong> Diagnóstico de <em>risco</em> → sem "fator relacionado" (FR), apenas "fatores de risco". Diagnóstico <em>real</em> → P (problema) + E (etiologia/FR) + S (sinais/sintomas). Diagnóstico de <em>promoção da saúde</em> → sem FR nem S; inicia com "Disposição para…".</p></div>
+  </div>
+  <div class="pf"><span class="pf-left">Extensivo ENARE · by Residência PRO</span><span class="pf-right">03</span></div>
+</div>
+
+<!-- P04 DOMÍNIOS E DIAGNÓSTICOS CRÍTICOS II -->
+<div class="page">
+  <div class="ph"><span class="ph-label">Conteúdo Principal · Aula 16</span><span class="ph-right">Extensivo ENARE</span></div>
+  <div class="pc-sm">
+    <h2>Diagnósticos Críticos — Domínios 9–13</h2>
+    <table>
+      <thead>
+        <tr><th>Código</th><th>Diagnóstico NANDA-I</th><th>Domínio/Classe</th><th>Tipo</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>00146</strong></td><td>Ansiedade</td><td>D9 Enfrent./tolerância ao estresse · C2</td><td>Real</td></tr>
+        <tr><td><strong>00148</strong></td><td>Medo</td><td>D9 · C2</td><td>Real</td></tr>
+        <tr><td><strong>00069</strong></td><td>Enfrentamento ineficaz</td><td>D9 · C2</td><td>Real</td></tr>
+        <tr><td><strong>00128</strong></td><td>Confusão aguda</td><td>D5 Percepção/cognição · C4</td><td>Real</td></tr>
+        <tr><td><strong>00173</strong></td><td>Risco de confusão aguda</td><td>D5 · C4</td><td>Risco</td></tr>
+        <tr><td><strong>00109</strong></td><td>Déficit no autocuidado para higiene</td><td>D4 · C5 Autocuidado</td><td>Real</td></tr>
+        <tr><td><strong>00108</strong></td><td>Déficit no autocuidado para banho</td><td>D4 · C5</td><td>Real</td></tr>
+        <tr><td><strong>00085</strong></td><td>Mobilidade física prejudicada</td><td>D4 · C2</td><td>Real</td></tr>
+        <tr><td><strong>00047</strong></td><td>Risco de integridade da pele prejudicada</td><td>D11 Segurança/proteção · C2</td><td>Risco</td></tr>
+        <tr><td><strong>00046</strong></td><td>Integridade da pele prejudicada</td><td>D11 · C2</td><td>Real</td></tr>
+        <tr><td><strong>00155</strong></td><td>Risco de quedas</td><td>D11 · C2</td><td>Risco</td></tr>
+        <tr><td><strong>00035</strong></td><td>Risco de lesão</td><td>D11 · C2</td><td>Risco</td></tr>
+        <tr><td><strong>00004</strong></td><td>Risco de infecção</td><td>D11 · C1 Controle de infecção</td><td>Risco</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="pf"><span class="pf-left">Extensivo ENARE · by Residência PRO</span><span class="pf-right">04</span></div>
+</div>
+
+<!-- P05 LINKAGEM NNN -->
+<div class="page">
+  <div class="ph"><span class="ph-label">Conteúdo Principal · Aula 16</span><span class="ph-right">Extensivo ENARE</span></div>
+  <div class="pc-sm">
+    <h2>Linkagem NNN — NANDA · NOC · NIC</h2>
+    <p style="font-size:7.5pt;margin-bottom:3mm;">O <strong>NNN</strong> conecta o diagnóstico (NANDA-I) ao resultado esperado (NOC) e à intervenção (NIC), tornando o Plano de Cuidados rastreável e baseado em evidências.</p>
+    <table>
+      <thead>
+        <tr><th>NANDA-I (Diagnóstico)</th><th>NOC (Resultado esperado)</th><th>NIC (Intervenção)</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Troca de gases prejudicada</strong> (00030)</td>
+          <td>Estado respiratório: troca gasosa (0402)</td>
+          <td>Manejo das vias aéreas (3140); Terapia com oxigênio (3320)</td>
+        </tr>
+        <tr>
+          <td><strong>Débito cardíaco diminuído</strong> (00029)</td>
+          <td>Efetividade da bomba cardíaca (0400)</td>
+          <td>Regulação hemodinâmica (4150); Monitoração cardíaca (4310)</td>
+        </tr>
+        <tr>
+          <td><strong>Risco de infecção</strong> (00004)</td>
+          <td>Controle do risco: processo infeccioso (1924)</td>
+          <td>Controle de infecção (6540); Cuidados com cateter urinário (1876)</td>
+        </tr>
+        <tr>
+          <td><strong>Risco de quedas</strong> (00155)</td>
+          <td>Comportamento de prevenção de quedas (1909)</td>
+          <td>Prevenção de quedas (6490); Controle do ambiente (6480)</td>
+        </tr>
+        <tr>
+          <td><strong>Mobilidade física prejudicada</strong> (00085)</td>
+          <td>Mobilidade (0208)</td>
+          <td>Terapia de exercício: mobilidade articular (0224); Posicionamento (0840)</td>
+        </tr>
+        <tr>
+          <td><strong>Déficit no autocuidado: banho</strong> (00108)</td>
+          <td>Autocuidado: banho (0301)</td>
+          <td>Assistência no autocuidado: banho/higiene (1801)</td>
+        </tr>
+        <tr>
+          <td><strong>Confusão aguda</strong> (00128)</td>
+          <td>Estado cognitivo (0900)</td>
+          <td>Manejo do delírio (6440); Orientação para a realidade (4820)</td>
+        </tr>
+        <tr>
+          <td><strong>Integridade da pele prejudicada</strong> (00046)</td>
+          <td>Integridade tissular: pele e mucosas (1101)</td>
+          <td>Cuidados com lesões por pressão (3520); Vigilância da pele (3590)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="pf"><span class="pf-left">Extensivo ENARE · by Residência PRO</span><span class="pf-right">05</span></div>
+</div>
+
+<!-- P06 Q1 — MEMORIZAÇÃO -->
+<div class="page">
+  <div class="ph"><span class="ph-label">Fixação · Aula 16</span><span class="ph-right">Extensivo ENARE</span></div>
+  <div class="pc">
+    <div class="q-header">Questão 01 de 03 · B4 NANDA-I Crítico — Diagnóstico de Risco vs. Real · Memorização</div>
+    <div class="q-stem">
+      Enfermeiro realiza o Processo de Enfermagem em paciente pós-operatório de laparotomia exploradora. Ao formular os diagnósticos de enfermagem, identifica que o paciente possui acesso venoso central inserido há 48 horas, curativo com sinais iniciais de hiperemia perilesional e temperatura de 37,9 °C. Qual o diagnóstico NANDA-I 2024–2026 mais adequado e qual a sua categorização correta?
+    </div>
+    <div class="opt"><span class="opt-letter">A</span><span>Risco de infecção (00004) — diagnóstico real, com fatores relacionados: sítio de inserção do cateter e febre.</span></div>
+    <div class="opt"><span class="opt-letter">B</span><span>Proteção ineficaz (00043) — diagnóstico de promoção da saúde; sem fatores de risco necessários.</span></div>
+    <div class="opt correct"><span class="opt-letter">C</span><span>Risco de infecção (00004) — diagnóstico de risco; fatores de risco incluem procedimento invasivo (CVC) e solução de continuidade. A hiperemia perilesional e a febre são dados contextuais, mas não configuram infecção estabelecida. <span class="badge-correta">Correta</span></span></div>
+    <div class="opt"><span class="opt-letter">D</span><span>Integridade da pele prejudicada (00046) — diagnóstico real, pois há alteração visível na pele perilesional.</span></div>
+    <div class="gab-box">
+      <div class="gab-title">Gabarito Comentado — C</div>
+      <p>Diagnóstico de <strong>risco</strong> exige presença de <em>fatores de risco</em>, mas <strong>não</strong> requer sinais/sintomas estabelecidos. O CVC e a manipulação cirúrgica são fatores de risco suficientes para 00004. A febre de 37,9 °C e a hiperemia perilesional são dados clínicos que elevam a suspeita, mas a ausência de critérios definitivos de infecção (pus, cultura positiva, SIRS completa) impede o diagnóstico real de "infecção". A — diagnósticos de risco NÃO têm fatores relacionados. B — Proteção ineficaz tem critérios diferentes. D — a hiperemia perilesional não é solução de continuidade da pele (não configura 00046 isolado).</p>
+    </div>
+  </div>
+  <div class="pf"><span class="pf-left">Extensivo ENARE · by Residência PRO</span><span class="pf-right">06</span></div>
+</div>
+
+<!-- P07 Q2 — APLICAÇÃO -->
+<div class="page">
+  <div class="ph"><span class="ph-label">Fixação · Aula 16</span><span class="ph-right">Extensivo ENARE</span></div>
+  <div class="pc">
+    <div class="q-header">Questão 02 de 03 · B4 NANDA-I Crítico — Linkagem NNN · Aplicação</div>
+    <div class="q-stem">
+      Paciente de 68 anos, AVC isquêmico à esquerda, hemiplegia direita, internado em UTI. Enfermeiro formula o diagnóstico NANDA-I: <em>"Mobilidade física prejudicada (00085) relacionada a prejuízo neuromuscular evidenciada por incapacidade de mover membros superiores e inferiores direitos de forma independente."</em> Ao realizar a linkagem NNN, qual o par NOC–NIC mais adequado para esse diagnóstico?
+    </div>
+    <div class="opt"><span class="opt-letter">A</span><span>NOC: Estado respiratório: troca gasosa (0402) / NIC: Terapia com oxigênio (3320).</span></div>
+    <div class="opt"><span class="opt-letter">B</span><span>NOC: Autocuidado: banho (0301) / NIC: Assistência no autocuidado: banho/higiene (1801).</span></div>
+    <div class="opt correct"><span class="opt-letter">C</span><span>NOC: Mobilidade (0208) / NIC: Terapia de exercício: mobilidade articular (0224) + Posicionamento (0840). <span class="badge-correta">Correta</span></span></div>
+    <div class="opt"><span class="opt-letter">D</span><span>NOC: Comportamento de prevenção de quedas (1909) / NIC: Prevenção de quedas (6490).</span></div>
+    <div class="gab-box">
+      <div class="gab-title">Gabarito Comentado — C</div>
+      <p>A linkagem NNN exige que NOC e NIC sejam diretamente vinculados ao diagnóstico formulado. Para <strong>Mobilidade física prejudicada (00085)</strong>, o resultado esperado é a melhora da <strong>mobilidade (0208)</strong> e as intervenções são exercícios de mobilidade articular (0224) e posicionamento adequado (0840), que previnem contraturas e úlceras por pressão em hemiplegia. A — para 00030 Troca de gases. B — para 00108 Autocuidado banho. D — embora 00155 Risco de quedas seja diagnóstico de risco frequentemente associado ao quadro, o diagnóstico enunciado é 00085, que exige NOC/NIC específicos de mobilidade.</p>
+    </div>
+  </div>
+  <div class="pf"><span class="pf-left">Extensivo ENARE · by Residência PRO</span><span class="pf-right">07</span></div>
+</div>
+
+<!-- P08 Q3 — ÂNCORA -->
+<div class="page">
+  <div class="ph"><span class="ph-label">Fixação · Aula 16</span><span class="ph-right">Extensivo ENARE</span></div>
+  <div class="pc">
+    <div class="q-header">Questão 03 de 03 · B4 NANDA-I Crítico — Priorização + NNN · Análise (An)</div>
+    <div class="q-stem">
+      Paciente de 55 anos, DPOC agudizado, internado em pronto-socorro. Dados: SpO₂ 84% em ar ambiente, FR 28 irpm, uso de musculatura acessória, tosse produtiva com secreção amarelada espessa, confusão leve (Glasgow 13), acesso venoso periférico, cateter de O₂ nasal a 2 L/min iniciado há 10 min. Enfermeiro identifica três diagnósticos NANDA-I: (I) Desobstrução ineficaz das vias aéreas (00031); (II) Troca de gases prejudicada (00030); (III) Confusão aguda (00128). Sobre a priorização e o plano NNN, assinale a alternativa correta:
+    </div>
+    <div class="opt"><span class="opt-letter">A</span><span>O diagnóstico prioritário é Confusão aguda (00128), pois compromete a segurança do paciente e o risco de autoextubação.</span></div>
+    <div class="opt"><span class="opt-letter">B</span><span>Os três diagnósticos têm igual prioridade; o plano NNN deve ser executado simultaneamente sem hierarquia.</span></div>
+    <div class="opt correct"><span class="opt-letter">C</span><span>Prioridade I: Desobstrução ineficaz das vias aéreas (00031) → NOC: Estado resp.: permeabilidade das vias aéreas (0410) → NIC: Manejo das vias aéreas (3140) + Aspiração (3160). Prioridade II: Troca de gases (00030). Confusão aguda (00128) é secundária à hipoxemia e se resolve com o manejo respiratório. <span class="badge-correta">Correta</span></span></div>
+    <div class="opt"><span class="opt-letter">D</span><span>Prioridade I: Troca de gases prejudicada (00030), pois a SpO₂ de 84% é a manifestação mais crítica; desobstrução e confusão são diagnósticos secundários.</span></div>
+    <div class="gab-box">
+      <div class="gab-title">Gabarito Comentado — C</div>
+      <p>Segundo Maslow/Kalish, <strong>permeabilidade das vias aéreas</strong> precede a troca gasosa — sem via aérea pérvia, nenhuma intervenção respiratória é eficaz. A secreção espessa obstrutiva + FR 28 configuram 00031 como prioridade máxima. O 00030 é consequência, tratado em seguida com O₂ e broncodilatação. O 00128 (confusão) é fisiopatologicamente secundário à hipoxemia (SpO₂ 84%) e se resolve com o manejo das prioridades 1 e 2 — prioridade terapêutica menor. A — confusão derivada de hipoxemia deve ser tratada pela causa. B — priorização é princípio central da SAE. D — embora 00030 seja crítico, 00031 é o diagnóstico antecedente estrutural.</p>
+    </div>
+  </div>
+  <div class="pf"><span class="pf-left">Extensivo ENARE · by Residência PRO</span><span class="pf-right">08</span></div>
+</div>
+
+<!-- P09 RECUPERAÇÃO ATIVA -->
+<div class="page">
+  <div class="ph"><span class="ph-label">Recuperação Ativa · Aula 16</span><span class="ph-right">Extensivo ENARE</span></div>
+  <div class="pc">
+    <h3>Se Esquecer Tudo, Lembre Disto</h3>
+    <hr class="rule">
+    <div class="recall-item"><span class="recall-star">★</span><p><strong>NANDA-I real:</strong> P (problema/diagnóstico) + E (etiologia: "relacionado a…") + S (sinais: "evidenciado por…"). Diagnóstico de <strong>risco</strong>: só P + fatores de risco — sem E nem S.</p></div>
+    <div class="recall-item"><span class="recall-star">★</span><p><strong>Diagnósticos de prioridade máxima FGV:</strong> 00031 (desobstrução vias aéreas) → 00030 (troca gasosa) → 00029 (débito cardíaco) → 00032 (padrão respiratório) → 00004 (risco infecção). Segue a lógica ABCDE.</p></div>
+    <div class="recall-item"><span class="recall-star">★</span><p><strong>Linkagem NNN:</strong> NANDA-I diagnostica → NOC define o resultado (escala Likert 1–5) → NIC descreve as intervenções (com atividades). Exige coerência entre os três — NOC e NIC devem "conversar" com o diagnóstico.</p></div>
+    <div class="recall-item"><span class="recall-star">★</span><p><strong>Promoção da saúde:</strong> Inicia com "Disposição para melhorar…" — sem etiologia, sem sinais. Ex.: Disposição para melhorar o manejo da saúde (00162).</p></div>
+    <div class="recall-item"><span class="recall-star">★</span><p><strong>Confusão aguda (00128) em hipoxemia:</strong> diagnóstico real, mas prioridade INFERIOR ao problema respiratório que a causa — tratar a causa resolve o efeito.</p></div>
+    <h4 style="margin-top:4mm;">Teste-se Sem Olhar</h4>
+    <ul class="self-list">
+      <li>Qual a diferença estrutural entre um diagnóstico de risco e um diagnóstico real no formato PES?</li>
+      <li>Cite 3 diagnósticos NANDA-I do domínio 11 (Segurança/Proteção) e seus códigos.</li>
+      <li>Para o diagnóstico 00029 (Débito cardíaco diminuído), qual o NOC e o NIC correspondentes na linkagem NNN?</li>
+      <li>Em um paciente com pneumonia, SpO₂ 90%, febre 39 °C e agitação, qual o diagnóstico NANDA-I prioritário e por quê?</li>
+    </ul>
+  </div>
+  <div class="pf"><span class="pf-left">Extensivo ENARE · by Residência PRO</span><span class="pf-right">09</span></div>
+</div>
+
+<!-- P10 REFERÊNCIAS -->
+<div class="page">
+  <div class="ph"><span class="ph-label">Referências · Aula 16</span><span class="ph-right">Extensivo ENARE</span></div>
+  <div class="pc">
+    <h3>Referências — Bloco B4 · Aula 16</h3>
+    <hr class="rule">
+    <div class="ref-item">HERDMAN, T.H.; KAMITSURU, S.; LOPES, C.T. (Eds.). <em>NANDA International — Diagnósticos de Enfermagem 2024–2026</em>. 13. ed. Porto Alegre: Artmed, 2024.</div>
+    <div class="ref-item">MOORHEAD, S. et al. <em>Classificação dos Resultados de Enfermagem (NOC)</em>. 6. ed. Rio de Janeiro: Elsevier, 2020.</div>
+    <div class="ref-item">BULECHEK, G.M. et al. <em>Classificação das Intervenções de Enfermagem (NIC)</em>. 7. ed. Rio de Janeiro: Elsevier, 2020.</div>
+    <div class="ref-item">BRASIL. Conselho Federal de Enfermagem. <em>Resolução COFEN n.º 736/2024</em>. Regulamenta a execução do Processo de Enfermagem. Brasília: COFEN, 2024.</div>
+    <div class="ref-item">BRASIL. Conselho Federal de Enfermagem. <em>Resolução COFEN n.º 358/2009</em>. Dispõe sobre a Sistematização da Assistência de Enfermagem. Brasília: COFEN, 2009.</div>
+    <div class="ref-item">JOHNSON, M. et al. <em>Ligações NANDA-NOC-NIC</em>. 3. ed. Rio de Janeiro: Elsevier, 2012.</div>
+    <div class="notes-box"><p>Espaço para anotações</p></div>
+  </div>
+  <div class="pf"><span class="pf-left">Extensivo ENARE · by Residência PRO</span><span class="pf-right">10</span></div>
+</div>
+
+</body>
+</html>
