@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Enfermagem · Bloco B4 · Aula 13 — Extensivo ENARE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Bricolage+Grotesque:wght@400;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --creme:#F6F4ED; --lima:#C6D834; --verde:#1F5C23;
+      --teal:#0D8A8D; --preto:#070707; --cinza:#9E9B94;
+      --borda:#DDD9D1; --creme-esc:#EDEAE2;
+      --vermelho:#C0392B; --laranja:#E67E22; --roxo:#7B2D8B;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { background:#CCC; font-family:'Bricolage Grotesque',sans-serif; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    @page { size:A4; margin:0; }
+    .page { width:210mm; height:297mm; position:relative; overflow:hidden; page-break-after:always; background:var(--creme); display:flex; flex-direction:column; }
+    @media screen { .page { margin:24px auto; box-shadow:0 4px 32px rgba(0,0,0,0.18); } }
+
+    .ph { height:14mm; background:var(--creme); border-bottom:2px solid var(--teal); display:flex; align-items:center; padding:0 16mm; flex-shrink:0; }
+    .ph-l { font-family:'Barlow Condensed',sans-serif; font-size:7.5pt; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; color:var(--cinza); }
+    .ph-r { font-size:7.5pt; font-style:italic; color:var(--cinza); margin-left:auto; }
+    .pf { height:9mm; background:var(--creme); border-top:1px solid var(--borda); display:flex; align-items:center; padding:0 16mm; flex-shrink:0; }
+    .pf-brand { font-family:'Space Grotesk',sans-serif; font-size:6.5pt; font-weight:300; color:var(--cinza); }
+    .pf-num { font-family:'Barlow Condensed',sans-serif; font-size:9pt; font-weight:700; color:var(--teal); margin-left:auto; }
+    .pc { flex:1; padding:7mm 16mm 5mm; overflow:hidden; }
+    .pc-sm { flex:1; padding:5mm 16mm 4mm; overflow:hidden; }
+
+    /* capa */
+    .capa { background:var(--teal); width:100%; height:100%; display:flex; flex-direction:column; padding:12mm 14mm 11mm; }
+    .capa-ext { font-family:'Playfair Display',serif; font-style:italic; font-size:9.5pt; color:var(--lima); }
+    .capa-enare { font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:36pt; color:var(--creme); line-height:0.9; }
+    .capa-by { font-family:'Space Grotesk',sans-serif; font-weight:300; font-size:7.5pt; color:rgba(246,244,237,0.55); margin-bottom:auto; }
+    .capa-area { font-family:'Barlow Condensed',sans-serif; font-size:7pt; font-weight:600; letter-spacing:4px; text-transform:uppercase; color:rgba(246,244,237,0.5); margin-bottom:1.5mm; }
+    .capa-cod { font-family:'Barlow Condensed',sans-serif; font-size:9pt; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--lima); margin-bottom:4mm; }
+    .capa-tit { font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:40pt; color:var(--creme); line-height:0.9; text-transform:uppercase; margin-bottom:3mm; }
+    .capa-sub { font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:12pt; color:var(--lima); text-transform:uppercase; letter-spacing:1px; line-height:1.25; }
+    .capa-wm { position:absolute; bottom:10mm; right:10mm; font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:110pt; color:rgba(246,244,237,0.07); line-height:1; }
+
+    /* objetivos */
+    .sec-tag { font-family:'Barlow Condensed',sans-serif; font-size:7pt; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--teal); border-bottom:2px solid var(--teal); padding-bottom:1.5mm; margin-bottom:4mm; }
+    .obj-list { list-style:none; display:flex; flex-direction:column; gap:3.5mm; margin-bottom:5mm; }
+    .obj-item { display:flex; gap:3mm; align-items:flex-start; }
+    .obj-n { font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:18pt; color:var(--teal); line-height:1; flex-shrink:0; width:7mm; }
+    .obj-t { font-size:9pt; line-height:1.45; padding-top:1mm; }
+    .prereq { background:var(--creme-esc); border-left:3px solid var(--borda); padding:2.5mm 4mm; margin-top:3mm; font-size:8pt; line-height:1.4; }
+    .prereq-lbl { font-family:'Barlow Condensed',sans-serif; font-size:6.5pt; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--cinza); margin-bottom:1mm; }
+    .meta-row { display:flex; gap:7mm; margin-top:4mm; padding-top:3mm; border-top:1px solid var(--borda); }
+    .meta-item { display:flex; flex-direction:column; gap:0.5mm; }
+    .meta-lbl { font-family:'Barlow Condensed',sans-serif; font-size:6pt; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--cinza); }
+    .meta-val { font-size:7.5pt; font-weight:600; }
+
+    /* headings */
+    h2 { font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:15pt; color:var(--teal); text-transform:uppercase; letter-spacing:0.5px; margin-bottom:3mm; line-height:1.1; }
+    h3 { font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:9.5pt; color:var(--preto); text-transform:uppercase; letter-spacing:1px; margin:3mm 0 1.5mm; }
+
+    /* tabela */
+    table { width:100%; border-collapse:collapse; font-size:8pt; margin-bottom:3mm; }
+    th { background:var(--teal); color:var(--creme); font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:7.5pt; letter-spacing:0.8px; text-transform:uppercase; padding:2mm 2.5mm; text-align:left; }
+    td { padding:2mm 2.5mm; border-bottom:1px solid var(--borda); vertical-align:top; line-height:1.35; font-size:8pt; }
+    tr:nth-child(even) td { background:var(--creme-esc); }
+
+    /* boxes */
+    .box { padding:3mm 3.5mm; margin-bottom:3mm; }
+    .box-alerta { background:#FFF5F5; border-left:4px solid var(--vermelho); }
+    .box-info { background:#F0FAF0; border-left:4px solid var(--verde); }
+    .box-dark { background:var(--preto); color:var(--creme); }
+    .box-lbl { font-family:'Barlow Condensed',sans-serif; font-size:6.5pt; font-weight:700; letter-spacing:2px; text-transform:uppercase; margin-bottom:1.5mm; }
+    .box-lbl-r { color:var(--vermelho); }
+    .box-lbl-v { color:var(--verde); }
+    .box-lbl-lima { color:var(--lima); }
+    .box-t { font-size:8pt; line-height:1.5; }
+
+    /* formula */
+    .formula { background:var(--preto); color:var(--creme); padding:3.5mm 5mm; margin-bottom:3mm; font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:12pt; text-align:center; line-height:1.5; }
+    .formula-sub { font-size:7.5pt; font-weight:400; font-family:'Bricolage Grotesque',sans-serif; color:rgba(246,244,237,0.7); margin-top:0.5mm; }
+
+    /* cards 2-col */
+    .cards2 { display:grid; grid-template-columns:1fr 1fr; gap:3mm; margin-bottom:3mm; }
+    .card { background:white; border:1px solid var(--borda); border-top:3px solid var(--teal); padding:3mm; }
+    .card-r { border-top-color:var(--vermelho); }
+    .card-o { border-top-color:var(--laranja); }
+    .card-v { border-top-color:var(--verde); }
+    .card-tit { font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:9pt; text-transform:uppercase; color:var(--teal); margin-bottom:2mm; }
+    .card-tit-r { color:var(--vermelho); }
+    .card-tit-o { color:var(--laranja); }
+    .card-tit-v { color:var(--verde); }
+    .card-body { font-size:7.5pt; line-height:1.4; }
+    .card-body li { margin-left:3mm; margin-bottom:0.8mm; }
+
+    /* tags */
+    .tag-r { display:inline-block; background:var(--vermelho); color:white; font-size:6pt; font-weight:700; letter-spacing:0.8px; text-transform:uppercase; padding:0.5mm 1.5mm; border-radius:2px; margin-left:1.5mm; }
+
+    /* questões */
+    .q-hdr { font-family:'Barlow Condensed',sans-serif; font-size:6.5pt; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--cinza); margin-bottom:2.5mm; }
+    .q-env { font-size:8.5pt; line-height:1.5; background:white; border:1px solid var(--borda); padding:3mm 3.5mm; margin-bottom:3mm; }
+    .alts { display:flex; flex-direction:column; gap:1.8mm; margin-bottom:3mm; }
+    .alt { display:flex; align-items:flex-start; gap:2.5mm; padding:2mm 3mm; border:1px solid var(--borda); font-size:8pt; line-height:1.35; background:white; }
+    .alt-l { font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:10pt; color:var(--cinza); flex-shrink:0; width:3.5mm; }
+    .alt-ok { border-color:var(--verde); background:#F0FAF0; }
+    .alt-ok .alt-l { color:var(--verde); }
+    .badge { display:inline-block; background:var(--verde); color:white; font-size:5.5pt; font-weight:700; letter-spacing:0.8px; text-transform:uppercase; padding:0.4mm 1.5mm; border-radius:2px; margin-left:1.5mm; vertical-align:middle; }
+    .gab { background:var(--preto); color:var(--creme); padding:3mm 3.5mm; font-size:7.5pt; line-height:1.5; }
+    .gab-lbl { font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:8pt; letter-spacing:1.5px; text-transform:uppercase; color:var(--lima); margin-bottom:1.5mm; }
+    .gab strong { color:var(--lima); }
+
+    /* recuperação */
+    .rec-tag { font-family:'Barlow Condensed',sans-serif; font-size:7pt; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--teal); border-bottom:2px solid var(--teal); padding-bottom:1.5mm; margin-bottom:4mm; }
+    .stars { display:flex; flex-direction:column; gap:2.5mm; margin-bottom:4mm; }
+    .star-item { display:flex; gap:3mm; align-items:flex-start; font-size:8.5pt; line-height:1.45; }
+    .star { color:var(--lima); font-size:11pt; flex-shrink:0; }
+    .teste-lbl { font-family:'Barlow Condensed',sans-serif; font-size:7pt; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--cinza); margin-bottom:2mm; }
+    .teste-grid { display:flex; flex-direction:column; gap:1.5mm; }
+    .teste-item { display:flex; gap:3mm; font-size:8pt; line-height:1.35; padding:1.5mm 0; border-bottom:1px solid var(--borda); }
+    .teste-n { font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:9pt; color:var(--teal); flex-shrink:0; }
+
+    /* referências */
+    .ref-tag { font-family:'Barlow Condensed',sans-serif; font-size:7pt; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--teal); border-bottom:2px solid var(--teal); padding-bottom:1.5mm; margin-bottom:4mm; }
+    .ref-list { display:flex; flex-direction:column; gap:2mm; }
+    .ref-item { font-size:7.5pt; line-height:1.45; border-left:2px solid var(--borda); padding-left:3mm; }
+    .ref-item em { font-style:italic; }
+    .anotacoes { margin-top:4mm; border:1px dashed var(--borda); padding:4mm; font-size:7.5pt; color:var(--cinza); text-align:center; letter-spacing:2px; text-transform:uppercase; min-height:16mm; display:flex; align-items:center; justify-content:center; }
+
+    b { font-weight:600; }
+  </style>
+</head>
+<body>
+
+<!-- P01 CAPA -->
+<div class="page">
+  <div class="capa">
+    <div>
+      <div class="capa-ext">extensivo</div>
+      <div class="capa-enare">ENARE</div>
+      <div class="capa-by">by Residência PRO</div>
+    </div>
+    <div>
+      <div class="capa-area">Enfermagem · Módulo Específico</div>
+      <div class="capa-cod">Bloco B4 · Aula 13</div>
+      <div class="capa-tit">FARMACO-<br>LOGIA II</div>
+      <div class="capa-sub">Fármacos de Alto Risco,<br>DVA e Cálculo Avançado</div>
+    </div>
+    <div class="capa-wm">13</div>
+  </div>
+</div>
+
+<!-- P02 OBJETIVOS -->
+<div class="page">
+  <div class="ph"><span class="ph-l">Enfermagem · Bloco B4 · Aula 13</span><span class="ph-r">Extensivo ENARE</span></div>
+  <div class="pc">
+    <div class="sec-tag">Objetivos de Aprendizagem</div>
+    <ul class="obj-list">
+      <li class="obj-item">
+        <span class="obj-n">1</span>
+        <span class="obj-t">Identificar os fármacos de alto risco em UTI (insulina, heparina, KCl, morfina, noradrenalina, dobutamina) e aplicar os protocolos de diluição, infusão e monitoramento para cada um.</span>
+      </li>
+      <li class="obj-item">
+        <span class="obj-n">2</span>
+        <span class="obj-t">Calcular velocidade de infusão (mL/h) de drogas vasoativas (DVA) a partir de dose em mcg/kg/min, utilizando a fórmula padrão e resolvendo exercícios com concentrações variadas.</span>
+      </li>
+      <li class="obj-item">
+        <span class="obj-n">3</span>
+        <span class="obj-t">Aplicar os protocolos de insulinoterapia intensiva e anticoagulação com heparina; identificar o diagnóstico NANDA-I em cenários de HIT (trombocitopenia induzida por heparina).</span>
+      </li>
+    </ul>
+    <div class="prereq">
+      <div class="prereq-lbl">Pré-Requisito</div>
+      Aula 12 — Farmacologia I (Terapia IV, CVC, capital venoso). Aula 08/09 — COFEN: Res. 680/2021 e responsabilidade profissional. Matemática básica e bases de farmacologia.
+    </div>
+    <div class="meta-row">
+      <div class="meta-item"><div class="meta-lbl">Bloco</div><div class="meta-val">B4 — Enfermagem</div></div>
+      <div class="meta-item"><div class="meta-lbl">Aula</div><div class="meta-val">13 de 24</div></div>
+      <div class="meta-item"><div class="meta-lbl">Tema</div><div class="meta-val">ENF-Farmacologia II</div></div>
+      <div class="meta-item"><div class="meta-lbl">Nível Cognitivo</div><div class="meta-val">M → An</div></div>
+    </div>
+  </div>
+  <div class="pf"><span class="pf-brand">Extensivo ENARE · by Residência PRO</span><span class="pf-num">02</span></div>
+</div>
+
+<!-- P03 FÁRMACOS DE ALTO RISCO -->
+<div class="page">
+  <div class="ph"><span class="ph-l">Conteúdo Principal · Aula 13</span><span class="ph-r">Extensivo ENARE</span></div>
+  <div class="pc-sm">
+    <h2>Fármacos de Alto Risco em UTI</h2>
+    <div class="box box-alerta" style="margin-bottom:2.5mm;">
+      <div class="box-lbl box-lbl-r">Definição ISMP</div>
+      <div class="box-t"><b>Fármacos de alto risco</b> são aqueles cujos erros têm probabilidade desproporcional de causar dano grave — não os mais frequentes em erros, mas os de consequências mais graves. Exigem dupla checagem e protocolos exclusivos.</div>
+    </div>
+    <table>
+      <tr>
+        <th>Fármaco</th>
+        <th>Indicação UTI</th>
+        <th>Diluição / Limite</th>
+        <th>Risco Principal</th>
+      </tr>
+      <tr>
+        <td><b>Insulina regular</b> <span class="tag-r">Alto Risco</span></td>
+        <td>Hiperglicemia ≥180 mg/dL; cetoacidose</td>
+        <td>50 UI em 50 mL SF (1 UI/mL); bomba exclusiva</td>
+        <td>Hipoglicemia grave — monitorar 1h/1h</td>
+      </tr>
+      <tr>
+        <td><b>KCl 19,1%</b> <span class="tag-r">Alto Risco</span></td>
+        <td>Hipopotassemia (K+ &lt;3,5 mEq/L)</td>
+        <td>Máx 10 mEq/h em CVC; NUNCA IV direto</td>
+        <td>Parada cardíaca por FV se IV puro ou rápido</td>
+      </tr>
+      <tr>
+        <td><b>HNF (heparina)</b> <span class="tag-r">Alto Risco</span></td>
+        <td>TVP, TEP, FA com trombo</td>
+        <td>Infusão contínua; controle por TTPA (1,5–2,5×)</td>
+        <td>Sangramento; HIT — monitorar plaquetas</td>
+      </tr>
+      <tr>
+        <td><b>Morfina</b> <span class="tag-r">Alto Risco</span></td>
+        <td>Dor intensa; edema agudo de pulmão</td>
+        <td>1–10 mg/mL; bomba; antídoto: naloxona</td>
+        <td>Depressão respiratória — naloxona à beira leito</td>
+      </tr>
+    </table>
+    <div class="box box-alerta" style="margin-top:1mm;">
+      <div class="box-lbl box-lbl-r">Regra de Ouro — KCl</div>
+      <div class="box-t">KCl <b>nunca</b> IV direto — causa FV e parada cardíaca. Sempre diluído, CVC, bomba infusora, máx. 10 mEq/h, ECG contínuo. Frasco segregado com fita vermelha (ISMP/ANVISA). Enfermeira deve <b>recusar prescrição inadequada</b> — dever ético (Res. 564/2017 Art. 54).</div>
+    </div>
+  </div>
+  <div class="pf"><span class="pf-brand">Extensivo ENARE · by Residência PRO</span><span class="pf-num">03</span></div>
+</div>
+
+<!-- P04 DVA E CÁLCULO -->
+<div class="page">
+  <div class="ph"><span class="ph-l">Conteúdo Principal · Aula 13</span><span class="ph-r">Extensivo ENARE</span></div>
+  <div class="pc-sm">
+    <h2>Drogas Vasoativas (DVA) e Cálculo de Dose</h2>
+    <div class="cards2">
+      <div class="card card-r">
+        <div class="card-tit card-tit-r">Noradrenalina</div>
+        <div class="card-body">
+          <ul>
+            <li><b>Mecanismo:</b> α1 >> β1 — vasoconstrição intensa</li>
+            <li><b>Indicação:</b> Choque séptico (1ª escolha)</li>
+            <li><b>Diluição:</b> 4 mg em 250 mL SG5% = 16 mcg/mL</li>
+            <li><b>Dose:</b> 0,01–3 mcg/kg/min; alvo PAM ≥65 mmHg</li>
+            <li><b>Acesso:</b> CVC obrigatório (necrose se extravasamento)</li>
+            <li><b>Monitorar:</b> PA invasiva, débito urinário</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card card-o">
+        <div class="card-tit card-tit-o">Dobutamina</div>
+        <div class="card-body">
+          <ul>
+            <li><b>Mecanismo:</b> β1 >> β2 — inotropia + cronotropia</li>
+            <li><b>Indicação:</b> Choque cardiogênico, IC com baixo débito</li>
+            <li><b>Diluição:</b> 250 mg em 250 mL SF = 1.000 mcg/mL</li>
+            <li><b>Dose:</b> 2,5–20 mcg/kg/min; titular por PAM e DC</li>
+            <li><b>Acesso:</b> Preferencialmente CVC</li>
+            <li><b>Monitorar:</b> FC, ritmo (pró-arrítmica!), PA</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="formula">
+      Velocidade (mL/h) = [Dose (mcg/kg/min) × Peso (kg) × 60] ÷ Concentração (mcg/mL)
+      <div class="formula-sub">Inverso: Dose = [Concentração × Velocidade] ÷ [Peso × 60]</div>
+    </div>
+    <div class="box box-info">
+      <div class="box-lbl box-lbl-v">Exemplo Resolvido — Noradrenalina</div>
+      <div class="box-t">Prescrição: 0,1 mcg/kg/min para paciente de 70 kg. Concentração: 16 mcg/mL (4 mg/250 mL).<br>
+      <b>Velocidade = (0,1 × 70 × 60) ÷ 16 = 420 ÷ 16 = 26,25 ≈ 26 mL/h</b></div>
+    </div>
+  </div>
+  <div class="pf"><span class="pf-brand">Extensivo ENARE · by Residência PRO</span><span class="pf-num">04</span></div>
+</div>
+
+<!-- P05 INSULINA + HEPARINA -->
+<div class="page">
+  <div class="ph"><span class="ph-l">Conteúdo Principal · Aula 13</span><span class="ph-r">Extensivo ENARE</span></div>
+  <div class="pc-sm">
+    <h2>Insulinoterapia Intensiva e Anticoagulação</h2>
+    <div class="cards2" style="margin-bottom:3mm;">
+      <div class="card">
+        <div class="card-tit">Insulina em UTI — Protocolo</div>
+        <div class="card-body">
+          <ul>
+            <li><b>Alvo glicêmico:</b> 140–180 mg/dL (NICE-SUGAR)</li>
+            <li><b>&lt;140:</b> reduzir dose; <b>&lt;70:</b> suspender + glicose IV</li>
+            <li><b>Monitoramento:</b> 1h/1h no ajuste; 2h/2h se estável</li>
+            <li><b>Insulina regular IV:</b> ação rápida — NUNCA NPH IV</li>
+            <li><b>Hipoglicemia grave (&lt;40):</b> glicose 50% 20–40 mL IV + notificar</li>
+            <li><b>NANDA-I:</b> Risco de glicemia instável (00179)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-tit">HNF vs HBPM</div>
+        <div class="card-body">
+          <ul>
+            <li><b>HNF:</b> IV contínua; TTPA 1,5–2,5×; antídoto = protamina</li>
+            <li><b>HBPM (enoxaparina):</b> SC 12/12h; sem controle de rotina</li>
+            <li><b>HIT (Tipo II):</b> queda plaquetas >50% após 5–14 dias<br>→ SUSPENDER toda heparina imediatamente<br>→ Substituir: argatroban ou fondaparinux<br>→ NÃO warfarina imediata (fase aguda)<br>→ NANDA-I: Proteção ineficaz</li>
+            <li><b>Reversão HNF:</b> protamina 1 mg / 100 UI de heparina</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="box box-alerta">
+      <div class="box-lbl box-lbl-r">Armadilha Frequente — HIT</div>
+      <div class="box-t">Na HIT tipo II, a plaquetopenia causa <b>trombose</b>, não sangramento. Warfarina na fase aguda = contraindicado (necrose de pele, gangrena venosa). Substituir por não-heparinoide. Plaquetas se recuperam em 4–14 dias após suspensão.</div>
+    </div>
+  </div>
+  <div class="pf"><span class="pf-brand">Extensivo ENARE · by Residência PRO</span><span class="pf-num">05</span></div>
+</div>
+
+<!-- P06 Q1 MEMORIZAÇÃO -->
+<div class="page">
+  <div class="ph"><span class="ph-l">Fixação · Aula 13</span><span class="ph-r">Extensivo ENARE</span></div>
+  <div class="pc-sm">
+    <div class="q-hdr">Questão 01 de 03 · B4 Farmacologia II · KCl e Alto Risco — Memorização</div>
+    <div class="q-env">
+      Enfermeira assume plantão em UTI e recebe prescrição para administrar KCl 19,1% IV direto a paciente com hipopotassemia grave (K+ = 2,2 mEq/L). O frasco está na bancada junto aos eletrólitos de uso rotineiro. Sobre a conduta correta e as medidas do ISMP/ANVISA, assinale a alternativa correta:
+    </div>
+    <div class="alts">
+      <div class="alt">
+        <span class="alt-l">A</span>
+        <span>Administrar conforme prescrito, pois a hipopotassemia grave justifica reposição rápida via IV direta.</span>
+      </div>
+      <div class="alt">
+        <span class="alt-l">B</span>
+        <span>Diluir em SF e infundir por acesso periférico em 30 minutos com monitoração contínua do ECG.</span>
+      </div>
+      <div class="alt alt-ok">
+        <span class="alt-l">C</span>
+        <span><b>Recusar a administração IV direta, contatar o médico, diluir em CVC com bomba infusora (≤10 mEq/h), segregar o frasco dos demais eletrólitos e registrar a ocorrência.</b> <span class="badge">Correta</span></span>
+      </div>
+      <div class="alt">
+        <span class="alt-l">D</span>
+        <span>Diluir em SG5% e infundir em acesso periférico em 1 hora, que é o tempo mínimo seguro para qualquer eletrólito.</span>
+      </div>
+    </div>
+    <div class="gab">
+      <div class="gab-lbl">Gabarito Comentado — C</div>
+      KCl IV direto causa <strong>FV e parada cardíaca</strong>. Conduta correta: (1) <strong>recusar</strong> (dever ético — Res. 564/2017 Art. 54); (2) <strong>contatar médico</strong>; (3) <strong>diluir + CVC + bomba</strong>, máx. 10 mEq/h; (4) <strong>segregar</strong> o frasco (fita vermelha, ISMP/ANVISA); (5) <strong>registrar</strong> near miss. A — IV direto = erro grave. B — periférico e 30 min = via e velocidade inadequadas. D — periférico ainda inadequado para &gt;10 mEq/h.
+    </div>
+  </div>
+  <div class="pf"><span class="pf-brand">Extensivo ENARE · by Residência PRO</span><span class="pf-num">06</span></div>
+</div>
+
+<!-- P07 Q2 APLICAÇÃO -->
+<div class="page">
+  <div class="ph"><span class="ph-l">Fixação · Aula 13</span><span class="ph-r">Extensivo ENARE</span></div>
+  <div class="pc-sm">
+    <div class="q-hdr">Questão 02 de 03 · B4 Farmacologia II · Cálculo DVA — Aplicação</div>
+    <div class="q-env">
+      Paciente em choque séptico, <b>80 kg</b>, recebe noradrenalina via CVC. Prescrição: iniciar em <b>0,05 mcg/kg/min</b>. Solução disponível: <b>4 mg de noradrenalina em 250 mL de SG5%</b>. Qual a velocidade de infusão em mL/h a programar na bomba infusora?
+    </div>
+    <div class="formula" style="margin-bottom:3mm;">
+      Velocidade (mL/h) = [Dose × Peso × 60] ÷ Concentração
+    </div>
+    <div class="alts">
+      <div class="alt"><span class="alt-l">A</span><span>5 mL/h</span></div>
+      <div class="alt"><span class="alt-l">B</span><span>8 mL/h</span></div>
+      <div class="alt alt-ok"><span class="alt-l">C</span><span><b>15 mL/h</b> <span class="badge">Correta</span></span></div>
+      <div class="alt"><span class="alt-l">D</span><span>24 mL/h</span></div>
+    </div>
+    <div class="gab">
+      <div class="gab-lbl">Gabarito Comentado — C</div>
+      <strong>Concentração:</strong> 4 mg = 4.000 mcg ÷ 250 mL = <strong>16 mcg/mL</strong><br>
+      <strong>Velocidade:</strong> (0,05 × 80 × 60) ÷ 16 = 240 ÷ 16 = <strong>15 mL/h</strong><br>
+      A — 5 mL/h ≈ 0,017 mcg/kg/min (subdose). B — 8 mL/h ≈ 0,027 mcg/kg/min. D — 24 mL/h ≈ 0,08 mcg/kg/min (sobredose). Erro clássico: esquecer o fator ×60 (converter minutos em hora) ou confundir mg com mcg na concentração.
+    </div>
+  </div>
+  <div class="pf"><span class="pf-brand">Extensivo ENARE · by Residência PRO</span><span class="pf-num">07</span></div>
+</div>
+
+<!-- P08 Q3 ANÁLISE -->
+<div class="page">
+  <div class="ph"><span class="ph-l">Fixação · Aula 13</span><span class="ph-r">Extensivo ENARE</span></div>
+  <div class="pc-sm">
+    <div class="q-hdr">Questão 03 de 03 · B4 Farmacologia II · HIT + NANDA-I — Análise</div>
+    <div class="q-env">
+      Paciente em UTI coronariana há 8 dias em uso de HNF por TEP. Exames: plaquetas 68.000/mm³ (eram 210.000 na admissão), D-dímero elevado, novo trombo em veia poplítea esquerda. Sem sangramento ativo. Sobre o diagnóstico provável, o NANDA-I prioritário e a conduta correta, assinale:
+    </div>
+    <div class="alts">
+      <div class="alt">
+        <span class="alt-l">A</span>
+        <span>HIT. NANDA-I: Risco de sangramento. Conduta: reduzir HNF à metade e associar warfarina imediatamente.</span>
+      </div>
+      <div class="alt">
+        <span class="alt-l">B</span>
+        <span>CIVD. NANDA-I: Perfusão periférica ineficaz. Conduta: transfundir plaquetas e manter HNF para controle da coagulação.</span>
+      </div>
+      <div class="alt alt-ok">
+        <span class="alt-l">C</span>
+        <span><b>HIT. NANDA-I: Proteção ineficaz. Conduta: suspender toda heparina, substituir por argatroban ou fondaparinux, NÃO iniciar warfarina na fase aguda, monitorar plaquetas diariamente.</b> <span class="badge">Correta</span></span>
+      </div>
+      <div class="alt">
+        <span class="alt-l">D</span>
+        <span>HIT. NANDA-I: Risco de glicemia instável. Conduta: suspender HNF e observar — plaquetas se recuperam espontaneamente em 48h.</span>
+      </div>
+    </div>
+    <div class="gab">
+      <div class="gab-lbl">Gabarito Comentado — C</div>
+      <strong>HIT tipo II</strong>: queda &gt;50% plaquetas após 5–14 dias + novo trombo (paradoxal — trombose, não sangramento). Conduta: (1) <strong>suspender toda heparina</strong> (inclusive flush e HBPM); (2) <strong>argatroban ou fondaparinux</strong>; (3) <strong>NÃO warfarina</strong> imediata (necrose de pele/gangrena venosa na fase aguda). NANDA-I: <strong>Proteção ineficaz</strong> (compromisso imune + risco trombótico sistêmico). A — warfarina imediata = erro grave. B — CIVD improvável; transfundir plaquetas em HIT perpetua trombose. D — observação passiva inadequada.
+    </div>
+  </div>
+  <div class="pf"><span class="pf-brand">Extensivo ENARE · by Residência PRO</span><span class="pf-num">08</span></div>
+</div>
+
+<!-- P09 RECUPERAÇÃO ATIVA -->
+<div class="page">
+  <div class="ph"><span class="ph-l">Recuperação Ativa · Aula 13</span><span class="ph-r">Extensivo ENARE</span></div>
+  <div class="pc">
+    <div class="rec-tag">Se Esquecer Tudo, Lembre Disto</div>
+    <div class="stars">
+      <div class="star-item">
+        <span class="star">★</span>
+        <span><b>KCl IV direto = parada cardíaca.</b> Sempre diluído, CVC, bomba, máx. 10 mEq/h. Frasco segregado (fita vermelha). Enfermeira deve recusar prescrição inadequada — dever ético e legal.</span>
+      </div>
+      <div class="star-item">
+        <span class="star">★</span>
+        <span><b>Fórmula DVA:</b> Velocidade (mL/h) = [Dose × Peso × 60] ÷ Concentração. Noradrenalina = 1ª escolha choque séptico. Dobutamina = choque cardiogênico. Ambas por CVC.</span>
+      </div>
+      <div class="star-item">
+        <span class="star">★</span>
+        <span><b>HIT = trombose, não sangramento.</b> Queda &gt;50% plaquetas após 5–14 dias de heparina. Suspender TODA heparina + argatroban/fondaparinux. NÃO warfarina imediata. NANDA-I: Proteção ineficaz.</span>
+      </div>
+      <div class="star-item">
+        <span class="star">★</span>
+        <span><b>Insulina em UTI:</b> alvo 140–180 mg/dL (NICE-SUGAR). Hipoglicemia &lt;70: suspender + glicose 50% IV. Morfina: naloxona à beira leito. Todos os fármacos de alto risco exigem dupla checagem.</span>
+      </div>
+    </div>
+    <div class="teste-lbl">Teste-se Sem Olhar</div>
+    <div class="teste-grid">
+      <div class="teste-item"><span class="teste-n">01 —</span><span>Por que o KCl IV direto causa parada cardíaca e qual a velocidade máxima segura em UTI?</span></div>
+      <div class="teste-item"><span class="teste-n">02 —</span><span>Calcule a velocidade (mL/h) para noradrenalina 0,1 mcg/kg/min, paciente 60 kg, concentração 8 mcg/mL.</span></div>
+      <div class="teste-item"><span class="teste-n">03 —</span><span>Quais os três erros clássicos no manejo da HIT e por que a warfarina é contraindicada na fase aguda?</span></div>
+      <div class="teste-item"><span class="teste-n">04 —</span><span>Qual o alvo glicêmico em UTI adulto (NICE-SUGAR) e a conduta na hipoglicemia grave (&lt;40 mg/dL)?</span></div>
+    </div>
+  </div>
+  <div class="pf"><span class="pf-brand">Extensivo ENARE · by Residência PRO</span><span class="pf-num">09</span></div>
+</div>
+
+<!-- P10 REFERÊNCIAS -->
+<div class="page">
+  <div class="ph"><span class="ph-l">Referências · Aula 13</span><span class="ph-r">Extensivo ENARE</span></div>
+  <div class="pc">
+    <div class="ref-tag">Referências — Bloco B4 · Aula 13</div>
+    <div class="ref-list">
+      <div class="ref-item">INSTITUTE FOR SAFE MEDICATION PRACTICES (ISMP). <em>ISMP's List of High-Alert Medications in Acute Care Settings.</em> Horsham: ISMP, 2018.</div>
+      <div class="ref-item">BRASIL. Agência Nacional de Vigilância Sanitária. <em>Boletim de Segurança do Paciente: Medicamentos de Alta Vigilância.</em> Brasília: ANVISA, 2019.</div>
+      <div class="ref-item">NICE-SUGAR STUDY INVESTIGATORS. Intensive versus conventional glucose control in critically ill patients. <em>New England Journal of Medicine,</em> v. 360, n. 13, p. 1283–1297, 2009.</div>
+      <div class="ref-item">WARKENTIN, T.E.; GREINACHER, A. Heparin-induced thrombocytopenia: recognition, treatment, and prevention. <em>Chest,</em> v. 126, Suppl. 3, p. 311S–337S, 2004.</div>
+      <div class="ref-item">RHODES, A. et al. Surviving Sepsis Campaign: International Guidelines for Management of Sepsis and Septic Shock 2016. <em>Critical Care Medicine,</em> v. 45, n. 3, p. 486–552, 2017.</div>
+      <div class="ref-item">HERDMAN, T.H.; KAMITSURU, S.; LOPES, C.T. (Eds.). <em>NANDA International — Diagnósticos de Enfermagem 2024–2026.</em> 13. ed. Porto Alegre: Artmed, 2024.</div>
+    </div>
+    <div class="anotacoes">Espaço para Anotações</div>
+  </div>
+  <div class="pf"><span class="pf-brand">Extensivo ENARE · by Residência PRO</span><span class="pf-num">10</span></div>
+</div>
+
+</body>
+</html>
