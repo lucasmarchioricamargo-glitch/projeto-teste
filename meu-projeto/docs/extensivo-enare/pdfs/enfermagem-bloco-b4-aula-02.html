@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Enfermagem · Bloco B4 · Aula 02 — Extensivo ENARE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Bricolage+Grotesque:wght@400;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --creme:#F6F4ED; --verde-lima:#C6D834; --verde-floresta:#1F5C23;
+      --teal:#0D8A8D; --preto:#070707; --cinza:#9E9B94;
+      --cinza-borda:#DDD9D1; --creme-escuro:#EDEAE2;
+    }
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{background:#CCC;font-family:'Bricolage Grotesque',sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    @page{size:A4;margin:0;}
+    .page{width:210mm;height:297mm;position:relative;overflow:hidden;page-break-after:always;background:var(--creme);display:flex;flex-direction:column;}
+    @media screen{.page{margin:24px auto;box-shadow:0 4px 32px rgba(0,0,0,0.18);}}
+
+    .page-header{height:14mm;background:var(--creme);border-bottom:2px solid var(--teal);display:flex;align-items:center;padding:0 18mm;flex-shrink:0;}
+    .page-header-label{font-family:'Barlow Condensed',sans-serif;font-size:8pt;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--cinza);}
+    .page-header-title{font-family:'Space Grotesk',sans-serif;font-size:7.5pt;font-weight:300;color:var(--cinza);margin-left:auto;}
+    .page-footer{height:10mm;background:var(--creme);border-top:1px solid var(--cinza-borda);display:flex;align-items:center;padding:0 18mm;flex-shrink:0;}
+    .page-footer-brand{font-family:'Space Grotesk',sans-serif;font-size:7pt;font-weight:300;color:var(--cinza);}
+    .page-footer-num{font-family:'Barlow Condensed',sans-serif;font-size:9pt;font-weight:700;color:var(--teal);margin-left:auto;}
+    .page-content{flex:1;padding:10mm 18mm;overflow:hidden;}
+
+    .section-tag{font-family:'Barlow Condensed',sans-serif;font-size:7.5pt;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--teal);margin-bottom:4mm;}
+    .section-rule{width:100%;height:2px;background:var(--teal);margin-bottom:6mm;}
+
+    /* CAPA */
+    .capa{background:var(--teal);width:100%;height:100%;display:flex;flex-direction:column;padding:14mm 16mm 12mm;}
+    .capa-logo-ext{font-family:'Playfair Display',serif;font-style:italic;font-size:10pt;color:var(--verde-lima);letter-spacing:1px;}
+    .capa-logo-enare{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:38pt;color:var(--creme);line-height:0.85;letter-spacing:-1px;}
+    .capa-logo-sub{font-family:'Space Grotesk',sans-serif;font-weight:300;font-size:8.5pt;color:rgba(246,244,237,0.6);margin-top:2mm;}
+    .capa-area{font-family:'Barlow Condensed',sans-serif;font-size:7.5pt;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:rgba(246,244,237,0.55);margin-bottom:2mm;}
+    .capa-codigo{font-family:'Barlow Condensed',sans-serif;font-size:9pt;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--verde-lima);margin-bottom:5mm;}
+    .capa-titulo{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:46pt;color:var(--creme);line-height:0.88;text-transform:uppercase;letter-spacing:-1px;margin-bottom:4mm;}
+    .capa-subtitulo{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:15pt;color:var(--verde-lima);text-transform:uppercase;letter-spacing:1px;line-height:1.2;}
+    .capa-watermark{position:absolute;bottom:12mm;right:12mm;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:110pt;color:rgba(246,244,237,0.08);line-height:1;pointer-events:none;}
+
+    /* OBJETIVOS */
+    .obj-list{list-style:none;display:flex;flex-direction:column;gap:4mm;margin-bottom:6mm;}
+    .obj-item{display:flex;gap:3mm;align-items:flex-start;}
+    .obj-num{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:18pt;color:var(--teal);line-height:1;flex-shrink:0;width:8mm;}
+    .obj-text{font-size:9.5pt;line-height:1.5;color:var(--preto);padding-top:1mm;}
+    .obj-prereq{background:var(--creme-escuro);border-left:3px solid var(--cinza-borda);padding:3mm 4mm;border-radius:0 3px 3px 0;margin-top:4mm;}
+    .obj-prereq-label{font-family:'Barlow Condensed',sans-serif;font-size:7pt;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--cinza);margin-bottom:1mm;}
+    .obj-prereq-text{font-size:8.5pt;color:var(--preto);line-height:1.4;}
+    .meta-row{display:flex;gap:8mm;margin-top:5mm;padding-top:4mm;border-top:1px solid var(--cinza-borda);}
+    .meta-item{display:flex;flex-direction:column;gap:0.5mm;}
+    .meta-label{font-family:'Barlow Condensed',sans-serif;font-size:6.5pt;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--cinza);}
+    .meta-value{font-size:8pt;font-weight:600;color:var(--preto);}
+
+    /* CONTEÚDO */
+    h2{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:17pt;color:var(--teal);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:3mm;line-height:1.1;}
+    h3{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11pt;color:var(--preto);text-transform:uppercase;letter-spacing:1px;margin:4mm 0 2mm;}
+    p{font-size:9pt;line-height:1.55;color:var(--preto);margin-bottom:3mm;}
+
+    table{width:100%;border-collapse:collapse;font-size:8.5pt;margin-bottom:4mm;}
+    th{background:var(--teal);color:var(--creme);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:8pt;letter-spacing:1px;text-transform:uppercase;padding:2.5mm 3mm;text-align:left;}
+    td{padding:2mm 3mm;border-bottom:1px solid var(--cinza-borda);vertical-align:top;line-height:1.4;}
+    tr:nth-child(even) td{background:var(--creme-escuro);}
+    .td-dest{font-weight:600;}
+
+    .box{padding:3.5mm 4mm;border-radius:4px;margin-bottom:4mm;}
+    .box-conceito{background:#e8f4e8;border-left:4px solid var(--verde-floresta);}
+    .box-conceito .box-label{color:var(--verde-floresta);}
+    .box-dica{background:#e5f4f4;border-left:4px solid var(--teal);}
+    .box-dica .box-label{color:var(--teal);}
+    .box-pega{background:#f5f9d4;border-left:4px solid var(--verde-lima);}
+    .box-pega .box-label{color:#7a8a00;}
+    .box-label{font-family:'Barlow Condensed',sans-serif;font-size:7pt;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:1.5mm;display:block;}
+    .box p{font-size:8.5pt;margin-bottom:0;}
+    .box p+p{margin-top:2mm;}
+
+    /* QUESTÕES */
+    .q-header{font-family:'Barlow Condensed',sans-serif;font-size:8pt;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--teal);margin-bottom:3mm;}
+    .q-stem{font-size:9.5pt;line-height:1.6;color:var(--preto);background:var(--creme-escuro);padding:4mm 5mm;border-radius:4px;margin-bottom:4mm;}
+    .q-opts{list-style:none;display:flex;flex-direction:column;gap:2.5mm;margin-bottom:4mm;}
+    .q-opt{display:flex;gap:3mm;align-items:flex-start;padding:2.5mm 3mm;border-radius:3px;border:1px solid var(--cinza-borda);font-size:9pt;line-height:1.45;}
+    .q-opt.correta{background:#e8f4e8;border-color:var(--verde-floresta);font-weight:600;}
+    .opt-letter{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:11pt;color:var(--teal);flex-shrink:0;line-height:1.2;}
+    .q-opt.correta .opt-letter{color:var(--verde-floresta);}
+    .badge-correta{background:var(--verde-floresta);color:var(--creme);font-family:'Barlow Condensed',sans-serif;font-size:6.5pt;font-weight:700;letter-spacing:1.5px;padding:1px 5px;border-radius:2px;margin-left:3mm;vertical-align:middle;text-transform:uppercase;}
+    .gabarito-box{background:var(--creme-escuro);border-top:2px solid var(--teal);padding:3.5mm 4mm;border-radius:0 0 4px 4px;}
+    .gabarito-title{font-family:'Barlow Condensed',sans-serif;font-size:7.5pt;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:2mm;}
+    .gabarito-text{font-size:8pt;line-height:1.55;color:var(--preto);}
+    .distrator{font-size:7.5pt;color:#555;margin-top:1.5mm;line-height:1.4;}
+    .distrator strong{color:var(--preto);}
+
+    /* BUNDLE */
+    .bundle-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5mm;margin-bottom:4mm;}
+    .bundle-card{background:var(--creme-escuro);border:1px solid var(--cinza-borda);border-radius:4px;padding:3mm;}
+    .bundle-card.alta{border-color:var(--teal);background:#e5f4f4;}
+    .bundle-num{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:11pt;color:var(--teal);margin-bottom:1mm;}
+    .bundle-card.alta .bundle-num{color:var(--teal);}
+    .bundle-text{font-size:7.5pt;line-height:1.4;color:var(--preto);}
+
+    /* CHOQUE CHIPS */
+    .choque-grid{display:grid;grid-template-columns:1fr 1fr;gap:3mm;margin-bottom:4mm;}
+    .choque-card{border-radius:4px;padding:3mm 4mm;border:1px solid var(--cinza-borda);}
+    .choque-card.hipo{background:#fff9e6;border-color:#c8a200;}
+    .choque-card.cardio{background:#fce8e8;border-color:#c0392b;}
+    .choque-card.distrib{background:#e5f4f4;border-color:var(--teal);}
+    .choque-card.obstrut{background:#f0e8f5;border-color:#8e44ad;}
+    .choque-titulo{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:10pt;text-transform:uppercase;margin-bottom:1.5mm;}
+    .choque-card.hipo .choque-titulo{color:#c8a200;}
+    .choque-card.cardio .choque-titulo{color:#c0392b;}
+    .choque-card.distrib .choque-titulo{color:var(--teal);}
+    .choque-card.obstrut .choque-titulo{color:#8e44ad;}
+    .choque-text{font-size:7.5pt;line-height:1.45;color:var(--preto);}
+
+    /* RECUPERAÇÃO */
+    .rec-box{background:var(--creme-escuro);border-radius:4px;padding:4mm 5mm;margin-bottom:4mm;}
+    .rec-label{font-family:'Barlow Condensed',sans-serif;font-size:8pt;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:3mm;}
+    .rec-item{display:flex;gap:2.5mm;align-items:flex-start;margin-bottom:2.5mm;font-size:9pt;line-height:1.5;}
+    .rec-star{color:var(--teal);font-weight:800;flex-shrink:0;}
+    .teste-list{list-style:none;display:flex;flex-direction:column;gap:3mm;}
+    .teste-item{font-size:8.5pt;line-height:1.5;padding-left:4mm;border-left:2px solid var(--cinza-borda);color:var(--preto);}
+    .teste-item strong{font-family:'Barlow Condensed',sans-serif;font-size:9pt;color:var(--teal);font-weight:700;letter-spacing:0.5px;}
+
+    /* REFERÊNCIAS */
+    .ref-list{list-style:none;display:flex;flex-direction:column;gap:2mm;}
+    .ref-item{font-size:7.5pt;line-height:1.55;color:var(--preto);padding-left:3mm;border-left:2px solid var(--cinza-borda);}
+    .anot-box{margin-top:5mm;border:1.5px dashed var(--cinza-borda);border-radius:4px;padding:4mm;height:52mm;display:flex;align-items:center;justify-content:center;}
+    .anot-label{font-family:'Barlow Condensed',sans-serif;font-size:8pt;letter-spacing:2px;text-transform:uppercase;color:var(--cinza-borda);}
+
+    /* NEWS */
+    .news-row{display:flex;gap:3mm;margin-bottom:3mm;flex-wrap:wrap;}
+    .news-badge{font-family:'Barlow Condensed',sans-serif;font-size:8.5pt;font-weight:700;padding:1.5mm 3.5mm;border-radius:3px;text-transform:uppercase;letter-spacing:0.5px;}
+    .news-verde{background:#e8f4e8;color:var(--verde-floresta);}
+    .news-amarelo{background:#fff9e6;color:#c8a200;}
+    .news-laranja{background:#fde8d8;color:#d35400;}
+    .news-vermelho{background:#fce8e8;color:#c0392b;}
+  </style>
+</head>
+<body>
+
+<!-- P01 — CAPA -->
+<div class="page" id="p01">
+  <div class="capa">
+    <div style="margin-bottom:auto;">
+      <span class="capa-logo-ext">extensivo</span><br>
+      <span class="capa-logo-enare">ENARE</span><br>
+      <span class="capa-logo-sub">by Residência PRO</span>
+    </div>
+    <div style="padding-bottom:2mm;">
+      <div class="capa-area">Enfermagem · Módulo Específico</div>
+      <div class="capa-codigo">Bloco B4 · Aula 02</div>
+      <div class="capa-titulo">UTI I</div>
+      <div class="capa-subtitulo">Choque, Sépsis<br>e Hemodinâmica</div>
+    </div>
+  </div>
+  <div class="capa-watermark">02</div>
+</div>
+
+<!-- P02 — OBJETIVOS -->
+<div class="page" id="p02">
+  <div class="page-header">
+    <span class="page-header-label">Enfermagem · Bloco B4 · Aula 02</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <div class="section-tag">Objetivos de Aprendizagem</div>
+    <div class="section-rule"></div>
+    <ol class="obj-list">
+      <li class="obj-item">
+        <span class="obj-num">1</span>
+        <span class="obj-text">Classificar os quatro tipos de choque (hipovolêmico, cardiogênico, distributivo e obstrutivo) a partir de achados clínicos como pressão arterial, FC, débito urinário e perfusão periférica, identificando a causa fisiopatológica de cada um.</span>
+      </li>
+      <li class="obj-item">
+        <span class="obj-num">2</span>
+        <span class="obj-text">Aplicar o bundle de tratamento do choque séptico, indicando a sequência correta das intervenções prioritárias do enfermeiro (coleta de hemoculturas, acesso venoso, reposição volêmica, antibioticoterapia) conforme protocolo institucional.</span>
+      </li>
+      <li class="obj-item">
+        <span class="obj-num">3</span>
+        <span class="obj-text">Reconhecer os parâmetros hemodinâmicos de deterioração clínica (PAM, NEWS, PVC, débito urinário) e a atuação autônoma do enfermeiro respaldada pela Resolução COFEN n.º 564/2017 em cenários de instabilidade.</span>
+      </li>
+    </ol>
+    <div class="obj-prereq">
+      <div class="obj-prereq-label">Pré-requisito</div>
+      <div class="obj-prereq-text">Aula 01 — Calibragem B4 (PE + NANDA-I). Conhecimento básico de fisiologia cardiovascular.</div>
+    </div>
+    <div class="meta-row">
+      <div class="meta-item"><span class="meta-label">Bloco</span><span class="meta-value">B4 — Enfermagem</span></div>
+      <div class="meta-item"><span class="meta-label">Aula</span><span class="meta-value">02 de 24</span></div>
+      <div class="meta-item"><span class="meta-label">Tema</span><span class="meta-value">ENF-UTI I</span></div>
+      <div class="meta-item"><span class="meta-label">Nível cognitivo</span><span class="meta-value">M → Ap</span></div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">02</span>
+  </div>
+</div>
+
+<!-- P03 — TIPOS DE CHOQUE -->
+<div class="page" id="p03">
+  <div class="page-header">
+    <span class="page-header-label">Conteúdo Principal · Aula 02</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <h2>Classificação do Choque</h2>
+    <p>Choque é a falência circulatória que resulta em hipoperfusão tecidual — o organismo não entrega oxigênio suficiente às células. Há quatro mecanismos fisiopatológicos distintos.</p>
+
+    <div class="choque-grid">
+      <div class="choque-card hipo">
+        <div class="choque-titulo">Hipovolêmico</div>
+        <div class="choque-text"><strong>Causa:</strong> perda de volume — hemorragia, queimadura, vômito, diarreia, terceiro espaço.<br><br><strong>Achados:</strong> PAM↓, FC↑, pele fria e pálida, TEC↑, veias colabadas, oligúria.<br><br><strong>Intervenção-chave:</strong> reposição volêmica rápida (cristaloide), controle da causa.</div>
+      </div>
+      <div class="choque-card cardio">
+        <div class="choque-titulo">Cardiogênico</div>
+        <div class="choque-text"><strong>Causa:</strong> falha da bomba — IAM extenso, ICC descompensada grave, arritmia grave.<br><br><strong>Achados:</strong> PAM↓, FC↑, B3, estertores bibasais, congestão pulmonar, extremidades frias.<br><br><strong>Intervenção-chave:</strong> suporte inotrópico (dobutamina), monitorização contínua, não sobrecarregar volume.</div>
+      </div>
+      <div class="choque-card distrib">
+        <div class="choque-titulo">Distributivo (Séptico)</div>
+        <div class="choque-text"><strong>Causa:</strong> vasodilatação maciça — sepse/choque séptico, anafilaxia, neurogênico.<br><br><strong>Achados:</strong> PAM↓, FC↑, pele quente e corada (fase inicial), febre, oligúria.<br><br><strong>Intervenção-chave:</strong> reposição volêmica + antibiótico em 1h + vasopressores (norepinefrina) se refratário.</div>
+      </div>
+      <div class="choque-card obstrut">
+        <div class="choque-titulo">Obstrutivo</div>
+        <div class="choque-text"><strong>Causa:</strong> obstrução mecânica ao fluxo — pneumotórax hipertensivo, tamponamento cardíaco, TEP maciço.<br><br><strong>Achados:</strong> PAM↓, FC↑, turgência jugular, desvio de traqueia (pneumo), bulhas abafadas (tamponamento).<br><br><strong>Intervenção-chave:</strong> aliviar obstrução imediatamente (drenagem, pericardiocentese).</div>
+      </div>
+    </div>
+
+    <div class="box box-pega">
+      <span class="box-label">Pegadinha de prova</span>
+      <p>No choque séptico inicial, a pele pode estar <strong>quente e corada</strong> (vasodilatação) — ao contrário do hipovolêmico e cardiogênico. A FGV usa esse dado para testar se o candidato confunde os tipos. Oligúria e PAM baixa estão presentes em todos, mas a perfusão periférica e a temperatura da pele diferenciam.</p>
+    </div>
+
+    <table>
+      <thead><tr><th>Parâmetro</th><th>Hipovolêmico</th><th>Cardiogênico</th><th>Séptico (inicial)</th></tr></thead>
+      <tbody>
+        <tr><td class="td-dest">Pele</td><td>Fria, pálida</td><td>Fria, úmida</td><td>Quente, corada</td></tr>
+        <tr><td class="td-dest">PVC</td><td>Baixa</td><td>Elevada</td><td>Baixa ou normal</td></tr>
+        <tr><td class="td-dest">Débito cardíaco</td><td>Baixo</td><td>Baixo</td><td>Elevado (hiperdinâmico)</td></tr>
+        <tr><td class="td-dest">Febre</td><td>Ausente</td><td>Ausente</td><td>Presente</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">03</span>
+  </div>
+</div>
+
+<!-- P04 — CHOQUE SÉPTICO -->
+<div class="page" id="p04">
+  <div class="page-header">
+    <span class="page-header-label">Conteúdo Principal · Aula 02</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <h2>Choque Séptico — Bundle e Conduta</h2>
+    <p>O choque séptico é a forma mais grave de sepse: hipotensão refratária à reposição volêmica com lactato elevado. A abordagem é cronodependente — cada hora sem antibiótico aumenta a mortalidade.</p>
+
+    <h3>Bundle de 1 hora — Sequência do Enfermeiro</h3>
+    <div class="bundle-grid">
+      <div class="bundle-card alta">
+        <div class="bundle-num">① Coletar</div>
+        <div class="bundle-text">Hemoculturas (2 sítios) <strong>antes</strong> do antibiótico. Não atrasar o ATB esperando resultado.</div>
+      </div>
+      <div class="bundle-card alta">
+        <div class="bundle-num">② Dosar</div>
+        <div class="bundle-text">Lactato arterial. Se &gt; 2 mmol/L → sepse confirmada. Se &gt; 4 → prioridade máxima.</div>
+      </div>
+      <div class="bundle-card alta">
+        <div class="bundle-num">③ Acesso</div>
+        <div class="bundle-text">Acesso venoso periférico calibroso (ou CVC) para reposição volêmica em velocidade adequada.</div>
+      </div>
+      <div class="bundle-card alta">
+        <div class="bundle-num">④ Volemia</div>
+        <div class="bundle-text">Cristaloide isotônico (SF 0,9% ou Ringer Lactato) — 30 mL/kg em 3h. Monitorar resposta.</div>
+      </div>
+      <div class="bundle-card alta">
+        <div class="bundle-num">⑤ ATB</div>
+        <div class="bundle-text">Antibiótico de amplo espectro em até <strong>1 hora</strong> do diagnóstico. Acesso exclusivo — incompatível com vasoativos.</div>
+      </div>
+      <div class="bundle-card alta">
+        <div class="bundle-num">⑥ Vasopressor</div>
+        <div class="bundle-text">Se PAM &lt; 65 após volemia: norepinefrina via CVC. Nunca em acesso periférico fino.</div>
+      </div>
+    </div>
+
+    <div class="box box-conceito">
+      <span class="box-label">Critérios de Choque Séptico</span>
+      <p><strong>Sepse:</strong> disfunção orgânica ameaçadora à vida causada por resposta do hospedeiro a infecção (SOFA ≥ 2). <strong>Choque séptico:</strong> sepse + hipotensão refratária a fluidos + necessidade de vasopressor para manter PAM ≥ 65 + lactato &gt; 2 mmol/L após reposição adequada.</p>
+    </div>
+
+    <div class="box box-pega">
+      <span class="box-label">Compatibilidade medicamentosa — Pegadinha frequente</span>
+      <p>O antibiótico precisa de <strong>acesso exclusivo</strong> — é incompatível com vasoativos (norepinefrina, dopamina) no mesmo lúmen. A FGV cobrou isso diretamente em Q90/2025: o enfermeiro deve solicitar acesso exclusivo para ATB em paciente séptico com vasoativo em curso.</p>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">04</span>
+  </div>
+</div>
+
+<!-- P05 — MONITORIZAÇÃO HEMODINÂMICA + Res. 564/2017 -->
+<div class="page" id="p05">
+  <div class="page-header">
+    <span class="page-header-label">Conteúdo Principal · Aula 02</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <h2>Monitorização Hemodinâmica + Atuação do Enfermeiro</h2>
+
+    <table>
+      <thead><tr><th>Parâmetro</th><th>Valor de referência</th><th>Alerta clínico</th></tr></thead>
+      <tbody>
+        <tr><td class="td-dest">PAM (Pressão Arterial Média)</td><td>70–100 mmHg</td><td>&lt; 65 mmHg → risco de hipoperfusão orgânica; acionar protocolo</td></tr>
+        <tr><td class="td-dest">Débito urinário</td><td>0,5–1 mL/kg/h</td><td>&lt; 0,5 mL/kg/h = oligúria → avaliar volemia e função renal</td></tr>
+        <tr><td class="td-dest">PVC</td><td>5–12 cmH₂O</td><td>&lt; 5 = hipovolemia; &gt; 12 = sobrecarga (cardiogênico/obstrutivo)</td></tr>
+        <tr><td class="td-dest">Lactato arterial</td><td>&lt; 2 mmol/L</td><td>&gt; 2 = hipoperfusão; &gt; 4 = choque grave — risco de morte</td></tr>
+        <tr><td class="td-dest">SpO₂</td><td>≥ 95%</td><td>&lt; 90% = hipóxia — O₂ suplementar imediato</td></tr>
+      </tbody>
+    </table>
+
+    <h3>NEWS Score — Resposta Rápida (Res. COFEN 564/2017)</h3>
+    <p>O NEWS (National Early Warning Score) estratifica o risco de deterioração clínica. A <strong>Res. COFEN 564/2017</strong> fundamenta a atuação autônoma do enfermeiro em situações de deterioração sem prescrição médica imediata — não é violação ética, é cumprimento de protocolo.</p>
+
+    <div class="news-row">
+      <span class="news-badge news-verde">NEWS 0–4 · Baixo risco — monitorar</span>
+      <span class="news-badge news-amarelo">NEWS 5–6 · Médio risco — intensificar vigilância</span>
+    </div>
+    <div class="news-row">
+      <span class="news-badge news-laranja">NEWS 7 · Alto risco — avisar equipe médica</span>
+      <span class="news-badge news-vermelho">NEWS ≥ 8 · Crítico — acionar resposta rápida imediatamente</span>
+    </div>
+
+    <div class="box box-dica">
+      <span class="box-label">O que o enfermeiro faz com NEWS ≥ 8</span>
+      <p><strong>1.</strong> Acionar equipe de resposta rápida. <strong>2.</strong> Monitorização contínua (ECG, SpO₂, PA invasiva se disponível). <strong>3.</strong> Garantir acesso venoso e preparar drogas de emergência. <strong>4.</strong> Posicionar o paciente (Trendelenburg modificado no choque distributivo; cabeceira 30° na falência respiratória). <strong>5.</strong> Registrar todas as ações no prontuário com horário.</p>
+      <p style="margin-top:2mm;">Isso é o padrão cobrado no ENARE: o enfermeiro age <em>protocolado</em>, não passivamente.</p>
+    </div>
+
+    <div class="box box-conceito">
+      <span class="box-label">PAI — Pressão Arterial Invasiva</span>
+      <p>A PAI é a monitorização contínua via cateter arterial. Para garantir acurácia: <strong>reposicionar o transdutor no 4.º espaço intercostal</strong> (linha axilar média), eliminar bolhas de ar no sistema e calibrar (zerar) com a torneira aberta para o ar.</p>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">05</span>
+  </div>
+</div>
+
+<!-- P06 — Q1 -->
+<div class="page" id="p06">
+  <div class="page-header">
+    <span class="page-header-label">Fixação · Aula 02</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <div class="q-header">Questão 01 de 03 · B4 UTI I · Classificação do Choque · Memorização/Compreensão</div>
+    <div class="q-stem">
+      Um paciente de 55 anos, internado em UTI após politrauma abdominal, apresenta pressão arterial de 80/50 mmHg, frequência cardíaca de 128 bpm, extremidades frias e pálidas, tempo de enchimento capilar de 4 segundos e débito urinário de 0,2 mL/kg/h. A pressão venosa central é de 2 cmH₂O. Com base nos achados clínicos e hemodinâmicos, o tipo de choque presente é:
+    </div>
+    <ul class="q-opts">
+      <li class="q-opt">
+        <span class="opt-letter">A</span>
+        Choque cardiogênico — a taquicardia e a hipotensão indicam falência da bomba cardíaca após o trauma.
+      </li>
+      <li class="q-opt correta">
+        <span class="opt-letter">B</span>
+        Choque hipovolêmico — PVC baixa, extremidades frias e pálidas com TEC alargado confirmam perda de volume como mecanismo central. <span class="badge-correta">Correta</span>
+      </li>
+      <li class="q-opt">
+        <span class="opt-letter">C</span>
+        Choque séptico — a febre ausente descarta infecção, mas a vasodilatação distributiva seria o mecanismo principal no politrauma.
+      </li>
+      <li class="q-opt">
+        <span class="opt-letter">D</span>
+        Choque obstrutivo — a diminuição do débito urinário sugere obstrução mecânica ao fluxo circulatório.
+      </li>
+    </ul>
+    <div class="gabarito-box">
+      <div class="gabarito-title">Gabarito Comentado — B</div>
+      <div class="gabarito-text">A tríade PVC baixa + extremidades frias/pálidas + TEC alargado após trauma abdominal aponta inequivocamente para <strong>choque hipovolêmico</strong> — perda de volume (sangue) como mecanismo principal. A intervenção prioritária é reposição volêmica rápida com cristaloide e controle cirúrgico da hemorragia.</div>
+      <div class="distrator"><strong>A —</strong> Incorreta: no cardiogênico, a PVC seria elevada (sobrecarga de câmara direita); não há evidência de cardiopatia. <strong>C —</strong> Incorreta: o choque séptico tem início distributivo (pele quente na fase inicial) e exige foco infeccioso. <strong>D —</strong> Incorreta: o obstrutivo exigiria sinais de tamponamento, pneumotórax ou TEP — não presentes.</div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">06</span>
+  </div>
+</div>
+
+<!-- P07 — Q2 -->
+<div class="page" id="p07">
+  <div class="page-header">
+    <span class="page-header-label">Fixação · Aula 02</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <div class="q-header">Questão 02 de 03 · B4 UTI I · Choque Séptico · Aplicação</div>
+    <div class="q-stem">
+      Paciente feminina, 75 anos, diabética, admitida na UTI com febre de 39,2 °C, frequência cardíaca de 118 bpm, pressão arterial de 84/52 mmHg, débito urinário de 10 mL na última hora e confusão mental de início agudo. Lactato arterial: 3,8 mmol/L. O diagnóstico de choque séptico é confirmado. Qual a sequência de intervenções prioritárias do enfermeiro no primeiro momento da admissão?
+    </div>
+    <ul class="q-opts">
+      <li class="q-opt">
+        <span class="opt-letter">A</span>
+        Iniciar antibiótico imediatamente e aguardar resultado de hemoculturas para ajustar cobertura antes de repor volemia.
+      </li>
+      <li class="q-opt">
+        <span class="opt-letter">B</span>
+        Administrar norepinefrina por acesso periférico para elevar a PAM enquanto aguarda passagem de cateter central.
+      </li>
+      <li class="q-opt correta">
+        <span class="opt-letter">C</span>
+        Coletar hemoculturas de dois sítios, garantir acesso venoso calibroso, iniciar cristaloide 30 mL/kg e administrar antibiótico de amplo espectro em até 1 hora. <span class="badge-correta">Correta</span>
+      </li>
+      <li class="q-opt">
+        <span class="opt-letter">D</span>
+        Aguardar prescrição médica antes de qualquer intervenção, pois as condutas no choque séptico exigem autorização expressa do plantonista.
+      </li>
+    </ul>
+    <div class="gabarito-box">
+      <div class="gabarito-title">Gabarito Comentado — C</div>
+      <div class="gabarito-text">O bundle de 1 hora no choque séptico exige: <strong>(1)</strong> hemoculturas antes do ATB, <strong>(2)</strong> acesso venoso calibroso, <strong>(3)</strong> reposição com cristaloide 30 mL/kg e <strong>(4)</strong> antibiótico de amplo espectro em até 1 hora. A Res. 564/2017 fundamenta que o enfermeiro pode iniciar essas ações com base em protocolo institucional, sem aguardar prescrição médica individual.</div>
+      <div class="distrator"><strong>A —</strong> Incorreta: a hemocultura deve ser colhida antes do ATB, mas a volemia não pode ser atrasada. <strong>B —</strong> Incorreta: norepinefrina em acesso periférico causa necrose por extravasamento — deve ser administrada via CVC. <strong>D —</strong> Incorreta: a Res. 564/2017 ampara o enfermeiro para agir em deterioração clínica conforme protocolo — aguardar passivamente seria negligência.</div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">07</span>
+  </div>
+</div>
+
+<!-- P08 — Q3 ÂNCORA -->
+<div class="page" id="p08">
+  <div class="page-header">
+    <span class="page-header-label">Fixação · Aula 02</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <div class="q-header">Questão 03 de 03 · B4 UTI I · Deterioração Hemodinâmica + Res. 564/2017 · Análise (Âncora)</div>
+    <div class="q-stem">
+      Paciente masculino, 62 anos, internado em UTI coronariana por IAM com Killip III. Recebe dobutamina 5 mcg/kg/min há 6 horas. O enfermeiro plantonista observa: PA 78/45 mmHg (PAM 56), FC 108 bpm, débito urinário de 8 mL na última hora, SpO₂ 91% em cateter de O₂ 4 L/min, estertores bibasais progressivos e o paciente refere piora da dispneia. O NEWS calculado é 9. Com base na Resolução COFEN n.º 564/2017, qual a conduta imediata correta do enfermeiro?
+    </div>
+    <ul class="q-opts">
+      <li class="q-opt">
+        <span class="opt-letter">A</span>
+        Aumentar a dose de dobutamina para 10 mcg/kg/min por iniciativa própria, sem acionar o médico, já que a Res. 564/2017 autoriza ajuste de vasoativos pelo enfermeiro.
+      </li>
+      <li class="q-opt">
+        <span class="opt-letter">B</span>
+        Aguardar piora adicional dos parâmetros antes de acionar a equipe médica, para não interromper desnecessariamente o plantão.
+      </li>
+      <li class="q-opt correta">
+        <span class="opt-letter">C</span>
+        Acionar imediatamente a equipe de resposta rápida, elevar a cabeceira a 30–45°, intensificar a oferta de O₂, garantir acesso venoso pérvio e registrar todos os parâmetros com horário. <span class="badge-correta">Correta</span>
+      </li>
+      <li class="q-opt">
+        <span class="opt-letter">D</span>
+        Suspender a dobutamina e iniciar reposição volêmica com cristaloide 30 mL/kg, pois a PAM baixa indica necessidade de volume.
+      </li>
+    </ul>
+    <div class="gabarito-box">
+      <div class="gabarito-title">Gabarito Comentado — C</div>
+      <div class="gabarito-text">NEWS 9 impõe acionamento imediato da equipe de resposta rápida. A Res. 564/2017 ampara o enfermeiro para agir conforme protocolos sem prescrição individual: elevar cabeceira, otimizar O₂, manter acesso e registrar — ações de suporte e segurança. A <strong>Res. 564</strong> não autoriza ajuste autônomo de vasoativos (opção A) nem indiferença à deterioração (B).</div>
+      <div class="distrator"><strong>A —</strong> Incorreta: ajuste de vasoativo sem prescrição médica ultrapassa a competência autônoma do enfermeiro, mesmo amparado pela Res. 564. <strong>B —</strong> Incorreta: aguardar diante de NEWS 9 e PAM 56 é negligência — há risco imediato de parada cardíaca. <strong>D —</strong> Incorreta: no choque cardiogênico (Killip III), a sobrecarga de volume piora a congestão pulmonar — a reposição indiscriminada está contraindicada.</div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">08</span>
+  </div>
+</div>
+
+<!-- P09 — RECUPERAÇÃO ATIVA -->
+<div class="page" id="p09">
+  <div class="page-header">
+    <span class="page-header-label">Recuperação Ativa · Aula 02</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <div class="section-tag">Se Esquecer Tudo, Lembre Disto</div>
+    <div class="section-rule"></div>
+    <div class="rec-box">
+      <div class="rec-item">
+        <span class="rec-star">★</span>
+        <span>O choque séptico inicial tem pele <strong>quente e corada</strong> (vasodilatação) — ao contrário do hipovolêmico e cardiogênico, que têm pele fria. PVC baixa aponta hipovolemia; PVC elevada, sobrecarga (cardiogênico/obstrutivo).</span>
+      </div>
+      <div class="rec-item">
+        <span class="rec-star">★</span>
+        <span>Bundle séptico em 1 hora: <strong>hemocultura → acesso → cristaloide 30 mL/kg → ATB em até 1h</strong>. ATB em acesso exclusivo — incompatível com vasoativos no mesmo lúmen.</span>
+      </div>
+      <div class="rec-item">
+        <span class="rec-star">★</span>
+        <span>NEWS ≥ 8 → acionar resposta rápida imediatamente. A <strong>Res. 564/2017</strong> ampara o enfermeiro para agir com base em protocolo — não é violação ética, é obrigação profissional.</span>
+      </div>
+    </div>
+
+    <div class="section-tag" style="margin-top:4mm;">Teste-se sem Olhar</div>
+    <div class="section-rule"></div>
+    <ul class="teste-list">
+      <li class="teste-item"><strong>Q1 —</strong> Qual a diferença clínica entre choque hipovolêmico e séptico na avaliação da pele e da PVC?</li>
+      <li class="teste-item"><strong>Q2 —</strong> Por que o antibiótico deve ser administrado em acesso exclusivo no choque séptico? Qual medicamento não pode estar no mesmo lúmen?</li>
+      <li class="teste-item"><strong>Q3 —</strong> Um paciente com choque cardiogênico e NEWS 9 deteriora. Por que reposição de 30 mL/kg de cristaloide é contraindicada neste caso?</li>
+      <li class="teste-item"><strong>Q4 —</strong> Cite três ações que o enfermeiro pode fazer autonomamente com NEWS ≥ 8, respaldado pela Res. 564/2017.</li>
+    </ul>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">09</span>
+  </div>
+</div>
+
+<!-- P10 — REFERÊNCIAS -->
+<div class="page" id="p10">
+  <div class="page-header">
+    <span class="page-header-label">Referências · Aula 02</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <div class="section-tag">Referências — Bloco B4 · Aula 02</div>
+    <div class="section-rule"></div>
+    <ul class="ref-list">
+      <li class="ref-item">BRASIL. Conselho Federal de Enfermagem. <em>Resolução COFEN n.º 564, de 6 de novembro de 2017.</em> Aprova o novo Código de Ética dos Profissionais de Enfermagem. Brasília: COFEN, 2017.</li>
+      <li class="ref-item">SINGER, M. et al. The Third International Consensus Definitions for Sepsis and Septic Shock (Sepsis-3). <em>JAMA</em>, v. 315, n. 8, p. 801–810, 2016.</li>
+      <li class="ref-item">RHODES, A. et al. Surviving Sepsis Campaign: International Guidelines for Management of Sepsis and Septic Shock 2016. <em>Critical Care Medicine</em>, v. 45, n. 3, p. 486–552, 2017.</li>
+      <li class="ref-item">ROYAL COLLEGE OF PHYSICIANS. <em>National Early Warning Score (NEWS) 2: Standardising the assessment of acute-illness severity in the NHS.</em> London: RCP, 2017.</li>
+      <li class="ref-item">MORTON, P.G.; FONTAINE, D.K. <em>Cuidados Críticos de Enfermagem: Uma Abordagem Holística.</em> 10. ed. Rio de Janeiro: Guanabara Koogan, 2013. cap. 14 (Choque) e cap. 22 (Monitorização hemodinâmica).</li>
+      <li class="ref-item">SMELTZER, S.C.; BARE, B.G. <em>Brunner e Suddarth — Tratado de Enfermagem Médico-Cirúrgica.</em> 14. ed. Rio de Janeiro: Guanabara Koogan, 2019. cap. 14 (Manejo do choque).</li>
+      <li class="ref-item">ANVISA. <em>Critérios Diagnósticos de Infecções Relacionadas à Assistência à Saúde.</em> Brasília: Anvisa, 2017. (Sepse relacionada à assistência).</li>
+    </ul>
+    <div class="anot-box">
+      <span class="anot-label">Espaço para anotações</span>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">10</span>
+  </div>
+</div>
+
+</body>
+</html>
