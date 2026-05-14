@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Fisioterapia B6 · Aula 07</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap');
+  @page{size:A4;margin:0;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{-webkit-print-color-adjust:exact;print-color-adjust:exact;font-family:'Bricolage Grotesque',sans-serif;background:#fff;}
+  .page{width:210mm;height:297mm;display:flex;flex-direction:column;overflow:hidden;page-break-after:always;}
+  .ph{height:14mm;flex-shrink:0;display:flex;align-items:center;justify-content:space-between;padding:0 16mm;border-bottom:0.4mm solid #E0DDD6;}
+  .pf{height:9mm;flex-shrink:0;display:flex;align-items:center;justify-content:space-between;padding:0 16mm;border-top:0.4mm solid #E0DDD6;}
+  .pc{flex:1;padding:7mm 16mm 5mm;overflow:hidden;}
+  .pc-sm{flex:1;padding:5mm 16mm 4mm;overflow:hidden;}
+  .ph-left{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:6.5pt;letter-spacing:0.12em;color:#555;text-transform:uppercase;}
+  .ph-right{font-size:6pt;color:#888;}
+  .pf-brand{font-family:'Playfair Display',serif;font-style:italic;font-size:6.5pt;color:#555;}
+  .pf-brand span{font-family:'Space Grotesk',sans-serif;font-weight:300;font-size:6pt;text-transform:uppercase;letter-spacing:0.08em;}
+  .pf-num{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:7pt;color:#0D8A8D;letter-spacing:0.06em;}
+
+  .capa-top{height:14mm;display:flex;align-items:center;padding:0 16mm;border-bottom:0.4mm solid #E0DDD6;}
+  .capa-top-txt{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:6.5pt;letter-spacing:0.12em;color:#555;text-transform:uppercase;}
+  .capa-body{flex:1;display:flex;flex-direction:column;justify-content:flex-end;padding:0 16mm 12mm;}
+  .capa-title{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:54pt;line-height:0.88;color:#070707;text-transform:uppercase;}
+  .capa-sub{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11pt;letter-spacing:0.14em;color:#0D8A8D;text-transform:uppercase;margin-top:5mm;}
+  .capa-desc{font-size:8pt;color:#444;line-height:1.45;margin-top:4mm;max-width:160mm;}
+  .capa-bottom{height:9mm;display:flex;align-items:center;justify-content:space-between;padding:0 16mm;border-top:0.4mm solid #E0DDD6;}
+
+  h1{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:15pt;text-transform:uppercase;letter-spacing:0.04em;color:#070707;border-bottom:0.6mm solid #0D8A8D;padding-bottom:2mm;margin-bottom:4mm;}
+  h2{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:9pt;text-transform:uppercase;letter-spacing:0.1em;color:#0D8A8D;margin:3.5mm 0 1.5mm;}
+  h3{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:7.5pt;text-transform:uppercase;letter-spacing:0.08em;color:#444;margin:2mm 0 0.8mm;}
+  p{font-size:7.8pt;line-height:1.45;color:#1a1a1a;margin-bottom:1.5mm;}
+  ul{padding-left:4mm;margin-bottom:2mm;}
+  li{font-size:7.5pt;line-height:1.4;color:#1a1a1a;margin-bottom:0.8mm;}
+  strong{font-weight:600;}
+  em{font-style:italic;}
+
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:6mm;margin-top:1mm;}
+
+  table{width:100%;border-collapse:collapse;font-size:7.2pt;margin-bottom:3mm;}
+  th{background:#0D8A8D;color:#fff;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:7pt;letter-spacing:0.06em;text-transform:uppercase;padding:2mm 2.5mm;text-align:left;}
+  td{padding:1.8mm 2.5mm;border-bottom:0.3mm solid #E0DDD6;vertical-align:top;line-height:1.35;}
+  tr:nth-child(even) td{background:#F6F4ED;}
+  .td-hl{background:#E8F5F5 !important;font-weight:600;color:#0D8A8D;}
+
+  .box-critico{background:#fff3cd;border-left:3mm solid #e6a817;padding:3mm 4mm;margin:3mm 0;border-radius:0 2mm 2mm 0;font-size:7.5pt;line-height:1.4;}
+  .box-pega{background:#f0fdf0;border-left:3mm solid #C6D834;padding:3mm 4mm;margin:3mm 0;border-radius:0 2mm 2mm 0;font-size:7.5pt;line-height:1.4;}
+  .box-conceito{background:#e8f5f5;border-left:3mm solid #0D8A8D;padding:3mm 4mm;margin:3mm 0;border-radius:0 2mm 2mm 0;font-size:7.5pt;line-height:1.4;}
+
+  .comp-item{display:flex;gap:3mm;margin-bottom:4mm;align-items:flex-start;}
+  .comp-num{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:18pt;color:#0D8A8D;line-height:1;flex-shrink:0;width:8mm;}
+  .comp-body{flex:1;}
+  .comp-title{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:8pt;text-transform:uppercase;letter-spacing:0.08em;color:#070707;margin-bottom:0.8mm;}
+  .comp-desc{font-size:7.5pt;color:#444;line-height:1.4;}
+
+  .questao-header{background:#0D8A8D;color:#fff;padding:2.5mm 4mm;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:7.5pt;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:4mm;}
+  .questao-stem{font-size:8pt;line-height:1.5;color:#1a1a1a;margin-bottom:4mm;}
+  .alt{display:flex;gap:2.5mm;margin-bottom:2.5mm;font-size:7.8pt;line-height:1.4;}
+  .alt-letra{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:9pt;color:#0D8A8D;flex-shrink:0;width:4mm;}
+  .alt-correta{background:#f0fdf0;border-radius:2mm;padding:1.5mm 3mm;margin:-1.5mm -3mm;}
+  .tag-correta{display:inline-block;background:#1F5C23;color:#fff;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:6.5pt;letter-spacing:0.08em;padding:0.5mm 2mm;border-radius:1mm;margin-left:2mm;vertical-align:middle;}
+  .gabarito{margin-top:4mm;padding-top:3mm;border-top:0.3mm solid #E0DDD6;}
+  .gabarito-title{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:7pt;text-transform:uppercase;letter-spacing:0.1em;color:#555;margin-bottom:2mm;}
+  .gabarito-body{font-size:7.5pt;line-height:1.45;color:#1a1a1a;}
+
+  .recap-title{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:40pt;line-height:0.9;color:#070707;text-transform:uppercase;margin-bottom:6mm;}
+  .recap-item{display:flex;gap:3mm;margin-bottom:4mm;align-items:flex-start;}
+  .recap-star{color:#0D8A8D;font-size:10pt;flex-shrink:0;margin-top:0.5mm;}
+  .recap-body{font-size:8pt;line-height:1.45;color:#1a1a1a;}
+  .recap-questions{margin-top:5mm;border-top:0.3mm solid #E0DDD6;padding-top:4mm;}
+  .recap-q-title{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:8pt;text-transform:uppercase;letter-spacing:0.1em;color:#555;margin-bottom:3mm;}
+  .rq{display:flex;gap:3mm;margin-bottom:3mm;}
+  .rq-num{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:9pt;color:#0D8A8D;flex-shrink:0;}
+  .rq-body{font-size:7.8pt;color:#333;line-height:1.4;}
+  .ref-item{font-size:7pt;line-height:1.5;margin-bottom:2mm;color:#333;}
+  .anotacoes{border:0.3mm solid #E0DDD6;border-radius:2mm;padding:4mm;margin-top:4mm;min-height:20mm;color:#bbb;font-size:7pt;font-style:italic;}
+
+  .borg-bar{display:flex;gap:1mm;margin:3mm 0;align-items:stretch;}
+  .borg-cell{flex:1;text-align:center;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:7pt;padding:2mm 0;border-radius:1mm;color:#fff;}
+</style>
+</head>
+<body>
+
+<!-- P01 CAPA -->
+<div class="page" style="background:#F6F4ED;">
+  <div class="capa-top">
+    <span class="capa-top-txt">Extensivo ENARE · Bloco B6 · Fisioterapia</span>
+  </div>
+  <div class="capa-body">
+    <div class="capa-title">REABILITA&shy;ÇÃO<br>CARDÍACA</div>
+    <div class="capa-sub">AHA 2024 · Exercício Pós-IAM · HAS · Síndrome da Imobilidade</div>
+    <div class="capa-desc">Reabilitação cardíaca: 10 componentes AHA 2024, fases e modalidades virtual/presencial (Q71/2025 · Q72/2025 · Q74/2025). Treinamento resistido pós-IAM — 30% 1-RM, 10–15 rep, 2×/semana (Q73/2025). Escala de Borg na prescrição de exercício para coronariopatas (Q97/2024). HAS e exercício — redução de PA sistólica e diastólica (Q94/2024). Síndrome da Imobilidade — efeitos da sedestação (Q30/2024 · Q26/2025).</div>
+  </div>
+  <div class="capa-bottom">
+    <div class="pf-brand"><em>Residência PRO</em> <span>by Elite Treinamentos</span></div>
+    <div class="pf-num">AULA 07 · FT-CARDIO</div>
+  </div>
+</div>
+
+<!-- P02 COMPETÊNCIAS -->
+<div class="page">
+  <div class="ph"><span class="ph-left">Competências · Aula 07</span><span class="ph-right">Extensivo ENARE</span></div>
+  <div class="pc">
+    <h1>O Que Você Vai Dominar</h1>
+
+    <div class="comp-item">
+      <div class="comp-num">01</div>
+      <div class="comp-body">
+        <div class="comp-title">RC AHA — Componentes e Modalidades (Q74/2025 · Q71/2025)</div>
+        <div class="comp-desc">10 componentes AHA 2024: avaliação, nutrição, dislipidemia, HAS, cessação do tabagismo (CO expirado), peso, diabetes, atividade física, exercício, psicossocial. RC virtual indicada para baixo/médio risco com sessões síncronas. A FGV apresenta lista incompleta e pede o componente ausente (NC: An).</div>
+      </div>
+    </div>
+
+    <div class="comp-item">
+      <div class="comp-num">02</div>
+      <div class="comp-body">
+        <div class="comp-title">Resistido Pós-IAM — Parâmetros AHA (Q73/2025)</div>
+        <div class="comp-desc">Treinamento resistido após IAM: início 2–4 semanas pós-evento não complicado. Carga: 30% de 1-RM. Volume: 10–15 repetições por série. Frequência: 2 vezes por semana. A FGV apresenta afirmativas sobre parâmetros e pede identificação do correto (NC: M).</div>
+      </div>
+    </div>
+
+    <div class="comp-item">
+      <div class="comp-num">03</div>
+      <div class="comp-body">
+        <div class="comp-title">Escala de Borg na Prescrição Cardíaca (Q97/2024 · Q75/2025)</div>
+        <div class="comp-desc">Borg 6–20: faixa 11–14 (leve a moderado) = intensidade alvo na RC; correlaciona com 60–80% da FC reserva. Borg 15–18 = vigoroso; 11 = leve. A FGV apresenta cenário de coronariopata e pede a faixa correta de Borg com justificativa (NC: Ap).</div>
+      </div>
+    </div>
+
+    <div class="comp-item">
+      <div class="comp-num">04</div>
+      <div class="comp-body">
+        <div class="comp-title">HAS + Imobilidade — Efeitos do Exercício (Q94/2024 · Q26/2025)</div>
+        <div class="comp-desc">HAS: exercício resistido reduz PA sistólica e diastólica (Q94/2024). Síndrome da Imobilidade: sedestação beira-leito → ↑CRF, ↑oxigenação, ↓trabalho cardíaco, efeitos respiratórios diretos (Q26/2025 · Q30/2024). A FGV cobra o mecanismo fisiológico da posição.</div>
+      </div>
+    </div>
+
+    <div class="box-pega">
+      <strong>Padrão FGV — RC e HAS são temas fixos:</strong> Q71-Q75/2025 = 5 questões consecutivas sobre RC AHA — maior concentração temática registrada. A FGV usa NC variado: M (parâmetros numéricos como 30% 1-RM), Ap (Borg + cenário clínico), An (componente ausente). Memorizar os 10 componentes AHA com foco em cessação do tabagismo (frequentemente omitido nas alternativas).
+    </div>
+  </div>
+  <div class="pf"><div class="pf-brand"><em>Extensivo ENARE</em> · <span>by Residência PRO</span></div><div class="pf-num">02</div></div>
+</div>
+
+<!-- P03 RC COMPONENTES E FASES -->
+<div class="page">
+  <div class="ph"><span class="ph-left">FT-CARDIO · Aula 07</span><span class="ph-right">Extensivo ENARE</span></div>
+  <div class="pc-sm">
+    <h1>Reabilitação Cardíaca — AHA 2024</h1>
+    <div class="cols">
+      <div>
+        <h2>10 Componentes AHA (Q74/2025)</h2>
+        <table>
+          <tr><th>#</th><th>Componente</th></tr>
+          <tr><td>1</td><td>Avaliação do paciente</td></tr>
+          <tr><td>2</td><td>Aconselhamento nutricional</td></tr>
+          <tr><td>3</td><td>Manejo de dislipidemia</td></tr>
+          <tr><td>4</td><td>Controle da hipertensão arterial</td></tr>
+          <tr><td class="td-hl">5</td><td class="td-hl"><strong>Cessação do tabagismo</strong> — CO expirado</td></tr>
+          <tr><td>6</td><td>Controle do peso</td></tr>
+          <tr><td>7</td><td>Manejo do diabetes</td></tr>
+          <tr><td>8</td><td>Aconselhamento de atividade física</td></tr>
+          <tr><td>9</td><td>Treinamento de exercícios</td></tr>
+          <tr><td>10</td><td>Manejo psicossocial</td></tr>
+        </table>
+        <div class="box-pega">
+          <strong>Armadilha Q74/2025:</strong> cessação do tabagismo é o componente mais frequentemente omitido em listas incompletas. Verificação por CO expirado — não apenas autorrelato.
+        </div>
+      </div>
+      <div>
+        <h2>Fases da RC</h2>
+        <table>
+          <tr><th>Fase</th><th>Contexto</th><th>Características</th></tr>
+          <tr><td><strong>I</strong></td><td>Intra-hospitalar</td><td>Mobilização precoce, educação, sentar + deambular supervisionado</td></tr>
+          <tr><td><strong>II</strong></td><td>Ambulatorial supervisionada</td><td>8–12 semanas, ECG contínuo se indicado, exercício estruturado</td></tr>
+          <tr><td><strong>III</strong></td><td>Manutenção</td><td>Exercício não supervisionado, longo prazo, automonitoramento</td></tr>
+        </table>
+
+        <h2>RC Virtual (Q71/2025 · Q72/2025)</h2>
+        <div class="box-conceito">
+          <strong>Indicação por risco:</strong><br>
+          · <strong>Baixo/médio risco:</strong> RC virtual com sessões síncronas em tempo real = alternativa válida<br>
+          · <strong>Alto risco:</strong> RC presencial com monitorização contínua (ECG + PA + SpO₂)<br><br>
+          <strong>Avaliação AHA 2024 (Q72/2025):</strong> monitoramento contínuo de FC, PA e sintomas a cada sessão — independente da modalidade.
+        </div>
+
+        <h2>Indicações de RC (pós-evento)</h2>
+        <ul>
+          <li>IAM — início fase II: 1–2 semanas pós-alta</li>
+          <li>Revascularização (cirurgia ou ICP)</li>
+          <li>Insuficiência cardíaca estável (FEVE &lt;35%: indicação classe I)</li>
+          <li>Doença arterial coronariana estável</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="pf"><div class="pf-brand"><em>Extensivo ENARE</em> · <span>by Residência PRO</span></div><div class="pf-num">03</div></div>
+</div>
+
+<!-- P04 PRESCRIÇÃO DE EXERCÍCIO -->
+<div class="page">
+  <div class="ph"><span class="ph-left">FT-CARDIO · Aula 07</span><span class="ph-right">Extensivo ENARE</span></div>
+  <div class="pc-sm">
+    <h1>Prescrição de Exercício na Reabilitação Cardíaca</h1>
+    <div class="cols">
+      <div>
+        <h2>Treinamento Aeróbico</h2>
+        <table>
+          <tr><th>Parâmetro</th><th>Recomendação AHA</th></tr>
+          <tr><td>Frequência</td><td>3–5 × semana</td></tr>
+          <tr><td>Duração</td><td>30–60 min/sessão</td></tr>
+          <tr><td>Intensidade</td><td>60–80% FC reserva / Borg 11–14</td></tr>
+          <tr><td>Progressão</td><td>Aumento gradual de duração antes de intensidade</td></tr>
+          <tr><td>Modalidade</td><td>Caminhada, esteira, cicloergômetro, natação</td></tr>
+        </table>
+
+        <h2>Escala de Borg — Prescrição (Q97/2024 · Q75/2025)</h2>
+        <div class="borg-bar">
+          <div class="borg-cell" style="background:#6DB33F;flex:2;">6–10<br><span style="font-size:5.5pt;font-weight:400;">Muito leve</span></div>
+          <div class="borg-cell" style="background:#0D8A8D;flex:3;">11–14<br><span style="font-size:5.5pt;font-weight:400;">Alvo RC</span></div>
+          <div class="borg-cell" style="background:#e6a817;flex:2;">15–17<br><span style="font-size:5.5pt;font-weight:400;">Vigoroso</span></div>
+          <div class="borg-cell" style="background:#C0392B;flex:1;">18–20<br><span style="font-size:5.5pt;font-weight:400;">Máx.</span></div>
+        </div>
+        <p style="font-size:7pt;color:#555;">Borg 11 = leve · 13 = um pouco intenso · 15 = intenso · 17 = muito intenso</p>
+
+        <div class="box-conceito">
+          <strong>Por que Borg 11–14 na RC?</strong> Correlaciona com 60–80% da FC reserva — faixa de treino aeróbico moderado, segura para coronariopatas e com benefício cardiovascular comprovado (Q97/2024).
+        </div>
+      </div>
+      <div>
+        <h2>Treinamento Resistido Pós-IAM (Q73/2025)</h2>
+        <table>
+          <tr><th>Parâmetro</th><th>Recomendação AHA</th></tr>
+          <tr><td>Início</td><td>2–4 semanas pós-IAM não complicado</td></tr>
+          <tr><td class="td-hl">Carga</td><td class="td-hl">30% de 1-RM (baixa intensidade)</td></tr>
+          <tr><td class="td-hl">Volume</td><td class="td-hl">10–15 repetições por série</td></tr>
+          <tr><td class="td-hl">Frequência</td><td class="td-hl">2 × semana</td></tr>
+          <tr><td>Borg</td><td>11–14 (leve a moderado)</td></tr>
+          <tr><td>Monitoramento</td><td>PA pré, durante e pós; sintomas; FC</td></tr>
+        </table>
+
+        <div class="box-critico">
+          <strong>Contraindicações ao exercício na RC:</strong><br>
+          · PA &gt; 180/110 mmHg em repouso<br>
+          · Angina instável ou em repouso<br>
+          · Arritmia não controlada<br>
+          · IC descompensada (edema, dispneia em repouso)<br>
+          · Febre ou infecção aguda<br>
+          <em>Suspender sessão: ↓PA &gt;10 mmHg, angina, dispneia intensa, arritmia.</em>
+        </div>
+
+        <h2>Monitorização da Sessão (Q72/2025)</h2>
+        <ul>
+          <li>FC, PA e Borg: antes, durante e ao final</li>
+          <li>SpO₂ se indicado (DPOC, IC com hipoxemia)</li>
+          <li>ECG: alto risco ou história de arritmia</li>
+          <li>Sintomas: dor precordial, palpitações, síncope</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="pf"><div class="pf-brand"><em>Extensivo ENARE</em> · <span>by Residência PRO</span></div><div class="pf-num">04</div></div>
+</div>
+
+<!-- P05 HAS + IMOBILIDADE -->
+<div class="page">
+  <div class="ph"><span class="ph-left">FT-CARDIO · Aula 07</span><span class="ph-right">Extensivo ENARE</span></div>
+  <div class="pc-sm">
+    <h1>HAS e Exercício + Síndrome da Imobilidade</h1>
+    <div class="cols">
+      <div>
+        <h2>HAS — Efeitos do Exercício (Q31/2024 · Q28/2025 · Q94/2024)</h2>
+        <table>
+          <tr><th>Modalidade</th><th>Efeito na PA</th><th>Dose</th></tr>
+          <tr><td><strong>Aeróbico</strong></td><td>↓ PA sistólica 5–8 mmHg<br>↓ PA diastólica 3–5 mmHg</td><td>≥150 min/semana moderado</td></tr>
+          <tr><td><strong>Resistido</strong></td><td class="td-hl">Reduz PA sistólica <em>e</em> diastólica (Q94/2024)</td><td>2–3×/sem, 60–80% 1-RM</td></tr>
+          <tr><td><strong>Isométrico</strong></td><td>Redução modesta (evidência emergente)</td><td>—</td></tr>
+        </table>
+
+        <div class="box-pega">
+          <strong>Erro cobrado (Q94/2024):</strong> exercício resistido NÃO é proibido em hipertensos — reduz PA sistólica <em>e</em> diastólica. A contraindicação é PA &gt;180/110 mmHg antes do exercício.
+        </div>
+
+        <h2>Contraindicações ao Exercício na HAS</h2>
+        <ul>
+          <li>PA sistólica &gt; 180 mmHg em repouso</li>
+          <li>PA diastólica &gt; 110 mmHg em repouso</li>
+          <li>Crise hipertensiva em curso</li>
+          <li>Lesão de órgão-alvo não controlada</li>
+        </ul>
+      </div>
+      <div>
+        <h2>Síndrome da Imobilidade Prolongada (Q30/2024 · Q26/2025)</h2>
+        <p>Imobilidade prolongada no leito → efeitos sistêmicos graves em múltiplos sistemas:</p>
+
+        <h3>Efeitos Respiratórios da Sedestação (Q26/2025)</h3>
+        <div class="box-conceito">
+          Posição ortostática (sentar/em pé) em relação ao decúbito:<br>
+          · <strong>↑ CRF</strong> — diafragma desce, maior expansão pulmonar<br>
+          · <strong>↑ volumes pulmonares</strong> — CV, CPT e VRE aumentam<br>
+          · <strong>↑ oxigenação</strong> — melhora relação V/Q<br>
+          · <strong>↓ trabalho respiratório</strong> — menor compressão abdominal<br>
+          · Facilita drenagem postural de secreções<br>
+          <em>Sedestação beira-leito = primeira mobilização terapêutica.</em>
+        </div>
+
+        <h3>Outros Efeitos da Imobilidade</h3>
+        <table>
+          <tr><th>Sistema</th><th>Consequências</th></tr>
+          <tr><td>Cardiovascular</td><td>↓ débito cardíaco, hipotensão ortostática, TVP</td></tr>
+          <tr><td>Musculoesquelético</td><td>Atrofia (1–5%/dia), contratura, osteoporose</td></tr>
+          <tr><td>Tegumentar</td><td>Lesão por pressão (úlcera de decúbito)</td></tr>
+          <tr><td>Gastrointestinal</td><td>Constipação, íleo paralítico</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="pf"><div class="pf-brand"><em>Extensivo ENARE</em> · <span>by Residência PRO</span></div><div class="pf-num">05</div></div>
+</div>
+
+<!-- P06 Q1 -->
+<div class="page">
+  <div class="ph"><span class="ph-left">Fixação · Aula 07</span><span class="ph-right">Extensivo ENARE</span></div>
+  <div class="pc">
+    <div class="questao-header">Questão 01 de 03 · B6 RC — Resistido Pós-IAM / Memorização</div>
+    <p class="questao-stem">Sobre o treinamento resistido na reabilitação cardíaca de pacientes pós-infarto agudo do miocárdio (IAM), segundo as diretrizes da AHA, assinale a alternativa CORRETA:</p>
+    <div class="alt"><div class="alt-letra">A</div><div>O treinamento resistido deve ser iniciado apenas após 12 semanas do IAM, para garantir a completa cicatrização miocárdica e reduzir o risco de rotura cardíaca.</div></div>
+    <div class="alt"><div class="alt-letra">B</div><div>A carga inicial recomendada é de 60–70% de 1-RM, com 8–10 repetições por série, o que promove maior hipertrofia muscular na fase de reabilitação.</div></div>
+    <div class="alt"><div class="alt-letra">C</div><div class="alt-correta">O treinamento resistido pode ser iniciado 2–4 semanas após IAM não complicado, com carga de 30% de 1-RM, 10–15 repetições por série e frequência de 2 vezes por semana. <span class="tag-correta">CORRETA</span></div></div>
+    <div class="alt"><div class="alt-letra">D</div><div>Exercícios isométricos prolongados são preferidos na fase inicial por gerarem menor elevação de pressão arterial durante a contração muscular.</div></div>
+    <div class="gabarito">
+      <div class="gabarito-title">Gabarito Comentado — C</div>
+      <div class="gabarito-body">A AHA recomenda inicio do resistido 2–4 semanas após IAM não complicado, com baixa carga (30% 1-RM) para minimizar sobrecarga miocárdica. A = 12 semanas é excessivamente conservador — não há respaldo nas diretrizes atuais. B = 60-70% 1-RM é carga moderada-alta, inapropriada na fase inicial. D = exercícios isométricos prolongados geram pico de PA (manobra de Valsalva) e são mais arriscados que o resistido dinâmico de baixa carga.</div>
+    </div>
+  </div>
+  <div class="pf"><div class="pf-brand"><em>Extensivo ENARE</em> · <span>by Residência PRO</span></div><div class="pf-num">06</div></div>
+</div>
+
+<!-- P07 Q2 -->
+<div class="page">
+  <div class="ph"><span class="ph-left">Fixação · Aula 07</span><span class="ph-right">Extensivo ENARE</span></div>
+  <div class="pc">
+    <div class="questao-header">Questão 02 de 03 · B6 Borg na Prescrição Cardíaca / Aplicação</div>
+    <p class="questao-stem">Maria, 62 anos, com doença arterial coronariana estável e fração de ejeção de 52%, inicia programa de reabilitação cardíaca fase II após angioplastia. O fisioterapeuta utiliza a Escala de Borg (6–20) para prescrição de intensidade do exercício aeróbico. Qual é a faixa de esforço percebido considerada adequada para esta paciente e qual é a sua justificativa fisiológica?</p>
+    <div class="alt"><div class="alt-letra">A</div><div>Borg 6–10 (muito leve) — intensidade mínima para não sobrecarregar o miocárdio revasculizado durante as primeiras semanas de treino aeróbico.</div></div>
+    <div class="alt"><div class="alt-letra">B</div><div>Borg 15–18 (vigoroso a muito intenso) — maior intensidade promove adaptações cardiovasculares mais rápidas e reduz o tempo total de reabilitação.</div></div>
+    <div class="alt"><div class="alt-letra">C</div><div class="alt-correta">Borg 11–14 (leve a moderado) — faixa que correlaciona com 60–80% da FC reserva, segura para coronariopatas e com eficácia comprovada em ganho aeróbico e redução de eventos. <span class="tag-correta">CORRETA</span></div></div>
+    <div class="alt"><div class="alt-letra">D</div><div>Borg 19–20 (máximo) — esforço máximo deve ser atingido progressivamente para maximizar a capacidade aeróbica e o retorno às atividades laborais.</div></div>
+    <div class="gabarito">
+      <div class="gabarito-title">Gabarito Comentado — C</div>
+      <div class="gabarito-body">O Borg 11–14 (leve a moderado) é a faixa-alvo na reabilitação cardíaca porque: (1) correlaciona com 60–80% da FC reserva — intensidade ótima para ganho aeróbico com segurança; (2) é reprodutível e não requer equipamentos; (3) evita isquemia miocárdica em coronariopatas. A = Borg 6-10 é subdosagem — sem estímulo cardiovascular suficiente. B = Borg 15-18 pode induzir isquemia em coronariopatas. D = esforço máximo é contraindicado na fase II.</div>
+    </div>
+  </div>
+  <div class="pf"><div class="pf-brand"><em>Extensivo ENARE</em> · <span>by Residência PRO</span></div><div class="pf-num">07</div></div>
+</div>
+
+<!-- P08 Q3 -->
+<div class="page">
+  <div class="ph"><span class="ph-left">Fixação · Aula 07</span><span class="ph-right">Extensivo ENARE</span></div>
+  <div class="pc">
+    <div class="questao-header">Questão 03 de 03 · B6 RC AHA — Componentes e Virtual / Questão-Âncora (An)</div>
+    <p class="questao-stem">Uma equipe de fisioterapia elabora um programa de reabilitação cardíaca e lista os seguintes componentes: avaliação do paciente, aconselhamento nutricional, manejo de dislipidemia, controle da hipertensão arterial, controle do peso, manejo do diabetes, aconselhamento de atividade física, treinamento de exercícios e manejo psicossocial. Analise as afirmativas sobre os componentes da RC segundo a AHA (2024):</p>
+    <p style="font-size:7.5pt;line-height:1.5;margin-bottom:3mm;">I — A cessação do tabagismo, verificada pelo monóxido de carbono expirado (CO), é um componente obrigatório do programa de RC segundo a AHA e foi omitida da lista acima.<br>II — A reabilitação cardíaca virtual com sessões síncronas em tempo real é uma alternativa válida à RC presencial para pacientes de baixo e médio risco cardiovascular.<br>III — O manejo psicossocial não é componente oficial da RC segundo a AHA, pois compete exclusivamente à equipe de psicologia e psiquiatria.<br>IV — O controle do peso e o aconselhamento nutricional são componentes secundários que podem ser omitidos em programas de RC de curta duração sem impacto nos desfechos.</p>
+    <div class="alt"><div class="alt-letra">A</div><div>Apenas I e III.</div></div>
+    <div class="alt"><div class="alt-letra">B</div><div class="alt-correta">Apenas I e II. <span class="tag-correta">CORRETA</span></div></div>
+    <div class="alt"><div class="alt-letra">C</div><div>Apenas II e IV.</div></div>
+    <div class="alt"><div class="alt-letra">D</div><div>Apenas I, II e III.</div></div>
+    <div class="gabarito">
+      <div class="gabarito-title">Gabarito Comentado — B</div>
+      <div class="gabarito-body">I está <strong>CORRETA</strong>: cessação do tabagismo (verificada por CO expirado, não apenas autorrelato) é o 5º componente oficial da AHA — omitido na lista. II está <strong>CORRETA</strong>: RC virtual com sessões síncronas é válida para baixo e médio risco — alto risco exige presencial com monitorização contínua (Q71/2025). III está <strong>ERRADA</strong>: manejo psicossocial É o 10º componente AHA — depressão e ansiedade são altamente prevalentes em cardiopatas e impactam o prognóstico. IV está <strong>ERRADA</strong>: nutrição e controle do peso são componentes primários com impacto em eventos cardiovasculares — não são omissíveis.</div>
+    </div>
+  </div>
+  <div class="pf"><div class="pf-brand"><em>Extensivo ENARE</em> · <span>by Residência PRO</span></div><div class="pf-num">08</div></div>
+</div>
+
+<!-- P09 RECUPERAÇÃO ATIVA -->
+<div class="page">
+  <div class="ph"><span class="ph-left">Recuperação Ativa · Aula 07</span><span class="ph-right">Extensivo ENARE</span></div>
+  <div class="pc">
+    <div class="recap-title">SE ESQUECER<br>TUDO,<br>LEMBRE DISTO</div>
+    <div class="recap-item">
+      <div class="recap-star">★</div>
+      <div class="recap-body"><strong>RC AHA — 10 componentes (Q74/2025):</strong> avaliação · nutrição · dislipidemia · HAS · <strong>cessação do tabagismo (CO)</strong> · peso · diabetes · atividade física · exercício · psicossocial. Cessação do tabagismo = componente frequentemente omitido nas questões.</div>
+    </div>
+    <div class="recap-item">
+      <div class="recap-star">★</div>
+      <div class="recap-body"><strong>Resistido pós-IAM (Q73/2025):</strong> início 2–4 semanas pós-IAM não complicado; carga = 30% 1-RM; 10–15 repetições; 2×/semana; Borg 11–14.</div>
+    </div>
+    <div class="recap-item">
+      <div class="recap-star">★</div>
+      <div class="recap-body"><strong>Borg na RC (Q97/2024 · Q75/2025):</strong> alvo = 11–14 (leve a moderado) = 60–80% FC reserva. Borg 15–18 = vigoroso (evitar em coronariopatas na fase inicial). Borg é válido para prescrição e monitorização (DPOC e RC).</div>
+    </div>
+    <div class="recap-item">
+      <div class="recap-star">★</div>
+      <div class="recap-body"><strong>Exercício resistido na HAS (Q94/2024):</strong> NÃO é contraindicado — reduz PA sistólica e diastólica. Contraindicação = PA &gt;180/110 mmHg em repouso. Aeróbico reduz PA em 5–8 mmHg com 150 min/semana.</div>
+    </div>
+    <div class="recap-item">
+      <div class="recap-star">★</div>
+      <div class="recap-body"><strong>Sedestação na Imobilidade (Q26/2025 · Q30/2024):</strong> posição ortostática → ↑CRF, ↑volumes pulmonares, ↑oxigenação, ↓trabalho respiratório. Sedestação beira-leito = primeira mobilização terapêutica na Síndrome da Imobilidade.</div>
+    </div>
+    <div class="recap-questions">
+      <div class="recap-q-title">Teste-se sem olhar</div>
+      <div class="rq"><div class="rq-num">01</div><div class="rq-body">Cite os 10 componentes da RC AHA. Qual é o mais frequentemente omitido nas questões? Como é verificado?</div></div>
+      <div class="rq"><div class="rq-num">02</div><div class="rq-body">Quais os parâmetros do treinamento resistido pós-IAM? Quando pode ser iniciado?</div></div>
+      <div class="rq"><div class="rq-num">03</div><div class="rq-body">Por que Borg 11–14 é o alvo na RC? Com qual porcentagem de FC reserva se correlaciona?</div></div>
+      <div class="rq"><div class="rq-num">04</div><div class="rq-body">Quais são os efeitos respiratórios da sedestação em relação ao decúbito? O que acontece com a CRF?</div></div>
+    </div>
+  </div>
+  <div class="pf"><div class="pf-brand"><em>Extensivo ENARE</em> · <span>by Residência PRO</span></div><div class="pf-num">09</div></div>
+</div>
+
+<!-- P10 REFERÊNCIAS -->
+<div class="page">
+  <div class="ph"><span class="ph-left">Referências · Aula 07</span><span class="ph-right">Extensivo ENARE</span></div>
+  <div class="pc">
+    <h1>Referências — Bloco B6 · Aula 07</h1>
+    <div class="ref-item">THOMAS, R.J. et al. Home-based cardiac rehabilitation: a scientific statement from the American Heart Association. <em>Circulation</em>, v. 140, n. 1, p. e69–e89, 2019.</div>
+    <div class="ref-item">TAYLOR, R.S. et al. Exercise-based cardiac rehabilitation for coronary heart disease. <em>Cochrane Database of Systematic Reviews</em>, n. 8, 2019.</div>
+    <div class="ref-item">MENEGHELO, R.S. et al. III Diretrizes da Sociedade Brasileira de Cardiologia sobre teste ergométrico. <em>Arquivos Brasileiros de Cardiologia</em>, v. 95, n. 5 (supl. 1), p. 1–26, 2010.</div>
+    <div class="ref-item">PESCATELLO, L.S. et al. ACSM's Guidelines for Exercise Testing and Prescription. 10. ed. Philadelphia: Wolters Kluwer, 2018.</div>
+    <div class="ref-item">BORG, G.A.V. Psychophysical bases of perceived exertion. <em>Medicine and Science in Sports and Exercise</em>, v. 14, n. 5, p. 377–381, 1982.</div>
+    <div class="ref-item">SOCIEDADE BRASILEIRA DE HIPERTENSÃO. 7ª Diretriz Brasileira de Hipertensão Arterial. <em>Arquivos Brasileiros de Cardiologia</em>, v. 107, n. 3, supl. 3, 2016.</div>
+    <div class="ref-item">STILLER, K. Physiotherapy in intensive care: an updated systematic review. <em>Chest</em>, v. 144, n. 3, p. 825–847, 2013.</div>
+    <div class="anotacoes">Espaço para anotações</div>
+  </div>
+  <div class="pf"><div class="pf-brand"><em>Extensivo ENARE</em> · <span>by Residência PRO</span></div><div class="pf-num">10</div></div>
+</div>
+
+</body>
+</html>
