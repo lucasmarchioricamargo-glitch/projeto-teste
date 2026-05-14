@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B9 · Aula 01 — NUT-FARM: Antidiabéticos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { -webkit-print-color-adjust: exact; print-color-adjust: exact; font-family: 'Bricolage Grotesque', sans-serif; background: #ccc; }
+
+  .page { width: 210mm; height: 297mm; display: flex; flex-direction: column; overflow: hidden; page-break-after: always; background: #F6F4ED; }
+
+  .ph { height: 14mm; flex-shrink: 0; display: flex; align-items: center; justify-content: space-between; padding: 0 16mm; border-bottom: 0.4mm solid #E0DDD6; }
+  .ph-label { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 7.5pt; letter-spacing: 0.12em; color: #0D8A8D; text-transform: uppercase; }
+  .ph-right { font-size: 7pt; color: #888; }
+
+  .pf { height: 9mm; flex-shrink: 0; display: flex; align-items: center; justify-content: space-between; padding: 0 16mm; border-top: 0.4mm solid #E0DDD6; }
+  .pf-logo { font-family: 'Playfair Display', serif; font-style: italic; font-size: 7.5pt; color: #0D8A8D; }
+  .pf-logo span { font-family: 'Space Grotesk', sans-serif; font-style: normal; font-weight: 300; font-size: 6.5pt; color: #888; text-transform: uppercase; letter-spacing: 0.08em; }
+  .pf-right { font-size: 7pt; color: #888; }
+  .pf-right strong { color: #0D8A8D; font-weight: 600; }
+
+  .pc { flex: 1; padding: 7mm 16mm 5mm; overflow: hidden; }
+  .pc-sm { flex: 1; padding: 5mm 16mm 4mm; overflow: hidden; }
+  .pc-xs { flex: 1; padding: 4mm 16mm 3mm; overflow: hidden; }
+
+  /* Cover */
+  .cover-eyebrow { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 8pt; letter-spacing: 0.15em; color: #0D8A8D; text-transform: uppercase; margin-bottom: 4mm; }
+  .cover-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 40pt; line-height: 0.93; color: #070707; text-transform: uppercase; margin-bottom: 5mm; }
+  .cover-sub { font-size: 9pt; color: #555; line-height: 1.5; margin-bottom: 6mm; max-width: 150mm; }
+
+  .stats-row { display: flex; gap: 0; margin-bottom: 6mm; }
+  .stat-item { display: flex; align-items: flex-start; gap: 3mm; padding-right: 7mm; border-right: 0.3mm solid #C0BDB6; margin-right: 7mm; }
+  .stat-item:last-child { border-right: none; }
+  .stat-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 28pt; color: #0D8A8D; line-height: 1; }
+  .stat-label { font-size: 7.5pt; color: #666; line-height: 1.3; padding-top: 1mm; }
+
+  .banca-box { border-left: 1.5mm solid #0D8A8D; background: rgba(13,138,141,0.06); padding: 3mm 4mm; border-radius: 0 2mm 2mm 0; }
+  .banca-box-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 8pt; letter-spacing: 0.08em; color: #0D8A8D; text-transform: uppercase; margin-bottom: 1mm; }
+  .banca-box p { font-size: 7.5pt; color: #444; line-height: 1.5; }
+
+  .section-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 15pt; color: #0D8A8D; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 3mm; padding-bottom: 1.2mm; border-bottom: 0.4mm solid #0D8A8D; }
+  .block-sub { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 9pt; color: #070707; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 1.5mm; margin-top: 2.5mm; }
+
+  .two-col { display: flex; gap: 5mm; }
+  .col { flex: 1; }
+  .col-wide { flex: 1.5; }
+
+  ul.dot-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.9mm; }
+  ul.dot-list li { font-size: 7.5pt; color: #333; line-height: 1.38; padding-left: 4mm; position: relative; }
+  ul.dot-list li::before { content: '·'; position: absolute; left: 0; color: #0D8A8D; font-weight: 700; font-size: 10pt; line-height: 1.1; }
+  ul.dot-list li strong { font-weight: 600; color: #070707; }
+  ul.dot-list li em { font-style: normal; color: #0D8A8D; font-weight: 600; }
+
+  /* Context table */
+  .ctx-table { width: 100%; border-collapse: collapse; margin-bottom: 3mm; }
+  .ctx-table th { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 7.5pt; text-transform: uppercase; letter-spacing: 0.05em; background: #070707; color: #F6F4ED; padding: 1.5mm 2.5mm; text-align: left; }
+  .ctx-table th.center { text-align: center; }
+  .ctx-table td { font-size: 7.5pt; color: #333; padding: 1.5mm 2.5mm; border-bottom: 0.2mm solid #E0DDD6; line-height: 1.3; vertical-align: middle; }
+  .ctx-table tr:nth-child(even) td { background: rgba(13,138,141,0.04); }
+  .ctx-table td.center { text-align: center; }
+  .ctx-table td.bold { font-weight: 600; color: #070707; }
+  .ctx-table td.teal { color: #0D8A8D; font-weight: 600; }
+  .ctx-table td.here { background: rgba(13,138,141,0.14) !important; font-weight: 600; color: #070707; }
+  .ctx-table td.here-teal { background: rgba(13,138,141,0.14) !important; font-weight: 600; color: #0D8A8D; }
+  .bar { display: inline-block; height: 3mm; background: #0D8A8D; border-radius: 0.5mm; vertical-align: middle; }
+
+  /* Insulin table */
+  .ins-table { width: 100%; border-collapse: collapse; margin-top: 1mm; }
+  .ins-table th { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 7pt; text-transform: uppercase; letter-spacing: 0.04em; background: #070707; color: #F6F4ED; padding: 1.2mm 2mm; text-align: left; }
+  .ins-table td { font-size: 7pt; color: #333; padding: 1.2mm 2mm; border-bottom: 0.2mm solid #E0DDD6; line-height: 1.3; vertical-align: top; }
+  .ins-table tr:nth-child(even) td { background: rgba(13,138,141,0.04); }
+  .ins-table td strong { font-weight: 600; color: #070707; }
+  .ins-table td em { font-style: normal; color: #0D8A8D; font-weight: 600; }
+  .ins-table td.warn { color: #a01010; font-weight: 600; }
+
+  /* Drug block */
+  .drug-block { border-left: 1.5mm solid #070707; padding: 2mm 3mm; margin-bottom: 2.5mm; background: rgba(255,255,255,0.4); border-radius: 0 1.5mm 1.5mm 0; }
+  .drug-name { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 9pt; color: #070707; text-transform: uppercase; margin-bottom: 0.8mm; }
+  .drug-block ul.dot-list { gap: 0.7mm; }
+
+  /* FGV flag */
+  .fgv-flag { display: inline-block; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 6.5pt; background: #0D8A8D; color: #fff; padding: 0.3mm 2mm; border-radius: 1mm; text-transform: uppercase; letter-spacing: 0.06em; margin-left: 1mm; vertical-align: middle; }
+  .fgv-flag-orange { display: inline-block; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 6.5pt; background: #c06010; color: #fff; padding: 0.3mm 2mm; border-radius: 1mm; text-transform: uppercase; letter-spacing: 0.06em; margin-left: 1mm; vertical-align: middle; }
+
+  /* Questions */
+  .q-badge-row { display: flex; align-items: center; gap: 2.5mm; margin-bottom: 4mm; flex-wrap: wrap; }
+  .q-badge { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 8pt; letter-spacing: 0.08em; text-transform: uppercase; padding: 1mm 3mm; border-radius: 1mm; }
+  .q-badge-nc { background: #070707; color: #F6F4ED; }
+  .q-badge-tema { background: rgba(13,138,141,0.12); color: #0D8A8D; }
+  .q-badge-ancora { background: #0D8A8D; color: #fff; }
+
+  .q-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 11pt; color: #0D8A8D; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 2.5mm; }
+
+  .q-stem { font-size: 8.5pt; color: #222; line-height: 1.55; margin-bottom: 4mm; }
+  .q-stem strong { font-weight: 600; }
+
+  .q-options { display: flex; flex-direction: column; gap: 2mm; margin-bottom: 3mm; }
+  .q-opt { display: flex; gap: 2.5mm; align-items: flex-start; }
+  .q-opt-letter { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 10pt; color: #0D8A8D; min-width: 5mm; line-height: 1.3; }
+  .q-opt-text { font-size: 7.5pt; color: #333; line-height: 1.45; }
+
+  .q-source { font-size: 6.5pt; color: #888; font-style: italic; }
+
+  /* Gabarito page */
+  .gab-block { margin-bottom: 4mm; }
+  .gab-q-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 10pt; color: #070707; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1.5mm; }
+  .gab-q-title span { color: #0D8A8D; }
+  .gabarito-box { background: rgba(13,138,141,0.07); border: 0.3mm solid #0D8A8D; border-radius: 2mm; padding: 2.5mm 4mm; }
+  .gabarito-box p { font-size: 7.5pt; color: #333; line-height: 1.5; margin-bottom: 1mm; }
+  .gabarito-box p:last-child { margin-bottom: 0; }
+  .gabarito-box p strong { font-weight: 700; }
+  .correct { color: #1F5C23; font-weight: 700; }
+  .wrong { color: #777; }
+
+  /* References */
+  .ref-list { display: flex; flex-direction: column; gap: 1.5mm; }
+  .ref-item { font-size: 7pt; color: #444; line-height: 1.4; }
+  .ref-item em { font-style: italic; }
+
+  /* Synthesis box */
+  .synth-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5mm; margin-bottom: 4mm; }
+  .synth-card { background: #fff; border-radius: 2mm; padding: 2.5mm 3mm; border-top: 1.5mm solid #0D8A8D; }
+  .synth-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 8pt; color: #070707; text-transform: uppercase; margin-bottom: 1mm; }
+  .synth-card p { font-size: 7pt; color: #555; line-height: 1.35; }
+  .synth-card p strong { color: #070707; font-weight: 600; }
+  .synth-card p em { color: #0D8A8D; font-style: normal; font-weight: 600; }
+</style>
+</head>
+<body>
+
+<!-- ========== PAGE 1 — CAPA ========== -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label">Bloco B9 · Nutrição · Aula 01</span>
+  </div>
+  <div class="pc">
+    <div class="cover-eyebrow">Bloco B9 · NUT-FARM · Aula 01 de ~35</div>
+    <div class="cover-title">NUT-FARM:<br>Antidiabéticos</div>
+    <div class="cover-sub">Interações nutriente-fármaco em antidiabéticos · Insulinas (tipos, cinética, hipoglicemia) · Metformina e deficiência de B12 · GLP-1 agonistas e orientação alimentar · Acarbose e fermentação colônica</div>
+
+    <div class="stats-row">
+      <div class="stat-item">
+        <div class="stat-num">13</div>
+        <div class="stat-label">Questões NUT-FARM<br>no ENARE 2025</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">+1200%</div>
+        <div class="stat-label">vs. 2024<br>(1 questão apenas)</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">An/Ap</div>
+        <div class="stat-label">Nível cognitivo<br>predominante</div>
+      </div>
+    </div>
+
+    <div class="banca-box">
+      <div class="banca-box-title">Sinal mais crítico do ENARE 2025:</div>
+      <p>NUT-FARM passou de <strong>1 questão</strong> (2024) para <strong>13 questões</strong> (2025) — o maior salto de qualquer tema entre todas as especialidades analisadas. Em 2024, havia apenas uma questão sobre dieta restrita em iodo. Em 2025, a FGV cobriu antidiabéticos, anticoagulantes, anti-hipertensivos, fármacos para obesidade, neurológico, diuréticos e IBP — todos em nível Ap ou An. A projeção para 2026 é de <strong>10 a 15 questões</strong>. NUT-FARM é a prioridade número um deste bloco.</p>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pf-logo">Residência PRO <span>· by Residência Pro</span></div>
+    <div class="pf-right"><strong>Extensivo ENARE 2026</strong><br>Nutrição · Convidado</div>
+  </div>
+</div>
+
+<!-- ========== PAGE 2 — NUT-FARM CONTEXTUALIZAÇÃO ========== -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label">NUT-FARM · Contextualização · B9 Aula 01</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc-sm">
+    <div class="section-title">NUT-FARM — O Maior Movimento do ENARE 2025</div>
+
+    <div class="banca-box" style="margin-bottom:3mm;">
+      <div class="banca-box-title">Por que a FGV expandiu tanto NUT-FARM?</div>
+      <p>A residência multiprofissional exige que o nutricionista participe dos rounds de UTI com <strong>contribuição real sobre farmacoterapia</strong>. A FGV sinalizou que não basta conhecer nutrição clínica isolada — é preciso entender como fármacos impactam o estado nutricional, a absorção de nutrientes e o metabolismo. As questões de 2025 exigem mecanismos (enzimas, transportadores, receptores) e decisões clínicas integradas nutrição-farmácia. Não há memorização simples — todas são Ap ou An.</p>
+    </div>
+
+    <table class="ctx-table" style="margin-bottom:2.5mm;">
+      <thead>
+        <tr>
+          <th>Subgrupo NUT-FARM</th>
+          <th>Aulas B9</th>
+          <th class="center">Questões 2025</th>
+          <th>Foco principal</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="here bold">Antidiabéticos</td>
+          <td class="here">A01 ← esta aula</td>
+          <td class="here-teal center">Q85, Q89, Q98</td>
+          <td class="here">Insulinas · GLP-1 · Acarbose · Metformina-B12</td>
+        </tr>
+        <tr>
+          <td class="bold">Fármacos obesidade</td>
+          <td>A02</td>
+          <td class="teal center">Q39, Q59, Q90</td>
+          <td>Anfepramona · Sibutramina · Termogênicos</td>
+        </tr>
+        <tr>
+          <td class="bold">Anticoagulantes</td>
+          <td>A03</td>
+          <td class="teal center">Q83</td>
+          <td>Varfarina + vitamina K · Alimentos contraindicados</td>
+        </tr>
+        <tr>
+          <td class="bold">Anti-hipertensivos</td>
+          <td>A04</td>
+          <td class="teal center">Q91, Q93</td>
+          <td>IECA + potássio · Furosemida + eletrólitos</td>
+        </tr>
+        <tr>
+          <td class="bold">Neurológico/Psiquiátrico</td>
+          <td>A05</td>
+          <td class="teal center">Q84, Q92</td>
+          <td>Levodopa + proteínas · IMAOs + tiramina</td>
+        </tr>
+        <tr>
+          <td class="bold">Gastroenterologia</td>
+          <td>A06</td>
+          <td class="teal center">Q99, Q100</td>
+          <td>IBP + ferro/B12/magnésio · Omeprazol</td>
+        </tr>
+        <tr>
+          <td>Oncológico/Imunossupressor</td>
+          <td>A07</td>
+          <td class="center">—</td>
+          <td>Metotrexato + folato · Ciclosporina + toranja</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="banca-box">
+      <div class="banca-box-title">Formato das questões NUT-FARM (padrão 2025):</div>
+      <p>Casos clínicos com múltiplas variáveis: o candidato recebe um paciente em uso de um fármaco + alteração nutricional e deve identificar o mecanismo de interação e a conduta. Exemplo: "paciente usa IECA + come banana → hipercalemia — o que orientar?". O nível An predomina — não basta saber o nome da interação; é preciso entender por que ela ocorre.</p>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pf-logo">Extensivo ENARE <span>· by Residência Pro</span></div>
+    <div class="pf-right">2</div>
+  </div>
+</div>
+
+<!-- ========== PAGE 3 — INSULINAS ========== -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label">Insulinas · NUT-FARM · B9 Aula 01</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc-sm">
+    <div class="section-title">Insulinas — Tipos, Cinética e Interações Alimentares</div>
+
+    <table class="ins-table" style="margin-bottom:3.5mm;">
+      <thead>
+        <tr>
+          <th>Tipo</th>
+          <th>Exemplos</th>
+          <th>Início</th>
+          <th>Pico</th>
+          <th>Duração</th>
+          <th>Ponto crítico NUT-FARM</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Ultrarrápida</strong></td>
+          <td>Lispro · Aspart · Glulisina</td>
+          <td>10–15 min</td>
+          <td>1–2 h</td>
+          <td>3–5 h</td>
+          <td>Aplicar imediatamente antes da refeição; refeição NÃO pode ser adiada</td>
+        </tr>
+        <tr>
+          <td><strong>Rápida (regular)</strong></td>
+          <td>Insulina regular humana</td>
+          <td>30–60 min</td>
+          <td>2–4 h</td>
+          <td>6–8 h</td>
+          <td>Aplicar 30 min antes da refeição; consistência no horário das refeições</td>
+        </tr>
+        <tr>
+          <td><strong>Intermediária (NPH)</strong></td>
+          <td>NPH</td>
+          <td>1–2 h</td>
+          <td>4–8 h</td>
+          <td>12–18 h</td>
+          <td class="warn">Hipoglicemia noturna — pico entre 4–8h pode coincidir com madrugada; lanche noturno com CHO complexo reduz risco <span class="fgv-flag">FGV Q94</span></td>
+        </tr>
+        <tr>
+          <td><strong>Longa duração</strong></td>
+          <td>Glargina · Detemir · Degludeca</td>
+          <td>1–2 h</td>
+          <td>Sem pico</td>
+          <td>24–42 h</td>
+          <td>Menor risco de hipoglicemia noturna; horário fixo de aplicação; sem necessidade de lanche</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="two-col">
+      <div class="col">
+        <div class="block-sub">Interações alimentares — Insulinas</div>
+        <ul class="dot-list">
+          <li><strong>Álcool:</strong> inibe gliconeogênese hepática → potencializa hipoglicemia; contraindicado em uso de insulina ou sulfonilureia</li>
+          <li><strong>Fracionamento:</strong> 5–6 refeições/dia com CHO complexos distribui a carga glicêmica e estabiliza a ação das insulinas de ação intermediária</li>
+          <li><strong>Hipoglicemia leve (≥70 mg/dL sintomática):</strong> 15 g de CHO de alto IG (suco, gel de glicose, açúcar); reavalie em 15 min — regra 15/15</li>
+          <li><strong>Refeição atrasada:</strong> com insulina rápida → risco de hipoglicemia entre a aplicação e o alimento; orientar horário fixo</li>
+          <li><strong>Fibras solúveis:</strong> reduzem pico glicêmico pós-prandial; complementares à insulinoterapia</li>
+        </ul>
+      </div>
+      <div class="col">
+        <div class="block-sub">Pontos FGV para insulinas <span class="fgv-flag">2025</span></div>
+        <ul class="dot-list">
+          <li><strong>DM1 + NPH:</strong> hipoglicemia noturna = efeito pico às 4–8h; solução = lanche noturno ou trocar por glargina</li>
+          <li><strong>DM2 + insulina ultrarrápida:</strong> refeição NÃO pode ser omitida após aplicação — risco hipoglicemia grave</li>
+          <li><strong>Regra prática:</strong> "insulina ultrarrápida → refeição imediata; rápida → refeição 30 min; NPH → lanche noturno"</li>
+          <li><strong>Glargina:</strong> não tem pico → pode ser aplicada em qualquer horário fixo do dia; menor variabilidade glicêmica</li>
+          <li><strong>Orientação familiar:</strong> sempre ter CHO de resgate (suco, gel) disponível para hipoglicemia; ensinar reconhecimento dos sintomas (tremor, sudorese, confusão)</li>
+        </ul>
+
+        <div class="banca-box" style="margin-top:2.5mm;">
+          <div class="banca-box-title">Distrator clássico — Insulina NPH:</div>
+          <p>A FGV coloca o pico da NPH (4–8h) como o mecanismo da hipoglicemia noturna. O distrator é "trocar a dose" — a conduta nutricional correta é orientar <strong>lanche noturno com CHO complexo</strong> (aveia, pão integral) para cobrir o pico da NPH durante o sono.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pf-logo">Extensivo ENARE <span>· by Residência Pro</span></div>
+    <div class="pf-right">3</div>
+  </div>
+</div>
+
+<!-- ========== PAGE 4 — METFORMINA · SULFONILUREIAS · SGLT-2 ========== -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label">Metformina · Sulfonilureias · SGLT-2 · NUT-FARM · B9 Aula 01</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc-sm">
+    <div class="section-title">Antidiabéticos Orais I — Metformina · Sulfonilureias · SGLT-2</div>
+
+    <div class="two-col">
+      <div class="col">
+        <div class="drug-block">
+          <div class="drug-name">Metformina <span class="fgv-flag">Q85 2025</span></div>
+          <ul class="dot-list">
+            <li><strong>Classe:</strong> biguanida — ↓produção hepática de glicose (inibe complexo I mitocondrial via AMPK)</li>
+            <li><strong>Vantagem:</strong> não causa hipoglicemia isoladamente; favorece leve ↓peso</li>
+            <li><strong>Interação nutricional crítica:</strong> inibe o cotransportador ileal Ca²⁺-dependente do complexo B12-fator intrínseco → ↓absorção de <em>vitamina B12</em> em 20–30% dos usuários</li>
+            <li><strong>Manifestações da deficiência B12:</strong> macrocitose, anemia megaloblástica, neuropatia periférica (formigamento, fraqueza), risco aumentado com uso ≥4 anos</li>
+            <li><strong>Conduta:</strong> monitorar B12 sérica a cada 1–2 anos; suplementar se &lt;200 pg/mL; dieta rica em cobalamina (carnes, ovos, laticínios) como suporte</li>
+            <li><strong>GI:</strong> náusea, diarreia (especialmente no início) → tomar com alimentos para reduzir intolerância</li>
+          </ul>
+        </div>
+
+        <div class="banca-box" style="margin-top:1.5mm;">
+          <div class="banca-box-title">Ponto FGV — Metformina:</div>
+          <p>Macrocitose + paresthesias em DM2 crônico em metformina = <strong>deficiência de B12</strong>. A FGV quer que o candidato identifique o mecanismo (inibição do cotransportador ileal) e a conduta (monitorar + suplementar B12). Não confundir com anemia ferropriva (que seria microcítica).</p>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="drug-block">
+          <div class="drug-name">Sulfonilureias</div>
+          <ul class="dot-list">
+            <li><strong>Exemplos:</strong> glibenclamida, glicazida MR, glimepirida</li>
+            <li><strong>Mecanismo:</strong> estimulam secreção pancreática de insulina independentemente da glicemia → principal risco: <em>hipoglicemia</em></li>
+            <li><strong>Hipoglicemia noturna:</strong> glicazida MR tem menor risco (ação mais seletiva); glibenclamida tem maior risco</li>
+            <li><strong>Álcool:</strong> potencializa fortemente a hipoglicemia — consumo mesmo moderado é de alto risco</li>
+            <li><strong>Conduta nutricional:</strong> fracionamento rigoroso, não pular refeições, lanche noturno preventivo, álcool contraindicado</li>
+          </ul>
+        </div>
+
+        <div class="drug-block" style="margin-top:1mm;">
+          <div class="drug-name">SGLT-2 (gliflozinas) <span class="fgv-flag">Q85 2025</span></div>
+          <ul class="dot-list">
+            <li><strong>Exemplos:</strong> dapagliflozina, empagliflozina, canagliflozina</li>
+            <li><strong>Mecanismo:</strong> inibem reabsorção renal de glicose → glicosúria (eliminação de ~70 g glicose/dia na urina)</li>
+            <li><strong>Efeitos adversos com impacto nutricional:</strong> infecções genitais (ITU, candidíase) por glicosúria; <em>poliúria</em> → risco desidratação; ↓peso</li>
+            <li><strong>Risco de cetoacidose euglicêmica:</strong> dieta muito restrita em CHO (&lt;50 g/dia) pode precipitar CAD mesmo com glicemia normal — orientar manutenção mínima de CHO</li>
+            <li><strong>Ponto FGV:</strong> dapagliflozina pode causar hipoglicemia apenas se combinada com sulfonilureia ou insulina — sozinha, NÃO causa hipoglicemia</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pf-logo">Extensivo ENARE <span>· by Residência Pro</span></div>
+    <div class="pf-right">4</div>
+  </div>
+</div>
+
+<!-- ========== PAGE 5 — GLP-1 AGONISTAS · ACARBOSE ========== -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label">GLP-1 Agonistas · Acarbose · NUT-FARM · B9 Aula 01</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc-sm">
+    <div class="section-title">Antidiabéticos Orais II — GLP-1 Agonistas · Acarbose</div>
+
+    <div class="two-col">
+      <div class="col">
+        <div class="drug-block">
+          <div class="drug-name">GLP-1 Agonistas (Incretinomiméticos) <span class="fgv-flag">Q89 2025</span></div>
+          <ul class="dot-list">
+            <li><strong>Exemplos:</strong> liraglutida, semaglutida, dulaglutida, exenatida</li>
+            <li><strong>Mecanismo:</strong> mimetizam GLP-1 endógeno → ↑secreção insulina glicose-dependente · ↓glucagon · <em>↓esvaziamento gástrico</em> · ↑saciedade hipotalâmica</li>
+            <li><strong>Efeito sobre esvaziamento gástrico:</strong> retardo significativo → pico pós-prandial menor, mas também maior distensão e náusea</li>
+            <li><strong>Efeitos GI:</strong> náusea, vômitos, diarreia — especialmente nas primeiras semanas de uso e com escalonamento de dose</li>
+          </ul>
+
+          <div class="block-sub" style="margin-top:1.5mm;">Orientação nutricional GLP-1 <span class="fgv-flag">Q89 2025</span></div>
+          <ul class="dot-list">
+            <li><em>Fracionar refeições:</em> 5–6 porções menores/dia; porções grandes agravam a náusea</li>
+            <li><em>Evitar alimentos gordurosos:</em> gordura já retarda o esvaziamento → piora sintomas</li>
+            <li><em>Comer devagar e mastigar bem:</em> reduz distensão e náusea</li>
+            <li><em>Hidratação entre refeições</em> — não durante, para não agravar o volume gástrico</li>
+            <li><em>Não pular refeições:</em> hipoglicemia pode ocorrer com insulina ou sulfonilureia concomitante</li>
+            <li><strong>Ponto FGV:</strong> a náusea por GLP-1 NÃO é motivo para suspender o fármaco — é esperada e manejável com orientação nutricional adequada</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="drug-block">
+          <div class="drug-name">Acarbose <span class="fgv-flag">Q98 2025</span></div>
+          <ul class="dot-list">
+            <li><strong>Classe:</strong> inibidor de alfa-glicosidase intestinal (bordo em escova)</li>
+            <li><strong>Mecanismo:</strong> inibe a digestão de carboidratos complexos (sacarose, amido, maltose) no intestino delgado → CHO não digeridos chegam ao cólon</li>
+            <li><strong>Consequência colônica:</strong> microbiota fermenta os CHO → H₂ + CO₂ + ácidos graxos de cadeia curta → <em>flatulência intensa, distensão abdominal, diarreia</em></li>
+            <li><strong>Sangramento nas fezes:</strong> fermentação e irritação mecânica da mucosa colônica podem causar <em>estrias de sangue nas fezes</em> — NÃO é hemorragia digestiva grave; é irritação local</li>
+            <li><strong>Ponto FGV (Q98/2025):</strong> candidato deve identificar fermentação colônica como mecanismo — não úlcera, não varizes, não deficiência de vitamina K</li>
+          </ul>
+
+          <div class="block-sub" style="margin-top:1.5mm;">Conduta nutricional — Acarbose</div>
+          <ul class="dot-list">
+            <li><em>Reduzir CHO fermentáveis:</em> oligossacarídeos (cebola, alho, leguminosas), FOS, amido resistente — esses chegam mais ao cólon</li>
+            <li><em>Introdução gradual de dose</em> — efeitos GI diminuem com a adaptação da microbiota ao longo de 4–8 semanas</li>
+            <li>Contraindicada em DII ativa (colite ulcerativa, Crohn em atividade)</li>
+            <li><strong>Hipoglicemia com acarbose:</strong> tratar com glicose pura (dextrose) — acarbose bloqueia a digestão de sacarose; uso de suco ou açúcar de mesa é ineficaz</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pf-logo">Extensivo ENARE <span>· by Residência Pro</span></div>
+    <div class="pf-right">5</div>
+  </div>
+</div>
+
+<!-- ========== PAGE 6 — QUESTÃO 01 ========== -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label">Questão 01 · NUT-FARM · B9 Aula 01</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc">
+    <div class="q-num">Questão 01</div>
+    <div class="q-badge-row">
+      <span class="q-badge q-badge-nc">Ap — Aplicação</span>
+      <span class="q-badge q-badge-tema">NUT-FARM · Metformina · Interação com Vitamina B12</span>
+    </div>
+
+    <div class="q-stem">
+      Paciente de 65 anos, portador de DM2 há 8 anos, em uso contínuo de metformina 2000 mg/dia. Em consulta de rotina, relata cansaço progressivo, formigamento nas extremidades e fraqueza muscular há 4 meses. O hemograma revela macrocitose sem anemia franca; dosagem de vitamina B12 sérica: 182 pg/mL (valor de referência: 200–900 pg/mL). Outras causas de deficiência foram descartadas. Qual conduta nutricional o nutricionista deve incluir <strong>prioritariamente</strong> no plano de cuidados desse paciente?
+    </div>
+
+    <div class="q-options">
+      <div class="q-opt">
+        <span class="q-opt-letter">A)</span>
+        <span class="q-opt-text">Aumentar a ingestão de carboidratos complexos e reduzir o índice glicêmico da dieta para melhorar o controle glicêmico e diminuir a demanda pelo fármaco.</span>
+      </div>
+      <div class="q-opt">
+        <span class="q-opt-letter">B)</span>
+        <span class="q-opt-text">Monitorar regularmente a cobalamina sérica e orientar suplementação de vitamina B12, pois a metformina inibe o cotransportador ileal Ca²⁺-dependente do complexo B12-fator intrínseco, reduzindo sua absorção intestinal.</span>
+      </div>
+      <div class="q-opt">
+        <span class="q-opt-letter">C)</span>
+        <span class="q-opt-text">Prescrever suplementação de ferro e orientar dieta rica em ferro heme para corrigir a anemia microcítica observada no hemograma e os sintomas neurológicos associados.</span>
+      </div>
+      <div class="q-opt">
+        <span class="q-opt-letter">D)</span>
+        <span class="q-opt-text">Orientar dieta hipossódica estrita e restrição de potássio, visto que a metformina provoca retenção hídrica e desequilíbrio eletrolítico em uso prolongado.</span>
+      </div>
+      <div class="q-opt">
+        <span class="q-opt-letter">E)</span>
+        <span class="q-opt-text">Aumentar a ingestão de vitamina D e cálcio, pois o DM2 de longa duração reduz a síntese cutânea de vitamina D e favorece desmineralização óssea, causando os sintomas referidos.</span>
+      </div>
+    </div>
+
+    <div class="q-source">Padrão NUT-FARM · ENARE 2025 (nível Ap) · Referência: Diretriz SBD 2023; revisão sistemática Aroda et al., Ann Intern Med 2016</div>
+  </div>
+  <div class="pf">
+    <div class="pf-logo">Extensivo ENARE <span>· by Residência Pro</span></div>
+    <div class="pf-right">6</div>
+  </div>
+</div>
+
+<!-- ========== PAGE 7 — QUESTÃO 02 ========== -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label">Questão 02 · NUT-FARM · B9 Aula 01</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc">
+    <div class="q-num">Questão 02</div>
+    <div class="q-badge-row">
+      <span class="q-badge q-badge-nc">Ap — Aplicação</span>
+      <span class="q-badge q-badge-tema">NUT-FARM · GLP-1 Agonistas · Orientação Alimentar</span>
+    </div>
+
+    <div class="q-stem">
+      Mulher de 48 anos, DM2 e obesidade grau II (IMC 38 kg/m²), inicia liraglutida 1,2 mg/dia com escalonamento previsto para 1,8 mg/dia após 4 semanas. Na segunda semana de uso, relata náuseas intensas e vômitos após as refeições principais, com dificuldade de manter a ingestão alimentar adequada. A glicemia de jejum está controlada. O nutricionista é acionado para orientação. Qual medida nutricional deve ser <strong>priorizada</strong> nesse momento?
+    </div>
+
+    <div class="q-options">
+      <div class="q-opt">
+        <span class="q-opt-letter">A)</span>
+        <span class="q-opt-text">Orientar refeições hiperlipídicas para retardar ainda mais o esvaziamento gástrico e reduzir a absorção do fármaco, atenuando os efeitos colaterais sistêmicos.</span>
+      </div>
+      <div class="q-opt">
+        <span class="q-opt-letter">B)</span>
+        <span class="q-opt-text">Reduzir o número de refeições para duas ao dia (almoço e jantar), em volumes maiores, para minimizar o estímulo ao esvaziamento gástrico e diminuir as náuseas.</span>
+      </div>
+      <div class="q-opt">
+        <span class="q-opt-letter">C)</span>
+        <span class="q-opt-text">Fracionar as refeições em 5 a 6 porções menores ao longo do dia, evitar alimentos gordurosos, ingerir líquidos entre as refeições e comer devagar, pois os GLP-1 agonistas retardam o esvaziamento gástrico.</span>
+      </div>
+      <div class="q-opt">
+        <span class="q-opt-letter">D)</span>
+        <span class="q-opt-text">Suspender a alimentação por via oral durante as primeiras 24 horas após cada injeção e manter hidratação exclusiva com soluções de eletrólitos para permitir adaptação gástrica.</span>
+      </div>
+      <div class="q-opt">
+        <span class="q-opt-letter">E)</span>
+        <span class="q-opt-text">Aumentar a ingestão de fibras insolúveis e proteínas para acelerar o trânsito intestinal e compensar o retardo do esvaziamento gástrico induzido pelo fármaco.</span>
+      </div>
+    </div>
+
+    <div class="q-source">Padrão NUT-FARM · ENARE 2025 (nível Ap) · Base: Q89/2025 — mecanismo GLP-1 agonistas; Diretriz SBD DM2 2023</div>
+  </div>
+  <div class="pf">
+    <div class="pf-logo">Extensivo ENARE <span>· by Residência Pro</span></div>
+    <div class="pf-right">7</div>
+  </div>
+</div>
+
+<!-- ========== PAGE 8 — QUESTÃO 03-ÂNCORA ========== -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label">Questão 03 — Âncora · NUT-FARM · B9 Aula 01</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc">
+    <div class="q-num">Questão 03 — Âncora</div>
+    <div class="q-badge-row">
+      <span class="q-badge q-badge-ancora">An — Análise</span>
+      <span class="q-badge q-badge-tema">NUT-FARM · Acarbose · Mecanismo de Fermentação Colônica</span>
+    </div>
+
+    <div class="q-stem">
+      Homem de 58 anos, DM2, em uso de acarbose 100 mg três vezes ao dia há três meses. Há quatro semanas, relata flatulência excessiva, distensão abdominal intensa e episódios de fezes pastosas com estrias de sangue. Nega uso de anti-inflamatórios não esteroidais ou aspirina. Colonoscopia prévia (há 2 anos) sem alterações. Sobre o <strong>mecanismo fisiopatológico</strong> e a <strong>conduta nutricional</strong> mais adequada para esse caso, é CORRETO afirmar:
+    </div>
+
+    <div class="q-options">
+      <div class="q-opt">
+        <span class="q-opt-letter">A)</span>
+        <span class="q-opt-text">O sangramento é causado por úlcera péptica induzida pela acarbose, que inibe a síntese de prostaglandinas protetoras da mucosa gástrica; o fármaco deve ser suspenso e substituído por metformina imediatamente.</span>
+      </div>
+      <div class="q-opt">
+        <span class="q-opt-letter">B)</span>
+        <span class="q-opt-text">A acarbose inibe a absorção de vitaminas lipossolúveis no intestino delgado, resultando em deficiência de vitamina K, coagulopatia e sangramento; conduta: suplementação intramuscular de vitamina K.</span>
+      </div>
+      <div class="q-opt">
+        <span class="q-opt-letter">C)</span>
+        <span class="q-opt-text">A inibição da alfa-glicosidase impede a digestão de carboidratos complexos no intestino delgado; estes chegam ao cólon e são fermentados pela microbiota, gerando gases e irritação da mucosa — as estrias de sangue decorrem dessa irritação local e não representam hemorragia grave; conduta: reduzir carboidratos fermentáveis e introduzir a dose gradualmente.</span>
+      </div>
+      <div class="q-opt">
+        <span class="q-opt-letter">D)</span>
+        <span class="q-opt-text">O quadro é causado por varizes esofágicas associadas a lesão hepática induzida pela acarbose; a conduta nutricional é dieta hipoproteica e restrição rigorosa de sódio.</span>
+      </div>
+      <div class="q-opt">
+        <span class="q-opt-letter">E)</span>
+        <span class="q-opt-text">A acarbose provoca colite isquêmica por mecanismo vasoconstritor direto na mucosa colônica; conduta: suspensão imediata do fármaco e hidratação venosa intensiva.</span>
+      </div>
+    </div>
+
+    <div class="q-source">Padrão NUT-FARM · Nível An · Base: Q98/2025 FGV/EBSERH — acarbose, inibição alfa-glicosidase, fermentação colônica</div>
+  </div>
+  <div class="pf">
+    <div class="pf-logo">Extensivo ENARE <span>· by Residência Pro</span></div>
+    <div class="pf-right">8</div>
+  </div>
+</div>
+
+<!-- ========== PAGE 9 — GABARITO E DISCUSSÃO ========== -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label">Gabarito · NUT-FARM · B9 Aula 01</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc-sm">
+    <div class="section-title">Gabarito e Discussão</div>
+
+    <div class="gab-block">
+      <div class="gab-q-title">Q01 — Gabarito: <span>B</span></div>
+      <div class="gabarito-box">
+        <p><span class="correct">B — CORRETA:</span> A metformina inibe o cotransportador ileal Ca²⁺-dependente responsável pela absorção do complexo vitamina B12-fator intrínseco. Esse mecanismo reduz a absorção de cobalamina em 20–30% dos usuários crônicos. O quadro de macrocitose + sintomas neurológicos (formigamento, fraqueza) é clássico de <strong>deficiência de B12</strong>. Conduta: monitorar B12 sérica a cada 1–2 anos e suplementar quando &lt;200 pg/mL (Diretriz SBD 2023).</p>
+        <p class="wrong">C) Anemia microcítica = deficiência de ferro; o enunciado mostra macrocitose — padrão oposto. A) e D) Metformina não causa retenção hídrica (isso é das tiazolidinedionas) nem exige restrição de potássio. E) Vitamina D é relevante no DM, mas não explica macrocitose nem neuropatia periférica.</p>
+      </div>
+    </div>
+
+    <div class="gab-block">
+      <div class="gab-q-title">Q02 — Gabarito: <span>C</span></div>
+      <div class="gabarito-box">
+        <p><span class="correct">C — CORRETA:</span> GLP-1 agonistas retardam o esvaziamento gástrico como parte do mecanismo sacietogênico — isso explica as náuseas e vômitos, especialmente no início e com escalonamento de dose. A conduta padrão é <strong>fracionar as refeições (5–6/dia)</strong>, porções menores, <strong>evitar gordurosos</strong> (que já retardam o esvaziamento e agravam os sintomas), ingerir líquidos entre (não durante) as refeições e comer devagar. Essa abordagem maneja os sintomas sem necessidade de suspender o fármaco.</p>
+        <p class="wrong">A) Alimentos gordurosos pioram o retardo gástrico — contraindicado. B) Refeições maiores e menos frequentes pioram a distensão. D) Suspender VO é conduta invasiva desnecessária para efeito colateral esperado e transitório. E) Fibras insolúveis não atuam sobre náusea por GLP-1; podem até agravar a distensão.</p>
+      </div>
+    </div>
+
+    <div class="gab-block">
+      <div class="gab-q-title">Q03 — Gabarito: <span>C</span></div>
+      <div class="gabarito-box">
+        <p><span class="correct">C — CORRETA:</span> A acarbose inibe as alfa-glicosidases do bordo em escova intestinal → carboidratos complexos (amido, sacarose, maltose) chegam não digeridos ao cólon → microbiota os fermenta → produção de H₂, CO₂ e ácidos graxos de cadeia curta → flatulência, distensão, diarreia e irritação da mucosa colônica. As estrias de sangue decorrem dessa irritação local e <strong>não representam hemorragia digestiva grave</strong>. Conduta: reduzir CHO fermentáveis (oligossacarídeos, FOS, amido resistente), introdução gradual da dose.</p>
+        <p class="wrong">A) Mecanismo de úlcera por AINEs (inibição de COX/prostaglandinas) — acarbose não tem esse mecanismo. B) Acarbose atua na borda em escova intestinal sem impacto relevante em vitaminas lipossolúveis. D) Varizes esofágicas não têm relação com acarbose; o dano hepático por acarbose é raro e não causa varizes. E) Colite isquêmica não é mecanismo da acarbose — não há ação vasomotora.</p>
+      </div>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pf-logo">Extensivo ENARE <span>· by Residência Pro</span></div>
+    <div class="pf-right">9</div>
+  </div>
+</div>
+
+<!-- ========== PAGE 10 — SÍNTESE E REFERÊNCIAS ========== -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label">Síntese · Referências · B9 Aula 01</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc-sm">
+    <div class="section-title">Síntese — NUT-FARM: Antidiabéticos</div>
+
+    <div class="synth-grid" style="margin-bottom:3.5mm;">
+      <div class="synth-card">
+        <div class="synth-title">Insulina NPH</div>
+        <p>Pico em <em>4–8h</em> → hipoglicemia noturna. Conduta: <strong>lanche noturno com CHO complexo</strong> (aveia, pão integral) ou trocar por glargina. Distrator: "reduzir dose" — não é conduta nutricional.</p>
+      </div>
+      <div class="synth-card">
+        <div class="synth-title">Metformina + B12</div>
+        <p>Inibe cotransportador ileal Ca²⁺-dependente → <em>↓absorção B12</em> em 20–30%. Macrocitose + neuropatia = deficiência de B12. Monitorar B12 a cada 1–2 anos; suplementar.</p>
+      </div>
+      <div class="synth-card">
+        <div class="synth-title">GLP-1 Agonistas</div>
+        <p>Retardam esvaziamento gástrico → náusea/vômito. Conduta: <em>fracionar refeições, evitar gordurosos, comer devagar</em>. Náusea é esperada e transitória — NÃO é motivo para suspender o fármaco.</p>
+      </div>
+      <div class="synth-card">
+        <div class="synth-title">Acarbose</div>
+        <p>Fermentação colônica de CHO não digeridos → gases, distensão, estrias de sangue (<em>não hemorragia grave</em>). Hipoglicemia: tratar com <strong>glicose pura</strong> — sacarose bloqueada. Reduzir CHO fermentáveis.</p>
+      </div>
+    </div>
+
+    <div class="banca-box" style="margin-bottom:3mm;">
+      <div class="banca-box-title">Regra de ouro NUT-FARM para a prova:</div>
+      <p>A FGV sempre descreve o <strong>mecanismo</strong> e pede a <strong>conduta nutricional</strong> — nunca pede apenas o nome da interação. Para acertar: (1) identifique o fármaco; (2) reconheça o nutriente afetado e o mecanismo; (3) escolha a conduta que resolve o problema nutricional sem suspender o tratamento farmacológico. Em antidiabéticos: B12 (metformina) · lanche noturno (NPH) · fracionar+evitar gordurosos (GLP-1) · glicose pura para hipoglicemia (acarbose).</p>
+    </div>
+
+    <div class="section-title" style="margin-top:1mm;">Referências</div>
+    <div class="ref-list">
+      <div class="ref-item">SOCIEDADE BRASILEIRA DE DIABETES. <em>Diretrizes da Sociedade Brasileira de Diabetes 2023</em>. São Paulo: SBD, 2023.</div>
+      <div class="ref-item">ARODA, V.R. et al. Long-term metformin use and vitamin B12 deficiency in the Diabetes Prevention Program Outcomes Study. <em>J Clin Endocrinol Metab</em>, v. 101, n. 4, p. 1754–1761, 2016.</div>
+      <div class="ref-item">DRUCKER, D.J. The biology of incretin hormones. <em>Cell Metabolism</em>, v. 3, n. 3, p. 153–165, 2006.</div>
+      <div class="ref-item">AMERICAN DIABETES ASSOCIATION. Standards of Medical Care in Diabetes — 2025. <em>Diabetes Care</em>, v. 48 (Suppl 1), 2025.</div>
+      <div class="ref-item">CHIASSON, J.L. et al. Acarbose for prevention of type 2 diabetes mellitus. <em>Lancet</em>, v. 359, n. 9323, p. 2072–2077, 2002.</div>
+      <div class="ref-item">CONSELHO FEDERAL DE NUTRICIONISTAS. <em>Resolução CFN nº 600/2018</em>. Brasília: CFN, 2018.</div>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pf-logo">Extensivo ENARE <span>· by Residência Pro</span></div>
+    <div class="pf-right">10</div>
+  </div>
+</div>
+
+</body>
+</html>
