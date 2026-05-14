@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B9 · Nutrição · Aula 18 — NUT-BIOC: Metabolismo Energético, Beta-oxidação e Lipoproteínas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Bricolage+Grotesque:wght@300;400;500;600;700&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { -webkit-print-color-adjust: exact; print-color-adjust: exact; font-family: 'Bricolage Grotesque', sans-serif; background: #888; }
+
+  .page { width: 210mm; height: 297mm; display: flex; flex-direction: column; overflow: hidden; page-break-after: always; background: #F6F4ED; }
+
+  .ph { height: 14mm; flex-shrink: 0; display: flex; align-items: center; justify-content: space-between; padding: 0 16mm; border-bottom: 0.4mm solid #E0DDD6; }
+  .ph-logo { display: flex; align-items: center; gap: 2.5mm; }
+  .ph-logo-text { display: flex; flex-direction: column; line-height: 1.1; }
+  .ph-logo-text span:first-child { font-family: 'Playfair Display', serif; font-style: italic; font-size: 8pt; color: #1F5C23; }
+  .ph-logo-text span:last-child { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 6pt; color: #888; letter-spacing: 0.03em; }
+  .ph-center { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 7.5pt; letter-spacing: 0.12em; color: #555; text-transform: uppercase; }
+  .ph-right { font-size: 7pt; color: #888; font-weight: 400; }
+
+  .pf { height: 9mm; flex-shrink: 0; display: flex; align-items: center; justify-content: space-between; padding: 0 16mm; border-top: 0.4mm solid #E0DDD6; }
+  .pf span { font-size: 6.5pt; color: #AAA; }
+
+  .pc { flex: 1; padding: 7mm 16mm 5mm; overflow: hidden; }
+  .pc-sm { flex: 1; padding: 5mm 16mm 4mm; overflow: hidden; }
+
+  .cover-band { background: #1F5C23; margin: 0 -16mm; padding: 9mm 16mm 8mm; }
+  .cover-eyebrow { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 7.5pt; letter-spacing: 0.14em; color: #C6D834; text-transform: uppercase; margin-bottom: 3mm; }
+  .cover-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 24pt; line-height: 1.0; color: #F6F4ED; text-transform: uppercase; margin-bottom: 2mm; }
+  .cover-sub { font-size: 8pt; color: #A8C9A8; font-weight: 400; }
+
+  .cover-highlights { display: flex; gap: 4mm; margin-top: 7mm; }
+  .cover-hl { flex: 1; background: #fff; border: 0.3mm solid #E0DDD6; border-radius: 2mm; padding: 4mm 5mm; }
+  .cover-hl-val { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 15pt; color: #1F5C23; line-height: 1.0; }
+  .cover-hl-label { font-size: 7pt; color: #555; margin-top: 1mm; line-height: 1.3; }
+
+  .cover-anchors { background: #1F5C23; margin: 0 -16mm; padding: 4mm 16mm; margin-top: 5mm; }
+  .cover-anchors-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 7pt; letter-spacing: 0.1em; color: #C6D834; text-transform: uppercase; margin-bottom: 2.5mm; }
+  .cover-anchor-row { display: flex; flex-wrap: wrap; gap: 2mm 6mm; }
+  .cover-anchor-item { font-size: 7pt; color: #F6F4ED; }
+  .cover-anchor-item strong { color: #C6D834; }
+
+  .cover-tags { display: flex; gap: 2.5mm; margin-top: 5mm; align-items: center; }
+  .tag { display: inline-block; padding: 1.5mm 3.5mm; border-radius: 1mm; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 7.5pt; letter-spacing: 0.08em; text-transform: uppercase; }
+  .tag-primary { background: #1F5C23; color: #F6F4ED; }
+  .tag-level { background: #C6D834; color: #1F5C23; }
+  .tag-freq { background: #F6F4ED; color: #1F5C23; border: 0.3mm solid #1F5C23; }
+  .tag-sep { font-size: 7pt; color: #AAA; }
+
+  .sec-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 13pt; color: #1F5C23; letter-spacing: 0.04em; text-transform: uppercase; padding-bottom: 2mm; border-bottom: 0.5mm solid #1F5C23; margin-bottom: 4mm; }
+  .sec-title-sm { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 11.5pt; color: #1F5C23; letter-spacing: 0.04em; text-transform: uppercase; padding-bottom: 1.5mm; border-bottom: 0.5mm solid #1F5C23; margin-bottom: 3mm; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 7.5pt; }
+  th { background: #1F5C23; color: #F6F4ED; font-weight: 600; padding: 2.5mm 3mm; text-align: left; font-size: 7pt; letter-spacing: 0.04em; }
+  td { padding: 2mm 3mm; border-bottom: 0.3mm solid #E0DDD6; vertical-align: top; line-height: 1.35; }
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) td { background: rgba(31,92,35,0.04); }
+  .td-bold { font-weight: 600; color: #1F5C23; }
+  .td-green { color: #1F5C23; font-weight: 600; }
+  .td-warn { color: #B85C00; font-weight: 600; }
+
+  .card-grid { display: grid; gap: 3.5mm; }
+  .card-grid-2 { grid-template-columns: 1fr 1fr; }
+  .card-grid-3 { grid-template-columns: 1fr 1fr 1fr; }
+
+  .card { background: #fff; border: 0.3mm solid #E0DDD6; border-radius: 2mm; padding: 4mm 4.5mm; }
+  .card-green { background: rgba(31,92,35,0.07); border-color: #1F5C23; }
+  .card-warn { background: #FFF8F0; border: 0.3mm solid #E8A050; }
+  .card-alert { background: #FFF0F0; border: 0.3mm solid #D06060; }
+  .card-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 8.5pt; color: #1F5C23; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 2mm; }
+  .card-title-warn { color: #B85C00; }
+  .card-title-alert { color: #C04040; }
+  .card-body { font-size: 7.5pt; line-height: 1.45; color: #333; }
+
+  .hl { color: #1F5C23; font-weight: 600; }
+  .hl-warn { color: #B85C00; font-weight: 600; }
+  .hl-alert { color: #C04040; font-weight: 600; }
+
+  ul.blist { list-style: none; padding: 0; }
+  ul.blist li { padding: 1mm 0 1mm 4mm; font-size: 7.5pt; line-height: 1.4; color: #333; position: relative; }
+  ul.blist li::before { content: '·'; position: absolute; left: 0; color: #1F5C23; font-weight: 700; }
+
+  .q-header { display: flex; align-items: center; gap: 3mm; margin-bottom: 5mm; }
+  .q-num { width: 14mm; height: 14mm; background: #1F5C23; border-radius: 1.5mm; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .q-num span { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 18pt; color: #F6F4ED; }
+  .q-meta { display: flex; flex-direction: column; gap: 1mm; }
+  .q-meta-top { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 8.5pt; color: #1F5C23; letter-spacing: 0.08em; text-transform: uppercase; }
+  .q-meta-sub { font-size: 7pt; color: #888; }
+  .q-level-badge { margin-left: auto; width: 9mm; height: 9mm; border-radius: 50%; background: #C6D834; display: flex; align-items: center; justify-content: center; font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; color: #1F5C23; }
+  .q-level-badge-an { background: #1F5C23; color: #F6F4ED; }
+
+  .q-stem { background: #fff; border: 0.3mm solid #E0DDD6; border-radius: 2mm; padding: 4mm 5mm; font-size: 8pt; line-height: 1.5; color: #222; margin-bottom: 4mm; }
+
+  .q-options { display: flex; flex-direction: column; gap: 2mm; margin-bottom: 4mm; }
+  .q-opt { display: flex; gap: 3mm; padding: 2.5mm 4mm; border-radius: 1.5mm; font-size: 7.5pt; line-height: 1.4; color: #333; border: 0.3mm solid #E0DDD6; background: #fff; }
+  .q-opt-letter { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; color: #1F5C23; flex-shrink: 0; width: 3mm; }
+  .q-opt.correct { background: rgba(31,92,35,0.10); border-color: #1F5C23; }
+  .q-opt.correct .q-opt-letter { color: #1F5C23; }
+
+  .q-rationale { background: #F6F4ED; border-left: 1mm solid #1F5C23; padding: 3mm 4mm; font-size: 7pt; line-height: 1.5; color: #444; }
+  .q-rationale strong { color: #1F5C23; }
+
+  .q-aff { display: flex; flex-direction: column; gap: 2mm; margin-bottom: 4mm; }
+  .q-aff-item { display: flex; gap: 3mm; padding: 2.5mm 4mm; border-radius: 1.5mm; font-size: 7.5pt; line-height: 1.4; color: #333; border: 0.3mm solid #E0DDD6; background: #fff; }
+  .q-aff-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; color: #555; flex-shrink: 0; width: 3.5mm; }
+  .q-aff-item.correta { background: rgba(31,92,35,0.08); border-color: #1F5C23; }
+  .q-aff-item.errada { background: rgba(200,60,60,0.06); border-color: #D06060; }
+  .q-aff-item.correta .q-aff-num { color: #1F5C23; }
+  .q-aff-item.errada .q-aff-num { color: #C04040; }
+
+  .gab-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 4mm; margin-bottom: 5mm; }
+  .gab-card { background: #1F5C23; border-radius: 2mm; padding: 5mm; text-align: center; }
+  .gab-label { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 8pt; letter-spacing: 0.1em; color: #C6D834; text-transform: uppercase; margin-bottom: 2mm; }
+  .gab-letter { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 42pt; color: #F6F4ED; line-height: 1.0; }
+  .gab-desc { font-size: 7pt; color: #A8C9A8; margin-top: 1.5mm; line-height: 1.3; }
+
+  .distrator-table table { font-size: 7.5pt; }
+  .distrator-table th { font-size: 7pt; }
+
+  .sintese-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5mm; }
+  .sintese-card { background: #fff; border: 0.3mm solid #E0DDD6; border-radius: 2mm; padding: 3.5mm 4mm; }
+  .sintese-card-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 8pt; color: #1F5C23; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 2mm; padding-bottom: 1.5mm; border-bottom: 0.3mm solid #E0DDD6; }
+
+  .mapa-box { background: rgba(31,92,35,0.08); border: 0.4mm solid #1F5C23; border-radius: 2mm; padding: 3.5mm 4.5mm; margin-bottom: 4mm; }
+  .mapa-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 7.5pt; color: #1F5C23; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 2mm; }
+  .mapa-body { font-size: 7.5pt; line-height: 1.5; color: #333; }
+
+  .refs { margin-top: 3mm; }
+  .refs-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 7.5pt; color: #888; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 2mm; }
+  .refs ul { list-style: none; padding: 0; }
+  .refs li { font-size: 6.5pt; color: #888; padding: 0.8mm 0 0.8mm 3.5mm; position: relative; line-height: 1.3; }
+  .refs li::before { content: '·'; position: absolute; left: 0; color: #1F5C23; }
+
+  .logo-svg { width: 8mm; height: 8mm; }
+</style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- PAGE 1 — CAPA -->
+<!-- ============================================================ -->
+<div class="page">
+  <div class="ph">
+    <div class="ph-logo">
+      <svg class="logo-svg" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="32" height="32" rx="6" fill="#1F5C23"/>
+        <path d="M16 6 L26 12 L26 20 L16 26 L6 20 L6 12 Z" fill="none" stroke="#C6D834" stroke-width="2"/>
+        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
+      </svg>
+      <div class="ph-logo-text">
+        <span>Extensivo ENARE</span>
+        <span>2026</span>
+      </div>
+    </div>
+    <div class="ph-center">Bloco B9 · Nutrição</div>
+    <div class="ph-right">PDF de Apoio · Aula 18</div>
+  </div>
+
+  <div class="pc">
+    <div class="cover-band">
+      <div class="cover-eyebrow">NUT-BIOC · Bioquímica e Fisiologia</div>
+      <div class="cover-title">METABOLISMO<br>ENERGÉTICO,<br>BETA-OXIDAÇÃO<br>E LIPOPROTEÍNAS</div>
+      <div class="cover-sub">Aula 18 de ~35 · Bloco B9</div>
+    </div>
+
+    <div class="cover-highlights">
+      <div class="cover-hl">
+        <div class="cover-hl-val">Piruvato</div>
+        <div class="cover-hl-label">nó central entre glicólise,<br>gliconeogênese e ciclo de Krebs</div>
+      </div>
+      <div class="cover-hl">
+        <div class="cover-hl-val">Carnitina</div>
+        <div class="cover-hl-label">transportador obrigatório de AGCL<br>para a mitocôndria (beta-oxidação)</div>
+      </div>
+      <div class="cover-hl">
+        <div class="cover-hl-val">LDL ox.</div>
+        <div class="cover-hl-label">captado por macrófagos →<br>células espumosas → aterosclerose</div>
+      </div>
+    </div>
+
+    <div class="cover-anchors">
+      <div class="cover-anchors-title">Questões-âncora da Banca FGV</div>
+      <div class="cover-anchor-row">
+        <div class="cover-anchor-item"><strong>2025 Q64</strong> · Glicólise aeróbica, gliconeogênese, piruvato (An)</div>
+        <div class="cover-anchor-item"><strong>2025 Q65</strong> · Glicólise e gliconeogênese — conceitos bioquímicos (An)</div>
+        <div class="cover-anchor-item"><strong>2025 Q68</strong> · Exercício aeróbico — ATP, glicogenólise, GLP-1, lipólise (C)</div>
+        <div class="cover-anchor-item"><strong>2025 Q69</strong> · Beta-oxidação ácidos graxos — jejum, exercício, demanda energética (C)</div>
+        <div class="cover-anchor-item"><strong>2025 Q95</strong> · Lipoproteínas — LDL, HDL, quilomícrons, VLDL, aterogênese (C)</div>
+      </div>
+    </div>
+
+    <div class="cover-tags">
+      <span class="tag tag-primary">NUT-BIOC</span>
+      <span class="tag tag-level">C · AN</span>
+      <span class="tag tag-freq">Frequência Crescente FGV</span>
+      <span class="tag-sep">C = Compreensão · An = Análise</span>
+    </div>
+  </div>
+
+  <div class="pf">
+    <span>Extensivo ENARE 2026</span>
+    <span>Bloco B9 · Nutrição · Aula 18</span>
+    <span>1 / 10</span>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PAGE 2 — GLICÓLISE AERÓBICA E ANAERÓBICA -->
+<!-- ============================================================ -->
+<div class="page">
+  <div class="ph">
+    <div class="ph-logo">
+      <svg class="logo-svg" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#1F5C23"/><path d="M16 6 L26 12 L26 20 L16 26 L6 20 L6 12 Z" fill="none" stroke="#C6D834" stroke-width="2"/><circle cx="16" cy="16" r="4" fill="#C6D834"/></svg>
+      <div class="ph-logo-text"><span>Extensivo ENARE</span><span>2026</span></div>
+    </div>
+    <div class="ph-center">Glicólise Aeróbica e Anaeróbica · Piruvato</div>
+    <div class="ph-right">NUT-BIOC · Aula 18</div>
+  </div>
+
+  <div class="pc-sm">
+    <div class="sec-title-sm">Glicólise — Rotas e Destinos do Piruvato</div>
+
+    <div class="mapa-box" style="margin-bottom:3.5mm;">
+      <div class="mapa-title">Glicose → Piruvato — Via Comum (10 reações no citoplasma)</div>
+      <div class="mapa-body">
+        1 glicose (6C) → <span class="hl">2 piruvato (3C)</span> + 2 ATP líquido + 2 NADH<br>
+        O piruvato é o <strong>nó metabólico</strong>: seu destino depende da disponibilidade de O₂ e da demanda energética do tecido.<br>
+        <strong>Com O₂ (aeróbico):</strong> piruvato → <span class="hl">acetil-CoA</span> (piruvato desidrogenase, na mitocôndria) → ciclo de Krebs → 36–38 ATP total<br>
+        <strong>Sem O₂ / alta intensidade:</strong> piruvato → <span class="hl">lactato</span> (lactato desidrogenase) → apenas 2 ATP — regenera NAD⁺ para continuar a glicólise
+      </div>
+    </div>
+
+    <div class="card-grid card-grid-2" style="margin-bottom:3.5mm;">
+      <div class="card">
+        <div class="card-title">Transportadores de Glicose (GLUTs) — Cobrados pela FGV</div>
+        <div class="card-body">
+          <ul class="blist">
+            <li><span class="hl">GLUT1</span> — eritrócitos, cérebro, barreira hematoencefálica; ubíquo; baixa Km (alta afinidade)</li>
+            <li><span class="hl">GLUT2</span> — fígado, pâncreas (células β), intestino delgado; alta Km (sensor de glicemia) — não insulino-dependente</li>
+            <li><span class="hl">GLUT4</span> — <strong>músculo esquelético e adipócito</strong>; <span class="hl">insulino-dependente</span>; translocação para membrana após ligação da insulina ao seu receptor</li>
+            <li><span class="hl">GLUT5</span> — transporte de <strong>frutose</strong> no intestino delgado; não transporta glicose</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card card-green">
+        <div class="card-title">Ciclo de Cori — Lactato e Gliconeogênese</div>
+        <div class="card-body">
+          <ul class="blist">
+            <li><strong>Músculo em esforço</strong> → glicólise anaeróbica → lactato → exportado ao sangue</li>
+            <li><strong>Fígado</strong> → capta lactato → <span class="hl">gliconeogênese</span> → nova glicose → exporta ao sangue → músculo utiliza</li>
+            <li><strong>Custo:</strong> 2 ATP gerados no músculo; 6 ATP gastos no fígado → déficit energético líquido</li>
+            <li><strong>Significado clínico:</strong> explica por que atletas precisam de carboidratos exógenos em exercícios prolongados mesmo com lactato elevado</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Via</th>
+          <th>Condição</th>
+          <th>Produto do piruvato</th>
+          <th>Rendimento ATP</th>
+          <th>Principal tecido</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="td-bold">Glicólise aeróbica</td>
+          <td>O₂ disponível, intensidade moderada</td>
+          <td class="td-green">Acetil-CoA → Krebs → cadeia resp.</td>
+          <td class="td-green">36–38 ATP/glicose</td>
+          <td>Todos os tecidos aeróbicos</td>
+        </tr>
+        <tr>
+          <td class="td-bold">Glicólise anaeróbica</td>
+          <td>Ausência de O₂ ou alta intensidade</td>
+          <td class="td-warn">Lactato (regenera NAD⁺)</td>
+          <td class="td-warn">2 ATP/glicose</td>
+          <td>Músculo em sprint, eritrócitos</td>
+        </tr>
+        <tr>
+          <td class="td-bold">Gliconeogênese</td>
+          <td>Jejum, hipoglicemia, pós-exercício</td>
+          <td>Piruvato como <em>substrato</em>, não produto</td>
+          <td>−6 ATP (consome energia)</td>
+          <td>Fígado (90%), rim (10%)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="pf">
+    <span>Extensivo ENARE 2026</span>
+    <span>Bloco B9 · Nutrição · Aula 18</span>
+    <span>2 / 10</span>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PAGE 3 — GLICONEOGÊNESE E EXERCÍCIO AERÓBICO -->
+<!-- ============================================================ -->
+<div class="page">
+  <div class="ph">
+    <div class="ph-logo">
+      <svg class="logo-svg" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#1F5C23"/><path d="M16 6 L26 12 L26 20 L16 26 L6 20 L6 12 Z" fill="none" stroke="#C6D834" stroke-width="2"/><circle cx="16" cy="16" r="4" fill="#C6D834"/></svg>
+      <div class="ph-logo-text"><span>Extensivo ENARE</span><span>2026</span></div>
+    </div>
+    <div class="ph-center">Gliconeogênese · Exercício Aeróbico e Fontes Energéticas</div>
+    <div class="ph-right">NUT-BIOC · Aula 18</div>
+  </div>
+
+  <div class="pc-sm">
+    <div class="card-grid card-grid-2" style="margin-bottom:3.5mm;">
+      <div class="card">
+        <div class="card-title">Gliconeogênese — Substratos e Regulação</div>
+        <div class="card-body">
+          <ul class="blist">
+            <li><strong>Substratos (precursores não glicídicos):</strong></li>
+            <li><span class="hl">Aminoácidos glicogênicos</span> — <strong>alanina</strong> (principal do músculo via ciclo glicose-alanina) e glutamina (intestino → fígado e rim)</li>
+            <li><span class="hl">Lactato</span> — via ciclo de Cori (músculo → fígado)</li>
+            <li><span class="hl">Glicerol</span> — proveniente da hidrólise de triglicerídeos no tecido adiposo</li>
+            <li><strong>Regulação hormonal:</strong></li>
+            <li><span class="hl">↑ Glucagon e cortisol</span> → estimulam gliconeogênese (jejum, estresse)</li>
+            <li><span class="hl-alert">↓ Insulina</span> → gliconeogênese é inibida no estado pós-prandial</li>
+            <li><strong>Enzimas-chave:</strong> piruvato carboxilase, PEPCK, frutose-1,6-bisfosfatase, glicose-6-fosfatase (exclusiva do fígado)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card card-green">
+        <div class="card-title">Exercício Aeróbico — Sequência de Fontes Energéticas</div>
+        <div class="card-body">
+          <ul class="blist">
+            <li><span class="hl">0–10 s:</span> ATP-CP (fosfocreatina) — fonte imediata, anaeróbica, no músculo</li>
+            <li><span class="hl">10 s – 2 min:</span> glicogenólise muscular + glicólise anaeróbica → lactato</li>
+            <li><span class="hl">2–20 min:</span> glicogenólise muscular + glicólise aeróbica → CO₂ + H₂O</li>
+            <li><span class="hl">&#62;20–30 min:</span> ↑lipólise no tecido adiposo → ácidos graxos livres → <span class="hl">beta-oxidação</span> passa a ser fonte predominante</li>
+            <li><strong>Controle:</strong> adrenalina e glucagon ↑ lipólise e glicogenólise; GLP-1 modula glicemia pós-exercício</li>
+            <li>Quanto maior a duração e menor a intensidade → maior proporção de lipídios oxidados</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec-title-sm" style="margin-bottom:2.5mm;">Integração Metabólica — Jejum vs. Exercício vs. Pós-prandial</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Estado</th>
+          <th>Hormônio dominante</th>
+          <th>Via ativa</th>
+          <th>Tecido adiposo</th>
+          <th>Músculo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="td-bold">Pós-prandial</td>
+          <td class="td-green">Insulina ↑</td>
+          <td>Glicólise, glicogênese, lipogênese</td>
+          <td>Captação de AGL → TG</td>
+          <td>Captação glicose via GLUT4</td>
+        </tr>
+        <tr>
+          <td class="td-bold">Jejum curto (4–12h)</td>
+          <td>Glucagon ↑ / insulina ↓</td>
+          <td>Glicogenólise hepática → glicose</td>
+          <td>↑ Lipólise → AGL e glicerol</td>
+          <td>↑ Glicólise anaeróbica</td>
+        </tr>
+        <tr>
+          <td class="td-bold">Jejum prolongado (&#62;24h)</td>
+          <td>Glucagon + cortisol ↑</td>
+          <td class="td-green">Gliconeogênese + cetogênese</td>
+          <td>Máxima lipólise</td>
+          <td>↑ Proteólise (alanina → fígado)</td>
+        </tr>
+        <tr>
+          <td class="td-bold">Exercício aeróbico &#62;30 min</td>
+          <td>Adrenalina + glucagon ↑</td>
+          <td class="td-green">Beta-oxidação predominante</td>
+          <td>↑ Lipólise mediada por HSL</td>
+          <td>GLUT4 translocado (sem insulina)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="pf">
+    <span>Extensivo ENARE 2026</span>
+    <span>Bloco B9 · Nutrição · Aula 18</span>
+    <span>3 / 10</span>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PAGE 4 — BETA-OXIDAÇÃO DOS ÁCIDOS GRAXOS -->
+<!-- ============================================================ -->
+<div class="page">
+  <div class="ph">
+    <div class="ph-logo">
+      <svg class="logo-svg" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#1F5C23"/><path d="M16 6 L26 12 L26 20 L16 26 L6 20 L6 12 Z" fill="none" stroke="#C6D834" stroke-width="2"/><circle cx="16" cy="16" r="4" fill="#C6D834"/></svg>
+      <div class="ph-logo-text"><span>Extensivo ENARE</span><span>2026</span></div>
+    </div>
+    <div class="ph-center">Beta-oxidação dos Ácidos Graxos</div>
+    <div class="ph-right">NUT-BIOC · Aula 18</div>
+  </div>
+
+  <div class="pc-sm">
+    <div class="sec-title-sm">Beta-oxidação — Etapas, Carnitina e Corpos Cetônicos</div>
+
+    <div class="mapa-box" style="margin-bottom:3.5mm;">
+      <div class="mapa-title">Via da Beta-oxidação — Sequência Obrigatória</div>
+      <div class="mapa-body">
+        Ácido graxo livre → <span class="hl">ativação</span> (+ CoA, ATP → acil-CoA) no citoplasma →<br>
+        AGCL: transporte para mitocôndria via <span class="hl">carnitina-acilcarnitina translocase</span> (carnitina palmitoiltransferase I e II) →<br>
+        Cada ciclo de beta-oxidação remove <span class="hl">2 carbonos como acetil-CoA</span> + produz 1 FADH₂ + 1 NADH →<br>
+        Acetil-CoA → <span class="hl">ciclo de Krebs</span> → CO₂ + H₂O + ATP<br>
+        <strong>Exemplo:</strong> palmitato (C16) → 7 ciclos → 8 acetil-CoA + 7 FADH₂ + 7 NADH → ~129 ATP total
+      </div>
+    </div>
+
+    <div class="card-grid card-grid-2" style="margin-bottom:3.5mm;">
+      <div class="card">
+        <div class="card-title">Carnitina — Por que é Essencial</div>
+        <div class="card-body">
+          <ul class="blist">
+            <li>Ácidos graxos de cadeia <strong>curta e média</strong> (&lt;12C): entram na mitocôndria <span class="hl">sem carnitina</span></li>
+            <li>Ácidos graxos de cadeia <strong>longa</strong> (AGCL, &gt;12C): <span class="hl-alert">dependem obrigatoriamente de carnitina</span> para cruzar a membrana mitocondrial interna</li>
+            <li>Deficiência de carnitina → acúmulo de AGCL no citoplasma → ↓energia muscular → <strong>miopatia, fraqueza muscular</strong></li>
+            <li>Síntese endógena: lisina + metionina (no fígado e rim) + vitamina C + Fe²⁺ + vitamina B₆</li>
+            <li>Suplementação: sem benefício comprovado em indivíduos saudáveis; indicada em deficiências secundárias</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card card-warn">
+        <div class="card-title card-title-warn">Corpos Cetônicos — Quando e Por quê</div>
+        <div class="card-body">
+          <ul class="blist">
+            <li><strong>Quando:</strong> excesso de acetil-CoA (jejum prolongado, DM descompensado, dieta cetogênica) sem oxaloacetato suficiente para o ciclo de Krebs</li>
+            <li><strong>Tipos:</strong> acetoacetato, beta-hidroxibutirato (principal no sangue), acetona (expirada)</li>
+            <li><strong>Local de produção:</strong> mitocôndria hepática</li>
+            <li><strong>Utilização:</strong> coração, músculo, rim, <span class="hl">cérebro</span> (após adaptação a jejum &gt;48h)</li>
+            <li><strong>Cetoacidose diabética:</strong> insulina ausente → lipólise máxima → acetil-CoA excessivo → cetonas acumulam → pH ↓ (&lt;7,3)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="card card-green">
+      <div class="card-title">Beta-oxidação no Contexto Clínico e Nutricional</div>
+      <div class="card-body" style="display:grid;grid-template-columns:1fr 1fr;gap:2mm 5mm;font-size:7.5pt;">
+        <div><strong>Exercício aeróbico &#62;30 min:</strong> beta-oxidação passa a ser via predominante → evidência para orientação de treino em perda de gordura</div>
+        <div><strong>Dieta cetogênica:</strong> CHO muito baixo (&lt;50g/dia) → glicose insuficiente → beta-oxidação máxima → corpos cetônicos como substrato energético</div>
+        <div><strong>DPOC/caquexia:</strong> pacientes dependem mais de lipídios (↓CHO para ↓CO₂) → beta-oxidação ↑ pela necessidade terapêutica</div>
+        <div><strong>TCM (triglicerídeos de cadeia média):</strong> cadeia 8–12C → não precisam de carnitina → absorção direta → usados em colestase, SIC, caquexia</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pf">
+    <span>Extensivo ENARE 2026</span>
+    <span>Bloco B9 · Nutrição · Aula 18</span>
+    <span>4 / 10</span>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PAGE 5 — LIPOPROTEÍNAS E ATEROGÊNESE -->
+<!-- ============================================================ -->
+<div class="page">
+  <div class="ph">
+    <div class="ph-logo">
+      <svg class="logo-svg" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#1F5C23"/><path d="M16 6 L26 12 L26 20 L16 26 L6 20 L6 12 Z" fill="none" stroke="#C6D834" stroke-width="2"/><circle cx="16" cy="16" r="4" fill="#C6D834"/></svg>
+      <div class="ph-logo-text"><span>Extensivo ENARE</span><span>2026</span></div>
+    </div>
+    <div class="ph-center">Lipoproteínas — Classificação e Aterogênese</div>
+    <div class="ph-right">NUT-BIOC · Aula 18</div>
+  </div>
+
+  <div class="pc-sm">
+    <div class="sec-title-sm">Lipoproteínas — Tabela Completa e Aterogênese</div>
+
+    <table style="margin-bottom:3.5mm;">
+      <thead>
+        <tr>
+          <th>Lipoproteína</th>
+          <th>Origem</th>
+          <th>Conteúdo principal</th>
+          <th>Apoproteína-chave</th>
+          <th>Função</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="td-bold">Quilomícron</td>
+          <td>Intestino delgado</td>
+          <td>TG exógenos (80–95%)</td>
+          <td class="td-warn">ApoB-48, ApoC-II, ApoE</td>
+          <td>Transporte de gordura dietética → tecidos periféricos</td>
+        </tr>
+        <tr>
+          <td class="td-bold">VLDL</td>
+          <td>Fígado</td>
+          <td>TG endógenos (55–65%)</td>
+          <td class="td-warn">ApoB-100, ApoC-II, ApoE</td>
+          <td>Transporte de TG hepáticos → tecidos</td>
+        </tr>
+        <tr>
+          <td class="td-bold">IDL</td>
+          <td>Catabolismo do VLDL</td>
+          <td>TG + colesterol</td>
+          <td>ApoB-100, ApoE</td>
+          <td>Intermediário → convertido a LDL</td>
+        </tr>
+        <tr>
+          <td class="td-bold">LDL</td>
+          <td>Catabolismo da IDL</td>
+          <td>Colesterol (45–50%)</td>
+          <td class="td-green">ApoB-100</td>
+          <td>Entrega colesterol a células periféricas; captado pelo receptor LDL (via ApoB-100)</td>
+        </tr>
+        <tr>
+          <td class="td-bold">HDL</td>
+          <td>Fígado e intestino</td>
+          <td>Proteínas (50%) + colesterol</td>
+          <td class="td-green">ApoA-I</td>
+          <td>Transporte reverso de colesterol dos tecidos → fígado (excreção biliar)</td>
+        </tr>
+        <tr>
+          <td class="td-bold">Lp(a)</td>
+          <td>Fígado</td>
+          <td>LDL + apolipoproteína(a)</td>
+          <td>ApoB-100 + Apo(a)</td>
+          <td class="td-warn">Risco cardiovascular independente; inibe fibrinólise</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="mapa-box">
+      <div class="mapa-title">Aterogênese — Cascata do LDL Oxidado</div>
+      <div class="mapa-body">
+        LDL penetra no espaço subendotelial → <span class="hl">oxidação (estresse oxidativo, tabagismo, hiperglicemia)</span> → LDL oxidado (LDL-ox) →<br>
+        Macrófagos expressam <span class="hl">receptores scavenger (SR-A, CD36)</span> → captam LDL-ox sem regulação por feedback →<br>
+        Macrófagos sobrecarregados de colesterol = <span class="hl-alert">células espumosas (foam cells)</span> → núcleo da placa aterosclerótica →<br>
+        Progressão: estria lipídica → placa fibrosa → placa vulnerável → ruptura → trombose → IAM / AVC<br>
+        <strong>Intervenção nutricional:</strong> ↓gordura sat/trans → ↓LDL; ↑HDL (exercício, ômega-3, álcool moderado — não recomendado); ↓LDL-ox (antioxidantes: vitamina E, C, polifenóis)
+      </div>
+    </div>
+  </div>
+
+  <div class="pf">
+    <span>Extensivo ENARE 2026</span>
+    <span>Bloco B9 · Nutrição · Aula 18</span>
+    <span>5 / 10</span>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PAGE 6 — QUESTÃO 01 (C) -->
+<!-- ============================================================ -->
+<div class="page">
+  <div class="ph">
+    <div class="ph-logo">
+      <svg class="logo-svg" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#1F5C23"/><path d="M16 6 L26 12 L26 20 L16 26 L6 20 L6 12 Z" fill="none" stroke="#C6D834" stroke-width="2"/><circle cx="16" cy="16" r="4" fill="#C6D834"/></svg>
+      <div class="ph-logo-text"><span>Extensivo ENARE</span><span>2026</span></div>
+    </div>
+    <div class="ph-center">Questão 01 · Compreensão</div>
+    <div class="ph-right">NUT-BIOC · Aula 18</div>
+  </div>
+
+  <div class="pc">
+    <div class="q-header">
+      <div class="q-num"><span>Q01</span></div>
+      <div class="q-meta">
+        <div class="q-meta-top">Compreensão (C) · NUT-BIOC</div>
+        <div class="q-meta-sub">Réplica calibrada · ENARE 2025 Q64/Q65 · Gabarito: B</div>
+      </div>
+      <div class="q-level-badge" style="background:#0D8A8D;color:#fff;font-size:8pt;">C</div>
+    </div>
+
+    <div class="q-stem">
+      Atleta de corrida de longa distância, 28 anos, inicia treino em jejum de 14 horas. Após 40 minutos de corrida em ritmo moderado, apresenta hipoglicemia leve (glicemia 68 mg/dL). A nutricionista explica ao atleta os mecanismos metabólicos que ocorrem nesse cenário. Sobre o metabolismo de carboidratos durante jejum prolongado e exercício, é CORRETO afirmar:
+    </div>
+
+    <div class="q-options">
+      <div class="q-opt">
+        <span class="q-opt-letter">A</span>
+        <span>A gliconeogênese hepática utiliza exclusivamente aminoácidos cetogênicos como leucina e lisina como substrato, pois são os únicos precursores capazes de originar oxaloacetato para a síntese de nova glicose.</span>
+      </div>
+      <div class="q-opt correct">
+        <span class="q-opt-letter">B</span>
+        <span>A alanina liberada pelo catabolismo muscular e o lactato produzido pela glicólise anaeróbica são os principais substratos gliconeogênicos disponíveis nesse momento; o glucagon estimula a gliconeogênese hepática enquanto a insulina está suprimida pelo jejum e exercício.</span>
+      </div>
+      <div class="q-opt">
+        <span class="q-opt-letter">C</span>
+        <span>A GLUT4 no músculo esquelético permanece inativa durante o exercício, pois a translocação desse transportador para a membrana celular depende exclusivamente da insulina e não ocorre por outros estímulos como contração muscular.</span>
+      </div>
+      <div class="q-opt">
+        <span class="q-opt-letter">D</span>
+        <span>O piruvato produzido pela glicólise anaeróbica é convertido diretamente a acetil-CoA no citoplasma, contribuindo imediatamente para a produção de ATP via ciclo de Krebs sem necessidade de transporte mitocondrial.</span>
+      </div>
+      <div class="q-opt">
+        <span class="q-opt-letter">E</span>
+        <span>A gliconeogênese ocorre predominantemente no tecido adiposo durante o exercício prolongado, pois o glicerol liberado da lipólise é convertido a glicose diretamente nas células adiposas antes de ser exportado ao plasma.</span>
+      </div>
+    </div>
+
+    <div class="q-rationale">
+      <strong>A) ERRADO:</strong> Leucina e lisina são exclusivamente cetogênicos (→ acetil-CoA, não glicose); os substratos glicogênicos são alanina, glutamina, lactato, glicerol e piruvato. <strong>B) CORRETO:</strong> Alanina (ciclo glicose-alanina) e lactato (ciclo de Cori) são os principais substratos gliconeogênicos; glucagon ↑ e insulina ↓ = sinal para ativar gliconeogênese hepática. <strong>C) ERRADO:</strong> GLUT4 transloca para membrana também por estímulo da <em>contração muscular</em> (via AMPK), independentemente de insulina — mecanismo importante no exercício. <strong>D) ERRADO:</strong> Piruvato → acetil-CoA ocorre na <em>mitocôndria</em> (piruvato desidrogenase), não no citoplasma. <strong>E) ERRADO:</strong> Gliconeogênese ocorre no <em>fígado</em> (90%) e rim (10%); o tecido adiposo libera glicerol ao sangue → fígado o converte.
+    </div>
+  </div>
+
+  <div class="pf">
+    <span>Extensivo ENARE 2026</span>
+    <span>Bloco B9 · Nutrição · Aula 18</span>
+    <span>6 / 10</span>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PAGE 7 — QUESTÃO 02 (C) -->
+<!-- ============================================================ -->
+<div class="page">
+  <div class="ph">
+    <div class="ph-logo">
+      <svg class="logo-svg" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#1F5C23"/><path d="M16 6 L26 12 L26 20 L16 26 L6 20 L6 12 Z" fill="none" stroke="#C6D834" stroke-width="2"/><circle cx="16" cy="16" r="4" fill="#C6D834"/></svg>
+      <div class="ph-logo-text"><span>Extensivo ENARE</span><span>2026</span></div>
+    </div>
+    <div class="ph-center">Questão 02 · Compreensão</div>
+    <div class="ph-right">NUT-BIOC · Aula 18</div>
+  </div>
+
+  <div class="pc">
+    <div class="q-header">
+      <div class="q-num"><span>Q02</span></div>
+      <div class="q-meta">
+        <div class="q-meta-top">Compreensão (C) · NUT-BIOC</div>
+        <div class="q-meta-sub">Réplica calibrada · ENARE 2025 Q68/Q69 · Gabarito: D</div>
+      </div>
+      <div class="q-level-badge" style="background:#0D8A8D;color:#fff;font-size:8pt;">C</div>
+    </div>
+
+    <div class="q-stem">
+      Paciente masculino, 45 anos, com obesidade (IMC 34 kg/m²) e dislipidemia. O médico indica caminhada rápida por 60 minutos diários como intervenção não farmacológica. A nutricionista explica a bioquímica do exercício aeróbico de longa duração e a importância da beta-oxidação. Sobre o metabolismo lipídico durante exercício aeróbico prolongado, assinale a alternativa CORRETA:
+    </div>
+
+    <div class="q-options">
+      <div class="q-opt">
+        <span class="q-opt-letter">A</span>
+        <span>A beta-oxidação de ácidos graxos ocorre no citoplasma celular e não exige a presença de carnitina, pois os ácidos graxos livres cruzam diretamente a membrana mitocondrial interna por difusão passiva.</span>
+      </div>
+      <div class="q-opt">
+        <span class="q-opt-letter">B</span>
+        <span>A beta-oxidação predomina como fonte energética desde o início do exercício aeróbico, independentemente da duração, pois os ácidos graxos fornecem mais ATP por molécula do que a glicose em qualquer intensidade.</span>
+      </div>
+      <div class="q-opt">
+        <span class="q-opt-letter">C</span>
+        <span>Os ácidos graxos de cadeia média (TCM) requerem carnitina para entrada na mitocôndria da mesma forma que os ácidos graxos de cadeia longa, razão pela qual sua absorção no intestino também é mais lenta.</span>
+      </div>
+      <div class="q-opt correct">
+        <span class="q-opt-letter">D</span>
+        <span>Após aproximadamente 20–30 minutos de exercício aeróbico moderado, a beta-oxidação torna-se a via energética predominante; ácidos graxos de cadeia longa necessitam obrigatoriamente de carnitina para transporte à mitocôndria, onde cada ciclo de beta-oxidação remove 2 carbonos gerando acetil-CoA, FADH₂ e NADH.</span>
+      </div>
+      <div class="q-opt">
+        <span class="q-opt-letter">E</span>
+        <span>A caminhada em jejum é contraindicada na obesidade, pois sem glicose circulante o organismo utiliza proteínas musculares como única fonte energética, impedindo a beta-oxidação de ácidos graxos por falta de oxaloacetato.</span>
+      </div>
+    </div>
+
+    <div class="q-rationale">
+      <strong>A) ERRADO:</strong> Beta-oxidação ocorre na <em>mitocôndria</em>; AGCL necessitam obrigatoriamente de carnitina para cruzar a membrana mitocondrial interna. <strong>B) ERRADO:</strong> Nos primeiros minutos, glicogênio e glicose dominam; a beta-oxidação torna-se predominante após ~20–30 min de exercício moderado. <strong>C) ERRADO:</strong> TCM (cadeia 8–12C) não precisam de carnitina — essa é a vantagem clínica deles em colestase e SIC. <strong>D) CORRETO:</strong> Transição para beta-oxidação após ~20–30 min; AGCL + carnitina → mitocôndria; cada ciclo produz acetil-CoA + FADH₂ + NADH. <strong>E) ERRADO:</strong> Em exercício com jejum, gliconeogênese (alanina, lactato, glicerol) mantém glicemia; beta-oxidação ocorre normalmente; proteólise é secundária.
+    </div>
+  </div>
+
+  <div class="pf">
+    <span>Extensivo ENARE 2026</span>
+    <span>Bloco B9 · Nutrição · Aula 18</span>
+    <span>7 / 10</span>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PAGE 8 — QUESTÃO 03 (AN — ÂNCORA) -->
+<!-- ============================================================ -->
+<div class="page">
+  <div class="ph">
+    <div class="ph-logo">
+      <svg class="logo-svg" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#1F5C23"/><path d="M16 6 L26 12 L26 20 L16 26 L6 20 L6 12 Z" fill="none" stroke="#C6D834" stroke-width="2"/><circle cx="16" cy="16" r="4" fill="#C6D834"/></svg>
+      <div class="ph-logo-text"><span>Extensivo ENARE</span><span>2026</span></div>
+    </div>
+    <div class="ph-center">Questão 03 · Análise — Âncora</div>
+    <div class="ph-right">NUT-BIOC · Aula 18</div>
+  </div>
+
+  <div class="pc">
+    <div class="q-header">
+      <div class="q-num"><span>Q03</span></div>
+      <div class="q-meta">
+        <div class="q-meta-top">Análise (AN) · NUT-BIOC · Questão-Âncora</div>
+        <div class="q-meta-sub">Réplica calibrada · ENARE 2025 Q95 · Gabarito: C</div>
+      </div>
+      <div class="q-level-badge q-level-badge-an">AN</div>
+    </div>
+
+    <div class="q-stem">
+      Paciente masculino, 52 anos, com hipercolesterolemia familiar heterozigótica. Exames: LDL-c 210 mg/dL, HDL-c 38 mg/dL, TG 195 mg/dL, glicemia 104 mg/dL. Tabagista há 20 anos. A nutricionista discute com o paciente o risco cardiovascular e o papel das lipoproteínas na aterogênese. Analise as afirmativas:
+    </div>
+
+    <div class="q-aff">
+      <div class="q-aff-item errada">
+        <span class="q-aff-num">I</span>
+        <span>O VLDL é sintetizado no intestino delgado e transporta principalmente triglicerídeos exógenos (provenientes da dieta) para os tecidos periféricos; sua apoproteína principal é a ApoB-48.</span>
+      </div>
+      <div class="q-aff-item correta">
+        <span class="q-aff-num">II</span>
+        <span>O LDL oxidado, formado em condições de estresse oxidativo, é captado pelos macrófagos da parede arterial via receptores scavenger sem regulação por feedback, originando células espumosas que constituem o núcleo lipídico da placa aterosclerótica.</span>
+      </div>
+      <div class="q-aff-item correta">
+        <span class="q-aff-num">III</span>
+        <span>O HDL realiza o transporte reverso do colesterol dos tecidos periféricos para o fígado, onde o colesterol pode ser excretado na bile; sua apoproteína estrutural principal é a ApoA-I, e níveis elevados de HDL são associados a menor risco cardiovascular.</span>
+      </div>
+      <div class="q-aff-item errada">
+        <span class="q-aff-num">IV</span>
+        <span>Os quilomícrons contêm ApoB-100 como apoproteína principal e são responsáveis pelo transporte de triglicerídeos endógenos sintetizados pelo fígado para os tecidos musculares e adiposo em estados pós-prandiais.</span>
+      </div>
+    </div>
+
+    <div class="q-options" style="gap:1.5mm;">
+      <div class="q-opt"><span class="q-opt-letter">A</span><span>I e II apenas</span></div>
+      <div class="q-opt"><span class="q-opt-letter">B</span><span>I e III apenas</span></div>
+      <div class="q-opt correct"><span class="q-opt-letter">C</span><span>II e III apenas</span></div>
+      <div class="q-opt"><span class="q-opt-letter">D</span><span>I, II e III apenas</span></div>
+      <div class="q-opt"><span class="q-opt-letter">E</span><span>I, II, III e IV</span></div>
+    </div>
+
+    <div class="q-rationale">
+      <strong>I — FALSO:</strong> VLDL é de origem <em>hepática</em> e transporta TG <em>endógenos</em>; sua apoproteína é ApoB-<strong>100</strong>. O que é intestinal com ApoB-48 é o quilomícron. <strong>II — VERDADEIRO:</strong> LDL-ox → receptores scavenger (SR-A, CD36) → sem inibição por feedback → macrófago repleto de colesterol = célula espumosa → núcleo da placa. <strong>III — VERDADEIRO:</strong> HDL → transporte reverso → fígado → excreção biliar; ApoA-I = apoproteína principal; HDL alto = proteção cardiovascular. <strong>IV — FALSO:</strong> Quilomícrons têm ApoB-48 (intestinal, truncada), não ApoB-100 (hepática); quilomícrons transportam TG <em>exógenos</em> (dieta), não endógenos — esse papel é do VLDL.
+    </div>
+  </div>
+
+  <div class="pf">
+    <span>Extensivo ENARE 2026</span>
+    <span>Bloco B9 · Nutrição · Aula 18</span>
+    <span>8 / 10</span>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PAGE 9 — GABARITO -->
+<!-- ============================================================ -->
+<div class="page">
+  <div class="ph">
+    <div class="ph-logo">
+      <svg class="logo-svg" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#1F5C23"/><path d="M16 6 L26 12 L26 20 L16 26 L6 20 L6 12 Z" fill="none" stroke="#C6D834" stroke-width="2"/><circle cx="16" cy="16" r="4" fill="#C6D834"/></svg>
+      <div class="ph-logo-text"><span>Extensivo ENARE</span><span>2026</span></div>
+    </div>
+    <div class="ph-center">Gabarito — Aula 18</div>
+    <div class="ph-right">NUT-BIOC · Aula 18</div>
+  </div>
+
+  <div class="pc">
+    <div class="gab-grid">
+      <div class="gab-card">
+        <div class="gab-label">Questão 01</div>
+        <div class="gab-letter">B</div>
+        <div class="gab-desc">Gliconeogênese — alanina e lactato<br>glucagon ↑, insulina ↓<br>Réplica ENARE 2025 Q64/Q65 (C)</div>
+      </div>
+      <div class="gab-card">
+        <div class="gab-label">Questão 02</div>
+        <div class="gab-letter">D</div>
+        <div class="gab-desc">Beta-oxidação &#62;20 min; AGCL +<br>carnitina → mitocôndria; acetil-CoA<br>Réplica ENARE 2025 Q68/Q69 (C)</div>
+      </div>
+      <div class="gab-card">
+        <div class="gab-label">Questão 03</div>
+        <div class="gab-letter">C</div>
+        <div class="gab-desc">Lipoproteínas — II e III corretas:<br>LDL-ox/foam cells; HDL/ApoA-I<br>Réplica ENARE 2025 Q95 (An)</div>
+      </div>
+    </div>
+
+    <div class="distrator-table">
+      <div class="sec-title-sm" style="margin-bottom:2.5mm;">Distratores Críticos desta Aula</div>
+      <table>
+        <thead>
+          <tr>
+            <th>Afirmativa-armadilha</th>
+            <th>Por que é errada</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>"VLDL é produzido no intestino com ApoB-48"</td>
+            <td>VLDL = hepático, ApoB-100; intestino = quilomícron, ApoB-48</td>
+          </tr>
+          <tr>
+            <td>"Beta-oxidação ocorre no citoplasma"</td>
+            <td>Ocorre na mitocôndria; AGCL precisam de carnitina para entrar; AGC curta/média dispensam</td>
+          </tr>
+          <tr>
+            <td>"GLUT4 só é ativado por insulina"</td>
+            <td>Contração muscular também transloca GLUT4 via AMPK — importante no exercício</td>
+          </tr>
+          <tr>
+            <td>"Leucina e lisina são substratos gliconeogênicos"</td>
+            <td>São exclusivamente cetogênicos (→ acetil-CoA); não podem originar glicose</td>
+          </tr>
+          <tr>
+            <td>"TCM necessitam de carnitina como AGCL"</td>
+            <td>TCM (8–12C) entram diretamente na mitocôndria sem carnitina — vantagem clínica</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="pf">
+    <span>Extensivo ENARE 2026</span>
+    <span>Bloco B9 · Nutrição · Aula 18</span>
+    <span>9 / 10</span>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PAGE 10 — SÍNTESE FINAL + REFERÊNCIAS -->
+<!-- ============================================================ -->
+<div class="page">
+  <div class="ph">
+    <div class="ph-logo">
+      <svg class="logo-svg" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#1F5C23"/><path d="M16 6 L26 12 L26 20 L16 26 L6 20 L6 12 Z" fill="none" stroke="#C6D834" stroke-width="2"/><circle cx="16" cy="16" r="4" fill="#C6D834"/></svg>
+      <div class="ph-logo-text"><span>Extensivo ENARE</span><span>2026</span></div>
+    </div>
+    <div class="ph-center">Síntese Final — Aula 18</div>
+    <div class="ph-right">NUT-BIOC · Aula 18</div>
+  </div>
+
+  <div class="pc-sm">
+    <div class="sec-title-sm" style="margin-bottom:3mm;">Síntese — Metabolismo Energético, Beta-oxidação e Lipoproteínas</div>
+
+    <div class="sintese-grid" style="margin-bottom:3mm;">
+      <div class="sintese-card">
+        <div class="sintese-card-title">Glicólise e Destinos do Piruvato</div>
+        <ul class="blist" style="font-size:7.5pt;">
+          <li>Aeróbica: piruvato → acetil-CoA (mitocôndria) → 36–38 ATP</li>
+          <li>Anaeróbica: piruvato → lactato → 2 ATP</li>
+          <li><span class="hl">GLUT4</span>: músculo/adipócito; insulina E contração</li>
+          <li>Gliconeogênese: fígado; glucagon↑ / insulina↓</li>
+        </ul>
+      </div>
+      <div class="sintese-card">
+        <div class="sintese-card-title">Beta-oxidação</div>
+        <ul class="blist" style="font-size:7.5pt;">
+          <li>Local: mitocôndria; AGCL: carnitina obrigatória</li>
+          <li><span class="hl">TCM</span>: não precisam de carnitina</li>
+          <li>Cada ciclo: acetil-CoA + FADH₂ + NADH</li>
+          <li>Predomina no exercício aeróbico após ~20–30 min</li>
+        </ul>
+      </div>
+      <div class="sintese-card">
+        <div class="sintese-card-title">Lipoproteínas — Pontos-chave</div>
+        <ul class="blist" style="font-size:7.5pt;">
+          <li>Quilomícron: intestino, TG exógenos, <span class="hl">ApoB-48</span></li>
+          <li>VLDL: fígado, TG endógenos, ApoB-100</li>
+          <li>LDL: colesterol, ApoB-100; aterogênico quando oxidado</li>
+          <li><span class="hl">HDL</span>: transporte reverso, ApoA-I; protetor</li>
+        </ul>
+      </div>
+      <div class="sintese-card">
+        <div class="sintese-card-title">Aterogênese</div>
+        <ul class="blist" style="font-size:7.5pt;">
+          <li>LDL-ox → receptores scavenger → sem feedback</li>
+          <li><span class="hl-alert">Células espumosas</span> = núcleo da placa</li>
+          <li>↓Gordura sat/trans → ↓LDL; ↑HDL</li>
+          <li>Antioxidantes (vit E, C, polifenóis) → ↓oxidação LDL</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mapa-box" style="margin-bottom:3mm;">
+      <div class="mapa-title">Integração — Bioquímica e Prática Clínica</div>
+      <div class="mapa-body">
+        Exercício aeróbico prolongado: <span class="hl">glicogênio → glicólise → beta-oxidação</span> (sequência temporal) — orienta timing de suplementação de CHO em atletas<br>
+        Jejum prolongado: gliconeogênese (alanina, lactato, glicerol) + cetogênese — base para entender caquexia, DM descompensado e dieta cetogênica<br>
+        LDL-ox e tabagismo: ↑estresse oxidativo → ↑oxidação LDL → ↑risco cardiovascular — justifica antioxidantes e cessação do tabagismo como intervenções nutricionais
+      </div>
+    </div>
+
+    <div class="refs">
+      <div class="refs-title">Referências</div>
+      <ul>
+        <li>Lehninger AL, Nelson DL, Cox MM. Princípios de Bioquímica, 7ª ed. Sarvier, 2022</li>
+        <li>Frayn KN. Metabolic Regulation: A Human Perspective, 3rd ed. Wiley-Blackwell, 2010</li>
+        <li>Libby P et al. Atherosclerosis. Nat Rev Dis Primers, 2019</li>
+        <li>Goodpaster BH, Sparks LM. Metabolic Flexibility in Health and Disease. Cell Metabolism, 2017</li>
+        <li>BRASPEN — Diretriz de Nutrição Clínica e Metabolismo, 2023</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="pf">
+    <span>Extensivo ENARE 2026</span>
+    <span>Bloco B9 · Nutrição · Aula 18</span>
+    <span>10 / 10</span>
+  </div>
+</div>
+
+</body>
+</html>
