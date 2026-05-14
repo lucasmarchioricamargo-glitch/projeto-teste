@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fisioterapia · Bloco B6 · Aula 17 — FT-APS 1</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  @page { size: A4; margin: 0; }
+  body { -webkit-print-color-adjust: exact; print-color-adjust: exact; font-family: 'Bricolage Grotesque', sans-serif; background: #E8E6DF; }
+
+  .page { width: 210mm; height: 297mm; display: flex; flex-direction: column; overflow: hidden; page-break-after: always; background: #F6F4ED; }
+  .ph { height: 14mm; flex-shrink: 0; display: flex; align-items: center; justify-content: space-between; padding: 0 16mm; border-bottom: 0.4mm solid #E0DDD6; }
+  .ph-label { font-family: 'Barlow Condensed', sans-serif; font-size: 7.5pt; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #0D8A8D; }
+  .ph-right { font-size: 7pt; color: #9A9490; font-weight: 300; }
+  .pf { height: 9mm; flex-shrink: 0; display: flex; align-items: center; justify-content: space-between; padding: 0 16mm; border-top: 0.4mm solid #E0DDD6; }
+  .pf-brand { font-family: 'Playfair Display', serif; font-style: italic; font-size: 7.5pt; color: #9A9490; }
+  .pf-brand span { font-family: 'Space Grotesk', sans-serif; font-style: normal; font-weight: 300; font-size: 6pt; text-transform: uppercase; letter-spacing: 0.08em; }
+  .pf-page { font-size: 7pt; color: #9A9490; }
+  .pc { flex: 1; padding: 7mm 16mm 5mm; overflow: hidden; }
+  .pc-sm { flex: 1; padding: 5mm 16mm 4mm; overflow: hidden; }
+
+  /* Capa */
+  .cover-tag { font-family: 'Barlow Condensed', sans-serif; font-size: 8pt; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #0D8A8D; margin-bottom: 6mm; }
+  .cover-title { font-family: 'Barlow Condensed', sans-serif; font-size: 40pt; font-weight: 800; line-height: 0.95; color: #070707; text-transform: uppercase; margin-bottom: 6mm; }
+  .cover-sub { font-size: 9.5pt; color: #5A5652; line-height: 1.5; max-width: 145mm; margin-bottom: 8mm; }
+  .cover-stats { display: flex; gap: 6mm; margin-bottom: 8mm; }
+  .cover-stat { flex: 1; border-left: 0.8mm solid #0D8A8D; padding-left: 4mm; }
+  .cover-stat-n { font-family: 'Barlow Condensed', sans-serif; font-size: 28pt; font-weight: 800; color: #0D8A8D; line-height: 1; }
+  .cover-stat-l { font-size: 7.5pt; color: #9A9490; margin-top: 1mm; }
+  .cover-box { background: #EDF7F7; border-left: 1mm solid #0D8A8D; padding: 4mm 5mm; border-radius: 0 2mm 2mm 0; font-size: 8pt; line-height: 1.55; color: #2A2826; }
+
+  /* Seções */
+  .sec-title { font-family: 'Barlow Condensed', sans-serif; font-size: 15pt; font-weight: 800; text-transform: uppercase; color: #0D8A8D; letter-spacing: 0.04em; margin-bottom: 4mm; }
+  .sub-title { font-family: 'Barlow Condensed', sans-serif; font-size: 9pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #0D8A8D; margin-bottom: 2mm; border-bottom: 0.3mm solid #0D8A8D; padding-bottom: 1mm; }
+
+  /* Objetivos */
+  .obj-list { list-style: none; display: flex; flex-direction: column; gap: 2.5mm; }
+  .obj-list li { display: flex; gap: 3mm; align-items: flex-start; font-size: 8.5pt; line-height: 1.45; color: #2A2826; }
+  .obj-n { font-family: 'Barlow Condensed', sans-serif; font-size: 16pt; font-weight: 800; color: #0D8A8D; line-height: 1; flex-shrink: 0; width: 6mm; }
+
+  /* Mapa */
+  .mapa { display: flex; gap: 2mm; margin-top: 3mm; }
+  .mapa-item { flex: 1; background: #EDF7F7; border-top: 1mm solid #0D8A8D; padding: 3mm; }
+  .mapa-item:nth-child(2) { background: #F0F7ED; border-top-color: #1F5C23; }
+  .mapa-item:nth-child(3) { background: #F9F7ED; border-top-color: #8A7D0D; }
+  .mapa-n { font-family: 'Barlow Condensed', sans-serif; font-size: 22pt; font-weight: 800; color: #0D8A8D; line-height: 1; }
+  .mapa-item:nth-child(2) .mapa-n { color: #1F5C23; }
+  .mapa-item:nth-child(3) .mapa-n { color: #8A7D0D; }
+  .mapa-label { font-family: 'Barlow Condensed', sans-serif; font-size: 8pt; font-weight: 700; text-transform: uppercase; color: #070707; margin: 1mm 0 0.5mm; }
+  .mapa-desc { font-size: 7pt; color: #5A5652; line-height: 1.35; }
+
+  /* Tabela */
+  table { width: 100%; border-collapse: collapse; font-size: 7.5pt; }
+  th { background: #070707; color: #F6F4ED; font-family: 'Barlow Condensed', sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; padding: 2mm 3mm; text-align: left; }
+  td { padding: 2mm 3mm; border-bottom: 0.3mm solid #E0DDD6; color: #2A2826; line-height: 1.35; vertical-align: top; }
+  tr:nth-child(even) td { background: #F0EEE7; }
+
+  /* Cards */
+  .two-col { display: flex; gap: 3mm; margin-top: 3mm; }
+  .col-card { flex: 1; background: #F0EEE7; border-radius: 1.5mm; padding: 3.5mm; }
+  .col-card-teal { background: #EDF7F7; border-left: 0.8mm solid #0D8A8D; }
+  .col-card-verde { background: #F0F7ED; border-left: 0.8mm solid #1F5C23; }
+  .card-h { font-family: 'Barlow Condensed', sans-serif; font-size: 8.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #070707; margin-bottom: 2mm; }
+  .card-body { font-size: 7.5pt; color: #2A2826; line-height: 1.45; }
+  .card-body li { margin-left: 3mm; margin-bottom: 0.8mm; }
+
+  /* Banca box */
+  .banca-box { background: #EDF7F7; border-left: 1mm solid #0D8A8D; padding: 3.5mm 4mm; margin-top: 3mm; border-radius: 0 2mm 2mm 0; }
+  .banca-title { font-family: 'Barlow Condensed', sans-serif; font-size: 8.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #0D8A8D; margin-bottom: 1.5mm; }
+  .banca-text { font-size: 7.5pt; color: #2A2826; line-height: 1.5; }
+
+  /* RAS fluxo */
+  .ras-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2mm; margin-top: 2mm; }
+  .ras-card { border-radius: 1.5mm; padding: 3mm; }
+  .ras-ab { background: #EDF7F7; border-left: 0.8mm solid #0D8A8D; }
+  .ras-esp { background: #F0F7ED; border-left: 0.8mm solid #1F5C23; }
+  .ras-hosp { background: #FFF4ED; border-left: 0.8mm solid #C85A1A; }
+  .ras-dom { background: #F9F7ED; border-left: 0.8mm solid #8A7D0D; }
+  .ras-h { font-family: 'Barlow Condensed', sans-serif; font-size: 8pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: #070707; margin-bottom: 1.5mm; }
+  .ras-body { font-size: 7pt; color: #2A2826; line-height: 1.4; }
+  .ras-body li { margin-left: 2.5mm; margin-bottom: 0.5mm; }
+
+  /* Nasf box */
+  .nasf-funcs { display: flex; flex-direction: column; gap: 1.5mm; margin-top: 2mm; }
+  .nasf-row { display: flex; gap: 2mm; background: #F0EEE7; padding: 2mm 3mm; border-radius: 1mm; align-items: flex-start; }
+  .nasf-dot { width: 2mm; height: 2mm; background: #0D8A8D; border-radius: 50%; flex-shrink: 0; margin-top: 1.5mm; }
+  .nasf-text { font-size: 7.5pt; color: #2A2826; line-height: 1.4; }
+
+  /* Fatores de risco */
+  .fr-grid { display: flex; gap: 2mm; margin-top: 2mm; }
+  .fr-card { flex: 1; background: #F0EEE7; border-radius: 1.5mm; padding: 3mm; border-top: 1mm solid #0D8A8D; }
+  .fr-card:nth-child(2) { border-top-color: #1F5C23; }
+  .fr-card:nth-child(3) { border-top-color: #8A7D0D; }
+  .fr-h { font-family: 'Barlow Condensed', sans-serif; font-size: 8pt; font-weight: 700; text-transform: uppercase; color: #070707; margin-bottom: 1.5mm; }
+  .fr-body { font-size: 7pt; color: #2A2826; line-height: 1.4; }
+  .fr-body li { margin-left: 2.5mm; margin-bottom: 0.5mm; }
+
+  /* Questão */
+  .q-header { display: flex; align-items: center; gap: 3mm; margin-bottom: 3.5mm; }
+  .q-badge { font-family: 'Barlow Condensed', sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 1mm 2.5mm; border-radius: 1mm; }
+  .badge-m { background: #EDF7F7; color: #0D8A8D; border: 0.3mm solid #0D8A8D; }
+  .badge-c { background: #F0F7ED; color: #1F5C23; border: 0.3mm solid #1F5C23; }
+  .badge-ap { background: #F9F7ED; color: #8A7D0D; border: 0.3mm solid #8A7D0D; }
+  .badge-an { background: #FFF0F0; color: #C83A1A; border: 0.3mm solid #C83A1A; }
+  .badge-enare { background: #0D8A8D; color: #F6F4ED; }
+  .q-topic { font-size: 7pt; color: #9A9490; text-transform: uppercase; letter-spacing: 0.06em; }
+  .q-stem { font-size: 8.5pt; color: #2A2826; line-height: 1.5; margin-bottom: 3mm; }
+  .q-opts { list-style: none; display: flex; flex-direction: column; gap: 1.5mm; margin-bottom: 3mm; }
+  .q-opts li { font-size: 8pt; color: #2A2826; line-height: 1.4; display: flex; gap: 2mm; }
+  .q-opts li b { font-family: 'Barlow Condensed', sans-serif; font-size: 9pt; color: #0D8A8D; flex-shrink: 0; }
+  .gab-box { background: #0D8A8D; color: #F6F4ED; padding: 3.5mm 4mm; border-radius: 1.5mm; }
+  .gab-title { font-family: 'Barlow Condensed', sans-serif; font-size: 8pt; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 2mm; }
+  .gab-text { font-size: 7.5pt; line-height: 1.5; }
+  .gab-text b { color: #C6D834; }
+  .gab-text .err { color: #FFB3A0; }
+
+  /* Fixação */
+  .fix-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5mm; margin-top: 2mm; }
+  .fix-card { background: #F0EEE7; border-radius: 1.5mm; padding: 3mm; }
+  .fix-q { font-size: 7.5pt; color: #5A5652; margin-bottom: 1.5mm; font-weight: 600; }
+  .fix-sep { border: none; border-top: 0.3mm dashed #C8C5BE; margin: 1.5mm 0; }
+  .fix-a { font-size: 7.5pt; color: #2A2826; line-height: 1.4; }
+
+  /* VF */
+  .vf-table { width: 100%; border-collapse: collapse; font-size: 7.5pt; margin-top: 2mm; }
+  .vf-table th { background: #0D8A8D; color: #F6F4ED; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; text-transform: uppercase; padding: 1.5mm 3mm; text-align: left; }
+  .vf-table td { padding: 2mm 3mm; border-bottom: 0.3mm solid #E0DDD6; vertical-align: top; line-height: 1.35; }
+  .vf-table tr:nth-child(even) td { background: #F0EEE7; }
+  .vf-v { color: #1F5C23; font-weight: 700; }
+  .vf-f { color: #C83A1A; font-weight: 700; }
+
+  /* Ref */
+  .ref-list { font-size: 7.5pt; color: #5A5652; line-height: 1.55; }
+  .ref-list p { margin-bottom: 2mm; }
+  .notes-box { margin-top: 5mm; border: 0.3mm dashed #C8C5BE; padding: 3mm; border-radius: 1mm; min-height: 18mm; color: #C8C5BE; font-style: italic; font-size: 7.5pt; }
+</style>
+</head>
+<body>
+
+<!-- ============================================================ PÁGINA 1 — CAPA -->
+<div class="page">
+  <div class="pc" style="padding-top: 12mm;">
+    <div class="cover-tag">Bloco B6 · Fisioterapia · Aula 17</div>
+    <div class="cover-title">FT-APS 1<br>Fisioterapeuta<br>na APS:<br>NASF, PNAB e RAS</div>
+    <div class="cover-sub">Papel do fisioterapeuta na Atenção Básica e no NASF-AB · Projeto Terapêutico Singular e visita domiciliar · Pontos de atuação na RAS · Vigilância em saúde, fatores de risco e promoção da saúde</div>
+    <div class="cover-stats">
+      <div class="cover-stat">
+        <div class="cover-stat-n">3</div>
+        <div class="cover-stat-l">Blocos de conteúdo</div>
+      </div>
+      <div class="cover-stat">
+        <div class="cover-stat-n">3</div>
+        <div class="cover-stat-l">Questões FGV comentadas</div>
+      </div>
+      <div class="cover-stat">
+        <div class="cover-stat-n">10</div>
+        <div class="cover-stat-l">Questões FGV mapeadas</div>
+      </div>
+    </div>
+    <div class="cover-box">
+      <b>Padrão FGV neste tema:</b><br>
+      FT-APS manteve exatamente 5 questões em cada edição — total de 10 questões mapeadas. A banca cobra o papel ativo do fisioterapeuta na APS (não só reabilitação), o NASF como apoio matricial, o PTS para casos complexos, os pontos de atuação na RAS e as categorias de fatores de risco. Questões de nível C e Ap — ideais para não perder pontos.
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pf-brand">Residência PRO <span>· BY RESIDÊNCIA PRO</span></div>
+    <div style="font-size: 7pt; color: #9A9490;">Extensivo ENARE 2026<br>Fisioterapia · Camila Nara</div>
+  </div>
+</div>
+
+<!-- ============================================================ PÁGINA 2 — OBJETIVOS + MAPA -->
+<div class="page">
+  <div class="ph">
+    <div class="ph-label">Objetivos · Aula 17</div>
+    <div class="ph-right">Extensivo ENARE</div>
+  </div>
+  <div class="pc">
+    <div class="sec-title">Objetivos de Aprendizagem</div>
+    <ul class="obj-list">
+      <li><span class="obj-n">1</span><span><b>Fisioterapeuta na PNAB:</b> reconhecer que as atribuições incluem promoção da saúde, prevenção, reabilitação, cuidado continuado e abordagem familiar — não apenas reabilitação de sequelas.</span></li>
+      <li><span class="obj-n">2</span><span><b>NASF-AB:</b> descrever o papel de apoio matricial (suporte especializado à ESF sem assumir o caso), o PTS e a visita domiciliar como instrumentos de cuidado integral na atenção básica.</span></li>
+      <li><span class="obj-n">3</span><span><b>RAS — pontos de atuação:</b> mapear a presença do fisioterapeuta na Atenção Básica (UBS, ESF), Especializada (ambulatórios, CER, CAPS), Hospitalar, Domiciliar (EMAD/EMAP) e na RAPS.</span></li>
+      <li><span class="obj-n">4</span><span><b>Vigilância e fatores de risco:</b> classificar fatores de risco (ambientais, genéticos, comportamentais) e compreender o papel do fisioterapeuta na vigilância em saúde, promoção e prevenção.</span></li>
+    </ul>
+
+    <div class="sec-title" style="margin-top: 5mm;">Mapa da Aula</div>
+    <div class="mapa">
+      <div class="mapa-item">
+        <div class="mapa-n">1</div>
+        <div class="mapa-label">NASF-AB + PNAB</div>
+        <div class="mapa-desc">Apoio matricial<br>Clínica ampliada · PTS<br>Visita domiciliar</div>
+      </div>
+      <div class="mapa-item">
+        <div class="mapa-n">2</div>
+        <div class="mapa-label">RAS — Pontos</div>
+        <div class="mapa-desc">Atenção Básica<br>Especializada · Hospital<br>CER · Domiciliar · RAPS</div>
+      </div>
+      <div class="mapa-item">
+        <div class="mapa-n">3</div>
+        <div class="mapa-label">Vigilância + Risco</div>
+        <div class="mapa-desc">Fatores de risco (3 categorias)<br>Promoção · Prevenção<br>Hiperdia · PNSPD</div>
+      </div>
+    </div>
+
+    <div class="banca-box" style="margin-top: 4mm;">
+      <div class="banca-text"><b>Perfil de cobrança 2024–2025:</b> A FGV cobra FT-APS com questões C e Ap, nunca puramente memorial. Sempre apresenta uma situação clínica (Maria 71 anos, comunidade rural, paciente com TCE) e pede a conduta correta do fisioterapeuta <b>dentro da APS</b>. O erro esperado é limitar o fisioterapeuta à reabilitação — a banca quer que o aluno saiba que ele atua em <b>promoção, prevenção e apoio matricial</b> na atenção básica.</div>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pf-brand">Extensivo ENARE <span>· BY RESIDÊNCIA PRO</span></div>
+    <div class="pf-page">2</div>
+  </div>
+</div>
+
+<!-- ============================================================ PÁGINA 3 — NASF + PNAB -->
+<div class="page">
+  <div class="ph">
+    <div class="ph-label">NASF · PNAB · Aula 17</div>
+    <div class="ph-right">Extensivo ENARE</div>
+  </div>
+  <div class="pc-sm">
+    <div class="sec-title">1. Fisioterapeuta na APS — NASF-AB e PNAB</div>
+
+    <div class="sub-title">Atribuições do Fisioterapeuta na PNAB 2017</div>
+    <div class="nasf-funcs">
+      <div class="nasf-row"><div class="nasf-dot"></div><div class="nasf-text"><b>Promoção da saúde:</b> grupos educativos, orientação em saúde, atividade física comunitária, educação em saúde</div></div>
+      <div class="nasf-row"><div class="nasf-dot"></div><div class="nasf-text"><b>Prevenção de agravos:</b> identificação de risco, orientação postural, prevenção de quedas no idoso, ergonomia</div></div>
+      <div class="nasf-row"><div class="nasf-dot"></div><div class="nasf-text"><b>Reabilitação:</b> pacientes com doenças crônicas, sequelas neurológicas, deficiências — integrado ao território</div></div>
+      <div class="nasf-row"><div class="nasf-dot"></div><div class="nasf-text"><b>Cuidado continuado:</b> visita domiciliar, grupos terapêuticos, acompanhamento longitudinal</div></div>
+      <div class="nasf-row"><div class="nasf-dot"></div><div class="nasf-text"><b>Abordagem familiar e comunitária:</b> avaliação do contexto social, orientação a familiares e cuidadores</div></div>
+    </div>
+
+    <div class="sub-title" style="margin-top: 3mm;">NASF-AB — Núcleo Ampliado de Saúde da Família e Atenção Básica</div>
+    <div class="two-col">
+      <div class="col-card col-card-teal">
+        <div class="card-h">Papel: Apoio Matricial</div>
+        <div class="card-body">
+          Suporte <b>especializado e pedagógico</b> às equipes de ESF — sem assumir o caso diretamente.<br><br>
+          <b>Instrumentos:</b><br>
+          <ul>
+            <li><b>PTS</b> (Projeto Terapêutico Singular): plano individualizado, elaborado por toda a equipe</li>
+            <li><b>Visita domiciliar:</b> essencial para casos de difícil acesso, acamados, idosos, zona rural</li>
+            <li><b>Clínica ampliada:</b> vai além da queixa principal — contexto biopsicossocial</li>
+            <li><b>Grupos terapêuticos:</b> hiperdia, idosos, lombalgias, pós-AVC</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-card col-card-verde">
+        <div class="card-h">O que NÃO é NASF-AB</div>
+        <div class="card-body">
+          <b>Não é</b> uma porta de entrada autônoma para o SUS.<br>
+          <b>Não assume</b> diretamente a gestão dos casos — apoia a ESF.<br>
+          <b>Não é</b> um serviço de reabilitação especializada (≠ CER).<br>
+          <b>Não deve</b> substituir o atendimento da ESF.<br><br>
+          O fisioterapeuta do NASF faz apoio matricial = suporte técnico + co-gestão do cuidado.
+        </div>
+      </div>
+    </div>
+
+    <div class="banca-box" style="margin-top: 2.5mm;">
+      <div class="banca-title">Como a FGV formula — Q32/2024 e Q31/2025</div>
+      <div class="banca-text">A banca apresenta paciente com TCE/AVC ou idosa em zona rural e pergunta o que o fisioterapeuta do NASF deve fazer. A conduta correta é sempre: <b>PTS + visita domiciliar</b> para casos de difícil acesso. O erro clássico é dizer que o NASF não pode fazer visita domiciliar ou que não atende casos neurológicos na APS.</div>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pf-brand">Extensivo ENARE <span>· BY RESIDÊNCIA PRO</span></div>
+    <div class="pf-page">3</div>
+  </div>
+</div>
+
+<!-- ============================================================ PÁGINA 4 — RAS -->
+<div class="page">
+  <div class="ph">
+    <div class="ph-label">RAS · Pontos de Atuação · Aula 17</div>
+    <div class="ph-right">Extensivo ENARE</div>
+  </div>
+  <div class="pc-sm">
+    <div class="sec-title">2. Fisioterapia nas Redes de Atenção à Saúde (RAS)</div>
+
+    <div class="sub-title">Pontos de Atuação do Fisioterapeuta na RAS</div>
+    <div class="ras-grid">
+      <div class="ras-card ras-ab">
+        <div class="ras-h">Atenção Básica</div>
+        <div class="ras-body">
+          <ul>
+            <li>UBS — Unidade Básica de Saúde</li>
+            <li>ESF — Equipe Saúde da Família</li>
+            <li>NASF-AB — apoio matricial</li>
+            <li>Academia da Saúde</li>
+          </ul>
+        </div>
+      </div>
+      <div class="ras-card ras-esp">
+        <div class="ras-h">Atenção Especializada</div>
+        <div class="ras-body">
+          <ul>
+            <li>Ambulatórios de especialidades</li>
+            <li>CER — Centro Especializado em Reabilitação (física, auditiva, visual, intelectual)</li>
+            <li>CAPS / CAPS-AD (RAPS)</li>
+            <li>Policlínicas</li>
+          </ul>
+        </div>
+      </div>
+      <div class="ras-card ras-hosp">
+        <div class="ras-h">Atenção Hospitalar</div>
+        <div class="ras-body">
+          <ul>
+            <li>UTI geral, neonatal, pediátrica</li>
+            <li>Enfermaria — cirúrgica, neurológica, cardíaca</li>
+            <li>Centro de reabilitação hospitalar</li>
+            <li>Pronto-socorro</li>
+          </ul>
+        </div>
+      </div>
+      <div class="ras-card ras-dom">
+        <div class="ras-h">Atenção Domiciliar</div>
+        <div class="ras-body">
+          <ul>
+            <li>Programa Melhor em Casa: <b>EMAD</b> (equipe multiprofissional de atenção domiciliar) e <b>EMAP</b> (equipe multiprofissional de apoio)</li>
+            <li>Visita domiciliar do NASF</li>
+            <li>SAD privado e filantrópico</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-title" style="margin-top: 3mm;">CER — Centro Especializado em Reabilitação</div>
+    <table>
+      <tr><th>Modalidade CER</th><th>Público-alvo</th><th>Serviços</th></tr>
+      <tr><td><b>Física</b></td><td>Deficiência física e mobilidade</td><td>Fisioterapia, terapia ocupacional, órteses/próteses</td></tr>
+      <tr><td><b>Auditiva</b></td><td>Deficiência auditiva</td><td>Fonoaudiologia, aparelho auditivo, implante coclear</td></tr>
+      <tr><td><b>Visual</b></td><td>Deficiência visual</td><td>Oftalmologia, óptica, orientação e mobilidade</td></tr>
+      <tr><td><b>Intelectual</b></td><td>Deficiência intelectual e autismo</td><td>Equipe multiprofissional, estimulação, psicologia</td></tr>
+    </table>
+
+    <div class="banca-box" style="margin-top: 2.5mm;">
+      <div class="banca-title">Ponto-chave FGV — Q38/2025</div>
+      <div class="banca-text">O fisioterapeuta atua em <b>todos os níveis da RAS</b> — não apenas na reabilitação hospitalar. O erro esperado é afirmar que CER é exclusivo para reabilitação física (cobre 4 modalidades) ou que o fisioterapeuta não tem papel na RAPS (atua em CAPS como equipe multiprofissional).</div>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pf-brand">Extensivo ENARE <span>· BY RESIDÊNCIA PRO</span></div>
+    <div class="pf-page">4</div>
+  </div>
+</div>
+
+<!-- ============================================================ PÁGINA 5 — VIGILÂNCIA + FATORES DE RISCO -->
+<div class="page">
+  <div class="ph">
+    <div class="ph-label">Vigilância · Fatores de Risco · Aula 17</div>
+    <div class="ph-right">Extensivo ENARE</div>
+  </div>
+  <div class="pc-sm">
+    <div class="sec-title">3. Vigilância em Saúde, Fatores de Risco e Políticas</div>
+
+    <div class="sub-title">Categorias de Fatores de Risco — Q61/2025</div>
+    <div class="fr-grid">
+      <div class="fr-card">
+        <div class="fr-h">Ambientais</div>
+        <div class="fr-body">
+          <ul>
+            <li>Poluição do ar e da água</li>
+            <li>Condições de trabalho insalubres</li>
+            <li>Exposição a agentes físicos (ruído, vibração)</li>
+            <li>Habitação inadequada</li>
+            <li>Saneamento básico deficiente</li>
+          </ul>
+        </div>
+      </div>
+      <div class="fr-card">
+        <div class="fr-h">Genéticos / Hereditários</div>
+        <div class="fr-body">
+          <ul>
+            <li>Histórico familiar de DCV</li>
+            <li>Predisposição genética a HAS, DM</li>
+            <li>Doenças hereditárias (DMD, hemofilia)</li>
+            <li>Polimorfismos de risco</li>
+          </ul>
+        </div>
+      </div>
+      <div class="fr-card">
+        <div class="fr-h">Comportamentais</div>
+        <div class="fr-body">
+          <ul>
+            <li>Sedentarismo</li>
+            <li>Tabagismo e etilismo</li>
+            <li>Dieta hipercalórica/hipersódica</li>
+            <li>Obesidade</li>
+            <li>Estresse crônico</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-title" style="margin-top: 3mm;">Vigilância em Saúde — Papel do Fisioterapeuta</div>
+    <div class="two-col">
+      <div class="col-card col-card-teal">
+        <div class="card-h">Vigilância Epidemiológica</div>
+        <div class="card-body">
+          Notificação de agravos de notificação compulsória (ANC) · Participação em inquéritos epidemiológicos · Identificação de surtos e aglomerados · Hiperdia: monitoramento de HAS e DM na comunidade
+        </div>
+      </div>
+      <div class="col-card" style="background: #F0EEE7;">
+        <div class="card-h">Fisioterapeuta na Promoção e Prevenção</div>
+        <div class="card-body">
+          <b>Promoção (Q53/2024, Q62/2024):</b> ações de melhoria de qualidade de vida independente de doença · grupos de exercício, orientação postural<br>
+          <b>Prevenção primária (Q35/2024):</b> controle de fatores de risco — HAS, sedentarismo · Hiperdia, grupos de atividade física<br>
+          <b>Prevenção secundária:</b> rastreamento, detecção precoce de incapacidade<br>
+          <b>Prevenção terciária:</b> reabilitação, evitar progressão de sequelas
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-title" style="margin-top: 2.5mm;">Política Nacional de Saúde da Pessoa com Deficiência (PNSPD) — Q50/2025</div>
+    <div style="background: #F0EEE7; border-radius: 1.5mm; padding: 3mm; font-size: 7.5pt; color: #2A2826; line-height: 1.5;">
+      Objetivos: <b>promoção da qualidade de vida, prevenção de deficiências, atenção integral, reabilitação e inclusão social.</b> O fisioterapeuta é agente central na PNSPD — atua em todos os níveis da RAS para pessoas com deficiência física, visual, auditiva e intelectual. O CER é o principal dispositivo da atenção especializada em reabilitação para pessoas com deficiência no SUS.
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pf-brand">Extensivo ENARE <span>· BY RESIDÊNCIA PRO</span></div>
+    <div class="pf-page">5</div>
+  </div>
+</div>
+
+<!-- ============================================================ PÁGINA 6 — QUESTÃO 1 -->
+<div class="page">
+  <div class="ph">
+    <div class="ph-label">Questão 1 · Aula 17</div>
+    <div class="ph-right">Extensivo ENARE</div>
+  </div>
+  <div class="pc">
+    <div class="q-header">
+      <span class="q-badge badge-c">C — Compreensão</span>
+      <span class="q-badge badge-enare">029 · ENARE 2025</span>
+      <span class="q-topic">FT-APS · PNAB · Papel do Fisioterapeuta na Atenção Básica</span>
+    </div>
+
+    <div class="q-stem">Sobre as atribuições do fisioterapeuta no âmbito da Política Nacional de Atenção Básica (PNAB) e sua integração à equipe de Saúde da Família e ao NASF-AB, assinale a alternativa <b>CORRETA</b>:</div>
+
+    <ul class="q-opts">
+      <li><b>A)</b> O fisioterapeuta na Atenção Básica atua exclusivamente na reabilitação de pacientes com deficiências físicas ou neurológicas já instaladas, não tendo competência para ações de promoção da saúde ou prevenção de agravos nesse nível de atenção.</li>
+      <li><b>B)</b> O fisioterapeuta, como integrante da equipe NASF-AB, exerce apoio matricial às equipes de ESF, participando de ações de promoção da saúde, prevenção de agravos, reabilitação e cuidado continuado, com abordagem familiar e comunitária.</li>
+      <li><b>C)</b> As atribuições do fisioterapeuta na Atenção Básica limitam-se ao atendimento individual em consultório dentro da UBS, não incluindo visitas domiciliares, atividades em grupo ou ações de apoio matricial às equipes de ESF.</li>
+      <li><b>D)</b> O NASF-AB é uma equipe autônoma que assume diretamente a gestão dos casos encaminhados pelas equipes de ESF, substituindo o atendimento primário nas unidades básicas de saúde.</li>
+    </ul>
+
+    <div class="gab-box">
+      <div class="gab-title">Gabarito: B</div>
+      <div class="gab-text">
+        <b>B — VERDADEIRA:</b> O fisioterapeuta no NASF-AB realiza apoio matricial — suporte especializado e pedagógico às equipes de ESF. Suas atribuições abrangem promoção, prevenção, reabilitação e cuidado continuado, com abordagem familiar e territorial.<br>
+        <span class="err">A) Errada:</span> O fisioterapeuta na APS não se limita à reabilitação — promoção e prevenção são atribuições centrais na PNAB.<br>
+        <span class="err">C) Errada:</span> Visita domiciliar e grupos terapêuticos são instrumentos essenciais do NASF-AB.<br>
+        <span class="err">D) Errada:</span> O NASF não assume diretamente os casos — faz apoio matricial sem substituir a ESF como gestora do cuidado.
+      </div>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pf-brand">Extensivo ENARE <span>· BY RESIDÊNCIA PRO</span></div>
+    <div class="pf-page">6</div>
+  </div>
+</div>
+
+<!-- ============================================================ PÁGINA 7 — QUESTÃO 2 -->
+<div class="page">
+  <div class="ph">
+    <div class="ph-label">Questão 2 · Aula 17</div>
+    <div class="ph-right">Extensivo ENARE</div>
+  </div>
+  <div class="pc">
+    <div class="q-header">
+      <span class="q-badge badge-ap">Ap — Aplicação</span>
+      <span class="q-badge badge-enare">031 · ENARE 2025</span>
+      <span class="q-topic">FT-APS · NASF · PTS · Visita Domiciliar</span>
+    </div>
+
+    <div class="q-stem">Maria, 71 anos, moradora de comunidade rural, apresenta dificuldade de locomoção após fratura de quadril pós-cirúrgica (3 meses). Mora sozinha em casa de difícil acesso, com baixa adesão a consultas presenciais. A equipe de Saúde da Família solicita apoio do fisioterapeuta do NASF-AB. Sobre a conduta mais adequada neste contexto, é <b>CORRETO</b> afirmar:</div>
+
+    <ul class="q-opts">
+      <li><b>A)</b> O fisioterapeuta deve recusar o atendimento, pois o NASF-AB tem competência exclusiva para apoio matricial em reuniões de equipe, sendo vedada a realização de visita domiciliar ou atendimento direto ao paciente.</li>
+      <li><b>B)</b> O fisioterapeuta deve elaborar, em conjunto com a equipe de saúde da família, um Projeto Terapêutico Singular (PTS) que inclua visita domiciliar, avaliação do ambiente doméstico, orientação à família e prescrição de exercícios adaptados ao contexto de vida da paciente.</li>
+      <li><b>C)</b> A conduta correta é encaminhar Maria diretamente a um serviço de reabilitação de média ou alta complexidade, pois o NASF-AB não tem competência técnica para manejo de casos pós-cirúrgicos ortopédicos na Atenção Básica.</li>
+      <li><b>D)</b> O fisioterapeuta deve atender Maria exclusivamente em grupo, pois o atendimento individualizado pelo NASF-AB é vedado pela PNAB, que determina que todos os atendimentos ocorram em formato coletivo para maior custo-efetividade.</li>
+    </ul>
+
+    <div class="gab-box">
+      <div class="gab-title">Gabarito: B</div>
+      <div class="gab-text">
+        <b>B — VERDADEIRA:</b> O PTS é o instrumento adequado para casos complexos na APS — elaborado de forma interdisciplinar. A visita domiciliar é essencial para casos com barreiras de acesso (zona rural, idoso acamado, baixa mobilidade). O fisioterapeuta do NASF pode e deve realizar atendimento direto quando indicado.<br>
+        <span class="err">A) Errada:</span> O NASF-AB pode e deve realizar visitas domiciliares — é um de seus instrumentos principais.<br>
+        <span class="err">C) Errada:</span> Encaminhamento direto sem tentativa de manejo na APS contraria o princípio de resolutividade da Atenção Básica.<br>
+        <span class="err">D) Errada:</span> O NASF pode fazer atendimentos individuais — não há vedação. A modalidade depende da necessidade do caso.
+      </div>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pf-brand">Extensivo ENARE <span>· BY RESIDÊNCIA PRO</span></div>
+    <div class="pf-page">7</div>
+  </div>
+</div>
+
+<!-- ============================================================ PÁGINA 8 — QUESTÃO 3 (ÂNCORA) -->
+<div class="page">
+  <div class="ph">
+    <div class="ph-label">Questão 3 · Âncora · Aula 17</div>
+    <div class="ph-right">Extensivo ENARE</div>
+  </div>
+  <div class="pc-sm">
+    <div class="q-header">
+      <span class="q-badge badge-c">C — Compreensão</span>
+      <span class="q-badge badge-enare">038 · ENARE 2025</span>
+      <span class="q-topic">FT-APS · RAS · Pontos de Atuação do Fisioterapeuta no SUS</span>
+    </div>
+
+    <div class="q-stem">Sobre os diferentes pontos de atuação do fisioterapeuta na Rede de Atenção à Saúde (RAS) do SUS, analise as afirmativas e assinale a alternativa que indica corretamente apenas as afirmativas <b>VERDADEIRAS</b>:</div>
+
+    <div style="font-size: 8pt; color: #2A2826; line-height: 1.5; margin-bottom: 3mm;">
+      I. O fisioterapeuta pode atuar na Atenção Básica (ESF, NASF-AB), na Atenção Especializada (ambulatórios, CER) e na Atenção Hospitalar, configurando presença em todos os níveis da RAS.<br>
+      II. O Programa Melhor em Casa (modalidades EMAD e EMAP) constitui um ponto de atenção domiciliar onde o fisioterapeuta integra equipes multiprofissionais de reabilitação em domicílio.<br>
+      III. Os Centros Especializados em Reabilitação (CER) são serviços exclusivos para reabilitação física, não contemplando as modalidades auditiva, visual ou intelectual.<br>
+      IV. O fisioterapeuta não tem atribuições reconhecidas na Rede de Atenção Psicossocial (RAPS), pois essa rede é composta exclusivamente por profissionais de saúde mental e psiquiatria.
+    </div>
+
+    <ul class="q-opts">
+      <li><b>A)</b> I e II</li>
+      <li><b>B)</b> I, II e III</li>
+      <li><b>C)</b> II e IV</li>
+      <li><b>D)</b> I, II, III e IV</li>
+    </ul>
+
+    <div class="gab-box">
+      <div class="gab-title">Gabarito: A</div>
+      <div class="gab-text">
+        <b>I — VERDADEIRA:</b> Fisioterapeuta atua em todos os níveis da RAS — atenção básica, especializada, hospitalar e domiciliar.<br>
+        <b>II — VERDADEIRA:</b> Programa Melhor em Casa: EMAD (equipe multiprofissional de atenção domiciliar — inclui fisioterapeuta) e EMAP (equipe de apoio). Reabilitação domiciliar é um ponto formal da RAS.<br>
+        <span class="err">III — FALSA:</span> CER contempla 4 modalidades: <b>física, auditiva, visual e intelectual</b> — não é exclusivo para física.<br>
+        <span class="err">IV — FALSA:</span> O fisioterapeuta pode integrar equipes da RAPS — por exemplo, em CAPS (Centro de Atenção Psicossocial), onde a equipe multiprofissional inclui diferentes categorias de saúde.
+      </div>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pf-brand">Extensivo ENARE <span>· BY RESIDÊNCIA PRO</span></div>
+    <div class="pf-page">8</div>
+  </div>
+</div>
+
+<!-- ============================================================ PÁGINA 9 — RECUPERAÇÃO ATIVA -->
+<div class="page">
+  <div class="ph">
+    <div class="ph-label">Recuperação Ativa · Aula 17</div>
+    <div class="ph-right">Extensivo ENARE</div>
+  </div>
+  <div class="pc-sm">
+    <div class="sec-title">Recuperação Ativa — Fixação</div>
+
+    <div class="fix-grid">
+      <div class="fix-card">
+        <div class="fix-q">Qual o papel do NASF-AB em relação à ESF?</div>
+        <hr class="fix-sep">
+        <div class="fix-a"><b>Apoio matricial</b> — suporte especializado e pedagógico <b>sem assumir o caso diretamente.</b> Instrumentos: PTS, visita domiciliar, clínica ampliada, grupos terapêuticos.</div>
+      </div>
+      <div class="fix-card">
+        <div class="fix-q">Cite 4 atribuições do fisioterapeuta na PNAB além da reabilitação.</div>
+        <hr class="fix-sep">
+        <div class="fix-a">Promoção da saúde · Prevenção de agravos · Cuidado continuado · Abordagem familiar e comunitária · Grupos educativos · Prevenção de quedas no idoso.</div>
+      </div>
+      <div class="fix-card">
+        <div class="fix-q">Quais são as 4 modalidades do CER?</div>
+        <hr class="fix-sep">
+        <div class="fix-a"><b>Física · Auditiva · Visual · Intelectual.</b> CER não é exclusivo para reabilitação física — abrange todas as 4 modalidades no SUS.</div>
+      </div>
+      <div class="fix-card">
+        <div class="fix-q">O que é o Programa Melhor em Casa? Quais equipes?</div>
+        <hr class="fix-sep">
+        <div class="fix-a">Atenção domiciliar no SUS. <b>EMAD</b> (equipe multiprofissional de atenção domiciliar — inclui fisioterapeuta) + <b>EMAP</b> (equipe de apoio). Reabilitação domiciliar formal na RAS.</div>
+      </div>
+      <div class="fix-card">
+        <div class="fix-q">Classifique: sedentarismo, poluição do ar e histórico familiar de HAS.</div>
+        <hr class="fix-sep">
+        <div class="fix-a">Sedentarismo = <b>comportamental.</b> Poluição do ar = <b>ambiental.</b> Histórico familiar de HAS = <b>genético/hereditário.</b></div>
+      </div>
+      <div class="fix-card">
+        <div class="fix-q">O fisioterapeuta pode atuar na RAPS?</div>
+        <hr class="fix-sep">
+        <div class="fix-a"><b>Sim.</b> Pode integrar equipes de CAPS e outros pontos da RAPS como membro da equipe multiprofissional — não é exclusividade de saúde mental.</div>
+      </div>
+    </div>
+
+    <div class="sub-title" style="margin-top: 3mm;">Fixação Rápida — V ou F</div>
+    <table class="vf-table">
+      <tr><th>Afirmativa</th><th>V/F</th><th>Justificativa</th></tr>
+      <tr><td>O NASF-AB assume diretamente a gestão dos casos encaminhados pela ESF.</td><td class="vf-f">F</td><td>Faz apoio matricial — suporte técnico à ESF, sem assumir o caso diretamente.</td></tr>
+      <tr><td>O fisioterapeuta do NASF pode realizar visitas domiciliares.</td><td class="vf-v">V</td><td>Visita domiciliar é instrumento essencial do NASF, especialmente para casos de difícil acesso.</td></tr>
+      <tr><td>O CER é exclusivo para reabilitação física no SUS.</td><td class="vf-f">F</td><td>CER tem 4 modalidades: física, auditiva, visual e intelectual.</td></tr>
+    </table>
+  </div>
+  <div class="pf">
+    <div class="pf-brand">Extensivo ENARE <span>· BY RESIDÊNCIA PRO</span></div>
+    <div class="pf-page">9</div>
+  </div>
+</div>
+
+<!-- ============================================================ PÁGINA 10 — REFERÊNCIAS -->
+<div class="page">
+  <div class="ph">
+    <div class="ph-label">Referências · Aula 17</div>
+    <div class="ph-right">Extensivo ENARE</div>
+  </div>
+  <div class="pc">
+    <div class="sec-title">Referências — Bloco B6 · Aula 17</div>
+    <div class="ref-list">
+      <p>BRASIL. Ministério da Saúde. <em>Política Nacional de Atenção Básica (PNAB)</em>. Portaria n. 2.436, de 21 de setembro de 2017. Brasília: Ministério da Saúde, 2017.</p>
+      <p>BRASIL. Ministério da Saúde. <em>Núcleo Ampliado de Saúde da Família e Atenção Básica (NASF-AB): ferramentas para a gestão e para o trabalho cotidiano</em>. Brasília: Ministério da Saúde, 2014. (Cadernos de Atenção Básica, n. 39)</p>
+      <p>BRASIL. Ministério da Saúde. <em>Política Nacional de Saúde da Pessoa com Deficiência</em>. Brasília: Editora do Ministério da Saúde, 2010.</p>
+      <p>BRASIL. Decreto n. 7.508, de 28 de junho de 2011. Regulamenta a Lei n. 8.080/1990 — organização do SUS e articulação das Redes de Atenção à Saúde. Brasília, 2011.</p>
+      <p>BRASIL. Portaria n. 793, de 24 de abril de 2012. Institui a Rede de Cuidados à Pessoa com Deficiência. Brasília: Ministério da Saúde, 2012.</p>
+      <p>CONSELHO FEDERAL DE FISIOTERAPIA E TERAPIA OCUPACIONAL (COFFITO). <em>Resolução n. 424, de 2013</em>. Estabelece o Código de Ética e Deontologia da Fisioterapia. Brasília: COFFITO, 2013.</p>
+    </div>
+    <div class="notes-box">Espaço para anotações</div>
+  </div>
+  <div class="pf">
+    <div class="pf-brand">Extensivo ENARE <span>· BY RESIDÊNCIA PRO</span></div>
+    <div class="pf-page">10</div>
+  </div>
+</div>
+
+</body>
+</html>
