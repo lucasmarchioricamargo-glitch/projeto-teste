@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nutrição · Bloco B9 · Aula 05 — NUT-FARM: Neurológico/Psiquiátrico</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    background: #888;
+  }
+  .page {
+    width: 210mm;
+    height: 297mm;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    page-break-after: always;
+    background: #F6F4ED;
+  }
+  .ph {
+    height: 14mm;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16mm;
+    border-bottom: 0.4mm solid #E0DDD6;
+  }
+  .ph-left {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 8.5pt;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #0D8A8D;
+  }
+  .ph-right {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 7.5pt;
+    color: #888;
+    letter-spacing: 0.04em;
+  }
+  .pf {
+    height: 9mm;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16mm;
+    border-top: 0.4mm solid #E0DDD6;
+  }
+  .pf-left {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 7pt;
+    color: #0D8A8D;
+  }
+  .pf-left span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-style: normal; color: #888; font-size: 7pt; }
+  .pf-right { text-align: right; }
+  .pf-right .pf-product { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 8pt; letter-spacing: 0.06em; color: #070707; display: block; }
+  .pf-right .pf-sub { font-family: 'Bricolage Grotesque', sans-serif; font-size: 6.5pt; color: #888; display: block; }
+  .pc { flex: 1; padding: 7mm 16mm 5mm; overflow: hidden; }
+  .pc-sm { flex: 1; padding: 5mm 16mm 4mm; overflow: hidden; }
+
+  /* CAPA */
+  .capa-eyebrow { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 9pt; letter-spacing: 0.18em; text-transform: uppercase; color: #0D8A8D; margin-bottom: 5mm; }
+  .capa-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 44pt; line-height: 0.95; color: #070707; text-transform: uppercase; margin-bottom: 6mm; }
+  .capa-desc { font-size: 9.5pt; color: #444; line-height: 1.55; max-width: 155mm; margin-bottom: 8mm; }
+  .capa-stats { display: flex; gap: 10mm; margin-bottom: 8mm; }
+  .stat-box { display: flex; flex-direction: column; gap: 1mm; }
+  .stat-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 28pt; color: #0D8A8D; line-height: 1; }
+  .stat-label { font-size: 7.5pt; color: #666; line-height: 1.3; }
+  .stat-divider { width: 0.3mm; background: #E0DDD6; margin: 0 2mm; }
+  .capa-banca-box { background: #EAF6F6; border-left: 3mm solid #0D8A8D; padding: 4mm 6mm; border-radius: 0 2mm 2mm 0; }
+  .capa-banca-box .bb-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 8pt; letter-spacing: 0.12em; text-transform: uppercase; color: #0D8A8D; margin-bottom: 2mm; }
+  .capa-banca-box p { font-size: 8.5pt; color: #333; line-height: 1.55; }
+
+  /* SECTION */
+  .sec-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 16pt; text-transform: uppercase; color: #070707; letter-spacing: 0.04em; margin-bottom: 4mm; padding-bottom: 2mm; border-bottom: 0.5mm solid #0D8A8D; }
+  .sec-sub { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 11pt; text-transform: uppercase; color: #0D8A8D; letter-spacing: 0.06em; margin: 3.5mm 0 2mm; }
+
+  /* LAYOUT */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 5mm; margin-bottom: 4mm; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 4mm; margin-bottom: 4mm; }
+
+  /* CARDS */
+  .card { background: #EDEBE4; border-radius: 2mm; padding: 4mm 5mm; }
+  .card-teal { background: #EAF6F6; border-radius: 2mm; padding: 4mm 5mm; }
+  .card-warn { background: #FFF3E0; border-radius: 2mm; padding: 4mm 5mm; border-left: 2.5mm solid #E65100; }
+  .card-red { background: #FFEBEE; border-radius: 2mm; padding: 4mm 5mm; border-left: 2.5mm solid #C62828; }
+  .card-green { background: #E8F5E9; border-radius: 2mm; padding: 4mm 5mm; border-left: 2.5mm solid #1F5C23; }
+  .card h4 { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 9pt; letter-spacing: 0.1em; text-transform: uppercase; color: #0D8A8D; margin-bottom: 2mm; }
+  .card-warn h4 { color: #E65100; }
+  .card-red h4 { color: #C62828; }
+  .card-green h4 { color: #1F5C23; }
+  .card p, .card li { font-size: 8pt; color: #333; line-height: 1.5; }
+  .card ul { padding-left: 3.5mm; }
+
+  /* TABLE */
+  table { width: 100%; border-collapse: collapse; font-size: 8pt; margin-bottom: 4mm; }
+  th { background: #070707; color: #F6F4ED; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 8pt; letter-spacing: 0.08em; text-transform: uppercase; padding: 2.5mm 3mm; text-align: left; }
+  td { padding: 2mm 3mm; border-bottom: 0.2mm solid #E0DDD6; vertical-align: top; color: #333; line-height: 1.45; }
+  tr:nth-child(even) td { background: #EDEBE4; }
+  .td-red { color: #C62828; font-weight: 600; }
+  .td-green { color: #1F5C23; font-weight: 600; }
+  .td-orange { color: #E65100; font-weight: 600; }
+  .td-teal { color: #0D8A8D; font-weight: 600; }
+
+  /* BODY */
+  p { font-size: 8.5pt; color: #333; line-height: 1.55; margin-bottom: 2.5mm; }
+  ul, ol { padding-left: 4mm; margin-bottom: 2.5mm; }
+  li { font-size: 8.5pt; color: #333; line-height: 1.5; margin-bottom: 1mm; }
+  strong { color: #070707; }
+  .highlight { color: #0D8A8D; font-weight: 600; }
+  .warn { color: #C62828; font-weight: 600; }
+
+  /* PILL */
+  .pill { display: inline-block; background: #0D8A8D; color: #F6F4ED; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 7pt; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.8mm 2.5mm; border-radius: 10mm; margin-right: 1.5mm; vertical-align: middle; }
+  .pill-warn { background: #C62828; }
+  .pill-green { background: #1F5C23; }
+
+  /* QUESTÃO */
+  .q-header { display: flex; align-items: center; gap: 3mm; margin-bottom: 4mm; }
+  .q-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 22pt; color: #070707; line-height: 1; }
+  .q-tag { display: inline-block; background: #070707; color: #F6F4ED; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 8pt; letter-spacing: 0.1em; text-transform: uppercase; padding: 1mm 3mm; border-radius: 1mm; }
+  .q-tag-teal { background: #0D8A8D; }
+  .q-enunciado { font-size: 9pt; color: #1a1a1a; line-height: 1.6; margin-bottom: 4mm; }
+  .alternativas { list-style: none; padding: 0; margin: 0; }
+  .alternativas li { display: flex; gap: 2.5mm; padding: 2mm 3mm; border-radius: 1.5mm; margin-bottom: 1.5mm; font-size: 8pt; color: #333; line-height: 1.45; background: #EDEBE4; }
+  .alt-letra { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 10pt; color: #0D8A8D; flex-shrink: 0; line-height: 1.3; }
+  .q-ref { font-size: 7pt; color: #999; font-style: italic; margin-top: 3mm; }
+
+  /* GABARITO */
+  .gab-box { background: #070707; border-radius: 2mm; padding: 4mm 6mm; margin-bottom: 4mm; display: flex; gap: 8mm; align-items: center; }
+  .gab-item { display: flex; flex-direction: column; align-items: center; gap: 1mm; }
+  .gab-qnum { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 8pt; letter-spacing: 0.1em; color: #888; text-transform: uppercase; }
+  .gab-letra { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 28pt; color: #C6D834; line-height: 1; }
+  .gab-divider { width: 0.3mm; height: 12mm; background: #333; }
+  .disc-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 9pt; letter-spacing: 0.1em; text-transform: uppercase; color: #0D8A8D; margin-bottom: 1.5mm; margin-top: 3mm; }
+  .disc-text { font-size: 7.8pt; color: #333; line-height: 1.5; margin-bottom: 2mm; }
+
+  /* SÍNTESE */
+  .sintese-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; margin-bottom: 5mm; }
+  .sintese-card { background: #EDEBE4; border-radius: 2mm; padding: 4mm 5mm; border-top: 2mm solid #0D8A8D; }
+  .sintese-card.sc-warn { border-top-color: #C62828; }
+  .sintese-card.sc-green { border-top-color: #1F5C23; }
+  .sintese-card.sc-lima { border-top-color: #C6D834; }
+  .sintese-card h4 { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 10pt; text-transform: uppercase; color: #070707; margin-bottom: 2mm; }
+  .sintese-card p, .sintese-card li { font-size: 7.8pt; color: #444; line-height: 1.5; }
+  .sintese-card ul { padding-left: 3.5mm; }
+  .regra-ouro { background: #070707; border-radius: 2mm; padding: 4mm 6mm; margin-bottom: 4mm; }
+  .regra-ouro .ro-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; letter-spacing: 0.12em; text-transform: uppercase; color: #C6D834; margin-bottom: 1.5mm; }
+  .regra-ouro p { font-size: 8.5pt; color: #F6F4ED; line-height: 1.55; }
+  .ref-list { list-style: none; padding: 0; }
+  .ref-list li { font-size: 7.5pt; color: #555; line-height: 1.5; margin-bottom: 1.5mm; padding-left: 3mm; border-left: 1mm solid #C6D834; }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     PÁGINA 1 — CAPA
+     ══════════════════════════════════════ -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-left">Bloco B9 · Nutrição · Aula 05</span>
+    <span class="ph-right"></span>
+  </div>
+  <div class="pc">
+    <div class="capa-eyebrow">Bloco B9 · NUT-FARM · Aula 05 de ~35</div>
+    <div class="capa-title">NUT-FARM:<br>NEUROLÓGICO/<br>PSIQUIÁTRICO</div>
+    <div class="capa-desc">
+      Levodopa × proteínas e toranja · Síndrome serotoninérgica dos IMAOs ·
+      Tiramina e crise hipertensiva · Lítio e sódio ·
+      Antipsicóticos e ganho de peso · Fenitoína e micronutrientes
+    </div>
+    <div class="capa-stats">
+      <div class="stat-box">
+        <div class="stat-num">Q84</div>
+        <div class="stat-label">Levodopa +<br>proteínas (An)<br>ENARE 2025</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-box">
+        <div class="stat-num">Q92</div>
+        <div class="stat-label">IMAOs +<br>tiramina (An)<br>ENARE 2025</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-box">
+        <div class="stat-num">An</div>
+        <div class="stat-label">Nível<br>cognitivo<br>FGV 2025</div>
+      </div>
+    </div>
+    <div class="capa-banca-box">
+      <div class="bb-title">O que a FGV cobra em neurológico/psiquiátrico:</div>
+      <p>
+        Q84/2025 exigiu que o candidato reconhecesse a <strong>competição entre levodopa e aminoácidos
+        neutros de cadeia longa (LNAA)</strong> no transporte intestinal, além do papel da toranja via CYP3A4.
+        Q92/2025 cobrou a crise hipertensiva por tiramina em pacientes com IMAOs.
+        Para o ENARE 2026, espera-se questões sobre o <strong>momento adequado da refeição proteica</strong>
+        e sobre os alimentos que contêm tiramina em concentração crítica.
+      </p>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pf-left">Residência PRO <span>· BY RESIDÊNCIA PRO</span></div>
+    <div class="pf-right">
+      <span class="pf-product">Extensivo ENARE 2026</span>
+      <span class="pf-sub">Nutrição · Convidado</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PÁGINA 2 — LEVODOPA × PROTEÍNAS
+     ══════════════════════════════════════ -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-left">Levodopa · Proteínas · LNAA · B9 Aula 05</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc-sm">
+    <div class="sec-title">Levodopa — Competição com Proteínas</div>
+    <div class="two-col">
+      <div>
+        <div class="sec-sub">Mecanismo central (cobrado em Q84)</div>
+        <p>
+          A levodopa é absorvida no intestino delgado pelo transportador de
+          <strong>aminoácidos neutros de cadeia longa (LNAA)</strong> — o mesmo sistema usado por
+          fenilalanina, tirosina, triptofano, leucina, valina e isoleucina.
+        </p>
+        <p>
+          Uma refeição rica em proteínas → elevação sérica de LNAA →
+          <strong class="warn">competição direta</strong> com a levodopa no transportador intestinal
+          e também na barreira hematoencefálica → ↓ absorção e ↓ acesso ao SNC →
+          efeito terapêutico reduzido ("off" motor).
+        </p>
+        <div class="card-warn" style="margin-top:3mm;">
+          <h4>Regra prática — timing da proteína</h4>
+          <ul>
+            <li>Tomar levodopa <strong>30–60 min antes</strong> das refeições proteicas (estômago vazio)</li>
+            <li>Se intolerância gástrica: tomar com carboidrato (bolacha, fruta) — sem proteína</li>
+            <li>Distribuir a proteína no <strong>jantar</strong> — estratégia da "proteína noturna"</li>
+            <li>Não suprimir proteínas — causa perda muscular em parkinsonianos</li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <div class="sec-sub">Toranja + levodopa/carbidopa</div>
+        <p>
+          A toranja (grapefruit) inibe o <strong>CYP3A4</strong> intestinal → ↑ biodisponibilidade
+          da carbidopa e de outros fármacos do esquema antiparkinsoniano →
+          risco de toxicidade dopaminérgica (discinesias, alucinações, hipotensão postural).
+        </p>
+        <div class="card-teal" style="margin-top:3mm;">
+          <h4>LNAA — aminoácidos que competem</h4>
+          <table style="margin-bottom:0;">
+            <tr><th>AA</th><th>Fontes principais</th></tr>
+            <tr><td>Fenilalanina</td><td>Carnes, laticínios, ovos</td></tr>
+            <tr><td>Tirosina</td><td>Queijo, soja, frango</td></tr>
+            <tr><td>Triptofano</td><td>Peru, banana, leite</td></tr>
+            <tr><td>Leucina / Valina</td><td>Carnes vermelhas, whey</td></tr>
+          </table>
+        </div>
+        <div class="card-red" style="margin-top:3mm;">
+          <h4>Distrator FGV Q84 — vitamina B6</h4>
+          <p>
+            A vitamina B6 (piridoxina) em altas doses (suplementos &gt;200 mg/dia)
+            acelera o metabolismo periférico da levodopa → ↓ chegada ao SNC.
+            <strong>Com carbidopa</strong> esse efeito é bloqueado. A FGV usa esse ponto
+            para confundir candidatos que sabem da interação antiga mas não da proteção pela carbidopa.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pf-left">Extensivo ENARE <span>· BY RESIDÊNCIA PRO</span></div>
+    <div class="pf-right">
+      <span class="pf-product">Extensivo ENARE 2026</span>
+      <span class="pf-sub">Nutrição · Convidado</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PÁGINA 3 — IMAOs E TIRAMINA
+     ══════════════════════════════════════ -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-left">IMAOs · Tiramina · Crise Hipertensiva · B9 Aula 05</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc-sm">
+    <div class="sec-title">IMAOs — Síndrome do Queijo e Crise Hipertensiva</div>
+    <div class="two-col">
+      <div>
+        <div class="sec-sub">Mecanismo (cobrado em Q92)</div>
+        <p>
+          IMAOs (fenelzina, tranilcipromina, isocarboxazida) inibem a <strong>monoamina oxidase</strong>
+          intestinal e hepática, enzima responsável por degradar a <strong>tiramina</strong> ingerida.
+        </p>
+        <p>
+          Com a MAO inibida, a tiramina absorvida chega à circulação sistêmica →
+          desloca noradrenalina dos grânulos das terminações simpáticas →
+          <strong class="warn">crise hipertensiva grave</strong> (cefaleia occipital, sudorese, palpitações,
+          risco de AVC hemorrágico).
+        </p>
+        <p>
+          Também chamada de "<strong>síndrome do queijo</strong>" — queijos maturados têm altíssima
+          concentração de tiramina (produto da fermentação bacteriana da tirosina).
+        </p>
+        <div class="card-red" style="margin-top:3mm;">
+          <h4>Selegilina — atenção ao contexto</h4>
+          <p>
+            Em doses baixas (&lt;10 mg/dia), a selegilina é seletiva para MAO-B → menor risco de crise por tiramina.
+            Em doses altas (para depressão) perde a seletividade — <strong>mesma restrição dietética dos IMAOs não seletivos</strong>.
+            A FGV pode apresentar esse contexto de dose como variável crítica.
+          </p>
+        </div>
+      </div>
+      <div>
+        <div class="sec-sub">Alimentos ricos em tiramina</div>
+        <table>
+          <tr><th>Alimento</th><th>Tiramina</th><th>Conduta</th></tr>
+          <tr><td>Queijo maturado (parmesão, cheddar)</td><td class="td-red">Alta (&gt;6 mg/g)</td><td class="td-red">Proibido</td></tr>
+          <tr><td>Vinho tinto / cerveja artesanal</td><td class="td-red">Alta</td><td class="td-red">Proibido</td></tr>
+          <tr><td>Extrato de levedura (Marmite)</td><td class="td-red">Muito alta</td><td class="td-red">Proibido</td></tr>
+          <tr><td>Molho de soja, pasta de missô</td><td class="td-red">Alta</td><td class="td-red">Proibido</td></tr>
+          <tr><td>Carnes curadas / embutidos</td><td class="td-orange">Moderada-alta</td><td class="td-orange">Evitar</td></tr>
+          <tr><td>Fígado de galinha</td><td class="td-orange">Moderada</td><td class="td-orange">Evitar</td></tr>
+          <tr><td>Queijo fresco / cottage</td><td class="td-green">Baixa</td><td class="td-green">Permitido</td></tr>
+          <tr><td>Cerveja sem álcool (pasteurizada)</td><td class="td-green">Baixa</td><td class="td-green">Permitido</td></tr>
+        </table>
+        <div class="card" style="margin-top:1mm;">
+          <h4>Regra: fermento + envelhecimento = tiramina</h4>
+          <p>Qualquer alimento submetido a <strong>fermentação, cura, defumação ou envelhecimento</strong> pode ter tiramina elevada. Laticínios frescos são seguros; os maturados são perigosos.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pf-left">Extensivo ENARE <span>· BY RESIDÊNCIA PRO</span></div>
+    <div class="pf-right">
+      <span class="pf-product">Extensivo ENARE 2026</span>
+      <span class="pf-sub">Nutrição · Convidado</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PÁGINA 4 — LÍTIO, ANTIPSICÓTICOS, FENITOÍNA
+     ══════════════════════════════════════ -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-left">Lítio · Antipsicóticos · Fenitoína · B9 Aula 05</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc-sm">
+    <div class="sec-title">Outras Classes Neurológico/Psiquiátrico</div>
+
+    <table style="margin-bottom:4mm;">
+      <tr>
+        <th>Fármaco</th>
+        <th>Interação nutricional</th>
+        <th>Mecanismo</th>
+        <th>Conduta</th>
+      </tr>
+      <tr>
+        <td><strong>Lítio</strong><br><em>Estabilizador de humor</em></td>
+        <td>Dieta hipossódica → <span class="td-red">↑ lítio sérico</span><br>Cafeína, diuréticos → ↓ lítio</td>
+        <td>Reabsorção tubular de Li⁺ e Na⁺ competem: com ↓Na → rim retém Li⁺</td>
+        <td>Manter ingestão de Na <strong>estável</strong> (2–3 g/dia); hidratação adequada; monitorar litemia</td>
+      </tr>
+      <tr>
+        <td><strong>Antipsicóticos típicos e atípicos</strong><br><em>Clozapina, olanzapina, haloperidol</em></td>
+        <td>Ganho de peso, resistência insulínica;<br>Cafeína → <span class="td-red">↑ clozapina</span> (inibe CYP1A2);<br>Tabagismo → ↓ clozapina (induz CYP1A2)</td>
+        <td>Bloqueio dopaminérgico/serotoninérgico → hiperfagia; cafeína compete no CYP1A2</td>
+        <td>Aconselhamento nutricional para controle de peso; limitar cafeína com clozapina; alertar sobre tabagismo</td>
+      </tr>
+      <tr>
+        <td><strong>Fenitoína</strong><br><em>Anticonvulsivante</em></td>
+        <td>↓ folato, ↓ vit D, ↓ vit K;<br>Álcool → ↓ fenitoína (induz CYP2C9);<br>Toranja → ↑ fenitoína</td>
+        <td>Indutor enzimático → ↑ catabolismo vitaminas; antagoniza absorção de folato</td>
+        <td>Suplementar folato (1 mg/dia), vit D (800–1000 UI) e vit K; monitorar nível sérico</td>
+      </tr>
+      <tr>
+        <td><strong>Benzodiazepínicos</strong><br><em>Diazepam, alprazolam</em></td>
+        <td>Toranja → ↑ BZD (CYP3A4);<br>Álcool → potencialização do SNC</td>
+        <td>CYP3A4 intestinal inibido pela toranja → ↑ biodisponibilidade</td>
+        <td>Evitar toranja e álcool durante o tratamento</td>
+      </tr>
+    </table>
+
+    <div class="two-col">
+      <div class="card-teal">
+        <h4>Lítio — regra do sódio</h4>
+        <p>
+          Li⁺ e Na⁺ são reabsorvidos pelo mesmo transportador tubular proximal.
+          Quando o sódio cai (diuréticos, sudorese, vômitos, dieta hipossódica) →
+          o rim retém lítio em excesso → <strong>toxicidade</strong>:
+          tremor, ataxia, confusão, arritmia.
+          A conduta nutricional é manter ingestão de sódio <strong>consistente</strong> — mesma lógica da varfarina com a vitamina K.
+        </p>
+      </div>
+      <div class="card-warn">
+        <h4>Clozapina × cafeína — distrator recente</h4>
+        <p>
+          A cafeína inibe o CYP1A2 → ↑ concentração plasmática da clozapina → risco de toxicidade
+          (convulsões, agranulocitose). O tabagismo faz o contrário: induz CYP1A2 → ↓ clozapina.
+          Pacientes que <strong>param de fumar</strong> durante internação psiquiátrica podem ter
+          ↑ abrupto de clozapina → ajustar dose.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pf-left">Extensivo ENARE <span>· BY RESIDÊNCIA PRO</span></div>
+    <div class="pf-right">
+      <span class="pf-product">Extensivo ENARE 2026</span>
+      <span class="pf-sub">Nutrição · Convidado</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PÁGINA 5 — PANORAMA E PADRÃO FGV
+     ══════════════════════════════════════ -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-left">Panorama · Padrão FGV · B9 Aula 05</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc-sm">
+    <div class="sec-title">Mapa de Interações Neurológico/Psiquiátrico</div>
+
+    <table style="margin-bottom:4mm;">
+      <tr>
+        <th>Alimento/Nutriente</th>
+        <th>Fármaco afetado</th>
+        <th>Efeito</th>
+        <th>Mecanismo</th>
+      </tr>
+      <tr>
+        <td><strong>Proteínas (LNAA)</strong></td>
+        <td>Levodopa</td>
+        <td class="td-red">↓ absorção / ↓ efeito</td>
+        <td>Competição transportador LNAA intestinal e BHE</td>
+      </tr>
+      <tr>
+        <td><strong>Toranja</strong></td>
+        <td>Levodopa/carbidopa, BZD, fenitoína</td>
+        <td class="td-red">↑ concentração plasmática</td>
+        <td>Inibe CYP3A4 intestinal</td>
+      </tr>
+      <tr>
+        <td><strong>Tiramina</strong> (queijo maturado, vinho)</td>
+        <td>IMAOs não seletivos</td>
+        <td class="td-red">Crise hipertensiva</td>
+        <td>MAO inibida → tiramina acumula → libera NE</td>
+      </tr>
+      <tr>
+        <td><strong>Sódio (↓)</strong></td>
+        <td>Lítio</td>
+        <td class="td-red">↑ lítio sérico → toxicidade</td>
+        <td>Reabsorção tubular competitiva Li⁺/Na⁺</td>
+      </tr>
+      <tr>
+        <td><strong>Cafeína</strong></td>
+        <td>Clozapina</td>
+        <td class="td-orange">↑ clozapina</td>
+        <td>Inibe CYP1A2</td>
+      </tr>
+      <tr>
+        <td><strong>Vitamina B6 &gt;200 mg</strong></td>
+        <td>Levodopa sem carbidopa</td>
+        <td class="td-red">↓ efeito levodopa</td>
+        <td>Cofator DOPA descarboxilase periférica → ↑ conversão L-DOPA → dopamina fora do SNC</td>
+      </tr>
+      <tr>
+        <td><strong>Álcool</strong></td>
+        <td>BZD, antidepressivos</td>
+        <td class="td-red">Potencialização SNC</td>
+        <td>Depressão aditiva do SNC</td>
+      </tr>
+    </table>
+
+    <div class="two-col">
+      <div class="card-teal">
+        <h4>Estratégia "proteína noturna" — Parkinson</h4>
+        <p>
+          Concentrar a ingestão de proteínas no <strong>jantar</strong> (última refeição do dia),
+          quando o controle motor é menos crítico para as atividades diárias.
+          Café da manhã e almoço: baixo teor proteico, rico em carboidratos.
+          Mantém eficácia diurna da levodopa sem comprometer o estado nutricional.
+        </p>
+      </div>
+      <div class="card">
+        <h4>Padrão FGV — como a banca apresenta</h4>
+        <p>
+          Q84: Paciente parkinsoniamo que <em>"começou a tomar suco de toranja para melhorar
+          a saúde"</em> e relata <em>"fluctuações motoras piores após o almoço"</em> →
+          duas interações diferentes no mesmo enunciado (proteínas + toranja).
+          A banca quer que o candidato distinga os dois mecanismos e identifique
+          a conduta nutricional correta para cada um.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pf-left">Extensivo ENARE <span>· BY RESIDÊNCIA PRO</span></div>
+    <div class="pf-right">
+      <span class="pf-product">Extensivo ENARE 2026</span>
+      <span class="pf-sub">Nutrição · Convidado</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PÁGINA 6 — QUESTÃO 01
+     ══════════════════════════════════════ -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-left">Questão 01 · NUT-FARM · B9 Aula 05</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc">
+    <div class="q-header"><div class="q-num">QUESTÃO 01</div></div>
+    <div style="display:flex; gap:3mm; margin-bottom:4mm; align-items:center;">
+      <span class="q-tag">AP — Aplicação</span>
+      <span class="q-tag q-tag-teal">NUT-FARM · Levodopa · Proteínas · LNAA</span>
+    </div>
+
+    <div class="q-enunciado">
+      Homem de 72 anos, diagnóstico de doença de Parkinson há 5 anos, em uso de levodopa/carbidopa
+      25/100 mg três vezes ao dia. Relata que, nos últimos dois meses, após introduzir iogurte grego
+      e frango grelhado no almoço por orientação de um personal trainer, começou a apresentar períodos
+      de "travamento" e rigidez cerca de 45 minutos após a tomada do medicamento do meio-dia.
+      A nutricionista, ao revisar o diário alimentar, identifica que o paciente toma a medicação
+      com o almoço. Qual é a <strong>explicação fisiopatológica mais adequada</strong> e a conduta correta?
+    </div>
+
+    <ul class="alternativas">
+      <li>
+        <span class="alt-letra">A)</span>
+        A vitamina B6 do iogurte grego acelera a conversão periférica da levodopa em dopamina,
+        reduzindo sua chegada ao SNC; a conduta é substituir o iogurte por queijo maturado,
+        que não contém piridoxina significativa.
+      </li>
+      <li>
+        <span class="alt-letra">B)</span>
+        O cálcio do iogurte quelata a levodopa no lúmen intestinal, formando um complexo
+        insolúvel que reduz a absorção; a conduta é separar laticínios das doses por 4 horas.
+      </li>
+      <li>
+        <span class="alt-letra">C)</span>
+        Os aminoácidos neutros de cadeia longa das proteínas do iogurte e do frango competem
+        com a levodopa pelo mesmo transportador intestinal e da barreira hematoencefálica,
+        reduzindo sua absorção e acesso ao SNC; a conduta é tomar a medicação 30–60 minutos
+        antes da refeição proteica ou redistribuir as proteínas para o jantar.
+      </li>
+      <li>
+        <span class="alt-letra">D)</span>
+        A gordura do iogurte integral retarda o esvaziamento gástrico e atrasa a absorção da
+        levodopa; a conduta é substituir o iogurte integral por versão desnatada e manter
+        o frango no almoço sem restrições.
+      </li>
+      <li>
+        <span class="alt-letra">E)</span>
+        O triptofano do frango compete com a levodopa nos receptores dopaminérgicos estriatais,
+        bloqueando diretamente o efeito terapêutico; a conduta é suspender o frango e manter
+        o iogurte como única fonte proteica do almoço.
+      </li>
+    </ul>
+
+    <div class="q-ref">Padrão NUT-FARM · ENARE 2025 Q84 (nível An) · Referência: Pincus & Barry 1987; Nutt et al. 1984; Levodopa Pharmacology Review 2022</div>
+  </div>
+  <div class="pf">
+    <div class="pf-left">Extensivo ENARE <span>· BY RESIDÊNCIA PRO</span></div>
+    <div class="pf-right">
+      <span class="pf-product">Extensivo ENARE 2026</span>
+      <span class="pf-sub">Nutrição · Convidado</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PÁGINA 7 — QUESTÃO 02
+     ══════════════════════════════════════ -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-left">Questão 02 · NUT-FARM · B9 Aula 05</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc">
+    <div class="q-header"><div class="q-num">QUESTÃO 02</div></div>
+    <div style="display:flex; gap:3mm; margin-bottom:4mm; align-items:center;">
+      <span class="q-tag">AP — Aplicação</span>
+      <span class="q-tag q-tag-teal">NUT-FARM · IMAOs · Tiramina · Crise Hipertensiva</span>
+    </div>
+
+    <div class="q-enunciado">
+      Mulher de 44 anos, depressão resistente há 3 anos, iniciou tranilcipromina 30 mg/dia há 6 semanas.
+      Em um jantar em restaurante italiano, consumiu risoto com queijo parmesão ralado,
+      vinho tinto e molho à bolonhesa com carne curada. Horas depois, deu entrada na UPA com
+      cefaleia occipital intensa de início súbito, PA 210/115 mmHg, sudorese profusa e palpitações.
+      Sobre o mecanismo desta emergência e a orientação nutricional correta para pacientes
+      em uso de IMAOs não seletivos, é CORRETO afirmar:
+    </div>
+
+    <ul class="alternativas">
+      <li>
+        <span class="alt-letra">A)</span>
+        A crise hipertensiva foi causada pelo alto teor de sódio do queijo e do molho à bolonhesa,
+        que sobrecarregou agudamente o sistema cardiovascular; pacientes com IMAOs devem seguir
+        dieta hipossódica rigorosa (&lt;1 g/dia).
+      </li>
+      <li>
+        <span class="alt-letra">B)</span>
+        O álcool do vinho inibiu o metabolismo hepático da tranilcipromina, elevando seus níveis
+        plasmáticos ao dobro; a orientação é evitar bebidas alcoólicas destiladas, sendo o vinho
+        tinto permitido com moderação.
+      </li>
+      <li>
+        <span class="alt-letra">C)</span>
+        A tiramina contida nos alimentos fermentados/maturados (queijo parmesão, vinho tinto,
+        carne curada) não foi degradada pela MAO intestinal e hepática, chegou à circulação e
+        deslocou noradrenalina dos grânulos simpáticos, precipitando a crise vasoespástica;
+        a orientação é restringir todos os alimentos fermentados, curados ou envelhecidos.
+      </li>
+      <li>
+        <span class="alt-letra">D)</span>
+        O triptofano do queijo, ao ser convertido em serotonina, interagiu com a tranilcipromina
+        gerando síndrome serotoninérgica com hipertensão reflexa; a conduta é evitar alimentos
+        com triptofano como laticínios, carnes e ovos.
+      </li>
+      <li>
+        <span class="alt-letra">E)</span>
+        A creatina da carne curada compete com a tranilcipromina no transporte renal, reduzindo
+        sua excreção e elevando seus níveis tóxicos; a restrição adequada é evitar carnes vermelhas
+        e embutidos durante o tratamento.
+      </li>
+    </ul>
+
+    <div class="q-ref">Padrão NUT-FARM · ENARE 2025 Q92 (nível An) · Referência: Shulman 2003; MAOI Diet Restriction Guidelines; Gillman 2011</div>
+  </div>
+  <div class="pf">
+    <div class="pf-left">Extensivo ENARE <span>· BY RESIDÊNCIA PRO</span></div>
+    <div class="pf-right">
+      <span class="pf-product">Extensivo ENARE 2026</span>
+      <span class="pf-sub">Nutrição · Convidado</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PÁGINA 8 — QUESTÃO 03 (ÂNCORA)
+     ══════════════════════════════════════ -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-left">Questão 03 — Âncora · NUT-FARM · B9 Aula 05</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc">
+    <div class="q-header"><div class="q-num">QUESTÃO 03 — ÂNCORA</div></div>
+    <div style="display:flex; gap:3mm; margin-bottom:4mm; align-items:center;">
+      <span class="q-tag">AN — Análise</span>
+      <span class="q-tag q-tag-teal">NUT-FARM · Levodopa · Toranja · Proteínas · CYP3A4</span>
+    </div>
+
+    <div class="q-enunciado">
+      Homem de 68 anos, Parkinson há 8 anos, em uso de levodopa/carbidopa 50/200 mg quatro
+      vezes ao dia. Refere que, após orientação de um vizinho, passou a tomar a medicação com
+      suco de toranja "para melhor absorção" e introduziu shake proteico (40g de proteína isolada
+      de soro de leite) junto com a primeira dose diária. Seu neurologista observa piora das
+      discinesias ao longo do dia, porém "off" motor logo após a primeira dose da manhã.
+      Sobre os mecanismos que explicam o quadro clínico descrito, é CORRETO afirmar:
+    </div>
+
+    <ul class="alternativas">
+      <li>
+        <span class="alt-letra">A)</span>
+        A toranja reduz a absorção da levodopa por quelação no lúmen intestinal, enquanto o whey
+        protein eleva os níveis de levodopa ao fornecer aminoácidos precursores da dopamina;
+        as duas interações são opostas e se cancelam mutuamente.
+      </li>
+      <li>
+        <span class="alt-letra">B)</span>
+        O suco de toranja inibe o CYP3A4 intestinal e eleva a biodisponibilidade da carbidopa,
+        aumentando o efeito inibitório periférico e potencializando a chegada da levodopa ao SNC;
+        as discinesias resultam dessa superdosagem efetiva, enquanto os aminoácidos do whey
+        competem com a levodopa no transportador LNAA, explicando o "off" matinal.
+      </li>
+      <li>
+        <span class="alt-letra">C)</span>
+        O efeito da toranja sobre a levodopa é irrelevante clinicamente, pois a carbidopa
+        impede qualquer modulação do CYP3A4; as discinesias são efeito adverso esperado
+        e o "off" matinal se deve ao intervalo de dosagem inadequado, sem relação com dieta.
+      </li>
+      <li>
+        <span class="alt-letra">D)</span>
+        A toranja aumenta a síntese de noradrenalina por inibição do CYP3A4 hipotalâmico,
+        gerando discinesias dopaminérgicas; o whey eleva a tiramina sérica, precipitando
+        crises hipertensivas que contribuem para o "off" motor.
+      </li>
+      <li>
+        <span class="alt-letra">E)</span>
+        Ambos os efeitos convergem para menor eficácia da levodopa: a toranja inibe sua absorção
+        e o whey aumenta sua degradação hepática por indução enzimática.
+      </li>
+    </ul>
+
+    <div class="q-ref">Padrão NUT-FARM · Nível An · Dois mecanismos simultâneos: toranja (CYP3A4 → ↑carbidopa → discinesias) + LNAA do whey (competição → "off" matinal)</div>
+  </div>
+  <div class="pf">
+    <div class="pf-left">Extensivo ENARE <span>· BY RESIDÊNCIA PRO</span></div>
+    <div class="pf-right">
+      <span class="pf-product">Extensivo ENARE 2026</span>
+      <span class="pf-sub">Nutrição · Convidado</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PÁGINA 9 — GABARITO E DISCUSSÃO
+     ══════════════════════════════════════ -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-left">Gabarito · NUT-FARM · B9 Aula 05</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc-sm">
+    <div class="sec-title" style="margin-bottom:3mm;">Gabarito e Discussão</div>
+
+    <div class="gab-box">
+      <div class="gab-item">
+        <span class="gab-qnum">Q01</span>
+        <span class="gab-letra">C</span>
+      </div>
+      <div class="gab-divider"></div>
+      <div class="gab-item">
+        <span class="gab-qnum">Q02</span>
+        <span class="gab-letra">C</span>
+      </div>
+      <div class="gab-divider"></div>
+      <div class="gab-item">
+        <span class="gab-qnum">Q03</span>
+        <span class="gab-letra">B</span>
+      </div>
+    </div>
+
+    <div class="disc-title">Q01 — GABARITO C</div>
+    <div class="disc-text">
+      O mecanismo correto é a <strong>competição no transportador LNAA</strong>: fenilalanina,
+      tirosina, leucina, valina e triptofano do iogurte e do frango disputam o mesmo sistema de
+      transporte da levodopa no intestino e na barreira hematoencefálica — o ponto cobrado em Q84/2025.
+      A opção A é o distrator da vitamina B6: correto só para levodopa <em>sem</em> carbidopa;
+      com carbidopa, a B6 alimentar não é relevante clinicamente.
+      A conduta correta é tomar a medicação <strong>30–60 minutos antes</strong> da refeição proteica.
+    </div>
+
+    <div class="disc-title">Q02 — GABARITO C</div>
+    <div class="disc-text">
+      A <strong>síndrome do queijo</strong>: tiramina presente em queijo maturado, vinho tinto e
+      carne curada não é degradada pela MAO inibida pela tranilcipromina → acumula →
+      desloca noradrenalina → crise hipertensiva. Opção A confunde com sódio;
+      B erra ao liberar o vinho tinto; D confunde com síndrome serotoninérgica (diferente — envolve
+      serotonina, não tiramina). A restrição é para <strong>alimentos fermentados/curados/envelhecidos</strong>,
+      não apenas queijo — o termo "síndrome do queijo" é histórico, mas o princípio é mais amplo.
+    </div>
+
+    <div class="disc-title">Q03 — GABARITO B</div>
+    <div class="disc-text">
+      Dois mecanismos simultâneos e opostos em efeito clínico:
+      (1) <strong>Toranja inibe CYP3A4 intestinal</strong> → ↑ biodisponibilidade da carbidopa →
+      maior inibição periférica → mais levodopa chega ao SNC nas doses seguintes →
+      superdosagem efetiva → <span class="warn">discinesias</span>.
+      (2) <strong>LNAA do whey protein</strong> compete com a levodopa no transportador LNAA →
+      ↓ absorção da primeira dose → <span class="warn">"off" matinal</span>.
+      Os dois fenômenos coexistem e explicam o paradoxo clínico apresentado.
+      Opção A inverte os efeitos; C nega incorretamente a relevância da toranja.
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pf-left">Extensivo ENARE <span>· BY RESIDÊNCIA PRO</span></div>
+    <div class="pf-right">
+      <span class="pf-product">Extensivo ENARE 2026</span>
+      <span class="pf-sub">Nutrição · Convidado</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PÁGINA 10 — SÍNTESE E REFERÊNCIAS
+     ══════════════════════════════════════ -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-left">Síntese · Referências · B9 Aula 05</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc-sm">
+    <div class="sec-title">Síntese — NUT-FARM: Neurológico/Psiquiátrico</div>
+
+    <div class="sintese-grid" style="margin-bottom:3mm;">
+      <div class="sintese-card">
+        <h4>Levodopa × Proteínas (LNAA)</h4>
+        <ul>
+          <li>Competição no transportador LNAA</li>
+          <li>Tomar 30–60 min antes da refeição</li>
+          <li>Estratégia "proteína noturna"</li>
+          <li>Não eliminar proteínas — risco de sarcopenia</li>
+          <li>B6 só é problema sem carbidopa</li>
+        </ul>
+      </div>
+      <div class="sintese-card sc-warn">
+        <h4>IMAOs × Tiramina</h4>
+        <ul>
+          <li>MAO inibida → tiramina não degradada → crise HAS</li>
+          <li>Proibir: queijo maturado, vinho tinto, carnes curadas, molho de soja, extrato de levedura</li>
+          <li>Permitir: queijo fresco, laticínios não maturados</li>
+          <li>Selegilina baixa dose: menor risco</li>
+        </ul>
+      </div>
+      <div class="sintese-card sc-green">
+        <h4>Toranja × SNC</h4>
+        <ul>
+          <li>Inibe CYP3A4 → ↑ levodopa/carbidopa, BZD, fenitoína</li>
+          <li>Evitar para qualquer fármaco do SNC metabolizado por CYP3A4</li>
+          <li>Efeito persiste 24–72h após ingestão</li>
+        </ul>
+      </div>
+      <div class="sintese-card sc-lima">
+        <h4>Lítio × Sódio / Clozapina × Cafeína</h4>
+        <ul>
+          <li>↓Na → rim retém Li⁺ → toxicidade</li>
+          <li>Manter Na estável (2–3 g/dia)</li>
+          <li>Cafeína inibe CYP1A2 → ↑ clozapina</li>
+          <li>Parar tabaco → ↑ clozapina (CYP1A2 ↓indução)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="regra-ouro">
+      <div class="ro-title">Regra de Ouro — Neurológico/Psiquiátrico</div>
+      <p>
+        <strong style="color:#C6D834;">Levodopa: proteínas no jantar, medicação 30 min antes. IMAOs: fermentado/curado = proibido.</strong>
+        A toranja aparece nos dois contextos (CYP3A4) e em múltiplas especialidades.
+        Para lítio: o problema não é o que o paciente come, é o que ele <em>deixa de comer</em>
+        (dieta hipossódica) ou o que perde (vômito, diarreia, diurético).
+      </p>
+    </div>
+
+    <ul class="ref-list">
+      <li>NUTT, J.G. et al. The "on-off" phenomenon in Parkinson's disease. <em>N Engl J Med</em>, v. 310, n. 8, p. 483–488, 1984.</li>
+      <li>PINCUS, J.H.; BARRY, K. Influence of dietary protein on motor fluctuations in Parkinson's disease. <em>Arch Neurol</em>, v. 44, n. 3, p. 270–272, 1987.</li>
+      <li>SHULMAN, K.I. et al. Dietary restriction, tyramine, and the use of monoamine oxidase inhibitors. <em>J Clin Psychiatry</em>, v. 50 (Suppl), 1989.</li>
+      <li>GILLMAN, P.K. Advances pertaining to the pharmacology and interactions of irreversible nonselective monoamine oxidase inhibitors. <em>J Clin Psychopharmacol</em>, v. 31, n. 1, p. 66–74, 2011.</li>
+      <li>JEFFERSON, J.W. Lithium: the present and the future. <em>J Clin Psychiatry</em>, v. 51, Suppl, p. 4–8, 1990.</li>
+    </ul>
+  </div>
+  <div class="pf">
+    <div class="pf-left">Extensivo ENARE <span>· BY RESIDÊNCIA PRO</span></div>
+    <div class="pf-right">
+      <span class="pf-product">Extensivo ENARE 2026</span>
+      <span class="pf-sub">Nutrição · Convidado</span>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
