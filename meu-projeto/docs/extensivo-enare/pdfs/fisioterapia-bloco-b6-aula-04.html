@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Fisioterapia · Bloco B6 · Aula 04</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+@page { size: A4; margin: 0; }
+body { -webkit-print-color-adjust: exact; print-color-adjust: exact; font-family: 'Bricolage Grotesque', sans-serif; background: #fff; }
+
+.page { width: 210mm; height: 297mm; display: flex; flex-direction: column; overflow: hidden; page-break-after: always; }
+.page:last-child { page-break-after: avoid; }
+
+.ph { height: 14mm; flex-shrink: 0; display: flex; align-items: center; padding: 0 16mm; border-bottom: 0.5px solid #e0e0e0; }
+.ph-label { font-family: 'Barlow Condensed', sans-serif; font-size: 7.5pt; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #555; }
+.ph-label span { color: #0D8A8D; }
+.ph-right { margin-left: auto; font-family: 'Bricolage Grotesque', sans-serif; font-size: 7pt; color: #888; }
+
+.pf { height: 9mm; flex-shrink: 0; display: flex; align-items: center; padding: 0 16mm; border-top: 0.5px solid #e0e0e0; }
+.pf-logo { font-family: 'Playfair Display', serif; font-style: italic; font-size: 8pt; color: #333; }
+.pf-logo span { font-family: 'Space Grotesk', sans-serif; font-style: normal; font-weight: 300; font-size: 7pt; letter-spacing: 0.08em; text-transform: uppercase; color: #666; }
+.pf-num { margin-left: auto; font-family: 'Barlow Condensed', sans-serif; font-size: 8pt; font-weight: 700; letter-spacing: 0.1em; color: #0D8A8D; }
+
+.pc  { flex: 1; padding: 7mm 16mm 5mm; overflow: hidden; }
+.pc-sm { flex: 1; padding: 5mm 16mm 4mm; overflow: hidden; }
+
+/* Capa */
+.cover-stripe { height: 3mm; background: #0D8A8D; flex-shrink: 0; }
+.cover-tag { font-family: 'Barlow Condensed', sans-serif; font-size: 8pt; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: #0D8A8D; }
+.cover-title { font-family: 'Barlow Condensed', sans-serif; font-size: 46pt; font-weight: 800; line-height: 0.9; color: #070707; text-transform: uppercase; margin: 3mm 0 2mm; }
+.cover-subtitle { font-family: 'Barlow Condensed', sans-serif; font-size: 14pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #0D8A8D; margin-bottom: 6mm; }
+.cover-body { font-size: 9.5pt; color: #444; line-height: 1.5; max-width: 145mm; }
+
+/* Tipografia */
+h2.sec { font-family: 'Barlow Condensed', sans-serif; font-size: 15pt; font-weight: 800; text-transform: uppercase; color: #070707; border-bottom: 2px solid #0D8A8D; padding-bottom: 2mm; margin-bottom: 3.5mm; letter-spacing: 0.03em; }
+h3.sub { font-family: 'Barlow Condensed', sans-serif; font-size: 10pt; font-weight: 700; text-transform: uppercase; color: #0D8A8D; margin: 2.5mm 0 1.5mm; letter-spacing: 0.06em; }
+p { font-size: 8.5pt; line-height: 1.5; color: #222; margin-bottom: 2mm; }
+p.sm { font-size: 8pt; line-height: 1.45; }
+p.xs { font-size: 7.5pt; line-height: 1.4; }
+
+/* Competências */
+.comp-block { display: flex; gap: 3mm; margin-bottom: 3mm; }
+.comp-num { font-family: 'Barlow Condensed', sans-serif; font-size: 20pt; font-weight: 800; color: #0D8A8D; line-height: 1; flex-shrink: 0; width: 10mm; }
+.comp-body { flex: 1; }
+.comp-title { font-family: 'Barlow Condensed', sans-serif; font-size: 9.5pt; font-weight: 700; text-transform: uppercase; color: #070707; letter-spacing: 0.04em; margin-bottom: 0.5mm; }
+.comp-desc { font-size: 7.5pt; color: #444; line-height: 1.4; }
+
+.box-fgv { background: #f0f7f7; border-left: 3px solid #0D8A8D; padding: 2.5mm 3.5mm; margin-top: 2.5mm; }
+.box-fgv-title { font-family: 'Barlow Condensed', sans-serif; font-size: 8pt; font-weight: 700; text-transform: uppercase; color: #0D8A8D; letter-spacing: 0.08em; margin-bottom: 1mm; }
+.box-fgv p { font-size: 7.5pt; color: #333; margin: 0; }
+
+/* Layouts */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; }
+.col-box { background: #f9f9f9; border: 0.5px solid #ddd; border-radius: 2px; padding: 2.5mm 3mm; }
+.col-box-title { font-family: 'Barlow Condensed', sans-serif; font-size: 8.5pt; font-weight: 700; text-transform: uppercase; color: #070707; margin-bottom: 1.5mm; letter-spacing: 0.04em; }
+
+/* Table */
+table { width: 100%; border-collapse: collapse; font-size: 7.5pt; margin: 1.5mm 0; }
+th { background: #0D8A8D; color: #fff; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 7.5pt; text-transform: uppercase; letter-spacing: 0.05em; padding: 1.5mm 2mm; text-align: left; }
+td { padding: 1.5mm 2mm; border-bottom: 0.5px solid #e8e8e8; vertical-align: top; }
+tr:nth-child(even) td { background: #f7f7f7; }
+td strong { color: #0D8A8D; }
+
+/* Listas */
+ul.dot { list-style: none; padding: 0; margin: 1mm 0 2mm; }
+ul.dot li { font-size: 8pt; color: #222; padding-left: 3.5mm; position: relative; margin-bottom: 1mm; line-height: 1.4; }
+ul.dot li::before { content: '·'; position: absolute; left: 0; color: #0D8A8D; font-size: 12pt; line-height: 1; top: -1px; }
+
+/* Boxes */
+.box-alerta  { background: #fff8e1; border-left: 3px solid #f9a825; padding: 2mm 3mm; margin: 1.5mm 0; }
+.box-info    { background: #e8f5f5; border-left: 3px solid #0D8A8D; padding: 2mm 3mm; margin: 1.5mm 0; }
+.box-critico { background: #fce4ec; border-left: 3px solid #c62828; padding: 2mm 3mm; margin: 1.5mm 0; }
+
+/* Questões */
+.q-header { background: #0D8A8D; color: #fff; padding: 2.5mm 4mm; margin-bottom: 3mm; }
+.q-header-text { font-family: 'Barlow Condensed', sans-serif; font-size: 8.5pt; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+.q-stem { font-size: 9pt; color: #111; line-height: 1.55; margin-bottom: 3.5mm; }
+.q-stem strong { color: #070707; }
+.q-options { list-style: none; padding: 0; margin-bottom: 3mm; }
+.q-options li { font-size: 8.5pt; color: #333; padding: 1.5mm 0 1.5mm 6mm; border-bottom: 0.5px solid #f0f0f0; line-height: 1.4; }
+.q-options li .opt-letter { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; color: #0D8A8D; margin-right: 1.5mm; font-size: 9pt; }
+.q-options li.correta { color: #111; font-weight: 500; }
+.badge { display: inline-block; background: #0D8A8D; color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 7pt; font-weight: 700; letter-spacing: 0.08em; padding: 0.5mm 2mm; border-radius: 2px; margin-left: 2mm; text-transform: uppercase; vertical-align: middle; }
+.gabarito { background: #f5f5f5; border-top: 1.5px solid #0D8A8D; padding: 3mm 4mm; margin-top: 2mm; }
+.gabarito-title { font-family: 'Barlow Condensed', sans-serif; font-size: 8pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #555; margin-bottom: 1.5mm; }
+.gabarito p { font-size: 8pt; color: #333; line-height: 1.45; margin: 0; }
+
+/* Recuperação ativa */
+.rec-title { font-family: 'Barlow Condensed', sans-serif; font-size: 28pt; font-weight: 800; color: #070707; line-height: 1.05; text-transform: uppercase; margin-bottom: 4mm; }
+.rec-item { display: flex; gap: 2.5mm; margin-bottom: 2.5mm; align-items: flex-start; }
+.rec-star { color: #0D8A8D; font-size: 10pt; flex-shrink: 0; margin-top: 0.5mm; }
+.rec-text { font-size: 8.5pt; color: #222; line-height: 1.5; }
+.rec-divider { height: 0.5px; background: #0D8A8D; margin: 3.5mm 0 3mm; }
+.rec-test-title { font-family: 'Barlow Condensed', sans-serif; font-size: 9pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #0D8A8D; margin-bottom: 2.5mm; }
+.rec-q { display: flex; gap: 2mm; margin-bottom: 2mm; align-items: baseline; }
+.rec-q-num { font-family: 'Barlow Condensed', sans-serif; font-size: 10pt; font-weight: 700; color: #0D8A8D; flex-shrink: 0; width: 7mm; }
+.rec-q-line { flex: 1; font-size: 8.5pt; color: #333; line-height: 1.4; }
+
+/* Referências */
+.ref-title { font-family: 'Barlow Condensed', sans-serif; font-size: 18pt; font-weight: 800; color: #070707; text-transform: uppercase; margin-bottom: 5mm; border-bottom: 2px solid #0D8A8D; padding-bottom: 2mm; }
+.ref-item { font-size: 7.5pt; color: #333; line-height: 1.5; margin-bottom: 2.5mm; }
+.ref-notes { border: 0.5px solid #ddd; padding: 3mm 4mm; margin-top: 4mm; }
+.ref-notes-text { font-size: 8pt; color: #aaa; font-style: italic; }
+</style>
+</head>
+<body>
+
+<!-- P01: CAPA -->
+<div class="page">
+  <div class="cover-stripe"></div>
+  <div style="padding: 7mm 16mm 0; flex-shrink:0;">
+    <span class="cover-tag">EXTENSIVO ENARE · BLOCO B6 · FISIOTERAPIA</span>
+  </div>
+  <div style="flex:1; padding: 8mm 16mm 6mm; display:flex; flex-direction:column; justify-content:flex-end; overflow:hidden;">
+    <div class="cover-title">EQUILÍBRIO<br>E NERVOS<br>PERIFÉRICOS</div>
+    <div class="cover-subtitle">ATAXIA · BESTEST · VESTIBULAR · NERVOS</div>
+    <div class="cover-body">Ataxia cerebelar — hipotonia e dismetria (Q81/2025). BESTest — avaliação dos 6 sistemas de controle postural (Q92/2025). Reabilitação vestibular segundo a Resolução COFFITO 419/2012 — VPPB e habituação (Q88/2025). Lesões de nervos periféricos — classificação de Seddon (Q84/2025) e nervos específicos: femoral, ulnar, radial, mediano, ciático, fibular e facial (Q45/2025, Q96/2025).</div>
+  </div>
+  <div class="pf">
+    <span class="pf-logo"><em>Residência PRO</em> <span>by ELITE TREINAMENTOS</span></span>
+    <span class="pf-num">AULA 04 · FT-NEURO</span>
+  </div>
+</div>
+
+<!-- P02: COMPETÊNCIAS -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label"><span>COMPETÊNCIAS</span> · AULA 04</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc">
+    <h2 class="sec">O QUE VOCÊ VAI DOMINAR</h2>
+
+    <div class="comp-block">
+      <div class="comp-num">01</div>
+      <div class="comp-body">
+        <div class="comp-title">ATAXIA CEREBELAR (Q81/2025) + BESTEST (Q92/2025)</div>
+        <div class="comp-desc">Sinais cerebelares: hipotonia (teste do pêndulo), dismetria (calcanhar-joelho, dedo-nariz), disdiadococinesia. BESTest avalia 6 sistemas do controle postural — diferencia a origem do desequilíbrio para guiar a intervenção. A FGV apresenta sinal clínico e pede o teste diagnóstico correto.</div>
+      </div>
+    </div>
+
+    <div class="comp-block">
+      <div class="comp-num">02</div>
+      <div class="comp-body">
+        <div class="comp-title">REABILITAÇÃO VESTIBULAR — COFFITO 419/2012 (Q88/2025)</div>
+        <div class="comp-desc">Competência exclusiva do fisioterapeuta (Res. COFFITO 419/2012). VPPB canal posterior: manobra de Epley. VPPB canal horizontal: Barbecue Roll. Habituação: exercícios de Cawthorne-Cooksey. Coordenação olho-cabeça (VOR). A FGV apresenta quadro de VPPB ou tontura crônica e cobra a manobra ou exercício correto.</div>
+      </div>
+    </div>
+
+    <div class="comp-block">
+      <div class="comp-num">03</div>
+      <div class="comp-body">
+        <div class="comp-title">NERVOS PERIFÉRICOS — SEDDON (Q84/2025)</div>
+        <div class="comp-desc">Classificação de Seddon: neuropraxia (bloqueio de condução, sem lesão axonal), axonotmese (axônio lesado, epineuro preservado — regenera 1 mm/dia), neurotmese (secção completa — cirurgia). A FGV testa a classificação correta de um caso descrito e a conduta esperada.</div>
+      </div>
+    </div>
+
+    <div class="comp-block">
+      <div class="comp-num">04</div>
+      <div class="comp-body">
+        <div class="comp-title">NERVOS ESPECÍFICOS (Q45 e Q96/2025)</div>
+        <div class="comp-desc">Nervo femoral (Q45/2025): músculos ilíaco + sartório + quadríceps. Paralisia facial periférica (Q96/2025): NMI — toda hemiface; fisioterapia: biofeedback EMG + contrações seletivas + calor superficial. Radial: "mão caída". Ulnar: "garra". Mediano: "mão simiesca". Fibular: "pé caído".</div>
+      </div>
+    </div>
+
+    <div class="box-fgv">
+      <div class="box-fgv-title">PADRÃO FGV — NERVOS E EQUILÍBRIO: 2 EM 2024 → 6 EM 2025</div>
+      <p>2024: Q69 (ataxia cerebelar — progressão do tratamento — Ap). 2025: Q45 (nervo femoral — M), Q81 (ataxia cerebelar — hipotonia/dismetria — C), Q84 (Seddon — M), Q88 (vestibular COFFITO — Ap), Q92 (BESTest — C), Q96 (facial periférica — Ap). FT-NEURO expandiu fortemente para instrumentos de avaliação e nervos periféricos.</p>
+    </div>
+  </div>
+  <div class="pf">
+    <span class="pf-logo"><em>Extensivo ENARE</em> <span>· by Residência PRO</span></span>
+    <span class="pf-num">02</span>
+  </div>
+</div>
+
+<!-- P03: ATAXIA CEREBELAR + BESTEST -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label"><span>FT-NEURO</span> · AULA 04</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc-sm">
+    <h2 class="sec">ATAXIA CEREBELAR + BESTEST</h2>
+
+    <div class="two-col" style="margin-bottom:2.5mm;">
+      <div>
+        <h3 class="sub" style="margin-top:0;">SINAIS CEREBELARES (Q81/2025)</h3>
+        <table>
+          <tr><th>Sinal</th><th>Teste clínico</th></tr>
+          <tr><td><strong>Hipotonia</strong></td><td>Teste do pêndulo — MMII oscilam excessivamente após impulso</td></tr>
+          <tr><td><strong>Dismetria</strong></td><td>Calcanhar-joelho; dedo-nariz (ultrapassa o alvo)</td></tr>
+          <tr><td><strong>Disdiadococinesia</strong></td><td>Pronossupinação rápida alternada — irregular e lenta</td></tr>
+          <tr><td><strong>Tremor de intenção</strong></td><td>Aumenta ao aproximar do alvo — piora no movimento</td></tr>
+          <tr><td><strong>Marcha ebriosa</strong></td><td>Base alargada, instável, desvio lateral ao lado da lesão</td></tr>
+        </table>
+
+        <div class="box-info" style="margin-top:2mm;">
+          <p class="xs"><strong>Mecanismo:</strong> cerebelo falha no ajuste antecipatório (feedforward) — o movimento começa, mas a correção automática é imprecisa. Fisioterapia: treino de precisão, biofeedback, dupla tarefa progressiva.</p>
+        </div>
+
+        <p class="xs" style="margin-top:1.5mm;"><strong>Progressão clínica:</strong> apoio bilateral → unilateral → sem apoio → olhos fechados → superfície instável → dupla tarefa.</p>
+      </div>
+
+      <div>
+        <h3 class="sub" style="margin-top:0;">BESTEST (Q92/2025)</h3>
+        <p class="xs" style="margin-bottom:1.5mm;">Balance Evaluation Systems Test — avalia <strong>todos os sistemas</strong> do controle postural, diferenciando onde está a falha.</p>
+
+        <table>
+          <tr><th>#</th><th>Sistema avaliado</th></tr>
+          <tr><td><strong>1</strong></td><td>Restrições biomecânicas (força, amplitude de movimento)</td></tr>
+          <tr><td><strong>2</strong></td><td>Limites de estabilidade e verticalidade</td></tr>
+          <tr><td><strong>3</strong></td><td>Ajustes posturais antecipatórios (feedforward)</td></tr>
+          <tr><td><strong>4</strong></td><td>Respostas posturais reativas (feedback)</td></tr>
+          <tr><td><strong>5</strong></td><td>Orientação sensorial (somatossensorial + visual + vestibular)</td></tr>
+          <tr><td><strong>6</strong></td><td>Estabilidade na marcha</td></tr>
+        </table>
+
+        <div class="box-alerta" style="margin-top:2mm;">
+          <p class="xs"><strong>Diferencial FGV:</strong> o BESTest <em>identifica o sistema deficiente</em> — não apenas o grau de déficit. Isso direciona a intervenção específica (ex.: sistema 5 = treino sensorial; sistema 3 = treino antecipatório).</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pf">
+    <span class="pf-logo"><em>Extensivo ENARE</em> <span>· by Residência PRO</span></span>
+    <span class="pf-num">03</span>
+  </div>
+</div>
+
+<!-- P04: REABILITAÇÃO VESTIBULAR -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label"><span>FT-NEURO</span> · AULA 04</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc-sm">
+    <h2 class="sec">REABILITAÇÃO VESTIBULAR — COFFITO 419/2012</h2>
+    <p class="xs" style="margin-bottom:2mm;"><strong>Resolução COFFITO 419/2012:</strong> a reabilitação vestibular é competência exclusiva do fisioterapeuta. Abrange diagnóstico funcional, manobras de reposicionamento e programas de exercícios vestibulares.</p>
+
+    <div class="two-col" style="margin-bottom:2.5mm;">
+      <div>
+        <h3 class="sub" style="margin-top:0;">VPPB — VERTIGEM POSICIONAL PAROXÍSTICA BENIGNA</h3>
+        <p class="xs" style="margin-bottom:1.5mm;">Otólitos (cristais de cálcio) deslocam-se para os canais semicirculares. Vertigem de curta duração (&lt; 1 min), desencadeada por mudança de posição.</p>
+
+        <table>
+          <tr><th>Canal</th><th>Teste</th><th>Nistagmo</th><th>Manobra</th></tr>
+          <tr><td><strong>Posterior</strong> (90%)</td><td>Dix-Hallpike</td><td>Geotrópico + torção</td><td><strong>Epley</strong></td></tr>
+          <tr><td><strong>Horizontal</strong></td><td>Roll test</td><td>Geotrópico (canalolitíase) ou apogeotrópico (cupulolitíase)</td><td><strong>Barbecue Roll</strong> ou Lempert</td></tr>
+          <tr><td><strong>Anterior</strong> (raro)</td><td>Dix-Hallpike</td><td>Apogeotrópico</td><td>Yacovino</td></tr>
+        </table>
+
+        <div class="box-info" style="margin-top:1.5mm;">
+          <p class="xs"><strong>Epley:</strong> 4 posições sequenciais — rotação da cabeça 90° para o lado oposto + inclinação progressiva — move os otólitos para fora do canal de volta ao utrículo.</p>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="sub" style="margin-top:0;">HABITUAÇÃO E VOR (Q88/2025)</h3>
+        <p class="xs" style="margin-bottom:1.5mm;">Para desequilíbrio crônico e hipofunção vestibular unilateral — não reposicionamento de otólitos.</p>
+
+        <ul class="dot">
+          <li><strong>Exercícios de Cawthorne-Cooksey:</strong> movimentos progressivos de olhos → cabeça → corpo → marcha com perturbações. Habituação: exposição repetida ao estímulo provocador reduz progressivamente a resposta vertiginosa.</li>
+          <li><strong>Coordenação olho-cabeça (VOR):</strong> fixar alvo + mover cabeça lateralmente — manter nitidez da imagem. Estimula o reflexo vestíbulo-ocular.</li>
+          <li><strong>Treino de substituição sensorial:</strong> reduzir dependência visual — exercícios de Romberg modificado, superfície instável.</li>
+        </ul>
+
+        <div class="box-alerta">
+          <p class="xs"><strong>Atenção FGV:</strong> Cawthorne-Cooksey = habituação (hipofunção crônica). Epley = reposicionamento (VPPB). Não intercambiar: a manobra de Epley NÃO trata hipofunção vestibular crônica.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pf">
+    <span class="pf-logo"><em>Extensivo ENARE</em> <span>· by Residência PRO</span></span>
+    <span class="pf-num">04</span>
+  </div>
+</div>
+
+<!-- P05: NERVOS PERIFÉRICOS -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label"><span>FT-NEURO</span> · AULA 04</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc-sm">
+    <h2 class="sec">LESÕES DE NERVOS PERIFÉRICOS</h2>
+
+    <h3 class="sub" style="margin-top:0;">CLASSIFICAÇÃO DE SEDDON (Q84/2025)</h3>
+    <table style="margin-bottom:2.5mm;">
+      <tr><th>Grau</th><th>Lesão</th><th>Recuperação</th><th>Conduta</th></tr>
+      <tr><td><strong>Neuropraxia</strong></td><td>Bloqueio de condução local — sem lesão axonal, bainha de mielina intacta</td><td>Completa em semanas (sem cirurgia)</td><td>Conservadora — aguardar + reabilitação</td></tr>
+      <tr><td><strong>Axonotmese</strong></td><td>Axônio lesado, epineuro preservado — degeneração walleriana distal</td><td>1 mm/dia (lenta, incompleta se longa distância)</td><td>Conservadora — reabilitação + tempo</td></tr>
+      <tr><td><strong>Neurotmese</strong></td><td>Secção completa — axônio + bainhas + epineuro rompidos</td><td>Nenhuma sem cirurgia</td><td>Cirurgia (neurorrafia ou enxerto)</td></tr>
+    </table>
+
+    <h3 class="sub">NERVOS ESPECÍFICOS — PADRÃO DE LESÃO</h3>
+    <div class="two-col">
+      <table>
+        <tr><th>Nervo</th><th>Sinal característico</th><th>Músculos-chave</th></tr>
+        <tr><td><strong>Femoral</strong> (Q45/2025)</td><td>Fraqueza extensão joelho, hiperestesia coxa ant.</td><td>Ilíaco, sartório, quadríceps</td></tr>
+        <tr><td><strong>Radial</strong></td><td>Mão caída (wrist drop), dedos em flexão</td><td>Extensores punho e dedos, tríceps</td></tr>
+        <tr><td><strong>Ulnar</strong></td><td>Garra ulnar (4º e 5º dedos)</td><td>Interósseos, hipotenar, flexor ulnar do carpo</td></tr>
+        <tr><td><strong>Mediano</strong></td><td>Mão simiesca (tenar atrofiado)</td><td>Oponente polegar, FPL, FDP (2º e 3º)</td></tr>
+        <tr><td><strong>Ciático</strong></td><td>Fraqueza posterior coxa + abaixo joelho</td><td>Isquiotibiais + toda perna e pé</td></tr>
+        <tr><td><strong>Fibular comum</strong></td><td>Pé caído (foot drop)</td><td>Tibial anterior, fibulares, ext. dedos</td></tr>
+      </table>
+
+      <div>
+        <h3 class="sub" style="margin-top:0;">FACIAL PERIFÉRICO (Q96/2025)</h3>
+        <p class="xs" style="margin-bottom:1.5mm;"><strong>NMI — toda hemiface</strong> (fronte + olho + boca). Diferencial: NMS = somente parte inferior da face.</p>
+
+        <ul class="dot">
+          <li><strong>Biofeedback eletromiográfico:</strong> aumentar consciência e controle voluntário de músculos faciais</li>
+          <li><strong>Contrações seletivas:</strong> treino muscular individualizado (sobrancelha, orbicular, zigomático)</li>
+          <li><strong>Calor superficial:</strong> estimula circulação e reduz tensão muscular</li>
+        </ul>
+
+        <div class="box-critico">
+          <p class="xs"><strong>Cuidado:</strong> eletroestimulação elétrica de alta intensidade no facial periférico pode gerar sincinesias (movimentos involuntários associados) — evitar ou usar com cautela.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pf">
+    <span class="pf-logo"><em>Extensivo ENARE</em> <span>· by Residência PRO</span></span>
+    <span class="pf-num">05</span>
+  </div>
+</div>
+
+<!-- P06: Q1 — MEMORIZAÇÃO (Q84/2025 — Seddon) -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label"><span>FIXAÇÃO</span> · AULA 04</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc">
+    <div class="q-header">
+      <div class="q-header-text">QUESTÃO 01 DE 03 · B6 NERVOS PERIFÉRICOS — CLASSIFICAÇÃO DE SEDDON / MEMORIZAÇÃO</div>
+    </div>
+
+    <p class="q-stem">Em relação à <strong>classificação de Seddon</strong> para lesões de nervos periféricos, assinale a alternativa que descreve corretamente os três graus em <strong>ordem crescente de gravidade</strong>:</p>
+
+    <ul class="q-options">
+      <li><span class="opt-letter">A</span> Axonotmese: bloqueio de condução sem lesão axonal; neuropraxia: axônio lesado com epineuro preservado; neurotmese: secção completa.</li>
+      <li class="correta"><span class="opt-letter">B</span> Neuropraxia: bloqueio de condução local, sem lesão axonal; axonotmese: axônio lesado com epineuro preservado; neurotmese: secção completa com perda total de continuidade. <span class="badge">CORRETA</span></li>
+      <li><span class="opt-letter">C</span> Neurotmese: bloqueio de condução reversível; neuropraxia: degeneração walleriana com regeneração espontânea; axonotmese: secção total irreversível.</li>
+      <li><span class="opt-letter">D</span> Neuropraxia: secção completa sem recuperação; axonotmese: bloqueio de condução; neurotmese: axônio lesado com epineuro preservado.</li>
+    </ul>
+
+    <div class="gabarito">
+      <div class="gabarito-title">GABARITO COMENTADO — B</div>
+      <p><strong>Neuropraxia</strong> = menos grave: bloqueio de condução elétrica local, sem dano axonal — mielina pode estar comprometida mas o axônio está intacto. Recuperação completa em semanas, sem cirurgia. <strong>Axonotmese</strong> = intermediária: axônio rompido mas epineuro (bainha externa) preservado — degeneração walleriana ocorre distalmente, mas o tubo neural intacto guia a regeneração (1 mm/dia). <strong>Neurotmese</strong> = mais grave: todas as estruturas rompidas (axônio + bainhas + epineuro) — sem regeneração espontânea, exige cirurgia. A e C invertem as definições. D inverte completamente a ordem de gravidade.</p>
+    </div>
+  </div>
+  <div class="pf">
+    <span class="pf-logo"><em>Extensivo ENARE</em> <span>· by Residência PRO</span></span>
+    <span class="pf-num">06</span>
+  </div>
+</div>
+
+<!-- P07: Q2 — APLICAÇÃO (Q88/2025 — VPPB vestibular) -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label"><span>FIXAÇÃO</span> · AULA 04</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc">
+    <div class="q-header">
+      <div class="q-header-text">QUESTÃO 02 DE 03 · B6 VESTIBULAR — VPPB / APLICAÇÃO</div>
+    </div>
+
+    <p class="q-stem">Paciente de 52 anos relata episódios de <strong>vertigem rotatória de curta duração</strong> (&lt; 1 minuto) desencadeados ao deitar e ao virar na cama para o lado direito. Teste de Dix-Hallpike: positivo à direita, com nistagmo de componente geotrópico e torsional, latência de 4 segundos e resolução espontânea em 30 segundos. Qual conduta fisioterapêutica é mais indicada?</p>
+
+    <ul class="q-options">
+      <li><span class="opt-letter">A</span> Exercícios de Cawthorne-Cooksey para habituação vestibular ao longo de 6 semanas.</li>
+      <li><span class="opt-letter">B</span> Restrição de movimentos de cabeça e orientação para evitar as posições desencadeadoras.</li>
+      <li class="correta"><span class="opt-letter">C</span> Manobra de Epley para reposicionamento dos otólitos do canal semicircular posterior direito. <span class="badge">CORRETA</span></li>
+      <li><span class="opt-letter">D</span> Estimulação galvânica vestibular para reduzir a hiperatividade do labirinto direito.</li>
+    </ul>
+
+    <div class="gabarito">
+      <div class="gabarito-title">GABARITO COMENTADO — C</div>
+      <p>O quadro é clássico de <strong>VPPB do canal posterior direito</strong>: vertigem posicional, curta duração, nistagmo geotrópico torsional no Dix-Hallpike com latência e resolução espontânea. A manobra de Epley é a intervenção de primeira escolha — nível de evidência A. Move os otólitos deslocados do canal posterior de volta ao utrículo com 4 posições sequenciais. A = Cawthorne-Cooksey é para habituação em hipofunção vestibular crônica, não reposiciona otólitos. B = restrição de movimentos está obsoleta e piora o prognóstico ao evitar a adaptação; está contraindicada como conduta principal. D = estimulação galvânica não é indicada para VPPB.</p>
+    </div>
+  </div>
+  <div class="pf">
+    <span class="pf-logo"><em>Extensivo ENARE</em> <span>· by Residência PRO</span></span>
+    <span class="pf-num">07</span>
+  </div>
+</div>
+
+<!-- P08: Q3 — QUESTÃO-ÂNCORA (Q92/2025 — BESTest) -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label"><span>FIXAÇÃO</span> · AULA 04</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc">
+    <div class="q-header">
+      <div class="q-header-text">QUESTÃO 03 DE 03 · B6 EQUILÍBRIO — BESTEST / QUESTÃO-ÂNCORA (An)</div>
+    </div>
+
+    <p class="q-stem">O <strong>Balance Evaluation Systems Test (BESTest)</strong> se diferencia de outros instrumentos de avaliação de equilíbrio, como a Escala de Equilíbrio de Berg, porque:</p>
+
+    <ul class="q-options">
+      <li><span class="opt-letter">A</span> Avalia exclusivamente o sistema vestibular e a orientação sensorial, sendo específico para labirintopatias.</li>
+      <li class="correta"><span class="opt-letter">B</span> Identifica qual dos seis sistemas de controle postural está deficiente, direcionando a intervenção fisioterapêutica de forma específica. <span class="badge">CORRETA</span></li>
+      <li><span class="opt-letter">C</span> É aplicável apenas a pacientes com diagnóstico neurológico central, sendo contraindicado em condições musculoesqueléticas e periféricas.</li>
+      <li><span class="opt-letter">D</span> Substitui a posturografia dinâmica computadorizada como padrão ouro único para a avaliação do equilíbrio estático e dinâmico.</li>
+    </ul>
+
+    <div class="gabarito">
+      <div class="gabarito-title">GABARITO COMENTADO — B</div>
+      <p>O BESTest avalia <strong>6 sistemas</strong> de controle postural: restrições biomecânicas, limites de estabilidade, ajustes antecipatórios, respostas reativas, orientação sensorial e estabilidade na marcha. Sua principal vantagem sobre a Escala de Berg é <em>identificar qual sistema está comprometido</em>, não apenas quantificar o déficit total — isso permite uma intervenção direcionada. A = o BESTest avalia todos os 6 sistemas, não apenas o vestibular; o sistema 5 cobre orientação sensorial (visual, somatossensorial e vestibular). C = é válido para condições neurológicas, ortopédicas e geriátricas. D = é um instrumento clínico — a posturografia dinâmica tem resolução superior em contextos de pesquisa e diagnóstico diferencial detalhado.</p>
+    </div>
+  </div>
+  <div class="pf">
+    <span class="pf-logo"><em>Extensivo ENARE</em> <span>· by Residência PRO</span></span>
+    <span class="pf-num">08</span>
+  </div>
+</div>
+
+<!-- P09: RECUPERAÇÃO ATIVA -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label"><span>RECUPERAÇÃO ATIVA</span> · AULA 04</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc">
+    <div class="rec-title">SE ESQUECER<br>TUDO,<br>LEMBRE DISTO</div>
+
+    <div class="rec-item">
+      <span class="rec-star">★</span>
+      <span class="rec-text"><strong>Ataxia cerebelar (Q81/2025):</strong> hipotonia = teste do pêndulo (MMII oscilam demais). Dismetria = calcanhar-joelho. Marcha ebriosa = base alargada. Feedforward falha — treinar precisão e progressão de apoio.</span>
+    </div>
+
+    <div class="rec-item">
+      <span class="rec-star">★</span>
+      <span class="rec-text"><strong>BESTest (Q92/2025):</strong> 6 sistemas (biomecânico, limites de estabilidade, antecipatório, reativo, sensorial, marcha). Diferencial: identifica qual sistema falha — não só o grau. Direciona a intervenção específica.</span>
+    </div>
+
+    <div class="rec-item">
+      <span class="rec-star">★</span>
+      <span class="rec-text"><strong>Vestibular COFFITO 419/2012 (Q88/2025):</strong> VPPB canal posterior + Dix-Hallpike positivo = Epley. VPPB canal horizontal = Barbecue Roll. Hipofunção crônica = Cawthorne-Cooksey (habituação). NÃO inverter: Epley não serve para hipofunção.</span>
+    </div>
+
+    <div class="rec-item">
+      <span class="rec-star">★</span>
+      <span class="rec-text"><strong>Seddon (Q84/2025):</strong> neuropraxia = bloqueio sem lesão axonal → recupera sem cirurgia. Axonotmese = axônio lesado, epineuro intacto → regenera 1 mm/dia. Neurotmese = tudo rompido → cirurgia.</span>
+    </div>
+
+    <div class="rec-item">
+      <span class="rec-star">★</span>
+      <span class="rec-text"><strong>Nervos específicos:</strong> femoral = quadríceps + sartório + ilíaco. Radial = mão caída. Ulnar = garra (4º/5º). Mediano = mão simiesca. Fibular = pé caído. Facial periférico (NMI) = biofeedback + contrações seletivas + calor.</span>
+    </div>
+
+    <div class="rec-divider"></div>
+    <div class="rec-test-title">TESTE-SE SEM OLHAR</div>
+
+    <div class="rec-q">
+      <span class="rec-q-num">01</span>
+      <span class="rec-q-line">Qual teste avalia hipotonia cerebelar? Qual avalia dismetria de MMSS e de MMII?</span>
+    </div>
+    <div class="rec-q">
+      <span class="rec-q-num">02</span>
+      <span class="rec-q-line">Quais são os 6 sistemas avaliados pelo BESTest? Por que ele é superior ao Berg para guiar intervenção?</span>
+    </div>
+    <div class="rec-q">
+      <span class="rec-q-num">03</span>
+      <span class="rec-q-line">Dix-Hallpike positivo à direita com nistagmo geotrópico — qual é o diagnóstico e a manobra indicada?</span>
+    </div>
+    <div class="rec-q">
+      <span class="rec-q-num">04</span>
+      <span class="rec-q-line">Qual a diferença entre axonotmese e neurotmese em termos de prognóstico e conduta?</span>
+    </div>
+  </div>
+  <div class="pf">
+    <span class="pf-logo"><em>Extensivo ENARE</em> <span>· by Residência PRO</span></span>
+    <span class="pf-num">09</span>
+  </div>
+</div>
+
+<!-- P10: REFERÊNCIAS -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label"><span>REFERÊNCIAS</span> · AULA 04</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc">
+    <div class="ref-title">REFERÊNCIAS — BLOCO B6 · AULA 04</div>
+
+    <div class="ref-item">HORAK, F.B. et al. The Balance Evaluation Systems Test (BESTest) to differentiate balance deficits. <em>Physical Therapy,</em> v. 89, n. 5, p. 484–498, 2009.</div>
+    <div class="ref-item">CONSELHO FEDERAL DE FISIOTERAPIA E TERAPIA OCUPACIONAL. <em>Resolução COFFITO nº 419, de 4 de outubro de 2012.</em> Regulamenta o uso pelo Fisioterapeuta da Reabilitação Vestibular como especialidade.</div>
+    <div class="ref-item">BHATTACHARYYA, N. et al. Clinical practice guideline: benign paroxysmal positional vertigo (Update). <em>Otolaryngology — Head and Neck Surgery,</em> v. 156, n. 3_suppl, 2017.</div>
+    <div class="ref-item">SEDDON, H.J. A classification of peripheral nerve injuries producing loss of function. <em>Brain,</em> v. 66, n. 4, p. 237–288, 1943.</div>
+    <div class="ref-item">SUNDERLAND, S. A classification of peripheral nerve injuries producing loss of function. <em>Brain,</em> v. 74, n. 4, p. 491–516, 1951.</div>
+    <div class="ref-item">BRONSTEIN, A.M. et al. <em>Vestibular Disorders: A Case Study Approach to Diagnosis and Treatment.</em> 3. ed. Oxford: Oxford University Press, 2019.</div>
+    <div class="ref-item">KANDEL, E.R. et al. <em>Principles of Neural Science.</em> 6. ed. New York: McGraw-Hill, 2021. Cap. 40 — The Cerebellum.</div>
+
+    <div class="ref-notes">
+      <span class="ref-notes-text">Espaço para anotações</span>
+    </div>
+  </div>
+  <div class="pf">
+    <span class="pf-logo"><em>Extensivo ENARE</em> <span>· by Residência PRO</span></span>
+    <span class="pf-num">10</span>
+  </div>
+</div>
+
+</body>
+</html>
