@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B6 · Aula 21 — Revisão Geral Bloco B6</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { -webkit-print-color-adjust: exact; print-color-adjust: exact; font-family: 'Bricolage Grotesque', sans-serif; background: #ccc; }
+
+  .page { width: 210mm; height: 297mm; display: flex; flex-direction: column; overflow: hidden; page-break-after: always; background: #F6F4ED; }
+
+  .ph { height: 14mm; flex-shrink: 0; display: flex; align-items: center; justify-content: space-between; padding: 0 16mm; border-bottom: 0.4mm solid #E0DDD6; }
+  .ph-label { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 7.5pt; letter-spacing: 0.12em; color: #0D8A8D; text-transform: uppercase; }
+  .ph-right { font-size: 7pt; color: #888; }
+
+  .pf { height: 9mm; flex-shrink: 0; display: flex; align-items: center; justify-content: space-between; padding: 0 16mm; border-top: 0.4mm solid #E0DDD6; }
+  .pf-logo { font-family: 'Playfair Display', serif; font-style: italic; font-size: 7.5pt; color: #0D8A8D; }
+  .pf-logo span { font-family: 'Space Grotesk', sans-serif; font-style: normal; font-weight: 300; font-size: 6.5pt; color: #888; text-transform: uppercase; letter-spacing: 0.08em; }
+  .pf-right { font-size: 7pt; color: #888; }
+  .pf-right strong { color: #0D8A8D; font-weight: 600; }
+
+  .pc { flex: 1; padding: 7mm 16mm 5mm; overflow: hidden; }
+  .pc-sm { flex: 1; padding: 5mm 16mm 4mm; overflow: hidden; }
+  .pc-xs { flex: 1; padding: 4mm 16mm 3mm; overflow: hidden; }
+
+  /* Cover */
+  .cover-eyebrow { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 8pt; letter-spacing: 0.15em; color: #0D8A8D; text-transform: uppercase; margin-bottom: 4mm; }
+  .cover-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 44pt; line-height: 0.93; color: #070707; text-transform: uppercase; margin-bottom: 5mm; }
+  .cover-sub { font-size: 9pt; color: #555; line-height: 1.5; margin-bottom: 6mm; max-width: 150mm; }
+
+  .stats-row { display: flex; gap: 0; margin-bottom: 6mm; }
+  .stat-item { display: flex; align-items: flex-start; gap: 3mm; padding-right: 7mm; border-right: 0.3mm solid #C0BDB6; margin-right: 7mm; }
+  .stat-item:last-child { border-right: none; }
+  .stat-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 28pt; color: #0D8A8D; line-height: 1; }
+  .stat-label { font-size: 7.5pt; color: #666; line-height: 1.3; padding-top: 1mm; }
+
+  .banca-box { border-left: 1.5mm solid #0D8A8D; background: rgba(13,138,141,0.06); padding: 3mm 4mm; border-radius: 0 2mm 2mm 0; }
+  .banca-box-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 8pt; letter-spacing: 0.08em; color: #0D8A8D; text-transform: uppercase; margin-bottom: 1mm; }
+  .banca-box p { font-size: 7.5pt; color: #444; line-height: 1.5; }
+
+  .section-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 15pt; color: #0D8A8D; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 3mm; padding-bottom: 1.2mm; border-bottom: 0.4mm solid #0D8A8D; }
+  .block-sub { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 9pt; color: #070707; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 1.5mm; margin-top: 2mm; }
+
+  .two-col { display: flex; gap: 5mm; }
+  .col { flex: 1; }
+  .col-wide { flex: 1.5; }
+
+  ul.dot-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.9mm; }
+  ul.dot-list li { font-size: 7.5pt; color: #333; line-height: 1.38; padding-left: 4mm; position: relative; }
+  ul.dot-list li::before { content: '·'; position: absolute; left: 0; color: #0D8A8D; font-weight: 700; font-size: 10pt; line-height: 1.1; }
+  ul.dot-list li strong { font-weight: 600; color: #070707; }
+  ul.dot-list li em { font-style: normal; color: #0D8A8D; font-weight: 600; }
+
+  /* Distribution table */
+  .dist-table { width: 100%; border-collapse: collapse; margin-bottom: 3mm; }
+  .dist-table th { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 7.5pt; text-transform: uppercase; letter-spacing: 0.05em; background: #070707; color: #F6F4ED; padding: 1.5mm 2.5mm; text-align: left; }
+  .dist-table th.center { text-align: center; }
+  .dist-table td { font-size: 7.5pt; color: #333; padding: 1.5mm 2.5mm; border-bottom: 0.2mm solid #E0DDD6; line-height: 1.3; }
+  .dist-table tr:nth-child(even) td { background: rgba(13,138,141,0.04); }
+  .dist-table td.center { text-align: center; }
+  .dist-table td.bold { font-weight: 600; color: #070707; }
+  .dist-table td.teal { color: #0D8A8D; font-weight: 600; }
+  .bar { display: inline-block; height: 3mm; background: #0D8A8D; border-radius: 0.5mm; vertical-align: middle; }
+
+  /* Critical points */
+  .crit-block { margin-bottom: 2.5mm; }
+  .crit-row { display: flex; align-items: flex-start; gap: 2mm; margin-bottom: 1mm; }
+  .crit-tag { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 7pt; background: #0D8A8D; color: #fff; padding: 0.4mm 2mm; border-radius: 1mm; white-space: nowrap; flex-shrink: 0; margin-top: 0.3mm; }
+  .crit-text { font-size: 7.5pt; color: #333; line-height: 1.4; }
+  .crit-text strong { color: #070707; font-weight: 600; }
+  .crit-text em { color: #0D8A8D; font-style: normal; font-weight: 600; }
+
+  /* Distractor table */
+  .dist-err-table { width: 100%; border-collapse: collapse; }
+  .dist-err-table th { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 7.5pt; text-transform: uppercase; background: #070707; color: #F6F4ED; padding: 1.5mm 2.5mm; }
+  .dist-err-table td { font-size: 7pt; color: #333; padding: 1.5mm 2.5mm; border-bottom: 0.2mm solid #E0DDD6; line-height: 1.35; vertical-align: top; }
+  .dist-err-table tr:nth-child(even) td { background: rgba(13,138,141,0.04); }
+  .dist-err-table td strong { font-weight: 600; color: #a01010; }
+  .dist-err-table td em { font-style: normal; color: #1F5C23; font-weight: 600; }
+
+  /* Flash questions */
+  .q-badge-row { display: flex; align-items: center; gap: 2.5mm; margin-bottom: 4mm; }
+  .q-badge { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 8pt; letter-spacing: 0.08em; text-transform: uppercase; padding: 1mm 3mm; border-radius: 1mm; }
+  .q-badge-nc { background: #070707; color: #F6F4ED; }
+  .q-badge-tema { background: rgba(13,138,141,0.12); color: #0D8A8D; }
+
+  .q-stem { font-size: 9pt; color: #222; line-height: 1.55; margin-bottom: 4mm; }
+  .q-stem strong { font-weight: 600; }
+
+  .q-options { display: flex; flex-direction: column; gap: 2mm; margin-bottom: 4mm; }
+  .q-opt { display: flex; gap: 2.5mm; align-items: flex-start; }
+  .q-opt-letter { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 10pt; color: #0D8A8D; min-width: 5mm; line-height: 1.3; }
+  .q-opt-text { font-size: 8pt; color: #333; line-height: 1.45; }
+
+  .gabarito-box { background: rgba(13,138,141,0.08); border: 0.3mm solid #0D8A8D; border-radius: 2mm; padding: 2.5mm 4mm; }
+  .gabarito-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 9pt; color: #0D8A8D; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1.5mm; }
+  .gabarito-box p { font-size: 7.5pt; color: #333; line-height: 1.5; }
+  .gabarito-box p strong { font-weight: 700; }
+  .gabarito-box .correct { color: #1F5C23; font-weight: 700; }
+  .gabarito-box .wrong { color: #888; }
+
+  /* Final strategy */
+  .strat-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2.5mm; margin: 2mm 0; }
+  .strat-card { background: #fff; border-radius: 2mm; padding: 2.5mm 3mm; border-top: 1.5mm solid #0D8A8D; }
+  .strat-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 16pt; color: #0D8A8D; line-height: 1; }
+  .strat-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 8pt; color: #070707; text-transform: uppercase; margin-bottom: 1mm; }
+  .strat-card p { font-size: 7pt; color: #555; line-height: 1.35; }
+
+  .ref-list { display: flex; flex-direction: column; gap: 1.5mm; }
+  .ref-item { font-size: 7pt; color: #444; line-height: 1.4; }
+  .ref-item em { font-style: italic; }
+</style>
+</head>
+<body>
+
+<!-- ========== PAGE 1 — CAPA ========== -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label">Bloco B6 · Fisioterapia · Aula 21</span>
+  </div>
+  <div class="pc">
+    <div class="cover-eyebrow">Aula Final · Bloco B6</div>
+    <div class="cover-title">Revisão<br>Geral<br>B6</div>
+    <div class="cover-sub">Síntese dos pontos críticos em FT-NEURO, FT-CARDIO, FT-MUSC, FT-ONCO, FT-APS, FT-ETICA e FT-BIOPS · Padrões FGV por tema · Grandes distratorres · Estratégia para o dia da prova</div>
+
+    <div class="stats-row">
+      <div class="stat-item">
+        <div class="stat-num">21</div>
+        <div class="stat-label">Aulas no Bloco B6</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">160</div>
+        <div class="stat-label">Questões FGV mapeadas</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">9</div>
+        <div class="stat-label">Temas cobertos</div>
+      </div>
+    </div>
+
+    <div class="banca-box">
+      <div class="banca-box-title">Estratégia de revisão:</div>
+      <p>FT-CARDIO (31,3%) + FT-MUSC (21–32%) + FT-NEURO (17–22%) = ~75% da prova. Dominar esses três temas é a prioridade absoluta. FT-ONCO, FT-APS e FT-ETICA somam ~15% com padrões altamente previsíveis — 3 questões cada, questões fáceis de acertar se os pontos-chave forem memorizados. FT-BIOPS, FT-GERIAT e FT-SAUMU completam o restante. Esta aula concentra os pontos críticos e os distratorres mais frequentes para maximizar o aproveitamento nos últimos dias de revisão.</p>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pf-logo">Residência PRO <span>· by Residência Pro</span></div>
+    <div class="pf-right"><strong>Extensivo ENARE 2026</strong><br>Fisioterapia · Camila Nara</div>
+  </div>
+</div>
+
+<!-- ========== PAGE 2 — DISTRIBUIÇÃO FGV + ESTRATÉGIA ========== -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label">Distribuição FGV · Revisão B6</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc-sm">
+    <div class="section-title">Mapa do Bloco B6 — Distribuição por Tema</div>
+
+    <table class="dist-table">
+      <thead>
+        <tr>
+          <th>Tema</th>
+          <th>Aulas</th>
+          <th class="center">2024</th>
+          <th class="center">2025</th>
+          <th class="center">Média</th>
+          <th>Tendência</th>
+          <th>Peso relativo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="bold">FT-CARDIO</td>
+          <td>A06–A10</td>
+          <td class="center teal">25</td>
+          <td class="center teal">25</td>
+          <td class="center bold">25,0</td>
+          <td>Estável — maior bloco</td>
+          <td><div class="bar" style="width:52mm;"></div></td>
+        </tr>
+        <tr>
+          <td class="bold">FT-MUSC</td>
+          <td>A11–A14</td>
+          <td class="center teal">26</td>
+          <td class="center">16</td>
+          <td class="center bold">21,0</td>
+          <td>Recuou — ainda 2º maior</td>
+          <td><div class="bar" style="width:44mm;"></div></td>
+        </tr>
+        <tr>
+          <td class="bold">FT-NEURO</td>
+          <td>A01–A05</td>
+          <td class="center">16</td>
+          <td class="center teal">18</td>
+          <td class="center bold">17,0</td>
+          <td>Cresceu — inversão com MUSC</td>
+          <td><div class="bar" style="width:36mm;"></div></td>
+        </tr>
+        <tr>
+          <td>FT-APS</td>
+          <td>A17</td>
+          <td class="center">3</td>
+          <td class="center">4</td>
+          <td class="center">3,5</td>
+          <td>Crescimento leve</td>
+          <td><div class="bar" style="width:8mm;opacity:0.7;"></div></td>
+        </tr>
+        <tr>
+          <td>FT-ONCO</td>
+          <td>A15–A16</td>
+          <td class="center">3</td>
+          <td class="center">3</td>
+          <td class="center">3,0</td>
+          <td>Estável — padrão fixo</td>
+          <td><div class="bar" style="width:7mm;opacity:0.65;"></div></td>
+        </tr>
+        <tr>
+          <td>FT-ETICA</td>
+          <td>A19</td>
+          <td class="center">3</td>
+          <td class="center">3</td>
+          <td class="center">3,0</td>
+          <td>Estável — tripartite</td>
+          <td><div class="bar" style="width:7mm;opacity:0.65;"></div></td>
+        </tr>
+        <tr>
+          <td>FT-BIOPS</td>
+          <td>A20</td>
+          <td class="center">4</td>
+          <td class="center">2</td>
+          <td class="center">3,0</td>
+          <td>Redução leve</td>
+          <td><div class="bar" style="width:6mm;opacity:0.6;"></div></td>
+        </tr>
+        <tr>
+          <td>FT-GERIAT</td>
+          <td>A18</td>
+          <td class="center">1</td>
+          <td class="center">1</td>
+          <td class="center">1,0</td>
+          <td>Estável</td>
+          <td><div class="bar" style="width:3mm;opacity:0.5;"></div></td>
+        </tr>
+        <tr>
+          <td>FT-SAUMU</td>
+          <td>A18</td>
+          <td class="center">2</td>
+          <td class="center">0</td>
+          <td class="center">1,0</td>
+          <td>Ausente 2025 — retorno provável</td>
+          <td><div class="bar" style="width:3mm;opacity:0.5;"></div></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="two-col" style="margin-top:2mm;">
+      <div class="col">
+        <div class="banca-box">
+          <div class="banca-box-title">Prioridade de estudo</div>
+          <p><strong>Nível A (>15q):</strong> FT-CARDIO, FT-MUSC, FT-NEURO — revisão profunda obrigatória.<br>
+          <strong>Nível B (3–4q):</strong> FT-APS, FT-ONCO, FT-ETICA, FT-BIOPS — padrões previsíveis, estude os pontos-chave.<br>
+          <strong>Nível C (1–2q):</strong> FT-GERIAT, FT-SAUMU — revisão rápida; foco nos conceitos mais pontuáveis (TUG, dispareunia, lei de Wolff).</p>
+        </div>
+      </div>
+      <div class="col">
+        <div class="banca-box">
+          <div class="banca-box-title">Evolução 2024 → 2025</div>
+          <p>A FGV expandiu FT-NEURO e FT-APS em 2025, às custas de FT-MUSC e FT-BIOPS. Temas de saúde coletiva (APS, RAS, NASF) ganharam espaço. FT-ETICA deslocou-se do final da prova (Q98–100) para o meio (Q32, Q33, Q62) — confirma que ética é cobrada em posição variável. FT-CARDIO permanece absolutamente estável: 25 questões em ambas as edições.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pf-logo">Extensivo ENARE <span>· by Residência Pro</span></div>
+    <div class="pf-right">2</div>
+  </div>
+</div>
+
+<!-- ========== PAGE 3 — FT-NEURO: PONTOS CRÍTICOS ========== -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label">FT-NEURO · Pontos Críticos · Revisão B6</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc-sm">
+    <div class="section-title">FT-NEURO — Os Pontos Mais Cobrados</div>
+
+    <div class="two-col">
+      <div class="col">
+        <div class="block-sub">AVC · TRM</div>
+        <div class="crit-block">
+          <div class="crit-row"><span class="crit-tag">A01</span><div class="crit-text"><strong>Espasticidade:</strong> velocidade-dependente (Ashworth não é velocidade-dependente — mede tônus) · <em>Escala de Ashworth Modificada</em> = 0–4</div></div>
+        </div>
+        <div class="crit-block">
+          <div class="crit-row"><span class="crit-tag">A01</span><div class="crit-text"><strong>Marcha hemiplégica:</strong> adução + rotação interna quadril + equino → circundução para compensar</div></div>
+        </div>
+        <div class="crit-block">
+          <div class="crit-row"><span class="crit-tag">A02</span><div class="crit-text"><strong>ASIA:</strong> A=completa; B=incompleta sensitiva; C=incompleta motora &lt;50% muscs chave ≥3; D=≥50% ≥3; E=normal</div></div>
+        </div>
+        <div class="crit-block">
+          <div class="crit-row"><span class="crit-tag">A02</span><div class="crit-text"><strong>Paradoxo postural TRM:</strong> ↑pressão hidrostática → ↑retorno venoso → ↑débito cardíaco → tolera posição vertical</div></div>
+        </div>
+
+        <div class="block-sub" style="margin-top:2.5mm;">Doenças Degenerativas</div>
+        <div class="crit-block">
+          <div class="crit-row"><span class="crit-tag">A03</span><div class="crit-text"><strong>Parkinson:</strong> tríade = rigidez + tremor repouso + bradicinesia; LSVT BIG; pistas externas visuais e auditivas para marcha festinante</div></div>
+        </div>
+        <div class="crit-block">
+          <div class="crit-row"><span class="crit-tag">A03</span><div class="crit-text"><strong>ELA:</strong> NMS + NMI + bulbar; <em>VNI em IRF</em> = intervenção precoce; fisioterapia NÃO fortalece musculatura denervada</div></div>
+        </div>
+        <div class="crit-block">
+          <div class="crit-row"><span class="crit-tag">A03</span><div class="crit-text"><strong>EM:</strong> surtos + remissões; Uhthoff (↑temperatura → piora); termoterapia fria indicada</div></div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="block-sub">Equilíbrio · Nervos Periféricos</div>
+        <div class="crit-block">
+          <div class="crit-row"><span class="crit-tag">A04</span><div class="crit-text"><strong>BESTest:</strong> avalia todos os sistemas do controle postural (biomecânico, estabilidade limites, ajustes antecipatórios, reativo, sensorial, marcha dinâmica)</div></div>
+        </div>
+        <div class="crit-block">
+          <div class="crit-row"><span class="crit-tag">A04</span><div class="crit-text"><strong>Ataxia:</strong> estratégia tornozelo → quadril → passo; treino sem superfícies excessivamente instáveis na fase inicial</div></div>
+        </div>
+        <div class="crit-block">
+          <div class="crit-row"><span class="crit-tag">A04</span><div class="crit-text"><strong>BPPV:</strong> manobra de Epley (canalolíase CSP); Sémont (cupulolíase); NÃO usar Brandt-Daroff como 1ª escolha</div></div>
+        </div>
+        <div class="crit-block">
+          <div class="crit-row"><span class="crit-tag">A04</span><div class="crit-text"><strong>Seddon:</strong> neuropraxia (desmielinização, recupera espontaneamente) → axonotmese (axônio lesado) → neurotmese (secção total)</div></div>
+        </div>
+
+        <div class="block-sub" style="margin-top:2.5mm;">Neuroplasticidade · TCE</div>
+        <div class="crit-block">
+          <div class="crit-row"><span class="crit-tag">A05</span><div class="crit-text"><strong>CIMT:</strong> restrição do membro saudável + treinamento intensivo do membro parético; <em>uso-dependente</em></div></div>
+        </div>
+        <div class="crit-block">
+          <div class="crit-row"><span class="crit-tag">A05</span><div class="crit-text"><strong>TCE grave:</strong> colisão frontal → dano polar frontal + temporal (contragolpe); EEF no TCE = ↑arco de movimento + ↓espasticidade</div></div>
+        </div>
+        <div class="crit-block">
+          <div class="crit-row"><span class="crit-tag">A05</span><div class="crit-text"><strong>Espinha bífida:</strong> mielomeningocele → lesão variável L2-S1; bexiga neurogênica; CIC; marcha com KAFO</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pf-logo">Extensivo ENARE <span>· by Residência Pro</span></div>
+    <div class="pf-right">3</div>
+  </div>
+</div>
+
+<!-- ========== PAGE 4 — FT-CARDIO: PONTOS CRÍTICOS ========== -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label">FT-CARDIO · Pontos Críticos · Revisão B6</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc-sm">
+    <div class="section-title">FT-CARDIO — Os Pontos Mais Cobrados</div>
+
+    <div class="two-col">
+      <div class="col">
+        <div class="block-sub">Fisioterapia Intensiva (A06)</div>
+        <div class="crit-block">
+          <div class="crit-row"><span class="crit-tag">VMI</span><div class="crit-text"><strong>Tobin (f/VT):</strong> &lt;105 = apto para desmame; TC: VC, FR, PEEP, FiO₂, PAW, complacência, resistência</div></div>
+        </div>
+        <div class="crit-block">
+          <div class="crit-row"><span class="crit-tag">VMI</span><div class="crit-text"><strong>Eltgol:</strong> decúbito lateral → expande pulmão <em>de cima</em>; mobiliza secreções do pulmão de baixo via fluxo colateral</div></div>
+        </div>
+        <div class="crit-block">
+          <div class="crit-row"><span class="crit-tag">VNI</span><div class="crit-text">IPAP = suporte + EPAP; indicação: DPOC agudizado, EAP cardiogênico, pós-extubação seletiva</div></div>
+        </div>
+
+        <div class="block-sub" style="margin-top:2mm;">Reabilitação Cardíaca (A07)</div>
+        <div class="crit-block">
+          <div class="crit-row"><span class="crit-tag">A07</span><div class="crit-text"><strong>RC AHA 2024:</strong> Fase I=hospitalar (mobilização precoce, educação); Fase II=supervisionada (ECG); Fase III=não supervisionada; Fase IV=manutenção</div></div>
+        </div>
+        <div class="crit-block">
+          <div class="crit-row"><span class="crit-tag">A07</span><div class="crit-text"><strong>HAS:</strong> aeróbico ≥150min/sem moderado + resistido 2–3x/sem; FC alvo = 50–85% FCmáx; Borg 12–13</div></div>
+        </div>
+        <div class="crit-block">
+          <div class="crit-row"><span class="crit-tag">A07</span><div class="crit-text"><strong>Imobilismo:</strong> ↓VO₂max 1%/dia; ↑FC repouso; ↓volume plasmático; contraturas + úlceras por pressão</div></div>
+        </div>
+
+        <div class="block-sub" style="margin-top:2mm;">DPOC · Reabilitação Pulmonar (A08)</div>
+        <div class="crit-block">
+          <div class="crit-row"><span class="crit-tag">A08</span><div class="crit-text"><strong>TC6:</strong> avalia capacidade funcional; prediz mortalidade; ↓distância = pior prognóstico; não é VO₂max</div></div>
+        </div>
+        <div class="crit-block">
+          <div class="crit-row"><span class="crit-tag">A08</span><div class="crit-text"><strong>RP:</strong> exercício (aeróbico + resistido) + educação + suporte nutricional + psicossocial; reduz exacerbações e hospitalizações</div></div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="block-sub">Fisiopatologia Respiratória (A09)</div>
+        <div class="crit-block">
+          <div class="crit-row"><span class="crit-tag">A09</span><div class="crit-text"><strong>Hipoxemia mecanismos:</strong> V/Q (corrige O₂) · hipoventilação (corrige O₂) · <em>shunt (NÃO corrige O₂</em> nem em FiO₂=1,0) · difusão · baixa PiO₂</div></div>
+        </div>
+        <div class="crit-block">
+          <div class="crit-row"><span class="crit-tag">A09</span><div class="crit-text"><strong>Equação de movimento:</strong> Pmus + Pvent = VT/C + f·VT·R — ↑Paw com VC constante → ↑resistência; ↓complacência = ↑pico com igual platô</div></div>
+        </div>
+        <div class="crit-block">
+          <div class="crit-row"><span class="crit-tag">A09</span><div class="crit-text"><strong>Oxigenoterapia:</strong> sistema baixo fluxo (Venturi = controle preciso da FiO₂); cateter nasal 1L = FiO₂ ~24%; máscara simples = 35–55%</div></div>
+        </div>
+
+        <div class="block-sub" style="margin-top:2mm;">Higiene Brônquica · SAOS (A10)</div>
+        <div class="crit-block">
+          <div class="crit-row"><span class="crit-tag">A10</span><div class="crit-text"><strong>TEF:</strong> expiração forçada sem fechar a glote; desloca muco do periferia → central; substitui tosse em pacientes frágeis</div></div>
+        </div>
+        <div class="crit-block">
+          <div class="crit-row"><span class="crit-tag">A10</span><div class="crit-text"><strong>CAR:</strong> ciclo ativo da respiração = (1)controle respiratório → (2)exercícios expansão torácica → (3)TEF; 3 fases em ciclo</div></div>
+        </div>
+        <div class="crit-block">
+          <div class="crit-row"><span class="crit-tag">A10</span><div class="crit-text"><strong>SAOS:</strong> IAH ≥5 + sintomas (ESS); CPAP = 1ª linha; fisioterapia = exercícios musculatura orofaríngea + posicionamento</div></div>
+        </div>
+        <div class="crit-block">
+          <div class="crit-row"><span class="crit-tag">A10</span><div class="crit-text"><strong>DPOC policitemia:</strong> hipoxemia crônica → ↑EPO → ↑Hb compensatória; não é patológica — é resposta adaptativa</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pf-logo">Extensivo ENARE <span>· by Residência Pro</span></div>
+    <div class="pf-right">4</div>
+  </div>
+</div>
+
+<!-- ========== PAGE 5 — FT-MUSC: PONTOS CRÍTICOS ========== -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label">FT-MUSC · Pontos Críticos · Revisão B6</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc-sm">
+    <div class="section-title">FT-MUSC — Os Pontos Mais Cobrados</div>
+
+    <div class="two-col">
+      <div class="col">
+        <div class="block-sub">Coluna · Tensão Neural (A11)</div>
+        <div class="crit-block">
+          <div class="crit-row"><span class="crit-tag">A11</span><div class="crit-text"><strong>Dermátomos:</strong> L4=face medial perna+calcâneo; <em>L5=dorso pé+hálux+face lateral perna</em>; S1=planta pé+calcâneo lateral+dedo mínimo</div></div>
+        </div>
+        <div class="crit-block">
+          <div class="crit-row"><span class="crit-tag">A11</span><div class="crit-text"><strong>ULNT1:</strong> nervo mediano (depressão escápula → abdução 90° → rotação ext → extensão cotovelo → supinação → extensão punho+dedos → inclinação cervical contralateral)</div></div>
+        </div>
+        <div class="crit-block">
+          <div class="crit-row"><span class="crit-tag">A11</span><div class="crit-text"><strong>AR:</strong> IFP+MCF+punhos+rigidez matinal >1h; FR+, anti-CCP; reabilitação = proteção articular + exercício isométrico fase aguda</div></div>
+        </div>
+
+        <div class="block-sub" style="margin-top:2mm;">Joelho · Quadril (A12)</div>
+        <div class="crit-block">
+          <div class="crit-row"><span class="crit-tag">A12</span><div class="crit-text"><strong>Gonartrose:</strong> espaço articular medial + varo; AKPS para disfunção patelofemoral; artroplastia → precaução: não dobrar >90°, não cruzar pernas</div></div>
+        </div>
+        <div class="crit-block">
+          <div class="crit-row"><span class="crit-tag">A12</span><div class="crit-text"><strong>Trendelenburg:</strong> fraqueza glúteo médio do lado do apoio → pelve cai para o lado do balanço</div></div>
+        </div>
+        <div class="crit-block">
+          <div class="crit-row"><span class="crit-tag">A12</span><div class="crit-text"><strong>Star Excursion:</strong> avalia controle dinâmico do tornozelo e MMII; direção posteromedial = mais sensitiva para lesão tornozelo</div></div>
+        </div>
+
+        <div class="block-sub" style="margin-top:2mm;">Ombro · LES (A13)</div>
+        <div class="crit-block">
+          <div class="crit-row"><span class="crit-tag">A13</span><div class="crit-text"><strong>SIS:</strong> espaço subacromial &lt;7mm; supraespinal ± LCA do ombro; sinal de Neer (flexão passiva) + Hawkins (rotação interna)</div></div>
+        </div>
+        <div class="crit-block">
+          <div class="crit-row"><span class="crit-tag">A13</span><div class="crit-text"><strong>Ritmo escápulo-umeral:</strong> 2:1 (glenoumeral:escapulotorácica); discinesia → ↑risco SIS; reabilitação = trapézio inferior + serrátil anterior</div></div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="block-sub">Amputação · Pé/Tornozelo · Fraturas (A14)</div>
+        <div class="crit-block">
+          <div class="crit-row"><span class="crit-tag">A14</span><div class="crit-text"><strong>Dor fantasma:</strong> ~90% dos amputados; reorganização cortical maladaptativa; <em>mirror therapy + TENS + protetização precoce</em></div></div>
+        </div>
+        <div class="crit-block">
+          <div class="crit-row"><span class="crit-tag">A14</span><div class="crit-text"><strong>Sinal de Homans:</strong> dorsiflexão passiva forçada → dor panturrilha → suspeita TVP; sensibilidade ~50%; <em>NÃO confirma isoladamente</em></div></div>
+        </div>
+        <div class="crit-block">
+          <div class="crit-row"><span class="crit-tag">A14</span><div class="crit-text"><strong>Colles:</strong> FOOSH; rádio distal deslocamento dorsal ("dorso de garfo"); pós-ORIF: (1)dedos+ombro; (2)rádio-cárpica passiva+extensores; (3)força</div></div>
+        </div>
+        <div class="crit-block">
+          <div class="crit-row"><span class="crit-tag">A14</span><div class="crit-text"><strong>Tendão calcâneo:</strong> descarga protegida 6–8 semanas; mobilização passiva tornozelo a partir de 10 semanas</div></div>
+        </div>
+
+        <div class="block-sub" style="margin-top:2mm;">Lesões Musculares</div>
+        <div class="crit-block">
+          <div class="crit-row"><span class="crit-tag">A11</span><div class="crit-text"><strong>Grau II bíceps:</strong> fibras musculares rompidas mas não total; dor + hematoma + força reduzida; crioterapia = vasoconstrição + ↓metabolismo local</div></div>
+        </div>
+        <div class="crit-block">
+          <div class="crit-row"><span class="crit-tag">A14</span><div class="crit-text"><strong>PRICE:</strong> Proteção · Repouso relativo · Ice 20min · Compressão · Elevação — fase aguda (primeiras 48–72h)</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pf-logo">Extensivo ENARE <span>· by Residência Pro</span></div>
+    <div class="pf-right">5</div>
+  </div>
+</div>
+
+<!-- ========== PAGE 6 — TEMAS TRANSVERSAIS ========== -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label">Temas Transversais · Revisão B6</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc-xs">
+    <div class="section-title">FT-ONCO · FT-APS · FT-ETICA · FT-BIOPS · FT-GERIAT/SAUMU</div>
+
+    <div class="two-col">
+      <div class="col">
+        <div class="block-sub">FT-ONCO (A15–A16)</div>
+        <div class="crit-block">
+          <div class="crit-row"><span class="crit-tag">A15</span><div class="crit-text"><strong>NC XI:</strong> esvaziamento radical → trapézio denervado → síndrome do ombro (↓elevação/abdução, protração escapular)</div></div>
+        </div>
+        <div class="crit-block">
+          <div class="crit-row"><span class="crit-tag">A15</span><div class="crit-text"><strong>CRF paradoxo:</strong> repouso PIORA a fadiga; aeróbico + resistido + ioga são indicados</div></div>
+        </div>
+        <div class="crit-block">
+          <div class="crit-row"><span class="crit-tag">A15</span><div class="crit-text"><strong>Contraindicações absolutas:</strong> febre >38°C · plaquetas &lt;50k · neutropenia+sepse · instabilidade CV · fratura patológica instável</div></div>
+        </div>
+        <div class="crit-block">
+          <div class="crit-row"><span class="crit-tag">A16</span><div class="crit-text"><strong>TDC:</strong> (1)DLM → (2)enfaixamento multicamadas (baixa elasticidade) → (3)cinesioterapia com enfaixamento → (4)pele. Fase II = meia elástica (manutenção)</div></div>
+        </div>
+        <div class="crit-block">
+          <div class="crit-row"><span class="crit-tag">A16</span><div class="crit-text"><strong>Paliativos OMS:</strong> não acelera nem retarda morte · biopsicossocioespiritual · integração precoce desde diagnóstico</div></div>
+        </div>
+
+        <div class="block-sub" style="margin-top:2mm;">FT-APS (A17)</div>
+        <div class="crit-block">
+          <div class="crit-row"><span class="crit-tag">A17</span><div class="crit-text"><strong>NASF-AB:</strong> apoio matricial — não assume o caso; PTS + visita domiciliar + clínica ampliada + grupos</div></div>
+        </div>
+        <div class="crit-block">
+          <div class="crit-row"><span class="crit-tag">A17</span><div class="crit-text"><strong>CER:</strong> 4 modalidades (física, auditiva, visual, intelectual) — NÃO é exclusivo de reabilitação física</div></div>
+        </div>
+        <div class="crit-block">
+          <div class="crit-row"><span class="crit-tag">A17</span><div class="crit-text"><strong>PNAB 2017:</strong> fisioterapeuta = promoção + prevenção + reabilitação + cuidado continuado + abordagem familiar</div></div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="block-sub">FT-ETICA (A19)</div>
+        <div class="crit-block">
+          <div class="crit-row"><span class="crit-tag">A19</span><div class="crit-text"><strong>Art. 10 — urgência:</strong> vedado negar assistência em urgência, independente de vínculo empregatício</div></div>
+        </div>
+        <div class="crit-block">
+          <div class="crit-row"><span class="crit-tag">A19</span><div class="crit-text"><strong>Sigilo:</strong> vedado compartilhar dados de paciente <em>lúcido</em> sem sua autorização — autonomia prevalece</div></div>
+        </div>
+        <div class="crit-block">
+          <div class="crit-row"><span class="crit-tag">A19</span><div class="crit-text"><strong>Notificação:</strong> maus-tratos em idoso/criança → notificação obrigatória; lei sobrepõe sigilo (suspeita já basta)</div></div>
+        </div>
+        <div class="crit-block">
+          <div class="crit-row"><span class="crit-tag">A19</span><div class="crit-text"><strong>PBE:</strong> evidência + expertise clínica + preferências do paciente — 3 pilares obrigatórios (Sackett, 1996)</div></div>
+        </div>
+
+        <div class="block-sub" style="margin-top:2mm;">FT-BIOPS (A20)</div>
+        <div class="crit-block">
+          <div class="crit-row"><span class="crit-tag">A20</span><div class="crit-text"><strong>SC:</strong> alodinia (estímulo não doloroso → dor) + hiperalgesia secundária + dor desproporcional; wind-up + NMDA</div></div>
+        </div>
+        <div class="crit-block">
+          <div class="crit-row"><span class="crit-tag">A20</span><div class="crit-text"><strong>Yellow flags:</strong> catastrofização + kinesiofobia + baixa autoeficácia + depressão → cronificação</div></div>
+        </div>
+        <div class="crit-block">
+          <div class="crit-row"><span class="crit-tag">A20</span><div class="crit-text"><strong>Exercício + SC:</strong> analgesia central (opioides endógenos + vias inibitórias descendentes) — NÃO apenas periférico</div></div>
+        </div>
+
+        <div class="block-sub" style="margin-top:2mm;">FT-GERIAT + FT-SAUMU (A18)</div>
+        <div class="crit-block">
+          <div class="crit-row"><span class="crit-tag">A18</span><div class="crit-text"><strong>Quedas:</strong> TUG >12s · Berg &lt;45 · Mini-BESTest &lt;20; fator intrínseco principal = fraqueza muscular; prevenção = Tai Chi + resistido</div></div>
+        </div>
+        <div class="crit-block">
+          <div class="crit-row"><span class="crit-tag">A18</span><div class="crit-text"><strong>Osteopenia:</strong> lei de Wolff → carga → formação óssea; <em>natação NÃO estimula</em> — flutuação cancela o estímulo; resistido + impacto são indicados</div></div>
+        </div>
+        <div class="crit-block">
+          <div class="crit-row"><span class="crit-tag">A18</span><div class="crit-text"><strong>Dispareunia:</strong> dor genital persistente durante/após coito; fisioterapia pélvica = Kegel + biofeedback + eletroestimulação</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pf-logo">Extensivo ENARE <span>· by Residência Pro</span></div>
+    <div class="pf-right">6</div>
+  </div>
+</div>
+
+<!-- ========== PAGE 7 — QUESTÃO FLASH 1 (An) ========== -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label">Questão Flash 1 · Revisão B6</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc">
+    <div class="q-badge-row">
+      <span class="q-badge q-badge-nc">An — Análise</span>
+      <span class="q-badge q-badge-tema">FT-CARDIO · Hipoxemia · Mecanismos</span>
+    </div>
+
+    <div class="q-stem">
+      Paciente com pneumonia lobar extensa no lobo inferior direito é admitido em UTI com SpO₂ 82% em ar ambiente. O médico prescreve oxigenoterapia com máscara de não-reinalação (FiO₂ ≈ 0,90). Após 30 minutos, a SpO₂ permanece em 83%, sem melhora significativa. Com base no mecanismo fisiopatológico que melhor explica o quadro, qual alternativa está <strong>correta</strong>?
+    </div>
+
+    <div class="q-options">
+      <div class="q-opt">
+        <span class="q-opt-letter">A)</span>
+        <span class="q-opt-text">A hipoxemia é causada por hipoventilação alveolar global, que responde adequadamente a FiO₂ elevada; a ausência de melhora indica falha no ajuste da FiO₂ prescrita.</span>
+      </div>
+      <div class="q-opt">
+        <span class="q-opt-letter">B)</span>
+        <span class="q-opt-text">A hipoxemia resulta de shunt intrapulmonar direita-esquerda, no qual alvéolos perfundidos não são ventilados (atelectasia por consolidação) — sangue venoso mistura-se ao arterial sem contato com O₂, explicando a refratariedade à oxigenoterapia.</span>
+      </div>
+      <div class="q-opt">
+        <span class="q-opt-letter">C)</span>
+        <span class="q-opt-text">O mecanismo é desequilíbrio V/Q, que sempre responde à suplementação de O₂ — a ausência de melhora indica diagnóstico equivocado de pneumonia.</span>
+      </div>
+      <div class="q-opt">
+        <span class="q-opt-letter">D)</span>
+        <span class="q-opt-text">A causa é distúrbio de difusão pulmonar por espessamento da membrana alveolo-capilar; aumentar a FiO₂ acima de 1,0 resolveria o problema, porém não é tecnicamente possível.</span>
+      </div>
+    </div>
+
+    <div class="gabarito-box">
+      <div class="gabarito-title">Gabarito: B</div>
+      <p><span class="correct">B — VERDADEIRA:</span> Pneumonia lobar = consolidação alveolar → alvéolos perfundidos sem ventilação = <strong>shunt intrapulmonar</strong>. No shunt, o sangue nunca alcança O₂ alveolar — aumentar FiO₂ não melhora SpO₂ porque o problema é ausência de ventilação, não falta de O₂. É o único mecanismo de hipoxemia <em>refratário à oxigenoterapia</em>.</p>
+      <p class="wrong">A) Hipoventilação global responderia bem ao O₂ — não explica a refratariedade. C) V/Q responde ao O₂ em graus variáveis. D) Distúrbio de difusão é raro e melhora com O₂ suplementar.</p>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pf-logo">Extensivo ENARE <span>· by Residência Pro</span></div>
+    <div class="pf-right">7</div>
+  </div>
+</div>
+
+<!-- ========== PAGE 8 — QUESTÃO FLASH 2 (An) ========== -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label">Questão Flash 2 · Revisão B6</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc">
+    <div class="q-badge-row">
+      <span class="q-badge q-badge-nc">An — Análise</span>
+      <span class="q-badge q-badge-tema">FT-ONCO · Linfedema · TDC</span>
+    </div>
+
+    <div class="q-stem">
+      Paciente do sexo feminino, 54 anos, 18 meses após mastectomia radical modificada com esvaziamento axilar esquerdo, apresenta linfedema grau II no membro superior esquerdo (ISL: redução do pitting, início de fibrose). A fisioterapeuta planeja iniciar a <strong>Fase I (intensiva)</strong> da Terapia Descongestiva Combinada (TDC). A sequência de condutas correta, do início ao fim de cada sessão, é:
+    </div>
+
+    <div class="q-options">
+      <div class="q-opt">
+        <span class="q-opt-letter">A)</span>
+        <span class="q-opt-text">Cinesioterapia com enfaixamento → drenagem linfática manual → enfaixamento multicamadas → cuidados com a pele.</span>
+      </div>
+      <div class="q-opt">
+        <span class="q-opt-letter">B)</span>
+        <span class="q-opt-text">Drenagem linfática manual → enfaixamento multicamadas de baixa elasticidade → cinesioterapia com enfaixamento → cuidados com a pele.</span>
+      </div>
+      <div class="q-opt">
+        <span class="q-opt-letter">C)</span>
+        <span class="q-opt-text">Meia elástica compressiva → drenagem linfática manual → cinesioterapia → cuidados com a pele.</span>
+      </div>
+      <div class="q-opt">
+        <span class="q-opt-letter">D)</span>
+        <span class="q-opt-text">Drenagem linfática manual → meia elástica compressiva → cinesioterapia → orientação domiciliar de automassagem.</span>
+      </div>
+    </div>
+
+    <div class="gabarito-box">
+      <div class="gabarito-title">Gabarito: B</div>
+      <p><span class="correct">B — VERDADEIRA:</span> TDC Fase I (intensiva) tem 4 componentes em sequência obrigatória: <strong>(1) DLM</strong> → mobiliza linfa para coletores funcionais; <strong>(2) enfaixamento multicamadas baixa elasticidade</strong> → mantém pressão durante atividade; <strong>(3) cinesioterapia com enfaixamento</strong> → contração muscular potencializa o efeito drenante; <strong>(4) cuidados com a pele</strong>. Meia elástica é da Fase II (manutenção), não da Fase I.</p>
+      <p class="wrong">A) Errada: Cinesioterapia não precede DLM — a DLM sempre abre o caminho linfático primeiro. C/D) Meia elástica pertence à Fase II de manutenção; usar na Fase I é erro clássico de distrator FGV.</p>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pf-logo">Extensivo ENARE <span>· by Residência Pro</span></div>
+    <div class="pf-right">8</div>
+  </div>
+</div>
+
+<!-- ========== PAGE 9 — GRANDES DISTRATORRES FGV ========== -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label">Grandes Distratorres · Revisão B6</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc-sm">
+    <div class="section-title">Os 12 Maiores Distratorres FGV — Bloco B6</div>
+    <p style="font-size:7.5pt;color:#555;margin-bottom:3mm;">Erros mais recorrentes nas questões de Fisioterapia FGV/ENARE — aprenda a diferença antes da prova:</p>
+
+    <table class="dist-err-table">
+      <thead>
+        <tr>
+          <th style="width:4mm;">#</th>
+          <th>Distrator (o que MUITOS marcam)</th>
+          <th>Correto (o que a FGV quer)</th>
+          <th style="width:12mm;">Aula</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td><strong>Shunt corrige com O₂ alto</strong></td><td><em>Shunt NÃO responde ao O₂ — alvéolo não ventilado, O₂ não chega</em></td><td>A09</td></tr>
+        <tr><td>2</td><td><strong>Eltgol expande pulmão de baixo</strong></td><td><em>Eltgol expande o pulmão DE CIMA (independente da ventilação)</em></td><td>A06</td></tr>
+        <tr><td>3</td><td><strong>DLM vem depois do enfaixamento</strong></td><td><em>TDC: DLM → enfaixamento → cinesioterapia → pele (nessa ordem)</em></td><td>A16</td></tr>
+        <tr><td>4</td><td><strong>Meia elástica na Fase I do linfedema</strong></td><td><em>Meia elástica é Fase II (manutenção); Fase I usa enfaixamento multicamadas</em></td><td>A16</td></tr>
+        <tr><td>5</td><td><strong>CRF melhora com repouso</strong></td><td><em>Fadiga oncológica: paradoxo — repouso PIORA; exercício é a intervenção</em></td><td>A15</td></tr>
+        <tr><td>6</td><td><strong>Natação estimula formação óssea</strong></td><td><em>Natação NÃO estimula osso — flutuação cancela a carga (lei de Wolff)</em></td><td>A18</td></tr>
+        <tr><td>7</td><td><strong>Homans confirma TVP</strong></td><td><em>Homans tem sensibilidade ~50% — suspeita, NÃO confirma isoladamente</em></td><td>A14</td></tr>
+        <tr><td>8</td><td><strong>NASF assume o caso do paciente</strong></td><td><em>NASF oferece apoio matricial à equipe; não assume o caso diretamente</em></td><td>A17</td></tr>
+        <tr><td>9</td><td><strong>PBE = só evidência científica</strong></td><td><em>PBE = evidência + expertise clínica + preferências do paciente (3 pilares)</em></td><td>A19</td></tr>
+        <tr><td>10</td><td><strong>Infecção = única contraindicação absoluta ao exercício oncológico</strong></td><td><em>São 5: febre >38°C, plaquetas &lt;50k, neutropenia+sepse, inst. CV, fratura patológica</em></td><td>A15</td></tr>
+        <tr><td>11</td><td><strong>Repouso é indicado na dor crônica</strong></td><td><em>Repouso reforça kinesiofobia e SC; exercício + PNE é a 1ª linha</em></td><td>A20</td></tr>
+        <tr><td>12</td><td><strong>CER tem só reabilitação física</strong></td><td><em>CER tem 4 modalidades: física + auditiva + visual + intelectual</em></td><td>A17</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="pf">
+    <div class="pf-logo">Extensivo ENARE <span>· by Residência Pro</span></div>
+    <div class="pf-right">9</div>
+  </div>
+</div>
+
+<!-- ========== PAGE 10 — ESTRATÉGIA FINAL ========== -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label">Estratégia Final · Revisão B6</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc-sm">
+    <div class="section-title">Estratégia para o Dia da Prova — Bloco B6</div>
+
+    <div class="strat-grid" style="margin-bottom:4mm;">
+      <div class="strat-card">
+        <div class="strat-num">1º</div>
+        <div class="strat-title">Leia o cenário até o final</div>
+        <p>A FGV dá a resposta no texto — paciente com alodinia + dor desproporcional = SC. Paciente com catastrofização = yellow flag. Leia com calma antes de olhar as opções.</p>
+      </div>
+      <div class="strat-card">
+        <div class="strat-num">2º</div>
+        <div class="strat-title">Identifique o tema primeiro</div>
+        <p>Determine o tema (CARDIO? MUSC? NEURO?) antes de responder. Ativa o "filtro mental" certo e evita confundir manobras de temas diferentes.</p>
+      </div>
+      <div class="strat-card">
+        <div class="strat-num">3º</div>
+        <div class="strat-title">Elimine por distrator</div>
+        <p>A FGV sempre coloca 1–2 opções com os distratorres clássicos (shunt corrige c/O₂; repouso na dor crônica; meia elástica fase I). Elimine-as primeiro.</p>
+      </div>
+      <div class="strat-card">
+        <div class="strat-num">4º</div>
+        <div class="strat-title">FT-ETICA = 3 pontos certos</div>
+        <p>Urgência nunca recusada · paciente lúcido = autonomia · maus-tratos = notifica sempre · PBE = 3 pilares. Se souber isso, 3 questões garantidas.</p>
+      </div>
+      <div class="strat-card">
+        <div class="strat-num">5º</div>
+        <div class="strat-title">Ordem TDC de cor</div>
+        <p>DLM → enfaixamento multicamadas → cinesioterapia → pele. Fase I = enfaixamento. Fase II = meia elástica. A FGV cobra toda edição.</p>
+      </div>
+      <div class="strat-card">
+        <div class="strat-num">6º</div>
+        <div class="strat-title">CARDIO = confiança</div>
+        <p>25 questões fixas por edição. TC6 = prognóstico. Shunt NÃO corrige. Eltgol = pulmão de cima. Tobin f/VT &lt;105. Domine esses 4 e marque pontos certos.</p>
+      </div>
+    </div>
+
+    <div class="section-title" style="margin-top:1mm;">Referências Principais — Bloco B6</div>
+    <div class="ref-list">
+      <div class="ref-item">CONSELHO FEDERAL DE FISIOTERAPIA E TERAPIA OCUPACIONAL. <em>Resolução COFFITO nº 424/2013</em>. Código de Ética. Brasília, 2013.</div>
+      <div class="ref-item">AMERICAN HEART ASSOCIATION. <em>Secondary Prevention and Cardiac Rehabilitation Guidelines</em>. Circulation, 2024.</div>
+      <div class="ref-item">SACKETT, D.L. et al. Evidence based medicine. <em>BMJ</em>, v. 312, p. 71–72, 1996.</div>
+      <div class="ref-item">WOOLF, C.J. Central sensitization. <em>Pain</em>, v. 152 (Suppl 3), p. S2–S15, 2011.</div>
+      <div class="ref-item">BRASIL. Portaria nº 2.528/2006. <em>Política Nacional de Saúde da Pessoa Idosa</em>. Brasília: MS, 2006.</div>
+      <div class="ref-item">INTERNATIONAL SOCIETY OF LYMPHOLOGY. The diagnosis and treatment of peripheral lymphedema: 2020 Consensus Document. <em>Lymphology</em>, v. 53, n. 1, 2020.</div>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pf-logo">Extensivo ENARE <span>· by Residência Pro</span></div>
+    <div class="pf-right">10</div>
+  </div>
+</div>
+
+</body>
+</html>
