@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fisioterapia · Bloco B6 · Aula 16 — FT-ONCO 2</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  @page { size: A4; margin: 0; }
+  body { -webkit-print-color-adjust: exact; print-color-adjust: exact; font-family: 'Bricolage Grotesque', sans-serif; background: #E8E6DF; }
+
+  .page { width: 210mm; height: 297mm; display: flex; flex-direction: column; overflow: hidden; page-break-after: always; background: #F6F4ED; position: relative; }
+  .ph { height: 14mm; flex-shrink: 0; display: flex; align-items: center; justify-content: space-between; padding: 0 16mm; border-bottom: 0.4mm solid #E0DDD6; }
+  .ph-label { font-family: 'Barlow Condensed', sans-serif; font-size: 7.5pt; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #0D8A8D; }
+  .ph-right { font-size: 7pt; color: #9A9490; font-weight: 300; }
+  .pf { height: 9mm; flex-shrink: 0; display: flex; align-items: center; justify-content: space-between; padding: 0 16mm; border-top: 0.4mm solid #E0DDD6; }
+  .pf-brand { font-family: 'Playfair Display', serif; font-style: italic; font-size: 7.5pt; color: #9A9490; }
+  .pf-brand span { font-family: 'Space Grotesk', sans-serif; font-style: normal; font-weight: 300; font-size: 6pt; text-transform: uppercase; letter-spacing: 0.08em; }
+  .pf-page { font-size: 7pt; color: #9A9490; }
+  .pc { flex: 1; padding: 7mm 16mm 5mm; overflow: hidden; }
+  .pc-sm { flex: 1; padding: 5mm 16mm 4mm; overflow: hidden; }
+
+  /* Capa */
+  .cover-tag { font-family: 'Barlow Condensed', sans-serif; font-size: 8pt; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #0D8A8D; margin-bottom: 6mm; }
+  .cover-title { font-family: 'Barlow Condensed', sans-serif; font-size: 40pt; font-weight: 800; line-height: 0.95; color: #070707; text-transform: uppercase; margin-bottom: 6mm; }
+  .cover-sub { font-size: 9.5pt; color: #5A5652; line-height: 1.5; max-width: 145mm; margin-bottom: 8mm; }
+  .cover-stats { display: flex; gap: 6mm; margin-bottom: 8mm; }
+  .cover-stat { flex: 1; border-left: 0.8mm solid #0D8A8D; padding-left: 4mm; }
+  .cover-stat-n { font-family: 'Barlow Condensed', sans-serif; font-size: 28pt; font-weight: 800; color: #0D8A8D; line-height: 1; }
+  .cover-stat-l { font-size: 7.5pt; color: #9A9490; margin-top: 1mm; }
+  .cover-box { background: #EDF7F7; border-left: 1mm solid #0D8A8D; padding: 4mm 5mm; border-radius: 0 2mm 2mm 0; font-size: 8pt; line-height: 1.55; color: #2A2826; }
+
+  /* Seções */
+  .sec-title { font-family: 'Barlow Condensed', sans-serif; font-size: 15pt; font-weight: 800; text-transform: uppercase; color: #0D8A8D; letter-spacing: 0.04em; margin-bottom: 4mm; }
+  .sub-title { font-family: 'Barlow Condensed', sans-serif; font-size: 9pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #0D8A8D; margin-bottom: 2mm; border-bottom: 0.3mm solid #0D8A8D; padding-bottom: 1mm; }
+
+  /* Objetivos */
+  .obj-list { list-style: none; display: flex; flex-direction: column; gap: 2.5mm; }
+  .obj-list li { display: flex; gap: 3mm; align-items: flex-start; font-size: 8.5pt; line-height: 1.45; color: #2A2826; }
+  .obj-n { font-family: 'Barlow Condensed', sans-serif; font-size: 16pt; font-weight: 800; color: #0D8A8D; line-height: 1; flex-shrink: 0; width: 6mm; }
+
+  /* Mapa */
+  .mapa { display: flex; gap: 2mm; margin-top: 3mm; }
+  .mapa-item { flex: 1; background: #EDF7F7; border-top: 1mm solid #0D8A8D; padding: 3mm; }
+  .mapa-item:nth-child(2) { background: #F0F7ED; border-top-color: #1F5C23; }
+  .mapa-item:nth-child(3) { background: #F9F7ED; border-top-color: #8A7D0D; }
+  .mapa-n { font-family: 'Barlow Condensed', sans-serif; font-size: 22pt; font-weight: 800; color: #0D8A8D; line-height: 1; }
+  .mapa-item:nth-child(2) .mapa-n { color: #1F5C23; }
+  .mapa-item:nth-child(3) .mapa-n { color: #8A7D0D; }
+  .mapa-label { font-family: 'Barlow Condensed', sans-serif; font-size: 8pt; font-weight: 700; text-transform: uppercase; color: #070707; margin: 1mm 0 0.5mm; }
+  .mapa-desc { font-size: 7pt; color: #5A5652; line-height: 1.35; }
+
+  /* Tabela */
+  table { width: 100%; border-collapse: collapse; font-size: 7.5pt; }
+  th { background: #070707; color: #F6F4ED; font-family: 'Barlow Condensed', sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; padding: 2mm 3mm; text-align: left; }
+  td { padding: 2mm 3mm; border-bottom: 0.3mm solid #E0DDD6; color: #2A2826; line-height: 1.35; vertical-align: top; }
+  tr:nth-child(even) td { background: #F0EEE7; }
+
+  /* Cards */
+  .two-col { display: flex; gap: 3mm; margin-top: 3mm; }
+  .col-card { flex: 1; background: #F0EEE7; border-radius: 1.5mm; padding: 3.5mm; }
+  .col-card-teal { background: #EDF7F7; border-left: 0.8mm solid #0D8A8D; }
+  .col-card-verde { background: #F0F7ED; border-left: 0.8mm solid #1F5C23; }
+  .card-h { font-family: 'Barlow Condensed', sans-serif; font-size: 8.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #070707; margin-bottom: 2mm; }
+  .card-body { font-size: 7.5pt; color: #2A2826; line-height: 1.45; }
+  .card-body li { margin-left: 3mm; margin-bottom: 0.8mm; }
+
+  /* Banca box */
+  .banca-box { background: #EDF7F7; border-left: 1mm solid #0D8A8D; padding: 3.5mm 4mm; margin-top: 3mm; border-radius: 0 2mm 2mm 0; }
+  .banca-title { font-family: 'Barlow Condensed', sans-serif; font-size: 8.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #0D8A8D; margin-bottom: 1.5mm; }
+  .banca-text { font-size: 7.5pt; color: #2A2826; line-height: 1.5; }
+
+  /* Warn box */
+  .warn-box { background: #FFF4ED; border-left: 1mm solid #C85A1A; padding: 3mm 4mm; margin-top: 3mm; border-radius: 0 2mm 2mm 0; }
+  .warn-title { font-family: 'Barlow Condensed', sans-serif; font-size: 8pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #C85A1A; margin-bottom: 1mm; }
+  .warn-text { font-size: 7.5pt; color: #2A2826; line-height: 1.45; }
+
+  /* TDC fases */
+  .tdc-phases { display: flex; gap: 2mm; margin-top: 2mm; }
+  .tdc-phase { flex: 1; border-radius: 1.5mm; padding: 3mm; }
+  .tdc-phase-1 { background: #EDF7F7; border-top: 1mm solid #0D8A8D; }
+  .tdc-phase-2 { background: #F0F7ED; border-top: 1mm solid #1F5C23; }
+  .tdc-phase-h { font-family: 'Barlow Condensed', sans-serif; font-size: 8.5pt; font-weight: 700; text-transform: uppercase; color: #070707; margin-bottom: 1.5mm; }
+  .tdc-phase-body { font-size: 7.5pt; color: #2A2826; line-height: 1.4; }
+  .tdc-phase-body li { margin-left: 3mm; margin-bottom: 0.5mm; }
+
+  /* TDC componentes visual */
+  .tdc-comp { display: flex; gap: 2mm; margin-top: 2mm; }
+  .tdc-c { flex: 1; background: #F0EEE7; border-radius: 1.5mm; padding: 2.5mm; text-align: center; }
+  .tdc-c-n { font-family: 'Barlow Condensed', sans-serif; font-size: 18pt; font-weight: 800; color: #0D8A8D; line-height: 1; }
+  .tdc-c-l { font-family: 'Barlow Condensed', sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; color: #070707; margin: 1mm 0 0.5mm; }
+  .tdc-c-d { font-size: 6.5pt; color: #5A5652; line-height: 1.3; }
+
+  /* Paliativos princípios */
+  .princ-list { display: flex; flex-direction: column; gap: 1.5mm; margin-top: 2mm; }
+  .princ-item { display: flex; gap: 2.5mm; align-items: flex-start; background: #F0EEE7; padding: 2mm 3mm; border-radius: 1mm; }
+  .princ-dot { width: 2mm; height: 2mm; background: #0D8A8D; border-radius: 50%; flex-shrink: 0; margin-top: 1.5mm; }
+  .princ-text { font-size: 7.5pt; color: #2A2826; line-height: 1.4; }
+
+  /* Terapias complementares grid */
+  .tc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2mm; margin-top: 2mm; }
+  .tc-card { background: #F0EEE7; border-radius: 1mm; padding: 2.5mm 3mm; }
+  .tc-h { font-family: 'Barlow Condensed', sans-serif; font-size: 8pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: #0D8A8D; margin-bottom: 1mm; }
+  .tc-body { font-size: 7pt; color: #2A2826; line-height: 1.4; }
+
+  /* Questão */
+  .q-header { display: flex; align-items: center; gap: 3mm; margin-bottom: 3.5mm; }
+  .q-badge { font-family: 'Barlow Condensed', sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 1mm 2.5mm; border-radius: 1mm; }
+  .badge-m { background: #EDF7F7; color: #0D8A8D; border: 0.3mm solid #0D8A8D; }
+  .badge-c { background: #F0F7ED; color: #1F5C23; border: 0.3mm solid #1F5C23; }
+  .badge-ap { background: #F9F7ED; color: #8A7D0D; border: 0.3mm solid #8A7D0D; }
+  .badge-an { background: #FFF0F0; color: #C83A1A; border: 0.3mm solid #C83A1A; }
+  .badge-enare { background: #0D8A8D; color: #F6F4ED; }
+  .q-topic { font-size: 7pt; color: #9A9490; text-transform: uppercase; letter-spacing: 0.06em; }
+  .q-stem { font-size: 8.5pt; color: #2A2826; line-height: 1.5; margin-bottom: 3mm; }
+  .q-opts { list-style: none; display: flex; flex-direction: column; gap: 1.5mm; margin-bottom: 3mm; }
+  .q-opts li { font-size: 8pt; color: #2A2826; line-height: 1.4; display: flex; gap: 2mm; }
+  .q-opts li b { font-family: 'Barlow Condensed', sans-serif; font-size: 9pt; color: #0D8A8D; flex-shrink: 0; }
+  .gab-box { background: #0D8A8D; color: #F6F4ED; padding: 3.5mm 4mm; border-radius: 1.5mm; }
+  .gab-title { font-family: 'Barlow Condensed', sans-serif; font-size: 8pt; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 2mm; }
+  .gab-text { font-size: 7.5pt; line-height: 1.5; }
+  .gab-text b { color: #C6D834; }
+  .gab-text .err { color: #FFB3A0; }
+
+  /* Fixação */
+  .fix-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5mm; margin-top: 2mm; }
+  .fix-card { background: #F0EEE7; border-radius: 1.5mm; padding: 3mm; }
+  .fix-q { font-size: 7.5pt; color: #5A5652; margin-bottom: 1.5mm; font-weight: 600; }
+  .fix-sep { border: none; border-top: 0.3mm dashed #C8C5BE; margin: 1.5mm 0; }
+  .fix-a { font-size: 7.5pt; color: #2A2826; line-height: 1.4; }
+
+  /* VF */
+  .vf-table { width: 100%; border-collapse: collapse; font-size: 7.5pt; margin-top: 2mm; }
+  .vf-table th { background: #0D8A8D; color: #F6F4ED; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; text-transform: uppercase; padding: 1.5mm 3mm; text-align: left; }
+  .vf-table td { padding: 2mm 3mm; border-bottom: 0.3mm solid #E0DDD6; vertical-align: top; line-height: 1.35; }
+  .vf-table tr:nth-child(even) td { background: #F0EEE7; }
+  .vf-v { color: #1F5C23; font-weight: 700; }
+  .vf-f { color: #C83A1A; font-weight: 700; }
+
+  /* Ref */
+  .ref-list { font-size: 7.5pt; color: #5A5652; line-height: 1.55; }
+  .ref-list p { margin-bottom: 2mm; }
+  .notes-box { margin-top: 5mm; border: 0.3mm dashed #C8C5BE; padding: 3mm; border-radius: 1mm; min-height: 18mm; color: #C8C5BE; font-style: italic; font-size: 7.5pt; }
+</style>
+</head>
+<body>
+
+<!-- ============================================================ PÁGINA 1 — CAPA -->
+<div class="page">
+  <div class="pc" style="padding-top: 12mm;">
+    <div class="cover-tag">Bloco B6 · Fisioterapia · Aula 16</div>
+    <div class="cover-title">FT-ONCO 2<br>Linfedema,<br>Paliativos e<br>Terapias Compl.</div>
+    <div class="cover-sub">Terapia Descongestiva Complexa (TDC): 4 componentes e fases · Cuidados paliativos: Política Nacional e integração precoce · Terapias complementares oncológicas: acupuntura, massoterapia, ioga</div>
+    <div class="cover-stats">
+      <div class="cover-stat">
+        <div class="cover-stat-n">3</div>
+        <div class="cover-stat-l">Blocos de conteúdo</div>
+      </div>
+      <div class="cover-stat">
+        <div class="cover-stat-n">3</div>
+        <div class="cover-stat-l">Questões FGV comentadas</div>
+      </div>
+      <div class="cover-stat">
+        <div class="cover-stat-n">6</div>
+        <div class="cover-stat-l">Flashcards de fixação</div>
+      </div>
+    </div>
+    <div class="cover-box">
+      <b>Padrão FGV neste tema:</b><br>
+      Em 2025, a banca destinou 4 questões consecutivas (Q37, Q78, Q79, Q80) ao bloco paliativo-oncológico — sinal de agenda estruturada. Q44/2024 (linfedema) e Q80/2025 (TDC) mostram que a FGV cobra os 4 componentes da TDC, a distinção entre fase intensiva e manutenção, e os princípios da Política Nacional de Cuidados Paliativos.
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pf-brand">Residência PRO <span>· BY RESIDÊNCIA PRO</span></div>
+    <div style="font-size: 7pt; color: #9A9490;">Extensivo ENARE 2026<br>Fisioterapia · Camila Nara</div>
+  </div>
+</div>
+
+<!-- ============================================================ PÁGINA 2 — OBJETIVOS + MAPA -->
+<div class="page">
+  <div class="ph">
+    <div class="ph-label">Objetivos · Aula 16</div>
+    <div class="ph-right">Extensivo ENARE</div>
+  </div>
+  <div class="pc">
+    <div class="sec-title">Objetivos de Aprendizagem</div>
+    <ul class="obj-list">
+      <li><span class="obj-n">1</span><span><b>Linfedema oncológico:</b> classificar por estágio (ISL I–III), descrever os 4 componentes da TDC (DLM, enfaixamento, cinesioterapia, cuidados com a pele) e diferenciar fase intensiva de manutenção.</span></li>
+      <li><span class="obj-n">2</span><span><b>Cuidados paliativos:</b> enumerar os princípios da OMS/Política Nacional, reconhecer a integração precoce como modelo atual e distinguir paliativo de eutanásia/distanásia.</span></li>
+      <li><span class="obj-n">3</span><span><b>Terapias complementares:</b> identificar as modalidades com evidência em oncologia (acupuntura, massoterapia, ioga, reflexologia) e seus alvos terapêuticos.</span></li>
+      <li><span class="obj-n">4</span><span><b>Aplicação clínica:</b> prescrever TDC para linfedema pós-mastectomia com esvaziamento axilar, selecionando a fase correta e os componentes em sequência.</span></li>
+    </ul>
+
+    <div class="sec-title" style="margin-top: 5mm;">Mapa da Aula</div>
+    <div class="mapa">
+      <div class="mapa-item">
+        <div class="mapa-n">1</div>
+        <div class="mapa-label">Linfedema + TDC</div>
+        <div class="mapa-desc">Estágios ISL<br>4 componentes TDC<br>Fase intensiva vs. manutenção</div>
+      </div>
+      <div class="mapa-item">
+        <div class="mapa-n">2</div>
+        <div class="mapa-label">Cuidados Paliativos</div>
+        <div class="mapa-desc">Política Nacional<br>Integração precoce<br>Princípios OMS</div>
+      </div>
+      <div class="mapa-item">
+        <div class="mapa-n">3</div>
+        <div class="mapa-label">Terapias Compl.</div>
+        <div class="mapa-desc">Acupuntura · Massoterapia<br>Ioga · Reflexologia<br>Evidência em oncologia</div>
+      </div>
+    </div>
+
+    <div class="banca-box" style="margin-top: 4mm;">
+      <div class="banca-text"><b>Perfil de cobrança 2024–2025:</b> A FGV consolidou FT-ONCO como área autônoma. Em linfedema, cobra os <b>4 componentes da TDC em ordem e por fase</b>. Em paliativos, cobra os <b>princípios</b> (sem acelerar nem retardar a morte) e a <b>integração precoce</b> — não esperar o fim da terapia curativa. Em terapias complementares, cobra <b>quais são reconhecidas</b> e seus efeitos principais.</div>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pf-brand">Extensivo ENARE <span>· BY RESIDÊNCIA PRO</span></div>
+    <div class="pf-page">2</div>
+  </div>
+</div>
+
+<!-- ============================================================ PÁGINA 3 — LINFEDEMA + TDC -->
+<div class="page">
+  <div class="ph">
+    <div class="ph-label">Linfedema · TDC · Aula 16</div>
+    <div class="ph-right">Extensivo ENARE</div>
+  </div>
+  <div class="pc-sm">
+    <div class="sec-title">1. Linfedema Oncológico e TDC</div>
+
+    <div class="sub-title">Classificação ISL — Estágios do Linfedema</div>
+    <table>
+      <tr><th>Estágio</th><th>Características</th><th>Condutas Prioritárias</th></tr>
+      <tr><td><b>0 (Latente)</b></td><td>Alteração linfática sem edema visível; risco aumentado</td><td>Prevenção, orientações, exercício</td></tr>
+      <tr><td><b>I (Reversível)</b></td><td>Edema com cacifo (pitting); melhora com elevação do membro</td><td>TDC — fase intensiva</td></tr>
+      <tr><td><b>II (Irreversível)</b></td><td>Pitting reduzido; fibrose tecidual; não melhora com elevação</td><td>TDC — fases intensiva + manutenção</td></tr>
+      <tr><td><b>III (Elefantíase)</b></td><td>Fibrose severa, alterações tróficas, papilomatose</td><td>TDC contínua; suporte multidisciplinar</td></tr>
+    </table>
+
+    <div class="sub-title" style="margin-top: 3mm;">Os 4 Componentes da TDC</div>
+    <div class="tdc-comp">
+      <div class="tdc-c">
+        <div class="tdc-c-n">1</div>
+        <div class="tdc-c-l">DLM</div>
+        <div class="tdc-c-d">Drenagem linfática manual — técnica Vodder/Leduc — manobras lentas e suaves no sentido do fluxo linfático</div>
+      </div>
+      <div class="tdc-c">
+        <div class="tdc-c-n">2</div>
+        <div class="tdc-c-l">Enfaixamento</div>
+        <div class="tdc-c-d">Multicamadas de baixa elasticidade — imediatamente após DLM — fase intensiva</div>
+      </div>
+      <div class="tdc-c">
+        <div class="tdc-c-n">3</div>
+        <div class="tdc-c-l">Cinesioterapia</div>
+        <div class="tdc-c-d">Exercícios com o enfaixamento — bombeamento muscular → drenagem linfática ativa</div>
+      </div>
+      <div class="tdc-c">
+        <div class="tdc-c-n">4</div>
+        <div class="tdc-c-l">Pele</div>
+        <div class="tdc-c-d">Hidratação, antifúngicos, evitar traumas, inspeção diária — prevenir linfangite</div>
+      </div>
+    </div>
+
+    <div class="tdc-phases" style="margin-top: 2mm;">
+      <div class="tdc-phase tdc-phase-1">
+        <div class="tdc-phase-h">Fase I — Intensiva (Redução)</div>
+        <div class="tdc-phase-body">Diária ou quase diária · DLM → enfaixamento multicamadas (não meia elástica) · Cinesioterapia com enfaixamento · Cuidados com a pele · Duração: 2–4 semanas ou até platô de redução</div>
+      </div>
+      <div class="tdc-phase tdc-phase-2">
+        <div class="tdc-phase-h">Fase II — Manutenção</div>
+        <div class="tdc-phase-body">Uso da meia/manga de compressão elástica durante o dia · DLM de manutenção (autodreno) · Exercícios · Cuidados com a pele · Autocuidado: orientar o paciente e cuidador</div>
+      </div>
+    </div>
+
+    <div class="banca-box" style="margin-top: 2.5mm;">
+      <div class="banca-title">Ponto-chave FGV — Q44/2024 e Q80/2025</div>
+      <div class="banca-text">Na fase intensiva: <b>enfaixamento multicamadas de baixa elasticidade</b> (não meia elástica — meia é para manutenção). DLM precede o enfaixamento. Cinesioterapia é feita com o enfaixamento colocado. <b>Diuréticos não têm indicação padrão</b> para linfedema.</div>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pf-brand">Extensivo ENARE <span>· BY RESIDÊNCIA PRO</span></div>
+    <div class="pf-page">3</div>
+  </div>
+</div>
+
+<!-- ============================================================ PÁGINA 4 — CUIDADOS PALIATIVOS -->
+<div class="page">
+  <div class="ph">
+    <div class="ph-label">Cuidados Paliativos · Aula 16</div>
+    <div class="ph-right">Extensivo ENARE</div>
+  </div>
+  <div class="pc-sm">
+    <div class="sec-title">2. Cuidados Paliativos — Princípios e Política Nacional</div>
+
+    <div class="sub-title">Definição OMS e Princípios Fundamentais</div>
+    <div class="princ-list">
+      <div class="princ-item"><div class="princ-dot"></div><div class="princ-text">Alívio de sintomas físicos, psicológicos, sociais e espirituais — abordagem total</div></div>
+      <div class="princ-item"><div class="princ-dot"></div><div class="princ-text"><b>Não acelera nem retarda a morte</b> — afirma a vida, reconhece o morrer como processo natural</div></div>
+      <div class="princ-item"><div class="princ-dot"></div><div class="princ-text">Integra aspectos psicológicos e espirituais do cuidado — suporte ao paciente e à família</div></div>
+      <div class="princ-item"><div class="princ-dot"></div><div class="princ-text">Oferece suporte para que pacientes vivam o mais ativamente possível até a morte</div></div>
+      <div class="princ-item"><div class="princ-dot"></div><div class="princ-text">Auxilia a família a lidar com a doença e com o luto pós-morte (suporte de luto)</div></div>
+      <div class="princ-item"><div class="princ-dot"></div><div class="princ-text">Aplicável desde o diagnóstico, em combinação com terapias que prolongam a vida</div></div>
+    </div>
+
+    <div class="sub-title" style="margin-top: 3mm;">Integração Precoce — Modelo Atual (ASCO 2012 / OMS)</div>
+    <div class="two-col">
+      <div class="col-card col-card-teal">
+        <div class="card-h">Integração Precoce — Por quê?</div>
+        <div class="card-body">
+          <b>Benefícios demonstrados</b> (estudo Temel 2010 — NEJM):<br>
+          <ul>
+            <li>Melhor qualidade de vida</li>
+            <li>Menor uso de quimio agressiva no fim da vida</li>
+            <li>Menor frequência a pronto-socorro</li>
+            <li>Menos internações em UTI na fase terminal</li>
+            <li>Sobrevida equivalente ou superior ao cuidado padrão</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-card" style="background: #F0EEE7;">
+        <div class="card-h">Política Nacional (Portaria 825/2016)</div>
+        <div class="card-body">
+          Atenção Domiciliar como modelo preferencial · Equipe multiprofissional (inclui fisioterapeuta) · Integração à Rede de Atenção à Saúde · <b>Não se limita à fase terminal</b> · Foco em autonomia e dignidade · Respeito à vontade do paciente (diretivas antecipadas)
+        </div>
+      </div>
+    </div>
+
+    <div class="two-col" style="margin-top: 2.5mm;">
+      <div class="col-card col-card-verde">
+        <div class="card-h">Fisioterapia em Cuidados Paliativos</div>
+        <div class="card-body">
+          Controle de dispneia (VNI, posicionamento, técnicas de conservação de energia) · Manejo da dor (TENS, posicionamento, mobilização suave) · Linfedema paliativo (TDC adaptada) · Prevenção de úlceras por pressão · Suporte para AVDs e independência funcional
+        </div>
+      </div>
+      <div class="col-card" style="background: #FFF4ED; border-left: 0.8mm solid #C85A1A;">
+        <div class="card-h" style="color: #C85A1A;">Distanásia vs. Ortotanásia</div>
+        <div class="card-body">
+          <b style="color: #C85A1A;">Distanásia</b> = obstinação terapêutica — prolongar sofrimento sem benefício.<br>
+          <b style="color: #1F5C23;">Ortotanásia</b> = morte no tempo certo — sem abreviação, sem prolongamento fútil.<br>
+          <b>Eutanásia</b> = proibida no Brasil — acelera a morte.
+          Cuidados paliativos praticam a <b>ortotanásia.</b>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pf-brand">Extensivo ENARE <span>· BY RESIDÊNCIA PRO</span></div>
+    <div class="pf-page">4</div>
+  </div>
+</div>
+
+<!-- ============================================================ PÁGINA 5 — TERAPIAS COMPLEMENTARES -->
+<div class="page">
+  <div class="ph">
+    <div class="ph-label">Terapias Complementares · Aula 16</div>
+    <div class="ph-right">Extensivo ENARE</div>
+  </div>
+  <div class="pc-sm">
+    <div class="sec-title">3. Terapias Complementares em Oncologia</div>
+
+    <div class="sub-title">Modalidades com Evidência — Práticas Integrativas (PNPIC)</div>
+    <div class="tc-grid">
+      <div class="tc-card">
+        <div class="tc-h">Acupuntura</div>
+        <div class="tc-body">Controle de náuseas e vômitos quimioterápicos (ponto P6 — Neiguan) · Analgesia por endorfinas · Controle da fadiga · Redução do bochecho seco pós-radioterapia de cabeça e pescoço</div>
+      </div>
+      <div class="tc-card">
+        <div class="tc-h">Massoterapia / Massagem</div>
+        <div class="tc-body">Redução de ansiedade e dor · Melhora da qualidade do sono · Não indicada sobre tumor ativo ou área irradiada aguda · Técnicas suaves em pacientes frágeis · DLM = modalidade específica para linfedema</div>
+      </div>
+      <div class="tc-card">
+        <div class="tc-h">Ioga / Práticas Mente-Corpo</div>
+        <div class="tc-body">Redução de fadiga (CRF) em câncer de mama · Melhora do humor, sono e qualidade de vida · Técnicas de respiração e meditação para ansiedade · Movimentos adaptados à capacidade funcional</div>
+      </div>
+      <div class="tc-card">
+        <div class="tc-h">Reflexologia / Musicoterapia</div>
+        <div class="tc-body">Reflexologia plantar: redução de ansiedade e dor · Musicoterapia: redução de ansiedade pré-procedimentos e melhora do humor · Evidência menos robusta — complementar ao tratamento principal</div>
+      </div>
+    </div>
+
+    <div class="sub-title" style="margin-top: 3mm;">Princípios para Uso de Terapias Complementares em Oncologia</div>
+    <table>
+      <tr><th>Princípio</th><th>Detalhamento</th></tr>
+      <tr><td><b>Complementar, não alternativo</b></td><td>Não substituem tratamento oncológico convencional (cirurgia, quimio, radio)</td></tr>
+      <tr><td><b>Segurança primeiro</b></td><td>Evitar sobre tumor ativo, área irradiada aguda, plaquetopenia grave</td></tr>
+      <tr><td><b>Autonomia</b></td><td>Paciente deve ser informado e consentir; respeitar crenças e preferências</td></tr>
+      <tr><td><b>Integração à equipe</b></td><td>Comunicar ao oncologista e equipe multiprofissional; evitar interações</td></tr>
+    </table>
+
+    <div class="banca-box" style="margin-top: 3mm;">
+      <div class="banca-title">Como a FGV formula — Q79/2025</div>
+      <div class="banca-text">A questão lista modalidades e pede as que têm <b>evidência reconhecida em oncologia</b>. Acupuntura (náuseas, dor), massoterapia (ansiedade, dor) e ioga (fadiga, qualidade de vida) são as mais consolidadas. O erro esperado é excluir alguma por ausência de evidência "suficiente" — mas as três são reconhecidas pelas diretrizes internacionais e pela PNPIC do SUS.</div>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pf-brand">Extensivo ENARE <span>· BY RESIDÊNCIA PRO</span></div>
+    <div class="pf-page">5</div>
+  </div>
+</div>
+
+<!-- ============================================================ PÁGINA 6 — QUESTÃO 1 -->
+<div class="page">
+  <div class="ph">
+    <div class="ph-label">Questão 1 · Aula 16</div>
+    <div class="ph-right">Extensivo ENARE</div>
+  </div>
+  <div class="pc">
+    <div class="q-header">
+      <span class="q-badge badge-c">C — Compreensão</span>
+      <span class="q-badge badge-enare">037 · ENARE 2025</span>
+      <span class="q-topic">FT-ONCO · Cuidados Paliativos · Política Nacional</span>
+    </div>
+
+    <div class="q-stem">Sobre os princípios que fundamentam os cuidados paliativos, conforme a Organização Mundial da Saúde e a Política Nacional de Cuidados Paliativos brasileira, assinale a alternativa <b>CORRETA</b>:</div>
+
+    <ul class="q-opts">
+      <li><b>A)</b> Os cuidados paliativos devem ser iniciados somente após o esgotamento de todas as possibilidades de tratamento curativo, constituindo uma abordagem exclusiva para a fase terminal da doença.</li>
+      <li><b>B)</b> Os cuidados paliativos visam ao alívio de sintomas físicos, psicológicos, sociais e espirituais, sem acelerar nem retardar a morte — afirmando a vida e reconhecendo o morrer como processo natural.</li>
+      <li><b>C)</b> A obstinação terapêutica (distanásia) é compatível com os princípios paliativos quando o paciente ou seus familiares solicitarem todos os recursos disponíveis para prolongar a vida, independentemente do benefício esperado.</li>
+      <li><b>D)</b> Os cuidados paliativos substituem completamente o tratamento oncológico ativo a partir do diagnóstico de doença avançada, pois a coexistência das duas abordagens gera conflito de objetivos terapêuticos.</li>
+    </ul>
+
+    <div class="gab-box">
+      <div class="gab-title">Gabarito: B</div>
+      <div class="gab-text">
+        <b>B — VERDADEIRA:</b> Os cuidados paliativos NÃO aceleram nem retardam a morte — princípio central da OMS. Abordam sintomas em todas as dimensões (biopsicossocioespiritual) e podem ser integrados ao tratamento curativo desde o diagnóstico.<br>
+        <span class="err">A) Errada:</span> Integração precoce é o modelo atual (ASCO 2012) — não esperar o esgotamento do curativo.<br>
+        <span class="err">C) Errada:</span> Distanásia é contrária aos princípios paliativos — prolonga sofrimento sem benefício (ortotanásia é o modelo correto).<br>
+        <span class="err">D) Errada:</span> Paliativos e tratamento ativo são complementares — não excludentes. O modelo atual prevê coexistência das duas abordagens.
+      </div>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pf-brand">Extensivo ENARE <span>· BY RESIDÊNCIA PRO</span></div>
+    <div class="pf-page">6</div>
+  </div>
+</div>
+
+<!-- ============================================================ PÁGINA 7 — QUESTÃO 2 -->
+<div class="page">
+  <div class="ph">
+    <div class="ph-label">Questão 2 · Aula 16</div>
+    <div class="ph-right">Extensivo ENARE</div>
+  </div>
+  <div class="pc">
+    <div class="q-header">
+      <span class="q-badge badge-c">C — Compreensão</span>
+      <span class="q-badge badge-enare">080 · ENARE 2025</span>
+      <span class="q-topic">FT-ONCO · Linfedema · TDC — 4 Componentes</span>
+    </div>
+
+    <div class="q-stem">A Terapia Descongestiva Complexa (TDC) é o padrão de cuidado internacional para linfedema relacionado ao câncer, sendo aplicada em duas fases distintas. Sobre os componentes da TDC e sua organização por fase, assinale a alternativa <b>CORRETA</b>:</div>
+
+    <ul class="q-opts">
+      <li><b>A)</b> A TDC é composta por drenagem linfática manual, compressão com meia elástica tubular, cinesioterapia e dieta hipossódica, devendo todos os componentes ser iniciados simultaneamente desde a fase intensiva.</li>
+      <li><b>B)</b> A TDC é composta por drenagem linfática manual, enfaixamento compressivo multicamadas de baixa elasticidade, cinesioterapia específica e cuidados com a pele — aplicada em fase intensiva (redução) e fase de manutenção.</li>
+      <li><b>C)</b> O enfaixamento com meia elástica de alta compressão é o componente mais importante da fase intensiva da TDC e deve ser aplicado antes da drenagem linfática manual para preparar o tecido linfático.</li>
+      <li><b>D)</b> A TDC é composta por drenagem linfática manual e compressão pneumática intermitente, sendo a cinesioterapia contraindicada no linfedema por aumentar o fluxo sanguíneo e agravar o extravasamento capilar.</li>
+    </ul>
+
+    <div class="gab-box">
+      <div class="gab-title">Gabarito: B</div>
+      <div class="gab-text">
+        <b>B — VERDADEIRA:</b> Os 4 componentes da TDC: (1) DLM, (2) enfaixamento compressivo multicamadas de baixa elasticidade, (3) cinesioterapia com o enfaixamento colocado, (4) cuidados com a pele. Fase I (intensiva): diária; Fase II (manutenção): meia elástica substitui o enfaixamento para uso diurno.<br>
+        <span class="err">A) Errada:</span> Dieta hipossódica não é componente da TDC; meia elástica é para manutenção, não fase intensiva.<br>
+        <span class="err">C) Errada:</span> DLM precede o enfaixamento; a meia elástica não é usada na fase intensiva — usa-se enfaixamento multicamadas.<br>
+        <span class="err">D) Errada:</span> Cinesioterapia é componente essencial da TDC — o bombeamento muscular favorece a drenagem linfática. CPI não substitui os 4 componentes.
+      </div>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pf-brand">Extensivo ENARE <span>· BY RESIDÊNCIA PRO</span></div>
+    <div class="pf-page">7</div>
+  </div>
+</div>
+
+<!-- ============================================================ PÁGINA 8 — QUESTÃO 3 (ÂNCORA) -->
+<div class="page">
+  <div class="ph">
+    <div class="ph-label">Questão 3 · Âncora · Aula 16</div>
+    <div class="ph-right">Extensivo ENARE</div>
+  </div>
+  <div class="pc-sm">
+    <div class="q-header">
+      <span class="q-badge badge-ap">Ap — Aplicação</span>
+      <span class="q-badge badge-enare">044 · ENARE 2024</span>
+      <span class="q-topic">FT-ONCO · Linfedema pós-câncer de mama · TDC Clínica</span>
+    </div>
+
+    <div class="q-stem">Paciente de 62 anos, submetida a mastectomia radical modificada esquerda com esvaziamento axilar completo há 10 meses, apresenta linfedema no membro superior esquerdo estágio II (ISL), com presença de pitting edema, fibrose inicial e diferença perimetral de 4 cm em relação ao membro contralateral. A paciente não realizou nenhum tratamento fisioterapêutico até o momento. Sobre a conduta mais adequada para o manejo do linfedema nesta paciente, é <b>CORRETO</b> afirmar:</div>
+
+    <ul class="q-opts">
+      <li><b>A)</b> Deve-se iniciar a compressão com meia elástica de alta compressão (30–40 mmHg) antes da drenagem linfática manual, pois a contenção prévia reduz o edema e facilita as manobras de drenagem.</li>
+      <li><b>B)</b> A Terapia Descongestiva Complexa (TDC) é indicada, incluindo drenagem linfática manual seguida de enfaixamento compressivo multicamadas de baixa elasticidade, cinesioterapia com o enfaixamento colocado e cuidados com a pele.</li>
+      <li><b>C)</b> O tratamento prioritário é o fortalecimento muscular resistido progressivo do membro acometido, pois o aumento da pressão muscular é o principal mecanismo de drenagem linfática no linfedema pós-cirúrgico.</li>
+      <li><b>D)</b> A compressão pneumática intermitente é o padrão de cuidado para linfedema estágio II, devendo ser aplicada diariamente, sendo a drenagem linfática manual reservada para casos refratários com mais de 5 cm de diferença perimetral.</li>
+    </ul>
+
+    <div class="gab-box">
+      <div class="gab-title">Gabarito: B</div>
+      <div class="gab-text">
+        <b>B — VERDADEIRA:</b> TDC com os 4 componentes na fase intensiva: DLM (primeiro) → enfaixamento multicamadas de baixa elasticidade (não meia elástica nesta fase) → cinesioterapia com enfaixamento → cuidados com a pele. Após redução máxima: fase de manutenção com meia elástica.<br>
+        <span class="err">A) Errada:</span> DLM precede o enfaixamento — a meia elástica é para a fase de manutenção, não para a fase intensiva.<br>
+        <span class="err">C) Errada:</span> Resistido progressivo com carga não é o componente prioritário; a cinesioterapia na TDC usa movimentos específicos com enfaixamento.<br>
+        <span class="err">D) Errada:</span> CPI pode ser adjuvante mas não é o padrão de cuidado; TDC é a 1ª linha desde estágio I.
+      </div>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pf-brand">Extensivo ENARE <span>· BY RESIDÊNCIA PRO</span></div>
+    <div class="pf-page">8</div>
+  </div>
+</div>
+
+<!-- ============================================================ PÁGINA 9 — RECUPERAÇÃO ATIVA -->
+<div class="page">
+  <div class="ph">
+    <div class="ph-label">Recuperação Ativa · Aula 16</div>
+    <div class="ph-right">Extensivo ENARE</div>
+  </div>
+  <div class="pc-sm">
+    <div class="sec-title">Recuperação Ativa — Fixação</div>
+
+    <div class="fix-grid">
+      <div class="fix-card">
+        <div class="fix-q">Quais são os 4 componentes da TDC em ordem?</div>
+        <hr class="fix-sep">
+        <div class="fix-a"><b>(1) DLM</b> → <b>(2) Enfaixamento multicamadas</b> (baixa elasticidade) → <b>(3) Cinesioterapia</b> com enfaixamento → <b>(4) Cuidados com a pele.</b></div>
+      </div>
+      <div class="fix-card">
+        <div class="fix-q">Qual a diferença entre fase intensiva e manutenção da TDC?</div>
+        <hr class="fix-sep">
+        <div class="fix-a">Intensiva: diária, <b>enfaixamento multicamadas</b>. Manutenção: <b>meia/manga elástica</b> durante o dia + autodreno + exercícios + cuidados com a pele.</div>
+      </div>
+      <div class="fix-card">
+        <div class="fix-q">Os cuidados paliativos aceleram ou retardam a morte?</div>
+        <hr class="fix-sep">
+        <div class="fix-a"><b>Nem aceleram nem retardam</b> — ortotanásia. Afirmam a vida e reconhecem o morrer como processo natural. Eutanásia e distanásia são contrários.</div>
+      </div>
+      <div class="fix-card">
+        <div class="fix-q">Quando devem ser iniciados os cuidados paliativos?</div>
+        <hr class="fix-sep">
+        <div class="fix-a"><b>Integração precoce</b> — desde o diagnóstico, em paralelo ao tratamento curativo. Não aguardar o esgotamento das opções de cura (modelo ASCO 2012).</div>
+      </div>
+      <div class="fix-card">
+        <div class="fix-q">Cite 3 terapias complementares com evidência em oncologia.</div>
+        <hr class="fix-sep">
+        <div class="fix-a"><b>Acupuntura</b> (náuseas, dor) · <b>Massoterapia</b> (ansiedade, dor) · <b>Ioga</b> (fadiga, qualidade de vida). Reconhecidas pela PNPIC e diretrizes internacionais.</div>
+      </div>
+      <div class="fix-card">
+        <div class="fix-q">Linfedema estágio II: pitting edema presente ou ausente?</div>
+        <hr class="fix-sep">
+        <div class="fix-a">Estágio II: pitting reduzido (fibrose inicial) — não melhora com elevação. Estágio I: pitting presente, melhora com elevação. Estágio III: elefantíase.</div>
+      </div>
+    </div>
+
+    <div class="sub-title" style="margin-top: 3mm;">Fixação Rápida — V ou F</div>
+    <table class="vf-table">
+      <tr><th>Afirmativa</th><th>V/F</th><th>Justificativa</th></tr>
+      <tr><td>Na fase intensiva da TDC, a meia elástica substituí o enfaixamento multicamadas.</td><td class="vf-f">F</td><td>Fase intensiva = enfaixamento multicamadas de baixa elasticidade; meia elástica é para manutenção.</td></tr>
+      <tr><td>Distanásia e cuidados paliativos são abordagens compatíveis.</td><td class="vf-f">F</td><td>Distanásia (obstinação terapêutica) é contrária aos princípios paliativos — que praticam ortotanásia.</td></tr>
+      <tr><td>Acupuntura tem evidência para controle de náuseas quimioterápicas.</td><td class="vf-v">V</td><td>Ponto P6 (Neiguan) — evidência robusta para náuseas e vômitos induzidos por quimioterapia.</td></tr>
+    </table>
+  </div>
+  <div class="pf">
+    <div class="pf-brand">Extensivo ENARE <span>· BY RESIDÊNCIA PRO</span></div>
+    <div class="pf-page">9</div>
+  </div>
+</div>
+
+<!-- ============================================================ PÁGINA 10 — REFERÊNCIAS -->
+<div class="page">
+  <div class="ph">
+    <div class="ph-label">Referências · Aula 16</div>
+    <div class="ph-right">Extensivo ENARE</div>
+  </div>
+  <div class="pc">
+    <div class="sec-title">Referências — Bloco B6 · Aula 16</div>
+    <div class="ref-list">
+      <p>INTERNATIONAL SOCIETY OF LYMPHOLOGY. The diagnosis and treatment of peripheral lymphedema: 2020 Consensus Document. <em>Lymphology</em>, v. 53, n. 1, p. 3–19, 2020.</p>
+      <p>FOLDI, M.; FOLDI, E. <em>Foldi's Textbook of Lymphology</em>. 3. ed. Munich: Elsevier, 2012.</p>
+      <p>TEMEL, J.S. et al. Early palliative care for patients with metastatic non-small-cell lung cancer. <em>New England Journal of Medicine</em>, v. 363, p. 733–742, 2010.</p>
+      <p>WORLD HEALTH ORGANIZATION. <em>Palliative Care: Fact Sheet</em>. Geneva: WHO, 2020.</p>
+      <p>BRASIL. Portaria GM/MS n. 825, de 25 de abril de 2016. Redefine a Atenção Domiciliar no âmbito do SUS. Brasília: Ministério da Saúde, 2016.</p>
+      <p>BRASIL. Ministério da Saúde. <em>Política Nacional de Práticas Integrativas e Complementares (PNPIC) no SUS</em>. Brasília: Ministério da Saúde, 2006.</p>
+      <p>DENG, G.; CASSILETH, B. Integrative oncology: an overview. <em>American Society of Clinical Oncology Educational Book</em>, p. e233–e242, 2014.</p>
+    </div>
+    <div class="notes-box">Espaço para anotações</div>
+  </div>
+  <div class="pf">
+    <div class="pf-brand">Extensivo ENARE <span>· BY RESIDÊNCIA PRO</span></div>
+    <div class="pf-page">10</div>
+  </div>
+</div>
+
+</body>
+</html>
