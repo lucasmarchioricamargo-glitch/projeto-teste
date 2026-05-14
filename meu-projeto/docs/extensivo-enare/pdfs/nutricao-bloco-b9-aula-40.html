@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bloco B9 — Aula 40 | NUT-ONCO: Nutrição Oncológica</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#2a2a2a;font-family:'Bricolage Grotesque',sans-serif;}
+.page{width:210mm;height:297mm;background:#F6F4ED;margin:10mm auto;position:relative;overflow:hidden;display:flex;flex-direction:column;}
+@media print{body{background:#F6F4ED;}.page{margin:0;page-break-after:always;}}
+
+.ph{display:flex;align-items:center;justify-content:space-between;padding:5mm 10mm 3.5mm;border-bottom:2px solid #1F5C23;flex-shrink:0;}
+.ph-logo{display:flex;align-items:center;gap:8px;}
+.ph-txt{font-family:'Playfair Display',serif;font-style:italic;font-size:12px;color:#1F5C23;line-height:1.1;}
+.ph-txt span{display:block;font-family:'Space Grotesk',sans-serif;font-weight:300;font-style:normal;font-size:7.5px;color:#555;letter-spacing:.05em;}
+.ph-meta{text-align:right;font-size:7.5px;color:#666;}
+.ph-meta strong{color:#1F5C23;font-size:8.5px;display:block;}
+
+.pf{display:flex;align-items:center;justify-content:space-between;padding:2.5mm 10mm 3.5mm;border-top:1px solid #C6D834;flex-shrink:0;}
+.pf-tag{font-size:7px;color:#888;}
+.pf-num{font-size:8px;color:#1F5C23;font-weight:600;}
+
+.pc{flex:1;padding:5mm 10mm 3mm;overflow:hidden;}
+
+/* COVER */
+.cover{background:#1F5C23;display:flex;flex-direction:column;}
+.cv-top{display:flex;align-items:center;justify-content:space-between;padding:7mm 12mm 5mm;border-bottom:3px solid #C6D834;}
+.cv-logo-row{display:flex;align-items:center;gap:10px;}
+.cv-ltxt{font-family:'Playfair Display',serif;font-style:italic;font-size:15px;color:#F6F4ED;line-height:1.1;}
+.cv-ltxt span{display:block;font-family:'Space Grotesk',sans-serif;font-weight:300;font-style:normal;font-size:8px;color:#C6D834;letter-spacing:.1em;text-transform:uppercase;}
+.cv-badge{background:#C6D834;color:#1F5C23;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:10px;padding:3px 9px;border-radius:3px;letter-spacing:.05em;}
+.cv-main{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8mm 14mm;text-align:center;}
+.cv-num{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:90px;color:rgba(246,244,237,.08);line-height:1;position:absolute;}
+.cv-bloco{font-family:'Space Grotesk',sans-serif;font-weight:300;font-size:9px;color:#C6D834;letter-spacing:.15em;text-transform:uppercase;margin-bottom:3mm;}
+.cv-code{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:13px;color:#C6D834;letter-spacing:.2em;margin-bottom:3mm;}
+.cv-title{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:40px;color:#F6F4ED;line-height:1.05;text-transform:uppercase;margin-bottom:5mm;}
+.cv-sub{font-family:'Bricolage Grotesque',sans-serif;font-size:12.5px;color:rgba(246,244,237,.7);line-height:1.5;max-width:128mm;}
+.cv-banca{display:inline-flex;align-items:center;gap:6px;margin-top:5mm;background:rgba(198,216,52,.12);border:1px solid rgba(198,216,52,.35);border-radius:4px;padding:4px 11px;}
+.cv-banca span{font-size:8.5px;color:rgba(246,244,237,.55);font-family:'Space Grotesk',sans-serif;font-weight:300;letter-spacing:.05em;}
+.cv-banca strong{font-size:9.5px;color:#C6D834;font-family:'Barlow Condensed',sans-serif;font-weight:800;letter-spacing:.1em;}
+.cv-bot{padding:5mm 12mm;border-top:1px solid rgba(198,216,52,.25);display:flex;align-items:center;justify-content:space-between;}
+.cv-bot-txt{font-size:7.5px;color:rgba(246,244,237,.45);font-family:'Space Grotesk',sans-serif;font-weight:300;}
+.cv-bot-n{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:20px;color:rgba(246,244,237,.12);}
+.cv-final-tag{display:inline-block;background:rgba(198,216,52,.25);border:1px solid rgba(198,216,52,.5);color:#C6D834;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:9px;letter-spacing:.12em;padding:2px 8px;border-radius:2px;margin-top:3mm;text-transform:uppercase;}
+
+/* TYPOGRAPHY */
+.sec-title{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:21px;color:#1F5C23;text-transform:uppercase;letter-spacing:.04em;margin-bottom:3.5mm;padding-bottom:2mm;border-bottom:2px solid #C6D834;}
+.sub-title{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:12px;color:#1F5C23;text-transform:uppercase;letter-spacing:.04em;margin:3mm 0 1.5mm;}
+p.bt{font-size:9.5px;line-height:1.6;color:#222;margin-bottom:2mm;}
+
+/* TABLES */
+table{width:100%;border-collapse:collapse;font-size:8.5px;margin:2mm 0;}
+thead th{background:#1F5C23;color:#F6F4ED;padding:2.5px 5px;text-align:left;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:8.5px;letter-spacing:.04em;text-transform:uppercase;}
+tbody td{padding:2.5px 5px;border-bottom:1px solid rgba(31,92,35,.1);font-size:8.5px;vertical-align:top;line-height:1.4;}
+tbody tr:nth-child(even) td{background:rgba(198,216,52,.07);}
+tbody tr:last-child td{border-bottom:2px solid #1F5C23;}
+td.hl{font-weight:600;color:#1F5C23;}
+td.red{color:#c00;font-weight:600;}
+td.gr{color:#1F5C23;font-weight:600;}
+
+/* BOXES */
+.ibox{background:rgba(31,92,35,.07);border-left:3px solid #1F5C23;padding:2.5mm 3.5mm;margin:2mm 0;border-radius:0 4px 4px 0;}
+.ibox.ac{background:rgba(198,216,52,.14);border-left-color:#C6D834;}
+.ibox.dg{background:rgba(180,0,0,.05);border-left:3px solid #c00;}
+.ibox p{font-size:9px;line-height:1.5;color:#222;}
+.ibox strong{color:#1F5C23;}
+.ibox.dg strong{color:#c00;}
+
+.trap{background:rgba(198,216,52,.18);border:1.5px solid #C6D834;border-radius:4px;padding:2mm 3.5mm;margin:2mm 0;display:flex;align-items:flex-start;gap:6px;}
+.trap-ico{font-size:11px;flex-shrink:0;margin-top:1px;}
+.trap p{font-size:9px;line-height:1.5;color:#222;}
+.trap strong{color:#1F5C23;font-size:9.5px;}
+
+/* TWO-COL */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:3.5mm;margin:2mm 0;}
+.cbox{background:rgba(31,92,35,.05);border:1px solid rgba(31,92,35,.18);border-radius:4px;padding:2.5mm;}
+.cbox h4{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:10.5px;color:#1F5C23;text-transform:uppercase;margin-bottom:1.5mm;padding-bottom:1mm;border-bottom:1px solid #C6D834;}
+.cbox ul{list-style:none;padding:0;}
+.cbox ul li{font-size:8px;line-height:1.5;color:#222;padding:1px 0;}
+.cbox ul li::before{content:"› ";color:#C6D834;font-weight:bold;}
+
+/* QUESTION PAGES */
+.qhdr{display:flex;align-items:center;gap:7px;margin-bottom:3.5mm;}
+.qbadge{background:#1F5C23;color:#F6F4ED;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:10.5px;padding:2.5px 8px;border-radius:3px;letter-spacing:.08em;}
+.cbadge{background:rgba(198,216,52,.28);color:#1F5C23;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:9.5px;padding:2.5px 7px;border-radius:3px;border:1px solid #C6D834;letter-spacing:.04em;}
+.qref{font-size:7.5px;color:#999;font-family:'Space Grotesk',sans-serif;font-weight:300;margin-left:auto;}
+.qstem{background:rgba(31,92,35,.06);border-left:3px solid #1F5C23;border-radius:0 4px 4px 0;padding:3.5mm;margin-bottom:3.5mm;}
+.qstem p{font-size:9.5px;line-height:1.65;color:#111;}
+.qstem p+p{margin-top:1.5mm;}
+.qtask{font-size:10px;font-weight:600;color:#1F5C23;margin-bottom:2.5mm;}
+.opts{list-style:none;padding:0;display:flex;flex-direction:column;gap:1.5mm;}
+.opts li{display:flex;align-items:flex-start;gap:7px;padding:2.5mm 3.5mm;background:rgba(31,92,35,.03);border:1px solid rgba(31,92,35,.1);border-radius:4px;font-size:9px;line-height:1.5;color:#222;}
+.opts li .ol{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:11.5px;color:#1F5C23;flex-shrink:0;line-height:1.2;}
+.opts li.correct{background:rgba(31,92,35,.11);border-color:#1F5C23;}
+
+/* AFIRMATIVAS */
+.afirm{list-style:none;padding:0;display:flex;flex-direction:column;gap:1.5mm;margin-bottom:2.5mm;}
+.afirm li{display:flex;align-items:flex-start;gap:7px;padding:2mm 3.5mm;border-radius:4px;font-size:9.5px;line-height:1.5;color:#222;border:1px solid transparent;}
+.afirm li .an{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:12px;flex-shrink:0;line-height:1.2;}
+.afirm li.correta{background:rgba(31,92,35,.08);border-color:rgba(31,92,35,.2);}
+.afirm li.correta .an{color:#1F5C23;}
+.afirm li.errada{background:rgba(180,0,0,.05);border-color:rgba(180,0,0,.15);}
+.afirm li.errada .an{color:#c00;}
+.af-opts{list-style:none;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:1.5mm;margin-top:2mm;}
+.af-opts li{display:flex;align-items:center;gap:6px;padding:2mm 3.5mm;background:rgba(31,92,35,.03);border:1px solid rgba(31,92,35,.1);border-radius:4px;font-size:9px;color:#222;}
+.af-opts li.correct{background:rgba(31,92,35,.11);border-color:#1F5C23;font-weight:600;color:#1F5C23;}
+.af-opts li .ol{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:11.5px;flex-shrink:0;}
+
+/* GABARITO */
+.gab-sec{margin-bottom:3.5mm;}
+.gab-hdr{display:flex;align-items:center;gap:7px;margin-bottom:1.5mm;}
+.gab-qb{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:11.5px;color:#1F5C23;text-transform:uppercase;letter-spacing:.04em;}
+.gab-ab{background:#1F5C23;color:#C6D834;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:13px;width:23px;height:23px;border-radius:50%;display:flex;align-items:center;justify-content:center;}
+.gab-exp{background:rgba(31,92,35,.05);border:1px solid rgba(31,92,35,.14);border-radius:4px;padding:2.5mm 3.5mm;}
+.gab-exp p{font-size:8.5px;line-height:1.55;color:#222;margin-bottom:1mm;}
+.gab-exp p:last-child{margin-bottom:0;}
+.dist-lbl{font-size:8px;font-weight:700;color:#c00;margin-top:1mm;}
+.dist-item{font-size:8px;color:#555;line-height:1.4;margin-left:4px;}
+
+/* SÍNTESE */
+.sint-grid{display:grid;grid-template-columns:1fr 1fr;gap:2.5mm;margin-top:1.5mm;}
+.sc{background:rgba(31,92,35,.05);border:1px solid rgba(31,92,35,.18);border-radius:4px;padding:2.5mm;}
+.sc h4{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:9.5px;color:#1F5C23;text-transform:uppercase;letter-spacing:.04em;margin-bottom:1.5mm;padding-bottom:1mm;border-bottom:1px solid #C6D834;}
+.sc ul{list-style:none;padding:0;}
+.sc ul li{font-size:7.5px;line-height:1.5;color:#222;padding:1px 0;}
+.sc ul li::before{content:"✓ ";color:#1F5C23;font-weight:bold;}
+.sc ul li.x::before{content:"✗ ";color:#c00;}
+.arm-box{background:rgba(198,216,52,.14);border:1.5px solid #C6D834;border-radius:4px;padding:2.5mm 3.5mm;margin-top:2.5mm;grid-column:1/-1;}
+.arm-box h4{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:10.5px;color:#1F5C23;text-transform:uppercase;letter-spacing:.04em;margin-bottom:1.5mm;}
+.arm-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5mm;}
+.arm-item{font-size:7.5px;line-height:1.5;color:#222;}
+.arm-item strong{color:#1F5C23;font-size:8px;}
+.encerramento{background:#1F5C23;color:#F6F4ED;border-radius:4px;padding:3mm 4mm;margin-top:2.5mm;grid-column:1/-1;text-align:center;}
+.encerramento h4{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:13px;color:#C6D834;text-transform:uppercase;letter-spacing:.08em;margin-bottom:1.5mm;}
+.encerramento p{font-size:8.5px;color:rgba(246,244,237,.8);line-height:1.5;}
+.enc-stats{display:grid;grid-template-columns:repeat(5,1fr);gap:2mm;margin-top:2.5mm;}
+.es{text-align:center;}
+.es .ev{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:16px;color:#C6D834;line-height:1;}
+.es .el{font-size:6.5px;color:rgba(246,244,237,.6);font-family:'Space Grotesk',sans-serif;font-weight:300;letter-spacing:.04em;}
+</style>
+</head>
+<body>
+
+<!-- ========== P1: CAPA ========== -->
+<div class="page cover">
+  <div class="cv-top">
+    <div class="cv-logo-row">
+      <svg viewBox="0 0 32 32" width="36" height="36">
+        <rect x="0" y="0" width="32" height="32" rx="6" fill="#F6F4ED"/>
+        <path d="M16 5 L25 10 L25 22 L16 27 L7 22 L7 10 Z" fill="none" stroke="#1F5C23" stroke-width="1.8"/>
+        <circle cx="16" cy="16" r="4" fill="#1F5C23"/>
+      </svg>
+      <div class="cv-ltxt">Elite Treinamentos<span>Extensivo ENARE 2026</span></div>
+    </div>
+    <div class="cv-badge">BLOCO B9 — NUTRIÇÃO</div>
+  </div>
+
+  <div class="cv-main">
+    <div class="cv-num">40</div>
+    <div class="cv-bloco">Bloco B9 &nbsp;·&nbsp; Aula 40 de 40 &nbsp;·&nbsp; AULA FINAL</div>
+    <div class="cv-code">NUT-ONCO</div>
+    <div class="cv-title">Nutrição<br>Oncológica</div>
+    <div class="cv-sub">Triagem e avaliação nutricional (PG-SGA · GLIM) · Caquexia tumoral: estágios e mecanismos · Recomendações VET e PTN · Imunonutrição (EPA, glutamina, arginina) · Manejo dos efeitos colaterais do tratamento</div>
+    <div class="cv-banca">
+      <span>Banca âncora</span>
+      <strong>FGV · ENARE 2024–2025</strong>
+    </div>
+    <div class="cv-final-tag">Aula de Encerramento — Bloco B9</div>
+  </div>
+
+  <div class="cv-bot">
+    <div class="cv-bot-txt">PDF de Apoio · Uso Exclusivo Extensivo ENARE 2026</div>
+    <div class="cv-bot-n">40</div>
+  </div>
+</div>
+
+<!-- ========== P2: TRIAGEM E AVALIAÇÃO NUTRICIONAL EM ONCOLOGIA ========== -->
+<div class="page">
+  <div class="ph">
+    <div class="ph-logo">
+      <svg viewBox="0 0 32 32" width="26" height="26">
+        <rect x="0" y="0" width="32" height="32" rx="6" fill="#1F5C23"/>
+        <path d="M16 5 L25 10 L25 22 L16 27 L7 22 L7 10 Z" fill="none" stroke="#C6D834" stroke-width="1.8"/>
+        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
+      </svg>
+      <div class="ph-txt">Elite Treinamentos<span>Extensivo ENARE 2026</span></div>
+    </div>
+    <div class="ph-meta"><strong>NUT-ONCO · Aula 40</strong>Nutrição Oncológica</div>
+  </div>
+
+  <div class="pc">
+    <div class="sec-title">Triagem e Avaliação Nutricional em Oncologia</div>
+
+    <div class="sub-title">Instrumentos de Triagem</div>
+    <table>
+      <thead><tr><th>Instrumento</th><th>Contexto</th><th>Pontos-Chave</th></tr></thead>
+      <tbody>
+        <tr><td class="hl">PG-SGA</td><td>Oncologia (padrão-ouro)</td><td>Produzida pelo Paciente; classifica A (bem nutrido), B (suspeito/moderado), C (gravemente desnutrido)</td></tr>
+        <tr><td>NRS-2002</td><td>Hospital geral</td><td>Escore ≥ 3 = risco nutricional; inclui gravidade da doença</td></tr>
+        <tr><td>MST</td><td>Ambulatorial</td><td>2 perguntas (perda de peso não intencional + apetite); score ≥ 2 = risco</td></tr>
+        <tr><td>MUST</td><td>Comunidade / atenção primária</td><td>IMC + perda de peso + efeito da doença aguda</td></tr>
+      </tbody>
+    </table>
+
+    <div class="trap">
+      <div class="trap-ico">⚠</div>
+      <p><strong>Armadilha ENARE:</strong> O <strong>PG-SGA</strong> é o padrão-ouro <strong>exclusivo da oncologia</strong>. NRS-2002 é padrão para hospital geral (não oncológico especificamente). A banca cobra esta distinção em cenários onde o nutricionista deve escolher o instrumento correto para o paciente com câncer.</p>
+    </div>
+
+    <div class="sub-title">Critérios GLIM 2019 — Diagnóstico de Desnutrição</div>
+    <div class="two">
+      <div class="cbox">
+        <h4>Critérios Fenotípicos (≥ 1)</h4>
+        <ul>
+          <li>Perda de peso não intencional (&gt; 5% em 6 meses ou &gt; 10% além de 6 meses)</li>
+          <li>IMC baixo (&lt; 20 kg/m² se &lt; 70 anos; &lt; 22 se ≥ 70 anos)</li>
+          <li>Massa muscular reduzida (DEXA, BIA, perímetro)</li>
+        </ul>
+      </div>
+      <div class="cbox">
+        <h4>Critérios Etiológicos (≥ 1)</h4>
+        <ul>
+          <li>Ingestão ou absorção reduzida (≤ 50% das necessidades &gt; 1 sem, ou qualquer redução &gt; 2 sem)</li>
+          <li>Inflamação (doença aguda/crônica com inflamação moderada/grave)</li>
+          <li>Diagnóstico = 1 fenotípico + 1 etiológico</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="ibox">
+      <p><strong>Gravidade pela GLIM:</strong> Grau 1 (moderada) → perda 5–10% em 6 meses ou IMC 18,5–20 (&lt;70a) ou 20–22 (≥70a). Grau 2 (grave) → perda &gt; 10% em 6 meses ou IMC &lt; 18,5 (&lt;70a) / &lt; 20 (≥70a). Combinado com critério etiológico obrigatório.</p>
+    </div>
+  </div>
+
+  <div class="pf">
+    <div class="pf-tag">NUT-ONCO · Bloco B9 · Extensivo ENARE 2026</div>
+    <div class="pf-num">2 / 10</div>
+  </div>
+</div>
+
+<!-- ========== P3: CAQUEXIA TUMORAL ========== -->
+<div class="page">
+  <div class="ph">
+    <div class="ph-logo">
+      <svg viewBox="0 0 32 32" width="26" height="26">
+        <rect x="0" y="0" width="32" height="32" rx="6" fill="#1F5C23"/>
+        <path d="M16 5 L25 10 L25 22 L16 27 L7 22 L7 10 Z" fill="none" stroke="#C6D834" stroke-width="1.8"/>
+        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
+      </svg>
+      <div class="ph-txt">Elite Treinamentos<span>Extensivo ENARE 2026</span></div>
+    </div>
+    <div class="ph-meta"><strong>NUT-ONCO · Aula 40</strong>Nutrição Oncológica</div>
+  </div>
+
+  <div class="pc">
+    <div class="sec-title">Caquexia Tumoral</div>
+
+    <div class="ibox dg">
+      <p><strong>Definição formal:</strong> Síndrome multifatorial caracterizada por perda contínua de massa muscular esquelética (com ou sem perda de massa adiposa) que <strong>não pode ser totalmente revertida pelo suporte nutricional convencional</strong>, levando a comprometimento funcional progressivo.</p>
+    </div>
+
+    <div class="sub-title">Critérios Diagnósticos da Caquexia Tumoral</div>
+    <div class="ibox ac">
+      <p>Perda de peso &gt; <strong>5%</strong> em 6 meses · OU · IMC &lt; 20 + perda &gt; 2% · OU · Sarcopenia (massa muscular reduzida) + perda &gt; 2%. Sempre associada ao contexto oncológico com inflamação sistêmica.</p>
+    </div>
+
+    <div class="sub-title">Estágios da Síndrome Caquética</div>
+    <table>
+      <thead><tr><th>Estágio</th><th>Características</th><th>Resposta ao Suporte Nutricional</th></tr></thead>
+      <tbody>
+        <tr><td class="hl">Pré-caquexia</td><td>Anorexia, alteração metabólica, perda &lt; 5%; doença ainda controlável</td><td class="gr">Boa resposta — intervir precocemente</td></tr>
+        <tr><td class="hl">Caquexia</td><td>Perda &gt; 5%; inflamação sistêmica; anorexia; redução de ingestão</td><td>Resposta parcial — suporte ativo + tratar doença base</td></tr>
+        <tr><td class="red">Caquexia Refratária</td><td>Progressão tumoral ativa; sem resposta ao tratamento; sobrevida &lt; 3 meses esperada</td><td class="red">SEM resposta ao suporte — foco em qualidade de vida e conforto</td></tr>
+      </tbody>
+    </table>
+
+    <div class="sub-title">Mecanismo Fisiopatológico</div>
+    <div class="two">
+      <div class="cbox">
+        <h4>Citocinas Pró-Inflamatórias</h4>
+        <ul>
+          <li>TNF-α, IL-1, IL-6, IFN-γ → mediadores principais</li>
+          <li>Anorexia central (hipotálamo)</li>
+          <li>Catabolismo proteico muscular (ubiquitina-proteassoma)</li>
+          <li>Lipólise acelerada (↓ LPL)</li>
+          <li>Resistência insulínica periférica</li>
+        </ul>
+      </div>
+      <div class="cbox">
+        <h4>Caquexia ≠ Desnutrição Simples</h4>
+        <ul>
+          <li>Desnutrição: responde ao suporte nutricional</li>
+          <li>Caquexia: catabolismo mediado por citocinas; suporte nutricional isolado é insuficiente</li>
+          <li>Tratamento: suporte nutricional + tratar doença base + agentes farmacológicos (acetato de megestrol, corticoides, EPA)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="trap">
+      <div class="trap-ico">⚠</div>
+      <p><strong>Armadilha:</strong> Caquexia refratária <strong>NÃO responde</strong> ao suporte nutricional intensivo — afirmar que "dieta hiperproteica reverte a caquexia refratária" é <strong>FALSO</strong>. Nesta fase, o objetivo é conforto e qualidade de vida, não repleção nutricional forçada.</p>
+    </div>
+  </div>
+
+  <div class="pf">
+    <div class="pf-tag">NUT-ONCO · Bloco B9 · Extensivo ENARE 2026</div>
+    <div class="pf-num">3 / 10</div>
+  </div>
+</div>
+
+<!-- ========== P4: RECOMENDAÇÕES NUTRICIONAIS E IMUNONUTRIÇÃO ========== -->
+<div class="page">
+  <div class="ph">
+    <div class="ph-logo">
+      <svg viewBox="0 0 32 32" width="26" height="26">
+        <rect x="0" y="0" width="32" height="32" rx="6" fill="#1F5C23"/>
+        <path d="M16 5 L25 10 L25 22 L16 27 L7 22 L7 10 Z" fill="none" stroke="#C6D834" stroke-width="1.8"/>
+        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
+      </svg>
+      <div class="ph-txt">Elite Treinamentos<span>Extensivo ENARE 2026</span></div>
+    </div>
+    <div class="ph-meta"><strong>NUT-ONCO · Aula 40</strong>Nutrição Oncológica</div>
+  </div>
+
+  <div class="pc">
+    <div class="sec-title">Recomendações Nutricionais e Imunonutrição</div>
+
+    <div class="sub-title">VET e Proteína no Paciente Oncológico</div>
+    <table>
+      <thead><tr><th>Parâmetro</th><th>Recomendação (ESPEN)</th><th>Situação Especial</th></tr></thead>
+      <tbody>
+        <tr><td>VET</td><td class="hl">25–35 kcal/kg/dia</td><td>Ajustar conforme estresse metabólico e tolerância</td></tr>
+        <tr><td>Proteína (geral)</td><td class="hl">1,0–1,5 g/kg/dia</td><td>Mínimo funcional para manutenção de massa magra</td></tr>
+        <tr><td>Proteína (caquexia / cirurgia)</td><td class="hl">1,5–2,0 g/kg/dia</td><td>Maior catabolismo; pós-operatório oncológico</td></tr>
+        <tr><td>Via preferencial</td><td class="gr">Oral &gt; Enteral &gt; Parenteral</td><td>TNE se TGI funcionante; NPT só se TGI inacessível</td></tr>
+      </tbody>
+    </table>
+
+    <div class="sub-title">Imunonutrição — Principais Nutrientes</div>
+    <table>
+      <thead><tr><th>Nutriente</th><th>Indicação Principal</th><th>Dose / Evidência</th></tr></thead>
+      <tbody>
+        <tr><td class="hl">EPA (ômega-3)</td><td>Caquexia tumoral; cirurgia oncológica de grande porte</td><td class="gr">1,5–2,2 g/dia; ↓ perda de peso, ↓ inflamação (citocinas); nível de evidência B</td></tr>
+        <tr><td class="hl">Glutamina</td><td>Mucosite oral e intestinal (QT/RT); pós-cirurgia</td><td>0,3–0,5 g/kg/dia VO ou EV; preserva integridade do enterócito</td></tr>
+        <tr><td class="hl">Arginina</td><td>Fórmulas pré-operatórias (Impact®) — cirurgia oncológica eletiva</td><td class="red">CONTRAINDICADA em sepse e câncer avançado ativo (↑ proliferação tumoral potencial)</td></tr>
+        <tr><td>Vitamina D</td><td>Deficiência comum em oncológicos; associada a pior prognóstico</td><td>Corrigir se deficiência documentada; sem dose supraterapeûtica</td></tr>
+      </tbody>
+    </table>
+
+    <div class="trap">
+      <div class="trap-ico">⚠</div>
+      <p><strong>Armadilha — Arginina:</strong> Indicada em fórmulas imunomoduladoras <strong>pré-operatórias</strong> (cirurgia eletiva, paciente sem sepse). É <strong>contraindicada</strong> em sepse e em câncer avançado ativo (potencial estímulo à proliferação tumoral via NO). A banca cobra o contexto exato de uso.</p>
+    </div>
+  </div>
+
+  <div class="pf">
+    <div class="pf-tag">NUT-ONCO · Bloco B9 · Extensivo ENARE 2026</div>
+    <div class="pf-num">4 / 10</div>
+  </div>
+</div>
+
+<!-- ========== P5: EFEITOS COLATERAIS E MANEJO NUTRICIONAL ========== -->
+<div class="page">
+  <div class="ph">
+    <div class="ph-logo">
+      <svg viewBox="0 0 32 32" width="26" height="26">
+        <rect x="0" y="0" width="32" height="32" rx="6" fill="#1F5C23"/>
+        <path d="M16 5 L25 10 L25 22 L16 27 L7 22 L7 10 Z" fill="none" stroke="#C6D834" stroke-width="1.8"/>
+        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
+      </svg>
+      <div class="ph-txt">Elite Treinamentos<span>Extensivo ENARE 2026</span></div>
+    </div>
+    <div class="ph-meta"><strong>NUT-ONCO · Aula 40</strong>Nutrição Oncológica</div>
+  </div>
+
+  <div class="pc">
+    <div class="sec-title">Efeitos Colaterais do Tratamento — Manejo Nutricional</div>
+
+    <table>
+      <thead><tr><th>Efeito</th><th>Mecanismo</th><th>Conduta Nutricional</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="hl">Mucosite</td>
+          <td>QT/RT → inflamação mucosa oral e TGI; graus I–IV</td>
+          <td>Dieta pastosa/líquida; alimentos frios ou mornos; higiene oral rigorosa; glutamina VO; crioterapia (gelo durante infusão QT)</td>
+        </tr>
+        <tr>
+          <td class="hl">Náuseas / Vômitos</td>
+          <td>QT → ação central (área postrema) e periférica</td>
+          <td>Refeições pequenas e frequentes; alimentos frios (menos odor); evitar gordurosos; gengibre; evitar preferências alimentares durante QT (aversão condicionada)</td>
+        </tr>
+        <tr>
+          <td class="hl">Xerostomia</td>
+          <td>RT em cabeça/pescoço → lesão glândulas salivares</td>
+          <td>Hidratação frequente; saliva artificial; alimentos úmidos/com molho; evitar secos e ácidos; higiene oral frequente</td>
+        </tr>
+        <tr>
+          <td class="hl">Disgeusia</td>
+          <td>QT → alteração de receptores gustativos; gosto metálico</td>
+          <td>Utensílios plásticos (metálico piora); temperaturas frias/mornas; temperos suaves; marinadas cítricas para carnes; zinco (se deficiência)</td>
+        </tr>
+        <tr>
+          <td class="hl">Diarreia</td>
+          <td>QT/RT intestinal → dano à mucosa</td>
+          <td>Dieta pobre em resíduos; eletrólitos; hidratação; probióticos (evidência limitada em QT); evitar lactose e gordura em excesso</td>
+        </tr>
+        <tr>
+          <td class="hl">Neutropenia</td>
+          <td>Mielossupressão → imunossupressão grave</td>
+          <td>Low microbial diet: alimentos cozidos; frutas com casca grossa (banana, laranja); evitar crus, defumados, queijos mofados, fast food de rua</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="trap">
+      <div class="trap-ico">⚠</div>
+      <p><strong>Armadilha — Low Microbial Diet:</strong> A dieta com restrições microbiológicas para neutropênicos <strong>NÃO requer autoclave/esterilização total</strong> de alimentos — exige apenas alimentos cozidos e frutas com casca protetora. Afirmar "esterilização em autoclave obrigatória" é FALSO e contrário à evidência atual.</p>
+    </div>
+  </div>
+
+  <div class="pf">
+    <div class="pf-tag">NUT-ONCO · Bloco B9 · Extensivo ENARE 2026</div>
+    <div class="pf-num">5 / 10</div>
+  </div>
+</div>
+
+<!-- ========== P6: Q01 — APLICAÇÃO ========== -->
+<div class="page">
+  <div class="ph">
+    <div class="ph-logo">
+      <svg viewBox="0 0 32 32" width="26" height="26">
+        <rect x="0" y="0" width="32" height="32" rx="6" fill="#1F5C23"/>
+        <path d="M16 5 L25 10 L25 22 L16 27 L7 22 L7 10 Z" fill="none" stroke="#C6D834" stroke-width="1.8"/>
+        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
+      </svg>
+      <div class="ph-txt">Elite Treinamentos<span>Extensivo ENARE 2026</span></div>
+    </div>
+    <div class="ph-meta"><strong>NUT-ONCO · Aula 40</strong>Nutrição Oncológica</div>
+  </div>
+
+  <div class="pc">
+    <div class="qhdr">
+      <div class="qbadge">Q01</div>
+      <div class="cbadge">Ap — Aplicação</div>
+      <div class="qref">Réplica ENARE 2025 Q130 · Banca FGV</div>
+    </div>
+
+    <div class="qstem">
+      <p>Paciente do sexo masculino, 58 anos, diagnóstico de adenocarcinoma gástrico localmente avançado, em quimioterapia paliativa. Internado por piora do estado geral. NRS-2002 = 5 pontos. Registra perda de 9% do peso corporal nos últimos 3 meses (peso atual: 54 kg, altura: 1,72 m — IMC 18,3 kg/m²). Apresenta mucosite grau III com dor intensa à deglutição, impedindo ingestão oral satisfatória. TGI funcionante.</p>
+      <p>Assinale a alternativa que indica a via de terapia nutricional e a meta proteica mais adequadas para este paciente.</p>
+    </div>
+
+    <div class="qtask">Qual é a melhor conduta de terapia nutricional para este paciente oncológico?</div>
+
+    <ul class="opts">
+      <li><span class="ol">A</span>Nutrição parenteral total exclusiva, com 0,8 g/kg/dia de proteína para evitar sobrecarga renal em paciente desnutrido grave.</li>
+      <li class="correct"><span class="ol">B</span>Nutrição enteral por sonda nasoenteral (SNE), com meta de 1,5–2,0 g/kg/dia de proteína, pois o TGI está funcionante e a mucosite impede a via oral.</li>
+      <li><span class="ol">C</span>Manutenção da dieta oral normal com adaptação de consistência, pois mucosite grau III permite deglutição de líquidos e pastosos sem necessidade de sonda.</li>
+      <li><span class="ol">D</span>Suspensão do suporte nutricional por 48–72 horas para avaliação da resposta à quimioterapia em curso, reiniciando após estabilização clínica.</li>
+    </ul>
+  </div>
+
+  <div class="pf">
+    <div class="pf-tag">NUT-ONCO · Bloco B9 · Extensivo ENARE 2026</div>
+    <div class="pf-num">6 / 10</div>
+  </div>
+</div>
+
+<!-- ========== P7: Q02 — APLICAÇÃO ========== -->
+<div class="page">
+  <div class="ph">
+    <div class="ph-logo">
+      <svg viewBox="0 0 32 32" width="26" height="26">
+        <rect x="0" y="0" width="32" height="32" rx="6" fill="#1F5C23"/>
+        <path d="M16 5 L25 10 L25 22 L16 27 L7 22 L7 10 Z" fill="none" stroke="#C6D834" stroke-width="1.8"/>
+        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
+      </svg>
+      <div class="ph-txt">Elite Treinamentos<span>Extensivo ENARE 2026</span></div>
+    </div>
+    <div class="ph-meta"><strong>NUT-ONCO · Aula 40</strong>Nutrição Oncológica</div>
+  </div>
+
+  <div class="pc">
+    <div class="qhdr">
+      <div class="qbadge">Q02</div>
+      <div class="cbadge">Ap — Aplicação</div>
+      <div class="qref">Réplica ENARE 2025 Q131 · Banca FGV</div>
+    </div>
+
+    <div class="qstem">
+      <p>Paciente feminina, 52 anos, com carcinoma de células escamosas de orofaringe, em radioterapia locorregional. Comparece à consulta ambulatorial com nutricionista referindo <strong>boca ressecada, todos os alimentos com sabor metálico</strong> e dificuldade de mastigação. Relata que não consegue comer carne por causa do gosto desagradável e que a saliva espessa dificulta a deglutição.</p>
+      <p>Assinale a conduta nutricional mais adequada para o manejo conjunto da xerostomia e da disgeusia nesta paciente.</p>
+    </div>
+
+    <div class="qtask">Qual é a conduta nutricional adequada para xerostomia e disgeusia em radioterapia de cabeça e pescoço?</div>
+
+    <ul class="opts">
+      <li><span class="ol">A</span>Prescrever dieta hiperlipídica exclusiva e suplementar zinco em megadose para reverter rapidamente a disgeusia e estimular a produção de saliva.</li>
+      <li><span class="ol">B</span>Indicar nutrição parenteral total como primeira escolha, pois a via oral está comprometida pela xerostomia e disgeusia associadas.</li>
+      <li class="correct"><span class="ol">C</span>Orientar uso de utensílios plásticos, consumo de alimentos em temperaturas frias ou mornas, marinadas cítricas para carnes, higiene oral frequente e consistência pastosa com boa hidratação.</li>
+      <li><span class="ol">D</span>Restringir a ingestão hídrica para evitar náuseas e não agravar o desconforto da xerostomia durante as refeições.</li>
+    </ul>
+  </div>
+
+  <div class="pf">
+    <div class="pf-tag">NUT-ONCO · Bloco B9 · Extensivo ENARE 2026</div>
+    <div class="pf-num">7 / 10</div>
+  </div>
+</div>
+
+<!-- ========== P8: Q03 — ANÁLISE ÂNCORA (AFIRMATIVAS) ========== -->
+<div class="page">
+  <div class="ph">
+    <div class="ph-logo">
+      <svg viewBox="0 0 32 32" width="26" height="26">
+        <rect x="0" y="0" width="32" height="32" rx="6" fill="#1F5C23"/>
+        <path d="M16 5 L25 10 L25 22 L16 27 L7 22 L7 10 Z" fill="none" stroke="#C6D834" stroke-width="1.8"/>
+        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
+      </svg>
+      <div class="ph-txt">Elite Treinamentos<span>Extensivo ENARE 2026</span></div>
+    </div>
+    <div class="ph-meta"><strong>NUT-ONCO · Aula 40</strong>Nutrição Oncológica</div>
+  </div>
+
+  <div class="pc">
+    <div class="qhdr">
+      <div class="qbadge">Q03</div>
+      <div class="cbadge">An — Análise</div>
+      <div class="qref">Âncora ENARE 2024 Q91 / 2025 Q132 · Banca FGV</div>
+    </div>
+
+    <div class="qstem">
+      <p>Analise as afirmativas abaixo sobre nutrição oncológica, caquexia tumoral e imunonutrição.</p>
+    </div>
+
+    <ul class="afirm">
+      <li class="errada">
+        <span class="an">I</span>
+        <span>A caquexia tumoral refratária, estágio terminal da síndrome caquética, responde completamente ao suporte nutricional intensivo com dieta hiperproteica e hipercalórica, resultando em reversão sustentada da perda de massa muscular.</span>
+      </li>
+      <li class="correta">
+        <span class="an">II</span>
+        <span>O instrumento PG-SGA (Avaliação Global Subjetiva Produzida pelo Paciente) é considerado o padrão-ouro para triagem e avaliação nutricional em pacientes oncológicos, classificando-os em categorias A, B ou C.</span>
+      </li>
+      <li class="correta">
+        <span class="an">III</span>
+        <span>O ácido eicosapentaenóico (EPA), ômega-3, apresenta evidência de benefício na redução da perda de peso e da inflamação em pacientes com caquexia tumoral, na dose de 1,5–2,2 g/dia.</span>
+      </li>
+      <li class="errada">
+        <span class="an">IV</span>
+        <span>A dieta com restrições microbiológicas indicada para pacientes oncológicos neutropênicos exige esterilização de todos os alimentos em autoclave para eliminação de patógenos e prevenção de infecções oportunistas.</span>
+      </li>
+    </ul>
+
+    <div class="qtask">Estão CORRETAS apenas as afirmativas:</div>
+
+    <ul class="af-opts">
+      <li><span class="ol">A</span>I e II</li>
+      <li><span class="ol">B</span>I e IV</li>
+      <li class="correct"><span class="ol">C</span>II e III</li>
+      <li><span class="ol">D</span>III e IV</li>
+    </ul>
+  </div>
+
+  <div class="pf">
+    <div class="pf-tag">NUT-ONCO · Bloco B9 · Extensivo ENARE 2026</div>
+    <div class="pf-num">8 / 10</div>
+  </div>
+</div>
+
+<!-- ========== P9: GABARITO ========== -->
+<div class="page">
+  <div class="ph">
+    <div class="ph-logo">
+      <svg viewBox="0 0 32 32" width="26" height="26">
+        <rect x="0" y="0" width="32" height="32" rx="6" fill="#1F5C23"/>
+        <path d="M16 5 L25 10 L25 22 L16 27 L7 22 L7 10 Z" fill="none" stroke="#C6D834" stroke-width="1.8"/>
+        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
+      </svg>
+      <div class="ph-txt">Elite Treinamentos<span>Extensivo ENARE 2026</span></div>
+    </div>
+    <div class="ph-meta"><strong>NUT-ONCO · Aula 40</strong>Nutrição Oncológica</div>
+  </div>
+
+  <div class="pc">
+    <div class="sec-title">Gabarito Comentado</div>
+
+    <!-- Q01 -->
+    <div class="gab-sec">
+      <div class="gab-hdr">
+        <div class="gab-qb">Questão 01</div>
+        <div class="gab-ab">B</div>
+      </div>
+      <div class="gab-exp">
+        <p><strong>Alternativa B — CORRETA:</strong> O paciente tem TGI funcionante (critério prioritário para TNE) e mucosite grau III impedindo ingestão oral adequada. A SNE garante aporte nutricional preservando a mucosa intestinal. Meta proteica de 1,5–2,0 g/kg/dia é adequada para paciente oncológico desnutrido grave (IMC 18,3) com catabolismo elevado.</p>
+        <div class="dist-lbl">Distratores:</div>
+        <div class="dist-item"><strong>A — ERRADA:</strong> NPT é reservada para TGI não funcionante ou inacessível — aqui o TGI está funcionante; além disso, 0,8 g/kg/dia é insuficiente para este grau de catabolismo oncológico.</div>
+        <div class="dist-item"><strong>C — ERRADA:</strong> Mucosite grau III cursa com ulcerações extensas e dor intensa — via oral é inviável como via principal de terapia nutricional neste grau.</div>
+        <div class="dist-item"><strong>D — ERRADA:</strong> Suspender suporte nutricional nunca é conduta correta em paciente desnutrido grave — piora prognóstico, tolerância ao tratamento e resposta imune.</div>
+      </div>
+    </div>
+
+    <!-- Q02 -->
+    <div class="gab-sec">
+      <div class="gab-hdr">
+        <div class="gab-qb">Questão 02</div>
+        <div class="gab-ab">C</div>
+      </div>
+      <div class="gab-exp">
+        <p><strong>Alternativa C — CORRETA:</strong> Manejo integrado de xerostomia e disgeusia: utensílios plásticos eliminam o gosto metálico dos metais; alimentos frios/mornos têm menos odor e são mais toleráveis; marinadas cítricas mascaram gosto metálico das carnes; consistência pastosa facilita deglutição com saliva espessa; hidratação frequente alivia a xerostomia.</p>
+        <div class="dist-lbl">Distratores:</div>
+        <div class="dist-item"><strong>A — ERRADA:</strong> Zinco em megadose não é indicado sem deficiência documentada; dieta hiperlipídica não trata xerostomia nem disgeusia.</div>
+        <div class="dist-item"><strong>B — ERRADA:</strong> NPT não é primeira escolha — a via oral ainda é tentada com adaptações; NPT só se ingestão oral insuficiente e TGI comprometido após tentativa de manejo.</div>
+        <div class="dist-item"><strong>D — ERRADA:</strong> Restringir hídrica piora a xerostomia — hidratação é fundamental para alívio sintomático e produção de saliva residual.</div>
+      </div>
+    </div>
+
+    <!-- Q03 -->
+    <div class="gab-sec">
+      <div class="gab-hdr">
+        <div class="gab-qb">Questão 03</div>
+        <div class="gab-ab">C</div>
+      </div>
+      <div class="gab-exp">
+        <p><strong>II e III — CORRETAS:</strong> PG-SGA = padrão-ouro em oncologia (A/B/C). EPA 1,5–2,2 g/dia tem evidência B para ↓ perda de peso e ↓ inflamação na caquexia tumoral.</p>
+        <div class="dist-lbl">Distratores:</div>
+        <div class="dist-item"><strong>I — ERRADA:</strong> Caquexia refratária NÃO responde ao suporte nutricional — mediada por citocinas e progressão tumoral irrefreável; objetivo desta fase é conforto e qualidade de vida.</div>
+        <div class="dist-item"><strong>IV — ERRADA:</strong> Low microbial diet = alimentos cozidos + frutas com casca grossa; não exige autoclave. Esterilização em autoclave não é prática padrão e comprometeria a palatabilidade e adesão à dieta.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pf">
+    <div class="pf-tag">NUT-ONCO · Bloco B9 · Extensivo ENARE 2026</div>
+    <div class="pf-num">9 / 10</div>
+  </div>
+</div>
+
+<!-- ========== P10: SÍNTESE FINAL — ENCERRAMENTO DO BLOCO B9 ========== -->
+<div class="page">
+  <div class="ph">
+    <div class="ph-logo">
+      <svg viewBox="0 0 32 32" width="26" height="26">
+        <rect x="0" y="0" width="32" height="32" rx="6" fill="#1F5C23"/>
+        <path d="M16 5 L25 10 L25 22 L16 27 L7 22 L7 10 Z" fill="none" stroke="#C6D834" stroke-width="1.8"/>
+        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
+      </svg>
+      <div class="ph-txt">Elite Treinamentos<span>Extensivo ENARE 2026</span></div>
+    </div>
+    <div class="ph-meta"><strong>NUT-ONCO · Aula 40</strong>Nutrição Oncológica</div>
+  </div>
+
+  <div class="pc">
+    <div class="sec-title">Síntese Final — NUT-ONCO</div>
+
+    <div class="sint-grid">
+      <div class="sc">
+        <h4>Triagem e Avaliação</h4>
+        <ul>
+          <li>PG-SGA = padrão-ouro oncologia (A / B / C)</li>
+          <li>NRS-2002 = hospital geral (≥ 3 pontos = risco)</li>
+          <li>GLIM: 1 fenotípico + 1 etiológico = desnutrição</li>
+          <li>Perda &gt; 5% em 6 meses = critério diagnóstico</li>
+        </ul>
+      </div>
+      <div class="sc">
+        <h4>Caquexia Tumoral</h4>
+        <ul>
+          <li>Pré-caquexia: boa resposta ao suporte — intervir</li>
+          <li>Caquexia: resposta parcial — tratar doença base</li>
+          <li class="x">Refratária: SEM resposta — foco em QV</li>
+          <li>Mediada por TNF-α, IL-1, IL-6 → catabolismo</li>
+          <li class="x">≠ Desnutrição simples (não responde igual)</li>
+        </ul>
+      </div>
+      <div class="sc">
+        <h4>Recomendações</h4>
+        <ul>
+          <li>VET: 25–35 kcal/kg/dia (ESPEN)</li>
+          <li>PTN: 1,0–1,5 g/kg/dia (geral)</li>
+          <li>PTN caquexia/cirurgia: 1,5–2,0 g/kg/dia</li>
+          <li>Via: oral &gt; enteral &gt; parenteral</li>
+          <li>EPA 1,5–2,2 g/dia: ↓ caquexia (evidência B)</li>
+        </ul>
+      </div>
+      <div class="sc">
+        <h4>Efeitos do Tratamento</h4>
+        <ul>
+          <li>Mucosite: pastoso + glutamina + crioterapia</li>
+          <li>Disgeusia: utensílios plásticos + frio/morno</li>
+          <li>Xerostomia: hidratação + saliva artificial</li>
+          <li>Neutropenia: low microbial diet (cozidos)</li>
+          <li class="x">Low microbial diet ≠ esterilização autoclave</li>
+        </ul>
+      </div>
+
+      <div class="arm-box">
+        <h4>Armadilhas da Banca FGV — NUT-ONCO</h4>
+        <div class="arm-grid">
+          <div class="arm-item"><strong>PG-SGA ≠ NRS-2002:</strong> PG-SGA = oncologia; NRS-2002 = hospital geral — escolha do instrumento depende do contexto</div>
+          <div class="arm-item"><strong>Caquexia refratária NÃO responde ao suporte:</strong> afirmar reversão com hipercalórica/hiperproteica = FALSO; foco é QV</div>
+          <div class="arm-item"><strong>Arginina: indicação específica:</strong> pré-op eletivo sem sepse; contraindicada em sepse e câncer avançado ativo</div>
+          <div class="arm-item"><strong>Low microbial diet ≠ autoclave:</strong> alimentos cozidos + frutas com casca — esterilização total não é padrão</div>
+          <div class="arm-item"><strong>Disgeusia metálica: utensílios plásticos:</strong> talheres de metal agravam o gosto metálico — orientação prática frequentemente cobrada</div>
+          <div class="arm-item"><strong>NPT não é 1ª linha:</strong> só indicada se TGI inacessível ou não funcionante — TNE é sempre preferida quando TGI funciona</div>
+        </div>
+      </div>
+
+      <div class="encerramento">
+        <h4>Bloco B9 — Nutrição · Concluído</h4>
+        <p>Extensivo ENARE 2026 · 40 aulas · Bloco B9 completo</p>
+        <div class="enc-stats">
+          <div class="es"><div class="ev">40</div><div class="el">Aulas PDF</div></div>
+          <div class="es"><div class="ev">120</div><div class="el">Questões FGV</div></div>
+          <div class="es"><div class="ev">400</div><div class="el">Páginas A4</div></div>
+          <div class="es"><div class="ev">9</div><div class="el">Módulos NUT</div></div>
+          <div class="es"><div class="ev">B9</div><div class="el">Bloco Completo</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pf">
+    <div class="pf-tag">NUT-ONCO · Bloco B9 · Extensivo ENARE 2026</div>
+    <div class="pf-num">10 / 10</div>
+  </div>
+</div>
+
+</body>
+</html>
