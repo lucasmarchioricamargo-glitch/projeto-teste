@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B6 · Aula 19 — FT-ETICA: Ética Profissional e PBE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { -webkit-print-color-adjust: exact; print-color-adjust: exact; font-family: 'Bricolage Grotesque', sans-serif; background: #ccc; }
+
+  .page { width: 210mm; height: 297mm; display: flex; flex-direction: column; overflow: hidden; page-break-after: always; background: #F6F4ED; position: relative; }
+
+  /* Header */
+  .ph { height: 14mm; flex-shrink: 0; display: flex; align-items: center; justify-content: space-between; padding: 0 16mm; border-bottom: 0.4mm solid #E0DDD6; }
+  .ph-label { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 7.5pt; letter-spacing: 0.12em; color: #0D8A8D; text-transform: uppercase; }
+  .ph-right { font-family: 'Bricolage Grotesque', sans-serif; font-size: 7pt; color: #888; }
+
+  /* Footer */
+  .pf { height: 9mm; flex-shrink: 0; display: flex; align-items: center; justify-content: space-between; padding: 0 16mm; border-top: 0.4mm solid #E0DDD6; }
+  .pf-logo { font-family: 'Playfair Display', serif; font-style: italic; font-size: 7.5pt; color: #0D8A8D; }
+  .pf-logo span { font-family: 'Space Grotesk', sans-serif; font-style: normal; font-weight: 300; font-size: 6.5pt; color: #888; text-transform: uppercase; letter-spacing: 0.08em; }
+  .pf-right { font-size: 7pt; color: #888; font-family: 'Bricolage Grotesque', sans-serif; }
+  .pf-right strong { color: #0D8A8D; font-weight: 600; }
+
+  /* Content areas */
+  .pc { flex: 1; padding: 7mm 16mm 5mm; overflow: hidden; }
+  .pc-sm { flex: 1; padding: 5mm 16mm 4mm; overflow: hidden; }
+
+  /* Cover page */
+  .cover-eyebrow { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 8pt; letter-spacing: 0.15em; color: #0D8A8D; text-transform: uppercase; margin-bottom: 4mm; }
+  .cover-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 42pt; line-height: 0.95; color: #070707; text-transform: uppercase; margin-bottom: 5mm; }
+  .cover-sub { font-size: 9pt; color: #555; line-height: 1.5; margin-bottom: 7mm; max-width: 145mm; }
+
+  .stats-row { display: flex; gap: 0; margin-bottom: 7mm; }
+  .stat-item { display: flex; align-items: flex-start; gap: 3mm; padding-right: 7mm; border-right: 0.3mm solid #C0BDB6; margin-right: 7mm; }
+  .stat-item:last-child { border-right: none; }
+  .stat-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 28pt; color: #0D8A8D; line-height: 1; }
+  .stat-label { font-size: 7.5pt; color: #666; line-height: 1.3; padding-top: 1mm; }
+
+  /* Banca box */
+  .banca-box { border-left: 1.5mm solid #0D8A8D; background: rgba(13,138,141,0.06); padding: 3.5mm 4mm; border-radius: 0 2mm 2mm 0; }
+  .banca-box-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 8pt; letter-spacing: 0.08em; color: #0D8A8D; text-transform: uppercase; margin-bottom: 1.5mm; }
+  .banca-box p { font-size: 8pt; color: #444; line-height: 1.55; }
+
+  /* Section headings */
+  .section-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 16pt; color: #0D8A8D; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 3.5mm; padding-bottom: 1.5mm; border-bottom: 0.4mm solid #0D8A8D; }
+  .section-title-sm { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 13pt; color: #0D8A8D; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 2.5mm; }
+
+  /* Objectives */
+  .obj-list { display: flex; flex-direction: column; gap: 2.5mm; margin-bottom: 5mm; }
+  .obj-item { display: flex; gap: 3mm; align-items: flex-start; }
+  .obj-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 16pt; color: #0D8A8D; line-height: 1; min-width: 6mm; }
+  .obj-text { font-size: 8.5pt; color: #333; line-height: 1.45; padding-top: 1mm; }
+  .obj-text strong { color: #070707; font-weight: 600; }
+
+  /* Map */
+  .map-row { display: flex; gap: 3mm; margin-bottom: 4mm; }
+  .map-card { flex: 1; background: #fff; border-top: 1.5mm solid #0D8A8D; padding: 3mm 3.5mm; border-radius: 0 0 2mm 2mm; }
+  .map-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 20pt; color: #0D8A8D; line-height: 1; margin-bottom: 0.5mm; }
+  .map-card-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 9pt; color: #070707; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 1.5mm; }
+  .map-card p { font-size: 7pt; color: #666; line-height: 1.4; }
+
+  /* Content blocks */
+  .content-block { margin-bottom: 4mm; }
+  .block-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 10pt; color: #0D8A8D; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 2mm; }
+  .block-sub { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 9pt; color: #070707; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 1.5mm; margin-top: 2mm; }
+
+  /* Two-column layout */
+  .two-col { display: flex; gap: 5mm; }
+  .col { flex: 1; }
+  .col-wide { flex: 1.4; }
+  .col-narrow { flex: 0.85; }
+
+  /* Lists */
+  ul.dot-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 1.2mm; }
+  ul.dot-list li { font-size: 8pt; color: #333; line-height: 1.4; padding-left: 4mm; position: relative; }
+  ul.dot-list li::before { content: '·'; position: absolute; left: 0; color: #0D8A8D; font-weight: 700; font-size: 10pt; line-height: 1.1; }
+  ul.dot-list li strong { font-weight: 600; color: #070707; }
+  ul.dot-list li em { font-style: normal; color: #0D8A8D; font-weight: 600; }
+
+  /* Highlighted rows / tags */
+  .tag { display: inline-block; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 7pt; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.5mm 2mm; border-radius: 1mm; }
+  .tag-teal { background: rgba(13,138,141,0.12); color: #0D8A8D; }
+  .tag-dark { background: #070707; color: #F6F4ED; }
+  .tag-green { background: rgba(31,92,35,0.12); color: #1F5C23; }
+  .tag-red { background: rgba(180,30,30,0.1); color: #a01010; }
+
+  /* Key point box */
+  .key-box { border: 0.3mm solid #0D8A8D; border-radius: 2mm; padding: 2.5mm 3.5mm; margin-top: 2.5mm; }
+  .key-box-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 7.5pt; text-transform: uppercase; letter-spacing: 0.08em; color: #0D8A8D; margin-bottom: 1mm; }
+  .key-box p { font-size: 7.5pt; color: #333; line-height: 1.45; }
+
+  /* Alert box */
+  .alert-box { background: rgba(180,30,30,0.06); border-left: 1.5mm solid #a01010; padding: 2.5mm 3.5mm; border-radius: 0 2mm 2mm 0; margin-top: 2mm; }
+  .alert-box p { font-size: 7.5pt; color: #333; line-height: 1.45; }
+  .alert-box strong { color: #a01010; font-weight: 600; }
+
+  /* Three pillars */
+  .pillars-row { display: flex; gap: 3mm; margin: 3mm 0; }
+  .pillar { flex: 1; background: #fff; border-radius: 2mm; padding: 3mm; text-align: center; border-top: 1.5mm solid #0D8A8D; }
+  .pillar-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 18pt; color: #0D8A8D; line-height: 1; margin-bottom: 1mm; }
+  .pillar-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 8.5pt; color: #070707; text-transform: uppercase; margin-bottom: 1.5mm; line-height: 1.2; }
+  .pillar p { font-size: 7pt; color: #555; line-height: 1.35; }
+
+  /* Hierarchy table */
+  .hier-list { display: flex; flex-direction: column; gap: 1mm; }
+  .hier-item { display: flex; align-items: center; gap: 2mm; }
+  .hier-bar { height: 5mm; background: #0D8A8D; border-radius: 1mm; }
+  .hier-label { font-size: 7.5pt; color: #333; white-space: nowrap; }
+  .hier-tag { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 6.5pt; color: #0D8A8D; }
+
+  /* Four principles */
+  .principles-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5mm; margin: 2mm 0; }
+  .principle-card { background: #fff; border-radius: 2mm; padding: 2.5mm 3mm; border-left: 1.5mm solid #0D8A8D; }
+  .principle-name { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 9pt; color: #070707; text-transform: uppercase; margin-bottom: 1mm; }
+  .principle-card p { font-size: 7.5pt; color: #555; line-height: 1.35; }
+
+  /* Condutas table */
+  .condutas-table { width: 100%; border-collapse: collapse; margin-top: 2mm; }
+  .condutas-table th { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 8pt; text-transform: uppercase; letter-spacing: 0.05em; background: #070707; color: #F6F4ED; padding: 1.8mm 3mm; text-align: left; }
+  .condutas-table td { font-size: 7.5pt; color: #333; padding: 1.8mm 3mm; border-bottom: 0.2mm solid #E0DDD6; line-height: 1.4; vertical-align: top; }
+  .condutas-table tr:nth-child(even) td { background: rgba(13,138,141,0.04); }
+  .condutas-table td strong { font-weight: 600; color: #070707; }
+
+  /* Question pages */
+  .q-badge-row { display: flex; align-items: center; gap: 2.5mm; margin-bottom: 5mm; }
+  .q-badge { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 8pt; letter-spacing: 0.08em; text-transform: uppercase; padding: 1mm 3mm; border-radius: 1mm; }
+  .q-badge-nc { background: #070707; color: #F6F4ED; }
+  .q-badge-num { background: #0D8A8D; color: #fff; }
+  .q-badge-tema { background: rgba(13,138,141,0.12); color: #0D8A8D; }
+
+  .q-stem { font-size: 9.5pt; color: #222; line-height: 1.6; margin-bottom: 5mm; }
+  .q-stem strong { font-weight: 600; }
+
+  .q-options { display: flex; flex-direction: column; gap: 2.5mm; margin-bottom: 5mm; }
+  .q-opt { display: flex; gap: 2.5mm; align-items: flex-start; }
+  .q-opt-letter { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 10pt; color: #0D8A8D; min-width: 5mm; line-height: 1.3; }
+  .q-opt-text { font-size: 8.5pt; color: #333; line-height: 1.5; }
+
+  .gabarito-box { background: rgba(13,138,141,0.08); border: 0.3mm solid #0D8A8D; border-radius: 2mm; padding: 3mm 4mm; }
+  .gabarito-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 9pt; color: #0D8A8D; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 2mm; }
+  .gabarito-box p { font-size: 8pt; color: #333; line-height: 1.55; }
+  .gabarito-box p strong { font-weight: 700; }
+  .gabarito-box .correct { color: #1F5C23; font-weight: 700; }
+  .gabarito-box .wrong { color: #888; }
+
+  /* Recuperação ativa */
+  .vof-table { width: 100%; border-collapse: collapse; margin-top: 2mm; }
+  .vof-table th { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 8pt; text-transform: uppercase; letter-spacing: 0.06em; background: #0D8A8D; color: #fff; padding: 2mm 3mm; text-align: left; }
+  .vof-table th.center { text-align: center; }
+  .vof-table td { font-size: 8pt; color: #333; padding: 2mm 3mm; border-bottom: 0.2mm solid #E0DDD6; line-height: 1.4; vertical-align: top; }
+  .vof-table tr:nth-child(even) td { background: rgba(13,138,141,0.04); }
+  .vof-table td.verdict { text-align: center; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 9pt; }
+  .vof-table td.v { color: #1F5C23; }
+  .vof-table td.f { color: #a01010; }
+
+  /* References */
+  .ref-list { display: flex; flex-direction: column; gap: 2.5mm; }
+  .ref-item { font-size: 7.5pt; color: #444; line-height: 1.5; }
+  .ref-item em { font-style: italic; }
+  .notes-box { margin-top: 5mm; border: 0.3mm dashed #C0BDB6; border-radius: 2mm; padding: 3mm 4mm; flex: 1; }
+  .notes-box p { font-size: 7pt; color: #aaa; font-style: italic; }
+</style>
+</head>
+<body>
+
+<!-- ========== PAGE 1 — CAPA ========== -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label">Bloco B6 · Fisioterapia · Aula 19</span>
+  </div>
+  <div class="pc">
+    <div class="cover-eyebrow">FT-ETICA</div>
+    <div class="cover-title">Ética<br>Profissional<br>e PBE</div>
+    <div class="cover-sub">Código de Ética COFFITO (Res. 424/2013) · Sigilo profissional e notificação obrigatória · Prática Baseada em Evidências — 3 pilares · Bioética clínica e condutas antiéticas</div>
+
+    <div class="stats-row">
+      <div class="stat-item">
+        <div class="stat-num">3</div>
+        <div class="stat-label">Blocos de conteúdo</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">3</div>
+        <div class="stat-label">Questões FGV comentadas</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">6</div>
+        <div class="stat-label">Questões FGV mapeadas</div>
+      </div>
+    </div>
+
+    <div class="banca-box">
+      <div class="banca-box-title">Padrão FGV neste tema:</div>
+      <p>FT-ETICA é o tema mais previsível da prova: exatamente 3 questões por edição, em padrão tripartite. Sempre há uma situação de aplicação do Código (sigilo, urgência, maus-tratos), uma de compreensão de princípio (artigo específico ou PBE) e uma de análise de conduta (imprudência, bioética). Em 2025, a FGV deslocou as questões de ética do final da prova (Q98–Q100/2024) para o meio (Q32, Q33, Q62/2025) — confirmando que ética é cobrada em posição variável.</p>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pf-logo">Residência PRO <span>· by Residência Pro</span></div>
+    <div class="pf-right"><strong>Extensivo ENARE 2026</strong><br>Fisioterapia · Camila Nara</div>
+  </div>
+</div>
+
+<!-- ========== PAGE 2 — OBJETIVOS + MAPA ========== -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label">Objetivos · Aula 19</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc">
+    <div class="section-title">Objetivos de Aprendizagem</div>
+
+    <div class="obj-list">
+      <div class="obj-item">
+        <div class="obj-num">1</div>
+        <div class="obj-text"><strong>Código de Ética COFFITO (Res. 424/2013):</strong> identificar os deveres fundamentais do fisioterapeuta — sigilo profissional, vedação à recusa de urgência e obrigação de denúncia de colega infrator.</div>
+      </div>
+      <div class="obj-item">
+        <div class="obj-num">2</div>
+        <div class="obj-text"><strong>Notificação obrigatória:</strong> compreender que a suspeita de maus-tratos em idoso, criança ou adolescente obriga notificação às autoridades competentes — a lei sobrepõe o sigilo profissional.</div>
+      </div>
+      <div class="obj-item">
+        <div class="obj-num">3</div>
+        <div class="obj-text"><strong>Prática Baseada em Evidências (PBE):</strong> reconhecer os 3 pilares de Sackett — melhor evidência científica + expertise clínica + valores e preferências do paciente — e a hierarquia de evidências.</div>
+      </div>
+      <div class="obj-item">
+        <div class="obj-num">4</div>
+        <div class="obj-text"><strong>Bioética e condutas antiéticas:</strong> distinguir imprudência (agir sem cuidado), negligência (omitir cuidado) e imperícia (falta de habilidade técnica) e associá-las a cenários clínicos da prova.</div>
+      </div>
+    </div>
+
+    <div class="section-title-sm" style="margin-top:3mm;">Mapa da Aula</div>
+    <div class="map-row">
+      <div class="map-card">
+        <div class="map-num">1</div>
+        <div class="map-card-title">Código de Ética COFFITO</div>
+        <p>Sigilo · Art. 10 urgência<br>Notificação maus-tratos<br>Dever de denúncia de colega</p>
+      </div>
+      <div class="map-card">
+        <div class="map-num">2</div>
+        <div class="map-card-title">PBE — 3 Pilares</div>
+        <p>Evidência + Expertise + Paciente<br>Hierarquia de evidências<br>Decisão compartilhada</p>
+      </div>
+      <div class="map-card">
+        <div class="map-num">3</div>
+        <div class="map-card-title">Bioética Clínica</div>
+        <p>4 princípios Beauchamp &amp; Childress<br>Imprudência · Negligência · Imperícia<br>Consentimento informado</p>
+      </div>
+    </div>
+
+    <div class="banca-box">
+      <div class="banca-box-title">Perfil de cobrança 2024–2025:</div>
+      <p>A FGV cobra FT-ETICA com padrão tripartite fixo: (1) situação que envolve aplicação prática do Código — sigilo, urgência, maus-tratos ou colega infrator; (2) compreensão de princípio ético ou conceitual — Art. específico, PBE; (3) análise de conduta — imprudência, negligência ou bioética. Saber o nome correto das condutas e os 3 pilares da PBE garante 2 de 3 questões.</p>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pf-logo">Extensivo ENARE <span>· by Residência Pro</span></div>
+    <div class="pf-right">2</div>
+  </div>
+</div>
+
+<!-- ========== PAGE 3 — BLOCO 1: CÓDIGO DE ÉTICA COFFITO ========== -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label">Código de Ética COFFITO · Aula 19</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc-sm">
+    <div class="section-title">1. Código de Ética COFFITO — Res. 424/2013</div>
+
+    <div class="two-col">
+      <div class="col-wide">
+        <div class="block-sub">Sigilo Profissional</div>
+        <ul class="dot-list" style="margin-bottom:3mm;">
+          <li>Dever de <strong>manter sigilo</strong> sobre informações do paciente obtidas no exercício profissional</li>
+          <li>Vedado compartilhar dados de <em>paciente lúcido sem sua autorização</em> — violação do sigilo (Q62/2025)</li>
+          <li><strong>Exceções ao sigilo:</strong> determinação judicial · risco de morte do paciente ou de terceiros · notificação compulsória de doenças</li>
+          <li>Prontuário: propriedade do paciente — acesso por terceiros exige autorização ou ordem judicial</li>
+        </ul>
+
+        <div class="block-sub">Art. 10 — Vedação à Recusa em Urgência</div>
+        <ul class="dot-list" style="margin-bottom:3mm;">
+          <li>É <em>vedado</em> ao fisioterapeuta <strong>negar assistência em casos de urgência</strong> — independente de vínculo empregatício ou remuneração (Q99/2024)</li>
+          <li>Obrigação ética de prestar socorro até transferência para serviço adequado</li>
+        </ul>
+
+        <div class="block-sub">Colega Infrator — Dever de Denúncia</div>
+        <ul class="dot-list">
+          <li>Fisioterapeuta que toma ciência de <strong>infração ética</strong> cometida por colega tem o <em>dever de comunicar ao CREFITO</em> — encobrir é também infração</li>
+          <li>Q98/2024 — EPAP tuberculoso: relatar infrator, não encobrir</li>
+        </ul>
+      </div>
+
+      <div class="col-narrow">
+        <div class="block-sub">Notificação Obrigatória</div>
+        <ul class="dot-list" style="margin-bottom:3mm;">
+          <li><strong>Maus-tratos em idoso:</strong> Lei 10.741/2003 (Estatuto do Idoso, Art. 19) — obrigação legal de notificação às autoridades competentes (Q32/2025)</li>
+          <li><strong>Maus-tratos em criança/adolescente:</strong> Lei 8.069/1990 (ECA) — mesma obrigação</li>
+          <li><em>Suspeita é suficiente</em> — não é necessária confirmação para notificar</li>
+          <li>A obrigação legal de notificação <strong>sobrepõe o sigilo profissional</strong></li>
+        </ul>
+
+        <div class="key-box">
+          <div class="key-box-title">Questões FGV mapeadas</div>
+          <p>Q98/2024 · Ap — EPAP tuberculoso: relatar colega infrator<br>Q99/2024 · M — Art.10: vedado negar urgência<br>Q100/2024 · An — Imprudência: liberar atleta (LCA)<br>Q32/2025 · Ap — Notificação maus-tratos em idosa<br>Q62/2025 · Ap — Compartilhar dados sem autorização</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert-box">
+      <p><strong>Distrator clássico FGV:</strong> A questão apresenta situação onde o fisioterapeuta compartilha dados de um paciente <em>consciente e capaz</em> sem sua autorização, alegando beneficência ou interesse do cuidador. Isso é <strong>violação do sigilo</strong> — a autonomia do paciente lúcido prevalece sobre a conveniência de terceiros.</p>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pf-logo">Extensivo ENARE <span>· by Residência Pro</span></div>
+    <div class="pf-right">3</div>
+  </div>
+</div>
+
+<!-- ========== PAGE 4 — BLOCO 2: PBE ========== -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label">PBE — 3 Pilares · Aula 19</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc-sm">
+    <div class="section-title">2. Prática Baseada em Evidências (PBE)</div>
+
+    <div class="block-sub">Definição — Sackett et al. (1996)</div>
+    <p style="font-size:8.5pt;color:#333;line-height:1.5;margin-bottom:3mm;">PBE é a integração consciente, explícita e criteriosa da <em>melhor evidência disponível</em> com a <em>expertise clínica individual</em> e com os <em>valores e preferências do paciente</em> na tomada de decisão clínica. Os 3 pilares devem estar presentes — nenhum sozinho é suficiente.</p>
+
+    <div class="pillars-row">
+      <div class="pillar">
+        <div class="pillar-num">1</div>
+        <div class="pillar-title">Melhor Evidência Científica Disponível</div>
+        <p>Pesquisas relevantes — preferencialmente estudos controlados randomizados e revisões sistemáticas — sobre o diagnóstico, tratamento e prognóstico</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">2</div>
+        <div class="pillar-title">Expertise Clínica do Profissional</div>
+        <p>Habilidade e julgamento adquiridos pela experiência clínica — interpretar evidências no contexto do paciente individual</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">3</div>
+        <div class="pillar-title">Valores e Preferências do Paciente</div>
+        <p>Expectativas, crenças, cultura e objetivos do paciente — tomada de decisão compartilhada e respeito à autonomia</p>
+      </div>
+    </div>
+
+    <div class="two-col" style="margin-top:3mm;">
+      <div class="col">
+        <div class="block-sub">Hierarquia de Evidências</div>
+        <div class="hier-list">
+          <div class="hier-item"><div class="hier-bar" style="width:52mm;opacity:1.0;"></div><span class="hier-label" style="font-size:7.5pt;color:#333;">Revisão sistemática + Meta-análise</span></div>
+          <div class="hier-item"><div class="hier-bar" style="width:44mm;opacity:0.85;"></div><span class="hier-label" style="font-size:7.5pt;color:#333;">Ensaio clínico randomizado (ECR)</span></div>
+          <div class="hier-item"><div class="hier-bar" style="width:37mm;opacity:0.70;"></div><span class="hier-label" style="font-size:7.5pt;color:#333;">Estudo de coorte</span></div>
+          <div class="hier-item"><div class="hier-bar" style="width:30mm;opacity:0.55;"></div><span class="hier-label" style="font-size:7.5pt;color:#333;">Estudo caso-controle</span></div>
+          <div class="hier-item"><div class="hier-bar" style="width:23mm;opacity:0.40;"></div><span class="hier-label" style="font-size:7.5pt;color:#333;">Série de casos / relato de caso</span></div>
+          <div class="hier-item"><div class="hier-bar" style="width:16mm;opacity:0.30;"></div><span class="hier-label" style="font-size:7.5pt;color:#333;">Opinião de especialista</span></div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="block-sub">Ponto-Chave FGV — Q33/2025</div>
+        <ul class="dot-list">
+          <li>Q33/2025 — Compreensão: os 3 pilares da PBE são <em>evidência + expertise + preferências</em> — todos obrigatórios</li>
+          <li><strong>Distrator clássico:</strong> opção que inclui apenas evidência científica, excluindo expertise ou preferências do paciente</li>
+          <li><strong>Outro distrator:</strong> incluir "custo-efetividade" ou "disponibilidade de recursos" como pilares — são considerações, não pilares formais de Sackett</li>
+          <li>PBE não significa "protocolo acima do paciente" — o pilar 3 garante que os valores do paciente integram a decisão</li>
+        </ul>
+
+        <div class="key-box" style="margin-top:2.5mm;">
+          <div class="key-box-title">Relação com autonomia</div>
+          <p>O pilar "preferências do paciente" é a expressão prática do princípio bioético da <strong>Autonomia</strong> — o paciente informado tem o direito de aceitar ou recusar intervenções, mesmo que a evidência científica as suporte.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pf-logo">Extensivo ENARE <span>· by Residência Pro</span></div>
+    <div class="pf-right">4</div>
+  </div>
+</div>
+
+<!-- ========== PAGE 5 — BLOCO 3: BIOÉTICA ========== -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label">Bioética Clínica · Aula 19</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc-sm">
+    <div class="section-title">3. Bioética e Condutas Antiéticas</div>
+
+    <div class="block-sub">4 Princípios de Beauchamp &amp; Childress (Principialismo)</div>
+    <div class="principles-grid" style="margin-bottom:3mm;">
+      <div class="principle-card">
+        <div class="principle-name">Autonomia</div>
+        <p>Respeitar a capacidade do paciente de tomar decisões informadas — consentimento informado, recusa de tratamento, sigilo (Q62/2025)</p>
+      </div>
+      <div class="principle-card">
+        <div class="principle-name">Beneficência</div>
+        <p>Agir em benefício do paciente — escolher condutas com o melhor desfecho esperado; base da PBE</p>
+      </div>
+      <div class="principle-card">
+        <div class="principle-name">Não-Maleficência</div>
+        <p>Primum non nocere — evitar danos ao paciente; inclui não liberar precocemente (Q100/2024: imprudência)</p>
+      </div>
+      <div class="principle-card">
+        <div class="principle-name">Justiça</div>
+        <p>Distribuição equitativa de recursos e acesso à saúde — base do SUS, igualdade no atendimento</p>
+      </div>
+    </div>
+
+    <div class="block-sub">Condutas Antiéticas — Distinção FGV</div>
+    <table class="condutas-table">
+      <thead>
+        <tr>
+          <th>Conduta</th>
+          <th>Definição</th>
+          <th>Exemplo FGV</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Imprudência</strong></td>
+          <td>Agir sem a cautela necessária — expõe o paciente a risco evitável</td>
+          <td>Liberar atleta para retorno esportivo antes da recuperação completa do LCA (Q100/2024)</td>
+        </tr>
+        <tr>
+          <td><strong>Negligência</strong></td>
+          <td>Omitir o cuidado ou a atenção devida — deixar de fazer o necessário</td>
+          <td>Não realizar avaliação de risco de queda em idoso institucionalizado</td>
+        </tr>
+        <tr>
+          <td><strong>Imperícia</strong></td>
+          <td>Executar procedimento sem habilidade técnica suficiente para realizá-lo</td>
+          <td>Aplicar técnica de mobilização articular sem treinamento específico</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="two-col" style="margin-top:3mm;">
+      <div class="col">
+        <div class="key-box">
+          <div class="key-box-title">Ponto-chave FGV — Q100/2024</div>
+          <p>A FGV classificou como <strong>imprudência</strong> a conduta de liberar atleta para atividade esportiva sem recuperação completa do LCA — o profissional agiu sem a cautela necessária, violando o princípio da não-maleficência.</p>
+        </div>
+      </div>
+      <div class="col">
+        <div class="banca-box">
+          <div class="banca-box-title">Distrator imprudência vs negligência</div>
+          <p>Imprudência = <em>faz o que não devia</em> (age sem cuidado). Negligência = <em>não faz o que devia</em> (omite o necessário). A FGV cobra essa distinção em cenários clínicos — identifique se há ação excessiva ou omissão.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pf-logo">Extensivo ENARE <span>· by Residência Pro</span></div>
+    <div class="pf-right">5</div>
+  </div>
+</div>
+
+<!-- ========== PAGE 6 — QUESTÃO 1 (M) ========== -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label">Questão 1 · Aula 19</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc">
+    <div class="q-badge-row">
+      <span class="q-badge q-badge-nc">M — Memorização</span>
+      <span class="q-badge q-badge-num">099 · ENARE 2024</span>
+      <span class="q-badge q-badge-tema">FT-ETICA · Código de Ética · Art. 10</span>
+    </div>
+
+    <div class="q-stem">
+      O Código de Ética do Fisioterapeuta e do Terapeuta Ocupacional, aprovado pela Resolução COFFITO nº 424/2013, estabelece deveres e vedações que regem a conduta profissional. Em relação às obrigações do fisioterapeuta diante de situações de emergência e urgência, é <strong>correto</strong> afirmar que:
+    </div>
+
+    <div class="q-options">
+      <div class="q-opt">
+        <span class="q-opt-letter">A)</span>
+        <span class="q-opt-text">O fisioterapeuta pode recusar atendimento em situações de urgência quando não houver contrato de trabalho formalizado com a instituição ou vínculo empregatício estabelecido.</span>
+      </div>
+      <div class="q-opt">
+        <span class="q-opt-letter">B)</span>
+        <span class="q-opt-text">É vedado ao fisioterapeuta negar assistência em casos de urgência, sendo obrigatória a prestação de socorro até que o paciente seja transferido a serviço capaz de continuá-lo.</span>
+      </div>
+      <div class="q-opt">
+        <span class="q-opt-letter">C)</span>
+        <span class="q-opt-text">A obrigação de atender casos de urgência aplica-se apenas ao fisioterapeuta com especialização em fisioterapia hospitalar ou intensivista, reconhecida pelo COFFITO.</span>
+      </div>
+      <div class="q-opt">
+        <span class="q-opt-letter">D)</span>
+        <span class="q-opt-text">O fisioterapeuta que atende uma urgência fora de sua área de especialidade viola o Código de Ética por exercício de atividade para a qual não possui habilitação específica.</span>
+      </div>
+    </div>
+
+    <div class="gabarito-box">
+      <div class="gabarito-title">Gabarito: B</div>
+      <p><span class="correct">B — VERDADEIRA:</span> Art. 10 da Res. COFFITO 424/2013 — é <strong>vedado ao fisioterapeuta negar assistência em casos de urgência</strong>, devendo prestar os primeiros socorros e assegurar transferência para serviço adequado. Não há exigência de vínculo empregatício nem de especialização para essa obrigação — ela decorre do exercício da profissão.</p>
+      <p class="wrong">A) Errada: A vedação à recusa independe de vínculo empregatício — é obrigação ética universal do profissional habilitado.</p>
+      <p class="wrong">C) Errada: Não existe restrição a especialistas — qualquer fisioterapeuta é obrigado a prestar socorro em urgência.</p>
+      <p class="wrong">D) Errada: Prestar socorro em urgência não constitui exercício indevido — é dever ético explícito do Código. A não intervenção seria a violação.</p>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pf-logo">Extensivo ENARE <span>· by Residência Pro</span></div>
+    <div class="pf-right">6</div>
+  </div>
+</div>
+
+<!-- ========== PAGE 7 — QUESTÃO 2 (C) ========== -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label">Questão 2 · Aula 19</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc">
+    <div class="q-badge-row">
+      <span class="q-badge q-badge-nc">C — Compreensão</span>
+      <span class="q-badge q-badge-num">033 · ENARE 2025</span>
+      <span class="q-badge q-badge-tema">FT-ETICA · PBE · 3 Pilares</span>
+    </div>
+
+    <div class="q-stem">
+      A Prática Baseada em Evidências (PBE) representa um paradigma essencial para a tomada de decisão clínica na fisioterapia contemporânea. De acordo com o modelo proposto por Sackett et al. (1996), a PBE integra de forma consciente e criteriosa três componentes fundamentais. Esses componentes são, <strong>corretamente</strong>:
+    </div>
+
+    <div class="q-options">
+      <div class="q-opt">
+        <span class="q-opt-letter">A)</span>
+        <span class="q-opt-text">A melhor evidência científica disponível, o custo-efetividade da intervenção e a disponibilidade de recursos no serviço de saúde.</span>
+      </div>
+      <div class="q-opt">
+        <span class="q-opt-letter">B)</span>
+        <span class="q-opt-text">A melhor evidência científica disponível, a expertise clínica do profissional e os valores e preferências do paciente.</span>
+      </div>
+      <div class="q-opt">
+        <span class="q-opt-letter">C)</span>
+        <span class="q-opt-text">A melhor evidência científica disponível, as diretrizes dos conselhos profissionais e o protocolo institucional do serviço.</span>
+      </div>
+      <div class="q-opt">
+        <span class="q-opt-letter">D)</span>
+        <span class="q-opt-text">A revisão sistemática de maior nível de evidência, a opinião de especialistas reconhecidos e a experiência prévia do paciente com tratamentos similares.</span>
+      </div>
+    </div>
+
+    <div class="gabarito-box">
+      <div class="gabarito-title">Gabarito: B</div>
+      <p><span class="correct">B — VERDADEIRA:</span> Os 3 pilares da PBE (Sackett, 1996) são: <strong>(1) melhor evidência científica disponível</strong> — preferencialmente RS e ECR; <strong>(2) expertise clínica do profissional</strong> — experiência e julgamento individual; <strong>(3) valores e preferências do paciente</strong> — respeito à autonomia e tomada de decisão compartilhada. Nenhum pilar sozinho é suficiente.</p>
+      <p class="wrong">A) Errada: Custo-efetividade e disponibilidade de recursos são considerações contextuais, não pilares formais da PBE de Sackett.</p>
+      <p class="wrong">C) Errada: Diretrizes e protocolos institucionais são instrumentos de aplicação, não pilares constitutivos da PBE — podem ou não estar baseados em evidências.</p>
+      <p class="wrong">D) Errada: Revisão sistemática é o nível mais alto de evidência (pilar 1), mas "opinião de especialistas" é o nível mais baixo. D confunde nível de evidência com pilares da PBE e omite o pilar das preferências do paciente.</p>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pf-logo">Extensivo ENARE <span>· by Residência Pro</span></div>
+    <div class="pf-right">7</div>
+  </div>
+</div>
+
+<!-- ========== PAGE 8 — QUESTÃO 3 — ÂNCORA (Ap) ========== -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label">Questão 3 · Âncora · Aula 19</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc">
+    <div class="q-badge-row">
+      <span class="q-badge q-badge-nc">Ap — Aplicação</span>
+      <span class="q-badge q-badge-num">062 · ENARE 2025</span>
+      <span class="q-badge q-badge-tema">FT-ETICA · Sigilo Profissional · Autonomia</span>
+    </div>
+
+    <div class="q-stem">
+      Um fisioterapeuta atende Carlos, 58 anos, paciente lúcido e orientado, em acompanhamento por lombalgiacrônica. Durante a sessão, o filho de Carlos solicita ao fisioterapeuta que lhe envie o prontuário completo do pai, argumentando que precisa das informações para organizar o cuidado familiar. O fisioterapeuta decide compartilhar os dados sem consultar Carlos. Em relação à conduta adotada, é <strong>correto</strong> afirmar que:
+    </div>
+
+    <div class="q-options">
+      <div class="q-opt">
+        <span class="q-opt-letter">A)</span>
+        <span class="q-opt-text">A conduta é eticamente aceitável, pois o filho é familiar direto e o objetivo declarado é o cuidado do paciente, configurando beneficência.</span>
+      </div>
+      <div class="q-opt">
+        <span class="q-opt-letter">B)</span>
+        <span class="q-opt-text">A conduta viola o Código de Ética do fisioterapeuta, pois o compartilhamento de dados de paciente lúcido sem sua autorização constitui quebra do sigilo profissional.</span>
+      </div>
+      <div class="q-opt">
+        <span class="q-opt-letter">C)</span>
+        <span class="q-opt-text">A conduta é eticamente aceitável quando o familiar é responsável legal pelo paciente, independentemente de o paciente ser lúcido ou não.</span>
+      </div>
+      <div class="q-opt">
+        <span class="q-opt-letter">D)</span>
+        <span class="q-opt-text">O fisioterapeuta agiu corretamente ao priorizar o interesse coletivo da família, que prevalece sobre o sigilo individual quando o objetivo é o cuidado integral do paciente.</span>
+      </div>
+    </div>
+
+    <div class="gabarito-box">
+      <div class="gabarito-title">Gabarito: B</div>
+      <p><span class="correct">B — VERDADEIRA:</span> Carlos é <strong>paciente lúcido e orientado</strong> — sua autonomia é plena. Compartilhar dados sem sua autorização expressa constitui <strong>quebra do sigilo profissional</strong>, vedada pelo Código de Ética (Res. COFFITO 424/2013). O parentesco do solicitante não autoriza o acesso: apenas o paciente, o juiz (determinação judicial) ou situação de risco de vida permite a exceção.</p>
+      <p class="wrong">A) Errada: A intenção de cuidado (beneficência) não justifica violar a autonomia e o sigilo do paciente capaz — princípio da autonomia prevalece sobre a beneficência paternalista quando o paciente é lúcido.</p>
+      <p class="wrong">C) Errada: A capacidade de decisão do paciente lúcido anula qualquer argumento de "responsável legal" — tutela e curatela pressupõem incapacidade civil, não se aplicam a adulto lúcido.</p>
+      <p class="wrong">D) Errada: Não existe no Código de Ética ou em princípio bioético a noção de "interesse coletivo familiar" que sobreponha o sigilo individual de um adulto capaz.</p>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pf-logo">Extensivo ENARE <span>· by Residência Pro</span></div>
+    <div class="pf-right">8</div>
+  </div>
+</div>
+
+<!-- ========== PAGE 9 — RECUPERAÇÃO ATIVA ========== -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label">Recuperação Ativa · Aula 19</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc-sm">
+    <div class="section-title">Recuperação Ativa — Fixação</div>
+    <p style="font-size:8.5pt;color:#555;margin-bottom:4mm;">Classifique cada afirmativa como <strong>V (Verdadeiro)</strong> ou <strong>F (Falso)</strong> com base no Código de Ética COFFITO, PBE e Bioética:</p>
+
+    <table class="vof-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Afirmativa</th>
+          <th class="center">V/F</th>
+          <th>Justificativa</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>O fisioterapeuta pode recusar o atendimento de urgência se não tiver vínculo empregatício com a instituição.</td>
+          <td class="verdict f">F</td>
+          <td>Art. 10 — a vedação à recusa de urgência independe de vínculo empregatício. (Q99/2024)</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>A PBE integra apenas a melhor evidência científica disponível, sem incluir a experiência clínica do profissional.</td>
+          <td class="verdict f">F</td>
+          <td>A PBE tem 3 pilares obrigatórios: evidência + expertise clínica + preferências do paciente. (Q33/2025)</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Compartilhar dados de paciente lúcido sem sua autorização constitui violação do sigilo profissional.</td>
+          <td class="verdict v">V</td>
+          <td>Paciente lúcido tem autonomia plena — autorização expressa é obrigatória. (Q62/2025)</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>A suspeita de maus-tratos em idoso obriga o fisioterapeuta a notificar autoridades competentes, mesmo sem confirmação.</td>
+          <td class="verdict v">V</td>
+          <td>Lei 10.741/2003 (Estatuto do Idoso, Art. 19) — suspeita é suficiente. A lei sobrepõe o sigilo. (Q32/2025)</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Liberar atleta para retorno esportivo antes da recuperação completa do LCA configura negligência.</td>
+          <td class="verdict f">F</td>
+          <td>Configura <strong>imprudência</strong> (agiu sem cautela necessária), não negligência (que seria omissão de cuidado). (Q100/2024)</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>O fisioterapeuta que tem conhecimento de infração ética de colega deve comunicar ao CREFITO, sob pena de também infringir o Código.</td>
+          <td class="verdict v">V</td>
+          <td>Encobrir colega infrator é também infração ética — dever de denúncia ao conselho regional. (Q98/2024)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="banca-box" style="margin-top:4mm;">
+      <div class="banca-box-title">Ponto-âncora para o dia da prova</div>
+      <p>FT-ETICA = 3 questões certas se você souber: (1) Art. 10 — urgência nunca pode ser recusada; (2) PBE = evidência + expertise + paciente; (3) paciente lúcido → autonomia prevalece. Maus-tratos → notifica sempre, mesmo com suspeita.</p>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pf-logo">Extensivo ENARE <span>· by Residência Pro</span></div>
+    <div class="pf-right">9</div>
+  </div>
+</div>
+
+<!-- ========== PAGE 10 — REFERÊNCIAS ========== -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label">Referências · Aula 19</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc">
+    <div class="section-title">Referências — Bloco B6 · Aula 19</div>
+
+    <div class="ref-list">
+      <div class="ref-item">CONSELHO FEDERAL DE FISIOTERAPIA E TERAPIA OCUPACIONAL. <em>Resolução COFFITO nº 424, de 8 de julho de 2013</em>. Estabelece o Código de Ética e Deontologia da Fisioterapia. Brasília: COFFITO, 2013.</div>
+      <div class="ref-item">BRASIL. <em>Lei nº 10.741, de 1º de outubro de 2003</em>. Dispõe sobre o Estatuto do Idoso e dá outras providências. Brasília: Diário Oficial da União, 2003.</div>
+      <div class="ref-item">BRASIL. <em>Lei nº 8.069, de 13 de julho de 1990</em>. Dispõe sobre o Estatuto da Criança e do Adolescente (ECA). Brasília: Diário Oficial da União, 1990.</div>
+      <div class="ref-item">SACKETT, D.L. et al. Evidence based medicine: what it is and what it isn't. <em>British Medical Journal</em>, v. 312, n. 7023, p. 71–72, 1996.</div>
+      <div class="ref-item">BEAUCHAMP, T.L.; CHILDRESS, J.F. <em>Principles of Biomedical Ethics</em>. 8. ed. New York: Oxford University Press, 2019.</div>
+      <div class="ref-item">STRAUS, S.E. et al. <em>Evidence-Based Medicine: How to Practice and Teach EBM</em>. 5. ed. Edinburgh: Elsevier, 2019.</div>
+      <div class="ref-item">HOFFMANN, T. et al. Sharing evidence and experiences with patients: the role of patient involvement in evidence-based practice. <em>Physical Therapy</em>, v. 97, n. 1, p. 71–80, 2017.</div>
+    </div>
+
+    <div class="notes-box">
+      <p>Espaço para anotações</p>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pf-logo">Extensivo ENARE <span>· by Residência Pro</span></div>
+    <div class="pf-right">10</div>
+  </div>
+</div>
+
+</body>
+</html>
