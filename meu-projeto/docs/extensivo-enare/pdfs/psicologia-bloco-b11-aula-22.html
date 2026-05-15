@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Psicologia — Bloco B11 — Aula 22 | Extensivo ENARE 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap');
+
+  :root {
+    --creme: #F6F4ED;
+    --verde: #1F5C23;
+    --accent: #C6D834;
+    --escuro: #0C1A0D;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body { background: #d0d0d0; font-family: 'Bricolage Grotesque', sans-serif; }
+
+  .pagina {
+    width: 210mm;
+    min-height: 297mm;
+    background: var(--creme);
+    margin: 8mm auto;
+    position: relative;
+    overflow: hidden;
+    page-break-after: always;
+  }
+
+  /* ===================== CAPA ===================== */
+  .capa { background: var(--verde); display: flex; flex-direction: column; justify-content: space-between; padding: 14mm 14mm 10mm 14mm; }
+  .capa-topo { display: flex; justify-content: space-between; align-items: flex-start; }
+  .capa-logo-area { display: flex; flex-direction: column; gap: 2mm; }
+  .capa-marca { font-family: 'Playfair Display', serif; font-style: italic; font-size: 15pt; color: var(--creme); letter-spacing: 0.02em; }
+  .capa-tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 6.5pt; color: var(--accent); letter-spacing: 0.18em; text-transform: uppercase; }
+  .capa-badge { background: var(--accent); color: var(--verde); font-family: 'Barlow Condensed', sans-serif; font-size: 7.5pt; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; padding: 2.5mm 5mm; border-radius: 1mm; }
+  .capa-meio { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 10mm 0 6mm 0; }
+  .capa-bloco-label { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7pt; color: var(--accent); letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 4mm; }
+  .capa-titulo { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 36pt; color: var(--creme); line-height: 0.92; text-transform: uppercase; letter-spacing: -0.01em; margin-bottom: 6mm; }
+  .capa-titulo span { color: var(--accent); }
+  .capa-subtitulo { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; font-size: 10pt; color: var(--creme); opacity: 0.82; line-height: 1.45; max-width: 145mm; }
+  .capa-linha { width: 28mm; height: 0.7mm; background: var(--accent); margin: 5mm 0; }
+  .capa-rodape { display: flex; justify-content: space-between; align-items: flex-end; border-top: 0.5px solid rgba(246,244,237,0.2); padding-top: 5mm; }
+  .capa-rodape-info { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 6pt; color: rgba(246,244,237,0.5); letter-spacing: 0.08em; text-transform: uppercase; line-height: 1.7; }
+  .capa-aula-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 52pt; color: rgba(246,244,237,0.08); line-height: 1; }
+
+  .capa-dist {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2mm;
+    margin-top: 5mm;
+  }
+
+  .capa-dist-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1mm;
+  }
+
+  .capa-dist-bar {
+    width: 100%;
+    background: rgba(198,216,52,0.2);
+    border-radius: 0.5mm;
+    overflow: hidden;
+  }
+
+  .capa-dist-fill {
+    background: var(--accent);
+    border-radius: 0.5mm;
+  }
+
+  .capa-dist-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 5pt;
+    color: rgba(246,244,237,0.6);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-align: center;
+  }
+
+  .capa-dist-pct {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 7pt;
+    color: var(--accent);
+  }
+
+  /* ===================== PÁGINAS INTERNAS ===================== */
+  .pg-interna { padding: 11mm 13mm 10mm 13mm; display: flex; flex-direction: column; gap: 3.5mm; }
+
+  .pg-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 0.6px solid var(--verde); padding-bottom: 2.5mm; margin-bottom: 0.5mm; }
+  .pg-header-left { display: flex; align-items: center; gap: 3mm; }
+  .pg-header-marca { font-family: 'Playfair Display', serif; font-style: italic; font-size: 8.5pt; color: var(--verde); }
+  .pg-header-sep { width: 0.5px; height: 3.5mm; background: var(--verde); opacity: 0.3; }
+  .pg-header-bloco { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 6pt; color: var(--verde); opacity: 0.65; letter-spacing: 0.12em; text-transform: uppercase; }
+  .pg-header-right { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 7.5pt; color: var(--accent); letter-spacing: 0.1em; background: var(--verde); padding: 1mm 3mm; border-radius: 0.5mm; }
+
+  /* ===================== INSTRUÇÕES ===================== */
+  .instrucoes {
+    background: var(--verde);
+    border-radius: 2mm;
+    padding: 4mm 5mm;
+  }
+
+  .instrucoes-titulo {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 10pt;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 2mm;
+  }
+
+  .instrucoes p { font-size: 7pt; color: rgba(246,244,237,0.85); line-height: 1.5; }
+  .instrucoes strong { color: var(--accent); }
+
+  /* ===================== GABARITO RÁPIDO ===================== */
+  .gab-rapido {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 1.5mm;
+    margin: 1mm 0;
+  }
+
+  .gab-rapido-item {
+    background: rgba(31,92,35,0.06);
+    border: 0.5px solid rgba(31,92,35,0.2);
+    border-radius: 1mm;
+    padding: 1.5mm 1mm;
+    text-align: center;
+  }
+
+  .gab-rapido-q {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    font-size: 5pt;
+    color: var(--verde);
+    opacity: 0.6;
+    letter-spacing: 0.05em;
+    display: block;
+  }
+
+  .gab-rapido-letra {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 13pt;
+    color: var(--verde);
+    line-height: 1.1;
+    display: block;
+  }
+
+  /* ===================== QUESTÕES ===================== */
+  .questao-bloco { margin-bottom: 3mm; }
+
+  .questao-header { display: flex; align-items: center; gap: 2.5mm; margin-bottom: 1.5mm; }
+  .questao-num { background: var(--verde); color: var(--accent); font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 10pt; width: 8mm; height: 8mm; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .questao-meta { display: flex; flex-direction: column; gap: 0.5mm; }
+  .questao-banca { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 5.5pt; color: var(--verde); opacity: 0.65; letter-spacing: 0.12em; text-transform: uppercase; }
+  .questao-tema { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 7.5pt; color: var(--verde); text-transform: uppercase; letter-spacing: 0.06em; }
+
+  .questao-enunciado { background: rgba(31,92,35,0.05); border-left: 2.5px solid var(--verde); padding: 2.5mm 3.5mm; border-radius: 0 1mm 1mm 0; margin-bottom: 2mm; }
+  .questao-enunciado p { font-size: 7.5pt; line-height: 1.52; }
+
+  .alternativas { display: flex; flex-direction: column; gap: 1.5mm; }
+  .alt { display: flex; align-items: flex-start; gap: 2mm; padding: 1.8mm 2.5mm; border-radius: 1mm; border: 0.5px solid rgba(31,92,35,0.15); }
+  .alt-letra { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 8.5pt; color: var(--verde); min-width: 4mm; line-height: 1.3; }
+  .alt p { font-size: 7.2pt; line-height: 1.48; }
+  .alt-correta { background: rgba(31,92,35,0.08); border-color: var(--verde); }
+
+  p { font-size: 7.8pt; line-height: 1.55; color: #1a2e1b; }
+  strong { font-weight: 600; color: var(--escuro); }
+  em { color: var(--verde); font-style: normal; font-weight: 600; }
+
+  .chip { display: inline-block; background: var(--verde); color: var(--creme); font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 6pt; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.8mm 2mm; border-radius: 0.8mm; margin: 0.3mm 0.3mm 0 0; }
+  .chip-accent { background: var(--accent); color: var(--verde); }
+
+  .sep-questao { border: none; border-top: 0.5px dashed rgba(31,92,35,0.2); margin: 3mm 0; }
+
+  /* ===================== GABARITO ===================== */
+  .gabarito-pg { padding: 11mm 13mm 10mm 13mm; }
+  .gabarito-titulo { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 18pt; color: var(--verde); text-transform: uppercase; letter-spacing: 0.03em; border-left: 3.5px solid var(--accent); padding-left: 3.5mm; margin-bottom: 4mm; }
+  .justificativa { margin-bottom: 3.5mm; padding: 2.5mm 3.5mm; background: rgba(31,92,35,0.05); border-radius: 1.5mm; border-left: 2.5px solid var(--accent); }
+  .justificativa-q { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 8pt; color: var(--verde); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1mm; display: flex; align-items: center; gap: 2mm; }
+  .justificativa-letra { background: var(--verde); color: var(--accent); font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 8pt; padding: 0.5mm 2mm; border-radius: 0.5mm; }
+  .justificativa p { font-size: 7.2pt; line-height: 1.52; }
+
+  /* ===================== SÍNTESE FINAL ===================== */
+  .sintese-pg { padding: 11mm 13mm 10mm 13mm; }
+  .sintese-titulo { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 18pt; color: var(--verde); text-transform: uppercase; letter-spacing: 0.03em; border-left: 3.5px solid var(--accent); padding-left: 3.5mm; margin-bottom: 4mm; }
+
+  .grade-temas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3mm;
+    margin-bottom: 4mm;
+  }
+
+  .tema-card {
+    border: 0.5px solid rgba(31,92,35,0.2);
+    border-radius: 1.5mm;
+    overflow: hidden;
+  }
+
+  .tema-card-header {
+    background: var(--verde);
+    padding: 2mm 3mm;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .tema-card-titulo {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 8pt;
+    color: var(--creme);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .tema-card-pct {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 9pt;
+    color: var(--accent);
+  }
+
+  .tema-card-body {
+    padding: 2.5mm 3mm;
+    background: rgba(31,92,35,0.03);
+  }
+
+  .tema-card-body p { font-size: 6.8pt; line-height: 1.5; color: #1a2e1b; }
+
+  .conquista-banner {
+    background: var(--verde);
+    border-radius: 2mm;
+    padding: 5mm 6mm;
+    text-align: center;
+    margin-top: 3mm;
+  }
+
+  .conquista-emoji {
+    font-size: 16pt;
+    display: block;
+    margin-bottom: 2mm;
+  }
+
+  .conquista-titulo {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 16pt;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 2mm;
+  }
+
+  .conquista-texto { font-size: 7.5pt; color: rgba(246,244,237,0.8); line-height: 1.55; }
+  .conquista-texto strong { color: var(--accent); }
+
+  .pg-num { position: absolute; bottom: 6mm; right: 13mm; font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 6pt; color: var(--verde); opacity: 0.4; letter-spacing: 0.1em; }
+
+  ul.lista { list-style: none; padding: 0; margin: 1mm 0; }
+  ul.lista li { font-size: 7pt; line-height: 1.5; color: #1a2e1b; padding-left: 4mm; position: relative; margin-bottom: 0.8mm; }
+  ul.lista li::before { content: '▸'; position: absolute; left: 0; color: var(--accent); font-size: 6.5pt; top: 0.5mm; }
+
+  @media print { body { background: none; } .pagina { margin: 0; } }
+</style>
+</head>
+<body>
+
+<!-- ========== PÁGINA 1 — CAPA ========== -->
+<div class="pagina capa">
+  <div class="capa-topo">
+    <div class="capa-logo-area">
+      <svg width="38" height="44" viewBox="0 0 38 44" fill="none">
+        <polygon points="19,2 36,11.5 36,32.5 19,42 2,32.5 2,11.5" fill="#F6F4ED"/>
+        <circle cx="19" cy="22" r="8.5" fill="#1F5C23"/>
+      </svg>
+      <div class="capa-marca">Elite Treinamentos</div>
+      <div class="capa-tagline">Extensivo ENARE 2026</div>
+    </div>
+    <div class="capa-badge">Psicologia · Bloco B11</div>
+  </div>
+
+  <div class="capa-meio">
+    <div class="capa-bloco-label">Aula 22 · Simulado Final</div>
+    <div class="capa-titulo">Simulado<br><span>Bloco B11</span></div>
+    <div class="capa-linha"></div>
+    <div class="capa-subtitulo">
+      10 questões integradas · PSI-SAUDE · PSI-TEORIA · PSI-ETICA · PSI-CLINICA · PSI-ORGAN · PSI-AVALIA · PSI-APS
+    </div>
+
+    <div class="capa-dist" style="margin-top:6mm;">
+      <div class="capa-dist-item">
+        <div class="capa-dist-pct">47%</div>
+        <div class="capa-dist-bar" style="height:14mm;"><div class="capa-dist-fill" style="height:100%;"></div></div>
+        <div class="capa-dist-label">PSI<br>SAÚDE</div>
+      </div>
+      <div class="capa-dist-item">
+        <div class="capa-dist-pct">17%</div>
+        <div class="capa-dist-bar" style="height:14mm;"><div class="capa-dist-fill" style="height:36%;"></div></div>
+        <div class="capa-dist-label">PSI<br>TEOR.</div>
+      </div>
+      <div class="capa-dist-item">
+        <div class="capa-dist-pct">11%</div>
+        <div class="capa-dist-bar" style="height:14mm;"><div class="capa-dist-fill" style="height:23%;"></div></div>
+        <div class="capa-dist-label">PSI<br>ÉTICA</div>
+      </div>
+      <div class="capa-dist-item">
+        <div class="capa-dist-pct">10%</div>
+        <div class="capa-dist-bar" style="height:14mm;"><div class="capa-dist-fill" style="height:21%;"></div></div>
+        <div class="capa-dist-label">PSI<br>CLÍN.</div>
+      </div>
+      <div class="capa-dist-item">
+        <div class="capa-dist-pct">7%</div>
+        <div class="capa-dist-bar" style="height:14mm;"><div class="capa-dist-fill" style="height:15%;"></div></div>
+        <div class="capa-dist-label">PSI<br>ORGAN</div>
+      </div>
+      <div class="capa-dist-item">
+        <div class="capa-dist-pct">5%</div>
+        <div class="capa-dist-bar" style="height:14mm;"><div class="capa-dist-fill" style="height:11%;"></div></div>
+        <div class="capa-dist-label">PSI<br>AVAL.</div>
+      </div>
+      <div class="capa-dist-item">
+        <div class="capa-dist-pct">1%</div>
+        <div class="capa-dist-bar" style="height:14mm;"><div class="capa-dist-fill" style="height:3%;"></div></div>
+        <div class="capa-dist-label">PSI<br>APS</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="capa-rodape">
+    <div class="capa-rodape-info">
+      <div>Extensivo ENARE 2026 · Bloco B11 — Encerramento</div>
+      <div>22 aulas · PSI integrado · Gabarito e justificativas completos</div>
+    </div>
+    <div class="capa-aula-num">22</div>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 2 — INSTRUÇÕES + Q01 + Q02 ========== -->
+<div class="pagina pg-interna">
+  <div class="pg-header">
+    <div class="pg-header-left">
+      <svg width="14" height="16" viewBox="0 0 38 44" fill="none">
+        <polygon points="19,2 36,11.5 36,32.5 19,42 2,32.5 2,11.5" fill="#1F5C23"/>
+        <circle cx="19" cy="22" r="8.5" fill="#F6F4ED"/>
+      </svg>
+      <span class="pg-header-marca">Elite Treinamentos</span>
+      <div class="pg-header-sep"></div>
+      <span class="pg-header-bloco">Psicologia · Bloco B11 · Simulado Final</span>
+    </div>
+    <div class="pg-header-right">SIMULADO</div>
+  </div>
+
+  <div class="instrucoes">
+    <div class="instrucoes-titulo">Instruções</div>
+    <p>Este simulado contém <strong>10 questões</strong> no estilo ENARE/FGV, cobrindo todos os módulos do Bloco B11. Resolva as questões antes de consultar o gabarito. Tempo sugerido: <strong>20 minutos</strong> (2 min/questão). Registre suas respostas no quadro abaixo.</p>
+  </div>
+
+  <div style="margin: 1mm 0 2mm 0;">
+    <p style="font-size:6.8pt;color:var(--verde);font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:1.5mm;">Meu Gabarito</p>
+    <div class="gab-rapido">
+      <div class="gab-rapido-item"><span class="gab-rapido-q">Q01</span><span class="gab-rapido-letra" style="color:rgba(31,92,35,0.15);">_</span></div>
+      <div class="gab-rapido-item"><span class="gab-rapido-q">Q02</span><span class="gab-rapido-letra" style="color:rgba(31,92,35,0.15);">_</span></div>
+      <div class="gab-rapido-item"><span class="gab-rapido-q">Q03</span><span class="gab-rapido-letra" style="color:rgba(31,92,35,0.15);">_</span></div>
+      <div class="gab-rapido-item"><span class="gab-rapido-q">Q04</span><span class="gab-rapido-letra" style="color:rgba(31,92,35,0.15);">_</span></div>
+      <div class="gab-rapido-item"><span class="gab-rapido-q">Q05</span><span class="gab-rapido-letra" style="color:rgba(31,92,35,0.15);">_</span></div>
+      <div class="gab-rapido-item"><span class="gab-rapido-q">Q06</span><span class="gab-rapido-letra" style="color:rgba(31,92,35,0.15);">_</span></div>
+      <div class="gab-rapido-item"><span class="gab-rapido-q">Q07</span><span class="gab-rapido-letra" style="color:rgba(31,92,35,0.15);">_</span></div>
+      <div class="gab-rapido-item"><span class="gab-rapido-q">Q08</span><span class="gab-rapido-letra" style="color:rgba(31,92,35,0.15);">_</span></div>
+      <div class="gab-rapido-item"><span class="gab-rapido-q">Q09</span><span class="gab-rapido-letra" style="color:rgba(31,92,35,0.15);">_</span></div>
+      <div class="gab-rapido-item"><span class="gab-rapido-q">Q10</span><span class="gab-rapido-letra" style="color:rgba(31,92,35,0.15);">_</span></div>
+    </div>
+  </div>
+
+  <!-- Q01 -->
+  <div class="questao-bloco">
+    <div class="questao-header">
+      <div class="questao-num">01</div>
+      <div class="questao-meta">
+        <span class="questao-banca">PSI-TEORIA · Psicanálise Freudiana</span>
+        <span class="questao-tema">Atos Falhos · Metapsicologia · Inconsciente</span>
+      </div>
+    </div>
+    <div class="questao-enunciado">
+      <p>Pedro, 32 anos, em análise, relata esquecer sistematicamente compromissos com sua chefe, chegando sempre atrasado. O analista observa que os esquecimentos ocorrem após situações em que Pedro sente raiva mas não a expressa. Do ponto de vista da metapsicologia freudiana, esses esquecimentos são melhor compreendidos como:</p>
+    </div>
+    <div class="alternativas">
+      <div class="alt"><span class="alt-letra">A</span><p>Sublimação — Pedro canaliza a pulsão agressiva em conduta socialmente aceitável (o atraso), transformando o impulso destrutivo em comportamento adaptativo.</p></div>
+      <div class="alt alt-correta"><span class="alt-letra">B</span><p>Atos falhos — manifestações do inconsciente em que desejos reprimidos (hostilidade à chefe) escapam à censura sob a forma de lapsos de comportamento aparentemente acidentais.</p></div>
+      <div class="alt"><span class="alt-letra">C</span><p>Formação reativa — Pedro transforma inconscientemente a raiva em excessiva pontualidade, sendo os atrasos uma falha esporádica desta defesa.</p></div>
+      <div class="alt"><span class="alt-letra">D</span><p>Fixação na fase anal — o atraso sistemático reflete conflito não resolvido em torno do controle e da autonomia, característico da fixação anal retentiva.</p></div>
+    </div>
+  </div>
+
+  <div class="pg-num">2</div>
+</div>
+
+<!-- ========== PÁGINA 3 — Q02 + Q03 ========== -->
+<div class="pagina pg-interna">
+  <div class="pg-header">
+    <div class="pg-header-left">
+      <svg width="14" height="16" viewBox="0 0 38 44" fill="none">
+        <polygon points="19,2 36,11.5 36,32.5 19,42 2,32.5 2,11.5" fill="#1F5C23"/>
+        <circle cx="19" cy="22" r="8.5" fill="#F6F4ED"/>
+      </svg>
+      <span class="pg-header-marca">Elite Treinamentos</span>
+      <div class="pg-header-sep"></div>
+      <span class="pg-header-bloco">Psicologia · Bloco B11 · Simulado Final</span>
+    </div>
+    <div class="pg-header-right">SIMULADO</div>
+  </div>
+
+  <!-- Q02 -->
+  <div class="questao-bloco">
+    <div class="questao-header">
+      <div class="questao-num">02</div>
+      <div class="questao-meta">
+        <span class="questao-banca">PSI-ETICA · Código de Ética · CFP</span>
+        <span class="questao-tema">Documentos Psicológicos · Sigilo · Res. CFP 006/2019</span>
+      </div>
+    </div>
+    <div class="questao-enunciado">
+      <p>Mariana, psicóloga clínica, atende Fábio há 8 meses. Fábio solicita cópia integral de todas as anotações que Mariana faz sobre ele durante as sessões. Mariana está em dúvida sobre como proceder. Com base na Resolução CFP 006/2019 e no Código de Ética, qual a conduta correta?</p>
+    </div>
+    <div class="alternativas">
+      <div class="alt"><span class="alt-letra">A</span><p>Fornecer cópia integral de todas as anotações, pois o cliente tem direito irrestrito a todo material produzido sobre si, incluindo hipóteses diagnósticas provisórias e registros de sessão.</p></div>
+      <div class="alt"><span class="alt-letra">B</span><p>Recusar integralmente o pedido, pois as anotações clínicas são documentos privados do psicólogo, protegidos pelo sigilo profissional mesmo em relação ao próprio cliente.</p></div>
+      <div class="alt alt-correta"><span class="alt-letra">C</span><p>Elaborar e fornecer a Fábio um documento psicológico formal (relatório ou declaração) com as informações pertinentes ao pedido, resguardando o conteúdo das anotações pessoais de uso técnico interno do psicólogo.</p></div>
+      <div class="alt"><span class="alt-letra">D</span><p>Encaminhar o pedido ao CFP regional, pois conflitos entre direito do cliente e sigilo profissional escapam à competência do psicólogo resolver sem deliberação do Conselho.</p></div>
+    </div>
+  </div>
+
+  <div class="sep-questao"></div>
+
+  <!-- Q03 -->
+  <div class="questao-bloco">
+    <div class="questao-header">
+      <div class="questao-num">03</div>
+      <div class="questao-meta">
+        <span class="questao-banca">PSI-AVALIA · Avaliação Psicológica</span>
+        <span class="questao-tema">SATEPSI · Res. CFP 009/2018 · Uso de Instrumentos</span>
+      </div>
+    </div>
+    <div class="questao-enunciado">
+      <p>Uma psicóloga é contratada para processo seletivo de operadores de empilhadeira e deseja utilizar um teste de atenção. Ao consultar o SATEPSI, verifica que o instrumento consta com parecer <strong>desfavorável</strong>. Qual a conduta correta com base na Resolução CFP 009/2018?</p>
+    </div>
+    <div class="alternativas">
+      <div class="alt alt-correta"><span class="alt-letra">A</span><p>Está vedada a utilização do instrumento em qualquer contexto de avaliação psicológica, devendo a psicóloga selecionar instrumento com parecer favorável no SATEPSI para realizar o processo seletivo.</p></div>
+      <div class="alt"><span class="alt-letra">B</span><p>Pode utilizar o instrumento mediante autorização prévia do CFP regional, pois o parecer desfavorável pode ser contestado nos casos em que há validade específica para a função avaliada.</p></div>
+      <div class="alt"><span class="alt-letra">C</span><p>Pode utilizar o instrumento apenas para fins de pesquisa científica, desde que informe os participantes sobre o parecer desfavorável e registre a ressalva no relatório final.</p></div>
+      <div class="alt"><span class="alt-letra">D</span><p>Pode utilizar livremente, pois o SATEPSI é sistema orientativo e não vinculante — o psicólogo pode julgar autonomamente a adequação de qualquer instrumento para cada contexto específico.</p></div>
+    </div>
+  </div>
+
+  <div class="pg-num">3</div>
+</div>
+
+<!-- ========== PÁGINA 4 — Q04 + Q05 ========== -->
+<div class="pagina pg-interna">
+  <div class="pg-header">
+    <div class="pg-header-left">
+      <svg width="14" height="16" viewBox="0 0 38 44" fill="none">
+        <polygon points="19,2 36,11.5 36,32.5 19,42 2,32.5 2,11.5" fill="#1F5C23"/>
+        <circle cx="19" cy="22" r="8.5" fill="#F6F4ED"/>
+      </svg>
+      <span class="pg-header-marca">Elite Treinamentos</span>
+      <div class="pg-header-sep"></div>
+      <span class="pg-header-bloco">Psicologia · Bloco B11 · Simulado Final</span>
+    </div>
+    <div class="pg-header-right">SIMULADO</div>
+  </div>
+
+  <!-- Q04 -->
+  <div class="questao-bloco">
+    <div class="questao-header">
+      <div class="questao-num">04</div>
+      <div class="questao-meta">
+        <span class="questao-banca">PSI-ORGAN · Saúde do Trabalhador</span>
+        <span class="questao-tema">Burnout · Maslach · CID-11</span>
+      </div>
+    </div>
+    <div class="questao-enunciado">
+      <p>Teresa, 44 anos, enfermeira de UTI, relata exaustão extrema, a sensação de que "não faz diferença o que faço pelos pacientes" e distanciamento emocional dos colegas. Diz adorar a profissão, mas sente que "virou um robô". Com base no modelo de Maslach e na CID-11, qual a conclusão correta?</p>
+    </div>
+    <div class="alternativas">
+      <div class="alt"><span class="alt-letra">A</span><p>Transtorno Depressivo Maior — exaustão e distanciamento emocional indicam episódio depressivo grave com necessidade de afastamento imediato e farmacoterapia.</p></div>
+      <div class="alt alt-correta"><span class="alt-letra">B</span><p>Síndrome de Burnout — as três dimensões de Maslach estão presentes: exaustão emocional, despersonalização (distanciamento/"robotização") e reduzida realização profissional. Pela CID-11 (QD85), é fenômeno ocupacional, não doença mental.</p></div>
+      <div class="alt"><span class="alt-letra">C</span><p>Transtorno de Adaptação — resposta desadaptativa ao estressor (UTI), situacional e autolimitada, sem configurar burnout pois Teresa ainda reconhece amor pela profissão.</p></div>
+      <div class="alt"><span class="alt-letra">D</span><p>Síndrome de Burnout em fase inicial — apenas duas dimensões de Maslach estão presentes (exaustão e despersonalização); a reduzida realização profissional ainda não se configura pois Teresa mantém identidade profissional.</p></div>
+    </div>
+  </div>
+
+  <div class="sep-questao"></div>
+
+  <!-- Q05 -->
+  <div class="questao-bloco">
+    <div class="questao-header">
+      <div class="questao-num">05</div>
+      <div class="questao-meta">
+        <span class="questao-banca">PSI-SAUDE · Reforma Psiquiátrica</span>
+        <span class="questao-tema">Lei 10.216/2001 · Internação Involuntária · MP</span>
+      </div>
+    </div>
+    <div class="questao-enunciado">
+      <p>Roberto, 45 anos, com esquizofrenia paranoide, recusa tratamento há 3 meses e apresenta deterioração grave (recusa alimentar-se, higiene precária). Sua esposa solicita internação à psiquiatra. A psiquiatra decide pela internação involuntária. Qual a obrigação legal imediata após a efetivação da internação?</p>
+    </div>
+    <div class="alternativas">
+      <div class="alt"><span class="alt-letra">A</span><p>Comunicar ao Juiz de Direito da comarca em 48 horas, que deverá homologar ou revogar a internação com base em laudo psiquiátrico independente.</p></div>
+      <div class="alt"><span class="alt-letra">B</span><p>Registrar no SINAN como situação de violência autoprovocada, pois a recusa de tratamento com consequências à saúde configura autolesão por omissão de autocuidado.</p></div>
+      <div class="alt alt-correta"><span class="alt-letra">C</span><p>Comunicar ao Ministério Público estadual no prazo de 72 horas após a efetivação da internação, conforme determina expressamente a Lei 10.216/2001 para internações involuntárias.</p></div>
+      <div class="alt"><span class="alt-letra">D</span><p>Obter assinatura de dois familiares como testemunhas e registrar em cartório, garantindo validade jurídica e proteção legal para a equipe responsável pela decisão.</p></div>
+    </div>
+  </div>
+
+  <div class="pg-num">4</div>
+</div>
+
+<!-- ========== PÁGINA 5 — Q06 + Q07 ========== -->
+<div class="pagina pg-interna">
+  <div class="pg-header">
+    <div class="pg-header-left">
+      <svg width="14" height="16" viewBox="0 0 38 44" fill="none">
+        <polygon points="19,2 36,11.5 36,32.5 19,42 2,32.5 2,11.5" fill="#1F5C23"/>
+        <circle cx="19" cy="22" r="8.5" fill="#F6F4ED"/>
+      </svg>
+      <span class="pg-header-marca">Elite Treinamentos</span>
+      <div class="pg-header-sep"></div>
+      <span class="pg-header-bloco">Psicologia · Bloco B11 · Simulado Final</span>
+    </div>
+    <div class="pg-header-right">SIMULADO</div>
+  </div>
+
+  <!-- Q06 -->
+  <div class="questao-bloco">
+    <div class="questao-header">
+      <div class="questao-num">06</div>
+      <div class="questao-meta">
+        <span class="questao-banca">PSI-SAUDE · Álcool e Outras Drogas</span>
+        <span class="questao-tema">Prochaska &amp; DiClemente · Entrevista Motivacional · Contemplação</span>
+      </div>
+    </div>
+    <div class="questao-enunciado">
+      <p>Augusto, 38 anos, fumante há 20 anos, é encaminhado ao psicólogo do NASF-AB. Na consulta, diz: "Sei que fumar faz mal, mas não consigo imaginar minha vida sem o cigarro. Às vezes penso em parar, às vezes não." Com base nos estágios de Prochaska &amp; DiClemente e na Entrevista Motivacional, qual a estratégia mais indicada?</p>
+    </div>
+    <div class="alternativas">
+      <div class="alt"><span class="alt-letra">A</span><p>Iniciar imediatamente o protocolo cognitivo-comportamental para cessação do tabagismo, pois o reconhecimento do dano indica que Augusto está no estágio de ação e pronto para intervenção direta.</p></div>
+      <div class="alt alt-correta"><span class="alt-letra">B</span><p>Trabalhar a ambivalência de Augusto por meio da Entrevista Motivacional (escuta reflexiva, balanço decisional, evocação de falas de mudança), pois ele se encontra no estágio de contemplação — reconhece o problema mas ainda não decidiu mudar.</p></div>
+      <div class="alt"><span class="alt-letra">C</span><p>Encaminhar ao grupo de cessação de tabagismo, pois o tratamento em grupo apresenta maior eficácia que a intervenção motivacional individual para usuários em qualquer estágio de mudança.</p></div>
+      <div class="alt"><span class="alt-letra">D</span><p>Iniciar reposição de nicotina como primeira etapa, pois a dependência física impede qualquer intervenção psicológica efetiva sem suporte farmacológico prévio que reduza a fissura.</p></div>
+    </div>
+  </div>
+
+  <div class="sep-questao"></div>
+
+  <!-- Q07 -->
+  <div class="questao-bloco">
+    <div class="questao-header">
+      <div class="questao-num">07</div>
+      <div class="questao-meta">
+        <span class="questao-banca">PSI-SAUDE · Infância e ECA</span>
+        <span class="questao-tema">Violência Contra Criança · ECA Art. 13 · Conselho Tutelar</span>
+      </div>
+    </div>
+    <div class="questao-enunciado">
+      <p>Cláudia, psicóloga em escola pública, percebe em Luísa, 9 anos, sinais comportamentais sugestivos de abuso sexual: regressão, comportamento sexual inapropriado para a idade e aversão a um familiar específico. A mãe de Luísa nega qualquer situação de abuso. Qual a conduta correta de Cláudia?</p>
+    </div>
+    <div class="alternativas">
+      <div class="alt"><span class="alt-letra">A</span><p>Manter sigilo e aguardar que Luísa verbaliza o abuso espontaneamente, preservando o vínculo terapêutico com a família e evitando acusações prematuras sem confissão da própria criança.</p></div>
+      <div class="alt"><span class="alt-letra">B</span><p>Comunicar à direção escolar para que a instituição encaminhe ao CT, pois a notificação ao Conselho Tutelar é atribuição exclusiva da gestão e não do psicólogo que realiza o atendimento.</p></div>
+      <div class="alt alt-correta"><span class="alt-letra">C</span><p>Notificar o Conselho Tutelar (ECA, Art. 13) independentemente da negação da mãe, pois a suspeita de violência contra criança gera obrigação legal de comunicação — o que não configura violação do sigilo profissional.</p></div>
+      <div class="alt"><span class="alt-letra">D</span><p>Encaminhar ao CAPSi para confirmação diagnóstica antes de qualquer notificação, pois é necessário laudo de serviço especializado para legitimar juridicamente a comunicação ao Conselho Tutelar.</p></div>
+    </div>
+  </div>
+
+  <div class="pg-num">5</div>
+</div>
+
+<!-- ========== PÁGINA 6 — Q08 + Q09 + Q10 ========== -->
+<div class="pagina pg-interna">
+  <div class="pg-header">
+    <div class="pg-header-left">
+      <svg width="14" height="16" viewBox="0 0 38 44" fill="none">
+        <polygon points="19,2 36,11.5 36,32.5 19,42 2,32.5 2,11.5" fill="#1F5C23"/>
+        <circle cx="19" cy="22" r="8.5" fill="#F6F4ED"/>
+      </svg>
+      <span class="pg-header-marca">Elite Treinamentos</span>
+      <div class="pg-header-sep"></div>
+      <span class="pg-header-bloco">Psicologia · Bloco B11 · Simulado Final</span>
+    </div>
+    <div class="pg-header-right">SIMULADO</div>
+  </div>
+
+  <!-- Q08 -->
+  <div class="questao-bloco">
+    <div class="questao-header">
+      <div class="questao-num">08</div>
+      <div class="questao-meta">
+        <span class="questao-banca">PSI-SAUDE · Suicídio</span>
+        <span class="questao-tema">Avaliação de Risco · PIMA · Mitos</span>
+      </div>
+    </div>
+    <div class="questao-enunciado">
+      <p>Fernanda, 22 anos, atendida em UBS, relata pensamentos recorrentes de morte. Na consulta, diz: "Prefiro não falar sobre isso — tenho medo de ser internada ou de você contar para minha família." Qual a conduta mais adequada da psicóloga?</p>
+    </div>
+    <div class="alternativas">
+      <div class="alt alt-correta"><span class="alt-letra">A</span><p>Explorar diretamente a ideação suicida de Fernanda — plano, intenção, meios e tentativas anteriores (PIMA) — esclarecendo que perguntar sobre suicídio não aumenta o risco e que as decisões sobre sigilo e internação dependem da avaliação, não da simples menção do assunto.</p></div>
+      <div class="alt"><span class="alt-letra">B</span><p>Evitar perguntar diretamente sobre suicídio para não iatrogenizar, encaminhando Fernanda ao CAPS para avaliação especializada antes de prosseguir com qualquer intervenção na APS.</p></div>
+      <div class="alt"><span class="alt-letra">C</span><p>Garantir sigilo absoluto e ausência de internação independentemente do que Fernanda revelar, como estratégia para criar aliança terapêutica e viabilizar a abertura do diálogo sobre os pensamentos de morte.</p></div>
+      <div class="alt"><span class="alt-letra">D</span><p>Comunicar imediatamente à família de Fernanda, pois qualquer pensamento de morte justifica a quebra do sigilo e o envolvimento familiar como principal rede de suporte e proteção.</p></div>
+    </div>
+  </div>
+
+  <div class="sep-questao"></div>
+
+  <!-- Q09 -->
+  <div class="questao-bloco">
+    <div class="questao-header">
+      <div class="questao-num">09</div>
+      <div class="questao-meta">
+        <span class="questao-banca">PSI-SAUDE · RAPS</span>
+        <span class="questao-tema">CAPS III · SRT · PVC · Portaria 3.088/2011</span>
+      </div>
+    </div>
+    <div class="questao-enunciado">
+      <p>Sobre os componentes da RAPS (Portaria 3.088/2011), assinale a alternativa <strong>correta</strong>:</p>
+    </div>
+    <div class="alternativas">
+      <div class="alt"><span class="alt-letra">A</span><p>O CAPS II atende municípios com mais de 200.000 habitantes, funciona em horário comercial e possui leitos de observação para situações de crise com acolhimento noturno.</p></div>
+      <div class="alt"><span class="alt-letra">B</span><p>O Programa de Volta para Casa (PVC), Lei 10.708/2003, destina-se a pessoas com no mínimo 6 meses de internação psiquiátrica contínua, oferecendo auxílio-reabilitação psicossocial para reinserção social.</p></div>
+      <div class="alt alt-correta"><span class="alt-letra">C</span><p>O CAPS III destina-se a municípios com mais de 200.000 habitantes, funciona 24 horas por dia, 7 dias por semana e em feriados, com leitos de acolhimento noturno. O Serviço Residencial Terapêutico (SRT) é destinado a egressos de longas internações e admite no máximo 8 moradores por unidade.</p></div>
+      <div class="alt"><span class="alt-letra">D</span><p>A Unidade de Acolhimento (UA) é destinada exclusivamente a adultos com transtornos pelo uso de álcool e outras drogas, com permanência de até 12 meses, sendo vedado o acolhimento de crianças e adolescentes.</p></div>
+    </div>
+  </div>
+
+  <div class="sep-questao"></div>
+
+  <!-- Q10 -->
+  <div class="questao-bloco">
+    <div class="questao-header">
+      <div class="questao-num">10</div>
+      <div class="questao-meta">
+        <span class="questao-banca">PSI-ETICA · Ética Profissional</span>
+        <span class="questao-tema">Sigilo · Duplo Papel · Contexto Clínico vs. Organizacional</span>
+      </div>
+    </div>
+    <div class="questao-enunciado">
+      <p>Sofia atendeu Jorge em psicoterapia por 10 meses. Após a alta, a empresa de Jorge solicita a Sofia um laudo psicológico detalhado para subsidiar decisão de promoção. Sofia sabe que o laudo exigiria usar informações da terapia. Qual a conduta eticamente correta?</p>
+    </div>
+    <div class="alternativas">
+      <div class="alt"><span class="alt-letra">A</span><p>Elaborar o laudo com base nas informações da terapia, pois o processo terapêutico foi encerrado e a empresa, como pagadora do tratamento, tem direito às informações produzidas.</p></div>
+      <div class="alt alt-correta"><span class="alt-letra">B</span><p>Recusar a elaboração do laudo organizacional, pois as informações obtidas no contexto clínico individual são protegidas pelo sigilo terapêutico — que não cessa com o término do processo — e não podem ser redirecionadas para fins avaliativos/organizacionais distintos do contexto original.</p></div>
+      <div class="alt"><span class="alt-letra">C</span><p>Elaborar o laudo omitindo os conteúdos mais sensíveis da terapia, pois a alta de Jorge autoriza implicitamente o uso das informações remanescentes para fins profissionais e de desenvolvimento de carreira.</p></div>
+      <div class="alt"><span class="alt-letra">D</span><p>Solicitar autorização escrita de Jorge e da empresa simultaneamente; se ambos concordarem, pode incluir livremente qualquer conteúdo terapêutico no laudo, pois o consentimento duplo legitima o uso das informações.</p></div>
+    </div>
+  </div>
+
+  <div class="pg-num">6</div>
+</div>
+
+<!-- ========== PÁGINA 7 — GABARITO OFICIAL + JUSTIFICATIVAS Q01–Q05 ========== -->
+<div class="pagina gabarito-pg">
+  <div class="pg-header" style="display:flex;justify-content:space-between;align-items:center;border-bottom:0.6px solid var(--verde);padding-bottom:2.5mm;margin-bottom:4mm;">
+    <div style="display:flex;align-items:center;gap:3mm;">
+      <svg width="14" height="16" viewBox="0 0 38 44" fill="none">
+        <polygon points="19,2 36,11.5 36,32.5 19,42 2,32.5 2,11.5" fill="#1F5C23"/>
+        <circle cx="19" cy="22" r="8.5" fill="#F6F4ED"/>
+      </svg>
+      <span class="pg-header-marca">Elite Treinamentos</span>
+      <div class="pg-header-sep"></div>
+      <span class="pg-header-bloco">Psicologia · Bloco B11 · Simulado Final</span>
+    </div>
+    <div class="pg-header-right">GABARITO</div>
+  </div>
+
+  <div class="gabarito-titulo">Gabarito Oficial</div>
+
+  <div class="gab-rapido" style="margin-bottom:5mm;">
+    <div class="gab-rapido-item"><span class="gab-rapido-q">Q01</span><span class="gab-rapido-letra">B</span></div>
+    <div class="gab-rapido-item"><span class="gab-rapido-q">Q02</span><span class="gab-rapido-letra">C</span></div>
+    <div class="gab-rapido-item"><span class="gab-rapido-q">Q03</span><span class="gab-rapido-letra">A</span></div>
+    <div class="gab-rapido-item"><span class="gab-rapido-q">Q04</span><span class="gab-rapido-letra">B</span></div>
+    <div class="gab-rapido-item"><span class="gab-rapido-q">Q05</span><span class="gab-rapido-letra">C</span></div>
+    <div class="gab-rapido-item"><span class="gab-rapido-q">Q06</span><span class="gab-rapido-letra">B</span></div>
+    <div class="gab-rapido-item"><span class="gab-rapido-q">Q07</span><span class="gab-rapido-letra">C</span></div>
+    <div class="gab-rapido-item"><span class="gab-rapido-q">Q08</span><span class="gab-rapido-letra">A</span></div>
+    <div class="gab-rapido-item"><span class="gab-rapido-q">Q09</span><span class="gab-rapido-letra">C</span></div>
+    <div class="gab-rapido-item"><span class="gab-rapido-q">Q10</span><span class="gab-rapido-letra">B</span></div>
+  </div>
+
+  <div class="justificativa">
+    <div class="justificativa-q"><span class="justificativa-letra">B</span> Q01 — PSI-TEORIA · Atos Falhos</div>
+    <p><strong>B correta:</strong> Atos falhos (Psicopatologia da Vida Cotidiana, Freud) são manifestações do inconsciente que contornam a censura: esquecimentos, lapsos de língua e erros aparentemente acidentais expressam desejos reprimidos. A raiva inconsciente de Pedro se manifesta no atraso sistemático. <strong>A errada</strong> — sublimação implica transformação construtiva da pulsão; <strong>C</strong> — formação reativa produziria pontualidade excessiva; <strong>D</strong> — fixação anal remeteria a questões de controle, não a relação de autoridade com raiva reprimida.</p>
+  </div>
+
+  <div class="justificativa">
+    <div class="justificativa-q"><span class="justificativa-letra">C</span> Q02 — PSI-ETICA · Documentos Psicológicos</div>
+    <p><strong>C correta:</strong> Res. CFP 006/2019 distingue anotações pessoais (uso técnico interno — não precisam ser entregues) de documentos psicológicos formais (laudo, relatório, declaração — fornecidos quando solicitados). <strong>A errada</strong> — o direito do cliente não é irrestrito às anotações de rascunho; <strong>B</strong> — recusa total viola o direito de acesso a informações sobre si; <strong>D</strong> — essa decisão está dentro da competência do próprio psicólogo.</p>
+  </div>
+
+  <div class="justificativa">
+    <div class="justificativa-q"><span class="justificativa-letra">A</span> Q03 — PSI-AVALIA · SATEPSI</div>
+    <p><strong>A correta:</strong> Res. CFP 009/2018 é absoluta — parecer <em>desfavorável</em> = VEDADO o uso em avaliação psicológica, sem exceções. Não há recurso ao CFP regional, nem uso para pesquisa como alternativa. <strong>B, C, D</strong> introduzem flexibilizações que a norma não permite — armadilha clássica do ENARE/FGV.</p>
+  </div>
+
+  <div class="justificativa">
+    <div class="justificativa-q"><span class="justificativa-letra">B</span> Q04 — PSI-ORGAN · Burnout</div>
+    <p><strong>B correta:</strong> as 3 dimensões de Maslach estão explicitamente presentes: exaustão emocional ("esgotamento extremo"), despersonalização ("virou um robô", distanciamento) e reduzida realização profissional ("não faz diferença"). CID-11 QD85 = fenômeno ocupacional, não doença mental. <strong>D errada</strong> — afirma que só 2 dimensões estão presentes, o que é incorreto dada a descrição do caso.</p>
+  </div>
+
+  <div class="justificativa">
+    <div class="justificativa-q"><span class="justificativa-letra">C</span> Q05 — PSI-SAUDE · Lei 10.216/2001</div>
+    <p><strong>C correta:</strong> Lei 10.216/2001 determina que a internação involuntária (solicitada por familiar) deve ser comunicada ao <em>Ministério Público estadual</em> em até <strong>72 horas</strong>. Não exige autorização judicial prévia (que seria o caso da internação compulsória). <strong>A</strong> — o prazo de 48h para o juiz é ficção; <strong>B</strong> — SINAN não se aplica; <strong>D</strong> — registro cartorial não tem previsão legal.</p>
+  </div>
+
+  <div class="pg-num">7</div>
+</div>
+
+<!-- ========== PÁGINA 8 — JUSTIFICATIVAS Q06–Q10 ========== -->
+<div class="pagina gabarito-pg">
+  <div class="pg-header" style="display:flex;justify-content:space-between;align-items:center;border-bottom:0.6px solid var(--verde);padding-bottom:2.5mm;margin-bottom:4mm;">
+    <div style="display:flex;align-items:center;gap:3mm;">
+      <svg width="14" height="16" viewBox="0 0 38 44" fill="none">
+        <polygon points="19,2 36,11.5 36,32.5 19,42 2,32.5 2,11.5" fill="#1F5C23"/>
+        <circle cx="19" cy="22" r="8.5" fill="#F6F4ED"/>
+      </svg>
+      <span class="pg-header-marca">Elite Treinamentos</span>
+      <div class="pg-header-sep"></div>
+      <span class="pg-header-bloco">Psicologia · Bloco B11 · Simulado Final</span>
+    </div>
+    <div class="pg-header-right">GABARITO</div>
+  </div>
+
+  <div class="gabarito-titulo">Justificativas Q06–Q10</div>
+
+  <div class="justificativa">
+    <div class="justificativa-q"><span class="justificativa-letra">B</span> Q06 — PSI-SAUDE · AD · Entrevista Motivacional</div>
+    <p><strong>B correta:</strong> "Às vezes penso em parar, às vezes não" = ambivalência clássica do estágio de <em>contemplação</em> (Prochaska &amp; DiClemente). A EM é a intervenção de escolha na contemplação — trabalha a ambivalência sem confrontação direta, evocar falas de mudança, balanço decisional. <strong>A errada</strong> — ação pressupõe decisão tomada e plano ativo; <strong>C</strong> — o grupo é recurso complementar, não prioritário sobre a EM no estágio de contemplação; <strong>D</strong> — psicólogo não prescreve medicação.</p>
+  </div>
+
+  <div class="justificativa">
+    <div class="justificativa-q"><span class="justificativa-letra">C</span> Q07 — PSI-SAUDE · ECA · Notificação</div>
+    <p><strong>C correta:</strong> ECA Art. 13 — suspeita ou confirmação de violência contra criança gera obrigação legal de notificação ao Conselho Tutelar. Essa obrigação: (1) independe de confissão ou BO; (2) não exige confirmação por serviço especializado; (3) não viola o sigilo profissional — é obrigação legal expressa; (4) a negação da mãe não impede a notificação. <strong>B errada</strong> — a notificação não é exclusividade da gestão, qualquer profissional que trabalha com crianças pode e deve notificar.</p>
+  </div>
+
+  <div class="justificativa">
+    <div class="justificativa-q"><span class="justificativa-letra">A</span> Q08 — PSI-SAUDE · Suicídio · Avaliação PIMA</div>
+    <p><strong>A correta:</strong> perguntar diretamente sobre suicídio é obrigação clínica e <em>não</em> aumenta o risco — isso é mito refutado pela evidência. A avaliação PIMA (Plano, Intenção, Meios, Anterior) é o padrão-ouro. <strong>B errada</strong> — evitar perguntar é conduta contraindicada; <strong>C</strong> — garantir sigilo <em>absoluto</em> é promessa impossível de cumprir quando há risco de vida (viola a ética); <strong>D</strong> — comunicar família automaticamente sem avaliar o risco é conduta desproporcional e prematura.</p>
+  </div>
+
+  <div class="justificativa">
+    <div class="justificativa-q"><span class="justificativa-letra">C</span> Q09 — PSI-SAUDE · RAPS</div>
+    <p><strong>C correta:</strong> CAPS III → &gt;200k hab., 24h/7d/feriados, leitos de acolhimento. SRT → egressos de longas internações, máx. 8 moradores. <strong>A errada</strong> — CAPS II é para &gt;70k hab., não tem leitos de acolhimento noturno (isso é CAPS III). <strong>B errada</strong> — PVC (Lei 10.708/2003) exige mínimo de <strong>2 anos</strong> de internação, não 6 meses. <strong>D errada</strong> — UA existe em versão adulto E infanto-juvenil (não exclusiva para adultos); permanência de até <strong>6 meses</strong> (não 12).</p>
+  </div>
+
+  <div class="justificativa">
+    <div class="justificativa-q"><span class="justificativa-letra">B</span> Q10 — PSI-ETICA · Duplo Papel</div>
+    <p><strong>B correta:</strong> o sigilo das informações terapêuticas é <em>permanente</em> — não cessa com a alta. O psicólogo não pode transitar do papel de terapeuta para avaliador organizacional com o mesmo indivíduo, pois viola o sigilo e a confiança terapêutica. <strong>A errada</strong> — quem paga o tratamento não tem direito às informações clínicas; <strong>C</strong> — omitir parte não resolve o conflito de papéis; <strong>D</strong> — o consentimento posterior não retroage para legitimar o desvio da finalidade original do atendimento clínico.</p>
+  </div>
+
+  <div style="margin-top:3mm; padding:2.5mm 4mm; background:rgba(31,92,35,0.06); border-radius:1.5mm; border:0.5px solid rgba(31,92,35,0.2);">
+    <p style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:8pt;color:var(--verde);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:1mm;">Pontuação</p>
+    <p style="font-size:7pt;">10/10 = Excelente · 8–9/10 = Muito bom · 6–7/10 = Bom, revisar erros · &lt;6/10 = Releia as aulas e refaça o simulado</p>
+  </div>
+
+  <div class="pg-num">8</div>
+</div>
+
+<!-- ========== PÁGINA 9 — DIAGNÓSTICO POR MÓDULO ========== -->
+<div class="pagina sintese-pg">
+  <div class="pg-header" style="display:flex;justify-content:space-between;align-items:center;border-bottom:0.6px solid var(--verde);padding-bottom:2.5mm;margin-bottom:4mm;">
+    <div style="display:flex;align-items:center;gap:3mm;">
+      <svg width="14" height="16" viewBox="0 0 38 44" fill="none">
+        <polygon points="19,2 36,11.5 36,32.5 19,42 2,32.5 2,11.5" fill="#1F5C23"/>
+        <circle cx="19" cy="22" r="8.5" fill="#F6F4ED"/>
+      </svg>
+      <span class="pg-header-marca">Elite Treinamentos</span>
+      <div class="pg-header-sep"></div>
+      <span class="pg-header-bloco">Psicologia · Bloco B11 · Simulado Final</span>
+    </div>
+    <div class="pg-header-right">DIAGNÓSTICO</div>
+  </div>
+
+  <div class="sintese-titulo">Diagnóstico por Módulo</div>
+
+  <div class="grade-temas">
+    <div class="tema-card">
+      <div class="tema-card-header">
+        <span class="tema-card-titulo">PSI-SAUDE (47%)</span>
+        <span class="tema-card-pct">Q05 · Q06 · Q07 · Q08 · Q09</span>
+      </div>
+      <div class="tema-card-body">
+        <p><strong>Q05:</strong> Lei 10.216 — MP 72h internação involuntária<br><strong>Q06:</strong> EM — contemplação + ambivalência<br><strong>Q07:</strong> ECA Art. 13 — CT obrigatório<br><strong>Q08:</strong> Suicídio — PIMA, mito "perguntar aumenta risco"<br><strong>Q09:</strong> RAPS — CAPS III, SRT, PVC (2 anos), UA</p>
+      </div>
+    </div>
+    <div class="tema-card">
+      <div class="tema-card-header">
+        <span class="tema-card-titulo">PSI-TEORIA (17%)</span>
+        <span class="tema-card-pct">Q01</span>
+      </div>
+      <div class="tema-card-body">
+        <p><strong>Q01:</strong> Atos falhos (Freud) — manifestação do inconsciente via lapsos de comportamento; distinguir de sublimação e formação reativa</p>
+        <p style="margin-top:2mm;"><strong>Recomendações de revisão:</strong> instâncias (id/ego/superego), mecanismos de defesa, fases do desenvolvimento libidinal, Psicologia Analítica (Jung), Humanismo (Rogers, Maslow)</p>
+      </div>
+    </div>
+    <div class="tema-card">
+      <div class="tema-card-header">
+        <span class="tema-card-titulo">PSI-ETICA (11%)</span>
+        <span class="tema-card-pct">Q02 · Q10</span>
+      </div>
+      <div class="tema-card-body">
+        <p><strong>Q02:</strong> Documentos psicológicos (Res. 006/2019) — anotações pessoais vs. documentos formais<br><strong>Q10:</strong> Duplo papel — terapeuta não pode virar avaliador; sigilo permanente após alta</p>
+      </div>
+    </div>
+    <div class="tema-card">
+      <div class="tema-card-header">
+        <span class="tema-card-titulo">PSI-AVALIA (5%)</span>
+        <span class="tema-card-pct">Q03</span>
+      </div>
+      <div class="tema-card-body">
+        <p><strong>Q03:</strong> SATEPSI — desfavorável = vedado sem exceção (Res. 009/2018). Armadilha: FGV apresenta "saídas parciais" que não existem na norma.</p>
+        <p style="margin-top:2mm;"><strong>Recomendações:</strong> 3 pareceres SATEPSI (favorável/desfavorável/provisório), documentos psicológicos, contextos de avaliação (forense, organizacional, clínico)</p>
+      </div>
+    </div>
+    <div class="tema-card">
+      <div class="tema-card-header">
+        <span class="tema-card-titulo">PSI-ORGAN (7%)</span>
+        <span class="tema-card-pct">Q04</span>
+      </div>
+      <div class="tema-card-body">
+        <p><strong>Q04:</strong> Burnout (Maslach) — 3 dimensões obrigatórias: exaustão + despersonalização + reduzida realização. CID-11 = QD85 = fenômeno ocupacional.</p>
+        <p style="margin-top:2mm;"><strong>Recomendações:</strong> Karasek (alta tensão), ERI (Siegrist), NR-17, assédio moral (reiteração obrigatória), DORT/LER</p>
+      </div>
+    </div>
+    <div class="tema-card">
+      <div class="tema-card-header">
+        <span class="tema-card-titulo">PSI-APS (1%)</span>
+        <span class="tema-card-pct">Revisão Integrada</span>
+      </div>
+      <div class="tema-card-body">
+        <p>Não houve questão dedicada neste simulado. Revise:<br>· NASF-AB ≠ porta de entrada<br>· Apoio matricial Campos: assistencial + pedagógico-consultiva<br>· PTS: 4 momentos, multiprofissional, singular</p>
+      </div>
+    </div>
+  </div>
+
+  <div style="padding:3mm 4mm; background:rgba(31,92,35,0.06); border-radius:1.5mm; border-left:3px solid var(--accent);">
+    <p style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:8pt;color:var(--verde);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:1mm;">Padrão FGV — O que nunca erra quem acerta</p>
+    <ul class="lista">
+      <li>Sigilo não é absoluto: cede diante de risco de vida (Res. CFP 010/2005, Art. 9º) e obrigações legais (SINAN, CT, Lei do Idoso).</li>
+      <li>SATEPSI desfavorável = vedado sem exceção. NASF-AB não é porta de entrada nem substitui equipe ESF.</li>
+      <li>Internação involuntária → comunicar MP em 72h (não juiz, não cartório). PVC = 2 anos de internação (não 6 meses).</li>
+      <li>Perguntar sobre suicídio não aumenta risco — é mito. Recaída é fase esperada nos estágios de mudança.</li>
+      <li>Atos falhos ≠ sublimação ≠ formação reativa. Cada mecanismo tem lógica distinta na metapsicologia freudiana.</li>
+    </ul>
+  </div>
+
+  <div class="pg-num">9</div>
+</div>
+
+<!-- ========== PÁGINA 10 — MAPA FINAL DO BLOCO B11 ========== -->
+<div class="pagina sintese-pg">
+  <div class="pg-header" style="display:flex;justify-content:space-between;align-items:center;border-bottom:0.6px solid var(--verde);padding-bottom:2.5mm;margin-bottom:4mm;">
+    <div style="display:flex;align-items:center;gap:3mm;">
+      <svg width="14" height="16" viewBox="0 0 38 44" fill="none">
+        <polygon points="19,2 36,11.5 36,32.5 19,42 2,32.5 2,11.5" fill="#1F5C23"/>
+        <circle cx="19" cy="22" r="8.5" fill="#F6F4ED"/>
+      </svg>
+      <span class="pg-header-marca">Elite Treinamentos</span>
+      <div class="pg-header-sep"></div>
+      <span class="pg-header-bloco">Psicologia · Bloco B11 — Encerramento</span>
+    </div>
+    <div class="pg-header-right">MAPA FINAL</div>
+  </div>
+
+  <div class="sintese-titulo">Mapa Final — Bloco B11 · 22 Aulas</div>
+
+  <table style="width:100%;border-collapse:collapse;font-size:6.8pt;margin-bottom:4mm;">
+    <tr>
+      <th style="background:var(--verde);color:var(--creme);font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:7.5pt;text-transform:uppercase;padding:2mm 2.5mm;text-align:left;">Aulas</th>
+      <th style="background:var(--verde);color:var(--creme);font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:7.5pt;text-transform:uppercase;padding:2mm 2.5mm;text-align:left;">Módulo</th>
+      <th style="background:var(--verde);color:var(--creme);font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:7.5pt;text-transform:uppercase;padding:2mm 2.5mm;text-align:left;">Temas Centrais</th>
+    </tr>
+    <tr><td style="padding:1.5mm 2.5mm;border-bottom:0.5px solid rgba(31,92,35,0.12);font-family:'Barlow Condensed',sans-serif;font-weight:800;color:var(--verde);">01–03</td><td style="padding:1.5mm 2.5mm;border-bottom:0.5px solid rgba(31,92,35,0.12);">PSI-TEORIA</td><td style="padding:1.5mm 2.5mm;border-bottom:0.5px solid rgba(31,92,35,0.12);">Psicanálise (Freud, Lacan) · Behaviorismo/TCC · Humanismo (Rogers, Maslow) · Gestalt · Psicologia Analítica</td></tr>
+    <tr style="background:rgba(31,92,35,0.04);"><td style="padding:1.5mm 2.5mm;border-bottom:0.5px solid rgba(31,92,35,0.12);font-family:'Barlow Condensed',sans-serif;font-weight:800;color:var(--verde);">04–06</td><td style="padding:1.5mm 2.5mm;border-bottom:0.5px solid rgba(31,92,35,0.12);">PSI-ETICA</td><td style="padding:1.5mm 2.5mm;border-bottom:0.5px solid rgba(31,92,35,0.12);">CFP · Código de Ética · Sigilo (Res. 010/2005) · SATEPSI (Res. 009/2018) · Documentos (Res. 006/2019) · Duplo papel</td></tr>
+    <tr><td style="padding:1.5mm 2.5mm;border-bottom:0.5px solid rgba(31,92,35,0.12);font-family:'Barlow Condensed',sans-serif;font-weight:800;color:var(--verde);">07–09</td><td style="padding:1.5mm 2.5mm;border-bottom:0.5px solid rgba(31,92,35,0.12);">PSI-CLINICA</td><td style="padding:1.5mm 2.5mm;border-bottom:0.5px solid rgba(31,92,35,0.12);">Entrevista · Escuta clínica · Abordagens (TCC/psicodinâmica/humanista) · Intervenção em crise · Psicoterapia breve</td></tr>
+    <tr style="background:rgba(31,92,35,0.04);"><td style="padding:1.5mm 2.5mm;border-bottom:0.5px solid rgba(31,92,35,0.12);font-family:'Barlow Condensed',sans-serif;font-weight:800;color:var(--verde);">10–11</td><td style="padding:1.5mm 2.5mm;border-bottom:0.5px solid rgba(31,92,35,0.12);">PSI-AVALIA</td><td style="padding:1.5mm 2.5mm;border-bottom:0.5px solid rgba(31,92,35,0.12);">Avaliação psicológica (multimétodo) · SATEPSI · Documentos · Contextos (forense, organizacional, clínico)</td></tr>
+    <tr><td style="padding:1.5mm 2.5mm;border-bottom:0.5px solid rgba(31,92,35,0.12);font-family:'Barlow Condensed',sans-serif;font-weight:800;color:var(--verde);">12–14</td><td style="padding:1.5mm 2.5mm;border-bottom:0.5px solid rgba(31,92,35,0.12);">PSI-ORGAN</td><td style="padding:1.5mm 2.5mm;border-bottom:0.5px solid rgba(31,92,35,0.12);">Burnout (Maslach/CID-11 QD85) · Karasek/ERI · Assédio moral · DORT/NR-17 · QVT (Walton) · RENAST/CEREST</td></tr>
+    <tr style="background:rgba(31,92,35,0.04);"><td style="padding:1.5mm 2.5mm;border-bottom:0.5px solid rgba(31,92,35,0.12);font-family:'Barlow Condensed',sans-serif;font-weight:800;color:var(--verde);">15–20</td><td style="padding:1.5mm 2.5mm;border-bottom:0.5px solid rgba(31,92,35,0.12);">PSI-SAUDE</td><td style="padding:1.5mm 2.5mm;border-bottom:0.5px solid rgba(31,92,35,0.12);">Lei 10.216 · RAPS/CAPS · AD (SISNAD/RD/EM) · TEA/TDAH/ECA · Suicídio/NSSI · Violência (LMP/Prot.Sexual/Idoso)</td></tr>
+    <tr><td style="padding:1.5mm 2.5mm;font-family:'Barlow Condensed',sans-serif;font-weight:800;color:var(--verde);">21</td><td style="padding:1.5mm 2.5mm;">PSI-APS</td><td style="padding:1.5mm 2.5mm;">NASF-AB · Apoio matricial (Campos) · PTS/PST · Clínica ampliada · Atributos APS (Starfield)</td></tr>
+  </table>
+
+  <div class="conquista-banner">
+    <div class="conquista-titulo">Bloco B11 Concluído</div>
+    <p class="conquista-texto">
+      <strong>22 aulas · PSI-SAUDE, PSI-TEORIA, PSI-ETICA, PSI-CLINICA, PSI-ORGAN, PSI-AVALIA e PSI-APS.</strong><br>
+      Você cobriu toda a grade de Psicologia do ENARE 2026 no Extensivo Bloco B11. Mantenha a revisão ativa:
+      releia gabaritos de questões erradas, use os mapas mentais de síntese de cada aula e realize questões
+      de provas anteriores (ENARE 2023–2025) focando nos módulos de maior frequência —
+      <strong>PSI-SAUDE (47%)</strong> e <strong>PSI-TEORIA (17%)</strong> respondem por quase dois terços das questões.
+    </p>
+  </div>
+
+  <div class="pg-num">10</div>
+</div>
+
+</body>
+</html>
