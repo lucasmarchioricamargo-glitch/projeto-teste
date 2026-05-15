@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Psicologia B11 — Aula 03 | PSI-SAUDE: CAPS — PTS, Acolhimento em Crise e Clínica Territorial</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #d0d0d0; font-family: 'Bricolage Grotesque', sans-serif; }
+  .page { width: 210mm; height: 297mm; background: #F6F4ED; margin: 8mm auto; position: relative; overflow: hidden; display: flex; flex-direction: column; }
+  @media print { body { background: none; margin: 0; } .page { margin: 0; page-break-after: always; box-shadow: none; } }
+  @page { size: A4; margin: 0; }
+
+  .page-header { background: #1F5C23; padding: 4mm 6mm; display: flex; align-items: center; gap: 4mm; flex-shrink: 0; }
+  .logo-svg { width: 10mm; height: 10mm; flex-shrink: 0; }
+  .header-text { flex: 1; }
+  .header-course { font-family: 'Playfair Display', serif; font-style: italic; color: #C6D834; font-size: 6.5pt; letter-spacing: 0.03em; }
+  .header-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: #F6F4ED; font-size: 11pt; line-height: 1; text-transform: uppercase; letter-spacing: 0.04em; }
+  .header-badge { background: #C6D834; color: #1F5C23; font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 7pt; padding: 1mm 3mm; border-radius: 2mm; text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap; }
+
+  .page-footer { background: #1F5C23; padding: 2mm 6mm; display: flex; justify-content: space-between; align-items: center; flex-shrink: 0; }
+  .footer-left { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: #C6D834; font-size: 6pt; letter-spacing: 0.05em; text-transform: uppercase; }
+  .footer-right { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: #F6F4ED; font-size: 8pt; letter-spacing: 0.06em; }
+
+  .page-body { flex: 1; padding: 5mm 7mm; display: flex; flex-direction: column; gap: 3mm; overflow: hidden; }
+
+  .section-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 13pt; color: #1F5C23; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 0.8mm solid #C6D834; padding-bottom: 1.5mm; margin-bottom: 1mm; }
+
+  .box { background: #fff; border-left: 1.2mm solid #1F5C23; border-radius: 1mm; padding: 3mm 4mm; font-size: 7.8pt; line-height: 1.45; color: #222; }
+  .box.accent { border-left-color: #C6D834; }
+  .box.alert  { border-left-color: #c0392b; background: #fff8f7; }
+  .box.dark   { background: #1F5C23; color: #F6F4ED; border-left-color: #C6D834; }
+  .box-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; color: #1F5C23; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 1.5mm; }
+  .box.dark .box-title  { color: #C6D834; }
+  .box.alert .box-title { color: #c0392b; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 7.5pt; }
+  th { background: #1F5C23; color: #F6F4ED; font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 8pt; text-transform: uppercase; padding: 1.5mm 2.5mm; text-align: left; letter-spacing: 0.03em; }
+  td { padding: 1.5mm 2.5mm; border-bottom: 0.3mm solid #e0ddd5; vertical-align: top; color: #222; line-height: 1.4; }
+  tr:nth-child(even) td { background: #f4f2eb; }
+  td strong { color: #1F5C23; }
+
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5mm; }
+  .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2mm; }
+
+  /* PTS steps */
+  .pts-step { display: flex; gap: 3mm; align-items: flex-start; padding: 2mm 3mm; background: #fff; border-radius: 1mm; margin-bottom: 1.5mm; font-size: 7.8pt; line-height: 1.4; }
+  .pts-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 13pt; color: #C6D834; background: #1F5C23; min-width: 7mm; height: 7mm; border-radius: 1mm; display: flex; align-items: center; justify-content: center; flex-shrink: 0; line-height: 1; }
+  .pts-content strong { color: #1F5C23; font-family: 'Barlow Condensed', sans-serif; font-size: 9pt; text-transform: uppercase; display: block; margin-bottom: 0.5mm; }
+
+  /* caso clínico */
+  .caso-block { background: #fff; border: 0.5mm solid #1F5C23; border-radius: 1.5mm; overflow: hidden; font-size: 7.5pt; line-height: 1.4; }
+  .caso-header { background: #1F5C23; color: #F6F4ED; font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 8.5pt; text-transform: uppercase; padding: 1.5mm 3mm; letter-spacing: 0.04em; }
+  .caso-header span { color: #C6D834; }
+  .caso-body { padding: 2.5mm 3mm; }
+  .caso-cond { background: #f0f8f0; border-left: 1mm solid #1F5C23; padding: 1.5mm 2.5mm; margin-top: 1.5mm; border-radius: 0 1mm 1mm 0; font-size: 7.5pt; }
+  .caso-cond strong { color: #1F5C23; font-family: 'Barlow Condensed', sans-serif; font-size: 8pt; text-transform: uppercase; }
+
+  /* fluxo crise */
+  .fluxo { display: flex; align-items: center; gap: 1.5mm; flex-wrap: wrap; }
+  .fluxo-step { background: #1F5C23; color: #F6F4ED; font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 7.5pt; padding: 1.5mm 2.5mm; border-radius: 1mm; text-transform: uppercase; text-align: center; flex: 1; min-width: 22mm; }
+  .fluxo-arrow { color: #C6D834; font-size: 10pt; font-weight: 800; flex-shrink: 0; }
+
+  /* questão */
+  .q-stem { background: #fff; border: 0.5mm solid #ddd; border-radius: 1.5mm; padding: 3mm 4mm; font-size: 8pt; line-height: 1.5; color: #222; margin-bottom: 2mm; }
+  .q-stem-label { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; color: #1F5C23; text-transform: uppercase; margin-bottom: 1.5mm; }
+  .q-option { display: flex; gap: 2mm; padding: 1.5mm 2.5mm; border-radius: 1mm; margin-bottom: 1mm; border: 0.4mm solid #e0ddd5; background: #fff; font-size: 7.8pt; line-height: 1.4; align-items: flex-start; }
+  .q-option.correct { background: #f0f8f0; border-color: #1F5C23; }
+  .q-option.wrong   { background: #fff8f7; border-color: #e0a0a0; }
+  .q-letter { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; color: #1F5C23; min-width: 4mm; flex-shrink: 0; margin-top: -0.3mm; }
+  .q-option.correct .q-letter { color: #1F5C23; }
+  .q-option.wrong   .q-letter { color: #c0392b; }
+
+  /* afirmativas */
+  .afirmativa { display: flex; gap: 2mm; padding: 2mm 3mm; border-radius: 1mm; margin-bottom: 1.5mm; font-size: 7.8pt; line-height: 1.45; align-items: flex-start; }
+  .afirmativa.certa  { background: #f0f8f0; border-left: 1mm solid #1F5C23; }
+  .afirmativa.errada { background: #fff8f7; border-left: 1mm solid #c0392b; }
+  .af-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; min-width: 5mm; flex-shrink: 0; }
+  .afirmativa.certa  .af-num { color: #1F5C23; }
+  .afirmativa.errada .af-num { color: #c0392b; }
+  .af-verdict { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 8pt; padding: 0.3mm 2mm; border-radius: 0.8mm; flex-shrink: 0; }
+  .afirmativa.certa  .af-verdict { background: #1F5C23; color: #F6F4ED; }
+  .afirmativa.errada .af-verdict { background: #c0392b; color: #fff; }
+
+  .gab-box { display: flex; gap: 3mm; align-items: center; background: #1F5C23; color: #F6F4ED; border-radius: 1.5mm; padding: 2.5mm 4mm; margin-bottom: 2mm; }
+  .gab-letter { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 20pt; color: #C6D834; line-height: 1; }
+  .gab-info { flex: 1; font-size: 7.8pt; line-height: 1.4; }
+  .gab-info strong { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; text-transform: uppercase; letter-spacing: 0.03em; }
+
+  .sintese-item { display: flex; gap: 2mm; padding: 2mm 3mm; border-radius: 1mm; margin-bottom: 1.5mm; background: #fff; border-left: 1mm solid #1F5C23; font-size: 7.8pt; line-height: 1.4; align-items: flex-start; }
+  .sintese-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: #1F5C23; font-size: 10pt; min-width: 5mm; flex-shrink: 0; margin-top: -0.5mm; }
+
+  /* capa */
+  .cover { background: #1F5C23; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; overflow: hidden; padding: 12mm; }
+  .cover::before { content: ''; position: absolute; top: -20mm; right: -20mm; width: 80mm; height: 80mm; background: rgba(198,216,52,0.12); border-radius: 50%; }
+  .cover::after  { content: ''; position: absolute; bottom: -15mm; left: -15mm; width: 60mm; height: 60mm; background: rgba(198,216,52,0.08); border-radius: 50%; }
+  .cover-inner { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 5mm; width: 100%; }
+  .cover-logo { width: 22mm; height: 22mm; }
+  .cover-brand { font-family: 'Playfair Display', serif; font-style: italic; color: #C6D834; font-size: 11pt; letter-spacing: 0.05em; }
+  .cover-tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(246,244,237,0.6); font-size: 7pt; text-transform: uppercase; letter-spacing: 0.12em; }
+  .cover-divider { width: 30mm; height: 0.3mm; background: rgba(198,216,52,0.4); }
+  .cover-bloco { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: #C6D834; font-size: 9pt; text-transform: uppercase; letter-spacing: 0.1em; background: rgba(198,216,52,0.12); padding: 1.5mm 4mm; border-radius: 1mm; }
+  .cover-aula-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: rgba(246,244,237,0.3); font-size: 52pt; line-height: 1; letter-spacing: -1mm; }
+  .cover-module { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: #C6D834; font-size: 10pt; text-transform: uppercase; letter-spacing: 0.08em; }
+  .cover-main-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: #F6F4ED; font-size: 20pt; text-transform: uppercase; letter-spacing: 0.03em; line-height: 1.1; }
+  .cover-sub { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; color: rgba(246,244,237,0.7); font-size: 8pt; line-height: 1.5; max-width: 140mm; }
+  .cover-footer-bar { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(198,216,52,0.15); border-top: 0.5mm solid rgba(198,216,52,0.3); padding: 3mm 8mm; display: flex; justify-content: space-between; align-items: center; }
+  .cover-footer-bar span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(246,244,237,0.5); font-size: 6pt; text-transform: uppercase; letter-spacing: 0.08em; }
+</style>
+</head>
+<body>
+
+<!-- P1 — CAPA -->
+<div class="page">
+  <div class="cover">
+    <div class="cover-inner">
+      <svg class="cover-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#F6F4ED" stroke="#C6D834" stroke-width="4"/>
+        <circle cx="50" cy="50" r="24" fill="#1F5C23"/>
+        <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#F6F4ED">E</text>
+      </svg>
+      <div class="cover-brand">Elite Treinamentos em Saúde</div>
+      <div class="cover-tagline">Extensivo ENARE 2026</div>
+      <div class="cover-divider"></div>
+      <div class="cover-bloco">Psicologia · Bloco B11</div>
+      <div class="cover-aula-num">03</div>
+      <div class="cover-module">PSI-SAUDE</div>
+      <div class="cover-main-title">CAPS — PTS, Acolhimento<br>em Crise e Clínica Territorial</div>
+      <div class="cover-sub">Projeto Terapêutico Singular · Técnico de Referência · Manejo da Crise ·
+        Clínica territorial (Lancetti) · Contrafissura · Casos ENARE 2024/2025</div>
+    </div>
+    <div class="cover-footer-bar">
+      <span>PDF de Apoio · Uso Exclusivo Extensivo ENARE 2026</span>
+      <span>Aula 03 · Bloco B11 · Psicologia</span>
+    </div>
+  </div>
+</div>
+
+<!-- P2 — CAPS: LÓGICA E FUNÇÕES -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">PSI-SAUDE · CAPS — Lógica do Serviço, Funções e Atividades</div>
+    </div>
+    <div class="header-badge">Aula 03</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">O CAPS como Dispositivo de Cuidado Territorial</div>
+
+    <div class="box">
+      <div class="box-title">Função do CAPS na Rede</div>
+      O CAPS é o <strong>serviço estratégico</strong> da RAPS para cuidado em saúde mental grave — mas <strong>não é a porta de entrada do sistema</strong>. A APS (UBS/eSF) é a porta de entrada preferencial. O CAPS atua como <strong>ordenador da rede de SM no território</strong>: articula os demais pontos de atenção, faz referência e contrarreferência, realiza o PTS e coordina o cuidado do usuário com TM grave.<br><br>
+      <strong>Não é ambulatório de consultas:</strong> o CAPS oferece cuidado integral — individual, grupal, familiar, domiciliar, cultural e de inserção social.
+    </div>
+
+    <div class="section-title">Atividades do CAPS</div>
+
+    <div class="grid2">
+      <div class="box">
+        <div class="box-title">Atividades Clínicas e Terapêuticas</div>
+        · Atendimento individual (consulta, acolhimento, escuta)<br>
+        · Grupos terapêuticos e de convivência<br>
+        · Oficinas terapêuticas (expressão, trabalho, cultura)<br>
+        · Visita domiciliar pela equipe<br>
+        · Atendimento familiar<br>
+        · Acompanhamento terapêutico (AT) no território
+      </div>
+      <div class="box">
+        <div class="box-title">Atividades de Rede e Gestão</div>
+        · Articulação com APS (matriciamento)<br>
+        · Referência e contrarreferência na RAPS<br>
+        · Suporte à crise (intensificação do cuidado)<br>
+        · Intersetorialidade: assistência social, educação, habitação<br>
+        · Elaboração e revisão do PTS<br>
+        · Participação de usuários e familiares na gestão
+      </div>
+    </div>
+
+    <div class="box accent">
+      <div class="box-title">Técnico de Referência — Papel Central</div>
+      Cada usuário do CAPS tem um <strong>técnico de referência</strong>: profissional de nível superior que estabelece vínculo privilegiado, acompanha longitudinalmente e é o interlocutor principal entre o sujeito, a família e a equipe.<br><br>
+      <strong>Não implica exclusividade:</strong> o técnico de referência não substitui a equipe multiprofissional — ele articula e coordena o cuidado dentro do coletivo. Pode ser qualquer profissional de nível superior (psicólogo, assistente social, enfermeiro, terapeuta ocupacional, médico).
+    </div>
+
+    <div class="box dark">
+      <div class="box-title">Armadilhas Frequentes</div>
+      (1) CAPS = porta de entrada → <strong>ERRADO</strong>; a APS é a porta; (2) PTS = elaborado só pelo médico → <strong>ERRADO</strong>; é construção coletiva; (3) Técnico de referência = exclusivo para atendimento → <strong>ERRADO</strong>; coordena sem excluir a equipe; (4) CAPS como serviço de consulta ambulatorial → <strong>ERRADO</strong>; é dispositivo territorial de cuidado integral.
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">2 / 10</div>
+  </div>
+</div>
+
+<!-- P3 — PTS: 4 MOMENTOS -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">PSI-SAUDE · PTS — Projeto Terapêutico Singular: 4 Momentos</div>
+    </div>
+    <div class="header-badge">Aula 03</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">PTS — Os 4 Momentos</div>
+
+    <div class="pts-step">
+      <div class="pts-num">1</div>
+      <div class="pts-content">
+        <strong>Diagnóstico Situacional</strong>
+        Levantamento das necessidades do usuário em todas as dimensões: biológica, psicológica, social, espiritual, familiar. Inclui potencialidades, recursos disponíveis e vulnerabilidades. Realizado coletivamente pela equipe, com o usuário e, sempre que possível, com a família.
+      </div>
+    </div>
+    <div class="pts-step">
+      <div class="pts-num">2</div>
+      <div class="pts-content">
+        <strong>Definição de Metas</strong>
+        Objetivos terapêuticos a curto, médio e longo prazo, definidos em conjunto com o usuário. Devem ser singulares (não protocolares), alcançáveis e negociados. O usuário é coautor das metas — não receptor passivo.
+      </div>
+    </div>
+    <div class="pts-step">
+      <div class="pts-num">3</div>
+      <div class="pts-content">
+        <strong>Divisão de Responsabilidades</strong>
+        Cada membro da equipe assume tarefas específicas conforme sua expertise. O técnico de referência coordena. O usuário e a família também têm responsabilidades definidas. Evita fragmentação e sobreposição de ações.
+      </div>
+    </div>
+    <div class="pts-step">
+      <div class="pts-num">4</div>
+      <div class="pts-content">
+        <strong>Reavaliação Periódica</strong>
+        O PTS é um instrumento dinâmico: revisado conforme o processo terapêutico avança, o contexto muda ou as metas são atingidas. Não é estático. A reavaliação é momento de reconhecimento dos avanços e redefinição de novos objetivos.
+      </div>
+    </div>
+
+    <div class="section-title" style="margin-top:1mm">PTS vs. Protocolo Clínico</div>
+
+    <div class="grid2">
+      <div class="box alert">
+        <div class="box-title">Protocolo Clínico</div>
+        · Padronizado e uniforme para todos os casos com o mesmo diagnóstico<br>
+        · Baseado em evidências populacionais<br>
+        · Define condutas mínimas obrigatórias<br>
+        · Garante uniformidade e auditabilidade<br><br>
+        <span style="color:#c0392b">O protocolo existe — mas não é o PTS.</span>
+      </div>
+      <div class="box">
+        <div class="box-title">PTS</div>
+        · <strong>Singular</strong> — único para cada sujeito<br>
+        · Construído com o usuário (não para ele)<br>
+        · Contempla toda a complexidade do sujeito<br>
+        · É dinâmico e se transforma com o processo<br>
+        · Não é auditável como protocolo — é clínico-político
+      </div>
+    </div>
+
+    <div class="box accent" style="margin-top:1mm">
+      <strong>ENARE 2024 (Q63):</strong> PTS = objetivo e construção coletiva — GAB B. A questão testou exatamente o caráter coletivo e singular do PTS, em contraste com a lógica de encaminhamento e conduta unilateral.
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">3 / 10</div>
+  </div>
+</div>
+
+<!-- P4 — ACOLHIMENTO EM CRISE -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">PSI-SAUDE · Acolhimento em Crise — Manejo no CAPS e Fluxo de Cuidado</div>
+    </div>
+    <div class="header-badge">Aula 03</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">Crise em Saúde Mental — Conceito e Manejo</div>
+
+    <div class="box">
+      <div class="box-title">O que é Crise em SM</div>
+      A crise não é sinônimo de emergência psiquiátrica. É um <strong>momento de ruptura subjetiva</strong> — intensificação do sofrimento, colapso dos recursos de enfrentamento, desorganização do sujeito. Pode ser oportunidade terapêutica: momento em que o sujeito está mais permeável à intervenção clínica.<br><br>
+      <strong>Princípios do acolhimento:</strong> escuta qualificada sem julgamento; vínculo como instrumento; avaliação contextual do risco; presença do técnico de referência; envolvimento da família; evitar contenção mecânica ou química como primeira resposta.
+    </div>
+
+    <div class="section-title">Fluxo de Manejo da Crise no CAPS</div>
+
+    <div class="fluxo" style="margin-bottom:2mm">
+      <div class="fluxo-step">Chegada ao CAPS<br><small>acolhimento imediato</small></div>
+      <div class="fluxo-arrow">▶</div>
+      <div class="fluxo-step">Escuta qualificada<br><small>técnico de referência</small></div>
+      <div class="fluxo-arrow">▶</div>
+      <div class="fluxo-step">Avaliação de risco<br><small>em contexto</small></div>
+      <div class="fluxo-arrow">▶</div>
+      <div class="fluxo-step">Decisão clínica<br><small>equipe coletiva</small></div>
+    </div>
+
+    <div class="grid2">
+      <div class="box">
+        <div class="box-title">Intensificação do Cuidado no CAPS</div>
+        Quando a crise pode ser manejada no próprio CAPS:<br>
+        · Mudar para atendimento <strong>intensivo</strong> (diário)<br>
+        · Acionar família e rede de apoio<br>
+        · Revisão imediata do PTS<br>
+        · Aumentar frequência de visitas domiciliares<br>
+        · CAPS III: usar leitos de observação (até 5) se necessário
+      </div>
+      <div class="box alert">
+        <div class="box-title">Encaminhar para Urgência — Quando?</div>
+        Apenas quando o risco à vida é <strong>imediato</strong> e o CAPS não tem recursos para contê-lo:<br>
+        · Risco de suicídio com plano e meio disponível<br>
+        · Agitação intensa com risco à equipe ou a terceiros<br>
+        · Intoxicação grave<br>
+        · Recusa de qualquer intervenção no serviço<br><br>
+        <span style="color:#c0392b">NÃO encaminhar por qualquer ideação — avaliar o contexto.</span>
+      </div>
+    </div>
+
+    <div class="box accent">
+      <div class="box-title">Casos ENARE — Crise no CAPS</div>
+      <table>
+        <tr><th>Q/Ano</th><th>Caso</th><th>Resposta Correta</th></tr>
+        <tr><td>Q61/2024</td><td>Catarina/CAPS — PTS e acolhimento em crise</td><td>Acolhimento + revisão do PTS com a equipe — não encaminhamento imediato</td></tr>
+        <tr><td>Q62/2024</td><td>João, 45a, CAPS — abordagem de confiança</td><td>Construir vínculo de confiança antes de qualquer intervenção diretiva</td></tr>
+        <tr><td>Q94/2024</td><td>Rafael/CAPS em crise — suporte e significação</td><td>Suporte ao sofrimento e trabalho de significação temporal (não contenção)</td></tr>
+        <tr><td>Q22/2025</td><td>Lucas/esquizofrenia — leito SM</td><td>Leito SM em hospital geral (RAPS), não hospital psiquiátrico</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">4 / 10</div>
+  </div>
+</div>
+
+<!-- P5 — CLÍNICA TERRITORIAL: LANCETTI, DELÍRIO E CONTRAFISSURA -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">PSI-SAUDE · Clínica Territorial — Lancetti, Delírio e Contrafissura</div>
+    </div>
+    <div class="header-badge">Aula 03</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">Clínica Territorial — Antonio Lancetti</div>
+
+    <div class="grid2">
+      <div class="box">
+        <div class="box-title">Clínica Peripatética / Territorial</div>
+        Lancetti propõe uma <strong>clínica que se desloca</strong> para o território do sujeito — praças, ruas, domicílios, bares. O terapeuta vai ao encontro do paciente onde ele vive, não espera que ele chegue ao serviço.<br><br>
+        <strong>Lógica:</strong> o território não é obstáculo ao cuidado — é <em>condição</em> do cuidado. A rua, o bar, a praça são espaços clínicos legítimos.
+      </div>
+      <div class="box">
+        <div class="box-title">Delírio como Ferramenta Clínica</div>
+        No paradigma psicossocial, o delírio não é algo a ser eliminado imediatamente. É uma <strong>produção de sentido</strong> do sujeito, uma tentativa de organizar o mundo.<br><br>
+        <strong>ENARE 2024 (Q97):</strong> psicólogo no CAPS usa o delírio como <em>ferramenta de acesso ao sujeito</em> — não como sintoma a suprimir. A resposta correta afirmou que a clínica territorial usa o delírio para construir vínculo e abrir caminho para o cuidado.
+      </div>
+    </div>
+
+    <div class="section-title">Contrafissura — Lancetti</div>
+
+    <div class="caso-block">
+      <div class="caso-header">Conceito de <span>Contrafissura</span> — ENARE 2025 (Q96)</div>
+      <div class="caso-body">
+        A <strong>contrafissura</strong> é o conceito de Lancetti para descrever a <em>compulsão pelo cuidado</em> que o sujeito em sofrimento intenso pode despertar nos profissionais — a urgência de conter, tratar, salvar imediatamente.<br><br>
+        Porém, Lancetti a usa também para descrever a <strong>possibilidade de cuidado em liberdade</strong>: em vez de exigir abstinência ou contenção, o clínico acompanha o sujeito em seu território, no meio do uso, construindo vínculo. A fissura (desejo pela droga) tem uma <em>contra</em> — o vínculo terapêutico que pode ser mais forte.<br><br>
+        <div class="caso-cond">
+          <strong>ENARE 2025 (Q96):</strong> "João/crise álcool/drogas — vínculo, evitar restrição" → conduta = construir vínculo no território, não impor abstinência. <strong>GAB A.</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-title" style="margin-top:2mm">Sérgio — Alucinação Auditiva (Q98/2024)</div>
+
+    <div class="box">
+      <div class="box-title">Caso Clínico Emblemático — Análise</div>
+      Sérgio, usuário do CAPS, relata alucinações auditivas persistentes que, segundo ele, "já fazem parte da sua vida". A equipe discute se deve intensificar a medicação ou realizar intervenção psicossocial.<br><br>
+      <strong>Gabarito (Q98/2024 — GAB C):</strong> a resposta correta reconheceu que a alucinação, quando não geradora de sofrimento intenso ou risco, pode ser objeto de <em>análise clínica</em> — não de supressão automática. O paradigma psicossocial pergunta: o que essa experiência significa para o sujeito? Como ela afeta sua vida no território?
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">5 / 10</div>
+  </div>
+</div>
+
+<!-- P6 — Q01 APLICAÇÃO (GAB B) -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">PSI-SAUDE · Q01 — Aplicação · Acolhimento em Crise no CAPS</div>
+    </div>
+    <div class="header-badge">Aula 03</div>
+  </div>
+  <div class="page-body">
+    <div class="q-stem">
+      <div class="q-stem-label">Questão 01 · Aplicação</div>
+      Catarina, 32 anos, usuária do CAPS II há 2 anos com diagnóstico de transtorno bipolar, chega ao serviço em estado de agitação intensa após grave conflito familiar, verbalizando que "não quer mais viver". A equipe aciona o técnico de referência. Considerando os princípios do cuidado em saúde mental no CAPS, qual a conduta <strong>MAIS ADEQUADA</strong> nesse momento?
+    </div>
+
+    <div class="q-option wrong">
+      <span class="q-letter">A</span>
+      <span>Encaminhar Catarina imediatamente para a UPA, pois qualquer verbalização de não querer mais viver configura emergência psiquiátrica que deve ser manejada exclusivamente em serviço de urgência e emergência, estando fora da competência do CAPS.</span>
+    </div>
+    <div class="q-option correct">
+      <span class="q-letter">B</span>
+      <span>O técnico de referência realiza escuta qualificada, avalia o risco em contexto, aciona a família se necessário, e a equipe revisa o PTS para intensificar o acompanhamento — encaminhando para urgência apenas se houver risco imediato não manejável no serviço.</span>
+    </div>
+    <div class="q-option wrong">
+      <span class="q-letter">C</span>
+      <span>Acionar o SAMU para transporte imediato ao hospital geral, pois o CAPS II não possui leitos de observação e, portanto, está vedado de manejar qualquer situação de crise em saúde mental, independentemente da gravidade.</span>
+    </div>
+    <div class="q-option wrong">
+      <span class="q-letter">D</span>
+      <span>Prescrever contenção química de imediato com benzodiazepínico em dose alta, pois a agitação psicomotora associada à ideação suicida configura risco imediato que dispensa a avaliação contextual pela equipe multiprofissional.</span>
+    </div>
+
+    <div class="box" style="margin-top:2mm">
+      <div class="box-title">Análise das Alternativas</div>
+      <table>
+        <tr><th>Alt.</th><th>Erro / Acerto</th></tr>
+        <tr><td><strong>A</strong></td><td>Verbalização não é emergência automática; o CAPS deve acolher, escutar e avaliar o contexto — não encaminhar reflexivamente</td></tr>
+        <tr><td><strong style="color:#1F5C23">B ✓</strong></td><td>CORRETA: técnico de referência + escuta + avaliação contextual do risco + revisão do PTS + intensificação. Encaminhamento só se risco imediato incontrolável</td></tr>
+        <tr><td><strong>C</strong></td><td>Ausência de leitos no CAPS II não impede manejo da crise; o CAPS pode intensificar o cuidado sem internação</td></tr>
+        <tr><td><strong>D</strong></td><td>Contenção química não é primeiro passo — avaliação contextual é imprescindível; a FGV nunca valida conduta unilateral e imediata sem avaliação</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">6 / 10</div>
+  </div>
+</div>
+
+<!-- P7 — Q02 APLICAÇÃO (GAB C) -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">PSI-SAUDE · Q02 — Aplicação · PTS — Elaboração e Características</div>
+    </div>
+    <div class="header-badge">Aula 03</div>
+  </div>
+  <div class="page-body">
+    <div class="q-stem">
+      <div class="q-stem-label">Questão 02 · Aplicação</div>
+      Pedro, 38 anos, com diagnóstico de esquizofrenia, está em acompanhamento no CAPS II há 1 ano. Recentemente passou a faltar às consultas, recusar medicação e relata que "as vozes estão controladas". A equipe decide revisar o Projeto Terapêutico Singular (PTS). Sobre o PTS, qual afirmativa é <strong>CORRETA</strong>?
+    </div>
+
+    <div class="q-option wrong">
+      <span class="q-letter">A</span>
+      <span>O PTS deve ser elaborado exclusivamente pelo médico psiquiatra, que centraliza as decisões terapêuticas e informa os demais membros da equipe sobre as condutas a serem seguidas por cada profissional no acompanhamento do usuário.</span>
+    </div>
+    <div class="q-option wrong">
+      <span class="q-letter">B</span>
+      <span>O PTS deve priorizar a adesão à medicação como objetivo principal, pois em casos de esquizofrenia a farmacoterapia é a única intervenção com evidência científica, sendo as demais ações terapêuticas complementares e de menor relevância clínica.</span>
+    </div>
+    <div class="q-option correct">
+      <span class="q-letter">C</span>
+      <span>O PTS é construído coletivamente pela equipe multiprofissional junto ao usuário e, sempre que possível, com sua família, definindo metas singulares, responsabilidades compartilhadas e sendo reavaliado periodicamente conforme o processo terapêutico.</span>
+    </div>
+    <div class="q-option wrong">
+      <span class="q-letter">D</span>
+      <span>O PTS deve ser mantido inalterado enquanto o usuário permanecer no serviço, pois modificações frequentes desestruturantes prejudicam o vínculo com o técnico de referência e geram instabilidade no processo terapêutico.</span>
+    </div>
+
+    <div class="box" style="margin-top:2mm">
+      <div class="box-title">Análise das Alternativas</div>
+      <table>
+        <tr><th>Alt.</th><th>Erro / Acerto</th></tr>
+        <tr><td><strong>A</strong></td><td>PTS = construção COLETIVA (equipe + usuário + família). Psiquiatra não centraliza — é um dos membros da equipe</td></tr>
+        <tr><td><strong>B</strong></td><td>PTS é singular e contempla todas as dimensões do sujeito; medicação é parte do cuidado, não o único objetivo</td></tr>
+        <tr><td><strong style="color:#1F5C23">C ✓</strong></td><td>CORRETA: coletivo + singular + com o usuário + metas + responsabilidades + reavaliação periódica — definição exata do PTS</td></tr>
+        <tr><td><strong>D</strong></td><td>PTS é dinâmico e deve ser reavaliado. Rigidez vai contra o princípio do PTS; as mudanças são parte do processo terapêutico</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">7 / 10</div>
+  </div>
+</div>
+
+<!-- P8 — Q03 ANÁLISE ÂNCORA (GAB C) -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">PSI-SAUDE · Q03 — Análise Âncora · CAPS: PTS, Técnico de Referência e Crise</div>
+    </div>
+    <div class="header-badge">Aula 03</div>
+  </div>
+  <div class="page-body">
+    <div class="q-stem">
+      <div class="q-stem-label">Questão 03 · Análise Âncora (Afirmativas)</div>
+      Sobre o funcionamento do CAPS, o Projeto Terapêutico Singular e o manejo da crise em saúde mental, analise as afirmativas e marque a alternativa correta:
+    </div>
+
+    <div class="afirmativa errada">
+      <span class="af-num">I.</span>
+      <div>
+        <span class="af-verdict">ERRADA</span><br>
+        O CAPS funciona como porta de entrada do sistema de saúde mental, sendo o serviço a ser acionado por qualquer pessoa com sofrimento psíquico em sua primeira busca por cuidado, independentemente da gravidade, substituindo a Unidade Básica de Saúde nessa função no território.
+      </div>
+    </div>
+
+    <div class="afirmativa certa">
+      <span class="af-num">II.</span>
+      <div>
+        <span class="af-verdict">CORRETA</span><br>
+        O técnico de referência no CAPS é o profissional de nível superior que estabelece vínculo privilegiado com o usuário, acompanhando-o longitudinalmente e sendo o interlocutor principal entre o sujeito, a família e a equipe, sem que isso implique exclusividade de atendimento ou substituição da equipe multiprofissional.
+      </div>
+    </div>
+
+    <div class="afirmativa certa">
+      <span class="af-num">III.</span>
+      <div>
+        <span class="af-verdict">CORRETA</span><br>
+        O manejo da crise em saúde mental no CAPS deve ser orientado pela escuta qualificada, avaliação contextual do risco e intensificação do cuidado, sendo o encaminhamento para serviços de urgência indicado apenas quando há risco imediato à vida que não pode ser contido no próprio serviço.
+      </div>
+    </div>
+
+    <div class="afirmativa errada">
+      <span class="af-num">IV.</span>
+      <div>
+        <span class="af-verdict">ERRADA</span><br>
+        O Projeto Terapêutico Singular (PTS) é um instrumento padronizado e uniforme para todos os usuários do CAPS, elaborado com base em protocolos clínicos definidos pelo Ministério da Saúde, que garante a uniformidade do cuidado e facilita os processos de auditoria dos serviços de saúde mental.
+      </div>
+    </div>
+
+    <div class="grid3" style="margin-top:2mm">
+      <div class="q-option wrong"><span class="q-letter">A</span><span>Apenas I e III são corretas</span></div>
+      <div class="q-option wrong"><span class="q-letter">B</span><span>Apenas II e IV são corretas</span></div>
+      <div class="q-option correct"><span class="q-letter">C</span><span>Apenas II e III são corretas</span></div>
+      <div class="q-option wrong"><span class="q-letter">D</span><span>Apenas I, III e IV são corretas</span></div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">8 / 10</div>
+  </div>
+</div>
+
+<!-- P9 — GABARITO COMENTADO -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">PSI-SAUDE · Gabarito Comentado</div>
+    </div>
+    <div class="header-badge">Aula 03</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">Gabarito Oficial</div>
+
+    <div class="gab-box">
+      <div class="gab-letter">B</div>
+      <div class="gab-info">
+        <strong>Q01 — Aplicação · Crise no CAPS</strong><br>
+        Acolhimento → escuta qualificada pelo técnico de referência → avaliação contextual do risco → revisão/intensificação do PTS → encaminhar para urgência somente se risco imediato incontrolável. Verbalização de "não querer mais viver" não é emergência automática — exige avaliação clínica em contexto.
+      </div>
+    </div>
+
+    <div class="gab-box">
+      <div class="gab-letter">C</div>
+      <div class="gab-info">
+        <strong>Q02 — Aplicação · PTS</strong><br>
+        PTS = coletivo (equipe + usuário + família) + singular + metas negociadas + responsabilidades compartilhadas + reavaliação periódica. Não é elaborado só pelo psiquiatra, não tem medicação como único objetivo, e não é estático.
+      </div>
+    </div>
+
+    <div class="gab-box">
+      <div class="gab-letter">C</div>
+      <div class="gab-info">
+        <strong>Q03 — Análise Âncora · II e III corretas</strong><br>
+        I errada (APS é a porta de entrada — não o CAPS). II correta (técnico de referência = vínculo privilegiado sem exclusividade). III correta (crise = escuta + avaliação contextual + intensificação; urgência só para risco imediato). IV errada (PTS é SINGULAR, não padronizado — oposto de protocolo uniforme).
+      </div>
+    </div>
+
+    <div class="section-title" style="margin-top:1mm">Por que a FGV Insiste no CAPS</div>
+    <div class="box">
+      <table>
+        <tr><th>Conceito</th><th>Lógica da Banca</th><th>Distrator Mais Perigoso</th></tr>
+        <tr><td>Crise no CAPS</td><td>Acolhimento ≠ encaminhamento imediato</td><td>"Encaminhar para UPA/SAMU" aparece como opção segura — mas é errada na ausência de risco imediato</td></tr>
+        <tr><td>PTS</td><td>Coletivo + singular + dinâmico</td><td>"Só o médico elabora" ou "mantém inalterado" — ambos errados</td></tr>
+        <tr><td>Técnico de referência</td><td>Vínculo sem exclusividade</td><td>"Atende sozinho, sem equipe" — errado; coordena a equipe multiprofissional</td></tr>
+        <tr><td>Clínica territorial</td><td>Delírio como ferramenta, não como obstáculo</td><td>"Eliminar o delírio" como primeira medida — errado</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">9 / 10</div>
+  </div>
+</div>
+
+<!-- P10 — SÍNTESE FINAL -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">PSI-SAUDE · Síntese Final — Aula 03</div>
+    </div>
+    <div class="header-badge">Aula 03</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">10 Âncoras da Aula 03</div>
+
+    <div class="sintese-item">
+      <span class="sintese-num">1</span>
+      <span><strong>CAPS ≠ porta de entrada:</strong> a APS (UBS/eSF) é a porta de entrada preferencial. O CAPS é o ordenador da rede de SM no território para casos graves.</span>
+    </div>
+    <div class="sintese-item">
+      <span class="sintese-num">2</span>
+      <span><strong>CAPS não é ambulatório:</strong> oferece cuidado integral — individual, grupal, familiar, domiciliar, cultural e de inserção social.</span>
+    </div>
+    <div class="sintese-item">
+      <span class="sintese-num">3</span>
+      <span><strong>Técnico de referência:</strong> vínculo privilegiado, acompanhamento longitudinal, interlocutor equipe-usuário-família. Não substitui a equipe — coordena-a.</span>
+    </div>
+    <div class="sintese-item">
+      <span class="sintese-num">4</span>
+      <span><strong>PTS — 4 momentos:</strong> diagnóstico situacional → definição de metas → divisão de responsabilidades → reavaliação periódica. Coletivo, singular e dinâmico.</span>
+    </div>
+    <div class="sintese-item">
+      <span class="sintese-num">5</span>
+      <span><strong>PTS ≠ protocolo:</strong> o protocolo é padronizado e uniforme; o PTS é singular, construído com o sujeito, e se transforma ao longo do processo.</span>
+    </div>
+    <div class="sintese-item">
+      <span class="sintese-num">6</span>
+      <span><strong>Crise em SM:</strong> ruptura subjetiva, não emergência automática. Exige escuta qualificada, avaliação contextual e intensificação do cuidado — não encaminhamento reflexivo.</span>
+    </div>
+    <div class="sintese-item">
+      <span class="sintese-num">7</span>
+      <span><strong>Encaminhar para urgência:</strong> somente quando há risco imediato à vida incontrolável no CAPS. Ideação sem plano/meio: avaliar, não encaminhar automaticamente.</span>
+    </div>
+    <div class="sintese-item">
+      <span class="sintese-num">8</span>
+      <span><strong>Lancetti — clínica territorial:</strong> o clínico vai ao território do sujeito (rua, domicílio, praça). Território não é obstáculo — é condição do cuidado.</span>
+    </div>
+    <div class="sintese-item">
+      <span class="sintese-num">9</span>
+      <span><strong>Delírio como ferramenta:</strong> no paradigma psicossocial, o delírio é produção de sentido do sujeito — pode ser usado para construir vínculo e acesso clínico, não suprimido imediatamente.</span>
+    </div>
+    <div class="sintese-item">
+      <span class="sintese-num">10</span>
+      <span><strong>Contrafissura (Lancetti):</strong> cuidado em liberdade; acompanhar o sujeito no seu território, no meio do sofrimento, construindo vínculo — sem exigir abstinência ou contenção imediata.</span>
+    </div>
+
+    <div class="box dark" style="margin-top:1mm">
+      <div class="box-title">Próxima Aula</div>
+      <div style="font-size:7.8pt;line-height:1.5">
+        <strong>Aula 04 — Álcool, Drogas e Redução de Danos:</strong> CAPSad, Consultório na Rua, princípio da autonomia na redução de danos, estratégias do psicólogo com usuários de substâncias, AA/NA como fatores terapêuticos e Portaria 5.201/2024 (notificação TM do trabalho relacionada ao uso de substâncias).
+      </div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">10 / 10</div>
+  </div>
+</div>
+
+</body>
+</html>
