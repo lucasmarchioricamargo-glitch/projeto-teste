@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Psicologia B11 — Aula 08 | PSI-SAUDE: Psicologia em Desastres e Emergências</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #d0d0d0; font-family: 'Bricolage Grotesque', sans-serif; }
+  .page { width: 210mm; height: 297mm; background: #F6F4ED; margin: 8mm auto; position: relative; overflow: hidden; display: flex; flex-direction: column; }
+  @media print { body { background: none; margin: 0; } .page { margin: 0; page-break-after: always; box-shadow: none; } }
+  @page { size: A4; margin: 0; }
+
+  .page-header { background: #1F5C23; padding: 4mm 6mm; display: flex; align-items: center; gap: 4mm; flex-shrink: 0; }
+  .logo-svg { width: 10mm; height: 10mm; flex-shrink: 0; }
+  .header-text { flex: 1; }
+  .header-course { font-family: 'Playfair Display', serif; font-style: italic; color: #C6D834; font-size: 6.5pt; letter-spacing: 0.03em; }
+  .header-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: #F6F4ED; font-size: 11pt; line-height: 1; text-transform: uppercase; letter-spacing: 0.04em; }
+  .header-badge { background: #C6D834; color: #1F5C23; font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 7pt; padding: 1mm 3mm; border-radius: 2mm; text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap; }
+
+  .page-footer { background: #1F5C23; padding: 2mm 6mm; display: flex; justify-content: space-between; align-items: center; flex-shrink: 0; }
+  .footer-left { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: #C6D834; font-size: 6pt; letter-spacing: 0.05em; text-transform: uppercase; }
+  .footer-right { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: #F6F4ED; font-size: 8pt; letter-spacing: 0.06em; }
+
+  .page-body { flex: 1; padding: 5mm 7mm; display: flex; flex-direction: column; gap: 3mm; overflow: hidden; }
+
+  .section-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 13pt; color: #1F5C23; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 0.8mm solid #C6D834; padding-bottom: 1.5mm; margin-bottom: 1mm; }
+
+  .box { background: #fff; border-left: 1.2mm solid #1F5C23; border-radius: 1mm; padding: 3mm 4mm; font-size: 7.8pt; line-height: 1.45; color: #222; }
+  .box.accent { border-left-color: #C6D834; }
+  .box.alert  { border-left-color: #c0392b; background: #fff8f7; }
+  .box.dark   { background: #1F5C23; color: #F6F4ED; border-left-color: #C6D834; }
+  .box-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; color: #1F5C23; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 1.5mm; }
+  .box.dark .box-title  { color: #C6D834; }
+  .box.alert .box-title { color: #c0392b; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 7.5pt; }
+  th { background: #1F5C23; color: #F6F4ED; font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 8pt; text-transform: uppercase; padding: 1.5mm 2.5mm; text-align: left; letter-spacing: 0.03em; }
+  td { padding: 1.5mm 2.5mm; border-bottom: 0.3mm solid #e0ddd5; vertical-align: top; color: #222; line-height: 1.4; }
+  tr:nth-child(even) td { background: #f4f2eb; }
+  td strong { color: #1F5C23; }
+
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5mm; }
+  .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2mm; }
+
+  .fase-item { display: flex; gap: 3mm; align-items: flex-start; padding: 2mm 3mm; background: #fff; border-radius: 1mm; margin-bottom: 1.5mm; font-size: 7.8pt; line-height: 1.4; }
+  .fase-badge { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 7pt; color: #fff; background: #1F5C23; padding: 0.8mm 2mm; border-radius: 0.8mm; flex-shrink: 0; white-space: nowrap; min-width: 18mm; text-align: center; text-transform: uppercase; }
+  .fase-content strong { color: #1F5C23; font-family: 'Barlow Condensed', sans-serif; font-size: 8.5pt; text-transform: uppercase; display: block; margin-bottom: 0.3mm; }
+
+  .pcp-step { display: flex; gap: 3mm; align-items: center; padding: 2.5mm 3mm; background: #fff; border-radius: 1mm; margin-bottom: 1.5mm; font-size: 7.8pt; line-height: 1.4; }
+  .pcp-icon { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 13pt; color: #C6D834; background: #1F5C23; min-width: 9mm; height: 9mm; border-radius: 1mm; display: flex; align-items: center; justify-content: center; flex-shrink: 0; line-height: 1; flex-direction: column; }
+  .pcp-icon span { font-size: 6pt; color: rgba(198,216,52,0.8); font-weight: 800; letter-spacing: 0.05em; }
+  .pcp-content strong { color: #1F5C23; font-family: 'Barlow Condensed', sans-serif; font-size: 9pt; text-transform: uppercase; display: block; margin-bottom: 0.3mm; }
+
+  .q-stem { background: #fff; border: 0.5mm solid #ddd; border-radius: 1.5mm; padding: 3mm 4mm; font-size: 8pt; line-height: 1.5; color: #222; margin-bottom: 2mm; }
+  .q-stem-label { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; color: #1F5C23; text-transform: uppercase; margin-bottom: 1.5mm; }
+  .q-option { display: flex; gap: 2mm; padding: 1.5mm 2.5mm; border-radius: 1mm; margin-bottom: 1mm; border: 0.4mm solid #e0ddd5; background: #fff; font-size: 7.8pt; line-height: 1.4; align-items: flex-start; }
+  .q-option.correct { background: #f0f8f0; border-color: #1F5C23; }
+  .q-option.wrong   { background: #fff8f7; border-color: #e0a0a0; }
+  .q-letter { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; color: #1F5C23; min-width: 4mm; flex-shrink: 0; margin-top: -0.3mm; }
+  .q-option.correct .q-letter { color: #1F5C23; }
+  .q-option.wrong   .q-letter { color: #c0392b; }
+
+  .afirmativa { display: flex; gap: 2mm; padding: 2mm 3mm; border-radius: 1mm; margin-bottom: 1.5mm; font-size: 7.8pt; line-height: 1.45; align-items: flex-start; }
+  .afirmativa.certa  { background: #f0f8f0; border-left: 1mm solid #1F5C23; }
+  .afirmativa.errada { background: #fff8f7; border-left: 1mm solid #c0392b; }
+  .af-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; min-width: 5mm; flex-shrink: 0; }
+  .afirmativa.certa  .af-num { color: #1F5C23; }
+  .afirmativa.errada .af-num { color: #c0392b; }
+  .af-verdict { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 8pt; padding: 0.3mm 2mm; border-radius: 0.8mm; flex-shrink: 0; }
+  .afirmativa.certa  .af-verdict { background: #1F5C23; color: #F6F4ED; }
+  .afirmativa.errada .af-verdict { background: #c0392b; color: #fff; }
+
+  .gab-box { display: flex; gap: 3mm; align-items: center; background: #1F5C23; color: #F6F4ED; border-radius: 1.5mm; padding: 2.5mm 4mm; margin-bottom: 2mm; }
+  .gab-letter { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 20pt; color: #C6D834; line-height: 1; }
+  .gab-info { flex: 1; font-size: 7.8pt; line-height: 1.4; }
+  .gab-info strong { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; text-transform: uppercase; letter-spacing: 0.03em; }
+
+  .sintese-item { display: flex; gap: 2mm; padding: 2mm 3mm; border-radius: 1mm; margin-bottom: 1.5mm; background: #fff; border-left: 1mm solid #1F5C23; font-size: 7.8pt; line-height: 1.4; align-items: flex-start; }
+  .sintese-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: #1F5C23; font-size: 10pt; min-width: 5mm; flex-shrink: 0; margin-top: -0.5mm; }
+
+  .cover { background: #1F5C23; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; overflow: hidden; padding: 12mm; }
+  .cover::before { content: ''; position: absolute; top: -20mm; right: -20mm; width: 80mm; height: 80mm; background: rgba(198,216,52,0.12); border-radius: 50%; }
+  .cover::after  { content: ''; position: absolute; bottom: -15mm; left: -15mm; width: 60mm; height: 60mm; background: rgba(198,216,52,0.08); border-radius: 50%; }
+  .cover-inner { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 5mm; width: 100%; }
+  .cover-logo { width: 22mm; height: 22mm; }
+  .cover-brand { font-family: 'Playfair Display', serif; font-style: italic; color: #C6D834; font-size: 11pt; letter-spacing: 0.05em; }
+  .cover-tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(246,244,237,0.6); font-size: 7pt; text-transform: uppercase; letter-spacing: 0.12em; }
+  .cover-divider { width: 30mm; height: 0.3mm; background: rgba(198,216,52,0.4); }
+  .cover-bloco { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: #C6D834; font-size: 9pt; text-transform: uppercase; letter-spacing: 0.1em; background: rgba(198,216,52,0.12); padding: 1.5mm 4mm; border-radius: 1mm; }
+  .cover-aula-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: rgba(246,244,237,0.3); font-size: 52pt; line-height: 1; letter-spacing: -1mm; }
+  .cover-module { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: #C6D834; font-size: 10pt; text-transform: uppercase; letter-spacing: 0.08em; }
+  .cover-main-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: #F6F4ED; font-size: 20pt; text-transform: uppercase; letter-spacing: 0.03em; line-height: 1.1; }
+  .cover-sub { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; color: rgba(246,244,237,0.7); font-size: 8pt; line-height: 1.5; max-width: 140mm; }
+  .cover-footer-bar { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(198,216,52,0.15); border-top: 0.5mm solid rgba(198,216,52,0.3); padding: 3mm 8mm; display: flex; justify-content: space-between; align-items: center; }
+  .cover-footer-bar span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(246,244,237,0.5); font-size: 6pt; text-transform: uppercase; letter-spacing: 0.08em; }
+</style>
+</head>
+<body>
+
+<!-- P1 — CAPA -->
+<div class="page">
+  <div class="cover">
+    <div class="cover-inner">
+      <svg class="cover-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#F6F4ED" stroke="#C6D834" stroke-width="4"/>
+        <circle cx="50" cy="50" r="24" fill="#1F5C23"/>
+        <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#F6F4ED">E</text>
+      </svg>
+      <div class="cover-brand">Elite Treinamentos em Saúde</div>
+      <div class="cover-tagline">Extensivo ENARE 2026</div>
+      <div class="cover-divider"></div>
+      <div class="cover-bloco">Psicologia · Bloco B11</div>
+      <div class="cover-aula-num">08</div>
+      <div class="cover-module">PSI-SAUDE</div>
+      <div class="cover-main-title">Psicologia em Desastres<br>e Emergências</div>
+      <div class="cover-sub">Fases do desastre · Primeiros Cuidados Psicológicos (PCP/IASC) · Olhar–Escutar–Conectar ·
+        PCP ≠ Debriefing (CISD) · Fase de prevenção · Pós-evento · Populações vulneráveis · Casos ENARE 2024/2025</div>
+    </div>
+    <div class="cover-footer-bar">
+      <span>PDF de Apoio · Uso Exclusivo Extensivo ENARE 2026</span>
+      <span>Aula 08 · Bloco B11 · Psicologia</span>
+    </div>
+  </div>
+</div>
+
+<!-- P2 — CONCEITOS E FASES DO DESASTRE -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">PSI-SAUDE · Desastres — Conceitos, Fases e Atuação do Psicólogo</div>
+    </div>
+    <div class="header-badge">Aula 08</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">Definição e Tipos de Desastre</div>
+
+    <div class="box">
+      <div class="box-title">Desastre — OPS/OPAS</div>
+      Evento súbito ou progressivo que <strong>supera a capacidade de resposta</strong> da comunidade afetada, gerando danos humanos, materiais e ambientais. Caracteriza-se pela <em>multidimensionalidade</em>: impacto físico, psicológico, social, econômico e comunitário simultâneos — não apenas trauma individual (Q68/2025).<br><br>
+      · <strong>Naturais:</strong> enchentes, terremotos, deslizamentos, secas<br>
+      · <strong>Tecnológicos:</strong> acidentes industriais, nucleares, colapso de estruturas<br>
+      · <strong>Complexos / Humanitários:</strong> conflitos armados, migrações forçadas, pandemias
+    </div>
+
+    <div class="section-title">Fases do Desastre e Atuação do Psicólogo</div>
+
+    <div class="fase-item">
+      <div class="fase-badge">ANTES<br>Prevenção</div>
+      <div class="fase-content">
+        <strong>Fase Pré-Impacto — Q38/2024</strong>
+        Capacitação de equipes de resposta e voluntários em PCP; mapeamento de vulnerabilidades psicossociais na comunidade; desenvolvimento de redes de suporte comunitário; elaboração de planos de resposta psicossocial; educação em saúde mental para redução de riscos; articulação com Defesa Civil e RAPS local
+      </div>
+    </div>
+    <div class="fase-item">
+      <div class="fase-badge">DURANTE<br>Impacto</div>
+      <div class="fase-content">
+        <strong>Fase de Impacto</strong>
+        Segurança própria primeiro; ações de busca e salvamento não são atribuição do psicólogo; presença no ponto de apoio; triagem básica de necessidades; proteção de grupos vulneráveis (crianças, idosos, pessoas com TM)
+      </div>
+    </div>
+    <div class="fase-item">
+      <div class="fase-badge">DEPOIS<br>Resposta</div>
+      <div class="fase-content">
+        <strong>Fase Pós-Impacto — Q30/2025 · Q77/2024</strong>
+        Aplicação de PCP com sobreviventes; suporte a familiares de desaparecidos e mortos; triagem para reações agudas (dissociação, agitação, choque); grupos de apoio; acompanhamento de luto coletivo; articulação com RAPS local para encaminhamentos; cuidado das equipes de resposta (desgaste secundário)
+      </div>
+    </div>
+    <div class="fase-item">
+      <div class="fase-badge">RECUP.<br>Reabilitação</div>
+      <div class="fase-content">
+        <strong>Fase de Recuperação</strong>
+        Triagem de TEPT, depressão e uso de substâncias; intervenção em crise prolongada; suporte a comunidades deslocadas; reconstrução de vínculos e rede social; advocacy por condições dignas de moradia e retomada de vida
+      </div>
+    </div>
+
+    <div class="box dark">
+      <div class="box-title">Psicólogo em Desastres — 4 Funções Centrais (Q68/2025)</div>
+      (1) <strong>Suporte individual:</strong> PCP, escuta, acolhimento de reações agudas; (2) <strong>Suporte coletivo:</strong> grupos de apoio, acolhimento comunitário, rituais coletivos de luto; (3) <strong>Apoio à equipe:</strong> prevenção de desgaste secundário e burnout nos respondentes; (4) <strong>Articulação de rede:</strong> conectar sobreviventes com serviços de saúde, assistência social e RAPS. A atuação é sempre <em>interdisciplinar</em> — o psicólogo não trabalha sozinho.
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">2 / 10</div>
+  </div>
+</div>
+
+<!-- P3 — PRIMEIROS CUIDADOS PSICOLÓGICOS (PCP) -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">PSI-SAUDE · Primeiros Cuidados Psicológicos (PCP) — IASC/OMS · Q30/2025</div>
+    </div>
+    <div class="header-badge">Aula 08</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">PCP — O que é e o que Não é</div>
+
+    <div class="grid2">
+      <div class="box">
+        <div class="box-title">O que é o PCP</div>
+        Suporte humano básico oferecido a pessoas afetadas por eventos traumáticos — desenvolvido pelo <strong>IASC (Comitê Permanente Interagências) e OMS</strong>. Pode ser aplicado por profissionais de saúde, voluntários treinados e agentes comunitários.<br><br>
+        · Não é psicoterapia<br>
+        · Não exige formação especializada em saúde mental<br>
+        · Não força o relato detalhado do evento traumático<br>
+        · É baseado em evidências de suporte eficaz em crises agudas
+      </div>
+      <div class="box alert">
+        <div class="box-title">PCP ≠ Debriefing Psicológico (CISD)</div>
+        O <strong>CISD (Critical Incident Stress Debriefing)</strong> é uma técnica grupal que força a narrativa do trauma nas primeiras 24–72h. Estudos mostram que o CISD <em>obrigatório pode ser prejudicial</em> — aumenta risco de TEPT em alguns sobreviventes.<br><br>
+        <strong>FGV testa:</strong> o candidato que marca "iniciar debriefing imediato com todos os sobreviventes" está errado. A abordagem recomendada é o PCP — que respeita o ritmo do sobrevivente e não força narrativa.
+      </div>
+    </div>
+
+    <div class="section-title">Os 3 Princípios do PCP: Olhar — Escutar — Conectar</div>
+
+    <div class="pcp-step">
+      <div class="pcp-icon">👁<span>OLHAR</span></div>
+      <div class="pcp-content">
+        <strong>Look (Olhar) — Avaliar o Contexto</strong>
+        Observar a situação com segurança: quem precisa de ajuda imediata, quais as necessidades básicas urgentes (ferimentos, separação de familiares, crianças desacompanhadas), se o ambiente é seguro para abordagem
+      </div>
+    </div>
+    <div class="pcp-step">
+      <div class="pcp-icon">👂<span>ESCUTAR</span></div>
+      <div class="pcp-content">
+        <strong>Listen (Escutar) — Presença Ativa</strong>
+        Aproximar-se com calma; apresentar-se; perguntar o que a pessoa precisa; escuta ativa sem pressionar para relatos; acolher o silêncio; validar reações normais diante de situação anormal; não minimizar o sofrimento
+      </div>
+    </div>
+    <div class="pcp-step">
+      <div class="pcp-icon">🔗<span>CONECTAR</span></div>
+      <div class="pcp-content">
+        <strong>Link (Conectar) — Articular Suporte</strong>
+        Conectar a pessoa com informações sobre o que ocorreu e o que está sendo feito; localizar familiares; encaminhar para serviços de saúde se necessário; conectar com redes de suporte social e comunitário; facilitar acesso a necessidades básicas (água, abrigo, alimentação)
+      </div>
+    </div>
+
+    <div class="box dark">
+      <div class="box-title">Reações Normais vs. Sinais de Alerta em Desastres</div>
+      <strong>Reações esperadas (normais):</strong> choro, choque/entorpecimento, agitação, dificuldade de concentração, insônia, pesadelos, irritabilidade — são respostas adaptativas, não patológicas.<br><br>
+      <strong>Sinais de alerta (encaminhar ao profissional de SM):</strong> comportamento violento ou suicida, dissociação grave (não reconhece onde está), agitação intensa sem controle, sintomas psicóticos, criança sem adulto de referência, pessoa com TM pré-existente descompensada.
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">3 / 10</div>
+  </div>
+</div>
+
+<!-- P4 — FASE DE PREVENÇÃO E PÓS-EVENTO -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">PSI-SAUDE · Fase de Prevenção (Q38/2024) e Pós-Evento (Q77/2024)</div>
+    </div>
+    <div class="header-badge">Aula 08</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">Fase de Prevenção — Q38/2024 (Gab E)</div>
+
+    <div class="box">
+      <div class="box-title">O que o Psicólogo Faz ANTES do Desastre</div>
+      A FGV testou (Q38/2024) o papel do psicólogo especificamente na <strong>fase de prevenção</strong>. Muitos candidatos associam o psicólogo apenas ao atendimento pós-evento — erro de enquadramento.<br><br>
+      <strong>Ações preventivas do psicólogo:</strong><br>
+      · Capacitar equipes de resposta (bombeiros, SAMU, assistência social) em PCP e comunicação de más notícias<br>
+      · Mapear e fortalecer redes psicossociais de suporte nas comunidades vulneráveis<br>
+      · Participar da elaboração de planos de contingência e resposta psicossocial<br>
+      · Identificar grupos com maior vulnerabilidade (pessoas com TM, idosos, crianças, PCD)<br>
+      · Conduzir ações de educação em saúde mental para redução de riscos<br>
+      · Articular previamente com RAPS, CRAS e Defesa Civil
+    </div>
+
+    <div class="section-title">Pós-Evento — Q77/2024 (Gab C)</div>
+
+    <div class="grid2">
+      <div class="box accent">
+        <div class="box-title">Suporte Imediato (0–72h)</div>
+        · Aplicar PCP nos pontos de apoio<br>
+        · Triagem de reações agudas que requerem intervenção<br>
+        · Apoio na comunicação de óbitos a familiares<br>
+        · Proteção de crianças desacompanhadas<br>
+        · Cuidado de pessoas com TM descompensado<br>
+        · Primeiros socorros psicológicos à equipe de resposta
+      </div>
+      <div class="box">
+        <div class="box-title">Suporte Médio Prazo (semanas–meses)</div>
+        · Triagem para TEPT, depressão, uso de substâncias<br>
+        · Grupos de apoio psicossocial para sobreviventes<br>
+        · Acompanhamento de luto coletivo<br>
+        · Suporte a comunidades deslocadas<br>
+        · Prevenção de desgaste secundário nas equipes<br>
+        · Encaminhamento para serviços especializados (CAPS)
+      </div>
+    </div>
+
+    <div class="section-title">Populações Vulneráveis em Desastres</div>
+
+    <table>
+      <tr>
+        <th>Grupo</th>
+        <th>Vulnerabilidade Específica</th>
+        <th>Abordagem</th>
+      </tr>
+      <tr>
+        <td><strong>Crianças</strong></td>
+        <td>Separação de adultos de referência; regressão comportamental; não compreendem o que ocorreu</td>
+        <td>Reunir com familiar; linguagem lúdica; rotina como âncora de segurança</td>
+      </tr>
+      <tr>
+        <td><strong>Idosos</strong></td>
+        <td>Mobilidade reduzida; polifarmácia interrompida; luto por bens e memórias; isolamento</td>
+        <td>Garantir medicação; manter vínculos; evitar isolamento no abrigo</td>
+      </tr>
+      <tr>
+        <td><strong>Pessoas com TM</strong></td>
+        <td>Interrupção de tratamento; descompensação; dificuldade de comunicar necessidades</td>
+        <td>Identificar precocemente; acionar CAPS/RAPS; garantir continuidade da medicação</td>
+      </tr>
+      <tr>
+        <td><strong>Equipes de resposta</strong></td>
+        <td>Desgaste secundário (trauma vicário); burnout; luto por vítimas atendidas</td>
+        <td>Rodízio de turnos; debriefing voluntário; suporte psicossocial da equipe</td>
+      </tr>
+    </table>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">4 / 10</div>
+  </div>
+</div>
+
+<!-- P5 — CASOS ENARE FGV -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">PSI-SAUDE · Casos ENARE FGV — Desastres e Emergências 2024/2025</div>
+    </div>
+    <div class="header-badge">Aula 08</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">Mapeamento das Questões FGV 2024–2025</div>
+
+    <table>
+      <tr>
+        <th>Q / Edição</th>
+        <th>Subtema</th>
+        <th>O que a FGV testou</th>
+        <th>Gab</th>
+      </tr>
+      <tr>
+        <td><strong>Q38/2024</strong></td>
+        <td>Fase de prevenção</td>
+        <td>O psicólogo atua ANTES do desastre — capacitação de equipes, mapeamento de vulnerabilidades, planejamento psicossocial</td>
+        <td>E</td>
+      </tr>
+      <tr>
+        <td><strong>Q77/2024</strong></td>
+        <td>Pós-evento</td>
+        <td>Atuação após o desastre — suporte a sobreviventes, luto coletivo, triagem para TEPT, articulação com RAPS</td>
+        <td>C</td>
+      </tr>
+      <tr>
+        <td><strong>Q30/2025</strong></td>
+        <td>Rejane — PCP imediato</td>
+        <td>Aplicação de PCP em sobrevivente em choque: presença calma, necessidades básicas, sem pressionar relato traumático</td>
+        <td>B</td>
+      </tr>
+      <tr>
+        <td><strong>Q68/2025</strong></td>
+        <td>Eventos multidimensionais</td>
+        <td>Desastres têm impacto multidimensional (físico, psicológico, social, comunitário) — atuação do psicólogo é interdisciplinar e não se limita ao trauma individual</td>
+        <td>C</td>
+      </tr>
+    </table>
+
+    <div class="section-title" style="margin-top:2mm;">Distinção Crítica — PCP vs. Psicoterapia vs. CISD</div>
+
+    <table>
+      <tr>
+        <th>Dimensão</th>
+        <th>PCP (Recomendado)</th>
+        <th>Psicoterapia</th>
+        <th>CISD (Debriefing)</th>
+      </tr>
+      <tr>
+        <td><strong>Timing</strong></td>
+        <td>Fase aguda (0–72h)</td>
+        <td>Fase de recuperação (semanas+)</td>
+        <td>24–72h (problemático)</td>
+      </tr>
+      <tr>
+        <td><strong>Quem aplica</strong></td>
+        <td>Qualquer profissional treinado</td>
+        <td>Psicólogo/psiquiatra</td>
+        <td>Facilitador treinado</td>
+      </tr>
+      <tr>
+        <td><strong>Foco</strong></td>
+        <td>Necessidades imediatas + segurança + conexão</td>
+        <td>Elaboração do trauma, TEPT, reabilitação</td>
+        <td>Narrativa grupal do evento</td>
+      </tr>
+      <tr>
+        <td><strong>Evidência</strong></td>
+        <td>Recomendado (OMS/IASC)</td>
+        <td>Eficaz em fases posteriores</td>
+        <td><strong>Obrigatório = prejudicial</strong></td>
+      </tr>
+    </table>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">5 / 10</div>
+  </div>
+</div>
+
+<!-- P6 — Q01: APLICAÇÃO -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">Q01 — Aplicação · PCP Imediato (modelo Q30/2025)</div>
+    </div>
+    <div class="header-badge">Aula 08</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">Questão 01 — Aplicação (Gab B)</div>
+
+    <div class="q-stem">
+      <div class="q-stem-label">Enunciado</div>
+      Rejane, 35 anos, está em um ponto de apoio montado após uma enchente que destruiu sua casa. Encontra-se sentada sozinha, olhar fixo, sem responder a perguntas, tremendo levemente. Não apresenta ferimentos físicos visíveis. O psicólogo da equipe de resposta se aproxima. Qual é a conduta inicial mais adequada?
+    </div>
+
+    <div class="q-option wrong">
+      <div class="q-letter">A</div>
+      <div>Iniciar imediatamente uma sessão de debriefing psicológico individual para que Rejane relate em detalhes o que vivenciou, pois externalizar o trauma nas primeiras horas previne o desenvolvimento de TEPT.</div>
+    </div>
+    <div class="q-option correct">
+      <div class="q-letter">B</div>
+      <div>Sentar próximo a Rejane com presença calma e não intrusiva; apresentar-se; garantir que ela está em local seguro; verificar se tem necessidades básicas atendidas (água, cobertor, informação sobre familiares); não pressionar para relatos; acolher o silêncio como resposta legítima ao evento.</div>
+    </div>
+    <div class="q-option wrong">
+      <div class="q-letter">C</div>
+      <div>Encaminhar Rejane imediatamente para avaliação psiquiátrica, pois a ausência de resposta verbal e o olhar fixo indicam quadro dissociativo grave que requer intervenção medicamentosa urgente.</div>
+    </div>
+    <div class="q-option wrong">
+      <div class="q-letter">D</div>
+      <div>Orientar os demais voluntários a não se aproximar de Rejane até que ela verbalize espontaneamente o que precisa, pois intervenções não solicitadas violam a autonomia da sobrevivente e podem piorar o choque.</div>
+    </div>
+
+    <div class="box accent" style="margin-top:3mm;">
+      <div class="box-title">Por que B está correto</div>
+      O comportamento de Rejane — entorpecimento, silêncio, olhar fixo — é <strong>reação normal</strong> de sobrevivente em choque agudo. A conduta do PCP (Olhar → Escutar → Conectar) é: aproximação calma, presença sem pressão, atendimento de necessidades básicas, informação sobre situação. A (debriefing forçado) está contraindicada — pode ser prejudicial. C (psiquiatria urgente) não é indicada para reação normal de choque sem outros sinais. D (não interagir) abandona a sobrevivente.
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">6 / 10</div>
+  </div>
+</div>
+
+<!-- P7 — Q02: APLICAÇÃO -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">Q02 — Aplicação · Fase de Prevenção e Atuação Pré-Desastre (modelo Q38/2024)</div>
+    </div>
+    <div class="header-badge">Aula 08</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">Questão 02 — Aplicação (Gab C)</div>
+
+    <div class="q-stem">
+      <div class="q-stem-label">Enunciado</div>
+      Um município localizado em área de risco de deslizamentos solicita assessoria de uma psicóloga para fortalecer a capacidade de resposta psicossocial da população e das equipes locais. O evento ainda não ocorreu. Dentre as ações propostas pela psicóloga, qual representa corretamente uma atuação na fase de prevenção?
+    </div>
+
+    <div class="q-option wrong">
+      <div class="q-letter">A</div>
+      <div>Aguardar a ocorrência do deslizamento para então mobilizar as equipes de PCP, pois intervenções psicológicas antes do evento são hipotéticas e não têm evidência de eficácia.</div>
+    </div>
+    <div class="q-option wrong">
+      <div class="q-letter">B</div>
+      <div>Instalar consultórios psicológicos itinerantes nos pontos de evacuação, prontos para atender individualmente cada morador assim que o evento ocorrer e as famílias forem evacuadas.</div>
+    </div>
+    <div class="q-option correct">
+      <div class="q-letter">C</div>
+      <div>Capacitar agentes comunitários de saúde, bombeiros e voluntários em Primeiros Cuidados Psicológicos; mapear grupos psicossocialmente vulneráveis (pessoas com TM, idosos sem rede de suporte); e articular previamente com o CAPS, CRAS e Defesa Civil um plano de resposta psicossocial para o município.</div>
+    </div>
+    <div class="q-option wrong">
+      <div class="q-letter">D</div>
+      <div>Realizar triagem diagnóstica de TEPT em todos os moradores da área de risco, para identificar previamente quem precisará de atendimento especializado após o desastre.</div>
+    </div>
+
+    <div class="box accent" style="margin-top:3mm;">
+      <div class="box-title">Por que C está correto</div>
+      A fase de prevenção do psicólogo em desastres (Q38/2024) envolve <strong>três eixos</strong>: (1) <em>capacitação de equipes</em> em PCP — multiplicar a capacidade de suporte; (2) <em>mapeamento de vulnerabilidades</em> — identificar quem precisa de proteção prioritária; (3) <em>articulação de rede</em> — garantir que RAPS, CRAS e Defesa Civil estejam coordenados antes do evento. A triagem de TEPT (D) é pós-evento. Consultórios itinerantes pré-desastre (B) não fazem sentido na fase preventiva. Aguardar o evento (A) abandona a função preventiva do psicólogo.
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">7 / 10</div>
+  </div>
+</div>
+
+<!-- P8 — Q03: ANÁLISE ÂNCORA -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">Q03 — Análise Âncora · PCP, Fases e Multidimensionalidade dos Desastres</div>
+    </div>
+    <div class="header-badge">Aula 08</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">Questão 03 — Análise (Gab C)</div>
+
+    <div class="q-stem">
+      <div class="q-stem-label">Enunciado</div>
+      Sobre a atuação do psicólogo em situações de desastre e emergência, analise as afirmativas:
+    </div>
+
+    <div class="afirmativa errada">
+      <div class="af-num">I.</div>
+      <div style="flex:1;">O Debriefing Psicológico (CISD) é a intervenção de primeira escolha após desastres coletivos, devendo ser aplicado de forma obrigatória a todos os sobreviventes nas primeiras 24 horas para prevenir o desenvolvimento de Transtorno de Estresse Pós-Traumático.</div>
+      <div class="af-verdict">ERRADA</div>
+    </div>
+
+    <div class="afirmativa certa">
+      <div class="af-num">II.</div>
+      <div style="flex:1;">Os Primeiros Cuidados Psicológicos (PCP), recomendados pela OMS e IASC, baseiam-se nos princípios de Olhar, Escutar e Conectar — consistindo em suporte humano básico que não exige formação em psicoterapia, não força o relato do evento e respeita o ritmo do sobrevivente.</div>
+      <div class="af-verdict">CERTA</div>
+    </div>
+
+    <div class="afirmativa certa">
+      <div class="af-num">III.</div>
+      <div style="flex:1;">A atuação do psicólogo em desastres abrange também a fase de prevenção — antes do evento — por meio de capacitação de equipes, mapeamento de vulnerabilidades psicossociais e articulação prévia com a rede de serviços (RAPS, CRAS, Defesa Civil).</div>
+      <div class="af-verdict">CERTA</div>
+    </div>
+
+    <div class="afirmativa errada">
+      <div class="af-num">IV.</div>
+      <div style="flex:1;">Em situações de desastre, o psicólogo deve atender individualmente cada sobrevivente em sessões de psicoterapia breve nas primeiras horas, pois apenas a intervenção especializada individual é capaz de prevenir sequelas psicológicas graves.</div>
+      <div class="af-verdict">ERRADA</div>
+    </div>
+
+    <div class="box dark" style="margin-top:2mm;">
+      <div class="box-title">Análise do Gabarito — C (II e III corretas)</div>
+      <strong>I — ERRADA:</strong> CISD obrigatório é contraindicado — pode aumentar o risco de TEPT em alguns sobreviventes; a abordagem recomendada é o PCP não intrusivo (Q30/2025). <strong>II — CERTA:</strong> PCP = Olhar, Escutar, Conectar; suporte básico, não psicoterapia, não força narrativa — base IASC/OMS. <strong>III — CERTA:</strong> fase de prevenção inclui capacitação, mapeamento e articulação de rede — cobrado diretamente na Q38/2024. <strong>IV — ERRADA:</strong> na fase aguda, o psicólogo aplica PCP e triagem — não psicoterapia individual imediata; a psicoterapia é indicada em fases posteriores para quem desenvolveu TEPT ou outras sequelas.
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">8 / 10</div>
+  </div>
+</div>
+
+<!-- P9 — GABARITO -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">Gabarito Comentado — Aula 08</div>
+    </div>
+    <div class="header-badge">Aula 08</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">Gabarito Comentado</div>
+
+    <div class="gab-box">
+      <div class="gab-letter">B</div>
+      <div class="gab-info">
+        <strong>Q01 — Aplicação · Rejane em choque — PCP imediato (modelo Q30/2025)</strong><br>
+        Presença calma + necessidades básicas + sem pressão para relato. Entorpecimento/silêncio = reação normal ao choque. Debriefing forçado (A) é contraindicado. Psiquiatria urgente (C) não indicada sem sinais de alerta específicos. Não interagir (D) é abandono.
+      </div>
+    </div>
+
+    <div class="gab-box">
+      <div class="gab-letter">C</div>
+      <div class="gab-info">
+        <strong>Q02 — Aplicação · Fase de prevenção (modelo Q38/2024)</strong><br>
+        Capacitar equipes em PCP + mapear vulneráveis + articular rede (CAPS/CRAS/Defesa Civil) antes do evento. A prevenção psicossocial é tão importante quanto a prevenção de engenharia — o psicólogo é ator desta fase.
+      </div>
+    </div>
+
+    <div class="gab-box">
+      <div class="gab-letter">C</div>
+      <div class="gab-info">
+        <strong>Q03 — Análise · II e III corretas</strong><br>
+        II: PCP = Olhar/Escutar/Conectar, suporte básico, sem forçar narrativa (Q30/2025). III: psicólogo atua na prevenção — capacitação + mapeamento + rede (Q38/2024). I errada (CISD obrigatório = prejudicial). IV errada (fase aguda = PCP, não psicoterapia individual).
+      </div>
+    </div>
+
+    <div class="section-title" style="margin-top:2mm;">Mapa de Erros — Padrão FGV Desastres</div>
+
+    <table>
+      <tr>
+        <th>Distrator Frequente</th>
+        <th>Por que é erro</th>
+        <th>Correto</th>
+      </tr>
+      <tr>
+        <td>"Psicólogo só atua pós-evento"</td>
+        <td>Fase de prevenção inclui capacitação, mapeamento e articulação de rede</td>
+        <td>Q38/2024: psicólogo atua ANTES do desastre</td>
+      </tr>
+      <tr>
+        <td>"CISD imediato previne TEPT"</td>
+        <td>Debriefing forçado pode ser prejudicial — evidência OMS</td>
+        <td>PCP (não intrusivo) é a abordagem recomendada</td>
+      </tr>
+      <tr>
+        <td>"Silêncio = dissociação grave"</td>
+        <td>Entorpecimento é reação normal ao choque agudo</td>
+        <td>Acolher o silêncio; avaliar sinais de alerta específicos</td>
+      </tr>
+      <tr>
+        <td>"Psicoterapia imediata para todos"</td>
+        <td>Fase aguda = PCP; psicoterapia = fase de recuperação (semanas+)</td>
+        <td>Triagem + PCP + encaminhar casos que precisam</td>
+      </tr>
+      <tr>
+        <td>"Desastre = trauma individual"</td>
+        <td>Impacto multidimensional: físico, psicológico, social, comunitário</td>
+        <td>Atuação interdisciplinar e comunitária (Q68/2025)</td>
+      </tr>
+    </table>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">9 / 10</div>
+  </div>
+</div>
+
+<!-- P10 — SÍNTESE FINAL -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">Síntese Final — Aula 08 · Âncoras de Alta Incidência FGV</div>
+    </div>
+    <div class="header-badge">Aula 08</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">10 Âncoras Absolutas — Aula 08</div>
+
+    <div class="sintese-item">
+      <div class="sintese-num">01</div>
+      <div><strong>Desastre = evento multidimensional:</strong> impacto físico, psicológico, social e comunitário simultâneos — não apenas trauma individual; atuação do psicólogo é interdisciplinar (Q68/2025).</div>
+    </div>
+    <div class="sintese-item">
+      <div class="sintese-num">02</div>
+      <div><strong>Fases do desastre:</strong> pré-impacto (prevenção) → impacto → pós-impacto imediato → recuperação — o psicólogo atua em <em>todas as fases</em>, não só no pós-evento.</div>
+    </div>
+    <div class="sintese-item">
+      <div class="sintese-num">03</div>
+      <div><strong>Fase de prevenção (Q38/2024):</strong> capacitar equipes em PCP; mapear vulnerabilidades psicossociais; articular previamente com RAPS/CRAS/Defesa Civil — antes do desastre ocorrer.</div>
+    </div>
+    <div class="sintese-item">
+      <div class="sintese-num">04</div>
+      <div><strong>PCP — Primeiros Cuidados Psicológicos (IASC/OMS):</strong> Olhar → Escutar → Conectar; suporte humano básico; não exige formação em psicoterapia; não força narrativa do trauma.</div>
+    </div>
+    <div class="sintese-item">
+      <div class="sintese-num">05</div>
+      <div><strong>PCP ≠ Debriefing (CISD):</strong> CISD obrigatório é contraindicado — pode aumentar risco de TEPT; o PCP respeita o ritmo do sobrevivente e não força o relato (Q30/2025).</div>
+    </div>
+    <div class="sintese-item">
+      <div class="sintese-num">06</div>
+      <div><strong>Reações normais ao choque:</strong> entorpecimento, silêncio, olhar fixo, tremor, choro — são respostas adaptativas, não patológicas; não indicam internação ou medicação imediata.</div>
+    </div>
+    <div class="sintese-item">
+      <div class="sintese-num">07</div>
+      <div><strong>Sinais de alerta:</strong> comportamento suicida/violento, dissociação grave, agitação incontrolável, sintomas psicóticos, TM pré-existente descompensado — estes exigem encaminhamento especializado.</div>
+    </div>
+    <div class="sintese-item">
+      <div class="sintese-num">08</div>
+      <div><strong>Desgaste secundário / trauma vicário:</strong> equipes de resposta também são população vulnerável — o psicólogo apoia a equipe com rodízio de turnos, debriefing <em>voluntário</em> e espaços de escuta.</div>
+    </div>
+    <div class="sintese-item">
+      <div class="sintese-num">09</div>
+      <div><strong>Psicoterapia após desastre:</strong> fase aguda = PCP; psicoterapia estruturada (TCC, EMDR) é indicada para TEPT e depressão identificados na fase de recuperação — não nas primeiras horas.</div>
+    </div>
+    <div class="sintese-item">
+      <div class="sintese-num">10</div>
+      <div><strong>TEPT pós-desastre:</strong> triagem nas semanas seguintes ao evento; fatores de risco — tentativa de suicídio prévia, TM pré-existente, ausência de rede social, exposição direta ao evento; encaminhamento para CAPS quando identificado.</div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">10 / 10</div>
+  </div>
+</div>
+
+</body>
+</html>
