@@ -2,825 +2,946 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Nutrição Bloco B9 — Aula 33 | NUT-FARM: Interação Droga-Nutriente</title>
+<title>Nutrição Bloco B9 — Aula 33 | NUT-ETICA: Ética Profissional e Legislação</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap" rel="stylesheet">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap');
-
+  :root {
+    --creme: #F6F4ED;
+    --verde: #1F5C23;
+    --accent: #C6D834;
+    --dark: #1a1a1a;
+    --muted: #555;
+  }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  @page { size: 210mm 297mm; margin: 0; }
-
-  body { font-family: 'Bricolage Grotesque', sans-serif; background: #e5e5e5; }
+  body { background: #d0d0d0; font-family: 'Bricolage Grotesque', sans-serif; }
 
   .page {
     width: 210mm;
     min-height: 297mm;
-    background: #F6F4ED;
+    background: var(--creme);
+    margin: 10mm auto;
     position: relative;
     overflow: hidden;
-    page-break-after: always;
-    margin: 0 auto 8mm;
+    display: flex;
+    flex-direction: column;
   }
 
-  .logo-wrap { display: flex; align-items: center; gap: 7px; }
-  .logo-text { font-family: 'Playfair Display', serif; font-style: italic; font-size: 12px; color: #F6F4ED; line-height: 1.1; }
-  .logo-tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7px; color: #C6D834; letter-spacing: 0.05em; }
+  /* ── CAPA ── */
+  .cover { background: var(--verde); color: var(--creme); }
+  .cover .top-bar {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10mm 12mm 0;
+  }
+  .cover .brand-text { display: flex; flex-direction: column; }
+  .cover .brand-name {
+    font-family: 'Playfair Display', serif; font-style: italic;
+    font-size: 13pt; color: var(--creme); letter-spacing: 0.02em;
+  }
+  .cover .brand-tag {
+    font-family: 'Space Grotesk', sans-serif; font-weight: 300;
+    font-size: 7pt; color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase;
+    margin-top: 1mm;
+  }
+  .cover .hero {
+    flex: 1; display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 8mm 14mm 6mm;
+    text-align: center;
+  }
+  .cover .bloco-tag {
+    font-family: 'Space Grotesk', sans-serif; font-weight: 300;
+    font-size: 8pt; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 5mm;
+  }
+  .cover .aula-num {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 72pt;
+    line-height: 1; color: var(--creme); opacity: 0.12;
+    position: absolute; right: 12mm; top: 38mm;
+  }
+  .cover .modulo-badge {
+    background: var(--accent); color: var(--verde);
+    font-family: 'Barlow Condensed', sans-serif; font-size: 9pt;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    padding: 1.5mm 5mm; border-radius: 2mm; margin-bottom: 5mm;
+    display: inline-block;
+  }
+  .cover h1 {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 30pt;
+    line-height: 1.05; color: var(--creme); margin-bottom: 4mm;
+    text-transform: uppercase; letter-spacing: 0.02em;
+  }
+  .cover .subtitle {
+    font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300;
+    font-size: 11pt; color: rgba(246,244,237,0.72); margin-bottom: 8mm;
+    line-height: 1.4;
+  }
+  .cover .tags {
+    display: flex; gap: 3mm; flex-wrap: wrap; justify-content: center;
+  }
+  .cover .tag {
+    border: 1px solid rgba(198,216,52,0.5); color: var(--accent);
+    font-family: 'Space Grotesk', sans-serif; font-weight: 300;
+    font-size: 7.5pt; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 1mm 3.5mm; border-radius: 1.5mm;
+  }
+  .cover .bottom-bar {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 5mm 12mm 8mm;
+    border-top: 1px solid rgba(198,216,52,0.25);
+  }
+  .cover .series-info {
+    font-family: 'Space Grotesk', sans-serif; font-weight: 300;
+    font-size: 7.5pt; color: rgba(246,244,237,0.55); letter-spacing: 0.1em;
+  }
+  .cover .aula-label {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 11pt;
+    color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase;
+  }
 
-  /* COVER */
-  .cover { background: #1F5C23; display: flex; flex-direction: column; min-height: 297mm; }
-  .cover-header { padding: 10mm 12mm 6mm; display: flex; justify-content: space-between; align-items: flex-start; }
-  .cover-badge { background: #C6D834; color: #1F5C23; font-family: 'Barlow Condensed', sans-serif; font-size: 10px; font-weight: 800; padding: 3px 10px; border-radius: 20px; letter-spacing: 0.06em; }
-  .cover-body { flex: 1; padding: 6mm 12mm 0; display: flex; flex-direction: column; justify-content: center; }
-  .cover-module { font-family: 'Barlow Condensed', sans-serif; font-size: 12px; font-weight: 800; color: #C6D834; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 4px; }
-  .cover-number { font-family: 'Barlow Condensed', sans-serif; font-size: 78px; font-weight: 800; color: #F6F4ED; line-height: 0.88; margin-bottom: 6px; }
-  .cover-title { font-family: 'Barlow Condensed', sans-serif; font-size: 34px; font-weight: 800; color: #F6F4ED; line-height: 1.05; text-transform: uppercase; margin-bottom: 4px; }
-  .cover-subtitle { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; font-size: 13px; color: rgba(246,244,237,0.68); margin-bottom: 16px; }
-  .cover-divider { width: 44px; height: 3px; background: #C6D834; margin-bottom: 16px; }
-  .cover-pills { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 16px; }
-  .cover-pill { background: rgba(246,244,237,0.1); border: 1px solid rgba(198,216,52,0.4); color: #F6F4ED; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 400; font-size: 9.5px; padding: 2px 8px; border-radius: 12px; }
-  .cover-footer { padding: 7mm 12mm; border-top: 1px solid rgba(246,244,237,0.14); display: flex; justify-content: space-between; align-items: center; margin-top: auto; }
-  .cover-meta { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; font-size: 9px; color: rgba(246,244,237,0.45); }
+  /* ── PÁGINAS INTERNAS ── */
+  .page-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 7mm 12mm 5mm;
+    border-bottom: 2px solid var(--verde);
+  }
+  .page-header .logo-area { display: flex; align-items: center; gap: 3mm; }
+  .page-header .brand-name-sm {
+    font-family: 'Playfair Display', serif; font-style: italic;
+    font-size: 10pt; color: var(--verde);
+  }
+  .page-header .page-meta {
+    font-family: 'Space Grotesk', sans-serif; font-weight: 300;
+    font-size: 7pt; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .page-content { flex: 1; padding: 6mm 12mm 5mm; }
+  .page-footer {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 3mm 12mm 5mm;
+    border-top: 1px solid rgba(31,92,35,0.2);
+  }
+  .page-footer .footer-text {
+    font-family: 'Space Grotesk', sans-serif; font-weight: 300;
+    font-size: 6.5pt; color: var(--muted); letter-spacing: 0.08em;
+  }
+  .page-footer .page-num {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 9pt;
+    color: var(--verde); letter-spacing: 0.1em;
+  }
 
-  /* CONTENT PAGES */
-  .content-header { background: #1F5C23; padding: 7mm 12mm; display: flex; justify-content: space-between; align-items: center; }
-  .header-right { text-align: right; }
-  .page-label { font-family: 'Barlow Condensed', sans-serif; font-size: 9px; font-weight: 800; color: #C6D834; letter-spacing: 0.14em; text-transform: uppercase; }
-  .page-title-hd { font-family: 'Barlow Condensed', sans-serif; font-size: 16px; font-weight: 800; color: #F6F4ED; text-transform: uppercase; letter-spacing: 0.04em; }
+  /* ── TIPOGRAFIA INTERNA ── */
+  .section-title {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 15pt;
+    color: var(--verde); text-transform: uppercase; letter-spacing: 0.05em;
+    margin-bottom: 4mm; padding-bottom: 2mm;
+    border-bottom: 2px solid var(--accent);
+  }
+  .subsection {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 11pt;
+    color: var(--verde); text-transform: uppercase; letter-spacing: 0.05em;
+    margin: 3.5mm 0 2mm;
+  }
+  p, li {
+    font-size: 8.5pt; line-height: 1.55; color: var(--dark);
+    font-family: 'Bricolage Grotesque', sans-serif; font-weight: 400;
+  }
+  ul, ol { padding-left: 4mm; margin-bottom: 2mm; }
+  li { margin-bottom: 1mm; }
+  strong { font-weight: 600; }
 
-  .content-body { padding: 8mm 12mm 18mm; }
+  /* ── TABELAS ── */
+  table { width: 100%; border-collapse: collapse; margin: 2.5mm 0; font-size: 7.8pt; }
+  th {
+    background: var(--verde); color: var(--creme);
+    font-family: 'Barlow Condensed', sans-serif; font-size: 8.5pt;
+    letter-spacing: 0.05em; text-transform: uppercase;
+    padding: 2mm 3mm; text-align: left;
+  }
+  td { padding: 1.8mm 3mm; border-bottom: 1px solid rgba(31,92,35,0.12); vertical-align: top; }
+  tr:nth-child(even) td { background: rgba(198,216,52,0.08); }
+  tr:last-child td { border-bottom: none; }
 
-  .content-footer { position: absolute; bottom: 0; left: 0; right: 0; padding: 4mm 12mm; border-top: 1px solid rgba(31,92,35,0.14); display: flex; justify-content: space-between; align-items: center; }
-  .footer-label { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; font-size: 8px; color: rgba(31,92,35,0.48); }
-  .footer-page { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 800; color: #1F5C23; }
+  /* ── DESTAQUES ── */
+  .highlight-box {
+    background: rgba(198,216,52,0.18); border-left: 3px solid var(--accent);
+    padding: 3mm 4mm; margin: 3mm 0; border-radius: 0 2mm 2mm 0;
+  }
+  .alert-box {
+    background: rgba(31,92,35,0.07); border-left: 3px solid var(--verde);
+    padding: 3mm 4mm; margin: 3mm 0; border-radius: 0 2mm 2mm 0;
+  }
+  .anchor-box {
+    background: var(--verde); color: var(--creme);
+    padding: 3mm 4mm; margin: 3mm 0; border-radius: 2mm;
+  }
+  .anchor-box p, .anchor-box li { color: var(--creme); font-size: 8pt; }
+  .anchor-box strong { color: var(--accent); }
 
-  .section-title { font-family: 'Barlow Condensed', sans-serif; font-size: 18px; font-weight: 800; color: #1F5C23; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 9px; padding-bottom: 5px; border-bottom: 2px solid #C6D834; }
-  .sub-title { font-family: 'Barlow Condensed', sans-serif; font-size: 12px; font-weight: 800; color: #1F5C23; text-transform: uppercase; letter-spacing: 0.05em; margin: 9px 0 4px; }
+  /* ── QUESTÕES ── */
+  .q-header {
+    display: flex; align-items: baseline; gap: 3mm; margin-bottom: 3mm;
+  }
+  .q-badge {
+    background: var(--verde); color: var(--creme);
+    font-family: 'Barlow Condensed', sans-serif; font-size: 10pt;
+    letter-spacing: 0.1em; padding: 1mm 3.5mm; border-radius: 1.5mm;
+    white-space: nowrap;
+  }
+  .q-type {
+    font-family: 'Space Grotesk', sans-serif; font-weight: 300;
+    font-size: 7pt; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .q-stem {
+    font-size: 8.5pt; line-height: 1.55; color: var(--dark);
+    margin-bottom: 3.5mm; font-family: 'Bricolage Grotesque', sans-serif;
+  }
+  .q-context {
+    background: rgba(31,92,35,0.06); border-radius: 2mm;
+    padding: 3mm 4mm; margin-bottom: 3mm;
+    font-size: 8pt; line-height: 1.5; color: var(--dark);
+    font-family: 'Bricolage Grotesque', sans-serif;
+  }
+  .alternatives { list-style: none; padding: 0; }
+  .alternatives li {
+    display: flex; gap: 2.5mm; align-items: flex-start;
+    padding: 2mm 0; border-bottom: 1px solid rgba(31,92,35,0.08);
+    font-size: 8.5pt; line-height: 1.45;
+  }
+  .alternatives li:last-child { border-bottom: none; }
+  .alt-letter {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 10pt;
+    color: var(--verde); font-weight: 800; min-width: 5mm;
+  }
+  .assertions { list-style: none; padding: 0; margin-bottom: 3mm; }
+  .assertions li {
+    display: flex; gap: 2.5mm; align-items: flex-start;
+    padding: 2mm 0; border-bottom: 1px solid rgba(31,92,35,0.08);
+    font-size: 8.5pt; line-height: 1.45;
+  }
+  .assert-num {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 10pt;
+    color: var(--verde); min-width: 5mm;
+  }
 
-  p { font-size: 10.5px; line-height: 1.55; color: #2a2a2a; margin-bottom: 5px; }
-  ul, ol { padding-left: 13px; margin-bottom: 5px; }
-  li { font-size: 10.5px; line-height: 1.55; color: #2a2a2a; margin-bottom: 2px; }
-  strong { font-weight: 600; color: #1F5C23; }
+  /* ── GABARITO ── */
+  .gab-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 3mm; margin: 3mm 0;
+  }
+  .gab-card {
+    border: 1.5px solid var(--verde); border-radius: 2mm;
+    padding: 3mm 4mm;
+  }
+  .gab-card .gab-q {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 9pt;
+    color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em;
+  }
+  .gab-card .gab-resp {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 22pt;
+    color: var(--verde); line-height: 1;
+  }
+  .gab-card .gab-tema {
+    font-size: 7pt; color: var(--muted);
+    font-family: 'Bricolage Grotesque', sans-serif; margin-top: 1mm;
+  }
+  .gab-justificativa { margin: 2.5mm 0; padding: 2.5mm 3.5mm; }
+  .gab-justificativa .gab-title {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 9.5pt;
+    color: var(--verde); text-transform: uppercase; margin-bottom: 1.5mm;
+    letter-spacing: 0.05em;
+  }
+  .correct { color: #1F5C23; font-weight: 600; }
+  .wrong { color: #b0392e; text-decoration: line-through; }
 
-  .highlight { background: rgba(198,216,52,0.22); border-left: 3px solid #C6D834; padding: 6px 10px; border-radius: 0 4px 4px 0; margin: 7px 0; font-size: 10.5px; line-height: 1.5; }
-  .alert { background: rgba(31,92,35,0.07); border-left: 3px solid #1F5C23; padding: 6px 10px; border-radius: 0 4px 4px 0; margin: 7px 0; font-size: 10.5px; line-height: 1.5; }
+  /* ── SÍNTESE ── */
+  .sintese-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; margin: 3mm 0;
+  }
+  .sintese-card {
+    border: 1.5px solid rgba(31,92,35,0.3); border-radius: 2mm; padding: 3mm 4mm;
+  }
+  .sintese-card .s-title {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 9pt;
+    color: var(--verde); text-transform: uppercase; letter-spacing: 0.08em;
+    margin-bottom: 2mm; padding-bottom: 1mm;
+    border-bottom: 1px solid var(--accent);
+  }
+  .sintese-card p, .sintese-card li { font-size: 7.8pt; line-height: 1.5; }
 
-  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin: 7px 0; }
-  .card { background: rgba(31,92,35,0.06); border: 1px solid rgba(31,92,35,0.15); border-radius: 5px; padding: 7px; }
-  .card-title { font-family: 'Barlow Condensed', sans-serif; font-size: 10.5px; font-weight: 800; color: #1F5C23; text-transform: uppercase; margin-bottom: 5px; }
-
-  table { width: 100%; border-collapse: collapse; margin: 7px 0; font-size: 9.5px; }
-  th { background: #1F5C23; color: #F6F4ED; font-family: 'Barlow Condensed', sans-serif; font-size: 10px; font-weight: 800; padding: 5px 7px; text-align: left; text-transform: uppercase; letter-spacing: 0.04em; }
-  td { padding: 4px 7px; border-bottom: 1px solid rgba(31,92,35,0.1); line-height: 1.4; color: #2a2a2a; }
-  tr:nth-child(even) td { background: rgba(31,92,35,0.04); }
-
-  .question-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 7px; }
-  .question-badge { background: #1F5C23; color: #F6F4ED; font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 800; padding: 3px 10px; border-radius: 4px; letter-spacing: 0.08em; }
-  .q-meta { text-align: right; }
-  .q-meta-line { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; font-size: 8px; color: rgba(31,92,35,0.58); }
-
-  .question-stem { background: rgba(31,92,35,0.06); border: 1px solid rgba(31,92,35,0.14); border-radius: 6px; padding: 9px 11px; margin-bottom: 9px; font-size: 10.5px; line-height: 1.6; color: #2a2a2a; }
-
-  .options-list { list-style: none; padding: 0; margin: 0; }
-  .option-item { display: flex; gap: 7px; padding: 5px 9px; margin-bottom: 4px; border-radius: 4px; font-size: 10.5px; line-height: 1.5; border: 1px solid rgba(31,92,35,0.1); color: #2a2a2a; }
-  .option-item.correct { background: rgba(198,216,52,0.25); border-color: #C6D834; font-weight: 600; }
-  .option-letter { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 12px; color: #1F5C23; min-width: 14px; }
-
-  .afirmativas-list { list-style: none; padding: 0; margin: 8px 0; }
-  .afirmativa-item { display: flex; gap: 7px; padding: 6px 10px; margin-bottom: 4px; border-radius: 4px; font-size: 10.5px; line-height: 1.5; border: 1px solid transparent; }
-  .afirmativa-item.correta { background: rgba(198,216,52,0.18); border-color: rgba(198,216,52,0.5); color: #2a2a2a; }
-  .afirmativa-item.errada { background: rgba(31,92,35,0.05); border-color: rgba(31,92,35,0.1); color: #666; }
-  .afirmativa-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 13px; color: #1F5C23; min-width: 18px; }
-
-  .gab-card { background: #1F5C23; border-radius: 7px; padding: 7px 11px; margin-bottom: 7px; }
-  .gab-card-hd { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
-  .gab-q-label { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 800; color: #C6D834; letter-spacing: 0.1em; text-transform: uppercase; }
-  .gab-answer { font-family: 'Barlow Condensed', sans-serif; font-size: 16px; font-weight: 800; color: #F6F4ED; }
-  .gab-text { font-size: 9.5px; line-height: 1.5; color: rgba(246,244,237,0.88); }
-
-  .sintese-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin: 7px 0; }
-  .sintese-card { background: rgba(31,92,35,0.06); border: 1px solid rgba(31,92,35,0.15); border-radius: 5px; padding: 7px; }
-  .sintese-card-title { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; font-weight: 800; color: #1F5C23; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 5px; padding-bottom: 3px; border-bottom: 1px solid rgba(198,216,52,0.4); }
-  .sintese-item { font-size: 9.5px; line-height: 1.5; color: #2a2a2a; margin-bottom: 2px; padding-left: 8px; position: relative; }
-  .sintese-item::before { content: '›'; position: absolute; left: 0; color: #1F5C23; font-weight: 800; }
-  .armadilha-box { background: rgba(198,216,52,0.14); border: 1.5px solid #C6D834; border-radius: 5px; padding: 7px 10px; margin-top: 7px; }
-  .armadilha-title { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 800; color: #1F5C23; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 4px; }
+  /* ── PRINT ── */
+  @media print {
+    body { background: white; }
+    .page { margin: 0; page-break-after: always; }
+    .page:last-child { page-break-after: auto; }
+  }
 </style>
 </head>
 <body>
 
-<!-- PAGE 1 — CAPA -->
+<!-- ════════════════════════════════════════════
+     PÁGINA 1 — CAPA
+════════════════════════════════════════════ -->
 <div class="page cover">
-  <div class="cover-header">
-    <div class="logo-wrap">
-      <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="32" height="32" rx="6" fill="#C6D834"/>
-        <path d="M16 4L28 10V22L16 28L4 22V10L16 4Z" fill="#1F5C23"/>
-        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
-      </svg>
-      <div>
-        <div class="logo-text">Extensivo ENARE</div>
-        <div class="logo-tagline">2026 · Nutrição</div>
-      </div>
+  <div class="top-bar">
+    <div class="brand-text">
+      <span class="brand-name">Extensivo ENARE</span>
+      <span class="brand-tag">Residências em Saúde · 2026</span>
     </div>
-    <div class="cover-badge">BLOCO B9 · AULA 33</div>
+    <!-- Logo capa: hexágono creme, círculo verde -->
+    <svg width="44" height="50" viewBox="0 0 44 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="22,2 41,13 41,37 22,48 3,37 3,13" fill="#F6F4ED" stroke="#C6D834" stroke-width="2"/>
+      <circle cx="22" cy="25" r="9" fill="#1F5C23"/>
+    </svg>
   </div>
-  <div class="cover-body">
-    <div class="cover-module">NUT-FARM</div>
-    <div class="cover-number">33</div>
-    <div class="cover-title">Interação<br>Droga-Nutriente</div>
-    <div class="cover-subtitle">Mecanismos, Interações Prioritárias e Conduta Clínica</div>
-    <div class="cover-divider"></div>
-    <div class="cover-pills">
-      <span class="cover-pill">Quelação</span>
-      <span class="cover-pill">CYP3A4</span>
-      <span class="cover-pill">Warfarina × VitK</span>
-      <span class="cover-pill">Isoniazida × B6</span>
-      <span class="cover-pill">Levodopa × PTN</span>
-      <span class="cover-pill">IMAO × Tiramina</span>
-      <span class="cover-pill">Metotrexato × Folato</span>
+
+  <div class="hero">
+    <div class="bloco-tag">Bloco B9 · Nutrição · Aula 33</div>
+    <div class="aula-num">33</div>
+    <div class="modulo-badge">NUT-ETICA</div>
+    <h1>Ética Profissional<br>e Legislação</h1>
+    <p class="subtitle">CFN · Lei 8.234/1991 · Resolução CFN 600/2018<br>Código de Ética · Exercício Ilegal</p>
+    <div class="tags">
+      <span class="tag">CFN / CRN</span>
+      <span class="tag">Lei 8.234/1991</span>
+      <span class="tag">Res. 600/2018</span>
+      <span class="tag">Código de Ética</span>
+      <span class="tag">RT</span>
+      <span class="tag">Sigilo</span>
     </div>
   </div>
-  <div class="cover-footer">
-    <div class="cover-meta">Extensivo ENARE 2026 · Bloco B9 — Nutrição · Banca FGV</div>
-    <div class="cover-meta">PDF de Apoio · Impressão A4</div>
+
+  <div class="bottom-bar">
+    <span class="series-info">Extensivo ENARE 2026 · Material de Apoio</span>
+    <span class="aula-label">Aula 33 / 39</span>
   </div>
 </div>
 
-<!-- PAGE 2 — MECANISMOS -->
+<!-- ════════════════════════════════════════════
+     PÁGINA 2 — CFN: ESTRUTURA E SISTEMA DE FISCALIZAÇÃO
+════════════════════════════════════════════ -->
 <div class="page">
-  <div class="content-header">
-    <div class="logo-wrap">
-      <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="32" height="32" rx="6" fill="#C6D834"/>
-        <path d="M16 4L28 10V22L16 28L4 22V10L16 4Z" fill="#1F5C23"/>
-        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="25" viewBox="0 0 44 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="22,2 41,13 41,37 22,48 3,37 3,13" fill="#1F5C23" stroke="#C6D834" stroke-width="2.5"/>
+        <circle cx="22" cy="25" r="9" fill="#F6F4ED"/>
       </svg>
-      <div>
-        <div class="logo-text">Extensivo ENARE</div>
-        <div class="logo-tagline">2026 · Nutrição</div>
-      </div>
+      <span class="brand-name-sm">Extensivo ENARE</span>
     </div>
-    <div class="header-right">
-      <div class="page-label">NUT-FARM · Aula 33</div>
-      <div class="page-title-hd">Mecanismos de Interação</div>
-    </div>
+    <span class="page-meta">NUT-ETICA · Aula 33 · Bloco B9</span>
   </div>
-  <div class="content-body">
-    <div class="section-title">Mecanismos de Interação Droga-Nutriente</div>
-    <p>As interações entre fármacos e nutrientes podem comprometer a eficácia terapêutica ou causar toxicidade. O nutricionista deve conhecer os principais mecanismos e suas implicações clínicas para orientar adequadamente o paciente.</p>
 
-    <div class="sub-title">1. Quelação</div>
-    <p>Nutrientes bivalentes (Ca²⁺, Mg²⁺, Fe²⁺, Zn²⁺) formam complexos insolúveis com alguns fármacos no TGI, reduzindo a absorção do medicamento.</p>
+  <div class="page-content">
+    <div class="section-title">CFN — Estrutura e Sistema de Fiscalização</div>
+
+    <div class="subsection">Criação e Natureza Jurídica</div>
     <ul>
-      <li><strong>Tetraciclinas:</strong> quelação com Ca, Mg, Fe, Zn → tomar 2h antes ou 4h após laticínios e antiácidos</li>
-      <li><strong>Fluoroquinolonas</strong> (ciprofloxacino, levofloxacino): quelação com Ca, Mg, Al → intervalo mínimo 2h</li>
-      <li><strong>Ferro oral:</strong> absorção ↑ com vitamina C; ↓ com Ca, taninos (chá, café), fitatos (cereais integrais), leite</li>
+      <li><strong>Lei 6.583/1978:</strong> cria o CFN e os CRNs como <strong>autarquias federais</strong>, dotadas de personalidade jurídica de direito público, com sede e foro no Distrito Federal (CFN).</li>
+      <li><strong>Financiamento:</strong> anuidades e emolumentos — sem subordinação ao orçamento federal.</li>
+      <li><strong>9 CRNs regionais</strong> no Brasil, com circunscrição territorial definida pelo CFN.</li>
     </ul>
 
-    <div class="sub-title">2. Antagonismo Vitamínico</div>
-    <div class="grid-2">
-      <div class="card">
-        <div class="card-title">Warfarina × Vitamina K</div>
-        <p style="font-size:10px">Warfarina inibe VKORC1 → bloqueia ativação dos fatores II, VII, IX, X. Vitamina K1 (filoquinona) em vegetais verde-escuros antagoniza o efeito. <strong>Conduta:</strong> manter ingestão CONSISTENTE — não proibir alimentos.</p>
-      </div>
-      <div class="card">
-        <div class="card-title">Metotrexato × Folato</div>
-        <p style="font-size:10px">MTX inibe DHFR → bloqueia síntese de folato ativo. Em AR/psoríase: ácido fólico reduz toxicidade SEM reduzir eficácia anti-inflamatória. Em oncologia: avaliação individual.</p>
-      </div>
-    </div>
+    <div class="subsection">Finalidades do CFN</div>
+    <ul>
+      <li>Disciplinar, fiscalizar e orientar o exercício da profissão de nutricionista.</li>
+      <li>Deliberar sobre questões éticas e aplicar penalidades (advertência, censura, suspensão, cassação).</li>
+      <li>Editar resoluções normativas (ex.: Res. 599/2018 e 600/2018).</li>
+      <li>Organizar e manter o registro dos profissionais habilitados.</li>
+    </ul>
 
-    <div class="sub-title">3. Inibição de CYP3A4 — Grapefruit</div>
-    <div class="highlight">
-      <strong>Grapefruit (bergamotina):</strong> inibe irreversivelmente o CYP3A4 intestinal → ↑ biodisponibilidade de fármacos metabolizados por essa isoenzima. Principais afetados: <strong>ciclosporina</strong>, <strong>estatinas</strong> (sinvastatina, atorvastatina), amiodarona, bloqueadores de canal de cálcio. Efeito persiste 24–72h após ingestão.
-    </div>
-
-    <div class="sub-title">4. Depleção de Nutrientes por Fármacos</div>
+    <div class="subsection">Inscrição Profissional</div>
     <table>
-      <tr><th>Fármaco</th><th>Nutriente depletado</th><th>Consequência</th></tr>
-      <tr><td>Corticoides (crônicos)</td><td>Ca²⁺, K⁺, Zn, vitaminas B e C</td><td>Osteoporose, imunossupressão adicional</td></tr>
-      <tr><td>Diuréticos de alça (furosemida)</td><td>K⁺, Mg²⁺, Ca²⁺, Na⁺</td><td>Arritmias, câimbras</td></tr>
-      <tr><td>Tiazídicos</td><td>K⁺, Mg²⁺ (retém Ca²⁺)</td><td>Hipocalemia</td></tr>
-      <tr><td>Isoniazida</td><td>Vitamina B6 (piridoxina)</td><td>Neuropatia periférica</td></tr>
-      <tr><td>Fenitoína</td><td>Folato, vitamina D</td><td>Anemia megaloblástica, osteomalácia</td></tr>
+      <tr><th>Modalidade</th><th>Quem se inscreve</th><th>Onde</th></tr>
+      <tr><td>Pessoa física</td><td>Nutricionista formado em curso reconhecido pelo MEC</td><td>CRN da região de domicílio profissional</td></tr>
+      <tr><td>Pessoa jurídica</td><td>Empresa que preste serviços na área (UANs, clínicas, consultorias)</td><td>CRN da sede do estabelecimento</td></tr>
+      <tr><td>Registro secundário</td><td>Nutricionista que exerce em outra região (além da principal)</td><td>CRN da região de atuação secundária</td></tr>
     </table>
 
-    <div class="sub-title">5. Competição por Transportador</div>
-    <div class="alert">
-      <strong>Levodopa × Proteínas de cadeia longa (BCAA):</strong> levodopa e aminoácidos neutros de cadeia longa competem pelo transportador LAT1 no intestino e na barreira hematoencefálica. Recomendação: tomar levodopa 30–60 min antes das refeições; concentrar proteínas no almoço e jantar.
-    </div>
-
-    <div class="sub-title">6. IMAO × Tiramina</div>
-    <p>Inibidores da MAO bloqueiam a degradação intestinal e hepática da tiramina → acúmulo → liberação de catecolaminas → <strong>crise hipertensiva aguda</strong>. Alimentos de risco: queijos maturados, vinho tinto, embutidos curados, molho de soja, extrato de levedura, conservas de peixe.</p>
-  </div>
-  <div class="content-footer">
-    <div class="footer-label">Extensivo ENARE 2026 · Bloco B9 — Nutrição · NUT-FARM</div>
-    <div class="footer-page">2 / 10</div>
-  </div>
-</div>
-
-<!-- PAGE 3 — ANTICOAG · PSICOTRÓP · LÍTIO -->
-<div class="page">
-  <div class="content-header">
-    <div class="logo-wrap">
-      <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="32" height="32" rx="6" fill="#C6D834"/>
-        <path d="M16 4L28 10V22L16 28L4 22V10L16 4Z" fill="#1F5C23"/>
-        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
-      </svg>
-      <div>
-        <div class="logo-text">Extensivo ENARE</div>
-        <div class="logo-tagline">2026 · Nutrição</div>
-      </div>
-    </div>
-    <div class="header-right">
-      <div class="page-label">NUT-FARM · Aula 33</div>
-      <div class="page-title-hd">Anticoag. · Psicotróp. · Lítio</div>
-    </div>
-  </div>
-  <div class="content-body">
-    <div class="section-title">Anticoagulantes, Psicotrópicos e Lítio</div>
-
-    <div class="sub-title">Warfarina e Vitamina K — Detalhe Clínico</div>
-    <p><strong>Alimentos ricos em VitK1:</strong> couve, espinafre, brócolis, repolho, acelga, salsinha. Não são proibidos — a conduta é manter consumo regular e estável. Variações bruscas (ex.: iniciar "suco verde detox") desestabilizam o INR.</p>
-    <div class="highlight">
-      <strong>Armadilha ENARE:</strong> "eliminar vegetais verde-escuros" = ERRADO. Resposta correta = "manter ingestão consistente e monitorar INR". Cranberry: potencializa anticoagulação (↑ INR) — não é inerte.
-    </div>
-
-    <div class="sub-title">Metotrexato — Contexto Clínico Determina a Conduta</div>
-    <div class="grid-2">
-      <div class="card">
-        <div class="card-title">MTX em AR / Psoríase</div>
-        <ul style="font-size:9.8px">
-          <li>Ácido fólico 1–5 mg/dia (em dia diferente do MTX)</li>
-          <li>Reduz toxicidade: mucosite, náuseas, hepatotoxicidade</li>
-          <li>NÃO reduz eficácia anti-inflamatória</li>
-          <li>Conduta padrão e recomendada</li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="card-title">MTX em Oncologia</div>
-        <ul style="font-size:9.8px">
-          <li>Avaliação individual — não é rotina</li>
-          <li>Leucovorin (ácido folínico) = resgate após doses altas</li>
-          <li>Suplementação rotineira pode atenuar efeito antitumoral</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="sub-title">IMAO × Tiramina — Crise Hipertensiva</div>
-    <p>IMAO (tranilcipromina, fenelzina, moclobemida): inibem MAO intestinal e hepática → tiramina não é degradada → libera catecolaminas → <strong>crise hipertensiva aguda</strong> (cefaleia explosiva, PA &gt;180/120 mmHg, risco de AVC).</p>
-    <div class="alert">
-      <strong>Alimentos ricos em tiramina:</strong> queijos maturados (cheddar, emmental, brie, gorgonzola), vinho tinto, cervejas não filtradas, salame, pepperoni, molho de soja, extrato de levedura (Marmite), conservas de peixe, fígado de frango.<br>
-      <strong>Linezolida</strong> (antibiótico oxazolidinona) tem efeito IMAO-like — mesma restrição. Isoniazida tem efeito IMAO-like fraco.
-    </div>
-    <p><strong>Washout:</strong> após suspensão do IMAO, aguardar <strong>14 dias</strong> antes de iniciar ISRS (risco de síndrome serotoninérgica). Manter restrição de tiramina durante esse período.</p>
-
-    <div class="sub-title">Lítio × Sódio</div>
-    <p>Lítio e sódio compartilham o transportador de reabsorção tubular proximal. <strong>Hiponatremia</strong> (dieta hipossódica severa, diuréticos, sudorese intensa, diarreia) → rim reabsorve mais lítio em compensação → toxicidade por lítio (tremores, confusão, convulsões).</p>
-    <div class="highlight">
-      <strong>Conduta:</strong> não recomendar dieta hipossódica agressiva em pacientes em uso de lítio. Manter Na⁺ estável (~2–3 g/dia). Monitorar litemias ao alterar dieta ou associar diuréticos.
-    </div>
-
-    <div class="sub-title">ISRS × Triptofano</div>
-    <p>Suplementos de triptofano ou 5-HTP em usuários de ISRS (fluoxetina, sertralina, paroxetina) → risco de <strong>síndrome serotoninérgica</strong> (hipertermia, agitação, mioclonias, diaforese). Contraindicados em associação.</p>
-  </div>
-  <div class="content-footer">
-    <div class="footer-label">Extensivo ENARE 2026 · Bloco B9 — Nutrição · NUT-FARM</div>
-    <div class="footer-page">3 / 10</div>
-  </div>
-</div>
-
-<!-- PAGE 4 — ANTIBIÓTICOS · ISONIAZIDA · TARV -->
-<div class="page">
-  <div class="content-header">
-    <div class="logo-wrap">
-      <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="32" height="32" rx="6" fill="#C6D834"/>
-        <path d="M16 4L28 10V22L16 28L4 22V10L16 4Z" fill="#1F5C23"/>
-        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
-      </svg>
-      <div>
-        <div class="logo-text">Extensivo ENARE</div>
-        <div class="logo-tagline">2026 · Nutrição</div>
-      </div>
-    </div>
-    <div class="header-right">
-      <div class="page-label">NUT-FARM · Aula 33</div>
-      <div class="page-title-hd">Antibióticos · Isoniazida · TARV</div>
-    </div>
-  </div>
-  <div class="content-body">
-    <div class="section-title">Antibióticos, Isoniazida e Antirretrovirais</div>
-
-    <div class="sub-title">Antibióticos — Quelação e Absorção</div>
+    <div class="subsection">Penalidades Éticas (ordem crescente)</div>
     <table>
-      <tr><th>Antibiótico</th><th>Nutriente interferente</th><th>Mecanismo</th><th>Intervalo</th></tr>
-      <tr><td>Tetraciclina / Doxiciclina</td><td>Ca²⁺, Mg²⁺, Fe²⁺, Zn²⁺</td><td>Quelação → complexo insolúvel → ↓ absorção do ATB</td><td>2h antes ou 4h depois</td></tr>
-      <tr><td>Ciprofloxacino / Levofloxacino</td><td>Ca²⁺, Mg²⁺, Al³⁺, Fe²⁺</td><td>Quelação semelhante</td><td>Mínimo 2h de laticínios / antiácidos</td></tr>
-      <tr><td>Linezolida</td><td>Tiramina</td><td>Efeito IMAO-like → crise hipertensiva</td><td>Evitar queijos maturados, vinho, embutidos</td></tr>
+      <tr><th>Penalidade</th><th>Aplicação</th></tr>
+      <tr><td><strong>Advertência verbal</strong></td><td>Infrações leves, primeira ocorrência</td></tr>
+      <tr><td><strong>Censura pública</strong></td><td>Reincidência ou infração moderada — publicada no DOU</td></tr>
+      <tr><td><strong>Suspensão do exercício</strong></td><td>Infrações graves, até 90 dias</td></tr>
+      <tr><td><strong>Cassação do registro</strong></td><td>Infrações gravíssimas ou reincidência em suspensão</td></tr>
     </table>
 
-    <div class="sub-title">Isoniazida (INH) × Vitamina B6</div>
-    <p>A isoniazida é análoga estrutural da piridoxina (vitamina B6) → compete pelo mesmo sítio enzimático → <strong>depleção de B6</strong> → deficit na síntese de GABA, serotonina e dopamina.</p>
-    <div class="alert">
-      <strong>Consequência:</strong> neuropatia periférica (parestesias, dormência, fraqueza) — mais frequente em desnutridos, alcoólatras, gestantes, idosos e portadores de HIV.<br>
-      <strong>Conduta padrão:</strong> suplementar <strong>piridoxina (B6) profilaticamente</strong> (10–50 mg/dia) para todos os pacientes em uso de INH.
-    </div>
-    <p><strong>Atenção adicional:</strong> isoniazida tem leve efeito IMAO-like → evitar <strong>queijos maturados, vinho tinto</strong> (tiramina) e atum/sardinha enlatada (histamina) → risco de rubor, palpitações e cefaleia.</p>
-
-    <div class="sub-title">Antirretrovirais (TARV) — Relação com Alimentos</div>
-    <div class="grid-2">
-      <div class="card">
-        <div class="card-title">Efavirenz (EFV)</div>
-        <ul style="font-size:9.8px">
-          <li>Absorção ↑ ~80% com refeições gordurosas</li>
-          <li>Tomar em <strong>jejum</strong> ou com refeição leve (à noite)</li>
-          <li>Evitar picos plasmáticos e efeitos adversos no SNC</li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="card-title">Lopinavir / Ritonavir</div>
-        <ul style="font-size:9.8px">
-          <li>Absorção ↑ com alimentos (qualquer tipo)</li>
-          <li>Tomar <strong>com as refeições</strong></li>
-          <li>Reduz náuseas e diarreia</li>
-        </ul>
-      </div>
+    <div class="highlight-box">
+      <p><strong>Ponto de prova:</strong> O CFN e os CRNs são autarquias federais — <em>não</em> associações de classe, <em>não</em> sindicatos. A inscrição no CRN é <strong>obrigatória</strong> para o exercício da profissão; a falta configura exercício ilegal.</p>
     </div>
 
-    <div class="sub-title">Fenitoína — Folato e Vitamina D</div>
-    <p>Fenitoína induz enzimas hepáticas (CYP450) → catabolismo acelerado da vitamina D → hipocalcemia e osteomalácia em uso crônico. Também reduz absorção intestinal de folato → anemia megaloblástica.</p>
-    <div class="highlight">
-      <strong>Nutrição enteral:</strong> proteínas da dieta podem ligar-se à fenitoína e reduzir absorção. Protocolo: suspender a dieta enteral 2h antes e 2h após a administração da fenitoína via SNE.
-    </div>
-
-    <div class="sub-title">Álcool × Tiamina (Vitamina B1)</div>
-    <p>Etilismo crônico: ↓ ingestão alimentar + ↓ absorção intestinal de tiamina + ↑ demanda metabólica → deficit grave → <strong>encefalopatia de Wernicke</strong> (oftalmoplegia, ataxia, confusão mental).</p>
-    <div class="alert">
-      <strong>Regra crítica:</strong> em pacientes com etilismo que iniciarão reposição calórica ou glicídica, administrar <strong>tiamina ANTES da glicose</strong> — mesma regra da síndrome de realimentação. Glicose sem tiamina consome os estoques residuais e precipita Wernicke.
-    </div>
+    <div class="subsection">Profissional Técnico em Nutrição</div>
+    <ul>
+      <li>Também tem registro no CRN (como técnico), mas <strong>não pode realizar atividades privativas</strong> do nutricionista.</li>
+      <li>Funções: auxílio na produção, higiene, controle de estoque — sempre sob supervisão do nutricionista.</li>
+      <li>Exercício de atividade privativa por técnico = exercício ilegal → responsabilidade solidária do nutricionista que permite.</li>
+    </ul>
   </div>
-  <div class="content-footer">
-    <div class="footer-label">Extensivo ENARE 2026 · Bloco B9 — Nutrição · NUT-FARM</div>
-    <div class="footer-page">4 / 10</div>
+
+  <div class="page-footer">
+    <span class="footer-text">Extensivo ENARE 2026 · Bloco B9 Nutrição</span>
+    <span class="page-num">2 / 10</span>
   </div>
 </div>
 
-<!-- PAGE 5 — TABELA MESTRA -->
+<!-- ════════════════════════════════════════════
+     PÁGINA 3 — LEI 8.234/1991: ATIVIDADES PRIVATIVAS E NÃO PRIVATIVAS
+════════════════════════════════════════════ -->
 <div class="page">
-  <div class="content-header">
-    <div class="logo-wrap">
-      <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="32" height="32" rx="6" fill="#C6D834"/>
-        <path d="M16 4L28 10V22L16 28L4 22V10L16 4Z" fill="#1F5C23"/>
-        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="25" viewBox="0 0 44 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="22,2 41,13 41,37 22,48 3,37 3,13" fill="#1F5C23" stroke="#C6D834" stroke-width="2.5"/>
+        <circle cx="22" cy="25" r="9" fill="#F6F4ED"/>
       </svg>
-      <div>
-        <div class="logo-text">Extensivo ENARE</div>
-        <div class="logo-tagline">2026 · Nutrição</div>
-      </div>
+      <span class="brand-name-sm">Extensivo ENARE</span>
     </div>
-    <div class="header-right">
-      <div class="page-label">NUT-FARM · Aula 33</div>
-      <div class="page-title-hd">Tabela Mestra ENARE</div>
+    <span class="page-meta">NUT-ETICA · Aula 33 · Bloco B9</span>
+  </div>
+
+  <div class="page-content">
+    <div class="section-title">Lei 8.234/1991 — Atividades Privativas e Não Privativas</div>
+
+    <div class="subsection">Art. 3° — Atividades PRIVATIVAS do Nutricionista</div>
+    <p style="margin-bottom:2mm;">Atividades <strong>exclusivamente</strong> reservadas ao nutricionista com registro ativo no CRN:</p>
+    <table>
+      <tr><th>Inciso</th><th>Atividade</th></tr>
+      <tr><td>I</td><td>Assistência e educação nutricional a coletividades ou indivíduos, sadios ou enfermos, em instituições públicas e privadas e em consultório de nutrição e dietética</td></tr>
+      <tr><td>II</td><td>Planejamento, organização, administração e avaliação de Unidades de Alimentação e Nutrição (UANs)</td></tr>
+      <tr><td>III</td><td>Planejamento, organização, administração e avaliação de serviços de alimentação e nutrição nas áreas de saúde pública, educação nutricional e outras</td></tr>
+      <tr><td>IV</td><td><strong>Prescrição de suplementos nutricionais</strong> necessários à complementação da dieta</td></tr>
+      <tr><td>V</td><td>Solicitação de exames laboratoriais necessários ao acompanhamento dietoterápico</td></tr>
+      <tr><td>VI</td><td>Participação em inspeções sanitárias relativas a alimentos</td></tr>
+      <tr><td>VII</td><td>Elaboração de dietas e respectivos planos alimentares individualizados</td></tr>
+    </table>
+
+    <div class="subsection">Art. 4° — Atividades NÃO Privativas (compartilhadas)</div>
+    <p style="margin-bottom:2mm;">Podem ser realizadas por nutricionistas e por <strong>outros profissionais habilitados</strong> (ex.: médicos, enfermeiros, tecnólogos em alimentos, chefs):</p>
+    <ul>
+      <li>Elaboração de cardápios coletivos (para populações sadias em restaurantes, escolas etc.)</li>
+      <li>Educação nutricional de caráter informativo/geral (não individualizada)</li>
+      <li>Controle de qualidade de gêneros e produtos alimentícios (em conjunto com farmacêuticos, engenheiros de alimentos)</li>
+      <li>Vigilância sanitária de alimentos (ação conjunta com profissionais da área)</li>
+    </ul>
+
+    <div class="alert-box">
+      <p><strong>Distinção crítica para a prova:</strong> A elaboração de <em>cardápios para coletividades sadias</em> (art. 4°) <strong>não é privativa</strong> — outros profissionais podem exercê-la. Já a <em>prescrição de suplementos</em> e a <em>elaboração de dietas individualizadas</em> (arts. 3°, IV e VII) são <strong>privativas</strong>.</p>
+    </div>
+
+    <div class="subsection">Habilitação para o Exercício</div>
+    <ul>
+      <li><strong>Diploma de graduação</strong> em Nutrição por instituição reconhecida pelo MEC.</li>
+      <li><strong>Registro ativo no CRN</strong> da região de atuação — obrigatório.</li>
+      <li><strong>Estrangeiros:</strong> precisam de revalidação do diploma + registro no CRN.</li>
+    </ul>
+
+    <div class="highlight-box">
+      <p><strong>Pegadinha clássica:</strong> Técnico em Nutrição, estagiário ou profissional de outra área <em>não pode</em> prescrever suplementos ou elaborar dietas individualizadas — mesmo com supervisão. Isso configura exercício ilegal pelo executor <em>e</em> responsabilidade ética do nutricionista supervisor que permitiu.</p>
     </div>
   </div>
-  <div class="content-body">
-    <div class="section-title">Tabela Mestra — Interações Prioritárias ENARE</div>
 
+  <div class="page-footer">
+    <span class="footer-text">Extensivo ENARE 2026 · Bloco B9 Nutrição</span>
+    <span class="page-num">3 / 10</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     PÁGINA 4 — RESOLUÇÃO CFN 600/2018: AMR E RESPONSABILIDADE TÉCNICA
+════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="25" viewBox="0 0 44 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="22,2 41,13 41,37 22,48 3,37 3,13" fill="#1F5C23" stroke="#C6D834" stroke-width="2.5"/>
+        <circle cx="22" cy="25" r="9" fill="#F6F4ED"/>
+      </svg>
+      <span class="brand-name-sm">Extensivo ENARE</span>
+    </div>
+    <span class="page-meta">NUT-ETICA · Aula 33 · Bloco B9</span>
+  </div>
+
+  <div class="page-content">
+    <div class="section-title">Resolução CFN 600/2018 — AMR e Responsabilidade Técnica</div>
+
+    <div class="subsection">Áreas de Atuação do Nutricionista (7 áreas)</div>
     <table>
+      <tr><th>#</th><th>Área</th><th>Exemplos de locais de atuação</th></tr>
+      <tr><td>1</td><td><strong>Alimentação Coletiva</strong></td><td>UANs, restaurantes, cozinhas hospitalares, catering</td></tr>
+      <tr><td>2</td><td><strong>Nutrição Clínica</strong></td><td>Hospitais, clínicas, ambulatórios, consultório</td></tr>
+      <tr><td>3</td><td><strong>Saúde Coletiva</strong></td><td>UBS, NASF-AB, vigilância alimentar, políticas públicas</td></tr>
+      <tr><td>4</td><td><strong>Ensino</strong></td><td>IES, cursos técnicos, EAD</td></tr>
+      <tr><td>5</td><td><strong>Pesquisa</strong></td><td>Universidades, centros de pesquisa, indústria</td></tr>
+      <tr><td>6</td><td><strong>Indústria de Alimentos</strong></td><td>P&amp;D, controle de qualidade, rotulagem</td></tr>
+      <tr><td>7</td><td><strong>Nutrição em Esportes</strong></td><td>Academias, clubes, seleções, equipes</td></tr>
+    </table>
+
+    <div class="subsection">AMR — Acervo Mínimo de Referência (Alimentação Coletiva)</div>
+    <p style="margin-bottom:2mm;">Parâmetros de carga horária semanal para UANs do segmento de refeições (restaurantes/self-service/catering):</p>
+    <table>
+      <tr><th>Refeições/dia</th><th>Nutricionistas</th><th>Carga horária (semana)</th></tr>
+      <tr><td>Até 500</td><td>1 nutricionista (RT)</td><td>Mínimo 30h/semana</td></tr>
+      <tr><td>501 a 1.000</td><td>1 nutricionista (RT) + 1 técnico em nutrição</td><td>Mínimo 30h/semana</td></tr>
+      <tr><td>1.001 a 2.000</td><td>1 nutricionista (RT) + nutricionistas adicionais conforme demanda</td><td>Mínimo 30h + proporcional</td></tr>
+      <tr><td>Acima de 2.000</td><td>Mínimo 2 nutricionistas</td><td>Proporcional ao volume</td></tr>
+    </table>
+    <p style="font-size:7.5pt; color:var(--muted); margin-top:1mm;">* Os parâmetros variam por segmento (hospitalar, escolar, social etc.) — os valores acima referem-se ao segmento comercial/industrial.</p>
+
+    <div class="subsection">Responsabilidade Técnica (RT)</div>
+    <ul>
+      <li>Todo estabelecimento na área de alimentação coletiva deve ter um nutricionista <strong>inscrito e com registro ativo no CRN</strong> como responsável técnico.</li>
+      <li>O nutricionista RT assina a <strong>ART (Anotação de Responsabilidade Técnica)</strong> junto ao CRN.</li>
+      <li>A RT implica responsabilidade <strong>ética, civil e administrativa</strong> pelo serviço.</li>
+      <li>O nutricionista pode acumular RT de mais de um estabelecimento, desde que comprove <strong>compatibilidade de horários</strong> e carga horária suficiente em cada um.</li>
+    </ul>
+
+    <div class="highlight-box">
+      <p><strong>Ponto de prova — Res. 600/2018 vs Lei 8.234:</strong> A Lei define <em>o que</em> é privativo; a Resolução 600/2018 define <em>quantos profissionais e por quanto tempo</em> (AMR). A ausência de RT ou descumprimento do AMR é irregularidade sanitária e ética.</p>
+    </div>
+
+    <div class="subsection">Nutrição Clínica — Parâmetros Relevantes</div>
+    <ul>
+      <li><strong>Hospital:</strong> 1 nutricionista para cada 30–60 leitos (varia por complexidade).</li>
+      <li><strong>UTI:</strong> 1 nutricionista para cada 10 leitos em terapia intensiva.</li>
+      <li><strong>Ambulatório/Consultório:</strong> parâmetros definidos por produtividade e carga horária.</li>
+    </ul>
+  </div>
+
+  <div class="page-footer">
+    <span class="footer-text">Extensivo ENARE 2026 · Bloco B9 Nutrição</span>
+    <span class="page-num">4 / 10</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     PÁGINA 5 — CÓDIGO DE ÉTICA (RES. 599/2018) + EXERCÍCIO ILEGAL
+════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="25" viewBox="0 0 44 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="22,2 41,13 41,37 22,48 3,37 3,13" fill="#1F5C23" stroke="#C6D834" stroke-width="2.5"/>
+        <circle cx="22" cy="25" r="9" fill="#F6F4ED"/>
+      </svg>
+      <span class="brand-name-sm">Extensivo ENARE</span>
+    </div>
+    <span class="page-meta">NUT-ETICA · Aula 33 · Bloco B9</span>
+  </div>
+
+  <div class="page-content">
+    <div class="section-title">Código de Ética — Resolução CFN 599/2018</div>
+
+    <div class="subsection">Princípios Fundamentais</div>
+    <ul>
+      <li>Respeito à <strong>dignidade humana</strong> e à autonomia do paciente/cliente.</li>
+      <li>Promoção da <strong>saúde e bem-estar</strong> individual e coletivo.</li>
+      <li>Compromisso com a <strong>justiça social</strong> e com o direito humano à alimentação adequada (DHAA).</li>
+      <li>Responsabilidade com a <strong>ciência</strong>: atualização contínua e prática baseada em evidências.</li>
+    </ul>
+
+    <div class="subsection">Deveres do Nutricionista</div>
+    <ul>
+      <li>Manter <strong>sigilo profissional</strong> sobre informações do paciente/cliente.</li>
+      <li>Prestar assistência sem qualquer forma de discriminação (racial, sexual, religiosa etc.).</li>
+      <li>Comunicar às autoridades sanitárias situações de risco à saúde pública.</li>
+      <li>Recusar-se a exercer atividades que violem princípios éticos, mesmo por pressão institucional.</li>
+      <li>Manter <strong>independência técnica</strong> frente a pressões comerciais (indústria alimentícia).</li>
+    </ul>
+
+    <div class="subsection">Sigilo Profissional — Regra e Exceções</div>
+    <table>
+      <tr><th>Regra</th><th>Exceções admitidas</th></tr>
       <tr>
-        <th>Fármaco</th>
-        <th>Nutriente / Alimento</th>
-        <th>Mecanismo</th>
-        <th>Efeito</th>
-        <th>Conduta</th>
-      </tr>
-      <tr>
-        <td><strong>Warfarina</strong></td>
-        <td>Vitamina K1 (vegetais)</td>
-        <td>Antagonismo (VKORC1)</td>
-        <td>↓ anticoagulação</td>
-        <td>Ingestão CONSISTENTE; não proibir</td>
-      </tr>
-      <tr>
-        <td><strong>Metotrexato</strong> (AR)</td>
-        <td>Ácido fólico</td>
-        <td>Antagonismo (DHFR)</td>
-        <td>Toxicidade</td>
-        <td>Suplementar B9 (↓ toxicidade, ≠ eficácia)</td>
-      </tr>
-      <tr>
-        <td><strong>Isoniazida</strong></td>
-        <td>Vitamina B6 (piridoxina)</td>
-        <td>Depleção / antagonismo</td>
-        <td>Neuropatia periférica</td>
-        <td>Suplementar piridoxina profilaticamente</td>
-      </tr>
-      <tr>
-        <td><strong>IMAO / Linezolida</strong></td>
-        <td>Tiramina</td>
-        <td>Inibição MAO → ↑ tiramina</td>
-        <td>Crise hipertensiva</td>
-        <td>Evitar queijos maturados, vinho, embutidos</td>
-      </tr>
-      <tr>
-        <td><strong>Levodopa</strong></td>
-        <td>Proteínas (BCAA)</td>
-        <td>Competição por LAT1</td>
-        <td>↓ eficácia dopaminérgica</td>
-        <td>Tomar 30–60 min antes das refeições</td>
-      </tr>
-      <tr>
-        <td><strong>Grapefruit</strong></td>
-        <td>Ciclosporina, estatinas</td>
-        <td>Inib. irreversível CYP3A4</td>
-        <td>↑ biodisponibilidade → toxicidade</td>
-        <td>Evitar grapefruit com esses fármacos</td>
-      </tr>
-      <tr>
-        <td><strong>Tetraciclina</strong></td>
-        <td>Ca, Mg, Fe, Zn</td>
-        <td>Quelação</td>
-        <td>↓ absorção do ATB</td>
-        <td>2h antes ou 4h após laticínios</td>
-      </tr>
-      <tr>
-        <td><strong>Ferro oral</strong></td>
-        <td>VitC (↑); Ca, taninos, fitatos (↓)</td>
-        <td>pH / quelação</td>
-        <td>Absorção variável</td>
-        <td>Tomar com VitC; 2h longe de Ca/chá/café</td>
-      </tr>
-      <tr>
-        <td><strong>Lítio</strong></td>
-        <td>Sódio (dieta hipossódica)</td>
-        <td>Competição renal</td>
-        <td>↑ litemias → toxicidade</td>
-        <td>Manter Na⁺ estável; evitar dieta muito restrita</td>
-      </tr>
-      <tr>
-        <td><strong>Fenitoína</strong></td>
-        <td>Folato, vitamina D</td>
-        <td>Indução enzimática (CYP)</td>
-        <td>Anemia, osteomalácia</td>
-        <td>Monitorar; intervalo 2h na NE</td>
-      </tr>
-      <tr>
-        <td><strong>Corticoides</strong> (crônico)</td>
-        <td>Ca²⁺, K⁺, Zn</td>
-        <td>Depleção</td>
-        <td>Osteoporose, imunodepressão</td>
-        <td>Suplementar Ca + VitD; dieta rica em K</td>
+        <td>Manter sigilo absoluto sobre dados do paciente/cliente</td>
+        <td>
+          • <strong>Risco de vida</strong> iminente ao paciente ou a terceiros<br>
+          • <strong>Determinação judicial</strong> expressa<br>
+          • <strong>Notificação compulsória</strong> de agravo à saúde pública<br>
+          • <strong>Consentimento expresso</strong> do próprio paciente
+        </td>
       </tr>
     </table>
 
-    <div class="sub-title">Ferro Oral — Fatores que Modulam a Absorção</div>
-    <div class="highlight">
-      <strong>Aumentam:</strong> vitamina C (reduz Fe³⁺ → Fe²⁺, forma solúvel), ácido cítrico, carne vermelha (heme estimula absorção do não-heme).<br>
-      <strong>Diminuem:</strong> Ca²⁺ (laticínios), taninos (chá preto, chá verde, café), fitatos (cereais integrais, leguminosas), oxalatos, antiácidos, leite, ovos.
+    <div class="alert-box">
+      <p><strong>O sigilo NÃO é absoluto:</strong> quando há risco de vida, a quebra do sigilo é <em>permitida e, em alguns casos, obrigatória</em>. Afirmativas que descrevem o sigilo como "absoluto, sem nenhuma exceção" estão incorretas.</p>
     </div>
-    <p><strong>Ferro heme</strong> (carnes): absorção ~15–35%, não quelado por fitatos/taninos, independente do pH.<br>
-    <strong>Ferro não-heme</strong> (vegetais, cereais, ovos): absorção 2–10%, altamente dependente de cofatores e inibidores presentes na refeição.</p>
+
+    <div class="subsection">Conflito de Interesses com a Indústria</div>
+    <ul>
+      <li>É vedado ao nutricionista <strong>induzir o consumo</strong> de produtos por interesse comercial sem base científica.</li>
+      <li>Patrocínios e parcerias com indústria devem ser <strong>declarados</strong> em publicações e atividades científicas.</li>
+      <li>Proibida a propaganda enganosa de produtos alimentícios e suplementos.</li>
+    </ul>
+
+    <div class="subsection">Exercício Ilegal da Profissão</div>
+    <table>
+      <tr><th>Situação</th><th>Consequência</th></tr>
+      <tr><td>Exercício sem registro no CRN</td><td>Exercício ilegal — responde criminalmente (Lei das Contravenções Penais)</td></tr>
+      <tr><td>Técnico em nutrição realizando atividade privativa</td><td>Exercício ilegal pelo técnico + responsabilidade ética do nutricionista que permite</td></tr>
+      <tr><td>Estagiário prescrevendo dietas sem supervisão</td><td>Exercício irregular — nulo o ato; responsabilidade do supervisor</td></tr>
+      <tr><td>Registro com diploma falso ou não reconhecido</td><td>Cassação + responsabilidade civil e criminal</td></tr>
+    </table>
+
+    <div class="anchor-box">
+      <p><strong>Âncoras críticas para a prova:</strong></p>
+      <ul>
+        <li><strong>Prescrição de suplementos = privativa</strong> (art. 3°, IV, Lei 8.234/1991)</li>
+        <li><strong>Cardápios coletivos ≠ privativo</strong> (art. 4° — atividade compartilhada)</li>
+        <li><strong>Sigilo ≠ absoluto</strong> — admite exceção em risco de vida e determinação judicial</li>
+        <li><strong>AMR (Res. 600/2018) = obrigatório</strong> — define mínimo de nutricionistas/carga horária</li>
+        <li><strong>RT obrigatória</strong> em todos os estabelecimentos de alimentação coletiva</li>
+      </ul>
+    </div>
   </div>
-  <div class="content-footer">
-    <div class="footer-label">Extensivo ENARE 2026 · Bloco B9 — Nutrição · NUT-FARM</div>
-    <div class="footer-page">5 / 10</div>
+
+  <div class="page-footer">
+    <span class="footer-text">Extensivo ENARE 2026 · Bloco B9 Nutrição</span>
+    <span class="page-num">5 / 10</span>
   </div>
 </div>
 
-<!-- PAGE 6 — Q01 -->
+<!-- ════════════════════════════════════════════
+     PÁGINA 6 — QUESTÃO 01 (APLICAÇÃO · GAB B)
+════════════════════════════════════════════ -->
 <div class="page">
-  <div class="content-header">
-    <div class="logo-wrap">
-      <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="32" height="32" rx="6" fill="#C6D834"/>
-        <path d="M16 4L28 10V22L16 28L4 22V10L16 4Z" fill="#1F5C23"/>
-        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="25" viewBox="0 0 44 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="22,2 41,13 41,37 22,48 3,37 3,13" fill="#1F5C23" stroke="#C6D834" stroke-width="2.5"/>
+        <circle cx="22" cy="25" r="9" fill="#F6F4ED"/>
       </svg>
-      <div>
-        <div class="logo-text">Extensivo ENARE</div>
-        <div class="logo-tagline">2026 · Nutrição</div>
-      </div>
+      <span class="brand-name-sm">Extensivo ENARE</span>
     </div>
-    <div class="header-right">
-      <div class="page-label">NUT-FARM · Aula 33</div>
-      <div class="page-title-hd">Questão 01 — Aplicação</div>
-    </div>
+    <span class="page-meta">NUT-ETICA · Aula 33 · Bloco B9</span>
   </div>
-  <div class="content-body">
-    <div class="section-title">Questão 01</div>
-    <div class="question-header">
-      <span class="question-badge">Q01 · Ap</span>
-      <div class="q-meta">
-        <div class="q-meta-line">Réplica ENARE 2025 · Q109</div>
-        <div class="q-meta-line">Banca FGV · Nutrição</div>
-      </div>
+
+  <div class="page-content">
+    <div class="q-header">
+      <span class="q-badge">Q 01</span>
+      <span class="q-type">Aplicação · Lei 8.234/1991</span>
     </div>
-    <div class="question-stem">
-      <p>Paciente de 68 anos com fibrilação atrial em uso contínuo de warfarina (INR alvo 2,0–3,0) relata que, ao iniciar uma "dieta detox" à base de sucos verdes com couve, espinafre e salsinha, seus valores de INR caíram de 2,5 para 1,4 em 10 dias. O médico solicita avaliação nutricional para orientação sobre a interação entre o anticoagulante e a alimentação.</p>
-      <p style="margin-top:6px">Com base na fisiopatologia desta interação, a orientação dietética <strong>mais adequada</strong> para este paciente é:</p>
+
+    <div class="q-context">
+      Uma nutricionista foi contratada como responsável técnica de uma UAN hospitalar com produção de 850 refeições/dia. Ao assumir o cargo, identificou que o técnico em nutrição da equipe havia estado prescrevendo suplementos proteicos individualizados para pacientes internados, com a justificativa de que essa conduta era prática habitual na instituição e que o médico já havia orientado a suplementação de forma geral no prontuário.
     </div>
-    <ul class="options-list">
-      <li class="option-item">
-        <span class="option-letter">A</span>
-        <span>Eliminar completamente os vegetais verde-escuros da dieta, pois a vitamina K antagoniza irreversivelmente o efeito da warfarina.</span>
+
+    <p class="q-stem">Com base na Lei 8.234/1991, é CORRETO afirmar que:</p>
+
+    <ul class="alternatives">
+      <li>
+        <span class="alt-letter">A</span>
+        <span>A conduta do técnico em nutrição é permitida porque houve orientação médica prévia no prontuário, tornando a prescrição nutricional complementar à conduta clínica já estabelecida.</span>
       </li>
-      <li class="option-item correct">
-        <span class="option-letter">B</span>
-        <span>Manter ingestão estável e consistente de alimentos ricos em vitamina K, evitando variações bruscas que desestabilizem o INR.</span>
+      <li>
+        <span class="alt-letter">B</span>
+        <span>A prescrição de suplementos nutricionais é atividade privativa do nutricionista, vedada ao técnico em nutrição mesmo quando há orientação médica ou prática institucional consolidada.</span>
       </li>
-      <li class="option-item">
-        <span class="option-letter">C</span>
-        <span>Substituir a warfarina por heparina de baixo peso molecular enquanto o paciente desejar manter a dieta rica em vegetais verde-escuros.</span>
+      <li>
+        <span class="alt-letter">C</span>
+        <span>O técnico em nutrição pode prescrever suplementos de via oral em ambiente hospitalar desde que a nutricionista responsável técnica assine o documento ao final do turno, caracterizando supervisão posterior.</span>
       </li>
-      <li class="option-item">
-        <span class="option-letter">D</span>
-        <span>Recomendar suplementação de vitamina K para compensar a ação anticoagulante e estabilizar o INR em valores mais elevados.</span>
-      </li>
-      <li class="option-item">
-        <span class="option-letter">E</span>
-        <span>Orientar o consumo exclusivo de cranberry como fonte antioxidante, pois esta fruta não interfere na ação da warfarina.</span>
+      <li>
+        <span class="alt-letter">D</span>
+        <span>A prescrição de suplementos nutricionais é atividade compartilhada entre médicos, técnicos em nutrição e nutricionistas, não configurando exercício ilegal quando realizada por técnico habilitado.</span>
       </li>
     </ul>
-    <div class="highlight" style="margin-top:12px">
-      <strong>Ponto-chave:</strong> O problema não é o consumo de vitamina K — é a variação brusca. A conduta correta é <strong>consistência</strong>, permitindo que a equipe médica ajuste a dose de warfarina ao padrão alimentar basal. Cranberry (distrator E) potencializa a anticoagulação (↑ INR) — não é inerte.
+
+    <div class="alert-box" style="margin-top:5mm;">
+      <p><strong>Foco da questão:</strong> A Lei 8.234/1991 (art. 3°, IV) define a prescrição de suplementos como atividade <em>privativa</em> do nutricionista. Nenhuma situação — orientação médica, prática institucional, supervisão a posteriori — transforma essa atividade em não privativa. O técnico em nutrição que prescreve suplementos comete exercício ilegal, e a nutricionista RT que permite incorre em infração ética.</p>
     </div>
   </div>
-  <div class="content-footer">
-    <div class="footer-label">Extensivo ENARE 2026 · Bloco B9 — Nutrição · NUT-FARM</div>
-    <div class="footer-page">6 / 10</div>
+
+  <div class="page-footer">
+    <span class="footer-text">Extensivo ENARE 2026 · Bloco B9 Nutrição</span>
+    <span class="page-num">6 / 10</span>
   </div>
 </div>
 
-<!-- PAGE 7 — Q02 -->
+<!-- ════════════════════════════════════════════
+     PÁGINA 7 — QUESTÃO 02 (APLICAÇÃO · GAB C)
+════════════════════════════════════════════ -->
 <div class="page">
-  <div class="content-header">
-    <div class="logo-wrap">
-      <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="32" height="32" rx="6" fill="#C6D834"/>
-        <path d="M16 4L28 10V22L16 28L4 22V10L16 4Z" fill="#1F5C23"/>
-        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="25" viewBox="0 0 44 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="22,2 41,13 41,37 22,48 3,37 3,13" fill="#1F5C23" stroke="#C6D834" stroke-width="2.5"/>
+        <circle cx="22" cy="25" r="9" fill="#F6F4ED"/>
       </svg>
-      <div>
-        <div class="logo-text">Extensivo ENARE</div>
-        <div class="logo-tagline">2026 · Nutrição</div>
-      </div>
+      <span class="brand-name-sm">Extensivo ENARE</span>
     </div>
-    <div class="header-right">
-      <div class="page-label">NUT-FARM · Aula 33</div>
-      <div class="page-title-hd">Questão 02 — Aplicação</div>
-    </div>
+    <span class="page-meta">NUT-ETICA · Aula 33 · Bloco B9</span>
   </div>
-  <div class="content-body">
-    <div class="section-title">Questão 02</div>
-    <div class="question-header">
-      <span class="question-badge">Q02 · Ap</span>
-      <div class="q-meta">
-        <div class="q-meta-line">Réplica ENARE 2025 · Q110</div>
-        <div class="q-meta-line">Banca FGV · Nutrição</div>
-      </div>
+
+  <div class="page-content">
+    <div class="q-header">
+      <span class="q-badge">Q 02</span>
+      <span class="q-type">Aplicação · Res. CFN 600/2018 + Código de Ética</span>
     </div>
-    <div class="question-stem">
-      <p>Paciente de 42 anos, desnutrido moderado (IMC = 17,2 kg/m²), é diagnosticado com tuberculose pulmonar bacilífera e inicia o esquema RHZE (rifampicina, isoniazida, pirazinamida e etambutol). Na consulta de nutrição, o paciente refere parestesias progressivas nas mãos e pés há 3 semanas, com dormência e sensação de queimação.</p>
-      <p style="margin-top:6px">A conduta nutricional mais adequada para prevenir e tratar a complicação em curso é:</p>
+
+    <div class="q-context">
+      Uma nutricionista responsável técnica de um restaurante self-service privado (produção de 1.200 refeições/dia) foi questionada pela direção sobre a necessidade de contratar um segundo profissional, argumentando que ela já atendia sozinha o serviço em 20 horas semanais. Paralelamente, um paciente de consultório pediu à nutricionista que não revelasse a terceiros seu diagnóstico de transtorno alimentar. Semanas depois, a nutricionista soube que o paciente estava em risco iminente de vida por recusa alimentar grave.
     </div>
-    <ul class="options-list">
-      <li class="option-item">
-        <span class="option-letter">A</span>
-        <span>Restringir proteínas, pois aminoácidos de cadeia longa competem com a isoniazida pelo transportador LAT1, reduzindo sua absorção intestinal.</span>
+
+    <p class="q-stem">Considerando as normas vigentes, assinale a alternativa CORRETA:</p>
+
+    <ul class="alternatives">
+      <li>
+        <span class="alt-letter">A</span>
+        <span>Uma única nutricionista em regime de 20 horas semanais atende plenamente aos parâmetros da Resolução CFN 600/2018 para uma UAN com 1.200 refeições/dia, pois o que importa é a presença do RT, não a carga horária mínima.</span>
       </li>
-      <li class="option-item">
-        <span class="option-letter">B</span>
-        <span>Orientar intervalo de 4 horas entre a tomada da isoniazida e laticínios, pois a quelação com cálcio reduz a absorção do fármaco.</span>
+      <li>
+        <span class="alt-letter">B</span>
+        <span>O sigilo profissional deve ser mantido em qualquer circunstância, incluindo situação de risco de vida, pois a confiança na relação nutricionista-paciente é fundamento inviolável do Código de Ética.</span>
       </li>
-      <li class="option-item correct">
-        <span class="option-letter">C</span>
-        <span>Suplementar piridoxina (vitamina B6) profilaticamente, pois a isoniazida depleta os estoques de B6, causando neuropatia periférica — com risco elevado em pacientes desnutridos.</span>
+      <li>
+        <span class="alt-letter">C</span>
+        <span>A Resolução CFN 600/2018 estabelece parâmetros mínimos de carga horária (AMR) que a nutricionista está descumprindo; e o Código de Ética (Res. 599/2018) permite a quebra do sigilo quando há risco iminente de vida ao paciente.</span>
       </li>
-      <li class="option-item">
-        <span class="option-letter">D</span>
-        <span>Recomendar queijos maturados como fonte proteica densa para favorecer a recuperação nutricional do paciente.</span>
-      </li>
-      <li class="option-item">
-        <span class="option-letter">E</span>
-        <span>Reduzir a ingestão de ácido fólico, pois a isoniazida depende da depleção de folato para exercer efeito antimicrobiano contra o Mycobacterium tuberculosis.</span>
+      <li>
+        <span class="alt-letter">D</span>
+        <span>A Resolução CFN 600/2018 não estabelece parâmetros numéricos de carga horária para UANs comerciais, e o sigilo somente pode ser quebrado por determinação judicial, nunca por decisão unilateral da nutricionista.</span>
       </li>
     </ul>
-    <div class="highlight" style="margin-top:12px">
-      <strong>Distratores:</strong> A → mecanismo LAT1 é da levodopa (não da INH); B → quelação com Ca é da tetraciclina/fluoroquinolonas; D → queijos maturados são CONTRAINDICADOS na INH (tiramina — efeito IMAO-like); E → INH não depende da depleção de folato para seu efeito antimicrobiano.
+
+    <div class="alert-box" style="margin-top:5mm;">
+      <p><strong>Foco da questão:</strong> Dois pontos centrais combinados — (1) AMR da Res. 600/2018 é obrigatório e define carga horária mínima de 30h/semana para UANs, não apenas presença do RT; (2) sigilo não é absoluto: risco de vida é exceção prevista no Código de Ética (Res. 599/2018). A alternativa C combina corretamente ambas as situações.</p>
     </div>
   </div>
-  <div class="content-footer">
-    <div class="footer-label">Extensivo ENARE 2026 · Bloco B9 — Nutrição · NUT-FARM</div>
-    <div class="footer-page">7 / 10</div>
+
+  <div class="page-footer">
+    <span class="footer-text">Extensivo ENARE 2026 · Bloco B9 Nutrição</span>
+    <span class="page-num">7 / 10</span>
   </div>
 </div>
 
-<!-- PAGE 8 — Q03 (AFIRMATIVAS) -->
+<!-- ════════════════════════════════════════════
+     PÁGINA 8 — QUESTÃO 03 (ANÁLISE ÂNCORA · GAB C)
+════════════════════════════════════════════ -->
 <div class="page">
-  <div class="content-header">
-    <div class="logo-wrap">
-      <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="32" height="32" rx="6" fill="#C6D834"/>
-        <path d="M16 4L28 10V22L16 28L4 22V10L16 4Z" fill="#1F5C23"/>
-        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="25" viewBox="0 0 44 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="22,2 41,13 41,37 22,48 3,37 3,13" fill="#1F5C23" stroke="#C6D834" stroke-width="2.5"/>
+        <circle cx="22" cy="25" r="9" fill="#F6F4ED"/>
       </svg>
-      <div>
-        <div class="logo-text">Extensivo ENARE</div>
-        <div class="logo-tagline">2026 · Nutrição</div>
-      </div>
+      <span class="brand-name-sm">Extensivo ENARE</span>
     </div>
-    <div class="header-right">
-      <div class="page-label">NUT-FARM · Aula 33</div>
-      <div class="page-title-hd">Questão 03 — Análise Âncora</div>
-    </div>
+    <span class="page-meta">NUT-ETICA · Aula 33 · Bloco B9</span>
   </div>
-  <div class="content-body">
-    <div class="section-title">Questão 03 — Análise Âncora</div>
-    <div class="question-header">
-      <span class="question-badge">Q03 · An</span>
-      <div class="q-meta">
-        <div class="q-meta-line">Réplica ENARE 2024 Q84 / 2025 Q111</div>
-        <div class="q-meta-line">Banca FGV · Nutrição · Afirmativas</div>
-      </div>
+
+  <div class="page-content">
+    <div class="q-header">
+      <span class="q-badge">Q 03</span>
+      <span class="q-type">Análise Âncora · Ética + Legislação Integrada</span>
     </div>
-    <div class="question-stem">
-      <p>Sobre interações entre fármacos e nutrientes de relevância clínica para o nutricionista, analise as afirmativas:</p>
-      <p style="margin-top:6px"><strong>I.</strong> A tetraciclina deve ser administrada junto com leite ou iogurte para reduzir a irritação gástrica e melhorar sua absorção intestinal.</p>
-      <p style="margin-top:4px"><strong>II.</strong> O suco de grapefruit inibe irreversivelmente o CYP3A4 intestinal, aumentando a biodisponibilidade de fármacos como ciclosporina e sinvastatina, podendo causar toxicidade mesmo com doses normais do fármaco.</p>
-      <p style="margin-top:4px"><strong>III.</strong> A levodopa deve ser administrada preferencialmente em jejum ou com lanche leve, distante de refeições ricas em proteínas, pois aminoácidos neutros de cadeia longa competem com ela pelo transportador LAT1 no intestino e na barreira hematoencefálica.</p>
-      <p style="margin-top:4px"><strong>IV.</strong> Em pacientes com artrite reumatoide em uso de metotrexato, a suplementação de ácido fólico é contraindicada pois reduz significativamente a eficácia anti-inflamatória do fármaco.</p>
-    </div>
-    <p style="margin-top:6px; font-size:10.5px">Estão <strong>corretas</strong> apenas as afirmativas:</p>
-    <ul class="options-list">
-      <li class="option-item"><span class="option-letter">A</span><span>I e II</span></li>
-      <li class="option-item"><span class="option-letter">B</span><span>I e IV</span></li>
-      <li class="option-item correct"><span class="option-letter">C</span><span>II e III</span></li>
-      <li class="option-item"><span class="option-letter">D</span><span>I, II e IV</span></li>
-      <li class="option-item"><span class="option-letter">E</span><span>III e IV</span></li>
-    </ul>
-    <ul class="afirmativas-list" style="margin-top:10px">
-      <li class="afirmativa-item errada">
-        <span class="afirmativa-num">I</span>
-        <span><strong>ERRADA.</strong> O leite (rico em Ca²⁺) forma complexo de quelação com a tetraciclina → reduz drasticamente a absorção do antibiótico. Orientação: tomar 2h antes ou 4h após laticínios e antiácidos.</span>
+
+    <p class="q-stem">Analise as afirmativas a seguir sobre o exercício profissional do nutricionista:</p>
+
+    <ul class="assertions">
+      <li>
+        <span class="assert-num">I</span>
+        <span>A elaboração de cardápios para coletividades sadias constitui atividade exclusivamente privativa do nutricionista, vedada a qualquer outro profissional, incluindo tecnólogos em alimentos e chefs de gastronomia.</span>
       </li>
-      <li class="afirmativa-item correta">
-        <span class="afirmativa-num">II</span>
-        <span><strong>CORRETA.</strong> A bergamotina do grapefruit inibe irreversivelmente o CYP3A4 intestinal → ↑ biodisponibilidade de ciclosporina, estatinas, amiodarona e outros. Efeito persiste 24–72h após ingestão.</span>
+      <li>
+        <span class="assert-num">II</span>
+        <span>A prescrição de suplementos nutricionais é atividade privativa do nutricionista, conforme o art. 3°, inciso IV, da Lei 8.234/1991, sendo vedada a outros profissionais independentemente de supervisão ou orientação médica prévia.</span>
       </li>
-      <li class="afirmativa-item correta">
-        <span class="afirmativa-num">III</span>
-        <span><strong>CORRETA.</strong> Competição pelo LAT1 → levodopa perde para BCAA tanto na absorção intestinal quanto na BHE → ↓ eficácia dopaminérgica. Proteínas devem ser concentradas no almoço/jantar.</span>
+      <li>
+        <span class="assert-num">III</span>
+        <span>O Código de Ética do Nutricionista, aprovado pela Resolução CFN 599/2018, admite a quebra do sigilo profissional em situações que envolvam risco de vida iminente ao paciente ou a terceiros, bem como por determinação judicial.</span>
       </li>
-      <li class="afirmativa-item errada">
-        <span class="afirmativa-num">IV</span>
-        <span><strong>ERRADA.</strong> Em AR e psoríase, ácido fólico reduz toxicidade do metotrexato (mucosite, náuseas, hepatotoxicidade) SEM comprometer a eficácia anti-inflamatória. Suplementação é conduta padrão.</span>
+      <li>
+        <span class="assert-num">IV</span>
+        <span>A Resolução CFN 600/2018 eliminou a obrigatoriedade da Anotação de Responsabilidade Técnica (ART) junto ao CRN para estabelecimentos de alimentação coletiva com menos de 500 refeições/dia, substituindo-a por simples cadastro eletrônico.</span>
       </li>
     </ul>
+
+    <p class="q-stem" style="margin-top:3mm;">Estão CORRETAS apenas as afirmativas:</p>
+
+    <ul class="alternatives">
+      <li><span class="alt-letter">A</span><span>I e II</span></li>
+      <li><span class="alt-letter">B</span><span>I e III</span></li>
+      <li><span class="alt-letter">C</span><span>II e III</span></li>
+      <li><span class="alt-letter">D</span><span>II e IV</span></li>
+    </ul>
+
+    <div class="anchor-box" style="margin-top:4mm;">
+      <p><strong>Âncora desta questão:</strong></p>
+      <ul>
+        <li><strong>I — ERRADA:</strong> Elaboração de cardápios coletivos para populações sadias está no <em>art. 4°</em> da Lei 8.234 — atividade <em>não privativa</em>, compartilhada com outros profissionais.</li>
+        <li><strong>II — CORRETA:</strong> Prescrição de suplementos = atividade privativa (art. 3°, IV).</li>
+        <li><strong>III — CORRETA:</strong> Sigilo admite exceção em risco de vida — Código de Ética Res. 599/2018.</li>
+        <li><strong>IV — ERRADA:</strong> A RT e a ART permanecem obrigatórias para todos os estabelecimentos, independentemente do porte — a Res. 600/2018 não eliminou essa exigência.</li>
+      </ul>
+    </div>
   </div>
-  <div class="content-footer">
-    <div class="footer-label">Extensivo ENARE 2026 · Bloco B9 — Nutrição · NUT-FARM</div>
-    <div class="footer-page">8 / 10</div>
+
+  <div class="page-footer">
+    <span class="footer-text">Extensivo ENARE 2026 · Bloco B9 Nutrição</span>
+    <span class="page-num">8 / 10</span>
   </div>
 </div>
 
-<!-- PAGE 9 — GABARITO -->
+<!-- ════════════════════════════════════════════
+     PÁGINA 9 — GABARITO COMENTADO
+════════════════════════════════════════════ -->
 <div class="page">
-  <div class="content-header">
-    <div class="logo-wrap">
-      <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="32" height="32" rx="6" fill="#C6D834"/>
-        <path d="M16 4L28 10V22L16 28L4 22V10L16 4Z" fill="#1F5C23"/>
-        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="25" viewBox="0 0 44 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="22,2 41,13 41,37 22,48 3,37 3,13" fill="#1F5C23" stroke="#C6D834" stroke-width="2.5"/>
+        <circle cx="22" cy="25" r="9" fill="#F6F4ED"/>
       </svg>
-      <div>
-        <div class="logo-text">Extensivo ENARE</div>
-        <div class="logo-tagline">2026 · Nutrição</div>
-      </div>
+      <span class="brand-name-sm">Extensivo ENARE</span>
     </div>
-    <div class="header-right">
-      <div class="page-label">NUT-FARM · Aula 33</div>
-      <div class="page-title-hd">Gabarito Comentado</div>
-    </div>
+    <span class="page-meta">NUT-ETICA · Aula 33 · Bloco B9</span>
   </div>
-  <div class="content-body">
+
+  <div class="page-content">
     <div class="section-title">Gabarito Comentado</div>
 
-    <div class="gab-card">
-      <div class="gab-card-hd">
-        <span class="gab-q-label">Q01 — Warfarina × Vitamina K</span>
-        <span class="gab-answer">GAB: B</span>
+    <div class="gab-grid">
+      <div class="gab-card">
+        <div class="gab-q">Questão 01</div>
+        <div class="gab-resp">B</div>
+        <div class="gab-tema">Lei 8.234/1991 — Privativa</div>
       </div>
-      <div class="gab-text">
-        A resposta correta é manter ingestão <em>consistente</em> de vitamina K — não eliminar vegetais. A warfarina inibe a VKORC1, bloqueando a ativação dos fatores de coagulação dependentes de VitK (II, VII, IX, X). A VitK1 dos vegetais compete com esse efeito, mas o INR pode ser estabilizado ajustando a dose de warfarina ao padrão alimentar habitual do paciente. O problema desta questão não é o consumo de vegetais — é a variação brusca causada pela dieta detox. <strong>A:</strong> eliminação total é contraindicada. <strong>E:</strong> cranberry potencializa a anticoagulação (↑ INR) — não é seguro nem inerte.
+      <div class="gab-card">
+        <div class="gab-q">Questão 02</div>
+        <div class="gab-resp">C</div>
+        <div class="gab-tema">Res. 600/2018 + Sigilo</div>
       </div>
-    </div>
-
-    <div class="gab-card">
-      <div class="gab-card-hd">
-        <span class="gab-q-label">Q02 — Isoniazida × Vitamina B6</span>
-        <span class="gab-answer">GAB: C</span>
-      </div>
-      <div class="gab-text">
-        A isoniazida é análoga estrutural da piridoxina e compete pelo mesmo sítio enzimático → depleção de B6 → deficit na síntese de GABA, serotonina e dopamina → neuropatia periférica (parestesias, dormência, queimação). Grupos de risco aumentado: desnutridos, gestantes, alcoólatras, idosos, portadores de HIV. Conduta padrão: suplementar piridoxina profilaticamente para todos em uso de INH. <strong>D</strong> é o distrator mais perigoso: queijos maturados são ricos em tiramina e a INH tem efeito IMAO-like fraco — podem causar rubor, palpitações e cefaleia mesmo sem o IMAO clássico.
+      <div class="gab-card">
+        <div class="gab-q">Questão 03</div>
+        <div class="gab-resp">C</div>
+        <div class="gab-tema">II e III corretas</div>
       </div>
     </div>
 
-    <div class="gab-card">
-      <div class="gab-card-hd">
-        <span class="gab-q-label">Q03 — Interações Droga-Nutriente (Afirmativas)</span>
-        <span class="gab-answer">GAB: C (II e III)</span>
-      </div>
-      <div class="gab-text">
-        <strong>I — ERRADA:</strong> laticínios quelam a tetraciclina → ↓ absorção do antibiótico (não melhoram — prejudicam).<br>
-        <strong>II — CORRETA:</strong> bergamotina do grapefruit inibe CYP3A4 intestinal irreversivelmente → ↑ biodisponibilidade de ciclosporina, estatinas, amiodarona → risco de toxicidade com dose normal. Efeito dura 24–72h.<br>
-        <strong>III — CORRETA:</strong> competição LAT1 entre levodopa e aminoácidos neutros de cadeia longa, tanto no intestino quanto na BHE — dois pontos de interferência. Protocolo: levodopa em jejum ou lanche leve; proteínas concentradas no almoço/jantar.<br>
-        <strong>IV — ERRADA:</strong> em AR/psoríase, ácido fólico reduz toxicidade do MTX SEM comprometer eficácia. É a conduta padrão e recomendada (diferente do MTX em oncologia, onde se avalia caso a caso).
-      </div>
+    <div class="gab-justificativa highlight-box">
+      <div class="gab-title">Q01 — Gabarito B</div>
+      <p><span class="wrong">A</span> — Orientação médica não converte atividade privativa em compartilhada.</p>
+      <p><span class="correct">B ✓</span> — A Lei 8.234/1991, art. 3°, IV, define prescrição de suplementos como atividade privativa do nutricionista, sem exceções. Prática institucional ou supervisão a posteriori não alteram esse status.</p>
+      <p><span class="wrong">C</span> — A supervisão precisa ser prévia e efetiva — não existe "validação por assinatura posterior" que legalize o ato ilegal já praticado.</p>
+      <p><span class="wrong">D</span> — A prescrição de suplementos NÃO é atividade compartilhada com médicos nem com técnicos — é privativa do nutricionista.</p>
     </div>
 
-    <div class="highlight" style="margin-top:8px">
-      <strong>Resumo do gabarito:</strong> Q01 → B &nbsp;|&nbsp; Q02 → C &nbsp;|&nbsp; Q03 → C (II e III corretas)
+    <div class="gab-justificativa highlight-box">
+      <div class="gab-title">Q02 — Gabarito C</div>
+      <p><span class="wrong">A</span> — A Res. 600/2018 estabelece carga horária mínima (AMR) — 30h/semana para até 500 ref/dia; 1.200 refeições exige carga proporcional, não se admite 20h.</p>
+      <p><span class="wrong">B</span> — O sigilo admite exceção em risco iminente de vida — o Código de Ética (Res. 599/2018) não o define como absoluto.</p>
+      <p><span class="correct">C ✓</span> — AMR obrigatório (Res. 600/2018) + sigilo com exceção de risco de vida (Res. 599/2018) — ambas as situações estão corretamente descritas.</p>
+      <p><span class="wrong">D</span> — A Res. 600/2018 SIM estabelece parâmetros numéricos; e a quebra de sigilo não exige determinação judicial quando há risco de vida.</p>
+    </div>
+
+    <div class="gab-justificativa highlight-box">
+      <div class="gab-title">Q03 — Gabarito C (II e III)</div>
+      <p><span class="wrong">I — ERRADA:</span> Elaboração de cardápios coletivos para populações sadias = art. 4°, atividade NÃO privativa — tecnólogos, chefs e outros podem exercê-la.</p>
+      <p><span class="correct">II — CORRETA ✓:</span> Prescrição de suplementos = atividade privativa (art. 3°, IV, Lei 8.234/1991).</p>
+      <p><span class="correct">III — CORRETA ✓:</span> Sigilo admite quebra em risco de vida e determinação judicial — Código de Ética Res. 599/2018.</p>
+      <p><span class="wrong">IV — ERRADA:</span> A RT e a ART são obrigatórias para todos os estabelecimentos, independente do porte — a Res. 600/2018 não eliminou essa exigência para nenhum segmento.</p>
     </div>
   </div>
-  <div class="content-footer">
-    <div class="footer-label">Extensivo ENARE 2026 · Bloco B9 — Nutrição · NUT-FARM</div>
-    <div class="footer-page">9 / 10</div>
+
+  <div class="page-footer">
+    <span class="footer-text">Extensivo ENARE 2026 · Bloco B9 Nutrição</span>
+    <span class="page-num">9 / 10</span>
   </div>
 </div>
 
-<!-- PAGE 10 — SÍNTESE FINAL -->
+<!-- ════════════════════════════════════════════
+     PÁGINA 10 — SÍNTESE FINAL
+════════════════════════════════════════════ -->
 <div class="page">
-  <div class="content-header">
-    <div class="logo-wrap">
-      <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="32" height="32" rx="6" fill="#C6D834"/>
-        <path d="M16 4L28 10V22L16 28L4 22V10L16 4Z" fill="#1F5C23"/>
-        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="25" viewBox="0 0 44 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="22,2 41,13 41,37 22,48 3,37 3,13" fill="#1F5C23" stroke="#C6D834" stroke-width="2.5"/>
+        <circle cx="22" cy="25" r="9" fill="#F6F4ED"/>
       </svg>
-      <div>
-        <div class="logo-text">Extensivo ENARE</div>
-        <div class="logo-tagline">2026 · Nutrição</div>
-      </div>
+      <span class="brand-name-sm">Extensivo ENARE</span>
     </div>
-    <div class="header-right">
-      <div class="page-label">NUT-FARM · Aula 33</div>
-      <div class="page-title-hd">Síntese Final</div>
-    </div>
+    <span class="page-meta">NUT-ETICA · Aula 33 · Bloco B9</span>
   </div>
-  <div class="content-body">
-    <div class="section-title">Síntese Final — NUT-FARM</div>
+
+  <div class="page-content">
+    <div class="section-title">Síntese Final — NUT-ETICA</div>
 
     <div class="sintese-grid">
       <div class="sintese-card">
-        <div class="sintese-card-title">Quelação</div>
-        <div class="sintese-item">Tetraciclina: Ca/Mg/Fe/Zn → 2h antes ou 4h depois</div>
-        <div class="sintese-item">Fluoroquinolonas: Ca/Mg/Al → intervalo mínimo 2h</div>
-        <div class="sintese-item">Ferro ↑ com VitC; ↓ com Ca, taninos, fitatos</div>
+        <div class="s-title">CFN e CRNs</div>
+        <ul>
+          <li>Autarquias federais — Lei 6.583/1978</li>
+          <li>9 CRNs regionais; CFN sede em Brasília</li>
+          <li>Inscrição obrigatória para exercício</li>
+          <li>Penalidades: advertência → censura → suspensão → cassação</li>
+          <li>PJ também deve se inscrever no CRN</li>
+        </ul>
       </div>
       <div class="sintese-card">
-        <div class="sintese-card-title">Antagonismo Vitamínico</div>
-        <div class="sintese-item">Warfarina × VitK1: ingestão CONSISTENTE (não eliminar)</div>
-        <div class="sintese-item">MTX (AR) × folato: suplementar B9 (↓ tox ≠ eficácia)</div>
-        <div class="sintese-item">Isoniazida × B6: piridoxina profilática para todos</div>
-        <div class="sintese-item">Fenitoína × folato + VitD: anemia + osteomalácia</div>
+        <div class="s-title">Lei 8.234/1991</div>
+        <ul>
+          <li><strong>Art. 3° — PRIVATIVAS:</strong> prescrição suplementos, assistência nutricional clínica/coletiva, direção de UAN, dietas individualizadas, solicitação de exames</li>
+          <li><strong>Art. 4° — NÃO privativas:</strong> cardápios coletivos saudáveis, educação nutricional geral, controle de qualidade, vigilância sanitária</li>
+        </ul>
       </div>
       <div class="sintese-card">
-        <div class="sintese-card-title">CYP3A4 e Enzimas</div>
-        <div class="sintese-item">Grapefruit (bergamotina): inib. irreversível CYP3A4</div>
-        <div class="sintese-item">↑ Ciclosporina, estatinas, amiodarona → toxicidade</div>
-        <div class="sintese-item">Efeito dura 24–72h após ingestão</div>
-        <div class="sintese-item">Fenitoína: induz CYP → catabolismo VitD</div>
+        <div class="s-title">Resolução CFN 600/2018</div>
+        <ul>
+          <li>7 áreas de atuação</li>
+          <li>AMR obrigatório: carga horária mínima por porte</li>
+          <li>≤500 ref/dia: 1 NT + 30h/semana</li>
+          <li>RT obrigatória + ART no CRN</li>
+          <li>UTI: 1 NT para cada 10 leitos</li>
+        </ul>
       </div>
       <div class="sintese-card">
-        <div class="sintese-card-title">Competição / Depleção</div>
-        <div class="sintese-item">Levodopa × BCAA: LAT1 — tomar 30–60 min antes</div>
-        <div class="sintese-item">Lítio × Na⁺: hiponatremia → ↑ lítio sérico</div>
-        <div class="sintese-item">IMAO × tiramina: crise hipertensiva; washout 14 dias</div>
-        <div class="sintese-item">Corticoides: depleção Ca, K⁺, Zn</div>
-        <div class="sintese-item">Furosemida: depleção K⁺, Mg²⁺, Ca²⁺</div>
+        <div class="s-title">Código de Ética (Res. 599/2018)</div>
+        <ul>
+          <li>Sigilo <strong>não é absoluto</strong>: quebra admitida em risco de vida, determinação judicial, notificação compulsória</li>
+          <li>Conflito de interesses com indústria: declarar</li>
+          <li>Proibida propaganda enganosa</li>
+          <li>Independência técnica é dever</li>
+        </ul>
       </div>
     </div>
 
-    <div class="armadilha-box">
-      <div class="armadilha-title">Armadilhas ENARE — NUT-FARM</div>
-      <ul style="font-size:9.8px; padding-left:13px; color:#2a2a2a">
-        <li><strong>Warfarina × VitK:</strong> "eliminar vegetais" = ERRADO. Correto = "manter ingestão consistente".</li>
-        <li><strong>MTX em AR × folato:</strong> suplementar B9 é INDICADO — contraindicado apenas em oncologia (avaliar caso a caso).</li>
-        <li><strong>Isoniazida:</strong> efeito IMAO-like fraco → queijos maturados proibidos além de suplementar B6.</li>
-        <li><strong>Levodopa:</strong> LAT1 compete no intestino E na BHE — dois pontos de interferência, não apenas um.</li>
-        <li><strong>Grapefruit:</strong> inibe CYP3A4 <em>intestinal</em> (efeito de 1ª passagem amplificado) → ↑ biodisponibilidade; efeito irreversível, persiste 24–72h.</li>
-        <li><strong>Cranberry:</strong> potencializa warfarina (↑ INR) — nunca dizer que é seguro/inerte junto com anticoagulantes.</li>
+    <div class="anchor-box" style="margin-top:3mm;">
+      <p><strong>As 5 âncoras desta aula:</strong></p>
+      <ul>
+        <li><strong>1.</strong> Prescrição de suplementos = PRIVATIVA do nutricionista (Lei 8.234, art. 3°, IV)</li>
+        <li><strong>2.</strong> Cardápios coletivos para populações sadias = NÃO privativa (art. 4°)</li>
+        <li><strong>3.</strong> Sigilo profissional ≠ absoluto — quebra admitida em risco de vida (Res. 599/2018)</li>
+        <li><strong>4.</strong> AMR (Res. 600/2018) = obrigatório — define mínimo de profissionais e carga horária</li>
+        <li><strong>5.</strong> RT com ART no CRN = obrigatória para todos os estabelecimentos, sem exceção de porte</li>
       </ul>
     </div>
 
-    <div class="highlight" style="margin-top:8px">
-      <strong>Gabarito:</strong> Q01 → <strong>B</strong> (warfarina = ingestão consistente de VitK) &nbsp;|&nbsp; Q02 → <strong>C</strong> (isoniazida = suplementar piridoxina profilaticamente) &nbsp;|&nbsp; Q03 → <strong>C</strong> (II e III: grapefruit/CYP3A4 + levodopa/LAT1)
+    <div class="sintese-grid" style="margin-top:3mm;">
+      <div class="sintese-card">
+        <div class="s-title">Exercício Ilegal — Gatilhos</div>
+        <ul>
+          <li>Sem registro no CRN</li>
+          <li>Técnico em nutrição prescrevendo suplementos</li>
+          <li>Diploma falso ou não reconhecido pelo MEC</li>
+          <li>Nutricionista RT que permite exercício ilegal por outro</li>
+        </ul>
+      </div>
+      <div class="sintese-card">
+        <div class="s-title">Próxima Aula — 34</div>
+        <ul>
+          <li><strong>NUT-FARM:</strong> Interações Droga-Nutriente</li>
+          <li>Mecanismos de interação (farmacológico, nutricional)</li>
+          <li>Principais grupos: anticoagulantes, IMAO, diuréticos, antibióticos</li>
+          <li>Condutas do nutricionista na prática clínica</li>
+        </ul>
+      </div>
     </div>
   </div>
-  <div class="content-footer">
-    <div class="footer-label">Extensivo ENARE 2026 · Bloco B9 — Nutrição · NUT-FARM</div>
-    <div class="footer-page">10 / 10</div>
+
+  <div class="page-footer">
+    <span class="footer-text">Extensivo ENARE 2026 · Bloco B9 Nutrição</span>
+    <span class="page-num">10 / 10</span>
   </div>
 </div>
 
