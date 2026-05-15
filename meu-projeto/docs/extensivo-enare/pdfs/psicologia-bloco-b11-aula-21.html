@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Psicologia — Bloco B11 — Aula 21 | Extensivo ENARE 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap');
+
+  :root {
+    --creme: #F6F4ED;
+    --verde: #1F5C23;
+    --accent: #C6D834;
+    --escuro: #0C1A0D;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #d0d0d0;
+    font-family: 'Bricolage Grotesque', sans-serif;
+  }
+
+  .pagina {
+    width: 210mm;
+    min-height: 297mm;
+    background: var(--creme);
+    margin: 8mm auto;
+    position: relative;
+    overflow: hidden;
+    page-break-after: always;
+  }
+
+  /* ===================== CAPA ===================== */
+  .capa {
+    background: var(--verde);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 14mm 14mm 10mm 14mm;
+  }
+
+  .capa-topo { display: flex; justify-content: space-between; align-items: flex-start; }
+  .capa-logo-area { display: flex; flex-direction: column; gap: 2mm; }
+  .capa-marca { font-family: 'Playfair Display', serif; font-style: italic; font-size: 15pt; color: var(--creme); letter-spacing: 0.02em; }
+  .capa-tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 6.5pt; color: var(--accent); letter-spacing: 0.18em; text-transform: uppercase; }
+  .capa-badge { background: var(--accent); color: var(--verde); font-family: 'Barlow Condensed', sans-serif; font-size: 7.5pt; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; padding: 2.5mm 5mm; border-radius: 1mm; }
+
+  .capa-meio { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 10mm 0 6mm 0; }
+  .capa-bloco-label { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7pt; color: var(--accent); letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 4mm; }
+  .capa-titulo { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 36pt; color: var(--creme); line-height: 0.92; text-transform: uppercase; letter-spacing: -0.01em; margin-bottom: 6mm; }
+  .capa-titulo span { color: var(--accent); }
+  .capa-subtitulo { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; font-size: 10pt; color: var(--creme); opacity: 0.82; line-height: 1.45; max-width: 140mm; }
+  .capa-linha { width: 28mm; height: 0.7mm; background: var(--accent); margin: 5mm 0; }
+  .capa-modulo-tag { display: inline-flex; align-items: center; gap: 2.5mm; background: rgba(198,216,52,0.15); border: 0.5px solid var(--accent); border-radius: 1mm; padding: 2mm 4mm; width: fit-content; margin-top: 4mm; }
+  .capa-modulo-tag span { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 8pt; color: var(--accent); letter-spacing: 0.12em; text-transform: uppercase; }
+
+  .capa-rodape { display: flex; justify-content: space-between; align-items: flex-end; border-top: 0.5px solid rgba(246,244,237,0.2); padding-top: 5mm; }
+  .capa-rodape-info { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 6pt; color: rgba(246,244,237,0.5); letter-spacing: 0.08em; text-transform: uppercase; line-height: 1.7; }
+  .capa-aula-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 52pt; color: rgba(246,244,237,0.08); line-height: 1; letter-spacing: -0.02em; }
+
+  /* ===================== PÁGINAS INTERNAS ===================== */
+  .pg-interna { padding: 12mm 13mm 10mm 13mm; display: flex; flex-direction: column; gap: 4mm; }
+
+  .pg-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 0.6px solid var(--verde); padding-bottom: 2.5mm; margin-bottom: 1mm; }
+  .pg-header-left { display: flex; align-items: center; gap: 3mm; }
+  .pg-header-marca { font-family: 'Playfair Display', serif; font-style: italic; font-size: 8.5pt; color: var(--verde); }
+  .pg-header-sep { width: 0.5px; height: 3.5mm; background: var(--verde); opacity: 0.3; }
+  .pg-header-bloco { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 6pt; color: var(--verde); opacity: 0.65; letter-spacing: 0.12em; text-transform: uppercase; }
+  .pg-header-right { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 7.5pt; color: var(--accent); letter-spacing: 0.1em; background: var(--verde); padding: 1mm 3mm; border-radius: 0.5mm; }
+
+  .secao-titulo { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 16pt; color: var(--verde); text-transform: uppercase; letter-spacing: 0.02em; line-height: 1.05; border-left: 3.5px solid var(--accent); padding-left: 3.5mm; margin-bottom: 1mm; }
+
+  .subsecao { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 10.5pt; color: var(--verde); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 3mm; margin-bottom: 1.5mm; display: flex; align-items: center; gap: 2mm; }
+  .subsecao::after { content: ''; flex: 1; height: 0.5px; background: var(--verde); opacity: 0.2; }
+
+  p { font-size: 7.8pt; line-height: 1.55; color: #1a2e1b; font-weight: 400; }
+  strong { font-weight: 600; color: var(--escuro); }
+  em { color: var(--verde); font-style: normal; font-weight: 600; }
+
+  .destaque-box { background: var(--verde); border-radius: 1.5mm; padding: 3.5mm 4.5mm; margin: 2mm 0; }
+  .destaque-box p { color: var(--creme); font-size: 7.5pt; }
+  .destaque-box strong { color: var(--accent); }
+
+  .alerta-box { background: rgba(198,216,52,0.12); border-left: 3px solid var(--accent); border-radius: 0 1.5mm 1.5mm 0; padding: 3mm 4mm; margin: 2mm 0; }
+  .alerta-box p { font-size: 7.5pt; color: #1a2e1b; }
+
+  .tabela { width: 100%; border-collapse: collapse; font-size: 7pt; margin: 2mm 0; }
+  .tabela th { background: var(--verde); color: var(--creme); font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 7.5pt; text-transform: uppercase; letter-spacing: 0.05em; padding: 2mm 2.5mm; text-align: left; }
+  .tabela td { padding: 1.8mm 2.5mm; border-bottom: 0.5px solid rgba(31,92,35,0.12); color: #1a2e1b; vertical-align: top; line-height: 1.45; }
+  .tabela tr:nth-child(even) td { background: rgba(31,92,35,0.04); }
+  .tabela .cel-dest { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 7.5pt; color: var(--verde); text-transform: uppercase; }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; margin: 2mm 0; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3mm; margin: 2mm 0; }
+
+  .card { background: rgba(31,92,35,0.06); border-radius: 1.5mm; padding: 3mm 3.5mm; border-top: 2.5px solid var(--verde); }
+  .card-accent { border-top-color: var(--accent); background: rgba(198,216,52,0.08); }
+  .card-titulo { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 8pt; color: var(--verde); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1.5mm; }
+  .card p { font-size: 7pt; line-height: 1.5; }
+
+  .chip { display: inline-block; background: var(--verde); color: var(--creme); font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 6.5pt; letter-spacing: 0.08em; text-transform: uppercase; padding: 1mm 2.5mm; border-radius: 0.8mm; margin: 0.5mm 0.5mm 0.5mm 0; }
+  .chip-accent { background: var(--accent); color: var(--verde); }
+
+  /* ===================== QUESTÕES ===================== */
+  .questao-header { display: flex; align-items: center; gap: 3mm; margin-bottom: 2mm; }
+  .questao-num { background: var(--verde); color: var(--accent); font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 11pt; width: 9mm; height: 9mm; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .questao-meta { display: flex; flex-direction: column; gap: 0.8mm; }
+  .questao-banca { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 6pt; color: var(--verde); opacity: 0.7; letter-spacing: 0.12em; text-transform: uppercase; }
+  .questao-tema { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 8pt; color: var(--verde); text-transform: uppercase; letter-spacing: 0.06em; }
+
+  .questao-enunciado { background: rgba(31,92,35,0.05); border-left: 2.5px solid var(--verde); padding: 3mm 4mm; border-radius: 0 1mm 1mm 0; margin-bottom: 3mm; }
+  .questao-enunciado p { font-size: 7.8pt; line-height: 1.55; }
+
+  .alternativas { display: flex; flex-direction: column; gap: 1.8mm; }
+  .alt { display: flex; align-items: flex-start; gap: 2.5mm; padding: 2mm 3mm; border-radius: 1mm; border: 0.5px solid rgba(31,92,35,0.15); }
+  .alt-letra { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; color: var(--verde); min-width: 4mm; line-height: 1.3; }
+  .alt p { font-size: 7.5pt; line-height: 1.5; }
+  .alt-correta { background: rgba(31,92,35,0.08); border-color: var(--verde); }
+
+  /* ===================== GABARITO ===================== */
+  .gabarito-pg { padding: 12mm 13mm 10mm 13mm; }
+  .gabarito-titulo { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 20pt; color: var(--verde); text-transform: uppercase; letter-spacing: 0.03em; border-left: 3.5px solid var(--accent); padding-left: 3.5mm; margin-bottom: 5mm; }
+  .gabarito-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4mm; margin-bottom: 6mm; }
+  .gab-card { background: var(--verde); border-radius: 2mm; padding: 4mm; text-align: center; }
+  .gab-card-q { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 6.5pt; color: rgba(246,244,237,0.6); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1.5mm; }
+  .gab-card-letra { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 32pt; color: var(--accent); line-height: 1; margin-bottom: 1.5mm; }
+  .gab-card-tema { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 6.5pt; color: rgba(246,244,237,0.8); text-transform: uppercase; letter-spacing: 0.05em; }
+  .justificativa { margin-bottom: 4mm; padding: 3mm 4mm; background: rgba(31,92,35,0.05); border-radius: 1.5mm; border-left: 2.5px solid var(--accent); }
+  .justificativa-q { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 8.5pt; color: var(--verde); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1.5mm; }
+  .justificativa p { font-size: 7.5pt; line-height: 1.55; }
+
+  /* ===================== SÍNTESE ===================== */
+  .sintese-pg { padding: 12mm 13mm 10mm 13mm; }
+  .sintese-titulo { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 20pt; color: var(--verde); text-transform: uppercase; letter-spacing: 0.03em; border-left: 3.5px solid var(--accent); padding-left: 3.5mm; margin-bottom: 5mm; }
+  .mapa-item { display: flex; gap: 3mm; margin-bottom: 3mm; align-items: flex-start; }
+  .mapa-bullet { width: 5mm; height: 5mm; background: var(--accent); border-radius: 50%; flex-shrink: 0; margin-top: 0.5mm; }
+  .mapa-content { flex: 1; }
+  .mapa-termo { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; color: var(--verde); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.8mm; }
+  .mapa-content p { font-size: 7.3pt; line-height: 1.5; }
+
+  .proxima-aula { background: var(--verde); border-radius: 2mm; padding: 4mm 5mm; margin-top: 4mm; display: flex; align-items: center; gap: 4mm; }
+  .proxima-aula-label { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 6pt; color: var(--accent); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 1.5mm; }
+  .proxima-aula-titulo { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 11pt; color: var(--creme); text-transform: uppercase; letter-spacing: 0.03em; }
+  .proxima-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 36pt; color: rgba(198,216,52,0.25); line-height: 1; flex-shrink: 0; }
+
+  .pg-num { position: absolute; bottom: 6mm; right: 13mm; font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 6pt; color: var(--verde); opacity: 0.4; letter-spacing: 0.1em; }
+
+  ul.lista { list-style: none; padding: 0; margin: 1.5mm 0; }
+  ul.lista li { font-size: 7.5pt; line-height: 1.5; color: #1a2e1b; padding-left: 4mm; position: relative; margin-bottom: 1mm; }
+  ul.lista li::before { content: '▸'; position: absolute; left: 0; color: var(--accent); font-size: 7pt; top: 0.5mm; }
+
+  @media print { body { background: none; } .pagina { margin: 0; } }
+</style>
+</head>
+<body>
+
+<!-- ========== PÁGINA 1 — CAPA ========== -->
+<div class="pagina capa">
+  <div class="capa-topo">
+    <div class="capa-logo-area">
+      <svg width="38" height="44" viewBox="0 0 38 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="19,2 36,11.5 36,32.5 19,42 2,32.5 2,11.5" fill="#F6F4ED"/>
+        <circle cx="19" cy="22" r="8.5" fill="#1F5C23"/>
+      </svg>
+      <div class="capa-marca">Elite Treinamentos</div>
+      <div class="capa-tagline">Extensivo ENARE 2026</div>
+    </div>
+    <div class="capa-badge">Psicologia · Bloco B11</div>
+  </div>
+
+  <div class="capa-meio">
+    <div class="capa-bloco-label">Aula 21 · PSI-APS</div>
+    <div class="capa-titulo">Psicologia na<br><span>Atenção Primária</span></div>
+    <div class="capa-linha"></div>
+    <div class="capa-subtitulo">
+      NASF-AB · Apoio Matricial · Interconsulta · Co-participação ·
+      Projeto Terapêutico Singular · PST · ESF · Clínica Ampliada
+    </div>
+    <div class="capa-modulo-tag">
+      <svg width="8" height="8" viewBox="0 0 8 8"><circle cx="4" cy="4" r="4" fill="#C6D834"/></svg>
+      <span>PSI-APS — Portaria 2.436/2017 · Alma-Ata 1978</span>
+    </div>
+  </div>
+
+  <div class="capa-rodape">
+    <div class="capa-rodape-info">
+      <div>Extensivo ENARE 2026 · Material de Estudo</div>
+      <div>Atualizado conforme PNAB 2017 · Nota Técnica SAPS 3/2020</div>
+    </div>
+    <div class="capa-aula-num">21</div>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 2 — APS: FUNDAMENTOS E ESF ========== -->
+<div class="pagina pg-interna">
+  <div class="pg-header">
+    <div class="pg-header-left">
+      <svg width="14" height="16" viewBox="0 0 38 44" fill="none">
+        <polygon points="19,2 36,11.5 36,32.5 19,42 2,32.5 2,11.5" fill="#1F5C23"/>
+        <circle cx="19" cy="22" r="8.5" fill="#F6F4ED"/>
+      </svg>
+      <span class="pg-header-marca">Elite Treinamentos</span>
+      <div class="pg-header-sep"></div>
+      <span class="pg-header-bloco">Psicologia · Bloco B11 · Aula 21</span>
+    </div>
+    <div class="pg-header-right">PSI-APS</div>
+  </div>
+
+  <div class="secao-titulo">APS — Fundamentos e Estratégia Saúde da Família</div>
+
+  <p>A <strong>Atenção Primária à Saúde (APS)</strong> é a porta de entrada preferencial do SUS, ordenadora do cuidado e coordenadora das redes de atenção. Fundamenta-se na <strong>Declaração de Alma-Ata (1978)</strong>, que define APS como atenção essencial à saúde, baseada em métodos práticos, cientificamente comprovados e socialmente aceitáveis, acessível a todos os indivíduos e famílias.</p>
+
+  <div class="subsecao">Princípios Doutrinários do SUS — APS como Concretização</div>
+
+  <div class="grid-3">
+    <div class="card">
+      <div class="card-titulo">Universalidade</div>
+      <p>Acesso garantido a todos, sem qualquer discriminação — a APS é a expressão concreta deste princípio.</p>
+    </div>
+    <div class="card">
+      <div class="card-titulo">Integralidade</div>
+      <p>Cuidado que transcende a doença: contempla promoção, prevenção, tratamento e reabilitação do sujeito em seu contexto.</p>
+    </div>
+    <div class="card">
+      <div class="card-titulo">Equidade</div>
+      <p>Priorizar quem mais precisa. A APS territorializada permite identificar vulnerabilidades e distribuir ações de acordo com a necessidade.</p>
+    </div>
+  </div>
+
+  <div class="subsecao">Estratégia Saúde da Família (ESF)</div>
+
+  <p>A ESF é o modelo prioritário de organização da APS no Brasil, criada em 1994. Opera por <strong>territorialização</strong> e <strong>adscrição de clientela</strong> — cada equipe é responsável por um território definido e pela população que nele reside.</p>
+
+  <table class="tabela">
+    <tr>
+      <th>Componente</th>
+      <th>Características</th>
+    </tr>
+    <tr>
+      <td class="cel-dest">Equipe mínima ESF</td>
+      <td>Médico + Enfermeiro + Técnico/Auxiliar de Enfermagem + Agente Comunitário de Saúde (ACS)</td>
+    </tr>
+    <tr>
+      <td class="cel-dest">ACS</td>
+      <td>Elo entre equipe e comunidade; mora no território; visitas domiciliares; vigilância de saúde; mínimo 1 ACS por microárea (até 750 pessoas)</td>
+    </tr>
+    <tr>
+      <td class="cel-dest">Equipe de Saúde Bucal</td>
+      <td>Cirurgião-dentista + ASB/TSB — podem ser incorporadas à ESF</td>
+    </tr>
+    <tr>
+      <td class="cel-dest">NASF-AB</td>
+      <td>Equipe multiprofissional de apoio — não integra a equipe mínima; suporte matricial às equipes ESF</td>
+    </tr>
+    <tr>
+      <td class="cel-dest">Territorialização</td>
+      <td>Mapeamento do território, identificação de riscos e vulnerabilidades, cadastramento de famílias</td>
+    </tr>
+  </table>
+
+  <div class="subsecao">Atributos da APS (Starfield)</div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-titulo">Atributos Essenciais</div>
+      <p><strong>1.</strong> Primeiro contato (porta de entrada)<br><strong>2.</strong> Longitudinalidade (vínculo ao longo do tempo)<br><strong>3.</strong> Integralidade (cuidado ampliado)<br><strong>4.</strong> Coordenação do cuidado (entre pontos da rede)</p>
+    </div>
+    <div class="card">
+      <div class="card-titulo">Atributos Derivados</div>
+      <p><strong>5.</strong> Centralidade na família<br><strong>6.</strong> Orientação comunitária (território)<br><strong>7.</strong> Competência cultural (diversidade)</p>
+    </div>
+  </div>
+
+  <div class="alerta-box">
+    <p><strong>Ponto ENARE:</strong> a <em>longitudinalidade</em> (vínculo continuado ao longo do tempo) é o atributo que diferencia APS de pronto-atendimento. O psicólogo na APS deve cultivar esse vínculo, não apenas intervir em crises.</p>
+  </div>
+
+  <div class="pg-num">2</div>
+</div>
+
+<!-- ========== PÁGINA 3 — NASF-AB E APOIO MATRICIAL ========== -->
+<div class="pagina pg-interna">
+  <div class="pg-header">
+    <div class="pg-header-left">
+      <svg width="14" height="16" viewBox="0 0 38 44" fill="none">
+        <polygon points="19,2 36,11.5 36,32.5 19,42 2,32.5 2,11.5" fill="#1F5C23"/>
+        <circle cx="19" cy="22" r="8.5" fill="#F6F4ED"/>
+      </svg>
+      <span class="pg-header-marca">Elite Treinamentos</span>
+      <div class="pg-header-sep"></div>
+      <span class="pg-header-bloco">Psicologia · Bloco B11 · Aula 21</span>
+    </div>
+    <div class="pg-header-right">PSI-APS</div>
+  </div>
+
+  <div class="secao-titulo">NASF-AB e Apoio Matricial</div>
+
+  <p>O <strong>NASF-AB (Núcleo Ampliado de Saúde da Família e Atenção Básica)</strong>, instituído pela Portaria 154/2008 e consolidado na <strong>PNAB — Portaria 2.436/2017</strong>, é uma equipe multiprofissional que apoia as equipes de Saúde da Família por meio da lógica do <strong>apoio matricial</strong>.</p>
+
+  <div class="destaque-box">
+    <p><strong>NASF-AB NÃO é porta de entrada do SUS.</strong> Não realiza atendimento individual direto como regra. Sua função é <strong>apoiar</strong> as equipes de referência (ESF), ampliar a resolutividade da APS e evitar encaminhamentos desnecessários aos serviços especializados. A Nota Técnica SAPS 3/2020 flexibilizou a lógica, mas o princípio matricial permanece central.</p>
+  </div>
+
+  <div class="subsecao">Apoio Matricial — Conceito de Campos (2000)</div>
+
+  <p>O <strong>apoio matricial</strong>, formulado por <strong>Gastão Wagner de Sousa Campos</strong>, é um modelo de gestão do cuidado em que equipes especializadas (matriciadores) apoiam equipes de referência sem substituí-las. Opera em duas dimensões complementares:</p>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-titulo">Dimensão Assistencial</div>
+      <p>Atendimentos com presença do profissional especializado:<br>· <strong>Interconsulta:</strong> avaliação conjunta equipe ESF + especialista<br>· <strong>Co-participação:</strong> especialista co-atende junto ao profissional da ESF<br>· <strong>Visita domiciliar compartilhada</strong><br>· <strong>Atendimento individual pontual</strong> (não substitutivo)</p>
+    </div>
+    <div class="card">
+      <div class="card-titulo">Dimensão Pedagógico-Consultiva</div>
+      <p>Fortalece capacidade da equipe de referência:<br>· <strong>Reunião de equipe / discussão de caso</strong><br>· <strong>Educação permanente</strong> em saúde mental<br>· Supervisão de casos<br>· Elaboração conjunta de PTS<br>· Capacitação para manejo de transtornos comuns</p>
+    </div>
+  </div>
+
+  <div class="subsecao">Ferramentas do Apoio Matricial</div>
+
+  <table class="tabela">
+    <tr>
+      <th>Ferramenta</th>
+      <th>Quem Realiza</th>
+      <th>Objetivo</th>
+    </tr>
+    <tr>
+      <td class="cel-dest">Interconsulta</td>
+      <td>NASF-AB + ESF (conjunta)</td>
+      <td>Avaliação especializada com participação da equipe de referência; evita encaminhamento</td>
+    </tr>
+    <tr>
+      <td class="cel-dest">Co-participação</td>
+      <td>NASF-AB + profissional ESF</td>
+      <td>Especialista está presente na consulta do profissional de referência; transferência de saberes in loco</td>
+    </tr>
+    <tr>
+      <td class="cel-dest">Discussão de Caso</td>
+      <td>Equipe ESF + NASF-AB</td>
+      <td>Análise multiprofissional de situações complexas; elaboração de PTS</td>
+    </tr>
+    <tr>
+      <td class="cel-dest">Educação Permanente</td>
+      <td>NASF-AB → ESF</td>
+      <td>Capacitação contínua da equipe de referência para manejo de casos de saúde mental na APS</td>
+    </tr>
+    <tr>
+      <td class="cel-dest">Visita Domiciliar</td>
+      <td>Conjunta ou NASF-AB</td>
+      <td>Avaliação contextual; casos de difícil acesso; situações de vulnerabilidade</td>
+    </tr>
+  </table>
+
+  <div class="alerta-box">
+    <p><strong>Distinção crucial ENARE:</strong> a equipe de referência (ESF) mantém o <em>vínculo longitudinal</em> com o usuário. O NASF-AB <strong>não assume</strong> esse vínculo — apoia, enriquece, capacita. Transferir a responsabilidade de todos os casos de saúde mental ao psicólogo do NASF-AB é conduta errada e viola a lógica matricial.</p>
+  </div>
+
+  <div class="pg-num">3</div>
+</div>
+
+<!-- ========== PÁGINA 4 — PTS, PST E FERRAMENTAS CLÍNICAS ========== -->
+<div class="pagina pg-interna">
+  <div class="pg-header">
+    <div class="pg-header-left">
+      <svg width="14" height="16" viewBox="0 0 38 44" fill="none">
+        <polygon points="19,2 36,11.5 36,32.5 19,42 2,32.5 2,11.5" fill="#1F5C23"/>
+        <circle cx="19" cy="22" r="8.5" fill="#F6F4ED"/>
+      </svg>
+      <span class="pg-header-marca">Elite Treinamentos</span>
+      <div class="pg-header-sep"></div>
+      <span class="pg-header-bloco">Psicologia · Bloco B11 · Aula 21</span>
+    </div>
+    <div class="pg-header-right">PSI-APS</div>
+  </div>
+
+  <div class="secao-titulo">PTS, PST e Ferramentas da Clínica Ampliada</div>
+
+  <div class="subsecao">Projeto Terapêutico Singular (PTS)</div>
+
+  <p>O <strong>PTS</strong> é um conjunto de propostas de condutas terapêuticas articuladas, elaborado para um indivíduo ou família em situação de <strong>maior complexidade</strong>, por uma equipe multiprofissional. É <em>singular</em> porque contempla a singularidade do sujeito — vai além dos diagnósticos biomédicos para incluir dimensões psicossociais, familiares e territoriais.</p>
+
+  <div class="destaque-box">
+    <p><strong>4 Momentos do PTS:</strong><br>
+    <strong>1. Diagnóstico situacional</strong> — avaliação ampliada: biológica + subjetiva + social/familiar/territorial<br>
+    <strong>2. Definição de metas</strong> — objetivos de curto, médio e longo prazo; participação do usuário e família<br>
+    <strong>3. Divisão de responsabilidades</strong> — quem faz o quê; profissional de referência designado<br>
+    <strong>4. Reavaliação</strong> — monitoramento periódico; ajuste das metas e intervenções</p>
+  </div>
+
+  <ul class="lista">
+    <li><strong>Multiprofissional:</strong> elaborado pela equipe, não apenas pelo médico.</li>
+    <li><strong>Singular:</strong> não é protocolo padronizado — é construído para aquela pessoa.</li>
+    <li><strong>Participativo:</strong> usuário e família são sujeitos, não objetos do PTS.</li>
+    <li><strong>Profissional de referência:</strong> um membro da equipe é designado como responsável pelo acompanhamento longitudinal.</li>
+  </ul>
+
+  <div class="subsecao">PTS vs. PST — Distinção Importante</div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-titulo">PTS — Projeto Terapêutico Singular</div>
+      <p><strong>Foco:</strong> Indivíduo ou família<br><strong>Para quem:</strong> Situações de maior complexidade<br><strong>Instrumento:</strong> Plano de cuidado multiprofissional individual<br><strong>Exemplo:</strong> Idosa com diabetes + depressão + isolamento social</p>
+    </div>
+    <div class="card">
+      <div class="card-titulo">PST — Projeto de Saúde no Território</div>
+      <p><strong>Foco:</strong> Território, grupos, coletivos<br><strong>Para quem:</strong> Comunidade, grupos vulneráveis<br><strong>Instrumento:</strong> Ação coletiva intersetorial<br><strong>Exemplo:</strong> Programa de saúde mental para adolescentes de uma microárea</p>
+    </div>
+  </div>
+
+  <div class="subsecao">Clínica Ampliada e Compartilhada</div>
+
+  <p>Conceito da <strong>Política Nacional de Humanização (PNH)</strong>: ampliar o objeto de trabalho clínico para além da doença, contemplando o <em>sujeito</em>, sua história, sua família e seu contexto social e territorial. A clínica ampliada articula:</p>
+
+  <ul class="lista">
+    <li><strong>Escuta qualificada</strong> — além dos sintomas, compreender o sofrimento na vida do sujeito.</li>
+    <li><strong>Vínculo terapêutico</strong> — relação de confiança e continuidade; base da longitudinalidade.</li>
+    <li><strong>Corresponsabilização</strong> — usuário como sujeito ativo no seu próprio cuidado.</li>
+    <li><strong>Trabalho em equipe multiprofissional</strong> — saberes complementares, discussão de caso, PTS.</li>
+  </ul>
+
+  <div class="subsecao">Instrumentos de Avaliação Familiar</div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-titulo">Genograma</div>
+      <p>Representação gráfica da estrutura familiar ao longo de gerações; padrões relacionais, doenças recorrentes, dinâmicas de cuidado e conflito.</p>
+    </div>
+    <div class="card">
+      <div class="card-titulo">Ecomapa</div>
+      <p>Diagrama das relações da família com os sistemas externos (comunidade, trabalho, escola, serviços de saúde); identifica recursos e tensões no ambiente.</p>
+    </div>
+  </div>
+
+  <div class="pg-num">4</div>
+</div>
+
+<!-- ========== PÁGINA 5 — PSICÓLOGO NA APS: ESPECIFICIDADES ========== -->
+<div class="pagina pg-interna">
+  <div class="pg-header">
+    <div class="pg-header-left">
+      <svg width="14" height="16" viewBox="0 0 38 44" fill="none">
+        <polygon points="19,2 36,11.5 36,32.5 19,42 2,32.5 2,11.5" fill="#1F5C23"/>
+        <circle cx="19" cy="22" r="8.5" fill="#F6F4ED"/>
+      </svg>
+      <span class="pg-header-marca">Elite Treinamentos</span>
+      <div class="pg-header-sep"></div>
+      <span class="pg-header-bloco">Psicologia · Bloco B11 · Aula 21</span>
+    </div>
+    <div class="pg-header-right">PSI-APS</div>
+  </div>
+
+  <div class="secao-titulo">Psicólogo na APS — Práticas e Desafios</div>
+
+  <div class="subsecao">Lógica Comunitária vs. Clínica Individual</div>
+
+  <p>O psicólogo inserido na APS opera em uma lógica <strong>diferente</strong> do consultório privado ou do serviço especializado. A APS exige que o profissional transcenda o atendimento individual-clínico para atuar na promoção de saúde, prevenção e vigilância no território.</p>
+
+  <table class="tabela">
+    <tr>
+      <th>Dimensão</th>
+      <th>Clínica Especializada / Consultório</th>
+      <th>Psicólogo na APS/NASF-AB</th>
+    </tr>
+    <tr>
+      <td class="cel-dest">Foco</td>
+      <td>Transtorno / sintoma específico</td>
+      <td>Sujeito no território; sofrimento no contexto de vida</td>
+    </tr>
+    <tr>
+      <td class="cel-dest">Clientela</td>
+      <td>Pacientes encaminhados por indicação</td>
+      <td>Território adscrito; população em geral; grupos vulneráveis</td>
+    </tr>
+    <tr>
+      <td class="cel-dest">Intervenções</td>
+      <td>Psicoterapia individual, avaliação, diagnóstico</td>
+      <td>Grupos terapêuticos, apoio matricial, PTS, visita domiciliar, ações coletivas</td>
+    </tr>
+    <tr>
+      <td class="cel-dest">Equipe</td>
+      <td>Trabalho predominantemente solo</td>
+      <td>Trabalho multiprofissional interdisciplinar; é apoiador, não referência única</td>
+    </tr>
+    <tr>
+      <td class="cel-dest">Relação com usuário</td>
+      <td>Encaminhamento → alta</td>
+      <td>Longitudinalidade; vínculo territorializado</td>
+    </tr>
+  </table>
+
+  <div class="subsecao">Ações do Psicólogo no NASF-AB</div>
+
+  <ul class="lista">
+    <li><strong>Grupos terapêuticos:</strong> ansiedade, depressão, luto, tabagismo, apoio a cuidadores — modalidade central na APS (eficiência e alcance coletivo).</li>
+    <li><strong>Visita domiciliar compartilhada:</strong> casos de mobilidade reduzida, vulnerabilidade grave, isolamento social.</li>
+    <li><strong>Apoio à equipe ESF:</strong> supervisão de casos, discussão clínica, educação permanente em saúde mental.</li>
+    <li><strong>Elaboração de PTS:</strong> participação ativa nos 4 momentos para casos complexos.</li>
+    <li><strong>Articulação com a RAPS:</strong> quando necessário encaminhamento a CAPS, garantir contra-referência e acompanhamento compartilhado.</li>
+    <li><strong>Ações intersetoriais:</strong> escola, CRAS, CREAS, equipamentos de cultura — saúde mental como transversal às políticas sociais.</li>
+  </ul>
+
+  <div class="subsecao">Saúde Mental na APS — Transtornos Comuns</div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-titulo">Transtornos Mentais Comuns (TMC)</div>
+      <p>Ansiedade, depressão, somatização — alta prevalência na APS (≈ 30% dos atendimentos); manejáveis na APS com apoio matricial; encaminhar ao CAPS apenas os casos <strong>graves e persistentes</strong>.</p>
+    </div>
+    <div class="card">
+      <div class="card-titulo">Indicadores de Encaminhamento</div>
+      <p>Psicose ativa · Risco grave de suicídio · Dependência química grave · Crise não manejável na APS · Necessidade de suporte intensivo → CAPS (sempre com contra-referência)</p>
+    </div>
+  </div>
+
+  <div class="destaque-box">
+    <p><strong>Erro frequente no ENARE:</strong> encaminhar ao CAPS <em>todos</em> os casos de sofrimento psíquico atendidos na APS. A lógica é inversa: a APS deve ser capaz de manejar a maioria dos casos de saúde mental, com apoio do psicólogo do NASF-AB. O CAPS é para casos <strong>graves, persistentes ou de alta complexidade</strong>.</p>
+  </div>
+
+  <div class="pg-num">5</div>
+</div>
+
+<!-- ========== PÁGINA 6 — QUESTÃO 01 ========== -->
+<div class="pagina pg-interna">
+  <div class="pg-header">
+    <div class="pg-header-left">
+      <svg width="14" height="16" viewBox="0 0 38 44" fill="none">
+        <polygon points="19,2 36,11.5 36,32.5 19,42 2,32.5 2,11.5" fill="#1F5C23"/>
+        <circle cx="19" cy="22" r="8.5" fill="#F6F4ED"/>
+      </svg>
+      <span class="pg-header-marca">Elite Treinamentos</span>
+      <div class="pg-header-sep"></div>
+      <span class="pg-header-bloco">Psicologia · Bloco B11 · Aula 21 — Questões</span>
+    </div>
+    <div class="pg-header-right">PSI-APS</div>
+  </div>
+
+  <div class="questao-header">
+    <div class="questao-num">01</div>
+    <div class="questao-meta">
+      <span class="questao-banca">ENARE / FGV · Estilo — NASF-AB</span>
+      <span class="questao-tema">Apoio Matricial · Papel do Psicólogo · Lógica Matricial</span>
+    </div>
+  </div>
+
+  <div class="questao-enunciado">
+    <p>Carlos é psicólogo do NASF-AB vinculado a quatro equipes da Estratégia Saúde da Família em um município de médio porte. O coordenador da UBS solicita que Carlos assuma o acompanhamento individual de todos os pacientes com diagnóstico de transtorno depressivo das quatro equipes, liberando médicos e enfermeiros para se concentrarem em outras demandas clínicas. Carlos, conhecendo os fundamentos do apoio matricial, considera a proposta inadequada. Qual seria a resposta mais coerente com a lógica do apoio matricial?</p>
+  </div>
+
+  <div class="alternativas">
+    <div class="alt">
+      <span class="alt-letra">A</span>
+      <p>Aceitar a proposta, pois o NASF-AB foi criado exatamente para assumir integralmente os casos de saúde mental da APS, permitindo que a equipe de referência se concentre em demandas clínico-biológicas.</p>
+    </div>
+    <div class="alt alt-correta">
+      <span class="alt-letra">B</span>
+      <p>Declinar do papel substitutivo e propor um modelo matricial: reuniões regulares de discussão de caso, co-participação em atendimentos selecionados, grupos terapêuticos de saúde mental e capacitação das equipes para manejo de transtornos depressivos leves e moderados, preservando o vínculo longitudinal das equipes ESF com seus usuários.</p>
+    </div>
+    <div class="alt">
+      <span class="alt-letra">C</span>
+      <p>Aceitar parcialmente, assumindo apenas os casos moderados e encaminhando os leves de volta para a ESF e os graves diretamente para o CAPS, sem necessidade de discussão com as equipes de referência.</p>
+    </div>
+    <div class="alt">
+      <span class="alt-letra">D</span>
+      <p>Recusar a proposta e encaminhar todos os pacientes depressivos ao CAPS, pois transtornos mentais diagnosticados ultrapassam a competência da APS e requerem serviço especializado da RAPS.</p>
+    </div>
+  </div>
+
+  <div style="margin-top: 4mm;">
+    <span class="chip chip-accent">Gabarito: B</span>
+    <span class="chip">Apoio Matricial — Campos 2000</span>
+    <span class="chip">NASF-AB não substitui ESF</span>
+    <span class="chip">Vínculo longitudinal</span>
+  </div>
+
+  <div class="pg-num">6</div>
+</div>
+
+<!-- ========== PÁGINA 7 — QUESTÃO 02 ========== -->
+<div class="pagina pg-interna">
+  <div class="pg-header">
+    <div class="pg-header-left">
+      <svg width="14" height="16" viewBox="0 0 38 44" fill="none">
+        <polygon points="19,2 36,11.5 36,32.5 19,42 2,32.5 2,11.5" fill="#1F5C23"/>
+        <circle cx="19" cy="22" r="8.5" fill="#F6F4ED"/>
+      </svg>
+      <span class="pg-header-marca">Elite Treinamentos</span>
+      <div class="pg-header-sep"></div>
+      <span class="pg-header-bloco">Psicologia · Bloco B11 · Aula 21 — Questões</span>
+    </div>
+    <div class="pg-header-right">PSI-APS</div>
+  </div>
+
+  <div class="questao-header">
+    <div class="questao-num">02</div>
+    <div class="questao-meta">
+      <span class="questao-banca">ENARE / FGV · Estilo — PTS</span>
+      <span class="questao-tema">Projeto Terapêutico Singular · Clínica Ampliada · Integralidade</span>
+    </div>
+  </div>
+
+  <div class="questao-enunciado">
+    <p>Dona Maria, 69 anos, é acompanhada pela equipe da ESF. Tem diagnóstico de hipertensão arterial sistêmica, diabetes mellitus tipo 2 e episódios recorrentes de humor deprimido, além de referir isolamento social após a morte do marido há dois anos. Mora sozinha e a filha que reside em outra cidade é o único suporte familiar. A equipe, com apoio da psicóloga do NASF-AB, decide elaborar um Projeto Terapêutico Singular. Sobre o PTS e sua aplicação neste caso, assinale a alternativa correta:</p>
+  </div>
+
+  <div class="alternativas">
+    <div class="alt">
+      <span class="alt-letra">A</span>
+      <p>O PTS deve ser elaborado exclusivamente pelo médico da equipe, que é o profissional habilitado para integrar condutas terapêuticas sobre doenças crônicas como hipertensão e diabetes, cabendo aos demais profissionais apenas executar as orientações prescritas.</p>
+    </div>
+    <div class="alt">
+      <span class="alt-letra">B</span>
+      <p>O PTS equivale a um protocolo clínico padronizado para comorbidades crônicas, com etapas fixas definidas pelas diretrizes da Sociedade Brasileira de Diabetes e da Sociedade Brasileira de Cardiologia, sem necessidade de adaptação ao contexto individual de Dona Maria.</p>
+    </div>
+    <div class="alt alt-correta">
+      <span class="alt-letra">C</span>
+      <p>O PTS é elaborado de forma multiprofissional e singular para Dona Maria, contemplando além do controle das doenças crônicas as dimensões psicossociais (luto, isolamento, suporte familiar), com definição de metas pactuadas com a própria usuária, divisão de responsabilidades entre os membros da equipe e reavaliação periódica.</p>
+    </div>
+    <div class="alt">
+      <span class="alt-letra">D</span>
+      <p>O PTS deve ser utilizado apenas quando há falha terapêutica no tratamento convencional, funcionando como plano de contingência para casos refratários; para Dona Maria, o tratamento padrão de cada condição isolada seria suficiente.</p>
+    </div>
+  </div>
+
+  <div style="margin-top: 4mm;">
+    <span class="chip chip-accent">Gabarito: C</span>
+    <span class="chip">PTS = Multiprofissional + Singular</span>
+    <span class="chip">4 Momentos</span>
+    <span class="chip">Clínica Ampliada</span>
+  </div>
+
+  <div class="pg-num">7</div>
+</div>
+
+<!-- ========== PÁGINA 8 — QUESTÃO 03 ========== -->
+<div class="pagina pg-interna">
+  <div class="pg-header">
+    <div class="pg-header-left">
+      <svg width="14" height="16" viewBox="0 0 38 44" fill="none">
+        <polygon points="19,2 36,11.5 36,32.5 19,42 2,32.5 2,11.5" fill="#1F5C23"/>
+        <circle cx="19" cy="22" r="8.5" fill="#F6F4ED"/>
+      </svg>
+      <span class="pg-header-marca">Elite Treinamentos</span>
+      <div class="pg-header-sep"></div>
+      <span class="pg-header-bloco">Psicologia · Bloco B11 · Aula 21 — Questões</span>
+    </div>
+    <div class="pg-header-right">PSI-APS</div>
+  </div>
+
+  <div class="questao-header">
+    <div class="questao-num">03</div>
+    <div class="questao-meta">
+      <span class="questao-banca">ENARE / FGV · Estilo — APS e Matriciamento</span>
+      <span class="questao-tema">NASF-AB · Apoio Matricial · PTS · Lógica da APS</span>
+    </div>
+  </div>
+
+  <div class="questao-enunciado">
+    <p>Sobre a atuação do psicólogo na Atenção Primária à Saúde (APS) e a lógica do apoio matricial, analise as afirmativas abaixo:</p>
+    <p style="margin-top:2mm;"><strong>I.</strong> O NASF-AB constitui uma porta de entrada do SUS com agenda própria de atendimentos individuais, devendo o psicólogo manter lista de espera para consultas de saúde mental, a fim de desafogar os serviços especializados da RAPS e garantir acesso à assistência psicológica na atenção básica.</p>
+    <p style="margin-top:2mm;"><strong>II.</strong> O apoio matricial, conforme formulado por Gastão Wagner de Sousa Campos, articula uma dimensão assistencial — que inclui atendimentos compartilhados como interconsulta e co-participação — e uma dimensão pedagógico-consultiva, que abrange a discussão de casos e a educação permanente com as equipes de referência.</p>
+    <p style="margin-top:2mm;"><strong>III.</strong> O Projeto Terapêutico Singular (PTS) é uma ferramenta multiprofissional elaborada para indivíduos ou famílias em situação de maior complexidade, cujos momentos incluem diagnóstico situacional, definição de metas, divisão de responsabilidades e reavaliação periódica.</p>
+    <p style="margin-top:2mm;"><strong>IV.</strong> Na lógica do apoio matricial, o psicólogo do NASF-AB deve assumir integralmente o acompanhamento longitudinal de todos os casos de sofrimento psíquico da UBS, substituindo a equipe de referência na responsabilidade sobre os usuários com transtornos mentais, de modo a garantir cuidado especializado na APS.</p>
+  </div>
+
+  <p style="margin-top:1mm;">Estão corretas apenas:</p>
+
+  <div class="alternativas">
+    <div class="alt">
+      <span class="alt-letra">A</span>
+      <p>I e III</p>
+    </div>
+    <div class="alt">
+      <span class="alt-letra">B</span>
+      <p>I e IV</p>
+    </div>
+    <div class="alt alt-correta">
+      <span class="alt-letra">C</span>
+      <p>II e III</p>
+    </div>
+    <div class="alt">
+      <span class="alt-letra">D</span>
+      <p>II e IV</p>
+    </div>
+  </div>
+
+  <div style="margin-top: 4mm;">
+    <span class="chip chip-accent">Gabarito: C</span>
+    <span class="chip">II e III corretas</span>
+    <span class="chip">NASF-AB ≠ porta de entrada</span>
+    <span class="chip">NASF-AB não substitui ESF</span>
+  </div>
+
+  <div class="pg-num">8</div>
+</div>
+
+<!-- ========== PÁGINA 9 — GABARITO E JUSTIFICATIVAS ========== -->
+<div class="pagina gabarito-pg">
+  <div class="pg-header" style="display:flex;justify-content:space-between;align-items:center;border-bottom:0.6px solid var(--verde);padding-bottom:2.5mm;margin-bottom:4mm;">
+    <div style="display:flex;align-items:center;gap:3mm;">
+      <svg width="14" height="16" viewBox="0 0 38 44" fill="none">
+        <polygon points="19,2 36,11.5 36,32.5 19,42 2,32.5 2,11.5" fill="#1F5C23"/>
+        <circle cx="19" cy="22" r="8.5" fill="#F6F4ED"/>
+      </svg>
+      <span class="pg-header-marca">Elite Treinamentos</span>
+      <div class="pg-header-sep"></div>
+      <span class="pg-header-bloco">Psicologia · Bloco B11 · Aula 21</span>
+    </div>
+    <div class="pg-header-right">GABARITO</div>
+  </div>
+
+  <div class="gabarito-titulo">Gabarito Comentado</div>
+
+  <div class="gabarito-grid">
+    <div class="gab-card">
+      <div class="gab-card-q">Questão 01</div>
+      <div class="gab-card-letra">B</div>
+      <div class="gab-card-tema">NASF-AB · Lógica Matricial</div>
+    </div>
+    <div class="gab-card">
+      <div class="gab-card-q">Questão 02</div>
+      <div class="gab-card-letra">C</div>
+      <div class="gab-card-tema">PTS · Clínica Ampliada</div>
+    </div>
+    <div class="gab-card">
+      <div class="gab-card-q">Questão 03</div>
+      <div class="gab-card-letra">C</div>
+      <div class="gab-card-tema">II e III corretas</div>
+    </div>
+  </div>
+
+  <div class="justificativa">
+    <div class="justificativa-q">Q01 — Por que B?</div>
+    <p>O NASF-AB <strong>não</strong> é porta de entrada e <strong>não</strong> assume o vínculo longitudinal dos usuários — essa é a função da equipe ESF. Assumir individualmente todos os casos de depressão viola a lógica matricial: transformaria o psicólogo em ambulatório especializado dentro da APS. A resposta correta oferece as ferramentas matriciais: co-participação em atendimentos, discussão de caso, grupos terapêuticos e capacitação da equipe ESF. Encaminhar todos ao CAPS (D) também está errado — transtornos depressivos leve/moderados são manejáveis na APS com apoio matricial.</p>
+  </div>
+
+  <div class="justificativa">
+    <div class="justificativa-q">Q02 — Por que C?</div>
+    <p><strong>A errada:</strong> o PTS é <em>multiprofissional</em> — a elaboração não é exclusividade do médico. <strong>B errada:</strong> o PTS é o oposto de um protocolo padronizado — é singular, construído para aquela pessoa, considerando suas dimensões biopsicossociais específicas. <strong>D errada:</strong> o PTS não é "plano de contingência para refratários" — é indicado para situações de <em>maior complexidade</em>, o que Dona Maria claramente apresenta (comorbidades múltiplas + sofrimento psíquico + isolamento social). A alternativa C traduz corretamente os 4 momentos do PTS com aplicação ao caso.</p>
+  </div>
+
+  <div class="justificativa">
+    <div class="justificativa-q">Q03 — Por que C (II e III corretas)?</div>
+    <p><strong>I — ERRADA:</strong> o NASF-AB <em>não é porta de entrada</em> do SUS; não deve manter lista de espera individual — isso reproduziria a lógica ambulatorial especializada dentro da APS, contrária à proposta matricial. <strong>II — CORRETA:</strong> Campos (2000) — dimensão assistencial (interconsulta, co-participação) + dimensão pedagógico-consultiva (discussão de caso, educação permanente). <strong>III — CORRETA:</strong> 4 momentos do PTS: diagnóstico situacional → metas → responsabilidades → reavaliação; ferramenta para complexidade. <strong>IV — ERRADA:</strong> o NASF-AB <em>não substitui</em> a equipe de referência; o vínculo longitudinal pertence à ESF — princípio central do apoio matricial.</p>
+  </div>
+
+  <div class="pg-num">9</div>
+</div>
+
+<!-- ========== PÁGINA 10 — SÍNTESE ========== -->
+<div class="pagina sintese-pg">
+  <div class="pg-header" style="display:flex;justify-content:space-between;align-items:center;border-bottom:0.6px solid var(--verde);padding-bottom:2.5mm;margin-bottom:4mm;">
+    <div style="display:flex;align-items:center;gap:3mm;">
+      <svg width="14" height="16" viewBox="0 0 38 44" fill="none">
+        <polygon points="19,2 36,11.5 36,32.5 19,42 2,32.5 2,11.5" fill="#1F5C23"/>
+        <circle cx="19" cy="22" r="8.5" fill="#F6F4ED"/>
+      </svg>
+      <span class="pg-header-marca">Elite Treinamentos</span>
+      <div class="pg-header-sep"></div>
+      <span class="pg-header-bloco">Psicologia · Bloco B11 · Aula 21</span>
+    </div>
+    <div class="pg-header-right">SÍNTESE</div>
+  </div>
+
+  <div class="sintese-titulo">Mapa Mental — Psicologia na APS</div>
+
+  <div class="mapa-item">
+    <div class="mapa-bullet"></div>
+    <div class="mapa-content">
+      <div class="mapa-termo">Alma-Ata (1978) e ESF</div>
+      <p>APS = porta de entrada preferencial · Territorialização + adscrição de clientela · Equipe mínima: médico + enfermeiro + técnico + ACS · Atributos Starfield: primeiro contato, longitudinalidade, integralidade, coordenação, centralidade família, orientação comunitária, competência cultural</p>
+    </div>
+  </div>
+
+  <div class="mapa-item">
+    <div class="mapa-bullet"></div>
+    <div class="mapa-content">
+      <div class="mapa-termo">NASF-AB — O que É e o que NÃO É</div>
+      <p>É: equipe de apoio matricial · suporte às equipes ESF · lógica matricial, não ambulatorial<br>NÃO é: porta de entrada · agenda individual própria · responsável longitudinal dos usuários · serviço que substitui equipe de referência</p>
+    </div>
+  </div>
+
+  <div class="mapa-item">
+    <div class="mapa-bullet"></div>
+    <div class="mapa-content">
+      <div class="mapa-termo">Apoio Matricial — Campos (2000)</div>
+      <p>Dimensão assistencial: interconsulta + co-participação + visita domiciliar compartilhada<br>Dimensão pedagógico-consultiva: discussão de caso + educação permanente + supervisão<br>Equipe de referência mantém o vínculo longitudinal</p>
+    </div>
+  </div>
+
+  <div class="mapa-item">
+    <div class="mapa-bullet"></div>
+    <div class="mapa-content">
+      <div class="mapa-termo">PTS vs. PST</div>
+      <p>PTS = indivíduo/família · situações complexas · 4 momentos: diagnóstico situacional → metas → responsabilidades → reavaliação · multiprofissional · singular · participativo<br>PST = território/grupos/coletivos · ação intersetorial · não é plano individual</p>
+    </div>
+  </div>
+
+  <div class="mapa-item">
+    <div class="mapa-bullet"></div>
+    <div class="mapa-content">
+      <div class="mapa-termo">Psicólogo no NASF-AB — Práticas Centrais</div>
+      <p>Grupos terapêuticos · Co-participação em consultas · Discussão de casos · Elaboração de PTS · Visita domiciliar · Educação permanente em saúde mental para equipe ESF · Articulação RAPS (CAPS = apenas casos graves) · Uso do genograma e ecomapa</p>
+    </div>
+  </div>
+
+  <div class="mapa-item">
+    <div class="mapa-bullet"></div>
+    <div class="mapa-content">
+      <div class="mapa-termo">Clínica Ampliada (PNH)</div>
+      <p>Sujeito ≠ doença · Escuta qualificada · Vínculo terapêutico · Corresponsabilização · Trabalho multiprofissional · Contexto biopsicossocial sempre presente no cuidado</p>
+    </div>
+  </div>
+
+  <div class="proxima-aula">
+    <div class="proxima-num">22</div>
+    <div>
+      <div class="proxima-aula-label">Próxima Aula</div>
+      <div class="proxima-aula-titulo">Simulado — Bloco B11 Completo</div>
+      <p style="color:rgba(246,244,237,0.65);font-size:7pt;margin-top:1.5mm;">10 questões integradas cobrindo todo o Bloco B11 — PSI-SAUDE, PSI-TEORIA, PSI-ETICA, PSI-CLINICA, PSI-ORGAN, PSI-AVALIA e PSI-APS</p>
+    </div>
+  </div>
+
+  <div class="pg-num">10</div>
+</div>
+
+</body>
+</html>
