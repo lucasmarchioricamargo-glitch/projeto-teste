@@ -2,751 +2,980 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Nutrição Bloco B9 — Aula 36 | NUT-GAST: Doença Celíaca, DII e SII</title>
+<title>Nutrição Bloco B9 — Aula 36 | NUT-DIETÉTICA: Técnica Dietética Avançada</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap" rel="stylesheet">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap');
-
+  :root {
+    --creme: #F6F4ED;
+    --verde: #1F5C23;
+    --accent: #C6D834;
+    --dark: #1a1a1a;
+    --muted: #555;
+  }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  @page { size: 210mm 297mm; margin: 0; }
-
-  body { font-family: 'Bricolage Grotesque', sans-serif; background: #e5e5e5; }
+  body { background: #d0d0d0; font-family: 'Bricolage Grotesque', sans-serif; }
 
   .page {
     width: 210mm;
     min-height: 297mm;
-    background: #F6F4ED;
+    background: var(--creme);
+    margin: 10mm auto;
     position: relative;
     overflow: hidden;
-    page-break-after: always;
-    margin: 0 auto 8mm;
+    display: flex;
+    flex-direction: column;
   }
 
-  .logo-wrap { display: flex; align-items: center; gap: 7px; }
-  .logo-text { font-family: 'Playfair Display', serif; font-style: italic; font-size: 12px; color: #F6F4ED; line-height: 1.1; }
-  .logo-tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7px; color: #C6D834; letter-spacing: 0.05em; }
+  /* ── CAPA ── */
+  .cover { background: var(--verde); color: var(--creme); }
+  .cover .top-bar {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10mm 12mm 0;
+  }
+  .cover .brand-text { display: flex; flex-direction: column; }
+  .cover .brand-name {
+    font-family: 'Playfair Display', serif; font-style: italic;
+    font-size: 13pt; color: var(--creme); letter-spacing: 0.02em;
+  }
+  .cover .brand-tag {
+    font-family: 'Space Grotesk', sans-serif; font-weight: 300;
+    font-size: 7pt; color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase;
+    margin-top: 1mm;
+  }
+  .cover .hero {
+    flex: 1; display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 8mm 14mm 6mm; text-align: center;
+  }
+  .cover .bloco-tag {
+    font-family: 'Space Grotesk', sans-serif; font-weight: 300;
+    font-size: 8pt; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 5mm;
+  }
+  .cover .aula-num {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 72pt;
+    line-height: 1; color: var(--creme); opacity: 0.12;
+    position: absolute; right: 12mm; top: 38mm;
+  }
+  .cover .modulo-badge {
+    background: var(--accent); color: var(--verde);
+    font-family: 'Barlow Condensed', sans-serif; font-size: 9pt;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    padding: 1.5mm 5mm; border-radius: 2mm; margin-bottom: 5mm;
+    display: inline-block;
+  }
+  .cover h1 {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 30pt;
+    line-height: 1.05; color: var(--creme); margin-bottom: 4mm;
+    text-transform: uppercase; letter-spacing: 0.02em;
+  }
+  .cover .subtitle {
+    font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300;
+    font-size: 11pt; color: rgba(246,244,237,0.72); margin-bottom: 8mm;
+    line-height: 1.4;
+  }
+  .cover .tags {
+    display: flex; gap: 3mm; flex-wrap: wrap; justify-content: center;
+  }
+  .cover .tag {
+    border: 1px solid rgba(198,216,52,0.5); color: var(--accent);
+    font-family: 'Space Grotesk', sans-serif; font-weight: 300;
+    font-size: 7.5pt; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 1mm 3.5mm; border-radius: 1.5mm;
+  }
+  .cover .bottom-bar {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 5mm 12mm 8mm;
+    border-top: 1px solid rgba(198,216,52,0.25);
+  }
+  .cover .series-info {
+    font-family: 'Space Grotesk', sans-serif; font-weight: 300;
+    font-size: 7.5pt; color: rgba(246,244,237,0.55); letter-spacing: 0.1em;
+  }
+  .cover .aula-label {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 11pt;
+    color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase;
+  }
 
-  .cover { background: #1F5C23; display: flex; flex-direction: column; min-height: 297mm; }
-  .cover-header { padding: 10mm 12mm 6mm; display: flex; justify-content: space-between; align-items: flex-start; }
-  .cover-badge { background: #C6D834; color: #1F5C23; font-family: 'Barlow Condensed', sans-serif; font-size: 10px; font-weight: 800; padding: 3px 10px; border-radius: 20px; letter-spacing: 0.06em; }
-  .cover-body { flex: 1; padding: 6mm 12mm 0; display: flex; flex-direction: column; justify-content: center; }
-  .cover-module { font-family: 'Barlow Condensed', sans-serif; font-size: 12px; font-weight: 800; color: #C6D834; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 4px; }
-  .cover-number { font-family: 'Barlow Condensed', sans-serif; font-size: 78px; font-weight: 800; color: #F6F4ED; line-height: 0.88; margin-bottom: 6px; }
-  .cover-title { font-family: 'Barlow Condensed', sans-serif; font-size: 34px; font-weight: 800; color: #F6F4ED; line-height: 1.05; text-transform: uppercase; margin-bottom: 4px; }
-  .cover-subtitle { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; font-size: 13px; color: rgba(246,244,237,0.68); margin-bottom: 16px; }
-  .cover-divider { width: 44px; height: 3px; background: #C6D834; margin-bottom: 16px; }
-  .cover-pills { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 16px; }
-  .cover-pill { background: rgba(246,244,237,0.1); border: 1px solid rgba(198,216,52,0.4); color: #F6F4ED; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 400; font-size: 9.5px; padding: 2px 8px; border-radius: 12px; }
-  .cover-footer { padding: 7mm 12mm; border-top: 1px solid rgba(246,244,237,0.14); display: flex; justify-content: space-between; align-items: center; margin-top: auto; }
-  .cover-meta { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; font-size: 9px; color: rgba(246,244,237,0.45); }
+  /* ── PÁGINAS INTERNAS ── */
+  .page-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 7mm 12mm 5mm;
+    border-bottom: 2px solid var(--verde);
+  }
+  .page-header .logo-area { display: flex; align-items: center; gap: 3mm; }
+  .page-header .brand-name-sm {
+    font-family: 'Playfair Display', serif; font-style: italic;
+    font-size: 10pt; color: var(--verde);
+  }
+  .page-header .page-meta {
+    font-family: 'Space Grotesk', sans-serif; font-weight: 300;
+    font-size: 7pt; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .page-content { flex: 1; padding: 6mm 12mm 5mm; }
+  .page-footer {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 3mm 12mm 5mm;
+    border-top: 1px solid rgba(31,92,35,0.2);
+  }
+  .page-footer .footer-text {
+    font-family: 'Space Grotesk', sans-serif; font-weight: 300;
+    font-size: 6.5pt; color: var(--muted); letter-spacing: 0.08em;
+  }
+  .page-footer .page-num {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 9pt;
+    color: var(--verde); letter-spacing: 0.1em;
+  }
 
-  .content-header { background: #1F5C23; padding: 7mm 12mm; display: flex; justify-content: space-between; align-items: center; }
-  .header-right { text-align: right; }
-  .page-label { font-family: 'Barlow Condensed', sans-serif; font-size: 9px; font-weight: 800; color: #C6D834; letter-spacing: 0.14em; text-transform: uppercase; }
-  .page-title-hd { font-family: 'Barlow Condensed', sans-serif; font-size: 16px; font-weight: 800; color: #F6F4ED; text-transform: uppercase; letter-spacing: 0.04em; }
+  /* ── TIPOGRAFIA ── */
+  .section-title {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 15pt;
+    color: var(--verde); text-transform: uppercase; letter-spacing: 0.05em;
+    margin-bottom: 4mm; padding-bottom: 2mm;
+    border-bottom: 2px solid var(--accent);
+  }
+  .subsection {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 11pt;
+    color: var(--verde); text-transform: uppercase; letter-spacing: 0.05em;
+    margin: 3.5mm 0 2mm;
+  }
+  p, li {
+    font-size: 8.5pt; line-height: 1.55; color: var(--dark);
+    font-family: 'Bricolage Grotesque', sans-serif; font-weight: 400;
+  }
+  ul, ol { padding-left: 4mm; margin-bottom: 2mm; }
+  li { margin-bottom: 1mm; }
+  strong { font-weight: 600; }
 
-  .content-body { padding: 8mm 12mm 18mm; }
+  /* ── TABELAS ── */
+  table { width: 100%; border-collapse: collapse; margin: 2.5mm 0; font-size: 7.8pt; }
+  th {
+    background: var(--verde); color: var(--creme);
+    font-family: 'Barlow Condensed', sans-serif; font-size: 8.5pt;
+    letter-spacing: 0.05em; text-transform: uppercase;
+    padding: 2mm 3mm; text-align: left;
+  }
+  td { padding: 1.8mm 3mm; border-bottom: 1px solid rgba(31,92,35,0.12); vertical-align: top; }
+  tr:nth-child(even) td { background: rgba(198,216,52,0.08); }
+  tr:last-child td { border-bottom: none; }
 
-  .content-footer { position: absolute; bottom: 0; left: 0; right: 0; padding: 4mm 12mm; border-top: 1px solid rgba(31,92,35,0.14); display: flex; justify-content: space-between; align-items: center; }
-  .footer-label { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; font-size: 8px; color: rgba(31,92,35,0.48); }
-  .footer-page { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 800; color: #1F5C23; }
+  /* ── DESTAQUES ── */
+  .highlight-box {
+    background: rgba(198,216,52,0.18); border-left: 3px solid var(--accent);
+    padding: 3mm 4mm; margin: 3mm 0; border-radius: 0 2mm 2mm 0;
+  }
+  .alert-box {
+    background: rgba(31,92,35,0.07); border-left: 3px solid var(--verde);
+    padding: 3mm 4mm; margin: 3mm 0; border-radius: 0 2mm 2mm 0;
+  }
+  .anchor-box {
+    background: var(--verde); color: var(--creme);
+    padding: 3mm 4mm; margin: 3mm 0; border-radius: 2mm;
+  }
+  .anchor-box p, .anchor-box li { color: var(--creme); font-size: 8pt; }
+  .anchor-box strong { color: var(--accent); }
 
-  .section-title { font-family: 'Barlow Condensed', sans-serif; font-size: 18px; font-weight: 800; color: #1F5C23; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 9px; padding-bottom: 5px; border-bottom: 2px solid #C6D834; }
-  .sub-title { font-family: 'Barlow Condensed', sans-serif; font-size: 12px; font-weight: 800; color: #1F5C23; text-transform: uppercase; letter-spacing: 0.05em; margin: 9px 0 4px; }
+  /* ── FÓRMULA ── */
+  .formula-box {
+    background: rgba(31,92,35,0.05); border: 1.5px solid var(--verde);
+    padding: 3mm 5mm; margin: 2.5mm 0; border-radius: 2mm; text-align: center;
+  }
+  .formula-box .formula {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 12pt;
+    color: var(--verde); letter-spacing: 0.05em;
+  }
+  .formula-box .formula-note {
+    font-family: 'Bricolage Grotesque', sans-serif; font-size: 7.5pt;
+    color: var(--muted); margin-top: 1mm;
+  }
 
-  p { font-size: 10.5px; line-height: 1.55; color: #2a2a2a; margin-bottom: 5px; }
-  ul, ol { padding-left: 13px; margin-bottom: 5px; }
-  li { font-size: 10.5px; line-height: 1.55; color: #2a2a2a; margin-bottom: 2px; }
-  strong { font-weight: 600; color: #1F5C23; }
+  /* ── QUESTÕES ── */
+  .q-header { display: flex; align-items: baseline; gap: 3mm; margin-bottom: 3mm; }
+  .q-badge {
+    background: var(--verde); color: var(--creme);
+    font-family: 'Barlow Condensed', sans-serif; font-size: 10pt;
+    letter-spacing: 0.1em; padding: 1mm 3.5mm; border-radius: 1.5mm;
+    white-space: nowrap;
+  }
+  .q-type {
+    font-family: 'Space Grotesk', sans-serif; font-weight: 300;
+    font-size: 7pt; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .q-stem {
+    font-size: 8.5pt; line-height: 1.55; color: var(--dark);
+    margin-bottom: 3.5mm; font-family: 'Bricolage Grotesque', sans-serif;
+  }
+  .q-context {
+    background: rgba(31,92,35,0.06); border-radius: 2mm;
+    padding: 3mm 4mm; margin-bottom: 3mm;
+    font-size: 8pt; line-height: 1.5; color: var(--dark);
+    font-family: 'Bricolage Grotesque', sans-serif;
+  }
+  .alternatives { list-style: none; padding: 0; }
+  .alternatives li {
+    display: flex; gap: 2.5mm; align-items: flex-start;
+    padding: 2mm 0; border-bottom: 1px solid rgba(31,92,35,0.08);
+    font-size: 8.5pt; line-height: 1.45;
+  }
+  .alternatives li:last-child { border-bottom: none; }
+  .alt-letter {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 10pt;
+    color: var(--verde); font-weight: 800; min-width: 5mm;
+  }
+  .assertions { list-style: none; padding: 0; margin-bottom: 3mm; }
+  .assertions li {
+    display: flex; gap: 2.5mm; align-items: flex-start;
+    padding: 2mm 0; border-bottom: 1px solid rgba(31,92,35,0.08);
+    font-size: 8.5pt; line-height: 1.45;
+  }
+  .assert-num {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 10pt;
+    color: var(--verde); min-width: 5mm;
+  }
 
-  .highlight { background: rgba(198,216,52,0.22); border-left: 3px solid #C6D834; padding: 6px 10px; border-radius: 0 4px 4px 0; margin: 7px 0; font-size: 10.5px; line-height: 1.5; }
-  .alert { background: rgba(31,92,35,0.07); border-left: 3px solid #1F5C23; padding: 6px 10px; border-radius: 0 4px 4px 0; margin: 7px 0; font-size: 10.5px; line-height: 1.5; }
+  /* ── GABARITO ── */
+  .gab-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3mm; margin: 3mm 0; }
+  .gab-card { border: 1.5px solid var(--verde); border-radius: 2mm; padding: 3mm 4mm; }
+  .gab-card .gab-q {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 9pt;
+    color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em;
+  }
+  .gab-card .gab-resp {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 22pt;
+    color: var(--verde); line-height: 1;
+  }
+  .gab-card .gab-tema { font-size: 7pt; color: var(--muted); font-family: 'Bricolage Grotesque', sans-serif; margin-top: 1mm; }
+  .gab-justificativa { margin: 2.5mm 0; padding: 2.5mm 3.5mm; }
+  .gab-justificativa .gab-title {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 9.5pt;
+    color: var(--verde); text-transform: uppercase; margin-bottom: 1.5mm; letter-spacing: 0.05em;
+  }
+  .correct { color: #1F5C23; font-weight: 600; }
+  .wrong { color: #b0392e; text-decoration: line-through; }
 
-  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin: 7px 0; }
-  .card { background: rgba(31,92,35,0.06); border: 1px solid rgba(31,92,35,0.15); border-radius: 5px; padding: 7px; }
-  .card-title { font-family: 'Barlow Condensed', sans-serif; font-size: 10.5px; font-weight: 800; color: #1F5C23; text-transform: uppercase; margin-bottom: 5px; }
+  /* ── SÍNTESE ── */
+  .sintese-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; margin: 3mm 0; }
+  .sintese-card { border: 1.5px solid rgba(31,92,35,0.3); border-radius: 2mm; padding: 3mm 4mm; }
+  .sintese-card .s-title {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 9pt;
+    color: var(--verde); text-transform: uppercase; letter-spacing: 0.08em;
+    margin-bottom: 2mm; padding-bottom: 1mm; border-bottom: 1px solid var(--accent);
+  }
+  .sintese-card p, .sintese-card li { font-size: 7.8pt; line-height: 1.5; }
 
-  table { width: 100%; border-collapse: collapse; margin: 7px 0; font-size: 9.5px; }
-  th { background: #1F5C23; color: #F6F4ED; font-family: 'Barlow Condensed', sans-serif; font-size: 10px; font-weight: 800; padding: 5px 7px; text-align: left; text-transform: uppercase; letter-spacing: 0.04em; }
-  td { padding: 4px 7px; border-bottom: 1px solid rgba(31,92,35,0.1); line-height: 1.4; color: #2a2a2a; }
-  tr:nth-child(even) td { background: rgba(31,92,35,0.04); }
-
-  .question-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 7px; }
-  .question-badge { background: #1F5C23; color: #F6F4ED; font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 800; padding: 3px 10px; border-radius: 4px; letter-spacing: 0.08em; }
-  .q-meta { text-align: right; }
-  .q-meta-line { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; font-size: 8px; color: rgba(31,92,35,0.58); }
-
-  .question-stem { background: rgba(31,92,35,0.06); border: 1px solid rgba(31,92,35,0.14); border-radius: 6px; padding: 9px 11px; margin-bottom: 9px; font-size: 10.5px; line-height: 1.6; color: #2a2a2a; }
-
-  .options-list { list-style: none; padding: 0; margin: 0; }
-  .option-item { display: flex; gap: 7px; padding: 5px 9px; margin-bottom: 4px; border-radius: 4px; font-size: 10.5px; line-height: 1.5; border: 1px solid rgba(31,92,35,0.1); color: #2a2a2a; }
-  .option-item.correct { background: rgba(198,216,52,0.25); border-color: #C6D834; font-weight: 600; }
-  .option-letter { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 12px; color: #1F5C23; min-width: 14px; }
-
-  .afirmativas-list { list-style: none; padding: 0; margin: 8px 0; }
-  .afirmativa-item { display: flex; gap: 7px; padding: 6px 10px; margin-bottom: 4px; border-radius: 4px; font-size: 10.5px; line-height: 1.5; border: 1px solid transparent; }
-  .afirmativa-item.correta { background: rgba(198,216,52,0.18); border-color: rgba(198,216,52,0.5); color: #2a2a2a; }
-  .afirmativa-item.errada { background: rgba(31,92,35,0.05); border-color: rgba(31,92,35,0.1); color: #666; }
-  .afirmativa-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 13px; color: #1F5C23; min-width: 18px; }
-
-  .gab-card { background: #1F5C23; border-radius: 7px; padding: 7px 11px; margin-bottom: 7px; }
-  .gab-card-hd { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
-  .gab-q-label { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 800; color: #C6D834; letter-spacing: 0.1em; text-transform: uppercase; }
-  .gab-answer { font-family: 'Barlow Condensed', sans-serif; font-size: 16px; font-weight: 800; color: #F6F4ED; }
-  .gab-text { font-size: 9.5px; line-height: 1.5; color: rgba(246,244,237,0.88); }
-
-  .sintese-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin: 7px 0; }
-  .sintese-card { background: rgba(31,92,35,0.06); border: 1px solid rgba(31,92,35,0.15); border-radius: 5px; padding: 7px; }
-  .sintese-card-title { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; font-weight: 800; color: #1F5C23; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 5px; padding-bottom: 3px; border-bottom: 1px solid rgba(198,216,52,0.4); }
-  .sintese-item { font-size: 9.5px; line-height: 1.5; color: #2a2a2a; margin-bottom: 2px; padding-left: 8px; position: relative; }
-  .sintese-item::before { content: '›'; position: absolute; left: 0; color: #1F5C23; font-weight: 800; }
-  .armadilha-box { background: rgba(198,216,52,0.14); border: 1.5px solid #C6D834; border-radius: 5px; padding: 7px 10px; margin-top: 7px; }
-  .armadilha-title { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 800; color: #1F5C23; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 4px; }
+  @media print {
+    body { background: white; }
+    .page { margin: 0; page-break-after: always; }
+    .page:last-child { page-break-after: auto; }
+  }
 </style>
 </head>
 <body>
 
-<!-- PAGE 1 — CAPA -->
+<!-- ════════════════════════════════════════════
+     PÁGINA 1 — CAPA
+════════════════════════════════════════════ -->
 <div class="page cover">
-  <div class="cover-header">
-    <div class="logo-wrap">
-      <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="32" height="32" rx="6" fill="#C6D834"/>
-        <path d="M16 4L28 10V22L16 28L4 22V10L16 4Z" fill="#1F5C23"/>
-        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
-      </svg>
-      <div>
-        <div class="logo-text">Extensivo ENARE</div>
-        <div class="logo-tagline">2026 · Nutrição</div>
-      </div>
+  <div class="top-bar">
+    <div class="brand-text">
+      <span class="brand-name">Extensivo ENARE</span>
+      <span class="brand-tag">Residências em Saúde · 2026</span>
     </div>
-    <div class="cover-badge">BLOCO B9 · AULA 36</div>
+    <svg width="44" height="50" viewBox="0 0 44 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="22,2 41,13 41,37 22,48 3,37 3,13" fill="#F6F4ED" stroke="#C6D834" stroke-width="2"/>
+      <circle cx="22" cy="25" r="9" fill="#1F5C23"/>
+    </svg>
   </div>
-  <div class="cover-body">
-    <div class="cover-module">NUT-GAST</div>
-    <div class="cover-number">36</div>
-    <div class="cover-title">Doença Celíaca,<br>DII e SII</div>
-    <div class="cover-subtitle">Glúten · Crohn · Retocolite · FODMAP · Roma IV</div>
-    <div class="cover-divider"></div>
-    <div class="cover-pills">
-      <span class="cover-pill">Doença Celíaca</span>
-      <span class="cover-pill">Anti-tTG IgA</span>
-      <span class="cover-pill">Dieta sem glúten</span>
-      <span class="cover-pill">Crohn vs. RCUI</span>
-      <span class="cover-pill">Skip lesions</span>
-      <span class="cover-pill">Dieta baixo FODMAP</span>
-      <span class="cover-pill">Roma IV</span>
+
+  <div class="hero">
+    <div class="bloco-tag">Bloco B9 · Nutrição · Aula 36</div>
+    <div class="aula-num">36</div>
+    <div class="modulo-badge">NUT-DIETÉTICA</div>
+    <h1>Técnica Dietética<br>Avançada</h1>
+    <p class="subtitle">FC e FK · Métodos de Cocção · Perdas Nutricionais<br>Per Capita · Indicadores de UAN · AQPC</p>
+    <div class="tags">
+      <span class="tag">Fator de Correção</span>
+      <span class="tag">Fator de Cocção</span>
+      <span class="tag">Per Capita</span>
+      <span class="tag">RI / Sobra</span>
+      <span class="tag">AQPC</span>
+      <span class="tag">Frituras</span>
     </div>
   </div>
-  <div class="cover-footer">
-    <div class="cover-meta">Extensivo ENARE 2026 · Bloco B9 — Nutrição · Banca FGV</div>
-    <div class="cover-meta">PDF de Apoio · Impressão A4</div>
+
+  <div class="bottom-bar">
+    <span class="series-info">Extensivo ENARE 2026 · Material de Apoio</span>
+    <span class="aula-label">Aula 36 / 39</span>
   </div>
 </div>
 
-<!-- PAGE 2 — DOENÇA CELÍACA: FISIOPATOLOGIA E DIAGNÓSTICO -->
+<!-- ════════════════════════════════════════════
+     PÁGINA 2 — FC E FK: CONCEITOS E CÁLCULOS
+════════════════════════════════════════════ -->
 <div class="page">
-  <div class="content-header">
-    <div class="logo-wrap">
-      <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="32" height="32" rx="6" fill="#C6D834"/>
-        <path d="M16 4L28 10V22L16 28L4 22V10L16 4Z" fill="#1F5C23"/>
-        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="25" viewBox="0 0 44 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="22,2 41,13 41,37 22,48 3,37 3,13" fill="#1F5C23" stroke="#C6D834" stroke-width="2.5"/>
+        <circle cx="22" cy="25" r="9" fill="#F6F4ED"/>
       </svg>
-      <div>
-        <div class="logo-text">Extensivo ENARE</div>
-        <div class="logo-tagline">2026 · Nutrição</div>
-      </div>
+      <span class="brand-name-sm">Extensivo ENARE</span>
     </div>
-    <div class="header-right">
-      <div class="page-label">NUT-GAST · Aula 36</div>
-      <div class="page-title-hd">Doença Celíaca — Fisiopat. e Diagnóstico</div>
-    </div>
+    <span class="page-meta">NUT-DIETÉTICA · Aula 36 · Bloco B9</span>
   </div>
-  <div class="content-body">
-    <div class="section-title">Doença Celíaca — Fisiopatologia e Diagnóstico</div>
 
-    <div class="sub-title">Conceito e Epidemiologia</div>
-    <p>Doença autoimune sistêmica desencadeada pela ingestão de <strong>glúten</strong> em indivíduos geneticamente predispostos (HLA-DQ2 e/ou HLA-DQ8). Prevalência: ~1% da população mundial; no Brasil ~1,5 milhões de pessoas. Associada a outras doenças autoimunes (DM1, tireoidite de Hashimoto, síndrome de Down, Turner).</p>
+  <div class="page-content">
+    <div class="section-title">Fator de Correção (FC) e Fator de Cocção (FK)</div>
 
-    <div class="sub-title">Glúten — Proteínas Desencadeadoras</div>
-    <div class="grid-2">
-      <div class="card">
-        <div class="card-title">Prolaminas Tóxicas</div>
-        <ul style="font-size:9.5px">
-          <li><strong>Gliadina</strong> → trigo</li>
-          <li><strong>Secalina</strong> → centeio</li>
-          <li><strong>Hordeína</strong> → cevada</li>
-          <li><strong>Avenina</strong> → aveia (controverso; risco de contaminação cruzada)</li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="card-title">Cereais Seguros</div>
-        <ul style="font-size:9.5px">
-          <li>Arroz, milho, mandioca, batata</li>
-          <li>Quinoa, amaranto, trigo-sarraceno</li>
-          <li>Polvilho, tapioca, fubá</li>
-          <li>Aveia <em>certificada</em> sem CC (limitado e controverso)</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="sub-title">Fisiopatologia</div>
-    <p>Gliadina → deamidada pela transglutaminase tecidual (tTG) → peptídeos apresentados ao HLA-DQ2/DQ8 → ativação de linfócitos T CD4⁺ → resposta Th1 → inflamação e atrofia vilositária progressiva (intestino delgado, principalmente duodeno e jejuno proximal).</p>
-    <div class="alert">
-      <strong>Consequências da atrofia vilositária:</strong> ↓ superfície absortiva → má absorção de ferro, ácido fólico, vitamina D, cálcio, vitamina B12, zinco → anemia (ferropriva ou megaloblástica), osteopenia/osteoporose, diarreia, perda de peso.
-    </div>
-
-    <div class="sub-title">Diagnóstico — Sequência Padrão</div>
-    <table>
-      <tr><th>Etapa</th><th>Exame</th><th>Observação</th></tr>
-      <tr><td><strong>1. Sorologia</strong> (1ª linha)</td><td>Anti-tTG IgA (mais sensível e específico)</td><td>Dosar IgA total junto — deficiência de IgA → falso-negativo; usar anti-tTG IgG ou anti-gliadina desamidada IgG nesses casos</td></tr>
-      <tr><td><strong>2. Biópsia duodenal</strong> (padrão-ouro)</td><td>EDA com biópsias múltiplas (≥4 fragmentos do bulbo e duodeno distal)</td><td>Classificação de Marsh: Marsh I (↑ linfócitos) → Marsh IIIc (atrofia total). Realizar com o paciente AINDA consumindo glúten</td></tr>
-      <tr><td><strong>3. Genética (HLA)</strong></td><td>HLA-DQ2 / HLA-DQ8</td><td>Valor preditivo negativo alto — ausência descarta celíaca; presença não confirma</td></tr>
-    </table>
-    <div class="highlight">
-      <strong>Atenção crítica:</strong> a biópsia DEVE ser realizada com o paciente ainda consumindo glúten. Se o paciente já iniciou a dieta sem glúten antes da biópsia, as vilosidades podem ter se recuperado parcialmente → falso-negativo. Suspender o diagnóstico e pedir nova exposição (gluten challenge) por 2–8 semanas.
-    </div>
-  </div>
-  <div class="content-footer">
-    <div class="footer-label">Extensivo ENARE 2026 · Bloco B9 — Nutrição · NUT-GAST</div>
-    <div class="footer-page">2 / 10</div>
-  </div>
-</div>
-
-<!-- PAGE 3 — CELÍACA: TRATAMENTO DIETÉTICO -->
-<div class="page">
-  <div class="content-header">
-    <div class="logo-wrap">
-      <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="32" height="32" rx="6" fill="#C6D834"/>
-        <path d="M16 4L28 10V22L16 28L4 22V10L16 4Z" fill="#1F5C23"/>
-        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
-      </svg>
-      <div>
-        <div class="logo-text">Extensivo ENARE</div>
-        <div class="logo-tagline">2026 · Nutrição</div>
-      </div>
-    </div>
-    <div class="header-right">
-      <div class="page-label">NUT-GAST · Aula 36</div>
-      <div class="page-title-hd">Celíaca — Tratamento Dietético</div>
-    </div>
-  </div>
-  <div class="content-body">
-    <div class="section-title">Doença Celíaca — Tratamento e Conduta Nutricional</div>
-
-    <div class="sub-title">Tratamento — Dieta Isenta de Glúten (DIG)</div>
-    <div class="alert">
-      <strong>Único tratamento disponível:</strong> dieta absolutamente isenta de glúten por <strong>toda a vida</strong> — não há remissão permanente que permita reintrodução. Mesmo pequenas quantidades de glúten (miligramas) podem manter a inflamação ativa e impedir a recuperação vilositária, mesmo que o paciente não apresente sintomas digestivos aparentes.
-    </div>
-
-    <div class="sub-title">Alimentos Proibidos</div>
-    <ul>
-      <li><strong>Trigo</strong> (farinha, semolina, espelta, kamut, triticale): pão, macarrão, pizza, bolos, biscoitos, cerveja de malte</li>
-      <li><strong>Centeio:</strong> pão de centeio, alguns whiskeys</li>
-      <li><strong>Cevada:</strong> malte, cerveja, alguns achocolatados</li>
-      <li><strong>Contaminação cruzada:</strong> aveia não certificada, alimentos processados em linhas que também processam trigo</li>
-      <li><strong>Ocultos:</strong> molho shoyu (trigo), embutidos com farinha, temperos industrializados, medicamentos com excipiente de glúten</li>
-    </ul>
-
-    <div class="sub-title">Alimentos Seguros (sem glúten natural)</div>
-    <p>Arroz, milho, mandioca (tapioca, polvilho), batata, inhame, cará, quinoa, amaranto, trigo-sarraceno (não é trigo), sorgo, grãos leguminosos (feijão, lentilha, grão-de-bico), carnes in natura, peixes, ovos, leite e derivados, frutas, verduras e legumes.</p>
-
-    <div class="sub-title">Intolerância à Lactose na Doença Celíaca</div>
-    <div class="highlight">
-      <strong>Transitória, não permanente:</strong> a atrofia vilositária reduz a produção de lactase (enzima da borda em escova) → intolerância secundária à lactose. Com a recuperação das vilosidades após a DIG, a lactase é reestabelecida e a maioria dos pacientes tolera lactose novamente. Em casos graves ou fase inicial, pode ser necessária restrição temporária de lactose.
-    </div>
-
-    <div class="sub-title">Deficiências Nutricionais — Monitorar e Repor</div>
-    <table>
-      <tr><th>Nutriente</th><th>Causa da deficiência</th><th>Conduta</th></tr>
-      <tr><td>Ferro</td><td>Má absorção no duodeno (principal sítio)</td><td>Suplementação oral; monitorar ferritina</td></tr>
-      <tr><td>Ácido fólico (B9)</td><td>Má absorção no jejuno proximal</td><td>Suplementação até recuperação vilositária</td></tr>
-      <tr><td>Vitamina D e cálcio</td><td>Má absorção + ↓ densidade óssea</td><td>Suplementar; densitometria óssea basal</td></tr>
-      <tr><td>Vitamina B12</td><td>Má absorção (casos graves/íleo envolvido)</td><td>Dosagem sérica periódica</td></tr>
-      <tr><td>Zinco</td><td>Má absorção intestinal geral</td><td>Avaliar e suplementar se deficiente</td></tr>
-    </table>
-
-    <div class="sub-title">Dermatite Herpetiforme</div>
-    <p>Manifestação cutânea da doença celíaca — lesões pruriginosas vesiculares simétricas em cotovelos, joelhos, glúteos e couro cabeludo. Anticorpos IgA antiepidermais (anti-endomísio). Tratamento: DIG + dapsona (controle das lesões cutâneas).</p>
-  </div>
-  <div class="content-footer">
-    <div class="footer-label">Extensivo ENARE 2026 · Bloco B9 — Nutrição · NUT-GAST</div>
-    <div class="footer-page">3 / 10</div>
-  </div>
-</div>
-
-<!-- PAGE 4 — DII: CROHN E RCUI -->
-<div class="page">
-  <div class="content-header">
-    <div class="logo-wrap">
-      <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="32" height="32" rx="6" fill="#C6D834"/>
-        <path d="M16 4L28 10V22L16 28L4 22V10L16 4Z" fill="#1F5C23"/>
-        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
-      </svg>
-      <div>
-        <div class="logo-text">Extensivo ENARE</div>
-        <div class="logo-tagline">2026 · Nutrição</div>
-      </div>
-    </div>
-    <div class="header-right">
-      <div class="page-label">NUT-GAST · Aula 36</div>
-      <div class="page-title-hd">DII — Crohn vs. Retocolite</div>
-    </div>
-  </div>
-  <div class="content-body">
-    <div class="section-title">Doença Inflamatória Intestinal — Crohn vs. RCUI</div>
-
-    <div class="sub-title">Comparativo Fundamental</div>
-    <table>
-      <tr><th>Característica</th><th>Doença de Crohn (DC)</th><th>Retocolite Ulcerativa (RCUI)</th></tr>
-      <tr><td>Localização</td><td>Qualquer segmento (boca→ânus); ileocecal = mais comum</td><td>Somente cólon; <strong>sempre compromete o reto</strong></td></tr>
-      <tr><td>Padrão de inflamação</td><td><strong>Transmural</strong> (todas as camadas)</td><td>Mucosa e submucosa apenas</td></tr>
-      <tr><td>Distribuição</td><td><strong>Skip lesions</strong> (áreas sãs entre segmentos inflamados)</td><td>Contínua (do reto em direção proximal)</td></tr>
-      <tr><td>Histologia</td><td><strong>Granulomas</strong> (presentes em ~50%)</td><td>Abscessos de criptas; sem granulomas</td></tr>
-      <tr><td>Complicações</td><td>Fístulas, abscessos, estenoses, má absorção</td><td>Megacólon tóxico, pseudopólipos, ↑ risco de câncer colorretal</td></tr>
-      <tr><td>Cura cirúrgica</td><td>Não (recidiva após ressecção)</td><td>Sim (colectomia total)</td></tr>
-    </table>
-
-    <div class="sub-title">Suporte Nutricional na DII</div>
-    <div class="grid-2">
-      <div class="card">
-        <div class="card-title">Fase Aguda / Ativa</div>
-        <ul style="font-size:9.5px">
-          <li><strong>Crohn pediátrico:</strong> terapia nutricional enteral exclusiva (TNE) = 1ª linha para induzir remissão (eficácia semelhante aos corticoides em crianças)</li>
-          <li>Dieta polimérica (padrão) ou elementar (se intolerância)</li>
-          <li>Dieta baixo resíduo (↓ fibras insolúveis) na fase aguda</li>
-          <li>NP total: apenas se TGI não funcionante (fístula de alto débito, obstrução)</li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="card-title">Fase de Remissão</div>
-        <ul style="font-size:9.5px">
-          <li>Reintroduzir fibras gradualmente</li>
-          <li>Ômega-3: evidências de benefício anti-inflamatório (manutenção da remissão em RCUI)</li>
-          <li>Probióticos (VSL#3): evidências para RCUI (não para DC)</li>
-          <li>Monitorar deficiências nutricionais</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="sub-title">Deficiências na Doença de Crohn com Ressecção</div>
-    <div class="alert">
-      <strong>Ressecção do íleo terminal:</strong> ↓ absorção de <strong>vitamina B12</strong> (receptor cubilin-amnionless) e <strong>sais biliares</strong> → diarreia por sais biliares, má absorção de vitaminas lipossolúveis (A, D, E, K). Suplementação de B12 IM obrigatória. Ressecção &gt;100 cm: síndrome do intestino curto.
+    <div class="subsection">Fator de Correção (FC)</div>
+    <div class="formula-box">
+      <div class="formula">FC = Peso Bruto (PB) / Peso Líquido (PL)</div>
+      <div class="formula-note">FC é SEMPRE &gt; 1 · Peso Bruto = Peso Líquido × FC</div>
     </div>
     <ul>
-      <li><strong>Ferro:</strong> inflamação + má absorção → anemia; preferir ferro IV na fase ativa (ferro oral piora inflamação intestinal)</li>
-      <li><strong>Vitamina D e cálcio:</strong> corticoides + má absorção → osteopenia (monitorar DMO)</li>
-      <li><strong>Folato:</strong> sulfassalazina (medicamento) inibe absorção de folato → suplementar</li>
-      <li><strong>Zinco:</strong> perdas aumentadas pela diarreia crônica</li>
+      <li><strong>Peso Bruto (PB):</strong> peso do alimento como adquirido, com cascas, sementes, gorduras aparentes e partes não comestíveis.</li>
+      <li><strong>Peso Líquido (PL):</strong> peso após pré-preparo — cascas retiradas, aparas removidas, partes não comestíveis descartadas.</li>
+      <li>FC > 1 sempre — porque o PB inclui perdas. Quanto maior o FC, maior o desperdício no pré-preparo.</li>
+      <li><strong>Uso prático:</strong> PB necessário = PL desejado × FC → indica quanto comprar.</li>
     </ul>
+    <table>
+      <tr><th>Alimento</th><th>FC aproximado</th><th>Principal perda</th></tr>
+      <tr><td>Frango com osso</td><td>1,80–2,00</td><td>Osso, pele, gordura</td></tr>
+      <tr><td>Carne bovina com gordura</td><td>1,20–1,35</td><td>Gordura aparente, aparas</td></tr>
+      <tr><td>Banana-prata</td><td>1,40–1,50</td><td>Casca</td></tr>
+      <tr><td>Manga Tommy</td><td>1,45–1,60</td><td>Casca, caroço</td></tr>
+      <tr><td>Cenoura</td><td>1,15–1,20</td><td>Casca</td></tr>
+      <tr><td>Cebola</td><td>1,15–1,25</td><td>Casca externa, raiz</td></tr>
+      <tr><td>Alface</td><td>1,05–1,10</td><td>Folhas deterioradas, talos</td></tr>
+      <tr><td>Tomate</td><td>1,05–1,10</td><td>Pedúnculo</td></tr>
+    </table>
+
+    <div class="subsection">Fator de Cocção (FK)</div>
+    <div class="formula-box">
+      <div class="formula">FK = Peso Cozido (PC) / Peso Cru Limpo (PL)</div>
+      <div class="formula-note">FK &gt; 1 = absorve água · FK &lt; 1 = perde água/gordura · Peso Cozido = Peso Líquido × FK</div>
+    </div>
+    <table>
+      <tr><th>Alimento</th><th>FK aproximado</th><th>Direção</th></tr>
+      <tr><td>Arroz branco cozido</td><td>2,5–3,0</td><td>&gt; 1 (absorve água)</td></tr>
+      <tr><td>Feijão cozido</td><td>2,3–2,5</td><td>&gt; 1 (absorve água)</td></tr>
+      <tr><td>Macarrão cozido</td><td>2,0–2,5</td><td>&gt; 1 (absorve água)</td></tr>
+      <tr><td>Frango cozido/assado</td><td>0,70–0,80</td><td>&lt; 1 (perde água e gordura)</td></tr>
+      <tr><td>Carne bovina grelhada</td><td>0,65–0,75</td><td>&lt; 1 (perde água e gordura)</td></tr>
+      <tr><td>Batata cozida com casca</td><td>0,90–1,00</td><td>≈ 1</td></tr>
+    </table>
+
+    <div class="subsection">Encadeamento FC → FK: Cálculo do Per Capita Bruto a partir do Cozido</div>
+    <div class="formula-box">
+      <div class="formula">PB = (PC ÷ FK) × FC</div>
+      <div class="formula-note">PC = per capita cozido desejado · FK = fator de cocção · FC = fator de correção</div>
+    </div>
+    <div class="highlight-box">
+      <p><strong>Passo a passo:</strong> (1) PC ÷ FK = PL (peso líquido/cru) → (2) PL × FC = PB (peso bruto a adquirir). Nunca multiplicar PC diretamente por FC sem antes reverter o FK.</p>
+    </div>
   </div>
-  <div class="content-footer">
-    <div class="footer-label">Extensivo ENARE 2026 · Bloco B9 — Nutrição · NUT-GAST</div>
-    <div class="footer-page">4 / 10</div>
+
+  <div class="page-footer">
+    <span class="footer-text">Extensivo ENARE 2026 · Bloco B9 Nutrição</span>
+    <span class="page-num">2 / 10</span>
   </div>
 </div>
 
-<!-- PAGE 5 — SII E FODMAP -->
+<!-- ════════════════════════════════════════════
+     PÁGINA 3 — MÉTODOS DE COCÇÃO E PERDAS NUTRICIONAIS
+════════════════════════════════════════════ -->
 <div class="page">
-  <div class="content-header">
-    <div class="logo-wrap">
-      <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="32" height="32" rx="6" fill="#C6D834"/>
-        <path d="M16 4L28 10V22L16 28L4 22V10L16 4Z" fill="#1F5C23"/>
-        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="25" viewBox="0 0 44 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="22,2 41,13 41,37 22,48 3,37 3,13" fill="#1F5C23" stroke="#C6D834" stroke-width="2.5"/>
+        <circle cx="22" cy="25" r="9" fill="#F6F4ED"/>
       </svg>
-      <div>
-        <div class="logo-text">Extensivo ENARE</div>
-        <div class="logo-tagline">2026 · Nutrição</div>
-      </div>
+      <span class="brand-name-sm">Extensivo ENARE</span>
     </div>
-    <div class="header-right">
-      <div class="page-label">NUT-GAST · Aula 36</div>
-      <div class="page-title-hd">SII — Roma IV · Dieta Baixo FODMAP</div>
-    </div>
+    <span class="page-meta">NUT-DIETÉTICA · Aula 36 · Bloco B9</span>
   </div>
-  <div class="content-body">
-    <div class="section-title">Síndrome do Intestino Irritável — SII</div>
 
-    <div class="sub-title">Diagnóstico — Critérios de Roma IV (2016)</div>
-    <div class="highlight">
-      <strong>Dor abdominal recorrente</strong> ≥1 dia/semana nos últimos 3 meses (início ≥6 meses antes do diagnóstico), associada a ≥2 dos seguintes: (1) relacionada à defecação; (2) associada a mudança na frequência das fezes; (3) associada a mudança na consistência das fezes.
+  <div class="page-content">
+    <div class="section-title">Métodos de Cocção e Perdas Nutricionais</div>
+
+    <div class="subsection">Classificação dos Métodos de Cocção</div>
+    <table>
+      <tr><th>Categoria</th><th>Métodos</th><th>Meio condutor</th></tr>
+      <tr><td><strong>Calor úmido</strong></td><td>Ebulição, vapor, escaldamento, brasear</td><td>Água ou vapor d'água</td></tr>
+      <tr><td><strong>Calor seco</strong></td><td>Assar (forno), grelhar, tostar</td><td>Ar quente e superfície aquecida</td></tr>
+      <tr><td><strong>Calor seco por gordura</strong></td><td>Saltear, refogar, fritar (rasa e imersão)</td><td>Gordura/óleo aquecido</td></tr>
+      <tr><td><strong>Calor misto</strong></td><td>Brasear, guisar, estufar</td><td>Inicial seco → úmido</td></tr>
+      <tr><td><strong>Cocção especial</strong></td><td>Micro-ondas, pressão, sous vide</td><td>Ondas eletromagnéticas / pressão / banho-maria</td></tr>
+    </table>
+
+    <div class="subsection">Impacto nos Nutrientes por Método</div>
+    <table>
+      <tr><th>Método</th><th>Vitaminas hidrossolúveis</th><th>Minerais</th><th>Proteínas/Lipídios</th></tr>
+      <tr>
+        <td><strong>Ebulição em água</strong></td>
+        <td>Maiores perdas: vit. C, B1, folato lixiviam para a água (30–60%)</td>
+        <td>Perda significativa por lixiviação</td>
+        <td>Desnaturação proteica; hidrólise parcial de lipídios</td>
+      </tr>
+      <tr>
+        <td><strong>Vapor</strong></td>
+        <td>Perdas menores que ebulição (~15–25%)</td>
+        <td>Perdas mínimas (sem contato com água)</td>
+        <td>Preservação boa; melhor método para vegetais</td>
+      </tr>
+      <tr>
+        <td><strong>Micro-ondas</strong></td>
+        <td>Perdas baixas (tempo curto, sem água abundante)</td>
+        <td>Preservação boa</td>
+        <td>Similar ao vapor</td>
+      </tr>
+      <tr>
+        <td><strong>Assar (forno)</strong></td>
+        <td>Perdas intermediárias (calor seco, sem lixiviação)</td>
+        <td>Concentra minerais (perde água, não minerais)</td>
+        <td>Oxidação de lipídios em temperaturas altas</td>
+      </tr>
+      <tr>
+        <td><strong>Fritura</strong></td>
+        <td>Perdas por calor; vit. C e B instáveis</td>
+        <td>Concentração por desidratação</td>
+        <td>Absorção de gordura (5–40%)</td>
+      </tr>
+    </table>
+
+    <div class="subsection">Frituras — Temperaturas e Acroleína</div>
+    <table>
+      <tr><th>Temperatura</th><th>Efeito</th></tr>
+      <tr><td><strong>Abaixo de 150°C</strong></td><td>Absorção excessiva de gordura → alimento encharcado, pesado</td></tr>
+      <tr><td><strong>180°C (ideal)</strong></td><td>Selamento rápido da superfície → menor absorção de gordura, textura crocante</td></tr>
+      <tr><td><strong>Acima de 200°C</strong></td><td>Decomposição do glicerol → formação de <strong>acroleína</strong> (fumaça irritante, potencialmente tóxica)</td></tr>
+    </table>
+
+    <div class="alert-box">
+      <p><strong>Acroleína:</strong> produto da decomposição térmica do glicerol em temperaturas acima de 200°C. É irritante para mucosas (olhos, vias respiratórias) e classifica-se como potencialmente carcinogênico. O ponto de fumaça de cada óleo indica o limiar de formação — ao atingir, a fritura deve ser interrompida.</p>
     </div>
-    <p><strong>Subtipos:</strong> SII-C (constipação predominante), SII-D (diarreia predominante), SII-M (mista), SII-U (não classificável). Diagnóstico de exclusão — afastar DII, celíaca, câncer colorretal, parasitoses.</p>
 
-    <div class="sub-title">Dieta Baixo FODMAP</div>
-    <p><strong>FODMAP:</strong> Fermentable Oligosaccharides, Disaccharides, Monosaccharides And Polyols. Carboidratos de cadeia curta e polióis pouco absorvidos → fermentados pela microbiota colônica → distensão, gases, dor, diarreia.</p>
-
-    <div class="grid-2">
-      <div class="card">
-        <div class="card-title">Alto FODMAP (restringir na fase 1)</div>
-        <ul style="font-size:9.2px">
-          <li><em>Oligossacarídeos:</em> trigo, centeio, alho, cebola, alho-poró, alcachofra, feijão, lentilha, grão-de-bico, brócolis, repolho</li>
-          <li><em>Dissacarídeos:</em> leite, iogurte, queijo mole (lactose)</li>
-          <li><em>Monossacarídeos:</em> maçã, pera, manga, mel, xarope de milho com alta frutose (frutose &gt; glicose)</li>
-          <li><em>Polióis:</em> ameixa, pêssego, damasco, cogumelos, sorbitol, manitol, xilitol</li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="card-title">Baixo FODMAP (seguros)</div>
-        <ul style="font-size:9.2px">
-          <li><em>Grãos:</em> arroz, milho, aveia, quinoa, tapioca</li>
-          <li><em>Laticínios:</em> queijos duros (cheddar, parmesão), leite sem lactose, leite de amêndoa</li>
-          <li><em>Frutas:</em> banana, morango, laranja, abacaxi, uva, kiwi, mamão, mirtilo</li>
-          <li><em>Vegetais:</em> cenoura, pepino, abobrinha, tomate, espinafre, alface, berinjela, pimentão</li>
-          <li><em>Proteínas:</em> frango, peixe, ovos, tofu firme</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="sub-title">Protocolo da Dieta Baixo FODMAP — 3 Fases</div>
-    <ol style="margin-bottom:6px">
-      <li><strong>Fase 1 — Eliminação (2–8 semanas):</strong> excluir todos os alimentos ricos em FODMAP; monitorar sintomas</li>
-      <li><strong>Fase 2 — Reintrodução (6–8 semanas):</strong> reintroduzir um grupo de FODMAP por vez, a cada 3 dias; identificar os desencadeantes individuais</li>
-      <li><strong>Fase 3 — Personalização:</strong> dieta individualizada excluindo apenas os FODMAPs mal tolerados pelo paciente; maximizar variedade alimentar</li>
-    </ol>
-    <div class="alert">
-      <strong>Fibras na SII:</strong> fibras solúveis (psyllium) = recomendadas para SII-C (normalizam trânsito sem piorar gases). Fibras insolúveis (farelo de trigo) podem piorar sintomas, especialmente na SII-D. A dieta baixo FODMAP pode ser pobre em prebióticos → risco de impacto negativo na microbiota se mantida cronicamente.
-    </div>
+    <div class="subsection">Escaldamento (Branqueamento)</div>
+    <ul>
+      <li><strong>Objetivo:</strong> inativar enzimas oxidativas (peroxidases, polifenoloxidases) → previne escurecimento enzimático e degradação de nutrientes durante armazenamento.</li>
+      <li>Método: imersão breve em água a 85–100°C ou vapor, seguida de choque térmico (água com gelo).</li>
+      <li>Preserva a cor verde dos vegetais (clorofila estabilizada) e textura.</li>
+      <li>Obrigatório antes do congelamento de vegetais (evita degradação enzimática durante estocagem).</li>
+    </ul>
   </div>
-  <div class="content-footer">
-    <div class="footer-label">Extensivo ENARE 2026 · Bloco B9 — Nutrição · NUT-GAST</div>
-    <div class="footer-page">5 / 10</div>
+
+  <div class="page-footer">
+    <span class="footer-text">Extensivo ENARE 2026 · Bloco B9 Nutrição</span>
+    <span class="page-num">3 / 10</span>
   </div>
 </div>
 
-<!-- PAGE 6 — Q01 -->
+<!-- ════════════════════════════════════════════
+     PÁGINA 4 — INDICADORES DE UAN: RI, SOBRA E AQPC
+════════════════════════════════════════════ -->
 <div class="page">
-  <div class="content-header">
-    <div class="logo-wrap">
-      <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="32" height="32" rx="6" fill="#C6D834"/>
-        <path d="M16 4L28 10V22L16 28L4 22V10L16 4Z" fill="#1F5C23"/>
-        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="25" viewBox="0 0 44 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="22,2 41,13 41,37 22,48 3,37 3,13" fill="#1F5C23" stroke="#C6D834" stroke-width="2.5"/>
+        <circle cx="22" cy="25" r="9" fill="#F6F4ED"/>
       </svg>
-      <div>
-        <div class="logo-text">Extensivo ENARE</div>
-        <div class="logo-tagline">2026 · Nutrição</div>
-      </div>
+      <span class="brand-name-sm">Extensivo ENARE</span>
     </div>
-    <div class="header-right">
-      <div class="page-label">NUT-GAST · Aula 36</div>
-      <div class="page-title-hd">Questão 01 — Aplicação</div>
-    </div>
+    <span class="page-meta">NUT-DIETÉTICA · Aula 36 · Bloco B9</span>
   </div>
-  <div class="content-body">
-    <div class="section-title">Questão 01</div>
-    <div class="question-header">
-      <span class="question-badge">Q01 · Ap</span>
-      <div class="q-meta">
-        <div class="q-meta-line">Réplica ENARE 2025 · Q118</div>
-        <div class="q-meta-line">Banca FGV · Nutrição</div>
-      </div>
+
+  <div class="page-content">
+    <div class="section-title">Indicadores de UAN: RI, Sobra Limpa e AQPC</div>
+
+    <div class="subsection">Resto Ingestão (RI)</div>
+    <div class="formula-box">
+      <div class="formula">RI (%) = (Peso do Resto / Peso Distribuído) × 100</div>
+      <div class="formula-note">Resto = alimento que sobrou no prato do comensal após a refeição</div>
     </div>
-    <div class="question-stem">
-      <p>Paciente de 32 anos, feminina, apresenta histórico de diarreia crônica há 2 anos, distensão abdominal, perda de 8 kg e anemia ferropriva refratária à reposição oral de ferro. A anti-transglutaminase IgA (anti-tTG IgA) resulta 4+ (fortemente positivo). A IgA total é normal. A biópsia duodenal realizada durante EDA evidencia atrofia vilositária subtotal (Marsh IIIb) com aumento de linfócitos intraepiteliais.</p>
-      <p style="margin-top:6px">Com base no diagnóstico confirmado, a conduta nutricional mais adequada é:</p>
-    </div>
-    <ul class="options-list">
-      <li class="option-item">
-        <span class="option-letter">A</span>
-        <span>Dieta sem glúten por 6 meses com reavaliação sorológica; se a anti-tTG normalizar, o glúten pode ser reintroduzido progressivamente.</span>
-      </li>
-      <li class="option-item correct">
-        <span class="option-letter">B</span>
-        <span>Dieta isenta de glúten por toda a vida; substituir trigo, centeio e cevada por arroz, milho, mandioca e quinoa; monitorar ferro, folato, vitamina D e cálcio.</span>
-      </li>
-      <li class="option-item">
-        <span class="option-letter">C</span>
-        <span>Dieta sem glúten e sem lactose permanentemente, pois a atrofia vilositária causa deficiência irreversível de lactase na mucosa intestinal.</span>
-      </li>
-      <li class="option-item">
-        <span class="option-letter">D</span>
-        <span>Incluir aveia integral livremente na dieta, pois a aveia não contém prolaminas tóxicas e é considerada segura para todos os pacientes celíacos sem restrições.</span>
-      </li>
-      <li class="option-item">
-        <span class="option-letter">E</span>
-        <span>A biópsia positiva dispensa a dieta sem glúten nesta fase; iniciar corticoterapia imunossupressora e reavaliar a necessidade da restrição dietética após 3 meses.</span>
-      </li>
+    <table>
+      <tr><th>Parâmetro</th><th>RI Aceitável</th></tr>
+      <tr><td>Coletividade sadia (UAN padrão)</td><td>≤ 10%</td></tr>
+      <tr><td>Hospital / clientela enferma</td><td>≤ 20% (alguns autores até 30%)</td></tr>
+    </table>
+    <ul>
+      <li><strong>RI alto:</strong> indica baixa aceitabilidade do cardápio, porção excessiva ou preparação inadequada.</li>
+      <li><strong>RI baixo:</strong> pode indicar porção insuficiente (risco de insatisfação) ou cardápio bem aceito.</li>
     </ul>
-    <div class="highlight" style="margin-top:12px">
-      <strong>Distratores:</strong> A → a dieta é por toda a vida (sem exceção); C → intolerância à lactose na celíaca é transitória (não permanente); D → aveia pode ter contaminação cruzada e só a certificada sem CC é liberada — com cautela; E → não há tratamento farmacológico que substitua a DIG na celíaca.
+
+    <div class="subsection">Sobra Limpa</div>
+    <div class="formula-box">
+      <div class="formula">Sobra Limpa (%) = (Peso da Sobra Limpa / Peso Produzido) × 100</div>
+      <div class="formula-note">Sobra limpa = alimento preparado e não distribuído, ainda em condições de consumo</div>
     </div>
+    <ul>
+      <li>Parâmetro aceitável: <strong>≤ 3%</strong> do peso total produzido.</li>
+      <li>Sobra limpa alta = superprodução → desperdício de insumos e custo.</li>
+      <li>Diferente de "sobra suja" (restos dos pratos dos comensais = componente do RI).</li>
+    </ul>
+
+    <div class="subsection">AQPC — Avaliação Qualitativa das Preparações e Cardápios</div>
+    <ul>
+      <li><strong>Método:</strong> avaliação qualitativa — analisa características do cardápio sem calcular VCT ou macronutrientes.</li>
+      <li><strong>NÃO calcula:</strong> calorias, proteínas, carboidratos, lipídios.</li>
+      <li><strong>Avalia:</strong> repetição de cores, técnicas de preparo, presença de frituras, alimentos sulfurosos (flatulentos), leguminosas, folhosos, frutas.</li>
+      <li><strong>Pontos negativos no AQPC:</strong> monotonia de cor/técnica, excesso de frituras, poucos folhosos e frutas.</li>
+      <li><strong>Pontos positivos:</strong> variedade de cores, presença de leguminosas diariamente, frutas, folhosos crus, método de cozimento predominante a vapor/grelhado.</li>
+    </ul>
+
+    <div class="alert-box">
+      <p><strong>Ponto de prova:</strong> AQPC é qualitativo — não calcula VCT. Afirmativas que afirmam "o AQPC avalia o valor calórico total e a adequação de macronutrientes" estão incorretas. É uma ferramenta de gestão de cardápios, não de cálculo dietético.</p>
+    </div>
+
+    <div class="subsection">Per Capita e Porcionamento</div>
+    <table>
+      <tr><th>Conceito</th><th>Definição</th><th>Uso</th></tr>
+      <tr><td>Per capita bruto</td><td>Peso adquirido por comensal (inclui partes não comestíveis)</td><td>Compras e licitações</td></tr>
+      <tr><td>Per capita líquido</td><td>Peso após pré-preparo por comensal</td><td>Planejamento de preparo</td></tr>
+      <tr><td>Per capita cozido</td><td>Peso da preparação pronta por comensal</td><td>Porcionamento no balcão</td></tr>
+    </table>
   </div>
-  <div class="content-footer">
-    <div class="footer-label">Extensivo ENARE 2026 · Bloco B9 — Nutrição · NUT-GAST</div>
-    <div class="footer-page">6 / 10</div>
+
+  <div class="page-footer">
+    <span class="footer-text">Extensivo ENARE 2026 · Bloco B9 Nutrição</span>
+    <span class="page-num">4 / 10</span>
   </div>
 </div>
 
-<!-- PAGE 7 — Q02 -->
+<!-- ════════════════════════════════════════════
+     PÁGINA 5 — EQUIVALÊNCIAS, IG/CG E DIETAS ESPECIAIS
+════════════════════════════════════════════ -->
 <div class="page">
-  <div class="content-header">
-    <div class="logo-wrap">
-      <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="32" height="32" rx="6" fill="#C6D834"/>
-        <path d="M16 4L28 10V22L16 28L4 22V10L16 4Z" fill="#1F5C23"/>
-        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="25" viewBox="0 0 44 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="22,2 41,13 41,37 22,48 3,37 3,13" fill="#1F5C23" stroke="#C6D834" stroke-width="2.5"/>
+        <circle cx="22" cy="25" r="9" fill="#F6F4ED"/>
       </svg>
-      <div>
-        <div class="logo-text">Extensivo ENARE</div>
-        <div class="logo-tagline">2026 · Nutrição</div>
-      </div>
+      <span class="brand-name-sm">Extensivo ENARE</span>
     </div>
-    <div class="header-right">
-      <div class="page-label">NUT-GAST · Aula 36</div>
-      <div class="page-title-hd">Questão 02 — Aplicação</div>
-    </div>
+    <span class="page-meta">NUT-DIETÉTICA · Aula 36 · Bloco B9</span>
   </div>
-  <div class="content-body">
-    <div class="section-title">Questão 02</div>
-    <div class="question-header">
-      <span class="question-badge">Q02 · Ap</span>
-      <div class="q-meta">
-        <div class="q-meta-line">Réplica ENARE 2025 · Q119</div>
-        <div class="q-meta-line">Banca FGV · Nutrição</div>
-      </div>
+
+  <div class="page-content">
+    <div class="section-title">Equivalências Alimentares, IG/CG e Consistências</div>
+
+    <div class="subsection">Grupos de Substituição e Equivalências</div>
+    <table>
+      <tr><th>Grupo</th><th>Equivalências comuns</th></tr>
+      <tr>
+        <td><strong>Carnes e ovos</strong></td>
+        <td>100 g carne bovina ≈ 100 g frango ≈ 100 g peixe ≈ 2 ovos (equivalência proteica)</td>
+      </tr>
+      <tr>
+        <td><strong>Leguminosas</strong></td>
+        <td>½ xíc. feijão ≈ ½ xíc. lentilha ≈ ½ xíc. grão-de-bico ≈ ½ xíc. ervilha cozida</td>
+      </tr>
+      <tr>
+        <td><strong>Cereais/tubérculos</strong></td>
+        <td>4 col. sopa arroz cozido ≈ 4 col. sopa macarrão ≈ 1 batata média ≈ 2 fatias pão de forma</td>
+      </tr>
+      <tr>
+        <td><strong>Lácteos</strong></td>
+        <td>1 copo leite ≈ 2 col. sopa leite em pó ≈ 1 pote iogurte (200 g) ≈ 30 g queijo minas</td>
+      </tr>
+      <tr>
+        <td><strong>Gorduras</strong></td>
+        <td>1 col. sopa azeite ≈ 1 col. sopa manteiga ≈ 1 col. sopa margarina (equivalência calórica)</td>
+      </tr>
+    </table>
+
+    <div class="subsection">Índice Glicêmico (IG) e Carga Glicêmica (CG)</div>
+    <div class="formula-box">
+      <div class="formula">CG = (IG × g de CHO disponível na porção) ÷ 100</div>
+      <div class="formula-note">IG &lt;55 = baixo · 55–70 = médio · &gt;70 = alto &nbsp;|&nbsp; CG &lt;10 = baixa · 10–19 = média · ≥20 = alta</div>
     </div>
-    <div class="question-stem">
-      <p>Paciente de 27 anos, feminina, refere dor abdominal recorrente há 8 meses, associada a episódios de diarreia alternados com constipação, distensão e gases. Os sintomas pioram após consumo de alho, cebola, feijão e maçã, e melhoram quando evita laticínios. Colonoscopia, parasitológico e anti-tTG IgA são normais. Os critérios de Roma IV estão presentes há mais de 6 meses.</p>
-      <p style="margin-top:6px">A abordagem nutricional mais adequada e baseada em evidências para esta paciente é:</p>
-    </div>
-    <ul class="options-list">
-      <li class="option-item">
-        <span class="option-letter">A</span>
-        <span>Prescrever dieta rica em fibras insolúveis (farelo de trigo, 30 g/dia) para regularizar o trânsito intestinal e reduzir os episódios de dor abdominal.</span>
-      </li>
-      <li class="option-item correct">
-        <span class="option-letter">B</span>
-        <span>Iniciar dieta baixo FODMAP em três fases: eliminação dos alimentos ricos em FODMAP por 2–8 semanas, seguida de reintrodução sistemática de cada grupo e personalização conforme tolerância individual.</span>
-      </li>
-      <li class="option-item">
-        <span class="option-letter">C</span>
-        <span>Eliminar permanentemente todos os alimentos ricos em FODMAP identificados, pois não ocorre recuperação da tolerância ao longo do tempo.</span>
-      </li>
-      <li class="option-item">
-        <span class="option-letter">D</span>
-        <span>Iniciar dieta sem glúten, pois os sintomas semelhantes à doença celíaca confirmam sensibilidade ao glúten não celíaca, mesmo com sorologia negativa.</span>
-      </li>
-      <li class="option-item">
-        <span class="option-letter">E</span>
-        <span>Indicar jejum intermitente como estratégia principal, pois a restrição calórica reduz a fermentação colônica e alivia os sintomas da síndrome do intestino irritável.</span>
-      </li>
+    <ul>
+      <li><strong>Exemplo clássico — melancia:</strong> IG alto (~72) mas CG baixa (~4) pela pouca quantidade de CHO por porção (100g = ~5g CHO disponível).</li>
+      <li><strong>Fibras, gordura e proteína</strong> na mesma refeição → ↓ IG da refeição como um todo.</li>
+      <li>O IG é determinado em relação à glicose (= 100) ou ao pão branco (= 70).</li>
     </ul>
-    <div class="highlight" style="margin-top:12px">
-      <strong>Distratores:</strong> A → fibras insolúveis podem piorar a SII (especialmente SII-D); C → a dieta FODMAP NÃO é permanentemente restritiva — o objetivo das fases 2 e 3 é justamente reintroduzir e personalizar; D → a sorologia normal afasta celíaca; sensibilidade ao glúten não celíaca é diagnóstico de exclusão e não inclui os mesmos alimentos da questão; E → sem evidência sólida para jejum intermitente na SII.
+
+    <div class="subsection">Consistências de Dietas — Progressão Hospitalar</div>
+    <table>
+      <tr><th>Consistência</th><th>Características</th><th>Indicação</th></tr>
+      <tr><td><strong>Líquida restrita</strong></td><td>Apenas líquidos claros (água, chás, caldo coado)</td><td>Pós-operatório imediato, íleo paralítico</td></tr>
+      <tr><td><strong>Líquida completa</strong></td><td>Líquidos e semilíquidos (leite, suco, caldo com partículas)</td><td>Disfagia grave, pós-cirúrgico inicial</td></tr>
+      <tr><td><strong>Pastosa</strong></td><td>Alimentos macios, sem grumos, sem necessidade de mastigação</td><td>Disfagia leve-moderada, próteses dentárias</td></tr>
+      <tr><td><strong>Branda</strong></td><td>Alimentos cozidos macios, mastigação fácil, sem frituras e crus duros</td><td>Recuperação GI, pós-cirúrgico tardio</td></tr>
+      <tr><td><strong>Normal/Geral</strong></td><td>Sem restrição de consistência</td><td>Pacientes sem limitação</td></tr>
+    </table>
+
+    <div class="anchor-box">
+      <p><strong>Âncoras críticas desta aula:</strong></p>
+      <ul>
+        <li><strong>FC sempre &gt; 1;</strong> FK pode ser &gt; 1 (cereais/leguminosas) ou &lt; 1 (carnes)</li>
+        <li><strong>PB = (PC ÷ FK) × FC</strong> — nunca multiplicar PC diretamente por FC</li>
+        <li><strong>Fritura ideal = 180°C;</strong> acima de 200°C = acroleína (tóxica)</li>
+        <li><strong>Vapor &gt; ebulição</strong> na preservação de vitaminas hidrossolúveis</li>
+        <li><strong>AQPC = qualitativo</strong> — NÃO calcula VCT; RI ≤ 10% (sadia) e sobra limpa ≤ 3%</li>
+      </ul>
     </div>
   </div>
-  <div class="content-footer">
-    <div class="footer-label">Extensivo ENARE 2026 · Bloco B9 — Nutrição · NUT-GAST</div>
-    <div class="footer-page">7 / 10</div>
+
+  <div class="page-footer">
+    <span class="footer-text">Extensivo ENARE 2026 · Bloco B9 Nutrição</span>
+    <span class="page-num">5 / 10</span>
   </div>
 </div>
 
-<!-- PAGE 8 — Q03 (AFIRMATIVAS) -->
+<!-- ════════════════════════════════════════════
+     PÁGINA 6 — QUESTÃO 01 (APLICAÇÃO · GAB B)
+════════════════════════════════════════════ -->
 <div class="page">
-  <div class="content-header">
-    <div class="logo-wrap">
-      <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="32" height="32" rx="6" fill="#C6D834"/>
-        <path d="M16 4L28 10V22L16 28L4 22V10L16 4Z" fill="#1F5C23"/>
-        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="25" viewBox="0 0 44 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="22,2 41,13 41,37 22,48 3,37 3,13" fill="#1F5C23" stroke="#C6D834" stroke-width="2.5"/>
+        <circle cx="22" cy="25" r="9" fill="#F6F4ED"/>
       </svg>
-      <div>
-        <div class="logo-text">Extensivo ENARE</div>
-        <div class="logo-tagline">2026 · Nutrição</div>
-      </div>
+      <span class="brand-name-sm">Extensivo ENARE</span>
     </div>
-    <div class="header-right">
-      <div class="page-label">NUT-GAST · Aula 36</div>
-      <div class="page-title-hd">Questão 03 — Análise Âncora</div>
-    </div>
+    <span class="page-meta">NUT-DIETÉTICA · Aula 36 · Bloco B9</span>
   </div>
-  <div class="content-body">
-    <div class="section-title">Questão 03 — Análise Âncora</div>
-    <div class="question-header">
-      <span class="question-badge">Q03 · An</span>
-      <div class="q-meta">
-        <div class="q-meta-line">Réplica ENARE 2024 Q87 / 2025 Q120</div>
-        <div class="q-meta-line">Banca FGV · Nutrição · Afirmativas</div>
-      </div>
+
+  <div class="page-content">
+    <div class="q-header">
+      <span class="q-badge">Q 01</span>
+      <span class="q-type">Aplicação · Cálculo FC e FK</span>
     </div>
-    <div class="question-stem">
-      <p>Sobre doenças gastroenterológicas e sua abordagem nutricional, analise as afirmativas:</p>
-      <p style="margin-top:6px"><strong>I.</strong> Na Doença de Crohn em fase aguda, a nutrição parenteral total é sempre a terapia de primeira escolha para induzir a remissão, sendo a nutrição enteral contraindicada pelo risco de exacerbação da inflamação intestinal.</p>
-      <p style="margin-top:4px"><strong>II.</strong> Na doença celíaca, a intolerância à lactose que pode ocorrer durante a fase ativa é geralmente transitória, revertendo com a recuperação vilositária após a adesão à dieta isenta de glúten.</p>
-      <p style="margin-top:4px"><strong>III.</strong> A dieta baixo FODMAP para a síndrome do intestino irritável deve ser implementada em fases, incluindo eliminação, reintrodução sistemática e personalização, para que o paciente não precise restringir indefinidamente todos os alimentos ricos em FODMAP.</p>
-      <p style="margin-top:4px"><strong>IV.</strong> A Retocolite Ulcerativa (RCUI) caracteriza-se por acometer qualquer segmento do trato gastrointestinal, da boca ao ânus, com inflamação transmural em padrão salteado (skip lesions) e presença de granulomas à histologia.</p>
+
+    <div class="q-context">
+      A nutricionista responsável por uma UAN precisa calcular a quantidade de frango com osso a ser adquirida para servir 100 refeições, com per capita cozido de 120 g por comensal. O fator de cocção (FK) do frango assado é 0,75 e o fator de correção (FC) do frango com osso é 1,85.
     </div>
-    <p style="margin-top:6px; font-size:10.5px">Estão <strong>corretas</strong> apenas as afirmativas:</p>
-    <ul class="options-list">
-      <li class="option-item"><span class="option-letter">A</span><span>I e IV</span></li>
-      <li class="option-item"><span class="option-letter">B</span><span>I e II</span></li>
-      <li class="option-item correct"><span class="option-letter">C</span><span>II e III</span></li>
-      <li class="option-item"><span class="option-letter">D</span><span>I, II e III</span></li>
-      <li class="option-item"><span class="option-letter">E</span><span>III e IV</span></li>
-    </ul>
-    <ul class="afirmativas-list" style="margin-top:10px">
-      <li class="afirmativa-item errada">
-        <span class="afirmativa-num">I</span>
-        <span><strong>ERRADA.</strong> Na Doença de Crohn pediátrica, a terapia nutricional enteral exclusiva (TNE) com dieta polimérica é a <em>1ª linha</em> para induzir remissão (eficácia semelhante aos corticoides). NP total fica reservada para quando o TGI não é funcionante (obstrução, fístula de alto débito).</span>
+
+    <p class="q-stem">Qual a quantidade total de frango com osso, em quilogramas, que a nutricionista deve solicitar na compra?</p>
+
+    <ul class="alternatives">
+      <li>
+        <span class="alt-letter">A</span>
+        <span>16,0 kg — calculado aplicando apenas o FK: (120 g ÷ 0,75) × 100 = 16.000 g.</span>
       </li>
-      <li class="afirmativa-item correta">
-        <span class="afirmativa-num">II</span>
-        <span><strong>CORRETA.</strong> A intolerância à lactose na celíaca é secundária à atrofia das vilosidades (↓ lactase na borda em escova). Com a recuperação vilositária após a DIG, a lactase é reestabelecida e a maioria dos pacientes tolera lactose novamente — não é permanente.</span>
+      <li>
+        <span class="alt-letter">B</span>
+        <span>29,6 kg — calculado revertendo o FK para obter o peso líquido e, em seguida, aplicando o FC: (120 g ÷ 0,75) × 1,85 × 100 = 29.600 g.</span>
       </li>
-      <li class="afirmativa-item correta">
-        <span class="afirmativa-num">III</span>
-        <span><strong>CORRETA.</strong> A dieta baixo FODMAP é implementada em 3 fases: (1) eliminação (2–8 sem.), (2) reintrodução gradual por grupo, (3) personalização. O objetivo final é uma dieta com variedade máxima, excluindo apenas os FODMAPs individualmente mal tolerados.</span>
+      <li>
+        <span class="alt-letter">C</span>
+        <span>22,2 kg — calculado aplicando apenas o FC sobre o per capita cozido: 120 g × 1,85 × 100 = 22.200 g.</span>
       </li>
-      <li class="afirmativa-item errada">
-        <span class="afirmativa-num">IV</span>
-        <span><strong>ERRADA (descrição completa da Doença de Crohn).</strong> RCUI acomete <em>apenas o cólon</em> (sempre o reto), inflamação <em>mucosa e submucosa</em> (não transmural), distribuição <em>contínua</em> (não salteada), <em>sem granulomas</em>. As características de IV correspondem à Doença de Crohn.</span>
+      <li>
+        <span class="alt-letter">D</span>
+        <span>12,0 kg — calculado sem nenhuma correção: 120 g × 100 = 12.000 g.</span>
       </li>
     </ul>
+
+    <div class="alert-box" style="margin-top:4mm;">
+      <p><strong>Resolução passo a passo:</strong></p>
+      <p>① Per capita líquido = PC ÷ FK = 120 g ÷ 0,75 = <strong>160 g</strong></p>
+      <p>② Per capita bruto = PL × FC = 160 g × 1,85 = <strong>296 g</strong></p>
+      <p>③ Total (100 refeições) = 296 g × 100 = <strong>29.600 g = 29,6 kg</strong></p>
+      <p style="margin-top:1.5mm;"><strong>Erros comuns:</strong> A aplica só FK (esquece FC); C aplica só FC (esquece FK); D não aplica nenhum fator.</p>
+    </div>
   </div>
-  <div class="content-footer">
-    <div class="footer-label">Extensivo ENARE 2026 · Bloco B9 — Nutrição · NUT-GAST</div>
-    <div class="footer-page">8 / 10</div>
+
+  <div class="page-footer">
+    <span class="footer-text">Extensivo ENARE 2026 · Bloco B9 Nutrição</span>
+    <span class="page-num">6 / 10</span>
   </div>
 </div>
 
-<!-- PAGE 9 — GABARITO -->
+<!-- ════════════════════════════════════════════
+     PÁGINA 7 — QUESTÃO 02 (APLICAÇÃO · GAB C)
+════════════════════════════════════════════ -->
 <div class="page">
-  <div class="content-header">
-    <div class="logo-wrap">
-      <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="32" height="32" rx="6" fill="#C6D834"/>
-        <path d="M16 4L28 10V22L16 28L4 22V10L16 4Z" fill="#1F5C23"/>
-        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="25" viewBox="0 0 44 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="22,2 41,13 41,37 22,48 3,37 3,13" fill="#1F5C23" stroke="#C6D834" stroke-width="2.5"/>
+        <circle cx="22" cy="25" r="9" fill="#F6F4ED"/>
       </svg>
-      <div>
-        <div class="logo-text">Extensivo ENARE</div>
-        <div class="logo-tagline">2026 · Nutrição</div>
-      </div>
+      <span class="brand-name-sm">Extensivo ENARE</span>
     </div>
-    <div class="header-right">
-      <div class="page-label">NUT-GAST · Aula 36</div>
-      <div class="page-title-hd">Gabarito Comentado</div>
+    <span class="page-meta">NUT-DIETÉTICA · Aula 36 · Bloco B9</span>
+  </div>
+
+  <div class="page-content">
+    <div class="q-header">
+      <span class="q-badge">Q 02</span>
+      <span class="q-type">Aplicação · Indicadores de UAN (RI e Sobra Limpa)</span>
+    </div>
+
+    <div class="q-context">
+      Após o almoço de uma UAN corporativa, a nutricionista registrou os seguintes dados: peso total de alimento produzido = 80 kg; peso de alimento distribuído = 50 kg; peso de sobra limpa (não distribuída, em condições de consumo) = 2,4 kg; peso de resto ingestão (sobra nos pratos dos comensais) = 6 kg.
+    </div>
+
+    <p class="q-stem">Com base nos parâmetros de aceitabilidade para coletividade sadia, é CORRETO afirmar que:</p>
+
+    <ul class="alternatives">
+      <li>
+        <span class="alt-letter">A</span>
+        <span>O RI de 12% e a sobra limpa de 4,8% estão ambos acima dos parâmetros aceitáveis, indicando baixa aceitabilidade do cardápio e superprodução simultâneas.</span>
+      </li>
+      <li>
+        <span class="alt-letter">B</span>
+        <span>O RI de 8% está dentro do parâmetro aceitável (≤ 10%); já a sobra limpa de 4,8% está acima do limite, indicando superprodução significativa.</span>
+      </li>
+      <li>
+        <span class="alt-letter">C</span>
+        <span>O RI de 12% está acima do parâmetro aceitável (≤ 10%) para coletividade sadia, sugerindo baixa aceitabilidade do cardápio; a sobra limpa de 3% está exatamente no limite máximo aceitável (≤ 3% do produzido).</span>
+      </li>
+      <li>
+        <span class="alt-letter">D</span>
+        <span>O RI de 6% e a sobra limpa de 3% estão ambos dentro dos parâmetros aceitáveis, não havendo necessidade de intervenção na gestão do cardápio.</span>
+      </li>
+    </ul>
+
+    <div class="alert-box" style="margin-top:4mm;">
+      <p><strong>Resolução:</strong></p>
+      <p>① RI = (Resto / Distribuído) × 100 = (6 / 50) × 100 = <strong>12%</strong> → acima de 10% → <em>fora do parâmetro</em></p>
+      <p>② Sobra limpa = (Sobra / Produzido) × 100 = (2,4 / 80) × 100 = <strong>3%</strong> → no limite máximo de 3% → <em>dentro do parâmetro</em></p>
+      <p style="margin-top:1.5mm;"><strong>Erros comuns:</strong> B calcula RI sobre o produzido (8%) em vez do distribuído; A e D apresentam valores incorretos.</p>
     </div>
   </div>
-  <div class="content-body">
+
+  <div class="page-footer">
+    <span class="footer-text">Extensivo ENARE 2026 · Bloco B9 Nutrição</span>
+    <span class="page-num">7 / 10</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     PÁGINA 8 — QUESTÃO 03 (ANÁLISE ÂNCORA · GAB C)
+════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="25" viewBox="0 0 44 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="22,2 41,13 41,37 22,48 3,37 3,13" fill="#1F5C23" stroke="#C6D834" stroke-width="2.5"/>
+        <circle cx="22" cy="25" r="9" fill="#F6F4ED"/>
+      </svg>
+      <span class="brand-name-sm">Extensivo ENARE</span>
+    </div>
+    <span class="page-meta">NUT-DIETÉTICA · Aula 36 · Bloco B9</span>
+  </div>
+
+  <div class="page-content">
+    <div class="q-header">
+      <span class="q-badge">Q 03</span>
+      <span class="q-type">Análise Âncora · Técnica Dietética Integrada</span>
+    </div>
+
+    <p class="q-stem">Analise as afirmativas a seguir sobre técnica dietética:</p>
+
+    <ul class="assertions">
+      <li>
+        <span class="assert-num">I</span>
+        <span>A avaliação qualitativa das preparações e cardápios (AQPC) é o método padrão para calcular o valor calórico total e a adequação de macronutrientes de cardápios coletivos, sendo obrigatória sua utilização na elaboração de cardápios hospitalares segundo a Resolução CFN 600/2018.</span>
+      </li>
+      <li>
+        <span class="assert-num">II</span>
+        <span>O fator de cocção (FK) é menor que 1 para carnes e aves submetidas a métodos de cocção com calor seco (grelhadas, assadas), pois esses alimentos perdem água e gordura durante o processo, resultando em peso cozido inferior ao peso cru limpo.</span>
+      </li>
+      <li>
+        <span class="assert-num">III</span>
+        <span>O fator de correção (FC) é sempre maior que 1, pois relaciona o peso bruto (antes do pré-preparo, com partes não comestíveis) ao peso líquido (após pré-preparo); seu uso permite determinar a quantidade a ser adquirida a partir do per capita líquido planejado.</span>
+      </li>
+      <li>
+        <span class="assert-num">IV</span>
+        <span>A temperatura ideal para fritura por imersão é acima de 200°C, pois nessa faixa ocorre o selamento rápido da superfície do alimento, reduzindo a absorção de gordura e preservando as propriedades organolépticas; temperaturas abaixo dessa faixa produzem a acroleína.</span>
+      </li>
+    </ul>
+
+    <p class="q-stem" style="margin-top:3mm;">Estão CORRETAS apenas as afirmativas:</p>
+
+    <ul class="alternatives">
+      <li><span class="alt-letter">A</span><span>I e III</span></li>
+      <li><span class="alt-letter">B</span><span>I e IV</span></li>
+      <li><span class="alt-letter">C</span><span>II e III</span></li>
+      <li><span class="alt-letter">D</span><span>II e IV</span></li>
+    </ul>
+
+    <div class="anchor-box" style="margin-top:4mm;">
+      <p><strong>Âncora desta questão:</strong></p>
+      <ul>
+        <li><strong>I — ERRADA:</strong> AQPC é qualitativa — NÃO calcula VCT nem macronutrientes. Não está na Res. CFN 600/2018 como obrigatória para hospitais.</li>
+        <li><strong>II — CORRETA:</strong> FK &lt; 1 para carnes/aves grelhadas/assadas (perdem água e gordura → peso cozido &lt; peso cru limpo).</li>
+        <li><strong>III — CORRETA:</strong> FC sempre &gt; 1 (PB/PL, com PB sempre maior por incluir partes não comestíveis).</li>
+        <li><strong>IV — ERRADA:</strong> Temperatura ideal = 180°C. Acima de 200°C forma-se acroleína (tóxica). A descrição está invertida.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span class="footer-text">Extensivo ENARE 2026 · Bloco B9 Nutrição</span>
+    <span class="page-num">8 / 10</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     PÁGINA 9 — GABARITO COMENTADO
+════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="25" viewBox="0 0 44 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="22,2 41,13 41,37 22,48 3,37 3,13" fill="#1F5C23" stroke="#C6D834" stroke-width="2.5"/>
+        <circle cx="22" cy="25" r="9" fill="#F6F4ED"/>
+      </svg>
+      <span class="brand-name-sm">Extensivo ENARE</span>
+    </div>
+    <span class="page-meta">NUT-DIETÉTICA · Aula 36 · Bloco B9</span>
+  </div>
+
+  <div class="page-content">
     <div class="section-title">Gabarito Comentado</div>
 
-    <div class="gab-card">
-      <div class="gab-card-hd">
-        <span class="gab-q-label">Q01 — Doença Celíaca: Conduta Dietética</span>
-        <span class="gab-answer">GAB: B</span>
+    <div class="gab-grid">
+      <div class="gab-card">
+        <div class="gab-q">Questão 01</div>
+        <div class="gab-resp">B</div>
+        <div class="gab-tema">Cálculo FC + FK</div>
       </div>
-      <div class="gab-text">
-        O único tratamento eficaz para a doença celíaca é a dieta isenta de glúten por toda a vida — não há prazo máximo ou possibilidade de reintrodução. Substitutos seguros: arroz, milho, mandioca, quinoa, amaranto. Monitorar deficiências: ferro (duodeno), folato (jejuno proximal), vitamina D, cálcio e B12. <strong>C:</strong> intolerância à lactose na celíaca é transitória — reversível com recuperação vilositária após DIG. <strong>D:</strong> aveia tem risco real de contaminação cruzada com glúten; apenas a aveia certificada sem contaminação pode ser avaliada individualmente, com cautela.
+      <div class="gab-card">
+        <div class="gab-q">Questão 02</div>
+        <div class="gab-resp">C</div>
+        <div class="gab-tema">RI + Sobra Limpa</div>
       </div>
-    </div>
-
-    <div class="gab-card">
-      <div class="gab-card-hd">
-        <span class="gab-q-label">Q02 — SII e Dieta Baixo FODMAP</span>
-        <span class="gab-answer">GAB: B</span>
-      </div>
-      <div class="gab-text">
-        O quadro clínico preenche critérios de Roma IV para SII (dor recorrente ≥1 dia/semana, associada a mudanças no hábito intestinal, há &gt;6 meses, com propedêutica negativa para causas orgânicas). A dieta baixo FODMAP é a intervenção nutricional com maior evidência para SII, aplicada em 3 fases. <strong>A:</strong> fibras insolúveis pioram distensão e dor na SII-D; psyllium (solúvel) seria mais indicado para SII-C. <strong>C:</strong> a restrição total e permanente de todos os FODMAPs é incorreta — fases 2 e 3 visam reintroduzir e personalizar. <strong>D:</strong> sorologia negativa afasta celíaca; os sintomas são desencadeados por FODMAPs (alho, cebola, maçã, leite), não especificamente pelo glúten.
+      <div class="gab-card">
+        <div class="gab-q">Questão 03</div>
+        <div class="gab-resp">C</div>
+        <div class="gab-tema">II e III corretas</div>
       </div>
     </div>
 
-    <div class="gab-card">
-      <div class="gab-card-hd">
-        <span class="gab-q-label">Q03 — Gastroenterologia (Afirmativas)</span>
-        <span class="gab-answer">GAB: C (II e III)</span>
-      </div>
-      <div class="gab-text">
-        <strong>I — ERRADA:</strong> em Crohn pediátrico, TNE polimérica é 1ª linha para indução da remissão; NP total é reserva para TGI não funcionante.<br>
-        <strong>II — CORRETA:</strong> intolerância à lactose na celíaca = secundária (↓ lactase por atrofia vilositária) = transitória. Reverte com a DIG e recuperação das vilosidades.<br>
-        <strong>III — CORRETA:</strong> dieta FODMAP em 3 fases: eliminação → reintrodução por grupo → personalização. Objetivo = dieta mais variada possível, excluindo apenas os FODMAPs individualmente intolerantes.<br>
-        <strong>IV — ERRADA (descrição da Doença de Crohn):</strong> RCUI = só cólon (sempre reto) + mucosa/submucosa + contínua + sem granulomas. DC = qualquer segmento + transmural + skip lesions + granulomas.
-      </div>
+    <div class="gab-justificativa highlight-box">
+      <div class="gab-title">Q01 — Gabarito B (29,6 kg)</div>
+      <p><span class="wrong">A (16,0 kg)</span> — Aplicou apenas o FK, esquecendo o FC: (120÷0,75)×100 = 16.000 g. Erro: não multiplicou pelo FC=1,85.</p>
+      <p><span class="correct">B ✓ (29,6 kg)</span> — Correto: (120÷0,75) = 160g (PL) → 160×1,85 = 296g (PB) → 296×100 = 29.600g = 29,6 kg.</p>
+      <p><span class="wrong">C (22,2 kg)</span> — Aplicou apenas o FC, esquecendo o FK: 120×1,85×100 = 22.200 g. Erro clássico: multiplicou o PC pelo FC sem corrigir pelo FK.</p>
+      <p><span class="wrong">D (12,0 kg)</span> — Não aplicou nenhum fator: 120×100 = 12.000 g. Equivale ao total cozido sem qualquer correção.</p>
     </div>
 
-    <div class="highlight" style="margin-top:8px">
-      <strong>Resumo do gabarito:</strong> Q01 → B &nbsp;|&nbsp; Q02 → B &nbsp;|&nbsp; Q03 → C (II e III corretas)
+    <div class="gab-justificativa highlight-box">
+      <div class="gab-title">Q02 — Gabarito C</div>
+      <p><span class="wrong">A</span> — RI calculado corretamente (12%) mas sobra limpa erroneamente calculada sobre o distribuído (2,4/50=4,8%) em vez do produzido.</p>
+      <p><span class="wrong">B</span> — RI calculado erroneamente sobre o produzido (6/80=7,5%≈8%) em vez do distribuído; e sobra sobre o distribuído = 4,8%.</p>
+      <p><span class="correct">C ✓</span> — RI = 6/50×100 = 12% (acima de 10%, fora do parâmetro); sobra limpa = 2,4/80×100 = 3% (exatamente no limite máximo, aceitável).</p>
+      <p><span class="wrong">D</span> — RI de 6% está errado (não há como obter 6% com os dados fornecidos usando a fórmula correta).</p>
+    </div>
+
+    <div class="gab-justificativa highlight-box">
+      <div class="gab-title">Q03 — Gabarito C (II e III)</div>
+      <p><span class="wrong">I — ERRADA:</span> AQPC é um instrumento QUALITATIVO — não calcula VCT. Não é obrigatória pela Res. CFN 600/2018 para hospitais.</p>
+      <p><span class="correct">II — CORRETA ✓:</span> FK &lt; 1 para carnes/aves grelhadas/assadas, pois perdem água e gordura → peso cozido &lt; peso cru limpo.</p>
+      <p><span class="correct">III — CORRETA ✓:</span> FC = PB/PL → sempre &gt; 1 (PB inclui partes não comestíveis). PB = PL × FC.</p>
+      <p><span class="wrong">IV — ERRADA:</span> Temperatura ideal para fritura = 180°C; acroleína forma-se ACIMA de 200°C, não abaixo. A alternativa inverteu os conceitos.</p>
     </div>
   </div>
-  <div class="content-footer">
-    <div class="footer-label">Extensivo ENARE 2026 · Bloco B9 — Nutrição · NUT-GAST</div>
-    <div class="footer-page">9 / 10</div>
+
+  <div class="page-footer">
+    <span class="footer-text">Extensivo ENARE 2026 · Bloco B9 Nutrição</span>
+    <span class="page-num">9 / 10</span>
   </div>
 </div>
 
-<!-- PAGE 10 — SÍNTESE FINAL -->
+<!-- ════════════════════════════════════════════
+     PÁGINA 10 — SÍNTESE FINAL
+════════════════════════════════════════════ -->
 <div class="page">
-  <div class="content-header">
-    <div class="logo-wrap">
-      <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="32" height="32" rx="6" fill="#C6D834"/>
-        <path d="M16 4L28 10V22L16 28L4 22V10L16 4Z" fill="#1F5C23"/>
-        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="25" viewBox="0 0 44 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="22,2 41,13 41,37 22,48 3,37 3,13" fill="#1F5C23" stroke="#C6D834" stroke-width="2.5"/>
+        <circle cx="22" cy="25" r="9" fill="#F6F4ED"/>
       </svg>
-      <div>
-        <div class="logo-text">Extensivo ENARE</div>
-        <div class="logo-tagline">2026 · Nutrição</div>
-      </div>
+      <span class="brand-name-sm">Extensivo ENARE</span>
     </div>
-    <div class="header-right">
-      <div class="page-label">NUT-GAST · Aula 36</div>
-      <div class="page-title-hd">Síntese Final</div>
-    </div>
+    <span class="page-meta">NUT-DIETÉTICA · Aula 36 · Bloco B9</span>
   </div>
-  <div class="content-body">
-    <div class="section-title">Síntese Final — NUT-GAST</div>
+
+  <div class="page-content">
+    <div class="section-title">Síntese Final — NUT-DIETÉTICA</div>
 
     <div class="sintese-grid">
       <div class="sintese-card">
-        <div class="sintese-card-title">Doença Celíaca</div>
-        <div class="sintese-item">Autoimune: gliadina (trigo), secalina (centeio), hordeína (cevada)</div>
-        <div class="sintese-item">Diagnóstico: anti-tTG IgA (1ª linha) + biópsia duodenal (padrão-ouro)</div>
-        <div class="sintese-item">Dosar IgA total — deficiência → falso-negativo</div>
-        <div class="sintese-item">Biópsia com paciente ainda consumindo glúten</div>
-        <div class="sintese-item">Tratamento: DIG por toda a vida (sem exceção)</div>
-        <div class="sintese-item">Intolerância à lactose: transitória (não permanente)</div>
-        <div class="sintese-item">Monitorar: Fe, folato, VitD, Ca, B12, Zn</div>
+        <div class="s-title">Fator de Correção (FC)</div>
+        <ul>
+          <li>FC = PB / PL → sempre <strong>&gt; 1</strong></li>
+          <li>PB = PL × FC (quanto comprar)</li>
+          <li>Frango com osso ≈ 1,85; banana ≈ 1,45</li>
+          <li>FC alto = maior desperdício no pré-preparo</li>
+        </ul>
       </div>
       <div class="sintese-card">
-        <div class="sintese-card-title">DII — Crohn vs. RCUI</div>
-        <div class="sintese-item">Crohn: qualquer segmento, transmural, skip lesions, granulomas, fístulas</div>
-        <div class="sintese-item">RCUI: só cólon, sempre reto, mucosa, contínua, sem granulomas</div>
-        <div class="sintese-item">Crohn ativo (pediátrico): TNE 1ª linha; NP só se TGI não funcionante</div>
-        <div class="sintese-item">Ressecção íleo terminal: B12 IM + sais biliares (má absorção)</div>
-        <div class="sintese-item">RCUI: probióticos VSL#3 (evidência); ômega-3</div>
-        <div class="sintese-item">Sulfassalazina → ↓ absorção folato → suplementar B9</div>
+        <div class="s-title">Fator de Cocção (FK)</div>
+        <ul>
+          <li>FK = PC / PL (cru limpo)</li>
+          <li>FK &gt; 1: cereais, leguminosas (absorvem água)</li>
+          <li>FK &lt; 1: carnes, aves (perdem água/gordura)</li>
+          <li>PB = (PC ÷ FK) × FC</li>
+        </ul>
       </div>
       <div class="sintese-card">
-        <div class="sintese-card-title">SII — Roma IV e FODMAP</div>
-        <div class="sintese-item">Roma IV: dor abdominal ≥1 dia/sem nos últimos 3 meses + ≥2 critérios</div>
-        <div class="sintese-item">Subtipos: SII-C, SII-D, SII-M, SII-U</div>
-        <div class="sintese-item">FODMAP: oligo, dissac, monossac fermentáveis + polióis</div>
-        <div class="sintese-item">Fase 1: eliminação (2–8 sem); Fase 2: reintrodução; Fase 3: personalização</div>
-        <div class="sintese-item">Alto FODMAP: trigo, alho, cebola, leite, maçã, feijão, cogumelo</div>
-        <div class="sintese-item">Fibra solúvel (psyllium): 1ª linha para SII-C</div>
+        <div class="s-title">Indicadores de UAN</div>
+        <ul>
+          <li>RI = Resto / Distribuído × 100</li>
+          <li>RI aceitável: <strong>≤ 10%</strong> (sadia) | ≤ 20% (hospital)</li>
+          <li>Sobra limpa = Sobra / Produzido × 100</li>
+          <li>Sobra aceitável: <strong>≤ 3%</strong></li>
+        </ul>
       </div>
       <div class="sintese-card">
-        <div class="sintese-card-title">Armadilhas ENARE</div>
-        <div class="sintese-item">DIG na celíaca: toda a vida (não temporário)</div>
-        <div class="sintese-item">Intolerância à lactose celíaca: transitória (não permanente)</div>
-        <div class="sintese-item">Aveia: risco de CC; só certificada e com cautela</div>
-        <div class="sintese-item">RCUI ≠ Crohn: inverter características = erro clássico</div>
-        <div class="sintese-item">TNE = 1ª linha no Crohn pediátrico (não NP)</div>
-        <div class="sintese-item">FODMAP: não é restrição permanente — personalizar nas fases 2/3</div>
+        <div class="s-title">Métodos de Cocção</div>
+        <ul>
+          <li>Vapor &lt; ebulição em perdas de vit. hidrossolúveis</li>
+          <li>Fritura ideal: <strong>180°C</strong></li>
+          <li>Acima de 200°C → <strong>acroleína</strong> (tóxica)</li>
+          <li>Abaixo de 150°C → absorção excessiva de gordura</li>
+        </ul>
       </div>
     </div>
 
-    <div class="highlight" style="margin-top:8px">
-      <strong>Gabarito:</strong> Q01 → <strong>B</strong> (DIG por toda a vida; monitorar micronutrientes) &nbsp;|&nbsp; Q02 → <strong>B</strong> (dieta baixo FODMAP em 3 fases) &nbsp;|&nbsp; Q03 → <strong>C</strong> (II e III: lactose transitória na celíaca + FODMAP em fases)
+    <div class="anchor-box" style="margin-top:3mm;">
+      <p><strong>As 5 âncoras desta aula:</strong></p>
+      <ul>
+        <li><strong>1.</strong> FC sempre &gt; 1; FK pode ser &gt; 1 (cereais absorvem água) ou &lt; 1 (carnes perdem água)</li>
+        <li><strong>2.</strong> PB = (PC ÷ FK) × FC — nunca aplicar FC direto sobre o per capita cozido</li>
+        <li><strong>3.</strong> Fritura: 180°C = ideal; &gt;200°C = acroleína; &lt;150°C = encharcamento</li>
+        <li><strong>4.</strong> AQPC = qualitativo (sem cálculo de VCT) — RI ≤10% e sobra limpa ≤3%</li>
+        <li><strong>5.</strong> RI calculado sobre peso distribuído; sobra limpa calculada sobre peso produzido</li>
+      </ul>
+    </div>
+
+    <div class="sintese-grid" style="margin-top:3mm;">
+      <div class="sintese-card">
+        <div class="s-title">AQPC — Resumo</div>
+        <ul>
+          <li>Qualitativo: cor, técnica, frituras, leguminosas</li>
+          <li>NÃO calcula VCT nem macronutrientes</li>
+          <li>Ferramenta de gestão de cardápios</li>
+          <li>Avalia monotonia e equilíbrio visual do cardápio</li>
+        </ul>
+      </div>
+      <div class="sintese-card">
+        <div class="s-title">Próxima Aula — 37</div>
+        <ul>
+          <li><strong>NUT-FUND:</strong> Água, Eletrólitos e Equilíbrio Ácido-Base</li>
+          <li>Compartimentos hídricos e regulação</li>
+          <li>Sódio, potássio, cloro e fósforo</li>
+          <li>Distúrbios: acidose, alcalose, desidratação</li>
+        </ul>
+      </div>
     </div>
   </div>
-  <div class="content-footer">
-    <div class="footer-label">Extensivo ENARE 2026 · Bloco B9 — Nutrição · NUT-GAST</div>
-    <div class="footer-page">10 / 10</div>
+
+  <div class="page-footer">
+    <span class="footer-text">Extensivo ENARE 2026 · Bloco B9 Nutrição</span>
+    <span class="page-num">10 / 10</span>
   </div>
 </div>
 
