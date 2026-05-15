@@ -2,782 +2,1005 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Nutrição Bloco B9 — Aula 35 | NUT-SAN: Segurança Alimentar e Nutricional</title>
+<title>Nutrição Bloco B9 — Aula 35 | NUT-FUNC: Alimentos Funcionais e Fitoquímicos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap" rel="stylesheet">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap');
-
+  :root {
+    --creme: #F6F4ED;
+    --verde: #1F5C23;
+    --accent: #C6D834;
+    --dark: #1a1a1a;
+    --muted: #555;
+  }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  @page { size: 210mm 297mm; margin: 0; }
-
-  body { font-family: 'Bricolage Grotesque', sans-serif; background: #e5e5e5; }
+  body { background: #d0d0d0; font-family: 'Bricolage Grotesque', sans-serif; }
 
   .page {
     width: 210mm;
     min-height: 297mm;
-    background: #F6F4ED;
+    background: var(--creme);
+    margin: 10mm auto;
     position: relative;
     overflow: hidden;
-    page-break-after: always;
-    margin: 0 auto 8mm;
+    display: flex;
+    flex-direction: column;
   }
 
-  .logo-wrap { display: flex; align-items: center; gap: 7px; }
-  .logo-text { font-family: 'Playfair Display', serif; font-style: italic; font-size: 12px; color: #F6F4ED; line-height: 1.1; }
-  .logo-tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7px; color: #C6D834; letter-spacing: 0.05em; }
+  /* ── CAPA ── */
+  .cover { background: var(--verde); color: var(--creme); }
+  .cover .top-bar {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10mm 12mm 0;
+  }
+  .cover .brand-text { display: flex; flex-direction: column; }
+  .cover .brand-name {
+    font-family: 'Playfair Display', serif; font-style: italic;
+    font-size: 13pt; color: var(--creme); letter-spacing: 0.02em;
+  }
+  .cover .brand-tag {
+    font-family: 'Space Grotesk', sans-serif; font-weight: 300;
+    font-size: 7pt; color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase;
+    margin-top: 1mm;
+  }
+  .cover .hero {
+    flex: 1; display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 8mm 14mm 6mm; text-align: center;
+  }
+  .cover .bloco-tag {
+    font-family: 'Space Grotesk', sans-serif; font-weight: 300;
+    font-size: 8pt; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 5mm;
+  }
+  .cover .aula-num {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 72pt;
+    line-height: 1; color: var(--creme); opacity: 0.12;
+    position: absolute; right: 12mm; top: 38mm;
+  }
+  .cover .modulo-badge {
+    background: var(--accent); color: var(--verde);
+    font-family: 'Barlow Condensed', sans-serif; font-size: 9pt;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    padding: 1.5mm 5mm; border-radius: 2mm; margin-bottom: 5mm;
+    display: inline-block;
+  }
+  .cover h1 {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 30pt;
+    line-height: 1.05; color: var(--creme); margin-bottom: 4mm;
+    text-transform: uppercase; letter-spacing: 0.02em;
+  }
+  .cover .subtitle {
+    font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300;
+    font-size: 11pt; color: rgba(246,244,237,0.72); margin-bottom: 8mm;
+    line-height: 1.4;
+  }
+  .cover .tags {
+    display: flex; gap: 3mm; flex-wrap: wrap; justify-content: center;
+  }
+  .cover .tag {
+    border: 1px solid rgba(198,216,52,0.5); color: var(--accent);
+    font-family: 'Space Grotesk', sans-serif; font-weight: 300;
+    font-size: 7.5pt; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 1mm 3.5mm; border-radius: 1.5mm;
+  }
+  .cover .bottom-bar {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 5mm 12mm 8mm;
+    border-top: 1px solid rgba(198,216,52,0.25);
+  }
+  .cover .series-info {
+    font-family: 'Space Grotesk', sans-serif; font-weight: 300;
+    font-size: 7.5pt; color: rgba(246,244,237,0.55); letter-spacing: 0.1em;
+  }
+  .cover .aula-label {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 11pt;
+    color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase;
+  }
 
-  /* COVER */
-  .cover { background: #1F5C23; display: flex; flex-direction: column; min-height: 297mm; }
-  .cover-header { padding: 10mm 12mm 6mm; display: flex; justify-content: space-between; align-items: flex-start; }
-  .cover-badge { background: #C6D834; color: #1F5C23; font-family: 'Barlow Condensed', sans-serif; font-size: 10px; font-weight: 800; padding: 3px 10px; border-radius: 20px; letter-spacing: 0.06em; }
-  .cover-body { flex: 1; padding: 6mm 12mm 0; display: flex; flex-direction: column; justify-content: center; }
-  .cover-module { font-family: 'Barlow Condensed', sans-serif; font-size: 12px; font-weight: 800; color: #C6D834; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 4px; }
-  .cover-number { font-family: 'Barlow Condensed', sans-serif; font-size: 78px; font-weight: 800; color: #F6F4ED; line-height: 0.88; margin-bottom: 6px; }
-  .cover-title { font-family: 'Barlow Condensed', sans-serif; font-size: 34px; font-weight: 800; color: #F6F4ED; line-height: 1.05; text-transform: uppercase; margin-bottom: 4px; }
-  .cover-subtitle { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; font-size: 13px; color: rgba(246,244,237,0.68); margin-bottom: 16px; }
-  .cover-divider { width: 44px; height: 3px; background: #C6D834; margin-bottom: 16px; }
-  .cover-pills { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 16px; }
-  .cover-pill { background: rgba(246,244,237,0.1); border: 1px solid rgba(198,216,52,0.4); color: #F6F4ED; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 400; font-size: 9.5px; padding: 2px 8px; border-radius: 12px; }
-  .cover-footer { padding: 7mm 12mm; border-top: 1px solid rgba(246,244,237,0.14); display: flex; justify-content: space-between; align-items: center; margin-top: auto; }
-  .cover-meta { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; font-size: 9px; color: rgba(246,244,237,0.45); }
+  /* ── PÁGINAS INTERNAS ── */
+  .page-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 7mm 12mm 5mm;
+    border-bottom: 2px solid var(--verde);
+  }
+  .page-header .logo-area { display: flex; align-items: center; gap: 3mm; }
+  .page-header .brand-name-sm {
+    font-family: 'Playfair Display', serif; font-style: italic;
+    font-size: 10pt; color: var(--verde);
+  }
+  .page-header .page-meta {
+    font-family: 'Space Grotesk', sans-serif; font-weight: 300;
+    font-size: 7pt; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .page-content { flex: 1; padding: 6mm 12mm 5mm; }
+  .page-footer {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 3mm 12mm 5mm;
+    border-top: 1px solid rgba(31,92,35,0.2);
+  }
+  .page-footer .footer-text {
+    font-family: 'Space Grotesk', sans-serif; font-weight: 300;
+    font-size: 6.5pt; color: var(--muted); letter-spacing: 0.08em;
+  }
+  .page-footer .page-num {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 9pt;
+    color: var(--verde); letter-spacing: 0.1em;
+  }
 
-  /* CONTENT PAGES */
-  .content-header { background: #1F5C23; padding: 7mm 12mm; display: flex; justify-content: space-between; align-items: center; }
-  .header-right { text-align: right; }
-  .page-label { font-family: 'Barlow Condensed', sans-serif; font-size: 9px; font-weight: 800; color: #C6D834; letter-spacing: 0.14em; text-transform: uppercase; }
-  .page-title-hd { font-family: 'Barlow Condensed', sans-serif; font-size: 16px; font-weight: 800; color: #F6F4ED; text-transform: uppercase; letter-spacing: 0.04em; }
+  /* ── TIPOGRAFIA ── */
+  .section-title {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 15pt;
+    color: var(--verde); text-transform: uppercase; letter-spacing: 0.05em;
+    margin-bottom: 4mm; padding-bottom: 2mm;
+    border-bottom: 2px solid var(--accent);
+  }
+  .subsection {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 11pt;
+    color: var(--verde); text-transform: uppercase; letter-spacing: 0.05em;
+    margin: 3.5mm 0 2mm;
+  }
+  p, li {
+    font-size: 8.5pt; line-height: 1.55; color: var(--dark);
+    font-family: 'Bricolage Grotesque', sans-serif; font-weight: 400;
+  }
+  ul, ol { padding-left: 4mm; margin-bottom: 2mm; }
+  li { margin-bottom: 1mm; }
+  strong { font-weight: 600; }
 
-  .content-body { padding: 8mm 12mm 18mm; }
+  /* ── TABELAS ── */
+  table { width: 100%; border-collapse: collapse; margin: 2.5mm 0; font-size: 7.8pt; }
+  th {
+    background: var(--verde); color: var(--creme);
+    font-family: 'Barlow Condensed', sans-serif; font-size: 8.5pt;
+    letter-spacing: 0.05em; text-transform: uppercase;
+    padding: 2mm 3mm; text-align: left;
+  }
+  td { padding: 1.8mm 3mm; border-bottom: 1px solid rgba(31,92,35,0.12); vertical-align: top; }
+  tr:nth-child(even) td { background: rgba(198,216,52,0.08); }
+  tr:last-child td { border-bottom: none; }
 
-  .content-footer { position: absolute; bottom: 0; left: 0; right: 0; padding: 4mm 12mm; border-top: 1px solid rgba(31,92,35,0.14); display: flex; justify-content: space-between; align-items: center; }
-  .footer-label { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; font-size: 8px; color: rgba(31,92,35,0.48); }
-  .footer-page { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 800; color: #1F5C23; }
+  /* ── DESTAQUES ── */
+  .highlight-box {
+    background: rgba(198,216,52,0.18); border-left: 3px solid var(--accent);
+    padding: 3mm 4mm; margin: 3mm 0; border-radius: 0 2mm 2mm 0;
+  }
+  .alert-box {
+    background: rgba(31,92,35,0.07); border-left: 3px solid var(--verde);
+    padding: 3mm 4mm; margin: 3mm 0; border-radius: 0 2mm 2mm 0;
+  }
+  .anchor-box {
+    background: var(--verde); color: var(--creme);
+    padding: 3mm 4mm; margin: 3mm 0; border-radius: 2mm;
+  }
+  .anchor-box p, .anchor-box li { color: var(--creme); font-size: 8pt; }
+  .anchor-box strong { color: var(--accent); }
 
-  .section-title { font-family: 'Barlow Condensed', sans-serif; font-size: 18px; font-weight: 800; color: #1F5C23; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 9px; padding-bottom: 5px; border-bottom: 2px solid #C6D834; }
-  .sub-title { font-family: 'Barlow Condensed', sans-serif; font-size: 12px; font-weight: 800; color: #1F5C23; text-transform: uppercase; letter-spacing: 0.05em; margin: 9px 0 4px; }
+  /* ── QUESTÕES ── */
+  .q-header { display: flex; align-items: baseline; gap: 3mm; margin-bottom: 3mm; }
+  .q-badge {
+    background: var(--verde); color: var(--creme);
+    font-family: 'Barlow Condensed', sans-serif; font-size: 10pt;
+    letter-spacing: 0.1em; padding: 1mm 3.5mm; border-radius: 1.5mm;
+    white-space: nowrap;
+  }
+  .q-type {
+    font-family: 'Space Grotesk', sans-serif; font-weight: 300;
+    font-size: 7pt; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .q-stem {
+    font-size: 8.5pt; line-height: 1.55; color: var(--dark);
+    margin-bottom: 3.5mm; font-family: 'Bricolage Grotesque', sans-serif;
+  }
+  .q-context {
+    background: rgba(31,92,35,0.06); border-radius: 2mm;
+    padding: 3mm 4mm; margin-bottom: 3mm;
+    font-size: 8pt; line-height: 1.5; color: var(--dark);
+    font-family: 'Bricolage Grotesque', sans-serif;
+  }
+  .alternatives { list-style: none; padding: 0; }
+  .alternatives li {
+    display: flex; gap: 2.5mm; align-items: flex-start;
+    padding: 2mm 0; border-bottom: 1px solid rgba(31,92,35,0.08);
+    font-size: 8.5pt; line-height: 1.45;
+  }
+  .alternatives li:last-child { border-bottom: none; }
+  .alt-letter {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 10pt;
+    color: var(--verde); font-weight: 800; min-width: 5mm;
+  }
+  .assertions { list-style: none; padding: 0; margin-bottom: 3mm; }
+  .assertions li {
+    display: flex; gap: 2.5mm; align-items: flex-start;
+    padding: 2mm 0; border-bottom: 1px solid rgba(31,92,35,0.08);
+    font-size: 8.5pt; line-height: 1.45;
+  }
+  .assert-num {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 10pt;
+    color: var(--verde); min-width: 5mm;
+  }
 
-  p { font-size: 10.5px; line-height: 1.55; color: #2a2a2a; margin-bottom: 5px; }
-  ul, ol { padding-left: 13px; margin-bottom: 5px; }
-  li { font-size: 10.5px; line-height: 1.55; color: #2a2a2a; margin-bottom: 2px; }
-  strong { font-weight: 600; color: #1F5C23; }
+  /* ── GABARITO ── */
+  .gab-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3mm; margin: 3mm 0; }
+  .gab-card { border: 1.5px solid var(--verde); border-radius: 2mm; padding: 3mm 4mm; }
+  .gab-card .gab-q {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 9pt;
+    color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em;
+  }
+  .gab-card .gab-resp {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 22pt;
+    color: var(--verde); line-height: 1;
+  }
+  .gab-card .gab-tema { font-size: 7pt; color: var(--muted); font-family: 'Bricolage Grotesque', sans-serif; margin-top: 1mm; }
+  .gab-justificativa { margin: 2.5mm 0; padding: 2.5mm 3.5mm; }
+  .gab-justificativa .gab-title {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 9.5pt;
+    color: var(--verde); text-transform: uppercase; margin-bottom: 1.5mm; letter-spacing: 0.05em;
+  }
+  .correct { color: #1F5C23; font-weight: 600; }
+  .wrong { color: #b0392e; text-decoration: line-through; }
 
-  .highlight { background: rgba(198,216,52,0.22); border-left: 3px solid #C6D834; padding: 6px 10px; border-radius: 0 4px 4px 0; margin: 7px 0; font-size: 10.5px; line-height: 1.5; }
-  .alert { background: rgba(31,92,35,0.07); border-left: 3px solid #1F5C23; padding: 6px 10px; border-radius: 0 4px 4px 0; margin: 7px 0; font-size: 10.5px; line-height: 1.5; }
+  /* ── SÍNTESE ── */
+  .sintese-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; margin: 3mm 0; }
+  .sintese-card { border: 1.5px solid rgba(31,92,35,0.3); border-radius: 2mm; padding: 3mm 4mm; }
+  .sintese-card .s-title {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 9pt;
+    color: var(--verde); text-transform: uppercase; letter-spacing: 0.08em;
+    margin-bottom: 2mm; padding-bottom: 1mm; border-bottom: 1px solid var(--accent);
+  }
+  .sintese-card p, .sintese-card li { font-size: 7.8pt; line-height: 1.5; }
 
-  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin: 7px 0; }
-  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; margin: 7px 0; }
-  .card { background: rgba(31,92,35,0.06); border: 1px solid rgba(31,92,35,0.15); border-radius: 5px; padding: 7px; }
-  .card-title { font-family: 'Barlow Condensed', sans-serif; font-size: 10.5px; font-weight: 800; color: #1F5C23; text-transform: uppercase; margin-bottom: 5px; }
-
-  table { width: 100%; border-collapse: collapse; margin: 7px 0; font-size: 9.5px; }
-  th { background: #1F5C23; color: #F6F4ED; font-family: 'Barlow Condensed', sans-serif; font-size: 10px; font-weight: 800; padding: 5px 7px; text-align: left; text-transform: uppercase; letter-spacing: 0.04em; }
-  td { padding: 4px 7px; border-bottom: 1px solid rgba(31,92,35,0.1); line-height: 1.4; color: #2a2a2a; }
-  tr:nth-child(even) td { background: rgba(31,92,35,0.04); }
-
-  .question-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 7px; }
-  .question-badge { background: #1F5C23; color: #F6F4ED; font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 800; padding: 3px 10px; border-radius: 4px; letter-spacing: 0.08em; }
-  .q-meta { text-align: right; }
-  .q-meta-line { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; font-size: 8px; color: rgba(31,92,35,0.58); }
-
-  .question-stem { background: rgba(31,92,35,0.06); border: 1px solid rgba(31,92,35,0.14); border-radius: 6px; padding: 9px 11px; margin-bottom: 9px; font-size: 10.5px; line-height: 1.6; color: #2a2a2a; }
-
-  .options-list { list-style: none; padding: 0; margin: 0; }
-  .option-item { display: flex; gap: 7px; padding: 5px 9px; margin-bottom: 4px; border-radius: 4px; font-size: 10.5px; line-height: 1.5; border: 1px solid rgba(31,92,35,0.1); color: #2a2a2a; }
-  .option-item.correct { background: rgba(198,216,52,0.25); border-color: #C6D834; font-weight: 600; }
-  .option-letter { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 12px; color: #1F5C23; min-width: 14px; }
-
-  .afirmativas-list { list-style: none; padding: 0; margin: 8px 0; }
-  .afirmativa-item { display: flex; gap: 7px; padding: 6px 10px; margin-bottom: 4px; border-radius: 4px; font-size: 10.5px; line-height: 1.5; border: 1px solid transparent; }
-  .afirmativa-item.correta { background: rgba(198,216,52,0.18); border-color: rgba(198,216,52,0.5); color: #2a2a2a; }
-  .afirmativa-item.errada { background: rgba(31,92,35,0.05); border-color: rgba(31,92,35,0.1); color: #666; }
-  .afirmativa-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 13px; color: #1F5C23; min-width: 18px; }
-
-  .gab-card { background: #1F5C23; border-radius: 7px; padding: 7px 11px; margin-bottom: 7px; }
-  .gab-card-hd { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
-  .gab-q-label { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 800; color: #C6D834; letter-spacing: 0.1em; text-transform: uppercase; }
-  .gab-answer { font-family: 'Barlow Condensed', sans-serif; font-size: 16px; font-weight: 800; color: #F6F4ED; }
-  .gab-text { font-size: 9.5px; line-height: 1.5; color: rgba(246,244,237,0.88); }
-
-  .sintese-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin: 7px 0; }
-  .sintese-card { background: rgba(31,92,35,0.06); border: 1px solid rgba(31,92,35,0.15); border-radius: 5px; padding: 7px; }
-  .sintese-card-title { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; font-weight: 800; color: #1F5C23; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 5px; padding-bottom: 3px; border-bottom: 1px solid rgba(198,216,52,0.4); }
-  .sintese-item { font-size: 9.5px; line-height: 1.5; color: #2a2a2a; margin-bottom: 2px; padding-left: 8px; position: relative; }
-  .sintese-item::before { content: '›'; position: absolute; left: 0; color: #1F5C23; font-weight: 800; }
-  .armadilha-box { background: rgba(198,216,52,0.14); border: 1.5px solid #C6D834; border-radius: 5px; padding: 7px 10px; margin-top: 7px; }
-  .armadilha-title { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 800; color: #1F5C23; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 4px; }
+  @media print {
+    body { background: white; }
+    .page { margin: 0; page-break-after: always; }
+    .page:last-child { page-break-after: auto; }
+  }
 </style>
 </head>
 <body>
 
-<!-- PAGE 1 — CAPA -->
+<!-- ════════════════════════════════════════════
+     PÁGINA 1 — CAPA
+════════════════════════════════════════════ -->
 <div class="page cover">
-  <div class="cover-header">
-    <div class="logo-wrap">
-      <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="32" height="32" rx="6" fill="#C6D834"/>
-        <path d="M16 4L28 10V22L16 28L4 22V10L16 4Z" fill="#1F5C23"/>
-        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
-      </svg>
-      <div>
-        <div class="logo-text">Extensivo ENARE</div>
-        <div class="logo-tagline">2026 · Nutrição</div>
-      </div>
+  <div class="top-bar">
+    <div class="brand-text">
+      <span class="brand-name">Extensivo ENARE</span>
+      <span class="brand-tag">Residências em Saúde · 2026</span>
     </div>
-    <div class="cover-badge">BLOCO B9 · AULA 35</div>
+    <svg width="44" height="50" viewBox="0 0 44 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="22,2 41,13 41,37 22,48 3,37 3,13" fill="#F6F4ED" stroke="#C6D834" stroke-width="2"/>
+      <circle cx="22" cy="25" r="9" fill="#1F5C23"/>
+    </svg>
   </div>
-  <div class="cover-body">
-    <div class="cover-module">NUT-SAN</div>
-    <div class="cover-number">35</div>
-    <div class="cover-title">Segurança<br>Alimentar e<br>Nutricional</div>
-    <div class="cover-subtitle">DHAA · LOSAN · CONSEA · PNAE · SISVAN · VIGITEL · EBIA</div>
-    <div class="cover-divider"></div>
-    <div class="cover-pills">
-      <span class="cover-pill">DHAA</span>
-      <span class="cover-pill">LOSAN 11.346/2006</span>
-      <span class="cover-pill">CONSEA</span>
-      <span class="cover-pill">PNAE</span>
-      <span class="cover-pill">PAT</span>
-      <span class="cover-pill">SISVAN</span>
-      <span class="cover-pill">EBIA</span>
-      <span class="cover-pill">VIGITEL</span>
+
+  <div class="hero">
+    <div class="bloco-tag">Bloco B9 · Nutrição · Aula 35</div>
+    <div class="aula-num">35</div>
+    <div class="modulo-badge">NUT-FUNC</div>
+    <h1>Alimentos Funcionais<br>e Fitoquímicos</h1>
+    <p class="subtitle">Regulamentação ANVISA · Alegações Aprovadas<br>Fitoquímicos · Probióticos · Prebióticos · Fibras</p>
+    <div class="tags">
+      <span class="tag">Res. 18/19 — 1999</span>
+      <span class="tag">Fitosteróis</span>
+      <span class="tag">Beta-glucana</span>
+      <span class="tag">Licopeno</span>
+      <span class="tag">Isoflavonas</span>
+      <span class="tag">Probióticos</span>
     </div>
   </div>
-  <div class="cover-footer">
-    <div class="cover-meta">Extensivo ENARE 2026 · Bloco B9 — Nutrição · Banca FGV</div>
-    <div class="cover-meta">PDF de Apoio · Impressão A4</div>
+
+  <div class="bottom-bar">
+    <span class="series-info">Extensivo ENARE 2026 · Material de Apoio</span>
+    <span class="aula-label">Aula 35 / 39</span>
   </div>
 </div>
 
-<!-- PAGE 2 — CONCEITO SAN, DHAA E MARCO LEGAL -->
+<!-- ════════════════════════════════════════════
+     PÁGINA 2 — REGULAMENTAÇÃO ANVISA
+════════════════════════════════════════════ -->
 <div class="page">
-  <div class="content-header">
-    <div class="logo-wrap">
-      <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="32" height="32" rx="6" fill="#C6D834"/>
-        <path d="M16 4L28 10V22L16 28L4 22V10L16 4Z" fill="#1F5C23"/>
-        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="25" viewBox="0 0 44 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="22,2 41,13 41,37 22,48 3,37 3,13" fill="#1F5C23" stroke="#C6D834" stroke-width="2.5"/>
+        <circle cx="22" cy="25" r="9" fill="#F6F4ED"/>
       </svg>
-      <div>
-        <div class="logo-text">Extensivo ENARE</div>
-        <div class="logo-tagline">2026 · Nutrição</div>
-      </div>
+      <span class="brand-name-sm">Extensivo ENARE</span>
     </div>
-    <div class="header-right">
-      <div class="page-label">NUT-SAN · Aula 35</div>
-      <div class="page-title-hd">Conceito de SAN · DHAA · Marco Legal</div>
-    </div>
+    <span class="page-meta">NUT-FUNC · Aula 35 · Bloco B9</span>
   </div>
-  <div class="content-body">
-    <div class="section-title">Segurança Alimentar e Nutricional — Conceitos Fundamentais</div>
 
-    <div class="sub-title">Conceito de SAN — LOSAN (Lei 11.346/2006)</div>
-    <div class="highlight">
-      <strong>Art. 3º da LOSAN:</strong> "A segurança alimentar e nutricional consiste na realização do direito de todos ao acesso regular e permanente a alimentos de qualidade, em quantidade suficiente, sem comprometer o acesso a outras necessidades essenciais, tendo como base práticas alimentares promotoras de saúde que respeitem a diversidade cultural e que sejam ambiental, cultural, econômica e socialmente sustentáveis."
-    </div>
+  <div class="page-content">
+    <div class="section-title">Regulamentação ANVISA — Marco Legal</div>
 
-    <div class="sub-title">Quatro Dimensões da SAN (FAO)</div>
-    <div class="grid-2">
-      <div class="card">
-        <div class="card-title">1. Disponibilidade</div>
-        <p style="font-size:9.5px">Produção suficiente de alimentos nos sistemas agrícolas. Inclui estoque, produção local e importação.</p>
-      </div>
-      <div class="card">
-        <div class="card-title">2. Acesso</div>
-        <p style="font-size:9.5px">Capacidade econômica, física e social de obter alimentos adequados. Renda, preço, infraestrutura.</p>
-      </div>
-      <div class="card">
-        <div class="card-title">3. Utilização Biológica</div>
-        <p style="font-size:9.5px">Aproveitamento pelo organismo — depende de saneamento, saúde, preparo adequado e diversidade da dieta.</p>
-      </div>
-      <div class="card">
-        <div class="card-title">4. Estabilidade</div>
-        <p style="font-size:9.5px">Acesso estável ao longo do tempo, sem vulnerabilidade a crises climáticas, econômicas ou políticas.</p>
-      </div>
-    </div>
+    <div class="subsection">Legislação Principal</div>
+    <table>
+      <tr><th>Norma</th><th>Objeto</th></tr>
+      <tr>
+        <td><strong>Res. SVS/MS 18/1999</strong></td>
+        <td>Diretrizes básicas para análise e comprovação de propriedades funcionais e/ou de saúde alegadas em rotulagem de alimentos</td>
+      </tr>
+      <tr>
+        <td><strong>Res. SVS/MS 19/1999</strong></td>
+        <td>Procedimentos para registro de alimentos com alegação de propriedades funcionais e/ou de saúde no rótulo</td>
+      </tr>
+      <tr>
+        <td><strong>RDC ANVISA 2/2002</strong></td>
+        <td>Lista das substâncias com alegações de propriedades funcionais e/ou de saúde aprovadas (atualizada periodicamente)</td>
+      </tr>
+      <tr>
+        <td><strong>RDC 429/2020 + IN 75/2020</strong></td>
+        <td>Nova rotulagem nutricional obrigatória — tabela nutricional frontal, alertas de nutrientes críticos</td>
+      </tr>
+    </table>
 
-    <div class="sub-title">DHAA — Direito Humano à Alimentação Adequada</div>
-    <p>O DHAA foi reconhecido internacionalmente pela Declaração Universal dos Direitos Humanos (1948) e pelo Pacto Internacional sobre Direitos Econômicos, Sociais e Culturais (PIDESC, 1966).</p>
-    <div class="alert">
-      <strong>Emenda Constitucional 64/2010:</strong> incluiu a alimentação como <strong>direito social</strong> no Art. 6º da Constituição Federal — ao lado de saúde, educação, moradia, trabalho, lazer, segurança, previdência social e proteção à maternidade e à infância. A alimentação é direito de todos e dever do Estado.
-    </div>
-
-    <div class="sub-title">LOSAN — Lei Orgânica de Segurança Alimentar e Nutricional</div>
-    <p><strong>Lei 11.346/2006:</strong> institui o <strong>SISAN</strong> (Sistema Nacional de Segurança Alimentar e Nutricional), define SAN e o DHAA, e cria o arcabouço institucional para implementação das políticas de SAN no Brasil.</p>
-    <ul>
-      <li>Define competências da União, estados e municípios</li>
-      <li>Institui o CONSEA como instância de participação e controle social</li>
-      <li>Prevê a elaboração do PNSAN (Política Nacional de SAN)</li>
-      <li><strong>Decreto 7.272/2010:</strong> regulamenta a LOSAN e institui o PLANSAN (Plano Nacional de SAN)</li>
-    </ul>
-
-    <div class="sub-title">Insegurança Alimentar × Fome × Desnutrição</div>
+    <div class="subsection">Definições Fundamentais</div>
     <table>
       <tr><th>Conceito</th><th>Definição</th></tr>
-      <tr><td><strong>Insegurança alimentar</strong></td><td>Situação de incerteza, restrição qualitativa ou quantitativa no acesso aos alimentos</td></tr>
-      <tr><td><strong>Fome</strong></td><td>Sensação física de privação alimentar aguda; forma extrema de IA grave</td></tr>
-      <tr><td><strong>Desnutrição</strong></td><td>Desequilíbrio nutricional crônico — pode coexistir com excesso calórico (dupla carga)</td></tr>
-      <tr><td><strong>Dupla carga</strong></td><td>Coexistência de desnutrição e obesidade no mesmo território, família ou indivíduo</td></tr>
+      <tr>
+        <td><strong>Alimento funcional</strong></td>
+        <td>Aquele que, além de nutrientes básicos, produz efeitos metabólicos e/ou fisiológicos benéficos à saúde humana, devendo ser seguro para consumo sem supervisão médica</td>
+      </tr>
+      <tr>
+        <td><strong>Alegação funcional</strong></td>
+        <td>Indica o papel fisiológico do nutriente/substância no crescimento, desenvolvimento e funções normais do organismo</td>
+      </tr>
+      <tr>
+        <td><strong>Alegação de saúde</strong></td>
+        <td>Afirma, sugere ou implica relação entre o alimento (ou componente) e uma doença ou condição relacionada à saúde</td>
+      </tr>
     </table>
-  </div>
-  <div class="content-footer">
-    <div class="footer-label">Extensivo ENARE 2026 · Bloco B9 — Nutrição · NUT-SAN</div>
-    <div class="footer-page">2 / 10</div>
-  </div>
-</div>
 
-<!-- PAGE 3 — GOVERNANÇA, CONSEA, EBIA -->
-<div class="page">
-  <div class="content-header">
-    <div class="logo-wrap">
-      <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="32" height="32" rx="6" fill="#C6D834"/>
-        <path d="M16 4L28 10V22L16 28L4 22V10L16 4Z" fill="#1F5C23"/>
-        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
-      </svg>
-      <div>
-        <div class="logo-text">Extensivo ENARE</div>
-        <div class="logo-tagline">2026 · Nutrição</div>
-      </div>
-    </div>
-    <div class="header-right">
-      <div class="page-label">NUT-SAN · Aula 35</div>
-      <div class="page-title-hd">Governança · CONSEA · EBIA</div>
-    </div>
-  </div>
-  <div class="content-body">
-    <div class="section-title">Governança do SISAN e Insegurança Alimentar</div>
-
-    <div class="sub-title">Instâncias do SISAN</div>
-    <div class="grid-2">
-      <div class="card">
-        <div class="card-title">CONSEA — Conselho Nacional de SAN</div>
-        <ul style="font-size:9.5px">
-          <li>Caráter <strong>consultivo</strong> (NÃO deliberativo)</li>
-          <li>Composição: <strong>2/3 sociedade civil + 1/3 governo</strong></li>
-          <li>Vinculado à Presidência da República</li>
-          <li>Propõe diretrizes e prioridades da PNSAN</li>
-          <li>Convoca a Conferência Nacional de SAN (CONSAN)</li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="card-title">CAISAN — Câmara Interministerial de SAN</div>
-        <ul style="font-size:9.5px">
-          <li>Caráter <strong>executivo</strong> — coordena implementação</li>
-          <li>Composição exclusivamente governamental (ministérios)</li>
-          <li>Elabora e monitora o PLANSAN</li>
-          <li>Presta contas ao CONSEA</li>
-        </ul>
-      </div>
-    </div>
-    <div class="highlight">
-      <strong>Armadilha ENARE:</strong> CONSEA = consultivo (propõe, assessora, acompanha) — NÃO executa nem delibera. CAISAN = executa. Composição do CONSEA: 2/3 sociedade civil (movimentos sociais, academia, ONGs) + 1/3 governo.
-    </div>
-
-    <div class="sub-title">EBIA — Escala Brasileira de Insegurança Alimentar</div>
-    <p>Instrumento validado para mensuração domiciliar da insegurança alimentar. Composto por <strong>14 questões</strong> (versão adultos) ou <strong>8 questões</strong> (domicílios sem menores de 18 anos), referentes aos últimos 3 meses.</p>
-    <table>
-      <tr><th>Classificação</th><th>Descrição</th><th>Pontuação (14q)</th></tr>
-      <tr><td><strong>Segurança Alimentar</strong></td><td>Acesso regular e adequado a alimentos; sem preocupação com disponibilidade</td><td>0 pontos</td></tr>
-      <tr><td><strong>IA Leve</strong></td><td>Preocupação ou incerteza sobre o acesso a alimentos; qualidade comprometida para manter quantidade</td><td>1–5 pontos</td></tr>
-      <tr><td><strong>IA Moderada</strong></td><td>Restrição quantitativa de alimentos entre adultos do domicílio</td><td>6–9 pontos</td></tr>
-      <tr><td><strong>IA Grave</strong></td><td>Restrição quantitativa também para <strong>crianças</strong>; experiência concreta de <strong>fome</strong> no domicílio</td><td>10–14 pontos</td></tr>
-    </table>
-    <div class="alert">
-      <strong>Distinção crítica:</strong> IA moderada = restrição em adultos. IA grave = restrição que atinge também as crianças + possibilidade de fome. É esta a situação que exige intervenção mais urgente.
-    </div>
-
-    <div class="sub-title">Conferência Nacional de SAN (CONSAN)</div>
-    <p>Convocada pelo CONSEA a cada 4 anos. Caráter deliberativo — define diretrizes para a PNSAN. Composição: delegados de toda a sociedade. A 4ª CONSAN (2011) aprovou o Marco de Referência de Educação Alimentar e Nutricional.</p>
-
-    <div class="sub-title">Dupla Carga da Má Nutrição</div>
-    <p>Fenômeno de coexistência de <strong>deficiências nutricionais</strong> (anemia ferropriva, hipovitaminose A, desnutrição infantil) com <strong>excesso de peso e DCNT</strong> (obesidade, DM2, HAS) no mesmo contexto social, familiar ou individual. Desafio central da nutrição em saúde pública brasileira.</p>
-  </div>
-  <div class="content-footer">
-    <div class="footer-label">Extensivo ENARE 2026 · Bloco B9 — Nutrição · NUT-SAN</div>
-    <div class="footer-page">3 / 10</div>
-  </div>
-</div>
-
-<!-- PAGE 4 — PNAE E PAT -->
-<div class="page">
-  <div class="content-header">
-    <div class="logo-wrap">
-      <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="32" height="32" rx="6" fill="#C6D834"/>
-        <path d="M16 4L28 10V22L16 28L4 22V10L16 4Z" fill="#1F5C23"/>
-        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
-      </svg>
-      <div>
-        <div class="logo-text">Extensivo ENARE</div>
-        <div class="logo-tagline">2026 · Nutrição</div>
-      </div>
-    </div>
-    <div class="header-right">
-      <div class="page-label">NUT-SAN · Aula 35</div>
-      <div class="page-title-hd">PNAE · PAT · Programas de Alimentação</div>
-    </div>
-  </div>
-  <div class="content-body">
-    <div class="section-title">Programas de Alimentação — PNAE e PAT</div>
-
-    <div class="sub-title">PNAE — Programa Nacional de Alimentação Escolar</div>
-    <p><strong>Lei 11.947/2009:</strong> maior programa de alimentação escolar do mundo em termos de abrangência. Gerenciado pelo <strong>FNDE</strong> (Fundo Nacional de Desenvolvimento da Educação).</p>
-    <div class="alert">
-      <strong>Requisito obrigatório — 30% agricultura familiar:</strong> no mínimo <strong>30%</strong> dos recursos federais repassados pelo FNDE devem ser utilizados na aquisição de alimentos provenientes da agricultura familiar, priorizando assentamentos da reforma agrária, comunidades indígenas e quilombolas. Dispensa de licitação para agricultores familiares (art. 14).
-    </div>
+    <div class="subsection">Requisitos para Uso de Alegações</div>
     <ul>
-      <li><strong>Meta nutricional:</strong> cobertura de, no mínimo, 15% das necessidades nutricionais dos alunos em período parcial; 30% em período integral; 70% em escolas indígenas e quilombolas</li>
-      <li><strong>Cardápio:</strong> elaborado pelo nutricionista RT; deve respeitar hábitos culturais regionais; oferta mínima de 3 porções de frutas e hortaliças/semana</li>
-      <li><strong>Proibidos:</strong> bebidas com baixo valor nutricional (refrigerantes, refrescos artificiais), preparações com &gt;10% de energia proveniente de gordura saturada, alimentos com alto teor de sódio</li>
+      <li><strong>Comprovação científica</strong> em estudos em humanos (não apenas animais ou in vitro).</li>
+      <li>O produto deve conter a substância na <strong>quantidade eficaz</strong> estabelecida nos estudos.</li>
+      <li>A alegação não pode fazer referência à <strong>cura ou prevenção de doenças específicas</strong>.</li>
+      <li>Rótulo deve incluir aviso: <em>"O consumo deste produto deve estar associado a uma alimentação equilibrada e hábitos de vida saudáveis."</em></li>
+      <li>Alegações não aprovadas previamente pela ANVISA = infração sanitária.</li>
     </ul>
-    <div class="highlight">
-      <strong>Papel do nutricionista no PNAE (Res. CFN 465/2010):</strong> RT obrigatório; parâmetro numérico: <strong>1 nutricionista / 500 alunos</strong> (com assistente técnico em nutrição). Sem assistente: 1 nutricionista / 500 alunos (mas deve dedicar ao menos 20h/semana ao PNAE em municípios com &gt;500 alunos).
+
+    <div class="highlight-box">
+      <p><strong>Ponto de prova:</strong> Alegação funcional descreve o <em>papel fisiológico</em> de uma substância — nunca alega cura, tratamento ou prevenção de doença. Afirmativas que descrevem alegações como "reduz o risco de câncer de próstata" em produtos de consumo geral estão incorretas no contexto regulatório brasileiro.</p>
     </div>
 
-    <div class="sub-title">PAT — Programa de Alimentação do Trabalhador</div>
-    <p><strong>Lei 6.321/1976:</strong> programa tripartite (governo + empresa + trabalhador) com objetivo de melhorar as condições nutricionais dos trabalhadores de baixa renda.</p>
-    <div class="grid-2">
-      <div class="card">
-        <div class="card-title">Benefícios fiscais</div>
-        <ul style="font-size:9.5px">
-          <li>Empresa: dedução de até 4% do IRPJ</li>
-          <li>Trabalhador: vale-refeição/alimentação não é salário (sem encargos trabalhistas)</li>
-          <li>Prioritário para trabalhadores que recebem até 5 salários mínimos</li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="card-title">Requisitos nutricionais</div>
-        <ul style="font-size:9.5px">
-          <li>Refeição principal: 600–800 kcal (30–40% GET diário)</li>
-          <li>Lanche: 300–400 kcal</li>
-          <li>Gordura saturada ≤10% do VET</li>
-          <li>Fibra alimentar ≥14 g/1.000 kcal</li>
-        </ul>
-      </div>
+    <div class="subsection">Frase Obrigatória Complementar</div>
+    <p>Todas as alegações aprovadas devem ser acompanhadas da seguinte frase na embalagem:</p>
+    <div class="alert-box">
+      <p><em>"Este produto não é um medicamento e não substitui uma alimentação variada e equilibrada e um estilo de vida saudável."</em> (ou equivalente aprovado pela ANVISA para cada categoria)</p>
     </div>
-
-    <div class="sub-title">Outros Programas de SAN</div>
-    <table>
-      <tr><th>Programa</th><th>Base Legal</th><th>Objetivo</th></tr>
-      <tr><td><strong>Bolsa Família / CadÚnico</strong></td><td>Lei 10.836/2004 / Lei 14.284/2021 (Auxílio Brasil)</td><td>Transferência de renda condicional para famílias em situação de pobreza e extrema pobreza</td></tr>
-      <tr><td><strong>NutriSUS</strong></td><td>Portaria MS 1.920/2013</td><td>Suplementação de micronutrientes em crianças de 6–48 meses na AB (Vitamix — multimistura)</td></tr>
-      <tr><td><strong>PNSAN</strong></td><td>Decreto 7.272/2010</td><td>Política Nacional de SAN — marco referencial para ações do SISAN</td></tr>
-      <tr><td><strong>Cisternas / 1 Milhão</strong></td><td>Lei 12.873/2013</td><td>Acesso à água potável em regiões semiáridas — dimensão disponibilidade da SAN</td></tr>
-    </table>
   </div>
-  <div class="content-footer">
-    <div class="footer-label">Extensivo ENARE 2026 · Bloco B9 — Nutrição · NUT-SAN</div>
-    <div class="footer-page">4 / 10</div>
+
+  <div class="page-footer">
+    <span class="footer-text">Extensivo ENARE 2026 · Bloco B9 Nutrição</span>
+    <span class="page-num">2 / 10</span>
   </div>
 </div>
 
-<!-- PAGE 5 — SISVAN, VIGITEL, POF E MARCADORES -->
+<!-- ════════════════════════════════════════════
+     PÁGINA 3 — ALEGAÇÕES APROVADAS E FITOQUÍMICOS CLÁSSICOS
+════════════════════════════════════════════ -->
 <div class="page">
-  <div class="content-header">
-    <div class="logo-wrap">
-      <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="32" height="32" rx="6" fill="#C6D834"/>
-        <path d="M16 4L28 10V22L16 28L4 22V10L16 4Z" fill="#1F5C23"/>
-        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="25" viewBox="0 0 44 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="22,2 41,13 41,37 22,48 3,37 3,13" fill="#1F5C23" stroke="#C6D834" stroke-width="2.5"/>
+        <circle cx="22" cy="25" r="9" fill="#F6F4ED"/>
       </svg>
-      <div>
-        <div class="logo-text">Extensivo ENARE</div>
-        <div class="logo-tagline">2026 · Nutrição</div>
-      </div>
+      <span class="brand-name-sm">Extensivo ENARE</span>
     </div>
-    <div class="header-right">
-      <div class="page-label">NUT-SAN · Aula 35</div>
-      <div class="page-title-hd">SISVAN · VIGITEL · POF · Marcadores</div>
-    </div>
+    <span class="page-meta">NUT-FUNC · Aula 35 · Bloco B9</span>
   </div>
-  <div class="content-body">
-    <div class="section-title">Vigilância Alimentar e Nutricional</div>
 
-    <div class="sub-title">SISVAN — Sistema de Vigilância Alimentar e Nutricional</div>
-    <p>Sistema nacional que coleta e analisa dados antropométricos e de consumo alimentar da população atendida pela <strong>Atenção Básica</strong> do SUS. Operacionalizado pelos municípios via e-SUS AB.</p>
-    <div class="grid-2">
-      <div class="card">
-        <div class="card-title">Dados Antropométricos</div>
-        <ul style="font-size:9.5px">
-          <li>Peso, estatura, IMC por faixa etária</li>
-          <li>Curvas OMS (0–5 anos e 5–19 anos)</li>
-          <li>Perímetro cefálico (0–2 anos)</li>
-          <li>Perímetro da cintura (adultos)</li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="card-title">Marcadores de Consumo Alimentar</div>
-        <ul style="font-size:9.5px">
-          <li>Instrumento simplificado: 10 marcadores</li>
-          <li>Alimentos protetores: feijão, frutas, verduras, legumes</li>
-          <li>Alimentos de risco: ultraprocessados, hambúrguer, embutidos, bolachas recheadas, macarrão instantâneo, refrigerante, suco de caixinha</li>
-        </ul>
-      </div>
-    </div>
+  <div class="page-content">
+    <div class="section-title">Alegações Aprovadas e Fitoquímicos Clássicos</div>
 
-    <div class="sub-title">VIGITEL — Vigilância de Fatores de Risco para DCNT</div>
-    <div class="alert">
-      <strong>Método:</strong> inquérito telefônico (entrevistas por telefone fixo e celular) realizado anualmente pelo Ministério da Saúde nas <strong>26 capitais estaduais + Distrito Federal</strong>. Monitora fatores de risco e proteção para DCNT (obesidade, tabagismo, inatividade física, consumo de álcool, alimentação). Não representa municípios do interior.
-    </div>
-    <p><strong>Limitações:</strong> viés de seleção (exclui domicílios sem telefone); autorreferido (peso e estatura declarados); não capta dados bioquímicos.</p>
-
-    <div class="sub-title">Inquéritos Nacionais — Referência para Dados Populacionais</div>
+    <div class="subsection">Principais Alegações Aprovadas (RDC 2/2002 e atualizações)</div>
     <table>
-      <tr><th>Inquérito</th><th>Executor</th><th>Método</th><th>Cobertura</th></tr>
-      <tr><td><strong>POF</strong> (Pesquisa de Orçamentos Familiares)</td><td>IBGE</td><td>Domiciliar, recordatório 24h, pesagem direta</td><td>Nacional (urbano e rural)</td></tr>
-      <tr><td><strong>PNAD Contínua</strong></td><td>IBGE</td><td>Domiciliar contínuo</td><td>Nacional</td></tr>
-      <tr><td><strong>VIGITEL</strong></td><td>MS / SVS</td><td>Telefônico anual</td><td>Capitais + DF</td></tr>
-      <tr><td><strong>SISVAN</strong></td><td>MS / AB</td><td>Coleta em serviços de AB</td><td>Usuários do SUS</td></tr>
-      <tr><td><strong>PNS</strong> (Pesquisa Nacional de Saúde)</td><td>IBGE / MS</td><td>Domiciliar, exame físico</td><td>Nacional</td></tr>
+      <tr><th>Substância</th><th>Alegação aprovada (ANVISA)</th><th>Dose referência</th></tr>
+      <tr>
+        <td><strong>Ácidos graxos ômega-3</strong> (EPA + DHA)</td>
+        <td>Auxiliam na manutenção de níveis normais de triglicerídeos no sangue / contribuem para função cardíaca normal</td>
+        <td>≥ 0,3 g EPA + DHA/porção</td>
+      </tr>
+      <tr>
+        <td><strong>Beta-glucana</strong> (aveia)</td>
+        <td>Auxilia na redução da absorção de colesterol; o consumo deve estar associado a dieta equilibrada e baixa em gorduras saturadas</td>
+        <td>≥ 3 g/dia</td>
+      </tr>
+      <tr>
+        <td><strong>Psyllium</strong></td>
+        <td>Auxilia na redução da absorção de colesterol e no controle glicêmico pós-prandial</td>
+        <td>≥ 7 g/dia</td>
+      </tr>
+      <tr>
+        <td><strong>Fitosteróis</strong></td>
+        <td>Auxiliam na redução da absorção de colesterol</td>
+        <td>1,5–3 g/dia</td>
+      </tr>
+      <tr>
+        <td><strong>Proteína de soja</strong></td>
+        <td>Auxilia na redução do colesterol total e do LDL-colesterol</td>
+        <td>≥ 25 g/dia de proteína de soja</td>
+      </tr>
+      <tr>
+        <td><strong>Probióticos</strong> (cepas específicas)</td>
+        <td>Contribuem para o equilíbrio da flora intestinal</td>
+        <td>Dependente da cepa</td>
+      </tr>
+      <tr>
+        <td><strong>Licopeno</strong></td>
+        <td>Tem propriedades antioxidantes que protegem as células contra os danos dos radicais livres</td>
+        <td>≥ 3,5 mg/porção</td>
+      </tr>
+      <tr>
+        <td><strong>Luteína</strong></td>
+        <td>Tem propriedades antioxidantes que protegem as células dos olhos contra os danos dos radicais livres</td>
+        <td>≥ 1 mg/porção</td>
+      </tr>
     </table>
 
-    <div class="sub-title">Guia Alimentar para a População Brasileira (2014)</div>
-    <p>Publicado pelo Ministério da Saúde em 2014. Usa a <strong>classificação NOVA</strong> (grau de processamento) como estruturante da alimentação saudável:</p>
+    <div class="subsection">Licopeno — Carotenoide Especial</div>
     <ul>
-      <li><strong>Regra de ouro:</strong> "Prefira sempre alimentos in natura ou minimamente processados e preparações culinárias a alimentos ultraprocessados"</li>
-      <li><strong>Alimentos in natura / minimamente processados:</strong> base da alimentação (frutas, legumes, verduras, cereais integrais, feijões, carnes, ovos, leite)</li>
-      <li><strong>Ultraprocessados:</strong> limitar ao máximo — associados a obesidade, DCNT, risco cardiovascular</li>
-      <li>Enfatiza comensalidade, culinária e cultura alimentar</li>
+      <li><strong>Carotenoide sem atividade de pró-vitamina A</strong> — diferente do beta-caroteno.</li>
+      <li>Principal fonte: <strong>tomate e derivados processados</strong> (molho, extrato, ketchup).</li>
+      <li><strong>Processamento térmico ↑ biodisponibilidade</strong> — rompe a parede celular e converte o isômero trans em cis (mais absorvível).</li>
+      <li>Presença de <strong>gordura</strong> na refeição potencializa absorção (lipossolúvel).</li>
+      <li>Propriedade: antioxidante; associado na literatura a ↓ risco de câncer de próstata (estudo observacional — não é alegação de saúde aprovada).</li>
     </ul>
+
+    <div class="highlight-box">
+      <p><strong>Regra do licopeno:</strong> Molho de tomate cozido com azeite = <em>mais</em> licopeno disponível do que tomate cru. O processamento térmico <em>aumenta</em> (não destrói) a biodisponibilidade do licopeno — ao contrário de algumas vitaminas hidrossolúveis.</p>
+    </div>
   </div>
-  <div class="content-footer">
-    <div class="footer-label">Extensivo ENARE 2026 · Bloco B9 — Nutrição · NUT-SAN</div>
-    <div class="footer-page">5 / 10</div>
+
+  <div class="page-footer">
+    <span class="footer-text">Extensivo ENARE 2026 · Bloco B9 Nutrição</span>
+    <span class="page-num">3 / 10</span>
   </div>
 </div>
 
-<!-- PAGE 6 — Q01 -->
+<!-- ════════════════════════════════════════════
+     PÁGINA 4 — FITOQUÍMICOS: FLAVONOIDES, FITOSTERÓIS, ÔMEGA-3
+════════════════════════════════════════════ -->
 <div class="page">
-  <div class="content-header">
-    <div class="logo-wrap">
-      <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="32" height="32" rx="6" fill="#C6D834"/>
-        <path d="M16 4L28 10V22L16 28L4 22V10L16 4Z" fill="#1F5C23"/>
-        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="25" viewBox="0 0 44 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="22,2 41,13 41,37 22,48 3,37 3,13" fill="#1F5C23" stroke="#C6D834" stroke-width="2.5"/>
+        <circle cx="22" cy="25" r="9" fill="#F6F4ED"/>
       </svg>
-      <div>
-        <div class="logo-text">Extensivo ENARE</div>
-        <div class="logo-tagline">2026 · Nutrição</div>
-      </div>
+      <span class="brand-name-sm">Extensivo ENARE</span>
     </div>
-    <div class="header-right">
-      <div class="page-label">NUT-SAN · Aula 35</div>
-      <div class="page-title-hd">Questão 01 — Aplicação</div>
-    </div>
+    <span class="page-meta">NUT-FUNC · Aula 35 · Bloco B9</span>
   </div>
-  <div class="content-body">
-    <div class="section-title">Questão 01</div>
-    <div class="question-header">
-      <span class="question-badge">Q01 · Ap</span>
-      <div class="q-meta">
-        <div class="q-meta-line">Réplica ENARE 2025 · Q115</div>
-        <div class="q-meta-line">Banca FGV · Nutrição</div>
-      </div>
-    </div>
-    <div class="question-stem">
-      <p>Durante atendimento na Unidade Básica de Saúde, uma nutricionista identifica que uma família composta por mãe (34 anos) e três filhos menores (2, 5 e 8 anos) encontra-se em situação de insegurança alimentar grave, com relato de fome frequente nos últimos meses. A renda familiar é inferior a meio salário mínimo per capita. Ao aplicar a EBIA, a pontuação obtida é de 12 pontos (escala de 14 questões).</p>
-      <p style="margin-top:6px">Com base no conceito do DHAA e na LOSAN (Lei 11.346/2006), a conduta mais adequada da nutricionista é:</p>
-    </div>
-    <ul class="options-list">
-      <li class="option-item">
-        <span class="option-letter">A</span>
-        <span>Orientar a mãe sobre técnicas de preparo de alimentos mais econômicas e receitas que aproveitam integralmente os alimentos, pois a responsabilidade pela alimentação familiar é individual.</span>
-      </li>
-      <li class="option-item correct">
-        <span class="option-letter">B</span>
-        <span>Encaminhar a família ao CRAS e acionar a rede intersetorial de proteção social, articulando programas de transferência de renda e SAN, pois o Estado tem obrigação legal de garantir o DHAA.</span>
-      </li>
-      <li class="option-item">
-        <span class="option-letter">C</span>
-        <span>Aguardar que a família se inscreva voluntariamente em programas sociais, limitando a atuação profissional à orientação técnica nutricional dentro da UBS.</span>
-      </li>
-      <li class="option-item">
-        <span class="option-letter">D</span>
-        <span>Prescrever suplementos vitamínicos para as crianças, pois a carência de micronutrientes é a principal consequência da insegurança alimentar e deve ser tratada farmacologicamente como primeira conduta.</span>
-      </li>
-      <li class="option-item">
-        <span class="option-letter">E</span>
-        <span>Notificar a situação ao Conselho Tutelar como caso de maus-tratos, pois a insegurança alimentar grave é tipificada como crime de abandono material pela legislação brasileira.</span>
-      </li>
+
+  <div class="page-content">
+    <div class="section-title">Flavonoides, Fitosteróis e Ômega-3</div>
+
+    <div class="subsection">Flavonoides — Polifenóis de Maior Diversidade</div>
+    <table>
+      <tr><th>Subclasse</th><th>Exemplos de compostos</th><th>Fontes</th><th>Propriedades</th></tr>
+      <tr>
+        <td><strong>Isoflavonas</strong></td>
+        <td>Genisteína, daidzeína</td>
+        <td>Soja, grão-de-bico, trevo vermelho</td>
+        <td>Fitoestrogênico; ↓ LDL; alívio de fogachos na menopausa</td>
+      </tr>
+      <tr>
+        <td><strong>Antocianinas</strong></td>
+        <td>Cianidina, pelargonidina</td>
+        <td>Frutas vermelhas, açaí, mirtilo, uva roxa</td>
+        <td>Antioxidante, anti-inflamatório, cardioprotetor</td>
+      </tr>
+      <tr>
+        <td><strong>Flavanonas</strong></td>
+        <td>Hesperidina, naringenina</td>
+        <td>Laranja, limão, grapefruit</td>
+        <td>Antioxidante, anti-inflamatório</td>
+      </tr>
+      <tr>
+        <td><strong>Catequinas</strong></td>
+        <td>EGCG (epigalocatequina galato)</td>
+        <td>Chá verde</td>
+        <td>Antioxidante, termogênico leve</td>
+      </tr>
+      <tr>
+        <td><strong>Resveratrol</strong> (estilbeno)</td>
+        <td>Trans-resveratrol</td>
+        <td>Uva roxa, vinho tinto, amendoim</td>
+        <td>Antioxidante, cardioprotetor (evidência limitada em humanos)</td>
+      </tr>
+    </table>
+
+    <div class="subsection">Fitosteróis — Mecanismo e Dose</div>
+    <ul>
+      <li><strong>Estrutura:</strong> similar ao colesterol → competem pela incorporação às micelas intestinais → <strong>↓ absorção de colesterol</strong> em 10–15%.</li>
+      <li><strong>Dose eficaz:</strong> 1,5–3 g/dia (margarinas funcionais, leites enriquecidos, suplementos).</li>
+      <li><strong>Efeito colateral relevante:</strong> reduzem também a absorção de carotenoides lipossolúveis (beta-caroteno, licopeno) — orientar consumo adequado de frutas e vegetais coloridos.</li>
+      <li>Não substituem estatinas em dislipidemias graves; são complementares.</li>
     </ul>
-    <div class="highlight" style="margin-top:12px">
-      <strong>Ponto-chave DHAA:</strong> a alimentação é direito de todos e dever do Estado (EC 64/2010 + LOSAN). A atuação do nutricionista no SUS deve ir além da orientação individual — inclui articulação com a rede de proteção social (CRAS, assistência social, Bolsa Família). Insegurança alimentar grave ≠ crime de maus-tratos automático.
+
+    <div class="subsection">Ácidos Graxos Ômega-3 — EPA, DHA e ALA</div>
+    <table>
+      <tr><th>Ácido graxo</th><th>Fontes</th><th>Efeitos</th></tr>
+      <tr>
+        <td><strong>EPA</strong> (C20:5 n-3)</td>
+        <td>Peixes marinhos gordurosos: salmão, sardinha, atum, cavala, arenque</td>
+        <td>↓ triglicerídeos; anti-inflamatório (percursores de resolvinas)</td>
+      </tr>
+      <tr>
+        <td><strong>DHA</strong> (C22:6 n-3)</td>
+        <td>Idem; também em algas marinhas (DHA vegano)</td>
+        <td>Desenvolvimento cerebral e visual; ↓ TG; neuroprotetor</td>
+      </tr>
+      <tr>
+        <td><strong>ALA</strong> (C18:3 n-3)</td>
+        <td>Linhaça, chia, nozes, canola</td>
+        <td>Precursor de EPA/DHA (conversão &lt; 5–10% em adultos)</td>
+      </tr>
+    </table>
+
+    <div class="alert-box">
+      <p><strong>ALA ≠ EPA/DHA:</strong> O ALA da linhaça e chia é um precursor com conversão muito limitada (menos de 10%). Não substitui EPA e DHA de origem animal/alga em situações clínicas. Essa distinção é cobrada com frequência na FGV.</p>
+    </div>
+
+    <div class="highlight-box">
+      <p><strong>Curcumina (cúrcuma):</strong> polifenol com propriedades anti-inflamatórias e antioxidantes — <em>sem alegação aprovada pela ANVISA</em>. Baixa biodisponibilidade oral; piperina (pimenta-preta) aumenta a absorção em até 2.000%. Evidências em humanos ainda limitadas para indicações clínicas específicas.</p>
     </div>
   </div>
-  <div class="content-footer">
-    <div class="footer-label">Extensivo ENARE 2026 · Bloco B9 — Nutrição · NUT-SAN</div>
-    <div class="footer-page">6 / 10</div>
+
+  <div class="page-footer">
+    <span class="footer-text">Extensivo ENARE 2026 · Bloco B9 Nutrição</span>
+    <span class="page-num">4 / 10</span>
   </div>
 </div>
 
-<!-- PAGE 7 — Q02 -->
+<!-- ════════════════════════════════════════════
+     PÁGINA 5 — PROBIÓTICOS, PREBIÓTICOS, SIMBIÓTICOS E FIBRAS
+════════════════════════════════════════════ -->
 <div class="page">
-  <div class="content-header">
-    <div class="logo-wrap">
-      <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="32" height="32" rx="6" fill="#C6D834"/>
-        <path d="M16 4L28 10V22L16 28L4 22V10L16 4Z" fill="#1F5C23"/>
-        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="25" viewBox="0 0 44 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="22,2 41,13 41,37 22,48 3,37 3,13" fill="#1F5C23" stroke="#C6D834" stroke-width="2.5"/>
+        <circle cx="22" cy="25" r="9" fill="#F6F4ED"/>
       </svg>
-      <div>
-        <div class="logo-text">Extensivo ENARE</div>
-        <div class="logo-tagline">2026 · Nutrição</div>
-      </div>
+      <span class="brand-name-sm">Extensivo ENARE</span>
     </div>
-    <div class="header-right">
-      <div class="page-label">NUT-SAN · Aula 35</div>
-      <div class="page-title-hd">Questão 02 — Aplicação</div>
-    </div>
+    <span class="page-meta">NUT-FUNC · Aula 35 · Bloco B9</span>
   </div>
-  <div class="content-body">
-    <div class="section-title">Questão 02</div>
-    <div class="question-header">
-      <span class="question-badge">Q02 · Ap</span>
-      <div class="q-meta">
-        <div class="q-meta-line">Réplica ENARE 2025 · Q116</div>
-        <div class="q-meta-line">Banca FGV · Nutrição</div>
-      </div>
+
+  <div class="page-content">
+    <div class="section-title">Probióticos, Prebióticos, Simbióticos e Fibras Funcionais</div>
+
+    <div class="subsection">Definições — Triáde do Microbioma</div>
+    <table>
+      <tr><th>Termo</th><th>Definição (FAO/OMS ou Gibson)</th><th>Exemplos</th></tr>
+      <tr>
+        <td><strong>Probiótico</strong></td>
+        <td><em>"Microrganismos vivos que, quando administrados em quantidades adequadas, conferem benefícios à saúde do hospedeiro"</em> (FAO/OMS, 2001)</td>
+        <td>Lactobacillus spp., Bifidobacterium spp., Saccharomyces boulardii</td>
+      </tr>
+      <tr>
+        <td><strong>Prebiótico</strong></td>
+        <td><em>"Substrato seletivamente utilizado por microrganismos do hospedeiro, conferindo benefício à saúde"</em> (Gibson, 2017)</td>
+        <td>Inulina, FOS, GOS, amido resistente, pectina</td>
+      </tr>
+      <tr>
+        <td><strong>Simbiótico</strong></td>
+        <td>Combinação de probiótico + prebiótico com efeito sinérgico documentado</td>
+        <td>Inulina + Lactobacillus acidophilus</td>
+      </tr>
+    </table>
+
+    <div class="alert-box">
+      <p><strong>Distinção crítica para a prova:</strong> Probiótico = <em>microrganismo vivo</em>. Prebiótico = <em>substrato/fibra não digerível</em>. Afirmativas que definem probiótico como "substância não digerível" ou prebiótico como "microrganismo" estão invertidas — é armadilha frequente.</p>
     </div>
-    <div class="question-stem">
-      <p>Nutricionista responsável técnica pelo Programa Nacional de Alimentação Escolar (PNAE) em município com 2.800 alunos matriculados em período parcial recebe os recursos federais repassados pelo FNDE referentes ao ano letivo. Ao elaborar o plano de aquisição de alimentos, deve cumprir integralmente os requisitos estabelecidos pela Lei 11.947/2009.</p>
-      <p style="margin-top:6px">Qual das seguintes afirmações sobre as obrigações legais do PNAE está <strong>correta</strong>?</p>
-    </div>
-    <ul class="options-list">
-      <li class="option-item">
-        <span class="option-letter">A</span>
-        <span>Os cardápios do PNAE podem incluir refrigerantes e sucos artificiais, desde que sua frequência seja restrita a uma vez por semana e em porções reduzidas.</span>
-      </li>
-      <li class="option-item">
-        <span class="option-letter">B</span>
-        <span>A meta nutricional do PNAE em período parcial é cobrir 30% das necessidades nutricionais diárias dos alunos — o mesmo percentual exigido em período integral.</span>
-      </li>
-      <li class="option-item correct">
-        <span class="option-letter">C</span>
-        <span>No mínimo 30% dos recursos federais repassados pelo FNDE devem ser destinados à aquisição de alimentos da agricultura familiar, com prioridade para assentamentos, comunidades indígenas e quilombolas, dispensando licitação.</span>
-      </li>
-      <li class="option-item">
-        <span class="option-letter">D</span>
-        <span>O nutricionista RT do PNAE pode ser responsável por até 1.500 alunos sem a necessidade de assistente técnico em nutrição, conforme a Resolução CFN 465/2010.</span>
-      </li>
-      <li class="option-item">
-        <span class="option-letter">E</span>
-        <span>A exigência de aquisição de alimentos da agricultura familiar é uma recomendação opcional — cabe ao município decidir se adere à medida conforme sua capacidade de fornecimento regional.</span>
-      </li>
+
+    <div class="subsection">Fibras Funcionais com Alegação Aprovada</div>
+    <table>
+      <tr><th>Fibra</th><th>Fonte</th><th>Mecanismo</th><th>Alegação ANVISA</th></tr>
+      <tr>
+        <td><strong>Beta-glucana</strong></td>
+        <td>Aveia, cevada</td>
+        <td>↑ viscosidade intestinal → ↓ absorção colesterol e glicose</td>
+        <td>↓ colesterol (≥ 3 g/dia)</td>
+      </tr>
+      <tr>
+        <td><strong>Psyllium</strong></td>
+        <td>Plantago ovata (semente)</td>
+        <td>Gel viscoso → ↓ absorção colesterol e resposta glicêmica</td>
+        <td>↓ colesterol (≥ 7 g/dia)</td>
+      </tr>
+      <tr>
+        <td><strong>Inulina / FOS</strong></td>
+        <td>Chicória, alho, cebola, alcachofra, banana</td>
+        <td>Fermentação seletiva → ↑ Bifidobacterium e Lactobacillus</td>
+        <td>Equilíbrio da flora intestinal (prebiótico)</td>
+      </tr>
+      <tr>
+        <td><strong>Amido resistente</strong></td>
+        <td>Banana verde, batata resfriada, leguminosas</td>
+        <td>Fermentação colônica → ↑ butirato → saúde intestinal</td>
+        <td>Flora intestinal (prebiótico)</td>
+      </tr>
+    </table>
+
+    <div class="subsection">Probióticos — Indicações com Evidência</div>
+    <ul>
+      <li><strong>Diarreia associada a antibióticos (AAD):</strong> Lactobacillus rhamnosus GG e S. boulardii — nível A de evidência.</li>
+      <li><strong>Síndrome do intestino irritável (SII):</strong> benefício em distensão e frequência de evacuações.</li>
+      <li><strong>Infecção por H. pylori:</strong> adjuvante ao tratamento triplo/quádruplo — reduz efeitos adversos e melhora erradicação.</li>
+      <li><strong>Diarreia do viajante:</strong> Lactobacillus rhamnosus GG — evidência moderada.</li>
+      <li><strong>Importante:</strong> efeitos são <em>cepa-específicos</em> — não generalizar entre produtos diferentes.</li>
     </ul>
-    <div class="highlight" style="margin-top:12px">
-      <strong>Distratores:</strong> A → refrigerantes são proibidos no PNAE (não apenas limitados); B → período parcial = 15% (não 30%; 30% é o mínimo para integral); D → limite é 500 alunos por nutricionista (Res. CFN 465/2010), não 1.500; E → 30% da agricultura familiar é obrigação legal, não facultativa.
+
+    <div class="anchor-box">
+      <p><strong>Âncoras críticas desta aula:</strong></p>
+      <ul>
+        <li><strong>Alegação funcional ≠ alegação de cura:</strong> descreve papel fisiológico — nunca trata/cura doença</li>
+        <li><strong>Licopeno:</strong> carotenoide SEM pró-vitamina A; processamento ↑ biodisponibilidade</li>
+        <li><strong>Beta-glucana ≥ 3 g/dia:</strong> alegação de ↓ colesterol aprovada; psyllium ≥ 7 g/dia: idem</li>
+        <li><strong>Fitosteróis 1,5–3 g/dia:</strong> competem com colesterol na absorção intestinal</li>
+        <li><strong>Probiótico = microrganismo vivo; prebiótico = substrato não digerível</strong> — nunca inverter</li>
+      </ul>
     </div>
   </div>
-  <div class="content-footer">
-    <div class="footer-label">Extensivo ENARE 2026 · Bloco B9 — Nutrição · NUT-SAN</div>
-    <div class="footer-page">7 / 10</div>
+
+  <div class="page-footer">
+    <span class="footer-text">Extensivo ENARE 2026 · Bloco B9 Nutrição</span>
+    <span class="page-num">5 / 10</span>
   </div>
 </div>
 
-<!-- PAGE 8 — Q03 (AFIRMATIVAS) -->
+<!-- ════════════════════════════════════════════
+     PÁGINA 6 — QUESTÃO 01 (APLICAÇÃO · GAB B)
+════════════════════════════════════════════ -->
 <div class="page">
-  <div class="content-header">
-    <div class="logo-wrap">
-      <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="32" height="32" rx="6" fill="#C6D834"/>
-        <path d="M16 4L28 10V22L16 28L4 22V10L16 4Z" fill="#1F5C23"/>
-        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="25" viewBox="0 0 44 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="22,2 41,13 41,37 22,48 3,37 3,13" fill="#1F5C23" stroke="#C6D834" stroke-width="2.5"/>
+        <circle cx="22" cy="25" r="9" fill="#F6F4ED"/>
       </svg>
-      <div>
-        <div class="logo-text">Extensivo ENARE</div>
-        <div class="logo-tagline">2026 · Nutrição</div>
-      </div>
+      <span class="brand-name-sm">Extensivo ENARE</span>
     </div>
-    <div class="header-right">
-      <div class="page-label">NUT-SAN · Aula 35</div>
-      <div class="page-title-hd">Questão 03 — Análise Âncora</div>
-    </div>
+    <span class="page-meta">NUT-FUNC · Aula 35 · Bloco B9</span>
   </div>
-  <div class="content-body">
-    <div class="section-title">Questão 03 — Análise Âncora</div>
-    <div class="question-header">
-      <span class="question-badge">Q03 · An</span>
-      <div class="q-meta">
-        <div class="q-meta-line">Réplica ENARE 2024 Q86 / 2025 Q117</div>
-        <div class="q-meta-line">Banca FGV · Nutrição · Afirmativas</div>
-      </div>
+
+  <div class="page-content">
+    <div class="q-header">
+      <span class="q-badge">Q 01</span>
+      <span class="q-type">Aplicação · Regulamentação ANVISA + Alegações</span>
     </div>
-    <div class="question-stem">
-      <p>Sobre Segurança Alimentar e Nutricional, políticas públicas e vigilância alimentar no Brasil, analise as afirmativas:</p>
-      <p style="margin-top:6px"><strong>I.</strong> O CONSEA (Conselho Nacional de Segurança Alimentar e Nutricional) é um órgão governamental de caráter deliberativo, responsável pela execução direta das políticas de segurança alimentar e nutricional no Brasil, sendo composto majoritariamente por representantes dos ministérios federais.</p>
-      <p style="margin-top:4px"><strong>II.</strong> A Escala Brasileira de Insegurança Alimentar (EBIA) classifica a insegurança alimentar grave como a situação em que há restrição quantitativa de alimentos também para as crianças do domicílio, podendo ocorrer a experiência concreta de fome.</p>
-      <p style="margin-top:4px"><strong>III.</strong> O VIGITEL é um sistema de vigilância de fatores de risco para doenças crônicas não transmissíveis conduzido por inquérito telefônico anual nas capitais dos estados brasileiros e no Distrito Federal.</p>
-      <p style="margin-top:4px"><strong>IV.</strong> O Programa Nacional de Alimentação Escolar (PNAE), instituído pela Lei 11.947/2009, exige que no mínimo 50% dos recursos federais repassados pelo FNDE sejam destinados à aquisição de alimentos provenientes da agricultura familiar.</p>
+
+    <div class="q-context">
+      Uma empresa de alimentos deseja lançar no mercado um iogurte adicionado de inulina e de cepas de Lactobacillus acidophilus. A equipe de marketing propõe as seguintes frases para o rótulo: (1) "Previne doenças intestinais e elimina bactérias patogênicas do cólon"; (2) "Contribui para o equilíbrio da flora intestinal — o consumo deve estar associado a uma alimentação equilibrada e hábitos de vida saudáveis." A área de Regulatório questiona qual das frases está em conformidade com a legislação brasileira de alimentos funcionais.
     </div>
-    <p style="margin-top:6px; font-size:10.5px">Estão <strong>corretas</strong> apenas as afirmativas:</p>
-    <ul class="options-list">
-      <li class="option-item"><span class="option-letter">A</span><span>I e II</span></li>
-      <li class="option-item"><span class="option-letter">B</span><span>I e IV</span></li>
-      <li class="option-item correct"><span class="option-letter">C</span><span>II e III</span></li>
-      <li class="option-item"><span class="option-letter">D</span><span>I, III e IV</span></li>
-      <li class="option-item"><span class="option-letter">E</span><span>II, III e IV</span></li>
-    </ul>
-    <ul class="afirmativas-list" style="margin-top:10px">
-      <li class="afirmativa-item errada">
-        <span class="afirmativa-num">I</span>
-        <span><strong>ERRADA (duplo erro).</strong> CONSEA é de caráter <em>consultivo</em> (não deliberativo); não executa políticas diretamente; composição = <em>2/3 sociedade civil + 1/3 governo</em> (maioria da sociedade civil, não dos ministérios). Quem executa é a CAISAN.</span>
+
+    <p class="q-stem">Com base na Resolução SVS/MS 18/1999 e na RDC ANVISA 2/2002, é CORRETO afirmar que:</p>
+
+    <ul class="alternatives">
+      <li>
+        <span class="alt-letter">A</span>
+        <span>A frase (1) está em conformidade, pois alimentos com probióticos e prebióticos documentados podem alegar prevenção de doenças infecciosas intestinais, desde que acompanhados de aviso médico no rótulo.</span>
       </li>
-      <li class="afirmativa-item correta">
-        <span class="afirmativa-num">II</span>
-        <span><strong>CORRETA.</strong> IA grave na EBIA (10–14 pontos em 14 questões): restrição quantitativa que alcança também as crianças do domicílio, com possibilidade de fome vivenciada. Difere da IA moderada (restrição apenas entre adultos).</span>
+      <li>
+        <span class="alt-letter">B</span>
+        <span>Apenas a frase (2) está em conformidade com a legislação: alegações funcionais devem descrever o papel fisiológico da substância sem fazer referência à cura ou prevenção de doenças específicas, e devem incluir a orientação de associação a dieta equilibrada.</span>
       </li>
-      <li class="afirmativa-item correta">
-        <span class="afirmativa-num">III</span>
-        <span><strong>CORRETA.</strong> VIGITEL: inquérito telefônico anual, MS/SVS, nas 26 capitais estaduais + DF. Monitora fatores de risco (obesidade, tabagismo, inatividade física, consumo alimentar) para DCNT. Não representa municípios do interior.</span>
+      <li>
+        <span class="alt-letter">C</span>
+        <span>Ambas as frases estão em conformidade, pois a legislação brasileira permite qualquer alegação de saúde desde que respaldada por estudos em animais publicados em revistas científicas indexadas.</span>
       </li>
-      <li class="afirmativa-item errada">
-        <span class="afirmativa-num">IV</span>
-        <span><strong>ERRADA.</strong> O percentual mínimo obrigatório é <strong>30%</strong> (não 50%) dos recursos federais do FNDE para aquisição de alimentos da agricultura familiar. A confusão com 50% é o distrator clássico desta questão.</span>
+      <li>
+        <span class="alt-letter">D</span>
+        <span>Nenhuma das frases pode ser utilizada, pois a legislação brasileira proíbe qualquer tipo de alegação funcional ou de saúde em rótulos de alimentos processados, reservando esse tipo de comunicação exclusivamente a medicamentos.</span>
       </li>
     </ul>
+
+    <div class="alert-box" style="margin-top:5mm;">
+      <p><strong>Foco da questão:</strong> A Res. 18/1999 proíbe alegações que refiram cura, tratamento ou prevenção de doenças — a frase (1) é irregular. A frase (2) está correta: descreve papel fisiológico ("equilíbrio da flora") sem mencionar doença e inclui o aviso obrigatório. Probiótico e prebiótico têm alegação aprovada apenas para "equilíbrio da flora intestinal".</p>
+    </div>
   </div>
-  <div class="content-footer">
-    <div class="footer-label">Extensivo ENARE 2026 · Bloco B9 — Nutrição · NUT-SAN</div>
-    <div class="footer-page">8 / 10</div>
+
+  <div class="page-footer">
+    <span class="footer-text">Extensivo ENARE 2026 · Bloco B9 Nutrição</span>
+    <span class="page-num">6 / 10</span>
   </div>
 </div>
 
-<!-- PAGE 9 — GABARITO -->
+<!-- ════════════════════════════════════════════
+     PÁGINA 7 — QUESTÃO 02 (APLICAÇÃO · GAB C)
+════════════════════════════════════════════ -->
 <div class="page">
-  <div class="content-header">
-    <div class="logo-wrap">
-      <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="32" height="32" rx="6" fill="#C6D834"/>
-        <path d="M16 4L28 10V22L16 28L4 22V10L16 4Z" fill="#1F5C23"/>
-        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="25" viewBox="0 0 44 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="22,2 41,13 41,37 22,48 3,37 3,13" fill="#1F5C23" stroke="#C6D834" stroke-width="2.5"/>
+        <circle cx="22" cy="25" r="9" fill="#F6F4ED"/>
       </svg>
-      <div>
-        <div class="logo-text">Extensivo ENARE</div>
-        <div class="logo-tagline">2026 · Nutrição</div>
-      </div>
+      <span class="brand-name-sm">Extensivo ENARE</span>
     </div>
-    <div class="header-right">
-      <div class="page-label">NUT-SAN · Aula 35</div>
-      <div class="page-title-hd">Gabarito Comentado</div>
+    <span class="page-meta">NUT-FUNC · Aula 35 · Bloco B9</span>
+  </div>
+
+  <div class="page-content">
+    <div class="q-header">
+      <span class="q-badge">Q 02</span>
+      <span class="q-type">Aplicação · Fitosteróis, Beta-glucana e Licopeno</span>
+    </div>
+
+    <div class="q-context">
+      Um homem de 58 anos, com LDL-colesterol de 168 mg/dL e triglicerídeos de 210 mg/dL, sem uso de estatinas, procura atendimento nutricional. A nutricionista decide orientar o uso de alimentos funcionais com alegação aprovada pela ANVISA para contribuir na redução do LDL. Ela considera incluir: aveia (fonte de beta-glucana), margarina enriquecida com fitosteróis e extrato de tomate como fonte de licopeno.
+    </div>
+
+    <p class="q-stem">Considerando as alegações aprovadas e os mecanismos de ação, é CORRETO afirmar que:</p>
+
+    <ul class="alternatives">
+      <li>
+        <span class="alt-letter">A</span>
+        <span>O extrato de tomate é a indicação prioritária para reduzir o LDL, pois o licopeno tem alegação aprovada para redução de colesterol LDL; a beta-glucana e os fitosteróis têm alegações apenas para controle glicêmico.</span>
+      </li>
+      <li>
+        <span class="alt-letter">B</span>
+        <span>A margarina com fitosteróis deve ser contraindicada nesse paciente, pois os fitosteróis elevam os triglicerídeos séricos ao competir com ácidos graxos pela via lipoproteica intestinal, agravando a hipertrigliceridemia.</span>
+      </li>
+      <li>
+        <span class="alt-letter">C</span>
+        <span>A beta-glucana da aveia (≥ 3 g/dia) e os fitosteróis (1,5–3 g/dia) têm alegações aprovadas para auxiliar na redução do colesterol LDL; o licopeno tem alegação aprovada como antioxidante, mas não especificamente para redução de LDL.</span>
+      </li>
+      <li>
+        <span class="alt-letter">D</span>
+        <span>A ingestão diária de 1 g de fitosterol já é suficiente para atingir a dose eficaz com alegação aprovada, e o licopeno do tomate cru tem maior biodisponibilidade do que o do tomate processado termicamente.</span>
+      </li>
+    </ul>
+
+    <div class="alert-box" style="margin-top:5mm;">
+      <p><strong>Foco da questão:</strong> Beta-glucana (≥ 3 g/dia) e fitosteróis (1,5–3 g/dia) têm alegação aprovada especificamente para redução de colesterol LDL. O licopeno tem alegação de antioxidante — sem alegação específica para LDL. Além disso, o tomate processado tem <em>mais</em> licopeno biodisponível do que o cru. Dose de fitosterol: mínimo 1,5 g/dia (a alternativa D erra ao dizer 1 g é suficiente).</p>
     </div>
   </div>
-  <div class="content-body">
+
+  <div class="page-footer">
+    <span class="footer-text">Extensivo ENARE 2026 · Bloco B9 Nutrição</span>
+    <span class="page-num">7 / 10</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     PÁGINA 8 — QUESTÃO 03 (ANÁLISE ÂNCORA · GAB C)
+════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="25" viewBox="0 0 44 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="22,2 41,13 41,37 22,48 3,37 3,13" fill="#1F5C23" stroke="#C6D834" stroke-width="2.5"/>
+        <circle cx="22" cy="25" r="9" fill="#F6F4ED"/>
+      </svg>
+      <span class="brand-name-sm">Extensivo ENARE</span>
+    </div>
+    <span class="page-meta">NUT-FUNC · Aula 35 · Bloco B9</span>
+  </div>
+
+  <div class="page-content">
+    <div class="q-header">
+      <span class="q-badge">Q 03</span>
+      <span class="q-type">Análise Âncora · Alimentos Funcionais e Fitoquímicos Integrados</span>
+    </div>
+
+    <p class="q-stem">Analise as afirmativas a seguir sobre alimentos funcionais e fitoquímicos:</p>
+
+    <ul class="assertions">
+      <li>
+        <span class="assert-num">I</span>
+        <span>A beta-glucana da aveia tem alegação de propriedade funcional aprovada pela ANVISA para redução do colesterol LDL; contudo, o processo de cozimento destrói completamente sua atividade funcional, tornando o farelo de aveia preparado termicamente ineficaz para essa finalidade.</span>
+      </li>
+      <li>
+        <span class="assert-num">II</span>
+        <span>O licopeno é um carotenoide sem atividade de pró-vitamina A; sua biodisponibilidade é aumentada pelo processamento térmico do tomate e pela presença de lipídios na refeição, sendo o molho de tomate preparado com azeite uma fonte de licopeno mais biodisponível do que o tomate cru.</span>
+      </li>
+      <li>
+        <span class="assert-num">III</span>
+        <span>Os fitosteróis exercem efeito hipocolesterolêmico ao competirem com o colesterol pela incorporação às micelas intestinais, reduzindo sua absorção; a dose eficaz reconhecida nas alegações aprovadas situa-se entre 1,5 e 3 g/dia.</span>
+      </li>
+      <li>
+        <span class="assert-num">IV</span>
+        <span>Probióticos são substâncias de origem vegetal não digeríveis que estimulam seletivamente o crescimento de bactérias benéficas no cólon; a inulina e os frutooligossacarídeos (FOS) são exemplos de probióticos com alegação aprovada pela ANVISA.</span>
+      </li>
+    </ul>
+
+    <p class="q-stem" style="margin-top:3mm;">Estão CORRETAS apenas as afirmativas:</p>
+
+    <ul class="alternatives">
+      <li><span class="alt-letter">A</span><span>I e III</span></li>
+      <li><span class="alt-letter">B</span><span>I e IV</span></li>
+      <li><span class="alt-letter">C</span><span>II e III</span></li>
+      <li><span class="alt-letter">D</span><span>II e IV</span></li>
+    </ul>
+
+    <div class="anchor-box" style="margin-top:4mm;">
+      <p><strong>Âncora desta questão:</strong></p>
+      <ul>
+        <li><strong>I — ERRADA:</strong> O cozimento <em>não destrói</em> a beta-glucana — a aveia cozida mantém sua atividade funcional. Além disso, o processamento térmico <em>aumenta</em> a solubilidade e viscosidade da beta-glucana.</li>
+        <li><strong>II — CORRETA:</strong> Licopeno = carotenoide sem atividade de pró-vitamina A; processamento térmico + gordura ↑ biodisponibilidade.</li>
+        <li><strong>III — CORRETA:</strong> Fitosteróis competem com colesterol na absorção intestinal; dose 1,5–3 g/dia.</li>
+        <li><strong>IV — ERRADA:</strong> A descrição na afirmativa IV é a de <em>PREBIÓTICOS</em>, não probióticos. Probióticos são <em>microrganismos vivos</em>. Inulina e FOS são prebióticos.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span class="footer-text">Extensivo ENARE 2026 · Bloco B9 Nutrição</span>
+    <span class="page-num">8 / 10</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     PÁGINA 9 — GABARITO COMENTADO
+════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="25" viewBox="0 0 44 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="22,2 41,13 41,37 22,48 3,37 3,13" fill="#1F5C23" stroke="#C6D834" stroke-width="2.5"/>
+        <circle cx="22" cy="25" r="9" fill="#F6F4ED"/>
+      </svg>
+      <span class="brand-name-sm">Extensivo ENARE</span>
+    </div>
+    <span class="page-meta">NUT-FUNC · Aula 35 · Bloco B9</span>
+  </div>
+
+  <div class="page-content">
     <div class="section-title">Gabarito Comentado</div>
 
-    <div class="gab-card">
-      <div class="gab-card-hd">
-        <span class="gab-q-label">Q01 — DHAA e Atuação Intersetorial</span>
-        <span class="gab-answer">GAB: B</span>
+    <div class="gab-grid">
+      <div class="gab-card">
+        <div class="gab-q">Questão 01</div>
+        <div class="gab-resp">B</div>
+        <div class="gab-tema">Regulamentação ANVISA</div>
       </div>
-      <div class="gab-text">
-        O DHAA (EC 64/2010 + LOSAN 11.346/2006) reconhece a alimentação como direito humano e impõe ao Estado a obrigação de garantir condições para sua realização. Diante de IA grave, a conduta do nutricionista no SUS deve articular a rede intersetorial — CRAS, assistência social, programas de transferência de renda — e não se limitar à orientação técnica individual. <strong>A:</strong> a culpabilização individual ("responsabilidade da família") contradiz o princípio do DHAA. <strong>D:</strong> suplementos podem ser pertinentes posteriormente, mas não são a primeira e única conduta. <strong>E:</strong> IA grave por pobreza não é tipificada automaticamente como crime de abandono material; exigiria outros elementos de intencionalidade.
+      <div class="gab-card">
+        <div class="gab-q">Questão 02</div>
+        <div class="gab-resp">C</div>
+        <div class="gab-tema">Beta-glucana + Fitosteróis</div>
       </div>
-    </div>
-
-    <div class="gab-card">
-      <div class="gab-card-hd">
-        <span class="gab-q-label">Q02 — PNAE e Agricultura Familiar</span>
-        <span class="gab-answer">GAB: C</span>
-      </div>
-      <div class="gab-text">
-        A Lei 11.947/2009 determina que, no mínimo, <strong>30%</strong> dos recursos federais repassados pelo FNDE ao PNAE devem ser utilizados na aquisição de alimentos da agricultura familiar, priorizando assentamentos da reforma agrária, comunidades indígenas e quilombolas, com dispensa de licitação (art. 14). <strong>A:</strong> refrigerantes são expressamente proibidos no PNAE (não apenas limitados). <strong>B:</strong> meta nutricional em período parcial = 15% das necessidades diárias (não 30%; 30% é para período integral). <strong>D:</strong> limite = 500 alunos/nutricionista (Res. CFN 465/2010). <strong>E:</strong> é obrigação legal, não facultativa.
+      <div class="gab-card">
+        <div class="gab-q">Questão 03</div>
+        <div class="gab-resp">C</div>
+        <div class="gab-tema">II e III corretas</div>
       </div>
     </div>
 
-    <div class="gab-card">
-      <div class="gab-card-hd">
-        <span class="gab-q-label">Q03 — SAN, CONSEA, EBIA, VIGITEL, PNAE</span>
-        <span class="gab-answer">GAB: C (II e III)</span>
-      </div>
-      <div class="gab-text">
-        <strong>I — ERRADA (duplo erro):</strong> CONSEA = consultivo (não deliberativo); composição = 2/3 sociedade civil + 1/3 governo (não maioria governamental). A CAISAN é a câmara que coordena a execução.<br>
-        <strong>II — CORRETA:</strong> IA grave (EBIA 10–14/14): restrição quantitativa que alcança as crianças do domicílio, com experiência concreta de fome. IA moderada = restrição só entre adultos.<br>
-        <strong>III — CORRETA:</strong> VIGITEL = inquérito telefônico anual, 26 capitais + DF, monitora fatores de risco para DCNT. Método por telefone = limitação (viés de seleção, dado autorreferido).<br>
-        <strong>IV — ERRADA:</strong> o percentual obrigatório é 30%, não 50%. Confusão de número é o distrator clássico da EBIA (ENARE cobra o número exato com frequência).
-      </div>
+    <div class="gab-justificativa highlight-box">
+      <div class="gab-title">Q01 — Gabarito B</div>
+      <p><span class="wrong">A</span> — Alegações de "prevenção de doenças infecciosas" não são permitidas mesmo com aviso médico; a legislação proíbe referência a doenças específicas.</p>
+      <p><span class="correct">B ✓</span> — Frase (2) está em conformidade: descreve papel fisiológico ("equilíbrio da flora") sem mencionar cura/prevenção de doença, e inclui o aviso obrigatório. Frase (1) menciona prevenção de doenças e é irregular.</p>
+      <p><span class="wrong">C</span> — Estudos em animais isoladamente NÃO são suficientes; a ANVISA exige evidência em humanos.</p>
+      <p><span class="wrong">D</span> — A legislação brasileira permite alegações funcionais/de saúde em alimentos — apenas proíbe referencias a cura de doenças específicas.</p>
     </div>
 
-    <div class="highlight" style="margin-top:8px">
-      <strong>Resumo do gabarito:</strong> Q01 → B &nbsp;|&nbsp; Q02 → C &nbsp;|&nbsp; Q03 → C (II e III corretas)
+    <div class="gab-justificativa highlight-box">
+      <div class="gab-title">Q02 — Gabarito C</div>
+      <p><span class="wrong">A</span> — Licopeno tem alegação de <em>antioxidante</em>, não de redução de LDL. Beta-glucana e fitosteróis é que têm alegação para colesterol.</p>
+      <p><span class="wrong">B</span> — Fitosteróis não elevam triglicerídeos — eles atuam apenas na absorção de colesterol no intestino, sem interferir nos triglicerídeos.</p>
+      <p><span class="correct">C ✓</span> — Beta-glucana (≥ 3 g/dia) e fitosteróis (1,5–3 g/dia) têm alegação aprovada para ↓ LDL. Licopeno: alegação apenas como antioxidante.</p>
+      <p><span class="wrong">D</span> — Dose mínima de fitosteróis é 1,5 g/dia (não 1 g); licopeno do tomate cru tem <em>menor</em> biodisponibilidade do que o processado.</p>
+    </div>
+
+    <div class="gab-justificativa highlight-box">
+      <div class="gab-title">Q03 — Gabarito C (II e III)</div>
+      <p><span class="wrong">I — ERRADA:</span> Cozimento NÃO destrói a beta-glucana — a aveia cozida mantém a atividade funcional. O processamento aumenta a solubilidade da beta-glucana.</p>
+      <p><span class="correct">II — CORRETA ✓:</span> Licopeno = carotenoide sem pró-vitamina A; processamento térmico + gordura ↑ biodisponibilidade. Molho de tomate com azeite &gt; tomate cru.</p>
+      <p><span class="correct">III — CORRETA ✓:</span> Fitosteróis → competição com colesterol nas micelas → ↓ absorção; dose 1,5–3 g/dia.</p>
+      <p><span class="wrong">IV — ERRADA:</span> Descrição de <em>PREBIÓTICO</em> (substância não digerível que estimula microrganismos benéficos). Inulina e FOS são prebióticos, não probióticos. Probiótico = microrganismo vivo.</p>
     </div>
   </div>
-  <div class="content-footer">
-    <div class="footer-label">Extensivo ENARE 2026 · Bloco B9 — Nutrição · NUT-SAN</div>
-    <div class="footer-page">9 / 10</div>
+
+  <div class="page-footer">
+    <span class="footer-text">Extensivo ENARE 2026 · Bloco B9 Nutrição</span>
+    <span class="page-num">9 / 10</span>
   </div>
 </div>
 
-<!-- PAGE 10 — SÍNTESE FINAL -->
+<!-- ════════════════════════════════════════════
+     PÁGINA 10 — SÍNTESE FINAL
+════════════════════════════════════════════ -->
 <div class="page">
-  <div class="content-header">
-    <div class="logo-wrap">
-      <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="32" height="32" rx="6" fill="#C6D834"/>
-        <path d="M16 4L28 10V22L16 28L4 22V10L16 4Z" fill="#1F5C23"/>
-        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="25" viewBox="0 0 44 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="22,2 41,13 41,37 22,48 3,37 3,13" fill="#1F5C23" stroke="#C6D834" stroke-width="2.5"/>
+        <circle cx="22" cy="25" r="9" fill="#F6F4ED"/>
       </svg>
-      <div>
-        <div class="logo-text">Extensivo ENARE</div>
-        <div class="logo-tagline">2026 · Nutrição</div>
-      </div>
+      <span class="brand-name-sm">Extensivo ENARE</span>
     </div>
-    <div class="header-right">
-      <div class="page-label">NUT-SAN · Aula 35</div>
-      <div class="page-title-hd">Síntese Final</div>
-    </div>
+    <span class="page-meta">NUT-FUNC · Aula 35 · Bloco B9</span>
   </div>
-  <div class="content-body">
-    <div class="section-title">Síntese Final — NUT-SAN</div>
+
+  <div class="page-content">
+    <div class="section-title">Síntese Final — NUT-FUNC</div>
 
     <div class="sintese-grid">
       <div class="sintese-card">
-        <div class="sintese-card-title">Marco Legal</div>
-        <div class="sintese-item">EC 64/2010: alimentação = direito social (Art. 6º CF)</div>
-        <div class="sintese-item">LOSAN 11.346/2006: institui SISAN, define SAN e DHAA</div>
-        <div class="sintese-item">Decreto 7.272/2010: regulamenta LOSAN, institui PNSAN</div>
-        <div class="sintese-item">4 dimensões SAN: disponibilidade, acesso, utilização, estabilidade</div>
+        <div class="s-title">Regulamentação ANVISA</div>
+        <ul>
+          <li>Res. 18 e 19/1999 — base legal</li>
+          <li>Alegação funcional = papel fisiológico (sem cura/doença)</li>
+          <li>Alegação de saúde = relação com condição de saúde (restrita)</li>
+          <li>Aviso obrigatório: associar a dieta equilibrada</li>
+          <li>Comprovação exigida em humanos</li>
+        </ul>
       </div>
       <div class="sintese-card">
-        <div class="sintese-card-title">Governança SISAN</div>
-        <div class="sintese-item">CONSEA: consultivo; 2/3 soc. civil + 1/3 governo</div>
-        <div class="sintese-item">CAISAN: executivo; só governamental; elabora PLANSAN</div>
-        <div class="sintese-item">CONSAN: conferência nacional a cada 4 anos</div>
+        <div class="s-title">Alegações com Dose</div>
+        <ul>
+          <li><strong>Beta-glucana:</strong> ≥ 3 g/dia → ↓ LDL</li>
+          <li><strong>Psyllium:</strong> ≥ 7 g/dia → ↓ LDL</li>
+          <li><strong>Fitosteróis:</strong> 1,5–3 g/dia → ↓ absorção colesterol</li>
+          <li><strong>Proteína de soja:</strong> ≥ 25 g/dia → ↓ colesterol</li>
+          <li><strong>Licopeno:</strong> antioxidante (≥ 3,5 mg/porção)</li>
+        </ul>
       </div>
       <div class="sintese-card">
-        <div class="sintese-card-title">EBIA e Insegurança Alimentar</div>
-        <div class="sintese-item">14 questões, últimos 3 meses</div>
-        <div class="sintese-item">IA Leve: preocupação / qualidade comprometida</div>
-        <div class="sintese-item">IA Moderada: restrição quantitativa em adultos</div>
-        <div class="sintese-item">IA Grave: restrição em crianças + fome concreta</div>
+        <div class="s-title">Probiótico vs Prebiótico</div>
+        <ul>
+          <li><strong>Probiótico:</strong> microrganismo vivo (Lactobacillus, Bifidobacterium)</li>
+          <li><strong>Prebiótico:</strong> substrato não digerível (inulina, FOS, GOS)</li>
+          <li><strong>Simbiótico:</strong> combinação sinérgica</li>
+          <li>Alegação: equilíbrio da flora intestinal</li>
+          <li>Efeito probiótico: cepa-específico</li>
+        </ul>
       </div>
       <div class="sintese-card">
-        <div class="sintese-card-title">Programas e Vigilância</div>
-        <div class="sintese-item">PNAE (Lei 11.947/2009): 30% AF; 15% NE parcial; refrigerante proibido</div>
-        <div class="sintese-item">Nutricionista RT PNAE: 1/500 alunos (Res. CFN 465)</div>
-        <div class="sintese-item">PAT (Lei 6.321/1976): trabalhador baixa renda; 4% IRPJ</div>
-        <div class="sintese-item">VIGITEL: telefônico, capitais + DF, DCNT</div>
-        <div class="sintese-item">SISVAN: AB, antropometria + marcadores de consumo</div>
-        <div class="sintese-item">POF: domiciliar, IBGE, nacional</div>
+        <div class="s-title">Fitoquímicos-Chave</div>
+        <ul>
+          <li><strong>Licopeno:</strong> sem pró-vit. A; cozimento ↑ biodisponibilidade</li>
+          <li><strong>Isoflavonas (soja):</strong> fitoestrogênico; ↓ LDL; menopausa</li>
+          <li><strong>Ômega-3 (EPA/DHA):</strong> peixe; ↓ TG; anti-inflamatório</li>
+          <li><strong>ALA (linhaça/chia):</strong> precursor; conversão &lt;10%</li>
+          <li><strong>Curcumina:</strong> sem alegação aprovada; piperina ↑ absorção</li>
+        </ul>
       </div>
     </div>
 
-    <div class="armadilha-box">
-      <div class="armadilha-title">Armadilhas ENARE — NUT-SAN</div>
-      <ul style="font-size:9.8px; padding-left:13px; color:#2a2a2a">
-        <li><strong>CONSEA:</strong> consultivo (não deliberativo) + 2/3 sociedade civil (não maioria governamental). CAISAN é que executa.</li>
-        <li><strong>PNAE:</strong> 30% agricultura familiar (não 50%); período parcial = 15% necessidades (não 30%); refrigerante proibido (não limitado).</li>
-        <li><strong>EBIA:</strong> IA grave ≠ IA moderada. Grave = crianças restringidas + fome. Moderada = restrição só em adultos.</li>
-        <li><strong>VIGITEL:</strong> só capitais + DF (não representa interior). Telefônico = dado autorreferido = limitação.</li>
-        <li><strong>DHAA na AB:</strong> IA grave exige articulação intersetorial (CRAS, Bolsa Família) — não apenas orientação técnica individual.</li>
+    <div class="anchor-box" style="margin-top:3mm;">
+      <p><strong>As 5 âncoras desta aula:</strong></p>
+      <ul>
+        <li><strong>1.</strong> Alegação funcional = papel fisiológico — nunca cura, nunca trata, nunca previne doença específica</li>
+        <li><strong>2.</strong> Licopeno = carotenoide sem pró-vit. A; processamento térmico + gordura ↑ biodisponibilidade</li>
+        <li><strong>3.</strong> Beta-glucana ≥ 3 g/dia e fitosteróis 1,5–3 g/dia = alegações aprovadas para ↓ LDL</li>
+        <li><strong>4.</strong> Probiótico = microrganismo vivo ≠ prebiótico = substrato não digerível (inulina, FOS)</li>
+        <li><strong>5.</strong> ALA (linhaça, chia) NÃO substitui EPA/DHA de peixe — conversão &lt;10% em adultos</li>
       </ul>
     </div>
 
-    <div class="highlight" style="margin-top:8px">
-      <strong>Gabarito:</strong> Q01 → <strong>B</strong> (DHAA: encaminhar ao CRAS + rede intersetorial) &nbsp;|&nbsp; Q02 → <strong>C</strong> (PNAE: 30% agricultura familiar, obrigatório) &nbsp;|&nbsp; Q03 → <strong>C</strong> (II e III: EBIA grave + VIGITEL capitais/DF)
+    <div class="sintese-grid" style="margin-top:3mm;">
+      <div class="sintese-card">
+        <div class="s-title">Fitosteróis — Atenção</div>
+        <ul>
+          <li>Reduzem absorção de carotenoides lipossolúveis</li>
+          <li>Orientar consumo adequado de frutas/vegetais coloridos</li>
+          <li>Complementam — não substituem — estatinas</li>
+        </ul>
+      </div>
+      <div class="sintese-card">
+        <div class="s-title">Próxima Aula — 36</div>
+        <ul>
+          <li><strong>NUT-DIETÉTICA:</strong> Técnica Dietética Avançada</li>
+          <li>FC e FK avançados, métodos de cocção e perdas</li>
+          <li>Planejamento de cardápios e per capita</li>
+          <li>Equivalências e substituições alimentares</li>
+        </ul>
+      </div>
     </div>
   </div>
-  <div class="content-footer">
-    <div class="footer-label">Extensivo ENARE 2026 · Bloco B9 — Nutrição · NUT-SAN</div>
-    <div class="footer-page">10 / 10</div>
+
+  <div class="page-footer">
+    <span class="footer-text">Extensivo ENARE 2026 · Bloco B9 Nutrição</span>
+    <span class="page-num">10 / 10</span>
   </div>
 </div>
 
