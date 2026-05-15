@@ -3,838 +3,746 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>B9 · Nutrição · Aula 31 — NUT-ONCO: Nutrição em Oncologia — Caquexia, ASG-GP e Cuidados Paliativos</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Bricolage+Grotesque:wght@300;400;500;600;700&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap" rel="stylesheet">
+<title>B9 · Nutrição · Aula 31 — NUT-FUND: Metabolismo Energético — Gasto Energético, Equações e DRIs</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap" rel="stylesheet">
 <style>
-  @page { size: A4; margin: 0; }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { -webkit-print-color-adjust: exact; print-color-adjust: exact; font-family: 'Bricolage Grotesque', sans-serif; background: #888; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #ccc; font-family: 'Bricolage Grotesque', sans-serif; }
 
-  .page { width: 210mm; height: 297mm; display: flex; flex-direction: column; overflow: hidden; page-break-after: always; background: #F6F4ED; }
+  .page {
+    width: 210mm; min-height: 297mm; height: 297mm;
+    background: #F6F4ED;
+    margin: 8mm auto;
+    padding: 10mm 11mm 8mm 11mm;
+    display: flex; flex-direction: column;
+    position: relative; overflow: hidden;
+    page-break-after: always;
+  }
 
-  .ph { height: 14mm; flex-shrink: 0; display: flex; align-items: center; justify-content: space-between; padding: 0 16mm; border-bottom: 0.4mm solid #E0DDD6; }
-  .ph-logo { display: flex; align-items: center; gap: 2.5mm; }
-  .ph-logo-text { display: flex; flex-direction: column; line-height: 1.1; }
-  .ph-logo-text span:first-child { font-family: 'Playfair Display', serif; font-style: italic; font-size: 8pt; color: #1F5C23; }
-  .ph-logo-text span:last-child { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 6pt; color: #888; letter-spacing: 0.03em; }
-  .ph-center { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 7.5pt; letter-spacing: 0.12em; color: #555; text-transform: uppercase; }
-  .ph-right { font-size: 7pt; color: #888; font-weight: 400; }
+  .page-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding-bottom: 2.5mm; border-bottom: 0.4mm solid #1F5C23;
+    margin-bottom: 4mm; flex-shrink: 0;
+  }
+  .header-logo-group { display: flex; align-items: center; gap: 2.5mm; }
+  .header-logo-svg { width: 7mm; height: 7mm; flex-shrink: 0; }
+  .header-brand { display: flex; flex-direction: column; line-height: 1; }
+  .header-brand-main { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 8pt; color: #1F5C23; letter-spacing: 0.04em; text-transform: uppercase; }
+  .header-brand-sub { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 5pt; color: #888; letter-spacing: 0.06em; }
+  .header-center { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 500; font-size: 6.5pt; color: #555; letter-spacing: 0.04em; text-transform: uppercase; }
+  .header-page { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 8pt; color: #1F5C23; letter-spacing: 0.06em; }
 
-  .pf { height: 9mm; flex-shrink: 0; display: flex; align-items: center; justify-content: space-between; padding: 0 16mm; border-top: 0.4mm solid #E0DDD6; }
-  .pf span { font-size: 6.5pt; color: #AAA; }
-
-  .pc { flex: 1; padding: 7mm 16mm 5mm; overflow: hidden; }
-  .pc-sm { flex: 1; padding: 5mm 16mm 4mm; overflow: hidden; }
-
-  .cover-band { background: #1F5C23; margin: 0 -16mm; padding: 9mm 16mm 8mm; }
-  .cover-eyebrow { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 7.5pt; letter-spacing: 0.14em; color: #C6D834; text-transform: uppercase; margin-bottom: 3mm; }
+  .cover-page { background: #1F5C23 !important; padding: 0 !important; }
+  .cover-page .cover-inner { width: 100%; height: 100%; padding: 10mm 11mm 8mm 11mm; display: flex; flex-direction: column; }
+  .cover-header { display: flex; align-items: center; justify-content: space-between; padding-bottom: 2.5mm; border-bottom: 0.4mm solid rgba(198,216,52,0.5); margin-bottom: auto; flex-shrink: 0; }
+  .cover-header-brand-main { color: #F6F4ED !important; }
+  .cover-header-brand-sub { color: rgba(246,244,237,0.6) !important; }
+  .cover-header-center { color: rgba(246,244,237,0.7) !important; }
+  .cover-header-page { color: #C6D834 !important; }
+  .cover-body { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 4mm 0; }
+  .cover-module-tag { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 7.5pt; letter-spacing: 0.18em; color: #C6D834; text-transform: uppercase; margin-bottom: 3mm; }
   .cover-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 24pt; line-height: 1.0; color: #F6F4ED; text-transform: uppercase; margin-bottom: 2mm; }
-  .cover-sub { font-size: 8pt; color: #A8C9A8; font-weight: 400; }
-
-  .cover-highlights { display: flex; gap: 4mm; margin-top: 7mm; }
-  .cover-hl { flex: 1; background: #fff; border: 0.3mm solid #E0DDD6; border-radius: 2mm; padding: 4mm 5mm; }
-  .cover-hl-val { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 14pt; color: #1F5C23; line-height: 1.0; }
-  .cover-hl-label { font-size: 7pt; color: #555; margin-top: 1mm; line-height: 1.3; }
-
-  .cover-anchors { background: #1F5C23; margin: 0 -16mm; padding: 4mm 16mm; margin-top: 5mm; }
+  .cover-subtitle { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; font-size: 9pt; color: rgba(246,244,237,0.75); margin-bottom: 6mm; line-height: 1.4; }
+  .cover-divider { width: 18mm; height: 0.4mm; background: #C6D834; margin-bottom: 6mm; }
   .cover-anchors-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 7pt; letter-spacing: 0.1em; color: #C6D834; text-transform: uppercase; margin-bottom: 2.5mm; }
-  .cover-anchor-row { display: flex; flex-wrap: wrap; gap: 2mm 6mm; }
-  .cover-anchor-item { font-size: 7pt; color: #F6F4ED; }
-  .cover-anchor-item strong { color: #C6D834; }
+  .cover-anchors { display: flex; flex-direction: column; gap: 1.5mm; }
+  .cover-anchor-item { display: flex; align-items: flex-start; gap: 2mm; }
+  .anchor-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 7pt; color: #C6D834; min-width: 4mm; }
+  .anchor-text { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 400; font-size: 7.5pt; color: rgba(246,244,237,0.85); line-height: 1.3; }
+  .cover-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 3mm; border-top: 0.4mm solid rgba(198,216,52,0.3); flex-shrink: 0; }
+  .cover-footer-brand { font-family: 'Playfair Display', serif; font-style: italic; font-size: 8pt; color: rgba(246,244,237,0.6); }
+  .cover-footer-label { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 6pt; color: rgba(246,244,237,0.5); letter-spacing: 0.08em; text-transform: uppercase; }
 
-  .cover-tags { display: flex; gap: 2.5mm; margin-top: 5mm; align-items: center; }
-  .tag { display: inline-block; padding: 1.5mm 3.5mm; border-radius: 1mm; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 7.5pt; letter-spacing: 0.08em; text-transform: uppercase; }
-  .tag-primary { background: #1F5C23; color: #F6F4ED; }
-  .tag-level { background: #C6D834; color: #1F5C23; }
-  .tag-freq { background: #F6F4ED; color: #1F5C23; border: 0.3mm solid #1F5C23; }
-  .tag-sep { font-size: 7pt; color: #AAA; }
-
+  .page-body { flex: 1; display: flex; flex-direction: column; gap: 3mm; overflow: hidden; }
   .sec-title-sm { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 11.5pt; color: #1F5C23; letter-spacing: 0.04em; text-transform: uppercase; padding-bottom: 1.5mm; border-bottom: 0.5mm solid #1F5C23; margin-bottom: 3mm; }
 
-  table { width: 100%; border-collapse: collapse; font-size: 7.5pt; }
-  th { background: #1F5C23; color: #F6F4ED; font-weight: 600; padding: 2.5mm 3mm; text-align: left; font-size: 7pt; letter-spacing: 0.04em; }
-  td { padding: 2mm 3mm; border-bottom: 0.3mm solid #E0DDD6; vertical-align: top; line-height: 1.35; }
-  tr:last-child td { border-bottom: none; }
-  tr:nth-child(even) td { background: rgba(31,92,35,0.04); }
-  .td-bold { font-weight: 600; color: #1F5C23; }
-  .td-green { color: #1F5C23; font-weight: 600; }
-  .td-warn { color: #B85C00; font-weight: 600; }
-  .td-alert { color: #C04040; font-weight: 600; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2.5mm; }
 
-  .card-grid { display: grid; gap: 3.5mm; }
-  .card-grid-2 { grid-template-columns: 1fr 1fr; }
-  .card-grid-3 { grid-template-columns: 1fr 1fr 1fr; }
-
-  .card { background: #fff; border: 0.3mm solid #E0DDD6; border-radius: 2mm; padding: 4mm 4.5mm; }
-  .card-green { background: rgba(31,92,35,0.07); border-color: #1F5C23; }
-  .card-warn { background: #FFF8F0; border: 0.3mm solid #E8A050; }
-  .card-alert { background: #FFF0F0; border: 0.3mm solid #D06060; }
+  .card { background: white; border-radius: 2mm; padding: 3mm 3.5mm; border-left: 1mm solid #1F5C23; }
+  .card-warn { border-left-color: #B85C00; }
+  .card-alert { border-left-color: #C04040; }
+  .card-accent { border-left-color: #C6D834; }
   .card-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 8.5pt; color: #1F5C23; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 2mm; }
   .card-title-warn { color: #B85C00; }
-  .card-title-alert { color: #C04040; }
-  .card-body { font-size: 7.5pt; line-height: 1.45; color: #333; }
 
-  .hl { color: #1F5C23; font-weight: 600; }
-  .hl-warn { color: #B85C00; font-weight: 600; }
-  .hl-alert { color: #C04040; font-weight: 600; }
+  .body-text { font-size: 7.5pt; line-height: 1.45; color: #333; }
+  .body-text b { color: #1F5C23; }
+  .body-text .warn { color: #B85C00; font-weight: 600; }
 
-  ul.blist { list-style: none; padding: 0; }
-  ul.blist li { padding: 1mm 0 1mm 4mm; font-size: 7.5pt; line-height: 1.4; color: #333; position: relative; }
-  ul.blist li::before { content: '·'; position: absolute; left: 0; color: #1F5C23; font-weight: 700; }
+  ul.dot-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 1mm; }
+  ul.dot-list li { font-size: 7.5pt; line-height: 1.4; color: #333; padding-left: 3mm; position: relative; }
+  ul.dot-list li::before { content: "•"; position: absolute; left: 0; color: #1F5C23; font-weight: 700; }
+  ul.dot-list li b { color: #1F5C23; }
+  ul.dot-list li .warn { color: #B85C00; font-weight: 600; }
 
-  .q-header { display: flex; align-items: center; gap: 3mm; margin-bottom: 5mm; }
-  .q-num { width: 14mm; height: 14mm; background: #1F5C23; border-radius: 1.5mm; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-  .q-num span { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 18pt; color: #F6F4ED; }
-  .q-meta { display: flex; flex-direction: column; gap: 1mm; }
-  .q-meta-top { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 8.5pt; color: #1F5C23; letter-spacing: 0.08em; text-transform: uppercase; }
-  .q-meta-sub { font-size: 7pt; color: #888; }
-  .q-level-badge { margin-left: auto; width: 9mm; height: 9mm; border-radius: 50%; background: #C6D834; display: flex; align-items: center; justify-content: center; font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; color: #1F5C23; }
-  .q-level-badge-an { background: #1F5C23; color: #F6F4ED; }
+  .table-sm { width: 100%; border-collapse: collapse; font-size: 7pt; }
+  .table-sm th { background: #1F5C23; color: #F6F4ED; padding: 1.5mm 2mm; text-align: left; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; letter-spacing: 0.05em; font-size: 7pt; }
+  .table-sm td { padding: 1.5mm 2mm; border-bottom: 0.2mm solid #E0DDD6; color: #333; vertical-align: top; line-height: 1.35; }
+  .table-sm tr:last-child td { border-bottom: none; }
+  .table-sm tr:nth-child(even) td { background: rgba(31,92,35,0.04); }
 
-  .q-stem { background: #fff; border: 0.3mm solid #E0DDD6; border-radius: 2mm; padding: 4mm 5mm; font-size: 8pt; line-height: 1.5; color: #222; margin-bottom: 4mm; }
-  .q-options { display: flex; flex-direction: column; gap: 2mm; margin-bottom: 4mm; }
-  .q-opt { display: flex; gap: 3mm; padding: 2.5mm 4mm; border-radius: 1.5mm; font-size: 7.5pt; line-height: 1.4; color: #333; border: 0.3mm solid #E0DDD6; background: #fff; }
-  .q-opt-letter { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; color: #1F5C23; flex-shrink: 0; width: 3mm; }
-  .q-opt.correct { background: rgba(31,92,35,0.10); border-color: #1F5C23; }
-  .q-opt.correct .q-opt-letter { color: #1F5C23; }
-  .q-rationale { background: #F6F4ED; border-left: 1mm solid #1F5C23; padding: 3mm 4mm; font-size: 7pt; line-height: 1.5; color: #444; }
-  .q-rationale strong { color: #1F5C23; }
+  .tag { display: inline-block; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 6.5pt; padding: 0.5mm 2mm; border-radius: 1mm; letter-spacing: 0.06em; text-transform: uppercase; }
+  .tag-green { background: #1F5C23; color: #F6F4ED; }
+  .tag-yellow { background: #C6D834; color: #1F5C23; }
 
-  .q-aff { display: flex; flex-direction: column; gap: 2mm; margin-bottom: 4mm; }
-  .q-aff-item { display: flex; gap: 3mm; padding: 2.5mm 4mm; border-radius: 1.5mm; font-size: 7.5pt; line-height: 1.4; color: #333; border: 0.3mm solid #E0DDD6; background: #fff; }
-  .q-aff-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; color: #555; flex-shrink: 0; width: 3.5mm; }
-  .q-aff-item.correta { background: rgba(31,92,35,0.08); border-color: #1F5C23; }
-  .q-aff-item.errada { background: rgba(200,60,60,0.06); border-color: #D06060; }
-  .q-aff-item.correta .q-aff-num { color: #1F5C23; }
-  .q-aff-item.errada .q-aff-num { color: #C04040; }
+  .q-header { margin-bottom: 4mm; }
+  .q-label { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; color: #1F5C23; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1mm; }
+  .q-meta { font-size: 6.5pt; color: #888; font-family: 'Bricolage Grotesque', sans-serif; margin-bottom: 3mm; }
+  .q-stem { font-size: 8pt; line-height: 1.5; color: #222; margin-bottom: 4mm; font-weight: 500; }
 
-  .gab-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 4mm; margin-bottom: 5mm; }
-  .gab-card { background: #1F5C23; border-radius: 2mm; padding: 5mm; text-align: center; }
-  .gab-label { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 8pt; letter-spacing: 0.1em; color: #C6D834; text-transform: uppercase; margin-bottom: 2mm; }
-  .gab-letter { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 42pt; color: #F6F4ED; line-height: 1.0; }
-  .gab-desc { font-size: 7pt; color: #A8C9A8; margin-top: 1.5mm; line-height: 1.3; }
+  .alternatives { display: flex; flex-direction: column; gap: 2mm; margin-bottom: 5mm; }
+  .alt { display: flex; gap: 2.5mm; align-items: flex-start; padding: 2mm 3mm; border-radius: 1.5mm; background: white; }
+  .alt-letter { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; color: #1F5C23; min-width: 4mm; line-height: 1.3; }
+  .alt-text { font-size: 7.5pt; line-height: 1.4; color: #333; }
+  .alt.correct { background: #E8F5E9; border: 0.3mm solid #1F5C23; }
+  .alt.wrong { opacity: 0.7; }
 
-  .distrator-table table { font-size: 7.5pt; }
-  .distrator-table th { font-size: 7pt; }
+  .assertions { display: flex; flex-direction: column; gap: 2mm; margin-bottom: 4mm; }
+  .assertion { display: flex; gap: 2.5mm; align-items: flex-start; padding: 2mm 3mm; border-radius: 1.5mm; background: white; }
+  .assert-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; min-width: 4mm; line-height: 1.3; }
+  .assert-num.correct { color: #1F5C23; }
+  .assert-num.wrong { color: #C04040; }
+  .assert-text { font-size: 7.5pt; line-height: 1.4; color: #333; }
 
-  .sintese-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5mm; }
-  .sintese-card { background: #fff; border: 0.3mm solid #E0DDD6; border-radius: 2mm; padding: 3.5mm 4mm; }
+  .q-answer-box { background: #1F5C23; border-radius: 2mm; padding: 3mm 4mm; display: flex; align-items: center; gap: 3mm; }
+  .q-answer-letter { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 20pt; color: #C6D834; line-height: 1; }
+  .q-answer-text { font-size: 7.5pt; color: #F6F4ED; line-height: 1.4; }
+  .q-answer-text b { color: #C6D834; }
+
+  .gab-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3mm; margin-bottom: 4mm; }
+  .gab-card { background: white; border-radius: 2mm; padding: 3mm; border-top: 1.5mm solid #1F5C23; }
+  .gab-card-q { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 8pt; color: #888; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1mm; }
+  .gab-card-letter { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 22pt; color: #1F5C23; line-height: 1; margin-bottom: 1.5mm; }
+  .gab-card-just { font-size: 6.5pt; line-height: 1.4; color: #555; }
+  .gab-card-just b { color: #1F5C23; }
+
+  .sintese-header { text-align: center; margin-bottom: 4mm; }
+  .sintese-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 14pt; color: #1F5C23; text-transform: uppercase; letter-spacing: 0.06em; }
+  .sintese-sub { font-size: 7pt; color: #888; font-family: 'Space Grotesk', sans-serif; font-weight: 300; }
+  .sintese-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; }
+  .sintese-card { background: white; border-radius: 2mm; padding: 3mm 3.5mm; }
   .sintese-card-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 8pt; color: #1F5C23; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 2mm; padding-bottom: 1.5mm; border-bottom: 0.3mm solid #E0DDD6; }
-
-  .mapa-box { background: rgba(31,92,35,0.08); border: 0.4mm solid #1F5C23; border-radius: 2mm; padding: 3.5mm 4.5mm; margin-bottom: 4mm; }
-  .mapa-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 7.5pt; color: #1F5C23; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 2mm; }
-  .mapa-body { font-size: 7.5pt; line-height: 1.5; color: #333; }
-
-  .refs { margin-top: 3mm; }
   .refs-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 7.5pt; color: #888; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 2mm; }
-  .refs ul { list-style: none; padding: 0; }
-  .refs li { font-size: 6.5pt; color: #888; padding: 0.8mm 0 0.8mm 3.5mm; position: relative; line-height: 1.3; }
-  .refs li::before { content: '·'; position: absolute; left: 0; color: #1F5C23; }
 
-  .logo-svg { width: 8mm; height: 8mm; }
+  @media print { body { background: none; } .page { margin: 0; box-shadow: none; } }
 </style>
 </head>
 <body>
 
-<!-- ============================================================ -->
-<!-- PAGE 1 — CAPA -->
-<!-- ============================================================ -->
-<div class="page">
-  <div class="ph">
-    <div class="ph-logo">
-      <svg class="logo-svg" viewBox="0 0 32 32" fill="none">
-        <rect width="32" height="32" rx="6" fill="#1F5C23"/>
-        <path d="M16 6 L26 12 L26 20 L16 26 L6 20 L6 12 Z" fill="none" stroke="#C6D834" stroke-width="2"/>
-        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
+<!-- ═══════════════════════════════════════════════════════ P1 · CAPA -->
+<div class="page cover-page">
+<div class="cover-inner">
+  <div class="cover-header">
+    <div class="header-logo-group">
+      <svg class="header-logo-svg" viewBox="0 0 28 28" fill="none">
+        <polygon points="14,1 26,7.5 26,20.5 14,27 2,20.5 2,7.5" fill="#F6F4ED" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="14" cy="14" r="5.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1"/>
       </svg>
-      <div class="ph-logo-text"><span>Extensivo ENARE</span><span>2026</span></div>
+      <div class="header-brand">
+        <span class="header-brand-main cover-header-brand-main">extensivo ENARE</span>
+        <span class="header-brand-sub cover-header-brand-sub">by Residência PRO</span>
+      </div>
     </div>
-    <div class="ph-center">Bloco B9 · Nutrição</div>
-    <div class="ph-right">PDF de Apoio · Aula 31</div>
+    <span class="header-center cover-header-center">Nutrição · Bloco B9 · Aula 31</span>
+    <span class="header-page cover-header-page">P1</span>
   </div>
-
-  <div class="pc">
-    <div class="cover-band">
-      <div class="cover-eyebrow">NUT-ONCO · Nutrição em Oncologia e Cuidados Paliativos</div>
-      <div class="cover-title">CAQUEXIA,<br>ASG-GP E<br>CUIDADOS<br>PALIATIVOS</div>
-      <div class="cover-sub">Aula 31 de ~35 · Bloco B9 · Módulo NUT-ONCO</div>
-    </div>
-
-    <div class="cover-highlights">
-      <div class="cover-hl">
-        <div class="cover-hl-val">≥ 9</div>
-        <div class="cover-hl-label">escore ASG-GP indicando<br>intervenção nutricional<br>crítica e urgente</div>
-      </div>
-      <div class="cover-hl">
-        <div class="cover-hl-val">IL-6 · TNF-α</div>
-        <div class="cover-hl-label">citocinas mediadoras da<br>caquexia do câncer →<br>catabolismo + anorexia</div>
-      </div>
-      <div class="cover-hl">
-        <div class="cover-hl-val">ERAS</div>
-        <div class="cover-hl-label">2h líquidos · 6h sólidos<br>pré-op (vs. 8–12h conv.)<br>protocolo perioperatório</div>
-      </div>
-    </div>
-
+  <div class="cover-body">
+    <div class="cover-module-tag">NUT-FUND · Fundamentos da Nutrição</div>
+    <div class="cover-title">Metabolismo<br>Energético</div>
+    <div class="cover-subtitle">GET · GEB · GER · Harris-Benedict · Mifflin-St Jeor · Calorimetria · DRIs · AMDR</div>
+    <div class="cover-divider"></div>
+    <div class="cover-anchors-title">Âncoras desta aula</div>
     <div class="cover-anchors">
-      <div class="cover-anchors-title">Questões-âncora da Banca FGV</div>
-      <div class="cover-anchor-row">
-        <div class="cover-anchor-item"><strong>2025 Q103</strong> · ASG-GP — escore ≥ 9 e conduta em oncológico cirúrgico (Ap)</div>
-        <div class="cover-anchor-item"><strong>2025 Q104</strong> · Caquexia do câncer — mecanismo, fases e irreversibilidade por suporte calórico (Ap)</div>
-        <div class="cover-anchor-item"><strong>2024 Q82</strong> · Imunonutrição perioperatória, caquexia e cuidados paliativos (An)</div>
-      </div>
-    </div>
-
-    <div class="cover-tags">
-      <span class="tag tag-primary">NUT-ONCO</span>
-      <span class="tag tag-level">C · AP · AN</span>
-      <span class="tag tag-freq">Alta Frequência FGV</span>
-      <span class="tag-sep">C = Compreensão · Ap = Aplicação · An = Análise</span>
+      <div class="cover-anchor-item"><span class="anchor-num">01</span><span class="anchor-text">Componentes do GET: GEB (~60-70%), ETA (~10%) e atividade física (~20-30%)</span></div>
+      <div class="cover-anchor-item"><span class="anchor-num">02</span><span class="anchor-text">Equações de estimativa: Harris-Benedict, Mifflin-St Jeor e fatores de atividade</span></div>
+      <div class="cover-anchor-item"><span class="anchor-num">03</span><span class="anchor-text">Calorimetria indireta: padrão-ouro; QR e substratos oxidados</span></div>
+      <div class="cover-anchor-item"><span class="anchor-num">04</span><span class="anchor-text">DRIs: EAR, RDA, AI, UL e AMDR — definições e aplicações clínicas</span></div>
+      <div class="cover-anchor-item"><span class="anchor-num">05</span><span class="anchor-text">Distribuição de macronutrientes e valor calórico: CHO 4 kcal, PTN 4 kcal, Lip 9 kcal</span></div>
     </div>
   </div>
-
-  <div class="pf">
-    <span>Extensivo ENARE 2026</span>
-    <span>Bloco B9 · Nutrição · Aula 31</span>
-    <span>1 / 10</span>
+  <div class="cover-footer">
+    <span class="cover-footer-brand">extensivo</span>
+    <span class="cover-footer-label">Material de apoio · Não substitui fontes primárias</span>
   </div>
 </div>
+</div>
 
-<!-- ============================================================ -->
-<!-- PAGE 2 — DESNUTRIÇÃO E CAQUEXIA DO CÂNCER -->
-<!-- ============================================================ -->
+<!-- ═══════════════════════════════════════════════════════ P2 · COMPONENTES DO GET -->
 <div class="page">
-  <div class="ph">
-    <div class="ph-logo">
-      <svg class="logo-svg" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#1F5C23"/><path d="M16 6 L26 12 L26 20 L16 26 L6 20 L6 12 Z" fill="none" stroke="#C6D834" stroke-width="2"/><circle cx="16" cy="16" r="4" fill="#C6D834"/></svg>
-      <div class="ph-logo-text"><span>Extensivo ENARE</span><span>2026</span></div>
+  <div class="page-header">
+    <div class="header-logo-group">
+      <svg class="header-logo-svg" viewBox="0 0 28 28" fill="none">
+        <polygon points="14,1 26,7.5 26,20.5 14,27 2,20.5 2,7.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="14" cy="14" r="5.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1"/>
+      </svg>
+      <div class="header-brand">
+        <span class="header-brand-main">extensivo ENARE</span>
+        <span class="header-brand-sub">by Residência PRO</span>
+      </div>
     </div>
-    <div class="ph-center">Desnutrição em Oncologia · Caquexia do Câncer — Mecanismo e Fases</div>
-    <div class="ph-right">NUT-ONCO · Aula 31</div>
+    <span class="header-center">Nutrição · Bloco B9 · Aula 31</span>
+    <span class="header-page">P2</span>
   </div>
-
-  <div class="pc-sm">
-    <div class="sec-title-sm" style="margin-bottom:2.5mm;">Impacto Nutricional no Câncer</div>
-    <div class="mapa-box" style="margin-bottom:3mm;">
-      <div class="mapa-title">Epidemiologia — Desnutrição como Causa de Morte</div>
-      <div class="mapa-body">40–80% dos pacientes oncológicos apresentam algum grau de desnutrição. Estimativas indicam que <strong>20–40% das mortes por câncer</strong> são causadas diretamente pelas consequências da desnutrição e caquexia — não pela progressão tumoral em si. A desnutrição aumenta toxicidade ao tratamento, reduz resposta à quimio/radioterapia, prolonga internação e piora sobrevida.</div>
-    </div>
-
-    <div class="sec-title-sm" style="margin-bottom:2.5mm;">Caquexia do Câncer — Definição, Mecanismo e Fases (Fearon et al., 2011)</div>
-    <div class="card-grid card-grid-2" style="margin-bottom:3mm;">
-      <div class="card card-alert">
-        <div class="card-title card-title-alert">Definição e Critérios Diagnósticos</div>
-        <div class="card-body">
-          <ul class="blist">
-            <li>Síndrome multifatorial com <span class="hl-alert">perda contínua de massa muscular</span> (com ou sem perda de gordura) que <span class="hl-alert">não pode ser completamente revertida</span> por suporte nutricional convencional</li>
-            <li>Diagnóstico: <strong>perda de peso &gt; 5% em 6 meses</strong> OU IMC &lt; 20 + perda &gt; 2% OU sarcopenia + perda &gt; 2%</li>
-            <li>Mediada por inflamação sistêmica: <span class="hl-alert">IL-1, IL-6, TNF-α, IFN-γ</span> → anorexia + catabolismo proteico + lipólise acelerada + resistência à insulina</li>
-            <li>Distinguir de <span class="hl">inanição simples</span> (responde ao suporte calórico) e <span class="hl">sarcopenia</span> (sem inflamação sistêmica predominante)</li>
-          </ul>
-        </div>
+  <div class="page-body">
+    <div class="sec-title-sm">Componentes do Gasto Energético Total (GET)</div>
+    <div class="three-col">
+      <div class="card">
+        <div class="card-title">GEB / GER (~60–70%)</div>
+        <ul class="dot-list">
+          <li><b>GEB</b> (Gasto Energético Basal): medido após 12h de jejum, em repouso absoluto, ambiente termicamente neutro, ao acordar</li>
+          <li><b>GER</b> (Gasto Energético de Repouso): medido em repouso sem necessidade de condições tão rigorosas; ~10% maior que o GEB</li>
+          <li>Maior componente do GET em indivíduos sedentários</li>
+          <li>Determinantes: massa magra (principal), sexo, idade, estado hormonal (T3/T4)</li>
+        </ul>
       </div>
       <div class="card">
-        <div class="card-title">Fases da Caquexia do Câncer</div>
-        <div class="card-body">
-          <table>
-            <thead><tr><th>Fase</th><th>Características</th><th>Abordagem</th></tr></thead>
-            <tbody>
-              <tr>
-                <td class="td-bold td-green">Pré-caquexia</td>
-                <td>Perda de peso &lt; 5%; alterações metabólicas iniciais; anorexia leve; marcadores inflamatórios elevados</td>
-                <td>Intervenção nutricional precoce + exercício físico</td>
-              </tr>
-              <tr>
-                <td class="td-bold td-warn">Caquexia</td>
-                <td>Perda de peso ≥ 5% (ou critérios acima); sarcopenia; inflamação sistêmica evidente; impacto na funcionalidade</td>
-                <td>Suporte multimodal: nutrição + exercício + farmacoterapia</td>
-              </tr>
-              <tr>
-                <td class="td-bold td-alert">Refratária</td>
-                <td>Sem resposta ao tratamento oncológico; catabolismo ativo; performance status baixo (ECOG 3–4); expectativa de vida &lt; 3 meses</td>
-                <td>Conforto e qualidade de vida; metas nutricionais flexíveis</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        <div class="card-title">ETA — Efeito Térmico (~10%)</div>
+        <ul class="dot-list">
+          <li>Também chamado: termogênese dietética, termogênese induzida pela dieta, ação dinâmica específica</li>
+          <li>Energia gasta para <b>digestão, absorção e metabolismo</b> dos nutrientes</li>
+          <li>Proteínas: maior ETA (~20–30%)</li>
+          <li>Carboidratos: ETA ~5–10%</li>
+          <li>Lipídios: menor ETA (~2–5%)</li>
+          <li>Menor componente do GET</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title">Atividade Física (~20–30%)</div>
+        <ul class="dot-list">
+          <li>Componente mais variável do GET</li>
+          <li>Inclui: exercício programado + atividade física espontânea (NEAT)</li>
+          <li><b>NEAT</b> (Non-Exercise Activity Thermogenesis): movimentos cotidianos não programados — pode representar até 50% da AF total</li>
+          <li>Fator de atividade multiplica o GER para calcular o GET</li>
+        </ul>
       </div>
     </div>
-
-    <div class="card card-warn">
-      <div class="card-title card-title-warn">Armadilha: Caquexia × Inanição — Diferença Fundamental</div>
-      <div class="card-body">Na <strong>inanição simples</strong> (jejum, restrição alimentar), o organismo preserva a massa muscular às custas da gordura → responde ao suporte calórico. Na <strong>caquexia do câncer</strong>, as citocinas pró-inflamatórias promovem catabolismo muscular preferencial mesmo com aporte calórico adequado — por isso a simples hipercaloria NÃO reverte a caquexia. A questão frequentemente apresenta como distrator a alternativa de que "suporte hipercalórico reverte a caquexia".</div>
+    <div class="sec-title-sm" style="margin-top:1mm;">Fatores de Atividade Física (FA) e Cálculo do GET</div>
+    <div class="two-col">
+      <div class="card">
+        <div class="card-title">Fatores de Atividade (Harris-Benedict / FAO)</div>
+        <table class="table-sm">
+          <tr><th>Nível de Atividade</th><th>FA</th><th>Descrição</th></tr>
+          <tr><td>Sedentário</td><td><b>1,2</b></td><td>Sem exercício ou trabalho sentado</td></tr>
+          <tr><td>Levemente ativo</td><td><b>1,375</b></td><td>Exercício leve 1–3x/semana</td></tr>
+          <tr><td>Moderadamente ativo</td><td><b>1,55</b></td><td>Exercício moderado 3–5x/semana</td></tr>
+          <tr><td>Muito ativo</td><td><b>1,725</b></td><td>Exercício intenso 6–7x/semana</td></tr>
+          <tr><td>Extremamente ativo</td><td><b>1,9</b></td><td>Trabalho físico pesado + treino</td></tr>
+        </table>
+      </div>
+      <div class="card">
+        <div class="card-title">Fatores de Injúria — Pacientes Hospitalizados</div>
+        <table class="table-sm">
+          <tr><th>Condição Clínica</th><th>Fator</th></tr>
+          <tr><td>Cirurgia eletiva</td><td>1,0 – 1,2</td></tr>
+          <tr><td>Trauma moderado</td><td>1,2 – 1,4</td></tr>
+          <tr><td>Sepse / infecção grave</td><td>1,2 – 1,6</td></tr>
+          <tr><td>Queimaduras extensas (&gt;40%)</td><td>1,5 – 2,0</td></tr>
+          <tr><td>TCE grave</td><td>1,3 – 1,6</td></tr>
+          <tr><td>Paciente ventilado (UTI)</td><td>Calorimetria indireta ideal</td></tr>
+        </table>
+        <p class="body-text" style="margin-top:2mm;"><b>GET = GER × FA</b> (ou × Fator de Injúria em pacientes críticos)</p>
+      </div>
     </div>
-  </div>
-
-  <div class="pf">
-    <span>Extensivo ENARE 2026</span>
-    <span>Bloco B9 · Nutrição · Aula 31</span>
-    <span>2 / 10</span>
   </div>
 </div>
 
-<!-- ============================================================ -->
-<!-- PAGE 3 — ASG-GP E TRIAGEM NUTRICIONAL EM ONCOLOGIA -->
-<!-- ============================================================ -->
+<!-- ═══════════════════════════════════════════════════════ P3 · EQUAÇÕES E CALORIMETRIA -->
 <div class="page">
-  <div class="ph">
-    <div class="ph-logo">
-      <svg class="logo-svg" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#1F5C23"/><path d="M16 6 L26 12 L26 20 L16 26 L6 20 L6 12 Z" fill="none" stroke="#C6D834" stroke-width="2"/><circle cx="16" cy="16" r="4" fill="#C6D834"/></svg>
-      <div class="ph-logo-text"><span>Extensivo ENARE</span><span>2026</span></div>
+  <div class="page-header">
+    <div class="header-logo-group">
+      <svg class="header-logo-svg" viewBox="0 0 28 28" fill="none">
+        <polygon points="14,1 26,7.5 26,20.5 14,27 2,20.5 2,7.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="14" cy="14" r="5.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1"/>
+      </svg>
+      <div class="header-brand">
+        <span class="header-brand-main">extensivo ENARE</span>
+        <span class="header-brand-sub">by Residência PRO</span>
+      </div>
     </div>
-    <div class="ph-center">ASG-GP (PG-SGA) · Triagem Nutricional em Oncologia · Escores</div>
-    <div class="ph-right">NUT-ONCO · Aula 31</div>
+    <span class="header-center">Nutrição · Bloco B9 · Aula 31</span>
+    <span class="header-page">P3</span>
   </div>
-
-  <div class="pc-sm">
-    <div class="sec-title-sm" style="margin-bottom:2.5mm;">ASG-GP (Patient-Generated SGA) — Ferramenta Padrão-Ouro em Oncologia</div>
-    <div class="card-grid card-grid-2" style="margin-bottom:3mm;">
-      <div class="card card-green">
-        <div class="card-title">Estrutura da ASG-GP (Ottery)</div>
-        <div class="card-body">
-          <ul class="blist">
-            <li><span class="hl">Parte A — Preenchida pelo paciente (4 blocos):</span></li>
-            <li style="padding-left:7mm;">Bloco 1: peso (atual, usual, variação em 1m e 6m)</li>
-            <li style="padding-left:7mm;">Bloco 2: ingestão alimentar atual vs. habitual</li>
-            <li style="padding-left:7mm;">Bloco 3: sintomas que impactam a alimentação (anorexia, náusea, vômito, mucosite, disfagia, diarreia, constipação, dor, fadiga)</li>
-            <li style="padding-left:7mm;">Bloco 4: capacidade funcional (sem limitação → acamado)</li>
-            <li><span class="hl">Parte B — Preenchida pelo profissional:</span> diagnóstico oncológico + estresse metabólico (febre, corticoides) + exame físico (gordura SC, massa muscular, edema, ascite)</li>
-            <li>Gera <span class="hl">escore numérico</span> (soma dos blocos) + classificação qualitativa A/B/C</li>
-          </ul>
-        </div>
-      </div>
-      <div class="card card-alert">
-        <div class="card-title card-title-alert">Escore ASG-GP — Conduta por Faixa</div>
-        <div class="card-body">
-          <table>
-            <thead><tr><th>Escore</th><th>Classificação</th><th>Conduta</th></tr></thead>
-            <tbody>
-              <tr><td class="td-bold td-green">0–1</td><td>Sem risco</td><td>Sem intervenção; reavaliação de rotina</td></tr>
-              <tr><td class="td-bold">2–3</td><td>Risco baixo</td><td>Educação nutricional pelo paciente e família</td></tr>
-              <tr><td class="td-bold td-warn">4–8</td><td>Risco moderado</td><td>Intervenção nutricional + triagem semanal</td></tr>
-              <tr><td class="td-bold td-alert">≥ 9</td><td class="td-alert">Risco crítico</td><td><strong>Intervenção nutricional crítica e urgente</strong> — iniciar suporte imediatamente</td></tr>
-            </tbody>
-          </table>
-          <ul class="blist" style="margin-top:2mm;">
-            <li><span class="hl-alert">Armadilha:</span> escore ≥ 9 NÃO significa "apenas reavaliar" — exige intervenção IMEDIATA</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="mapa-box" style="margin-bottom:2.5mm;">
-      <div class="mapa-title">Outras Ferramentas de Triagem Usadas em Oncologia</div>
-      <div class="mapa-body">
-        <strong>MUST:</strong> validado e amplamente utilizado, especialmente em ambulatório oncológico. ·
-        <strong>NRS-2002:</strong> recomendado para oncológicos hospitalizados (inclui gravidade da doença). ·
-        <strong>MST (Malnutrition Screening Tool):</strong> 2 perguntas (perda de peso não intencional + redução da ingestão) → rápida, útil em triagem de admissão. ·
-        <strong>ESPEN 2021:</strong> recomenda triagem nutricional em todo paciente oncológico na admissão e a cada consulta — ferramenta preferida: ASG-GP (combina triagem + avaliação).
-      </div>
-    </div>
-
+  <div class="page-body">
+    <div class="sec-title-sm">Equações de Estimativa do GER/GEB</div>
     <div class="card">
-      <div class="card-title">Sarcopenia Oncológica e Obesidade Sarcopênica</div>
-      <div class="card-body" style="font-size:7.5pt; line-height:1.45;">
-        A <span class="hl">sarcopenia oncológica</span> pode ocorrer independentemente da perda de peso — o paciente obeso pode ter massa muscular gravemente reduzida com IMC elevado. Essa condição, chamada <span class="hl-alert">obesidade sarcopênica</span>, apresenta pior prognóstico que a sarcopenia isolada: a gordura visceral amplifica a inflamação sistêmica enquanto a massa muscular reduzida compromete a reserva metabólica e a tolerância ao tratamento. O IMC isolado subestima o risco nutricional nesses pacientes — necessário avaliar composição corporal (BIA ou TC).
+      <div class="card-title">Harris-Benedict (1919) — Equações Originais</div>
+      <div class="two-col" style="margin-top:1mm;">
+        <div>
+          <p class="body-text" style="margin-bottom:1mm;"><b>Homens:</b></p>
+          <p class="body-text" style="background:#f0f7f0; padding:2mm; border-radius:1.5mm; font-family:monospace; font-size:7pt;">GEB = 66,5 + (13,75 × P) + (5,003 × A) − (6,775 × I)</p>
+        </div>
+        <div>
+          <p class="body-text" style="margin-bottom:1mm;"><b>Mulheres:</b></p>
+          <p class="body-text" style="background:#f0f7f0; padding:2mm; border-radius:1.5mm; font-family:monospace; font-size:7pt;">GEB = 655,1 + (9,563 × P) + (1,850 × A) − (4,676 × I)</p>
+        </div>
       </div>
+      <p class="body-text" style="margin-top:2mm; color:#888; font-size:6.5pt;">P = peso (kg) · A = altura (cm) · I = idade (anos) · Resultado em kcal/dia</p>
     </div>
-  </div>
-
-  <div class="pf">
-    <span>Extensivo ENARE 2026</span>
-    <span>Bloco B9 · Nutrição · Aula 31</span>
-    <span>3 / 10</span>
-  </div>
-</div>
-
-<!-- ============================================================ -->
-<!-- PAGE 4 — TERAPIA NUTRICIONAL EM ONCOLOGIA E PERIOPERATÓRIO -->
-<!-- ============================================================ -->
-<div class="page">
-  <div class="ph">
-    <div class="ph-logo">
-      <svg class="logo-svg" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#1F5C23"/><path d="M16 6 L26 12 L26 20 L16 26 L6 20 L6 12 Z" fill="none" stroke="#C6D834" stroke-width="2"/><circle cx="16" cy="16" r="4" fill="#C6D834"/></svg>
-      <div class="ph-logo-text"><span>Extensivo ENARE</span><span>2026</span></div>
+    <div class="card" style="margin-top:2mm;">
+      <div class="card-title">Mifflin-St Jeor (1990) — Mais Precisa para Obesidade</div>
+      <div class="two-col" style="margin-top:1mm;">
+        <div>
+          <p class="body-text" style="margin-bottom:1mm;"><b>Homens:</b></p>
+          <p class="body-text" style="background:#f0f7f0; padding:2mm; border-radius:1.5mm; font-family:monospace; font-size:7pt;">GER = (10 × P) + (6,25 × A) − (5 × I) + 5</p>
+        </div>
+        <div>
+          <p class="body-text" style="margin-bottom:1mm;"><b>Mulheres:</b></p>
+          <p class="body-text" style="background:#f0f7f0; padding:2mm; border-radius:1.5mm; font-family:monospace; font-size:7pt;">GER = (10 × P) + (6,25 × A) − (5 × I) − 161</p>
+        </div>
+      </div>
+      <p class="body-text" style="margin-top:1.5mm;">Diferença entre sexos: homens +5; mulheres −161. Harris-Benedict <b>superestima</b> o GER em obesos; Mifflin-St Jeor é mais precisa nesse grupo.</p>
     </div>
-    <div class="ph-center">Terapia Nutricional · Imunonutrição Perioperatória · ERAS · Micronutrientes</div>
-    <div class="ph-right">NUT-ONCO · Aula 31</div>
-  </div>
-
-  <div class="pc-sm">
-    <div class="sec-title-sm" style="margin-bottom:2.5mm;">Necessidades Nutricionais e Terapia Nutricional em Oncologia</div>
-    <div class="card-grid card-grid-2" style="margin-bottom:3mm;">
+    <div class="two-col" style="margin-top:2mm;">
       <div class="card">
-        <div class="card-title">Necessidades Calórico-Proteicas</div>
-        <div class="card-body">
-          <ul class="blist">
-            <li><span class="hl">Energia:</span> 25–30 kcal/kg/dia (ESPEN 2021) — semelhante a outras doenças graves; evitar superalimentação (↑CO₂, ↑infecções)</li>
-            <li><span class="hl">Proteína:</span> 1,2–2,0 g/kg/dia; ESPEN recomenda ≥ 1,5 g/kg/dia em caquexia; distribuição ao longo do dia (≥ 30 g/refeição para estimular síntese muscular)</li>
-            <li><span class="hl">EPA (ômega-3):</span> 2 g/dia — atenua inflamação sistêmica, pode reduzir progressão da caquexia; evidências mais sólidas em câncer de pulmão e GI</li>
-            <li><span class="hl">Glutamina:</span> controversa — <span class="hl-alert">contraindicada em leucemias e linfomas</span> (risco de proliferação tumoral); pode ser usada em mucosite por radioterapia (tópica)</li>
-          </ul>
-        </div>
-      </div>
-      <div class="card card-green">
-        <div class="card-title">Imunonutrição Perioperatória — Fórmulas IMPACT</div>
-        <div class="card-body">
-          <ul class="blist">
-            <li>Composição: <span class="hl">arginina + ômega-3 (EPA/DHA) + nucleotídeos</span></li>
-            <li><span class="hl">Indicação ESPEN:</span> cirurgias oncológicas de grande porte (esôfago, estômago, pâncreas, colorretal, cabeça e pescoço)</li>
-            <li>Período: <span class="hl">5–7 dias pré-operatórios</span> + continuação pós-operatória (7–10 dias)</li>
-            <li>Benefícios demonstrados: ↓ complicações infecciosas (pneumonia, ISC), ↓ tempo de internação</li>
-            <li>Uso mesmo em pacientes bem nutridos se cirurgia de grande porte — o efeito imunomodulador independe do estado nutricional prévio</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="sec-title-sm" style="margin-bottom:2.5mm;">Protocolo ERAS — Enhanced Recovery After Surgery</div>
-    <table style="margin-bottom:2.5mm;">
-      <thead><tr><th>Item ERAS</th><th>Recomendação</th><th>Benefício</th></tr></thead>
-      <tbody>
-        <tr><td class="td-bold">Jejum pré-operatório</td><td class="td-green"><strong>2h para líquidos claros · 6h para sólidos</strong> (vs. 8–12h convencional)</td><td>↓ resistência à insulina pós-op; ↓ catabolismo; ↓ náusea</td></tr>
-        <tr><td class="td-bold">Carboidratos pré-op</td><td>Bebida com CHO (12,5%) — 800 mL na noite + 400 mL 2h antes do ato cirúrgico</td><td>↓ resistência insulínica pós-op; ↓ catabolismo proteico</td></tr>
-        <tr><td class="td-bold">Retomada da dieta</td><td>Via oral nas primeiras 24h pós-operatórias (quando tolerado)</td><td>↓ complicações, ↓ permeabilidade intestinal, ↓ internação</td></tr>
-        <tr><td class="td-bold">Imunonutrição</td><td>Fórmula IMPACT 5–7 dias pré-op + pós-op</td><td>↓ infecções, ↓ fístulas anastomóticas</td></tr>
-      </tbody>
-    </table>
-
-    <div class="mapa-box">
-      <div class="mapa-title">Farmacoterapia Adjuvante na Caquexia — Pontos de Prova</div>
-      <div class="mapa-body">
-        <strong>Acetato de megestrol (progesterona sintética):</strong> estimula apetite, pode ↑ peso (mas principalmente gordura, não músculo); risco de tromboembolismo. ·
-        <strong>Corticoides (dexametasona, prednisolona):</strong> melhoram apetite e bem-estar em curto prazo (2–4 semanas); não revertem a perda muscular; uso limitado pela toxicidade crônica. ·
-        <strong>Grelina/anamorelin:</strong> análogo da grelina → estimula apetite e GH; aprovado em alguns países para caquexia oncológica (não no Brasil ainda).
-      </div>
-    </div>
-  </div>
-
-  <div class="pf">
-    <span>Extensivo ENARE 2026</span>
-    <span>Bloco B9 · Nutrição · Aula 31</span>
-    <span>4 / 10</span>
-  </div>
-</div>
-
-<!-- ============================================================ -->
-<!-- PAGE 5 — CUIDADOS PALIATIVOS E SITUAÇÕES ESPECIAIS -->
-<!-- ============================================================ -->
-<div class="page">
-  <div class="ph">
-    <div class="ph-logo">
-      <svg class="logo-svg" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#1F5C23"/><path d="M16 6 L26 12 L26 20 L16 26 L6 20 L6 12 Z" fill="none" stroke="#C6D834" stroke-width="2"/><circle cx="16" cy="16" r="4" fill="#C6D834"/></svg>
-      <div class="ph-logo-text"><span>Extensivo ENARE</span><span>2026</span></div>
-    </div>
-    <div class="ph-center">Cuidados Paliativos · Mucosite · Disfagia Oncológica · Fase Terminal</div>
-    <div class="ph-right">NUT-ONCO · Aula 31</div>
-  </div>
-
-  <div class="pc-sm">
-    <div class="sec-title-sm" style="margin-bottom:2.5mm;">Nutrição em Cuidados Paliativos — Objetivos por Fase</div>
-    <table style="margin-bottom:3mm;">
-      <thead><tr><th>Fase da Doença</th><th>Objetivo Nutricional</th><th>Abordagem</th></tr></thead>
-      <tbody>
-        <tr>
-          <td class="td-bold td-green">Curativa / Ativa</td>
-          <td>Manter estado nutricional, tolerância ao tratamento, qualidade de vida</td>
-          <td>Suporte nutricional completo (oral, enteral ou parenteral); metas calórico-proteicas plenas; imunonutrição perioperatória</td>
-        </tr>
-        <tr>
-          <td class="td-bold td-warn">Paliativa (não terminal)</td>
-          <td>Qualidade de vida, controle de sintomas, prevenção de desnutrição grave</td>
-          <td>Suporte nutricional adaptado aos objetivos do paciente; respeitar preferências; TNE se via oral insuficiente e prognóstico &gt; 1–3 meses</td>
-        </tr>
-        <tr>
-          <td class="td-bold td-alert">Terminal (fase ativa de morte)</td>
-          <td>Conforto e dignidade — não prolongar o processo de morte</td>
-          <td>Alimentação e hidratação artificiais intensivas podem ser <span class="hl-alert">fúteis e prejudiciais</span> (distensão, secreções, desconforto); decisão compartilhada com paciente e família</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <div class="card-grid card-grid-2" style="margin-bottom:3mm;">
-      <div class="card card-warn">
-        <div class="card-title card-title-warn">Mucosite Oral — Complicação do Tratamento</div>
-        <div class="card-body">
-          <ul class="blist">
-            <li>Inflamação dolorosa das mucosas oral e GI por quimio/radioterapia cervical</li>
-            <li>Grau I–IV (OMS): eritema → úlceras extensas com impossibilidade de ingestão</li>
-            <li><span class="hl">Conduta nutricional:</span> alimentos frios/gelados (efeito analgésico), pastosos e macios, sem acidez, sem álcool</li>
-            <li>Evitar: alimentos duros, ácidos, picantes, quentes e álcool</li>
-            <li><span class="hl">Grau III–IV:</span> TNE via SNG ou gastrostomia preventiva (câncer de cabeça e pescoço)</li>
-            <li>Glutamina tópica: evidências limitadas; não é padrão de tratamento</li>
-          </ul>
-        </div>
+        <div class="card-title">Outras Equações Especializadas</div>
+        <ul class="dot-list">
+          <li><b>FAO/OMS/ONU (1985):</b> equações por faixa etária e sexo; usa apenas peso; adequada para populações em desenvolvimento</li>
+          <li><b>Ireton-Jones (1992/2002):</b> pacientes em ventilação mecânica; considera VM, obesidade, trauma, queimadura</li>
+          <li><b>Penn State (2003):</b> pacientes críticos obesos com VM; usa temperatura máxima e VE (volume-minuto)</li>
+          <li><b>Cunningham:</b> baseada na massa livre de gordura (MLG) — mais precisa quando se conhece a composição corporal</li>
+        </ul>
       </div>
       <div class="card">
-        <div class="card-title">Disfagia Oncológica — Câncer de Cabeça e Pescoço</div>
-        <div class="card-body">
-          <ul class="blist">
-            <li>Prevalência: até 90% dos pacientes com CCP apresentam disfagia durante o tratamento</li>
-            <li>Causas: tumor + cirurgia (ressecção) + radioterapia (fibrose, xerostomia, trismo)</li>
-            <li>IDDSI (International Dysphagia Diet Standardisation Initiative): padrão de classificação de consistências (0–7) — mesma classificação abordada em terapia nutricional (Aula 10)</li>
-            <li><span class="hl">Gastrostomia profilática:</span> indicada antes de iniciar radioterapia em CCP avançado quando risco alto de disfagia grave</li>
-            <li>Xerostomia (↓saliva): adaptar consistência + umidade dos alimentos; estimulantes salivares</li>
-          </ul>
-        </div>
+        <div class="card-title">Calorimetria Indireta — Padrão-Ouro</div>
+        <ul class="dot-list">
+          <li>Mede o consumo de O₂ (VO₂) e produção de CO₂ (VCO₂)</li>
+          <li><b>Quociente Respiratório (QR)</b> = VCO₂ ÷ VO₂</li>
+          <li>QR = 1,0 → oxidação exclusiva de CHO</li>
+          <li>QR = 0,7 → oxidação exclusiva de lipídios</li>
+          <li>QR = 0,82 → dieta mista</li>
+          <li>QR &gt; 1,0 → lipogênese (excesso de CHO; sobrealimentação)</li>
+          <li>Recomendada em UTI, grandes queimados, distúrbios respiratórios</li>
+        </ul>
       </div>
     </div>
-
-    <div class="mapa-box">
-      <div class="mapa-title">Hidratação Artificial em Fase Terminal — Debate Ético-Clínico</div>
-      <div class="mapa-body">Em fase ativa de morte, a hidratação parenteral em grandes volumes pode causar <strong>edema, ascite, secreções respiratórias e desconforto</strong>, sem benefício comprovado em sobrevida ou conforto. A ESPEN recomenda avaliação individualizada: se prognóstico &gt; 1–2 meses, hidratação pode ser benéfica; se fase terminal (dias a semanas), hidratação mínima (500–1.000 mL/dia) pode ser suficiente para conforto. A decisão deve envolver o paciente (quando capaz), família e equipe multidisciplinar — respeito à autonomia e ao princípio da não maleficência.</div>
-    </div>
-  </div>
-
-  <div class="pf">
-    <span>Extensivo ENARE 2026</span>
-    <span>Bloco B9 · Nutrição · Aula 31</span>
-    <span>5 / 10</span>
   </div>
 </div>
 
-<!-- ============================================================ -->
-<!-- PAGE 6 — QUESTÃO 01 (Aplicação) -->
-<!-- ============================================================ -->
+<!-- ═══════════════════════════════════════════════════════ P4 · DRIs -->
 <div class="page">
-  <div class="ph">
-    <div class="ph-logo">
-      <svg class="logo-svg" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#1F5C23"/><path d="M16 6 L26 12 L26 20 L16 26 L6 20 L6 12 Z" fill="none" stroke="#C6D834" stroke-width="2"/><circle cx="16" cy="16" r="4" fill="#C6D834"/></svg>
-      <div class="ph-logo-text"><span>Extensivo ENARE</span><span>2026</span></div>
+  <div class="page-header">
+    <div class="header-logo-group">
+      <svg class="header-logo-svg" viewBox="0 0 28 28" fill="none">
+        <polygon points="14,1 26,7.5 26,20.5 14,27 2,20.5 2,7.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="14" cy="14" r="5.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1"/>
+      </svg>
+      <div class="header-brand">
+        <span class="header-brand-main">extensivo ENARE</span>
+        <span class="header-brand-sub">by Residência PRO</span>
+      </div>
     </div>
-    <div class="ph-center">Questão 01 · Aplicação · ASG-GP — Interpretação e Conduta</div>
-    <div class="ph-right">NUT-ONCO · Aula 31</div>
+    <span class="header-center">Nutrição · Bloco B9 · Aula 31</span>
+    <span class="header-page">P4</span>
   </div>
+  <div class="page-body">
+    <div class="sec-title-sm">DRIs — Dietary Reference Intakes (IOM / EUA-Canadá)</div>
+    <div class="two-col">
+      <div class="card">
+        <div class="card-title">4 Valores de Referência</div>
+        <table class="table-sm">
+          <tr><th>Sigla</th><th>Nome</th><th>Definição e Uso</th></tr>
+          <tr><td><b>EAR</b></td><td>Estimated Average Requirement</td><td>Mediana das necessidades — cobre 50% da população; avaliação de grupos e base para a RDA</td></tr>
+          <tr><td><b>RDA</b></td><td>Recommended Dietary Allowance</td><td>EAR + 2 DP → cobre 97–98%; recomendação para indivíduos saudáveis</td></tr>
+          <tr><td><b>AI</b></td><td>Adequate Intake</td><td>Estimativa quando não há EAR suficiente; baseada em ingestão de grupos saudáveis</td></tr>
+          <tr><td><b>UL</b></td><td>Tolerable Upper Intake Level</td><td>Limite máximo sem risco de toxicidade; acima = risco de efeitos adversos</td></tr>
+        </table>
+      </div>
+      <div class="card">
+        <div class="card-title">Como Usar as DRIs</div>
+        <ul class="dot-list">
+          <li><b>Avaliação individual:</b> ingestão = RDA → provável adequação; ingestão = EAR → 50% chance de inadequação</li>
+          <li><b>Planejamento individual:</b> usar RDA como meta (ou AI quando RDA não disponível)</li>
+          <li><b>Avaliação de grupos:</b> usar EAR (prevalência de inadequação via distribuição de ingestão)</li>
+          <li><b>Planejamento de grupos:</b> usar EAR como base do cardápio</li>
+          <li>UL: nunca deve ser ultrapassado; aplicável especialmente para micronutrientes e suplementos</li>
+          <li>AI não deve ser comparada ao EAR — menor precisão metodológica</li>
+        </ul>
+      </div>
+    </div>
+    <div class="sec-title-sm" style="margin-top:1mm;">AMDR e Recomendações de Macronutrientes</div>
+    <div class="two-col">
+      <div class="card">
+        <div class="card-title">AMDR — Acceptable Macronutrient Distribution Range</div>
+        <table class="table-sm">
+          <tr><th>Macronutriente</th><th>AMDR (% VCT)</th><th>Valor Calórico</th></tr>
+          <tr><td><b>Carboidratos</b></td><td><b>45 – 65%</b></td><td>4 kcal/g</td></tr>
+          <tr><td><b>Proteínas</b></td><td><b>10 – 35%</b></td><td>4 kcal/g</td></tr>
+          <tr><td><b>Lipídios</b></td><td><b>20 – 35%</b></td><td>9 kcal/g</td></tr>
+          <tr><td>Álcool (etanol)</td><td>—</td><td>7 kcal/g</td></tr>
+          <tr><td>Fibras (AI)</td><td>25 g/dia ♀ · 38 g/dia ♂</td><td>—</td></tr>
+        </table>
+      </div>
+      <div class="card">
+        <div class="card-title">RDAs Importantes de Macronutrientes</div>
+        <ul class="dot-list">
+          <li>CHO mínimo: <b>130 g/dia</b> (EAR = RDA para SNC; adultos e gestantes)</li>
+          <li>Proteínas: RDA adultos saudáveis = <b>0,8 g/kg/dia</b></li>
+          <li>Idosos (tendência atual): <b>1,0–1,2 g/kg/dia</b> (PROT-AGE Study Group)</li>
+          <li>Gestantes: +<b>25 g/dia</b> adicionais sobre a RDA basal (2º e 3º trimestres)</li>
+          <li>Lactantes: +<b>19 g/dia</b> adicionais</li>
+          <li>AGE linoleico (ω-6): AI = 17 g/dia ♂; 12 g/dia ♀</li>
+          <li>AGE alfa-linolênico (ω-3): AI = 1,6 g/dia ♂; 1,1 g/dia ♀</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
 
-  <div class="pc">
+<!-- ═══════════════════════════════════════════════════════ P5 · MACRONUTRIENTES: DIGESTÃO E FUNÇÕES -->
+<div class="page">
+  <div class="page-header">
+    <div class="header-logo-group">
+      <svg class="header-logo-svg" viewBox="0 0 28 28" fill="none">
+        <polygon points="14,1 26,7.5 26,20.5 14,27 2,20.5 2,7.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="14" cy="14" r="5.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1"/>
+      </svg>
+      <div class="header-brand">
+        <span class="header-brand-main">extensivo ENARE</span>
+        <span class="header-brand-sub">by Residência PRO</span>
+      </div>
+    </div>
+    <span class="header-center">Nutrição · Bloco B9 · Aula 31</span>
+    <span class="header-page">P5</span>
+  </div>
+  <div class="page-body">
+    <div class="sec-title-sm">Macronutrientes — Digestão, Absorção e Funções Principais</div>
+    <div class="three-col">
+      <div class="card">
+        <div class="card-title">Carboidratos</div>
+        <ul class="dot-list">
+          <li><b>Digestão:</b> inicia na boca (amilase salivar); amilase pancreática no intestino delgado; dissacaridases na borda em escova</li>
+          <li>Absorção: monossacarídeos (glicose, frutose, galactose) na mucosa do ID</li>
+          <li>Glicose e galactose: transporte ativo (SGLT1); frutose: difusão facilitada (GLUT5)</li>
+          <li>Fibras insolúveis: não fermentadas, ↑ trânsito intestinal</li>
+          <li>Fibras solúveis: fermentadas no cólon → AGCC (butirato, propionato, acetato) → ↓colesterol e glicemia</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title">Proteínas</div>
+        <ul class="dot-list">
+          <li><b>Digestão:</b> pepsina no estômago (pH ácido); tripsina, quimotripsina, elastase pancreática no ID; peptidases da borda em escova</li>
+          <li>Absorção: di/tripeptídeos (transportador PepT1) e aminoácidos livres</li>
+          <li>Aminoácidos essenciais: Phe, Val, Thr, Trp, Ile, Met, His, Arg*, Leu, Lys (PVTTIMHALL)</li>
+          <li>AA condicionalmente essenciais: Arg, Cys, Gln, Tyr (estresse/doença)</li>
+          <li>BN = N ingerido − N excretado (urinário + fecal)</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title">Lipídios</div>
+        <ul class="dot-list">
+          <li><b>Digestão:</b> lipase lingual (mínima); lipase gástrica; lipase pancreática + colipase no ID (principal)</li>
+          <li>Emulsificação: sais biliares → micelas → absorção no jejuno</li>
+          <li>Quilomícrons: transporte de gorduras absorvidas via linfa → ducto torácico → circulação</li>
+          <li>AGS ↑LDL; AGPI ω-6 ↓LDL; AGPI ω-3 ↓TG; AGT ↑LDL e ↓HDL</li>
+          <li>Ácidos graxos de cadeia curta e média: absorção direta pela veia porta</li>
+        </ul>
+      </div>
+    </div>
+    <div class="sec-title-sm" style="margin-top:1mm;">Índice Glicêmico e Carga Glicêmica</div>
+    <div class="two-col">
+      <div class="card">
+        <div class="card-title">Índice Glicêmico (IG) e Carga Glicêmica (CG)</div>
+        <ul class="dot-list">
+          <li><b>IG:</b> resposta glicêmica pós-prandial de um alimento vs pão branco (ou glicose) = 100</li>
+          <li>IG baixo &lt; 55; médio 55–70; alto &gt; 70</li>
+          <li><b>CG</b> = (IG × g CHO disponível) ÷ 100; integra IG + quantidade consumida</li>
+          <li>CG baixa &lt; 10; média 11–19; alta ≥ 20</li>
+          <li>Fatores que ↓IG: fibras, acidez, proteínas, gordura, processo de cocção (amido resistente)</li>
+          <li>Fibras solúveis (β-glucana, pectina) → maior impacto no ↓IG</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title">Ponto Crítico — Valor Calórico dos Nutrientes</div>
+        <table class="table-sm">
+          <tr><th>Substrato</th><th>kcal/g</th><th>kJ/g</th></tr>
+          <tr><td><b>Carboidratos</b></td><td><b>4</b></td><td>17</td></tr>
+          <tr><td><b>Proteínas</b></td><td><b>4</b></td><td>17</td></tr>
+          <tr><td><b>Lipídios</b></td><td><b>9</b></td><td>37</td></tr>
+          <tr><td>Álcool (etanol)</td><td><b>7</b></td><td>29</td></tr>
+          <tr><td>Fibras (AGCC)</td><td>~2</td><td>—</td></tr>
+        </table>
+        <p class="body-text" style="margin-top:2mm;">Para calcular VCT: somar kcal dos macros (CHO×4 + PTN×4 + Lip×9). Conversão: 1 kcal ≈ 4,18 kJ.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ P6 · Q01 -->
+<div class="page">
+  <div class="page-header">
+    <div class="header-logo-group">
+      <svg class="header-logo-svg" viewBox="0 0 28 28" fill="none">
+        <polygon points="14,1 26,7.5 26,20.5 14,27 2,20.5 2,7.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="14" cy="14" r="5.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1"/>
+      </svg>
+      <div class="header-brand">
+        <span class="header-brand-main">extensivo ENARE</span>
+        <span class="header-brand-sub">by Residência PRO</span>
+      </div>
+    </div>
+    <span class="header-center">Nutrição · Bloco B9 · Aula 31</span>
+    <span class="header-page">P6</span>
+  </div>
+  <div class="page-body">
     <div class="q-header">
-      <div class="q-num"><span>01</span></div>
-      <div class="q-meta">
-        <div class="q-meta-top">ASG-GP · Escore ≥ 9 · Conduta em Oncológico Cirúrgico</div>
-        <div class="q-meta-sub">Réplica FGV ENARE 2025 Q103 · Nível: Aplicação</div>
-      </div>
-      <div class="q-level-badge">Ap</div>
+      <div class="q-label">Questão 01 <span class="tag tag-green" style="margin-left:2mm;">Aplicação</span></div>
+      <div class="q-meta">NUT-FUND · GET · GER vs GEB · Equações de Estimativa · ETA</div>
     </div>
-
-    <div class="q-stem">
-      Paciente masculino, 61 anos, com diagnóstico de adenocarcinoma gástrico avançado, em pré-operatório de gastrectomia total. A nutricionista aplica a ASG-GP e obtém escore de 11 pontos. O paciente relata perda de peso de 9% em 3 meses, redução acentuada da ingestão alimentar, náusea diária, disfagia para sólidos e fadiga intensa que o impede de realizar atividades cotidianas. Exame físico evidencia perda muscular moderada e ausência de edema. Com base no resultado da ASG-GP, qual é a conduta nutricional correta?
-    </div>
-
-    <div class="q-options">
-      <div class="q-opt">
-        <span class="q-opt-letter">A</span>
-        <span>Escore 11 indica risco moderado; orientar dieta fracionada e reavaliar em 1 semana antes de decidir sobre suporte nutricional especializado.</span>
+    <p class="q-stem">Uma nutricionista atende uma paciente do sexo feminino, 40 anos, peso 80 kg, altura 162 cm, que trabalha em escritório e não pratica exercícios regularmente (fator de atividade = 1,2). Para planejar a dieta, a profissional decide estimar o gasto energético total (GET). Sobre as equações de estimativa do gasto energético e os componentes do GET, é CORRETO afirmar que:</p>
+    <div class="alternatives">
+      <div class="alt wrong">
+        <span class="alt-letter">A</span>
+        <span class="alt-text">A calorimetria indireta é o método menos recomendado para determinação do gasto energético real em pacientes críticos, pois os gases analisados (VO₂ e VCO₂) sofrem interferência dos medicamentos utilizados na UTI; nessa situação, as equações preditivas são mais precisas e devem ser preferidas.</span>
       </div>
-      <div class="q-opt">
-        <span class="q-opt-letter">B</span>
-        <span>Escore 11 indica risco crítico, mas o suporte nutricional deve aguardar o resultado histopatológico definitivo para evitar gastos desnecessários caso o diagnóstico seja revertido.</span>
+      <div class="alt correct">
+        <span class="alt-letter">B</span>
+        <span class="alt-text">A equação de Mifflin-St Jeor (1990) é considerada mais precisa que a Harris-Benedict (1919) para estimativa do GER em adultos com excesso de peso ou obesidade; o gasto energético total é obtido multiplicando-se o GER pelo fator de atividade física correspondente, e o Gasto Energético Basal (GEB) difere do GER por ser medido sob condições mais rigorosas de jejum e temperatura ambiental controlada.</span>
       </div>
-      <div class="q-opt correct">
-        <span class="q-opt-letter">C</span>
-        <span>Escore 11 ≥ 9 indica necessidade de intervenção nutricional crítica e urgente; iniciar imediatamente terapia nutricional especializada (via oral enriquecida, enteral ou parenteral conforme tolerância) e suporte multimodal antes da cirurgia.</span>
+      <div class="alt wrong">
+        <span class="alt-letter">C</span>
+        <span class="alt-text">O efeito térmico dos alimentos (ETA) é o componente mais expressivo do gasto energético total em adultos sedentários, representando aproximadamente 55–65% do GET; entre os macronutrientes, os lipídios apresentam o maior efeito termogênico por grama consumido.</span>
       </div>
-      <div class="q-opt">
-        <span class="q-opt-letter">D</span>
-        <span>Escore 11 indica risco elevado; suspender a cirurgia indefinidamente até normalização do estado nutricional e nova avaliação com escore ≤ 3.</span>
+      <div class="alt wrong">
+        <span class="alt-letter">D</span>
+        <span class="alt-text">A distribuição de macronutrientes recomendada pelas DRIs (AMDR) determina que os carboidratos devem contribuir com 55–75% do valor calórico total e os lipídios com no máximo 15% do VCT, a fim de prevenir doenças cardiovasculares em adultos saudáveis.</span>
       </div>
     </div>
-
-    <div class="q-rationale">
-      <strong>Gabarito C.</strong> Na ASG-GP, escore <strong>≥ 9 = risco crítico → intervenção nutricional crítica e urgente</strong>, imediata. No pré-operatório oncológico, o suporte nutricional deve ser iniciado sem demora — idealmente 7–14 dias antes da cirurgia quando há desnutrição grave — pois reduz complicações pós-operatórias.
-      <strong>A</strong> subestima o escore (≥ 9 não é moderado). <strong>B</strong> é clinicamente inadequada — o diagnóstico histológico já foi estabelecido. <strong>D</strong> erra ao suspender a cirurgia indefinidamente; o correto é otimizar o estado nutricional e realizar a cirurgia com menor risco, não postergar indefinidamente.
+    <div class="q-answer-box">
+      <span class="q-answer-letter">B</span>
+      <span class="q-answer-text"><b>Mifflin-St Jeor = mais precisa para obesos; GET = GER × FA; GEB ≠ GER (condições mais rigorosas).</b> A <b>A</b> erra: calorimetria indireta é o <b>padrão-ouro</b>, especialmente recomendada em UTI. A <b>C</b> erra: ETA representa ~10% do GET; proteínas têm maior ETA (20–30%), não lipídios. A <b>D</b> erra: CHO = 45–65% e lip. = 20–35% (não 15%) segundo o AMDR.</span>
     </div>
-  </div>
-
-  <div class="pf">
-    <span>Extensivo ENARE 2026</span>
-    <span>Bloco B9 · Nutrição · Aula 31</span>
-    <span>6 / 10</span>
   </div>
 </div>
 
-<!-- ============================================================ -->
-<!-- PAGE 7 — QUESTÃO 02 (Aplicação) -->
-<!-- ============================================================ -->
+<!-- ═══════════════════════════════════════════════════════ P7 · Q02 -->
 <div class="page">
-  <div class="ph">
-    <div class="ph-logo">
-      <svg class="logo-svg" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#1F5C23"/><path d="M16 6 L26 12 L26 20 L16 26 L6 20 L6 12 Z" fill="none" stroke="#C6D834" stroke-width="2"/><circle cx="16" cy="16" r="4" fill="#C6D834"/></svg>
-      <div class="ph-logo-text"><span>Extensivo ENARE</span><span>2026</span></div>
+  <div class="page-header">
+    <div class="header-logo-group">
+      <svg class="header-logo-svg" viewBox="0 0 28 28" fill="none">
+        <polygon points="14,1 26,7.5 26,20.5 14,27 2,20.5 2,7.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="14" cy="14" r="5.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1"/>
+      </svg>
+      <div class="header-brand">
+        <span class="header-brand-main">extensivo ENARE</span>
+        <span class="header-brand-sub">by Residência PRO</span>
+      </div>
     </div>
-    <div class="ph-center">Questão 02 · Aplicação · Caquexia do Câncer — Mecanismo e Irreversibilidade</div>
-    <div class="ph-right">NUT-ONCO · Aula 31</div>
+    <span class="header-center">Nutrição · Bloco B9 · Aula 31</span>
+    <span class="header-page">P7</span>
   </div>
-
-  <div class="pc">
+  <div class="page-body">
     <div class="q-header">
-      <div class="q-num"><span>02</span></div>
-      <div class="q-meta">
-        <div class="q-meta-top">Caquexia Oncológica · Citocinas · Fases · Suporte Calórico</div>
-        <div class="q-meta-sub">Réplica FGV ENARE 2025 Q104 · Nível: Aplicação</div>
-      </div>
-      <div class="q-level-badge">Ap</div>
+      <div class="q-label">Questão 02 <span class="tag tag-green" style="margin-left:2mm;">Aplicação</span></div>
+      <div class="q-meta">NUT-FUND · DRIs · EAR · RDA · AI · UL · Planejamento Nutricional</div>
     </div>
-
-    <div class="q-stem">
-      Paciente feminina, 55 anos, com câncer de pulmão avançado, apresenta perda de peso de 8% nos últimos 4 meses, anorexia persistente, fadiga intensa e redução progressiva da massa muscular confirmada por bioimpedância, mesmo recebendo suporte nutricional oral com dieta hipercalórica e hiperproteica há 6 semanas. A equipe questiona o porquê da ausência de resposta ao suporte calórico. Qual alternativa descreve CORRETAMENTE o mecanismo e as características da caquexia do câncer?
-    </div>
-
-    <div class="q-options">
-      <div class="q-opt">
-        <span class="q-opt-letter">A</span>
-        <span>A caquexia do câncer é causada exclusivamente por redução da ingestão alimentar; o suporte hipercalórico por tempo insuficiente (menos de 3 meses) não é suficiente para reverter o quadro.</span>
+    <p class="q-stem">Durante a avaliação dietética de um grupo de adultos saudáveis atendidos em um serviço de atenção primária, a nutricionista utiliza as Dietary Reference Intakes (DRIs) para interpretar os dados de ingestão habitual coletados por recordatório alimentar. Sobre as DRIs e sua correta aplicação na prática clínica e coletiva, assinale a alternativa CORRETA:</p>
+    <div class="alternatives">
+      <div class="alt wrong">
+        <span class="alt-letter">A</span>
+        <span class="alt-text">A RDA (Recommended Dietary Allowance) representa a mediana das necessidades nutricionais da população e é o valor mais adequado para avaliar a prevalência de inadequação nutricional em grupos; quando a ingestão habitual de um indivíduo é igual à RDA, há 50% de probabilidade de que sua necessidade individual não esteja sendo atendida.</span>
       </div>
-      <div class="q-opt">
-        <span class="q-opt-letter">B</span>
-        <span>A caquexia refratária, fase terminal da síndrome, é caracterizada por boa resposta ao suporte nutricional agressivo e estabilização da perda de peso quando a ingestão calórica é maximizada.</span>
+      <div class="alt wrong">
+        <span class="alt-letter">B</span>
+        <span class="alt-text">O UL (Tolerable Upper Intake Level) indica o nível mínimo de ingestão de um nutriente necessário para prevenir deficiências em 97–98% da população; valores de ingestão abaixo do UL representam risco de inadequação e deficiência nutricional clínica.</span>
       </div>
-      <div class="q-opt correct">
-        <span class="q-opt-letter">C</span>
-        <span>A caquexia do câncer é uma síndrome multifatorial mediada por citocinas pró-inflamatórias (IL-1, IL-6, TNF-α) que promovem catabolismo proteico muscular preferencial mesmo com aporte calórico adequado, não podendo ser completamente revertida por suporte nutricional convencional.</span>
+      <div class="alt correct">
+        <span class="alt-letter">C</span>
+        <span class="alt-text">A EAR representa a mediana das necessidades de um nutriente em um grupo; quando a ingestão habitual de um indivíduo é igual à EAR, há 50% de probabilidade de que sua necessidade não seja atendida. A RDA é estabelecida como EAR + 2 desvios-padrão, cobrindo as necessidades de 97–98% dos indivíduos saudáveis de um grupo, e é utilizada como meta de ingestão para o planejamento dietético individual.</span>
       </div>
-      <div class="q-opt">
-        <span class="q-opt-letter">D</span>
-        <span>A ausência de resposta ao suporte calórico indica erro na prescrição nutricional; a caquexia do câncer sempre é reversível com dieta hipercalórica adequada e suporte de micronutrientes.</span>
+      <div class="alt wrong">
+        <span class="alt-letter">D</span>
+        <span class="alt-text">A AI (Adequate Intake) é estabelecida com maior precisão metodológica que a RDA, sendo calculada a partir de estudos controlados de depleção-repleção; por isso, a AI deve ser preferida à RDA no planejamento dietético individual quando ambos os valores estiverem disponíveis para o mesmo nutriente.</span>
       </div>
     </div>
-
-    <div class="q-rationale">
-      <strong>Gabarito C.</strong> A caquexia do câncer tem mecanismo central na <strong>inflamação sistêmica mediada por citocinas</strong> (IL-1, IL-6, TNF-α, IFN-γ), que induzem anorexia, catabolismo muscular e lipólise acelerada — independentemente do aporte calórico. Por isso, a simples hipercaloria não reverte o quadro; é necessária abordagem multimodal (nutrição + exercício + farmacoterapia + controle da doença de base).
-      <strong>A</strong> reduz a caquexia a ingestão insuficiente — ignora o componente inflamatório. <strong>B</strong> inverte a realidade: na caquexia refratária, não há resposta ao suporte. <strong>D</strong> é factualmente incorreta — a definição estabelece que a caquexia NÃO é completamente reversível por suporte convencional.
+    <div class="q-answer-box">
+      <span class="q-answer-letter">C</span>
+      <span class="q-answer-text"><b>EAR = mediana (50% probabilidade); RDA = EAR + 2DP → 97–98% população.</b> A <b>A</b> confunde EAR com RDA: EAR = mediana, não RDA. A <b>B</b> inverte o conceito do UL — é o limite <b>máximo</b>, não mínimo. A <b>D</b> erra: AI tem <b>menor</b> precisão metodológica que a RDA/EAR; quando a RDA existe, ela é preferida no planejamento individual.</span>
     </div>
-  </div>
-
-  <div class="pf">
-    <span>Extensivo ENARE 2026</span>
-    <span>Bloco B9 · Nutrição · Aula 31</span>
-    <span>7 / 10</span>
   </div>
 </div>
 
-<!-- ============================================================ -->
-<!-- PAGE 8 — QUESTÃO 03 ANÁLISE ÂNCORA (Afirmativas) -->
-<!-- ============================================================ -->
+<!-- ═══════════════════════════════════════════════════════ P8 · Q03 ÂNCORA -->
 <div class="page">
-  <div class="ph">
-    <div class="ph-logo">
-      <svg class="logo-svg" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#1F5C23"/><path d="M16 6 L26 12 L26 20 L16 26 L6 20 L6 12 Z" fill="none" stroke="#C6D834" stroke-width="2"/><circle cx="16" cy="16" r="4" fill="#C6D834"/></svg>
-      <div class="ph-logo-text"><span>Extensivo ENARE</span><span>2026</span></div>
+  <div class="page-header">
+    <div class="header-logo-group">
+      <svg class="header-logo-svg" viewBox="0 0 28 28" fill="none">
+        <polygon points="14,1 26,7.5 26,20.5 14,27 2,20.5 2,7.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="14" cy="14" r="5.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1"/>
+      </svg>
+      <div class="header-brand">
+        <span class="header-brand-main">extensivo ENARE</span>
+        <span class="header-brand-sub">by Residência PRO</span>
+      </div>
     </div>
-    <div class="ph-center">Questão 03 · Análise Âncora · Imunonutrição · Caquexia · Paliativo</div>
-    <div class="ph-right">NUT-ONCO · Aula 31</div>
+    <span class="header-center">Nutrição · Bloco B9 · Aula 31</span>
+    <span class="header-page">P8</span>
   </div>
-
-  <div class="pc">
+  <div class="page-body">
     <div class="q-header">
-      <div class="q-num"><span>03</span></div>
-      <div class="q-meta">
-        <div class="q-meta-top">Âncora — Imunonutrição IMPACT · Caquexia · Glutamina · Fase Terminal</div>
-        <div class="q-meta-sub">Réplica FGV ENARE 2024 Q82 · 2025 Q105 · Nível: Análise</div>
-      </div>
-      <div class="q-level-badge q-level-badge-an">An</div>
+      <div class="q-label">Questão 03 <span class="tag tag-yellow" style="margin-left:2mm; color:#1F5C23;">Análise · Âncora</span></div>
+      <div class="q-meta">NUT-FUND · Metabolismo Energético · DRIs · Calorimetria · Macronutrientes</div>
     </div>
-
-    <div class="q-stem">
-      Sobre nutrição em oncologia e cuidados paliativos, analise as afirmativas:
-    </div>
-
-    <div class="q-aff">
-      <div class="q-aff-item errada">
-        <span class="q-aff-num">I</span>
-        <span>A ASG-GP (Patient-Generated SGA) é uma ferramenta de triagem nutricional indicada exclusivamente para pacientes oncológicos hospitalizados em UTI, não sendo recomendada para avaliação de pacientes em tratamento ambulatorial ou em quimioterapia de curta duração.</span>
+    <p class="q-stem">Sobre metabolismo energético, recomendações nutricionais e macronutrientes, analise as afirmativas:</p>
+    <div class="assertions">
+      <div class="assertion">
+        <span class="assert-num wrong">I</span>
+        <span class="assert-text">O efeito térmico dos alimentos (ETA), também denominado termogênese dietética, é o componente que representa a maior fração do gasto energético total em adultos sedentários, contribuindo com aproximadamente <b>55–65%</b> do GET; entre os macronutrientes, os lipídios possuem o maior efeito termogênico por grama ingerido.</span>
       </div>
-      <div class="q-aff-item correta">
-        <span class="q-aff-num">II</span>
-        <span>As fórmulas imunomoduladoras perioperatórias, contendo arginina, ômega-3 e nucleotídeos, são recomendadas pela ESPEN para pacientes submetidos a cirurgias oncológicas de grande porte no período pré e pós-operatório, com evidência de redução de complicações infecciosas e do tempo de hospitalização.</span>
+      <div class="assertion">
+        <span class="assert-num correct">II</span>
+        <span class="assert-text">A equação de Harris-Benedict tende a <b>superestimar</b> o gasto energético de repouso (GER) em indivíduos com obesidade; para esse grupo, a equação de Mifflin-St Jeor é considerada mais precisa, enquanto a calorimetria indireta, que mede VO₂ e VCO₂, permanece como padrão-ouro para determinação do gasto energético real.</span>
       </div>
-      <div class="q-aff-item correta">
-        <span class="q-aff-num">III</span>
-        <span>Na caquexia do câncer, a inflamação sistêmica mediada por citocinas pró-inflamatórias (IL-1, IL-6, TNF-α) promove catabolismo muscular preferencial e lipólise acelerada que não são completamente revertidos pelo aumento isolado do aporte calórico, exigindo abordagem multimodal.</span>
+      <div class="assertion">
+        <span class="assert-num correct">III</span>
+        <span class="assert-text">As DRIs estabelecem que a ingestão mínima de carboidratos deve ser de <b>130 g/dia</b> para garantir o aporte adequado de glicose ao sistema nervoso central, e a AMDR para carboidratos é de <b>45–65%</b> do valor calórico total; a RDA para proteínas em adultos saudáveis é de <b>0,8 g/kg/dia</b>.</span>
       </div>
-      <div class="q-aff-item errada">
-        <span class="q-aff-num">IV</span>
-        <span>Em pacientes oncológicos em fase terminal (fase ativa de morte), a nutrição parenteral total e a hidratação intravenosa em grandes volumes são sempre recomendadas para melhorar o conforto, a qualidade de vida e prolongar a sobrevida de forma digna.</span>
+      <div class="assertion">
+        <span class="assert-num wrong">IV</span>
+        <span class="assert-text">Na avaliação da adequação da ingestão de um <b>grupo</b> populacional, a referência mais indicada é a RDA, pois ela representa o valor que cobre as necessidades de 97–98% dos indivíduos e, portanto, garante que a maior parte do grupo tenha sua necessidade atendida quando a ingestão média do grupo se iguala a essa referência.</span>
       </div>
     </div>
-
-    <div class="q-stem" style="margin-bottom:3mm;">
-      Estão <strong>CORRETAS</strong> apenas as afirmativas:
+    <p class="q-stem" style="margin-top:1mm;">Estão CORRETAS apenas:</p>
+    <div class="alternatives">
+      <div class="alt wrong"><span class="alt-letter">A</span><span class="alt-text">I e II</span></div>
+      <div class="alt wrong"><span class="alt-letter">B</span><span class="alt-text">I e IV</span></div>
+      <div class="alt correct"><span class="alt-letter">C</span><span class="alt-text">II e III</span></div>
+      <div class="alt wrong"><span class="alt-letter">D</span><span class="alt-text">III e IV</span></div>
     </div>
-
-    <div class="q-options">
-      <div class="q-opt"><span class="q-opt-letter">A</span><span>I e IV</span></div>
-      <div class="q-opt"><span class="q-opt-letter">B</span><span>I e III</span></div>
-      <div class="q-opt correct"><span class="q-opt-letter">C</span><span>II e III</span></div>
-      <div class="q-opt"><span class="q-opt-letter">D</span><span>II e IV</span></div>
+    <div class="q-answer-box">
+      <span class="q-answer-letter">C</span>
+      <span class="q-answer-text"><b>I — ERRADA:</b> ETA representa ~10% do GET (não 55–65%), e proteínas têm maior ETA (não lipídios). <b>II — CORRETA:</b> Harris-Benedict superestima em obesos; Mifflin-St Jeor mais precisa; calorimetria indireta = padrão-ouro. <b>III — CORRETA:</b> CHO mín. 130 g/dia; AMDR CHO 45–65%; RDA PTN = 0,8 g/kg/dia. <b>IV — ERRADA:</b> para avaliação de <b>grupos</b>, usa-se a <b>EAR</b>, não a RDA.</span>
     </div>
-  </div>
-
-  <div class="pf">
-    <span>Extensivo ENARE 2026</span>
-    <span>Bloco B9 · Nutrição · Aula 31</span>
-    <span>8 / 10</span>
   </div>
 </div>
 
-<!-- ============================================================ -->
-<!-- PAGE 9 — GABARITO COMENTADO -->
-<!-- ============================================================ -->
+<!-- ═══════════════════════════════════════════════════════ P9 · GABARITO -->
 <div class="page">
-  <div class="ph">
-    <div class="ph-logo">
-      <svg class="logo-svg" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#1F5C23"/><path d="M16 6 L26 12 L26 20 L16 26 L6 20 L6 12 Z" fill="none" stroke="#C6D834" stroke-width="2"/><circle cx="16" cy="16" r="4" fill="#C6D834"/></svg>
-      <div class="ph-logo-text"><span>Extensivo ENARE</span><span>2026</span></div>
+  <div class="page-header">
+    <div class="header-logo-group">
+      <svg class="header-logo-svg" viewBox="0 0 28 28" fill="none">
+        <polygon points="14,1 26,7.5 26,20.5 14,27 2,20.5 2,7.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="14" cy="14" r="5.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1"/>
+      </svg>
+      <div class="header-brand">
+        <span class="header-brand-main">extensivo ENARE</span>
+        <span class="header-brand-sub">by Residência PRO</span>
+      </div>
     </div>
-    <div class="ph-center">Gabarito Comentado · Análise de Distratores</div>
-    <div class="ph-right">NUT-ONCO · Aula 31</div>
+    <span class="header-center">Nutrição · Bloco B9 · Aula 31</span>
+    <span class="header-page">P9</span>
   </div>
-
-  <div class="pc-sm">
+  <div class="page-body">
+    <div class="sec-title-sm">Gabarito Comentado</div>
     <div class="gab-grid">
       <div class="gab-card">
-        <div class="gab-label">Questão 01</div>
-        <div class="gab-letter">C</div>
-        <div class="gab-desc">ASG-GP ≥ 9 = urgente<br>Iniciar TNE imediata<br>Pré-op oncológico</div>
+        <div class="gab-card-q">Q01 · Aplicação</div>
+        <div class="gab-card-letter">B</div>
+        <div class="gab-card-just">
+          <b>Mifflin-St Jeor mais precisa em obesos; GET = GER × FA; GEB ≠ GER.</b> Calorimetria indireta = padrão-ouro (especialmente UTI). ETA ~10% do GET; proteínas têm maior ETA. AMDR: CHO 45–65%, lip. 20–35%.
+        </div>
       </div>
       <div class="gab-card">
-        <div class="gab-label">Questão 02</div>
-        <div class="gab-letter">C</div>
-        <div class="gab-desc">IL-1, IL-6, TNF-α<br>Catabolismo muscular<br>Hipercaloria não reverte</div>
+        <div class="gab-card-q">Q02 · Aplicação</div>
+        <div class="gab-card-letter">C</div>
+        <div class="gab-card-just">
+          <b>EAR = mediana (50% probabilidade); RDA = EAR + 2DP (97–98%).</b> UL = limite máximo, não mínimo. AI tem menor rigor metodológico que RDA/EAR. Para avaliação de grupos: EAR. Para planejamento individual: RDA (ou AI quando RDA não existe).
+        </div>
       </div>
       <div class="gab-card">
-        <div class="gab-label">Questão 03</div>
-        <div class="gab-letter">C</div>
-        <div class="gab-desc">II e III corretas<br>I: ASG-GP não é só UTI<br>IV: NPT/hidratação ≠ conforto terminal</div>
+        <div class="gab-card-q">Q03 · Análise</div>
+        <div class="gab-card-letter">C</div>
+        <div class="gab-card-just">
+          <b>II e III corretas.</b> I errada: ETA ~10% (não 55–65%); proteínas = maior ETA. IV errada: avaliação de grupos usa <b>EAR</b> (não RDA). Usar RDA para grupos superestima o consumo necessário — a RDA já tem margem de segurança.
+        </div>
       </div>
     </div>
-
-    <div class="sec-title-sm" style="margin-bottom:2.5mm;">Análise de Distratores — Q03</div>
-    <div class="distrator-table">
-      <table>
-        <thead><tr><th>Afirmativa</th><th>Veredito</th><th>Justificativa Técnica</th></tr></thead>
-        <tbody>
-          <tr>
-            <td class="td-bold">I</td>
-            <td class="td-alert">ERRADA</td>
-            <td>A ASG-GP foi desenvolvida especificamente para pacientes oncológicos em <strong>qualquer cenário</strong> — hospitalar, ambulatorial, durante quimioterapia, radioterapia e cuidados paliativos. A ESPEN 2021 recomenda aplicar a ASG-GP em toda consulta nutricional oncológica, independentemente do setting. Não é exclusiva de UTI.</td>
-          </tr>
-          <tr>
-            <td class="td-bold">II</td>
-            <td class="td-green">CORRETA</td>
-            <td>As fórmulas IMPACT (arginina + ômega-3 + nucleotídeos) têm indicação pré e pós-operatória em cirurgias oncológicas de grande porte. Metanálises demonstram redução de <strong>complicações infecciosas</strong> (ISC, pneumonia) e <strong>tempo de internação</strong>. A ESPEN recomenda seu uso mesmo em pacientes bem nutridos quando submetidos a cirurgia de grande porte.</td>
-          </tr>
-          <tr>
-            <td class="td-bold">III</td>
-            <td class="td-green">CORRETA</td>
-            <td>O mecanismo central da caquexia é a <strong>inflamação sistêmica</strong> por IL-1, IL-6, TNF-α e IFN-γ → catabolismo muscular + lipólise + anorexia + resistência à insulina. O catabolismo muscular ocorre mesmo com aporte calórico adequado (diferente da inanição simples). A abordagem multimodal — nutrição + exercício resistido + controle tumoral + farmacoterapia — é necessária.</td>
-          </tr>
-          <tr>
-            <td class="td-bold">IV</td>
-            <td class="td-alert">ERRADA</td>
-            <td>Em fase terminal, nutrição parenteral total e hidratação venosa em grandes volumes <strong>não melhoram conforto nem sobrevida</strong> — frequentemente causam desconforto (edema, ascite, secreções). A ESPEN recomenda avaliação individualizada; na fase ativa de morte, a suspensão ou minimização do suporte artificial é eticamente adequada e pode ser mais confortável para o paciente.</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <div class="pf">
-    <span>Extensivo ENARE 2026</span>
-    <span>Bloco B9 · Nutrição · Aula 31</span>
-    <span>9 / 10</span>
+    <div class="sec-title-sm" style="margin-top:1mm;">Síntese dos Erros Típicos</div>
+    <table class="table-sm">
+      <tr><th>Tema</th><th>Erro Comum</th><th>Correto</th></tr>
+      <tr><td>ETA</td><td>ETA = maior componente do GET (~60%)</td><td>GEB/GER = maior (~60–70%); <b>ETA ~10%</b></td></tr>
+      <tr><td>ETA por macro</td><td>Lipídios têm maior ETA</td><td><b>Proteínas</b> têm maior ETA (20–30%)</td></tr>
+      <tr><td>EAR vs RDA</td><td>RDA = mediana das necessidades do grupo</td><td><b>EAR = mediana</b>; RDA = EAR + 2DP</td></tr>
+      <tr><td>Avaliação de grupos</td><td>Usar RDA para avaliar grupos</td><td>Usar <b>EAR</b> para prevalência de inadequação em grupos</td></tr>
+      <tr><td>UL</td><td>UL = recomendação mínima para saúde</td><td>UL = limite <b>máximo</b> sem toxicidade</td></tr>
+      <tr><td>RDA proteínas adultos</td><td>RDA = 1,2 g/kg/dia para todos os adultos</td><td>RDA adultos saudáveis = <b>0,8 g/kg/dia</b></td></tr>
+      <tr><td>CHO mínimo</td><td>Não há recomendação mínima de CHO</td><td><b>130 g/dia</b> (mínimo para SNC)</td></tr>
+    </table>
   </div>
 </div>
 
-<!-- ============================================================ -->
-<!-- PAGE 10 — SÍNTESE FINAL -->
-<!-- ============================================================ -->
+<!-- ═══════════════════════════════════════════════════════ P10 · SÍNTESE FINAL -->
 <div class="page">
-  <div class="ph">
-    <div class="ph-logo">
-      <svg class="logo-svg" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#1F5C23"/><path d="M16 6 L26 12 L26 20 L16 26 L6 20 L6 12 Z" fill="none" stroke="#C6D834" stroke-width="2"/><circle cx="16" cy="16" r="4" fill="#C6D834"/></svg>
-      <div class="ph-logo-text"><span>Extensivo ENARE</span><span>2026</span></div>
+  <div class="page-header">
+    <div class="header-logo-group">
+      <svg class="header-logo-svg" viewBox="0 0 28 28" fill="none">
+        <polygon points="14,1 26,7.5 26,20.5 14,27 2,20.5 2,7.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="14" cy="14" r="5.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1"/>
+      </svg>
+      <div class="header-brand">
+        <span class="header-brand-main">extensivo ENARE</span>
+        <span class="header-brand-sub">by Residência PRO</span>
+      </div>
     </div>
-    <div class="ph-center">Síntese Final · Mapa de Revisão · Aula 31</div>
-    <div class="ph-right">NUT-ONCO · Aula 31</div>
+    <span class="header-center">Nutrição · Bloco B9 · Aula 31</span>
+    <span class="header-page">P10</span>
   </div>
-
-  <div class="pc-sm">
-    <div class="sec-title-sm" style="margin-bottom:3mm;">Síntese Final — O Que a FGV Mais Cobra Nesta Aula</div>
-
-    <div class="sintese-grid" style="margin-bottom:3.5mm;">
+  <div class="page-body">
+    <div class="sintese-header">
+      <div class="sintese-title">Síntese Final · Aula 31</div>
+      <div class="sintese-sub">NUT-FUND · Metabolismo Energético e DRIs</div>
+    </div>
+    <div class="sintese-grid">
       <div class="sintese-card">
-        <div class="sintese-card-title">Caquexia do Câncer</div>
-        <ul class="blist">
-          <li>Definição: perda de peso &gt; 5% em 6m + perda muscular + inflamação</li>
-          <li>Mediada por: <span class="hl-alert">IL-1, IL-6, TNF-α, IFN-γ</span></li>
-          <li><span class="hl-alert">Não é revertida por hipercaloria</span> — suporte convencional insuficiente</li>
-          <li>Fases: pré-caquexia → caquexia → <span class="hl-alert">refratária</span> (sem resposta)</li>
-          <li>Diferencial: inanição (responde a caloria) vs. caquexia (não responde)</li>
-          <li>Tratamento multimodal: nutrição + exercício + fármacos</li>
+        <div class="sintese-card-title">Componentes do GET</div>
+        <table class="table-sm">
+          <tr><th>Componente</th><th>% GET</th><th>Característica</th></tr>
+          <tr><td><b>GEB / GER</b></td><td><b>60–70%</b></td><td>Principal; MM magra é determinante</td></tr>
+          <tr><td><b>ETA</b></td><td><b>~10%</b></td><td>PTN &gt; CHO &gt; Lip (termogênese)</td></tr>
+          <tr><td><b>Atividade Física</b></td><td><b>20–30%</b></td><td>Mais variável; inclui NEAT</td></tr>
+        </table>
+        <ul class="dot-list" style="margin-top:2mm;">
+          <li>GET = GER × FA (sedentário 1,2 → extremamente ativo 1,9)</li>
+          <li>QR = VCO₂/VO₂: CHO=1,0; lip.=0,7; misto=0,82; &gt;1=lipogênese</li>
         </ul>
       </div>
       <div class="sintese-card">
-        <div class="sintese-card-title">ASG-GP (PG-SGA)</div>
-        <ul class="blist">
-          <li>Ferramenta padrão-ouro em oncologia — qualquer setting</li>
-          <li>Parte A (paciente): peso, ingestão, sintomas, funcionalidade</li>
-          <li>Parte B (profissional): diagnóstico, estresse, exame físico</li>
-          <li>0–1: sem intervenção · 2–3: educação · 4–8: suporte + triagem semanal</li>
-          <li><span class="hl-alert">≥ 9: intervenção crítica e urgente — imediata</span></li>
-          <li>Gera escore numérico + classificação A/B/C</li>
+        <div class="sintese-card-title">Equações de GER</div>
+        <ul class="dot-list">
+          <li><b>Harris-Benedict (1919):</b> clássica; superestima em obesos</li>
+          <li><b>Mifflin-St Jeor (1990):</b> mais precisa para sobrepeso/obesidade</li>
+          <li><b>Calorimetria indireta:</b> padrão-ouro; mede VO₂ e VCO₂</li>
+          <li>Ireton-Jones / Penn State: pacientes críticos com VM</li>
+          <li>GEB ≠ GER: GEB = condições mais rigorosas (jejum 12h, neutro)</li>
         </ul>
       </div>
       <div class="sintese-card">
-        <div class="sintese-card-title">Imunonutrição e ERAS</div>
-        <ul class="blist">
-          <li>IMPACT: arginina + ômega-3 + nucleotídeos</li>
-          <li>Indicação: cirurgias oncológicas de grande porte</li>
-          <li>Período: <span class="hl">5–7 dias pré-op + 7–10 dias pós-op</span></li>
-          <li>Efeito: ↓ infecções + ↓ tempo de internação</li>
-          <li>ERAS: 2h líquidos / 6h sólidos pré-op</li>
-          <li>Glutamina: <span class="hl-alert">contraindicada em leucemias/linfomas</span></li>
+        <div class="sintese-card-title">DRIs — Referências Essenciais</div>
+        <ul class="dot-list">
+          <li><b>EAR:</b> mediana (50% probabilidade) → avaliar grupos</li>
+          <li><b>RDA:</b> EAR + 2DP → 97–98% → meta individual</li>
+          <li><b>AI:</b> quando EAR não disponível; menor precisão</li>
+          <li><b>UL:</b> máximo sem toxicidade — não é meta!</li>
+          <li>RDA PTN adultos: <b>0,8 g/kg/dia</b></li>
+          <li>CHO mínimo: <b>130 g/dia</b></li>
         </ul>
       </div>
       <div class="sintese-card">
-        <div class="sintese-card-title">Cuidados Paliativos</div>
-        <ul class="blist">
-          <li>Fase curativa: metas plenas de suporte nutricional</li>
-          <li>Fase paliativa: adaptar ao objetivo e prognóstico do paciente</li>
-          <li>Fase terminal: <span class="hl-alert">NPT/hidratação em grandes volumes = fútil e prejudicial</span></li>
-          <li>Mucosite: alimentos frios, pastosos, sem acidez; SNG se grau III–IV</li>
-          <li>Disfagia CCP: IDDSI + gastrostomia profilática se risco alto</li>
-          <li>Decisão compartilhada: paciente + família + equipe</li>
-        </ul>
+        <div class="sintese-card-title">AMDR e Valor Calórico</div>
+        <table class="table-sm">
+          <tr><th>Nutriente</th><th>AMDR</th><th>kcal/g</th></tr>
+          <tr><td>Carboidratos</td><td><b>45–65%</b></td><td>4</td></tr>
+          <tr><td>Proteínas</td><td><b>10–35%</b></td><td>4</td></tr>
+          <tr><td>Lipídios</td><td><b>20–35%</b></td><td>9</td></tr>
+          <tr><td>Álcool</td><td>—</td><td>7</td></tr>
+          <tr><td>Fibras</td><td>25♀ / 38♂ g/dia</td><td>~2</td></tr>
+        </table>
       </div>
     </div>
-
-    <div class="mapa-box" style="margin-bottom:3mm;">
-      <div class="mapa-title">Armadilhas da FGV Nesta Aula</div>
-      <div class="mapa-body">
-        <strong>1. Caquexia e hipercaloria:</strong> "suporte hipercalórico reverte a caquexia" — ERRADO; a inflamação sistêmica persiste independentemente do aporte. ·
-        <strong>2. ASG-GP exclusiva de UTI:</strong> é indicada em qualquer cenário oncológico (hospital, ambulatório, quimioterapia). ·
-        <strong>3. ASG-GP escore ≥ 9:</strong> a questão pode sugerir "monitorar" ou "reavaliar" — o correto é intervenção IMEDIATA e urgente. ·
-        <strong>4. Glutamina em leucemia:</strong> contraindicada — pode estimular proliferação tumoral. ·
-        <strong>5. NPT em fase terminal:</strong> não melhora conforto — frequentemente aumenta desconforto (secreções, edema).
-      </div>
-    </div>
-
-    <div class="refs">
+    <div style="margin-top:2mm;">
       <div class="refs-title">Referências</div>
-      <ul>
-        <li>Fearon K et al. Definition and classification of cancer cachexia: an international consensus. Lancet Oncol. 2011.</li>
-        <li>ESPEN. Clinical Nutrition in cancer (guidelines). Clin Nutr. 2021.</li>
-        <li>Ottery FD. Definition of standardized nutritional assessment and interventional pathways in oncology. Nutrition. 1996 (PG-SGA).</li>
-        <li>Weimann A et al. ESPEN guideline: Clinical nutrition in surgery. Clin Nutr. 2017 (ERAS + imunonutrição).</li>
-        <li>Hui D et al. Hydration and nutrition at the end of life. Ann Palliat Med. 2013.</li>
-      </ul>
+      <p class="body-text" style="color:#888;">IOM/DRI Reports (2002–2005) — Energy, Carbohydrates, Fiber, Fat, Fatty Acids, Cholesterol, Protein and Amino Acids · Harris JA & Benedict FG (1919) · Mifflin MD et al. (1990) AJCN · Ireton-Jones CS (2002) · Roza AM & Shizgal HM (1984) · Weir JB (1949) — calorimetria indireta · FAO/WHO/UNU (1985) — Energy and Protein Requirements</p>
     </div>
-  </div>
-
-  <div class="pf">
-    <span>Extensivo ENARE 2026</span>
-    <span>Bloco B9 · Nutrição · Aula 31</span>
-    <span>10 / 10</span>
   </div>
 </div>
 
