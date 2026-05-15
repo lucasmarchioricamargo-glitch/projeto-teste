@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Psicologia — Bloco B11 — Aula 23 | Extensivo ENARE 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap');
+
+  :root {
+    --creme: #F6F4ED;
+    --verde: #1F5C23;
+    --accent: #C6D834;
+    --escuro: #0C1A0D;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #d0d0d0; font-family: 'Bricolage Grotesque', sans-serif; }
+
+  .pagina {
+    width: 210mm;
+    min-height: 297mm;
+    background: var(--creme);
+    margin: 8mm auto;
+    position: relative;
+    overflow: hidden;
+    page-break-after: always;
+  }
+
+  /* ===== CAPA ===== */
+  .capa { background: var(--verde); display: flex; flex-direction: column; justify-content: space-between; padding: 14mm 14mm 10mm 14mm; }
+  .capa-topo { display: flex; justify-content: space-between; align-items: flex-start; }
+  .capa-logo-area { display: flex; flex-direction: column; gap: 2mm; }
+  .capa-marca { font-family: 'Playfair Display', serif; font-style: italic; font-size: 15pt; color: var(--creme); }
+  .capa-tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 6.5pt; color: var(--accent); letter-spacing: 0.18em; text-transform: uppercase; }
+  .capa-badge { background: var(--accent); color: var(--verde); font-family: 'Barlow Condensed', sans-serif; font-size: 7.5pt; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; padding: 2.5mm 5mm; border-radius: 1mm; }
+  .capa-meio { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 10mm 0 6mm 0; }
+  .capa-bloco-label { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7pt; color: var(--accent); letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 4mm; }
+  .capa-titulo { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 34pt; color: var(--creme); line-height: 0.92; text-transform: uppercase; margin-bottom: 6mm; }
+  .capa-titulo span { color: var(--accent); }
+  .capa-subtitulo { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; font-size: 10pt; color: var(--creme); opacity: 0.82; line-height: 1.45; max-width: 145mm; }
+  .capa-linha { width: 28mm; height: 0.7mm; background: var(--accent); margin: 5mm 0; }
+  .capa-modulo-tag { display: inline-flex; align-items: center; gap: 2.5mm; background: rgba(198,216,52,0.15); border: 0.5px solid var(--accent); border-radius: 1mm; padding: 2mm 4mm; width: fit-content; margin-top: 4mm; }
+  .capa-modulo-tag span { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 8pt; color: var(--accent); letter-spacing: 0.12em; text-transform: uppercase; }
+  .capa-rodape { display: flex; justify-content: space-between; align-items: flex-end; border-top: 0.5px solid rgba(246,244,237,0.2); padding-top: 5mm; }
+  .capa-rodape-info { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 6pt; color: rgba(246,244,237,0.5); letter-spacing: 0.08em; text-transform: uppercase; line-height: 1.7; }
+  .capa-aula-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 52pt; color: rgba(246,244,237,0.08); line-height: 1; }
+
+  /* ===== PÁGINAS INTERNAS ===== */
+  .pg-interna { padding: 12mm 13mm 10mm 13mm; display: flex; flex-direction: column; gap: 4.5mm; }
+  .pg-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 0.6px solid var(--verde); padding-bottom: 2.5mm; margin-bottom: 1mm; }
+  .pg-header-left { display: flex; align-items: center; gap: 3mm; }
+  .pg-header-marca { font-family: 'Playfair Display', serif; font-style: italic; font-size: 8.5pt; color: var(--verde); }
+  .pg-header-sep { width: 0.5px; height: 3.5mm; background: var(--verde); opacity: 0.3; }
+  .pg-header-bloco { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 6pt; color: var(--verde); opacity: 0.65; letter-spacing: 0.12em; text-transform: uppercase; }
+  .pg-header-right { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 7.5pt; color: var(--accent); letter-spacing: 0.1em; background: var(--verde); padding: 1mm 3mm; border-radius: 0.5mm; }
+
+  .secao-titulo { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 16pt; color: var(--verde); text-transform: uppercase; line-height: 1.05; border-left: 3.5px solid var(--accent); padding-left: 3.5mm; margin-bottom: 1mm; }
+  .subsecao { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 10.5pt; color: var(--verde); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 3mm; margin-bottom: 1.5mm; display: flex; align-items: center; gap: 2mm; }
+  .subsecao::after { content: ''; flex: 1; height: 0.5px; background: var(--verde); opacity: 0.2; }
+
+  p { font-size: 7.8pt; line-height: 1.55; color: #1a2e1b; }
+  strong { font-weight: 600; color: var(--escuro); }
+  em { color: var(--verde); font-style: normal; font-weight: 600; }
+
+  .destaque-box { background: var(--verde); border-radius: 1.5mm; padding: 3.5mm 4.5mm; margin: 2mm 0; }
+  .destaque-box p { color: var(--creme); font-size: 7.5pt; }
+  .destaque-box strong { color: var(--accent); }
+
+  .alerta-box { background: rgba(198,216,52,0.12); border-left: 3px solid var(--accent); border-radius: 0 1.5mm 1.5mm 0; padding: 3mm 4mm; margin: 2mm 0; }
+  .alerta-box p { font-size: 7.5pt; }
+
+  .tabela { width: 100%; border-collapse: collapse; font-size: 7pt; margin: 2mm 0; }
+  .tabela th { background: var(--verde); color: var(--creme); font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 7.5pt; text-transform: uppercase; padding: 2mm 2.5mm; text-align: left; }
+  .tabela td { padding: 1.8mm 2.5mm; border-bottom: 0.5px solid rgba(31,92,35,0.12); color: #1a2e1b; vertical-align: top; line-height: 1.45; }
+  .tabela tr:nth-child(even) td { background: rgba(31,92,35,0.04); }
+  .tabela .cel-dest { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 7.5pt; color: var(--verde); text-transform: uppercase; }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; margin: 2mm 0; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3mm; margin: 2mm 0; }
+  .card { background: rgba(31,92,35,0.06); border-radius: 1.5mm; padding: 3mm 3.5mm; border-top: 2.5px solid var(--verde); }
+  .card-titulo { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 8pt; color: var(--verde); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1.5mm; }
+  .card p { font-size: 7pt; line-height: 1.5; }
+
+  .chip { display: inline-block; background: var(--verde); color: var(--creme); font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 6.5pt; letter-spacing: 0.08em; text-transform: uppercase; padding: 1mm 2.5mm; border-radius: 0.8mm; margin: 0.5mm 0.5mm 0 0; }
+  .chip-accent { background: var(--accent); color: var(--verde); }
+
+  ul.lista { list-style: none; padding: 0; margin: 1.5mm 0; }
+  ul.lista li { font-size: 7.5pt; line-height: 1.5; color: #1a2e1b; padding-left: 4mm; position: relative; margin-bottom: 1mm; }
+  ul.lista li::before { content: '▸'; position: absolute; left: 0; color: var(--accent); font-size: 7pt; top: 0.5mm; }
+
+  /* ===== QUESTÕES ===== */
+  .questao-header { display: flex; align-items: center; gap: 3mm; margin-bottom: 2mm; }
+  .questao-num { background: var(--verde); color: var(--accent); font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 11pt; width: 9mm; height: 9mm; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .questao-meta { display: flex; flex-direction: column; gap: 0.8mm; }
+  .questao-banca { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 6pt; color: var(--verde); opacity: 0.7; letter-spacing: 0.12em; text-transform: uppercase; }
+  .questao-tema { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 8pt; color: var(--verde); text-transform: uppercase; letter-spacing: 0.06em; }
+  .questao-enunciado { background: rgba(31,92,35,0.05); border-left: 2.5px solid var(--verde); padding: 3mm 4mm; border-radius: 0 1mm 1mm 0; margin-bottom: 3mm; }
+  .questao-enunciado p { font-size: 7.8pt; line-height: 1.55; }
+  .alternativas { display: flex; flex-direction: column; gap: 1.8mm; }
+  .alt { display: flex; align-items: flex-start; gap: 2.5mm; padding: 2mm 3mm; border-radius: 1mm; border: 0.5px solid rgba(31,92,35,0.15); }
+  .alt-letra { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; color: var(--verde); min-width: 4mm; line-height: 1.3; }
+  .alt p { font-size: 7.5pt; line-height: 1.5; }
+  .alt-correta { background: rgba(31,92,35,0.08); border-color: var(--verde); }
+
+  /* ===== GABARITO ===== */
+  .gabarito-pg { padding: 12mm 13mm 10mm 13mm; }
+  .gabarito-titulo { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 20pt; color: var(--verde); text-transform: uppercase; border-left: 3.5px solid var(--accent); padding-left: 3.5mm; margin-bottom: 5mm; }
+  .gabarito-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4mm; margin-bottom: 6mm; }
+  .gab-card { background: var(--verde); border-radius: 2mm; padding: 4mm; text-align: center; }
+  .gab-card-q { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 6.5pt; color: rgba(246,244,237,0.6); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1.5mm; }
+  .gab-card-letra { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 32pt; color: var(--accent); line-height: 1; margin-bottom: 1.5mm; }
+  .gab-card-tema { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 6.5pt; color: rgba(246,244,237,0.8); text-transform: uppercase; letter-spacing: 0.05em; }
+  .justificativa { margin-bottom: 4mm; padding: 3mm 4mm; background: rgba(31,92,35,0.05); border-radius: 1.5mm; border-left: 2.5px solid var(--accent); }
+  .justificativa-q { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 8.5pt; color: var(--verde); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1.5mm; }
+  .justificativa p { font-size: 7.5pt; line-height: 1.55; }
+
+  /* ===== SÍNTESE ===== */
+  .sintese-pg { padding: 12mm 13mm 10mm 13mm; }
+  .sintese-titulo { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 20pt; color: var(--verde); text-transform: uppercase; border-left: 3.5px solid var(--accent); padding-left: 3.5mm; margin-bottom: 5mm; }
+  .mapa-item { display: flex; gap: 3mm; margin-bottom: 3mm; align-items: flex-start; }
+  .mapa-bullet { width: 5mm; height: 5mm; background: var(--accent); border-radius: 50%; flex-shrink: 0; margin-top: 0.5mm; }
+  .mapa-content { flex: 1; }
+  .mapa-termo { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; color: var(--verde); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.8mm; }
+  .mapa-content p { font-size: 7.3pt; line-height: 1.5; }
+  .proxima-aula { background: var(--verde); border-radius: 2mm; padding: 4mm 5mm; margin-top: 4mm; display: flex; align-items: center; gap: 4mm; }
+  .proxima-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 36pt; color: rgba(198,216,52,0.25); line-height: 1; flex-shrink: 0; }
+  .proxima-aula-label { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 6pt; color: var(--accent); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 1.5mm; }
+  .proxima-aula-titulo { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 11pt; color: var(--creme); text-transform: uppercase; }
+
+  .pg-num { position: absolute; bottom: 6mm; right: 13mm; font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 6pt; color: var(--verde); opacity: 0.4; letter-spacing: 0.1em; }
+
+  @media print { body { background: none; } .pagina { margin: 0; } }
+</style>
+</head>
+<body>
+
+<!-- ========== PÁGINA 1 — CAPA ========== -->
+<div class="pagina capa">
+  <div class="capa-topo">
+    <div class="capa-logo-area">
+      <svg width="38" height="44" viewBox="0 0 38 44" fill="none">
+        <polygon points="19,2 36,11.5 36,32.5 19,42 2,32.5 2,11.5" fill="#F6F4ED"/>
+        <circle cx="19" cy="22" r="8.5" fill="#1F5C23"/>
+      </svg>
+      <div class="capa-marca">Elite Treinamentos</div>
+      <div class="capa-tagline">Extensivo ENARE 2026</div>
+    </div>
+    <div class="capa-badge">Psicologia · Bloco B11</div>
+  </div>
+
+  <div class="capa-meio">
+    <div class="capa-bloco-label">Aula 23 · PSI-SAÚDE</div>
+    <div class="capa-titulo">Psicologia<br><span>Hospitalar</span> e<br>Cuidados Paliativos</div>
+    <div class="capa-linha"></div>
+    <div class="capa-subtitulo">
+      Inserção do Psicólogo no Hospital · HumanizaSUS/PNH ·
+      Morte e Morrer (Kübler-Ross) · Cuidados Paliativos (OMS) ·
+      Comunicação de Más Notícias (SPIKES) · Luto Normal e Prolongado (CID-11)
+    </div>
+    <div class="capa-modulo-tag">
+      <svg width="8" height="8" viewBox="0 0 8 8"><circle cx="4" cy="4" r="4" fill="#C6D834"/></svg>
+      <span>PSI-SAÚDE — Alta frequência ENARE/FGV</span>
+    </div>
+  </div>
+
+  <div class="capa-rodape">
+    <div class="capa-rodape-info">
+      <div>Extensivo ENARE 2026 · Material de Estudo</div>
+      <div>Atualizado conforme definição OMS 2002 · CFM · PNH/MS</div>
+    </div>
+    <div class="capa-aula-num">23</div>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 2 — PSICOLOGIA HOSPITALAR ========== -->
+<div class="pagina pg-interna">
+  <div class="pg-header">
+    <div class="pg-header-left">
+      <svg width="14" height="16" viewBox="0 0 38 44" fill="none">
+        <polygon points="19,2 36,11.5 36,32.5 19,42 2,32.5 2,11.5" fill="#1F5C23"/>
+        <circle cx="19" cy="22" r="8.5" fill="#F6F4ED"/>
+      </svg>
+      <span class="pg-header-marca">Elite Treinamentos</span>
+      <div class="pg-header-sep"></div>
+      <span class="pg-header-bloco">Psicologia · Bloco B11 · Aula 23</span>
+    </div>
+    <div class="pg-header-right">PSI-SAÚDE</div>
+  </div>
+
+  <div class="secao-titulo">Psicologia Hospitalar — Fundamentos</div>
+
+  <p>A <strong>Psicologia Hospitalar</strong> é a área de atuação do psicólogo em contextos de saúde de média e alta complexidade — hospitais gerais, unidades de terapia intensiva (UTI), ambulatórios especializados, serviços de oncologia e cuidados paliativos. Distingue-se da psicologia clínica tradicional pela lógica do cuidado <em>integral</em> em contexto de crise aguda e cronicidade.</p>
+
+  <div class="subsecao">Papel do Psicólogo Hospitalar</div>
+
+  <ul class="lista">
+    <li><strong>Avaliação psicológica</strong> — impacto emocional do adoecimento, recursos de enfrentamento (coping), rede de suporte, risco de saúde mental.</li>
+    <li><strong>Intervenção em crise</strong> — diagnóstico novo, piora clínica, procedimentos invasivos, comunicação de mau prognóstico.</li>
+    <li><strong>Suporte à família</strong> — mediação, psicoeducação, apoio no luto antecipatório e na tomada de decisão.</li>
+    <li><strong>Atuação junto à equipe</strong> — discussão de casos, gestão do sofrimento da equipe (burnout, humanização), apoio à comunicação de más notícias.</li>
+    <li><strong>Cuidados paliativos</strong> — equipe multiprofissional; conforto biopsicossocial e espiritual; luto.</li>
+    <li><strong>Aderência ao tratamento</strong> — compreensão dos obstáculos psicológicos à adesão (negação, medo, crenças).</li>
+  </ul>
+
+  <div class="subsecao">HumanizaSUS — Política Nacional de Humanização (PNH)</div>
+
+  <p>A <strong>PNH (2003)</strong> transversaliza a humanização em toda a rede SUS, não sendo política específica de um serviço. Seus princípios orientadores:</p>
+
+  <div class="grid-3">
+    <div class="card">
+      <div class="card-titulo">Transversalidade</div>
+      <p>Humanização perpassa todos os níveis de atenção — APS, média e alta complexidade — não é restrita ao hospital.</p>
+    </div>
+    <div class="card">
+      <div class="card-titulo">Indissociabilidade</div>
+      <p>Atenção (cuidado ao usuário) e gestão (organização do trabalho) são indissociáveis — humanizar é também mudar os processos de trabalho.</p>
+    </div>
+    <div class="card">
+      <div class="card-titulo">Autonomia e Protagonismo</div>
+      <p>Usuários, trabalhadores e gestores são sujeitos — não objetos — das práticas de saúde.</p>
+    </div>
+  </div>
+
+  <div class="subsecao">Dispositivos da PNH</div>
+
+  <table class="tabela">
+    <tr>
+      <th>Dispositivo</th>
+      <th>Descrição / Aplicação</th>
+    </tr>
+    <tr>
+      <td class="cel-dest">Clínica Ampliada</td>
+      <td>Cuidado que vai além da doença: sujeito + família + contexto social. Base do PTS.</td>
+    </tr>
+    <tr>
+      <td class="cel-dest">Acolhimento</td>
+      <td>Escuta qualificada em todos os pontos de contato; não é triagem — é postura ética de cuidado.</td>
+    </tr>
+    <tr>
+      <td class="cel-dest">Cogestão</td>
+      <td>Inclusão de trabalhadores e usuários na gestão das unidades (Colegiados de Gestão).</td>
+    </tr>
+    <tr>
+      <td class="cel-dest">Valorização do Trabalhador</td>
+      <td>Prevenção do burnout; espaços de escuta da equipe; câmara de escuta; apoio institucional.</td>
+    </tr>
+    <tr>
+      <td class="cel-dest">Ambiência</td>
+      <td>Organização dos espaços físicos para favorecer conforto, privacidade e subjetividade.</td>
+    </tr>
+    <tr>
+      <td class="cel-dest">Visita Aberta e Direito à Acompanhante</td>
+      <td>Garantia do acompanhante em internações (incluindo UTI); fortalece vínculo e suporte familiar.</td>
+    </tr>
+  </table>
+
+  <div class="alerta-box">
+    <p><strong>Ponto FGV:</strong> a PNH <em>não</em> é política exclusiva do hospital nem da atenção especializada — é transversal ao SUS. O psicólogo contribui para a humanização em qualquer ponto da rede, não apenas no contexto hospitalar.</p>
+  </div>
+
+  <div class="pg-num">2</div>
+</div>
+
+<!-- ========== PÁGINA 3 — MORTE, MORRER E KÜBLER-ROSS ========== -->
+<div class="pagina pg-interna">
+  <div class="pg-header">
+    <div class="pg-header-left">
+      <svg width="14" height="16" viewBox="0 0 38 44" fill="none">
+        <polygon points="19,2 36,11.5 36,32.5 19,42 2,32.5 2,11.5" fill="#1F5C23"/>
+        <circle cx="19" cy="22" r="8.5" fill="#F6F4ED"/>
+      </svg>
+      <span class="pg-header-marca">Elite Treinamentos</span>
+      <div class="pg-header-sep"></div>
+      <span class="pg-header-bloco">Psicologia · Bloco B11 · Aula 23</span>
+    </div>
+    <div class="pg-header-right">PSI-SAÚDE</div>
+  </div>
+
+  <div class="secao-titulo">Morte e Morrer — Elisabeth Kübler-Ross</div>
+
+  <p>Elisabeth Kübler-Ross descreveu, a partir de entrevistas com pacientes terminais (<em>On Death and Dying</em>, 1969), cinco <strong>estágios do luto</strong> — padrões de resposta emocional diante da morte iminente. Os estágios <strong>não são lineares</strong> nem obrigatórios: o paciente pode experimentá-los em qualquer ordem, retornar a estágios anteriores ou não vivenciar todos.</p>
+
+  <div class="subsecao">5 Estágios de Kübler-Ross</div>
+
+  <table class="tabela">
+    <tr>
+      <th>Estágio</th>
+      <th>Características / Falas Típicas</th>
+      <th>Intervenção do Psicólogo</th>
+    </tr>
+    <tr>
+      <td class="cel-dest">1. Negação</td>
+      <td>"Deve haver um erro no exame." "Isso não pode ser comigo." Mecanismo de defesa adaptativo; amortece o impacto inicial.</td>
+      <td>Acolhimento; não confrontar a negação de forma abrupta; presença e vínculo.</td>
+    </tr>
+    <tr>
+      <td class="cel-dest">2. Raiva</td>
+      <td>"Por que eu?" Hostilidade dirigida à equipe, família, Deus. Inveja dos saudáveis.</td>
+      <td>Não personalizar a raiva; validar o sentimento; escuta ativa sem defensividade.</td>
+    </tr>
+    <tr>
+      <td class="cel-dest">3. Barganha</td>
+      <td>"Se eu melhorar, prometo que..." Negociação com Deus, destino, médicos. Tentativa de adiar a morte por bom comportamento.</td>
+      <td>Respeitar a negociação sem reforçar falsas esperanças; explorar os valores que a barganha revela.</td>
+    </tr>
+    <tr>
+      <td class="cel-dest">4. Depressão</td>
+      <td>Tristeza profunda, choro, retraimento, preparação para a perda. Luto antecipatório.</td>
+      <td>Presença silenciosa; não tentar "animar"; reconhecer o sofrimento como legítimo.</td>
+    </tr>
+    <tr>
+      <td class="cel-dest">5. Aceitação</td>
+      <td>Paz relativa; cansaço; desapego progressivo. Não é resignação nem felicidade — é serenidade.</td>
+      <td>Facilitar despedidas; cuidado espiritual; suporte à família.</td>
+    </tr>
+  </table>
+
+  <div class="alerta-box">
+    <p><strong>Erro frequente no ENARE:</strong> os estágios de Kübler-Ross foram elaborados para o <em>paciente terminal</em> — mas são amplamente aplicados ao processo de luto em geral (perda de uma pessoa querida, diagnóstico grave, perda de função). <strong>NÃO são lineares nem obrigatórios.</strong> A barganha (estágio 3) é marcada por promessas e negociações condicionais: "se X acontecer, eu farei Y."</p>
+  </div>
+
+  <div class="subsecao">Tanatologia — Conceitos Éticos Fundamentais</div>
+
+  <table class="tabela">
+    <tr>
+      <th>Conceito</th>
+      <th>Definição</th>
+      <th>Posição Ética</th>
+    </tr>
+    <tr>
+      <td class="cel-dest">Distanásia</td>
+      <td>Prolongamento artificial e excessivo do processo de morte — "morte difícil" — com sofrimento desproporcionado e sem benefício clínico real.</td>
+      <td>Considerada antiética pelo CFM; viola a dignidade do paciente terminal.</td>
+    </tr>
+    <tr>
+      <td class="cel-dest">Ortotanásia</td>
+      <td>Morte no tempo certo — permite o curso natural da morte sem prolongamento artificial. Suspensão de medidas fúteis. Diferente da eutanásia.</td>
+      <td>Aceita pelo CFM (Res. 1.805/2006); compatível com cuidados paliativos.</td>
+    </tr>
+    <tr>
+      <td class="cel-dest">Eutanásia</td>
+      <td>Provocação intencional da morte por ação da equipe ou terceiro, a pedido do paciente, para aliviar sofrimento insuportável.</td>
+      <td>Ilegal no Brasil; vedada pelo CFM e pelo Código Penal.</td>
+    </tr>
+    <tr>
+      <td class="cel-dest">Suicídio Assistido</td>
+      <td>Profissional fornece os meios; o próprio paciente executa o ato. Ilegal no Brasil.</td>
+      <td>Vedado; discutido em países com legislação específica (Holanda, Bélgica).</td>
+    </tr>
+  </table>
+
+  <div class="pg-num">3</div>
+</div>
+
+<!-- ========== PÁGINA 4 — CUIDADOS PALIATIVOS E COMUNICAÇÃO DE MÁS NOTÍCIAS ========== -->
+<div class="pagina pg-interna">
+  <div class="pg-header">
+    <div class="pg-header-left">
+      <svg width="14" height="16" viewBox="0 0 38 44" fill="none">
+        <polygon points="19,2 36,11.5 36,32.5 19,42 2,32.5 2,11.5" fill="#1F5C23"/>
+        <circle cx="19" cy="22" r="8.5" fill="#F6F4ED"/>
+      </svg>
+      <span class="pg-header-marca">Elite Treinamentos</span>
+      <div class="pg-header-sep"></div>
+      <span class="pg-header-bloco">Psicologia · Bloco B11 · Aula 23</span>
+    </div>
+    <div class="pg-header-right">PSI-SAÚDE</div>
+  </div>
+
+  <div class="secao-titulo">Cuidados Paliativos e SPIKES</div>
+
+  <div class="subsecao">Cuidados Paliativos — Definição OMS (2002)</div>
+
+  <div class="destaque-box">
+    <p><strong>OMS (2002):</strong> "Cuidados paliativos constituem uma abordagem que <strong>melhora a qualidade de vida</strong> de pacientes e famílias que enfrentam problemas associados a doenças que ameaçam a continuidade da vida, por meio da <strong>prevenção e alívio do sofrimento</strong>, da identificação precoce e do tratamento impecável da dor e de outros problemas físicos, psicossociais e espirituais."</p>
+  </div>
+
+  <div class="subsecao">Princípios dos Cuidados Paliativos (OMS)</div>
+
+  <ul class="lista">
+    <li><strong>Afirmam a vida</strong> e encararam a morte como processo natural — não a antecipam nem a prolongam artificialmente (ortotanásia, não distanásia).</li>
+    <li><strong>Alívio da dor</strong> e de outros sintomas de sofrimento (físico, psicológico, social, espiritual).</li>
+    <li><strong>Integração dos aspectos psicossociais e espirituais</strong> no cuidado — modelo biopsicossocial ampliado.</li>
+    <li><strong>Sistema de suporte à família</strong> durante o adoecimento e no luto após a morte.</li>
+    <li><strong>Equipe multiprofissional:</strong> médico + enfermagem + psicólogo + assistente social + capelão/assistência espiritual + fisioterapeuta + nutricionista.</li>
+    <li><strong>Aplicáveis desde o diagnóstico</strong> — não apenas na fase terminal; podem ser combinados com tratamentos curativos.</li>
+    <li><strong>Não aceleram nem retardam</strong> a morte — compatíveis com ortotanásia.</li>
+  </ul>
+
+  <div class="subsecao">Protocolo SPIKES — Comunicação de Más Notícias</div>
+
+  <p>O protocolo <strong>SPIKES</strong> (Buckman, 2000) é amplamente utilizado no contexto hospitalar para organizar a comunicação de informações diagnósticas e prognósticas desfavoráveis de forma humanizada, respeitando a autonomia e o tempo do paciente.</p>
+
+  <table class="tabela">
+    <tr>
+      <th>Letra</th>
+      <th>Etapa (original)</th>
+      <th>O que fazer</th>
+    </tr>
+    <tr>
+      <td class="cel-dest">S</td>
+      <td>Setting (Preparação)</td>
+      <td>Local privado, silencioso; sentar no mesmo nível do paciente; convidar familiar se o paciente desejar; desligar celular.</td>
+    </tr>
+    <tr>
+      <td class="cel-dest">P</td>
+      <td>Perception (Percepção)</td>
+      <td>"O que o sr. já sabe sobre sua situação?" — avaliar o que o paciente já compreende antes de falar.</td>
+    </tr>
+    <tr>
+      <td class="cel-dest">I</td>
+      <td>Invitation (Convite)</td>
+      <td>"O quanto o sr. quer saber sobre os resultados?" — respeitar a autonomia informacional; pacientes têm o direito de não saber.</td>
+    </tr>
+    <tr>
+      <td class="cel-dest">K</td>
+      <td>Knowledge (Conhecimento)</td>
+      <td>Transmitir a informação em linguagem clara, gradualmente, sem jargão; pausar para verificar compreensão.</td>
+    </tr>
+    <tr>
+      <td class="cel-dest">E</td>
+      <td>Emotions (Emoções)</td>
+      <td>Identificar e validar a resposta emocional; silêncio empático; "Entendo que é muito difícil ouvir isso."</td>
+    </tr>
+    <tr>
+      <td class="cel-dest">S</td>
+      <td>Strategy/Summary</td>
+      <td>Apresentar plano de cuidado; sumarizar; combinar próximos passos; garantir que não está sozinho.</td>
+    </tr>
+  </table>
+
+  <div class="alerta-box">
+    <p><strong>Ponto crítico ENARE:</strong> o SPIKES <em>começa escutando</em> (P = o que o paciente já sabe) antes de transmitir a informação. Informar diretamente de imediato viola a autonomia e ignora o modelo do paciente sobre sua doença.</p>
+  </div>
+
+  <div class="pg-num">4</div>
+</div>
+
+<!-- ========== PÁGINA 5 — LUTO NORMAL E PROLONGADO ========== -->
+<div class="pagina pg-interna">
+  <div class="pg-header">
+    <div class="pg-header-left">
+      <svg width="14" height="16" viewBox="0 0 38 44" fill="none">
+        <polygon points="19,2 36,11.5 36,32.5 19,42 2,32.5 2,11.5" fill="#1F5C23"/>
+        <circle cx="19" cy="22" r="8.5" fill="#F6F4ED"/>
+      </svg>
+      <span class="pg-header-marca">Elite Treinamentos</span>
+      <div class="pg-header-sep"></div>
+      <span class="pg-header-bloco">Psicologia · Bloco B11 · Aula 23</span>
+    </div>
+    <div class="pg-header-right">PSI-SAÚDE</div>
+  </div>
+
+  <div class="secao-titulo">Luto — Normal, Antecipatório e Prolongado</div>
+
+  <div class="subsecao">Luto Normal vs. Luto Prolongado</div>
+
+  <table class="tabela">
+    <tr>
+      <th>Dimensão</th>
+      <th>Luto Normal</th>
+      <th>Luto Prolongado (CID-11: QD60)</th>
+    </tr>
+    <tr>
+      <td class="cel-dest">Duração</td>
+      <td>Diminui gradualmente; picos temporários</td>
+      <td>&gt; 6 meses em adultos (CID-11); DSM-5 TR: &gt; 12 meses</td>
+    </tr>
+    <tr>
+      <td class="cel-dest">Intensidade</td>
+      <td>Sofrimento intenso no início, com progressiva readaptação</td>
+      <td>Saudade intensa e persistente sem atenuação ao longo do tempo</td>
+    </tr>
+    <tr>
+      <td class="cel-dest">Funcionamento</td>
+      <td>Prejuízo temporário; retorno gradual às atividades</td>
+      <td>Prejuízo funcional significativo e persistente (social, profissional, saúde)</td>
+    </tr>
+    <tr>
+      <td class="cel-dest">Identidade</td>
+      <td>Preservação do senso de identidade ao longo do tempo</td>
+      <td>Dificuldade em aceitar a realidade da perda; sensação de que parte de si morreu</td>
+    </tr>
+    <tr>
+      <td class="cel-dest">Codificação</td>
+      <td>Resposta normal ao estressor</td>
+      <td>CID-11: QD60 (Transtorno de Luto Prolongado)</td>
+    </tr>
+  </table>
+
+  <div class="subsecao">Luto Antecipatório</div>
+
+  <p>O <strong>luto antecipatório</strong> ocorre antes da morte propriamente dita — tanto no paciente (consciência da própria morte iminente) quanto na família (antecipação da perda do ente querido). É frequente no contexto dos cuidados paliativos e dos cuidados oncológicos. O psicólogo pode trabalhar o luto antecipatório para facilitar a despedida, a resolução de conflitos relacionais e a aceitação.</p>
+
+  <div class="subsecao">Fatores de Risco para Luto Complicado</div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-titulo">Relativos à Perda</div>
+      <p>Morte súbita ou violenta · Suicídio do ente querido (posvenção) · Morte de filho · Perda múltipla (desastres) · Corpo não encontrado · Morte ambígua (desaparecimento)</p>
+    </div>
+    <div class="card">
+      <div class="card-titulo">Relativos ao Enlutado</div>
+      <p>Histórico de depressão/ansiedade · Apego ansioso ou ambivalente · Isolamento social · Dependência do falecido · Ausência de rituais de despedida · Criança enlutada sem suporte</p>
+    </div>
+  </div>
+
+  <div class="subsecao">Tarefas do Luto — Worden (4 Tarefas)</div>
+
+  <ul class="lista">
+    <li><strong>Tarefa 1:</strong> Aceitar a realidade da perda — contra a negação.</li>
+    <li><strong>Tarefa 2:</strong> Trabalhar a dor do luto — processar o sofrimento sem suprimi-lo.</li>
+    <li><strong>Tarefa 3:</strong> Adaptar-se ao mundo sem o falecido — novos papéis, nova identidade.</li>
+    <li><strong>Tarefa 4:</strong> Encontrar uma conexão duradoura com o falecido ao mover-se para uma nova vida — manter vínculo interno sem impedir o investimento em novas relações.</li>
+  </ul>
+
+  <div class="destaque-box">
+    <p><strong>Posvenção:</strong> intervenção com enlutados por suicídio. Familiares e amigos de vítimas de suicídio têm risco 3–5× maior de comportamento suicida. O psicólogo deve oferecer suporte especializado, desmistificar a culpa, facilitar o luto e conectar à rede de apoio. NOT-ME é o protocolo de posvenção em escolas.</p>
+  </div>
+
+  <div class="pg-num">5</div>
+</div>
+
+<!-- ========== PÁGINA 6 — QUESTÃO 01 ========== -->
+<div class="pagina pg-interna">
+  <div class="pg-header">
+    <div class="pg-header-left">
+      <svg width="14" height="16" viewBox="0 0 38 44" fill="none">
+        <polygon points="19,2 36,11.5 36,32.5 19,42 2,32.5 2,11.5" fill="#1F5C23"/>
+        <circle cx="19" cy="22" r="8.5" fill="#F6F4ED"/>
+      </svg>
+      <span class="pg-header-marca">Elite Treinamentos</span>
+      <div class="pg-header-sep"></div>
+      <span class="pg-header-bloco">Psicologia · Bloco B11 · Aula 23 — Questões</span>
+    </div>
+    <div class="pg-header-right">PSI-SAÚDE</div>
+  </div>
+
+  <div class="questao-header">
+    <div class="questao-num">01</div>
+    <div class="questao-meta">
+      <span class="questao-banca">ENARE / FGV · Estilo — Morte e Morrer</span>
+      <span class="questao-tema">Estágios de Kübler-Ross · Barganha · Identificação de Estágio</span>
+    </div>
+  </div>
+
+  <div class="questao-enunciado">
+    <p>Maria Clara, 58 anos, foi diagnosticada com câncer de pâncreas em fase avançada. Nas primeiras semanas, recusou-se a aceitar o diagnóstico, afirmando que os exames estavam errados. Nas semanas seguintes, tornou-se irritada com a equipe e com os familiares, questionando por que isso havia acontecido com ela. Em atendimento psicológico recente, diz ao psicólogo: <em>"Se eu ficar boa, prometo a Deus que vou mudar completamente minha vida. Vou me dedicar à família e às coisas que realmente importam."</em> Com base nos estágios de Kübler-Ross, em qual estágio Maria Clara se encontra neste momento?</p>
+  </div>
+
+  <div class="alternativas">
+    <div class="alt">
+      <span class="alt-letra">A</span>
+      <p>Aceitação — ao reconhecer implicitamente a gravidade da doença e prometer mudanças de vida caso sobreviva, Maria Clara demonstra serenidade e reconciliação com a possibilidade da morte.</p>
+    </div>
+    <div class="alt alt-correta">
+      <span class="alt-letra">B</span>
+      <p>Barganha — o estágio é caracterizado por negociações e promessas condicionais dirigidas a Deus, ao destino ou à equipe, em troca de cura ou mais tempo de vida. "Se eu ficar boa, prometo que..." é a expressão prototípica deste estágio.</p>
+    </div>
+    <div class="alt">
+      <span class="alt-letra">C</span>
+      <p>Depressão — a promessa de mudança revela tristeza profunda e desesperança de Maria Clara em relação ao futuro, indicando luto antecipatório característico do quarto estágio.</p>
+    </div>
+    <div class="alt">
+      <span class="alt-letra">D</span>
+      <p>Negação — ao projetar um futuro idealizado condicionado à cura, Maria Clara ainda recusa inconscientemente a realidade da doença e da possibilidade de morte iminente.</p>
+    </div>
+  </div>
+
+  <div style="margin-top:4mm;">
+    <span class="chip chip-accent">Gabarito: B</span>
+    <span class="chip">Kübler-Ross — 5 estágios</span>
+    <span class="chip">Barganha = promessa condicional</span>
+    <span class="chip">Negação → Raiva → Barganha</span>
+  </div>
+
+  <div class="pg-num">6</div>
+</div>
+
+<!-- ========== PÁGINA 7 — QUESTÃO 02 ========== -->
+<div class="pagina pg-interna">
+  <div class="pg-header">
+    <div class="pg-header-left">
+      <svg width="14" height="16" viewBox="0 0 38 44" fill="none">
+        <polygon points="19,2 36,11.5 36,32.5 19,42 2,32.5 2,11.5" fill="#1F5C23"/>
+        <circle cx="19" cy="22" r="8.5" fill="#F6F4ED"/>
+      </svg>
+      <span class="pg-header-marca">Elite Treinamentos</span>
+      <div class="pg-header-sep"></div>
+      <span class="pg-header-bloco">Psicologia · Bloco B11 · Aula 23 — Questões</span>
+    </div>
+    <div class="pg-header-right">PSI-SAÚDE</div>
+  </div>
+
+  <div class="questao-header">
+    <div class="questao-num">02</div>
+    <div class="questao-meta">
+      <span class="questao-banca">ENARE / FGV · Estilo — Cuidados Paliativos</span>
+      <span class="questao-tema">Protocolo SPIKES · Comunicação de Más Notícias · Autonomia</span>
+    </div>
+  </div>
+
+  <div class="questao-enunciado">
+    <p>Dr. Paulo, oncologista, irá comunicar a Sérgio, 64 anos, que os exames mostram progressão da doença e que as opções de tratamento curativo estão esgotadas. Antes da consulta, solicita apoio do psicólogo hospitalar. Com base no protocolo SPIKES de comunicação de más notícias, qual a sequência de etapas corretamente aplicada ao caso?</p>
+  </div>
+
+  <div class="alternativas">
+    <div class="alt">
+      <span class="alt-letra">A</span>
+      <p>O psicólogo deve realizar a comunicação de más notícias no lugar do médico, pois está melhor preparado para lidar com as reações emocionais de Sérgio e pode integrar a notícia ao suporte psicológico de forma mais humanizada.</p>
+    </div>
+    <div class="alt">
+      <span class="alt-letra">B</span>
+      <p>O protocolo determina que a má notícia seja transmitida de forma objetiva e direta no início da consulta, comunicando imediatamente a progressão e as opções disponíveis para não prolongar a ansiedade de antecipação do paciente.</p>
+    </div>
+    <div class="alt alt-correta">
+      <span class="alt-letra">C</span>
+      <p>O protocolo SPIKES orienta a preparar o ambiente (S), verificar o que Sérgio já sabe sobre sua situação (P), identificar quanto ele deseja ser informado (I), transmitir gradualmente o conhecimento em linguagem acessível (K), acolher e validar as emoções (E) e, por fim, apresentar o plano de cuidados e garantir suporte contínuo (S) — colocando o paciente como agente ativo do processo.</p>
+    </div>
+    <div class="alt">
+      <span class="alt-letra">D</span>
+      <p>O psicólogo deve recomendar que a informação sobre a progressão da doença seja omitida a Sérgio e comunicada apenas aos familiares, preservando o princípio da beneficência e protegendo o paciente de sofrimento desnecessário.</p>
+    </div>
+  </div>
+
+  <div style="margin-top:4mm;">
+    <span class="chip chip-accent">Gabarito: C</span>
+    <span class="chip">SPIKES — 6 etapas</span>
+    <span class="chip">Começa escutando (Perception)</span>
+    <span class="chip">Autonomia do paciente</span>
+  </div>
+
+  <div style="margin-top:3mm; padding:3mm 4mm; background:rgba(31,92,35,0.05); border-radius:1.5mm; border-left:2.5px solid var(--verde);">
+    <p style="font-size:7.3pt;"><strong>Por que D está errada:</strong> omitir a informação ao paciente viola o princípio da autonomia e da não-maleficência a longo prazo — o paciente tem o direito de conhecer sua situação para tomar decisões sobre tratamento, vida e despedidas. A beneficência não justifica paternalismo informacional.</p>
+  </div>
+
+  <div class="pg-num">7</div>
+</div>
+
+<!-- ========== PÁGINA 8 — QUESTÃO 03 ========== -->
+<div class="pagina pg-interna">
+  <div class="pg-header">
+    <div class="pg-header-left">
+      <svg width="14" height="16" viewBox="0 0 38 44" fill="none">
+        <polygon points="19,2 36,11.5 36,32.5 19,42 2,32.5 2,11.5" fill="#1F5C23"/>
+        <circle cx="19" cy="22" r="8.5" fill="#F6F4ED"/>
+      </svg>
+      <span class="pg-header-marca">Elite Treinamentos</span>
+      <div class="pg-header-sep"></div>
+      <span class="pg-header-bloco">Psicologia · Bloco B11 · Aula 23 — Questões</span>
+    </div>
+    <div class="pg-header-right">PSI-SAÚDE</div>
+  </div>
+
+  <div class="questao-header">
+    <div class="questao-num">03</div>
+    <div class="questao-meta">
+      <span class="questao-banca">ENARE / FGV · Estilo — Tanatologia e Luto</span>
+      <span class="questao-tema">Cuidados Paliativos OMS · Luto Prolongado CID-11 · Ortotanásia · Distanásia</span>
+    </div>
+  </div>
+
+  <div class="questao-enunciado">
+    <p>Sobre cuidados paliativos, morte e morrer, analise as afirmativas a seguir:</p>
+    <p style="margin-top:2mm;"><strong>I.</strong> A distanásia consiste em permitir que o paciente morra naturalmente, no tempo certo, sem o prolongamento artificial do processo de morrer — sendo considerada pelo Conselho Federal de Medicina a conduta eticamente mais adequada no cuidado ao paciente com doença irreversível em fase terminal.</p>
+    <p style="margin-top:2mm;"><strong>II.</strong> Os cuidados paliativos, conforme definição da Organização Mundial da Saúde (2002), afirmam a vida e encararam a morte como processo natural — nem a antecipam nem a prolongam artificialmente —, visando melhorar a qualidade de vida de pacientes e famílias que enfrentam doenças que ameaçam a continuidade da vida.</p>
+    <p style="margin-top:2mm;"><strong>III.</strong> O Transtorno de Luto Prolongado (CID-11: QD60) caracteriza-se por saudade intensa e persistente e sofrimento relacionado à perda, com duração superior a 6 meses após o óbito em adultos, causando prejuízo funcional significativo e diferenciando-se do luto normal pela intensidade, duração e impacto na vida do enlutado.</p>
+    <p style="margin-top:2mm;"><strong>IV.</strong> A ortotanásia refere-se à aceleração intencional do processo de morte por meio da administração de substâncias letais pela equipe médica a pedido do paciente ou de seus representantes legais, sendo admitida pelo CFM nos casos em que há sofrimento insuportável e prognóstico irrecuperável.</p>
+  </div>
+
+  <p style="margin-top:1mm;">Estão corretas apenas:</p>
+
+  <div class="alternativas">
+    <div class="alt"><span class="alt-letra">A</span><p>I e II</p></div>
+    <div class="alt"><span class="alt-letra">B</span><p>I e IV</p></div>
+    <div class="alt alt-correta"><span class="alt-letra">C</span><p>II e III</p></div>
+    <div class="alt"><span class="alt-letra">D</span><p>III e IV</p></div>
+  </div>
+
+  <div style="margin-top:4mm;">
+    <span class="chip chip-accent">Gabarito: C</span>
+    <span class="chip">II e III corretas</span>
+    <span class="chip">Distanásia ≠ Ortotanásia</span>
+    <span class="chip">CID-11 QD60 &gt;6 meses</span>
+  </div>
+
+  <div class="pg-num">8</div>
+</div>
+
+<!-- ========== PÁGINA 9 — GABARITO COMENTADO ========== -->
+<div class="pagina gabarito-pg">
+  <div class="pg-header" style="display:flex;justify-content:space-between;align-items:center;border-bottom:0.6px solid var(--verde);padding-bottom:2.5mm;margin-bottom:4mm;">
+    <div style="display:flex;align-items:center;gap:3mm;">
+      <svg width="14" height="16" viewBox="0 0 38 44" fill="none">
+        <polygon points="19,2 36,11.5 36,32.5 19,42 2,32.5 2,11.5" fill="#1F5C23"/>
+        <circle cx="19" cy="22" r="8.5" fill="#F6F4ED"/>
+      </svg>
+      <span class="pg-header-marca">Elite Treinamentos</span>
+      <div class="pg-header-sep"></div>
+      <span class="pg-header-bloco">Psicologia · Bloco B11 · Aula 23</span>
+    </div>
+    <div class="pg-header-right">GABARITO</div>
+  </div>
+
+  <div class="gabarito-titulo">Gabarito Comentado</div>
+
+  <div class="gabarito-grid">
+    <div class="gab-card">
+      <div class="gab-card-q">Questão 01</div>
+      <div class="gab-card-letra">B</div>
+      <div class="gab-card-tema">Barganha · Kübler-Ross</div>
+    </div>
+    <div class="gab-card">
+      <div class="gab-card-q">Questão 02</div>
+      <div class="gab-card-letra">C</div>
+      <div class="gab-card-tema">SPIKES · 6 Etapas</div>
+    </div>
+    <div class="gab-card">
+      <div class="gab-card-q">Questão 03</div>
+      <div class="gab-card-letra">C</div>
+      <div class="gab-card-tema">II e III corretas</div>
+    </div>
+  </div>
+
+  <div class="justificativa">
+    <div class="justificativa-q">Q01 — Por que B?</div>
+    <p>A sequência descrita no caso — negação → raiva → promessa condicional — reproduz exatamente os três primeiros estágios de Kübler-Ross. A fala <em>"Se eu ficar boa, prometo a Deus que..."</em> é a expressão prototípica da <strong>barganha</strong>: negociação com forças superiores (Deus, destino) ou com a equipe em troca de cura ou sobrevivência. <strong>A errada</strong> — aceitação é serenidade e desapego, não promessa condicional; <strong>C</strong> — depressão é silêncio, tristeza, retraimento, não negociação ativa; <strong>D</strong> — negação já foi superada na fase inicial descrita.</p>
+  </div>
+
+  <div class="justificativa">
+    <div class="justificativa-q">Q02 — Por que C?</div>
+    <p>O SPIKES é um protocolo de 6 etapas cuja lógica central é <em>escutar antes de falar</em>: as etapas P (Perception — o que o paciente já sabe) e I (Invitation — quanto ele quer saber) precedem a transmissão da informação (K). Isso respeita a autonomia e evita o choque brusco. <strong>A errada</strong> — o psicólogo apoia a equipe; não substitui o médico na comunicação de informação clínica; <strong>B</strong> — iniciar diretamente pela informação ruim viola o protocolo e a autonomia; <strong>D</strong> — omitir informação ao paciente competente é paternalismo antiético.</p>
+  </div>
+
+  <div class="justificativa">
+    <div class="justificativa-q">Q03 — Por que C (II e III corretas)?</div>
+    <p><strong>I — ERRADA:</strong> o que descreve é a <em>ortotanásia</em> (morte no tempo certo, sem prolongamento artificial), não a distanásia. <strong>Distanásia</strong> = prolongamento artificial e excessivo do processo de morrer, com sofrimento desproporcional e sem benefício — considerada antiética. <strong>II — CORRETA:</strong> reproduz fielmente a definição OMS (2002) para cuidados paliativos. <strong>III — CORRETA:</strong> CID-11 QD60 = Transtorno de Luto Prolongado; critério temporal em adultos: &gt;6 meses; saudade intensa + sofrimento persistente + prejuízo funcional. <strong>IV — ERRADA:</strong> o que descreve é a <em>eutanásia</em> (morte intencional por ação de terceiro). Ortotanásia <em>não</em> antecipa a morte — permite o curso natural sem medidas fúteis.</p>
+  </div>
+
+  <div class="pg-num">9</div>
+</div>
+
+<!-- ========== PÁGINA 10 — SÍNTESE ========== -->
+<div class="pagina sintese-pg">
+  <div class="pg-header" style="display:flex;justify-content:space-between;align-items:center;border-bottom:0.6px solid var(--verde);padding-bottom:2.5mm;margin-bottom:4mm;">
+    <div style="display:flex;align-items:center;gap:3mm;">
+      <svg width="14" height="16" viewBox="0 0 38 44" fill="none">
+        <polygon points="19,2 36,11.5 36,32.5 19,42 2,32.5 2,11.5" fill="#1F5C23"/>
+        <circle cx="19" cy="22" r="8.5" fill="#F6F4ED"/>
+      </svg>
+      <span class="pg-header-marca">Elite Treinamentos</span>
+      <div class="pg-header-sep"></div>
+      <span class="pg-header-bloco">Psicologia · Bloco B11 · Aula 23</span>
+    </div>
+    <div class="pg-header-right">SÍNTESE</div>
+  </div>
+
+  <div class="sintese-titulo">Mapa Mental — Psicologia Hospitalar</div>
+
+  <div class="mapa-item">
+    <div class="mapa-bullet"></div>
+    <div class="mapa-content">
+      <div class="mapa-termo">Psicólogo Hospitalar — Papel</div>
+      <p>Avaliação psicológica do adoecimento · Intervenção em crise · Suporte à família · Apoio à equipe (burnout, comunicação) · Cuidados paliativos · Aderência ao tratamento · Humanização (PNH)</p>
+    </div>
+  </div>
+
+  <div class="mapa-item">
+    <div class="mapa-bullet"></div>
+    <div class="mapa-content">
+      <div class="mapa-termo">PNH — Política Nacional de Humanização</div>
+      <p>Transversal ao SUS (não só hospital) · Princípios: transversalidade + indissociabilidade gestão-atenção + autonomia · Dispositivos: clínica ampliada, acolhimento, cogestão, ambiência, visita aberta + acompanhante</p>
+    </div>
+  </div>
+
+  <div class="mapa-item">
+    <div class="mapa-bullet"></div>
+    <div class="mapa-content">
+      <div class="mapa-termo">Kübler-Ross — 5 Estágios (não lineares)</div>
+      <p>1. Negação ("erro no exame") · 2. Raiva ("por que eu?") · 3. Barganha ("se eu melhorar, prometo...") · 4. Depressão (tristeza/retraimento) · 5. Aceitação (serenidade/desapego) · Não obrigatórios nem sequenciais</p>
+    </div>
+  </div>
+
+  <div class="mapa-item">
+    <div class="mapa-bullet"></div>
+    <div class="mapa-content">
+      <div class="mapa-termo">Tanatologia — Conceitos-Chave</div>
+      <p>Distanásia = prolongamento artificial excessivo = antiética · Ortotanásia = morte no tempo certo, sem medidas fúteis = aceita pelo CFM (Res. 1.805/2006) · Eutanásia = morte intencional por terceiro = ilegal no Brasil · Suicídio assistido = ilegal no Brasil</p>
+    </div>
+  </div>
+
+  <div class="mapa-item">
+    <div class="mapa-bullet"></div>
+    <div class="mapa-content">
+      <div class="mapa-termo">Cuidados Paliativos — OMS 2002</div>
+      <p>Afirmam a vida + morte como processo natural · Não antecipam nem prolongam artificialmente · Alívio dor/sofrimento físico/psicológico/social/espiritual · Equipe multiprofissional · Aplicáveis desde o diagnóstico · Suporte à família durante e após a morte</p>
+    </div>
+  </div>
+
+  <div class="mapa-item">
+    <div class="mapa-bullet"></div>
+    <div class="mapa-content">
+      <div class="mapa-termo">SPIKES e Luto</div>
+      <p>SPIKES: Setting → Perception → Invitation → Knowledge → Emotions → Strategy · Começa escutando (P) antes de falar · Respeita autonomia informacional · Luto prolongado CID-11 QD60: &gt;6 meses em adultos, saudade intensa, prejuízo funcional · Luto antecipatório: antes da morte (paciente e família) · Worden: 4 tarefas do luto</p>
+    </div>
+  </div>
+
+  <div class="proxima-aula">
+    <div class="proxima-num">24</div>
+    <div>
+      <div class="proxima-aula-label">Próxima Aula</div>
+      <div class="proxima-aula-titulo">PSI-SAÚDE: Saúde da Mulher</div>
+      <p style="color:rgba(246,244,237,0.65);font-size:7pt;margin-top:1.5mm;">Saúde Mental no Ciclo Gravídico-Puerperal · Depressão Pós-Parto · Psicose Puerperal · Saúde Sexual e Reprodutiva · Diversidade Sexual e Identidade de Gênero no SUS</p>
+    </div>
+  </div>
+
+  <div class="pg-num">10</div>
+</div>
+
+</body>
+</html>
