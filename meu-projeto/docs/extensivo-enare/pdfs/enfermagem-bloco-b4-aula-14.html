@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Enfermagem · Bloco B4 · Aula 14 — Extensivo ENARE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Bricolage+Grotesque:wght@400;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --creme:#F6F4ED; --lima:#C6D834; --verde:#1F5C23;
+      --teal:#0D8A8D; --preto:#070707; --cinza:#9E9B94;
+      --borda:#DDD9D1; --creme-esc:#EDEAE2;
+      --vermelho:#C0392B; --laranja:#E67E22; --roxo:#7B2D8B; --azul:#2E86AB;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { background:#CCC; font-family:'Bricolage Grotesque',sans-serif; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    @page { size:A4; margin:0; }
+    .page { width:210mm; height:297mm; position:relative; overflow:hidden; page-break-after:always; background:var(--creme); display:flex; flex-direction:column; }
+    @media screen { .page { margin:24px auto; box-shadow:0 4px 32px rgba(0,0,0,0.18); } }
+
+    .ph { height:14mm; background:var(--creme); border-bottom:2px solid var(--teal); display:flex; align-items:center; padding:0 16mm; flex-shrink:0; }
+    .ph-l { font-family:'Barlow Condensed',sans-serif; font-size:7.5pt; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; color:var(--cinza); }
+    .ph-r { font-size:7.5pt; font-style:italic; color:var(--cinza); margin-left:auto; }
+    .pf { height:9mm; background:var(--creme); border-top:1px solid var(--borda); display:flex; align-items:center; padding:0 16mm; flex-shrink:0; }
+    .pf-brand { font-family:'Space Grotesk',sans-serif; font-size:6.5pt; font-weight:300; color:var(--cinza); }
+    .pf-num { font-family:'Barlow Condensed',sans-serif; font-size:9pt; font-weight:700; color:var(--teal); margin-left:auto; }
+    .pc { flex:1; padding:7mm 16mm 5mm; overflow:hidden; }
+    .pc-sm { flex:1; padding:5mm 16mm 4mm; overflow:hidden; }
+
+    /* capa */
+    .capa { background:var(--teal); width:100%; height:100%; display:flex; flex-direction:column; padding:12mm 14mm 11mm; }
+    .capa-ext { font-family:'Playfair Display',serif; font-style:italic; font-size:9.5pt; color:var(--lima); }
+    .capa-enare { font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:36pt; color:var(--creme); line-height:0.9; }
+    .capa-by { font-family:'Space Grotesk',sans-serif; font-weight:300; font-size:7.5pt; color:rgba(246,244,237,0.55); margin-bottom:auto; }
+    .capa-area { font-family:'Barlow Condensed',sans-serif; font-size:7pt; font-weight:600; letter-spacing:4px; text-transform:uppercase; color:rgba(246,244,237,0.5); margin-bottom:1.5mm; }
+    .capa-cod { font-family:'Barlow Condensed',sans-serif; font-size:9pt; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--lima); margin-bottom:4mm; }
+    .capa-tit { font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:44pt; color:var(--creme); line-height:0.9; text-transform:uppercase; margin-bottom:3mm; }
+    .capa-sub { font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:12pt; color:var(--lima); text-transform:uppercase; letter-spacing:1px; line-height:1.25; }
+    .capa-wm { position:absolute; bottom:10mm; right:10mm; font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:110pt; color:rgba(246,244,237,0.07); line-height:1; }
+
+    .sec-tag { font-family:'Barlow Condensed',sans-serif; font-size:7pt; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--teal); border-bottom:2px solid var(--teal); padding-bottom:1.5mm; margin-bottom:4mm; }
+    .obj-list { list-style:none; display:flex; flex-direction:column; gap:3mm; margin-bottom:4mm; }
+    .obj-item { display:flex; gap:3mm; align-items:flex-start; }
+    .obj-n { font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:18pt; color:var(--teal); line-height:1; flex-shrink:0; width:7mm; }
+    .obj-t { font-size:9pt; line-height:1.45; padding-top:1mm; }
+    .prereq { background:var(--creme-esc); border-left:3px solid var(--borda); padding:2.5mm 4mm; margin-top:3mm; font-size:8pt; line-height:1.4; }
+    .prereq-lbl { font-family:'Barlow Condensed',sans-serif; font-size:6.5pt; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--cinza); margin-bottom:1mm; }
+    .meta-row { display:flex; gap:7mm; margin-top:4mm; padding-top:3mm; border-top:1px solid var(--borda); }
+    .meta-item { display:flex; flex-direction:column; gap:0.5mm; }
+    .meta-lbl { font-family:'Barlow Condensed',sans-serif; font-size:6pt; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--cinza); }
+    .meta-val { font-size:7.5pt; font-weight:600; }
+
+    h2 { font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:15pt; color:var(--teal); text-transform:uppercase; letter-spacing:0.5px; margin-bottom:3mm; line-height:1.1; }
+    h3 { font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:9pt; color:var(--preto); text-transform:uppercase; letter-spacing:1px; margin:3mm 0 1.5mm; }
+
+    table { width:100%; border-collapse:collapse; font-size:8pt; margin-bottom:3mm; }
+    th { background:var(--teal); color:var(--creme); font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:7.5pt; letter-spacing:0.8px; text-transform:uppercase; padding:2mm 2.5mm; text-align:left; }
+    td { padding:2mm 2.5mm; border-bottom:1px solid var(--borda); vertical-align:top; line-height:1.35; font-size:8pt; }
+    tr:nth-child(even) td { background:var(--creme-esc); }
+
+    .box { padding:3mm 3.5mm; margin-bottom:3mm; }
+    .box-alerta { background:#FFF5F5; border-left:4px solid var(--vermelho); }
+    .box-info { background:#F0FAF0; border-left:4px solid var(--verde); }
+    .box-azul { background:#EBF5FB; border-left:4px solid var(--azul); }
+    .box-roxo { background:#F5EEF8; border-left:4px solid var(--roxo); }
+    .box-lbl { font-family:'Barlow Condensed',sans-serif; font-size:6.5pt; font-weight:700; letter-spacing:2px; text-transform:uppercase; margin-bottom:1.5mm; }
+    .lbl-r { color:var(--vermelho); }
+    .lbl-v { color:var(--verde); }
+    .lbl-a { color:var(--azul); }
+    .lbl-p { color:var(--roxo); }
+    .box-t { font-size:8pt; line-height:1.5; }
+
+    .cards2 { display:grid; grid-template-columns:1fr 1fr; gap:3mm; margin-bottom:3mm; }
+    .cards3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:2.5mm; margin-bottom:3mm; }
+    .card { background:white; border:1px solid var(--borda); border-top:3px solid var(--teal); padding:3mm; }
+    .card-r { border-top-color:var(--vermelho); }
+    .card-o { border-top-color:var(--laranja); }
+    .card-v { border-top-color:var(--verde); }
+    .card-p { border-top-color:var(--roxo); }
+    .card-a { border-top-color:var(--azul); }
+    .card-tit { font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:9pt; text-transform:uppercase; color:var(--teal); margin-bottom:2mm; }
+    .card-tit-r { color:var(--vermelho); }
+    .card-tit-o { color:var(--laranja); }
+    .card-tit-v { color:var(--verde); }
+    .card-tit-p { color:var(--roxo); }
+    .card-tit-a { color:var(--azul); }
+    .card-body { font-size:7.5pt; line-height:1.4; }
+    .card-body li { margin-left:3mm; margin-bottom:0.8mm; }
+
+    /* questões */
+    .q-hdr { font-family:'Barlow Condensed',sans-serif; font-size:6.5pt; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--cinza); margin-bottom:2.5mm; }
+    .q-env { font-size:8.5pt; line-height:1.5; background:white; border:1px solid var(--borda); padding:3mm 3.5mm; margin-bottom:3mm; }
+    .alts { display:flex; flex-direction:column; gap:1.8mm; margin-bottom:3mm; }
+    .alt { display:flex; align-items:flex-start; gap:2.5mm; padding:2mm 3mm; border:1px solid var(--borda); font-size:8pt; line-height:1.35; background:white; }
+    .alt-l { font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:10pt; color:var(--cinza); flex-shrink:0; width:3.5mm; }
+    .alt-ok { border-color:var(--verde); background:#F0FAF0; }
+    .alt-ok .alt-l { color:var(--verde); }
+    .badge { display:inline-block; background:var(--verde); color:white; font-size:5.5pt; font-weight:700; letter-spacing:0.8px; text-transform:uppercase; padding:0.4mm 1.5mm; border-radius:2px; margin-left:1.5mm; vertical-align:middle; }
+    .gab { background:var(--preto); color:var(--creme); padding:3mm 3.5mm; font-size:7.5pt; line-height:1.5; }
+    .gab-lbl { font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:8pt; letter-spacing:1.5px; text-transform:uppercase; color:var(--lima); margin-bottom:1.5mm; }
+    .gab strong { color:var(--lima); }
+
+    /* recuperação */
+    .rec-tag { font-family:'Barlow Condensed',sans-serif; font-size:7pt; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--teal); border-bottom:2px solid var(--teal); padding-bottom:1.5mm; margin-bottom:4mm; }
+    .stars { display:flex; flex-direction:column; gap:2.5mm; margin-bottom:4mm; }
+    .star-item { display:flex; gap:3mm; align-items:flex-start; font-size:8.5pt; line-height:1.45; }
+    .star { color:var(--lima); font-size:11pt; flex-shrink:0; }
+    .teste-lbl { font-family:'Barlow Condensed',sans-serif; font-size:7pt; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--cinza); margin-bottom:2mm; }
+    .teste-grid { display:flex; flex-direction:column; gap:1.5mm; }
+    .teste-item { display:flex; gap:3mm; font-size:8pt; line-height:1.35; padding:1.5mm 0; border-bottom:1px solid var(--borda); }
+    .teste-n { font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:9pt; color:var(--teal); flex-shrink:0; }
+
+    .ref-tag { font-family:'Barlow Condensed',sans-serif; font-size:7pt; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--teal); border-bottom:2px solid var(--teal); padding-bottom:1.5mm; margin-bottom:4mm; }
+    .ref-list { display:flex; flex-direction:column; gap:2mm; }
+    .ref-item { font-size:7.5pt; line-height:1.45; border-left:2px solid var(--borda); padding-left:3mm; }
+    .ref-item em { font-style:italic; }
+    .anotacoes { margin-top:4mm; border:1px dashed var(--borda); padding:4mm; font-size:7.5pt; color:var(--cinza); text-align:center; letter-spacing:2px; text-transform:uppercase; min-height:16mm; display:flex; align-items:center; justify-content:center; }
+
+    b { font-weight:600; }
+
+    /* síndrome badge */
+    .sb { display:inline-block; font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:7pt; letter-spacing:1px; text-transform:uppercase; padding:0.5mm 2mm; border-radius:2px; margin-right:1mm; }
+    .sb-r { background:var(--vermelho); color:white; }
+    .sb-o { background:var(--laranja); color:white; }
+    .sb-p { background:var(--roxo); color:white; }
+    .sb-a { background:var(--azul); color:white; }
+  </style>
+</head>
+<body>
+
+<!-- P01 CAPA -->
+<div class="page">
+  <div class="capa">
+    <div>
+      <div class="capa-ext">extensivo</div>
+      <div class="capa-enare">ENARE</div>
+      <div class="capa-by">by Residência PRO</div>
+    </div>
+    <div>
+      <div class="capa-area">Enfermagem · Módulo Específico</div>
+      <div class="capa-cod">Bloco B4 · Aula 14</div>
+      <div class="capa-tit">GERIATRIA I</div>
+      <div class="capa-sub">Síndromes Geriátricas,<br>Fragilidade e Demências</div>
+    </div>
+    <div class="capa-wm">14</div>
+  </div>
+</div>
+
+<!-- P02 OBJETIVOS -->
+<div class="page">
+  <div class="ph"><span class="ph-l">Enfermagem · Bloco B4 · Aula 14</span><span class="ph-r">Extensivo ENARE</span></div>
+  <div class="pc">
+    <div class="sec-tag">Objetivos de Aprendizagem</div>
+    <ul class="obj-list">
+      <li class="obj-item">
+        <span class="obj-n">1</span>
+        <span class="obj-t">Identificar as principais síndromes geriátricas ("5Is + 1F": Imobilidade, Instabilidade, Incontinência, Insuficiência cognitiva, Iatrogenia e Fragilidade) e os fatores de risco associados a cada uma.</span>
+      </li>
+      <li class="obj-item">
+        <span class="obj-n">2</span>
+        <span class="obj-t">Diferenciar os tipos de demência (Alzheimer, vascular, Lewy, frontotemporal) pelos critérios clínicos, exames e progressão; identificar o diagnóstico NANDA-I pertinente.</span>
+      </li>
+      <li class="obj-item">
+        <span class="obj-n">3</span>
+        <span class="obj-t">Aplicar os critérios de fragilidade (Fried e FRAIL), reconhecer a síndrome de delirium (hiperativo vs hipoativo) e diferenciar delirium de demência e depressão no idoso.</span>
+      </li>
+    </ul>
+    <div class="prereq">
+      <div class="prereq-lbl">Pré-Requisito</div>
+      Bases de semiologia e propedêutica clínica. Noções de neuroanatomia funcional (lobo frontal, hipocampo, acetilcolina). Aulas B4 anteriores — COFEN e responsabilidade profissional na atenção ao idoso.
+    </div>
+    <div class="meta-row">
+      <div class="meta-item"><div class="meta-lbl">Bloco</div><div class="meta-val">B4 — Enfermagem</div></div>
+      <div class="meta-item"><div class="meta-lbl">Aula</div><div class="meta-val">14 de 24</div></div>
+      <div class="meta-item"><div class="meta-lbl">Tema</div><div class="meta-val">ENF-Geriatria I</div></div>
+      <div class="meta-item"><div class="meta-lbl">Nível Cognitivo</div><div class="meta-val">M → An</div></div>
+    </div>
+  </div>
+  <div class="pf"><span class="pf-brand">Extensivo ENARE · by Residência PRO</span><span class="pf-num">02</span></div>
+</div>
+
+<!-- P03 SÍNDROMES GERIÁTRICAS -->
+<div class="page">
+  <div class="ph"><span class="ph-l">Conteúdo Principal · Aula 14</span><span class="ph-r">Extensivo ENARE</span></div>
+  <div class="pc-sm">
+    <h2>Síndromes Geriátricas — Os 5Is + Fragilidade</h2>
+    <table>
+      <tr>
+        <th>Síndrome</th>
+        <th>Característica Central</th>
+        <th>Fator de Risco / Gatilho</th>
+        <th>Cuidado de Enfermagem</th>
+      </tr>
+      <tr>
+        <td><b>Imobilidade</b></td>
+        <td>Perda da capacidade de mover-se independentemente; risco de UPP, contraturas, TEP</td>
+        <td>Fraturas, AVC, dor, sedação excessiva</td>
+        <td>Mobilização precoce; mudança de decúbito 2/2h; fisioterapia</td>
+      </tr>
+      <tr>
+        <td><b>Instabilidade</b></td>
+        <td>Quedas de repetição; principal causa de morbidade e mortalidade no idoso</td>
+        <td>Polifarmácia (BZD, diuréticos, anti-HAS), hipotensão ortostática, sarcopenia</td>
+        <td>Escala de Morse; grade de segurança; calçados antiderrapantes; revisar medicamentos</td>
+      </tr>
+      <tr>
+        <td><b>Incontinência</b></td>
+        <td>Urinária (mais comum) ou fecal; associada a infecção urinária e UPP perineal</td>
+        <td>Prolapso, bexiga hiperativa, medicamentos (diuréticos)</td>
+        <td>Horário miccional; cateter apenas se necessário; higiene rigorosa</td>
+      </tr>
+      <tr>
+        <td><b>Insuficiência cognitiva</b></td>
+        <td>Demências e delirium (confusão aguda); impacto funcional progressivo</td>
+        <td>Alzheimer, AVC, medicamentos anticolinérgicos, infecção</td>
+        <td>Reorientação; ambiente seguro; revisão de medicamentos</td>
+      </tr>
+      <tr>
+        <td><b>Iatrogenia</b></td>
+        <td>Dano causado pelo próprio tratamento; polifarmácia (≥5 medicamentos) é o principal fator</td>
+        <td>Prescrição inapropriada (Critérios de Beers), polifarmácia</td>
+        <td>Conciliação medicamentosa; monitorar reações adversas; revisar com farmacêutico</td>
+      </tr>
+      <tr>
+        <td><b>Fragilidade</b></td>
+        <td>Síndrome de vulnerabilidade fisiológica com risco de desfechos adversos</td>
+        <td>Sarcopenia, desnutrição, sedentarismo, multimorbidade</td>
+        <td>Triagem com FRAIL/Fried; exercício resistido; suporte nutricional</td>
+      </tr>
+    </table>
+    <div class="box box-info">
+      <div class="box-lbl lbl-v">Mnemônico — 5Is + F</div>
+      <div class="box-t"><b>I</b>mobilidade · <b>I</b>nstabilidade · <b>I</b>ncontinência · <b>I</b>nsuficiência cognitiva · <b>I</b>atrogenia + <b>F</b>ragilidade. Reconhecer qualquer um deve ativar avaliação geriátrica ampla — raramente ocorrem isolados.</div>
+    </div>
+  </div>
+  <div class="pf"><span class="pf-brand">Extensivo ENARE · by Residência PRO</span><span class="pf-num">03</span></div>
+</div>
+
+<!-- P04 FRAGILIDADE + DELIRIUM -->
+<div class="page">
+  <div class="ph"><span class="ph-l">Conteúdo Principal · Aula 14</span><span class="ph-r">Extensivo ENARE</span></div>
+  <div class="pc-sm">
+    <h2>Fragilidade e Delirium</h2>
+    <div class="cards2" style="margin-bottom:3mm;">
+      <div class="card">
+        <div class="card-tit">Critérios de Fried (Fenótipo de Fragilidade)</div>
+        <div class="card-body">
+          <ul>
+            <li><b>Perda de peso não intencional</b> ≥4,5 kg no último ano</li>
+            <li><b>Exaustão</b> autorreferida (fadiga)</li>
+            <li><b>Baixo nível de atividade física</b> (kcal/semana abaixo do quartil inferior)</li>
+            <li><b>Lentidão</b> na marcha (velocidade abaixo do 20º percentil)</li>
+            <li><b>Fraqueza muscular</b> (força de preensão abaixo do 20º percentil)</li>
+          </ul>
+          <div style="margin-top:2mm; padding:2mm; background:var(--creme-esc); font-size:7.5pt;">
+            <b>0 critérios</b> = Robusto · <b>1–2</b> = Pré-frágil · <b>≥3</b> = Frágil
+          </div>
+        </div>
+      </div>
+      <div class="card card-o">
+        <div class="card-tit card-tit-o">Delirium — Confusão Aguda</div>
+        <div class="card-body">
+          <ul>
+            <li><b>Início agudo</b>, flutuação ao longo do dia</li>
+            <li><b>Desatenção</b> (critério central)</li>
+            <li><b>Hiperativo:</b> agitação, alucinações — fácil reconhecimento</li>
+            <li><b>Hipoativo:</b> sonolência, letargia — mais grave, subreconhecido</li>
+            <li><b>Gatilhos (PINCH ME):</b> Pain, Infection, Nutrition, Constipation, Hydration, Medication, Environment</li>
+            <li><b>NANDA-I:</b> Confusão aguda (00128)</li>
+            <li><b>Triagem:</b> CAM (Confusion Assessment Method)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <table style="margin-bottom:2mm;">
+      <tr>
+        <th>Característica</th>
+        <th>Delirium</th>
+        <th>Demência</th>
+        <th>Depressão</th>
+      </tr>
+      <tr>
+        <td><b>Início</b></td>
+        <td>Agudo (horas–dias)</td>
+        <td>Insidioso (meses–anos)</td>
+        <td>Semanas a meses</td>
+      </tr>
+      <tr>
+        <td><b>Consciência</b></td>
+        <td>Alterada (flutuante)</td>
+        <td>Preservada (inicial)</td>
+        <td>Preservada</td>
+      </tr>
+      <tr>
+        <td><b>Atenção</b></td>
+        <td>Gravemente comprometida</td>
+        <td>Comprometida tardiamente</td>
+        <td>Dificuldade leve</td>
+      </tr>
+      <tr>
+        <td><b>Reversibilidade</b></td>
+        <td>Sim (se tratada causa)</td>
+        <td>Não (progressiva)</td>
+        <td>Sim (com tratamento)</td>
+      </tr>
+    </table>
+  </div>
+  <div class="pf"><span class="pf-brand">Extensivo ENARE · by Residência PRO</span><span class="pf-num">04</span></div>
+</div>
+
+<!-- P05 DEMÊNCIAS -->
+<div class="page">
+  <div class="ph"><span class="ph-l">Conteúdo Principal · Aula 14</span><span class="ph-r">Extensivo ENARE</span></div>
+  <div class="pc-sm">
+    <h2>Demências — Diagnóstico Diferencial</h2>
+    <table>
+      <tr>
+        <th>Tipo</th>
+        <th>Característica Clínica Diferencial</th>
+        <th>Neuroimagem / Dado-chave</th>
+        <th>Tratamento Base</th>
+      </tr>
+      <tr>
+        <td><b>Alzheimer</b></td>
+        <td>Início insidioso; <b>amnésia anterógrada</b> primeiro sintoma; progressão gradual; 60–70% das demências</td>
+        <td>Atrofia hipocampal (RM); redução de acetilcolina</td>
+        <td>Inibidores da AChE (donepezila, rivastigmina); memantina (leve-moderada)</td>
+      </tr>
+      <tr>
+        <td><b>Vascular</b></td>
+        <td>Início <b>abrupto</b> após AVC; progressão em <b>degraus</b>; déficits neurológicos focais</td>
+        <td>Infartos lacunares (TC/RM); leucoaraiose</td>
+        <td>Controle de FR cardiovascular (HAS, DM, tabagismo); AAS</td>
+      </tr>
+      <tr>
+        <td><b>Corpos de Lewy</b></td>
+        <td><b>Alucinações visuais</b> precoces, parkinsonismo, flutuação cognitiva, hipersensibilidade a neurolépticos</td>
+        <td>SPECT com redução dopaminérgica</td>
+        <td>Evitar haloperidol (risco de reação grave); rivastigmina; levodopa se parkinsonismo</td>
+      </tr>
+      <tr>
+        <td><b>Frontotemporal (DFT)</b></td>
+        <td><b>Alterações de comportamento</b> e linguagem; desinibição; apatia; memória preservada no início</td>
+        <td>Atrofia frontotemporal; pacientes mais jovens (50–70 anos)</td>
+        <td>Sintomático; ISRS para desinibição; sem AChE indicado</td>
+      </tr>
+    </table>
+    <div class="cards2" style="margin-bottom:0;">
+      <div class="box box-alerta" style="margin-bottom:0;">
+        <div class="box-lbl lbl-r">Neurolépticos e Lewy</div>
+        <div class="box-t">Haloperidol e antipsicóticos típicos são <b>contraindicados</b> na demência por Corpos de Lewy — podem precipitar síndrome neuroléptica maligna grave com alta mortalidade. Sinalizar na SAE.</div>
+      </div>
+      <div class="box box-info" style="margin-bottom:0;">
+        <div class="box-lbl lbl-v">NANDA-I nas Demências</div>
+        <div class="box-t"><b>Confusão crônica</b> (00129) · <b>Memória prejudicada</b> (00131) · <b>Processos familiares disfuncionais</b> (00063) · <b>Risco de quedas</b> (00155) · <b>Nutrição desequilibrada: menos do que necessita</b> (00002)</div>
+      </div>
+    </div>
+  </div>
+  <div class="pf"><span class="pf-brand">Extensivo ENARE · by Residência PRO</span><span class="pf-num">05</span></div>
+</div>
+
+<!-- P06 Q1 MEMORIZAÇÃO -->
+<div class="page">
+  <div class="ph"><span class="ph-l">Fixação · Aula 14</span><span class="ph-r">Extensivo ENARE</span></div>
+  <div class="pc-sm">
+    <div class="q-hdr">Questão 01 de 03 · B4 Geriatria I · Síndromes Geriátricas — Memorização</div>
+    <div class="q-env">
+      Idosa de 78 anos, internada por fratura de quadril, com 6 medicamentos em uso (diuréticos, benzodiazepínico, anti-hipertensivo, hipoglicemiante, AAS, omeprazol). Apresentou episódio de queda na enfermaria durante a noite. A enfermeira ao avaliar a situação identifica múltiplas síndromes geriátricas sobrepostas. Sobre as síndromes geriátricas e a conduta de enfermagem, assinale a alternativa correta:
+    </div>
+    <div class="alts">
+      <div class="alt">
+        <span class="alt-l">A</span>
+        <span>A queda representa apenas instabilidade; as demais síndromes geriátricas são independentes e devem ser tratadas separadamente.</span>
+      </div>
+      <div class="alt">
+        <span class="alt-l">B</span>
+        <span>O uso de ≥3 medicamentos já configura polifarmácia e iatrogenia; a suspensão de todos os medicamentos é a primeira conduta.</span>
+      </div>
+      <div class="alt alt-ok">
+        <span class="alt-l">C</span>
+        <span><b>A paciente apresenta sobreposição de instabilidade (queda), iatrogenia (polifarmácia com BZD e diuréticos) e risco de imobilidade (fratura + pós-operatório); a SAE deve incluir escala de Morse, revisão medicamentosa, mobilização precoce e medidas ambientais de segurança.</b> <span class="badge">Correta</span></span>
+      </div>
+      <div class="alt">
+        <span class="alt-l">D</span>
+        <span>Polifarmácia é definida por ≥10 medicamentos; a paciente não preenche o critério e não há iatrogenia a considerar.</span>
+      </div>
+    </div>
+    <div class="gab">
+      <div class="gab-lbl">Gabarito Comentado — C</div>
+      As síndromes geriátricas raramente ocorrem isoladas — <strong>sobreposição é a regra</strong>. Neste caso: (1) <strong>Instabilidade</strong>: queda real; (2) <strong>Iatrogenia</strong>: polifarmácia = <strong>≥5 medicamentos</strong> (não 3, não 10 — erro clássico); BZD e diuréticos são causas clássicas de queda; (3) <strong>Imobilidade iminente</strong>: fratura de quadril + pós-op. SAE deve conter: Escala de Morse, revisão de medicamentos, mobilização precoce 24–48h após cirurgia, grades, campainha ao alcance. A — síndromes são interdependentes. B — suspensão total é conduta incorreta. D — polifarmácia = ≥5 medicamentos.
+    </div>
+  </div>
+  <div class="pf"><span class="pf-brand">Extensivo ENARE · by Residência PRO</span><span class="pf-num">06</span></div>
+</div>
+
+<!-- P07 Q2 APLICAÇÃO -->
+<div class="page">
+  <div class="ph"><span class="ph-l">Fixação · Aula 14</span><span class="ph-r">Extensivo ENARE</span></div>
+  <div class="pc-sm">
+    <div class="q-hdr">Questão 02 de 03 · B4 Geriatria I · Delirium vs Demência — Aplicação</div>
+    <div class="q-env">
+      Idoso de 82 anos, institucionalizado com diagnóstico prévio de demência leve, internado por pneumonia. Às 2h da madrugada apresenta agitação intensa, tentativa de retirar sonda vesical, desorientação com confusão de lugar e tempo, e relato de "ver insetos na parede". Pela manhã, está sonolento e cooperativo. Familiar relata que ontem estava "bem". Sobre o diagnóstico de enfermagem prioritário e a conduta, assinale a alternativa correta:
+    </div>
+    <div class="alts">
+      <div class="alt">
+        <span class="alt-l">A</span>
+        <span>Progressão da demência — o diagnóstico NANDA-I é Confusão crônica. Conduta: sedação com haloperidol IM e contenção mecânica.</span>
+      </div>
+      <div class="alt">
+        <span class="alt-l">B</span>
+        <span>Episódio depressivo agitado — o NANDA-I é Processos familiares disfuncionais. Conduta: aguardar avaliação psiquiátrica eletiva.</span>
+      </div>
+      <div class="alt alt-ok">
+        <span class="alt-l">C</span>
+        <span><b>Delirium hiperativo sobreposto à demência. NANDA-I: Confusão aguda (00128). Conduta: identificar e tratar causa precipitante (infecção), reorientar, manter ambiente silencioso e iluminado, evitar contenção física, rever medicamentos — haloperidol apenas se risco de segurança iminente e em baixa dose.</b> <span class="badge">Correta</span></span>
+      </div>
+      <div class="alt">
+        <span class="alt-l">D</span>
+        <span>Delirium hipoativo — o paciente agitado não preenche critérios de delirium hipoativo. Conduta: estimulação e aumento da dieta.</span>
+      </div>
+    </div>
+    <div class="gab">
+      <div class="gab-lbl">Gabarito Comentado — C</div>
+      <strong>Delirium sobreposto à demência:</strong> início agudo, flutuação (agitado de noite, sonolento de manhã), desatenção, alucinações visuais, gatilho infeccioso (pneumonia). NANDA-I: <strong>Confusão aguda</strong> (aguda = reversível; crônica = demência progressiva). Conduta: tratar a causa base, medidas não farmacológicas primeiro. <strong>Contenção mecânica piora o delirium</strong> — é último recurso. A — confusão crônica é demência estabelecida; flutuação e início agudo afastam. B — depressão não causa alucinações e agitação noturna aguda. D — o quadro descrito é hiperativo, não hipoativo.
+    </div>
+  </div>
+  <div class="pf"><span class="pf-brand">Extensivo ENARE · by Residência PRO</span><span class="pf-num">07</span></div>
+</div>
+
+<!-- P08 Q3 ANÁLISE -->
+<div class="page">
+  <div class="ph"><span class="ph-l">Fixação · Aula 14</span><span class="ph-r">Extensivo ENARE</span></div>
+  <div class="pc-sm">
+    <div class="q-hdr">Questão 03 de 03 · B4 Geriatria I · Demência por Corpos de Lewy — Análise</div>
+    <div class="q-env">
+      Idoso de 74 anos com demência diagnosticada há 8 meses: apresenta alucinações visuais elaboradas (vê animais na sala) desde o início, flutuação cognitiva ao longo do dia, tremor de repouso e rigidez. Familiar relata que após receber <b>haloperidol 2 mg IM</b> na UPA por agitação, evoluiu com rigidez intensa, febre, alteração de consciência e CPK elevada. Sobre o diagnóstico de base, a reação ao haloperidol e o NANDA-I mais pertinente, assinale a alternativa correta:
+    </div>
+    <div class="alts">
+      <div class="alt">
+        <span class="alt-l">A</span>
+        <span>Alzheimer com parkinsonismo secundário. A reação ao haloperidol é esperada e o haloperidol pode ser mantido em dose reduzida. NANDA-I: Confusão crônica.</span>
+      </div>
+      <div class="alt">
+        <span class="alt-l">B</span>
+        <span>Demência vascular. A reação é rabdomiólise por imobilidade. Não há contraindicação a antipsicóticos. NANDA-I: Risco de quedas.</span>
+      </div>
+      <div class="alt alt-ok">
+        <span class="alt-l">C</span>
+        <span><b>Demência por Corpos de Lewy. A reação ao haloperidol é síndrome neuroléptica maligna (SNM) — quadro potencialmente fatal. Haloperidol e antipsicóticos típicos são contraindicados. NANDA-I prioritário: Proteção ineficaz. Conduta: suspender haloperidol, suporte clínico intensivo, considerar bromocriptina/dantrolene.</b> <span class="badge">Correta</span></span>
+      </div>
+      <div class="alt">
+        <span class="alt-l">D</span>
+        <span>Demência frontotemporal. A reação é convulsão por baixa do limiar. Haloperidol pode ser substituído por risperidona em alta dose. NANDA-I: Memória prejudicada.</span>
+      </div>
+    </div>
+    <div class="gab">
+      <div class="gab-lbl">Gabarito Comentado — C</div>
+      Tríade diagnóstica de <strong>DCL</strong>: (1) alucinações visuais precoces e elaboradas; (2) flutuação cognitiva; (3) parkinsonismo espontâneo. O haloperidol precipitou <strong>SNM</strong> (hipersensibilidade aos neurolépticos, típica da DCL): febre + rigidez + alteração de consciência + CPK elevada. NANDA-I: <strong>Proteção ineficaz</strong> — falha no sistema de proteção farmacológica. Conduta: <strong>suspender antipsicótico típico</strong>, suporte em UTI, bromocriptina (agonista dopaminérgico) e/ou dantrolene (relaxante muscular). A — Alzheimer não tem hipersensibilidade a neurolépticos. B — vascular não tem alucinações visuais precoces. D — DFT tem início mais jovem, sem parkinsonismo.
+    </div>
+  </div>
+  <div class="pf"><span class="pf-brand">Extensivo ENARE · by Residência PRO</span><span class="pf-num">08</span></div>
+</div>
+
+<!-- P09 RECUPERAÇÃO ATIVA -->
+<div class="page">
+  <div class="ph"><span class="ph-l">Recuperação Ativa · Aula 14</span><span class="ph-r">Extensivo ENARE</span></div>
+  <div class="pc">
+    <div class="rec-tag">Se Esquecer Tudo, Lembre Disto</div>
+    <div class="stars">
+      <div class="star-item">
+        <span class="star">★</span>
+        <span><b>5Is + F:</b> Imobilidade, Instabilidade, Incontinência, Insuficiência cognitiva, Iatrogenia e Fragilidade. Síndromes se sobrepõem — reconhecer uma exige busca ativa das demais. Polifarmácia = ≥5 medicamentos.</span>
+      </div>
+      <div class="star-item">
+        <span class="star">★</span>
+        <span><b>Delirium:</b> início agudo, flutuação, desatenção. Hipoativo = pior prognóstico, mais subreconhecido. NANDA-I: Confusão aguda (00128). Tratar causa (PINCH ME). Contenção mecânica piora — último recurso.</span>
+      </div>
+      <div class="star-item">
+        <span class="star">★</span>
+        <span><b>Demências:</b> Alzheimer = amnésia anterógrada primeiro. Vascular = início abrupto em degraus. Lewy = alucinações visuais + parkinsonismo + <u>haloperidol contraindicado</u>. DFT = comportamento + linguagem, memória preservada.</span>
+      </div>
+      <div class="star-item">
+        <span class="star">★</span>
+        <span><b>Fried:</b> ≥3 de 5 critérios = Frágil (perda de peso, exaustão, inatividade, lentidão, fraqueza). 1–2 = Pré-frágil. Delirium ≠ demência: inicio agudo vs insidioso; reversível vs progressivo.</span>
+      </div>
+    </div>
+    <div class="teste-lbl">Teste-se Sem Olhar</div>
+    <div class="teste-grid">
+      <div class="teste-item"><span class="teste-n">01 —</span><span>Quais são os 5Is + F das síndromes geriátricas e o que define polifarmácia (número de medicamentos)?</span></div>
+      <div class="teste-item"><span class="teste-n">02 —</span><span>Quais são os 3 critérios clínicos centrais para diferenciar delirium de demência?</span></div>
+      <div class="teste-item"><span class="teste-n">03 —</span><span>Por que o haloperidol é contraindicado na demência por Corpos de Lewy e qual o quadro clínico que precipita?</span></div>
+      <div class="teste-item"><span class="teste-n">04 —</span><span>Quantos critérios de Fried definem fragilidade e quais são eles?</span></div>
+    </div>
+  </div>
+  <div class="pf"><span class="pf-brand">Extensivo ENARE · by Residência PRO</span><span class="pf-num">09</span></div>
+</div>
+
+<!-- P10 REFERÊNCIAS -->
+<div class="page">
+  <div class="ph"><span class="ph-l">Referências · Aula 14</span><span class="ph-r">Extensivo ENARE</span></div>
+  <div class="pc">
+    <div class="ref-tag">Referências — Bloco B4 · Aula 14</div>
+    <div class="ref-list">
+      <div class="ref-item">FRIED, L.P. et al. Frailty in older adults: evidence for a phenotype. <em>Journals of Gerontology: Series A,</em> v. 56, n. 3, p. M146–M156, 2001.</div>
+      <div class="ref-item">INOUYE, S.K. et al. Clarifying confusion: the confusion assessment method. A new method for detection of delirium. <em>Annals of Internal Medicine,</em> v. 113, n. 12, p. 941–948, 1990.</div>
+      <div class="ref-item">AMERICAN GERIATRICS SOCIETY. Updated AGS Beers Criteria for potentially inappropriate medication use in older adults. <em>Journal of the American Geriatrics Society,</em> v. 71, n. 7, p. 2052–2081, 2023.</div>
+      <div class="ref-item">MCKEITH, I.G. et al. Diagnosis and management of dementia with Lewy bodies. <em>Neurology,</em> v. 89, n. 1, p. 88–100, 2017.</div>
+      <div class="ref-item">BRASIL. Ministério da Saúde. <em>Caderno de Atenção Básica n.º 19: Envelhecimento e Saúde da Pessoa Idosa.</em> Brasília: MS, 2006.</div>
+      <div class="ref-item">HERDMAN, T.H.; KAMITSURU, S.; LOPES, C.T. (Eds.). <em>NANDA International — Diagnósticos de Enfermagem 2024–2026.</em> 13. ed. Porto Alegre: Artmed, 2024.</div>
+    </div>
+    <div class="anotacoes">Espaço para Anotações</div>
+  </div>
+  <div class="pf"><span class="pf-brand">Extensivo ENARE · by Residência PRO</span><span class="pf-num">10</span></div>
+</div>
+
+</body>
+</html>

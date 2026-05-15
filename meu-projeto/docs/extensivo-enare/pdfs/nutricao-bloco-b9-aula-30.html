@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B9 · Nutrição · Aula 30 — NUT-COLET: Unidade de Alimentação e Nutrição — Gestão, HACCP e Boas Práticas</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #ccc; font-family: 'Bricolage Grotesque', sans-serif; }
+
+  .page {
+    width: 210mm; min-height: 297mm; height: 297mm;
+    background: #F6F4ED;
+    margin: 8mm auto;
+    padding: 10mm 11mm 8mm 11mm;
+    display: flex; flex-direction: column;
+    position: relative; overflow: hidden;
+    page-break-after: always;
+  }
+
+  .page-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding-bottom: 2.5mm;
+    border-bottom: 0.4mm solid #1F5C23;
+    margin-bottom: 4mm; flex-shrink: 0;
+  }
+  .header-logo-group { display: flex; align-items: center; gap: 2.5mm; }
+  .header-logo-svg { width: 7mm; height: 7mm; flex-shrink: 0; }
+  .header-brand { display: flex; flex-direction: column; line-height: 1; }
+  .header-brand-main { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 8pt; color: #1F5C23; letter-spacing: 0.04em; text-transform: uppercase; }
+  .header-brand-sub { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 5pt; color: #888; letter-spacing: 0.06em; }
+  .header-center { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 500; font-size: 6.5pt; color: #555; letter-spacing: 0.04em; text-transform: uppercase; }
+  .header-page { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 8pt; color: #1F5C23; letter-spacing: 0.06em; }
+
+  .cover-page { background: #1F5C23 !important; padding: 0 !important; }
+  .cover-page .cover-inner { width: 100%; height: 100%; padding: 10mm 11mm 8mm 11mm; display: flex; flex-direction: column; }
+  .cover-header { display: flex; align-items: center; justify-content: space-between; padding-bottom: 2.5mm; border-bottom: 0.4mm solid rgba(198,216,52,0.5); margin-bottom: auto; flex-shrink: 0; }
+  .cover-header-brand-main { color: #F6F4ED !important; }
+  .cover-header-brand-sub { color: rgba(246,244,237,0.6) !important; }
+  .cover-header-center { color: rgba(246,244,237,0.7) !important; }
+  .cover-header-page { color: #C6D834 !important; }
+  .cover-body { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 4mm 0; }
+  .cover-module-tag { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 7.5pt; letter-spacing: 0.18em; color: #C6D834; text-transform: uppercase; margin-bottom: 3mm; }
+  .cover-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 24pt; line-height: 1.0; color: #F6F4ED; text-transform: uppercase; margin-bottom: 2mm; }
+  .cover-subtitle { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; font-size: 9pt; color: rgba(246,244,237,0.75); margin-bottom: 6mm; line-height: 1.4; }
+  .cover-divider { width: 18mm; height: 0.4mm; background: #C6D834; margin-bottom: 6mm; }
+  .cover-anchors-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 7pt; letter-spacing: 0.1em; color: #C6D834; text-transform: uppercase; margin-bottom: 2.5mm; }
+  .cover-anchors { display: flex; flex-direction: column; gap: 1.5mm; }
+  .cover-anchor-item { display: flex; align-items: flex-start; gap: 2mm; }
+  .anchor-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 7pt; color: #C6D834; min-width: 4mm; }
+  .anchor-text { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 400; font-size: 7.5pt; color: rgba(246,244,237,0.85); line-height: 1.3; }
+  .cover-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 3mm; border-top: 0.4mm solid rgba(198,216,52,0.3); flex-shrink: 0; }
+  .cover-footer-brand { font-family: 'Playfair Display', serif; font-style: italic; font-size: 8pt; color: rgba(246,244,237,0.6); }
+  .cover-footer-label { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 6pt; color: rgba(246,244,237,0.5); letter-spacing: 0.08em; text-transform: uppercase; }
+
+  .page-body { flex: 1; display: flex; flex-direction: column; gap: 3mm; overflow: hidden; }
+  .sec-title-sm { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 11.5pt; color: #1F5C23; letter-spacing: 0.04em; text-transform: uppercase; padding-bottom: 1.5mm; border-bottom: 0.5mm solid #1F5C23; margin-bottom: 3mm; }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2.5mm; }
+
+  .card { background: white; border-radius: 2mm; padding: 3mm 3.5mm; border-left: 1mm solid #1F5C23; }
+  .card-warn { border-left-color: #B85C00; }
+  .card-alert { border-left-color: #C04040; }
+  .card-accent { border-left-color: #C6D834; }
+  .card-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 8.5pt; color: #1F5C23; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 2mm; }
+  .card-title-warn { color: #B85C00; }
+  .card-title-alert { color: #C04040; }
+
+  .body-text { font-size: 7.5pt; line-height: 1.45; color: #333; }
+  .body-text b { color: #1F5C23; }
+  .body-text .warn { color: #B85C00; font-weight: 600; }
+  .body-text .alert { color: #C04040; font-weight: 600; }
+
+  ul.dot-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 1mm; }
+  ul.dot-list li { font-size: 7.5pt; line-height: 1.4; color: #333; padding-left: 3mm; position: relative; }
+  ul.dot-list li::before { content: "•"; position: absolute; left: 0; color: #1F5C23; font-weight: 700; }
+  ul.dot-list li b { color: #1F5C23; }
+  ul.dot-list li .warn { color: #B85C00; font-weight: 600; }
+  ul.dot-list li .alert { color: #C04040; font-weight: 600; }
+
+  .table-sm { width: 100%; border-collapse: collapse; font-size: 7pt; }
+  .table-sm th { background: #1F5C23; color: #F6F4ED; padding: 1.5mm 2mm; text-align: left; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; letter-spacing: 0.05em; font-size: 7pt; }
+  .table-sm td { padding: 1.5mm 2mm; border-bottom: 0.2mm solid #E0DDD6; color: #333; vertical-align: top; line-height: 1.35; }
+  .table-sm tr:last-child td { border-bottom: none; }
+  .table-sm tr:nth-child(even) td { background: rgba(31,92,35,0.04); }
+
+  .tag { display: inline-block; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 6.5pt; padding: 0.5mm 2mm; border-radius: 1mm; letter-spacing: 0.06em; text-transform: uppercase; }
+  .tag-green { background: #1F5C23; color: #F6F4ED; }
+  .tag-yellow { background: #C6D834; color: #1F5C23; }
+
+  .q-header { margin-bottom: 4mm; }
+  .q-label { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; color: #1F5C23; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1mm; }
+  .q-meta { font-size: 6.5pt; color: #888; font-family: 'Bricolage Grotesque', sans-serif; margin-bottom: 3mm; }
+  .q-stem { font-size: 8pt; line-height: 1.5; color: #222; margin-bottom: 4mm; font-weight: 500; }
+
+  .alternatives { display: flex; flex-direction: column; gap: 2mm; margin-bottom: 5mm; }
+  .alt { display: flex; gap: 2.5mm; align-items: flex-start; padding: 2mm 3mm; border-radius: 1.5mm; background: white; }
+  .alt-letter { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; color: #1F5C23; min-width: 4mm; line-height: 1.3; }
+  .alt-text { font-size: 7.5pt; line-height: 1.4; color: #333; }
+  .alt.correct { background: #E8F5E9; border: 0.3mm solid #1F5C23; }
+  .alt.wrong { opacity: 0.7; }
+
+  .assertions { display: flex; flex-direction: column; gap: 2mm; margin-bottom: 4mm; }
+  .assertion { display: flex; gap: 2.5mm; align-items: flex-start; padding: 2mm 3mm; border-radius: 1.5mm; background: white; }
+  .assert-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; min-width: 4mm; line-height: 1.3; }
+  .assert-num.correct { color: #1F5C23; }
+  .assert-num.wrong { color: #C04040; }
+  .assert-text { font-size: 7.5pt; line-height: 1.4; color: #333; }
+
+  .q-answer-box { background: #1F5C23; border-radius: 2mm; padding: 3mm 4mm; display: flex; align-items: center; gap: 3mm; }
+  .q-answer-letter { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 20pt; color: #C6D834; line-height: 1; }
+  .q-answer-text { font-size: 7.5pt; color: #F6F4ED; line-height: 1.4; }
+  .q-answer-text b { color: #C6D834; }
+
+  .gab-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3mm; margin-bottom: 4mm; }
+  .gab-card { background: white; border-radius: 2mm; padding: 3mm; border-top: 1.5mm solid #1F5C23; }
+  .gab-card-q { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 8pt; color: #888; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1mm; }
+  .gab-card-letter { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 22pt; color: #1F5C23; line-height: 1; margin-bottom: 1.5mm; }
+  .gab-card-just { font-size: 6.5pt; line-height: 1.4; color: #555; }
+  .gab-card-just b { color: #1F5C23; }
+
+  .sintese-header { text-align: center; margin-bottom: 4mm; }
+  .sintese-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 14pt; color: #1F5C23; text-transform: uppercase; letter-spacing: 0.06em; }
+  .sintese-sub { font-size: 7pt; color: #888; font-family: 'Space Grotesk', sans-serif; font-weight: 300; }
+  .sintese-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; }
+  .sintese-card { background: white; border-radius: 2mm; padding: 3mm 3.5mm; }
+  .sintese-card-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 8pt; color: #1F5C23; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 2mm; padding-bottom: 1.5mm; border-bottom: 0.3mm solid #E0DDD6; }
+  .refs-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 7.5pt; color: #888; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 2mm; }
+
+  @media print { body { background: none; } .page { margin: 0; box-shadow: none; } }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════ P1 · CAPA -->
+<div class="page cover-page">
+<div class="cover-inner">
+  <div class="cover-header">
+    <div class="header-logo-group">
+      <svg class="header-logo-svg" viewBox="0 0 28 28" fill="none">
+        <polygon points="14,1 26,7.5 26,20.5 14,27 2,20.5 2,7.5" fill="#F6F4ED" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="14" cy="14" r="5.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1"/>
+      </svg>
+      <div class="header-brand">
+        <span class="header-brand-main cover-header-brand-main">extensivo ENARE</span>
+        <span class="header-brand-sub cover-header-brand-sub">by Residência PRO</span>
+      </div>
+    </div>
+    <span class="header-center cover-header-center">Nutrição · Bloco B9 · Aula 30</span>
+    <span class="header-page cover-header-page">P1</span>
+  </div>
+  <div class="cover-body">
+    <div class="cover-module-tag">NUT-COLET · Nutrição Coletiva</div>
+    <div class="cover-title">Unidade de<br>Alimentação<br>e Nutrição</div>
+    <div class="cover-subtitle">Gestão de UAN · HACCP · Boas Práticas · Temperaturas Críticas · Técnica Dietética</div>
+    <div class="cover-divider"></div>
+    <div class="cover-anchors-title">Âncoras desta aula</div>
+    <div class="cover-anchors">
+      <div class="cover-anchor-item"><span class="anchor-num">01</span><span class="anchor-text">Fator de Correção e Fator de Cocção: cálculos e per capita</span></div>
+      <div class="cover-anchor-item"><span class="anchor-num">02</span><span class="anchor-text">Índice de Resto-Ingestão e AQPC: indicadores de qualidade de cardápio</span></div>
+      <div class="cover-anchor-item"><span class="anchor-num">03</span><span class="anchor-text">HACCP: 7 princípios, PCC vs PC e tipos de perigos alimentares</span></div>
+      <div class="cover-anchor-item"><span class="anchor-num">04</span><span class="anchor-text">RDC 216/2004: temperaturas críticas, zona de perigo e resfriamento rápido</span></div>
+      <div class="cover-anchor-item"><span class="anchor-num">05</span><span class="anchor-text">POPs, 5S e papel do nutricionista RT em diferentes modalidades de UAN</span></div>
+    </div>
+  </div>
+  <div class="cover-footer">
+    <span class="cover-footer-brand">extensivo</span>
+    <span class="cover-footer-label">Material de apoio · Não substitui fontes primárias</span>
+  </div>
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ P2 · PLANEJAMENTO E ÍNDICES -->
+<div class="page">
+  <div class="page-header">
+    <div class="header-logo-group">
+      <svg class="header-logo-svg" viewBox="0 0 28 28" fill="none">
+        <polygon points="14,1 26,7.5 26,20.5 14,27 2,20.5 2,7.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="14" cy="14" r="5.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1"/>
+      </svg>
+      <div class="header-brand">
+        <span class="header-brand-main">extensivo ENARE</span>
+        <span class="header-brand-sub">by Residência PRO</span>
+      </div>
+    </div>
+    <span class="header-center">Nutrição · Bloco B9 · Aula 30</span>
+    <span class="header-page">P2</span>
+  </div>
+  <div class="page-body">
+    <div class="sec-title-sm">UAN — Conceito e Planejamento de Cardápio</div>
+    <div class="two-col">
+      <div class="card">
+        <div class="card-title">Definição e Tipos de UAN</div>
+        <ul class="dot-list">
+          <li><b>UAN:</b> conjunto de áreas e instalações onde são desenvolvidas atividades relacionadas à alimentação e nutrição, independentemente do vínculo empregatício do nutricionista (Resolução CFN 380/2005)</li>
+          <li>Tipos: hospitalar, empresa/industrial, escolar (PNAE), creche, penitenciária, hotéis, restaurantes comerciais</li>
+          <li>Nutricionista RT obrigatório em todos; carga horária mínima varia por tipo e número de refeições</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title">Fator de Correção (FC) e Fator de Cocção (FK)</div>
+        <ul class="dot-list">
+          <li><b>FC</b> = Peso Bruto (PB) ÷ Peso Líquido (PL)</li>
+          <li>FC mede perdas no <b>pré-preparo</b> (cascas, sementes, ossos, partes não comestíveis)</li>
+          <li>FC &gt; 1 sempre; quanto maior o FC, maior a perda no pré-preparo</li>
+          <li><b>FK (Fator de Cocção)</b> = Peso Cozido (PC) ÷ Peso Cru Limpo (PL)</li>
+          <li>FK &lt; 1: alimento perde peso na cocção (carnes, vegetais folhosos)</li>
+          <li>FK &gt; 1: alimento ganha peso na cocção (arroz, feijão, massas)</li>
+          <li><b>Per capita bruto</b> = per capita líquido × FC</li>
+        </ul>
+      </div>
+    </div>
+    <div class="sec-title-sm" style="margin-top:1mm;">Índices de Qualidade e Avaliação do Cardápio</div>
+    <div class="two-col">
+      <div class="card">
+        <div class="card-title">Resto-Ingestão (RI) e Sobra Limpa</div>
+        <ul class="dot-list">
+          <li><b>RI (%)</b> = (Peso do resto ÷ Peso distribuído) × 100</li>
+          <li>RI aceitável: <b>≤ 10%</b> em restaurantes industriais/coletivos</li>
+          <li>RI &gt; 10%: inaceitável → investigar causas (cardápio, porcionamento, aceitação)</li>
+          <li><b>Sobra Limpa:</b> alimento preparado, não distribuído, em condições de redistribuição</li>
+          <li>Sobra limpa aceitável: <b>≤ 3%</b> do peso total preparado</li>
+          <li>Diferença-chave: sobra limpa ≠ resto (resto = o que sobrou no prato do comensal)</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title">AQPC — Avaliação Qualitativa das Preparações</div>
+        <ul class="dot-list">
+          <li>Método de Veiros e Proença (2003): avalia técnicas culinárias e combinações de preparações</li>
+          <li>Avalia: cores, técnicas de cocção, repetição de ingredientes, teor de gordura, fibras, folhosos</li>
+          <li>Indicadores negativos: frituras, carnes gordurosas, doces, preparações de cor escura (&gt;1/cardápio)</li>
+          <li>Indicadores positivos: folhosos crus, frutas, leguminosas, cereais integrais</li>
+          <li>Não é instrumento quantitativo (não calcula VCT) — avalia <b>qualidade das escolhas</b></li>
+        </ul>
+      </div>
+    </div>
+    <div class="card card-accent" style="margin-top:1mm;">
+      <div class="card-title">Exemplo Prático — Fator de Correção</div>
+      <p class="body-text">Cebola FC = 1,25 → para obter 100g limpa: 100 × 1,25 = <b>125g brutas</b>. Frango inteiro FC = 2,0 → para 500g limpo: 1.000g brutas. Arroz cru (FK = 2,5) → 100g cru → 250g cozido. <b>Per capita bruto</b> = per capita líquido × FC. Esses cálculos são cobrados em questões contextuais de UAN no ENARE.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ P3 · HACCP -->
+<div class="page">
+  <div class="page-header">
+    <div class="header-logo-group">
+      <svg class="header-logo-svg" viewBox="0 0 28 28" fill="none">
+        <polygon points="14,1 26,7.5 26,20.5 14,27 2,20.5 2,7.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="14" cy="14" r="5.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1"/>
+      </svg>
+      <div class="header-brand">
+        <span class="header-brand-main">extensivo ENARE</span>
+        <span class="header-brand-sub">by Residência PRO</span>
+      </div>
+    </div>
+    <span class="header-center">Nutrição · Bloco B9 · Aula 30</span>
+    <span class="header-page">P3</span>
+  </div>
+  <div class="page-body">
+    <div class="sec-title-sm">HACCP — Análise de Perigos e Pontos Críticos de Controle</div>
+    <div class="two-col">
+      <div class="card">
+        <div class="card-title">Histórico e Base Legal</div>
+        <ul class="dot-list">
+          <li>Origem: NASA (anos 1960) + Pillsbury Company — alimentação de astronautas</li>
+          <li>Codex Alimentarius: sistematização internacional</li>
+          <li>Brasil: <b>Portaria SVS/MS 1.428/1993</b> (indústria) e <b>RDC 275/2002</b> (boas práticas)</li>
+          <li><b>RDC 216/2004</b> (ANVISA): boas práticas em serviços de alimentação (restaurantes, lanchonetes, UAN)</li>
+          <li>HACCP não é obrigatório para todos os serviços de alimentação no Brasil (obrigatório na indústria)</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title">Tipos de Perigos Alimentares</div>
+        <ul class="dot-list">
+          <li><b>Biológicos (principal):</b> bactérias (Salmonella, S. aureus, C. perfringens, L. monocytogenes), vírus (hepatite A, norovírus), parasitas, fungos/micotoxinas</li>
+          <li><b>Químicos:</b> agrotóxicos, aditivos em excesso, metais pesados, resíduos de sanitizantes, histamina</li>
+          <li><b>Físicos:</b> fragmentos de vidro, metal, osso, pedras, cabelo, pragas</li>
+          <li>Perigos biológicos: maior frequência e gravidade em surtos de DTA</li>
+        </ul>
+      </div>
+    </div>
+    <div class="sec-title-sm" style="margin-top:1mm;">7 Princípios do HACCP</div>
+    <div class="card">
+      <table class="table-sm">
+        <tr><th>Nº</th><th>Princípio</th><th>O que envolve</th></tr>
+        <tr><td><b>1</b></td><td>Análise de perigos</td><td>Identificar perigos biológicos, químicos e físicos em cada etapa do processo produtivo</td></tr>
+        <tr><td><b>2</b></td><td>Identificação dos PCCs</td><td>Determinar as etapas onde o controle é crítico para eliminar/reduzir o perigo a nível aceitável</td></tr>
+        <tr><td><b>3</b></td><td>Limites críticos</td><td>Estabelecer limites mensuráveis para cada PCC (ex: temperatura mínima de cocção = 70°C)</td></tr>
+        <tr><td><b>4</b></td><td>Sistema de monitoração</td><td>Procedimentos para verificar se o PCC está sob controle (quem, como, quando)</td></tr>
+        <tr><td><b>5</b></td><td>Ações corretivas</td><td>O que fazer quando o monitoramento indica que um PCC não está sob controle</td></tr>
+        <tr><td><b>6</b></td><td>Sistema de verificação</td><td>Confirmar se o plano HACCP está funcionando efetivamente (auditorias, testes)</td></tr>
+        <tr><td><b>7</b></td><td>Documentação e registros</td><td>Registrar todos os procedimentos e ocorrências — obrigatório e auditável</td></tr>
+      </table>
+    </div>
+    <div class="card card-warn" style="margin-top:2mm;">
+      <div class="card-title card-title-warn">PCC vs Ponto de Controle (PC) — Distinção Crítica</div>
+      <p class="body-text"><b>PCC (Ponto Crítico de Controle):</b> etapa onde o controle é <b>obrigatório e imprescindível</b> para eliminar ou reduzir o perigo a nível aceitável; se falha, o alimento é inseguro. <b>PC (Ponto de Controle):</b> etapa que contribui para a segurança mas onde a falha não resulta diretamente em perigo inaceitável. São conceitualmente distintos — questões frequentemente testam essa diferença.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ P4 · BOAS PRÁTICAS E TEMPERATURAS -->
+<div class="page">
+  <div class="page-header">
+    <div class="header-logo-group">
+      <svg class="header-logo-svg" viewBox="0 0 28 28" fill="none">
+        <polygon points="14,1 26,7.5 26,20.5 14,27 2,20.5 2,7.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="14" cy="14" r="5.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1"/>
+      </svg>
+      <div class="header-brand">
+        <span class="header-brand-main">extensivo ENARE</span>
+        <span class="header-brand-sub">by Residência PRO</span>
+      </div>
+    </div>
+    <span class="header-center">Nutrição · Bloco B9 · Aula 30</span>
+    <span class="header-page">P4</span>
+  </div>
+  <div class="page-body">
+    <div class="sec-title-sm">Boas Práticas — RDC 216/2004 (ANVISA)</div>
+    <div class="two-col">
+      <div class="card">
+        <div class="card-title">Temperaturas Críticas — Zona de Perigo</div>
+        <table class="table-sm">
+          <tr><th>Situação</th><th>Temperatura / Tempo</th></tr>
+          <tr><td><b>Zona de perigo</b></td><td class="alert"><b>5°C a 60°C</b> — proliferação bacteriana</td></tr>
+          <tr><td>Alimentos quentes (distribuição)</td><td><b>≥ 60°C</b> por no máx. 6 horas</td></tr>
+          <tr><td>Alimentos frios (distribuição)</td><td><b>≤ 5°C</b> (ou ≤ 10°C por no máx. 4 h)</td></tr>
+          <tr><td>Cocção (temperatura interna)</td><td><b>≥ 70°C</b> instantâneo (ou 65°C × 15 min)</td></tr>
+          <tr><td>Resfriamento rápido</td><td>60°C → ≤ 10°C em <b>até 2 horas</b></td></tr>
+          <tr><td>Reaquecimento</td><td>Atingir <b>≥ 70°C</b> antes de redistribuir</td></tr>
+          <tr><td>Congelamento</td><td><b>≤ −18°C</b>; descongelar em refrigerador (≤ 5°C)</td></tr>
+        </table>
+      </div>
+      <div class="card">
+        <div class="card-title">Manipuladores e Higiene</div>
+        <ul class="dot-list">
+          <li>Higiene das mãos: <b>antes e após</b> cada manipulação, após usar o banheiro, após tocar lixo</li>
+          <li>Uniforme completo: avental, touca (cabelo coberto), luvas quando necessário, máscara</li>
+          <li>Proibido: fumar, tossir/espirrar sobre alimentos, uso de adornos (anel, brinco, relógio)</li>
+          <li>Manipulador com ferida, diarreia ou infecção respiratória: <b>afastar das áreas de preparo</b></li>
+          <li>Programa de capacitação: obrigatório — frequência mínima documentada</li>
+          <li>Exames periódicos de saúde: obrigatórios (hepatite A, coproscopia, etc.)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="sec-title-sm" style="margin-top:1mm;">Doenças Transmitidas por Alimentos (DTA) — Agentes Principais</div>
+    <div class="three-col">
+      <div class="card">
+        <div class="card-title">Toxiinfecção (Toxina)</div>
+        <ul class="dot-list">
+          <li><b>S. aureus:</b> toxina termoestável; não destruída na cocção; alimentos manipulados; IP 1–6h</li>
+          <li><b>C. botulinum:</b> toxina em conservas caseiras; neurológica; IP 12–36h</li>
+          <li><b>B. cereus (emético):</b> arroz requentado; IP 1–6h; toxina termoestável</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title">Infecção (Multiplicação)</div>
+        <ul class="dot-list">
+          <li><b>Salmonella spp.:</b> ovos, aves, carne crua; IP 6–48h; diarreia febril</li>
+          <li><b>L. monocytogenes:</b> queijo mole, frios; gestantes/imunossuprimidos; IP longo</li>
+          <li><b>C. jejuni:</b> aves mal cozidas, leite cru; IP 2–5 dias</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title">Perigos Especiais</div>
+        <ul class="dot-list">
+          <li><b>C. perfringens:</b> carnes em grandes volumes; IP 8–22h; esporo termorresistente</li>
+          <li><b>Hepatite A / Norovírus:</b> manipuladores infectados; alimentos crus</li>
+          <li><b>Histamina:</b> peixes mal refrigerados (atum, sardinha); reação pseudoalérgica</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ P5 · GESTÃO DE RH E POPS -->
+<div class="page">
+  <div class="page-header">
+    <div class="header-logo-group">
+      <svg class="header-logo-svg" viewBox="0 0 28 28" fill="none">
+        <polygon points="14,1 26,7.5 26,20.5 14,27 2,20.5 2,7.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="14" cy="14" r="5.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1"/>
+      </svg>
+      <div class="header-brand">
+        <span class="header-brand-main">extensivo ENARE</span>
+        <span class="header-brand-sub">by Residência PRO</span>
+      </div>
+    </div>
+    <span class="header-center">Nutrição · Bloco B9 · Aula 30</span>
+    <span class="header-page">P5</span>
+  </div>
+  <div class="page-body">
+    <div class="sec-title-sm">Gestão de RH, POPs e Qualidade em UAN</div>
+    <div class="two-col">
+      <div class="card">
+        <div class="card-title">POPs — Procedimentos Operacionais Padronizados (RDC 275/2002)</div>
+        <ul class="dot-list">
+          <li>Obrigatórios em serviços de alimentação para garantir conformidade</li>
+          <li><b>POPs mínimos obrigatórios (RDC 275):</b></li>
+          <li>1) Higienização das instalações, equipamentos e utensílios</li>
+          <li>2) Controle de pragas e vetores urbanos</li>
+          <li>3) Higienização do reservatório de água</li>
+          <li>4) Higiene e saúde dos manipuladores</li>
+          <li>5) Manejo de resíduos sólidos</li>
+          <li>6) Manutenção preventiva dos equipamentos</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title">Programa 5S e Papel do Nutricionista RT</div>
+        <ul class="dot-list">
+          <li><b>5S:</b> Seiri (utilização/descarte) · Seiton (organização) · Seiso (limpeza) · Seiketsu (padronização) · Shitsuke (disciplina)</li>
+          <li>Nutricionista RT: <b>responsável técnico</b> pela UAN — planejamento, cardápio, supervisão higiênico-sanitária, controle de qualidade, RH</li>
+          <li>Resolução CFN 380/2005: define atribuições do nutricionista na UAN por área de atuação</li>
+          <li>Atividades obrigatórias do RT: avaliação nutricional dos comensais, elaboração e avaliação de cardápios, controle higiênico-sanitário</li>
+        </ul>
+      </div>
+    </div>
+    <div class="two-col" style="margin-top:1mm;">
+      <div class="card">
+        <div class="card-title">Higienização de Hortaliças e Frutas</div>
+        <ul class="dot-list">
+          <li><b>Etapas obrigatórias (RDC 216/2004):</b></li>
+          <li>1) Seleção (retirar partes danificadas)</li>
+          <li>2) Lavagem em água corrente folha a folha ou unidade a unidade</li>
+          <li>3) <b>Desinfecção:</b> hipoclorito de sódio <b>100–200 ppm por 15 min</b> (ou produto específico conforme fabricante)</li>
+          <li>4) Enxágue em água corrente</li>
+          <li>5) Centrifugação/escorrimento</li>
+          <li>Vinagre e limão: <b>não são sanificantes aprovados</b></li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title">Técnica Dietética — Métodos de Cocção</div>
+        <ul class="dot-list">
+          <li><b>Calor úmido:</b> cozimento em água (ebulição, vapor, braseado, escalfado) — perdas de vitaminas hidrossolúveis por lixiviação</li>
+          <li><b>Calor seco:</b> assar, grelhar, fritar (imersão ou superfície) — reação de Maillard (escurecimento não enzimático)</li>
+          <li><b>Micro-ondas:</b> menor perda de nutrientes (cocção rápida com pouca água)</li>
+          <li><b>Vapor:</b> menor perda de vitaminas hidrossolúveis vs ebulição em água</li>
+          <li>Temperatura ideal de frituras: <b>180°C</b>; acima de 200°C → acroleína (tóxica)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card card-accent" style="margin-top:1mm;">
+      <div class="card-title">Resolução CFN 600/2018 — Atribuições e Carga Horária</div>
+      <p class="body-text">Substitui a Resolução CFN 380/2005. Mantém a obrigatoriedade do nutricionista RT em UAN. Define áreas de competência: <b>nutrição clínica, alimentação coletiva, saúde coletiva, docência, indústria, esportes</b>. Em alimentação coletiva: planeja cardápio, supervisiona preparo, responsabiliza-se pela qualidade nutricional e higiênico-sanitária. Atribuição privativa: assistência e educação nutricional aos comensais.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ P6 · Q01 -->
+<div class="page">
+  <div class="page-header">
+    <div class="header-logo-group">
+      <svg class="header-logo-svg" viewBox="0 0 28 28" fill="none">
+        <polygon points="14,1 26,7.5 26,20.5 14,27 2,20.5 2,7.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="14" cy="14" r="5.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1"/>
+      </svg>
+      <div class="header-brand">
+        <span class="header-brand-main">extensivo ENARE</span>
+        <span class="header-brand-sub">by Residência PRO</span>
+      </div>
+    </div>
+    <span class="header-center">Nutrição · Bloco B9 · Aula 30</span>
+    <span class="header-page">P6</span>
+  </div>
+  <div class="page-body">
+    <div class="q-header">
+      <div class="q-label">Questão 01 <span class="tag tag-green" style="margin-left:2mm;">Aplicação</span></div>
+      <div class="q-meta">NUT-COLET · HACCP · 7 Princípios · PCC vs PC</div>
+    </div>
+    <p class="q-stem">Uma nutricionista responsável técnica por uma UAN hospitalar está elaborando o plano HACCP para o processo produtivo de refeições. Ao analisar a etapa de cocção de carnes, ela a classifica como Ponto Crítico de Controle (PCC), estabelecendo como limite crítico a temperatura interna mínima de 70°C. Sobre os fundamentos do sistema HACCP e sua aplicação em serviços de alimentação, é CORRETO afirmar que:</p>
+    <div class="alternatives">
+      <div class="alt wrong">
+        <span class="alt-letter">A</span>
+        <span class="alt-text">O HACCP é um sistema de controle voltado exclusivamente para perigos biológicos; os perigos químicos (como resíduos de agrotóxicos) e físicos (como fragmentos de vidro) são gerenciados por programas independentes de Boas Práticas, não integrando os princípios do HACCP.</span>
+      </div>
+      <div class="alt correct">
+        <span class="alt-letter">B</span>
+        <span class="alt-text">O HACCP estrutura-se em 7 princípios, sendo o primeiro a análise de perigos (biológicos, químicos e físicos) em cada etapa do processo produtivo; um Ponto Crítico de Controle (PCC) é uma etapa onde o controle é obrigatório para eliminar ou reduzir o perigo a nível aceitável, distinguindo-se dos pontos de controle (PC), onde a falha não resulta necessariamente em risco inaceitável.</span>
+      </div>
+      <div class="alt wrong">
+        <span class="alt-letter">C</span>
+        <span class="alt-text">Toda etapa do fluxo produtivo onde seja possível reduzir a contaminação deve ser classificada como PCC, pois qualquer falha no controle representa risco inaceitável ao consumidor; portanto, o número de PCCs em um plano HACCP deve ser maximizado para garantir a segurança do alimento.</span>
+      </div>
+      <div class="alt wrong">
+        <span class="alt-letter">D</span>
+        <span class="alt-text">A documentação e os registros constituem o primeiro princípio do HACCP e devem ser elaborados antes da análise de perigos, pois a legislação brasileira exige que o plano HACCP seja submetido à ANVISA antes da implementação em qualquer serviço de alimentação.</span>
+      </div>
+    </div>
+    <div class="q-answer-box">
+      <span class="q-answer-letter">B</span>
+      <span class="q-answer-text"><b>HACCP = 7 princípios; 1º = análise de perigos (bio + quím + fís); PCC ≠ PC.</b> A <b>A</b> erra: HACCP cobre os 3 tipos de perigos. A <b>C</b> erra: PCCs devem ser <b>mínimos e necessários</b> — maximizá-los é erro conceitual. A <b>D</b> inverte a ordem: análise de perigos vem antes da documentação (7º princípio).</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ P7 · Q02 -->
+<div class="page">
+  <div class="page-header">
+    <div class="header-logo-group">
+      <svg class="header-logo-svg" viewBox="0 0 28 28" fill="none">
+        <polygon points="14,1 26,7.5 26,20.5 14,27 2,20.5 2,7.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="14" cy="14" r="5.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1"/>
+      </svg>
+      <div class="header-brand">
+        <span class="header-brand-main">extensivo ENARE</span>
+        <span class="header-brand-sub">by Residência PRO</span>
+      </div>
+    </div>
+    <span class="header-center">Nutrição · Bloco B9 · Aula 30</span>
+    <span class="header-page">P7</span>
+  </div>
+  <div class="page-body">
+    <div class="q-header">
+      <div class="q-label">Questão 02 <span class="tag tag-green" style="margin-left:2mm;">Aplicação</span></div>
+      <div class="q-meta">NUT-COLET · RDC 216/2004 · Temperaturas Críticas · Zona de Perigo</div>
+    </div>
+    <p class="q-stem">Durante o monitoramento de temperatura em um restaurante institucional, a nutricionista verifica que um frango assado mantido em cuba de distribuição está a 55°C após 90 minutos de exposição. Ao mesmo tempo, uma salada de frutas está sendo mantida em balcão refrigerado a 8°C há 3 horas. Com base nas normas da RDC 216/2004 da ANVISA, sobre as condições verificadas, é CORRETO afirmar que:</p>
+    <div class="alternatives">
+      <div class="alt wrong">
+        <span class="alt-letter">A</span>
+        <span class="alt-text">Ambas as preparações estão dentro dos parâmetros de segurança estabelecidos pela RDC 216/2004: o frango a 55°C é aceitável pois o tempo de distribuição não ultrapassou 2 horas, e a salada de frutas a 8°C é segura pois está abaixo de 10°C.</span>
+      </div>
+      <div class="alt wrong">
+        <span class="alt-letter">B</span>
+        <span class="alt-text">O frango a 55°C está em condição segura pois ainda se encontra acima de 50°C, limite mínimo permitido para alimentos quentes em distribuição; a salada de frutas, entretanto, está em não conformidade pois deveria ser mantida a no máximo 5°C.</span>
+      </div>
+      <div class="alt correct">
+        <span class="alt-letter">C</span>
+        <span class="alt-text">O frango a 55°C está em não conformidade: alimentos quentes devem ser mantidos a ≥60°C durante a distribuição (zona de perigo: 5–60°C); a salada de frutas a 8°C por 3 horas está em conformidade, pois a RDC 216/2004 permite alimentos frios a ≤10°C por no máximo 4 horas.</span>
+      </div>
+      <div class="alt wrong">
+        <span class="alt-letter">D</span>
+        <span class="alt-text">A salada de frutas a 8°C está em não conformidade grave, pois alimentos frios devem obrigatoriamente ser mantidos a ≤4°C em todo tipo de serviço de alimentação; o frango a 55°C, embora abaixo do ideal, é aceitável quando o tempo total de distribuição não exceder 4 horas.</span>
+      </div>
+    </div>
+    <div class="q-answer-box">
+      <span class="q-answer-letter">C</span>
+      <span class="q-answer-text"><b>Quente: ≥60°C (frango a 55°C = não conforme). Frio: ≤5°C; ou ≤10°C por máx. 4h (salada a 8°C × 3h = conforme).</b> A <b>A</b> erra: frango a 55°C não é seguro. A <b>B</b> erra: limite de alimentos quentes é <b>≥60°C</b>, não 50°C. A <b>D</b> erra: RDC 216 permite ≤10°C por até 4h para alimentos frios.</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ P8 · Q03 ÂNCORA -->
+<div class="page">
+  <div class="page-header">
+    <div class="header-logo-group">
+      <svg class="header-logo-svg" viewBox="0 0 28 28" fill="none">
+        <polygon points="14,1 26,7.5 26,20.5 14,27 2,20.5 2,7.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="14" cy="14" r="5.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1"/>
+      </svg>
+      <div class="header-brand">
+        <span class="header-brand-main">extensivo ENARE</span>
+        <span class="header-brand-sub">by Residência PRO</span>
+      </div>
+    </div>
+    <span class="header-center">Nutrição · Bloco B9 · Aula 30</span>
+    <span class="header-page">P8</span>
+  </div>
+  <div class="page-body">
+    <div class="q-header">
+      <div class="q-label">Questão 03 <span class="tag tag-yellow" style="margin-left:2mm; color:#1F5C23;">Análise · Âncora</span></div>
+      <div class="q-meta">NUT-COLET · UAN · Técnica Dietética · AQPC · Controle de Qualidade</div>
+    </div>
+    <p class="q-stem">Sobre gestão de Unidades de Alimentação e Nutrição (UAN) e técnica dietética, analise as afirmativas:</p>
+    <div class="assertions">
+      <div class="assertion">
+        <span class="assert-num wrong">I</span>
+        <span class="assert-text">O Fator de Correção (FC) representa a relação entre o peso cozido e o peso cru limpo de um alimento, sendo utilizado para calcular as perdas que ocorrem durante o processo de cocção e estimar o rendimento final da preparação.</span>
+      </div>
+      <div class="assertion">
+        <span class="assert-num correct">II</span>
+        <span class="assert-text">O Índice de Resto-Ingestão (RI) aceitável em restaurantes institucionais e industriais é de até <b>10%</b> do peso total de alimentos distribuídos, calculado pela razão entre o peso dos restos deixados nos pratos pelos comensais e o peso total de alimentos efetivamente distribuídos.</span>
+      </div>
+      <div class="assertion">
+        <span class="assert-num correct">III</span>
+        <span class="assert-text">As Boas Práticas para Serviços de Alimentação, regulamentadas pela <b>RDC 216/2004</b> da ANVISA, estabelecem que alimentos quentes devem ser mantidos a temperaturas iguais ou superiores a <b>60°C</b> durante a distribuição, sendo a faixa entre 5°C e 60°C denominada "zona de perigo" por permitir a multiplicação acelerada de microrganismos patogênicos.</span>
+      </div>
+      <div class="assertion">
+        <span class="assert-num wrong">IV</span>
+        <span class="assert-text">No sistema HACCP, os Pontos de Controle (PC) e os Pontos Críticos de Controle (PCC) são equivalentes em termos de obrigatoriedade de monitoramento, diferenciando-se apenas pelo tipo de perigo envolvido: PCCs controlam perigos biológicos, enquanto PCs controlam perigos químicos e físicos.</span>
+      </div>
+    </div>
+    <p class="q-stem" style="margin-top:1mm;">Estão CORRETAS apenas:</p>
+    <div class="alternatives">
+      <div class="alt wrong"><span class="alt-letter">A</span><span class="alt-text">I e III</span></div>
+      <div class="alt wrong"><span class="alt-letter">B</span><span class="alt-text">I e IV</span></div>
+      <div class="alt correct"><span class="alt-letter">C</span><span class="alt-text">II e III</span></div>
+      <div class="alt wrong"><span class="alt-letter">D</span><span class="alt-text">II e IV</span></div>
+    </div>
+    <div class="q-answer-box">
+      <span class="q-answer-letter">C</span>
+      <span class="q-answer-text"><b>I — ERRADA:</b> FC = PB ÷ PL (mede perdas no pré-preparo); o Fator de Cocção (FK) mede peso cozido ÷ peso cru limpo. <b>II — CORRETA:</b> RI ≤ 10% = aceitável. <b>III — CORRETA:</b> RDC 216/2004: quente ≥ 60°C; zona de perigo 5–60°C. <b>IV — ERRADA:</b> PC ≠ PCC em obrigatoriedade — diferença não é por tipo de perigo, mas por criticidade do controle.</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ P9 · GABARITO -->
+<div class="page">
+  <div class="page-header">
+    <div class="header-logo-group">
+      <svg class="header-logo-svg" viewBox="0 0 28 28" fill="none">
+        <polygon points="14,1 26,7.5 26,20.5 14,27 2,20.5 2,7.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="14" cy="14" r="5.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1"/>
+      </svg>
+      <div class="header-brand">
+        <span class="header-brand-main">extensivo ENARE</span>
+        <span class="header-brand-sub">by Residência PRO</span>
+      </div>
+    </div>
+    <span class="header-center">Nutrição · Bloco B9 · Aula 30</span>
+    <span class="header-page">P9</span>
+  </div>
+  <div class="page-body">
+    <div class="sec-title-sm">Gabarito Comentado</div>
+    <div class="gab-grid">
+      <div class="gab-card">
+        <div class="gab-card-q">Q01 · Aplicação</div>
+        <div class="gab-card-letter">B</div>
+        <div class="gab-card-just">
+          <b>HACCP: 7 princípios; 1º = análise de perigos (bio+quím+fís); PCC ≠ PC.</b> PCCs devem ser mínimos — cada um exige monitoramento rigoroso. PC é etapa de controle sem criticalidade obrigatória. Documentação = 7º princípio (último), não o primeiro.
+        </div>
+      </div>
+      <div class="gab-card">
+        <div class="gab-card-q">Q02 · Aplicação</div>
+        <div class="gab-card-letter">C</div>
+        <div class="gab-card-just">
+          <b>Quente ≥60°C; frio: ≤5°C ou ≤10°C por máx. 4h.</b> Frango a 55°C = zona de perigo = não conforme. Salada a 8°C × 3h = conforme (dentro do limite de 10°C por 4h). O erro clássico é confundir o limite de alimentos frios (5°C vs 10°C/4h).
+        </div>
+      </div>
+      <div class="gab-card">
+        <div class="gab-card-q">Q03 · Análise</div>
+        <div class="gab-card-letter">C</div>
+        <div class="gab-card-just">
+          <b>II e III corretas.</b> I errada: FC = PB/PL (pré-preparo), não cocção. FK = cocção. IV errada: PCC vs PC não é separado por tipo de perigo — todos os 3 tipos podem ser controlados em PCCs; a diferença é a criticalidade/obrigatoriedade do controle.
+        </div>
+      </div>
+    </div>
+    <div class="sec-title-sm" style="margin-top:1mm;">Síntese dos Erros Típicos</div>
+    <table class="table-sm">
+      <tr><th>Tema</th><th>Erro Comum</th><th>Correto</th></tr>
+      <tr><td>FC vs FK</td><td>FC = perdas na cocção (ganho ou perda de peso)</td><td><b>FC = PB/PL (pré-preparo)</b>; FK = peso cozido/peso cru limpo</td></tr>
+      <tr><td>Resto-Ingestão</td><td>RI aceitável ≤ 5% ou ≤ 15%</td><td><b>RI ≤ 10%</b>; sobra limpa ≤ 3%</td></tr>
+      <tr><td>Temperatura (quente)</td><td>Alimento quente seguro a 55°C ou 50°C</td><td><b>≥ 60°C</b> obrigatório; abaixo = zona de perigo</td></tr>
+      <tr><td>Temperatura (frio)</td><td>Alimento frio deve ficar sempre ≤ 5°C</td><td>≤ 5°C (ideal); ou <b>≤ 10°C por máx. 4 horas</b></td></tr>
+      <tr><td>PCC vs PC</td><td>Diferença é pelo tipo de perigo controlado</td><td>Diferença é pela <b>criticalidade</b> — PCC = obrigatório; PC = desejável</td></tr>
+      <tr><td>Higienização de hortaliças</td><td>Vinagre e limão são sanificantes válidos</td><td><b>Hipoclorito 100–200 ppm × 15 min</b> — vinagre não é sanificante</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ P10 · SÍNTESE FINAL -->
+<div class="page">
+  <div class="page-header">
+    <div class="header-logo-group">
+      <svg class="header-logo-svg" viewBox="0 0 28 28" fill="none">
+        <polygon points="14,1 26,7.5 26,20.5 14,27 2,20.5 2,7.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="14" cy="14" r="5.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1"/>
+      </svg>
+      <div class="header-brand">
+        <span class="header-brand-main">extensivo ENARE</span>
+        <span class="header-brand-sub">by Residência PRO</span>
+      </div>
+    </div>
+    <span class="header-center">Nutrição · Bloco B9 · Aula 30</span>
+    <span class="header-page">P10</span>
+  </div>
+  <div class="page-body">
+    <div class="sintese-header">
+      <div class="sintese-title">Síntese Final · Aula 30</div>
+      <div class="sintese-sub">NUT-COLET · Unidade de Alimentação e Nutrição</div>
+    </div>
+    <div class="sintese-grid">
+      <div class="sintese-card">
+        <div class="sintese-card-title">Índices de UAN</div>
+        <ul class="dot-list">
+          <li><b>FC</b> = PB ÷ PL → perdas no pré-preparo; FC &gt; 1 sempre</li>
+          <li><b>FK</b> = Peso cozido ÷ Peso cru limpo → &lt;1 (carnes/verduras) ou &gt;1 (arroz/massa)</li>
+          <li>Per capita bruto = per capita líquido × FC</li>
+          <li><b>RI ≤ 10%</b>; Sobra limpa ≤ 3%</li>
+          <li>AQPC: qualitativo — técnicas de cocção e combinações; não calcula VCT</li>
+        </ul>
+      </div>
+      <div class="sintese-card">
+        <div class="sintese-card-title">HACCP — 7 Princípios (ordem)</div>
+        <ul class="dot-list">
+          <li><b>1)</b> Análise de perigos (bio + quím + fís)</li>
+          <li><b>2)</b> Identificação dos PCCs</li>
+          <li><b>3)</b> Limites críticos</li>
+          <li><b>4)</b> Sistema de monitoração</li>
+          <li><b>5)</b> Ações corretivas</li>
+          <li><b>6)</b> Sistema de verificação</li>
+          <li><b>7)</b> Documentação e registros</li>
+          <li>PCC ≠ PC: PCC = controle obrigatório/crítico</li>
+        </ul>
+      </div>
+      <div class="sintese-card">
+        <div class="sintese-card-title">Temperaturas Críticas</div>
+        <table class="table-sm">
+          <tr><th>Situação</th><th>Temperatura</th></tr>
+          <tr><td>Zona de perigo</td><td><b>5°C – 60°C</b></td></tr>
+          <tr><td>Quente (distribuição)</td><td><b>≥ 60°C</b> / máx. 6h</td></tr>
+          <tr><td>Frio (distribuição)</td><td>≤ 5°C ou ≤ 10°C/4h</td></tr>
+          <tr><td>Cocção interna</td><td><b>≥ 70°C</b> instântaneo</td></tr>
+          <tr><td>Resfriamento rápido</td><td>60→10°C em <b>2h</b></td></tr>
+          <tr><td>Congelamento</td><td><b>≤ −18°C</b></td></tr>
+        </table>
+      </div>
+      <div class="sintese-card">
+        <div class="sintese-card-title">POPs e Qualidade</div>
+        <ul class="dot-list">
+          <li>RDC 275/2002: POPs obrigatórios (6 tipos)</li>
+          <li>RDC 216/2004: boas práticas em serviços de alimentação</li>
+          <li>Higienização hortaliças: hipoclorito 100–200 ppm × 15 min</li>
+          <li>Frituras: 180°C ideal; &gt;200°C → acroleína (tóxica)</li>
+          <li>Vapor: menor perda de vitaminas vs ebulição em água</li>
+          <li>Nutricionista RT: Res. CFN 600/2018</li>
+        </ul>
+      </div>
+    </div>
+    <div style="margin-top:2mm;">
+      <div class="refs-title">Referências</div>
+      <p class="body-text" style="color:#888;">RDC ANVISA 216/2004 (Boas Práticas Serviços de Alimentação) · RDC ANVISA 275/2002 (POPs) · Portaria SVS/MS 1.428/1993 (HACCP Indústria) · Resolução CFN 600/2018 (Atribuições Nutricionistas) · Philippi, S.T. — Nutrição e Técnica Dietética · Abreu, E.S. — Gestão de Unidades de Alimentação e Nutrição · Codex Alimentarius — HACCP System and Guidelines</p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

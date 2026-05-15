@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nutrição Bloco B9 — Aula 16 | Extensivo ENARE 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --creme: #F6F4ED;
+    --verde: #1F5C23;
+    --accent: #C6D834;
+    --dark: #1a1a1a;
+    --muted: #555;
+    --page-w: 210mm;
+    --page-h: 297mm;
+    --pad: 14mm;
+  }
+
+  body { background: #d0d0d0; font-family: 'Bricolage Grotesque', sans-serif; }
+
+  .page {
+    width: var(--page-w);
+    min-height: var(--page-h);
+    background: var(--creme);
+    margin: 8mm auto;
+    padding: var(--pad);
+    position: relative;
+    overflow: hidden;
+    page-break-after: always;
+  }
+
+  /* ── HEADER (todas as páginas exceto capa) ── */
+  .page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2.5px solid var(--verde);
+    padding-bottom: 4px;
+    margin-bottom: 10px;
+  }
+  .page-header .logo-area { display: flex; align-items: center; gap: 6px; }
+  .page-header .brand { font-family: 'Playfair Display', serif; font-style: italic; font-size: 13px; color: var(--verde); }
+  .page-header .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; color: var(--muted); letter-spacing: .03em; }
+  .page-header .hd-right { text-align: right; }
+  .page-header .hd-aula { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; color: var(--verde); letter-spacing: .04em; text-transform: uppercase; }
+  .page-header .hd-pag { font-size: 8px; color: var(--muted); }
+
+  /* ── FOOTER ── */
+  .page-footer {
+    position: absolute;
+    bottom: 8mm;
+    left: var(--pad);
+    right: var(--pad);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #ccc;
+    padding-top: 4px;
+  }
+  .page-footer span { font-size: 7px; color: #999; }
+
+  /* ══════════════════════════════
+     CAPA (P1)
+  ══════════════════════════════ */
+  .cover {
+    background: var(--verde);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: var(--pad);
+  }
+  .cover-top { display: flex; justify-content: space-between; align-items: flex-start; }
+  .cover-brand { font-family: 'Playfair Display', serif; font-style: italic; color: var(--creme); font-size: 16px; }
+  .cover-tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(246,244,237,.55); font-size: 8px; letter-spacing: .05em; margin-top: 2px; }
+
+  .cover-mid { text-align: center; padding: 10mm 0 6mm; }
+  .cover-eyebrow { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+  .cover-title { font-family: 'Barlow Condensed', sans-serif; font-size: 38px; font-weight: 800; color: var(--creme); line-height: 1.0; text-transform: uppercase; letter-spacing: .01em; margin-bottom: 8px; }
+  .cover-subtitle { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; font-size: 13px; color: rgba(246,244,237,.8); letter-spacing: .04em; }
+
+  .cover-divider { border: none; border-top: 1.5px solid var(--accent); margin: 6mm 0; opacity: .5; }
+
+  .cover-pills { display: flex; justify-content: center; gap: 6px; flex-wrap: wrap; }
+  .pill {
+    border: 1px solid rgba(198,216,52,.45);
+    border-radius: 20px;
+    padding: 3px 10px;
+    font-size: 8.5px;
+    color: rgba(246,244,237,.85);
+    font-family: 'Bricolage Grotesque', sans-serif;
+    letter-spacing: .03em;
+  }
+
+  .cover-bottom { display: flex; justify-content: space-between; align-items: flex-end; }
+  .cv-meta { font-size: 8px; color: rgba(246,244,237,.5); }
+  .cv-code { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: .12em; color: var(--accent); }
+
+  /* ══════════════════════════════
+     CONTEÚDO (P2–P5)
+  ══════════════════════════════ */
+  .sec-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--verde);
+    text-transform: uppercase;
+    letter-spacing: .03em;
+    border-left: 4px solid var(--accent);
+    padding-left: 8px;
+    margin-bottom: 8px;
+    line-height: 1.1;
+  }
+  .sec-intro {
+    font-size: 8.5px;
+    color: var(--muted);
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+
+  /* boxes */
+  .box {
+    border-radius: 6px;
+    padding: 8px 10px;
+    margin-bottom: 8px;
+    font-size: 8px;
+    line-height: 1.55;
+  }
+  .box-verde { background: rgba(31,92,35,.08); border-left: 3px solid var(--verde); }
+  .box-accent { background: rgba(198,216,52,.13); border-left: 3px solid var(--accent); }
+  .box-alert  { background: rgba(220,53,69,.07);  border-left: 3px solid #dc3545; }
+  .box-info   { background: rgba(13,110,253,.06); border-left: 3px solid #0d6efd; }
+  .box-dark   { background: rgba(26,26,26,.05);   border-left: 3px solid #555; }
+
+  .box-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    margin-bottom: 5px;
+    color: var(--dark);
+  }
+  .box-title.verde { color: var(--verde); }
+  .box-title.red   { color: #dc3545; }
+  .box-title.blue  { color: #0d6efd; }
+  .box-title.acc   { color: #5a6e00; }
+
+  /* tabelas */
+  table { width: 100%; border-collapse: collapse; font-size: 7.5px; margin-bottom: 8px; }
+  th { background: var(--verde); color: var(--creme); font-family: 'Barlow Condensed', sans-serif; font-size: 9px; padding: 4px 6px; text-align: left; }
+  td { padding: 3.5px 6px; border-bottom: 1px solid #ddd; vertical-align: top; }
+  tr:nth-child(even) td { background: rgba(0,0,0,.03); }
+  td strong { color: var(--verde); }
+
+  /* listas */
+  ul, ol { padding-left: 14px; margin-bottom: 6px; }
+  li { font-size: 8px; line-height: 1.55; margin-bottom: 2px; }
+  li strong { color: var(--verde); }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 7px; margin-bottom: 8px; }
+
+  /* badge */
+  .badge {
+    display: inline-block;
+    padding: 2px 7px;
+    border-radius: 10px;
+    font-size: 7px;
+    font-weight: 600;
+    letter-spacing: .04em;
+  }
+  .badge-verde  { background: var(--verde);  color: var(--creme); }
+  .badge-accent { background: var(--accent); color: var(--dark); }
+  .badge-red    { background: #dc3545; color: #fff; }
+  .badge-blue   { background: #0d6efd; color: #fff; }
+  .badge-gray   { background: #888; color: #fff; }
+
+  /* ══════════════════════════════
+     QUESTÕES (P6–P8)
+  ══════════════════════════════ */
+  .q-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--verde);
+  }
+  .q-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--verde);
+    line-height: 1;
+  }
+  .q-meta { display: flex; flex-direction: column; }
+  .q-tipo { font-size: 7.5px; color: var(--muted); letter-spacing: .05em; text-transform: uppercase; }
+  .q-tema { font-size: 9px; font-weight: 600; color: var(--dark); }
+
+  .q-enunciado {
+    background: rgba(31,92,35,.06);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 9px;
+    line-height: 1.6;
+    margin-bottom: 10px;
+    border-left: 3px solid var(--verde);
+    color: var(--dark);
+  }
+  .q-enunciado .stem { font-weight: 600; margin-bottom: 6px; }
+  .q-afirmativas { margin: 6px 0 6px 6px; }
+  .q-afirmativas li { font-size: 8.5px; line-height: 1.55; margin-bottom: 3px; }
+
+  .q-alternativas { list-style: none; padding: 0; margin-bottom: 12px; }
+  .q-alternativas li {
+    display: flex;
+    gap: 8px;
+    padding: 5px 8px;
+    border-radius: 5px;
+    font-size: 8.5px;
+    line-height: 1.5;
+    margin-bottom: 3px;
+    border: 1px solid transparent;
+  }
+  .q-alternativas li .letra {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--verde);
+    min-width: 14px;
+  }
+  .q-alternativas li.correta { background: rgba(198,216,52,.2); border-color: var(--accent); }
+  .q-alternativas li.correta .letra { color: #5a6e00; }
+
+  .ap-box {
+    background: linear-gradient(135deg, rgba(31,92,35,.07), rgba(198,216,52,.09));
+    border: 1px solid rgba(198,216,52,.4);
+    border-radius: 8px;
+    padding: 10px 12px;
+  }
+  .ap-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--verde);
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    margin-bottom: 7px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .ap-body { font-size: 8px; line-height: 1.6; color: var(--dark); }
+  .ap-body strong { color: var(--verde); }
+  .ap-body ul { padding-left: 12px; margin-top: 4px; }
+  .ap-body li { font-size: 7.8px; margin-bottom: 2px; }
+
+  /* ══════════════════════════════
+     GABARITO (P9)
+  ══════════════════════════════ */
+  .gab-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; margin: 10px 0; }
+  .gab-card {
+    border: 1.5px solid var(--verde);
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+  }
+  .gab-q { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+  .gab-letra {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 42px;
+    font-weight: 800;
+    color: var(--verde);
+    line-height: 1;
+    margin: 2px 0;
+  }
+  .gab-tag { font-size: 7.5px; color: var(--muted); }
+  .gab-justif { font-size: 7.8px; color: var(--dark); line-height: 1.5; margin-top: 5px; text-align: left; background: rgba(31,92,35,.05); border-radius: 5px; padding: 6px 8px; }
+
+  /* ══════════════════════════════
+     SÍNTESE FINAL (P10)
+  ══════════════════════════════ */
+  .sintese-header {
+    text-align: center;
+    padding: 8px 0 10px;
+    border-bottom: 2px solid var(--accent);
+    margin-bottom: 12px;
+  }
+  .sintese-header .sh-label { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: .15em; text-transform: uppercase; color: var(--accent); margin-bottom: 3px; }
+  .sintese-header .sh-title { font-family: 'Barlow Condensed', sans-serif; font-size: 22px; font-weight: 800; color: var(--verde); text-transform: uppercase; letter-spacing: .02em; }
+
+  .armadilha-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-bottom: 10px; }
+  .arm-card {
+    background: rgba(220,53,69,.06);
+    border: 1px solid rgba(220,53,69,.25);
+    border-radius: 7px;
+    padding: 7px 9px;
+  }
+  .arm-title { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; font-weight: 800; color: #dc3545; text-transform: uppercase; letter-spacing: .04em; margin-bottom: 4px; }
+  .arm-body { font-size: 7.5px; line-height: 1.5; color: var(--dark); }
+  .arm-body strong { color: #dc3545; }
+
+  .flashcard-strip { display: grid; grid-template-columns: repeat(4,1fr); gap: 5px; margin-bottom: 10px; }
+  .fc {
+    background: var(--verde);
+    color: var(--creme);
+    border-radius: 6px;
+    padding: 7px 8px;
+    text-align: center;
+  }
+  .fc .fc-num { font-family: 'Barlow Condensed', sans-serif; font-size: 18px; font-weight: 800; color: var(--accent); line-height: 1; }
+  .fc .fc-label { font-size: 7px; color: rgba(246,244,237,.75); margin-top: 1px; }
+
+  @media print {
+    body { background: none; }
+    .page { margin: 0; box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════
+     P1 — CAPA
+════════════════════════════════════════════════ -->
+<div class="page cover">
+  <div class="cover-top">
+    <div>
+      <div class="cover-brand">Elite Treinamentos</div>
+      <div class="cover-tagline">Extensivo ENARE 2026 · Material de Apoio</div>
+    </div>
+    <svg width="38" height="38" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="32" height="32" rx="6" fill="#F6F4ED"/>
+      <path d="M16 4 L26 9.5 L26 20.5 L16 26 L6 20.5 L6 9.5 Z" stroke="#1F5C23" stroke-width="1.8" fill="none"/>
+      <circle cx="16" cy="16" r="4" fill="#1F5C23"/>
+    </svg>
+  </div>
+
+  <div class="cover-mid">
+    <div class="cover-eyebrow">Nutrição · Bloco B9 · Aula 16</div>
+    <div class="cover-title">Nutrição no<br>Paciente Crítico</div>
+    <div class="cover-subtitle">UTI e Perioperatório</div>
+    <hr class="cover-divider">
+    <div class="cover-pills">
+      <span class="pill">NUTRIC Score</span>
+      <span class="pill">TNE Precoce UTI</span>
+      <span class="pill">Sínd. Realimentação</span>
+      <span class="pill">Protocolo ERAS</span>
+      <span class="pill">Jejum Pré-op</span>
+    </div>
+  </div>
+
+  <div class="cover-bottom">
+    <div class="cv-meta">NUT-CLÍN · Módulo Terapia Nutricional</div>
+    <div class="cv-code">B9-A16 · ENARE 2026</div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     P2 — AVALIAÇÃO NUTRICIONAL NA UTI
+════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="22" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="32" height="32" rx="6" fill="#1F5C23"/>
+        <path d="M16 4 L26 9.5 L26 20.5 L16 26 L6 20.5 L6 9.5 Z" stroke="#C6D834" stroke-width="1.8" fill="none"/>
+        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
+      </svg>
+      <div>
+        <div class="brand">Elite Treinamentos</div>
+        <div class="tagline">Extensivo ENARE 2026</div>
+      </div>
+    </div>
+    <div class="hd-right">
+      <div class="hd-aula">Aula 16 · Nutrição no Paciente Crítico</div>
+      <div class="hd-pag">Página 2 de 10</div>
+    </div>
+  </div>
+
+  <div class="sec-title">Avaliação Nutricional na UTI</div>
+  <div class="sec-intro">O paciente crítico exige ferramentas validadas para UTI — a triagem clássica (NRS-2002, MAN) tem limitações no contexto de ventilação e sedação.</div>
+
+  <div class="box box-verde">
+    <div class="box-title verde">NUTRIC Score — Instrumento Padrão-Ouro na UTI</div>
+    <table>
+      <tr><th>Variável</th><th>Valor</th><th>Pontos</th></tr>
+      <tr><td>Idade</td><td>50–74 anos</td><td>1</td></tr>
+      <tr><td>Idade</td><td>≥75 anos</td><td>2</td></tr>
+      <tr><td>APACHE II</td><td>15–19</td><td>1</td></tr>
+      <tr><td>APACHE II</td><td>20–27</td><td>2</td></tr>
+      <tr><td>APACHE II</td><td>≥28</td><td>3</td></tr>
+      <tr><td>SOFA</td><td>6–9</td><td>1</td></tr>
+      <tr><td>SOFA</td><td>≥10</td><td>2</td></tr>
+      <tr><td>Comorbidades (nº)</td><td>1–2</td><td>1</td></tr>
+      <tr><td>Comorbidades (nº)</td><td>≥3</td><td>2</td></tr>
+      <tr><td>Dias UTI pré-inclusão</td><td>≥1</td><td>1</td></tr>
+      <tr><td>IL-6 (versão com IL-6)</td><td>0–399 pg/mL</td><td>1</td></tr>
+      <tr><td>IL-6 (versão com IL-6)</td><td>≥400 pg/mL</td><td>2</td></tr>
+    </table>
+    <div class="two-col" style="margin-top:4px;">
+      <div style="font-size:8px;"><strong>Sem IL-6:</strong> 0–8 pts → <span class="badge badge-verde">≥5 = alto risco</span> de mortalidade; benefício nutricional claro</div>
+      <div style="font-size:8px;"><strong>Com IL-6:</strong> 0–10 pts → <span class="badge badge-accent">≥6 = alto risco</span>; IL-6 ≥400 pg/mL indica inflamação maciça</div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="box box-info">
+      <div class="box-title blue">NRS-2002 na UTI</div>
+      <ul>
+        <li>Aplicável em pacientes <strong>capazes de responder</strong> (acordados)</li>
+        <li>Pontuação ≥3 → risco nutricional</li>
+        <li>Limitação: <strong>não considera gravidade metabólica</strong> (APACHE/SOFA)</li>
+        <li>Usado em pré-operatório eletivo (pré-UTI)</li>
+      </ul>
+    </div>
+    <div class="box box-dark">
+      <div class="box-title">Calorimetria Indireta</div>
+      <ul>
+        <li><strong>Padrão-ouro</strong> para aferir GE real em UTI</li>
+        <li>Mede VO₂ e VCO₂ → calcula GE pela equação de Weir</li>
+        <li>Na ausência: equações preditivas (Harris-Benedict, Penn State)</li>
+        <li>ASPEN/SCCM: usar CI quando disponível para evitar sobrealimentação</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="box box-accent">
+    <div class="box-title acc">Fases do Estresse Metabólico (Moore / Cuthbertson)</div>
+    <table>
+      <tr><th>Fase</th><th>Duração</th><th>Característica Metabólica</th><th>Oferta Calórica</th></tr>
+      <tr><td><strong>Ebb (Refluxo)</strong></td><td>0–24h</td><td>Hipovolemia, hipometabolismo, ↓ débito cardíaco; metabolismo de sobrevivência</td><td>Restritiva — ressuscitação volêmica prioritária</td></tr>
+      <tr><td><strong>Flow Aguda (Catabólica)</strong></td><td>24h–7d</td><td>Hipermetabolismo, catabolismo muscular, gliconeogênese ↑, resposta inflamatória máxima</td><td>Hipocaloria permissiva 70–80% (≤20 kcal/kg)</td></tr>
+      <tr><td><strong>Flow Adaptativa (Anabólica)</strong></td><td>&gt;7d</td><td>↓ inflamação, reconstrução tecidual, balanço nitrogenado melhora</td><td>Normocaloria — alvo completo</td></tr>
+    </table>
+  </div>
+
+  <div class="page-footer">
+    <span>Elite Treinamentos em Saúde · Extensivo ENARE 2026</span>
+    <span>NUT-CLÍN · Aula 16 · Avaliação UTI</span>
+    <span>B9-A16-P02</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     P3 — TERAPIA NUTRICIONAL NA UTI
+════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="22" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="32" height="32" rx="6" fill="#1F5C23"/>
+        <path d="M16 4 L26 9.5 L26 20.5 L16 26 L6 20.5 L6 9.5 Z" stroke="#C6D834" stroke-width="1.8" fill="none"/>
+        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
+      </svg>
+      <div>
+        <div class="brand">Elite Treinamentos</div>
+        <div class="tagline">Extensivo ENARE 2026</div>
+      </div>
+    </div>
+    <div class="hd-right">
+      <div class="hd-aula">Aula 16 · Nutrição no Paciente Crítico</div>
+      <div class="hd-pag">Página 3 de 10</div>
+    </div>
+  </div>
+
+  <div class="sec-title">Terapia Nutricional na UTI</div>
+  <div class="sec-intro">Diretrizes ESPEN 2023 e SCCM/ASPEN: a via enteral precoce é o padrão; NPT precoce causou dano (EPaNIC Trial).</div>
+
+  <div class="box box-verde">
+    <div class="box-title verde">Protocolo TNE Precoce — Resumo Executivo</div>
+    <div class="three-col">
+      <div style="font-size:8px;"><span class="badge badge-verde">Quando iniciar</span><br>24–48h após ressuscitação volêmica adequada — mesmo em vasopressor <strong>decrescente</strong></div>
+      <div style="font-size:8px;"><span class="badge badge-accent">Oferta calórica</span><br>Hipocaloria permissiva: <strong>70–80% do GE</strong> na fase aguda (≤ 20 kcal/kg/dia); avançar após 48–72h</div>
+      <div style="font-size:8px;"><span class="badge badge-blue">Proteína</span><br><strong>1,3–2,0 g/kg/dia</strong> em fase aguda; até 2,5 g/kg/dia na fase anabólica (queimados, trauma)</div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="box box-alert">
+      <div class="box-title red">Contraindicações à TNE</div>
+      <ul>
+        <li><strong>Vasopressor crescente / instabilidade hemodinâmica grave</strong> (NE com noradrenalina crescente)</li>
+        <li>Isquemia mesentérica ativa</li>
+        <li>Obstrução intestinal mecânica</li>
+        <li>Fístula entérica de alto débito sem acesso distal</li>
+        <li>Hemorragia digestiva ativa</li>
+        <li>Vômitos intratáveis / aspiração recorrente</li>
+      </ul>
+      <div style="font-size:7.5px;color:#dc3545;margin-top:4px;"><strong>Atenção:</strong> vasopressor em dose ESTÁVEL ou decrescente NÃO é contraindicação</div>
+    </div>
+    <div class="box box-info">
+      <div class="box-title blue">NPT — Quando Usar?</div>
+      <ul>
+        <li><strong>EPaNIC Trial:</strong> NPT precoce (48h) → mais infecções, mais dias de VM → <strong>NÃO é padrão</strong></li>
+        <li>ESPEN: iniciar NPT apenas se TNE falhou ou contraindicada <strong>após 3–7 dias</strong></li>
+        <li>NPT complementar: quando TNE cobre &lt;60% do alvo após 2–3 dias</li>
+        <li>Desnutrido grave: considerar NPT + TNE combinada</li>
+      </ul>
+      <div style="font-size:7.5px;color:#0d6efd;margin-top:4px;"><strong>Regra:</strong> se TGI funcionante → TNE sempre preferível</div>
+    </div>
+  </div>
+
+  <div class="box box-accent">
+    <div class="box-title acc">Posicionamento e Monitoramento</div>
+    <div class="two-col">
+      <div>
+        <ul>
+          <li><strong>Cabeceira 30–45°</strong> — reduz risco de aspiração e PAV</li>
+          <li>Checar resíduo gástrico (RG): ≤500 mL = aceitável (SCCM não recomenda parar rotineiramente por RG &lt;500 mL)</li>
+          <li>Metoclopramida / eritromicina: procinéticos para intolerância gástrica</li>
+          <li>SNG vs SNE: SNE se RG ↑ persistente ou gastroparesia</li>
+        </ul>
+      </div>
+      <div>
+        <ul>
+          <li><strong>Glicemia alvo UTI: 140–180 mg/dL</strong> (NICE-SUGAR Trial)</li>
+          <li>Controle estrito &lt;110 mg/dL → ↑ mortalidade por hipoglicemia</li>
+          <li>Hiperglicemia de estresse: insulinoterapia IV em bomba</li>
+          <li>Monitorar: sódio, potássio, fósforo, magnésio diariamente</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="box box-dark">
+    <div class="box-title">Nutrientes Farmacológicos em UTI</div>
+    <table>
+      <tr><th>Nutriente</th><th>Evidência</th><th>Indicação</th><th>Contraindicação</th></tr>
+      <tr><td><strong>Glutamina IV</strong></td><td>Benefício em queimados e trauma; prejudicial em MOF (REDOXS trial)</td><td>Queimados, trauma sem MOF</td><td>Insuficiência renal/hepática, MOF</td></tr>
+      <tr><td><strong>Ômega-3 (EPA/DHA)</strong></td><td>↓ inflamação; benefício em SDRA discutido</td><td>Sepse, SDRA — avaliação caso a caso</td><td>Sangramento ativo</td></tr>
+      <tr><td><strong>Vitamina C IV</strong></td><td>Estudos em sepse/SDRA — benefício não confirmado em grandes RCTs</td><td>Empiricamente em sepse grave</td><td>Oxalúria</td></tr>
+      <tr><td><strong>Selênio IV</strong></td><td>Antioxidante; meta-análises inconclusivas</td><td>Sepse grave? — evidência fraca</td><td>—</td></tr>
+    </table>
+  </div>
+
+  <div class="page-footer">
+    <span>Elite Treinamentos em Saúde · Extensivo ENARE 2026</span>
+    <span>NUT-CLÍN · Aula 16 · TNE UTI</span>
+    <span>B9-A16-P03</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     P4 — SÍNDROME DE REALIMENTAÇÃO
+════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="22" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="32" height="32" rx="6" fill="#1F5C23"/>
+        <path d="M16 4 L26 9.5 L26 20.5 L16 26 L6 20.5 L6 9.5 Z" stroke="#C6D834" stroke-width="1.8" fill="none"/>
+        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
+      </svg>
+      <div>
+        <div class="brand">Elite Treinamentos</div>
+        <div class="tagline">Extensivo ENARE 2026</div>
+      </div>
+    </div>
+    <div class="hd-right">
+      <div class="hd-aula">Aula 16 · Nutrição no Paciente Crítico</div>
+      <div class="hd-pag">Página 4 de 10</div>
+    </div>
+  </div>
+
+  <div class="sec-title">Síndrome de Realimentação</div>
+  <div class="sec-intro">Complicação grave da reintrodução alimentar após jejum prolongado. A hipofosfatemia é o marcador cardinal — pode ser fatal.</div>
+
+  <div class="box box-alert">
+    <div class="box-title red">Fisiopatologia — O Mecanismo Central</div>
+    <div style="font-size:8.5px;line-height:1.6;margin-bottom:6px;">
+      Durante o jejum prolongado, as reservas de Pi (fósforo intracelular), K⁺ e Mg²⁺ são depleadas, embora os níveis séricos possam parecer normais (deplecão intracelular silenciosa).<br><br>
+      Ao reintroduzir <strong>carboidratos</strong> → pico de <strong>insulina</strong> → captação massiva de glicose pelas células → arraste intracelular de <strong>Pi, K⁺ e Mg²⁺</strong> → <strong>hipofosfatemia sérica abrupta</strong>.
+    </div>
+    <div class="three-col">
+      <div style="background:rgba(220,53,69,.1);border-radius:5px;padding:6px;text-align:center;">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;color:#dc3545;">Pi &lt; 0,5 mmol/L</div>
+        <div style="font-size:7px;color:#dc3545;">Hipofosfatemia grave</div>
+        <div style="font-size:7.5px;margin-top:3px;">Fraqueza muscular, respiratória, rabdomiólise, falência cardíaca, encefalopatia</div>
+      </div>
+      <div style="background:rgba(220,53,69,.1);border-radius:5px;padding:6px;text-align:center;">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;color:#dc3545;">K⁺ ↓</div>
+        <div style="font-size:7px;color:#dc3545;">Hipocalemia</div>
+        <div style="font-size:7.5px;margin-top:3px;">Arritmias cardíacas, fraqueza muscular, íleo paralítico</div>
+      </div>
+      <div style="background:rgba(220,53,69,.1);border-radius:5px;padding:6px;text-align:center;">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;color:#dc3545;">Mg²⁺ ↓</div>
+        <div style="font-size:7px;color:#dc3545;">Hipomagnesemia</div>
+        <div style="font-size:7.5px;margin-top:3px;">Convulsões, arritmias, tetania, confusão mental</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="box box-info">
+      <div class="box-title blue">Grupos de Risco (NICE 2006)</div>
+      <ul>
+        <li>IMC &lt; 16 kg/m² ou perda de peso &gt; 15% em 3–6 meses</li>
+        <li>Ingestão mínima ou nula por <strong>&gt; 10 dias</strong></li>
+        <li>História de abuso de álcool</li>
+        <li>Anorexia nervosa grave</li>
+        <li>Quimioterapia / período pós-operatório prolongado</li>
+        <li>Disfagia crônica / câncer de cabeça e pescoço</li>
+        <li>Idosos com polifarmácia (diuréticos → já depleados)</li>
+      </ul>
+    </div>
+    <div class="box box-verde">
+      <div class="box-title verde">Conduta — Protocolo de Prevenção</div>
+      <ol>
+        <li><strong>Tiamina IV ANTES da glicose</strong> — 100–300 mg/dia por 3 dias (previne encefalopatia de Wernicke)</li>
+        <li>Iniciar nutrição com <strong>10–20 kcal/kg/dia</strong> (hipocaloria intencional)</li>
+        <li>Avançar lentamente: aumentar 33% a cada 2–3 dias</li>
+        <li><strong>Repor Pi IV:</strong> fósforo de sódio / potássio EV se Pi &lt; 0,6 mmol/L</li>
+        <li><strong>Repor K⁺ e Mg²⁺</strong> antes de reiniciar nutrição</li>
+        <li>Monitorar eletrólitos 2×/dia nos primeiros 3 dias</li>
+        <li>Limitar sódio (evitar expansão volêmica)</li>
+      </ol>
+      <div style="font-size:7.5px;color:#1F5C23;margin-top:4px;font-weight:600;">Tiamina SEMPRE antes de qualquer glicose — mesmo soro glicosado!</div>
+    </div>
+  </div>
+
+  <div class="box box-dark">
+    <div class="box-title">Depleção de Tiamina — Sinal de Alerta</div>
+    <div class="two-col">
+      <div style="font-size:8px;line-height:1.55;">
+        <strong>Tiamina (B1)</strong> é cofator essencial do piruvato desidrogenase e do ciclo de Krebs. Depleção severa → acúmulo de piruvato/lactato → acidose lática.<br><br>
+        <strong>Encefalopatia de Wernicke:</strong> tríade clássica — confusão mental + oftalmoplegia + ataxia. Progressão → Síndrome de Korsakoff (amnésia anterógrada permanente).
+      </div>
+      <div style="font-size:8px;line-height:1.55;">
+        <strong>Situações de risco:</strong><br>
+        • Alcoolismo crônico<br>
+        • Desnutrição grave<br>
+        • Vômitos incoercíveis (hiperemese gravídica)<br>
+        • Cirurgia bariátrica (RYGB)<br>
+        • NPT sem tiamina<br><br>
+        <strong>Dose preventiva:</strong> 100 mg IV antes da glicose.
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Elite Treinamentos em Saúde · Extensivo ENARE 2026</span>
+    <span>NUT-CLÍN · Aula 16 · Sínd. Realimentação</span>
+    <span>B9-A16-P04</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     P5 — NUTRIÇÃO PERIOPERATÓRIA (ERAS/ACERTO)
+════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="22" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="32" height="32" rx="6" fill="#1F5C23"/>
+        <path d="M16 4 L26 9.5 L26 20.5 L16 26 L6 20.5 L6 9.5 Z" stroke="#C6D834" stroke-width="1.8" fill="none"/>
+        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
+      </svg>
+      <div>
+        <div class="brand">Elite Treinamentos</div>
+        <div class="tagline">Extensivo ENARE 2026</div>
+      </div>
+    </div>
+    <div class="hd-right">
+      <div class="hd-aula">Aula 16 · Nutrição no Paciente Crítico</div>
+      <div class="hd-pag">Página 5 de 10</div>
+    </div>
+  </div>
+
+  <div class="sec-title">Nutrição Perioperatória — ERAS / ACERTO</div>
+  <div class="sec-intro">Enhanced Recovery After Surgery (ERAS) e Aceleração da Recuperação Total Pós-Operatória (ACERTO): protocolos multimodais que aboliram o jejum prolongado pré-operatório.</div>
+
+  <div class="box box-alert">
+    <div class="box-title red">"Jejum a partir da meia-noite" — OBSOLETO</div>
+    <div style="font-size:8.5px;line-height:1.6;">
+      O antigo protocolo de "NPO desde meia-noite" gerou <strong>12–16h de jejum desnecessário</strong>, levando a hiperglicemia de estresse, resistência insulínica, catabolismo muscular e pior recuperação pós-op. O ERAS/ACERTO substituiu por tempos específicos conforme o tipo de alimento.
+    </div>
+  </div>
+
+  <div class="box box-verde">
+    <div class="box-title verde">Tempos de Jejum Pré-Operatório — ERAS (ESPEN 2021)</div>
+    <table>
+      <tr><th>Alimento / Líquido</th><th>Jejum Mínimo</th><th>Observação</th></tr>
+      <tr><td><strong>Líquidos claros</strong> (água, suco sem polpa, chá, café sem leite)</td><td><strong>2 horas</strong></td><td>Incluindo suplemento de CHO líquido 12,5%</td></tr>
+      <tr><td><strong>CHO líquido 12,5%</strong> (maltodextrina ou SG)</td><td><strong>2 horas</strong></td><td>200 mL até 2h antes — ↓ resistência insulínica</td></tr>
+      <tr><td><strong>Leite / fórmula infantil</strong></td><td><strong>6 horas</strong></td><td>Digestão mais lenta</td></tr>
+      <tr><td><strong>Refeição leve</strong> (torrada, biscoito)</td><td><strong>6 horas</strong></td><td>Sem gordura adicional</td></tr>
+      <tr><td><strong>Refeição sólida completa</strong></td><td><strong>8 horas</strong></td><td>Carne, gordura — esvaziamento gástrico lento</td></tr>
+    </table>
+  </div>
+
+  <div class="two-col">
+    <div class="box box-info">
+      <div class="box-title blue">Pré-operatório — Quando Otimizar?</div>
+      <ul>
+        <li>Desnutrição grave (NRS ≥ 5 ou IMC &lt; 18,5 com perda ≥ 10%): suporte <strong>7–14 dias pré-op eletivo</strong></li>
+        <li>Suplemento oral imunomodulador (arginina + ômega-3 + nucleotídeos) por 5–7 dias pré-op em desnutridos</li>
+        <li>Meta: recuperar reservas antes da agressão cirúrgica</li>
+        <li>Não adiar emergências por desnutrição</li>
+      </ul>
+    </div>
+    <div class="box box-accent">
+      <div class="box-title acc">Pós-operatório — Retomada Oral Precoce</div>
+      <ul>
+        <li>Iniciar dieta oral/enteral <strong>nas primeiras 24h</strong> após cirurgia abdominal (ERAS)</li>
+        <li>Retomada precoce → ↓ complicações infecciosas, ↓ tempo de internação</li>
+        <li>Anastomose intestinal: TNE precoce é segura mesmo com anastomose recente</li>
+        <li>Náuseas/vômitos: antiemético profilático (ondansetrona) + não é contraindicação à TNE</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="box box-dark">
+    <div class="box-title">Imunonutrição Perioperatória</div>
+    <table>
+      <tr><th>Nutriente</th><th>Mecanismo</th><th>Indicação Perioperatória</th><th>Cuidado</th></tr>
+      <tr><td><strong>Arginina</strong></td><td>↑ síntese NO, ↑ função imune, proliferação celular</td><td>Cirurgia de grande porte, desnutridos</td><td><strong>Contraindicada em sepse grave / câncer avançado</strong> (↑ NO → vasoplegia)</td></tr>
+      <tr><td><strong>Glutamina oral</strong></td><td>Combustível enterócito, barreira intestinal</td><td>Cirurgia abdominal, queimados</td><td>Não usar em MOF</td></tr>
+      <tr><td><strong>Ômega-3</strong></td><td>↓ prostaglandinas pró-inflamatórias (PGE2)</td><td>Pré-op câncer GI; pós-op cirurgia abdominal</td><td>Cautela com anticoagulantes</td></tr>
+    </table>
+    <div style="font-size:7.5px;color:#dc3545;margin-top:4px;"><strong>Mnemônico:</strong> Arginina = SEPSE contraindica · Glutamina = MOF contraindica · Ômega-3 = seguro na maioria</div>
+  </div>
+
+  <div class="page-footer">
+    <span>Elite Treinamentos em Saúde · Extensivo ENARE 2026</span>
+    <span>NUT-CLÍN · Aula 16 · ERAS / Perioperatório</span>
+    <span>B9-A16-P05</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     P6 — QUESTÃO 01 (APLICAÇÃO)
+════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="22" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="32" height="32" rx="6" fill="#1F5C23"/>
+        <path d="M16 4 L26 9.5 L26 20.5 L16 26 L6 20.5 L6 9.5 Z" stroke="#C6D834" stroke-width="1.8" fill="none"/>
+        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
+      </svg>
+      <div>
+        <div class="brand">Elite Treinamentos</div>
+        <div class="tagline">Extensivo ENARE 2026</div>
+      </div>
+    </div>
+    <div class="hd-right">
+      <div class="hd-aula">Aula 16 · Nutrição no Paciente Crítico</div>
+      <div class="hd-pag">Página 6 de 10</div>
+    </div>
+  </div>
+
+  <div class="q-header">
+    <div class="q-num">Q01</div>
+    <div class="q-meta">
+      <span class="q-tipo">Nível: Aplicação · NUT-CLÍN · UTI</span>
+      <span class="q-tema">Indicação de TNE Precoce na UTI</span>
+    </div>
+    <span class="badge badge-verde" style="margin-left:auto;">Ap</span>
+  </div>
+
+  <div class="q-enunciado">
+    <div class="stem">Paciente masculino, 58 anos, admitido na UTI por sepse abdominal pós-operatória. No momento da avaliação nutricional (48h de UTI): APACHE II = 22, SOFA = 8, NUTRIC Score = 6, em uso de noradrenalina 0,08 µg/kg/min com tendência de redução progressiva da dose nas últimas 6 horas, trato gastrointestinal sem obstrução, ausência de sangramento ativo. Qual a conduta nutricional mais adequada?</div>
+  </div>
+
+  <ul class="q-alternativas">
+    <li>
+      <span class="letra">A</span>
+      <span>Aguardar suspensão completa da noradrenalina antes de iniciar qualquer suporte nutricional enteral, priorizando NPT neste momento.</span>
+    </li>
+    <li class="correta">
+      <span class="letra">B</span>
+      <span>Iniciar TNE com oferta hipocalórica (70–80% do GE estimado), pois o paciente está hemodinamicamente estabilizando com NUTRIC Score alto.</span>
+    </li>
+    <li>
+      <span class="letra">C</span>
+      <span>Iniciar NPT completa (100% das necessidades) imediatamente, uma vez que o risco nutricional é alto (NUTRIC = 6).</span>
+    </li>
+    <li>
+      <span class="letra">D</span>
+      <span>Iniciar TNE com oferta normocalórica completa (100% GE), pois a fase flow já está estabelecida após 48h.</span>
+    </li>
+  </ul>
+
+  <div class="ap-box">
+    <div class="ap-title">
+      <svg width="14" height="14" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#1F5C23"/><path d="M16 4 L26 9.5 L26 20.5 L16 26 L6 20.5 L6 9.5 Z" stroke="#C6D834" stroke-width="1.8" fill="none"/><circle cx="16" cy="16" r="4" fill="#C6D834"/></svg>
+      Aprendizagem — Gabarito B
+    </div>
+    <div class="ap-body">
+      <strong>Por que B é correta:</strong> NUTRIC Score ≥ 5 = alto risco nutricional → benefício claro da TNE precoce. Vasopressor em dose <strong>decrescente</strong> com TGI funcionante NÃO é contraindicação. A oferta deve ser hipocalórica (70–80%) na fase aguda para evitar sobrealimentação.<br><br>
+      <strong>Por que A está errada:</strong> aguardar suspensão total do vasopressor atrasa desnecessariamente o suporte — diretriz SCCM/ASPEN permite TNE com vasopressor em redução.<br><br>
+      <strong>Por que C está errada:</strong> NPT precoce é inferior à TNE quando TGI funcionante — EPaNIC Trial demonstrou mais infecções com NPT precoce.<br><br>
+      <strong>Por que D está errada:</strong> oferta normocalórica completa na fase aguda → risco de sobrealimentação (hiperglicemia, azotemia, ↑ VO₂). A hipocaloria permissiva é o padrão nas primeiras 48–72h.
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Elite Treinamentos em Saúde · Extensivo ENARE 2026</span>
+    <span>NUT-CLÍN · Aula 16 · Q01 Aplicação</span>
+    <span>B9-A16-P06</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     P7 — QUESTÃO 02 (APLICAÇÃO)
+════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="22" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="32" height="32" rx="6" fill="#1F5C23"/>
+        <path d="M16 4 L26 9.5 L26 20.5 L16 26 L6 20.5 L6 9.5 Z" stroke="#C6D834" stroke-width="1.8" fill="none"/>
+        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
+      </svg>
+      <div>
+        <div class="brand">Elite Treinamentos</div>
+        <div class="tagline">Extensivo ENARE 2026</div>
+      </div>
+    </div>
+    <div class="hd-right">
+      <div class="hd-aula">Aula 16 · Nutrição no Paciente Crítico</div>
+      <div class="hd-pag">Página 7 de 10</div>
+    </div>
+  </div>
+
+  <div class="q-header">
+    <div class="q-num">Q02</div>
+    <div class="q-meta">
+      <span class="q-tipo">Nível: Aplicação · NUT-CLÍN · Síndrome de Realimentação</span>
+      <span class="q-tema">Manejo da Síndrome de Realimentação</span>
+    </div>
+    <span class="badge badge-verde" style="margin-left:auto;">Ap</span>
+  </div>
+
+  <div class="q-enunciado">
+    <div class="stem">Paciente feminina, 34 anos, com histórico de anorexia nervosa, IMC = 14 kg/m², ingestão mínima por 21 dias. Internada para realimentação. No 2º dia após início de dieta hipocalórica (15 kcal/kg/dia), apresenta fraqueza muscular progressiva, dispneia e fósforo sérico = 0,38 mmol/L, potássio = 2,9 mEq/L, magnésio = 1,2 mg/dL. Qual a conduta imediata mais adequada?</div>
+  </div>
+
+  <ul class="q-alternativas">
+    <li>
+      <span class="letra">A</span>
+      <span>Aumentar a oferta calórica para 25 kcal/kg/dia para suprir o maior déficit energético e melhorar o estado clínico.</span>
+    </li>
+    <li>
+      <span class="letra">B</span>
+      <span>Interromper temporariamente a oferta nutricional, repor tiamina IV e reiniciar com oferta ainda mais reduzida (5–10 kcal/kg/dia) após correção eletrolítica.</span>
+    </li>
+    <li class="correta">
+      <span class="letra">C</span>
+      <span>Reduzir a oferta calórica, repor fósforo IV, potássio IV e magnésio IV imediatamente, e só reiniciar a progressão após estabilização eletrolítica.</span>
+    </li>
+    <li>
+      <span class="letra">D</span>
+      <span>Suspender a dieta enteral e iniciar NPT com eletrólitos adicionados, mantendo a oferta calórica total.</span>
+    </li>
+  </ul>
+
+  <div class="ap-box">
+    <div class="ap-title">
+      <svg width="14" height="14" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#1F5C23"/><path d="M16 4 L26 9.5 L26 20.5 L16 26 L6 20.5 L6 9.5 Z" stroke="#C6D834" stroke-width="1.8" fill="none"/><circle cx="16" cy="16" r="4" fill="#C6D834"/></svg>
+      Aprendizagem — Gabarito C
+    </div>
+    <div class="ap-body">
+      <strong>Por que C é correta:</strong> Síndrome de Realimentação instalada (Pi = 0,38 mmol/L — grave &lt; 0,5; K⁺ baixo; Mg²⁺ baixo). Conduta: <strong>reduzir oferta calórica + repor eletrólitos IV + aguardar estabilização</strong>. Tiamina já deveria ter sido dada ANTES de iniciar — se não foi, dar imediatamente.<br><br>
+      <strong>Por que A está errada:</strong> aumentar calorias agrava a síndrome — mais CHO → mais insulina → mais captação intracelular de Pi → hipofosfatemia ainda mais grave e fatal.<br><br>
+      <strong>Por que B está errada:</strong> interromper totalmente a dieta não é necessário; reduzir + repor eletrólitos é a conduta correta. Reiniciar com 5–10 kcal/kg é razoável após correção, mas a alternativa omite a reposição eletrolítica imediata como passo 1.<br><br>
+      <strong>Por que D está errada:</strong> trocar para NPT mantendo a mesma oferta calórica não resolve o problema — a síndrome é causada pelo CHO de qualquer via, não apenas enteral.
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Elite Treinamentos em Saúde · Extensivo ENARE 2026</span>
+    <span>NUT-CLÍN · Aula 16 · Q02 Aplicação</span>
+    <span>B9-A16-P07</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     P8 — QUESTÃO 03 (ANÁLISE ÂNCORA)
+════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="22" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="32" height="32" rx="6" fill="#1F5C23"/>
+        <path d="M16 4 L26 9.5 L26 20.5 L16 26 L6 20.5 L6 9.5 Z" stroke="#C6D834" stroke-width="1.8" fill="none"/>
+        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
+      </svg>
+      <div>
+        <div class="brand">Elite Treinamentos</div>
+        <div class="tagline">Extensivo ENARE 2026</div>
+      </div>
+    </div>
+    <div class="hd-right">
+      <div class="hd-aula">Aula 16 · Nutrição no Paciente Crítico</div>
+      <div class="hd-pag">Página 8 de 10</div>
+    </div>
+  </div>
+
+  <div class="q-header">
+    <div class="q-num">Q03</div>
+    <div class="q-meta">
+      <span class="q-tipo">Nível: Análise · NUT-CLÍN · Questão Âncora</span>
+      <span class="q-tema">UTI, Síndrome de Realimentação e ERAS — Afirmativas</span>
+    </div>
+    <span class="badge badge-accent" style="margin-left:auto;">An</span>
+  </div>
+
+  <div class="q-enunciado">
+    <div class="stem">Acerca da terapia nutricional do paciente crítico e perioperatório, analise as afirmativas:</div>
+    <ol class="q-afirmativas">
+      <li><strong>I.</strong> A NPT precoce (nas primeiras 48h de UTI) é a via de escolha para pacientes críticos com NUTRIC Score ≥ 5 e trato gastrointestinal funcionante, por oferecer nutrição mais precisa e controlada.</li>
+      <li><strong>II.</strong> Na síndrome de realimentação, a hipofosfatemia é o distúrbio eletrolítico cardinal, resultante da captação intracelular massiva de fósforo induzida pelo pico de insulina após reintrodução de carboidratos.</li>
+      <li><strong>III.</strong> Pelo protocolo ERAS/ACERTO, líquidos claros e carboidratos líquidos (12,5%) podem ser oferecidos até 2 horas antes de cirurgias eletivas em pacientes sem gastroparesia.</li>
+      <li><strong>IV.</strong> A cabeceira a 0° (posição supina plana) é recomendada para pacientes em TNE na UTI, pois reduz a pressão intra-abdominal e facilita o esvaziamento gástrico.</li>
+    </ol>
+    <div class="stem" style="margin-top:6px;">Estão corretas APENAS:</div>
+  </div>
+
+  <ul class="q-alternativas">
+    <li>
+      <span class="letra">A</span>
+      <span>I e III</span>
+    </li>
+    <li>
+      <span class="letra">B</span>
+      <span>I e IV</span>
+    </li>
+    <li class="correta">
+      <span class="letra">C</span>
+      <span>II e III</span>
+    </li>
+    <li>
+      <span class="letra">D</span>
+      <span>II e IV</span>
+    </li>
+  </ul>
+
+  <div class="ap-box">
+    <div class="ap-title">
+      <svg width="14" height="14" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#1F5C23"/><path d="M16 4 L26 9.5 L26 20.5 L16 26 L6 20.5 L6 9.5 Z" stroke="#C6D834" stroke-width="1.8" fill="none"/><circle cx="16" cy="16" r="4" fill="#C6D834"/></svg>
+      Aprendizagem — Gabarito C (II e III corretas)
+    </div>
+    <div class="ap-body">
+      <strong>I — ERRADA:</strong> com TGI funcionante, a TNE é SEMPRE preferível à NPT. O EPaNIC Trial demonstrou que NPT precoce (48h) levou a mais infecções e mais dias de VM. NUTRIC Score ≥ 5 indica que o paciente se beneficia de <em>nutrição precoce</em>, não necessariamente de NPT.
+      <ul>
+        <li><strong>II — CORRETA:</strong> fisiopatologia clássica da síndrome de realimentação — CHO → ↑ insulina → captação intracelular de Pi/K⁺/Mg²⁺ → hipofosfatemia como marcador cardinal.</li>
+        <li><strong>III — CORRETA:</strong> ERAS/ACERTO: líquidos claros e CHO líquido 12,5% até 2h antes de cirurgia eletiva — aboliu o jejum prolongado e reduziu resistência insulínica perioperatória.</li>
+      </ul>
+      <strong>IV — ERRADA:</strong> cabeceira 0° (posição supina) é CONTRAINDICADA em TNE — aumenta risco de aspiração e PAV. A posição correta é 30–45°.
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Elite Treinamentos em Saúde · Extensivo ENARE 2026</span>
+    <span>NUT-CLÍN · Aula 16 · Q03 Análise Âncora</span>
+    <span>B9-A16-P08</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     P9 — GABARITO
+════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="22" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="32" height="32" rx="6" fill="#1F5C23"/>
+        <path d="M16 4 L26 9.5 L26 20.5 L16 26 L6 20.5 L6 9.5 Z" stroke="#C6D834" stroke-width="1.8" fill="none"/>
+        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
+      </svg>
+      <div>
+        <div class="brand">Elite Treinamentos</div>
+        <div class="tagline">Extensivo ENARE 2026</div>
+      </div>
+    </div>
+    <div class="hd-right">
+      <div class="hd-aula">Aula 16 · Nutrição no Paciente Crítico</div>
+      <div class="hd-pag">Página 9 de 10</div>
+    </div>
+  </div>
+
+  <div class="sec-title">Gabarito Comentado</div>
+
+  <div class="gab-grid">
+    <div class="gab-card">
+      <div class="gab-q">Questão 01</div>
+      <div class="gab-letra">B</div>
+      <div class="gab-tag">Aplicação · UTI</div>
+      <div class="gab-justif">TNE hipocalórica (70–80% GE) nas primeiras 48h é o padrão com NUTRIC ≥ 5 e vasopressor decrescente. NPT precoce é inferior com TGI funcionante.</div>
+    </div>
+    <div class="gab-card">
+      <div class="gab-q">Questão 02</div>
+      <div class="gab-letra">C</div>
+      <div class="gab-tag">Aplicação · Realimentação</div>
+      <div class="gab-justif">Síndrome de realimentação instalada: reduzir oferta + repor Pi/K⁺/Mg²⁺ IV imediatamente + aguardar estabilização eletrolítica antes de progredir.</div>
+    </div>
+    <div class="gab-card">
+      <div class="gab-q">Questão 03</div>
+      <div class="gab-letra">C</div>
+      <div class="gab-tag">Análise Âncora · II e III</div>
+      <div class="gab-justif">II correta: hipofosfatemia cardinal por CHO→insulina→captação Pi. III correta: ERAS permite líquidos claros até 2h. I errada: TNE > NPT se TGI OK. IV errada: cabeceira 30–45°.</div>
+    </div>
+  </div>
+
+  <div class="box box-alert" style="margin-top:10px;">
+    <div class="box-title red">Armadilhas de Prova — Nunca Confunda</div>
+    <table>
+      <tr><th>Conceito</th><th>Armadilha Frequente</th><th>Correto</th></tr>
+      <tr><td><strong>NPT precoce na UTI</strong></td><td>NUTRIC alto → iniciar NPT imediatamente</td><td>TNE sempre preferível se TGI funcionante — NPT precoce causa dano (EPaNIC)</td></tr>
+      <tr><td><strong>Vasopressor e TNE</strong></td><td>Qualquer vasopressor = contraindicação TNE</td><td>Apenas dose <em>crescente</em> contraindica — dose estável ou decrescente = pode TNE</td></tr>
+      <tr><td><strong>Sínd. Realimentação</strong></td><td>Nutrição zerada ao sinal de hipofosfatemia</td><td>Reduzir (não zerar) + repor eletrólitos IV + tiamina</td></tr>
+      <tr><td><strong>Cabeceira UTI/TNE</strong></td><td>Posição supina facilita esvaziamento gástrico</td><td>30–45° obrigatório — supina ↑ aspiração e PAV</td></tr>
+      <tr><td><strong>ERAS jejum</strong></td><td>"Jejum a partir da meia-noite" ainda é padrão</td><td>Obsoleto — líquidos claros até 2h, sólidos até 6–8h</td></tr>
+      <tr><td><strong>Glicemia alvo UTI</strong></td><td>Controle estrito &lt;110 mg/dL reduz mortalidade</td><td>Alvo 140–180 mg/dL (NICE-SUGAR) — controle estrito ↑ mortalidade por hipoglicemia</td></tr>
+    </table>
+  </div>
+
+  <div class="box box-verde">
+    <div class="box-title verde">Valores Numéricos para Fixar</div>
+    <div class="three-col">
+      <div style="font-size:8px;">
+        <strong>NUTRIC Score:</strong><br>
+        ≥5 (sem IL-6) = alto risco<br>
+        ≥6 (com IL-6) = alto risco<br><br>
+        <strong>Oferta UTI fase aguda:</strong><br>
+        70–80% GE estimado<br>
+        ≤20 kcal/kg/dia
+      </div>
+      <div style="font-size:8px;">
+        <strong>Proteína UTI:</strong><br>
+        1,3–2,0 g/kg/dia (fase aguda)<br>
+        até 2,5 g/kg (queimados)<br><br>
+        <strong>Glicemia alvo UTI:</strong><br>
+        140–180 mg/dL
+      </div>
+      <div style="font-size:8px;">
+        <strong>Sínd. Realimentação:</strong><br>
+        Pi grave &lt; 0,5 mmol/L<br>
+        Início: 10–20 kcal/kg/dia<br><br>
+        <strong>ERAS líquidos claros:</strong><br>
+        até 2h antes da cirurgia
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Elite Treinamentos em Saúde · Extensivo ENARE 2026</span>
+    <span>NUT-CLÍN · Aula 16 · Gabarito</span>
+    <span>B9-A16-P09</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     P10 — SÍNTESE FINAL
+════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="22" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="32" height="32" rx="6" fill="#1F5C23"/>
+        <path d="M16 4 L26 9.5 L26 20.5 L16 26 L6 20.5 L6 9.5 Z" stroke="#C6D834" stroke-width="1.8" fill="none"/>
+        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
+      </svg>
+      <div>
+        <div class="brand">Elite Treinamentos</div>
+        <div class="tagline">Extensivo ENARE 2026</div>
+      </div>
+    </div>
+    <div class="hd-right">
+      <div class="hd-aula">Aula 16 · Nutrição no Paciente Crítico</div>
+      <div class="hd-pag">Página 10 de 10</div>
+    </div>
+  </div>
+
+  <div class="sintese-header">
+    <div class="sh-label">Síntese Final · Aula 16</div>
+    <div class="sh-title">Nutrição no Paciente Crítico — UTI e Perioperatório</div>
+  </div>
+
+  <div class="armadilha-grid">
+    <div class="arm-card">
+      <div class="arm-title">NPT Precoce na UTI</div>
+      <div class="arm-body"><strong>ERRADO:</strong> NPT precoce para NUTRIC alto.<br><strong>CERTO:</strong> TNE 24–48h se TGI OK — EPaNIC provou dano da NPT precoce.</div>
+    </div>
+    <div class="arm-card">
+      <div class="arm-title">Vasopressor ≠ Veto TNE</div>
+      <div class="arm-body"><strong>ERRADO:</strong> qualquer vasopressor bloqueia TNE.<br><strong>CERTO:</strong> apenas vasopressor <strong>crescente</strong> contraindica — decrescente/estável permite TNE.</div>
+    </div>
+    <div class="arm-card">
+      <div class="arm-title">Sínd. Realimentação</div>
+      <div class="arm-body"><strong>ERRADO:</strong> zerar nutrição ao detectar hipofosfatemia.<br><strong>CERTO:</strong> reduzir oferta + repor Pi/K⁺/Mg²⁺ IV + <strong>tiamina ANTES da glicose</strong>.</div>
+    </div>
+    <div class="arm-card">
+      <div class="arm-title">Glicemia UTI</div>
+      <div class="arm-body"><strong>ERRADO:</strong> controle estrito &lt;110 mg/dL é melhor.<br><strong>CERTO:</strong> 140–180 mg/dL (NICE-SUGAR) — controle estrito → ↑ mortalidade por hipoglicemia.</div>
+    </div>
+    <div class="arm-card">
+      <div class="arm-title">ERAS — Jejum</div>
+      <div class="arm-body"><strong>ERRADO:</strong> jejum a partir da meia-noite.<br><strong>CERTO:</strong> líquidos claros/CHO 12,5% até 2h; sólidos/leite até 6h; refeição completa até 8h.</div>
+    </div>
+    <div class="arm-card">
+      <div class="arm-title">Cabeceira na TNE</div>
+      <div class="arm-body"><strong>ERRADO:</strong> posição supina plana.<br><strong>CERTO:</strong> 30–45° obrigatório para ↓ risco de aspiração e pneumonia associada à VM.</div>
+    </div>
+  </div>
+
+  <div class="flashcard-strip">
+    <div class="fc">
+      <div class="fc-num">TNE</div>
+      <div class="fc-label">24–48h pós-ressuscitação UTI</div>
+    </div>
+    <div class="fc">
+      <div class="fc-num">70–80%</div>
+      <div class="fc-label">GE na fase aguda (hipocaloria)</div>
+    </div>
+    <div class="fc">
+      <div class="fc-num">Pi &lt; 0,5</div>
+      <div class="fc-label">Hipofosfatemia grave (realimentação)</div>
+    </div>
+    <div class="fc">
+      <div class="fc-num">2h</div>
+      <div class="fc-label">Jejum líquidos claros (ERAS)</div>
+    </div>
+  </div>
+
+  <div class="box box-verde" style="margin-top:4px;">
+    <div class="box-title verde">Hierarquia de Decisão Nutricional na UTI</div>
+    <div style="font-size:8px;line-height:1.7;text-align:center;">
+      TGI funcionante? <strong>→ TNE sempre</strong><br>
+      TNE contraindicada ou insuficiente após 3–7d? <strong>→ NPT</strong><br>
+      Risco de realimentação? <strong>→ Tiamina primeiro, CHO devagar, repor eletrólitos</strong><br>
+      Cirurgia eletiva? <strong>→ ERAS: não jejue mais do que o necessário</strong>
+    </div>
+  </div>
+
+  <div class="box box-accent" style="margin-top:6px;">
+    <div class="box-title acc">Mnemônicos Finais</div>
+    <div class="two-col">
+      <div style="font-size:8px;line-height:1.6;">
+        <strong>Sínd. Realimentação = "TPKM":</strong><br>
+        <strong>T</strong>iamina IV antes da glicose<br>
+        <strong>P</strong>i (fósforo) = distúrbio cardinal<br>
+        <strong>K</strong>⁺ e <strong>M</strong>g²⁺ → repor antes de progredir
+      </div>
+      <div style="font-size:8px;line-height:1.6;">
+        <strong>ERAS Jejum = "2-6-8":</strong><br>
+        <strong>2h</strong> → líquidos claros / CHO 12,5%<br>
+        <strong>6h</strong> → leite / refeição leve<br>
+        <strong>8h</strong> → refeição sólida completa
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Elite Treinamentos em Saúde · Extensivo ENARE 2026</span>
+    <span>NUT-CLÍN · Aula 16 · Síntese Final</span>
+    <span>B9-A16-P10</span>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B4 · Aula 22 — Gestão, Saúde Mental e PCR (AHA 2020)</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  @page{size:A4;margin:0;}
+  body{-webkit-print-color-adjust:exact;print-color-adjust:exact;font-family:'Bricolage Grotesque',sans-serif;}
+  .page{width:210mm;height:297mm;display:flex;flex-direction:column;overflow:hidden;page-break-after:always;}
+  .ph{height:14mm;flex-shrink:0;}
+  .pf{height:9mm;flex-shrink:0;}
+  .pc{flex:1;padding:7mm 16mm 5mm;overflow:hidden;}
+  .pc-sm{flex:1;padding:5mm 16mm 4mm;overflow:hidden;}
+
+  /* CAPA */
+  .cover{background:#0D8A8D;display:flex;flex-direction:column;padding:14mm 16mm;}
+  .cover-logo .ext{font-family:'Playfair Display',serif;font-style:italic;color:#C6D834;font-size:9pt;letter-spacing:1px;}
+  .cover-logo .brand{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:34pt;color:#F6F4ED;line-height:1;letter-spacing:1px;}
+  .cover-logo .sub{font-family:'Space Grotesk',sans-serif;font-weight:300;font-size:7pt;color:#F6F4ED;letter-spacing:3px;margin-top:1mm;}
+  .cover-tag{margin:6mm 0 10mm;}
+  .cover-tag p{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:7.5pt;color:#C6D834;letter-spacing:2.5px;}
+  .cover-title{flex:1;display:flex;flex-direction:column;justify-content:center;}
+  .cover-title h1{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:46pt;color:#F6F4ED;line-height:.9;letter-spacing:-1px;text-transform:uppercase;}
+  .cover-title .sub2{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11pt;color:#C6D834;letter-spacing:2.5px;margin-top:5mm;text-transform:uppercase;}
+  .cover-num{text-align:right;}
+  .cover-num span{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:72pt;color:rgba(246,244,237,.15);line-height:1;}
+
+  /* HEADER / FOOTER */
+  .header{background:#F6F4ED;display:flex;align-items:center;justify-content:space-between;padding:0 16mm;border-bottom:1.5px solid #0D8A8D;}
+  .header-left{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:7pt;color:#0D8A8D;letter-spacing:2px;text-transform:uppercase;}
+  .header-right{font-family:'Playfair Display',serif;font-style:italic;font-size:8pt;color:#555;}
+  .footer{background:#F6F4ED;display:flex;align-items:center;justify-content:space-between;padding:0 16mm;border-top:1px solid #ddd;}
+  .footer-left{font-family:'Bricolage Grotesque',sans-serif;font-size:7pt;color:#888;}
+  .footer-right{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11pt;color:#0D8A8D;}
+
+  /* TIPOGRAFIA */
+  h2{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:15pt;color:#0D8A8D;letter-spacing:1.5px;text-transform:uppercase;border-bottom:2px solid #0D8A8D;padding-bottom:1.5mm;margin-bottom:4mm;}
+  h3{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:10pt;color:#1F5C23;letter-spacing:1px;text-transform:uppercase;margin-bottom:2mm;}
+  p,li{font-size:8.5pt;line-height:1.45;color:#222;}
+  ul{padding-left:4mm;margin-bottom:2mm;}
+  li{margin-bottom:1mm;}
+  strong{font-weight:600;color:#070707;}
+
+  /* OBJETIVOS */
+  .obj-list{display:flex;flex-direction:column;gap:3mm;margin-bottom:4mm;}
+  .obj-item{display:flex;gap:3mm;align-items:flex-start;}
+  .obj-num{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:22pt;color:#0D8A8D;line-height:1;flex-shrink:0;width:7mm;}
+  .obj-text{font-size:8.5pt;line-height:1.45;color:#222;padding-top:1.5mm;}
+  .prereq{border-left:3px solid #0D8A8D;padding:2.5mm 4mm;background:#f0fafa;font-size:7.5pt;color:#333;margin-bottom:4mm;}
+  .meta-row{display:flex;gap:10mm;margin-top:2mm;}
+  .meta-col{display:flex;flex-direction:column;gap:0.5mm;}
+  .meta-label{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:6.5pt;color:#999;letter-spacing:1.5px;text-transform:uppercase;}
+  .meta-val{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:9pt;color:#0D8A8D;}
+
+  /* TABELAS */
+  table{width:100%;border-collapse:collapse;margin-bottom:3mm;font-size:7.5pt;}
+  th{background:#0D8A8D;color:#F6F4ED;font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:2mm 3mm;text-align:left;font-size:7.5pt;}
+  td{padding:2mm 3mm;border-bottom:1px solid #e5e5e5;vertical-align:top;font-size:7.5pt;line-height:1.35;}
+  tr:nth-child(even) td{background:#f7f7f5;}
+
+  /* CARDS */
+  .card-grid{display:grid;grid-template-columns:1fr 1fr;gap:3mm;margin-bottom:3mm;}
+  .card-grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2.5mm;margin-bottom:3mm;}
+  .card{background:#f7f7f5;border-radius:2mm;padding:3mm;border-top:3px solid #0D8A8D;}
+  .card.verde{border-top-color:#1F5C23;}
+  .card.lima{border-top-color:#8a9e00;}
+  .card.warn{border-top-color:#c0392b;}
+  .card h4{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:8.5pt;color:#0D8A8D;letter-spacing:1px;text-transform:uppercase;margin-bottom:1.5mm;}
+  .card.verde h4{color:#1F5C23;}
+  .card.warn h4{color:#c0392b;}
+  .card.lima h4{color:#6b7a00;}
+  .card p,.card li{font-size:7.5pt;line-height:1.35;}
+
+  /* CAIXAS */
+  .box{border-left:3px solid #0D8A8D;padding:2.5mm 4mm;background:#f0fafa;margin-bottom:3mm;font-size:7.8pt;line-height:1.4;}
+  .box.verde{border-left-color:#1F5C23;background:#f0f7f0;}
+  .box.warn{border-left-color:#c0392b;background:#fdf0f0;}
+  .box strong{color:#0D8A8D;}
+  .box.verde strong{color:#1F5C23;}
+  .box.warn strong{color:#c0392b;}
+
+  /* CADEIA PCR */
+  .chain{display:flex;gap:1.5mm;margin-bottom:3mm;align-items:stretch;}
+  .chain-step{flex:1;background:#f0fafa;border:1px solid #0D8A8D;border-radius:2mm;padding:2mm;text-align:center;}
+  .chain-step .cs-num{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:14pt;color:#0D8A8D;line-height:1;}
+  .chain-step .cs-label{font-size:6.5pt;color:#333;line-height:1.3;margin-top:1mm;}
+  .chain-arrow{display:flex;align-items:center;color:#0D8A8D;font-size:12pt;font-weight:700;}
+
+  /* QUESTÃO */
+  .q-header{background:#0D8A8D;color:#F6F4ED;padding:2mm 4mm;border-radius:2mm 2mm 0 0;}
+  .q-header span{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:7pt;letter-spacing:2px;text-transform:uppercase;}
+  .q-body{border:1.5px solid #0D8A8D;border-top:none;border-radius:0 0 2mm 2mm;padding:3mm 4mm;margin-bottom:3mm;background:#fff;}
+  .q-stem{font-size:8.2pt;line-height:1.5;color:#222;margin-bottom:3mm;}
+  .q-opts{display:flex;flex-direction:column;gap:1.5mm;}
+  .q-opt{display:flex;gap:2mm;align-items:flex-start;font-size:8pt;line-height:1.4;color:#222;}
+  .q-opt .ol{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:9pt;color:#0D8A8D;flex-shrink:0;width:4mm;}
+  .q-opt.correta .ol{color:#1F5C23;}
+  .q-opt.correta{color:#1F5C23;font-weight:600;}
+  .gabarito{background:#f0f7f0;border:1.5px solid #1F5C23;border-radius:2mm;padding:3mm 4mm;font-size:7.5pt;line-height:1.5;color:#222;}
+  .gabarito .gt{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:8pt;color:#1F5C23;letter-spacing:1px;margin-bottom:1mm;}
+  .badge{display:inline-block;background:#1F5C23;color:#F6F4ED;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:6.5pt;letter-spacing:1.5px;padding:0.5mm 2mm;border-radius:1mm;vertical-align:middle;margin-left:1mm;}
+
+  /* RECUPERAÇÃO */
+  .rec-list{display:flex;flex-direction:column;gap:2mm;margin-bottom:3mm;}
+  .rec-item{display:flex;gap:2.5mm;align-items:flex-start;}
+  .rec-star{color:#C6D834;font-size:10pt;flex-shrink:0;line-height:1.3;}
+  .rec-text{font-size:8pt;line-height:1.4;color:#222;}
+  .tso{margin-top:3mm;}
+  .tso h3{font-size:8.5pt;margin-bottom:2mm;}
+  .tso-list{display:flex;flex-direction:column;gap:1.5mm;}
+  .tso-item{display:flex;gap:2mm;}
+  .tso-num{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:8.5pt;color:#0D8A8D;flex-shrink:0;width:5mm;}
+  .tso-text{font-size:7.8pt;line-height:1.4;color:#333;}
+</style>
+</head>
+<body>
+
+<!-- PÁGINA 1 — CAPA -->
+<div class="page">
+  <div class="cover">
+    <div class="cover-logo">
+      <div class="ext">extensivo</div>
+      <div class="brand">ENARE</div>
+      <div class="sub">BY RESIDÊNCIA PRO</div>
+    </div>
+    <div class="cover-tag">
+      <p>ENFERMAGEM · MÓDULO ESPECÍFICO</p>
+      <p>BLOCO B4 · AULA 22</p>
+    </div>
+    <div class="cover-title">
+      <h1>GESTÃO,<br>SAÚDE<br>MENTAL<br>E PCR</h1>
+      <div class="sub2">SAE · Lei 10.216 · AHA 2020</div>
+    </div>
+    <div class="cover-num"><span>22</span></div>
+  </div>
+</div>
+
+<!-- PÁGINA 2 — OBJETIVOS -->
+<div class="page">
+  <div class="header ph"><span class="header-left">ENFERMAGEM · BLOCO B4 · AULA 22</span><span class="header-right">Extensivo ENARE</span></div>
+  <div class="pc">
+    <h2>Objetivos de Aprendizagem</h2>
+    <div class="obj-list">
+      <div class="obj-item">
+        <div class="obj-num">1</div>
+        <div class="obj-text">Descrever as 5 etapas da SAE (Sistematização da Assistência de Enfermagem) e aplicar os critérios de dimensionamento de pessoal de enfermagem conforme a RDC COFEN 543/2017.</div>
+      </div>
+      <div class="obj-item">
+        <div class="obj-num">2</div>
+        <div class="obj-text">Identificar os principais transtornos mentais (depressão, transtorno bipolar, esquizofrenia, TAC) e descrever os princípios da Reforma Psiquiátrica Brasileira (Lei 10.216/2001) e a rede RAPS/CAPS.</div>
+      </div>
+      <div class="obj-item">
+        <div class="obj-num">3</div>
+        <div class="obj-text">Aplicar o protocolo de RCP do adulto conforme as Diretrizes AHA 2020: sequência CAB, compressões de qualidade, desfibrilação precoce e drogas vasoativas (adrenalina, amiodarona).</div>
+      </div>
+    </div>
+    <div class="prereq"><strong>Pré-requisito:</strong> Urgências do adulto (Aula 21). NANDA-I 2024–2026 (Aula 16). Fundamentos de farmacologia cardiovascular.</div>
+    <div class="meta-row">
+      <div class="meta-col"><span class="meta-label">Bloco</span><span class="meta-val">B4 — Enfermagem</span></div>
+      <div class="meta-col"><span class="meta-label">Aula</span><span class="meta-val">22 de 24</span></div>
+      <div class="meta-col"><span class="meta-label">Tema</span><span class="meta-val">ENF-Gestão, Saúde Mental e PCR</span></div>
+      <div class="meta-col"><span class="meta-label">Nível Cognitivo</span><span class="meta-val">Ap → An</span></div>
+    </div>
+  </div>
+  <div class="footer pf"><span class="footer-left">Extensivo ENARE · by Residência PRO</span><span class="footer-right">02</span></div>
+</div>
+
+<!-- PÁGINA 3 — GESTÃO EM ENFERMAGEM -->
+<div class="page">
+  <div class="header ph"><span class="header-left">CONTEÚDO PRINCIPAL · AULA 22</span><span class="header-right">Extensivo ENARE</span></div>
+  <div class="pc-sm">
+    <h2>Gestão em Enfermagem — SAE e Dimensionamento</h2>
+
+    <h3>SAE — 5 Etapas do Processo de Enfermagem (Resolução COFEN 358/2009)</h3>
+    <table>
+      <thead><tr><th>#</th><th>Etapa</th><th>Descrição</th><th>Produto</th></tr></thead>
+      <tbody>
+        <tr><td><strong>1</strong></td><td><strong>Histórico/Coleta de dados</strong></td><td>Anamnese + exame físico; dados subjetivos e objetivos</td><td>Base de dados do paciente</td></tr>
+        <tr><td><strong>2</strong></td><td><strong>Diagnóstico de Enfermagem</strong></td><td>Interpretação dos dados; identificação de problemas (NANDA-I)</td><td>Lista de DE com P + E + S</td></tr>
+        <tr><td><strong>3</strong></td><td><strong>Planejamento</strong></td><td>Metas/resultados esperados (NOC); priorização</td><td>Plano de cuidados</td></tr>
+        <tr><td><strong>4</strong></td><td><strong>Implementação</strong></td><td>Execução das intervenções (NIC) prescritas</td><td>Registro das ações</td></tr>
+        <tr><td><strong>5</strong></td><td><strong>Avaliação</strong></td><td>Comparar resultados com metas; reformular se necessário</td><td>Evolução de enfermagem</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Dimensionamento de Pessoal — RDC COFEN 543/2017</h3>
+    <div class="card-grid">
+      <div class="card">
+        <h4>Unidade de Internação Geral (SUS)</h4>
+        <ul>
+          <li><strong>Enfermeiro:</strong> mín. 1 para cada 10 pacientes/turno</li>
+          <li><strong>Técnico/Aux.:</strong> mín. 1 para cada 5 pacientes/turno</li>
+          <li>Plantão 6 h = 4 turnos/dia · 12 h = 2 turnos/dia</li>
+        </ul>
+      </div>
+      <div class="card verde">
+        <h4>UTI (pacientes de alta dependência)</h4>
+        <ul>
+          <li><strong>Enfermeiro:</strong> 1 para cada 2 pacientes</li>
+          <li><strong>Técnico:</strong> 1 para cada 1–2 pacientes</li>
+          <li>52% do quadro = Enfermeiros (UTI)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="box"><strong>Fórmula dimensionamento:</strong> Nº de profissionais/turno = (Nº leitos × índice de segurança técnica) ÷ carga horária diária. IST padrão = 1,33 (turnos 6 h). NANDA-I associado à gestão: <strong>00188</strong> Comportamento de saúde propenso a risco (equipe subdimensionada).</div>
+  </div>
+  <div class="footer pf"><span class="footer-left">Extensivo ENARE · by Residência PRO</span><span class="footer-right">03</span></div>
+</div>
+
+<!-- PÁGINA 4 — SAÚDE MENTAL -->
+<div class="page">
+  <div class="header ph"><span class="header-left">CONTEÚDO PRINCIPAL · AULA 22</span><span class="header-right">Extensivo ENARE</span></div>
+  <div class="pc-sm">
+    <h2>Saúde Mental — Reforma Psiquiátrica e Transtornos</h2>
+
+    <h3>Lei 10.216/2001 — Reforma Psiquiátrica Brasileira</h3>
+    <div class="card-grid">
+      <div class="card">
+        <h4>Princípios</h4>
+        <ul>
+          <li>Direito à internação <strong>voluntária</strong> (com consentimento)</li>
+          <li>Internação <strong>involuntária</strong>: decisão médica + comunicação ao MP em 72 h</li>
+          <li>Internação <strong>compulsória</strong>: determinação judicial</li>
+          <li>Proibição de internação em hospital psiquiátrico como 1ª escolha</li>
+        </ul>
+      </div>
+      <div class="card verde">
+        <h4>RAPS — Rede de Atenção Psicossocial</h4>
+        <ul>
+          <li><strong>CAPS I:</strong> município &gt;20 mil hab. — transtornos graves/persistentes</li>
+          <li><strong>CAPS II:</strong> &gt;70 mil hab.</li>
+          <li><strong>CAPS III:</strong> &gt;200 mil hab. — 24 h, leitos de acolhimento noturno</li>
+          <li><strong>CAPSad:</strong> álcool e drogas · <strong>CAPSi:</strong> infanto-juvenil</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>Principais Transtornos Mentais — FGV</h3>
+    <table>
+      <thead><tr><th>Transtorno</th><th>Características-chave</th><th>Droga 1ª linha</th><th>NANDA-I</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Depressão maior</strong></td><td>Humor deprimido + anedonia ≥2 semanas; 5 critérios DSM</td><td>ISRS (fluoxetina, sertralina)</td><td>00124 Desesperança · 00150 Risco de suicídio</td></tr>
+        <tr><td><strong>Transtorno bipolar</strong></td><td>Episódios mania (euforia, grandiosidade, insônia ↓) + depressão</td><td>Lítio (estabilizador); valproato</td><td>00095 Insônia · 00069 Enfrentamento ineficaz</td></tr>
+        <tr><td><strong>Esquizofrenia</strong></td><td>Psicose: alucinações (auditivas), delírios, desorganização</td><td>Antipsicótico (risperidona, olanzapina)</td><td>00122 Percepção sensorial perturbada · 00051 Comunicação verbal prejudicada</td></tr>
+        <tr><td><strong>TAC (Transt. Ansiedad. Generaliz.)</strong></td><td>Preocupação excessiva &gt;6 m; tensão muscular, fadiga, insônia</td><td>ISRS + TCC; benzodiazepínico (curto prazo)</td><td>00146 Ansiedade · 00148 Medo</td></tr>
+      </tbody>
+    </table>
+    <div class="box warn"><strong>Atenção FGV:</strong> internação involuntária ≠ compulsória. Involuntária = decisão médica (família não decide sozinha). Compulsória = apenas por ordem judicial.</div>
+  </div>
+  <div class="footer pf"><span class="footer-left">Extensivo ENARE · by Residência PRO</span><span class="footer-right">04</span></div>
+</div>
+
+<!-- PÁGINA 5 — PCR / RCP AHA 2020 -->
+<div class="page">
+  <div class="header ph"><span class="header-left">CONTEÚDO PRINCIPAL · AULA 22</span><span class="header-right">Extensivo ENARE</span></div>
+  <div class="pc-sm">
+    <h2>PCR — RCP do Adulto (Diretrizes AHA 2020)</h2>
+
+    <h3>Cadeia de Sobrevivência — Intra-Hospitalar</h3>
+    <div class="chain">
+      <div class="chain-step"><div class="cs-num">1</div><div class="cs-label">Reconhecimento e acionamento do sistema de resposta</div></div>
+      <div class="chain-arrow">›</div>
+      <div class="chain-step"><div class="cs-num">2</div><div class="cs-label">RCP precoce de alta qualidade</div></div>
+      <div class="chain-arrow">›</div>
+      <div class="chain-step"><div class="cs-num">3</div><div class="cs-label">Desfibrilação precoce (DEA/manual)</div></div>
+      <div class="chain-arrow">›</div>
+      <div class="chain-step"><div class="cs-num">4</div><div class="cs-label">Cuidados avançados (ACLS)</div></div>
+      <div class="chain-arrow">›</div>
+      <div class="chain-step"><div class="cs-num">5</div><div class="cs-label">Cuidados pós-PCR e reabilitação</div></div>
+    </div>
+
+    <h3>Sequência CAB — Compressões de Qualidade</h3>
+    <div class="card-grid-3">
+      <div class="card">
+        <h4>C — Compressões</h4>
+        <ul>
+          <li>Frequência: <strong>100–120 compressões/min</strong></li>
+          <li>Profundidade: <strong>5–6 cm</strong> (adulto)</li>
+          <li>Retorno total do tórax</li>
+          <li>Minimizar interrupções (&lt;10 s)</li>
+        </ul>
+      </div>
+      <div class="card verde">
+        <h4>A — Via Aérea</h4>
+        <ul>
+          <li>Extensão da cabeça + chin lift</li>
+          <li>IOT (sem interromper &gt;10 s)</li>
+          <li>Após IOT: compressões contínuas + ventilação 1 a cada 6 s (10/min)</li>
+        </ul>
+      </div>
+      <div class="card lima">
+        <h4>B — Ventilação</h4>
+        <ul>
+          <li>Relação 30:2 (sem via aérea avançada)</li>
+          <li>Volume corrente: elevação visível do tórax</li>
+          <li>Evitar hiperventilação</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>Ritmos e Drogas</h3>
+    <table>
+      <thead><tr><th>Ritmo</th><th>Conduta</th><th>Droga</th><th>Dose</th></tr></thead>
+      <tbody>
+        <tr><td><strong>FV / TV sem pulso</strong> (chocáveis)</td><td>Desfibrilação 200 J (bifásico) a cada 2 min</td><td>Adrenalina 1 mg IV a cada 3–5 min; amiodarona 300 mg (1ª dose) após 3º choque</td><td>Adrenalina: 1 mg/3–5 min · Amiodarona: 300 mg + 150 mg</td></tr>
+        <tr><td><strong>AESP / Assistolia</strong> (não chocáveis)</td><td>RCP contínua; tratar causas reversíveis (5H + 5T)</td><td>Adrenalina 1 mg IV a cada 3–5 min (o mais cedo possível)</td><td>1 mg IV/IO a cada 3–5 min</td></tr>
+      </tbody>
+    </table>
+
+    <div class="box warn"><strong>5H + 5T (causas reversíveis PCR):</strong> Hipóxia, Hipovolemia, Hipo/Hipercalemia, Hipotermia, H⁺ (acidose) · Tensão pneumotórax, Tamponamento cardíaco, Trombose (TEP/IAM), Tóxicos, Tromboembolismo.</div>
+  </div>
+  <div class="footer pf"><span class="footer-left">Extensivo ENARE · by Residência PRO</span><span class="footer-right">05</span></div>
+</div>
+
+<!-- PÁGINA 6 — QUESTÃO 01 (Memorização) -->
+<div class="page">
+  <div class="header ph"><span class="header-left">FIXAÇÃO · AULA 22</span><span class="header-right">Extensivo ENARE</span></div>
+  <div class="pc">
+    <div class="q-header"><span>QUESTÃO 01 DE 03 · B4 GESTÃO — SAE · MEMORIZAÇÃO</span></div>
+    <div class="q-body">
+      <p class="q-stem">Durante a passagem de plantão, o enfermeiro de uma clínica médica identifica que paciente internado apresenta SpO₂ 88%, edema de MMII +++/4+, dispneia ao repouso e ingesta hídrica de apenas 400 mL nas últimas 24 h. Ao iniciar a SAE para esse paciente, qual é a segunda etapa correta a realizar e qual é seu produto?</p>
+      <div class="q-opts">
+        <div class="q-opt"><span class="ol">A</span><span>Planejamento — elaborar o plano de cuidados com metas e intervenções para os problemas identificados.</span></div>
+        <div class="q-opt correta"><span class="ol">C</span><span><strong>Diagnóstico de Enfermagem — interpretar os dados coletados e formular os DE prioritários (ex.: 00030 Troca de gases prejudicada, 00026 Volume excessivo de líquidos), usando NANDA-I com problema + etiologia + sinais.</strong> <span class="badge">CORRETA</span></span></div>
+        <div class="q-opt"><span class="ol">B</span><span>Implementação — administrar O₂ suplementar e restringir hídrica conforme prescrição médica.</span></div>
+        <div class="q-opt"><span class="ol">D</span><span>Avaliação — comparar SpO₂ atual com meta estabelecida no plano de cuidados anterior.</span></div>
+      </div>
+    </div>
+    <div class="gabarito">
+      <div class="gt">GABARITO COMENTADO — C</div>
+      A SAE segue sequência obrigatória: <strong>1. Histórico</strong> (coleta dos dados já realizada na passagem de plantão) → <strong>2. Diagnóstico</strong> → 3. Planejamento → 4. Implementação → 5. Avaliação. A 2ª etapa é sempre o <strong>Diagnóstico de Enfermagem</strong>: interpretação dos dados e formulação dos DE com estrutura PES (problema + etiologia + sinais/sintomas). A (planejamento) = 3ª etapa. B (implementação) = 4ª etapa. D (avaliação) = 5ª etapa. Os DE prioritários aqui são os que ameaçam vida: 00030 Troca de gases + 00026 Volume excessivo.
+    </div>
+  </div>
+  <div class="footer pf"><span class="footer-left">Extensivo ENARE · by Residência PRO</span><span class="footer-right">06</span></div>
+</div>
+
+<!-- PÁGINA 7 — QUESTÃO 02 (Aplicação) -->
+<div class="page">
+  <div class="header ph"><span class="header-left">FIXAÇÃO · AULA 22</span><span class="header-right">Extensivo ENARE</span></div>
+  <div class="pc">
+    <div class="q-header"><span>QUESTÃO 02 DE 03 · B4 SAÚDE MENTAL — LEI 10.216/2001 · APLICAÇÃO</span></div>
+    <div class="q-body">
+      <p class="q-stem">Familiar de paciente com diagnóstico de esquizofrenia descompensada solicita ao enfermeiro de um CAPS que o paciente seja internado em hospital psiquiátrico contra a sua vontade, pois está apresentando alucinações auditivas intensas e recusa uso da medicação. O paciente não representa risco imediato de vida para si ou para outros. Qual é a conduta correta conforme a Lei 10.216/2001?</p>
+      <div class="q-opts">
+        <div class="q-opt"><span class="ol">A</span><span>Atender ao pedido da família imediatamente, pois parentes de 1º grau têm autoridade legal para determinar internação involuntária a qualquer momento.</span></div>
+        <div class="q-opt"><span class="ol">B</span><span>Solicitar ordem judicial para internação compulsória, pois a recusa ao tratamento configura risco à saúde do paciente e justifica medida compulsória.</span></div>
+        <div class="q-opt correta"><span class="ol">C</span><span><strong>Priorizar o tratamento na rede RAPS (CAPS), intensificar abordagem comunitária e, se necessário, acionar internação involuntária mediante decisão médica — não familiar — comunicando ao Ministério Público em 72 h. Internação hospitalar não é 1ª escolha.</strong> <span class="badge">CORRETA</span></span></div>
+        <div class="q-opt"><span class="ol">D</span><span>Encaminhar diretamente para pronto-socorro psiquiátrico e aguardar decisão da equipe médica hospitalar, pois o CAPS não tem competência para manejar psicose ativa.</span></div>
+      </div>
+    </div>
+    <div class="gabarito">
+      <div class="gt">GABARITO COMENTADO — C</div>
+      Lei 10.216/2001 estabelece: internação hospitalar psiquiátrica não é 1ª escolha — prioridade é tratamento em serviço ambulatorial/comunitário (CAPS). A família sozinha NÃO decide internação involuntária (A). Internação involuntária exige <strong>decisão médica</strong> + comunicação ao MP em <strong>72 h</strong>. Compulsória (B) = apenas por ordem judicial — recusa ao tratamento sem risco imediato de vida não a justifica. D = errado porque CAPS é competente para manejo de psicose ativa e é a porta preferencial da RAPS.
+    </div>
+  </div>
+  <div class="footer pf"><span class="footer-left">Extensivo ENARE · by Residência PRO</span><span class="footer-right">07</span></div>
+</div>
+
+<!-- PÁGINA 8 — QUESTÃO 03 (Âncora) -->
+<div class="page">
+  <div class="header ph"><span class="header-left">FIXAÇÃO · AULA 22</span><span class="header-right">Extensivo ENARE</span></div>
+  <div class="pc">
+    <div class="q-header"><span>QUESTÃO 03 DE 03 · B4 PCR — RCP AHA 2020 · ANÁLISE (AN)</span></div>
+    <div class="q-body">
+      <p class="q-stem">Paciente internado em enfermaria evolui com PCR. O monitor mostra fibrilação ventricular. A equipe de enfermagem inicia RCP. Após o 3º choque (200 J bifásico) sem reversão do ritmo, qual é a sequência correta de drogas e procedimentos conforme as Diretrizes AHA 2020?</p>
+      <div class="q-opts">
+        <div class="q-opt"><span class="ol">A</span><span>Administrar lidocaína 1,5 mg/kg IV como antiarrítmico de 1ª linha após o 3º choque, seguida de adrenalina a cada 5 min.</span></div>
+        <div class="q-opt"><span class="ol">B</span><span>Suspender as compressões por 30 s para avaliar pulso central e administrar atropina 1 mg IV, pois FV refratária indica bradicardia subjacente.</span></div>
+        <div class="q-opt correta"><span class="ol">C</span><span><strong>Manter RCP de qualidade; administrar adrenalina 1 mg IV (a cada 3–5 min) + amiodarona 300 mg IV após o 3º choque; continuar ciclos de 2 min de RCP + choque; buscar e tratar causas reversíveis (5H + 5T).</strong> <span class="badge">CORRETA</span></span></div>
+        <div class="q-opt"><span class="ol">D</span><span>Aumentar a energia do choque para 360 J bifásico e administrar vasopressina 40 U IV como substituto da adrenalina conforme protocolo AHA 2020.</span></div>
+      </div>
+    </div>
+    <div class="gabarito">
+      <div class="gt">GABARITO COMENTADO — C</div>
+      FV/TV sem pulso = ritmo <strong>chocável</strong>. Após 3º choque sem reversão: <strong>adrenalina 1 mg IV a cada 3–5 min</strong> + <strong>amiodarona 300 mg IV</strong> (1ª dose antiarrítmica AHA 2020). Ciclos: 2 min RCP → análise ritmo → choque se indicado → droga → repetir. A → lidocaína é alternativa (2ª linha), não 1ª. B → atropina não tem papel em FV; interromper compressões ≥30 s = erro grave. D → AHA 2020 <strong>removeu vasopressina</strong> do protocolo rotineiro (não substitui adrenalina); energia bifásica não escala para 360 J rotineiramente.
+    </div>
+  </div>
+  <div class="footer pf"><span class="footer-left">Extensivo ENARE · by Residência PRO</span><span class="footer-right">08</span></div>
+</div>
+
+<!-- PÁGINA 9 — RECUPERAÇÃO ATIVA -->
+<div class="page">
+  <div class="header ph"><span class="header-left">RECUPERAÇÃO ATIVA · AULA 22</span><span class="header-right">Extensivo ENARE</span></div>
+  <div class="pc">
+    <h2>Se Esquecer Tudo, Lembre Disto</h2>
+    <div class="rec-list">
+      <div class="rec-item"><span class="rec-star">★</span><span class="rec-text"><strong>SAE — 5 etapas:</strong> Histórico → Diagnóstico (NANDA-I) → Planejamento (NOC) → Implementação (NIC) → Avaliação. Sequência obrigatória e cíclica.</span></div>
+      <div class="rec-item"><span class="rec-star">★</span><span class="rec-text"><strong>Lei 10.216/2001:</strong> Internação hospitalar psiquiátrica NÃO é 1ª escolha. Involuntária = médico decide + MP em 72 h. Compulsória = só ordem judicial. Família não decide sozinha.</span></div>
+      <div class="rec-item"><span class="rec-star">★</span><span class="rec-text"><strong>CAPS:</strong> porta preferencial da RAPS. CAPS III = 24 h + acolhimento noturno. CAPSad = álcool/drogas. CAPSi = infanto-juvenil.</span></div>
+      <div class="rec-item"><span class="rec-star">★</span><span class="rec-text"><strong>RCP AHA 2020 — sequência CAB:</strong> compressões 100–120/min, 5–6 cm, retorno total. Relação 30:2 sem VA avançada. Após IOT: compressões contínuas + 10 ventilações/min.</span></div>
+      <div class="rec-item"><span class="rec-star">★</span><span class="rec-text"><strong>FV/TV sem pulso após 3º choque:</strong> adrenalina 1 mg IV (3–5 min) + amiodarona 300 mg. Vasopressina foi <strong>removida</strong> do protocolo AHA 2020.</span></div>
+      <div class="rec-item"><span class="rec-star">★</span><span class="rec-text"><strong>AESP/Assistolia:</strong> não chocável → RCP + adrenalina o mais cedo possível + tratar 5H + 5T. Atropina: sem papel em PCR.</span></div>
+    </div>
+    <div class="tso">
+      <h3>TESTE-SE SEM OLHAR</h3>
+      <div class="tso-list">
+        <div class="tso-item"><span class="tso-num">01 —</span><span class="tso-text">Cite as 5 etapas da SAE na ordem correta e o produto de cada uma.</span></div>
+        <div class="tso-item"><span class="tso-num">02 —</span><span class="tso-text">Qual a diferença entre internação involuntária e compulsória segundo a Lei 10.216/2001?</span></div>
+        <div class="tso-item"><span class="tso-num">03 —</span><span class="tso-text">Em FV refratária após 3 choques, qual droga antiarrítmica é usada e em que dose?</span></div>
+        <div class="tso-item"><span class="tso-num">04 —</span><span class="tso-text">Por que a vasopressina foi removida das diretrizes AHA 2020?</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="footer pf"><span class="footer-left">Extensivo ENARE · by Residência PRO</span><span class="footer-right">09</span></div>
+</div>
+
+<!-- PÁGINA 10 — REFERÊNCIAS -->
+<div class="page">
+  <div class="header ph"><span class="header-left">REFERÊNCIAS · AULA 22</span><span class="header-right">Extensivo ENARE</span></div>
+  <div class="pc">
+    <h2>Referências — Bloco B4 · Aula 22</h2>
+    <p style="margin-bottom:3mm;">CONSELHO FEDERAL DE ENFERMAGEM (COFEN). <em>Resolução nº 358/2009</em>: dispõe sobre a Sistematização da Assistência de Enfermagem (SAE). Brasília: COFEN, 2009.</p>
+    <p style="margin-bottom:3mm;">CONSELHO FEDERAL DE ENFERMAGEM (COFEN). <em>Resolução RDC nº 543/2017</em>: atualiza e estabelece parâmetros para o Dimensionamento do Quadro de Profissionais de Enfermagem. Brasília: COFEN, 2017.</p>
+    <p style="margin-bottom:3mm;">BRASIL. <em>Lei nº 10.216, de 6 de abril de 2001</em>: dispõe sobre a proteção e os direitos das pessoas portadoras de transtornos mentais. Brasília: Presidência da República, 2001.</p>
+    <p style="margin-bottom:3mm;">PANCHAL, A.R. et al. 2020 American Heart Association Guidelines for Cardiopulmonary Resuscitation and Emergency Cardiovascular Care. <em>Circulation</em>, v. 142, Suppl. 2, 2020.</p>
+    <p style="margin-bottom:3mm;">AMERICAN PSYCHIATRIC ASSOCIATION. <em>DSM-5-TR: Manual Diagnóstico e Estatístico de Transtornos Mentais</em>. 5. ed. revisada. Porto Alegre: Artmed, 2023.</p>
+    <p style="margin-bottom:3mm;">HERDMAN, T.H.; KAMITSURU, S.; LOPES, C.T. (Eds.). <em>NANDA International — Diagnósticos de Enfermagem 2024–2026</em>. 13. ed. Porto Alegre: Artmed, 2024.</p>
+    <div style="margin-top:5mm;border:1px dashed #ccc;border-radius:2mm;padding:4mm;color:#aaa;font-size:8pt;text-align:center;font-style:italic;">Espaço para anotações</div>
+  </div>
+  <div class="footer pf"><span class="footer-left">Extensivo ENARE · by Residência PRO</span><span class="footer-right">10</span></div>
+</div>
+
+</body>
+</html>

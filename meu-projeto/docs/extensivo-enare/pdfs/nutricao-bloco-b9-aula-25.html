@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nutrição Bloco B9 — Aula 25 | Extensivo ENARE 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;600;700&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #d0d0d0; font-family: 'Bricolage Grotesque', sans-serif; }
+  .page {
+    width: 210mm; min-height: 297mm; background: #F6F4ED;
+    margin: 8mm auto; position: relative; overflow: hidden;
+    display: flex; flex-direction: column;
+  }
+  .page-header {
+    background: #1F5C23; padding: 5mm 7mm 4mm;
+    display: flex; align-items: center; gap: 5mm; flex-shrink: 0;
+  }
+  .page-header .logo-svg { width: 12mm; height: 12mm; flex-shrink: 0; }
+  .header-text { flex: 1; }
+  .header-course { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7pt; color: #C6D834; letter-spacing: 0.08em; text-transform: uppercase; }
+  .header-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 13pt; color: #F6F4ED; line-height: 1.1; text-transform: uppercase; }
+  .header-sub { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; font-size: 7.5pt; color: #C6D834; margin-top: 0.5mm; }
+  .header-page-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 18pt; color: #C6D834; }
+  .page-footer {
+    background: #1F5C23; padding: 2.5mm 7mm;
+    display: flex; justify-content: space-between; align-items: center;
+    margin-top: auto; flex-shrink: 0;
+  }
+  .footer-left { font-family: 'Playfair Display', serif; font-style: italic; font-size: 8pt; color: #C6D834; }
+  .footer-right { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7pt; color: #F6F4ED; opacity: 0.75; }
+  .page-body { flex: 1; padding: 5mm 7mm 4mm; display: flex; flex-direction: column; gap: 3mm; }
+  /* COVER */
+  .cover-page { justify-content: space-between; min-height: 297mm; }
+  .cover-header { background: #F6F4ED; padding: 6mm 7mm 4mm; display: flex; align-items: center; gap: 5mm; flex-shrink: 0; border-bottom: 0.5mm solid #1F5C23; }
+  .cover-header .logo-svg { width: 14mm; height: 14mm; flex-shrink: 0; }
+  .cover-header-text .course-tag { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7pt; color: #1F5C23; letter-spacing: 0.1em; text-transform: uppercase; }
+  .cover-header-text .brand { font-family: 'Playfair Display', serif; font-style: italic; font-size: 13pt; color: #1F5C23; line-height: 1.1; }
+  .cover-hero { flex: 1; background: #1F5C23; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 10mm; gap: 4mm; text-align: center; }
+  .cover-bloco-tag { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 8pt; color: #C6D834; letter-spacing: 0.15em; text-transform: uppercase; border: 0.3mm solid #C6D834; padding: 1mm 4mm; border-radius: 1mm; }
+  .cover-aula-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 60pt; color: #F6F4ED; line-height: 1; }
+  .cover-modulo { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 11pt; color: #C6D834; letter-spacing: 0.2em; text-transform: uppercase; }
+  .cover-titulo { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 26pt; color: #F6F4ED; text-transform: uppercase; line-height: 1.05; max-width: 160mm; }
+  .cover-subtitulo { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; font-size: 10pt; color: #C6D834; max-width: 140mm; line-height: 1.4; }
+  .cover-divider { width: 20mm; height: 0.4mm; background: #C6D834; opacity: 0.6; }
+  .cover-footer-band { background: #F6F4ED; border-top: 0.5mm solid #1F5C23; padding: 4mm 7mm; display: flex; justify-content: space-between; align-items: center; }
+  .cover-footer-band .series { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 600; font-size: 8pt; color: #1F5C23; }
+  .cover-footer-band .year { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 14pt; color: #1F5C23; }
+  /* SECTIONS */
+  .section-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 13pt; color: #1F5C23; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 0.4mm solid #C6D834; padding-bottom: 1mm; margin-bottom: 2mm; }
+  .section-subtitle { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 10pt; color: #1F5C23; text-transform: uppercase; letter-spacing: 0.04em; margin: 2.5mm 0 1mm; }
+  p, li { font-family: 'Bricolage Grotesque', sans-serif; font-size: 8pt; color: #1a1a1a; line-height: 1.45; }
+  ul, ol { padding-left: 4mm; }
+  li { margin-bottom: 0.8mm; }
+  strong { font-weight: 700; color: #1F5C23; }
+  em { font-style: italic; }
+  .highlight-box { background: #1F5C23; color: #F6F4ED; border-radius: 1.5mm; padding: 3mm 4mm; margin: 1.5mm 0; }
+  .highlight-box p, .highlight-box li { color: #F6F4ED; font-size: 7.8pt; }
+  .highlight-box strong { color: #C6D834; }
+  .highlight-box .box-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 10pt; color: #C6D834; text-transform: uppercase; margin-bottom: 1.5mm; letter-spacing: 0.05em; }
+  .accent-box { background: #C6D834; border-radius: 1.5mm; padding: 3mm 4mm; margin: 1.5mm 0; }
+  .accent-box p, .accent-box li { color: #1a1a1a; font-size: 7.8pt; }
+  .accent-box strong { color: #1F5C23; }
+  .accent-box .box-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 10pt; color: #1F5C23; text-transform: uppercase; margin-bottom: 1.5mm; }
+  .outline-box { border: 0.4mm solid #1F5C23; border-radius: 1.5mm; padding: 3mm 4mm; margin: 1.5mm 0; }
+  .outline-box .box-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9.5pt; color: #1F5C23; text-transform: uppercase; margin-bottom: 1.5mm; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; margin: 1mm 0; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2.5mm; margin: 1mm 0; }
+  table { width: 100%; border-collapse: collapse; margin: 1.5mm 0; font-size: 7.5pt; }
+  th { background: #1F5C23; color: #F6F4ED; font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 8pt; text-transform: uppercase; padding: 2mm 2.5mm; text-align: left; }
+  td { padding: 1.8mm 2.5mm; border-bottom: 0.2mm solid #d0cec7; font-size: 7.5pt; vertical-align: top; color: #1a1a1a; }
+  tr:nth-child(even) td { background: rgba(198,216,52,0.12); }
+  td strong { color: #1F5C23; }
+  .question-tag { display: inline-block; background: #1F5C23; color: #C6D834; font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; padding: 0.8mm 3mm; border-radius: 1mm; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 2mm; }
+  .question-type-tag { display: inline-block; background: #C6D834; color: #1F5C23; font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 8pt; padding: 0.6mm 2.5mm; border-radius: 1mm; margin-left: 2mm; text-transform: uppercase; }
+  .question-text { font-family: 'Bricolage Grotesque', sans-serif; font-size: 8.5pt; color: #1a1a1a; line-height: 1.5; margin-bottom: 3mm; padding: 3mm 4mm; background: #fff; border-left: 1mm solid #1F5C23; border-radius: 0 1.5mm 1.5mm 0; }
+  .alternatives { display: flex; flex-direction: column; gap: 1.5mm; }
+  .alt { font-family: 'Bricolage Grotesque', sans-serif; font-size: 8pt; color: #1a1a1a; padding: 2mm 3mm; border: 0.3mm solid #c8c6c0; border-radius: 1mm; line-height: 1.4; }
+  .alt-label { font-weight: 700; color: #1F5C23; margin-right: 1.5mm; }
+  .answer-section { margin-top: 4mm; border-top: 0.4mm solid #C6D834; padding-top: 3mm; }
+  .answer-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 10pt; color: #1F5C23; text-transform: uppercase; margin-bottom: 2mm; }
+  .answer-gab { display: inline-block; background: #1F5C23; color: #C6D834; font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 14pt; padding: 1mm 5mm; border-radius: 1.5mm; margin-bottom: 2mm; }
+  .answer-body { font-family: 'Bricolage Grotesque', sans-serif; font-size: 8pt; color: #1a1a1a; line-height: 1.5; }
+  .answer-body strong { color: #1F5C23; }
+  .gab-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3mm; margin: 2mm 0; }
+  .gab-card { background: #1F5C23; border-radius: 2mm; padding: 3.5mm 4mm; display: flex; flex-direction: column; align-items: center; gap: 1.5mm; }
+  .gab-card .q-label { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7pt; color: #C6D834; text-transform: uppercase; letter-spacing: 0.1em; }
+  .gab-card .q-letter { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 32pt; color: #F6F4ED; line-height: 1; }
+  .gab-card .q-type { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 600; font-size: 6.5pt; color: #C6D834; text-align: center; }
+  .synthesis-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; flex: 1; }
+  .synth-block { background: #1F5C23; border-radius: 2mm; padding: 4mm; }
+  .synth-block .synth-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9.5pt; color: #C6D834; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 2mm; border-bottom: 0.3mm solid rgba(198,216,52,0.4); padding-bottom: 1mm; }
+  .synth-block p, .synth-block li { color: #F6F4ED; font-size: 7.5pt; line-height: 1.45; }
+  .synth-block strong { color: #C6D834; }
+  .synth-block ul { padding-left: 3.5mm; }
+  @media print {
+    body { background: none; }
+    .page { margin: 0; width: 210mm; min-height: 297mm; page-break-after: always; break-after: page; }
+    .page:last-child { page-break-after: avoid; break-after: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!--  P1 — CAPA                                                   -->
+<!-- ============================================================ -->
+<div class="page cover-page">
+  <div class="cover-header">
+    <svg class="logo-svg" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="24,2 44,13 44,35 24,46 4,35 4,13" fill="#F6F4ED" stroke="#1F5C23" stroke-width="2.5"/>
+      <circle cx="24" cy="24" r="8" fill="#1F5C23"/>
+    </svg>
+    <div class="cover-header-text">
+      <div class="course-tag">Extensivo ENARE 2026 · Nutrição · Bloco B9</div>
+      <div class="brand">Elite Treinamentos em Saúde</div>
+    </div>
+  </div>
+  <div class="cover-hero">
+    <div class="cover-bloco-tag">Bloco B9 · NUT-CLÍN</div>
+    <div class="cover-aula-num">25</div>
+    <div class="cover-divider"></div>
+    <div class="cover-modulo">Nutrição Clínica</div>
+    <div class="cover-titulo">Nutrição Oncológica — Caquexia, Triagem e Suporte Nutricional no Câncer</div>
+    <div class="cover-subtitulo">SACA · PG-SGA · EPA ômega-3 · Imunonutrição · Mucosite · Radioterapia · Cuidados Paliativos</div>
+  </div>
+  <div class="cover-footer-band">
+    <div class="series">PDF de Apoio · Aula 25 de 39</div>
+    <div class="year">ENARE 2026</div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!--  P2 — CAQUEXIA DO CÂNCER E SACA                             -->
+<!-- ============================================================ -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="24,2 44,13 44,35 24,46 4,35 4,13" fill="none" stroke="#C6D834" stroke-width="2.5"/>
+      <circle cx="24" cy="24" r="8" fill="#C6D834"/>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Extensivo ENARE 2026 · Nutrição · Bloco B9 · NUT-CLÍN</div>
+      <div class="header-title">Caquexia do Câncer e SACA</div>
+      <div class="header-sub">Definição Fearon 2011 · Estágios · Mecanismos Inflamatórios · Diferença da Desnutrição Simples</div>
+    </div>
+    <div class="header-page-num">02</div>
+  </div>
+  <div class="page-body">
+
+    <div class="section-title">Definição e Critérios Diagnósticos — Fearon et al. 2011</div>
+    <div class="highlight-box">
+      <div class="box-title">Caquexia do Câncer — Diagnóstico (qualquer 1 dos 3 critérios)</div>
+      <div class="three-col">
+        <div>
+          <p><strong>Critério 1</strong></p>
+          <p>Perda de peso &gt;5% nos últimos 12 meses (ou menos)</p>
+        </div>
+        <div>
+          <p><strong>Critério 2</strong></p>
+          <p>IMC &lt;20 kg/m² + qualquer perda de peso &gt;2%</p>
+        </div>
+        <div>
+          <p><strong>Critério 3</strong></p>
+          <p>Sarcopenia (massa muscular apendicular ↓) + perda de peso &gt;2%</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-subtitle">Estágios da Caquexia</div>
+    <table>
+      <tr><th>Estágio</th><th>Perda de Peso</th><th>Características</th><th>Intervenção</th></tr>
+      <tr><td><strong>Pré-Caquexia</strong></td><td>&lt;5%</td><td>Anorexia, distúrbio metabólico, inflamação subclínica</td><td>Prevenção — nutrição agressiva</td></tr>
+      <tr><td><strong>Caquexia</strong></td><td>≥5% (ou critérios acima)</td><td>Inflamação sistêmica, anorexia, atrofia muscular</td><td>Suporte multimodal</td></tr>
+      <tr><td><strong>Caquexia Refratária</strong></td><td>Variável</td><td>Doença progressiva, catabolismo irreversível, expectativa &lt;3 meses</td><td>Conforto/cuidados paliativos</td></tr>
+    </table>
+
+    <div class="two-col">
+      <div>
+        <div class="section-subtitle">Mecanismos Fisiopatológicos</div>
+        <ul>
+          <li><strong>Citocinas pró-inflamatórias:</strong> TNF-α (caquectina), IL-1β, IL-6, IFN-γ → anorexia + catabolismo proteico (ubiquitina-proteassoma) + lipólise</li>
+          <li><strong>PIF (Proteólysis Inducing Factor):</strong> produzido pelo tumor → ativa via ubiquitina</li>
+          <li><strong>LMF (Lipid-Mobilizing Factor):</strong> lipólise de TG no tecido adiposo</li>
+          <li>↑TMB (paradoxo: paciente magro com gasto aumentado)</li>
+          <li>Resistência à insulina e à GH</li>
+          <li>Anorexia central: citocinas agem no hipotálamo → ↓NPY, ↑POMC → saciedade precoce</li>
+        </ul>
+      </div>
+      <div>
+        <div class="highlight-box">
+          <div class="box-title">Caquexia ≠ Desnutrição Simples</div>
+          <ul>
+            <li>Desnutrição: déficit de ingestão → corrige com suporte nutricional</li>
+            <li>Caquexia: <em>inflamação sistêmica + catabolismo ativo</em> → nutrição SOZINHA não reverte</li>
+            <li>Caquexia refratária: nutrição NÃO prolonga sobrevida; pode agravar desconforto</li>
+            <li>Tratamento: suporte nutricional + anti-inflamatórios (EPA) + atividade física + manejo da anorexia (acetato de megestrol, dexametasona — uso limitado)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="accent-box">
+      <div class="box-title">SACA — Síndrome de Anorexia-Caquexia Associada ao Câncer</div>
+      <p>Termo abrangente que engloba anorexia, perda de peso, fadiga, alterações metabólicas e declínio funcional. Presente em <strong>50–80% dos pacientes oncológicos</strong> e responsável por <strong>20–30% das mortes por câncer</strong> (não pela doença em si, mas pelas consequências do catabolismo). Pior prognóstico: câncer de pâncreas (quase universal) &gt; gástrico &gt; pulmão.</p>
+    </div>
+
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde</div>
+    <div class="footer-right">Nutrição · Bloco B9 · Aula 25 · p.2</div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!--  P3 — TRIAGEM E AVALIAÇÃO NUTRICIONAL NO CÂNCER             -->
+<!-- ============================================================ -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="24,2 44,13 44,35 24,46 4,35 4,13" fill="none" stroke="#C6D834" stroke-width="2.5"/>
+      <circle cx="24" cy="24" r="8" fill="#C6D834"/>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Extensivo ENARE 2026 · Nutrição · Bloco B9 · NUT-CLÍN</div>
+      <div class="header-title">Triagem e Avaliação Nutricional em Oncologia</div>
+      <div class="header-sub">PG-SGA · NRS-2002 · MST · GLIM · Composição Corporal por TC</div>
+    </div>
+    <div class="header-page-num">03</div>
+  </div>
+  <div class="page-body">
+
+    <div class="section-title">PG-SGA — Avaliação Global Subjetiva Gerada pelo Paciente</div>
+    <div class="highlight-box">
+      <div class="box-title">PG-SGA — Ferramenta Específica para Oncologia (Ottery, 1994)</div>
+      <p>Adaptação da SGA para oncologia. Composta por <strong>duas partes:</strong> (A) preenchida pelo paciente (perda de peso, ingestão alimentar, sintomas nutricionais, capacidade funcional) + (B) preenchida pelo profissional (diagnóstico, comorbidades, estresse metabólico, exame físico).</p>
+    </div>
+
+    <div class="section-subtitle">Pontuação e Conduta PG-SGA</div>
+    <table>
+      <tr><th>Pontuação</th><th>Classificação Global</th><th>Conduta</th></tr>
+      <tr><td><strong>0–1</strong></td><td>Sem necessidade de intervenção</td><td>Reavaliação rotineira</td></tr>
+      <tr><td><strong>2–3</strong></td><td>Intervenção pela equipe</td><td>Educação nutricional pelo nutricionista ou outro profissional</td></tr>
+      <tr><td><strong>4–8</strong></td><td>Intervenção pelo nutricionista</td><td>Avaliação e intervenção nutricional obrigatória</td></tr>
+      <tr><td><strong>≥9</strong></td><td>Necessidade crítica de melhora sintomática</td><td>Intervenção nutricional urgente + manejo de sintomas</td></tr>
+    </table>
+    <p style="font-size:7.2pt; margin-top:1mm;"><em>Categorias qualitativas:</em> A = bem nutrido; B = moderadamente desnutrido/suspeito; C = gravemente desnutrido</p>
+
+    <div class="two-col">
+      <div>
+        <div class="section-subtitle">Outros Instrumentos</div>
+        <div class="outline-box">
+          <div class="box-title">NRS-2002</div>
+          <ul>
+            <li>Triagem hospitalar (ESPEN recomenda)</li>
+            <li>Pontuação ≥3 = risco nutricional → intervenção</li>
+            <li>Avalia: IMC, perda de peso, ingestão, gravidade da doença, idade ≥70 anos (+1 ponto)</li>
+          </ul>
+        </div>
+        <div class="outline-box" style="margin-top:1.5mm">
+          <div class="box-title">MST (Malnutrition Screening Tool)</div>
+          <ul>
+            <li>Apenas 2 perguntas: perda de peso recente + redução de ingestão alimentar</li>
+            <li>Score ≥2 = risco → encaminhar ao nutricionista</li>
+            <li>Validado para ambulatório oncológico</li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <div class="section-subtitle">Composição Corporal no Câncer</div>
+        <div class="highlight-box">
+          <div class="box-title">Tomografia Computadorizada (TC-L3)</div>
+          <ul>
+            <li>TC de rotina (estadiamento) → análise de área muscular no nível L3</li>
+            <li>Índice de massa muscular esquelética (SMI): H &lt;55 cm²/m²; M &lt;39 cm²/m² = sarcopenia</li>
+            <li>Prediz toxicidade à quimio, complicações cirúrgicas, sobrevida</li>
+            <li>Músculo psoas: marcador de massa muscular visceral</li>
+            <li>DXA: padrão-ouro de referência (menos acessível)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="accent-box">
+      <div class="box-title">GLIM 2018 — Critérios de Desnutrição em Oncologia</div>
+      <p>Fenotípicos (1 obrigatório): perda de peso &gt;5% em 6 meses ou &gt;10% além de 6 meses; IMC baixo; ↓massa muscular. Etiológicos (1 obrigatório): ↓ingestão/↓absorção ou inflamação/doença aguda ou crônica. Combinação de 1 fenotípico + 1 etiológico = desnutrição (moderada ou grave).</p>
+    </div>
+
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde</div>
+    <div class="footer-right">Nutrição · Bloco B9 · Aula 25 · p.3</div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!--  P4 — SUPORTE NUTRICIONAL E IMUNONUTRIÇÃO                   -->
+<!-- ============================================================ -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="24,2 44,13 44,35 24,46 4,35 4,13" fill="none" stroke="#C6D834" stroke-width="2.5"/>
+      <circle cx="24" cy="24" r="8" fill="#C6D834"/>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Extensivo ENARE 2026 · Nutrição · Bloco B9 · NUT-CLÍN</div>
+      <div class="header-title">Suporte Nutricional e Imunonutrição em Oncologia</div>
+      <div class="header-sub">VET e PTN · EPA ômega-3 · Glutamina · Arginina · TNE vs NPT · Fórmulas Oncológicas</div>
+    </div>
+    <div class="header-page-num">04</div>
+  </div>
+  <div class="page-body">
+
+    <div class="section-title">Necessidades Nutricionais no Paciente Oncológico</div>
+    <div class="two-col">
+      <div class="highlight-box">
+        <div class="box-title">VET — Valor Energético Total</div>
+        <ul>
+          <li>Ambulatorial ativo: <strong>30–35 kcal/kg/dia</strong></li>
+          <li>Hospitalizado: <strong>25–30 kcal/kg/dia</strong></li>
+          <li>Caquexia/hipercatabolismo: ajustar para evitar excesso (↑CO₂, hiperglicemia)</li>
+          <li>Calorimetria indireta: gold standard</li>
+        </ul>
+      </div>
+      <div class="highlight-box">
+        <div class="box-title">Proteínas</div>
+        <ul>
+          <li>Mínimo: <strong>1,0–1,5 g/kg/dia</strong></li>
+          <li>Catabolismo elevado/caquexia: <strong>1,5–2,0 g/kg/dia</strong></li>
+          <li>Objetivo: preservar massa muscular e função imune</li>
+          <li>Fontes: proteínas de alto valor biológico (clara de ovo, whey, caseína)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-title">Imunonutrição — Nutrientes Imunomoduladores</div>
+    <table>
+      <tr><th>Nutriente</th><th>Dose / Fonte</th><th>Indicação / Evidência em Oncologia</th></tr>
+      <tr><td><strong>EPA (ω-3)</strong></td><td>2 g/dia (suplemento); fórmulas ricas em EPA</td><td>↓IL-6, TNF-α → melhora apetite, preserva massa muscular, ↓SACA; nível de evidência B para caquexia (ESPEN)</td></tr>
+      <tr><td><strong>Glutamina</strong></td><td>0,3–0,5 g/kg/dia VO/SNE</td><td>Mucosite oral e intestinal: preserva integridade da mucosa do TGI; ↑recuperação; ESPEN recomenda para radioterapia pélvica e mucosa</td></tr>
+      <tr><td><strong>Arginina</strong></td><td>15–30 g/dia (fórmulas)</td><td>Cirurgia oncológica perioperatória: ↑síntese de óxido nítrico, ativação de linfócitos T; parte das fórmulas IMPACT e Reconvan</td></tr>
+      <tr><td><strong>Nucleotídeos</strong></td><td>Componentes das fórmulas Impact</td><td>Maturação de linfócitos; proliferação de enterócitos; imunoestimulação perioperatória</td></tr>
+      <tr><td><strong>Vitamina D</strong></td><td>Titular conforme 25-OH-D</td><td>Deficiência frequente em oncológicos; correlação inversa com risco de vários cânceres; correção recomendada</td></tr>
+    </table>
+
+    <div class="two-col">
+      <div class="accent-box">
+        <div class="box-title">TNE vs NPT no Câncer</div>
+        <ul>
+          <li><strong>TNE preferencial</strong> sempre que TGI funcionante</li>
+          <li>NPT: TGI não funcionante OU obstáculo mecânico irresolvível</li>
+          <li>NPT pré-operatória: indicada se desnutrição grave E cirurgia eletiva possível (7–14 dias)</li>
+          <li>NPT domiciliar: pacientes sem TGI funcional com expectativa &gt;2–3 meses</li>
+        </ul>
+      </div>
+      <div class="accent-box">
+        <div class="box-title">Fórmulas Oncológicas Específicas</div>
+        <ul>
+          <li>↑EPA (ômega-3): Supportan, Prosure → caquexia</li>
+          <li>↑Proteína + ↑energia: fórmulas hipercalóricas/hiperproteicas</li>
+          <li>Imunomoduladora (perioperatória): IMPACT (arginina + ω-3 + nucleotídeos) — 5 dias pré-op + 7 dias pós-op</li>
+          <li>Oligomérica: mucosite grave, disfagia, síndrome do intestino curto pós-ressecção</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde</div>
+    <div class="footer-right">Nutrição · Bloco B9 · Aula 25 · p.4</div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!--  P5 — EFEITOS DO TRATAMENTO E CUIDADOS PALIATIVOS           -->
+<!-- ============================================================ -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="24,2 44,13 44,35 24,46 4,35 4,13" fill="none" stroke="#C6D834" stroke-width="2.5"/>
+      <circle cx="24" cy="24" r="8" fill="#C6D834"/>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Extensivo ENARE 2026 · Nutrição · Bloco B9 · NUT-CLÍN</div>
+      <div class="header-title">Efeitos do Tratamento e Cuidados Paliativos</div>
+      <div class="header-sub">Quimioterapia · Radioterapia · Mucosite · Xerostomia · Cuidados Paliativos · Planejamento Alimentar</div>
+    </div>
+    <div class="header-page-num">05</div>
+  </div>
+  <div class="page-body">
+
+    <div class="section-title">Manejo Nutricional dos Efeitos Colaterais do Tratamento</div>
+    <table>
+      <tr><th>Efeito Colateral</th><th>Adaptação Nutricional</th></tr>
+      <tr><td><strong>Náusea / Vômito</strong></td><td>Refeições pequenas e frequentes (6–8/dia); alimentos frios ou em temperatura ambiente (↓odor); evitar alimentos gordurosos, condimentados e muito doces; gengibre (evidência anti-emética); preferir CHO simples no pico da náusea</td></tr>
+      <tr><td><strong>Mucosite oral</strong></td><td>Alimentos pastosos/líquidos frios (gelados analgésicos); evitar ácidos, salgados, álcool, alimentos abrasivos; glutamina oral pode reduzir grau; SNE se ingestão impossível</td></tr>
+      <tr><td><strong>Xerostomia (boca seca)</strong></td><td>Hidratação frequente (goles pequenos); alimentos úmidos, cozidos em caldo; sucos não ácidos; saliva artificial; não fumar; palitos de gelo</td></tr>
+      <tr><td><strong>Disgeusia (alteração do paladar)</strong></td><td>Variar temperos e consistências; marinar carnes; usar talheres de plástico se gosto metálico; servir em temperatura fria</td></tr>
+      <tr><td><strong>Disfagia (radioterapia cervical)</strong></td><td>Consistência modificada (IDDSI); SNE se grau III–IV; glutamina para mucosite esofágica</td></tr>
+      <tr><td><strong>Diarreia (quimio/radioterapia pélvica)</strong></td><td>↓fibra insolúvel e gordura; fórmulas oligoméricas; glutamina; probióticos (evidência limitada); repor perdas hidroeletrolíticas</td></tr>
+      <tr><td><strong>Constipação (opioides)</strong></td><td>↑fibra (solúvel + insolúvel), hidratação, atividade física; laxativos osmóticos</td></tr>
+    </table>
+
+    <div class="two-col">
+      <div class="highlight-box">
+        <div class="box-title">Cuidados Paliativos — Objetivo Muda</div>
+        <ul>
+          <li>Objetivo passa de <em>terapêutico</em> para <em>conforto e qualidade de vida</em></li>
+          <li>Caquexia refratária: nutrição artificial NÃO prolonga sobrevida</li>
+          <li>Reidratação parenteral paliativa pode aliviar sede (hidratação hipodermóclise)</li>
+          <li>Alimentação como vínculo afetivo: manter autonomia e prazer por maior tempo possível</li>
+          <li>Decisão compartilhada com paciente e família: não "forçar" alimentação</li>
+        </ul>
+      </div>
+      <div class="outline-box">
+        <div class="box-title">Cirurgia Oncológica — ERAS/ACERTO</div>
+        <ul>
+          <li>Protocolo ERAS: regra 2-6-8h para jejum pré-op (líquidos claros 2h, leite/sólido leve 6h, sólido 8h)</li>
+          <li>Suporte nutricional pré-op 7–14 dias se desnutrição grave</li>
+          <li>TNE precoce pós-op (24–48h): ↓infecções, ↓tempo de internação</li>
+          <li>Imunonutrição perioperatória (IMPACT): 5 dias pré + 7 dias pós</li>
+          <li>Whey protein pós-op: ↑síntese muscular</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde</div>
+    <div class="footer-right">Nutrição · Bloco B9 · Aula 25 · p.5</div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!--  P6 — QUESTÃO 01                                             -->
+<!-- ============================================================ -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="24,2 44,13 44,35 24,46 4,35 4,13" fill="none" stroke="#C6D834" stroke-width="2.5"/>
+      <circle cx="24" cy="24" r="8" fill="#C6D834"/>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Extensivo ENARE 2026 · Nutrição · Bloco B9 · NUT-CLÍN</div>
+      <div class="header-title">Questão 01 — Nutrição Oncológica</div>
+      <div class="header-sub">Nível: Aplicação · Triagem nutricional — PG-SGA e conduta</div>
+    </div>
+    <div class="header-page-num">06</div>
+  </div>
+  <div class="page-body">
+    <span class="question-tag">Q01</span>
+    <span class="question-type-tag">Aplicação</span>
+
+    <div class="question-text">
+      Paciente com câncer gástrico em quimioterapia paliativa é avaliado pelo nutricionista utilizando a PG-SGA. A pontuação obtida é 11. Qual é a conduta correta segundo essa ferramenta de triagem?
+    </div>
+
+    <div class="alternatives">
+      <div class="alt"><span class="alt-label">A)</span> Apenas reavaliação nutricional de rotina em 30 dias, sem necessidade de intervenção imediata</div>
+      <div class="alt"><span class="alt-label">B)</span> Encaminhar ao nutricionista para intervenção nutricional eletiva sem caráter de urgência</div>
+      <div class="alt"><span class="alt-label">C)</span> Intervenção nutricional urgente com manejo de sintomas, pois a pontuação indica necessidade crítica</div>
+      <div class="alt"><span class="alt-label">D)</span> Educação nutricional realizada por qualquer membro da equipe, sem encaminhamento ao nutricionista</div>
+    </div>
+
+    <div class="answer-section">
+      <div class="answer-title">Resolução</div>
+      <div class="answer-gab">Gabarito: C</div>
+      <div class="answer-body">
+        <p>Na <strong>PG-SGA</strong>, a pontuação 11 está acima de 9, que corresponde à necessidade de <strong>intervenção nutricional urgente</strong> com manejo de sintomas que prejudicam a ingestão alimentar. A escala de conduta é:</p>
+        <ul>
+          <li>0–1: reavaliação rotineira</li>
+          <li>2–3: educação nutricional por qualquer profissional</li>
+          <li>4–8: intervenção pelo nutricionista (não urgente)</li>
+          <li><strong>≥9: intervenção nutricional urgente + manejo de sintomas (náusea, mucosite, dor, etc.)</strong></li>
+        </ul>
+        <p>Com pontuação 11, o paciente está em categoria C (gravemente desnutrido) e provavelmente com múltiplos sintomas que impedem ingestão adequada. A abordagem inclui suporte nutricional especializado e controle farmacológico dos sintomas. Câncer gástrico tem alta prevalência de SACA e desnutrição grave.</p>
+      </div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde</div>
+    <div class="footer-right">Nutrição · Bloco B9 · Aula 25 · p.6</div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!--  P7 — QUESTÃO 02                                             -->
+<!-- ============================================================ -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="24,2 44,13 44,35 24,46 4,35 4,13" fill="none" stroke="#C6D834" stroke-width="2.5"/>
+      <circle cx="24" cy="24" r="8" fill="#C6D834"/>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Extensivo ENARE 2026 · Nutrição · Bloco B9 · NUT-CLÍN</div>
+      <div class="header-title">Questão 02 — Nutrição Oncológica</div>
+      <div class="header-sub">Nível: Aplicação · Mucosite e manejo nutricional de efeitos colaterais</div>
+    </div>
+    <div class="header-page-num">07</div>
+  </div>
+  <div class="page-body">
+    <span class="question-tag">Q02</span>
+    <span class="question-type-tag">Aplicação</span>
+
+    <div class="question-text">
+      Paciente com leucemia em quimioterapia de alta dose desenvolve mucosite oral grau III (úlceras extensas, incapaz de deglutir sólidos e semissólidos). Apresenta perda de 8% do peso corporal nas últimas 4 semanas. Qual é a via de suporte nutricional MAIS INDICADA nesse momento?
+    </div>
+
+    <div class="alternatives">
+      <div class="alt"><span class="alt-label">A)</span> Manter dieta oral com alimentos pastosos e orientar o paciente a fazer esforço para ingerir pelo menos 50% das necessidades</div>
+      <div class="alt"><span class="alt-label">B)</span> Iniciar nutrição parenteral total imediatamente, pois a mucosite contraindica absolutamente qualquer via enteral</div>
+      <div class="alt"><span class="alt-label">C)</span> Instalar sonda nasoenteral (SNE) para terapia nutricional enteral, preservando o trato gastrointestinal e minimizando riscos infecciosos da NPT</div>
+      <div class="alt"><span class="alt-label">D)</span> Aguardar resolução espontânea da mucosite em 7–10 dias antes de iniciar qualquer suporte nutricional, pois o risco de contaminação pela sonda supera o benefício</div>
+    </div>
+
+    <div class="answer-section">
+      <div class="answer-title">Resolução</div>
+      <div class="answer-gab">Gabarito: C</div>
+      <div class="answer-body">
+        <p>Mucosite grau III–IV impede ingestão oral adequada. O princípio fundamental é: <strong>"se o TGI funciona, use-o."</strong></p>
+        <p><strong>SNE (sonda nasoenteral)</strong> é a via de escolha quando:</p>
+        <ul>
+          <li>TGI distal está funcionante (intestino delgado íntegro)</li>
+          <li>Barreira oral está comprometida (mucosite oral não afeta o estômago/intestino)</li>
+          <li>↓risco de translocação bacteriana vs NPT</li>
+          <li>↓custo, ↓sepse por cateter central, preserva vilosidades intestinais</li>
+        </ul>
+        <p><strong>NPT (B) é reservada</strong> para quando o TGI não é funcionante (ex: mucosite intestinal grave com íleo paralítico, má absorção severa, enterocolite neutropênica). <strong>A errada:</strong> com grau III não há como garantir ingestão oral; forçar piora desconforto. <strong>D errada:</strong> aguardar é contraindicado com perda de 8%/4 semanas — urgência nutricional.</p>
+      </div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde</div>
+    <div class="footer-right">Nutrição · Bloco B9 · Aula 25 · p.7</div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!--  P8 — QUESTÃO 03 (ANÁLISE ÂNCORA)                           -->
+<!-- ============================================================ -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="24,2 44,13 44,35 24,46 4,35 4,13" fill="none" stroke="#C6D834" stroke-width="2.5"/>
+      <circle cx="24" cy="24" r="8" fill="#C6D834"/>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Extensivo ENARE 2026 · Nutrição · Bloco B9 · NUT-CLÍN</div>
+      <div class="header-title">Questão 03 — Nutrição Oncológica</div>
+      <div class="header-sub">Nível: Análise Âncora · Caquexia, imunonutrição e cuidados paliativos</div>
+    </div>
+    <div class="header-page-num">08</div>
+  </div>
+  <div class="page-body">
+    <span class="question-tag">Q03</span>
+    <span class="question-type-tag">Análise Âncora</span>
+
+    <div class="question-text">
+      Acerca da nutrição em oncologia, analise as afirmativas:
+      <br><br>
+      <strong>I.</strong> A caquexia do câncer é equivalente à desnutrição por baixa ingestão calórica, portanto a oferta adequada de nutrientes por via enteral ou parenteral é suficiente para reverter completamente o quadro em qualquer estágio da doença.
+      <br><br>
+      <strong>II.</strong> O ácido eicosapentaenoico (EPA, ômega-3) na dose de aproximadamente 2 g/dia tem evidência de atenuar a síndrome de anorexia-caquexia associada ao câncer (SACA), por meio da redução de citocinas pró-inflamatórias como TNF-α e IL-6.
+      <br><br>
+      <strong>III.</strong> A glutamina oral ou enteral é indicada para reduzir a gravidade da mucosite em pacientes submetidos a quimiorradioterapia, pois serve como substrato energético preferencial dos enterócitos e colonócitos, preservando a integridade da mucosa gastrointestinal.
+      <br><br>
+      <strong>IV.</strong> Em pacientes com caquexia refratária e expectativa de vida inferior a 3 meses, a nutrição parenteral total está sempre indicada para prolongar a sobrevida e deve ser instituída independentemente do desejo do paciente e da família.
+    </div>
+
+    <div class="alternatives">
+      <div class="alt"><span class="alt-label">A)</span> Apenas I e IV estão corretas</div>
+      <div class="alt"><span class="alt-label">B)</span> Apenas I, II e III estão corretas</div>
+      <div class="alt"><span class="alt-label">C)</span> Apenas II e III estão corretas</div>
+      <div class="alt"><span class="alt-label">D)</span> I, II, III e IV estão corretas</div>
+    </div>
+
+    <div class="answer-section">
+      <div class="answer-title">Resolução</div>
+      <div class="answer-gab">Gabarito: C</div>
+      <div class="answer-body">
+        <p><strong>I — ERRADA:</strong> Caquexia do câncer é fundamentalmente diferente da desnutrição simples: envolve <em>inflamação sistêmica ativa</em> (TNF-α, IL-1β, IL-6) que promove catabolismo proteico e lipólise independentemente da ingestão. A nutrição isolada <strong>não reverte</strong> a caquexia, especialmente na fase refratária. O tratamento requer abordagem multimodal (nutrição + anti-inflamatórios como EPA + exercício + manejo farmacológico da anorexia).</p>
+        <p><strong>II — CORRETA:</strong> EPA inibe a síntese de eicosanoides pró-inflamatórios (PGE2, LTB4) derivados do AA e reduz TNF-α e IL-6 → atenua a SACA. Dose efetiva: ~2 g EPA/dia. Evidência de nível B (ESPEN) para atenuação da perda de peso e melhora do apetite em caquexia oncológica.</p>
+        <p><strong>III — CORRETA:</strong> A glutamina é o aminoácido mais consumido pelos enterócitos e colonócitos (combustível preferencial). Em quimiorradioterapia, a demanda aumenta e o pool endógeno esgota → mucosite + enterite actínica. Suplementação 0,3–0,5 g/kg/dia VO/SNE reduz grau e duração da mucosite. ESPEN recomenda para radioterapia pélvica.</p>
+        <p><strong>IV — ERRADA:</strong> Em caquexia refratária (doença em progressão, catabolismo irreversível, expectativa &lt;3 meses), a NPT <strong>não prolonga sobrevida</strong> e pode aumentar desconforto (complicações do cateter, sobrecarga hídrica). A decisão deve ser <em>compartilhada</em> com paciente e família, respeitando autonomia e princípios de cuidados paliativos.</p>
+      </div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde</div>
+    <div class="footer-right">Nutrição · Bloco B9 · Aula 25 · p.8</div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!--  P9 — GABARITO                                               -->
+<!-- ============================================================ -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="24,2 44,13 44,35 24,46 4,35 4,13" fill="none" stroke="#C6D834" stroke-width="2.5"/>
+      <circle cx="24" cy="24" r="8" fill="#C6D834"/>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Extensivo ENARE 2026 · Nutrição · Bloco B9 · NUT-CLÍN</div>
+      <div class="header-title">Gabarito — Aula 25</div>
+      <div class="header-sub">Nutrição Oncológica — Caquexia, Triagem e Suporte Nutricional no Câncer</div>
+    </div>
+    <div class="header-page-num">09</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">Gabarito das Questões</div>
+    <div class="gab-grid">
+      <div class="gab-card">
+        <div class="q-label">Questão 01</div>
+        <div class="q-letter">C</div>
+        <div class="q-type">Aplicação</div>
+      </div>
+      <div class="gab-card">
+        <div class="q-label">Questão 02</div>
+        <div class="q-letter">C</div>
+        <div class="q-type">Aplicação</div>
+      </div>
+      <div class="gab-card">
+        <div class="q-label">Questão 03</div>
+        <div class="q-letter">C</div>
+        <div class="q-type">Análise Âncora</div>
+      </div>
+    </div>
+
+    <div class="section-title" style="margin-top:4mm">Pontos-Chave para a Prova</div>
+    <div class="two-col">
+      <div class="highlight-box">
+        <div class="box-title">Caquexia — Diagnóstico Fearon 2011</div>
+        <ul>
+          <li>Perda &gt;5% em 12 meses; OU IMC &lt;20+perda &gt;2%; OU sarcopenia+perda &gt;2%</li>
+          <li>Pré-caquexia → Caquexia → <strong>Refratária</strong> (catabolismo irreversível)</li>
+          <li>NÃO reverte apenas com nutrição (inflamação sistêmica ativa)</li>
+          <li>Pior em: pâncreas &gt; gástrico &gt; pulmão</li>
+          <li>20–30% das mortes por câncer devidas à caquexia</li>
+        </ul>
+      </div>
+      <div class="highlight-box">
+        <div class="box-title">PG-SGA — Pontuação e Conduta</div>
+        <ul>
+          <li>0–1: sem intervenção (rotina)</li>
+          <li>2–3: educação nutricional (qualquer profissional)</li>
+          <li>4–8: intervenção pelo nutricionista</li>
+          <li><strong>≥9: intervenção urgente + manejo de sintomas</strong></li>
+          <li>Categorias: A (bem nutrido); B (suspeito); C (gravemente desnutrido)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="two-col" style="margin-top:2mm">
+      <div class="accent-box">
+        <div class="box-title">Imunonutrição Oncológica</div>
+        <ul>
+          <li>EPA 2 g/dia: ↓TNF-α, IL-6 → atenua SACA</li>
+          <li>Glutamina: mucosite oral/intestinal e enterite actínica</li>
+          <li>Arginina + ω-3 + nucleotídeos (IMPACT): perioperatório oncológico</li>
+          <li>TNE sempre preferível à NPT quando TGI funciona</li>
+        </ul>
+      </div>
+      <div class="accent-box">
+        <div class="box-title">Efeitos Colaterais — Resumo</div>
+        <ul>
+          <li>Náusea: refeições pequenas, alimentos frios, gengibre</li>
+          <li>Mucosite: alimentos frios/pastosos; SNE se grau III–IV</li>
+          <li>Xerostomia: hidratação frequente, saliva artificial</li>
+          <li>Diarreia pós-RT pélvica: ↓fibra insolúvel, glutamina</li>
+          <li>Paliativos: objetivo = conforto; NPT não prolonga sobrevida</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde</div>
+    <div class="footer-right">Nutrição · Bloco B9 · Aula 25 · p.9</div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!--  P10 — SÍNTESE FINAL                                         -->
+<!-- ============================================================ -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="24,2 44,13 44,35 24,46 4,35 4,13" fill="none" stroke="#C6D834" stroke-width="2.5"/>
+      <circle cx="24" cy="24" r="8" fill="#C6D834"/>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Extensivo ENARE 2026 · Nutrição · Bloco B9 · NUT-CLÍN</div>
+      <div class="header-title">Síntese Final — Aula 25</div>
+      <div class="header-sub">Nutrição Oncológica — Mapa Mental de Revisão</div>
+    </div>
+    <div class="header-page-num">10</div>
+  </div>
+  <div class="page-body">
+    <div class="synthesis-grid">
+
+      <div class="synth-block">
+        <div class="synth-title">Caquexia — Critérios e Estágios</div>
+        <ul>
+          <li>Fearon 2011: perda &gt;5%/12m; IMC &lt;20+perda &gt;2%; sarcopenia+perda &gt;2%</li>
+          <li><strong>Pré-caquexia:</strong> anorexia + distúrbio metabólico</li>
+          <li><strong>Caquexia:</strong> perda ≥5% + inflamação</li>
+          <li><strong>Refratária:</strong> catabolismo irreversível; expectativa &lt;3m</li>
+          <li>Citocinas: TNF-α, IL-1β, IL-6 → anorexia + proteólise + lipólise</li>
+          <li>NÃO reverte apenas com nutrição</li>
+        </ul>
+      </div>
+
+      <div class="synth-block">
+        <div class="synth-title">PG-SGA — Pontuação</div>
+        <ul>
+          <li><strong>0–1:</strong> sem intervenção (rotina)</li>
+          <li><strong>2–3:</strong> educação nutricional</li>
+          <li><strong>4–8:</strong> intervenção pelo nutricionista</li>
+          <li><strong>≥9:</strong> intervenção URGENTE + sintomas</li>
+          <li>A = bem nutrido; B = suspeito; C = grave</li>
+          <li>Ferramenta específica para oncologia</li>
+        </ul>
+      </div>
+
+      <div class="synth-block">
+        <div class="synth-title">Necessidades e Via de Acesso</div>
+        <ul>
+          <li>VET: <strong>25–35 kcal/kg/dia</strong></li>
+          <li>PTN: <strong>1,2–2,0 g/kg/dia</strong> (catabolismo elevado)</li>
+          <li>TNE: sempre preferível quando TGI funciona</li>
+          <li>NPT: TGI não funcionante / obstrução irresolvível</li>
+          <li>Mucosite oral grau III–IV → SNE (TGI distal íntegro)</li>
+          <li>Caquexia refratária: NPT não prolonga sobrevida</li>
+        </ul>
+      </div>
+
+      <div class="synth-block">
+        <div class="synth-title">Imunonutrição</div>
+        <ul>
+          <li><strong>EPA 2 g/dia:</strong> ↓TNF-α, IL-6 → atenua SACA</li>
+          <li><strong>Glutamina 0,3–0,5 g/kg:</strong> mucosite, enterite actínica</li>
+          <li><strong>Arginina + ω-3 + nucleotídeos</strong> (IMPACT): perioperatório</li>
+          <li>Fórmulas oncológicas: ↑EPA (Supportan, Prosure)</li>
+          <li>TC-L3: SMI H &lt;55/M &lt;39 cm²/m² = sarcopenia</li>
+        </ul>
+      </div>
+
+      <div class="synth-block">
+        <div class="synth-title">Manejo de Sintomas</div>
+        <ul>
+          <li><strong>Náusea:</strong> refeições pequenas, alimentos frios, gengibre</li>
+          <li><strong>Mucosite:</strong> frios/pastosos; glutamina; SNE grau III–IV</li>
+          <li><strong>Xerostomia:</strong> hidratação frequente, saliva artificial</li>
+          <li><strong>Disgeusia:</strong> variar temperos, talheres plástico</li>
+          <li><strong>Diarreia RT pélvica:</strong> ↓fibra insolúvel, glutamina</li>
+        </ul>
+      </div>
+
+      <div class="synth-block">
+        <div class="synth-title">Cuidados Paliativos e Cirurgia</div>
+        <ul>
+          <li>Caquexia refratária: objetivo = conforto (não cura)</li>
+          <li>Decisão compartilhada: paciente + família + equipe</li>
+          <li>ERAS/ACERTO: regra 2-6-8h; TNE precoce 24–48h pós-op</li>
+          <li>Imunonutrição perioperatória: 5 dias pré + 7 dias pós</li>
+          <li>Suporte pré-op 7–14 dias se desnutrição grave</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde</div>
+    <div class="footer-right">Nutrição · Bloco B9 · Aula 25 · p.10</div>
+  </div>
+</div>
+
+</body>
+</html>

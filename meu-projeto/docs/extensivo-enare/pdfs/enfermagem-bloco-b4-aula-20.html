@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B4 · Aula 20 — CME: Spaulding, Esterilização e RDC 15/2012</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  @page{size:A4;margin:0;}
+  body{-webkit-print-color-adjust:exact;print-color-adjust:exact;font-family:'Bricolage Grotesque',sans-serif;}
+  .page{width:210mm;height:297mm;display:flex;flex-direction:column;overflow:hidden;page-break-after:always;}
+  .ph{height:14mm;flex-shrink:0;}
+  .pf{height:9mm;flex-shrink:0;}
+  .pc{flex:1;padding:7mm 16mm 5mm;overflow:hidden;}
+  .pc-sm{flex:1;padding:5mm 16mm 4mm;overflow:hidden;}
+
+  /* CAPA */
+  .cover{background:#0D8A8D;display:flex;flex-direction:column;padding:14mm 16mm;}
+  .cover-logo{margin-bottom:6mm;}
+  .cover-logo .ext{font-family:'Playfair Display',serif;font-style:italic;color:#C6D834;font-size:9pt;letter-spacing:1px;}
+  .cover-logo .brand{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:34pt;color:#F6F4ED;line-height:1;letter-spacing:1px;}
+  .cover-logo .sub{font-family:'Space Grotesk',sans-serif;font-weight:300;font-size:7pt;color:#F6F4ED;letter-spacing:3px;margin-top:1mm;}
+  .cover-tag{margin:6mm 0 10mm;}
+  .cover-tag p{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:7.5pt;color:#C6D834;letter-spacing:2.5px;}
+  .cover-title{flex:1;display:flex;flex-direction:column;justify-content:center;}
+  .cover-title h1{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:56pt;color:#F6F4ED;line-height:.9;letter-spacing:-1px;text-transform:uppercase;}
+  .cover-title .sub2{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13pt;color:#C6D834;letter-spacing:3px;margin-top:5mm;text-transform:uppercase;}
+  .cover-num{text-align:right;}
+  .cover-num span{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:72pt;color:rgba(246,244,237,.15);line-height:1;}
+
+  /* HEADER */
+  .header{background:#F6F4ED;display:flex;align-items:center;justify-content:space-between;padding:0 16mm;border-bottom:1.5px solid #0D8A8D;}
+  .header-left{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:7pt;color:#0D8A8D;letter-spacing:2px;text-transform:uppercase;}
+  .header-right{font-family:'Playfair Display',serif;font-style:italic;font-size:8pt;color:#555;}
+
+  /* FOOTER */
+  .footer{background:#F6F4ED;display:flex;align-items:center;justify-content:space-between;padding:0 16mm;border-top:1px solid #ddd;}
+  .footer-left{font-family:'Bricolage Grotesque',sans-serif;font-size:7pt;color:#888;}
+  .footer-right{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11pt;color:#0D8A8D;}
+
+  /* TIPOGRAFIA GERAL */
+  h2{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:15pt;color:#0D8A8D;letter-spacing:1.5px;text-transform:uppercase;border-bottom:2px solid #0D8A8D;padding-bottom:1.5mm;margin-bottom:4mm;}
+  h3{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:10pt;color:#1F5C23;letter-spacing:1px;text-transform:uppercase;margin-bottom:2mm;}
+  p,li{font-size:8.5pt;line-height:1.45;color:#222;}
+  ul{padding-left:4mm;margin-bottom:2mm;}
+  li{margin-bottom:1mm;}
+  strong{font-weight:600;color:#070707;}
+
+  /* OBJETIVOS */
+  .obj-list{display:flex;flex-direction:column;gap:3mm;margin-bottom:4mm;}
+  .obj-item{display:flex;gap:3mm;align-items:flex-start;}
+  .obj-num{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:22pt;color:#0D8A8D;line-height:1;flex-shrink:0;width:7mm;}
+  .obj-text{font-size:8.5pt;line-height:1.45;color:#222;padding-top:1.5mm;}
+  .prereq{border-left:3px solid #0D8A8D;padding:2.5mm 4mm;background:#f0fafa;font-size:7.5pt;color:#333;margin-bottom:4mm;}
+  .meta-row{display:flex;gap:10mm;margin-top:2mm;}
+  .meta-col{display:flex;flex-direction:column;gap:0.5mm;}
+  .meta-label{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:6.5pt;color:#999;letter-spacing:1.5px;text-transform:uppercase;}
+  .meta-val{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:9pt;color:#0D8A8D;}
+
+  /* TABELAS */
+  table{width:100%;border-collapse:collapse;margin-bottom:3mm;font-size:7.5pt;}
+  th{background:#0D8A8D;color:#F6F4ED;font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:2mm 3mm;text-align:left;font-size:7.5pt;}
+  td{padding:2mm 3mm;border-bottom:1px solid #e5e5e5;vertical-align:top;font-size:7.5pt;line-height:1.35;}
+  tr:nth-child(even) td{background:#f7f7f5;}
+  tr:hover td{background:#e8f5f5;}
+
+  /* CARDS */
+  .card-grid{display:grid;grid-template-columns:1fr 1fr;gap:3mm;margin-bottom:3mm;}
+  .card-grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2.5mm;margin-bottom:3mm;}
+  .card{background:#f7f7f5;border-radius:2mm;padding:3mm;border-top:3px solid #0D8A8D;}
+  .card.verde{border-top-color:#1F5C23;}
+  .card.lima{border-top-color:#C6D834;}
+  .card.warn{border-top-color:#c0392b;}
+  .card h4{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:8.5pt;color:#0D8A8D;letter-spacing:1px;text-transform:uppercase;margin-bottom:1.5mm;}
+  .card.verde h4{color:#1F5C23;}
+  .card.lima h4{color:#6b7a00;}
+  .card.warn h4{color:#c0392b;}
+  .card p,.card li{font-size:7.5pt;line-height:1.35;}
+
+  /* CAIXA DESTAQUE */
+  .box{border-left:3px solid #0D8A8D;padding:2.5mm 4mm;background:#f0fafa;margin-bottom:3mm;font-size:7.8pt;line-height:1.4;}
+  .box.verde{border-left-color:#1F5C23;background:#f0f7f0;}
+  .box.warn{border-left-color:#c0392b;background:#fdf0f0;}
+  .box strong{color:#0D8A8D;}
+  .box.verde strong{color:#1F5C23;}
+  .box.warn strong{color:#c0392b;}
+
+  /* SPAULDING BADGE */
+  .sp-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2.5mm;margin-bottom:3mm;}
+  .sp-card{border-radius:2mm;padding:3mm 3.5mm;display:flex;flex-direction:column;gap:1.5mm;}
+  .sp-card.critico{background:#fde8e8;border-left:4px solid #c0392b;}
+  .sp-card.semi{background:#fff3e0;border-left:4px solid #e67e22;}
+  .sp-card.nao{background:#e8f5f0;border-left:4px solid #1F5C23;}
+  .sp-card .sp-label{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:9pt;letter-spacing:1px;text-transform:uppercase;}
+  .sp-card.critico .sp-label{color:#c0392b;}
+  .sp-card.semi .sp-label{color:#e67e22;}
+  .sp-card.nao .sp-label{color:#1F5C23;}
+  .sp-card p{font-size:7.3pt;line-height:1.35;color:#333;}
+
+  /* QUESTÃO */
+  .q-header{background:#0D8A8D;color:#F6F4ED;padding:2mm 4mm;border-radius:2mm 2mm 0 0;margin-bottom:0;}
+  .q-header span{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:7pt;letter-spacing:2px;text-transform:uppercase;}
+  .q-body{border:1.5px solid #0D8A8D;border-top:none;border-radius:0 0 2mm 2mm;padding:3mm 4mm;margin-bottom:3mm;background:#fff;}
+  .q-stem{font-size:8.2pt;line-height:1.5;color:#222;margin-bottom:3mm;}
+  .q-opts{display:flex;flex-direction:column;gap:1.5mm;}
+  .q-opt{display:flex;gap:2mm;align-items:flex-start;font-size:8pt;line-height:1.4;color:#222;}
+  .q-opt .ol{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:9pt;color:#0D8A8D;flex-shrink:0;width:4mm;}
+  .q-opt.correta .ol{color:#1F5C23;}
+  .q-opt.correta{color:#1F5C23;font-weight:600;}
+  .gabarito{background:#f0f7f0;border:1.5px solid #1F5C23;border-radius:2mm;padding:3mm 4mm;font-size:7.5pt;line-height:1.5;color:#222;}
+  .gabarito .gt{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:8pt;color:#1F5C23;letter-spacing:1px;margin-bottom:1mm;}
+  .badge{display:inline-block;background:#1F5C23;color:#F6F4ED;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:6.5pt;letter-spacing:1.5px;padding:0.5mm 2mm;border-radius:1mm;vertical-align:middle;margin-left:1mm;}
+
+  /* RECUPERAÇÃO */
+  .rec-list{display:flex;flex-direction:column;gap:2mm;margin-bottom:3mm;}
+  .rec-item{display:flex;gap:2.5mm;align-items:flex-start;}
+  .rec-star{color:#C6D834;font-size:10pt;flex-shrink:0;line-height:1.3;}
+  .rec-text{font-size:8pt;line-height:1.4;color:#222;}
+  .tso{margin-top:3mm;}
+  .tso h3{font-size:8.5pt;margin-bottom:2mm;}
+  .tso-list{display:flex;flex-direction:column;gap:1.5mm;}
+  .tso-item{display:flex;gap:2mm;}
+  .tso-num{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:8.5pt;color:#0D8A8D;flex-shrink:0;width:5mm;}
+  .tso-text{font-size:7.8pt;line-height:1.4;color:#333;}
+</style>
+</head>
+<body>
+
+<!-- PÁGINA 1 — CAPA -->
+<div class="page">
+  <div class="cover">
+    <div class="cover-logo">
+      <div class="ext">extensivo</div>
+      <div class="brand">ENARE</div>
+      <div class="sub">BY RESIDÊNCIA PRO</div>
+    </div>
+    <div class="cover-tag">
+      <p>ENFERMAGEM · MÓDULO ESPECÍFICO</p>
+      <p>BLOCO B4 · AULA 20</p>
+    </div>
+    <div class="cover-title">
+      <h1>CME &amp;<br>ESTERILI-<br>ZAÇÃO</h1>
+      <div class="sub2">Spaulding, RDC 15/2012<br>e Controle de Qualidade</div>
+    </div>
+    <div class="cover-num"><span>20</span></div>
+  </div>
+</div>
+
+<!-- PÁGINA 2 — OBJETIVOS -->
+<div class="page">
+  <div class="header ph"><span class="header-left">ENFERMAGEM · BLOCO B4 · AULA 20</span><span class="header-right">Extensivo ENARE</span></div>
+  <div class="pc">
+    <h2>Objetivos de Aprendizagem</h2>
+    <div class="obj-list">
+      <div class="obj-item">
+        <div class="obj-num">1</div>
+        <div class="obj-text">Aplicar a Classificação de Spaulding para determinar o nível de processamento exigido para artigos médico-hospitalares (críticos, semicríticos e não críticos).</div>
+      </div>
+      <div class="obj-item">
+        <div class="obj-num">2</div>
+        <div class="obj-text">Descrever os métodos de esterilização (autoclave a vapor, óxido de etileno, plasma de peróxido de hidrogênio) e os critérios de escolha conforme a RDC 15/2012 (ANVISA).</div>
+      </div>
+      <div class="obj-item">
+        <div class="obj-num">3</div>
+        <div class="obj-text">Interpretar os indicadores de controle de qualidade do processo (físicos, químicos e biológicos) e identificar condutas do enfermeiro diante de falhas no CME.</div>
+      </div>
+    </div>
+    <div class="prereq"><strong>Pré-requisito:</strong> Biossegurança e IRAS (Aula 17). Fundamentos de microbiologia hospitalar. NANDA-I 2024–2026 (Aula 16).</div>
+    <div class="meta-row">
+      <div class="meta-col"><span class="meta-label">Bloco</span><span class="meta-val">B4 — Enfermagem</span></div>
+      <div class="meta-col"><span class="meta-label">Aula</span><span class="meta-val">20 de 24</span></div>
+      <div class="meta-col"><span class="meta-label">Tema</span><span class="meta-val">ENF-CME &amp; Esterilização</span></div>
+      <div class="meta-col"><span class="meta-label">Nível Cognitivo</span><span class="meta-val">Ap → An</span></div>
+    </div>
+  </div>
+  <div class="footer pf"><span class="footer-left">Extensivo ENARE · by Residência PRO</span><span class="footer-right">02</span></div>
+</div>
+
+<!-- PÁGINA 3 — CLASSIFICAÇÃO DE SPAULDING -->
+<div class="page">
+  <div class="header ph"><span class="header-left">CONTEÚDO PRINCIPAL · AULA 20</span><span class="header-right">Extensivo ENARE</span></div>
+  <div class="pc">
+    <h2>Classificação de Spaulding — Nível de Processamento</h2>
+    <div class="sp-grid">
+      <div class="sp-card critico">
+        <div class="sp-label">Crítico</div>
+        <p><strong>Contato:</strong> tecidos estéreis, sistema vascular</p>
+        <p><strong>Risco:</strong> alto (penetra barreira estéril)</p>
+        <p><strong>Processo:</strong> <strong>Esterilização</strong></p>
+        <p><strong>Exemplos:</strong> bisturi, agulha, cateter IV, endoscópio rígido cirúrgico, implantes</p>
+      </div>
+      <div class="sp-card semi">
+        <div class="sp-label">Semicrítico</div>
+        <p><strong>Contato:</strong> mucosas íntegras ou pele não íntegra</p>
+        <p><strong>Risco:</strong> intermediário</p>
+        <p><strong>Processo:</strong> <strong>Desinfecção de alto nível (DAN)</strong></p>
+        <p><strong>Exemplos:</strong> endoscópio flexível, laringoscópio, espéculo vaginal, ambu</p>
+      </div>
+      <div class="sp-card nao">
+        <div class="sp-label">Não Crítico</div>
+        <p><strong>Contato:</strong> pele íntegra</p>
+        <p><strong>Risco:</strong> baixo</p>
+        <p><strong>Processo:</strong> <strong>Desinfecção de baixo/médio nível</strong></p>
+        <p><strong>Exemplos:</strong> esfigmomanômetro, termômetro axilar, cama, maca</p>
+      </div>
+    </div>
+
+    <h3>Níveis de Desinfecção</h3>
+    <table>
+      <thead><tr><th>Nível</th><th>Eficácia</th><th>Agentes</th><th>Uso Típico</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Alto (DAN)</strong></td><td>Elimina todos exceto esporos em alta carga</td><td>Glutaraldeído 2%, ácido peracético, OPA 0,55%</td><td>Semicríticos (endoscópios)</td></tr>
+        <tr><td><strong>Médio</strong></td><td>Elimina bactérias vegetativas, vírus, Mycobacterium</td><td>Álcool 70%, hipoclorito 1%</td><td>Superfícies, não críticos com sangue</td></tr>
+        <tr><td><strong>Baixo</strong></td><td>Bactérias vegetativas, vírus envelopados</td><td>Quaternário amônio, hipoclorito 0,1%</td><td>Não críticos de baixo risco</td></tr>
+      </tbody>
+    </table>
+
+    <div class="box warn"><strong>Atenção FGV:</strong> Endoscópio flexível = semicrítico → DAN (não esterilização rotineira). Endoscópio rígido usado em cavidade estéril = crítico → esterilização.</div>
+
+    <div class="box verde">NANDA-I: <strong>00004</strong> Risco de infecção — relacionado a processamento inadequado de artigos · <strong>00038</strong> Risco de trauma físico (manuseio de perfurocortantes sem EPI adequado).</div>
+  </div>
+  <div class="footer pf"><span class="footer-left">Extensivo ENARE · by Residência PRO</span><span class="footer-right">03</span></div>
+</div>
+
+<!-- PÁGINA 4 — MÉTODOS DE ESTERILIZAÇÃO -->
+<div class="page">
+  <div class="header ph"><span class="header-left">CONTEÚDO PRINCIPAL · AULA 20</span><span class="header-right">Extensivo ENARE</span></div>
+  <div class="pc">
+    <h2>Métodos de Esterilização — RDC 15/2012 (ANVISA)</h2>
+    <table>
+      <thead><tr><th>Método</th><th>Parâmetros</th><th>Vantagens</th><th>Limitações / Indicação</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Autoclave a vapor saturado sob pressão</strong><br>(método de referência)</td>
+          <td>134 °C / 3 min<br>ou 121 °C / 15 min<br>Pressão: 1 atm</td>
+          <td>Seguro, barato, rápido, sem resíduo tóxico; eficaz contra esporos</td>
+          <td>Artigos termossensíveis (plástico, ótica, eletrônico): CONTRAINDICADO</td>
+        </tr>
+        <tr>
+          <td><strong>Óxido de etileno (EtO)</strong></td>
+          <td>55 °C, 8–16 h<br>Concentração: 600–1200 mg/L</td>
+          <td>Penetra embalagens, artigos termossensíveis</td>
+          <td>Resíduo tóxico/carcinogênico; aeração 8–12 h obrigatória; câmara ventilada</td>
+        </tr>
+        <tr>
+          <td><strong>Plasma de peróxido de hidrogênio (H₂O₂)</strong></td>
+          <td>45–55 °C, 28–75 min<br>H₂O₂ 58–59%</td>
+          <td>Rápido, sem resíduo tóxico (H₂O + O₂), artigos termossensíveis</td>
+          <td>Artigos com lúmen longo/estreito: limitado. Celulose: CONTRAINDICADO</td>
+        </tr>
+        <tr>
+          <td><strong>Ácido peracético (imersão)</strong></td>
+          <td>35 °C, 12 min<br>0,2–0,35%</td>
+          <td>Endoscópios termoláveis, rápido</td>
+          <td>Artigo deve ser usado imediatamente (sem validade de estoque)</td>
+        </tr>
+        <tr>
+          <td><strong>Calor seco (estufa)</strong></td>
+          <td>170 °C / 1 h<br>ou 160 °C / 2 h</td>
+          <td>Pós, óleos, materiais que não toleram vapor</td>
+          <td>Lento; não indicado para artigos com cavidade ou plástico</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="box"><strong>Regra RDC 15/2012:</strong> Todo artigo classificado como crítico deve ser esterilizado antes do uso. A escolha do método segue a compatibilidade do material com o agente esterilizante. Autoclave = 1ª escolha quando compatível.</div>
+  </div>
+  <div class="footer pf"><span class="footer-left">Extensivo ENARE · by Residência PRO</span><span class="footer-right">04</span></div>
+</div>
+
+<!-- PÁGINA 5 — CONTROLE DE QUALIDADE + CME -->
+<div class="page">
+  <div class="header ph"><span class="header-left">CONTEÚDO PRINCIPAL · AULA 20</span><span class="header-right">Extensivo ENARE</span></div>
+  <div class="pc-sm">
+    <h2>Controle de Qualidade do Processo e Gestão do CME</h2>
+
+    <h3>Indicadores de Monitoração (RDC 15/2012)</h3>
+    <table>
+      <thead><tr><th>Tipo</th><th>Exemplos</th><th>Frequência</th><th>Ação em Falha</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Físico</strong></td><td>Tempo, temperatura, pressão (printout da autoclave)</td><td>A cada ciclo</td><td>Não liberar artigos; registrar ocorrência; acionar manutenção</td></tr>
+        <tr><td><strong>Químico</strong></td><td>Fita zebrada (muda de cor), integrador Classe 5/6, Bowie-Dick</td><td>A cada pacote (fita) / A cada ciclo (integrador)</td><td>Falha no integrador: reprocessar lote; isolar artigos</td></tr>
+        <tr><td><strong>Biológico</strong></td><td>Geobacillus stearothermophilus (vapor/plasma); Bacillus atrophaeus (EtO)</td><td>Semanal (mínimo); cargas implantes: a cada carga</td><td>Resultado + : recolher todo o lote; notificar CCIH; investigar falha</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Teste de Bowie-Dick</h3>
+    <div class="box">Avalia a <strong>eficiência da remoção de ar</strong> em autoclaves de pré-vácuo. Realizado <strong>diariamente</strong> no 1º ciclo, sem carga. Falha = manchas no papel-teste = câmara com ar residual → artigos não esterilizados.</div>
+
+    <div class="card-grid">
+      <div class="card">
+        <h4>Fluxo do CME</h4>
+        <ul>
+          <li><strong>Área suja:</strong> recepção + limpeza</li>
+          <li><strong>Área limpa:</strong> inspeção + embalagem</li>
+          <li><strong>Área estéril:</strong> esterilização + armazenamento</li>
+          <li>Fluxo <strong>unidirecional</strong> (sem retorno de artigo)</li>
+        </ul>
+      </div>
+      <div class="card verde">
+        <h4>Validade / Armazenamento</h4>
+        <ul>
+          <li>Validade <strong>por evento</strong> (embalagem íntegra = estéril)</li>
+          <li>Temperatura: 18–22 °C; UR: 35–50%</li>
+          <li>Rastreabilidade: etiqueta com lote, data, operador, método</li>
+          <li>Estante perfurada, longe do chão e paredes</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="box warn"><strong>NANDA-I:</strong> 00004 Risco de infecção (falha no CME) · 00188 Comportamento de saúde propenso a risco (desrespeito a protocolos). Enfermeiro do CME: notificar CCIH, rastrear pacientes expostos a artigo potencialmente não estéril.</div>
+  </div>
+  <div class="footer pf"><span class="footer-left">Extensivo ENARE · by Residência PRO</span><span class="footer-right">05</span></div>
+</div>
+
+<!-- PÁGINA 6 — QUESTÃO 01 (Memorização) -->
+<div class="page">
+  <div class="header ph"><span class="header-left">FIXAÇÃO · AULA 20</span><span class="header-right">Extensivo ENARE</span></div>
+  <div class="pc">
+    <div class="q-header"><span>QUESTÃO 01 DE 03 · B4 CME — SPAULDING · MEMORIZAÇÃO</span></div>
+    <div class="q-body">
+      <p class="q-stem">Um hospital adquire novos endoscópios flexíveis utilizados para colonoscopia diagnóstica. A enfermeira do CME é questionada sobre qual o processamento mínimo obrigatório entre cada paciente. Conforme a Classificação de Spaulding e a RDC 15/2012, qual é a conduta correta?</p>
+      <div class="q-opts">
+        <div class="q-opt"><span class="ol">A</span><span>Esterilização por autoclave a vapor 134 °C, pois o endoscópio entra em contato com mucosa do cólon, classificando-o como artigo crítico.</span></div>
+        <div class="q-opt"><span class="ol">B</span><span>Desinfecção de médio nível com álcool 70%, suficiente pois o endoscópio toca apenas mucosa íntegra e não penetra tecido estéril.</span></div>
+        <div class="q-opt correta"><span class="ol">C</span><span><strong>Desinfecção de alto nível (DAN) com glutaraldeído 2% ou OPA 0,55%, pois o endoscópio flexível é artigo semicrítico (contato com mucosa) e não tolera autoclave.</strong> <span class="badge">CORRETA</span></span></div>
+        <div class="q-opt"><span class="ol">D</span><span>Esterilização por plasma de peróxido de hidrogênio, obrigatória para todos os endoscópios, independentemente do tipo de procedimento realizado.</span></div>
+      </div>
+    </div>
+    <div class="gabarito">
+      <div class="gt">GABARITO COMENTADO — C</div>
+      Endoscópio flexível diagnóstico (colonoscópio, gastroscópio) contata <strong>mucosa íntegra</strong> → artigo <strong>semicrítico</strong> → exige <strong>DAN</strong>, não esterilização. Autoclave (A) danifica o endoscópio e é desnecessário para semicrítico. Álcool 70% (B) é desinfecção de médio nível — insuficiente. Plasma de H₂O₂ (D) pode ser usado mas não é obrigatório nem primeira escolha para rotina de DAN em endoscópio. Regra: semicrítico → DAN; crítico (ex.: bisturi, agulha) → esterilização.
+    </div>
+  </div>
+  <div class="footer pf"><span class="footer-left">Extensivo ENARE · by Residência PRO</span><span class="footer-right">06</span></div>
+</div>
+
+<!-- PÁGINA 7 — QUESTÃO 02 (Aplicação) -->
+<div class="page">
+  <div class="header ph"><span class="header-left">FIXAÇÃO · AULA 20</span><span class="header-right">Extensivo ENARE</span></div>
+  <div class="pc">
+    <div class="q-header"><span>QUESTÃO 02 DE 03 · B4 CME — CONTROLE DE QUALIDADE · APLICAÇÃO</span></div>
+    <div class="q-body">
+      <p class="q-stem">Durante a rotina do CME de um hospital, o técnico de enfermagem relata que o indicador biológico utilizado no ciclo de autoclave da manhã apresentou resultado positivo para crescimento de Geobacillus stearothermophilus. Os artigos do respectivo lote já foram distribuídos às unidades. Qual deve ser a conduta imediata do enfermeiro responsável?</p>
+      <div class="q-opts">
+        <div class="q-opt"><span class="ol">A</span><span>Repetir o teste biológico no próximo ciclo; se negativo, confirmar que o ciclo anterior foi válido e não há necessidade de recolhimento.</span></div>
+        <div class="q-opt correta"><span class="ol">C</span><span><strong>Recolher imediatamente todos os artigos do lote positivo, notificar a CCIH, rastrear pacientes que possam ter sido expostos e investigar a causa da falha no processo.</strong> <span class="badge">CORRETA</span></span></div>
+        <div class="q-opt"><span class="ol">B</span><span>Isolar o lote ainda no CME, mas aguardar confirmação com segundo teste biológico antes de comunicar à chefia, para evitar alarme desnecessário.</span></div>
+        <div class="q-opt"><span class="ol">D</span><span>Liberar os artigos normalmente, pois o indicador biológico tem alta taxa de falso-positivo e o indicador químico (fita zebrada) havia mudado de cor corretamente.</span></div>
+      </div>
+    </div>
+    <div class="gabarito">
+      <div class="gt">GABARITO COMENTADO — C</div>
+      Indicador biológico positivo = <strong>falha confirmada de esterilização</strong>. RDC 15/2012 e protocolos de CCIH determinam: (1) <strong>recolher lote</strong> imediatamente; (2) <strong>notificar CCIH</strong>; (3) <strong>rastrear pacientes</strong> expostos; (4) <strong>investigar causa</strong> (sobrecarga, falha mecânica, embalagem inadequada). A → repetição posterior é insuficiente — artigos contaminados já circularam. B → comunicação deve ser imediata, não aguardada. D → indicador químico positivo (fita zebrada) indica apenas que o pacote atingiu temperatura, não esterilidade; não substitui o biológico.
+    </div>
+  </div>
+  <div class="footer pf"><span class="footer-left">Extensivo ENARE · by Residência PRO</span><span class="footer-right">07</span></div>
+</div>
+
+<!-- PÁGINA 8 — QUESTÃO 03 (Âncora) -->
+<div class="page">
+  <div class="header ph"><span class="header-left">FIXAÇÃO · AULA 20</span><span class="header-right">Extensivo ENARE</span></div>
+  <div class="pc">
+    <div class="q-header"><span>QUESTÃO 03 DE 03 · B4 CME — ESCOLHA DO MÉTODO · ANÁLISE (AN)</span></div>
+    <div class="q-body">
+      <p class="q-stem">O CME de um hospital necessita esterilizar os seguintes artigos: (I) instrumental cirúrgico metálico de aço inoxidável; (II) cateter de poliuretano com lúmen fino de 40 cm; (III) lâmina de laringoscópio com fonte de luz embutida (plástico e metal); (IV) caixa de petri de vidro com substâncias oleosas. Considerando os métodos disponíveis (autoclave, EtO, plasma H₂O₂ e calor seco), qual a associação correta de artigo e método?</p>
+      <div class="q-opts">
+        <div class="q-opt"><span class="ol">A</span><span>I-plasma H₂O₂; II-autoclave; III-autoclave; IV-EtO.</span></div>
+        <div class="q-opt"><span class="ol">B</span><span>I-autoclave; II-autoclave; III-calor seco; IV-plasma H₂O₂.</span></div>
+        <div class="q-opt correta"><span class="ol">C</span><span><strong>I-autoclave; II-plasma H₂O₂ ou EtO (lúmen fino, termossensível); III-EtO ou plasma H₂O₂ (termossensível); IV-calor seco (óleo/vidro, incompatível com vapor).</strong> <span class="badge">CORRETA</span></span></div>
+        <div class="q-opt"><span class="ol">D</span><span>I-EtO; II-calor seco; III-autoclave; IV-plasma H₂O₂.</span></div>
+      </div>
+    </div>
+    <div class="gabarito">
+      <div class="gt">GABARITO COMENTADO — C</div>
+      <strong>I</strong> — Metal inox tolera vapor → <strong>autoclave</strong> (1ª escolha, mais barato e seguro). <strong>II</strong> — Poliuretano termossensível + lúmen fino → plasma H₂O₂ (lúmen ≤ comprimento máximo permitido) ou EtO. Atenção: plasma H₂O₂ tem limitação para lúmens muito longos/estreitos; checar especificação. <strong>III</strong> — Plástico + eletrônico = termossensível → EtO ou plasma; autoclave destruiria o componente eletrônico. <strong>IV</strong> — Óleo/vidro não tolera vapor (explosão de partículas) e não é compatível com plasma → <strong>calor seco</strong> (estufa). EtO não penetra óleos adequadamente.
+    </div>
+  </div>
+  <div class="footer pf"><span class="footer-left">Extensivo ENARE · by Residência PRO</span><span class="footer-right">08</span></div>
+</div>
+
+<!-- PÁGINA 9 — RECUPERAÇÃO ATIVA -->
+<div class="page">
+  <div class="header ph"><span class="header-left">RECUPERAÇÃO ATIVA · AULA 20</span><span class="header-right">Extensivo ENARE</span></div>
+  <div class="pc">
+    <h2>Se Esquecer Tudo, Lembre Disto</h2>
+    <div class="rec-list">
+      <div class="rec-item"><span class="rec-star">★</span><span class="rec-text"><strong>Spaulding:</strong> crítico (tecido estéril) → esterilização · semicrítico (mucosa) → DAN · não crítico (pele íntegra) → desinfecção baixo/médio. Endoscópio flexível = semicrítico → DAN.</span></div>
+      <div class="rec-item"><span class="rec-star">★</span><span class="rec-text"><strong>Autoclave:</strong> método de referência — 134 °C/3 min ou 121 °C/15 min. Termossensíveis: NÃO usar autoclave → EtO (tóxico, aeração obrigatória) ou plasma H₂O₂ (rápido, sem toxicidade).</span></div>
+      <div class="rec-item"><span class="rec-star">★</span><span class="rec-text"><strong>Calor seco (estufa):</strong> apenas para pós, óleos, vidro. 170 °C/1 h ou 160 °C/2 h. Plasma H₂O₂: celulose = CONTRAINDICADA.</span></div>
+      <div class="rec-item"><span class="rec-star">★</span><span class="rec-text"><strong>Indicador biológico positivo:</strong> recolher lote + notificar CCIH + rastrear pacientes + investigar falha. Não aguardar confirmação para agir.</span></div>
+      <div class="rec-item"><span class="rec-star">★</span><span class="rec-text"><strong>Bowie-Dick:</strong> teste diário no 1º ciclo da autoclave de pré-vácuo — avalia remoção de ar. Falha = reprocessar.</span></div>
+      <div class="rec-item"><span class="rec-star">★</span><span class="rec-text"><strong>Validade por evento:</strong> artigo estéril enquanto embalagem íntegra. CME = fluxo unidirecional: suja → limpa → estéril.</span></div>
+    </div>
+    <div class="tso">
+      <h3>TESTE-SE SEM OLHAR</h3>
+      <div class="tso-list">
+        <div class="tso-item"><span class="tso-num">01 —</span><span class="tso-text">Qual artigo exige DAN (não esterilização) conforme Spaulding, e por quê?</span></div>
+        <div class="tso-item"><span class="tso-num">02 —</span><span class="tso-text">Por que o óxido de etileno exige aeração obrigatória e quanto tempo dura?</span></div>
+        <div class="tso-item"><span class="tso-num">03 —</span><span class="tso-text">Qual microrganismo é usado no indicador biológico da autoclave e o que seu crescimento indica?</span></div>
+        <div class="tso-item"><span class="tso-num">04 —</span><span class="tso-text">Cite duas contraindicações do plasma de peróxido de hidrogênio.</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="footer pf"><span class="footer-left">Extensivo ENARE · by Residência PRO</span><span class="footer-right">09</span></div>
+</div>
+
+<!-- PÁGINA 10 — REFERÊNCIAS -->
+<div class="page">
+  <div class="header ph"><span class="header-left">REFERÊNCIAS · AULA 20</span><span class="header-right">Extensivo ENARE</span></div>
+  <div class="pc">
+    <h2>Referências — Bloco B4 · Aula 20</h2>
+    <p style="margin-bottom:3mm;">BRASIL. Agência Nacional de Vigilância Sanitária (ANVISA). <em>RDC nº 15, de 15 de março de 2012</em>: dispõe sobre requisitos de boas práticas para o processamento de produtos para saúde. Brasília: ANVISA, 2012.</p>
+    <p style="margin-bottom:3mm;">BRASIL. Agência Nacional de Vigilância Sanitária (ANVISA). <em>Manual de Processamento de Artigos e Superfícies em Estabelecimentos de Saúde</em>. 2. ed. Brasília: ANVISA, 2001.</p>
+    <p style="margin-bottom:3mm;">SPAULDING, E.H. Chemical disinfection of medical and surgical materials. In: LAWRENCE, C.A.; BLOCK, S.S. (Eds.). <em>Disinfection, Sterilization and Preservation</em>. Philadelphia: Lea &amp; Febiger, 1968. p. 517–531.</p>
+    <p style="margin-bottom:3mm;">RUTALA, W.A.; WEBER, D.J.; HICPAC. <em>Guideline for Disinfection and Sterilization in Healthcare Facilities</em>. Atlanta: CDC, 2008 (updated 2019).</p>
+    <p style="margin-bottom:3mm;">HERDMAN, T.H.; KAMITSURU, S.; LOPES, C.T. (Eds.). <em>NANDA International — Diagnósticos de Enfermagem 2024–2026</em>. 13. ed. Porto Alegre: Artmed, 2024.</p>
+    <div style="margin-top:8mm;border:1px dashed #ccc;border-radius:2mm;padding:4mm;color:#aaa;font-size:8pt;text-align:center;font-style:italic;">Espaço para anotações</div>
+  </div>
+  <div class="footer pf"><span class="footer-left">Extensivo ENARE · by Residência PRO</span><span class="footer-right">10</span></div>
+</div>
+
+</body>
+</html>

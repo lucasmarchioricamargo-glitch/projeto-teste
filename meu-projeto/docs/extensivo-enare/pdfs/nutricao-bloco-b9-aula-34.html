@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Nutrição Bloco B9 — Aula 34 | NUT-FARM: Interações Droga-Nutriente</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --creme: #F6F4ED;
+    --verde: #1F5C23;
+    --accent: #C6D834;
+    --dark: #1a1a1a;
+    --muted: #555;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #d0d0d0; font-family: 'Bricolage Grotesque', sans-serif; }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    background: var(--creme);
+    margin: 10mm auto;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── CAPA ── */
+  .cover { background: var(--verde); color: var(--creme); }
+  .cover .top-bar {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10mm 12mm 0;
+  }
+  .cover .brand-text { display: flex; flex-direction: column; }
+  .cover .brand-name {
+    font-family: 'Playfair Display', serif; font-style: italic;
+    font-size: 13pt; color: var(--creme); letter-spacing: 0.02em;
+  }
+  .cover .brand-tag {
+    font-family: 'Space Grotesk', sans-serif; font-weight: 300;
+    font-size: 7pt; color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase;
+    margin-top: 1mm;
+  }
+  .cover .hero {
+    flex: 1; display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 8mm 14mm 6mm;
+    text-align: center;
+  }
+  .cover .bloco-tag {
+    font-family: 'Space Grotesk', sans-serif; font-weight: 300;
+    font-size: 8pt; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 5mm;
+  }
+  .cover .aula-num {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 72pt;
+    line-height: 1; color: var(--creme); opacity: 0.12;
+    position: absolute; right: 12mm; top: 38mm;
+  }
+  .cover .modulo-badge {
+    background: var(--accent); color: var(--verde);
+    font-family: 'Barlow Condensed', sans-serif; font-size: 9pt;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    padding: 1.5mm 5mm; border-radius: 2mm; margin-bottom: 5mm;
+    display: inline-block;
+  }
+  .cover h1 {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 30pt;
+    line-height: 1.05; color: var(--creme); margin-bottom: 4mm;
+    text-transform: uppercase; letter-spacing: 0.02em;
+  }
+  .cover .subtitle {
+    font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300;
+    font-size: 11pt; color: rgba(246,244,237,0.72); margin-bottom: 8mm;
+    line-height: 1.4;
+  }
+  .cover .tags {
+    display: flex; gap: 3mm; flex-wrap: wrap; justify-content: center;
+  }
+  .cover .tag {
+    border: 1px solid rgba(198,216,52,0.5); color: var(--accent);
+    font-family: 'Space Grotesk', sans-serif; font-weight: 300;
+    font-size: 7.5pt; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 1mm 3.5mm; border-radius: 1.5mm;
+  }
+  .cover .bottom-bar {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 5mm 12mm 8mm;
+    border-top: 1px solid rgba(198,216,52,0.25);
+  }
+  .cover .series-info {
+    font-family: 'Space Grotesk', sans-serif; font-weight: 300;
+    font-size: 7.5pt; color: rgba(246,244,237,0.55); letter-spacing: 0.1em;
+  }
+  .cover .aula-label {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 11pt;
+    color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase;
+  }
+
+  /* ── PÁGINAS INTERNAS ── */
+  .page-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 7mm 12mm 5mm;
+    border-bottom: 2px solid var(--verde);
+  }
+  .page-header .logo-area { display: flex; align-items: center; gap: 3mm; }
+  .page-header .brand-name-sm {
+    font-family: 'Playfair Display', serif; font-style: italic;
+    font-size: 10pt; color: var(--verde);
+  }
+  .page-header .page-meta {
+    font-family: 'Space Grotesk', sans-serif; font-weight: 300;
+    font-size: 7pt; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .page-content { flex: 1; padding: 6mm 12mm 5mm; }
+  .page-footer {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 3mm 12mm 5mm;
+    border-top: 1px solid rgba(31,92,35,0.2);
+  }
+  .page-footer .footer-text {
+    font-family: 'Space Grotesk', sans-serif; font-weight: 300;
+    font-size: 6.5pt; color: var(--muted); letter-spacing: 0.08em;
+  }
+  .page-footer .page-num {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 9pt;
+    color: var(--verde); letter-spacing: 0.1em;
+  }
+
+  /* ── TIPOGRAFIA INTERNA ── */
+  .section-title {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 15pt;
+    color: var(--verde); text-transform: uppercase; letter-spacing: 0.05em;
+    margin-bottom: 4mm; padding-bottom: 2mm;
+    border-bottom: 2px solid var(--accent);
+  }
+  .subsection {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 11pt;
+    color: var(--verde); text-transform: uppercase; letter-spacing: 0.05em;
+    margin: 3.5mm 0 2mm;
+  }
+  p, li {
+    font-size: 8.5pt; line-height: 1.55; color: var(--dark);
+    font-family: 'Bricolage Grotesque', sans-serif; font-weight: 400;
+  }
+  ul, ol { padding-left: 4mm; margin-bottom: 2mm; }
+  li { margin-bottom: 1mm; }
+  strong { font-weight: 600; }
+
+  /* ── TABELAS ── */
+  table { width: 100%; border-collapse: collapse; margin: 2.5mm 0; font-size: 7.8pt; }
+  th {
+    background: var(--verde); color: var(--creme);
+    font-family: 'Barlow Condensed', sans-serif; font-size: 8.5pt;
+    letter-spacing: 0.05em; text-transform: uppercase;
+    padding: 2mm 3mm; text-align: left;
+  }
+  td { padding: 1.8mm 3mm; border-bottom: 1px solid rgba(31,92,35,0.12); vertical-align: top; }
+  tr:nth-child(even) td { background: rgba(198,216,52,0.08); }
+  tr:last-child td { border-bottom: none; }
+
+  /* ── DESTAQUES ── */
+  .highlight-box {
+    background: rgba(198,216,52,0.18); border-left: 3px solid var(--accent);
+    padding: 3mm 4mm; margin: 3mm 0; border-radius: 0 2mm 2mm 0;
+  }
+  .alert-box {
+    background: rgba(31,92,35,0.07); border-left: 3px solid var(--verde);
+    padding: 3mm 4mm; margin: 3mm 0; border-radius: 0 2mm 2mm 0;
+  }
+  .anchor-box {
+    background: var(--verde); color: var(--creme);
+    padding: 3mm 4mm; margin: 3mm 0; border-radius: 2mm;
+  }
+  .anchor-box p, .anchor-box li { color: var(--creme); font-size: 8pt; }
+  .anchor-box strong { color: var(--accent); }
+
+  /* ── QUESTÕES ── */
+  .q-header {
+    display: flex; align-items: baseline; gap: 3mm; margin-bottom: 3mm;
+  }
+  .q-badge {
+    background: var(--verde); color: var(--creme);
+    font-family: 'Barlow Condensed', sans-serif; font-size: 10pt;
+    letter-spacing: 0.1em; padding: 1mm 3.5mm; border-radius: 1.5mm;
+    white-space: nowrap;
+  }
+  .q-type {
+    font-family: 'Space Grotesk', sans-serif; font-weight: 300;
+    font-size: 7pt; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .q-stem {
+    font-size: 8.5pt; line-height: 1.55; color: var(--dark);
+    margin-bottom: 3.5mm; font-family: 'Bricolage Grotesque', sans-serif;
+  }
+  .q-context {
+    background: rgba(31,92,35,0.06); border-radius: 2mm;
+    padding: 3mm 4mm; margin-bottom: 3mm;
+    font-size: 8pt; line-height: 1.5; color: var(--dark);
+    font-family: 'Bricolage Grotesque', sans-serif;
+  }
+  .alternatives { list-style: none; padding: 0; }
+  .alternatives li {
+    display: flex; gap: 2.5mm; align-items: flex-start;
+    padding: 2mm 0; border-bottom: 1px solid rgba(31,92,35,0.08);
+    font-size: 8.5pt; line-height: 1.45;
+  }
+  .alternatives li:last-child { border-bottom: none; }
+  .alt-letter {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 10pt;
+    color: var(--verde); font-weight: 800; min-width: 5mm;
+  }
+  .assertions { list-style: none; padding: 0; margin-bottom: 3mm; }
+  .assertions li {
+    display: flex; gap: 2.5mm; align-items: flex-start;
+    padding: 2mm 0; border-bottom: 1px solid rgba(31,92,35,0.08);
+    font-size: 8.5pt; line-height: 1.45;
+  }
+  .assert-num {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 10pt;
+    color: var(--verde); min-width: 5mm;
+  }
+
+  /* ── GABARITO ── */
+  .gab-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 3mm; margin: 3mm 0;
+  }
+  .gab-card {
+    border: 1.5px solid var(--verde); border-radius: 2mm;
+    padding: 3mm 4mm;
+  }
+  .gab-card .gab-q {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 9pt;
+    color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em;
+  }
+  .gab-card .gab-resp {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 22pt;
+    color: var(--verde); line-height: 1;
+  }
+  .gab-card .gab-tema {
+    font-size: 7pt; color: var(--muted);
+    font-family: 'Bricolage Grotesque', sans-serif; margin-top: 1mm;
+  }
+  .gab-justificativa { margin: 2.5mm 0; padding: 2.5mm 3.5mm; }
+  .gab-justificativa .gab-title {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 9.5pt;
+    color: var(--verde); text-transform: uppercase; margin-bottom: 1.5mm;
+    letter-spacing: 0.05em;
+  }
+  .correct { color: #1F5C23; font-weight: 600; }
+  .wrong { color: #b0392e; text-decoration: line-through; }
+
+  /* ── SÍNTESE ── */
+  .sintese-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; margin: 3mm 0;
+  }
+  .sintese-card {
+    border: 1.5px solid rgba(31,92,35,0.3); border-radius: 2mm; padding: 3mm 4mm;
+  }
+  .sintese-card .s-title {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 9pt;
+    color: var(--verde); text-transform: uppercase; letter-spacing: 0.08em;
+    margin-bottom: 2mm; padding-bottom: 1mm;
+    border-bottom: 1px solid var(--accent);
+  }
+  .sintese-card p, .sintese-card li { font-size: 7.8pt; line-height: 1.5; }
+
+  /* ── PRINT ── */
+  @media print {
+    body { background: white; }
+    .page { margin: 0; page-break-after: always; }
+    .page:last-child { page-break-after: auto; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════
+     PÁGINA 1 — CAPA
+════════════════════════════════════════════ -->
+<div class="page cover">
+  <div class="top-bar">
+    <div class="brand-text">
+      <span class="brand-name">Extensivo ENARE</span>
+      <span class="brand-tag">Residências em Saúde · 2026</span>
+    </div>
+    <svg width="44" height="50" viewBox="0 0 44 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="22,2 41,13 41,37 22,48 3,37 3,13" fill="#F6F4ED" stroke="#C6D834" stroke-width="2"/>
+      <circle cx="22" cy="25" r="9" fill="#1F5C23"/>
+    </svg>
+  </div>
+
+  <div class="hero">
+    <div class="bloco-tag">Bloco B9 · Nutrição · Aula 34</div>
+    <div class="aula-num">34</div>
+    <div class="modulo-badge">NUT-FARM</div>
+    <h1>Interações<br>Droga-Nutriente</h1>
+    <p class="subtitle">Mecanismos · Varfarina + Vit. K · IMAO + Tiramina<br>Antibióticos · Isoniazida · Grapefruit · Condutas Clínicas</p>
+    <div class="tags">
+      <span class="tag">Varfarina / Vit. K</span>
+      <span class="tag">IMAO / Tiramina</span>
+      <span class="tag">Tetraciclina</span>
+      <span class="tag">Isoniazida / B6</span>
+      <span class="tag">CYP3A4</span>
+      <span class="tag">Grapefruit</span>
+    </div>
+  </div>
+
+  <div class="bottom-bar">
+    <span class="series-info">Extensivo ENARE 2026 · Material de Apoio</span>
+    <span class="aula-label">Aula 34 / 39</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     PÁGINA 2 — MECANISMOS DE INTERAÇÃO DROGA-NUTRIENTE
+════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="25" viewBox="0 0 44 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="22,2 41,13 41,37 22,48 3,37 3,13" fill="#1F5C23" stroke="#C6D834" stroke-width="2.5"/>
+        <circle cx="22" cy="25" r="9" fill="#F6F4ED"/>
+      </svg>
+      <span class="brand-name-sm">Extensivo ENARE</span>
+    </div>
+    <span class="page-meta">NUT-FARM · Aula 34 · Bloco B9</span>
+  </div>
+
+  <div class="page-content">
+    <div class="section-title">Mecanismos de Interação Droga-Nutriente</div>
+
+    <div class="subsection">Direções da Interação</div>
+    <table>
+      <tr><th>Direção</th><th>O que ocorre</th><th>Consequência clínica</th></tr>
+      <tr>
+        <td><strong>Fármaco afeta nutriente</strong></td>
+        <td>Altera absorção, metabolismo ou excreção do nutriente</td>
+        <td>Deficiências nutricionais induzidas por medicamentos</td>
+      </tr>
+      <tr>
+        <td><strong>Nutriente afeta fármaco</strong></td>
+        <td>Altera absorção, distribuição, metabolismo ou excreção do fármaco</td>
+        <td>Falha terapêutica ou toxicidade aumentada</td>
+      </tr>
+    </table>
+
+    <div class="subsection">Mecanismos Principais</div>
+    <table>
+      <tr><th>Mecanismo</th><th>Exemplo</th><th>Consequência</th></tr>
+      <tr>
+        <td><strong>Quelação</strong></td>
+        <td>Tetraciclina + Ca²⁺/Mg²⁺/Fe²⁺/Zn²⁺</td>
+        <td>↓ absorção do antibiótico</td>
+      </tr>
+      <tr>
+        <td><strong>Antagonismo farmacodinâmico</strong></td>
+        <td>Varfarina + Vitamina K</td>
+        <td>↓ efeito anticoagulante</td>
+      </tr>
+      <tr>
+        <td><strong>Inibição enzimática (CYP)</strong></td>
+        <td>Grapefruit + estatinas (CYP3A4)</td>
+        <td>↑ biodisponibilidade → toxicidade</td>
+      </tr>
+      <tr>
+        <td><strong>Antagonismo de cofator</strong></td>
+        <td>Isoniazida + Vitamina B6</td>
+        <td>Deficiência de piridoxina → neuropatia</td>
+      </tr>
+      <tr>
+        <td><strong>Substrato enzimático acumulado</strong></td>
+        <td>IMAO + tiramina alimentar</td>
+        <td>Crise hipertensiva</td>
+      </tr>
+      <tr>
+        <td><strong>Efeito na motilidade/pH gástrico</strong></td>
+        <td>Antiácidos + diversas drogas</td>
+        <td>↓ ou ↑ absorção variável</td>
+      </tr>
+      <tr>
+        <td><strong>Adsorção por fibras</strong></td>
+        <td>Dieta rica em fibras + digoxina/levotiroxina</td>
+        <td>↓ absorção do fármaco</td>
+      </tr>
+    </table>
+
+    <div class="subsection">Fase Farmacocinética Afetada</div>
+    <ul>
+      <li><strong>Absorção:</strong> maioria das interações ocorre nesta fase — jejum vs. alimentado, pH gástrico, quelação.</li>
+      <li><strong>Distribuição:</strong> competição por proteínas plasmáticas (albumina) — relevante em hipoalbuminemia (desnutrição).</li>
+      <li><strong>Metabolismo:</strong> indução ou inibição de enzimas do citocromo P450 (CYP1A2, CYP2C9, CYP3A4).</li>
+      <li><strong>Excreção:</strong> pH urinário altera excreção renal de fármacos ionizáveis; diuréticos afetam eletrólitos.</li>
+    </ul>
+
+    <div class="highlight-box">
+      <p><strong>Regra prática para a prova:</strong> A maioria das interações clinicamente relevantes ocorre na fase de <strong>absorção</strong> (quelação, pH, alimentos). As interações metabólicas (CYP) são as mais graves por potencial de toxicidade ou falha terapêutica. Deficiências nutricionais induzidas por medicamentos são frequentemente subdiagnosticadas.</p>
+    </div>
+
+    <div class="subsection">Fatores de Risco para Interações Relevantes</div>
+    <ul>
+      <li>Polifarmácia (uso de ≥5 medicamentos) — idosos são o grupo de maior risco.</li>
+      <li>Estado nutricional comprometido: desnutrição reduz albumina → ↑ fração livre de fármacos.</li>
+      <li>Doenças que alteram motilidade GI, pH gástrico ou absorção intestinal.</li>
+      <li>Uso prolongado de medicamentos (ex.: anticonvulsivantes, tuberculostáticos, antiretrovirais).</li>
+    </ul>
+  </div>
+
+  <div class="page-footer">
+    <span class="footer-text">Extensivo ENARE 2026 · Bloco B9 Nutrição</span>
+    <span class="page-num">2 / 10</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     PÁGINA 3 — VARFARINA + VIT. K E IMAO + TIRAMINA
+════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="25" viewBox="0 0 44 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="22,2 41,13 41,37 22,48 3,37 3,13" fill="#1F5C23" stroke="#C6D834" stroke-width="2.5"/>
+        <circle cx="22" cy="25" r="9" fill="#F6F4ED"/>
+      </svg>
+      <span class="brand-name-sm">Extensivo ENARE</span>
+    </div>
+    <span class="page-meta">NUT-FARM · Aula 34 · Bloco B9</span>
+  </div>
+
+  <div class="page-content">
+    <div class="section-title">Varfarina + Vitamina K e IMAO + Tiramina</div>
+
+    <div class="subsection">Varfarina + Vitamina K — Interação Clássica</div>
+    <table>
+      <tr><th>Aspecto</th><th>Detalhe</th></tr>
+      <tr><td>Mecanismo</td><td>Varfarina antagoniza a vitamina K na síntese dos fatores II, VII, IX, X (via hepática)</td></tr>
+      <tr><td>Efeito da Vit. K alimentar</td><td><strong>REDUZ</strong> o efeito anticoagulante (vitamina K "concorre" com a varfarina) → ↑ risco trombótico</td></tr>
+      <tr><td>Alimentos ricos em Vit. K</td><td>Couve, espinafre, brócolis, agrião, repolho, alface, óleo de canola/soja</td></tr>
+      <tr><td>Conduta CORRETA</td><td><strong>Manter consumo CONSTANTE</strong> — não eliminar, não aumentar abruptamente</td></tr>
+      <tr><td>Erro comum na conduta</td><td>Eliminar totalmente as hortaliças → desestabiliza o INR</td></tr>
+      <tr><td>Cranberry (oxicoco)</td><td>Pode <em>potencializar</em> a varfarina → ↑ risco de sangramento (mecanismo: inibição CYP2C9)</td></tr>
+    </table>
+
+    <div class="alert-box">
+      <p><strong>Ponto de prova:</strong> A vitamina K <em>reduz</em> (não potencializa) o efeito da varfarina. A conduta é manter o consumo habitual e constante, pois variações bruscas desestabilizam o INR — não eliminar as hortaliças.</p>
+    </div>
+
+    <div class="subsection">IMAO + Tiramina — Crise Hipertensiva</div>
+    <table>
+      <tr><th>Aspecto</th><th>Detalhe</th></tr>
+      <tr><td>Fármacos IMAO</td><td>Fenelzina, tranilcipromina, isocarboxazida; selegilina em altas doses (patch transdérmico)</td></tr>
+      <tr><td>Mecanismo normal</td><td>MAO intestinal degrada tiramina alimentar, impedindo absorção sistêmica</td></tr>
+      <tr><td>Com IMAO</td><td>MAO inibida → tiramina absorvida → libera norepinefrina → <strong>crise hipertensiva grave</strong></td></tr>
+      <tr><td>Manifestações</td><td>Cefaleia occipital súbita, palpitações, diaforese, rubor, hipertensão grave (emergência)</td></tr>
+      <tr><td>Conduta nutricional</td><td><strong>RESTRIÇÃO TOTAL</strong> de alimentos ricos em tiramina — não "reduzir", eliminar</td></tr>
+    </table>
+
+    <div class="subsection">Alimentos Ricos em Tiramina — Restrição Obrigatória com IMAO</div>
+    <table>
+      <tr><th>Categoria</th><th>Exemplos</th></tr>
+      <tr><td>Queijos maturados</td><td>Parmesão, gorgonzola, brie, camembert, cheddar, emmental</td></tr>
+      <tr><td>Bebidas fermentadas</td><td>Vinho tinto, cervejas artesanais fermentadas, chope</td></tr>
+      <tr><td>Carnes/proteínas</td><td>Embutidos (salame, pepperoni), carne defumada, peixe defumado/seco, vísceras</td></tr>
+      <tr><td>Outros fermentados</td><td>Molho de soja, missô, tempeh, tofu fermentado, chucrute, levedo de cerveja</td></tr>
+      <tr><td>Frutas</td><td>Banana excessivamente madura, abacate, figos enlatados</td></tr>
+    </table>
+
+    <div class="highlight-box">
+      <p><strong>Distinção crítica:</strong> Com IMAO, a restrição de tiramina é <strong>TOTAL</strong> — qualquer quantidade pode desencadear crise. Com varfarina, a vitamina K não é proibida — o consumo deve ser <strong>constante</strong>. Confundir esses dois conceitos é armadilha frequente na FGV.</p>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span class="footer-text">Extensivo ENARE 2026 · Bloco B9 Nutrição</span>
+    <span class="page-num">3 / 10</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     PÁGINA 4 — ANTIBIÓTICOS, DIURÉTICOS E ANTICONVULSIVANTES
+════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="25" viewBox="0 0 44 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="22,2 41,13 41,37 22,48 3,37 3,13" fill="#1F5C23" stroke="#C6D834" stroke-width="2.5"/>
+        <circle cx="22" cy="25" r="9" fill="#F6F4ED"/>
+      </svg>
+      <span class="brand-name-sm">Extensivo ENARE</span>
+    </div>
+    <span class="page-meta">NUT-FARM · Aula 34 · Bloco B9</span>
+  </div>
+
+  <div class="page-content">
+    <div class="section-title">Antibióticos, Diuréticos e Anticonvulsivantes</div>
+
+    <div class="subsection">Tetraciclinas e Fluorquinolonas + Minerais</div>
+    <table>
+      <tr><th>Fármaco</th><th>Nutriente/Alimento</th><th>Mecanismo</th><th>Conduta</th></tr>
+      <tr>
+        <td>Tetraciclina, doxiciclina</td>
+        <td>Ca²⁺, Mg²⁺, Fe²⁺, Zn²⁺ (laticínios, antiácidos)</td>
+        <td>Quelação → ↓ absorção até 50–80%</td>
+        <td>Ingerir 1h antes ou 2h após refeições/laticínios</td>
+      </tr>
+      <tr>
+        <td>Ciprofloxacino, levofloxacino</td>
+        <td>Ca²⁺, Mg²⁺, Al³⁺ (laticínios, antiácidos)</td>
+        <td>Quelação → ↓ absorção</td>
+        <td>Evitar laticínios e antiácidos 2h antes/depois</td>
+      </tr>
+      <tr>
+        <td>Ampicilina, amoxicilina</td>
+        <td>Alimentos em geral</td>
+        <td>↓ absorção em 30–50% com alimentos</td>
+        <td>Amoxicilina: pode tomar com alimentos; ampicilina: jejum</td>
+      </tr>
+    </table>
+
+    <div class="subsection">Diuréticos — Impacto nos Eletrólitos</div>
+    <table>
+      <tr><th>Diurético</th><th>Eletrólito afetado</th><th>Conduta nutricional</th></tr>
+      <tr>
+        <td>Tiazídicos (hidroclorotiazida)</td>
+        <td>↓K⁺, ↓Mg²⁺, ↑Ca²⁺</td>
+        <td>↑ consumo de potássio (banana, laranja, feijão, batata)</td>
+      </tr>
+      <tr>
+        <td>Alça (furosemida)</td>
+        <td>↓K⁺, ↓Mg²⁺, ↓Ca²⁺, ↓Na⁺</td>
+        <td>↑ potássio e magnésio; monitorar sódio</td>
+      </tr>
+      <tr>
+        <td>Poupadores de K⁺ (espironolactona)</td>
+        <td>↑K⁺ (hipercalemia)</td>
+        <td><strong>Restringir</strong> alimentos ricos em potássio</td>
+      </tr>
+    </table>
+
+    <div class="alert-box">
+      <p><strong>Diferencial importante:</strong> Tiazídicos e de alça = <em>perdem</em> K⁺ → orientar aumento de potássio na dieta. Poupadores de K⁺ (espironolactona) = <em>retêm</em> K⁺ → orientar <em>restrição</em> de potássio. Confundir os sentidos é erro clássico de prova.</p>
+    </div>
+
+    <div class="subsection">Anticonvulsivantes — Fenitoína, Carbamazepina, Fenobarbital</div>
+    <table>
+      <tr><th>Fármaco</th><th>Nutriente afetado</th><th>Consequência</th><th>Conduta</th></tr>
+      <tr>
+        <td>Fenitoína</td>
+        <td>Vitamina D, folato, vitamina K</td>
+        <td>Induz CYP → ↑ catabolismo de vit. D → osteomalácia; ↓ folato → ↑ homocisteína</td>
+        <td>Suplementar vit. D e monitorar folato; cautela com folato alto (pode ↓ nível fenitoína)</td>
+      </tr>
+      <tr>
+        <td>Carbamazepina</td>
+        <td>Vitamina D, folato</td>
+        <td>Similar à fenitoína por indução de CYP</td>
+        <td>Suplementar vitamina D; monitorar densidade óssea</td>
+      </tr>
+      <tr>
+        <td>Fenobarbital</td>
+        <td>Vitamina D, vit. K, folato, vit. B12</td>
+        <td>Osteomalacia, anemia megaloblástica em uso crônico</td>
+        <td>Monitorar e suplementar conforme níveis</td>
+      </tr>
+    </table>
+
+    <div class="highlight-box">
+      <p><strong>Regra dos anticonvulsivantes indutores de CYP:</strong> Fenitoína + carbamazepina + fenobarbital → todos induzem enzimas hepáticas → <strong>↑ catabolismo de vitamina D</strong> → risco de osteomalácia em uso crônico. Monitorar vit. D e densidade óssea é conduta padrão.</p>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span class="footer-text">Extensivo ENARE 2026 · Bloco B9 Nutrição</span>
+    <span class="page-num">4 / 10</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     PÁGINA 5 — ISONIAZIDA, GRAPEFRUIT, METOTREXATO E CONDUTAS
+════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="25" viewBox="0 0 44 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="22,2 41,13 41,37 22,48 3,37 3,13" fill="#1F5C23" stroke="#C6D834" stroke-width="2.5"/>
+        <circle cx="22" cy="25" r="9" fill="#F6F4ED"/>
+      </svg>
+      <span class="brand-name-sm">Extensivo ENARE</span>
+    </div>
+    <span class="page-meta">NUT-FARM · Aula 34 · Bloco B9</span>
+  </div>
+
+  <div class="page-content">
+    <div class="section-title">Isoniazida, Grapefruit, Metotrexato e Condutas</div>
+
+    <div class="subsection">Isoniazida (Tuberculostático) + Vitamina B6</div>
+    <table>
+      <tr><th>Aspecto</th><th>Detalhe</th></tr>
+      <tr><td>Mecanismo</td><td>Isoniazida antagoniza a piridoxal fosfato (forma ativa da vit. B6) — forma hidrazona inativa</td></tr>
+      <tr><td>Consequência</td><td>Deficiência funcional de B6 → <strong>neuropatia periférica</strong> (formigamento, dormência, queimação)</td></tr>
+      <tr><td>Grupos de risco</td><td>Desnutridos, alcoólicos, diabéticos, gestantes, idosos, HIV+</td></tr>
+      <tr><td>Conduta</td><td><strong>Suplementação profilática de piridoxina</strong> 10–50 mg/dia durante todo o tratamento (6–9 meses)</td></tr>
+      <tr><td>Interação extra</td><td>Isoniazida + álcool: ↑ hepatotoxicidade; isoniazida pode ↑ nível de fenitoína</td></tr>
+    </table>
+
+    <div class="subsection">Suco de Grapefruit + CYP3A4 — Interação Metabólica</div>
+    <table>
+      <tr><th>Aspecto</th><th>Detalhe</th></tr>
+      <tr><td>Mecanismo</td><td>Furanocumarinas do grapefruit inibem <strong>CYP3A4 intestinal</strong> de forma irreversível → ↑ biodisponibilidade do fármaco</td></tr>
+      <tr><td>Duração</td><td>1 copo de suco pode inibir CYP3A4 por até <strong>24–72h</strong></td></tr>
+      <tr><td>Estatinas afetadas</td><td><strong>Sinvastatina, lovastatina</strong> (maior risco de miopatia/rabdomiólise)</td></tr>
+      <tr><td>Estatinas não afetadas</td><td>Pravastatina, rosuvastatina (metabolismo independente de CYP3A4)</td></tr>
+      <tr><td>Outros fármacos</td><td>Ciclosporina, tacrolimus, alguns bloqueadores de canal de cálcio, benzodiazepínicos</td></tr>
+      <tr><td>Conduta</td><td>Evitar grapefruit e seu suco em pacientes que usam sinvastatina/lovastatina</td></tr>
+    </table>
+
+    <div class="subsection">Metotrexato + Folato e Álcool + Metronidazol</div>
+    <table>
+      <tr><th>Interação</th><th>Mecanismo</th><th>Conduta</th></tr>
+      <tr>
+        <td>Metotrexato + folato</td>
+        <td>MTX inibe DHFR (dihidrofolato redutase) → ↓ folato ativo → mucosite, hepatotoxicidade, supressão medular</td>
+        <td>Suplementar ácido fólico (leucovorina) para reduzir toxicidade SEM afetar eficácia antineoplásica</td>
+      </tr>
+      <tr>
+        <td>Metronidazol/tinidazol + álcool</td>
+        <td>Inibe acetaldeído desidrogenase → acúmulo de acetaldeído → <strong>reação tipo dissulfiram</strong></td>
+        <td>Proibir álcool durante o tratamento e por 48h após a última dose</td>
+      </tr>
+      <tr>
+        <td>Levotiroxina + fibras / soja / cálcio</td>
+        <td>↓ absorção do hormônio tireoidiano</td>
+        <td>Ingerir em jejum, 30–60 min antes do café; separar de suplementos de cálcio/ferro em 4h</td>
+      </tr>
+    </table>
+
+    <div class="anchor-box">
+      <p><strong>Âncoras críticas desta aula:</strong></p>
+      <ul>
+        <li><strong>Varfarina + Vit. K:</strong> Vit. K <em>REDUZ</em> o anticoagulante — manter consumo constante, não eliminar</li>
+        <li><strong>IMAO + tiramina:</strong> restrição <em>TOTAL</em> — qualquer quantidade pode causar crise hipertensiva</li>
+        <li><strong>Isoniazida + B6:</strong> antagonismo de piridoxina → neuropatia → suplementar piridoxina profilaticamente</li>
+        <li><strong>Grapefruit + sinvastatina:</strong> inibição CYP3A4 → ↑ biodisponibilidade → miopatia (não afeta pravastatina)</li>
+        <li><strong>Espironolactona:</strong> RETÉM K⁺ → restringir potássio (ao contrário de tiazídicos e furosemida)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span class="footer-text">Extensivo ENARE 2026 · Bloco B9 Nutrição</span>
+    <span class="page-num">5 / 10</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     PÁGINA 6 — QUESTÃO 01 (APLICAÇÃO · GAB B)
+════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="25" viewBox="0 0 44 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="22,2 41,13 41,37 22,48 3,37 3,13" fill="#1F5C23" stroke="#C6D834" stroke-width="2.5"/>
+        <circle cx="22" cy="25" r="9" fill="#F6F4ED"/>
+      </svg>
+      <span class="brand-name-sm">Extensivo ENARE</span>
+    </div>
+    <span class="page-meta">NUT-FARM · Aula 34 · Bloco B9</span>
+  </div>
+
+  <div class="page-content">
+    <div class="q-header">
+      <span class="q-badge">Q 01</span>
+      <span class="q-type">Aplicação · Varfarina + Vitamina K</span>
+    </div>
+
+    <div class="q-context">
+      Uma paciente de 72 anos, portadora de fibrilação atrial crônica, está em uso de varfarina. Durante consulta de nutrição, relata que uma amiga lhe disse que deveria eliminar completamente da dieta todas as hortaliças folhosas escuras (couve, espinafre, brócolis) para evitar interferência no anticoagulante. A paciente afirma que parou de consumir essas hortaliças há duas semanas e, na última consulta médica, seu INR estava acima da faixa terapêutica.
+    </div>
+
+    <p class="q-stem">Com base nas interações droga-nutriente, é CORRETO afirmar que:</p>
+
+    <ul class="alternatives">
+      <li>
+        <span class="alt-letter">A</span>
+        <span>A paciente agiu corretamente: a vitamina K presente nas hortaliças folhosas potencializa o efeito da varfarina, e sua eliminação da dieta é necessária para evitar sangramentos.</span>
+      </li>
+      <li>
+        <span class="alt-letter">B</span>
+        <span>A conduta foi incorreta: a eliminação abrupta de alimentos ricos em vitamina K reduz a "competição" com a varfarina, potencializando o efeito anticoagulante e elevando o INR; o correto é manter um consumo habitual e constante dessas hortaliças.</span>
+      </li>
+      <li>
+        <span class="alt-letter">C</span>
+        <span>A vitamina K dos alimentos não interfere no efeito da varfarina; a elevação do INR deve-se a outro fator não relacionado à dieta, e a eliminação das hortaliças pode ser mantida sem consequências.</span>
+      </li>
+      <li>
+        <span class="alt-letter">D</span>
+        <span>A nutricionista deve orientar a paciente a aumentar o consumo de hortaliças ricas em vitamina K para antagonizar a varfarina e reduzir o risco de sangramento, sem necessidade de ajuste na dose do medicamento.</span>
+      </li>
+    </ul>
+
+    <div class="alert-box" style="margin-top:5mm;">
+      <p><strong>Foco da questão:</strong> A vitamina K alimentar antagoniza (reduz) o efeito da varfarina. Com a eliminação das hortaliças, a concentração de vitamina K caiu → a varfarina ficou "sem competição" → INR subiu (efeito anticoagulante potencializado). A conduta correta é manter consumo constante para estabilizar o INR — não eliminar.</p>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span class="footer-text">Extensivo ENARE 2026 · Bloco B9 Nutrição</span>
+    <span class="page-num">6 / 10</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     PÁGINA 7 — QUESTÃO 02 (APLICAÇÃO · GAB C)
+════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="25" viewBox="0 0 44 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="22,2 41,13 41,37 22,48 3,37 3,13" fill="#1F5C23" stroke="#C6D834" stroke-width="2.5"/>
+        <circle cx="22" cy="25" r="9" fill="#F6F4ED"/>
+      </svg>
+      <span class="brand-name-sm">Extensivo ENARE</span>
+    </div>
+    <span class="page-meta">NUT-FARM · Aula 34 · Bloco B9</span>
+  </div>
+
+  <div class="page-content">
+    <div class="q-header">
+      <span class="q-badge">Q 02</span>
+      <span class="q-type">Aplicação · Isoniazida + B6 / Tuberculostáticos</span>
+    </div>
+
+    <div class="q-context">
+      Um paciente de 45 anos, com diagnóstico de tuberculose pulmonar, iniciou o esquema básico de tratamento (RHZE: rifampicina, isoniazida, pirazinamida e etambutol) há 3 meses. Apresenta-se na consulta de nutrição com queixas de formigamento e dormência nos pés e nas mãos, além de fraqueza muscular progressiva nos membros inferiores. Nega uso de álcool e não tem diabetes.
+    </div>
+
+    <p class="q-stem">Com base nas interações droga-nutriente, assinale a alternativa CORRETA:</p>
+
+    <ul class="alternatives">
+      <li>
+        <span class="alt-letter">A</span>
+        <span>Os sintomas neurológicos são causados pela rifampicina, que induz deficiência de vitamina B12 por competição com o fator intrínseco no íleo terminal, indicando suplementação de cianocobalamina.</span>
+      </li>
+      <li>
+        <span class="alt-letter">B</span>
+        <span>O quadro é compatível com deficiência de vitamina D induzida pela isoniazida, que inibe a enzima 1-alfa-hidroxilase renal, resultando em neuropatia e fraqueza muscular proximal.</span>
+      </li>
+      <li>
+        <span class="alt-letter">C</span>
+        <span>A isoniazida antagoniza a vitamina B6 (piridoxina), formando complexos inativos com o piridoxal fosfato; a deficiência funcional resultante causa neuropatia periférica, e a suplementação profilática de piridoxina é a conduta recomendada.</span>
+      </li>
+      <li>
+        <span class="alt-letter">D</span>
+        <span>A neuropatia é um efeito adverso direto da pirazinamida sobre os nervos periféricos, sem relação com estado nutricional; a única conduta é a substituição do fármaco por outro tuberculostático de segunda linha.</span>
+      </li>
+    </ul>
+
+    <div class="alert-box" style="margin-top:5mm;">
+      <p><strong>Foco da questão:</strong> Isoniazida antagoniza a vitamina B6 (piridoxina) — forma hidrazona inativa com o piridoxal fosfato. O resultado é deficiência funcional de B6 e neuropatia periférica (polineuropatia). A suplementação profilática de piridoxina (10–50 mg/dia) deve ser prescrita para todos os pacientes em tratamento com isoniazida, especialmente os de maior risco (desnutridos, idosos, diabéticos, gestantes).</p>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span class="footer-text">Extensivo ENARE 2026 · Bloco B9 Nutrição</span>
+    <span class="page-num">7 / 10</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     PÁGINA 8 — QUESTÃO 03 (ANÁLISE ÂNCORA · GAB C)
+════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="25" viewBox="0 0 44 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="22,2 41,13 41,37 22,48 3,37 3,13" fill="#1F5C23" stroke="#C6D834" stroke-width="2.5"/>
+        <circle cx="22" cy="25" r="9" fill="#F6F4ED"/>
+      </svg>
+      <span class="brand-name-sm">Extensivo ENARE</span>
+    </div>
+    <span class="page-meta">NUT-FARM · Aula 34 · Bloco B9</span>
+  </div>
+
+  <div class="page-content">
+    <div class="q-header">
+      <span class="q-badge">Q 03</span>
+      <span class="q-type">Análise Âncora · Interações Droga-Nutriente Integradas</span>
+    </div>
+
+    <p class="q-stem">Analise as afirmativas a seguir sobre interações droga-nutriente:</p>
+
+    <ul class="assertions">
+      <li>
+        <span class="assert-num">I</span>
+        <span>Pacientes em uso de inibidores da monoamina oxidase (IMAO) devem reduzir à metade o consumo de queijos maturados e vinho tinto, pois a restrição parcial de tiramina é suficiente para prevenir crises hipertensivas com esses fármacos.</span>
+      </li>
+      <li>
+        <span class="assert-num">II</span>
+        <span>O suco de grapefruit inibe de forma irreversível o CYP3A4 intestinal, aumentando a biodisponibilidade de sinvastatina e lovastatina e elevando o risco de miopatia e rabdomiólise; esse efeito não se aplica à pravastatina, que não é metabolizada por essa enzima.</span>
+      </li>
+      <li>
+        <span class="assert-num">III</span>
+        <span>A tetraciclina deve ser administrada longe das refeições com laticínios e antiácidos contendo cálcio, magnésio ou alumínio, pois esses íons formam quelatos insolúveis com o antibiótico, reduzindo significativamente sua absorção intestinal.</span>
+      </li>
+      <li>
+        <span class="assert-num">IV</span>
+        <span>A vitamina K alimentar potencializa o efeito anticoagulante da varfarina, razão pela qual pacientes anticoagulados devem aumentar o consumo de hortaliças folhosas escuras para reduzir a necessidade de doses maiores do fármaco.</span>
+      </li>
+    </ul>
+
+    <p class="q-stem" style="margin-top:3mm;">Estão CORRETAS apenas as afirmativas:</p>
+
+    <ul class="alternatives">
+      <li><span class="alt-letter">A</span><span>I e III</span></li>
+      <li><span class="alt-letter">B</span><span>I e IV</span></li>
+      <li><span class="alt-letter">C</span><span>II e III</span></li>
+      <li><span class="alt-letter">D</span><span>III e IV</span></li>
+    </ul>
+
+    <div class="anchor-box" style="margin-top:4mm;">
+      <p><strong>Âncora desta questão:</strong></p>
+      <ul>
+        <li><strong>I — ERRADA:</strong> Com IMAO, a restrição de tiramina é <em>TOTAL</em> — não "redução à metade". Qualquer quantidade pode desencadear crise hipertensiva grave.</li>
+        <li><strong>II — CORRETA:</strong> Grapefruit inibe CYP3A4 irreversivelmente → ↑ sinvastatina/lovastatina → miopatia. Pravastatina não é afetada (metabolismo diferente).</li>
+        <li><strong>III — CORRETA:</strong> Tetraciclina + Ca²⁺/Mg²⁺/Al³⁺ → quelação → ↓ absorção antibiótico em até 50–80%.</li>
+        <li><strong>IV — ERRADA:</strong> Vitamina K <em>ANTAGONIZA</em> (reduz) a varfarina — não potencializa. Alimentos ricos em vit. K reduzem o efeito anticoagulante.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span class="footer-text">Extensivo ENARE 2026 · Bloco B9 Nutrição</span>
+    <span class="page-num">8 / 10</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     PÁGINA 9 — GABARITO COMENTADO
+════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="25" viewBox="0 0 44 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="22,2 41,13 41,37 22,48 3,37 3,13" fill="#1F5C23" stroke="#C6D834" stroke-width="2.5"/>
+        <circle cx="22" cy="25" r="9" fill="#F6F4ED"/>
+      </svg>
+      <span class="brand-name-sm">Extensivo ENARE</span>
+    </div>
+    <span class="page-meta">NUT-FARM · Aula 34 · Bloco B9</span>
+  </div>
+
+  <div class="page-content">
+    <div class="section-title">Gabarito Comentado</div>
+
+    <div class="gab-grid">
+      <div class="gab-card">
+        <div class="gab-q">Questão 01</div>
+        <div class="gab-resp">B</div>
+        <div class="gab-tema">Varfarina + Vit. K</div>
+      </div>
+      <div class="gab-card">
+        <div class="gab-q">Questão 02</div>
+        <div class="gab-resp">C</div>
+        <div class="gab-tema">Isoniazida + B6</div>
+      </div>
+      <div class="gab-card">
+        <div class="gab-q">Questão 03</div>
+        <div class="gab-resp">C</div>
+        <div class="gab-tema">II e III corretas</div>
+      </div>
+    </div>
+
+    <div class="gab-justificativa highlight-box">
+      <div class="gab-title">Q01 — Gabarito B</div>
+      <p><span class="wrong">A</span> — Errado: a vitamina K <em>antagoniza</em> (reduz) a varfarina — não potencializa. Eliminar a hortaliça foi o erro.</p>
+      <p><span class="correct">B ✓</span> — Correto: a eliminação das hortaliças reduziu a vitamina K → varfarina sem "competição" → INR subiu. Manter consumo constante é a conduta adequada — não eliminar nem aumentar abruptamente.</p>
+      <p><span class="wrong">C</span> — A vitamina K alimentar interfere sim na varfarina — essa é uma das interações droga-nutriente mais clássicas.</p>
+      <p><span class="wrong">D</span> — Orientar aumento deliberado de vit. K sem ajuste médico pode antagonizar demais o anticoagulante, criando risco trombótico.</p>
+    </div>
+
+    <div class="gab-justificativa highlight-box">
+      <div class="gab-title">Q02 — Gabarito C</div>
+      <p><span class="wrong">A</span> — Rifampicina induz CYP, mas não causa deficiência de B12 por competição com fator intrínseco. O agente da neuropatia aqui é a isoniazida.</p>
+      <p><span class="wrong">B</span> — A isoniazida não inibe a 1-alfa-hidroxilase renal. A neuropatia periférica é causada por antagonismo de B6, não de vit. D.</p>
+      <p><span class="correct">C ✓</span> — Isoniazida forma hidrazona com o piridoxal fosfato → deficiência funcional de B6 → polineuropatia periférica. Suplementação profilática de piridoxina 10–50 mg/dia é recomendada para todos os pacientes em RHZE.</p>
+      <p><span class="wrong">D</span> — A pirazinamida não causa neuropatia periférica por mecanismo neurotóxico direto. O tuberculostático responsável é a isoniazida.</p>
+    </div>
+
+    <div class="gab-justificativa highlight-box">
+      <div class="gab-title">Q03 — Gabarito C (II e III)</div>
+      <p><span class="wrong">I — ERRADA:</span> IMAO exige restrição TOTAL de tiramina — "reduzir à metade" não é suficiente; qualquer quantidade pode desencadear crise hipertensiva.</p>
+      <p><span class="correct">II — CORRETA ✓:</span> Grapefruit inibe CYP3A4 irreversivelmente → ↑ biodisponibilidade sinvastatina/lovastatina → risco de miopatia. Pravastatina não sofre essa interação.</p>
+      <p><span class="correct">III — CORRETA ✓:</span> Tetraciclina + minerais divalentes/trivalentes → quelação → ↓ absorção do antibiótico em até 50–80%.</p>
+      <p><span class="wrong">IV — ERRADA:</span> Vitamina K REDUZ o efeito anticoagulante da varfarina (antagonismo farmacodinâmico) — nunca potencializa.</p>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span class="footer-text">Extensivo ENARE 2026 · Bloco B9 Nutrição</span>
+    <span class="page-num">9 / 10</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     PÁGINA 10 — SÍNTESE FINAL
+════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="25" viewBox="0 0 44 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="22,2 41,13 41,37 22,48 3,37 3,13" fill="#1F5C23" stroke="#C6D834" stroke-width="2.5"/>
+        <circle cx="22" cy="25" r="9" fill="#F6F4ED"/>
+      </svg>
+      <span class="brand-name-sm">Extensivo ENARE</span>
+    </div>
+    <span class="page-meta">NUT-FARM · Aula 34 · Bloco B9</span>
+  </div>
+
+  <div class="page-content">
+    <div class="section-title">Síntese Final — NUT-FARM</div>
+
+    <div class="sintese-grid">
+      <div class="sintese-card">
+        <div class="s-title">Varfarina + Vitamina K</div>
+        <ul>
+          <li>Vit. K <strong>reduz</strong> efeito anticoagulante</li>
+          <li>Conduta: consumo <strong>constante</strong> — não eliminar</li>
+          <li>Cranberry: <em>potencializa</em> varfarina (inibe CYP2C9)</li>
+          <li>Eliminar hortaliças → INR sobe → risco de sangramento</li>
+        </ul>
+      </div>
+      <div class="sintese-card">
+        <div class="s-title">IMAO + Tiramina</div>
+        <ul>
+          <li>Restrição <strong>TOTAL</strong> de tiramina</li>
+          <li>Queijos maturados, vinho, embutidos, molho de soja</li>
+          <li>Risco: crise hipertensiva grave</li>
+          <li>Redução parcial NÃO é suficiente</li>
+        </ul>
+      </div>
+      <div class="sintese-card">
+        <div class="s-title">Antibióticos + Minerais</div>
+        <ul>
+          <li>Tetraciclina + Ca/Mg/Fe/Zn → quelação → ↓ absorção</li>
+          <li>Ciprofloxacino + laticínios/antiácidos → idem</li>
+          <li>Conduta: 1h antes ou 2h após refeições</li>
+          <li>Ampicilina: jejum; amoxicilina: pode com alimento</li>
+        </ul>
+      </div>
+      <div class="sintese-card">
+        <div class="s-title">Isoniazida + Vitamina B6</div>
+        <ul>
+          <li>Antagonismo piridoxal fosfato → deficiência B6</li>
+          <li>Neuropatia periférica: formigamento, dormência</li>
+          <li>Suplementar piridoxina <strong>10–50 mg/dia</strong></li>
+          <li>Profilaxia durante todo tratamento (6–9 meses)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="anchor-box" style="margin-top:3mm;">
+      <p><strong>As 5 âncoras desta aula:</strong></p>
+      <ul>
+        <li><strong>1.</strong> Varfarina + Vit. K: antagonismo → manter consumo constante, nunca eliminar</li>
+        <li><strong>2.</strong> IMAO + tiramina: restrição TOTAL (não parcial) → previne crise hipertensiva</li>
+        <li><strong>3.</strong> Isoniazida → antagoniza B6 → neuropatia → suplementar piridoxina profilaticamente</li>
+        <li><strong>4.</strong> Grapefruit → inibe CYP3A4 → ↑ sinvastatina/lovastatina → miopatia (não afeta pravastatina)</li>
+        <li><strong>5.</strong> Espironolactona = retém K⁺ (restringir K na dieta) ≠ furosemida/tiazídicos = perdem K⁺ (suplementar K)</li>
+      </ul>
+    </div>
+
+    <div class="sintese-grid" style="margin-top:3mm;">
+      <div class="sintese-card">
+        <div class="s-title">Diuréticos e Eletrólitos</div>
+        <ul>
+          <li>Tiazídicos + furosemida → ↓K⁺ → ↑K dieta</li>
+          <li>Espironolactona → ↑K⁺ → <em>restringir</em> K dieta</li>
+          <li>Fenitoína/carbamazepina → ↓Vit. D → osteomalácia</li>
+          <li>Metotrexato → ↓folato → leucovorina reduz toxicidade</li>
+        </ul>
+      </div>
+      <div class="sintese-card">
+        <div class="s-title">Próxima Aula — 35</div>
+        <ul>
+          <li><strong>NUT-FUNC:</strong> Alimentos Funcionais e Fitoquímicos</li>
+          <li>Regulamentação ANVISA (Res. 18 e 19/1999)</li>
+          <li>Alegações de propriedade funcional</li>
+          <li>Fitoquímicos com evidência: licopeno, flavonoides, ômega-3, fibras, probióticos</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span class="footer-text">Extensivo ENARE 2026 · Bloco B9 Nutrição</span>
+    <span class="page-num">10 / 10</span>
+  </div>
+</div>
+
+</body>
+</html>

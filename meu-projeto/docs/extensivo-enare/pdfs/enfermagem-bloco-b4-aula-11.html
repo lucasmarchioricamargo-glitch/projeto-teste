@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Enfermagem · Bloco B4 · Aula 11 — Extensivo ENARE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Bricolage+Grotesque:wght@400;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --creme:          #F6F4ED;
+      --verde-lima:     #C6D834;
+      --verde-floresta: #1F5C23;
+      --teal:           #0D8A8D;
+      --preto:          #070707;
+      --cinza:          #9E9B94;
+      --cinza-borda:    #DDD9D1;
+      --creme-escuro:   #EDEAE2;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #CCC; font-family: 'Bricolage Grotesque', sans-serif; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    @page { size: A4; margin: 0; }
+    .page { width: 210mm; height: 297mm; position: relative; overflow: hidden; page-break-after: always; background: var(--creme); display: flex; flex-direction: column; }
+    @media screen { .page { margin: 24px auto; box-shadow: 0 4px 32px rgba(0,0,0,0.18); } }
+
+    .page-header { height: 14mm; background: var(--creme); border-bottom: 2px solid var(--teal); display: flex; align-items: center; padding: 0 18mm; flex-shrink: 0; }
+    .page-header-label { font-family: 'Barlow Condensed', sans-serif; font-size: 8pt; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--cinza); }
+    .page-header-title { font-family: 'Space Grotesk', sans-serif; font-size: 7.5pt; font-weight: 300; color: var(--cinza); margin-left: auto; }
+    .page-footer { height: 10mm; background: var(--creme); border-top: 1px solid var(--cinza-borda); display: flex; align-items: center; padding: 0 18mm; flex-shrink: 0; }
+    .page-footer-brand { font-family: 'Space Grotesk', sans-serif; font-size: 7pt; font-weight: 300; color: var(--cinza); }
+    .page-footer-num { font-family: 'Barlow Condensed', sans-serif; font-size: 9pt; font-weight: 700; color: var(--teal); margin-left: auto; }
+    .page-content { flex: 1; padding: 10mm 18mm; overflow: hidden; }
+
+    .section-tag { font-family: 'Barlow Condensed', sans-serif; font-size: 7.5pt; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--teal); margin-bottom: 4mm; }
+    .section-rule { width: 100%; height: 2px; background: var(--teal); margin-bottom: 6mm; }
+
+    .capa { background: var(--teal); width: 100%; height: 100%; display: flex; flex-direction: column; padding: 14mm 16mm 12mm; }
+    .capa-logo-ext { font-family: 'Playfair Display', serif; font-style: italic; font-size: 10pt; color: var(--verde-lima); letter-spacing: 1px; }
+    .capa-logo-enare { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 38pt; color: var(--creme); line-height: 0.85; letter-spacing: -1px; }
+    .capa-logo-sub { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 8.5pt; color: rgba(246,244,237,0.6); margin-top: 2mm; margin-bottom: auto; }
+    .capa-area { font-family: 'Barlow Condensed', sans-serif; font-size: 7.5pt; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: rgba(246,244,237,0.55); margin-bottom: 2mm; }
+    .capa-codigo { font-family: 'Barlow Condensed', sans-serif; font-size: 9pt; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--verde-lima); margin-bottom: 5mm; }
+    .capa-titulo { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 38pt; color: var(--creme); line-height: 0.9; text-transform: uppercase; letter-spacing: -1px; margin-bottom: 4mm; }
+    .capa-subtitulo { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 15pt; color: var(--verde-lima); text-transform: uppercase; letter-spacing: 1px; line-height: 1.2; }
+    .capa-watermark { position: absolute; bottom: 12mm; right: 12mm; font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 110pt; color: rgba(246,244,237,0.08); line-height: 1; pointer-events: none; }
+
+    .obj-list { list-style: none; display: flex; flex-direction: column; gap: 4mm; margin-bottom: 6mm; }
+    .obj-item { display: flex; gap: 3mm; align-items: flex-start; }
+    .obj-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 18pt; color: var(--teal); line-height: 1; flex-shrink: 0; width: 8mm; }
+    .obj-text { font-size: 9.5pt; line-height: 1.5; color: var(--preto); padding-top: 1mm; }
+    .obj-prereq { background: var(--creme-escuro); border-left: 3px solid var(--cinza-borda); padding: 3mm 4mm; border-radius: 0 3px 3px 0; margin-top: 4mm; }
+    .obj-prereq-label { font-family: 'Barlow Condensed', sans-serif; font-size: 7pt; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--cinza); margin-bottom: 1mm; }
+    .obj-prereq-text { font-size: 8.5pt; color: var(--preto); line-height: 1.4; }
+    .meta-row { display: flex; gap: 8mm; margin-top: 5mm; padding-top: 4mm; border-top: 1px solid var(--cinza-borda); }
+    .meta-item { display: flex; flex-direction: column; gap: 0.5mm; }
+    .meta-label { font-family: 'Barlow Condensed', sans-serif; font-size: 6.5pt; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--cinza); }
+    .meta-value { font-size: 8pt; font-weight: 600; color: var(--preto); }
+
+    h2 { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 17pt; color: var(--teal); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 3mm; line-height: 1.1; }
+    h3 { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 10.5pt; color: var(--preto); text-transform: uppercase; letter-spacing: 1px; margin: 4mm 0 2mm; }
+
+    table { width: 100%; border-collapse: collapse; font-size: 8.3pt; margin-bottom: 4mm; }
+    th { background: var(--teal); color: var(--creme); font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 8pt; letter-spacing: 1px; text-transform: uppercase; padding: 2.5mm 3mm; text-align: left; }
+    td { padding: 2mm 3mm; border-bottom: 1px solid var(--cinza-borda); vertical-align: top; line-height: 1.4; }
+    tr:nth-child(even) td { background: var(--creme-escuro); }
+    .td-dest { font-weight: 600; }
+
+    .box { padding: 3.5mm 4mm; border-radius: 4px; margin-bottom: 4mm; }
+    .box-alerta { background: #fff3cd; border-left: 4px solid #e6a817; }
+    .box-conceito { background: #e8f4e8; border-left: 4px solid var(--verde-floresta); }
+    .box-erro { background: #fdecea; border-left: 4px solid #c0392b; }
+    .box-label { font-family: 'Barlow Condensed', sans-serif; font-size: 7pt; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--cinza); margin-bottom: 1.5mm; }
+    .box-text { font-size: 8.5pt; line-height: 1.5; color: var(--preto); }
+
+    /* ALEITAMENTO — reflexos 2-col */
+    .reflexo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; margin-bottom: 4mm; }
+    .reflexo-card { border-radius: 4px; padding: 3mm 3.5mm; }
+    .ref-prolac { background: #e8f0fe; border-top: 3px solid #4a6fa5; }
+    .ref-ocit { background: #fce8f3; border-top: 3px solid #8e3a7f; }
+    .reflexo-card-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 10pt; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2mm; }
+    .ref-prolac .reflexo-card-title { color: #4a6fa5; }
+    .ref-ocit .reflexo-card-title { color: #8e3a7f; }
+    .reflexo-item { font-size: 8pt; line-height: 1.45; color: var(--preto); margin-bottom: 1mm; }
+
+    /* PROBLEMAS cards inline */
+    .prob-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2.5mm; margin-bottom: 4mm; }
+    .prob-card { background: var(--creme-escuro); border-radius: 4px; padding: 2.5mm 3mm; border-top: 3px solid var(--teal); }
+    .prob-card-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 9pt; text-transform: uppercase; color: var(--teal); margin-bottom: 1.5mm; }
+    .prob-item { font-size: 7.5pt; line-height: 1.4; color: var(--preto); margin-bottom: 0.8mm; }
+
+    /* VULVOVAGINITE table colored header */
+    .vulvo-th-cand { background: #6a3d9a; }
+    .vulvo-th-vag { background: #4a6fa5; }
+    .vulvo-th-tric { background: #c0392b; }
+    .vulvo-td-cand { background: #f3eaff !important; }
+    .vulvo-td-vag { background: #e8f0fe !important; }
+    .vulvo-td-tric { background: #fdecea !important; }
+
+    /* CONTRAINDICAÇÕES */
+    .contra-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; margin-bottom: 4mm; }
+    .contra-abs { background: #fdecea; border-radius: 4px; padding: 3mm 3.5mm; border-top: 3px solid #c0392b; }
+    .contra-rel { background: #fff3cd; border-radius: 4px; padding: 3mm 3.5mm; border-top: 3px solid #e6a817; }
+    .contra-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9.5pt; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2mm; }
+    .contra-abs .contra-title { color: #c0392b; }
+    .contra-rel .contra-title { color: #856404; }
+    .contra-item { font-size: 8pt; line-height: 1.45; color: var(--preto); margin-bottom: 0.8mm; }
+
+    /* QUESTÕES */
+    .q-header { font-family: 'Barlow Condensed', sans-serif; font-size: 7.5pt; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--teal); margin-bottom: 3mm; }
+    .q-enunciado { background: var(--creme-escuro); border-radius: 4px; padding: 4mm 5mm; font-size: 9pt; line-height: 1.6; color: var(--preto); margin-bottom: 4mm; }
+    .q-alternativas { display: flex; flex-direction: column; gap: 2.5mm; margin-bottom: 4mm; }
+    .q-alt { display: flex; gap: 3mm; padding: 2.5mm 3.5mm; border-radius: 4px; background: white; border: 1px solid var(--cinza-borda); font-size: 9pt; line-height: 1.5; color: var(--preto); }
+    .q-alt.correta { background: #e8f4e8; border-color: var(--verde-floresta); font-weight: 600; }
+    .q-alt-letra { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 11pt; color: var(--teal); flex-shrink: 0; line-height: 1.2; }
+    .q-alt.correta .q-alt-letra { color: var(--verde-floresta); }
+    .correta-badge { display: inline-block; font-family: 'Barlow Condensed', sans-serif; font-size: 7pt; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; background: var(--verde-floresta); color: white; padding: 0.5mm 2mm; border-radius: 2px; margin-left: 2mm; vertical-align: middle; }
+    .gabarito-box { background: var(--preto); color: var(--creme); border-radius: 4px; padding: 3.5mm 4mm; font-size: 8pt; line-height: 1.55; }
+    .gabarito-box-title { font-family: 'Barlow Condensed', sans-serif; font-size: 8pt; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--verde-lima); margin-bottom: 2mm; }
+    .gabarito-distratores { font-size: 7.5pt; line-height: 1.4; color: rgba(246,244,237,0.75); margin-top: 2mm; }
+
+    .ra-items { list-style: none; display: flex; flex-direction: column; gap: 3mm; }
+    .ra-item { display: flex; gap: 3mm; align-items: flex-start; font-size: 9pt; line-height: 1.5; color: var(--preto); }
+    .ra-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 10pt; color: var(--teal); flex-shrink: 0; width: 6mm; }
+    .ra-sub { font-family: 'Barlow Condensed', sans-serif; font-size: 7.5pt; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--cinza); margin-bottom: 3mm; }
+
+    .ref-list { list-style: none; display: flex; flex-direction: column; gap: 2.5mm; }
+    .ref-item { font-size: 8pt; line-height: 1.5; color: var(--preto); border-left: 3px solid var(--cinza-borda); padding-left: 3mm; }
+    .ref-item cite { font-style: italic; }
+    .notas-box { margin-top: 6mm; border: 1.5px dashed var(--cinza-borda); border-radius: 4px; padding: 4mm; flex: 1; display: flex; align-items: center; justify-content: center; }
+    .notas-label { font-family: 'Barlow Condensed', sans-serif; font-size: 8pt; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--cinza-borda); }
+  </style>
+</head>
+<body>
+
+<!-- ══ P01 CAPA ══ -->
+<div class="page">
+  <div class="capa">
+    <div>
+      <span class="capa-logo-ext">extensivo</span><br>
+      <span class="capa-logo-enare">ENARE</span><br>
+      <span class="capa-logo-sub">by Residência PRO</span>
+    </div>
+    <div style="margin-top:auto;">
+      <div class="capa-area">Enfermagem · Módulo Específico</div>
+      <div class="capa-codigo">Bloco B4 · Aula 11</div>
+      <div class="capa-titulo">Saúde da<br>Mulher II</div>
+      <div class="capa-subtitulo">Aleitamento,<br>Anatomia e<br>Vulvovaginite</div>
+    </div>
+    <div class="capa-watermark">11</div>
+  </div>
+</div>
+
+<!-- ══ P02 OBJETIVOS ══ -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-label">Enfermagem · Bloco B4 · Aula 11</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <div class="section-tag">Objetivos de Aprendizagem</div>
+    <div class="section-rule"></div>
+    <ul class="obj-list">
+      <li class="obj-item">
+        <span class="obj-num">1</span>
+        <span class="obj-text">Distinguir os reflexos de prolactina (produção do leite) e ocitocina (ejeção), identificar a técnica correta de amamentação e conduzir os principais problemas: fissura mamilar, ingurgitamento e mastite.</span>
+      </li>
+      <li class="obj-item">
+        <span class="obj-num">2</span>
+        <span class="obj-text">Diferenciar candidíase vaginal, vaginose bacteriana e tricomoníase pelos dados do corrimento (cor, odor, pH, clue cells, teste de aminas) e indicar o tratamento específico para cada agente.</span>
+      </li>
+      <li class="obj-item">
+        <span class="obj-num">3</span>
+        <span class="obj-text">Aplicar as contraindicações absolutas ao aleitamento materno (HIV, HTLV, galactosemia no RN) e o diagnóstico NANDA-I pertinente ao planejamento do cuidado pós-parto.</span>
+      </li>
+    </ul>
+    <div class="obj-prereq">
+      <div class="obj-prereq-label">Pré-requisito</div>
+      <div class="obj-prereq-text">Aula 10 — Saúde da Mulher I (pré-natal, PHPN, risco gestacional). Aula 01 — NANDA-I 2024–2026 para aplicação em cenários obstétricos e puerperais.</div>
+    </div>
+    <div class="meta-row">
+      <div class="meta-item"><div class="meta-label">Bloco</div><div class="meta-value">B4 — Enfermagem</div></div>
+      <div class="meta-item"><div class="meta-label">Aula</div><div class="meta-value">11 de 24</div></div>
+      <div class="meta-item"><div class="meta-label">Tema</div><div class="meta-value">ENF-Saúde Mulher II</div></div>
+      <div class="meta-item"><div class="meta-label">Nível cognitivo</div><div class="meta-value">M → An</div></div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">02</span>
+  </div>
+</div>
+
+<!-- ══ P03 ALEITAMENTO MATERNO ══ -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-label">Conteúdo Principal · Aula 11</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <h2>Aleitamento Materno — Reflexos e Técnica</h2>
+    <div class="reflexo-grid">
+      <div class="reflexo-card ref-prolac">
+        <div class="reflexo-card-title">Prolactina — Produção</div>
+        <div class="reflexo-item">· Hormônio da hipófise anterior</div>
+        <div class="reflexo-item">· Estímulo: sucção do RN → ↑ prolactina → lactogênese</div>
+        <div class="reflexo-item">· Pico noturno: amamentação noturna mantém a lactação</div>
+        <div class="reflexo-item">· Inibida por: dopamina, estrogênio, progesterona</div>
+        <div class="reflexo-item">· <strong>Quanto mais mama → mais leite se produz</strong></div>
+      </div>
+      <div class="reflexo-card ref-ocit">
+        <div class="reflexo-card-title">Ocitocina — Ejeção</div>
+        <div class="reflexo-item">· Hormônio da hipófise posterior</div>
+        <div class="reflexo-item">· Estímulo: sucção + estímulos emocionais positivos</div>
+        <div class="reflexo-item">· Promove descida do leite (reflexo de ejeção)</div>
+        <div class="reflexo-item">· Inibida por: estresse, dor, ansiedade, medo</div>
+        <div class="reflexo-item">· Também contrai o útero → involução uterina pós-parto</div>
+      </div>
+    </div>
+
+    <h3>Duração Recomendada (OMS/MS)</h3>
+    <table>
+      <thead><tr><th>Modalidade</th><th>Definição</th><th>Período</th></tr></thead>
+      <tbody>
+        <tr><td class="td-dest">AME (exclusivo)</td><td>Leite materno sem água, chá ou outro alimento</td><td><strong>Até 6 meses</strong></td></tr>
+        <tr><td class="td-dest">AM complementado</td><td>Leite materno + alimentos complementares</td><td><strong>A partir dos 6 meses até 2 anos ou mais</strong></td></tr>
+        <tr><td class="td-dest">AM misto</td><td>Leite materno + fórmula infantil</td><td>Transitório (indicação específica)</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Técnica Correta de Amamentação</h3>
+    <div class="box box-conceito">
+      <div class="box-label">Sinais de pega correta</div>
+      <div class="box-text"><strong>Boca bem aberta</strong> (≥120°) · <strong>Aréola incluída</strong> na boca (não apenas o mamilo) · <strong>Queixo tocando a mama</strong> · <strong>Nariz livre</strong> · Lábio inferior evertido · Bochechas arredondadas durante a sucção · RN faz pausas rítmicas (sucção-deglutição-respiração)</div>
+    </div>
+
+    <div class="box box-alerta">
+      <div class="box-label">Pegadinha FGV — "só o mamilo" vs "aréola incluída"</div>
+      <div class="box-text">A pega apenas no mamilo causa <strong>fissura mamilar</strong> e reduz a transferência de leite. A pega correta inclui grande parte da aréola. Questões cobram o sinal mais importante da pega inadequada: o RN sugar apenas a ponta do mamilo.</div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">03</span>
+  </div>
+</div>
+
+<!-- ══ P04 PROBLEMAS + CONTRAINDICAÇÕES ══ -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-label">Conteúdo Principal · Aula 11</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <h2>Problemas do Aleitamento e Contraindicações</h2>
+    <div class="prob-grid">
+      <div class="prob-card">
+        <div class="prob-card-title">Fissura Mamilar</div>
+        <div class="prob-item"><strong>Causa:</strong> pega incorreta (só o mamilo)</div>
+        <div class="prob-item"><strong>Conduta:</strong> corrigir a técnica + ordenhar e passar leite materno no mamilo após mamada + não usar cremes perfumados + expor ao ar</div>
+        <div class="prob-item"><strong>NÃO suspender</strong> amamentação</div>
+      </div>
+      <div class="prob-card">
+        <div class="prob-card-title">Ingurgitamento</div>
+        <div class="prob-item"><strong>Causa:</strong> intervalo longo entre mamadas, produção excessiva</div>
+        <div class="prob-item"><strong>Conduta:</strong> amamentar com frequência + ordenha antes da mamada (para suavizar a aréola) + compressas mornas antes + compressas frias após</div>
+        <div class="prob-item"><strong>NÃO suspender</strong> amamentação</div>
+      </div>
+      <div class="prob-card">
+        <div class="prob-card-title">Mastite</div>
+        <div class="prob-item"><strong>Agente:</strong> S. aureus (principal)</div>
+        <div class="prob-item"><strong>Sinais:</strong> mama vermelha, quente, endurecida + febre + dor intensa</div>
+        <div class="prob-item"><strong>Conduta:</strong> <span style="color:#1F5C23; font-weight:700;">CONTINUAR amamentando</span> + antibiótico (oxacilina/cefalexina) + analgésico + compressas</div>
+        <div class="prob-item">Se abscesso: drenar + suspender temporariamente naquela mama</div>
+      </div>
+    </div>
+
+    <div class="contra-grid">
+      <div class="contra-abs">
+        <div class="contra-title">Contraindicações Absolutas</div>
+        <div class="contra-item">· <strong>HIV materno</strong> (no Brasil — onde há acesso a fórmula infantil segura)</div>
+        <div class="contra-item">· <strong>HTLV 1 e 2</strong> — vírus linfotrópico T humano</div>
+        <div class="contra-item">· <strong>Galactosemia no RN</strong> — intolerância hereditária à lactose</div>
+        <div class="contra-item">· Uso materno de drogas ilícitas (cocaína, heroína, anfetaminas)</div>
+        <div class="contra-item">· Quimioterapia / radioterapia ativa (a maioria dos protocolos)</div>
+      </div>
+      <div class="contra-rel">
+        <div class="contra-title">Contraindicações Relativas</div>
+        <div class="contra-item">· <strong>Tuberculose ativa</strong> não tratada — afastar até 2 semanas de tratamento (pode ordenhar e oferecer o leite)</div>
+        <div class="contra-item">· <strong>Hepatite B</strong> — vacinar RN nas primeiras 12h + imunoglobulina → <em>pode amamentar</em></div>
+        <div class="contra-item">· <strong>Herpes simples</strong> na mama — não amamentar naquela mama (lesão ativa); outra mama: pode</div>
+        <div class="contra-item">· Fenilcetonúria no RN — avaliar; AM com suplementação específica pode ser mantido</div>
+      </div>
+    </div>
+
+    <div class="box box-erro">
+      <div class="box-label">Mastite ≠ suspender amamentação</div>
+      <div class="box-text">A mastite não é contraindicação ao aleitamento. Suspender piora o ingurgitamento e pode levar a abscesso. O antibiótico de escolha é a cefalexina ou oxacilina (S. aureus). Apenas no abscesso formado e drenado recomenda-se suspensão temporária na mama afetada — a outra mama continua.</div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">04</span>
+  </div>
+</div>
+
+<!-- ══ P05 VULVOVAGINITES ══ -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-label">Conteúdo Principal · Aula 11</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <h2>Vulvovaginites — Diagnóstico Diferencial</h2>
+    <table>
+      <thead>
+        <tr>
+          <th style="width:18%">Característica</th>
+          <th class="vulvo-th-cand" style="width:27%">Candidíase Vaginal</th>
+          <th class="vulvo-th-vag" style="width:27%">Vaginose Bacteriana</th>
+          <th class="vulvo-th-tric" style="width:28%">Tricomoníase</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="td-dest">Agente</td>
+          <td class="vulvo-td-cand"><em>Candida albicans</em></td>
+          <td class="vulvo-td-vag"><em>Gardnerella vaginalis</em> (polimicrobiana)</td>
+          <td class="vulvo-td-tric"><em>Trichomonas vaginalis</em> (protozoário)</td>
+        </tr>
+        <tr>
+          <td class="td-dest">Corrimento</td>
+          <td class="vulvo-td-cand">Branco, grumoso ("leite coalhado"), aderido</td>
+          <td class="vulvo-td-vag">Acinzentado, fluido, homogêneo, bolhoso leve</td>
+          <td class="vulvo-td-tric">Amarelo-esverdeado, espumoso, abundante</td>
+        </tr>
+        <tr>
+          <td class="td-dest">Odor</td>
+          <td class="vulvo-td-cand">Ausente ou leve</td>
+          <td class="vulvo-td-vag"><strong>"Peixe podre"</strong> — piora após relação e menstruação</td>
+          <td class="vulvo-td-tric">Fétido</td>
+        </tr>
+        <tr>
+          <td class="td-dest">pH vaginal</td>
+          <td class="vulvo-td-cand"><strong>&lt; 4,5</strong> (ácido — normal)</td>
+          <td class="vulvo-td-vag"><strong>&gt; 4,5</strong> (básico)</td>
+          <td class="vulvo-td-tric"><strong>&gt; 4,5</strong> (básico)</td>
+        </tr>
+        <tr>
+          <td class="td-dest">Clue cells</td>
+          <td class="vulvo-td-cand">Não</td>
+          <td class="vulvo-td-vag"><strong>Sim</strong> (células guia — critério de Amsel)</td>
+          <td class="vulvo-td-tric">Não (protozoário móvel ao microscópio)</td>
+        </tr>
+        <tr>
+          <td class="td-dest">Teste aminas (Whiff)</td>
+          <td class="vulvo-td-cand">Negativo</td>
+          <td class="vulvo-td-vag"><strong>Positivo</strong> (odor de peixe com KOH)</td>
+          <td class="vulvo-td-tric">Pode ser positivo</td>
+        </tr>
+        <tr>
+          <td class="td-dest">Tratamento</td>
+          <td class="vulvo-td-cand">Fluconazol 150mg VO dose única ou nistatina tópica</td>
+          <td class="vulvo-td-vag">Metronidazol 500mg VO 2×/dia 7 dias</td>
+          <td class="vulvo-td-tric">Metronidazol 2g VO dose única</td>
+        </tr>
+        <tr>
+          <td class="td-dest">Tratar parceiro?</td>
+          <td class="vulvo-td-cand">Geralmente não</td>
+          <td class="vulvo-td-vag">Geralmente não</td>
+          <td class="vulvo-td-tric"><strong>Sim — obrigatório</strong> (IST)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="box box-alerta">
+      <div class="box-label">Regra mnemônica — corrimento e pH</div>
+      <div class="box-text"><strong>Cândida = coalhado, pH ácido normal (&lt;4,5).</strong> Vaginose = cinza + odor de peixe + pH básico + Whiff+. Tricomoníase = espumoso + amarelado + pH básico + tratar parceiro (única das três que é IST clássica). Vaginose e tricomoníase compartilham pH &gt;4,5 — diferencia-se pelo corrimento e pelas clue cells.</div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">05</span>
+  </div>
+</div>
+
+<!-- ══ P06 Q1 MEMORIZAÇÃO ══ -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-label">Fixação · Aula 11</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <div class="q-header">Questão 01 de 03 · B4 Saúde da Mulher II · Vulvovaginite — Memorização</div>
+    <div class="q-enunciado">
+      Paciente de 28 anos procura a UBS com queixa de corrimento vaginal há 5 dias. Refere odor desagradável que piora após a relação sexual e após a menstruação. Ao exame: corrimento acinzentado, homogêneo, fluido. pH vaginal 5,2. Teste das aminas (Whiff) positivo. Microscopia: células epiteliais com bordas cobertas por cocobacilos (clue cells). Sobre o diagnóstico e conduta, assinale a alternativa correta:
+    </div>
+    <div class="q-alternativas">
+      <div class="q-alt">
+        <span class="q-alt-letra">A</span>
+        <span>Candidíase vaginal. Tratamento: fluconazol 150 mg VO dose única. O parceiro deve ser tratado simultaneamente para evitar reinfecção.</span>
+      </div>
+      <div class="q-alt">
+        <span class="q-alt-letra">B</span>
+        <span>Tricomoníase. Tratamento: metronidazol 2g VO dose única e tratamento obrigatório do parceiro. O pH &gt;4,5 e as clue cells confirmam o diagnóstico.</span>
+      </div>
+      <div class="q-alt correta">
+        <span class="q-alt-letra">C</span>
+        <span>Vaginose bacteriana. Tratamento: metronidazol 500 mg VO 2×/dia por 7 dias. O parceiro geralmente não precisa de tratamento. Os critérios de Amsel (corrimento homogêneo + pH &gt;4,5 + clue cells + Whiff+) confirmam o diagnóstico. <span class="correta-badge">Correta</span></span>
+      </div>
+      <div class="q-alt">
+        <span class="q-alt-letra">D</span>
+        <span>Vaginose bacteriana. Tratamento: fluconazol 150 mg VO dose única, por ser o antifúngico de primeira escolha para infecções vaginais em geral.</span>
+      </div>
+    </div>
+    <div class="gabarito-box">
+      <div class="gabarito-box-title">Gabarito Comentado — C</div>
+      O quadro preenche 4/4 critérios de Amsel para <strong>vaginose bacteriana</strong>: corrimento cinza homogêneo + pH&gt;4,5 + clue cells + Whiff+. Tratamento: <strong>metronidazol 500mg 2×/dia por 7 dias</strong>. Parceiro: geralmente não é tratado (VB não é IST clássica — é desequilíbrio da flora).
+      <div class="gabarito-distratores"><strong>A —</strong> Candidíase: corrimento grumoso branco, pH &lt;4,5, sem clue cells, Whiff negativo — quadro oposto. <strong>B —</strong> Tricomoníase: corrimento espumoso amarelado + protozoário móvel ao microscópio; clue cells são específicas de VB, não de tricomoníase. <strong>D —</strong> Fluconazol é antifúngico — trata candidíase, não VB (infecção bacteriana).</div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">06</span>
+  </div>
+</div>
+
+<!-- ══ P07 Q2 APLICAÇÃO ══ -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-label">Fixação · Aula 11</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <div class="q-header">Questão 02 de 03 · B4 Saúde da Mulher II · Mastite — Aplicação</div>
+    <div class="q-enunciado">
+      Puérpera de 18 dias, em aleitamento materno exclusivo, procura a UBS com queixa de dor intensa na mama direita há 48 horas. Ao exame: mama direita endurecida, eritematosa, quente e dolorosa à palpação em quadrante superior externo. Temperatura axilar 38,8°C. Sem flutuação à palpação (abscesso ausente). Sobre o diagnóstico e a conduta de enfermagem, assinale a alternativa correta:
+    </div>
+    <div class="q-alternativas">
+      <div class="q-alt">
+        <span class="q-alt-letra">A</span>
+        <span>Diagnóstico: mastite puerperal. Conduta: suspender imediatamente a amamentação na mama afetada e na mama contralateral, ordenhar e desprezar o leite, encaminhar para prescrição de antibiótico.</span>
+      </div>
+      <div class="q-alt">
+        <span class="q-alt-letra">B</span>
+        <span>Diagnóstico: ingurgitamento mamário. Conduta: compressas mornas antes das mamadas, ordenha frequente e analgésico. Antibiótico não é necessário pois não há abscesso.</span>
+      </div>
+      <div class="q-alt correta">
+        <span class="q-alt-letra">C</span>
+        <span>Diagnóstico: mastite puerperal sem abscesso. Conduta: manter amamentação (na mama afetada e na contralateral) + encaminhar para antibioticoterapia (cefalexina ou oxacilina) + analgésico + orientar compressas mornas e esvaziamento frequente. <span class="correta-badge">Correta</span></span>
+      </div>
+      <div class="q-alt">
+        <span class="q-alt-letra">D</span>
+        <span>Diagnóstico: mastite puerperal. Conduta: suspender amamentação na mama afetada, manter na contralateral, iniciar antibiótico e agendar drenagem cirúrgica de urgência.</span>
+      </div>
+    </div>
+    <div class="gabarito-box">
+      <div class="gabarito-box-title">Gabarito Comentado — C</div>
+      Na mastite <strong>sem abscesso</strong>, o aleitamento deve ser <strong>mantido em ambas as mamas</strong> — suspender piora o ingurgitamento e pode evoluir para abscesso. O agente mais comum é S. aureus; o antibiótico de escolha é <strong>cefalexina</strong> (VO, 500mg 4×/dia, 10–14 dias) ou oxacilina. A drenagem cirúrgica só é indicada quando há abscesso flutuante.
+      <div class="gabarito-distratores"><strong>A —</strong> Suspender ambas as mamas é conduta incorreta e agrava o quadro. <strong>B —</strong> Febre 38,8°C + eritema + endurecimento = mastite, não apenas ingurgitamento; antibiótico é necessário. <strong>D —</strong> Sem flutuação (abscesso ausente), não há indicação de drenagem; a suspensão na mama afetada também não é recomendada na mastite sem abscesso.</div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">07</span>
+  </div>
+</div>
+
+<!-- ══ P08 Q3 ANÁLISE ÂNCORA ══ -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-label">Fixação · Aula 11</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <div class="q-header">Questão 03 de 03 · B4 Saúde da Mulher II · HIV + Aleitamento + NANDA-I · Análise</div>
+    <div class="q-enunciado">
+      Puérpera de 22 anos, HIV positivo em uso regular de TARV, parto cesáreo há 12 horas, recém-nascido a termo com Apgar 9/10. A paciente expressa forte desejo de amamentar e questiona a enfermeira: "Minha carga viral está indetectável há 8 meses — posso amamentar?". Sobre o diagnóstico de enfermagem (NANDA-I 2024–2026) e a orientação da enfermeira, assinale a alternativa correta:
+    </div>
+    <div class="q-alternativas">
+      <div class="q-alt">
+        <span class="q-alt-letra">A</span>
+        <span>Carga viral indetectável elimina o risco de transmissão do HIV pelo leite materno; a paciente pode amamentar com segurança. Diagnóstico: Amamentação eficaz.</span>
+      </div>
+      <div class="q-alt">
+        <span class="q-alt-letra">B</span>
+        <span>A amamentação é contraindicada apenas nas primeiras 6 semanas de vida do RN; após esse período, a paciente pode amamentar se mantiver a carga viral indetectável.</span>
+      </div>
+      <div class="q-alt correta">
+        <span class="q-alt-letra">C</span>
+        <span>No Brasil, o HIV materno é contraindicação absoluta ao aleitamento, independentemente da carga viral. Diagnóstico NANDA-I: Amamentação interrompida. Conduta: orientar uso de fórmula infantil (disponível pelo SUS), inibição da lactação e suporte emocional à decisão. <span class="correta-badge">Correta</span></span>
+      </div>
+      <div class="q-alt">
+        <span class="q-alt-letra">D</span>
+        <span>A decisão de amamentar deve ser da paciente, cabendo à enfermeira apenas informar sobre os riscos sem recomendar a suspensão — o princípio da autonomia prevalece sobre qualquer protocolo.</span>
+      </div>
+    </div>
+    <div class="gabarito-box">
+      <div class="gabarito-box-title">Gabarito Comentado — C</div>
+      No Brasil, onde há acesso universal à fórmula infantil pelo SUS, o <strong>HIV materno é contraindicação absoluta ao aleitamento</strong> — independente de carga viral indetectável, uso de TARV ou tempo de diagnóstico. O risco de transmissão persiste mesmo com carga viral indetectável no sangue, pois o leite materno pode conter vírus em compartimentos distintos. O NANDA-I adequado é <strong>Amamentação interrompida</strong>. A inibição da lactação (cabergolina ou enfaixamento) e o suporte emocional são cuidados prioritários.
+      <div class="gabarito-distratores"><strong>A —</strong> Carga viral indetectável no sangue não garante ausência de HIV no leite materno. <strong>B —</strong> Não existe esse período de liberação; a contraindicação é absoluta e permanente no Brasil. <strong>D —</strong> A autonomia não prevalece quando há risco documentado ao RN — a enfermeira tem dever de orientar conforme o protocolo do Ministério da Saúde (PTMH).</div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">08</span>
+  </div>
+</div>
+
+<!-- ══ P09 RECUPERAÇÃO ATIVA ══ -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-label">Recuperação Ativa · Aula 11</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <div class="section-tag">Se esquecer tudo, lembre disto</div>
+    <div class="section-rule"></div>
+    <ul class="obj-list" style="margin-bottom:8mm;">
+      <li class="obj-item">
+        <span class="obj-num" style="font-size:14pt;">★</span>
+        <span class="obj-text">Mastite sem abscesso → <strong>NÃO suspender</strong> amamentação + antibiótico (cefalexina). Abscesso formado → drenar + suspender temporariamente só na mama afetada. Fissura → corrigir técnica, não suspender.</span>
+      </li>
+      <li class="obj-item">
+        <span class="obj-num" style="font-size:14pt;">★</span>
+        <span class="obj-text">Vaginose: corrimento cinza + odor peixe + pH&gt;4,5 + clue cells + Whiff+ → metronidazol. Cândida: grumoso branco + pH&lt;4,5 → fluconazol. Tricomoníase: espumoso amarelado + tratar parceiro → metronidazol 2g.</span>
+      </li>
+      <li class="obj-item">
+        <span class="obj-num" style="font-size:14pt;">★</span>
+        <span class="obj-text"><strong>HIV = contraindicação absoluta ao AM no Brasil</strong> — mesmo com carga viral indetectável. NANDA-I: Amamentação interrompida. SUS fornece fórmula infantil. HTLV e galactosemia no RN também são contraindicações absolutas.</span>
+      </li>
+    </ul>
+    <div class="ra-sub">Teste-se sem olhar</div>
+    <ul class="ra-items">
+      <li class="ra-item"><span class="ra-num">01 —</span>Qual a diferença entre prolactina e ocitocina no aleitamento materno? O que inibe cada uma?</li>
+      <li class="ra-item"><span class="ra-num">02 —</span>Como diferenciar candidíase vaginal de vaginose bacteriana pelos dados clínicos e laboratoriais básicos?</li>
+      <li class="ra-item"><span class="ra-num">03 —</span>Puérpera com mastite e sem abscesso: deve suspender o aleitamento? Qual antibiótico indicar?</li>
+      <li class="ra-item"><span class="ra-num">04 —</span>Quais são as três contraindicações absolutas ao aleitamento materno no Brasil?</li>
+    </ul>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">09</span>
+  </div>
+</div>
+
+<!-- ══ P10 REFERÊNCIAS ══ -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-label">Referências · Aula 11</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <div class="section-tag">Referências — Bloco B4 · Aula 11</div>
+    <div class="section-rule"></div>
+    <ul class="ref-list">
+      <li class="ref-item">BRASIL. Ministério da Saúde. <cite>Saúde da Criança: Aleitamento Materno e Alimentação Complementar.</cite> 2. ed. Cadernos de Atenção Básica n.º 23. Brasília: MS/DAB, 2015.</li>
+      <li class="ref-item">BRASIL. Ministério da Saúde. <cite>Protocolo Clínico e Diretrizes Terapêuticas para Prevenção da Transmissão Vertical de HIV, Sífilis e Hepatites Virais (PCDT-PTMH).</cite> Brasília: MS, 2022.</li>
+      <li class="ref-item">BRASIL. Ministério da Saúde. <cite>Protocolo Clínico e Diretrizes Terapêuticas para Atenção Integral às Pessoas com Infecções Sexualmente Transmissíveis (IST).</cite> Brasília: MS, 2022.</li>
+      <li class="ref-item">WHO. <cite>Guidelines on Infant Feeding and HIV.</cite> Geneva: World Health Organization, 2016.</li>
+      <li class="ref-item">BRASIL. Conselho Federal de Enfermagem. <cite>Resolução COFEN n.º 736/2024.</cite> Regulamenta a execução do Processo de Enfermagem. Brasília: COFEN, 2024.</li>
+      <li class="ref-item">HERDMAN, T.H.; KAMITSURU, S.; LOPES, C.T. (Eds.). <cite>NANDA International — Diagnósticos de Enfermagem 2024–2026.</cite> 13. ed. Porto Alegre: Artmed, 2024.</li>
+    </ul>
+    <div class="notas-box">
+      <span class="notas-label">Espaço para anotações</span>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">10</span>
+  </div>
+</div>
+
+</body>
+</html>

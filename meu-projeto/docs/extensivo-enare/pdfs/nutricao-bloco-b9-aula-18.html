@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nutrição Bloco B9 — Aula 18 | Extensivo ENARE 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --creme: #F6F4ED; --verde: #1F5C23; --accent: #C6D834;
+    --dark: #1a1a1a; --muted: #555;
+    --page-w: 210mm; --page-h: 297mm; --pad: 14mm;
+  }
+  body { background: #d0d0d0; font-family: 'Bricolage Grotesque', sans-serif; }
+  .page { width: var(--page-w); min-height: var(--page-h); background: var(--creme); margin: 8mm auto; padding: var(--pad); position: relative; overflow: hidden; page-break-after: always; }
+
+  .page-header { display: flex; align-items: center; justify-content: space-between; border-bottom: 2.5px solid var(--verde); padding-bottom: 4px; margin-bottom: 10px; }
+  .page-header .logo-area { display: flex; align-items: center; gap: 6px; }
+  .page-header .brand { font-family: 'Playfair Display', serif; font-style: italic; font-size: 13px; color: var(--verde); }
+  .page-header .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; color: var(--muted); letter-spacing: .03em; }
+  .page-header .hd-right { text-align: right; }
+  .page-header .hd-aula { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; color: var(--verde); letter-spacing: .04em; text-transform: uppercase; }
+  .page-header .hd-pag { font-size: 8px; color: var(--muted); }
+
+  .page-footer { position: absolute; bottom: 8mm; left: var(--pad); right: var(--pad); display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #ccc; padding-top: 4px; }
+  .page-footer span { font-size: 7px; color: #999; }
+
+  /* CAPA */
+  .cover { background: var(--verde); display: flex; flex-direction: column; justify-content: space-between; padding: var(--pad); }
+  .cover-top { display: flex; justify-content: space-between; align-items: flex-start; }
+  .cover-brand { font-family: 'Playfair Display', serif; font-style: italic; color: var(--creme); font-size: 16px; }
+  .cover-tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(246,244,237,.55); font-size: 8px; letter-spacing: .05em; margin-top: 2px; }
+  .cover-mid { text-align: center; padding: 10mm 0 6mm; }
+  .cover-eyebrow { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+  .cover-title { font-family: 'Barlow Condensed', sans-serif; font-size: 36px; font-weight: 800; color: var(--creme); line-height: 1.0; text-transform: uppercase; letter-spacing: .01em; margin-bottom: 8px; }
+  .cover-subtitle { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; font-size: 13px; color: rgba(246,244,237,.8); letter-spacing: .04em; }
+  .cover-divider { border: none; border-top: 1.5px solid var(--accent); margin: 6mm 0; opacity: .5; }
+  .cover-pills { display: flex; justify-content: center; gap: 6px; flex-wrap: wrap; }
+  .pill { border: 1px solid rgba(198,216,52,.45); border-radius: 20px; padding: 3px 10px; font-size: 8.5px; color: rgba(246,244,237,.85); font-family: 'Bricolage Grotesque', sans-serif; letter-spacing: .03em; }
+  .cover-bottom { display: flex; justify-content: space-between; align-items: flex-end; }
+  .cv-meta { font-size: 8px; color: rgba(246,244,237,.5); }
+  .cv-code { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: .12em; color: var(--accent); }
+
+  /* CONTEÚDO */
+  .sec-title { font-family: 'Barlow Condensed', sans-serif; font-size: 20px; font-weight: 800; color: var(--verde); text-transform: uppercase; letter-spacing: .03em; border-left: 4px solid var(--accent); padding-left: 8px; margin-bottom: 8px; line-height: 1.1; }
+  .sec-intro { font-size: 8.5px; color: var(--muted); margin-bottom: 10px; line-height: 1.5; }
+
+  .box { border-radius: 6px; padding: 8px 10px; margin-bottom: 8px; font-size: 8px; line-height: 1.55; }
+  .box-verde  { background: rgba(31,92,35,.08);  border-left: 3px solid var(--verde); }
+  .box-accent { background: rgba(198,216,52,.13); border-left: 3px solid var(--accent); }
+  .box-alert  { background: rgba(220,53,69,.07);  border-left: 3px solid #dc3545; }
+  .box-info   { background: rgba(13,110,253,.06); border-left: 3px solid #0d6efd; }
+  .box-dark   { background: rgba(26,26,26,.05);   border-left: 3px solid #555; }
+
+  .box-title { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .05em; margin-bottom: 5px; color: var(--dark); }
+  .box-title.verde { color: var(--verde); }
+  .box-title.red   { color: #dc3545; }
+  .box-title.blue  { color: #0d6efd; }
+  .box-title.acc   { color: #5a6e00; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 7.5px; margin-bottom: 8px; }
+  th { background: var(--verde); color: var(--creme); font-family: 'Barlow Condensed', sans-serif; font-size: 9px; padding: 4px 6px; text-align: left; }
+  td { padding: 3.5px 6px; border-bottom: 1px solid #ddd; vertical-align: top; }
+  tr:nth-child(even) td { background: rgba(0,0,0,.03); }
+  td strong { color: var(--verde); }
+
+  ul, ol { padding-left: 14px; margin-bottom: 6px; }
+  li { font-size: 8px; line-height: 1.55; margin-bottom: 2px; }
+  li strong { color: var(--verde); }
+
+  .two-col   { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 7px; margin-bottom: 8px; }
+
+  .badge { display: inline-block; padding: 2px 7px; border-radius: 10px; font-size: 7px; font-weight: 600; letter-spacing: .04em; }
+  .badge-verde  { background: var(--verde);  color: var(--creme); }
+  .badge-accent { background: var(--accent); color: var(--dark); }
+  .badge-red    { background: #dc3545; color: #fff; }
+  .badge-blue   { background: #0d6efd; color: #fff; }
+
+  /* QUESTÕES */
+  .q-header { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; padding-bottom: 6px; border-bottom: 2px solid var(--verde); }
+  .q-num { font-family: 'Barlow Condensed', sans-serif; font-size: 28px; font-weight: 800; color: var(--verde); line-height: 1; }
+  .q-meta { display: flex; flex-direction: column; }
+  .q-tipo { font-size: 7.5px; color: var(--muted); letter-spacing: .05em; text-transform: uppercase; }
+  .q-tema { font-size: 9px; font-weight: 600; color: var(--dark); }
+
+  .q-enunciado { background: rgba(31,92,35,.06); border-radius: 6px; padding: 10px 12px; font-size: 9px; line-height: 1.6; margin-bottom: 10px; border-left: 3px solid var(--verde); color: var(--dark); }
+  .q-enunciado .stem { font-weight: 600; margin-bottom: 6px; }
+  .q-afirmativas { margin: 6px 0 6px 6px; }
+  .q-afirmativas li { font-size: 8.5px; line-height: 1.55; margin-bottom: 3px; }
+
+  .q-alternativas { list-style: none; padding: 0; margin-bottom: 12px; }
+  .q-alternativas li { display: flex; gap: 8px; padding: 5px 8px; border-radius: 5px; font-size: 8.5px; line-height: 1.5; margin-bottom: 3px; border: 1px solid transparent; }
+  .q-alternativas li .letra { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 800; color: var(--verde); min-width: 14px; }
+  .q-alternativas li.correta { background: rgba(198,216,52,.2); border-color: var(--accent); }
+  .q-alternativas li.correta .letra { color: #5a6e00; }
+
+  .ap-box { background: linear-gradient(135deg, rgba(31,92,35,.07), rgba(198,216,52,.09)); border: 1px solid rgba(198,216,52,.4); border-radius: 8px; padding: 10px 12px; }
+  .ap-title { font-family: 'Barlow Condensed', sans-serif; font-size: 12px; font-weight: 800; color: var(--verde); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 7px; display: flex; align-items: center; gap: 6px; }
+  .ap-body { font-size: 8px; line-height: 1.6; color: var(--dark); }
+  .ap-body strong { color: var(--verde); }
+  .ap-body ul { padding-left: 12px; margin-top: 4px; }
+  .ap-body li { font-size: 7.8px; margin-bottom: 2px; }
+
+  /* GABARITO */
+  .gab-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; margin: 10px 0; }
+  .gab-card { border: 1.5px solid var(--verde); border-radius: 8px; padding: 10px; text-align: center; }
+  .gab-q { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+  .gab-letra { font-family: 'Barlow Condensed', sans-serif; font-size: 42px; font-weight: 800; color: var(--verde); line-height: 1; margin: 2px 0; }
+  .gab-tag { font-size: 7.5px; color: var(--muted); }
+  .gab-justif { font-size: 7.8px; color: var(--dark); line-height: 1.5; margin-top: 5px; text-align: left; background: rgba(31,92,35,.05); border-radius: 5px; padding: 6px 8px; }
+
+  /* SÍNTESE */
+  .sintese-header { text-align: center; padding: 8px 0 10px; border-bottom: 2px solid var(--accent); margin-bottom: 12px; }
+  .sintese-header .sh-label { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: .15em; text-transform: uppercase; color: var(--accent); margin-bottom: 3px; }
+  .sintese-header .sh-title { font-family: 'Barlow Condensed', sans-serif; font-size: 22px; font-weight: 800; color: var(--verde); text-transform: uppercase; letter-spacing: .02em; }
+
+  .armadilha-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-bottom: 10px; }
+  .arm-card { background: rgba(220,53,69,.06); border: 1px solid rgba(220,53,69,.25); border-radius: 7px; padding: 7px 9px; }
+  .arm-title { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; font-weight: 800; color: #dc3545; text-transform: uppercase; letter-spacing: .04em; margin-bottom: 4px; }
+  .arm-body { font-size: 7.5px; line-height: 1.5; color: var(--dark); }
+  .arm-body strong { color: #dc3545; }
+
+  .flashcard-strip { display: grid; grid-template-columns: repeat(4,1fr); gap: 5px; margin-bottom: 10px; }
+  .fc { background: var(--verde); color: var(--creme); border-radius: 6px; padding: 7px 8px; text-align: center; }
+  .fc .fc-num { font-family: 'Barlow Condensed', sans-serif; font-size: 15px; font-weight: 800; color: var(--accent); line-height: 1; }
+  .fc .fc-label { font-size: 7px; color: rgba(246,244,237,.75); margin-top: 1px; }
+
+  @media print { body { background: none; } .page { margin: 0; box-shadow: none; } }
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════
+     P1 — CAPA
+════════════════════════════════════════════════ -->
+<div class="page cover">
+  <div class="cover-top">
+    <div>
+      <div class="cover-brand">Elite Treinamentos</div>
+      <div class="cover-tagline">Extensivo ENARE 2026 · Material de Apoio</div>
+    </div>
+    <svg width="38" height="38" viewBox="0 0 32 32" fill="none">
+      <rect width="32" height="32" rx="6" fill="#F6F4ED"/>
+      <path d="M16 4 L26 9.5 L26 20.5 L16 26 L6 20.5 L6 9.5 Z" stroke="#1F5C23" stroke-width="1.8" fill="none"/>
+      <circle cx="16" cy="16" r="4" fill="#1F5C23"/>
+    </svg>
+  </div>
+  <div class="cover-mid">
+    <div class="cover-eyebrow">Nutrição · Bloco B9 · Aula 18</div>
+    <div class="cover-title">Nutrição na<br>Gestação e<br>Lactação</div>
+    <div class="cover-subtitle">Necessidades, Ganho de Peso e Suplementação</div>
+    <hr class="cover-divider">
+    <div class="cover-pills">
+      <span class="pill">Ganho Ponderal IOM</span>
+      <span class="pill">Ácido Fólico</span>
+      <span class="pill">Ferro Gestacional</span>
+      <span class="pill">DHA / Ômega-3</span>
+      <span class="pill">Lactação e Aleitamento</span>
+    </div>
+  </div>
+  <div class="cover-bottom">
+    <div class="cv-meta">NUT-CLÍN · Módulo Ciclos da Vida</div>
+    <div class="cv-code">B9-A18 · ENARE 2026</div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     P2 — GANHO DE PESO E NECESSIDADES CALÓRICAS
+════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="22" viewBox="0 0 32 32" fill="none">
+        <rect width="32" height="32" rx="6" fill="#1F5C23"/>
+        <path d="M16 4 L26 9.5 L26 20.5 L16 26 L6 20.5 L6 9.5 Z" stroke="#C6D834" stroke-width="1.8" fill="none"/>
+        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
+      </svg>
+      <div><div class="brand">Elite Treinamentos</div><div class="tagline">Extensivo ENARE 2026</div></div>
+    </div>
+    <div class="hd-right">
+      <div class="hd-aula">Aula 18 · Nutrição na Gestação e Lactação</div>
+      <div class="hd-pag">Página 2 de 10</div>
+    </div>
+  </div>
+
+  <div class="sec-title">Ganho de Peso Gestacional e Necessidades Calóricas</div>
+  <div class="sec-intro">O ganho ponderal adequado é determinado pelo IMC pré-gestacional (IOM 2009). Excessivo → risco de macrossomia, DM gestacional; insuficiente → RCIU, prematuridade.</div>
+
+  <div class="box box-verde">
+    <div class="box-title verde">Ganho de Peso Total — IOM 2009 (Institute of Medicine)</div>
+    <table>
+      <tr><th>IMC Pré-gestacional</th><th>Classificação</th><th>Ganho Total Recomendado</th><th>Ganho/Semana (2º e 3º trim.)</th></tr>
+      <tr><td>&lt; 18,5 kg/m²</td><td>Baixo peso</td><td><strong>12,5–18 kg</strong></td><td>0,51 kg/sem</td></tr>
+      <tr><td>18,5–24,9 kg/m²</td><td>Peso adequado</td><td><strong>11,5–16 kg</strong></td><td>0,42 kg/sem</td></tr>
+      <tr><td>25,0–29,9 kg/m²</td><td>Sobrepeso</td><td><strong>7–11,5 kg</strong></td><td>0,28 kg/sem</td></tr>
+      <tr><td>≥ 30,0 kg/m²</td><td>Obesidade</td><td><strong>5–9 kg</strong></td><td>0,22 kg/sem</td></tr>
+      <tr><td>Gemelar (peso normal)</td><td>—</td><td><strong>17–25 kg</strong></td><td>0,7 kg/sem</td></tr>
+    </table>
+    <div style="font-size:7.5px;color:#1F5C23;margin-top:3px;"><strong>1º trimestre:</strong> ganho mínimo (~0,5–2 kg total independente do IMC pré-gestacional)</div>
+  </div>
+
+  <div class="two-col">
+    <div class="box box-accent">
+      <div class="box-title acc">Acréscimo Calórico por Trimestre</div>
+      <table>
+        <tr><th>Trimestre</th><th>Acréscimo</th></tr>
+        <tr><td>1º trimestre</td><td><strong>+0 kcal/dia</strong> (sem acréscimo)</td></tr>
+        <tr><td>2º trimestre</td><td><strong>+340 kcal/dia</strong></td></tr>
+        <tr><td>3º trimestre</td><td><strong>+452 kcal/dia</strong></td></tr>
+      </table>
+      <div style="font-size:7.5px;margin-top:4px;">Referência: DRI 2002/IOM. Valores para gestação única, mulher com peso adequado.</div>
+    </div>
+    <div class="box box-info">
+      <div class="box-title blue">Acréscimo Calórico na Lactação</div>
+      <table>
+        <tr><th>Fase</th><th>Acréscimo</th></tr>
+        <tr><td>0–6 meses (exclusiva)</td><td><strong>+330 kcal/dia</strong></td></tr>
+        <tr><td>7–12 meses</td><td><strong>+400 kcal/dia</strong></td></tr>
+      </table>
+      <div style="font-size:7.5px;margin-top:4px;">Volume médio de leite: 750–800 mL/dia nos primeiros 6 meses. Densidade energética: ~70 kcal/100 mL.</div>
+    </div>
+  </div>
+
+  <div class="box box-dark">
+    <div class="box-title">Distribuição de Macronutrientes na Gestação</div>
+    <table>
+      <tr><th>Macronutriente</th><th>Recomendação</th><th>Observação</th></tr>
+      <tr><td><strong>Carboidratos</strong></td><td>175 g/dia (mínimo absoluto) · 45–65% VET</td><td>DMG: mínimo mantido em 175 g/dia</td></tr>
+      <tr><td><strong>Proteínas</strong></td><td>1,1 g/kg/dia (+25 g/dia acima da necessidade basal) · 10–35% VET</td><td>↑ necessidade no 2º e 3º trimestres</td></tr>
+      <tr><td><strong>Lipídios</strong></td><td>20–35% VET; DHA 200–300 mg/dia</td><td>DHA: desenvolvimento neurológico fetal</td></tr>
+      <tr><td><strong>Fibras</strong></td><td>28 g/dia (vs 25 g não gestante)</td><td>↓ constipação, controle glicêmico</td></tr>
+      <tr><td><strong>Água</strong></td><td>3,0 L/dia total (2,3 L bebidas + alimentos)</td><td>↑ 0,3 L em relação à não gestante</td></tr>
+    </table>
+  </div>
+
+  <div class="page-footer">
+    <span>Elite Treinamentos em Saúde · Extensivo ENARE 2026</span>
+    <span>NUT-CLÍN · Aula 18 · Ganho de Peso Gestacional</span>
+    <span>B9-A18-P02</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     P3 — MICRONUTRIENTES NA GESTAÇÃO
+════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="22" viewBox="0 0 32 32" fill="none">
+        <rect width="32" height="32" rx="6" fill="#1F5C23"/>
+        <path d="M16 4 L26 9.5 L26 20.5 L16 26 L6 20.5 L6 9.5 Z" stroke="#C6D834" stroke-width="1.8" fill="none"/>
+        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
+      </svg>
+      <div><div class="brand">Elite Treinamentos</div><div class="tagline">Extensivo ENARE 2026</div></div>
+    </div>
+    <div class="hd-right">
+      <div class="hd-aula">Aula 18 · Nutrição na Gestação e Lactação</div>
+      <div class="hd-pag">Página 3 de 10</div>
+    </div>
+  </div>
+
+  <div class="sec-title">Micronutrientes Críticos na Gestação</div>
+  <div class="sec-intro">A gestação aumenta substancialmente as necessidades de micronutrientes específicos. O ácido fólico e o ferro são os mais cobrados nas provas de residência.</div>
+
+  <div class="box box-alert">
+    <div class="box-title red">Ácido Fólico — O Mais Importante da Gestação</div>
+    <div class="two-col">
+      <div>
+        <ul>
+          <li><strong>Dose suplementar:</strong> 400 µg/dia (0,4 mg) para gestantes de baixo risco</li>
+          <li><strong>Alto risco (epilepsia, DM, histórico de DTN):</strong> 4–5 mg/dia</li>
+          <li><strong>Início:</strong> pelo menos <strong>1 mês antes</strong> da concepção (idealmente 3 meses) e até <strong>12ª semana</strong> de gestação</li>
+          <li>Fechamento do tubo neural: <strong>28º dia</strong> pós-concepção → suplementação pré-concepção é mandatória</li>
+        </ul>
+      </div>
+      <div>
+        <ul>
+          <li><strong>Deficiência → DTN:</strong> anencefalia, espinha bífida, mielomeningocele</li>
+          <li>Folato alimentar: não é suficiente para prevenir DTN — suplemento é necessário</li>
+          <li>RDA gestação: 600 µg DFE/dia (dietéticos + suplemento)</li>
+          <li><strong>Mnemônico:</strong> <em>Folato Fecha o Tubo Neural no 28º Dia</em></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="box box-verde">
+    <div class="box-title verde">Ferro na Gestação</div>
+    <div class="two-col">
+      <div>
+        <ul>
+          <li><strong>RDA:</strong> 27 mg/dia (vs 18 mg não gestante)</li>
+          <li><strong>Suplementação profilática:</strong> 40 mg de ferro elementar/dia a partir da 20ª semana (MS Brasil)</li>
+          <li>Anemia ferropriva gestacional: ↓ Hb, ↓ ferritina, ↑ TIBC</li>
+          <li>Tratamento da anemia: 120–200 mg ferro elementar/dia</li>
+        </ul>
+      </div>
+      <div>
+        <ul>
+          <li>Riscos da deficiência: parto prematuro, baixo peso ao nascer, óbito perinatal</li>
+          <li>Absorção: melhorada por vitamina C; inibida por cálcio, fitatos, taninos</li>
+          <li>Não ingerir ferro com leite/café → inibição de absorção</li>
+          <li>Anemia na gestação: Hb &lt; 11 g/dL (1º e 3º tri) ou &lt; 10,5 g/dL (2º tri)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="box box-info">
+    <div class="box-title blue">Demais Micronutrientes Críticos</div>
+    <table>
+      <tr><th>Micronutriente</th><th>RDA Gestação</th><th>Função / Risco da Deficiência</th><th>Atenção</th></tr>
+      <tr><td><strong>Cálcio</strong></td><td>1.000 mg/dia (19–50 anos); 1.300 mg (&lt;19 anos)</td><td>Mineralização óssea fetal; ↓ preeclâmpsia</td><td>Suplementar se ingestão &lt; 600 mg/dia; não tomar com ferro (antagonismo)</td></tr>
+      <tr><td><strong>Vitamina D</strong></td><td>600 UI/dia (RDA); 1.500–2.000 UI prática clínica</td><td>Absorção de cálcio; imunidade; ↓ risco preeclâmpsia</td><td>Deficiência prevalente; rastrear 25-OH-D</td></tr>
+      <tr><td><strong>Iodo</strong></td><td>220 µg/dia</td><td>Síntese hormonal tireoidiana; desenvolvimento neurológico</td><td>Deficiência = hipotireoidismo congênito, cretinismo</td></tr>
+      <tr><td><strong>DHA (ômega-3)</strong></td><td>200–300 mg/dia</td><td>Desenvolvimento do SNC e retina fetal</td><td>Peixe 2×/sem; evitar peixes com mercúrio (tubarão, cação)</td></tr>
+      <tr><td><strong>Zinco</strong></td><td>11 mg/dia</td><td>Divisão celular, crescimento fetal</td><td>Déficit → malformações, RCIU</td></tr>
+      <tr><td><strong>Vitamina A</strong></td><td>770 µg RAE/dia</td><td>Desenvolvimento ocular e imunidade</td><td><strong>Excesso (UL = 3.000 µg)</strong> → teratogênese (isotretinoína!)</td></tr>
+    </table>
+  </div>
+
+  <div class="page-footer">
+    <span>Elite Treinamentos em Saúde · Extensivo ENARE 2026</span>
+    <span>NUT-CLÍN · Aula 18 · Micronutrientes Gestação</span>
+    <span>B9-A18-P03</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     P4 — INTERCORRÊNCIAS NUTRICIONAIS NA GESTAÇÃO
+════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="22" viewBox="0 0 32 32" fill="none">
+        <rect width="32" height="32" rx="6" fill="#1F5C23"/>
+        <path d="M16 4 L26 9.5 L26 20.5 L16 26 L6 20.5 L6 9.5 Z" stroke="#C6D834" stroke-width="1.8" fill="none"/>
+        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
+      </svg>
+      <div><div class="brand">Elite Treinamentos</div><div class="tagline">Extensivo ENARE 2026</div></div>
+    </div>
+    <div class="hd-right">
+      <div class="hd-aula">Aula 18 · Nutrição na Gestação e Lactação</div>
+      <div class="hd-pag">Página 4 de 10</div>
+    </div>
+  </div>
+
+  <div class="sec-title">Intercorrências Nutricionais na Gestação</div>
+  <div class="sec-intro">Diabetes gestacional, náuseas/vômitos e hiperêmese gravídica são as principais intercorrências com impacto nutricional direto.</div>
+
+  <div class="box box-accent">
+    <div class="box-title acc">Diabetes Mellitus Gestacional (DMG) — Conduta Nutricional</div>
+    <div class="two-col">
+      <div>
+        <ul>
+          <li><strong>CHO mínimo:</strong> 175 g/dia (DRI) — nunca abaixo, mesmo no DMG</li>
+          <li>Distribuição: 3 refeições principais + 2–3 lanches + colação noturna</li>
+          <li>CHO de baixo IG: cereais integrais, leguminosas, hortaliças</li>
+          <li>Fracionamento → evita picos glicêmicos pós-prandiais</li>
+          <li>Meta glicêmica: jejum &lt; 95 mg/dL; 1h pós-prandial &lt; 140 mg/dL; 2h &lt; 120 mg/dL</li>
+        </ul>
+      </div>
+      <div>
+        <ul>
+          <li><strong>Ganho de peso no DMG:</strong> seguir IOM 2009 por IMC pré-gestacional</li>
+          <li>Rastreio: TOTG 75g entre 24–28 semanas (critério IADPSG: jejum ≥92 mg/dL, 1h ≥180, 2h ≥153)</li>
+          <li>Insulinoterapia: quando MNT não atinge meta em 2 semanas</li>
+          <li>Adoçantes: aprovados pelo FDA (stevia, sucralose) — com moderação</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="box box-alert">
+      <div class="box-title red">Náuseas e Vômitos / Hiperemese Gravídica</div>
+      <ul>
+        <li><strong>Náuseas/vômitos leves (NVP):</strong> 70–80% das gestantes; 1º trimestre; autolimitado</li>
+        <li>Conduta NVP: refeições pequenas e frequentes, alimentos secos (bolacha cream cracker), gengibre 1 g/dia (evidência moderada), vitamina B6 (piridoxina) 10–25 mg 3×/dia</li>
+        <li><strong>Hiperemese gravídica:</strong> vômitos intratáveis + perda ≥5% do peso + cetonúria</li>
+        <li>HG: internação → hidratação IV + tiamina 100 mg IV (prevenir Wernicke) → TNE se necessário</li>
+        <li>HG grave: NPT se TNE não tolerada</li>
+      </ul>
+    </div>
+    <div class="box box-info">
+      <div class="box-title blue">Alimentos Contraindicados na Gestação</div>
+      <ul>
+        <li><strong>Peixes de alto mercúrio:</strong> tubarão, cação, peixe-espada, atum fresco (limitado a 170 g/sem) — neurotoxicidade fetal</li>
+        <li><strong>Listeria:</strong> queijos moles (brie, camembert, gorgonzola), leite/suco não pasteurizado, embutidos frios, patê</li>
+        <li><strong>Toxoplasma:</strong> carnes cruas/malpassadas, vegetais e frutas não higienizados</li>
+        <li><strong>Salmonella:</strong> ovos crus, maionese caseira</li>
+        <li><strong>Vitamina A:</strong> fígado bovino (consumo excessivo → hipervitaminose A → teratogênese)</li>
+        <li><strong>Álcool:</strong> proibido em qualquer dose (síndrome alcoólica fetal)</li>
+        <li><strong>Cafeína:</strong> &lt; 200 mg/dia (1 xícara de café filtrado ≈ 100 mg)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="box box-dark">
+    <div class="box-title">Preeclâmpsia e Nutrição</div>
+    <div style="font-size:8px;line-height:1.6;">
+      <strong>Preeclâmpsia:</strong> PA ≥ 140/90 mmHg após 20ª semana + proteinúria ou critérios de gravidade. Não existe dieta que cure, mas:<br>
+      • <strong>Cálcio:</strong> suplementação 1,5–2 g/dia reduz risco em gestantes com baixa ingestão (evidência A — OMS)<br>
+      • <strong>Vitamina D:</strong> status adequado associado a ↓ risco<br>
+      • <strong>Ômega-3 (DHA/EPA):</strong> evidências sugerem efeito protetor<br>
+      • <strong>Restrição de sódio:</strong> NÃO recomendada rotineiramente (pode ↓ volume plasmático); apenas se PA muito elevada com edema grave
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Elite Treinamentos em Saúde · Extensivo ENARE 2026</span>
+    <span>NUT-CLÍN · Aula 18 · Intercorrências Gestação</span>
+    <span>B9-A18-P04</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     P5 — LACTAÇÃO E ALEITAMENTO MATERNO
+════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="22" viewBox="0 0 32 32" fill="none">
+        <rect width="32" height="32" rx="6" fill="#1F5C23"/>
+        <path d="M16 4 L26 9.5 L26 20.5 L16 26 L6 20.5 L6 9.5 Z" stroke="#C6D834" stroke-width="1.8" fill="none"/>
+        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
+      </svg>
+      <div><div class="brand">Elite Treinamentos</div><div class="tagline">Extensivo ENARE 2026</div></div>
+    </div>
+    <div class="hd-right">
+      <div class="hd-aula">Aula 18 · Nutrição na Gestação e Lactação</div>
+      <div class="hd-pag">Página 5 de 10</div>
+    </div>
+  </div>
+
+  <div class="sec-title">Lactação e Nutrição da Nutriz</div>
+  <div class="sec-intro">O aleitamento materno exclusivo (AME) até os 6 meses é a recomendação global (OMS/MS). As necessidades nutricionais da nutriz são elevadas e específicas.</div>
+
+  <div class="box box-verde">
+    <div class="box-title verde">Necessidades da Nutriz — Micronutrientes Prioritários</div>
+    <table>
+      <tr><th>Nutriente</th><th>RDA Lactação</th><th>RDA Gestação</th><th>Transferência para o Leite</th></tr>
+      <tr><td><strong>Vitamina D</strong></td><td>600 UI/dia</td><td>600 UI/dia</td><td>Baixa — recém-nascido precisa de suplementação separada (400 UI/dia)</td></tr>
+      <tr><td><strong>Vitamina B12</strong></td><td>2,8 µg/dia</td><td>2,6 µg/dia</td><td>Alta — vegetarianas estritas devem suplementar obrigatoriamente</td></tr>
+      <tr><td><strong>Iodo</strong></td><td>290 µg/dia</td><td>220 µg/dia</td><td>Alta — deficiência → hipotireoidismo neonatal</td></tr>
+      <tr><td><strong>Cálcio</strong></td><td>1.000 mg/dia</td><td>1.000 mg/dia</td><td>Moderada — desmineralização óssea temporária na nutriz</td></tr>
+      <tr><td><strong>DHA</strong></td><td>200–300 mg/dia</td><td>200–300 mg/dia</td><td>Alta — essencial para neurodesenvolvimento do lactente</td></tr>
+      <tr><td><strong>Ferro</strong></td><td>9–10 mg/dia</td><td>27 mg/dia</td><td>Baixa — leite materno tem pouco ferro (mas altamente biodisponível)</td></tr>
+    </table>
+    <div style="font-size:7.5px;color:#1F5C23;margin-top:3px;"><strong>Ferro na lactação:</strong> necessidade MENOR que na gestação (sem menstruação). Suplementação pós-parto apenas se anemia confirmada.</div>
+  </div>
+
+  <div class="two-col">
+    <div class="box box-info">
+      <div class="box-title blue">Composição do Leite Materno</div>
+      <ul>
+        <li><strong>Colostro (0–3 dias):</strong> rico em IgA secretória, lactoferrina, leucócitos; baixo volume; alto em proteínas e vitaminas A e K</li>
+        <li><strong>Leite de transição (3–15 dias):</strong> ↑ volume, ↓ proteínas, ↑ lactose e lipídios</li>
+        <li><strong>Leite maduro (&gt;15 dias):</strong> composição estável; ~70 kcal/100 mL; lactose = CHO principal</li>
+        <li><strong>Leite anterior vs posterior:</strong> leite anterior (início da mamada) → mais aquoso; leite posterior → mais rico em lipídios e calorias</li>
+      </ul>
+    </div>
+    <div class="box box-accent">
+      <div class="box-title acc">Contraindicações ao Aleitamento Materno</div>
+      <ul>
+        <li><strong>HIV materno</strong> (em países com acesso à água potável e fórmula segura)</li>
+        <li><strong>HTLV-1 e HTLV-2</strong></li>
+        <li><strong>Galactosemia clássica</strong> no lactente (não metaboliza galactose)</li>
+        <li>Uso de quimioterápicos, antirretrovirais (ARV em países desenvolvidos), radioterapia ativa</li>
+        <li><strong>Não contraindica:</strong> hepatite B e C (com cuidados), CMV (lactentes a termo), diabetes materno, hipotireoidismo</li>
+      </ul>
+      <div style="font-size:7.5px;color:#5a6e00;margin-top:4px;"><strong>Atenção Brasil:</strong> HIV = contraindicação absoluta independente de TARV.</div>
+    </div>
+  </div>
+
+  <div class="box box-dark">
+    <div class="box-title">Vitamina D no Lactente — Suplementação Obrigatória</div>
+    <div style="font-size:8px;line-height:1.6;">
+      Leite materno tem teor insuficiente de vitamina D (~20–25 UI/L). O lactente em AME não consegue atingir necessidade apenas pelo leite.<br>
+      <strong>SBP (2022): 400 UI/dia de vitamina D3 para todos os lactentes em AME ou com ingestão de fórmula &lt; 1 L/dia</strong>, desde o nascimento até os 12 meses.<br>
+      Exposição solar: NÃO é recomendada como fonte de vitamina D em lactentes &lt; 6 meses (risco de queimadura solar).
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Elite Treinamentos em Saúde · Extensivo ENARE 2026</span>
+    <span>NUT-CLÍN · Aula 18 · Lactação</span>
+    <span>B9-A18-P05</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     P6 — QUESTÃO 01 (APLICAÇÃO)
+════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="22" viewBox="0 0 32 32" fill="none">
+        <rect width="32" height="32" rx="6" fill="#1F5C23"/>
+        <path d="M16 4 L26 9.5 L26 20.5 L16 26 L6 20.5 L6 9.5 Z" stroke="#C6D834" stroke-width="1.8" fill="none"/>
+        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
+      </svg>
+      <div><div class="brand">Elite Treinamentos</div><div class="tagline">Extensivo ENARE 2026</div></div>
+    </div>
+    <div class="hd-right">
+      <div class="hd-aula">Aula 18 · Nutrição na Gestação e Lactação</div>
+      <div class="hd-pag">Página 6 de 10</div>
+    </div>
+  </div>
+
+  <div class="q-header">
+    <div class="q-num">Q01</div>
+    <div class="q-meta">
+      <span class="q-tipo">Nível: Aplicação · NUT-CLÍN · Gestação</span>
+      <span class="q-tema">Ganho Ponderal e Suplementação</span>
+    </div>
+    <span class="badge badge-verde" style="margin-left:auto;">Ap</span>
+  </div>
+
+  <div class="q-enunciado">
+    <div class="stem">Gestante, 26 anos, com IMC pré-gestacional de 27,2 kg/m², atualmente na 16ª semana. Apresenta glicemia de jejum de 105 mg/dL (DMG confirmado). Na consulta nutricional, qual a conduta mais adequada quanto ao ganho ponderal recomendado e ao mínimo de carboidratos na dieta?</div>
+  </div>
+
+  <ul class="q-alternativas">
+    <li>
+      <span class="letra">A</span>
+      <span>Ganho total de 11,5–16 kg (peso adequado) e restrição de carboidratos a 100 g/dia para melhor controle glicêmico no DMG.</span>
+    </li>
+    <li class="correta">
+      <span class="letra">B</span>
+      <span>Ganho total de 7–11,5 kg (sobrepeso) e manutenção de no mínimo 175 g de carboidratos por dia, mesmo com DMG.</span>
+    </li>
+    <li>
+      <span class="letra">C</span>
+      <span>Ganho total de 7–11,5 kg (sobrepeso) e restrição de carboidratos a 100–130 g/dia, priorizando proteínas para controle do DMG.</span>
+    </li>
+    <li>
+      <span class="letra">D</span>
+      <span>Ganho total de 5–9 kg (obesidade) e 150 g de carboidratos/dia como mínimo tolerável no DMG.</span>
+    </li>
+  </ul>
+
+  <div class="ap-box">
+    <div class="ap-title">
+      <svg width="14" height="14" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#1F5C23"/><path d="M16 4 L26 9.5 L26 20.5 L16 26 L6 20.5 L6 9.5 Z" stroke="#C6D834" stroke-width="1.8" fill="none"/><circle cx="16" cy="16" r="4" fill="#C6D834"/></svg>
+      Aprendizagem — Gabarito B
+    </div>
+    <div class="ap-body">
+      <strong>Por que B é correta:</strong> IMC 27,2 kg/m² = sobrepeso → ganho IOM = 7–11,5 kg. O mínimo de CHO na gestação é <strong>175 g/dia</strong> mesmo no DMG (DRI) — abaixo disso há risco de cetonemia fetal, cetoacidose e comprometimento do desenvolvimento cerebral fetal.<br><br>
+      <strong>Por que A está errada:</strong> IMC 27,2 = sobrepeso, não peso adequado (11,5–16 kg é para IMC 18,5–24,9). E 100 g CHO/dia é insuficiente e contraindicado na gestação.<br><br>
+      <strong>Por que C está errada:</strong> ganho correto (sobrepeso), mas CHO 100–130 g/dia é contraindicado. O mínimo é 175 g/dia.<br><br>
+      <strong>Por que D está errada:</strong> 5–9 kg é para obesidade (IMC ≥30); IMC 27,2 é sobrepeso. E 150 g CHO não atinge o mínimo de 175 g/dia.
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Elite Treinamentos em Saúde · Extensivo ENARE 2026</span>
+    <span>NUT-CLÍN · Aula 18 · Q01 Aplicação</span>
+    <span>B9-A18-P06</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     P7 — QUESTÃO 02 (APLICAÇÃO)
+════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="22" viewBox="0 0 32 32" fill="none">
+        <rect width="32" height="32" rx="6" fill="#1F5C23"/>
+        <path d="M16 4 L26 9.5 L26 20.5 L16 26 L6 20.5 L6 9.5 Z" stroke="#C6D834" stroke-width="1.8" fill="none"/>
+        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
+      </svg>
+      <div><div class="brand">Elite Treinamentos</div><div class="tagline">Extensivo ENARE 2026</div></div>
+    </div>
+    <div class="hd-right">
+      <div class="hd-aula">Aula 18 · Nutrição na Gestação e Lactação</div>
+      <div class="hd-pag">Página 7 de 10</div>
+    </div>
+  </div>
+
+  <div class="q-header">
+    <div class="q-num">Q02</div>
+    <div class="q-meta">
+      <span class="q-tipo">Nível: Aplicação · NUT-CLÍN · Ácido Fólico</span>
+      <span class="q-tema">Prevenção de Defeitos do Tubo Neural</span>
+    </div>
+    <span class="badge badge-verde" style="margin-left:auto;">Ap</span>
+  </div>
+
+  <div class="q-enunciado">
+    <div class="stem">Mulher, 29 anos, com epilepsia em uso de ácido valproico, desejando engravidar. Em consulta pré-concepcional, a nutricionista é questionada sobre a suplementação de ácido fólico. Qual a recomendação correta?</div>
+  </div>
+
+  <ul class="q-alternativas">
+    <li>
+      <span class="letra">A</span>
+      <span>400 µg/dia de ácido fólico, iniciado na confirmação da gravidez, mantido até o fim da gestação, por ser esse o protocolo padrão para todas as gestantes.</span>
+    </li>
+    <li>
+      <span class="letra">B</span>
+      <span>400 µg/dia de ácido fólico, iniciado 3 meses antes da concepção, pois o fechamento do tubo neural ocorre no 28º dia pós-concepção, quando a gestação ainda pode não ser conhecida.</span>
+    </li>
+    <li class="correta">
+      <span class="letra">C</span>
+      <span>4–5 mg/dia de ácido fólico, iniciado pelo menos 1 mês antes da concepção (idealmente 3 meses), por ser gestante de alto risco (epilepsia + uso de antiepiléptico que antagoniza folato).</span>
+    </li>
+    <li>
+      <span class="letra">D</span>
+      <span>800 µg/dia de ácido fólico, iniciado ao descobrir a gravidez, associado a dieta rica em folato natural para garantir o fechamento do tubo neural.</span>
+    </li>
+  </ul>
+
+  <div class="ap-box">
+    <div class="ap-title">
+      <svg width="14" height="14" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#1F5C23"/><path d="M16 4 L26 9.5 L26 20.5 L16 26 L6 20.5 L6 9.5 Z" stroke="#C6D834" stroke-width="1.8" fill="none"/><circle cx="16" cy="16" r="4" fill="#C6D834"/></svg>
+      Aprendizagem — Gabarito C
+    </div>
+    <div class="ap-body">
+      <strong>Por que C é correta:</strong> Epilepsia + ácido valproico = <strong>alto risco</strong> para DTN (valproato inibe enzimas do metabolismo do folato). Neste grupo: dose = <strong>4–5 mg/dia</strong>, iniciado 1–3 meses antes da concepção. Esta é a recomendação do Ministério da Saúde e da ACOG.<br><br>
+      <strong>Por que A está errada:</strong> iniciar apenas na confirmação é tarde demais — o tubo neural já fechou no 28º dia pós-concepção. Além disso, a dose é insuficiente para alto risco.<br><br>
+      <strong>Por que B está errada:</strong> o raciocínio pré-concepcional está correto, mas a dose de 400 µg é para baixo risco — esta paciente é alto risco.<br><br>
+      <strong>Por que D está errada:</strong> iniciar ao descobrir a gravidez é tardio para prevenção de DTN; além disso, folato alimentar não substitui a suplementação em alto risco.
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Elite Treinamentos em Saúde · Extensivo ENARE 2026</span>
+    <span>NUT-CLÍN · Aula 18 · Q02 Aplicação</span>
+    <span>B9-A18-P07</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     P8 — QUESTÃO 03 (ANÁLISE ÂNCORA)
+════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="22" viewBox="0 0 32 32" fill="none">
+        <rect width="32" height="32" rx="6" fill="#1F5C23"/>
+        <path d="M16 4 L26 9.5 L26 20.5 L16 26 L6 20.5 L6 9.5 Z" stroke="#C6D834" stroke-width="1.8" fill="none"/>
+        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
+      </svg>
+      <div><div class="brand">Elite Treinamentos</div><div class="tagline">Extensivo ENARE 2026</div></div>
+    </div>
+    <div class="hd-right">
+      <div class="hd-aula">Aula 18 · Nutrição na Gestação e Lactação</div>
+      <div class="hd-pag">Página 8 de 10</div>
+    </div>
+  </div>
+
+  <div class="q-header">
+    <div class="q-num">Q03</div>
+    <div class="q-meta">
+      <span class="q-tipo">Nível: Análise · NUT-CLÍN · Questão Âncora</span>
+      <span class="q-tema">Gestação, Lactação e Suplementação — Afirmativas</span>
+    </div>
+    <span class="badge badge-accent" style="margin-left:auto;">An</span>
+  </div>
+
+  <div class="q-enunciado">
+    <div class="stem">Acerca da nutrição na gestação e na lactação, analise as afirmativas:</div>
+    <ol class="q-afirmativas">
+      <li><strong>I.</strong> No diabetes mellitus gestacional, a restrição de carboidratos abaixo de 130 g/dia é recomendada para atingir as metas glicêmicas, pois reduz os picos de glicemia pós-prandial sem riscos para o feto.</li>
+      <li><strong>II.</strong> A necessidade de ferro na lactação é menor do que na gestação, pois a amenorreia lactacional reduz as perdas mensais de ferro, e as necessidades fetais de depósito de ferro não estão mais presentes.</li>
+      <li><strong>III.</strong> O leite materno contém quantidade insuficiente de vitamina D para suprir as necessidades do lactente, sendo recomendada suplementação de 400 UI/dia de vitamina D3 para todos os lactentes em aleitamento materno exclusivo desde o nascimento.</li>
+      <li><strong>IV.</strong> A suplementação de vitamina A em doses superiores ao UL (3.000 µg RAE/dia) é recomendada no 1º trimestre da gestação para prevenir a cegueira noturna gestacional, condição prevalente em países em desenvolvimento.</li>
+    </ol>
+    <div class="stem" style="margin-top:6px;">Estão corretas APENAS:</div>
+  </div>
+
+  <ul class="q-alternativas">
+    <li>
+      <span class="letra">A</span>
+      <span>I e III</span>
+    </li>
+    <li>
+      <span class="letra">B</span>
+      <span>I e IV</span>
+    </li>
+    <li class="correta">
+      <span class="letra">C</span>
+      <span>II e III</span>
+    </li>
+    <li>
+      <span class="letra">D</span>
+      <span>II e IV</span>
+    </li>
+  </ul>
+
+  <div class="ap-box">
+    <div class="ap-title">
+      <svg width="14" height="14" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#1F5C23"/><path d="M16 4 L26 9.5 L26 20.5 L16 26 L6 20.5 L6 9.5 Z" stroke="#C6D834" stroke-width="1.8" fill="none"/><circle cx="16" cy="16" r="4" fill="#C6D834"/></svg>
+      Aprendizagem — Gabarito C (II e III corretas)
+    </div>
+    <div class="ap-body">
+      <strong>I — ERRADA:</strong> O mínimo de carboidratos na gestação é <strong>175 g/dia</strong> (DRI), <em>inclusive no DMG</em>. Abaixo disso → cetose fetal, comprometimento do SNC e acidose. Restrição abaixo de 130 g é contraindicada em gestantes.
+      <ul>
+        <li><strong>II — CORRETA:</strong> RDA de ferro na lactação = 9–10 mg/dia, muito inferior à gestação (27 mg/dia). Justificativa: sem menstruação + sem demanda de depósito fetal. Suplementação pós-parto apenas se anemia.</li>
+        <li><strong>III — CORRETA:</strong> Leite materno tem ~20–25 UI/L de vitamina D — insuficiente. SBP recomenda 400 UI/dia de vitamina D3 desde o nascimento para lactentes em AME.</li>
+      </ul>
+      <strong>IV — ERRADA:</strong> Vitamina A acima do UL (3.000 µg RAE/dia) é <strong>teratogênica</strong> — especialmente no 1º trimestre (organogênese). Causa malformações craniofaciais, cardíacas e do SNC. O UL é um limite a não ultrapassar, não uma meta a atingir.
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Elite Treinamentos em Saúde · Extensivo ENARE 2026</span>
+    <span>NUT-CLÍN · Aula 18 · Q03 Análise Âncora</span>
+    <span>B9-A18-P08</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     P9 — GABARITO
+════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="22" viewBox="0 0 32 32" fill="none">
+        <rect width="32" height="32" rx="6" fill="#1F5C23"/>
+        <path d="M16 4 L26 9.5 L26 20.5 L16 26 L6 20.5 L6 9.5 Z" stroke="#C6D834" stroke-width="1.8" fill="none"/>
+        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
+      </svg>
+      <div><div class="brand">Elite Treinamentos</div><div class="tagline">Extensivo ENARE 2026</div></div>
+    </div>
+    <div class="hd-right">
+      <div class="hd-aula">Aula 18 · Nutrição na Gestação e Lactação</div>
+      <div class="hd-pag">Página 9 de 10</div>
+    </div>
+  </div>
+
+  <div class="sec-title">Gabarito Comentado</div>
+
+  <div class="gab-grid">
+    <div class="gab-card">
+      <div class="gab-q">Questão 01</div>
+      <div class="gab-letra">B</div>
+      <div class="gab-tag">Aplicação · Gestação/DMG</div>
+      <div class="gab-justif">IMC 27,2 = sobrepeso → ganho 7–11,5 kg (IOM). CHO mínimo na gestação = 175 g/dia mesmo com DMG — cetose fetal é o risco da restrição.</div>
+    </div>
+    <div class="gab-card">
+      <div class="gab-q">Questão 02</div>
+      <div class="gab-letra">C</div>
+      <div class="gab-tag">Aplicação · Ácido Fólico</div>
+      <div class="gab-justif">Epilepsia + valproato = alto risco DTN → 4–5 mg/dia de ácido fólico iniciado 1–3 meses antes da concepção. Dose de 400 µg é apenas para baixo risco.</div>
+    </div>
+    <div class="gab-card">
+      <div class="gab-q">Questão 03</div>
+      <div class="gab-letra">C</div>
+      <div class="gab-tag">Análise Âncora · II e III</div>
+      <div class="gab-justif">II correta: ferro ↓ na lactação (sem menstruação/demanda fetal). III correta: leite materno insuficiente em vit. D → 400 UI/dia desde nascimento. I errada: CHO mínimo 175 g/dia no DMG. IV errada: vitamina A acima do UL é teratogênica.</div>
+    </div>
+  </div>
+
+  <div class="box box-alert" style="margin-top:10px;">
+    <div class="box-title red">Armadilhas de Prova — Nunca Confunda</div>
+    <table>
+      <tr><th>Conceito</th><th>Armadilha Frequente</th><th>Correto</th></tr>
+      <tr><td><strong>CHO no DMG</strong></td><td>Restringir CHO abaixo de 130 g no DMG</td><td>Mínimo = 175 g/dia mesmo no DMG — cetose fetal é grave</td></tr>
+      <tr><td><strong>Ácido fólico pré-concepcional</strong></td><td>Iniciar na confirmação da gravidez</td><td>Tubo neural fecha no 28º dia — iniciar 1–3 meses ANTES da concepção</td></tr>
+      <tr><td><strong>Vitamina A e gravidez</strong></td><td>Alta dose de vit. A protege a gestante</td><td>UL = 3.000 µg RAE — acima disso → teratogênica (especialmente 1º trim.)</td></tr>
+      <tr><td><strong>Ferro lactação</strong></td><td>Ferro lactação ≥ gestação</td><td>Ferro ↓ na lactação (9–10 mg vs 27 mg/dia) — sem menstruação + sem demanda fetal</td></tr>
+      <tr><td><strong>Vitamina D no lactente</strong></td><td>Sol supre vitamina D no lactente</td><td>Exposição solar contraindicada &lt;6 meses; suplementar 400 UI/dia de vitamina D3</td></tr>
+      <tr><td><strong>Ganho ponderal DMG/sobrepeso</strong></td><td>Gestante diabética deve restringir mais o ganho</td><td>Ganho segue IMC pré-gestacional (IOM 2009) independente do DMG</td></tr>
+    </table>
+  </div>
+
+  <div class="box box-verde">
+    <div class="box-title verde">Resumo — Acréscimo Calórico por Fase</div>
+    <div class="three-col">
+      <div style="text-align:center;font-size:8px;">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:800;color:var(--verde);">+0</div>
+        <div style="font-weight:600;">1º trimestre</div>
+        <div style="color:var(--muted);">Sem acréscimo calórico</div>
+      </div>
+      <div style="text-align:center;font-size:8px;">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:800;color:var(--verde);">+340</div>
+        <div style="font-weight:600;">2º trimestre</div>
+        <div style="color:var(--muted);">kcal/dia</div>
+      </div>
+      <div style="text-align:center;font-size:8px;">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:800;color:var(--verde);">+452</div>
+        <div style="font-weight:600;">3º trimestre</div>
+        <div style="color:var(--muted);">kcal/dia</div>
+      </div>
+    </div>
+    <div style="border-top:1px solid rgba(31,92,35,.2);margin-top:6px;padding-top:6px;font-size:8px;">
+      <strong>Lactação:</strong> +330 kcal/dia (0–6 meses) · +400 kcal/dia (7–12 meses) · Vitamina D3 400 UI/dia para o lactente desde o nascimento
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Elite Treinamentos em Saúde · Extensivo ENARE 2026</span>
+    <span>NUT-CLÍN · Aula 18 · Gabarito</span>
+    <span>B9-A18-P09</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     P10 — SÍNTESE FINAL
+════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="22" viewBox="0 0 32 32" fill="none">
+        <rect width="32" height="32" rx="6" fill="#1F5C23"/>
+        <path d="M16 4 L26 9.5 L26 20.5 L16 26 L6 20.5 L6 9.5 Z" stroke="#C6D834" stroke-width="1.8" fill="none"/>
+        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
+      </svg>
+      <div><div class="brand">Elite Treinamentos</div><div class="tagline">Extensivo ENARE 2026</div></div>
+    </div>
+    <div class="hd-right">
+      <div class="hd-aula">Aula 18 · Nutrição na Gestação e Lactação</div>
+      <div class="hd-pag">Página 10 de 10</div>
+    </div>
+  </div>
+
+  <div class="sintese-header">
+    <div class="sh-label">Síntese Final · Aula 18</div>
+    <div class="sh-title">Nutrição na Gestação e Lactação</div>
+  </div>
+
+  <div class="armadilha-grid">
+    <div class="arm-card">
+      <div class="arm-title">CHO Mínimo = 175 g/dia</div>
+      <div class="arm-body"><strong>Nunca abaixo de 175 g/dia</strong> na gestação — inclusive no DMG. Cetose fetal compromete o SNC. Não existe "low-carb" na gravidez.</div>
+    </div>
+    <div class="arm-card">
+      <div class="arm-title">Folato — 28º Dia</div>
+      <div class="arm-body">Tubo neural fecha no <strong>28º dia pós-concepção</strong>. Suplementação deve começar <strong>antes</strong> de engravidar. Alto risco (epilepsia/DM/DTN prévia): <strong>4–5 mg/dia</strong>.</div>
+    </div>
+    <div class="arm-card">
+      <div class="arm-title">Vitamina A — Teratogênica em Excesso</div>
+      <div class="arm-body"><strong>UL = 3.000 µg RAE/dia</strong>. Acima disso → teratogênese no 1º trimestre. Isotretinoína (acne) = contraindicada na gestação.</div>
+    </div>
+    <div class="arm-card">
+      <div class="arm-title">Ferro Cai na Lactação</div>
+      <div class="arm-body">Gestação: 27 mg/dia. Lactação: <strong>9–10 mg/dia</strong>. Amenorreia + sem depósito fetal = menor necessidade. Não suplementar sem anemia confirmada.</div>
+    </div>
+    <div class="arm-card">
+      <div class="arm-title">Vitamina D — Suplementar o Lactente</div>
+      <div class="arm-body">Leite materno insuficiente em vit. D (~20 UI/L). <strong>400 UI/dia de vitamina D3</strong> para todos os lactentes em AME desde o nascimento (SBP 2022).</div>
+    </div>
+    <div class="arm-card">
+      <div class="arm-title">Ganho Ponderal — IOM 2009</div>
+      <div class="arm-body">Baixo peso: 12,5–18 kg · Normal: 11,5–16 kg · Sobrepeso: 7–11,5 kg · Obesidade: 5–9 kg. O DMG não altera a meta de ganho — segue IMC pré-gestacional.</div>
+    </div>
+  </div>
+
+  <div class="flashcard-strip">
+    <div class="fc">
+      <div class="fc-num">175 g</div>
+      <div class="fc-label">CHO mínimo gestação (incl. DMG)</div>
+    </div>
+    <div class="fc">
+      <div class="fc-num">28º dia</div>
+      <div class="fc-label">Fechamento do tubo neural</div>
+    </div>
+    <div class="fc">
+      <div class="fc-num">4–5 mg</div>
+      <div class="fc-label">Folato alto risco (epilepsia/DM)</div>
+    </div>
+    <div class="fc">
+      <div class="fc-num">400 UI</div>
+      <div class="fc-label">Vit. D3/dia no lactente em AME</div>
+    </div>
+  </div>
+
+  <div class="box box-verde" style="margin-top:4px;">
+    <div class="box-title verde">Regras de Ouro da Gestação Nutricional</div>
+    <div style="font-size:8px;line-height:1.7;text-align:center;">
+      Ganho → <strong>IOM 2009 por IMC pré-gestacional</strong><br>
+      CHO → <strong>nunca abaixo de 175 g/dia</strong> (mesmo no DMG)<br>
+      Folato → <strong>pré-concepcional obrigatório</strong> (28º dia já é tarde)<br>
+      Vitamina A → <strong>não ultrapassar UL</strong> (3.000 µg RAE) — teratogênica<br>
+      Lactente → <strong>400 UI vitamina D3/dia</strong> desde o nascimento
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Elite Treinamentos em Saúde · Extensivo ENARE 2026</span>
+    <span>NUT-CLÍN · Aula 18 · Síntese Final</span>
+    <span>B9-A18-P10</span>
+  </div>
+</div>
+
+</body>
+</html>

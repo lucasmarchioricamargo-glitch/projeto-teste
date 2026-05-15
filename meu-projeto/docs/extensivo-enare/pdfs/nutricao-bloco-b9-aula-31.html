@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B9 · Nutrição · Aula 31 — NUT-FUND: Metabolismo Energético — Gasto Energético, Equações e DRIs</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #ccc; font-family: 'Bricolage Grotesque', sans-serif; }
+
+  .page {
+    width: 210mm; min-height: 297mm; height: 297mm;
+    background: #F6F4ED;
+    margin: 8mm auto;
+    padding: 10mm 11mm 8mm 11mm;
+    display: flex; flex-direction: column;
+    position: relative; overflow: hidden;
+    page-break-after: always;
+  }
+
+  .page-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding-bottom: 2.5mm; border-bottom: 0.4mm solid #1F5C23;
+    margin-bottom: 4mm; flex-shrink: 0;
+  }
+  .header-logo-group { display: flex; align-items: center; gap: 2.5mm; }
+  .header-logo-svg { width: 7mm; height: 7mm; flex-shrink: 0; }
+  .header-brand { display: flex; flex-direction: column; line-height: 1; }
+  .header-brand-main { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 8pt; color: #1F5C23; letter-spacing: 0.04em; text-transform: uppercase; }
+  .header-brand-sub { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 5pt; color: #888; letter-spacing: 0.06em; }
+  .header-center { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 500; font-size: 6.5pt; color: #555; letter-spacing: 0.04em; text-transform: uppercase; }
+  .header-page { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 8pt; color: #1F5C23; letter-spacing: 0.06em; }
+
+  .cover-page { background: #1F5C23 !important; padding: 0 !important; }
+  .cover-page .cover-inner { width: 100%; height: 100%; padding: 10mm 11mm 8mm 11mm; display: flex; flex-direction: column; }
+  .cover-header { display: flex; align-items: center; justify-content: space-between; padding-bottom: 2.5mm; border-bottom: 0.4mm solid rgba(198,216,52,0.5); margin-bottom: auto; flex-shrink: 0; }
+  .cover-header-brand-main { color: #F6F4ED !important; }
+  .cover-header-brand-sub { color: rgba(246,244,237,0.6) !important; }
+  .cover-header-center { color: rgba(246,244,237,0.7) !important; }
+  .cover-header-page { color: #C6D834 !important; }
+  .cover-body { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 4mm 0; }
+  .cover-module-tag { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 7.5pt; letter-spacing: 0.18em; color: #C6D834; text-transform: uppercase; margin-bottom: 3mm; }
+  .cover-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 24pt; line-height: 1.0; color: #F6F4ED; text-transform: uppercase; margin-bottom: 2mm; }
+  .cover-subtitle { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; font-size: 9pt; color: rgba(246,244,237,0.75); margin-bottom: 6mm; line-height: 1.4; }
+  .cover-divider { width: 18mm; height: 0.4mm; background: #C6D834; margin-bottom: 6mm; }
+  .cover-anchors-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 7pt; letter-spacing: 0.1em; color: #C6D834; text-transform: uppercase; margin-bottom: 2.5mm; }
+  .cover-anchors { display: flex; flex-direction: column; gap: 1.5mm; }
+  .cover-anchor-item { display: flex; align-items: flex-start; gap: 2mm; }
+  .anchor-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 7pt; color: #C6D834; min-width: 4mm; }
+  .anchor-text { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 400; font-size: 7.5pt; color: rgba(246,244,237,0.85); line-height: 1.3; }
+  .cover-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 3mm; border-top: 0.4mm solid rgba(198,216,52,0.3); flex-shrink: 0; }
+  .cover-footer-brand { font-family: 'Playfair Display', serif; font-style: italic; font-size: 8pt; color: rgba(246,244,237,0.6); }
+  .cover-footer-label { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 6pt; color: rgba(246,244,237,0.5); letter-spacing: 0.08em; text-transform: uppercase; }
+
+  .page-body { flex: 1; display: flex; flex-direction: column; gap: 3mm; overflow: hidden; }
+  .sec-title-sm { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 11.5pt; color: #1F5C23; letter-spacing: 0.04em; text-transform: uppercase; padding-bottom: 1.5mm; border-bottom: 0.5mm solid #1F5C23; margin-bottom: 3mm; }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2.5mm; }
+
+  .card { background: white; border-radius: 2mm; padding: 3mm 3.5mm; border-left: 1mm solid #1F5C23; }
+  .card-warn { border-left-color: #B85C00; }
+  .card-alert { border-left-color: #C04040; }
+  .card-accent { border-left-color: #C6D834; }
+  .card-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 8.5pt; color: #1F5C23; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 2mm; }
+  .card-title-warn { color: #B85C00; }
+
+  .body-text { font-size: 7.5pt; line-height: 1.45; color: #333; }
+  .body-text b { color: #1F5C23; }
+  .body-text .warn { color: #B85C00; font-weight: 600; }
+
+  ul.dot-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 1mm; }
+  ul.dot-list li { font-size: 7.5pt; line-height: 1.4; color: #333; padding-left: 3mm; position: relative; }
+  ul.dot-list li::before { content: "•"; position: absolute; left: 0; color: #1F5C23; font-weight: 700; }
+  ul.dot-list li b { color: #1F5C23; }
+  ul.dot-list li .warn { color: #B85C00; font-weight: 600; }
+
+  .table-sm { width: 100%; border-collapse: collapse; font-size: 7pt; }
+  .table-sm th { background: #1F5C23; color: #F6F4ED; padding: 1.5mm 2mm; text-align: left; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; letter-spacing: 0.05em; font-size: 7pt; }
+  .table-sm td { padding: 1.5mm 2mm; border-bottom: 0.2mm solid #E0DDD6; color: #333; vertical-align: top; line-height: 1.35; }
+  .table-sm tr:last-child td { border-bottom: none; }
+  .table-sm tr:nth-child(even) td { background: rgba(31,92,35,0.04); }
+
+  .tag { display: inline-block; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 6.5pt; padding: 0.5mm 2mm; border-radius: 1mm; letter-spacing: 0.06em; text-transform: uppercase; }
+  .tag-green { background: #1F5C23; color: #F6F4ED; }
+  .tag-yellow { background: #C6D834; color: #1F5C23; }
+
+  .q-header { margin-bottom: 4mm; }
+  .q-label { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; color: #1F5C23; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1mm; }
+  .q-meta { font-size: 6.5pt; color: #888; font-family: 'Bricolage Grotesque', sans-serif; margin-bottom: 3mm; }
+  .q-stem { font-size: 8pt; line-height: 1.5; color: #222; margin-bottom: 4mm; font-weight: 500; }
+
+  .alternatives { display: flex; flex-direction: column; gap: 2mm; margin-bottom: 5mm; }
+  .alt { display: flex; gap: 2.5mm; align-items: flex-start; padding: 2mm 3mm; border-radius: 1.5mm; background: white; }
+  .alt-letter { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; color: #1F5C23; min-width: 4mm; line-height: 1.3; }
+  .alt-text { font-size: 7.5pt; line-height: 1.4; color: #333; }
+  .alt.correct { background: #E8F5E9; border: 0.3mm solid #1F5C23; }
+  .alt.wrong { opacity: 0.7; }
+
+  .assertions { display: flex; flex-direction: column; gap: 2mm; margin-bottom: 4mm; }
+  .assertion { display: flex; gap: 2.5mm; align-items: flex-start; padding: 2mm 3mm; border-radius: 1.5mm; background: white; }
+  .assert-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; min-width: 4mm; line-height: 1.3; }
+  .assert-num.correct { color: #1F5C23; }
+  .assert-num.wrong { color: #C04040; }
+  .assert-text { font-size: 7.5pt; line-height: 1.4; color: #333; }
+
+  .q-answer-box { background: #1F5C23; border-radius: 2mm; padding: 3mm 4mm; display: flex; align-items: center; gap: 3mm; }
+  .q-answer-letter { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 20pt; color: #C6D834; line-height: 1; }
+  .q-answer-text { font-size: 7.5pt; color: #F6F4ED; line-height: 1.4; }
+  .q-answer-text b { color: #C6D834; }
+
+  .gab-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3mm; margin-bottom: 4mm; }
+  .gab-card { background: white; border-radius: 2mm; padding: 3mm; border-top: 1.5mm solid #1F5C23; }
+  .gab-card-q { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 8pt; color: #888; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1mm; }
+  .gab-card-letter { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 22pt; color: #1F5C23; line-height: 1; margin-bottom: 1.5mm; }
+  .gab-card-just { font-size: 6.5pt; line-height: 1.4; color: #555; }
+  .gab-card-just b { color: #1F5C23; }
+
+  .sintese-header { text-align: center; margin-bottom: 4mm; }
+  .sintese-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 14pt; color: #1F5C23; text-transform: uppercase; letter-spacing: 0.06em; }
+  .sintese-sub { font-size: 7pt; color: #888; font-family: 'Space Grotesk', sans-serif; font-weight: 300; }
+  .sintese-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; }
+  .sintese-card { background: white; border-radius: 2mm; padding: 3mm 3.5mm; }
+  .sintese-card-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 8pt; color: #1F5C23; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 2mm; padding-bottom: 1.5mm; border-bottom: 0.3mm solid #E0DDD6; }
+  .refs-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 7.5pt; color: #888; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 2mm; }
+
+  @media print { body { background: none; } .page { margin: 0; box-shadow: none; } }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════ P1 · CAPA -->
+<div class="page cover-page">
+<div class="cover-inner">
+  <div class="cover-header">
+    <div class="header-logo-group">
+      <svg class="header-logo-svg" viewBox="0 0 28 28" fill="none">
+        <polygon points="14,1 26,7.5 26,20.5 14,27 2,20.5 2,7.5" fill="#F6F4ED" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="14" cy="14" r="5.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1"/>
+      </svg>
+      <div class="header-brand">
+        <span class="header-brand-main cover-header-brand-main">extensivo ENARE</span>
+        <span class="header-brand-sub cover-header-brand-sub">by Residência PRO</span>
+      </div>
+    </div>
+    <span class="header-center cover-header-center">Nutrição · Bloco B9 · Aula 31</span>
+    <span class="header-page cover-header-page">P1</span>
+  </div>
+  <div class="cover-body">
+    <div class="cover-module-tag">NUT-FUND · Fundamentos da Nutrição</div>
+    <div class="cover-title">Metabolismo<br>Energético</div>
+    <div class="cover-subtitle">GET · GEB · GER · Harris-Benedict · Mifflin-St Jeor · Calorimetria · DRIs · AMDR</div>
+    <div class="cover-divider"></div>
+    <div class="cover-anchors-title">Âncoras desta aula</div>
+    <div class="cover-anchors">
+      <div class="cover-anchor-item"><span class="anchor-num">01</span><span class="anchor-text">Componentes do GET: GEB (~60-70%), ETA (~10%) e atividade física (~20-30%)</span></div>
+      <div class="cover-anchor-item"><span class="anchor-num">02</span><span class="anchor-text">Equações de estimativa: Harris-Benedict, Mifflin-St Jeor e fatores de atividade</span></div>
+      <div class="cover-anchor-item"><span class="anchor-num">03</span><span class="anchor-text">Calorimetria indireta: padrão-ouro; QR e substratos oxidados</span></div>
+      <div class="cover-anchor-item"><span class="anchor-num">04</span><span class="anchor-text">DRIs: EAR, RDA, AI, UL e AMDR — definições e aplicações clínicas</span></div>
+      <div class="cover-anchor-item"><span class="anchor-num">05</span><span class="anchor-text">Distribuição de macronutrientes e valor calórico: CHO 4 kcal, PTN 4 kcal, Lip 9 kcal</span></div>
+    </div>
+  </div>
+  <div class="cover-footer">
+    <span class="cover-footer-brand">extensivo</span>
+    <span class="cover-footer-label">Material de apoio · Não substitui fontes primárias</span>
+  </div>
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ P2 · COMPONENTES DO GET -->
+<div class="page">
+  <div class="page-header">
+    <div class="header-logo-group">
+      <svg class="header-logo-svg" viewBox="0 0 28 28" fill="none">
+        <polygon points="14,1 26,7.5 26,20.5 14,27 2,20.5 2,7.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="14" cy="14" r="5.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1"/>
+      </svg>
+      <div class="header-brand">
+        <span class="header-brand-main">extensivo ENARE</span>
+        <span class="header-brand-sub">by Residência PRO</span>
+      </div>
+    </div>
+    <span class="header-center">Nutrição · Bloco B9 · Aula 31</span>
+    <span class="header-page">P2</span>
+  </div>
+  <div class="page-body">
+    <div class="sec-title-sm">Componentes do Gasto Energético Total (GET)</div>
+    <div class="three-col">
+      <div class="card">
+        <div class="card-title">GEB / GER (~60–70%)</div>
+        <ul class="dot-list">
+          <li><b>GEB</b> (Gasto Energético Basal): medido após 12h de jejum, em repouso absoluto, ambiente termicamente neutro, ao acordar</li>
+          <li><b>GER</b> (Gasto Energético de Repouso): medido em repouso sem necessidade de condições tão rigorosas; ~10% maior que o GEB</li>
+          <li>Maior componente do GET em indivíduos sedentários</li>
+          <li>Determinantes: massa magra (principal), sexo, idade, estado hormonal (T3/T4)</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title">ETA — Efeito Térmico (~10%)</div>
+        <ul class="dot-list">
+          <li>Também chamado: termogênese dietética, termogênese induzida pela dieta, ação dinâmica específica</li>
+          <li>Energia gasta para <b>digestão, absorção e metabolismo</b> dos nutrientes</li>
+          <li>Proteínas: maior ETA (~20–30%)</li>
+          <li>Carboidratos: ETA ~5–10%</li>
+          <li>Lipídios: menor ETA (~2–5%)</li>
+          <li>Menor componente do GET</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title">Atividade Física (~20–30%)</div>
+        <ul class="dot-list">
+          <li>Componente mais variável do GET</li>
+          <li>Inclui: exercício programado + atividade física espontânea (NEAT)</li>
+          <li><b>NEAT</b> (Non-Exercise Activity Thermogenesis): movimentos cotidianos não programados — pode representar até 50% da AF total</li>
+          <li>Fator de atividade multiplica o GER para calcular o GET</li>
+        </ul>
+      </div>
+    </div>
+    <div class="sec-title-sm" style="margin-top:1mm;">Fatores de Atividade Física (FA) e Cálculo do GET</div>
+    <div class="two-col">
+      <div class="card">
+        <div class="card-title">Fatores de Atividade (Harris-Benedict / FAO)</div>
+        <table class="table-sm">
+          <tr><th>Nível de Atividade</th><th>FA</th><th>Descrição</th></tr>
+          <tr><td>Sedentário</td><td><b>1,2</b></td><td>Sem exercício ou trabalho sentado</td></tr>
+          <tr><td>Levemente ativo</td><td><b>1,375</b></td><td>Exercício leve 1–3x/semana</td></tr>
+          <tr><td>Moderadamente ativo</td><td><b>1,55</b></td><td>Exercício moderado 3–5x/semana</td></tr>
+          <tr><td>Muito ativo</td><td><b>1,725</b></td><td>Exercício intenso 6–7x/semana</td></tr>
+          <tr><td>Extremamente ativo</td><td><b>1,9</b></td><td>Trabalho físico pesado + treino</td></tr>
+        </table>
+      </div>
+      <div class="card">
+        <div class="card-title">Fatores de Injúria — Pacientes Hospitalizados</div>
+        <table class="table-sm">
+          <tr><th>Condição Clínica</th><th>Fator</th></tr>
+          <tr><td>Cirurgia eletiva</td><td>1,0 – 1,2</td></tr>
+          <tr><td>Trauma moderado</td><td>1,2 – 1,4</td></tr>
+          <tr><td>Sepse / infecção grave</td><td>1,2 – 1,6</td></tr>
+          <tr><td>Queimaduras extensas (&gt;40%)</td><td>1,5 – 2,0</td></tr>
+          <tr><td>TCE grave</td><td>1,3 – 1,6</td></tr>
+          <tr><td>Paciente ventilado (UTI)</td><td>Calorimetria indireta ideal</td></tr>
+        </table>
+        <p class="body-text" style="margin-top:2mm;"><b>GET = GER × FA</b> (ou × Fator de Injúria em pacientes críticos)</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ P3 · EQUAÇÕES E CALORIMETRIA -->
+<div class="page">
+  <div class="page-header">
+    <div class="header-logo-group">
+      <svg class="header-logo-svg" viewBox="0 0 28 28" fill="none">
+        <polygon points="14,1 26,7.5 26,20.5 14,27 2,20.5 2,7.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="14" cy="14" r="5.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1"/>
+      </svg>
+      <div class="header-brand">
+        <span class="header-brand-main">extensivo ENARE</span>
+        <span class="header-brand-sub">by Residência PRO</span>
+      </div>
+    </div>
+    <span class="header-center">Nutrição · Bloco B9 · Aula 31</span>
+    <span class="header-page">P3</span>
+  </div>
+  <div class="page-body">
+    <div class="sec-title-sm">Equações de Estimativa do GER/GEB</div>
+    <div class="card">
+      <div class="card-title">Harris-Benedict (1919) — Equações Originais</div>
+      <div class="two-col" style="margin-top:1mm;">
+        <div>
+          <p class="body-text" style="margin-bottom:1mm;"><b>Homens:</b></p>
+          <p class="body-text" style="background:#f0f7f0; padding:2mm; border-radius:1.5mm; font-family:monospace; font-size:7pt;">GEB = 66,5 + (13,75 × P) + (5,003 × A) − (6,775 × I)</p>
+        </div>
+        <div>
+          <p class="body-text" style="margin-bottom:1mm;"><b>Mulheres:</b></p>
+          <p class="body-text" style="background:#f0f7f0; padding:2mm; border-radius:1.5mm; font-family:monospace; font-size:7pt;">GEB = 655,1 + (9,563 × P) + (1,850 × A) − (4,676 × I)</p>
+        </div>
+      </div>
+      <p class="body-text" style="margin-top:2mm; color:#888; font-size:6.5pt;">P = peso (kg) · A = altura (cm) · I = idade (anos) · Resultado em kcal/dia</p>
+    </div>
+    <div class="card" style="margin-top:2mm;">
+      <div class="card-title">Mifflin-St Jeor (1990) — Mais Precisa para Obesidade</div>
+      <div class="two-col" style="margin-top:1mm;">
+        <div>
+          <p class="body-text" style="margin-bottom:1mm;"><b>Homens:</b></p>
+          <p class="body-text" style="background:#f0f7f0; padding:2mm; border-radius:1.5mm; font-family:monospace; font-size:7pt;">GER = (10 × P) + (6,25 × A) − (5 × I) + 5</p>
+        </div>
+        <div>
+          <p class="body-text" style="margin-bottom:1mm;"><b>Mulheres:</b></p>
+          <p class="body-text" style="background:#f0f7f0; padding:2mm; border-radius:1.5mm; font-family:monospace; font-size:7pt;">GER = (10 × P) + (6,25 × A) − (5 × I) − 161</p>
+        </div>
+      </div>
+      <p class="body-text" style="margin-top:1.5mm;">Diferença entre sexos: homens +5; mulheres −161. Harris-Benedict <b>superestima</b> o GER em obesos; Mifflin-St Jeor é mais precisa nesse grupo.</p>
+    </div>
+    <div class="two-col" style="margin-top:2mm;">
+      <div class="card">
+        <div class="card-title">Outras Equações Especializadas</div>
+        <ul class="dot-list">
+          <li><b>FAO/OMS/ONU (1985):</b> equações por faixa etária e sexo; usa apenas peso; adequada para populações em desenvolvimento</li>
+          <li><b>Ireton-Jones (1992/2002):</b> pacientes em ventilação mecânica; considera VM, obesidade, trauma, queimadura</li>
+          <li><b>Penn State (2003):</b> pacientes críticos obesos com VM; usa temperatura máxima e VE (volume-minuto)</li>
+          <li><b>Cunningham:</b> baseada na massa livre de gordura (MLG) — mais precisa quando se conhece a composição corporal</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title">Calorimetria Indireta — Padrão-Ouro</div>
+        <ul class="dot-list">
+          <li>Mede o consumo de O₂ (VO₂) e produção de CO₂ (VCO₂)</li>
+          <li><b>Quociente Respiratório (QR)</b> = VCO₂ ÷ VO₂</li>
+          <li>QR = 1,0 → oxidação exclusiva de CHO</li>
+          <li>QR = 0,7 → oxidação exclusiva de lipídios</li>
+          <li>QR = 0,82 → dieta mista</li>
+          <li>QR &gt; 1,0 → lipogênese (excesso de CHO; sobrealimentação)</li>
+          <li>Recomendada em UTI, grandes queimados, distúrbios respiratórios</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ P4 · DRIs -->
+<div class="page">
+  <div class="page-header">
+    <div class="header-logo-group">
+      <svg class="header-logo-svg" viewBox="0 0 28 28" fill="none">
+        <polygon points="14,1 26,7.5 26,20.5 14,27 2,20.5 2,7.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="14" cy="14" r="5.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1"/>
+      </svg>
+      <div class="header-brand">
+        <span class="header-brand-main">extensivo ENARE</span>
+        <span class="header-brand-sub">by Residência PRO</span>
+      </div>
+    </div>
+    <span class="header-center">Nutrição · Bloco B9 · Aula 31</span>
+    <span class="header-page">P4</span>
+  </div>
+  <div class="page-body">
+    <div class="sec-title-sm">DRIs — Dietary Reference Intakes (IOM / EUA-Canadá)</div>
+    <div class="two-col">
+      <div class="card">
+        <div class="card-title">4 Valores de Referência</div>
+        <table class="table-sm">
+          <tr><th>Sigla</th><th>Nome</th><th>Definição e Uso</th></tr>
+          <tr><td><b>EAR</b></td><td>Estimated Average Requirement</td><td>Mediana das necessidades — cobre 50% da população; avaliação de grupos e base para a RDA</td></tr>
+          <tr><td><b>RDA</b></td><td>Recommended Dietary Allowance</td><td>EAR + 2 DP → cobre 97–98%; recomendação para indivíduos saudáveis</td></tr>
+          <tr><td><b>AI</b></td><td>Adequate Intake</td><td>Estimativa quando não há EAR suficiente; baseada em ingestão de grupos saudáveis</td></tr>
+          <tr><td><b>UL</b></td><td>Tolerable Upper Intake Level</td><td>Limite máximo sem risco de toxicidade; acima = risco de efeitos adversos</td></tr>
+        </table>
+      </div>
+      <div class="card">
+        <div class="card-title">Como Usar as DRIs</div>
+        <ul class="dot-list">
+          <li><b>Avaliação individual:</b> ingestão = RDA → provável adequação; ingestão = EAR → 50% chance de inadequação</li>
+          <li><b>Planejamento individual:</b> usar RDA como meta (ou AI quando RDA não disponível)</li>
+          <li><b>Avaliação de grupos:</b> usar EAR (prevalência de inadequação via distribuição de ingestão)</li>
+          <li><b>Planejamento de grupos:</b> usar EAR como base do cardápio</li>
+          <li>UL: nunca deve ser ultrapassado; aplicável especialmente para micronutrientes e suplementos</li>
+          <li>AI não deve ser comparada ao EAR — menor precisão metodológica</li>
+        </ul>
+      </div>
+    </div>
+    <div class="sec-title-sm" style="margin-top:1mm;">AMDR e Recomendações de Macronutrientes</div>
+    <div class="two-col">
+      <div class="card">
+        <div class="card-title">AMDR — Acceptable Macronutrient Distribution Range</div>
+        <table class="table-sm">
+          <tr><th>Macronutriente</th><th>AMDR (% VCT)</th><th>Valor Calórico</th></tr>
+          <tr><td><b>Carboidratos</b></td><td><b>45 – 65%</b></td><td>4 kcal/g</td></tr>
+          <tr><td><b>Proteínas</b></td><td><b>10 – 35%</b></td><td>4 kcal/g</td></tr>
+          <tr><td><b>Lipídios</b></td><td><b>20 – 35%</b></td><td>9 kcal/g</td></tr>
+          <tr><td>Álcool (etanol)</td><td>—</td><td>7 kcal/g</td></tr>
+          <tr><td>Fibras (AI)</td><td>25 g/dia ♀ · 38 g/dia ♂</td><td>—</td></tr>
+        </table>
+      </div>
+      <div class="card">
+        <div class="card-title">RDAs Importantes de Macronutrientes</div>
+        <ul class="dot-list">
+          <li>CHO mínimo: <b>130 g/dia</b> (EAR = RDA para SNC; adultos e gestantes)</li>
+          <li>Proteínas: RDA adultos saudáveis = <b>0,8 g/kg/dia</b></li>
+          <li>Idosos (tendência atual): <b>1,0–1,2 g/kg/dia</b> (PROT-AGE Study Group)</li>
+          <li>Gestantes: +<b>25 g/dia</b> adicionais sobre a RDA basal (2º e 3º trimestres)</li>
+          <li>Lactantes: +<b>19 g/dia</b> adicionais</li>
+          <li>AGE linoleico (ω-6): AI = 17 g/dia ♂; 12 g/dia ♀</li>
+          <li>AGE alfa-linolênico (ω-3): AI = 1,6 g/dia ♂; 1,1 g/dia ♀</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ P5 · MACRONUTRIENTES: DIGESTÃO E FUNÇÕES -->
+<div class="page">
+  <div class="page-header">
+    <div class="header-logo-group">
+      <svg class="header-logo-svg" viewBox="0 0 28 28" fill="none">
+        <polygon points="14,1 26,7.5 26,20.5 14,27 2,20.5 2,7.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="14" cy="14" r="5.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1"/>
+      </svg>
+      <div class="header-brand">
+        <span class="header-brand-main">extensivo ENARE</span>
+        <span class="header-brand-sub">by Residência PRO</span>
+      </div>
+    </div>
+    <span class="header-center">Nutrição · Bloco B9 · Aula 31</span>
+    <span class="header-page">P5</span>
+  </div>
+  <div class="page-body">
+    <div class="sec-title-sm">Macronutrientes — Digestão, Absorção e Funções Principais</div>
+    <div class="three-col">
+      <div class="card">
+        <div class="card-title">Carboidratos</div>
+        <ul class="dot-list">
+          <li><b>Digestão:</b> inicia na boca (amilase salivar); amilase pancreática no intestino delgado; dissacaridases na borda em escova</li>
+          <li>Absorção: monossacarídeos (glicose, frutose, galactose) na mucosa do ID</li>
+          <li>Glicose e galactose: transporte ativo (SGLT1); frutose: difusão facilitada (GLUT5)</li>
+          <li>Fibras insolúveis: não fermentadas, ↑ trânsito intestinal</li>
+          <li>Fibras solúveis: fermentadas no cólon → AGCC (butirato, propionato, acetato) → ↓colesterol e glicemia</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title">Proteínas</div>
+        <ul class="dot-list">
+          <li><b>Digestão:</b> pepsina no estômago (pH ácido); tripsina, quimotripsina, elastase pancreática no ID; peptidases da borda em escova</li>
+          <li>Absorção: di/tripeptídeos (transportador PepT1) e aminoácidos livres</li>
+          <li>Aminoácidos essenciais: Phe, Val, Thr, Trp, Ile, Met, His, Arg*, Leu, Lys (PVTTIMHALL)</li>
+          <li>AA condicionalmente essenciais: Arg, Cys, Gln, Tyr (estresse/doença)</li>
+          <li>BN = N ingerido − N excretado (urinário + fecal)</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title">Lipídios</div>
+        <ul class="dot-list">
+          <li><b>Digestão:</b> lipase lingual (mínima); lipase gástrica; lipase pancreática + colipase no ID (principal)</li>
+          <li>Emulsificação: sais biliares → micelas → absorção no jejuno</li>
+          <li>Quilomícrons: transporte de gorduras absorvidas via linfa → ducto torácico → circulação</li>
+          <li>AGS ↑LDL; AGPI ω-6 ↓LDL; AGPI ω-3 ↓TG; AGT ↑LDL e ↓HDL</li>
+          <li>Ácidos graxos de cadeia curta e média: absorção direta pela veia porta</li>
+        </ul>
+      </div>
+    </div>
+    <div class="sec-title-sm" style="margin-top:1mm;">Índice Glicêmico e Carga Glicêmica</div>
+    <div class="two-col">
+      <div class="card">
+        <div class="card-title">Índice Glicêmico (IG) e Carga Glicêmica (CG)</div>
+        <ul class="dot-list">
+          <li><b>IG:</b> resposta glicêmica pós-prandial de um alimento vs pão branco (ou glicose) = 100</li>
+          <li>IG baixo &lt; 55; médio 55–70; alto &gt; 70</li>
+          <li><b>CG</b> = (IG × g CHO disponível) ÷ 100; integra IG + quantidade consumida</li>
+          <li>CG baixa &lt; 10; média 11–19; alta ≥ 20</li>
+          <li>Fatores que ↓IG: fibras, acidez, proteínas, gordura, processo de cocção (amido resistente)</li>
+          <li>Fibras solúveis (β-glucana, pectina) → maior impacto no ↓IG</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title">Ponto Crítico — Valor Calórico dos Nutrientes</div>
+        <table class="table-sm">
+          <tr><th>Substrato</th><th>kcal/g</th><th>kJ/g</th></tr>
+          <tr><td><b>Carboidratos</b></td><td><b>4</b></td><td>17</td></tr>
+          <tr><td><b>Proteínas</b></td><td><b>4</b></td><td>17</td></tr>
+          <tr><td><b>Lipídios</b></td><td><b>9</b></td><td>37</td></tr>
+          <tr><td>Álcool (etanol)</td><td><b>7</b></td><td>29</td></tr>
+          <tr><td>Fibras (AGCC)</td><td>~2</td><td>—</td></tr>
+        </table>
+        <p class="body-text" style="margin-top:2mm;">Para calcular VCT: somar kcal dos macros (CHO×4 + PTN×4 + Lip×9). Conversão: 1 kcal ≈ 4,18 kJ.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ P6 · Q01 -->
+<div class="page">
+  <div class="page-header">
+    <div class="header-logo-group">
+      <svg class="header-logo-svg" viewBox="0 0 28 28" fill="none">
+        <polygon points="14,1 26,7.5 26,20.5 14,27 2,20.5 2,7.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="14" cy="14" r="5.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1"/>
+      </svg>
+      <div class="header-brand">
+        <span class="header-brand-main">extensivo ENARE</span>
+        <span class="header-brand-sub">by Residência PRO</span>
+      </div>
+    </div>
+    <span class="header-center">Nutrição · Bloco B9 · Aula 31</span>
+    <span class="header-page">P6</span>
+  </div>
+  <div class="page-body">
+    <div class="q-header">
+      <div class="q-label">Questão 01 <span class="tag tag-green" style="margin-left:2mm;">Aplicação</span></div>
+      <div class="q-meta">NUT-FUND · GET · GER vs GEB · Equações de Estimativa · ETA</div>
+    </div>
+    <p class="q-stem">Uma nutricionista atende uma paciente do sexo feminino, 40 anos, peso 80 kg, altura 162 cm, que trabalha em escritório e não pratica exercícios regularmente (fator de atividade = 1,2). Para planejar a dieta, a profissional decide estimar o gasto energético total (GET). Sobre as equações de estimativa do gasto energético e os componentes do GET, é CORRETO afirmar que:</p>
+    <div class="alternatives">
+      <div class="alt wrong">
+        <span class="alt-letter">A</span>
+        <span class="alt-text">A calorimetria indireta é o método menos recomendado para determinação do gasto energético real em pacientes críticos, pois os gases analisados (VO₂ e VCO₂) sofrem interferência dos medicamentos utilizados na UTI; nessa situação, as equações preditivas são mais precisas e devem ser preferidas.</span>
+      </div>
+      <div class="alt correct">
+        <span class="alt-letter">B</span>
+        <span class="alt-text">A equação de Mifflin-St Jeor (1990) é considerada mais precisa que a Harris-Benedict (1919) para estimativa do GER em adultos com excesso de peso ou obesidade; o gasto energético total é obtido multiplicando-se o GER pelo fator de atividade física correspondente, e o Gasto Energético Basal (GEB) difere do GER por ser medido sob condições mais rigorosas de jejum e temperatura ambiental controlada.</span>
+      </div>
+      <div class="alt wrong">
+        <span class="alt-letter">C</span>
+        <span class="alt-text">O efeito térmico dos alimentos (ETA) é o componente mais expressivo do gasto energético total em adultos sedentários, representando aproximadamente 55–65% do GET; entre os macronutrientes, os lipídios apresentam o maior efeito termogênico por grama consumido.</span>
+      </div>
+      <div class="alt wrong">
+        <span class="alt-letter">D</span>
+        <span class="alt-text">A distribuição de macronutrientes recomendada pelas DRIs (AMDR) determina que os carboidratos devem contribuir com 55–75% do valor calórico total e os lipídios com no máximo 15% do VCT, a fim de prevenir doenças cardiovasculares em adultos saudáveis.</span>
+      </div>
+    </div>
+    <div class="q-answer-box">
+      <span class="q-answer-letter">B</span>
+      <span class="q-answer-text"><b>Mifflin-St Jeor = mais precisa para obesos; GET = GER × FA; GEB ≠ GER (condições mais rigorosas).</b> A <b>A</b> erra: calorimetria indireta é o <b>padrão-ouro</b>, especialmente recomendada em UTI. A <b>C</b> erra: ETA representa ~10% do GET; proteínas têm maior ETA (20–30%), não lipídios. A <b>D</b> erra: CHO = 45–65% e lip. = 20–35% (não 15%) segundo o AMDR.</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ P7 · Q02 -->
+<div class="page">
+  <div class="page-header">
+    <div class="header-logo-group">
+      <svg class="header-logo-svg" viewBox="0 0 28 28" fill="none">
+        <polygon points="14,1 26,7.5 26,20.5 14,27 2,20.5 2,7.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="14" cy="14" r="5.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1"/>
+      </svg>
+      <div class="header-brand">
+        <span class="header-brand-main">extensivo ENARE</span>
+        <span class="header-brand-sub">by Residência PRO</span>
+      </div>
+    </div>
+    <span class="header-center">Nutrição · Bloco B9 · Aula 31</span>
+    <span class="header-page">P7</span>
+  </div>
+  <div class="page-body">
+    <div class="q-header">
+      <div class="q-label">Questão 02 <span class="tag tag-green" style="margin-left:2mm;">Aplicação</span></div>
+      <div class="q-meta">NUT-FUND · DRIs · EAR · RDA · AI · UL · Planejamento Nutricional</div>
+    </div>
+    <p class="q-stem">Durante a avaliação dietética de um grupo de adultos saudáveis atendidos em um serviço de atenção primária, a nutricionista utiliza as Dietary Reference Intakes (DRIs) para interpretar os dados de ingestão habitual coletados por recordatório alimentar. Sobre as DRIs e sua correta aplicação na prática clínica e coletiva, assinale a alternativa CORRETA:</p>
+    <div class="alternatives">
+      <div class="alt wrong">
+        <span class="alt-letter">A</span>
+        <span class="alt-text">A RDA (Recommended Dietary Allowance) representa a mediana das necessidades nutricionais da população e é o valor mais adequado para avaliar a prevalência de inadequação nutricional em grupos; quando a ingestão habitual de um indivíduo é igual à RDA, há 50% de probabilidade de que sua necessidade individual não esteja sendo atendida.</span>
+      </div>
+      <div class="alt wrong">
+        <span class="alt-letter">B</span>
+        <span class="alt-text">O UL (Tolerable Upper Intake Level) indica o nível mínimo de ingestão de um nutriente necessário para prevenir deficiências em 97–98% da população; valores de ingestão abaixo do UL representam risco de inadequação e deficiência nutricional clínica.</span>
+      </div>
+      <div class="alt correct">
+        <span class="alt-letter">C</span>
+        <span class="alt-text">A EAR representa a mediana das necessidades de um nutriente em um grupo; quando a ingestão habitual de um indivíduo é igual à EAR, há 50% de probabilidade de que sua necessidade não seja atendida. A RDA é estabelecida como EAR + 2 desvios-padrão, cobrindo as necessidades de 97–98% dos indivíduos saudáveis de um grupo, e é utilizada como meta de ingestão para o planejamento dietético individual.</span>
+      </div>
+      <div class="alt wrong">
+        <span class="alt-letter">D</span>
+        <span class="alt-text">A AI (Adequate Intake) é estabelecida com maior precisão metodológica que a RDA, sendo calculada a partir de estudos controlados de depleção-repleção; por isso, a AI deve ser preferida à RDA no planejamento dietético individual quando ambos os valores estiverem disponíveis para o mesmo nutriente.</span>
+      </div>
+    </div>
+    <div class="q-answer-box">
+      <span class="q-answer-letter">C</span>
+      <span class="q-answer-text"><b>EAR = mediana (50% probabilidade); RDA = EAR + 2DP → 97–98% população.</b> A <b>A</b> confunde EAR com RDA: EAR = mediana, não RDA. A <b>B</b> inverte o conceito do UL — é o limite <b>máximo</b>, não mínimo. A <b>D</b> erra: AI tem <b>menor</b> precisão metodológica que a RDA/EAR; quando a RDA existe, ela é preferida no planejamento individual.</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ P8 · Q03 ÂNCORA -->
+<div class="page">
+  <div class="page-header">
+    <div class="header-logo-group">
+      <svg class="header-logo-svg" viewBox="0 0 28 28" fill="none">
+        <polygon points="14,1 26,7.5 26,20.5 14,27 2,20.5 2,7.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="14" cy="14" r="5.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1"/>
+      </svg>
+      <div class="header-brand">
+        <span class="header-brand-main">extensivo ENARE</span>
+        <span class="header-brand-sub">by Residência PRO</span>
+      </div>
+    </div>
+    <span class="header-center">Nutrição · Bloco B9 · Aula 31</span>
+    <span class="header-page">P8</span>
+  </div>
+  <div class="page-body">
+    <div class="q-header">
+      <div class="q-label">Questão 03 <span class="tag tag-yellow" style="margin-left:2mm; color:#1F5C23;">Análise · Âncora</span></div>
+      <div class="q-meta">NUT-FUND · Metabolismo Energético · DRIs · Calorimetria · Macronutrientes</div>
+    </div>
+    <p class="q-stem">Sobre metabolismo energético, recomendações nutricionais e macronutrientes, analise as afirmativas:</p>
+    <div class="assertions">
+      <div class="assertion">
+        <span class="assert-num wrong">I</span>
+        <span class="assert-text">O efeito térmico dos alimentos (ETA), também denominado termogênese dietética, é o componente que representa a maior fração do gasto energético total em adultos sedentários, contribuindo com aproximadamente <b>55–65%</b> do GET; entre os macronutrientes, os lipídios possuem o maior efeito termogênico por grama ingerido.</span>
+      </div>
+      <div class="assertion">
+        <span class="assert-num correct">II</span>
+        <span class="assert-text">A equação de Harris-Benedict tende a <b>superestimar</b> o gasto energético de repouso (GER) em indivíduos com obesidade; para esse grupo, a equação de Mifflin-St Jeor é considerada mais precisa, enquanto a calorimetria indireta, que mede VO₂ e VCO₂, permanece como padrão-ouro para determinação do gasto energético real.</span>
+      </div>
+      <div class="assertion">
+        <span class="assert-num correct">III</span>
+        <span class="assert-text">As DRIs estabelecem que a ingestão mínima de carboidratos deve ser de <b>130 g/dia</b> para garantir o aporte adequado de glicose ao sistema nervoso central, e a AMDR para carboidratos é de <b>45–65%</b> do valor calórico total; a RDA para proteínas em adultos saudáveis é de <b>0,8 g/kg/dia</b>.</span>
+      </div>
+      <div class="assertion">
+        <span class="assert-num wrong">IV</span>
+        <span class="assert-text">Na avaliação da adequação da ingestão de um <b>grupo</b> populacional, a referência mais indicada é a RDA, pois ela representa o valor que cobre as necessidades de 97–98% dos indivíduos e, portanto, garante que a maior parte do grupo tenha sua necessidade atendida quando a ingestão média do grupo se iguala a essa referência.</span>
+      </div>
+    </div>
+    <p class="q-stem" style="margin-top:1mm;">Estão CORRETAS apenas:</p>
+    <div class="alternatives">
+      <div class="alt wrong"><span class="alt-letter">A</span><span class="alt-text">I e II</span></div>
+      <div class="alt wrong"><span class="alt-letter">B</span><span class="alt-text">I e IV</span></div>
+      <div class="alt correct"><span class="alt-letter">C</span><span class="alt-text">II e III</span></div>
+      <div class="alt wrong"><span class="alt-letter">D</span><span class="alt-text">III e IV</span></div>
+    </div>
+    <div class="q-answer-box">
+      <span class="q-answer-letter">C</span>
+      <span class="q-answer-text"><b>I — ERRADA:</b> ETA representa ~10% do GET (não 55–65%), e proteínas têm maior ETA (não lipídios). <b>II — CORRETA:</b> Harris-Benedict superestima em obesos; Mifflin-St Jeor mais precisa; calorimetria indireta = padrão-ouro. <b>III — CORRETA:</b> CHO mín. 130 g/dia; AMDR CHO 45–65%; RDA PTN = 0,8 g/kg/dia. <b>IV — ERRADA:</b> para avaliação de <b>grupos</b>, usa-se a <b>EAR</b>, não a RDA.</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ P9 · GABARITO -->
+<div class="page">
+  <div class="page-header">
+    <div class="header-logo-group">
+      <svg class="header-logo-svg" viewBox="0 0 28 28" fill="none">
+        <polygon points="14,1 26,7.5 26,20.5 14,27 2,20.5 2,7.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="14" cy="14" r="5.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1"/>
+      </svg>
+      <div class="header-brand">
+        <span class="header-brand-main">extensivo ENARE</span>
+        <span class="header-brand-sub">by Residência PRO</span>
+      </div>
+    </div>
+    <span class="header-center">Nutrição · Bloco B9 · Aula 31</span>
+    <span class="header-page">P9</span>
+  </div>
+  <div class="page-body">
+    <div class="sec-title-sm">Gabarito Comentado</div>
+    <div class="gab-grid">
+      <div class="gab-card">
+        <div class="gab-card-q">Q01 · Aplicação</div>
+        <div class="gab-card-letter">B</div>
+        <div class="gab-card-just">
+          <b>Mifflin-St Jeor mais precisa em obesos; GET = GER × FA; GEB ≠ GER.</b> Calorimetria indireta = padrão-ouro (especialmente UTI). ETA ~10% do GET; proteínas têm maior ETA. AMDR: CHO 45–65%, lip. 20–35%.
+        </div>
+      </div>
+      <div class="gab-card">
+        <div class="gab-card-q">Q02 · Aplicação</div>
+        <div class="gab-card-letter">C</div>
+        <div class="gab-card-just">
+          <b>EAR = mediana (50% probabilidade); RDA = EAR + 2DP (97–98%).</b> UL = limite máximo, não mínimo. AI tem menor rigor metodológico que RDA/EAR. Para avaliação de grupos: EAR. Para planejamento individual: RDA (ou AI quando RDA não existe).
+        </div>
+      </div>
+      <div class="gab-card">
+        <div class="gab-card-q">Q03 · Análise</div>
+        <div class="gab-card-letter">C</div>
+        <div class="gab-card-just">
+          <b>II e III corretas.</b> I errada: ETA ~10% (não 55–65%); proteínas = maior ETA. IV errada: avaliação de grupos usa <b>EAR</b> (não RDA). Usar RDA para grupos superestima o consumo necessário — a RDA já tem margem de segurança.
+        </div>
+      </div>
+    </div>
+    <div class="sec-title-sm" style="margin-top:1mm;">Síntese dos Erros Típicos</div>
+    <table class="table-sm">
+      <tr><th>Tema</th><th>Erro Comum</th><th>Correto</th></tr>
+      <tr><td>ETA</td><td>ETA = maior componente do GET (~60%)</td><td>GEB/GER = maior (~60–70%); <b>ETA ~10%</b></td></tr>
+      <tr><td>ETA por macro</td><td>Lipídios têm maior ETA</td><td><b>Proteínas</b> têm maior ETA (20–30%)</td></tr>
+      <tr><td>EAR vs RDA</td><td>RDA = mediana das necessidades do grupo</td><td><b>EAR = mediana</b>; RDA = EAR + 2DP</td></tr>
+      <tr><td>Avaliação de grupos</td><td>Usar RDA para avaliar grupos</td><td>Usar <b>EAR</b> para prevalência de inadequação em grupos</td></tr>
+      <tr><td>UL</td><td>UL = recomendação mínima para saúde</td><td>UL = limite <b>máximo</b> sem toxicidade</td></tr>
+      <tr><td>RDA proteínas adultos</td><td>RDA = 1,2 g/kg/dia para todos os adultos</td><td>RDA adultos saudáveis = <b>0,8 g/kg/dia</b></td></tr>
+      <tr><td>CHO mínimo</td><td>Não há recomendação mínima de CHO</td><td><b>130 g/dia</b> (mínimo para SNC)</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ P10 · SÍNTESE FINAL -->
+<div class="page">
+  <div class="page-header">
+    <div class="header-logo-group">
+      <svg class="header-logo-svg" viewBox="0 0 28 28" fill="none">
+        <polygon points="14,1 26,7.5 26,20.5 14,27 2,20.5 2,7.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="14" cy="14" r="5.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1"/>
+      </svg>
+      <div class="header-brand">
+        <span class="header-brand-main">extensivo ENARE</span>
+        <span class="header-brand-sub">by Residência PRO</span>
+      </div>
+    </div>
+    <span class="header-center">Nutrição · Bloco B9 · Aula 31</span>
+    <span class="header-page">P10</span>
+  </div>
+  <div class="page-body">
+    <div class="sintese-header">
+      <div class="sintese-title">Síntese Final · Aula 31</div>
+      <div class="sintese-sub">NUT-FUND · Metabolismo Energético e DRIs</div>
+    </div>
+    <div class="sintese-grid">
+      <div class="sintese-card">
+        <div class="sintese-card-title">Componentes do GET</div>
+        <table class="table-sm">
+          <tr><th>Componente</th><th>% GET</th><th>Característica</th></tr>
+          <tr><td><b>GEB / GER</b></td><td><b>60–70%</b></td><td>Principal; MM magra é determinante</td></tr>
+          <tr><td><b>ETA</b></td><td><b>~10%</b></td><td>PTN &gt; CHO &gt; Lip (termogênese)</td></tr>
+          <tr><td><b>Atividade Física</b></td><td><b>20–30%</b></td><td>Mais variável; inclui NEAT</td></tr>
+        </table>
+        <ul class="dot-list" style="margin-top:2mm;">
+          <li>GET = GER × FA (sedentário 1,2 → extremamente ativo 1,9)</li>
+          <li>QR = VCO₂/VO₂: CHO=1,0; lip.=0,7; misto=0,82; &gt;1=lipogênese</li>
+        </ul>
+      </div>
+      <div class="sintese-card">
+        <div class="sintese-card-title">Equações de GER</div>
+        <ul class="dot-list">
+          <li><b>Harris-Benedict (1919):</b> clássica; superestima em obesos</li>
+          <li><b>Mifflin-St Jeor (1990):</b> mais precisa para sobrepeso/obesidade</li>
+          <li><b>Calorimetria indireta:</b> padrão-ouro; mede VO₂ e VCO₂</li>
+          <li>Ireton-Jones / Penn State: pacientes críticos com VM</li>
+          <li>GEB ≠ GER: GEB = condições mais rigorosas (jejum 12h, neutro)</li>
+        </ul>
+      </div>
+      <div class="sintese-card">
+        <div class="sintese-card-title">DRIs — Referências Essenciais</div>
+        <ul class="dot-list">
+          <li><b>EAR:</b> mediana (50% probabilidade) → avaliar grupos</li>
+          <li><b>RDA:</b> EAR + 2DP → 97–98% → meta individual</li>
+          <li><b>AI:</b> quando EAR não disponível; menor precisão</li>
+          <li><b>UL:</b> máximo sem toxicidade — não é meta!</li>
+          <li>RDA PTN adultos: <b>0,8 g/kg/dia</b></li>
+          <li>CHO mínimo: <b>130 g/dia</b></li>
+        </ul>
+      </div>
+      <div class="sintese-card">
+        <div class="sintese-card-title">AMDR e Valor Calórico</div>
+        <table class="table-sm">
+          <tr><th>Nutriente</th><th>AMDR</th><th>kcal/g</th></tr>
+          <tr><td>Carboidratos</td><td><b>45–65%</b></td><td>4</td></tr>
+          <tr><td>Proteínas</td><td><b>10–35%</b></td><td>4</td></tr>
+          <tr><td>Lipídios</td><td><b>20–35%</b></td><td>9</td></tr>
+          <tr><td>Álcool</td><td>—</td><td>7</td></tr>
+          <tr><td>Fibras</td><td>25♀ / 38♂ g/dia</td><td>~2</td></tr>
+        </table>
+      </div>
+    </div>
+    <div style="margin-top:2mm;">
+      <div class="refs-title">Referências</div>
+      <p class="body-text" style="color:#888;">IOM/DRI Reports (2002–2005) — Energy, Carbohydrates, Fiber, Fat, Fatty Acids, Cholesterol, Protein and Amino Acids · Harris JA & Benedict FG (1919) · Mifflin MD et al. (1990) AJCN · Ireton-Jones CS (2002) · Roza AM & Shizgal HM (1984) · Weir JB (1949) — calorimetria indireta · FAO/WHO/UNU (1985) — Energy and Protein Requirements</p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

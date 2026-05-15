@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nutrição Bloco B9 — Aula 21 | Extensivo ENARE 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --creme: #F6F4ED; --verde: #1F5C23; --accent: #C6D834;
+    --dark: #1a1a1a; --muted: #555;
+    --page-w: 210mm; --page-h: 297mm; --pad: 14mm;
+  }
+  body { background: #d0d0d0; font-family: 'Bricolage Grotesque', sans-serif; }
+  .page { width: var(--page-w); min-height: var(--page-h); background: var(--creme); margin: 8mm auto; padding: var(--pad); position: relative; overflow: hidden; page-break-after: always; }
+
+  .page-header { display: flex; align-items: center; justify-content: space-between; border-bottom: 2.5px solid var(--verde); padding-bottom: 4px; margin-bottom: 10px; }
+  .page-header .logo-area { display: flex; align-items: center; gap: 6px; }
+  .page-header .brand { font-family: 'Playfair Display', serif; font-style: italic; font-size: 13px; color: var(--verde); }
+  .page-header .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; color: var(--muted); letter-spacing: .03em; }
+  .page-header .hd-right { text-align: right; }
+  .page-header .hd-aula { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; color: var(--verde); letter-spacing: .04em; text-transform: uppercase; }
+  .page-header .hd-pag { font-size: 8px; color: var(--muted); }
+
+  .page-footer { position: absolute; bottom: 8mm; left: var(--pad); right: var(--pad); display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #ccc; padding-top: 4px; }
+  .page-footer span { font-size: 7px; color: #999; }
+
+  .cover { background: var(--verde); display: flex; flex-direction: column; justify-content: space-between; padding: var(--pad); }
+  .cover-top { display: flex; justify-content: space-between; align-items: flex-start; }
+  .cover-brand { font-family: 'Playfair Display', serif; font-style: italic; color: var(--creme); font-size: 16px; }
+  .cover-tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(246,244,237,.55); font-size: 8px; letter-spacing: .05em; margin-top: 2px; }
+  .cover-mid { text-align: center; padding: 10mm 0 6mm; }
+  .cover-eyebrow { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+  .cover-title { font-family: 'Barlow Condensed', sans-serif; font-size: 36px; font-weight: 800; color: var(--creme); line-height: 1.0; text-transform: uppercase; letter-spacing: .01em; margin-bottom: 8px; }
+  .cover-subtitle { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; font-size: 13px; color: rgba(246,244,237,.8); letter-spacing: .04em; }
+  .cover-divider { border: none; border-top: 1.5px solid var(--accent); margin: 6mm 0; opacity: .5; }
+  .cover-pills { display: flex; justify-content: center; gap: 6px; flex-wrap: wrap; }
+  .pill { border: 1px solid rgba(198,216,52,.45); border-radius: 20px; padding: 3px 10px; font-size: 8.5px; color: rgba(246,244,237,.85); font-family: 'Bricolage Grotesque', sans-serif; letter-spacing: .03em; }
+  .cover-bottom { display: flex; justify-content: space-between; align-items: flex-end; }
+  .cv-meta { font-size: 8px; color: rgba(246,244,237,.5); }
+  .cv-code { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: .12em; color: var(--accent); }
+
+  .sec-title { font-family: 'Barlow Condensed', sans-serif; font-size: 20px; font-weight: 800; color: var(--verde); text-transform: uppercase; letter-spacing: .03em; border-left: 4px solid var(--accent); padding-left: 8px; margin-bottom: 8px; line-height: 1.1; }
+  .sec-intro { font-size: 8.5px; color: var(--muted); margin-bottom: 10px; line-height: 1.5; }
+
+  .box { border-radius: 6px; padding: 8px 10px; margin-bottom: 8px; font-size: 8px; line-height: 1.55; }
+  .box-verde  { background: rgba(31,92,35,.08);  border-left: 3px solid var(--verde); }
+  .box-accent { background: rgba(198,216,52,.13); border-left: 3px solid var(--accent); }
+  .box-alert  { background: rgba(220,53,69,.07);  border-left: 3px solid #dc3545; }
+  .box-info   { background: rgba(13,110,253,.06); border-left: 3px solid #0d6efd; }
+  .box-dark   { background: rgba(26,26,26,.05);   border-left: 3px solid #555; }
+
+  .box-title { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .05em; margin-bottom: 5px; color: var(--dark); }
+  .box-title.verde { color: var(--verde); }
+  .box-title.red   { color: #dc3545; }
+  .box-title.blue  { color: #0d6efd; }
+  .box-title.acc   { color: #5a6e00; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 7.5px; margin-bottom: 8px; }
+  th { background: var(--verde); color: var(--creme); font-family: 'Barlow Condensed', sans-serif; font-size: 9px; padding: 4px 6px; text-align: left; }
+  td { padding: 3.5px 6px; border-bottom: 1px solid #ddd; vertical-align: top; }
+  tr:nth-child(even) td { background: rgba(0,0,0,.03); }
+  td strong { color: var(--verde); }
+
+  ul, ol { padding-left: 14px; margin-bottom: 6px; }
+  li { font-size: 8px; line-height: 1.55; margin-bottom: 2px; }
+  li strong { color: var(--verde); }
+
+  .two-col   { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 7px; margin-bottom: 8px; }
+
+  .badge { display: inline-block; padding: 2px 7px; border-radius: 10px; font-size: 7px; font-weight: 600; letter-spacing: .04em; }
+  .badge-verde  { background: var(--verde);  color: var(--creme); }
+  .badge-accent { background: var(--accent); color: var(--dark); }
+  .badge-red    { background: #dc3545; color: #fff; }
+  .badge-blue   { background: #0d6efd; color: #fff; }
+
+  .q-header { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; padding-bottom: 6px; border-bottom: 2px solid var(--verde); }
+  .q-num { font-family: 'Barlow Condensed', sans-serif; font-size: 28px; font-weight: 800; color: var(--verde); line-height: 1; }
+  .q-meta { display: flex; flex-direction: column; }
+  .q-tipo { font-size: 7.5px; color: var(--muted); letter-spacing: .05em; text-transform: uppercase; }
+  .q-tema { font-size: 9px; font-weight: 600; color: var(--dark); }
+
+  .q-enunciado { background: rgba(31,92,35,.06); border-radius: 6px; padding: 10px 12px; font-size: 9px; line-height: 1.6; margin-bottom: 10px; border-left: 3px solid var(--verde); color: var(--dark); }
+  .q-enunciado .stem { font-weight: 600; margin-bottom: 6px; }
+  .q-afirmativas { margin: 6px 0 6px 6px; }
+  .q-afirmativas li { font-size: 8.5px; line-height: 1.55; margin-bottom: 3px; }
+
+  .q-alternativas { list-style: none; padding: 0; margin-bottom: 12px; }
+  .q-alternativas li { display: flex; gap: 8px; padding: 5px 8px; border-radius: 5px; font-size: 8.5px; line-height: 1.5; margin-bottom: 3px; border: 1px solid transparent; }
+  .q-alternativas li .letra { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 800; color: var(--verde); min-width: 14px; }
+  .q-alternativas li.correta { background: rgba(198,216,52,.2); border-color: var(--accent); }
+  .q-alternativas li.correta .letra { color: #5a6e00; }
+
+  .ap-box { background: linear-gradient(135deg, rgba(31,92,35,.07), rgba(198,216,52,.09)); border: 1px solid rgba(198,216,52,.4); border-radius: 8px; padding: 10px 12px; }
+  .ap-title { font-family: 'Barlow Condensed', sans-serif; font-size: 12px; font-weight: 800; color: var(--verde); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 7px; display: flex; align-items: center; gap: 6px; }
+  .ap-body { font-size: 8px; line-height: 1.6; color: var(--dark); }
+  .ap-body strong { color: var(--verde); }
+  .ap-body ul { padding-left: 12px; margin-top: 4px; }
+  .ap-body li { font-size: 7.8px; margin-bottom: 2px; }
+
+  .gab-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; margin: 10px 0; }
+  .gab-card { border: 1.5px solid var(--verde); border-radius: 8px; padding: 10px; text-align: center; }
+  .gab-q { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+  .gab-letra { font-family: 'Barlow Condensed', sans-serif; font-size: 42px; font-weight: 800; color: var(--verde); line-height: 1; margin: 2px 0; }
+  .gab-tag { font-size: 7.5px; color: var(--muted); }
+  .gab-justif { font-size: 7.8px; color: var(--dark); line-height: 1.5; margin-top: 5px; text-align: left; background: rgba(31,92,35,.05); border-radius: 5px; padding: 6px 8px; }
+
+  .sintese-header { text-align: center; padding: 8px 0 10px; border-bottom: 2px solid var(--accent); margin-bottom: 12px; }
+  .sintese-header .sh-label { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: .15em; text-transform: uppercase; color: var(--accent); margin-bottom: 3px; }
+  .sintese-header .sh-title { font-family: 'Barlow Condensed', sans-serif; font-size: 22px; font-weight: 800; color: var(--verde); text-transform: uppercase; letter-spacing: .02em; }
+
+  .armadilha-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-bottom: 10px; }
+  .arm-card { background: rgba(220,53,69,.06); border: 1px solid rgba(220,53,69,.25); border-radius: 7px; padding: 7px 9px; }
+  .arm-title { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; font-weight: 800; color: #dc3545; text-transform: uppercase; letter-spacing: .04em; margin-bottom: 4px; }
+  .arm-body { font-size: 7.5px; line-height: 1.5; color: var(--dark); }
+  .arm-body strong { color: #dc3545; }
+
+  .flashcard-strip { display: grid; grid-template-columns: repeat(4,1fr); gap: 5px; margin-bottom: 10px; }
+  .fc { background: var(--verde); color: var(--creme); border-radius: 6px; padding: 7px 8px; text-align: center; }
+  .fc .fc-num { font-family: 'Barlow Condensed', sans-serif; font-size: 14px; font-weight: 800; color: var(--accent); line-height: 1; }
+  .fc .fc-label { font-size: 7px; color: rgba(246,244,237,.75); margin-top: 1px; }
+
+  @media print { body { background: none; } .page { margin: 0; box-shadow: none; } }
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════
+     P1 — CAPA
+════════════════════════════════════════════════ -->
+<div class="page cover">
+  <div class="cover-top">
+    <div>
+      <div class="cover-brand">Elite Treinamentos</div>
+      <div class="cover-tagline">Extensivo ENARE 2026 · Material de Apoio</div>
+    </div>
+    <svg width="38" height="38" viewBox="0 0 32 32" fill="none">
+      <rect width="32" height="32" rx="6" fill="#F6F4ED"/>
+      <path d="M16 4 L26 9.5 L26 20.5 L16 26 L6 20.5 L6 9.5 Z" stroke="#1F5C23" stroke-width="1.8" fill="none"/>
+      <circle cx="16" cy="16" r="4" fill="#1F5C23"/>
+    </svg>
+  </div>
+  <div class="cover-mid">
+    <div class="cover-eyebrow">Nutrição · Bloco B9 · Aula 21</div>
+    <div class="cover-title">Nutrição<br>Pediátrica</div>
+    <div class="cover-subtitle">Alimentação Complementar, Desnutrição e Déficits</div>
+    <hr class="cover-divider">
+    <div class="cover-pills">
+      <span class="pill">AME 6 meses</span>
+      <span class="pill">Introdução Alimentar</span>
+      <span class="pill">Kwashiorkor vs Marasmo</span>
+      <span class="pill">Anemia Ferropriva</span>
+      <span class="pill">Crescimento e Curvas</span>
+    </div>
+  </div>
+  <div class="cover-bottom">
+    <div class="cv-meta">NUT-CLÍN · Módulo Ciclos da Vida</div>
+    <div class="cv-code">B9-A21 · ENARE 2026</div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     P2 — AME E ALIMENTAÇÃO COMPLEMENTAR
+════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="22" viewBox="0 0 32 32" fill="none">
+        <rect width="32" height="32" rx="6" fill="#1F5C23"/>
+        <path d="M16 4 L26 9.5 L26 20.5 L16 26 L6 20.5 L6 9.5 Z" stroke="#C6D834" stroke-width="1.8" fill="none"/>
+        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
+      </svg>
+      <div><div class="brand">Elite Treinamentos</div><div class="tagline">Extensivo ENARE 2026</div></div>
+    </div>
+    <div class="hd-right">
+      <div class="hd-aula">Aula 21 · Nutrição Pediátrica</div>
+      <div class="hd-pag">Página 2 de 10</div>
+    </div>
+  </div>
+
+  <div class="sec-title">Aleitamento Materno e Alimentação Complementar</div>
+  <div class="sec-intro">O AME até os 6 meses e a manutenção do AM até 2 anos ou mais são recomendações da OMS/MS Brasil. A introdução alimentar oportuna (a partir dos 6 meses) é crítica para o desenvolvimento.</div>
+
+  <div class="box box-verde">
+    <div class="box-title verde">Recomendações de Aleitamento Materno — OMS / MS Brasil</div>
+    <div class="two-col">
+      <div>
+        <ul>
+          <li><strong>AME (Aleitamento Materno Exclusivo):</strong> até os <strong>6 meses completos</strong> — sem água, sucos, chás ou outros alimentos</li>
+          <li><strong>AM complementado:</strong> manter AM junto com alimentação complementar até <strong>2 anos ou mais</strong></li>
+          <li><strong>Primeira mamada:</strong> na primeira hora de vida (vínculo + colostro)</li>
+          <li><strong>Leite materno exclusivo até 6 meses</strong> supre TODAS as necessidades nutricionais do lactente, exceto vitamina D (suplementar 400 UI/dia)</li>
+          <li>Vitamina K: dose única IM ao nascer (profilaxia da doença hemorrágica)</li>
+        </ul>
+      </div>
+      <div>
+        <div class="box box-alert" style="margin-bottom:0;">
+          <div class="box-title red" style="font-size:9px;">Quando NÃO Amamentar</div>
+          <ul>
+            <li><strong>Mãe HIV+</strong> (BR: contraindicação absoluta)</li>
+            <li>HTLV-1 e HTLV-2</li>
+            <li><strong>Galactosemia clássica</strong> no lactente</li>
+            <li>Uso de quimioterápicos ativos</li>
+            <li>Não contraindica: hepatite B/C, CMV, DM, hipotireoidismo, mastite (continuar amamentando)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="box box-accent">
+    <div class="box-title acc">Alimentação Complementar — "A Partir dos 6 Meses"</div>
+    <div style="font-size:8.5px;margin-bottom:6px;">A introdução precoce (&lt;6 meses) aumenta risco de infecções, obesidade, alergias e displasia do desenvolvimento. A introdução tardia (&gt;6 meses) aumenta risco de deficiência de ferro, zinco e retardo do desenvolvimento motor-oral.</div>
+    <table>
+      <tr><th>Princípio</th><th>Recomendação MS Brasil (Guia Alimentar 2019)</th></tr>
+      <tr><td><strong>Início</strong></td><td>6 meses completos (180 dias) — junto com manutenção do AM</td></tr>
+      <tr><td><strong>Consistência</strong></td><td>Papas e alimentos amassados/picados; <strong>não liquidificar</strong> — textura estimula desenvolvimento oro-motor</td></tr>
+      <tr><td><strong>Diversidade</strong></td><td>Oferecer todos os grupos desde o início: cereais, leguminosas, carnes, hortaliças, frutas</td></tr>
+      <tr><td><strong>Ferro</strong></td><td>Fonte de ferro de alta biodisponibilidade (carne vermelha) desde o início — prioridade máxima</td></tr>
+      <tr><td><strong>Mel</strong></td><td><strong>Proibido antes de 1 ano</strong> — risco de botulismo infantil (C. botulinum no mel)</td></tr>
+      <tr><td><strong>Sal e açúcar</strong></td><td>Proibidos até 1 ano; muito limitados após (até 2 anos evitar açúcar)</td></tr>
+      <tr><td><strong>Leite de vaca integral</strong></td><td>Não recomendado antes de 1 ano como bebida principal (baixo ferro + sobrecarga renal de solutos)</td></tr>
+      <tr><td><strong>Leite de vaca integral (1+ ano)</strong></td><td>Permitido como bebida a partir de 1 ano — até 500 mL/dia</td></tr>
+    </table>
+  </div>
+
+  <div class="page-footer">
+    <span>Elite Treinamentos em Saúde · Extensivo ENARE 2026</span>
+    <span>NUT-CLÍN · Aula 21 · AME e Alimentação Complementar</span>
+    <span>B9-A21-P02</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     P3 — CRESCIMENTO E AVALIAÇÃO NUTRICIONAL PEDIÁTRICA
+════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="22" viewBox="0 0 32 32" fill="none">
+        <rect width="32" height="32" rx="6" fill="#1F5C23"/>
+        <path d="M16 4 L26 9.5 L26 20.5 L16 26 L6 20.5 L6 9.5 Z" stroke="#C6D834" stroke-width="1.8" fill="none"/>
+        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
+      </svg>
+      <div><div class="brand">Elite Treinamentos</div><div class="tagline">Extensivo ENARE 2026</div></div>
+    </div>
+    <div class="hd-right">
+      <div class="hd-aula">Aula 21 · Nutrição Pediátrica</div>
+      <div class="hd-pag">Página 3 de 10</div>
+    </div>
+  </div>
+
+  <div class="sec-title">Crescimento e Avaliação Nutricional Pediátrica</div>
+  <div class="sec-intro">A avaliação do crescimento utiliza curvas de referência (OMS 2006/2007) com índices antropométricos específicos por faixa etária.</div>
+
+  <div class="box box-verde">
+    <div class="box-title verde">Índices Antropométricos e Curvas OMS</div>
+    <table>
+      <tr><th>Índice</th><th>Relação</th><th>Uso Preferencial</th><th>O Que Avalia</th></tr>
+      <tr><td><strong>P/I</strong> (Peso/Idade)</td><td>Peso observado vs peso esperado para a idade</td><td>0–10 anos; não recomendado isolado acima de 2 anos</td><td>Desnutrição global; não distingue aguda de crônica</td></tr>
+      <tr><td><strong>E/I ou C/I</strong> (Estatura/Idade)</td><td>Estatura vs estatura esperada para a idade</td><td>Qualquer faixa etária</td><td><strong>Déficit crônico (stunting)</strong> — baixa estatura para a idade</td></tr>
+      <tr><td><strong>P/E</strong> (Peso/Estatura)</td><td>Peso vs peso esperado para a estatura</td><td>0–5 anos (não recomendado &gt;5 anos)</td><td><strong>Déficit agudo (wasting)</strong> — magreza; independente da idade</td></tr>
+      <tr><td><strong>IMC/Idade</strong></td><td>IMC vs IMC esperado para sexo e idade</td><td>≥2 anos (substitui P/E acima de 5 anos)</td><td>Magreza, sobrepeso e obesidade pediátrica</td></tr>
+    </table>
+    <div style="font-size:7.5px;color:#1F5C23;margin-top:3px;"><strong>Referência:</strong> OMS 2006 (0–5 anos) e OMS 2007 (5–19 anos). Pontos de corte: escore-z &lt;−2 = déficit; &lt;−3 = déficit grave; &gt;+1 = risco; &gt;+2 = excesso.</div>
+  </div>
+
+  <div class="two-col">
+    <div class="box box-info">
+      <div class="box-title blue">Classificação do Estado Nutricional (OMS — Escore-Z)</div>
+      <table>
+        <tr><th>Escore-Z</th><th>Classificação</th></tr>
+        <tr><td>&lt; −3</td><td>Muito baixo peso / Magreza acentuada / Muito baixa estatura</td></tr>
+        <tr><td>−3 a &lt;−2</td><td>Baixo peso / Magreza / Baixa estatura (déficit)</td></tr>
+        <tr><td>−2 a +1</td><td><strong>Eutrofia</strong> (adequado)</td></tr>
+        <tr><td>&gt;+1 a +2</td><td>Risco de sobrepeso</td></tr>
+        <tr><td>&gt;+2 a +3</td><td>Sobrepeso</td></tr>
+        <tr><td>&gt;+3</td><td>Obesidade</td></tr>
+      </table>
+    </div>
+    <div class="box box-accent">
+      <div class="box-title acc">Suplementação Preventiva — MS Brasil</div>
+      <ul>
+        <li><strong>Vitamina D:</strong> 400 UI/dia desde o nascimento até 1 ano (todos os lactentes em AME ou &lt;1 L fórmula/dia)</li>
+        <li><strong>Ferro:</strong>
+          <ul>
+            <li>RN termo: 1 mg/kg/dia a partir dos <strong>6 meses</strong> até 24 meses (prevenção da anemia)</li>
+            <li>RN prematuro ou BPN: 2 mg/kg/dia a partir do <strong>30º dia</strong> de vida</li>
+          </ul>
+        </li>
+        <li><strong>Vitamina A (PNVITA — MS):</strong> dose única semestral em crianças 6 meses–5 anos (regiões endêmicas)</li>
+        <li><strong>Fluor:</strong> a partir dos 6 meses se água não fluoretada (&lt;0,7 mg F/L)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="box box-dark">
+    <div class="box-title">Necessidades por Faixa Etária — Pontos-Chave</div>
+    <table>
+      <tr><th>Nutriente</th><th>Lactente (0–12m)</th><th>Criança (1–3a)</th><th>Escolar (4–8a)</th></tr>
+      <tr><td><strong>Proteína</strong></td><td>1,5 g/kg/dia (0–6m); 1,2 g/kg (6–12m)</td><td>1,05 g/kg/dia</td><td>0,95 g/kg/dia</td></tr>
+      <tr><td><strong>Ferro</strong></td><td>0,27 mg/dia (AI); 11 mg/dia (7–12m, RDA)</td><td>7 mg/dia</td><td>10 mg/dia</td></tr>
+      <tr><td><strong>Cálcio</strong></td><td>200–260 mg/dia (AI)</td><td>700 mg/dia</td><td>1.000 mg/dia</td></tr>
+      <tr><td><strong>Vitamina D</strong></td><td>400 UI/dia (suplementar AME)</td><td>600 UI/dia</td><td>600 UI/dia</td></tr>
+      <tr><td><strong>Zinco</strong></td><td>2–3 mg/dia</td><td>3 mg/dia</td><td>5 mg/dia</td></tr>
+    </table>
+  </div>
+
+  <div class="page-footer">
+    <span>Elite Treinamentos em Saúde · Extensivo ENARE 2026</span>
+    <span>NUT-CLÍN · Aula 21 · Crescimento e Avaliação</span>
+    <span>B9-A21-P03</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     P4 — DESNUTRIÇÃO INFANTIL: KWASHIORKOR E MARASMO
+════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="22" viewBox="0 0 32 32" fill="none">
+        <rect width="32" height="32" rx="6" fill="#1F5C23"/>
+        <path d="M16 4 L26 9.5 L26 20.5 L16 26 L6 20.5 L6 9.5 Z" stroke="#C6D834" stroke-width="1.8" fill="none"/>
+        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
+      </svg>
+      <div><div class="brand">Elite Treinamentos</div><div class="tagline">Extensivo ENARE 2026</div></div>
+    </div>
+    <div class="hd-right">
+      <div class="hd-aula">Aula 21 · Nutrição Pediátrica</div>
+      <div class="hd-pag">Página 4 de 10</div>
+    </div>
+  </div>
+
+  <div class="sec-title">Desnutrição Infantil Grave — Kwashiorkor e Marasmo</div>
+  <div class="sec-intro">A desnutrição grave (SAM — Severe Acute Malnutrition) é diagnosticada por P/E &lt;−3 DP ou CB &lt;11,5 cm ou presença de edema bilateral. O kwashiorkor e o marasmo são os dois polos clínicos clássicos.</div>
+
+  <div class="box box-alert">
+    <div class="box-title red">Kwashiorkor vs Marasmo — Diferenciação Clínica</div>
+    <table>
+      <tr><th>Característica</th><th>Kwashiorkor</th><th>Marasmo</th></tr>
+      <tr><td><strong>Déficit principal</strong></td><td>Proteína (com ingestão calórica razoável)</td><td>Calorias e proteína (déficit energético global)</td></tr>
+      <tr><td><strong>Peso</strong></td><td>Pode estar normal ou ↑ (edema mascara)</td><td>Muito reduzido (&lt;60% do esperado)</td></tr>
+      <tr><td><strong>Edema</strong></td><td><strong>Presente</strong> (bilateral, pitting) — sinal cardinal</td><td>Ausente</td></tr>
+      <tr><td><strong>Albumina sérica</strong></td><td><strong>↓↓</strong> (hipoalbuminemia grave → edema)</td><td>Pode ser normal ou levemente ↓</td></tr>
+      <tr><td><strong>Aparência</strong></td><td>"Lua cheia" (face edematosa); pele descamativa (dermatose em mosaico); cabelo despigmentado e quebradiço (sinal da bandeira)</td><td>Emagrecimento extremo; face simiesca; pele frouxa; "velho pequeno"; musculatura visível</td></tr>
+      <tr><td><strong>Humor</strong></td><td>Apático, irritável, choro fácil</td><td>Alerta, vigilante, choro fraco</td></tr>
+      <tr><td><strong>Fígado</strong></td><td>Esteatose hepática (acúmulo de lipídios)</td><td>Sem esteatose</td></tr>
+      <tr><td><strong>Prognóstico</strong></td><td>Pior (edema esconde a gravidade)</td><td>Melhor que kwashiorkor se tratado</td></tr>
+    </table>
+  </div>
+
+  <div class="box box-verde">
+    <div class="box-title verde">Tratamento da SAM — Protocolo OMS (10 Passos)</div>
+    <div class="two-col">
+      <div>
+        <div style="font-size:8px;font-weight:600;margin-bottom:3px;">Fase 1 — Estabilização (dias 1–7):</div>
+        <ol>
+          <li>Tratar hipoglicemia (glicose oral/SG)</li>
+          <li>Tratar hipotermia (aquecer)</li>
+          <li>Tratar desidratação (ReSoMal — solução de reidratação especial, <strong>não SRO padrão</strong>)</li>
+          <li>Corrigir desequilíbrio eletrolítico</li>
+          <li>Tratar infecção (ATB)</li>
+          <li>Corrigir deficiências de micronutrientes</li>
+          <li>Iniciar realimentação cautelosa</li>
+        </ol>
+      </div>
+      <div>
+        <div style="font-size:8px;font-weight:600;margin-bottom:3px;">Fase 2 — Reabilitação (semanas 2–6):</div>
+        <ol start="8">
+          <li>Reabilitação nutricional (F-100: 100 kcal/100 mL)</li>
+          <li>Estimulação sensorial e apoio emocional</li>
+          <li>Preparo para alta e seguimento</li>
+        </ol>
+        <div class="box box-info" style="margin-top:6px;margin-bottom:0;">
+          <div class="box-title blue" style="font-size:9px;">Fórmulas OMS para SAM</div>
+          <ul>
+            <li><strong>F-75</strong> (fase 1): 75 kcal/100 mL · 0,9 g PTN/100 mL — baixa carga de solutos</li>
+            <li><strong>F-100</strong> (fase 2): 100 kcal/100 mL · 2,9 g PTN/100 mL — reabilitação</li>
+            <li><strong>RUTF</strong> (Ready-to-Use Therapeutic Food): pasta de amendoim + leite em pó + óleo + açúcar + minerais/vitaminas</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div style="font-size:7.5px;color:#dc3545;margin-top:4px;"><strong>Atenção:</strong> NÃO usar SRO padrão no kwashiorkor — alto sódio agrava o edema. Usar ReSoMal (baixo Na⁺, rico em K⁺ e Mg²⁺).</div>
+  </div>
+
+  <div class="page-footer">
+    <span>Elite Treinamentos em Saúde · Extensivo ENARE 2026</span>
+    <span>NUT-CLÍN · Aula 21 · Desnutrição Grave Pediátrica</span>
+    <span>B9-A21-P04</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     P5 — DEFICIÊNCIAS NUTRICIONAIS NA INFÂNCIA
+════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="22" viewBox="0 0 32 32" fill="none">
+        <rect width="32" height="32" rx="6" fill="#1F5C23"/>
+        <path d="M16 4 L26 9.5 L26 20.5 L16 26 L6 20.5 L6 9.5 Z" stroke="#C6D834" stroke-width="1.8" fill="none"/>
+        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
+      </svg>
+      <div><div class="brand">Elite Treinamentos</div><div class="tagline">Extensivo ENARE 2026</div></div>
+    </div>
+    <div class="hd-right">
+      <div class="hd-aula">Aula 21 · Nutrição Pediátrica</div>
+      <div class="hd-pag">Página 5 de 10</div>
+    </div>
+  </div>
+
+  <div class="sec-title">Deficiências Nutricionais Prioritárias na Infância</div>
+  <div class="sec-intro">Anemia ferropriva, hipovitaminose A e deficiência de zinco são as três carências nutricionais de maior impacto em saúde pública infantil no Brasil e no mundo.</div>
+
+  <div class="box box-alert">
+    <div class="box-title red">Anemia Ferropriva — A Carência Nutricional Mais Prevalente</div>
+    <div class="two-col">
+      <div>
+        <ul>
+          <li><strong>Prevalência:</strong> ~50% das crianças &lt;5 anos no Brasil (maior em 6–24 meses)</li>
+          <li><strong>Diagnóstico:</strong> Hb &lt; 11 g/dL (&lt;5 anos e gestantes) · Hb &lt; 11,5 g/dL (5–11 anos)</li>
+          <li><strong>Ferritina sérica:</strong> melhor marcador de reservas → &lt;12 µg/L (criança) = depleção</li>
+          <li><strong>Etiologia pediátrica:</strong> baixa reserva ao nascer, AME prolongado sem complementação com ferro, baixa ingestão de ferro heme, inibidores (leite de vaca, fitatos, taninos)</li>
+        </ul>
+      </div>
+      <div>
+        <ul>
+          <li><strong>Consequências:</strong> comprometimento do desenvolvimento cognitivo e motor (irreversível se &lt;2 anos), imunossupressão, menor crescimento</li>
+          <li><strong>Prevenção:</strong> 1 mg/kg/dia ferro elementar dos 6–24 meses (RN termo); 2 mg/kg/dia do 30º dia (RN prematuro/BPN)</li>
+          <li><strong>Tratamento:</strong> 3–6 mg/kg/dia de ferro elementar por 3–6 meses</li>
+          <li>Vitamina C (50 mg) junto com ferro → ↑ absorção</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="box box-info">
+      <div class="box-title blue">Hipovitaminose A — DVA</div>
+      <ul>
+        <li>Principal causa de cegueira infantil evitável no mundo</li>
+        <li>Sinais: cegueira noturna (nictalopia) → xeroftalmia → mancha de Bitot → ulceração corneana → cegueira irreversível</li>
+        <li><strong>PNVITA (MS Brasil):</strong> doses de megadose profilática:
+          <ul>
+            <li>6–11 meses: 100.000 UI dose única semestral</li>
+            <li>12 meses–5 anos: 200.000 UI dose única semestral</li>
+            <li>Puérpera: 200.000 UI no pós-parto imediato</li>
+          </ul>
+        </li>
+        <li>Alimentos fontes: fígado, ovos, laticínios integrais; betacaroteno: cenoura, abóbora, manga</li>
+      </ul>
+    </div>
+    <div class="box box-dark">
+      <div class="box-title">Deficiência de Zinco e Iodo</div>
+      <ul>
+        <li><strong>Zinco:</strong> déficit → diarreia persistente, retardo do crescimento linear, imunossupressão, ageusia, hipogonadismo
+          <ul>
+            <li>Suplementação terapêutica na diarreia aguda: 10–20 mg/dia por 10–14 dias (OMS/OPAS)</li>
+          </ul>
+        </li>
+        <li><strong>Iodo:</strong> deficiência gestacional → hipotireoidismo congênito, cretinismo (retardo mental, surdo-mudez, nanismo)
+          <ul>
+            <li>Iodo no sal de cozinha (iodação obrigatória no Brasil desde 1956): 20–60 mg I/kg sal</li>
+            <li>RDA lactente: 110–130 µg/dia</li>
+          </ul>
+        </li>
+        <li><strong>Cálcio e Vitamina D:</strong> deficiência → <strong>raquitismo</strong> (criança): alargamento das epífises, rosário raquítico, craniotabes; tratamento: vitamina D 2.000–6.000 UI/dia + cálcio</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Elite Treinamentos em Saúde · Extensivo ENARE 2026</span>
+    <span>NUT-CLÍN · Aula 21 · Deficiências Nutricionais</span>
+    <span>B9-A21-P05</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     P6 — QUESTÃO 01 (APLICAÇÃO)
+════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="22" viewBox="0 0 32 32" fill="none">
+        <rect width="32" height="32" rx="6" fill="#1F5C23"/>
+        <path d="M16 4 L26 9.5 L26 20.5 L16 26 L6 20.5 L6 9.5 Z" stroke="#C6D834" stroke-width="1.8" fill="none"/>
+        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
+      </svg>
+      <div><div class="brand">Elite Treinamentos</div><div class="tagline">Extensivo ENARE 2026</div></div>
+    </div>
+    <div class="hd-right">
+      <div class="hd-aula">Aula 21 · Nutrição Pediátrica</div>
+      <div class="hd-pag">Página 6 de 10</div>
+    </div>
+  </div>
+
+  <div class="q-header">
+    <div class="q-num">Q01</div>
+    <div class="q-meta">
+      <span class="q-tipo">Nível: Aplicação · NUT-CLÍN · Pediátrica</span>
+      <span class="q-tema">Alimentação Complementar e Introdução Alimentar</span>
+    </div>
+    <span class="badge badge-verde" style="margin-left:auto;">Ap</span>
+  </div>
+
+  <div class="q-enunciado">
+    <div class="stem">Lactente masculino, 7 meses, nascido a termo, em aleitamento materno exclusivo até os 6 meses. A mãe iniciou a introdução de alimentos há 4 semanas. Na consulta nutricional, pergunta sobre quais alimentos ainda são contraindicados. Qual a orientação correta?</div>
+  </div>
+
+  <ul class="q-alternativas">
+    <li>
+      <span class="letra">A</span>
+      <span>Mel pode ser introduzido a partir dos 6 meses junto com os demais alimentos, pois o sistema imunológico já está suficientemente desenvolvido nesta fase.</span>
+    </li>
+    <li class="correta">
+      <span class="letra">B</span>
+      <span>Mel é contraindicado até 1 ano de idade pelo risco de botulismo infantil; leite de vaca integral não deve ser a bebida principal antes de 1 ano; sal e açúcar devem ser evitados até 1 ano.</span>
+    </li>
+    <li>
+      <span class="letra">C</span>
+      <span>Mel pode ser introduzido a partir de 8 meses, e leite de vaca integral em pequenas quantidades pode ser oferecido a partir dos 7 meses para enriquecer as papas.</span>
+    </li>
+    <li>
+      <span class="letra">D</span>
+      <span>Frutas cítricas, ovos e peixes devem ser evitados até 1 ano para prevenir alergias alimentares, conforme recomendação atual do Guia Alimentar MS 2019.</span>
+    </li>
+  </ul>
+
+  <div class="ap-box">
+    <div class="ap-title">
+      <svg width="14" height="14" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#1F5C23"/><path d="M16 4 L26 9.5 L26 20.5 L16 26 L6 20.5 L6 9.5 Z" stroke="#C6D834" stroke-width="1.8" fill="none"/><circle cx="16" cy="16" r="4" fill="#C6D834"/></svg>
+      Aprendizagem — Gabarito B
+    </div>
+    <div class="ap-body">
+      <strong>Por que B é correta:</strong> As três restrições absolutas para lactentes antes de 1 ano são: <strong>mel</strong> (C. botulinum → botulismo infantil), <strong>leite de vaca integral como bebida principal</strong> (↓ ferro + sobrecarga renal de solutos) e <strong>sal e açúcar</strong> (desenvolvimento do paladar + saúde renal). O sistema imunológico do lactente ainda não neutraliza os esporos de C. botulinum.<br><br>
+      <strong>Por que A está errada:</strong> mel é proibido até 1 ano completo — não há idade segura antes dos 12 meses pelo risco de botulismo.<br><br>
+      <strong>Por que C está errada:</strong> mel continua proibido até 1 ano; leite de vaca integral não deve ser a bebida principal antes de 1 ano.<br><br>
+      <strong>Por que D está errada:</strong> o Guia Alimentar MS 2019 e as diretrizes de alergia alimentar atuais NÃO recomendam adiar introdução de alimentos alergênicos como ovos, peixes e amendoim — a introdução precoce e diversificada pode ser protetora contra alergias.
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Elite Treinamentos em Saúde · Extensivo ENARE 2026</span>
+    <span>NUT-CLÍN · Aula 21 · Q01 Aplicação</span>
+    <span>B9-A21-P06</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     P7 — QUESTÃO 02 (APLICAÇÃO)
+════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="22" viewBox="0 0 32 32" fill="none">
+        <rect width="32" height="32" rx="6" fill="#1F5C23"/>
+        <path d="M16 4 L26 9.5 L26 20.5 L16 26 L6 20.5 L6 9.5 Z" stroke="#C6D834" stroke-width="1.8" fill="none"/>
+        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
+      </svg>
+      <div><div class="brand">Elite Treinamentos</div><div class="tagline">Extensivo ENARE 2026</div></div>
+    </div>
+    <div class="hd-right">
+      <div class="hd-aula">Aula 21 · Nutrição Pediátrica</div>
+      <div class="hd-pag">Página 7 de 10</div>
+    </div>
+  </div>
+
+  <div class="q-header">
+    <div class="q-num">Q02</div>
+    <div class="q-meta">
+      <span class="q-tipo">Nível: Aplicação · NUT-CLÍN · Desnutrição Pediátrica</span>
+      <span class="q-tema">Kwashiorkor vs Marasmo — Diagnóstico e Tratamento</span>
+    </div>
+    <span class="badge badge-verde" style="margin-left:auto;">Ap</span>
+  </div>
+
+  <div class="q-enunciado">
+    <div class="stem">Criança, 2 anos, procedente de área de vulnerabilidade social. Exame físico: edema bilateral pitting em membros inferiores, face arredondada, cabelo ralo e despigmentado, lesões descamativas na pele. Peso adequado para a idade, albumina = 1,8 g/dL. Qual o diagnóstico e a principal preocupação no tratamento inicial?</div>
+  </div>
+
+  <ul class="q-alternativas">
+    <li>
+      <span class="letra">A</span>
+      <span>Marasmo; o tratamento deve iniciar com fórmula F-100 de alta densidade energética para rápida recuperação ponderal, pois o peso adequado indica boa reserva calórica.</span>
+    </li>
+    <li>
+      <span class="letra">B</span>
+      <span>Kwashiorkor; o tratamento inicial deve usar SRO padrão para correção da desidratação e soluções de albumina IV para corrigir a hipoalbuminemia rapidamente.</span>
+    </li>
+    <li class="correta">
+      <span class="letra">C</span>
+      <span>Kwashiorkor; tratamento na fase de estabilização com F-75 e ReSoMal (não SRO padrão), corrigindo hipoglicemia, hipotermia e infecções antes da realimentação intensiva.</span>
+    </li>
+    <li>
+      <span class="letra">D</span>
+      <span>Kwashiorkor-marasmático; o diagnóstico é confirmado pela albumina baixa isolada, sendo a reposição proteica IV a prioridade imediata do tratamento.</span>
+    </li>
+  </ul>
+
+  <div class="ap-box">
+    <div class="ap-title">
+      <svg width="14" height="14" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#1F5C23"/><path d="M16 4 L26 9.5 L26 20.5 L16 26 LG 20.5 L6 9.5 Z" stroke="#C6D834" stroke-width="1.8" fill="none"/><circle cx="16" cy="16" r="4" fill="#C6D834"/></svg>
+      Aprendizagem — Gabarito C
+    </div>
+    <div class="ap-body">
+      <strong>Por que C é correta:</strong> Edema bilateral + hipoalbuminemia + cabelo despigmentado + dermatose = <strong>kwashiorkor</strong>. Fase 1 (estabilização): F-75 (75 kcal/100 mL — baixa densidade evita síndrome de realimentação) + <strong>ReSoMal</strong> (não SRO padrão — SRO padrão tem alto Na⁺ e agravaria o edema). Prioridades: hipoglicemia, hipotermia, infecção antes de avançar a nutrição.<br><br>
+      <strong>Por que A está errada:</strong> não é marasmo (edema bilateral, albumina baixa, cabelo despigmentado = kwashiorkor). F-100 é da fase 2 (reabilitação), não da estabilização — usar F-100 na fase 1 pode causar síndrome de realimentação e morte.<br><br>
+      <strong>Por que B está errada:</strong> SRO padrão é contraindicado no kwashiorkor. Albumina IV não é tratamento padrão — o edema regride com correção nutricional e eletrolítica.<br><br>
+      <strong>Por que D está errada:</strong> reposição proteica IV não é o protocolo OMS — a abordagem é enteral gradual com F-75 → F-100 → RUTF.
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Elite Treinamentos em Saúde · Extensivo ENARE 2026</span>
+    <span>NUT-CLÍN · Aula 21 · Q02 Aplicação</span>
+    <span>B9-A21-P07</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     P8 — QUESTÃO 03 (ANÁLISE ÂNCORA)
+════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="22" viewBox="0 0 32 32" fill="none">
+        <rect width="32" height="32" rx="6" fill="#1F5C23"/>
+        <path d="M16 4 L26 9.5 L26 20.5 L16 26 L6 20.5 L6 9.5 Z" stroke="#C6D834" stroke-width="1.8" fill="none"/>
+        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
+      </svg>
+      <div><div class="brand">Elite Treinamentos</div><div class="tagline">Extensivo ENARE 2026</div></div>
+    </div>
+    <div class="hd-right">
+      <div class="hd-aula">Aula 21 · Nutrição Pediátrica</div>
+      <div class="hd-pag">Página 8 de 10</div>
+    </div>
+  </div>
+
+  <div class="q-header">
+    <div class="q-num">Q03</div>
+    <div class="q-meta">
+      <span class="q-tipo">Nível: Análise · NUT-CLÍN · Questão Âncora</span>
+      <span class="q-tema">Nutrição Pediátrica — Alimentação, Desnutrição e Deficiências — Afirmativas</span>
+    </div>
+    <span class="badge badge-accent" style="margin-left:auto;">An</span>
+  </div>
+
+  <div class="q-enunciado">
+    <div class="stem">Acerca da nutrição pediátrica, alimentação complementar e desnutrição infantil, analise as afirmativas:</div>
+    <ol class="q-afirmativas">
+      <li><strong>I.</strong> No marasmo, o edema bilateral é o sinal patognomônico que o diferencia do kwashiorkor, sendo resultado da hipoalbuminemia grave com redução da pressão oncótica plasmática.</li>
+      <li><strong>II.</strong> Na desnutrição grave (kwashiorkor), a solução de reidratação oral padrão (SRO) não deve ser utilizada para corrigir a desidratação, pois seu alto teor de sódio pode agravar o edema; deve-se utilizar o ReSoMal.</li>
+      <li><strong>III.</strong> A suplementação preventiva de ferro para recém-nascidos a termo em aleitamento materno exclusivo deve ser iniciada a partir dos 6 meses de vida, na dose de 1 mg/kg/dia, até os 24 meses de idade.</li>
+      <li><strong>IV.</strong> A introdução de alimentos potencialmente alergênicos como ovos, peixes e amendoim deve ser adiada até os 12 meses de vida, conforme a recomendação atual do Guia Alimentar para Crianças Brasileiras Menores de 2 Anos (MS 2019).</li>
+    </ol>
+    <div class="stem" style="margin-top:6px;">Estão corretas APENAS:</div>
+  </div>
+
+  <ul class="q-alternativas">
+    <li>
+      <span class="letra">A</span>
+      <span>I e III</span>
+    </li>
+    <li>
+      <span class="letra">B</span>
+      <span>I e IV</span>
+    </li>
+    <li class="correta">
+      <span class="letra">C</span>
+      <span>II e III</span>
+    </li>
+    <li>
+      <span class="letra">D</span>
+      <span>II e IV</span>
+    </li>
+  </ul>
+
+  <div class="ap-box">
+    <div class="ap-title">
+      <svg width="14" height="14" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#1F5C23"/><path d="M16 4 L26 9.5 L26 20.5 L16 26 L6 20.5 L6 9.5 Z" stroke="#C6D834" stroke-width="1.8" fill="none"/><circle cx="16" cy="16" r="4" fill="#C6D834"/></svg>
+      Aprendizagem — Gabarito C (II e III corretas)
+    </div>
+    <div class="ap-body">
+      <strong>I — ERRADA:</strong> A afirmativa inverteu os quadros. O edema bilateral é o sinal cardinal do <em>kwashiorkor</em> (déficit proteico → hipoalbuminemia → ↓ pressão oncótica → edema), <strong>não</strong> do marasmo. No marasmo não há edema — há emagrecimento extremo.
+      <ul>
+        <li><strong>II — CORRETA:</strong> ReSoMal (Rehydration Solution for Malnourished children) tem baixo Na⁺ e rico em K⁺ e Mg²⁺ — específica para SAM. SRO padrão tem Na⁺ elevado e pode piorar o edema no kwashiorkor.</li>
+        <li><strong>III — CORRETA:</strong> Suplementação preventiva de ferro: RN a termo em AME → iniciar nos <strong>6 meses</strong> de vida, 1 mg/kg/dia, até os 24 meses. RN prematuro/BPN: iniciar no 30º dia, 2 mg/kg/dia.</li>
+      </ul>
+      <strong>IV — ERRADA:</strong> O Guia Alimentar MS 2019 e as diretrizes atuais de alergia alimentar (ESPACI, SBP) <strong>não</strong> recomendam adiar alimentos alergênicos — a introdução diversificada e oportuna a partir dos 6 meses pode ser protetora contra alergia alimentar. A restrição preventiva não tem evidência e pode ser prejudicial.
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Elite Treinamentos em Saúde · Extensivo ENARE 2026</span>
+    <span>NUT-CLÍN · Aula 21 · Q03 Análise Âncora</span>
+    <span>B9-A21-P08</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     P9 — GABARITO
+════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="22" viewBox="0 0 32 32" fill="none">
+        <rect width="32" height="32" rx="6" fill="#1F5C23"/>
+        <path d="M16 4 L26 9.5 L26 20.5 L16 26 L6 20.5 L6 9.5 Z" stroke="#C6D834" stroke-width="1.8" fill="none"/>
+        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
+      </svg>
+      <div><div class="brand">Elite Treinamentos</div><div class="tagline">Extensivo ENARE 2026</div></div>
+    </div>
+    <div class="hd-right">
+      <div class="hd-aula">Aula 21 · Nutrição Pediátrica</div>
+      <div class="hd-pag">Página 9 de 10</div>
+    </div>
+  </div>
+
+  <div class="sec-title">Gabarito Comentado</div>
+
+  <div class="gab-grid">
+    <div class="gab-card">
+      <div class="gab-q">Questão 01</div>
+      <div class="gab-letra">B</div>
+      <div class="gab-tag">Aplicação · Alimentação Complementar</div>
+      <div class="gab-justif">Mel proibido até 1 ano (botulismo). Leite de vaca integral não é bebida principal &lt;1 ano (↓Fe + sobrecarga renal). Sal e açúcar evitar até 1 ano. Alergênicos NÃO devem ser adiados — introduzir a partir dos 6 meses.</div>
+    </div>
+    <div class="gab-card">
+      <div class="gab-q">Questão 02</div>
+      <div class="gab-letra">C</div>
+      <div class="gab-tag">Aplicação · Kwashiorkor</div>
+      <div class="gab-justif">Edema + albumina ↓ + cabelo despigmentado = kwashiorkor. Fase 1: F-75 + ReSoMal (não SRO). Priorizar: hipoglicemia, hipotermia, infecção. F-100 só na fase 2 (reabilitação).</div>
+    </div>
+    <div class="gab-card">
+      <div class="gab-q">Questão 03</div>
+      <div class="gab-letra">C</div>
+      <div class="gab-tag">Análise Âncora · II e III</div>
+      <div class="gab-justif">II correta: ReSoMal no kwashiorkor (não SRO — alto Na⁺ agrava edema). III correta: ferro 1 mg/kg/dia dos 6 aos 24 meses (RN termo). I errada: edema é do kwashiorkor, não do marasmo. IV errada: alergênicos NÃO devem ser adiados.</div>
+    </div>
+  </div>
+
+  <div class="box box-alert" style="margin-top:10px;">
+    <div class="box-title red">Armadilhas de Prova — Nunca Confunda</div>
+    <table>
+      <tr><th>Conceito</th><th>Armadilha Frequente</th><th>Correto</th></tr>
+      <tr><td><strong>Edema no marasmo</strong></td><td>Edema bilateral é sinal de marasmo grave</td><td>Edema bilateral = kwashiorkor (hipoalbuminemia). Marasmo = emagrecimento sem edema</td></tr>
+      <tr><td><strong>SRO no kwashiorkor</strong></td><td>Usar SRO padrão para reidratar kwashiorkor</td><td>SRO padrão é contraindicada — usar ReSoMal (baixo Na⁺, rico K⁺/Mg²⁺)</td></tr>
+      <tr><td><strong>Mel e introdução alimentar</strong></td><td>Mel pode ser introduzido aos 6 meses com outros alimentos</td><td>Mel proibido até 1 ano completo — risco de botulismo infantil por esporos de C. botulinum</td></tr>
+      <tr><td><strong>Alergênicos na infância</strong></td><td>Adiar alergênicos previne alergia alimentar</td><td>Introdução precoce e diversificada a partir de 6 meses — NÃO adiar alergênicos</td></tr>
+      <tr><td><strong>Ferro — RN prematuro</strong></td><td>Suplementar ferro do prematuro a partir dos 6 meses</td><td>RN prematuro/BPN: iniciar ferro no 30º dia (não aos 6 meses) na dose de 2 mg/kg/dia</td></tr>
+      <tr><td><strong>F-75 vs F-100</strong></td><td>F-100 na fase de estabilização do SAM</td><td>F-75 = fase 1 (estabilização); F-100 = fase 2 (reabilitação). F-100 prematuro → síndrome realimentação</td></tr>
+    </table>
+  </div>
+
+  <div class="page-footer">
+    <span>Elite Treinamentos em Saúde · Extensivo ENARE 2026</span>
+    <span>NUT-CLÍN · Aula 21 · Gabarito</span>
+    <span>B9-A21-P09</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     P10 — SÍNTESE FINAL
+════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="22" viewBox="0 0 32 32" fill="none">
+        <rect width="32" height="32" rx="6" fill="#1F5C23"/>
+        <path d="M16 4 L26 9.5 L26 20.5 L16 26 L6 20.5 L6 9.5 Z" stroke="#C6D834" stroke-width="1.8" fill="none"/>
+        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
+      </svg>
+      <div><div class="brand">Elite Treinamentos</div><div class="tagline">Extensivo ENARE 2026</div></div>
+    </div>
+    <div class="hd-right">
+      <div class="hd-aula">Aula 21 · Nutrição Pediátrica</div>
+      <div class="hd-pag">Página 10 de 10</div>
+    </div>
+  </div>
+
+  <div class="sintese-header">
+    <div class="sh-label">Síntese Final · Aula 21</div>
+    <div class="sh-title">Nutrição Pediátrica — AME, Desnutrição e Deficiências</div>
+  </div>
+
+  <div class="armadilha-grid">
+    <div class="arm-card">
+      <div class="arm-title">Mel — Proibido &lt;1 ano</div>
+      <div class="arm-body">Mel proibido até <strong>1 ano completo</strong> pelo risco de botulismo infantil (C. botulinum). Não há dose segura antes dos 12 meses.</div>
+    </div>
+    <div class="arm-card">
+      <div class="arm-title">Kwashiorkor = Edema + ↓Albumina</div>
+      <div class="arm-body">Edema bilateral pitting + hipoalbuminemia + cabelo despigmentado = <strong>kwashiorkor</strong>. Marasmo = sem edema + emagrecimento extremo.</div>
+    </div>
+    <div class="arm-card">
+      <div class="arm-title">ReSoMal no Kwashiorkor</div>
+      <div class="arm-body">SRO padrão <strong>contraindicada</strong> no kwashiorkor (alto Na⁺ piora edema). Usar <strong>ReSoMal</strong> (baixo Na⁺, rico K⁺/Mg²⁺).</div>
+    </div>
+    <div class="arm-card">
+      <div class="arm-title">Ferro Preventivo</div>
+      <div class="arm-body">RN termo: <strong>1 mg/kg/dia</strong> a partir dos 6 meses até 24 meses.<br>RN prematuro/BPN: <strong>2 mg/kg/dia</strong> a partir do 30º dia.</div>
+    </div>
+    <div class="arm-card">
+      <div class="arm-title">Alergênicos — Não Adiar</div>
+      <div class="arm-body">Introduzir ovos, peixes, amendoim a partir dos <strong>6 meses</strong> junto com outros alimentos. Adiar alergênicos <strong>não previne</strong> alergia alimentar.</div>
+    </div>
+    <div class="arm-card">
+      <div class="arm-title">F-75 → F-100 → RUTF</div>
+      <div class="arm-body">SAM: fase 1 = <strong>F-75</strong> (75 kcal/100 mL). Fase 2 = <strong>F-100</strong> (100 kcal). Ambulatorial = <strong>RUTF</strong> (pasta terapêutica à base de amendoim).</div>
+    </div>
+  </div>
+
+  <div class="flashcard-strip">
+    <div class="fc">
+      <div class="fc-num">6 m</div>
+      <div class="fc-label">AME exclusivo + início AC</div>
+    </div>
+    <div class="fc">
+      <div class="fc-num">1 ano</div>
+      <div class="fc-label">Limite proibição mel/sal/açúcar</div>
+    </div>
+    <div class="fc">
+      <div class="fc-num">Edema</div>
+      <div class="fc-label">Sinal cardinal do kwashiorkor</div>
+    </div>
+    <div class="fc">
+      <div class="fc-num">30º dia</div>
+      <div class="fc-label">Ferro no prematuro/BPN</div>
+    </div>
+  </div>
+
+  <div class="box box-verde" style="margin-top:4px;">
+    <div class="box-title verde">Fluxo Diagnóstico na Desnutrição Grave Pediátrica (SAM)</div>
+    <div style="font-size:8px;line-height:1.8;text-align:center;">
+      P/E &lt;−3 DP ou CB &lt;11,5 cm → <strong>SAM</strong><br>
+      + Edema bilateral pitting → <strong>Kwashiorkor</strong> (albumina ↓, edema, dermatose)<br>
+      Sem edema, emagrecimento extremo → <strong>Marasmo</strong> (peso &lt;60% esperado)<br>
+      Fase 1: F-75 + ReSoMal + tratar hipoglicemia/hipotermia/infecção<br>
+      Fase 2: F-100 → RUTF → alta com acompanhamento
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Elite Treinamentos em Saúde · Extensivo ENARE 2026</span>
+    <span>NUT-CLÍN · Aula 21 · Síntese Final</span>
+    <span>B9-A21-P10</span>
+  </div>
+</div>
+
+</body>
+</html>

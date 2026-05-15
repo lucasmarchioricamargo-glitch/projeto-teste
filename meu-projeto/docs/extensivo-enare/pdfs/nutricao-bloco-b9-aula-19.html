@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nutrição Bloco B9 — Aula 19 | Extensivo ENARE 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --creme: #F6F4ED; --verde: #1F5C23; --accent: #C6D834;
+    --dark: #1a1a1a; --muted: #555;
+    --page-w: 210mm; --page-h: 297mm; --pad: 14mm;
+  }
+  body { background: #d0d0d0; font-family: 'Bricolage Grotesque', sans-serif; }
+  .page { width: var(--page-w); min-height: var(--page-h); background: var(--creme); margin: 8mm auto; padding: var(--pad); position: relative; overflow: hidden; page-break-after: always; }
+
+  .page-header { display: flex; align-items: center; justify-content: space-between; border-bottom: 2.5px solid var(--verde); padding-bottom: 4px; margin-bottom: 10px; }
+  .page-header .logo-area { display: flex; align-items: center; gap: 6px; }
+  .page-header .brand { font-family: 'Playfair Display', serif; font-style: italic; font-size: 13px; color: var(--verde); }
+  .page-header .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; color: var(--muted); letter-spacing: .03em; }
+  .page-header .hd-right { text-align: right; }
+  .page-header .hd-aula { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; color: var(--verde); letter-spacing: .04em; text-transform: uppercase; }
+  .page-header .hd-pag { font-size: 8px; color: var(--muted); }
+
+  .page-footer { position: absolute; bottom: 8mm; left: var(--pad); right: var(--pad); display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #ccc; padding-top: 4px; }
+  .page-footer span { font-size: 7px; color: #999; }
+
+  /* CAPA */
+  .cover { background: var(--verde); display: flex; flex-direction: column; justify-content: space-between; padding: var(--pad); }
+  .cover-top { display: flex; justify-content: space-between; align-items: flex-start; }
+  .cover-brand { font-family: 'Playfair Display', serif; font-style: italic; color: var(--creme); font-size: 16px; }
+  .cover-tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(246,244,237,.55); font-size: 8px; letter-spacing: .05em; margin-top: 2px; }
+  .cover-mid { text-align: center; padding: 10mm 0 6mm; }
+  .cover-eyebrow { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+  .cover-title { font-family: 'Barlow Condensed', sans-serif; font-size: 38px; font-weight: 800; color: var(--creme); line-height: 1.0; text-transform: uppercase; letter-spacing: .01em; margin-bottom: 8px; }
+  .cover-subtitle { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; font-size: 13px; color: rgba(246,244,237,.8); letter-spacing: .04em; }
+  .cover-divider { border: none; border-top: 1.5px solid var(--accent); margin: 6mm 0; opacity: .5; }
+  .cover-pills { display: flex; justify-content: center; gap: 6px; flex-wrap: wrap; }
+  .pill { border: 1px solid rgba(198,216,52,.45); border-radius: 20px; padding: 3px 10px; font-size: 8.5px; color: rgba(246,244,237,.85); font-family: 'Bricolage Grotesque', sans-serif; letter-spacing: .03em; }
+  .cover-bottom { display: flex; justify-content: space-between; align-items: flex-end; }
+  .cv-meta { font-size: 8px; color: rgba(246,244,237,.5); }
+  .cv-code { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: .12em; color: var(--accent); }
+
+  /* CONTEÚDO */
+  .sec-title { font-family: 'Barlow Condensed', sans-serif; font-size: 20px; font-weight: 800; color: var(--verde); text-transform: uppercase; letter-spacing: .03em; border-left: 4px solid var(--accent); padding-left: 8px; margin-bottom: 8px; line-height: 1.1; }
+  .sec-intro { font-size: 8.5px; color: var(--muted); margin-bottom: 10px; line-height: 1.5; }
+
+  .box { border-radius: 6px; padding: 8px 10px; margin-bottom: 8px; font-size: 8px; line-height: 1.55; }
+  .box-verde  { background: rgba(31,92,35,.08);  border-left: 3px solid var(--verde); }
+  .box-accent { background: rgba(198,216,52,.13); border-left: 3px solid var(--accent); }
+  .box-alert  { background: rgba(220,53,69,.07);  border-left: 3px solid #dc3545; }
+  .box-info   { background: rgba(13,110,253,.06); border-left: 3px solid #0d6efd; }
+  .box-dark   { background: rgba(26,26,26,.05);   border-left: 3px solid #555; }
+
+  .box-title { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .05em; margin-bottom: 5px; color: var(--dark); }
+  .box-title.verde { color: var(--verde); }
+  .box-title.red   { color: #dc3545; }
+  .box-title.blue  { color: #0d6efd; }
+  .box-title.acc   { color: #5a6e00; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 7.5px; margin-bottom: 8px; }
+  th { background: var(--verde); color: var(--creme); font-family: 'Barlow Condensed', sans-serif; font-size: 9px; padding: 4px 6px; text-align: left; }
+  td { padding: 3.5px 6px; border-bottom: 1px solid #ddd; vertical-align: top; }
+  tr:nth-child(even) td { background: rgba(0,0,0,.03); }
+  td strong { color: var(--verde); }
+
+  ul, ol { padding-left: 14px; margin-bottom: 6px; }
+  li { font-size: 8px; line-height: 1.55; margin-bottom: 2px; }
+  li strong { color: var(--verde); }
+
+  .two-col   { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 7px; margin-bottom: 8px; }
+
+  .badge { display: inline-block; padding: 2px 7px; border-radius: 10px; font-size: 7px; font-weight: 600; letter-spacing: .04em; }
+  .badge-verde  { background: var(--verde);  color: var(--creme); }
+  .badge-accent { background: var(--accent); color: var(--dark); }
+  .badge-red    { background: #dc3545; color: #fff; }
+  .badge-blue   { background: #0d6efd; color: #fff; }
+
+  /* QUESTÕES */
+  .q-header { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; padding-bottom: 6px; border-bottom: 2px solid var(--verde); }
+  .q-num { font-family: 'Barlow Condensed', sans-serif; font-size: 28px; font-weight: 800; color: var(--verde); line-height: 1; }
+  .q-meta { display: flex; flex-direction: column; }
+  .q-tipo { font-size: 7.5px; color: var(--muted); letter-spacing: .05em; text-transform: uppercase; }
+  .q-tema { font-size: 9px; font-weight: 600; color: var(--dark); }
+
+  .q-enunciado { background: rgba(31,92,35,.06); border-radius: 6px; padding: 10px 12px; font-size: 9px; line-height: 1.6; margin-bottom: 10px; border-left: 3px solid var(--verde); color: var(--dark); }
+  .q-enunciado .stem { font-weight: 600; margin-bottom: 6px; }
+  .q-afirmativas { margin: 6px 0 6px 6px; }
+  .q-afirmativas li { font-size: 8.5px; line-height: 1.55; margin-bottom: 3px; }
+
+  .q-alternativas { list-style: none; padding: 0; margin-bottom: 12px; }
+  .q-alternativas li { display: flex; gap: 8px; padding: 5px 8px; border-radius: 5px; font-size: 8.5px; line-height: 1.5; margin-bottom: 3px; border: 1px solid transparent; }
+  .q-alternativas li .letra { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 800; color: var(--verde); min-width: 14px; }
+  .q-alternativas li.correta { background: rgba(198,216,52,.2); border-color: var(--accent); }
+  .q-alternativas li.correta .letra { color: #5a6e00; }
+
+  .ap-box { background: linear-gradient(135deg, rgba(31,92,35,.07), rgba(198,216,52,.09)); border: 1px solid rgba(198,216,52,.4); border-radius: 8px; padding: 10px 12px; }
+  .ap-title { font-family: 'Barlow Condensed', sans-serif; font-size: 12px; font-weight: 800; color: var(--verde); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 7px; display: flex; align-items: center; gap: 6px; }
+  .ap-body { font-size: 8px; line-height: 1.6; color: var(--dark); }
+  .ap-body strong { color: var(--verde); }
+  .ap-body ul { padding-left: 12px; margin-top: 4px; }
+  .ap-body li { font-size: 7.8px; margin-bottom: 2px; }
+
+  /* GABARITO */
+  .gab-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; margin: 10px 0; }
+  .gab-card { border: 1.5px solid var(--verde); border-radius: 8px; padding: 10px; text-align: center; }
+  .gab-q { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+  .gab-letra { font-family: 'Barlow Condensed', sans-serif; font-size: 42px; font-weight: 800; color: var(--verde); line-height: 1; margin: 2px 0; }
+  .gab-tag { font-size: 7.5px; color: var(--muted); }
+  .gab-justif { font-size: 7.8px; color: var(--dark); line-height: 1.5; margin-top: 5px; text-align: left; background: rgba(31,92,35,.05); border-radius: 5px; padding: 6px 8px; }
+
+  /* SÍNTESE */
+  .sintese-header { text-align: center; padding: 8px 0 10px; border-bottom: 2px solid var(--accent); margin-bottom: 12px; }
+  .sintese-header .sh-label { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: .15em; text-transform: uppercase; color: var(--accent); margin-bottom: 3px; }
+  .sintese-header .sh-title { font-family: 'Barlow Condensed', sans-serif; font-size: 22px; font-weight: 800; color: var(--verde); text-transform: uppercase; letter-spacing: .02em; }
+
+  .armadilha-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-bottom: 10px; }
+  .arm-card { background: rgba(220,53,69,.06); border: 1px solid rgba(220,53,69,.25); border-radius: 7px; padding: 7px 9px; }
+  .arm-title { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; font-weight: 800; color: #dc3545; text-transform: uppercase; letter-spacing: .04em; margin-bottom: 4px; }
+  .arm-body { font-size: 7.5px; line-height: 1.5; color: var(--dark); }
+  .arm-body strong { color: #dc3545; }
+
+  .flashcard-strip { display: grid; grid-template-columns: repeat(4,1fr); gap: 5px; margin-bottom: 10px; }
+  .fc { background: var(--verde); color: var(--creme); border-radius: 6px; padding: 7px 8px; text-align: center; }
+  .fc .fc-num { font-family: 'Barlow Condensed', sans-serif; font-size: 15px; font-weight: 800; color: var(--accent); line-height: 1; }
+  .fc .fc-label { font-size: 7px; color: rgba(246,244,237,.75); margin-top: 1px; }
+
+  @media print { body { background: none; } .page { margin: 0; box-shadow: none; } }
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════
+     P1 — CAPA
+════════════════════════════════════════════════ -->
+<div class="page cover">
+  <div class="cover-top">
+    <div>
+      <div class="cover-brand">Elite Treinamentos</div>
+      <div class="cover-tagline">Extensivo ENARE 2026 · Material de Apoio</div>
+    </div>
+    <svg width="38" height="38" viewBox="0 0 32 32" fill="none">
+      <rect width="32" height="32" rx="6" fill="#F6F4ED"/>
+      <path d="M16 4 L26 9.5 L26 20.5 L16 26 L6 20.5 L6 9.5 Z" stroke="#1F5C23" stroke-width="1.8" fill="none"/>
+      <circle cx="16" cy="16" r="4" fill="#1F5C23"/>
+    </svg>
+  </div>
+  <div class="cover-mid">
+    <div class="cover-eyebrow">Nutrição · Bloco B9 · Aula 19</div>
+    <div class="cover-title">Nutrição<br>no Idoso</div>
+    <div class="cover-subtitle">Sarcopenia, Fragilidade e Avaliação Nutricional</div>
+    <hr class="cover-divider">
+    <div class="cover-pills">
+      <span class="pill">Mini Avaliação Nutricional</span>
+      <span class="pill">Sarcopenia EWGSOP2</span>
+      <span class="pill">Fragilidade</span>
+      <span class="pill">Proteína no Idoso</span>
+      <span class="pill">Vitamina D e Cálcio</span>
+    </div>
+  </div>
+  <div class="cover-bottom">
+    <div class="cv-meta">NUT-CLÍN · Módulo Ciclos da Vida</div>
+    <div class="cv-code">B9-A19 · ENARE 2026</div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     P2 — ALTERAÇÕES FISIOLÓGICAS E AVALIAÇÃO NUTRICIONAL
+════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="22" viewBox="0 0 32 32" fill="none">
+        <rect width="32" height="32" rx="6" fill="#1F5C23"/>
+        <path d="M16 4 L26 9.5 L26 20.5 L16 26 L6 20.5 L6 9.5 Z" stroke="#C6D834" stroke-width="1.8" fill="none"/>
+        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
+      </svg>
+      <div><div class="brand">Elite Treinamentos</div><div class="tagline">Extensivo ENARE 2026</div></div>
+    </div>
+    <div class="hd-right">
+      <div class="hd-aula">Aula 19 · Nutrição no Idoso</div>
+      <div class="hd-pag">Página 2 de 10</div>
+    </div>
+  </div>
+
+  <div class="sec-title">Alterações do Envelhecimento e Avaliação Nutricional</div>
+  <div class="sec-intro">O envelhecimento gera alterações fisiológicas que aumentam o risco nutricional. A Mini Avaliação Nutricional (MAN/MNA) é o instrumento validado padrão para idosos.</div>
+
+  <div class="box box-verde">
+    <div class="box-title verde">Alterações Fisiológicas com Impacto Nutricional</div>
+    <div class="two-col">
+      <div>
+        <ul>
+          <li><strong>↓ Massa muscular (sarcopenia):</strong> perda de 1–2% ao ano após os 50 anos; acelerada após os 65</li>
+          <li><strong>↑ Gordura corporal:</strong> redistribuição central — risco metabólico mesmo com IMC normal</li>
+          <li><strong>↓ Água corporal total:</strong> maior risco de desidratação; sede diminuída ("anorexia da sede")</li>
+          <li><strong>↓ TMB:</strong> redução de 2–3% por década após os 30 anos</li>
+          <li><strong>↓ Absorção de micronutrientes:</strong> B12 (↓ FI + acloridria), D, Ca, Zn</li>
+        </ul>
+      </div>
+      <div>
+        <ul>
+          <li><strong>Anorexia do envelhecimento:</strong> ↓ apetite por ↓ leptina, ↓ grelina, ↑ colecistocinina, saciedade precoce</li>
+          <li><strong>Disfagia:</strong> frequente em idosos institucionalizados (&gt;50%); risco de aspiração</li>
+          <li><strong>Xerostomia:</strong> boca seca → dificuldade de mastigar; altera seleção alimentar</li>
+          <li><strong>Polimedicação:</strong> ↑ interações fármaco-nutriente; náuseas; alteração de apetite</li>
+          <li><strong>IMC no idoso:</strong> ponto de corte diferente — baixo peso: &lt; 22 kg/m²; adequado: 22–27 kg/m²</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="box box-accent">
+    <div class="box-title acc">Mini Avaliação Nutricional (MAN / MNA) — Padrão-Ouro para Idosos</div>
+    <div class="two-col">
+      <div>
+        <div style="font-size:8px;margin-bottom:5px;"><strong>MAN Triagem (MAN-T):</strong> 6 questões, máximo 14 pontos</div>
+        <table>
+          <tr><th>Pontuação MAN-T</th><th>Classificação</th><th>Conduta</th></tr>
+          <tr><td>12–14 pts</td><td>Estado normal</td><td>Reavaliar periodicamente</td></tr>
+          <tr><td>8–11 pts</td><td>Risco de desnutrição</td><td>Avaliação completa (MAN-F)</td></tr>
+          <tr><td>0–7 pts</td><td>Desnutrição</td><td>Intervenção imediata</td></tr>
+        </table>
+      </div>
+      <div>
+        <div style="font-size:8px;margin-bottom:5px;"><strong>MAN Completa (MAN-F):</strong> triagem + 12 itens adicionais, máximo 30 pontos</div>
+        <table>
+          <tr><th>Pontuação MAN-F</th><th>Classificação</th></tr>
+          <tr><td>≥ 24 pts</td><td>Estado nutricional normal</td></tr>
+          <tr><td>17–23,5 pts</td><td>Risco de desnutrição</td></tr>
+          <tr><td>&lt; 17 pts</td><td>Desnutrição</td></tr>
+        </table>
+        <div style="font-size:7.5px;margin-top:3px;color:#5a6e00;"><strong>MAN:</strong> avalia indicadores clínicos, antropométricos, dietéticos e subjetivos — não só peso.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="box box-dark">
+    <div class="box-title">IMC no Idoso — Pontos de Corte Específicos</div>
+    <table>
+      <tr><th>IMC (kg/m²)</th><th>Classificação no Idoso (OPAS/OMS)</th><th>Ação</th></tr>
+      <tr><td>&lt; 22</td><td><strong>Baixo peso</strong></td><td>Intervenção nutricional prioritária</td></tr>
+      <tr><td>22–27</td><td><strong>Adequado</strong></td><td>Monitorar</td></tr>
+      <tr><td>27–30</td><td><strong>Sobrepeso</strong></td><td>Avaliar individualmente — pode ser protetor</td></tr>
+      <tr><td>&gt; 30</td><td><strong>Obesidade</strong></td><td>Atenção — obesidade sarcopênica</td></tr>
+    </table>
+    <div style="font-size:7.5px;color:#dc3545;margin-top:3px;"><strong>Obesidade sarcopênica:</strong> IMC ↑ + massa muscular ↓ — IMC normal ou elevado não exclui sarcopenia. Pior prognóstico que obesidade ou sarcopenia isoladas.</div>
+  </div>
+
+  <div class="page-footer">
+    <span>Elite Treinamentos em Saúde · Extensivo ENARE 2026</span>
+    <span>NUT-CLÍN · Aula 19 · Avaliação Nutricional Idoso</span>
+    <span>B9-A19-P02</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     P3 — SARCOPENIA E FRAGILIDADE
+════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="22" viewBox="0 0 32 32" fill="none">
+        <rect width="32" height="32" rx="6" fill="#1F5C23"/>
+        <path d="M16 4 L26 9.5 L26 20.5 L16 26 L6 20.5 L6 9.5 Z" stroke="#C6D834" stroke-width="1.8" fill="none"/>
+        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
+      </svg>
+      <div><div class="brand">Elite Treinamentos</div><div class="tagline">Extensivo ENARE 2026</div></div>
+    </div>
+    <div class="hd-right">
+      <div class="hd-aula">Aula 19 · Nutrição no Idoso</div>
+      <div class="hd-pag">Página 3 de 10</div>
+    </div>
+  </div>
+
+  <div class="sec-title">Sarcopenia — Diagnóstico EWGSOP2 (2018)</div>
+  <div class="sec-intro">Sarcopenia é uma doença muscular progressiva com perda de força, massa e desempenho muscular. O consenso europeu EWGSOP2 (2018) é a referência principal para o ENARE.</div>
+
+  <div class="box box-alert">
+    <div class="box-title red">Critérios Diagnósticos — EWGSOP2 2018</div>
+    <div class="three-col">
+      <div style="background:rgba(220,53,69,.08);border-radius:5px;padding:7px;text-align:center;">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;color:#dc3545;">PASSO 1</div>
+        <div style="font-size:8px;font-weight:600;margin:3px 0;">Rastreio</div>
+        <div style="font-size:7.5px;">SARC-F ≥ 4 pontos → suspeita de sarcopenia → ir ao passo 2</div>
+      </div>
+      <div style="background:rgba(220,53,69,.08);border-radius:5px;padding:7px;text-align:center;">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;color:#dc3545;">PASSO 2</div>
+        <div style="font-size:8px;font-weight:600;margin:3px 0;">Força Muscular</div>
+        <div style="font-size:7.5px;"><strong>Força de preensão palmar</strong> (handgrip) &lt;27 kg (H) ou &lt;16 kg (M) → sarcopenia provável</div>
+      </div>
+      <div style="background:rgba(220,53,69,.08);border-radius:5px;padding:7px;text-align:center;">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;color:#dc3545;">PASSO 3</div>
+        <div style="font-size:8px;font-weight:600;margin:3px 0;">Quantidade Muscular</div>
+        <div style="font-size:7.5px;">DXA ou BIA para confirmar ↓ massa muscular → <strong>diagnóstico confirmado</strong></div>
+      </div>
+    </div>
+    <div style="margin-top:6px;">
+      <table>
+        <tr><th>Estágio</th><th>Critério</th><th>Implicação</th></tr>
+        <tr><td><strong>Provável</strong></td><td>↓ força muscular (handgrip)</td><td>Investigar e intervir preventivamente</td></tr>
+        <tr><td><strong>Confirmada</strong></td><td>↓ força + ↓ quantidade/qualidade muscular</td><td>Intervenção nutricional + exercício</td></tr>
+        <tr><td><strong>Grave</strong></td><td>↓ força + ↓ massa + ↓ desempenho físico (TUG, SPPB &lt;8)</td><td>Alta mortalidade, instituição</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="box box-verde">
+    <div class="box-title verde">Fragilidade — Critérios de Fried (Fenótipo de Fragilidade)</div>
+    <div style="font-size:8.5px;margin-bottom:5px;">5 critérios avaliados — cada um presente = 1 ponto:</div>
+    <div class="two-col">
+      <div>
+        <ol>
+          <li><strong>Perda de peso não intencional:</strong> &gt; 4,5 kg ou &gt; 5% do peso no último ano</li>
+          <li><strong>Exaustão/fadiga:</strong> autorrelato de cansaço frequente</li>
+          <li><strong>Fraqueza muscular:</strong> ↓ força de preensão palmar (critério sexo/IMC)</li>
+        </ol>
+      </div>
+      <div>
+        <ol start="4">
+          <li><strong>↓ Velocidade de marcha:</strong> &lt; 0,8 m/s ou &lt; 1 m/s (ajustado por sexo/altura)</li>
+          <li><strong>↓ Atividade física:</strong> baixo gasto energético semanal</li>
+        </ol>
+        <div style="margin-top:5px;">
+          <span class="badge badge-verde">0 critérios = robusto</span>
+          <span class="badge badge-accent" style="margin-left:3px;">1–2 = pré-frágil</span>
+          <span class="badge badge-red" style="margin-left:3px;">≥3 = frágil</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="box box-info">
+    <div class="box-title blue">Sarcopenia vs Fragilidade vs Caquexia — Diferenças</div>
+    <table>
+      <tr><th>Síndrome</th><th>Foco</th><th>Reversível?</th><th>Marcador Principal</th></tr>
+      <tr><td><strong>Sarcopenia</strong></td><td>↓ massa + força muscular (envelhecimento)</td><td>Parcialmente (exercício + PTN)</td><td>Handgrip + DXA/BIA</td></tr>
+      <tr><td><strong>Fragilidade</strong></td><td>Vulnerabilidade funcional multissistêmica</td><td>Parcialmente (pré-fragilidade)</td><td>Critérios de Fried (5 itens)</td></tr>
+      <tr><td><strong>Caquexia</strong></td><td>Perda de massa muscular por doença crônica ativa (câncer, ICC, DRC)</td><td>Limitada (doença base)</td><td>Perda ≥5%/12m + inflamação (PCR)</td></tr>
+      <tr><td><strong>Desnutrição</strong></td><td>Ingestão insuficiente ou má absorção</td><td>Sim (suporte nutricional)</td><td>MAN, IMC, albumina, CB</td></tr>
+    </table>
+  </div>
+
+  <div class="page-footer">
+    <span>Elite Treinamentos em Saúde · Extensivo ENARE 2026</span>
+    <span>NUT-CLÍN · Aula 19 · Sarcopenia e Fragilidade</span>
+    <span>B9-A19-P03</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     P4 — NECESSIDADES NUTRICIONAIS DO IDOSO
+════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="22" viewBox="0 0 32 32" fill="none">
+        <rect width="32" height="32" rx="6" fill="#1F5C23"/>
+        <path d="M16 4 L26 9.5 L26 20.5 L16 26 L6 20.5 L6 9.5 Z" stroke="#C6D834" stroke-width="1.8" fill="none"/>
+        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
+      </svg>
+      <div><div class="brand">Elite Treinamentos</div><div class="tagline">Extensivo ENARE 2026</div></div>
+    </div>
+    <div class="hd-right">
+      <div class="hd-aula">Aula 19 · Nutrição no Idoso</div>
+      <div class="hd-pag">Página 4 de 10</div>
+    </div>
+  </div>
+
+  <div class="sec-title">Necessidades Nutricionais do Idoso</div>
+  <div class="sec-intro">Apesar de menor gasto energético, as necessidades de proteína, vitamina D, cálcio e vitamina B12 estão aumentadas no idoso. A ingestão proteica é o ponto mais cobrado em prova.</div>
+
+  <div class="box box-verde">
+    <div class="box-title verde">Proteína no Idoso — O Ponto Central</div>
+    <div class="three-col">
+      <div style="text-align:center;background:rgba(31,92,35,.08);border-radius:6px;padding:8px;">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:800;color:var(--verde);">≥ 1,0–1,2</div>
+        <div style="font-size:8px;font-weight:600;">g/kg/dia</div>
+        <div style="font-size:7.5px;color:var(--muted);margin-top:3px;">Idoso saudável (PROT-AGE Consensus)</div>
+      </div>
+      <div style="text-align:center;background:rgba(198,216,52,.15);border-radius:6px;padding:8px;">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:800;color:#5a6e00;">1,2–1,5</div>
+        <div style="font-size:8px;font-weight:600;">g/kg/dia</div>
+        <div style="font-size:7.5px;color:var(--muted);margin-top:3px;">Idoso com doença aguda ou crônica</div>
+      </div>
+      <div style="text-align:center;background:rgba(220,53,69,.08);border-radius:6px;padding:8px;">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:800;color:#dc3545;">≥ 2,0</div>
+        <div style="font-size:8px;font-weight:600;">g/kg/dia</div>
+        <div style="font-size:7.5px;color:var(--muted);margin-top:3px;">Sarcopenia grave / desnutrição</div>
+      </div>
+    </div>
+    <div style="font-size:8px;margin-top:6px;line-height:1.6;">
+      <strong>Por que mais proteína?</strong> Resistência anabólica — o idoso precisa de maior dose de aminoácidos para estimular a síntese proteica muscular. Leucina (aminoácido-chave): 2,5–3 g por refeição para maximizar MPS.<br>
+      <strong>Distribuição:</strong> 25–30 g de proteína por refeição (≥3 refeições) é superior a concentrar tudo em uma refeição.
+    </div>
+  </div>
+
+  <div class="box box-accent">
+    <div class="box-title acc">Micronutrientes com Necessidades Aumentadas no Idoso</div>
+    <table>
+      <tr><th>Micronutriente</th><th>RDA/AI Idoso</th><th>Causa do Aumento</th><th>Consequência da Deficiência</th></tr>
+      <tr><td><strong>Vitamina D</strong></td><td>600 UI (70 anos); 800 UI (&gt;70 anos)</td><td>↓ síntese cutânea, ↓ hidroxilação renal, ↓ absorção</td><td>Osteoporose, sarcopenia, ↑ queda, ↑ fraturas</td></tr>
+      <tr><td><strong>Cálcio</strong></td><td>1.200 mg/dia (&gt;70 anos; mulher &gt;51 anos)</td><td>↓ absorção intestinal (↓ vit. D e acidez gástrica)</td><td>Osteoporose, fraturas de fêmur</td></tr>
+      <tr><td><strong>Vitamina B12</strong></td><td>2,4 µg/dia (mesmo DRI, mas absorção ↓)</td><td>Gastrite atrófica → ↓ FI + acloridria → má absorção B12 alimentar</td><td>Anemia megaloblástica, neuropatia, demência</td></tr>
+      <tr><td><strong>Vitamina B6</strong></td><td>1,7 mg/H · 1,5 mg/M (&gt;51 anos)</td><td>↑ catabolismo, ↓ ingestão</td><td>Neuropatia, imunossupressão</td></tr>
+      <tr><td><strong>Zinco</strong></td><td>11 mg/H · 8 mg/M</td><td>↓ ingestão, ↓ absorção, ↑ perdas urinárias</td><td>Imunodeficiência, cicatrização lenta, ageusia</td></tr>
+      <tr><td><strong>Água</strong></td><td>2,7 L/dia (M) · 3,7 L/dia (H) total</td><td>↓ sensação de sede ("anorexia da sede")</td><td>Desidratação crônica, confusão mental, infecção urinária</td></tr>
+    </table>
+  </div>
+
+  <div class="box box-info">
+    <div class="box-title blue">Calorias e Macronutrientes no Idoso</div>
+    <div class="two-col">
+      <div style="font-size:8px;line-height:1.6;">
+        <strong>Energia:</strong> necessidade pode ser menor (↓ TMB), mas não reduzir abaixo de 25–30 kcal/kg/dia — abaixo disso → catabolismo muscular mesmo com proteína adequada.<br><br>
+        <strong>Carboidratos:</strong> atenção ao índice glicêmico — idosos têm maior prevalência de DM2 e intolerância à glicose. Priorizar CHO complexos e fibras.
+      </div>
+      <div style="font-size:8px;line-height:1.6;">
+        <strong>Fibras:</strong> 21 g/dia (M) e 30 g/dia (H) — previne constipação (muito prevalente no idoso); ↑ saciedade.<br><br>
+        <strong>Gorduras:</strong> ômega-3 (EPA/DHA) tem efeito anti-inflamatório e pode ajudar a preservar massa muscular; 250–500 mg/dia como meta.
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Elite Treinamentos em Saúde · Extensivo ENARE 2026</span>
+    <span>NUT-CLÍN · Aula 19 · Necessidades Idoso</span>
+    <span>B9-A19-P04</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     P5 — INTERVENÇÃO NUTRICIONAL E DESNUTRIÇÃO
+════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="22" viewBox="0 0 32 32" fill="none">
+        <rect width="32" height="32" rx="6" fill="#1F5C23"/>
+        <path d="M16 4 L26 9.5 L26 20.5 L16 26 L6 20.5 L6 9.5 Z" stroke="#C6D834" stroke-width="1.8" fill="none"/>
+        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
+      </svg>
+      <div><div class="brand">Elite Treinamentos</div><div class="tagline">Extensivo ENARE 2026</div></div>
+    </div>
+    <div class="hd-right">
+      <div class="hd-aula">Aula 19 · Nutrição no Idoso</div>
+      <div class="hd-pag">Página 5 de 10</div>
+    </div>
+  </div>
+
+  <div class="sec-title">Intervenção Nutricional no Idoso</div>
+  <div class="sec-intro">A desnutrição no idoso é subdiagnosticada e tem impacto direto em morbidade, mortalidade, tempo de internação e qualidade de vida.</div>
+
+  <div class="box box-verde">
+    <div class="box-title verde">Estratégias para Aumentar Ingestão Calórico-Proteica</div>
+    <div class="two-col">
+      <div>
+        <div style="font-size:8px;font-weight:600;margin-bottom:4px;">Enriquecimento alimentar (fortification):</div>
+        <ul>
+          <li>Adicionar leite em pó desnatado: +1 colher de sopa = +2 g PTN + cálcio</li>
+          <li>Óleo vegetal em preparações: ↑ densidade energética sem ↑ volume</li>
+          <li>Clara de ovo cozida em sopas e purês</li>
+          <li>Queijo ralado em preparações salgadas</li>
+          <li>Gelatina proteica em líquidos</li>
+        </ul>
+      </div>
+      <div>
+        <div style="font-size:8px;font-weight:600;margin-bottom:4px;">Suplementos orais (SNO):</div>
+        <ul>
+          <li>Indicação: quando ingestão &lt; 75% das necessidades por &gt; 3–5 dias</li>
+          <li>Fórmulas hipercalóricas (1,5–2 kcal/mL) com proteína ≥ 20% do VET</li>
+          <li>Oferecer entre refeições — não substituir refeições (efeito de substituição)</li>
+          <li>SNO específicos para sarcopenia: fórmulas com leucina, vitamina D, HMB</li>
+          <li>HMB (β-hidroxi-β-metilbutirato): 3 g/dia → reduz catabolismo muscular</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="box box-alert">
+      <div class="box-title red">Desnutrição no Idoso — Critérios GLIM (2019)</div>
+      <div style="font-size:8px;margin-bottom:4px;"><strong>Diagnóstico requer ≥1 critério fenotípico + ≥1 critério etiológico:</strong></div>
+      <div style="font-size:8px;"><strong>Fenotípicos:</strong></div>
+      <ul>
+        <li>Perda de peso: &gt;5%/6m ou &gt;10% além de 6m</li>
+        <li>IMC baixo: &lt;20 (sob 70 anos) ou &lt;22 (acima de 70 anos)</li>
+        <li>↓ massa muscular (DXA, BIA, circunferência de panturrilha &lt;31 cm)</li>
+      </ul>
+      <div style="font-size:8px;margin-top:4px;"><strong>Etiológicos:</strong></div>
+      <ul>
+        <li>↓ ingestão/absorção: &lt;50% das necessidades por &gt;1 semana, ou qualquer redução por &gt;2 semanas</li>
+        <li>Inflamação: doença aguda/crônica com impacto nutricional</li>
+      </ul>
+    </div>
+    <div class="box box-info">
+      <div class="box-title blue">Circunferência de Panturrilha (CP)</div>
+      <ul>
+        <li>Melhor marcador antropométrico de <strong>massa muscular periférica</strong> no idoso</li>
+        <li><strong>Ponto de corte:</strong> &lt; 31 cm → indicativo de sarcopenia (EWGSOP2 e MAN)</li>
+        <li>Medida no maior perímetro da panturrilha, membro não dominante, idoso sentado ou deitado</li>
+        <li>Utilizada no MAN como critério de avaliação muscular quando DXA/BIA não disponíveis</li>
+        <li>CP &lt; 31 cm: score do MAN é automaticamente 0 (piora pontuação)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="box box-dark">
+    <div class="box-title">Vitamina D e Cálcio — Prevenção de Quedas e Fraturas</div>
+    <div style="font-size:8px;line-height:1.6;">
+      <strong>Vitamina D (&gt;70 anos):</strong> 800 UI/dia (RDA) — na prática clínica, doses de 1.000–2.000 UI/dia são frequentemente necessárias para manter 25-OH-D ≥ 30 ng/mL. Deficiência (&lt;20 ng/mL) → ↑ queda + sarcopenia + fratura.<br><br>
+      <strong>Cálcio (&gt;70 anos):</strong> 1.200 mg/dia. Priorizar fontes alimentares (laticínios); suplementar apenas o déficit. Excesso de suplemento &gt; 1.000 mg/dia → risco cardiovascular (litíase renal; discutido).<br><br>
+      <strong>Suplementação combinada vitamina D + cálcio:</strong> evidência de ↓ fraturas de quadril em idosos institucionalizados (Chapuy trial).
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Elite Treinamentos em Saúde · Extensivo ENARE 2026</span>
+    <span>NUT-CLÍN · Aula 19 · Intervenção Nutricional Idoso</span>
+    <span>B9-A19-P05</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     P6 — QUESTÃO 01 (APLICAÇÃO)
+════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="22" viewBox="0 0 32 32" fill="none">
+        <rect width="32" height="32" rx="6" fill="#1F5C23"/>
+        <path d="M16 4 L26 9.5 L26 20.5 L16 26 L6 20.5 L6 9.5 Z" stroke="#C6D834" stroke-width="1.8" fill="none"/>
+        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
+      </svg>
+      <div><div class="brand">Elite Treinamentos</div><div class="tagline">Extensivo ENARE 2026</div></div>
+    </div>
+    <div class="hd-right">
+      <div class="hd-aula">Aula 19 · Nutrição no Idoso</div>
+      <div class="hd-pag">Página 6 de 10</div>
+    </div>
+  </div>
+
+  <div class="q-header">
+    <div class="q-num">Q01</div>
+    <div class="q-meta">
+      <span class="q-tipo">Nível: Aplicação · NUT-CLÍN · Idoso</span>
+      <span class="q-tema">Avaliação Nutricional e Sarcopenia</span>
+    </div>
+    <span class="badge badge-verde" style="margin-left:auto;">Ap</span>
+  </div>
+
+  <div class="q-enunciado">
+    <div class="stem">Idosa, 74 anos, IMC = 24,5 kg/m², referindo cansaço frequente e diminuição do apetite há 3 meses. Na avaliação física: circunferência de panturrilha = 29 cm; força de preensão palmar = 14 kg. MAN-T = 9 pontos. Qual o diagnóstico nutricional mais adequado e a conduta prioritária?</div>
+  </div>
+
+  <ul class="q-alternativas">
+    <li>
+      <span class="letra">A</span>
+      <span>Estado nutricional normal (IMC adequado para a idade); monitorar e reavaliação em 6 meses.</span>
+    </li>
+    <li>
+      <span class="letra">B</span>
+      <span>Risco de desnutrição pela MAN-T (8–11 pts); indicar MAN completa e iniciar suplementação oral com fórmula hipercalórica como primeira conduta.</span>
+    </li>
+    <li class="correta">
+      <span class="letra">C</span>
+      <span>Risco de desnutrição (MAN-T 9 pts) com sarcopenia provável (CP &lt;31 cm + handgrip &lt;16 kg); realizar MAN completa e confirmação de sarcopenia com DXA/BIA; iniciar intervenção proteica e exercício resistido.</span>
+    </li>
+    <li>
+      <span class="letra">D</span>
+      <span>Obesidade sarcopênica pelo IMC, pois IMC ≥22 kg/m² com sinais de fraqueza muscular confirma o diagnóstico; indicar dieta hipocalórica para redução do IMC.</span>
+    </li>
+  </ul>
+
+  <div class="ap-box">
+    <div class="ap-title">
+      <svg width="14" height="14" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#1F5C23"/><path d="M16 4 L26 9.5 L26 20.5 L16 26 L6 20.5 L6 9.5 Z" stroke="#C6D834" stroke-width="1.8" fill="none"/><circle cx="16" cy="16" r="4" fill="#C6D834"/></svg>
+      Aprendizagem — Gabarito C
+    </div>
+    <div class="ap-body">
+      <strong>Por que C é correta:</strong> MAN-T = 9 = risco de desnutrição (8–11 pts) → MAN completa indicada. CP = 29 cm (&lt;31 cm) + handgrip = 14 kg (&lt;16 kg em mulheres) = sarcopenia provável pelo EWGSOP2. Conduta completa: MAN-F + confirmação com DXA/BIA + aumento de proteína (≥1,2 g/kg/dia) + exercício resistido (pilar da sarcopenia).<br><br>
+      <strong>Por que A está errada:</strong> IMC de 24,5 kg/m² está na faixa "adequada" para idoso (22–27), mas IMC não exclui sarcopenia. MAN-T anormal + CP + handgrip alterados indicam risco real.<br><br>
+      <strong>Por que B está errada:</strong> o raciocínio da MAN-T está correto, mas iniciar suplementação oral como "primeira conduta" sem completar a avaliação (MAN-F e confirmar sarcopenia) é precipitado — e não menciona exercício resistido.<br><br>
+      <strong>Por que D está errada:</strong> IMC 24,5 não confirma obesidade sarcopênica; a dieta hipocalórica em idoso sarcopênico agrava a perda muscular.
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Elite Treinamentos em Saúde · Extensivo ENARE 2026</span>
+    <span>NUT-CLÍN · Aula 19 · Q01 Aplicação</span>
+    <span>B9-A19-P06</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     P7 — QUESTÃO 02 (APLICAÇÃO)
+════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="22" viewBox="0 0 32 32" fill="none">
+        <rect width="32" height="32" rx="6" fill="#1F5C23"/>
+        <path d="M16 4 L26 9.5 L26 20.5 L16 26 L6 20.5 L6 9.5 Z" stroke="#C6D834" stroke-width="1.8" fill="none"/>
+        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
+      </svg>
+      <div><div class="brand">Elite Treinamentos</div><div class="tagline">Extensivo ENARE 2026</div></div>
+    </div>
+    <div class="hd-right">
+      <div class="hd-aula">Aula 19 · Nutrição no Idoso</div>
+      <div class="hd-pag">Página 7 de 10</div>
+    </div>
+  </div>
+
+  <div class="q-header">
+    <div class="q-num">Q02</div>
+    <div class="q-meta">
+      <span class="q-tipo">Nível: Aplicação · NUT-CLÍN · Idoso</span>
+      <span class="q-tema">Necessidade Proteica e B12 no Idoso</span>
+    </div>
+    <span class="badge badge-verde" style="margin-left:auto;">Ap</span>
+  </div>
+
+  <div class="q-enunciado">
+    <div class="stem">Idoso, 80 anos, 68 kg, com diagnóstico recente de pneumonia adquirida na comunidade, internado há 5 dias, em uso de dieta via oral. Apresenta anemia com VCM elevado (macrocítica), déficit cognitivo leve e gastrite atrófica diagnosticada por endoscopia. Qual a intervenção nutricional mais adequada considerando o contexto?</div>
+  </div>
+
+  <ul class="q-alternativas">
+    <li>
+      <span class="letra">A</span>
+      <span>Manter a dieta oral padrão hospitalar com 0,8 g/kg/dia de proteínas (RDA padrão) e suplementar ferro oral, pois a anemia macrocítica pode ser por déficit de ferro em idosos.</span>
+    </li>
+    <li>
+      <span class="letra">B</span>
+      <span>Aumentar a oferta proteica para 1,2–1,5 g/kg/dia e suplementar vitamina B12 oral em doses elevadas, pois a gastrite atrófica reduz o fator intrínseco e impede a absorção da B12 alimentar.</span>
+    </li>
+    <li class="correta">
+      <span class="letra">C</span>
+      <span>Aumentar a oferta proteica para 1,2–1,5 g/kg/dia e suplementar vitamina B12 por via parenteral ou intramuscular, pois a gastrite atrófica compromete o fator intrínseco e a B12 oral em dose convencional não é absorvida adequadamente.</span>
+    </li>
+    <li>
+      <span class="letra">D</span>
+      <span>Iniciar TNE exclusiva, pois idosos com doença aguda não conseguem cobrir necessidades nutricionais via oral, e suplementar ácido fólico para corrigir a anemia macrocítica.</span>
+    </li>
+  </ul>
+
+  <div class="ap-box">
+    <div class="ap-title">
+      <svg width="14" height="14" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#1F5C23"/><path d="M16 4 L26 9.5 L26 20.5 L16 26 L6 20.5 L6 9.5 Z" stroke="#C6D834" stroke-width="1.8" fill="none"/><circle cx="16" cy="16" r="4" fill="#C6D834"/></svg>
+      Aprendizagem — Gabarito C
+    </div>
+    <div class="ap-body">
+      <strong>Por que C é correta:</strong> Doença aguda + idoso → necessidade proteica = 1,2–1,5 g/kg/dia. Gastrite atrófica → ↓ FI → má absorção de B12 alimentar. A B12 oral em dose convencional não funciona sem FI. A reposição correta é <strong>parenteral (IM)</strong> ou, em dose muito alta (500–1.000 µg/dia oral), pode contornar a falta de FI por absorção passiva — mas a questão pede a via principal, que é parenteral/IM.<br><br>
+      <strong>Por que A está errada:</strong> 0,8 g/kg/dia é insuficiente para idoso com doença aguda (necessidade ≥1,2 g/kg). Anemia macrocítica é megaloblástica (B12 ou folato), não ferropriva (microcítica hipocromica).<br><br>
+      <strong>Por que B está errada:</strong> B12 oral em dose elevada pode funcionar por absorção passiva, mas não é a via padrão e preferencial com gastrite atrófica confirmada — a questão descreve um cenário em que a via parenteral é mais indicada.<br><br>
+      <strong>Por que D está errada:</strong> não há indicação de TNE exclusiva se o idoso está tomando dieta oral; folato não corrige déficit de B12 (e pode mascarar a neuropatia).
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Elite Treinamentos em Saúde · Extensivo ENARE 2026</span>
+    <span>NUT-CLÍN · Aula 19 · Q02 Aplicação</span>
+    <span>B9-A19-P07</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     P8 — QUESTÃO 03 (ANÁLISE ÂNCORA)
+════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="22" viewBox="0 0 32 32" fill="none">
+        <rect width="32" height="32" rx="6" fill="#1F5C23"/>
+        <path d="M16 4 L26 9.5 L26 20.5 L16 26 L6 20.5 L6 9.5 Z" stroke="#C6D834" stroke-width="1.8" fill="none"/>
+        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
+      </svg>
+      <div><div class="brand">Elite Treinamentos</div><div class="tagline">Extensivo ENARE 2026</div></div>
+    </div>
+    <div class="hd-right">
+      <div class="hd-aula">Aula 19 · Nutrição no Idoso</div>
+      <div class="hd-pag">Página 8 de 10</div>
+    </div>
+  </div>
+
+  <div class="q-header">
+    <div class="q-num">Q03</div>
+    <div class="q-meta">
+      <span class="q-tipo">Nível: Análise · NUT-CLÍN · Questão Âncora</span>
+      <span class="q-tema">Sarcopenia, MAN, Fragilidade e Necessidades do Idoso — Afirmativas</span>
+    </div>
+    <span class="badge badge-accent" style="margin-left:auto;">An</span>
+  </div>
+
+  <div class="q-enunciado">
+    <div class="stem">Acerca da nutrição no idoso, sarcopenia e avaliação nutricional, analise as afirmativas:</div>
+    <ol class="q-afirmativas">
+      <li><strong>I.</strong> A recomendação proteica para idosos saudáveis é de 0,8 g/kg/dia (mesma RDA do adulto), pois a redução da taxa metabólica basal no envelhecimento diminui proporcionalmente a necessidade de proteína para manutenção da massa muscular.</li>
+      <li><strong>II.</strong> Na sarcopenia, o diagnóstico pelo EWGSOP2 (2018) é fundamentado na avaliação sequencial: rastreio com SARC-F, seguido de medição da força muscular (handgrip) e confirmação da quantidade/qualidade muscular por método de imagem ou bioimpedância.</li>
+      <li><strong>III.</strong> A circunferência de panturrilha &lt; 31 cm é utilizada como indicador de redução de massa muscular periférica na Mini Avaliação Nutricional (MAN), sendo ponto de corte válido para ambos os sexos.</div>
+      <li><strong>IV.</strong> O IMC ≥ 22 kg/m² no idoso exclui a presença de sarcopenia, pois o peso corporal adequado reflete manutenção da massa muscular nessa faixa etária.</li>
+    </ol>
+    <div class="stem" style="margin-top:6px;">Estão corretas APENAS:</div>
+  </div>
+
+  <ul class="q-alternativas">
+    <li>
+      <span class="letra">A</span>
+      <span>I e IV</span>
+    </li>
+    <li>
+      <span class="letra">B</span>
+      <span>I e III</span>
+    </li>
+    <li class="correta">
+      <span class="letra">C</span>
+      <span>II e III</span>
+    </li>
+    <li>
+      <span class="letra">D</span>
+      <span>II e IV</span>
+    </li>
+  </ul>
+
+  <div class="ap-box">
+    <div class="ap-title">
+      <svg width="14" height="14" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#1F5C23"/><path d="M16 4 L26 9.5 L26 20.5 L16 26 L6 20.5 L6 9.5 Z" stroke="#C6D834" stroke-width="1.8" fill="none"/><circle cx="16" cy="16" r="4" fill="#C6D834"/></svg>
+      Aprendizagem — Gabarito C (II e III corretas)
+    </div>
+    <div class="ap-body">
+      <strong>I — ERRADA:</strong> A RDA de proteína para idosos saudáveis é <strong>≥1,0–1,2 g/kg/dia</strong> (consenso PROT-AGE), não 0,8 g/kg/dia. O idoso tem <em>resistência anabólica</em> — precisa de MAIS proteína para o mesmo efeito anabólico, não menos.
+      <ul>
+        <li><strong>II — CORRETA:</strong> EWGSOP2 descreve exatamente essa sequência: SARC-F (rastreio) → handgrip/teste de cadeira (força) → DXA ou BIA (quantidade/qualidade muscular) → diagnóstico confirmado.</li>
+        <li><strong>III — CORRETA:</strong> CP &lt; 31 cm é o ponto de corte do MAN e do EWGSOP2 para indicar ↓ massa muscular periférica — válido para homens e mulheres.</li>
+      </ul>
+      <strong>IV — ERRADA:</strong> IMC ≥ 22 kg/m² <strong>não exclui sarcopenia</strong>. Na obesidade sarcopênica, o IMC pode estar normal ou elevado enquanto há perda de massa muscular (substituída por gordura). O IMC é um indicador grosseiro para composição corporal no idoso.
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Elite Treinamentos em Saúde · Extensivo ENARE 2026</span>
+    <span>NUT-CLÍN · Aula 19 · Q03 Análise Âncora</span>
+    <span>B9-A19-P08</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     P9 — GABARITO
+════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="22" viewBox="0 0 32 32" fill="none">
+        <rect width="32" height="32" rx="6" fill="#1F5C23"/>
+        <path d="M16 4 L26 9.5 L26 20.5 L16 26 L6 20.5 L6 9.5 Z" stroke="#C6D834" stroke-width="1.8" fill="none"/>
+        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
+      </svg>
+      <div><div class="brand">Elite Treinamentos</div><div class="tagline">Extensivo ENARE 2026</div></div>
+    </div>
+    <div class="hd-right">
+      <div class="hd-aula">Aula 19 · Nutrição no Idoso</div>
+      <div class="hd-pag">Página 9 de 10</div>
+    </div>
+  </div>
+
+  <div class="sec-title">Gabarito Comentado</div>
+
+  <div class="gab-grid">
+    <div class="gab-card">
+      <div class="gab-q">Questão 01</div>
+      <div class="gab-letra">C</div>
+      <div class="gab-tag">Aplicação · MAN + Sarcopenia</div>
+      <div class="gab-justif">MAN-T 9 = risco (→ MAN-F). CP 29 cm + handgrip 14 kg = sarcopenia provável EWGSOP2. Conduta: MAN-F + DXA/BIA + PTN ↑ + exercício resistido. IMC normal não exclui sarcopenia.</div>
+    </div>
+    <div class="gab-card">
+      <div class="gab-q">Questão 02</div>
+      <div class="gab-letra">C</div>
+      <div class="gab-tag">Aplicação · B12 Parenteral</div>
+      <div class="gab-justif">Idoso com doença aguda: PTN 1,2–1,5 g/kg/dia. Gastrite atrófica → ↓ FI → B12 oral convencional não absorvida → reposição IM/parenteral. Anemia macrocítica ≠ ferropriva.</div>
+    </div>
+    <div class="gab-card">
+      <div class="gab-q">Questão 03</div>
+      <div class="gab-letra">C</div>
+      <div class="gab-tag">Análise Âncora · II e III</div>
+      <div class="gab-justif">II correta: EWGSOP2 = SARC-F → handgrip → DXA/BIA. III correta: CP &lt;31 cm = ponto de corte MAN para ambos os sexos. I errada: PTN idoso = 1,0–1,2 g/kg (resistência anabólica). IV errada: IMC ≥22 não exclui sarcopenia.</div>
+    </div>
+  </div>
+
+  <div class="box box-alert" style="margin-top:10px;">
+    <div class="box-title red">Armadilhas de Prova — Nunca Confunda</div>
+    <table>
+      <tr><th>Conceito</th><th>Armadilha Frequente</th><th>Correto</th></tr>
+      <tr><td><strong>Proteína no idoso</strong></td><td>0,8 g/kg/dia (mesma do adulto)</td><td>≥1,0–1,2 g/kg/dia (saudável); 1,2–1,5 g/kg (doença aguda) — resistência anabólica</td></tr>
+      <tr><td><strong>IMC e sarcopenia</strong></td><td>IMC ≥22 exclui sarcopenia</td><td>Obesidade sarcopênica: IMC normal/alto + ↓ massa muscular — IMC não exclui sarcopenia</td></tr>
+      <tr><td><strong>B12 oral na gastrite atrófica</strong></td><td>Doses altas de B12 oral corrigem gastrite atrófica</td><td>Gastrite atrófica → ↓ FI → B12 oral não absorvida → via IM/parenteral é padrão</td></tr>
+      <tr><td><strong>CP no idoso</strong></td><td>Circunferência de panturrilha tem pontos de corte diferentes por sexo</td><td>CP &lt;31 cm = mesmo ponto de corte para H e M no MAN e EWGSOP2</td></tr>
+      <tr><td><strong>IMC baixo peso idoso</strong></td><td>IMC &lt;18,5 = baixo peso em todas as idades</td><td>Para idosos: baixo peso = IMC &lt;22 kg/m² (OPAS/OMS)</td></tr>
+      <tr><td><strong>MAN triagem</strong></td><td>MAN-T ≥12 = risco de desnutrição</td><td>MAN-T: 12–14 = normal; 8–11 = risco; 0–7 = desnutrição</td></tr>
+    </table>
+  </div>
+
+  <div class="page-footer">
+    <span>Elite Treinamentos em Saúde · Extensivo ENARE 2026</span>
+    <span>NUT-CLÍN · Aula 19 · Gabarito</span>
+    <span>B9-A19-P09</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     P10 — SÍNTESE FINAL
+════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="22" viewBox="0 0 32 32" fill="none">
+        <rect width="32" height="32" rx="6" fill="#1F5C23"/>
+        <path d="M16 4 L26 9.5 L26 20.5 L16 26 L6 20.5 L6 9.5 Z" stroke="#C6D834" stroke-width="1.8" fill="none"/>
+        <circle cx="16" cy="16" r="4" fill="#C6D834"/>
+      </svg>
+      <div><div class="brand">Elite Treinamentos</div><div class="tagline">Extensivo ENARE 2026</div></div>
+    </div>
+    <div class="hd-right">
+      <div class="hd-aula">Aula 19 · Nutrição no Idoso</div>
+      <div class="hd-pag">Página 10 de 10</div>
+    </div>
+  </div>
+
+  <div class="sintese-header">
+    <div class="sh-label">Síntese Final · Aula 19</div>
+    <div class="sh-title">Nutrição no Idoso — Sarcopenia e Fragilidade</div>
+  </div>
+
+  <div class="armadilha-grid">
+    <div class="arm-card">
+      <div class="arm-title">Proteína ↑ no Idoso</div>
+      <div class="arm-body">Idoso saudável: <strong>≥1,0–1,2 g/kg/dia</strong>. Com doença: <strong>1,2–1,5 g/kg</strong>. Resistência anabólica exige mais PTN para o mesmo efeito no músculo.</div>
+    </div>
+    <div class="arm-card">
+      <div class="arm-title">MAN — Pontuações Fixar</div>
+      <div class="arm-body">Triagem (0–14): <strong>12–14 = normal · 8–11 = risco · 0–7 = desnutrição</strong>. Completa (0–30): ≥24 normal · 17–23,5 risco · &lt;17 desnutrição.</div>
+    </div>
+    <div class="arm-card">
+      <div class="arm-title">Sarcopenia EWGSOP2</div>
+      <div class="arm-body">SARC-F (≥4) → Handgrip (H&lt;27/M&lt;16 kg) = <strong>provável</strong> → DXA/BIA = <strong>confirmada</strong> → + SPPB/TUG = <strong>grave</strong>.</div>
+    </div>
+    <div class="arm-card">
+      <div class="arm-title">CP &lt; 31 cm</div>
+      <div class="arm-body">Ponto de corte único para <strong>ambos os sexos</strong>. Marcador de massa muscular periférica no MAN e EWGSOP2. IMC normal não exclui CP baixo.</div>
+    </div>
+    <div class="arm-card">
+      <div class="arm-title">IMC no Idoso</div>
+      <div class="arm-body">Baixo peso: <strong>&lt;22 kg/m²</strong> (diferente do adulto: &lt;18,5). Adequado: 22–27. Sobrepeso pode ser protetor ("paradoxo da obesidade no idoso").</div>
+    </div>
+    <div class="arm-card">
+      <div class="arm-title">B12 — Gastrite Atrófica</div>
+      <div class="arm-body">Acloridria + ↓ FI → B12 alimentar não absorvida → <strong>via IM ou alta dose oral</strong> (500–1.000 µg/dia). Anemia macrocítica + déficit cognitivo = sinal de alerta.</div>
+    </div>
+  </div>
+
+  <div class="flashcard-strip">
+    <div class="fc">
+      <div class="fc-num">1,2</div>
+      <div class="fc-label">g/kg/dia PTN idoso saudável (mín.)</div>
+    </div>
+    <div class="fc">
+      <div class="fc-num">&lt;31cm</div>
+      <div class="fc-label">CP — sarcopenia / MAN</div>
+    </div>
+    <div class="fc">
+      <div class="fc-num">&lt;22</div>
+      <div class="fc-label">IMC baixo peso no idoso</div>
+    </div>
+    <div class="fc">
+      <div class="fc-num">800 UI</div>
+      <div class="fc-label">Vitamina D (&gt;70 anos)</div>
+    </div>
+  </div>
+
+  <div class="box box-verde" style="margin-top:4px;">
+    <div class="box-title verde">Fluxo Diagnóstico no Idoso com Suspeita de Sarcopenia</div>
+    <div style="font-size:8px;line-height:1.8;text-align:center;">
+      SARC-F ≥ 4 → suspeita → <strong>Handgrip &lt;27(H)/&lt;16(M) kg</strong> → sarcopenia provável<br>
+      + DXA/BIA (↓ massa muscular) → <strong>sarcopenia confirmada</strong><br>
+      + SPPB &lt; 8 ou TUG &gt; 20s → <strong>sarcopenia grave</strong><br>
+      CP &lt; 31 cm → indicar avaliação com EWGSOP2 + MAN completa<br>
+      Intervenção: <strong>PTN ≥1,2 g/kg/dia + Leucina + Exercício resistido + Vitamina D 800 UI/dia</strong>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Elite Treinamentos em Saúde · Extensivo ENARE 2026</span>
+    <span>NUT-CLÍN · Aula 19 · Síntese Final</span>
+    <span>B9-A19-P10</span>
+  </div>
+</div>
+
+</body>
+</html>

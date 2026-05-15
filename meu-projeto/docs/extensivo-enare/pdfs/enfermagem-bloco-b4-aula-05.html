@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Enfermagem · Bloco B4 · Aula 05 — Extensivo ENARE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Bricolage+Grotesque:wght@400;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root{--creme:#F6F4ED;--verde-lima:#C6D834;--verde-floresta:#1F5C23;--teal:#0D8A8D;--preto:#070707;--cinza:#9E9B94;--cinza-borda:#DDD9D1;--creme-escuro:#EDEAE2;}
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{background:#CCC;font-family:'Bricolage Grotesque',sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    @page{size:A4;margin:0;}
+    .page{width:210mm;height:297mm;position:relative;overflow:hidden;page-break-after:always;background:var(--creme);display:flex;flex-direction:column;}
+    @media screen{.page{margin:24px auto;box-shadow:0 4px 32px rgba(0,0,0,0.18);}}
+    .page-header{height:14mm;background:var(--creme);border-bottom:2px solid var(--teal);display:flex;align-items:center;padding:0 18mm;flex-shrink:0;}
+    .page-header-label{font-family:'Barlow Condensed',sans-serif;font-size:8pt;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--cinza);}
+    .page-header-title{font-family:'Space Grotesk',sans-serif;font-size:7.5pt;font-weight:300;color:var(--cinza);margin-left:auto;}
+    .page-footer{height:10mm;background:var(--creme);border-top:1px solid var(--cinza-borda);display:flex;align-items:center;padding:0 18mm;flex-shrink:0;}
+    .page-footer-brand{font-family:'Space Grotesk',sans-serif;font-size:7pt;font-weight:300;color:var(--cinza);}
+    .page-footer-num{font-family:'Barlow Condensed',sans-serif;font-size:9pt;font-weight:700;color:var(--teal);margin-left:auto;}
+    .page-content{flex:1;padding:10mm 18mm;overflow:hidden;}
+    .section-tag{font-family:'Barlow Condensed',sans-serif;font-size:7.5pt;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--teal);margin-bottom:4mm;}
+    .section-rule{width:100%;height:2px;background:var(--teal);margin-bottom:6mm;}
+    .capa{background:var(--teal);width:100%;height:100%;display:flex;flex-direction:column;padding:14mm 16mm 12mm;}
+    .capa-logo-ext{font-family:'Playfair Display',serif;font-style:italic;font-size:10pt;color:var(--verde-lima);letter-spacing:1px;}
+    .capa-logo-enare{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:38pt;color:var(--creme);line-height:0.85;letter-spacing:-1px;}
+    .capa-logo-sub{font-family:'Space Grotesk',sans-serif;font-weight:300;font-size:8.5pt;color:rgba(246,244,237,0.6);margin-top:2mm;}
+    .capa-area{font-family:'Barlow Condensed',sans-serif;font-size:7.5pt;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:rgba(246,244,237,0.55);margin-bottom:2mm;}
+    .capa-codigo{font-family:'Barlow Condensed',sans-serif;font-size:9pt;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--verde-lima);margin-bottom:5mm;}
+    .capa-titulo{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:46pt;color:var(--creme);line-height:0.88;text-transform:uppercase;letter-spacing:-1px;margin-bottom:4mm;}
+    .capa-subtitulo{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:14pt;color:var(--verde-lima);text-transform:uppercase;letter-spacing:1px;line-height:1.25;}
+    .capa-watermark{position:absolute;bottom:12mm;right:12mm;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:110pt;color:rgba(246,244,237,0.08);line-height:1;pointer-events:none;}
+    .obj-list{list-style:none;display:flex;flex-direction:column;gap:4mm;margin-bottom:6mm;}
+    .obj-item{display:flex;gap:3mm;align-items:flex-start;}
+    .obj-num{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:18pt;color:var(--teal);line-height:1;flex-shrink:0;width:8mm;}
+    .obj-text{font-size:9.5pt;line-height:1.5;color:var(--preto);padding-top:1mm;}
+    .obj-prereq{background:var(--creme-escuro);border-left:3px solid var(--cinza-borda);padding:3mm 4mm;border-radius:0 3px 3px 0;margin-top:4mm;}
+    .obj-prereq-label{font-family:'Barlow Condensed',sans-serif;font-size:7pt;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--cinza);margin-bottom:1mm;}
+    .obj-prereq-text{font-size:8.5pt;color:var(--preto);line-height:1.4;}
+    .meta-row{display:flex;gap:8mm;margin-top:5mm;padding-top:4mm;border-top:1px solid var(--cinza-borda);}
+    .meta-item{display:flex;flex-direction:column;gap:0.5mm;}
+    .meta-label{font-family:'Barlow Condensed',sans-serif;font-size:6.5pt;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--cinza);}
+    .meta-value{font-size:8pt;font-weight:600;color:var(--preto);}
+    h2{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:17pt;color:var(--teal);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:3mm;line-height:1.1;}
+    h3{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11pt;color:var(--preto);text-transform:uppercase;letter-spacing:1px;margin:4mm 0 2mm;}
+    p{font-size:9pt;line-height:1.55;color:var(--preto);margin-bottom:3mm;}
+    table{width:100%;border-collapse:collapse;font-size:8.5pt;margin-bottom:4mm;}
+    th{background:var(--teal);color:var(--creme);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:8pt;letter-spacing:1px;text-transform:uppercase;padding:2.5mm 3mm;text-align:left;}
+    td{padding:2mm 3mm;border-bottom:1px solid var(--cinza-borda);vertical-align:top;line-height:1.4;}
+    tr:nth-child(even) td{background:var(--creme-escuro);}
+    .td-dest{font-weight:600;}
+    .box{padding:3.5mm 4mm;border-radius:4px;margin-bottom:4mm;}
+    .box-conceito{background:#e8f4e8;border-left:4px solid var(--verde-floresta);}
+    .box-conceito .box-label{color:var(--verde-floresta);}
+    .box-dica{background:#e5f4f4;border-left:4px solid var(--teal);}
+    .box-dica .box-label{color:var(--teal);}
+    .box-pega{background:#f5f9d4;border-left:4px solid var(--verde-lima);}
+    .box-pega .box-label{color:#7a8a00;}
+    .box-alerta{background:#fce8e8;border-left:4px solid #b03030;}
+    .box-alerta .box-label{color:#b03030;}
+    .box-label{font-family:'Barlow Condensed',sans-serif;font-size:7pt;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:1.5mm;display:block;}
+    .box p{font-size:8.5pt;margin-bottom:0;}
+    .box p+p{margin-top:2mm;}
+    .q-header{font-family:'Barlow Condensed',sans-serif;font-size:8pt;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--teal);margin-bottom:3mm;}
+    .q-stem{font-size:9.5pt;line-height:1.6;color:var(--preto);background:var(--creme-escuro);padding:4mm 5mm;border-radius:4px;margin-bottom:4mm;}
+    .q-opts{list-style:none;display:flex;flex-direction:column;gap:2.5mm;margin-bottom:4mm;}
+    .q-opt{display:flex;gap:3mm;align-items:flex-start;padding:2.5mm 3mm;border-radius:3px;border:1px solid var(--cinza-borda);font-size:9pt;line-height:1.45;}
+    .q-opt.correta{background:#e8f4e8;border-color:var(--verde-floresta);font-weight:600;}
+    .opt-letter{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:11pt;color:var(--teal);flex-shrink:0;line-height:1.2;}
+    .q-opt.correta .opt-letter{color:var(--verde-floresta);}
+    .badge-correta{background:var(--verde-floresta);color:var(--creme);font-family:'Barlow Condensed',sans-serif;font-size:6.5pt;font-weight:700;letter-spacing:1.5px;padding:1px 5px;border-radius:2px;margin-left:3mm;vertical-align:middle;text-transform:uppercase;}
+    .gabarito-box{background:var(--creme-escuro);border-top:2px solid var(--teal);padding:3.5mm 4mm;border-radius:0 0 4px 4px;}
+    .gabarito-title{font-family:'Barlow Condensed',sans-serif;font-size:7.5pt;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:2mm;}
+    .gabarito-text{font-size:8pt;line-height:1.55;color:var(--preto);}
+    .distrator{font-size:7.5pt;color:#555;margin-top:1.5mm;line-height:1.4;}
+    .distrator strong{color:var(--preto);}
+    .rec-box{background:var(--creme-escuro);border-radius:4px;padding:4mm 5mm;margin-bottom:4mm;}
+    .rec-item{display:flex;gap:2.5mm;align-items:flex-start;margin-bottom:2.5mm;font-size:9pt;line-height:1.5;}
+    .rec-star{color:var(--teal);font-weight:800;flex-shrink:0;}
+    .teste-list{list-style:none;display:flex;flex-direction:column;gap:3mm;}
+    .teste-item{font-size:8.5pt;line-height:1.5;padding-left:4mm;border-left:2px solid var(--cinza-borda);color:var(--preto);}
+    .teste-item strong{font-family:'Barlow Condensed',sans-serif;font-size:9pt;color:var(--teal);font-weight:700;letter-spacing:0.5px;}
+    .ref-list{list-style:none;display:flex;flex-direction:column;gap:2mm;}
+    .ref-item{font-size:7.5pt;line-height:1.55;color:var(--preto);padding-left:3mm;border-left:2px solid var(--cinza-borda);}
+    .anot-box{margin-top:5mm;border:1.5px dashed var(--cinza-borda);border-radius:4px;padding:4mm;height:52mm;display:flex;align-items:center;justify-content:center;}
+    .anot-label{font-family:'Barlow Condensed',sans-serif;font-size:8pt;letter-spacing:2px;text-transform:uppercase;color:var(--cinza-borda);}
+    /* SCA */
+    .sca-table-wrap{margin-bottom:4mm;}
+    .sca-table-wrap table th:nth-child(2){background:#b03030;}
+    .sca-table-wrap table th:nth-child(3){background:#a06010;}
+    .sca-table-wrap table th:nth-child(4){background:var(--verde-floresta);}
+    .sca-iamcsst td:nth-child(2){background:#fce8e8;font-weight:600;}
+    .sca-iamssst td:nth-child(3){background:#fef0e8;font-weight:600;}
+    .sca-ai td:nth-child(4){background:#e8f4e8;font-weight:600;}
+    /* Protocol steps */
+    .proto-seq{display:flex;flex-direction:column;gap:2mm;margin-bottom:4mm;}
+    .proto-step{display:flex;gap:3mm;align-items:flex-start;background:var(--creme-escuro);border-radius:4px;padding:2.5mm 3mm;}
+    .proto-num{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:14pt;color:var(--teal);flex-shrink:0;line-height:1;width:6mm;}
+    .proto-text{font-size:8pt;line-height:1.45;color:var(--preto);}
+    .proto-text strong{color:var(--teal);}
+    /* Killip */
+    .killip-grid{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:2mm;margin-bottom:4mm;}
+    .killip-card{border-radius:4px;padding:2.5mm 3mm;text-align:center;}
+    .killip-card.k1{background:#e8f4e8;border-top:3px solid var(--verde-floresta);}
+    .killip-card.k2{background:#fff9e6;border-top:3px solid #d4a000;}
+    .killip-card.k3{background:#fef0e8;border-top:3px solid #e07020;}
+    .killip-card.k4{background:#fce8e8;border-top:3px solid #b03030;}
+    .killip-class{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:12pt;line-height:1;}
+    .killip-card.k1 .killip-class{color:var(--verde-floresta);}
+    .killip-card.k2 .killip-class{color:#d4a000;}
+    .killip-card.k3 .killip-class{color:#e07020;}
+    .killip-card.k4 .killip-class{color:#b03030;}
+    .killip-desc{font-size:7pt;line-height:1.4;color:var(--preto);margin-top:1.5mm;}
+    .killip-cond{font-family:'Barlow Condensed',sans-serif;font-size:6.5pt;font-weight:700;color:#555;margin-top:2mm;text-transform:uppercase;letter-spacing:0.5px;}
+    /* brady */
+    .brady-seq{display:flex;flex-direction:column;gap:2mm;margin-bottom:3mm;}
+    .brady-step{display:flex;gap:2mm;align-items:center;font-size:8pt;color:var(--preto);line-height:1.4;}
+    .brady-arrow{font-size:10pt;color:var(--teal);flex-shrink:0;}
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════
+     P01 — CAPA
+     ═══════════════════════════════════════════════════════════ -->
+<div class="page" id="p01">
+  <div class="capa">
+    <div style="margin-bottom:auto;">
+      <span class="capa-logo-ext">extensivo</span><br>
+      <span class="capa-logo-enare">ENARE</span><br>
+      <span class="capa-logo-sub">by Residência PRO</span>
+    </div>
+    <div style="padding-bottom:2mm;">
+      <div class="capa-area">Enfermagem · Módulo Específico</div>
+      <div class="capa-codigo">Bloco B4 · Aula 05</div>
+      <div class="capa-titulo">UTI IV</div>
+      <div class="capa-subtitulo">Cardiológico Crítico:<br>SCA, IAM<br>e Arritmia</div>
+    </div>
+  </div>
+  <div class="capa-watermark">05</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     P02 — OBJETIVOS
+     ═══════════════════════════════════════════════════════════ -->
+<div class="page" id="p02">
+  <div class="page-header">
+    <span class="page-header-label">Enfermagem · Bloco B4 · Aula 05</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <div class="section-tag">Objetivos de Aprendizagem</div>
+    <div class="section-rule"></div>
+
+    <ul class="obj-list">
+      <li class="obj-item">
+        <span class="obj-num">1</span>
+        <span class="obj-text">Classificar a Síndrome Coronariana Aguda (SCA) em IAMCSST, IAMSSST e Angina Instável com base nos critérios de ECG e troponina, distinguindo as condutas de reperfusão pertinentes a cada categoria.</span>
+      </li>
+      <li class="obj-item">
+        <span class="obj-num">2</span>
+        <span class="obj-text">Executar o protocolo de enfermagem no IAM em sequência correta, incluindo monitorização, O₂ criterioso, acesso venoso, posicionamento e identificação das contraindicações absolutas do nitrato (PA, FC, IAM de VD e inibidores de PDE5).</span>
+      </li>
+      <li class="obj-item">
+        <span class="obj-num">3</span>
+        <span class="obj-text">Reconhecer a bradiarritmia pós-IAM inferior como emergência hemodinâmica e selecionar o diagnóstico NANDA-I 2024–2026 prioritário: <em>Débito cardíaco diminuído</em> — nunca "risco de" quando a manifestação já está instalada.</span>
+      </li>
+    </ul>
+
+    <div class="obj-prereq">
+      <div class="obj-prereq-label">Pré-Requisito</div>
+      <div class="obj-prereq-text">Aula 02 — Choque cardiogênico, hemodinâmica e Killip. Aula 01 — NANDA-I: Débito cardíaco diminuído (já introduzido no cenário ICC).</div>
+    </div>
+
+    <div class="meta-row">
+      <div class="meta-item"><span class="meta-label">Bloco</span><span class="meta-value">B4 — Enfermagem</span></div>
+      <div class="meta-item"><span class="meta-label">Aula</span><span class="meta-value">05 de 24</span></div>
+      <div class="meta-item"><span class="meta-label">Tema</span><span class="meta-value">ENF-UTI IV</span></div>
+      <div class="meta-item"><span class="meta-label">Nível Cognitivo</span><span class="meta-value">M → An</span></div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">02</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     P03 — SCA: CLASSIFICAÇÃO DIAGNÓSTICA
+     ═══════════════════════════════════════════════════════════ -->
+<div class="page" id="p03">
+  <div class="page-header">
+    <span class="page-header-label">Conteúdo Principal · Aula 05</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <h2>Síndrome Coronariana Aguda — Classificação</h2>
+
+    <div class="sca-table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Critério</th>
+            <th>IAMCSST</th>
+            <th>IAMSSST</th>
+            <th>Angina Instável</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="sca-iamcsst sca-iamssst sca-ai">
+            <td class="td-dest">ECG</td>
+            <td>Supra ST ≥1mm em ≥2 derivações contíguas</td>
+            <td>Infra ST, inversão de onda T ou ECG normal</td>
+            <td>Normal ou inespecífico (pode ser idêntico ao IAMSSST)</td>
+          </tr>
+          <tr class="sca-iamcsst sca-iamssst sca-ai">
+            <td class="td-dest">Troponina</td>
+            <td>Elevada (marcador obrigatório)</td>
+            <td>Elevada (hsTn+ em pelo menos 1 dosagem)</td>
+            <td>Normal — dentro dos limites de referência</td>
+          </tr>
+          <tr class="sca-iamcsst sca-iamssst sca-ai">
+            <td class="td-dest">Conduta</td>
+            <td>Reperfusão urgente: ACTP ≤90 min ou trombólise ≤30 min do diagnóstico</td>
+            <td>Anticoagulação + estratificação de risco (TIMI, GRACE)</td>
+            <td>AAS + nitrato + observação 12–24h + nova troponina</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="box box-dica">
+      <span class="box-label">Atenção — ECG não exclui IAM</span>
+      <p>Até 30% dos IAMSSST têm ECG inicial normal. A troponina ultrassensível (hsTnI/hsTnT) é o padrão atual, com protocolo acelerado 0h/3h. A diferença entre IAMSSST e Angina Instável <strong>é exclusivamente a troponina</strong>: elevada no infarto, normal na angina.</p>
+    </div>
+
+    <div class="box box-conceito">
+      <span class="box-label">Marcadores Cardíacos — Ordem de Aparecimento</span>
+      <p><strong>Mioglobina</strong> — surge em 1–3h (precoce, mas inespecífica). <strong>CK-MB</strong> — eleva-se em 3–6h, pico em 12–24h, retorna ao normal em 48–72h (útil para re-infarto). <strong>Troponina</strong> (padrão-ouro) — eleva-se em 3–6h, permanece elevada por até 14 dias — não serve para re-infarto agudo.</p>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">03</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     P04 — IAM: PROTOCOLO DE ENFERMAGEM
+     ═══════════════════════════════════════════════════════════ -->
+<div class="page" id="p04">
+  <div class="page-header">
+    <span class="page-header-label">Conteúdo Principal · Aula 05</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <h2>IAM — Protocolo de Enfermagem</h2>
+
+    <div class="proto-seq">
+      <div class="proto-step">
+        <div class="proto-num">1</div>
+        <div class="proto-text"><strong>Monitorização cardíaca contínua</strong> — ECG 12 derivações imediato (&lt;10 min do contato médico); identificar topografia do IAM (inferior: D2/D3/aVF; anterior: V1–V4; lateral: D1/aVL)</div>
+      </div>
+      <div class="proto-step">
+        <div class="proto-num">2</div>
+        <div class="proto-text"><strong>O₂ suplementar — somente se SpO₂ &lt;90%</strong>; não ofertar O₂ rotineiramente (guideline atual: hiperóxia é deletéria no IAM, aumenta a zona de isquemia)</div>
+      </div>
+      <div class="proto-step">
+        <div class="proto-num">3</div>
+        <div class="proto-text"><strong>Acesso venoso periférico</strong> calibroso (14–16G), preferencialmente dois acessos; evitar membros inferiores; coletar amostra para troponina, CK-MB, hemograma, coagulograma</div>
+      </div>
+      <div class="proto-step">
+        <div class="proto-num">4</div>
+        <div class="proto-text"><strong>Posicionamento</strong>: decúbito dorsal, cabeceira 0–30° — reduz demanda miocárdica de O₂ e não compromete retorno venoso; NÃO usar Trendelenburg (aumenta pré-carga do VD comprometido)</div>
+      </div>
+      <div class="proto-step">
+        <div class="proto-num">5</div>
+        <div class="proto-text"><strong>Acionamento do protocolo institucional</strong> — registrar horário do início dos sintomas e do primeiro contato médico; notificar hemodinâmica/equipe de ACTP conforme protocolo</div>
+      </div>
+    </div>
+
+    <div class="box box-alerta">
+      <span class="box-label">Nitrato — Contraindicado Quando:</span>
+      <p>PA sistólica &lt;90 mmHg · FC &lt;50 bpm ou bradicardia severa · Suspeita de IAM de VD (supra em D2/D3/aVF + hipotensão: o VD depende da pré-carga, e o nitrato vasodilatador causa colapso) · Uso de inibidor de PDE5: sildenafil (últimas 24h), tadalafil (últimas 48h)</p>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">04</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     P05 — BRADIARRITMIA PÓS-IAM + KILLIP
+     ═══════════════════════════════════════════════════════════ -->
+<div class="page" id="p05">
+  <div class="page-header">
+    <span class="page-header-label">Conteúdo Principal · Aula 05</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <h2>Bradiarritmia Pós-IAM Inferior</h2>
+
+    <div class="box box-dica">
+      <span class="box-label">Por que o IAM inferior causa bradicardia?</span>
+      <p>A artéria coronária direita (CD) irriga a parede inferior do VE e, na maioria das pessoas, os <strong>nós sinoatrial (SA) e atrioventricular (AV)</strong>. Oclusão da CD → isquemia dos nós → bradicardia sinusal e bloqueios AV. Resultado clínico: queda do débito cardíaco → hipotensão → hipoperfusão.</p>
+    </div>
+
+    <div class="brady-seq">
+      <div class="brady-step"><span class="brady-arrow">▶</span><span>Bradicardia sintomática (hipotensão, síncope, Glasgow em queda, FC &lt;50 bpm)</span></div>
+      <div class="brady-step"><span class="brady-arrow">▶</span><span><strong>Atropina 0,5 mg IV</strong> — pode repetir a cada 3–5 min até 3 mg total; NÃO usar doses &lt;0,5 mg (bradicardia paradoxal por bloqueio muscaínico central)</span></div>
+      <div class="brady-step"><span class="brady-arrow">▶</span><span>Se refratária: <strong>marca-passo transcutâneo</strong> — acoplado ao monitor; sedar se necessário; transição para MP transvenoso</span></div>
+    </div>
+
+    <h2 style="margin-top:4mm;">Classificação de Killip</h2>
+
+    <div class="killip-grid">
+      <div class="killip-card k1">
+        <div class="killip-class">I</div>
+        <div class="killip-desc">Sem sinais de IC; ausculta pulmonar limpa</div>
+        <div class="killip-cond">Monitorização padrão</div>
+      </div>
+      <div class="killip-card k2">
+        <div class="killip-class">II</div>
+        <div class="killip-desc">Estertores basais (&lt;50% campos) ± B3 ou TJP elevada</div>
+        <div class="killip-cond">Cabeceira elevada; diurético c/ prescrição</div>
+      </div>
+      <div class="killip-card k3">
+        <div class="killip-class">III</div>
+        <div class="killip-desc">EAP — estertores &gt;50% + dispneia intensa + ortopneia</div>
+        <div class="killip-cond">Fowler alta; VNI; diurético; O₂ alto fluxo</div>
+      </div>
+      <div class="killip-card k4">
+        <div class="killip-class">IV</div>
+        <div class="killip-desc">Choque cardiogênico: PA &lt;90 + pele fria + oligúria</div>
+        <div class="killip-cond">UTI; vasopressor; monitorização invasiva</div>
+      </div>
+    </div>
+
+    <div class="box box-pega">
+      <span class="box-label">Pegadinha Clássica FGV</span>
+      <p>No IAM de parede inferior com hipotensão: <strong>não administrar nitrato e não infundir diurético</strong>. O VD isquêmico depende de pré-carga — tanto o nitrato quanto o diurético reduzem a volemia e podem precipitar colapso circulatório irreversível.</p>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">05</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     P06 — QUESTÃO 01
+     ═══════════════════════════════════════════════════════════ -->
+<div class="page" id="p06">
+  <div class="page-header">
+    <span class="page-header-label">Fixação · Aula 05</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <div class="q-header">Questão 01 de 03 · B4 UTI IV · SCA — Classificação · Memorização</div>
+
+    <div class="q-stem">
+      Sobre a classificação da Síndrome Coronariana Aguda (SCA) e o papel da troponina no diagnóstico diferencial, é correto afirmar que:
+    </div>
+
+    <ul class="q-opts">
+      <li class="q-opt">
+        <span class="opt-letter">A</span>
+        Na Angina Instável, a troponina ultrassensível está elevada em pelo menos uma das dosagens seriadas, enquanto o padrão eletrocardiográfico é o critério que a diferencia do IAMSSST.
+      </li>
+      <li class="q-opt correta">
+        <span class="opt-letter">B</span>
+        A diferença entre IAMSSST e Angina Instável é a elevação da troponina: no IAMSSST ela está elevada em pelo menos uma dosagem seriada; na Angina Instável permanece dentro dos limites de referência em todas as coletas. <span class="badge-correta">Correta</span>
+      </li>
+      <li class="q-opt">
+        <span class="opt-letter">C</span>
+        O IAMCSST é diagnosticado exclusivamente pela elevação de troponina ultrassensível, dispensando o ECG quando o quadro clínico for típico de dor isquêmica.
+      </li>
+      <li class="q-opt">
+        <span class="opt-letter">D</span>
+        O uso de nitrato sublingual é contraindicado em qualquer tipo de SCA quando a frequência cardíaca estiver acima de 80 bpm, independentemente da pressão arterial.
+      </li>
+    </ul>
+
+    <div class="gabarito-box">
+      <div class="gabarito-title">Gabarito Comentado — B</div>
+      <div class="gabarito-text">O critério que separa IAMSSST de Angina Instável é <strong>exclusivamente a troponina</strong>: ambas podem ter ECG normal ou com alterações inespecíficas. A troponina elevada confirma necrose miocárdica (infarto); troponina normal é Angina Instável. Esse ponto é repetido em múltiplas edições do ENARE.</div>
+      <div class="distrator"><strong>A —</strong> Invertido: na AI a troponina é normal; o ECG não diferencia AI de IAMSSST. <strong>C —</strong> O IAMCSST é definido pelo ECG (supra ST), não pela troponina isolada. <strong>D —</strong> A contraindicação ao nitrato ocorre quando FC &lt;50 bpm (bradicardia), não acima de 80 bpm.</div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">06</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     P07 — QUESTÃO 02
+     ═══════════════════════════════════════════════════════════ -->
+<div class="page" id="p07">
+  <div class="page-header">
+    <span class="page-header-label">Fixação · Aula 05</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <div class="q-header">Questão 02 de 03 · B4 UTI IV · IAM — Protocolo + Nitrato · Aplicação</div>
+
+    <div class="q-stem">
+      Paciente masculino, 55 anos, admitido com dor precordial opressiva 9/10 há 40 minutos, irradiação para membro superior esquerdo, diaforese intensa. PA 86/52 mmHg, FC 54 bpm, SpO₂ 97% em ar ambiente. ECG: supradesnivelamento de ST em D2, D3 e aVF (IAM de parede inferior). Qual a conduta imediata de enfermagem mais adequada?
+    </div>
+
+    <ul class="q-opts">
+      <li class="q-opt">
+        <span class="opt-letter">A</span>
+        Instalar O₂ a 5 L/min por máscara facial e administrar nitrato sublingual imediatamente para aliviar a dor precordial.
+      </li>
+      <li class="q-opt">
+        <span class="opt-letter">B</span>
+        Administrar morfina 10 mg IV para controle da dor e acionar hemodinâmica para angioplastia primária (ACTP).
+      </li>
+      <li class="q-opt correta">
+        <span class="opt-letter">C</span>
+        Instalar monitorização cardíaca contínua, obter acesso venoso periférico calibroso e acionar imediatamente o protocolo institucional de SCA; nitrato é contraindicado (PA 86 mmHg + FC 54 bpm + IAM inferior com suspeita de comprometimento de VD). <span class="badge-correta">Correta</span>
+      </li>
+      <li class="q-opt">
+        <span class="opt-letter">D</span>
+        Posicionar em Trendelenburg e infundir cristaloide 1.000 mL em bolus rápido para reverter a hipotensão antes de qualquer outra medida.
+      </li>
+    </ul>
+
+    <div class="gabarito-box">
+      <div class="gabarito-title">Gabarito Comentado — C</div>
+      <div class="gabarito-text">A sequência correta é: monitorização → acesso → protocolo. O nitrato tem <strong>três contraindicações simultâneas</strong> neste caso: PA &lt;90 mmHg, FC &lt;60 bpm e suspeita de IAM de VD (topografia inferior + hipotensão). Identificar essas contraindicações é o diferencial de nível análise nesta questão.</div>
+      <div class="distrator"><strong>A —</strong> O₂ é desnecessário (SpO₂ 97%); nitrato é absolutamente contraindicado. <strong>B —</strong> Morfina 10 mg é dose excessiva; acionar ACTP é conduta médica, não de enfermagem isolada; o protocolo deve ser acionado antes de qualquer fármaco. <strong>D —</strong> Trendelenburg aumenta retorno venoso e pré-carga do VD comprometido; bolus de 1.000 mL sem critério pode causar EAP.</div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">07</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     P08 — QUESTÃO 03 (ÂNCORA)
+     ═══════════════════════════════════════════════════════════ -->
+<div class="page" id="p08">
+  <div class="page-header">
+    <span class="page-header-label">Fixação · Aula 05</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <div class="q-header">Questão 03 de 03 · B4 UTI IV · NANDA-I + Tríade de Cushing · Análise</div>
+
+    <div class="q-stem">
+      Paciente feminino, 63 anos, internada há 2 horas após IAM de parede inferior confirmado (supradesnivelamento em D2, D3 e aVF). Evolui com PA 78/48 mmHg, FC 36 bpm, pele fria e pegajosa, sudorese profusa, Glasgow 12 (redução de 3 pontos em relação à admissão). O monitor exibe bradicardia sinusal severa sem resposta à primeira dose de atropina 0,5 mg IV. Qual o diagnóstico de enfermagem NANDA-I 2024–2026 prioritário?
+    </div>
+
+    <ul class="q-opts">
+      <li class="q-opt">
+        <span class="opt-letter">A</span>
+        Perfusão tissular ineficaz: cardiovascular, relacionada à redução do fluxo coronariano secundária à oclusão da artéria coronária direita.
+      </li>
+      <li class="q-opt">
+        <span class="opt-letter">B</span>
+        Dor aguda relacionada ao processo isquêmico miocárdico, evidenciada por expressão facial de sofrimento e queixa de dor precordial.
+      </li>
+      <li class="q-opt correta">
+        <span class="opt-letter">C</span>
+        Débito cardíaco diminuído relacionado à alteração da frequência e do ritmo cardíaco, evidenciado por bradicardia (FC 36 bpm), hipotensão (PA 78/48 mmHg), pele fria e pegajosa e rebaixamento do nível de consciência. <span class="badge-correta">Correta</span>
+      </li>
+      <li class="q-opt">
+        <span class="opt-letter">D</span>
+        Risco de perfusão miocárdica ineficaz relacionado à oclusão coronariana e ausência de reperfusão percutânea confirmada.
+      </li>
+    </ul>
+
+    <div class="gabarito-box">
+      <div class="gabarito-title">Gabarito Comentado — C</div>
+      <div class="gabarito-text"><em>Débito cardíaco diminuído</em> (NANDA-I 00029) é o diagnóstico raiz: a bradicardia severa causa queda do débito → hipotensão → hipoperfusão tecidual → rebaixamento de consciência. Todas as características definidoras do diagnóstico estão documentadas. A conduta imediata é o marca-passo transcutâneo.</div>
+      <div class="distrator"><strong>A —</strong> Perfusão tissular ineficaz é <em>consequência</em> do débito diminuído; não é o diagnóstico raiz neste cenário. <strong>B —</strong> Dor aguda é real mas é diagnóstico secundário quando há instabilidade hemodinâmica — sobrevida tem prioridade sobre conforto na hierarquia NANDA-I. <strong>D —</strong> Regra absoluta: nunca usar "risco de" quando a manifestação já está estabelecida — bradicardia, hipotensão e rebaixamento de consciência são fatos, não riscos.</div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">08</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     P09 — RECUPERAÇÃO ATIVA
+     ═══════════════════════════════════════════════════════════ -->
+<div class="page" id="p09">
+  <div class="page-header">
+    <span class="page-header-label">Recuperação Ativa · Aula 05</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <div class="section-tag">Se Esquecer Tudo, Lembre Disto</div>
+    <div class="section-rule"></div>
+
+    <div class="rec-box">
+      <div class="rec-item">
+        <span class="rec-star">★</span>
+        <span>IAMSSST vs Angina Instável: o critério é <strong>exclusivamente a troponina</strong> — elevada no infarto, normal na angina. O ECG pode ser idêntico nos dois. Essa distinção define tratamento e prognóstico.</span>
+      </div>
+      <div class="rec-item">
+        <span class="rec-star">★</span>
+        <span>Nitrato é <strong>contraindicado</strong> quando: PA &lt;90 mmHg · FC &lt;50 bpm · IAM de VD (inferior + hipotensão) · inibidor de PDE5 (sildenafil 24h, tadalafil 48h). O VD isquêmico depende de pré-carga — vasodilatador = colapso.</span>
+      </div>
+      <div class="rec-item">
+        <span class="rec-star">★</span>
+        <span>Bradicardia pós-IAM inferior → <strong>Débito cardíaco diminuído</strong> é o NANDA-I prioritário (não "risco de", não "perfusão tissular"). Atropina 0,5 mg IV; se refratária → marca-passo transcutâneo.</span>
+      </div>
+    </div>
+
+    <div class="section-tag" style="margin-top:2mm;">Teste-se Sem Olhar</div>
+    <div class="section-rule"></div>
+
+    <ul class="teste-list">
+      <li class="teste-item"><strong>Q1 —</strong> Qual o único critério que diferencia IAMSSST de Angina Instável quando o ECG é normal?</li>
+      <li class="teste-item"><strong>Q2 —</strong> Cite quatro contraindicações absolutas ao nitrato no IAM.</li>
+      <li class="teste-item"><strong>Q3 —</strong> Por que o IAM de parede inferior frequentemente evolui com bradicardia?</li>
+      <li class="teste-item"><strong>Q4 —</strong> Por que "Risco de perfusão miocárdica ineficaz" é um distrator errado quando o paciente já tem hipotensão e bradicardia instaladas?</li>
+    </ul>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">09</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     P10 — REFERÊNCIAS
+     ═══════════════════════════════════════════════════════════ -->
+<div class="page" id="p10">
+  <div class="page-header">
+    <span class="page-header-label">Referências · Aula 05</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <div class="section-tag">Referências — Bloco B4 · Aula 05</div>
+    <div class="section-rule"></div>
+
+    <ul class="ref-list">
+      <li class="ref-item">SOCIEDADE BRASILEIRA DE CARDIOLOGIA (SBC). <em>Diretriz da SBC sobre Angina Instável e Infarto Agudo do Miocárdio sem Supradesnivelamento do Segmento ST</em>. Arq. Bras. Cardiol. 2021; 117(1):181–264.</li>
+      <li class="ref-item">THYGESEN, K. et al. Fourth Universal Definition of Myocardial Infarction (2018). <em>European Heart Journal</em>, v. 40, n. 3, p. 237–269, 2019.</li>
+      <li class="ref-item">BRASIL. Conselho Federal de Enfermagem. <em>Resolução COFEN n.º 564/2017</em>. Código de Ética dos Profissionais de Enfermagem. Brasília: COFEN, 2017.</li>
+      <li class="ref-item">HERDMAN, T.H.; KAMITSURU, S.; LOPES, C.T. (Eds.). <em>NANDA International — Diagnósticos de Enfermagem 2024–2026</em>. 13. ed. Porto Alegre: Artmed, 2024. (Débito cardíaco diminuído — diagnóstico 00029).</li>
+      <li class="ref-item">MORTON, P.G.; FONTAINE, D.K. <em>Cuidados Críticos de Enfermagem</em>. 10. ed. Rio de Janeiro: Guanabara Koogan, 2013. cap. 20 (Cardiopatias isquêmicas) e cap. 22 (Distúrbios do ritmo cardíaco).</li>
+      <li class="ref-item">SMELTZER, S.C.; BARE, B.G. <em>Brunner e Suddarth</em>. 14. ed. Rio de Janeiro: Guanabara Koogan, 2019. cap. 27 (Tratamento de pacientes com arritmias cardíacas) e cap. 28 (Coronariopatias).</li>
+    </ul>
+
+    <div class="anot-box">
+      <span class="anot-label">Espaço para Anotações</span>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">10</span>
+  </div>
+</div>
+
+</body>
+</html>

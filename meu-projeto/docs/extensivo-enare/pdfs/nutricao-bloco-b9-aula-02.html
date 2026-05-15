@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B9 · Aula 02 — NUT-FARM: Fármacos para Obesidade</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { -webkit-print-color-adjust: exact; print-color-adjust: exact; font-family: 'Bricolage Grotesque', sans-serif; background: #ccc; }
+
+  .page { width: 210mm; height: 297mm; display: flex; flex-direction: column; overflow: hidden; page-break-after: always; background: #F6F4ED; }
+
+  .ph { height: 14mm; flex-shrink: 0; display: flex; align-items: center; justify-content: space-between; padding: 0 16mm; border-bottom: 0.4mm solid #E0DDD6; }
+  .ph-label { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 7.5pt; letter-spacing: 0.12em; color: #0D8A8D; text-transform: uppercase; }
+  .ph-right { font-size: 7pt; color: #888; }
+
+  .pf { height: 9mm; flex-shrink: 0; display: flex; align-items: center; justify-content: space-between; padding: 0 16mm; border-top: 0.4mm solid #E0DDD6; }
+  .pf-logo { font-family: 'Playfair Display', serif; font-style: italic; font-size: 7.5pt; color: #0D8A8D; }
+  .pf-logo span { font-family: 'Space Grotesk', sans-serif; font-style: normal; font-weight: 300; font-size: 6.5pt; color: #888; text-transform: uppercase; letter-spacing: 0.08em; }
+  .pf-right { font-size: 7pt; color: #888; }
+  .pf-right strong { color: #0D8A8D; font-weight: 600; }
+
+  .pc { flex: 1; padding: 7mm 16mm 5mm; overflow: hidden; }
+  .pc-sm { flex: 1; padding: 5mm 16mm 4mm; overflow: hidden; }
+
+  /* Cover */
+  .cover-eyebrow { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 8pt; letter-spacing: 0.15em; color: #0D8A8D; text-transform: uppercase; margin-bottom: 4mm; }
+  .cover-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 38pt; line-height: 0.93; color: #070707; text-transform: uppercase; margin-bottom: 5mm; }
+  .cover-sub { font-size: 9pt; color: #555; line-height: 1.5; margin-bottom: 6mm; max-width: 150mm; }
+
+  .stats-row { display: flex; gap: 0; margin-bottom: 6mm; }
+  .stat-item { display: flex; align-items: flex-start; gap: 3mm; padding-right: 7mm; border-right: 0.3mm solid #C0BDB6; margin-right: 7mm; }
+  .stat-item:last-child { border-right: none; }
+  .stat-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 26pt; color: #0D8A8D; line-height: 1; }
+  .stat-label { font-size: 7.5pt; color: #666; line-height: 1.3; padding-top: 1mm; }
+
+  .banca-box { border-left: 1.5mm solid #0D8A8D; background: rgba(13,138,141,0.06); padding: 3mm 4mm; border-radius: 0 2mm 2mm 0; }
+  .banca-box-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 8pt; letter-spacing: 0.08em; color: #0D8A8D; text-transform: uppercase; margin-bottom: 1mm; }
+  .banca-box p { font-size: 7.5pt; color: #444; line-height: 1.5; }
+
+  .section-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 15pt; color: #0D8A8D; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 3mm; padding-bottom: 1.2mm; border-bottom: 0.4mm solid #0D8A8D; }
+  .block-sub { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 9pt; color: #070707; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 1.5mm; margin-top: 2.5mm; }
+
+  .two-col { display: flex; gap: 5mm; }
+  .col { flex: 1; }
+
+  ul.dot-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.9mm; }
+  ul.dot-list li { font-size: 7.5pt; color: #333; line-height: 1.38; padding-left: 4mm; position: relative; }
+  ul.dot-list li::before { content: '·'; position: absolute; left: 0; color: #0D8A8D; font-weight: 700; font-size: 10pt; line-height: 1.1; }
+  ul.dot-list li strong { font-weight: 600; color: #070707; }
+  ul.dot-list li em { font-style: normal; color: #0D8A8D; font-weight: 600; }
+
+  .drug-block { border-left: 1.5mm solid #070707; padding: 2mm 3mm; margin-bottom: 2.5mm; background: rgba(255,255,255,0.4); border-radius: 0 1.5mm 1.5mm 0; }
+  .drug-name { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 9pt; color: #070707; text-transform: uppercase; margin-bottom: 0.8mm; }
+  .drug-block ul.dot-list { gap: 0.7mm; }
+
+  .fgv-flag { display: inline-block; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 6.5pt; background: #0D8A8D; color: #fff; padding: 0.3mm 2mm; border-radius: 1mm; text-transform: uppercase; letter-spacing: 0.06em; margin-left: 1mm; vertical-align: middle; }
+
+  /* Mechanism overview table */
+  .mech-table { width: 100%; border-collapse: collapse; margin-bottom: 3mm; }
+  .mech-table th { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 7.5pt; text-transform: uppercase; letter-spacing: 0.04em; background: #070707; color: #F6F4ED; padding: 1.5mm 2.5mm; text-align: left; }
+  .mech-table td { font-size: 7pt; color: #333; padding: 1.5mm 2.5mm; border-bottom: 0.2mm solid #E0DDD6; line-height: 1.3; vertical-align: top; }
+  .mech-table tr:nth-child(even) td { background: rgba(13,138,141,0.04); }
+  .mech-table td strong { font-weight: 600; color: #070707; }
+  .mech-table td em { font-style: normal; color: #0D8A8D; font-weight: 600; }
+  .mech-table td.warn { color: #a01010; font-weight: 600; font-size: 6.5pt; }
+
+  /* Questions */
+  .q-badge-row { display: flex; align-items: center; gap: 2.5mm; margin-bottom: 4mm; flex-wrap: wrap; }
+  .q-badge { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 8pt; letter-spacing: 0.08em; text-transform: uppercase; padding: 1mm 3mm; border-radius: 1mm; }
+  .q-badge-nc { background: #070707; color: #F6F4ED; }
+  .q-badge-tema { background: rgba(13,138,141,0.12); color: #0D8A8D; }
+  .q-badge-ancora { background: #0D8A8D; color: #fff; }
+  .q-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 11pt; color: #0D8A8D; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 2.5mm; }
+  .q-stem { font-size: 8.5pt; color: #222; line-height: 1.55; margin-bottom: 4mm; }
+  .q-stem strong { font-weight: 600; }
+  .q-options { display: flex; flex-direction: column; gap: 2mm; margin-bottom: 3mm; }
+  .q-opt { display: flex; gap: 2.5mm; align-items: flex-start; }
+  .q-opt-letter { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 10pt; color: #0D8A8D; min-width: 5mm; line-height: 1.3; }
+  .q-opt-text { font-size: 7.5pt; color: #333; line-height: 1.45; }
+  .q-source { font-size: 6.5pt; color: #888; font-style: italic; }
+
+  /* Gabarito */
+  .gab-block { margin-bottom: 3.5mm; }
+  .gab-q-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 10pt; color: #070707; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1.5mm; }
+  .gab-q-title span { color: #0D8A8D; }
+  .gabarito-box { background: rgba(13,138,141,0.07); border: 0.3mm solid #0D8A8D; border-radius: 2mm; padding: 2.5mm 4mm; }
+  .gabarito-box p { font-size: 7.5pt; color: #333; line-height: 1.5; margin-bottom: 1mm; }
+  .gabarito-box p:last-child { margin-bottom: 0; }
+  .gabarito-box p strong { font-weight: 700; }
+  .correct { color: #1F5C23; font-weight: 700; }
+  .wrong { color: #777; }
+
+  /* Synthesis */
+  .synth-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5mm; margin-bottom: 3.5mm; }
+  .synth-card { background: #fff; border-radius: 2mm; padding: 2.5mm 3mm; border-top: 1.5mm solid #0D8A8D; }
+  .synth-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 8pt; color: #070707; text-transform: uppercase; margin-bottom: 1mm; }
+  .synth-card p { font-size: 7pt; color: #555; line-height: 1.35; }
+  .synth-card p strong { color: #070707; font-weight: 600; }
+  .synth-card p em { color: #0D8A8D; font-style: normal; font-weight: 600; }
+
+  .ref-list { display: flex; flex-direction: column; gap: 1.5mm; }
+  .ref-item { font-size: 7pt; color: #444; line-height: 1.4; }
+  .ref-item em { font-style: italic; }
+</style>
+</head>
+<body>
+
+<!-- ========== PAGE 1 — CAPA ========== -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label">Bloco B9 · Nutrição · Aula 02</span>
+  </div>
+  <div class="pc">
+    <div class="cover-eyebrow">Bloco B9 · NUT-FARM · Aula 02 de ~35</div>
+    <div class="cover-title">NUT-FARM:<br>Fármacos<br>para Obesidade</div>
+    <div class="cover-sub">Anfepramona e efeito rebote dopaminérgico · Sibutramina e monitoramento cardiovascular · Termogênicos e ação adrenérgica · Orlistat e vitaminas lipossolúveis · GLP-1 agonistas no contexto da obesidade</div>
+
+    <div class="stats-row">
+      <div class="stat-item">
+        <div class="stat-num">Q39</div>
+        <div class="stat-label">Anfepramona<br>ENARE 2025 (An)</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">Q59</div>
+        <div class="stat-label">Termogênicos<br>ENARE 2025 (An)</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">Q90</div>
+        <div class="stat-label">Sibutramina<br>ENARE 2025 (Ap)</div>
+      </div>
+    </div>
+
+    <div class="banca-box">
+      <div class="banca-box-title">Por que fármacos para obesidade são NUT-FARM?</div>
+      <p>Em 2025, a FGV cobrou <strong>3 questões</strong> sobre fármacos para emagrecimento — todas exigindo compreensão de mecanismos farmacológicos (dopamina, noradrenalina, lipase, receptores adrenérgicos) e das consequências nutricionais (monitoramento cardiovascular, absorção de vitaminas lipossolúveis, efeito rebote metabólico). O nutricionista precisa conhecer esses fármacos não apenas para identificar interações, mas para orientar o paciente com segurança durante o tratamento.</p>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pf-logo">Residência PRO <span>· by Residência Pro</span></div>
+    <div class="pf-right"><strong>Extensivo ENARE 2026</strong><br>Nutrição · Convidado</div>
+  </div>
+</div>
+
+<!-- ========== PAGE 2 — PANORAMA DOS FÁRMACOS ANTI-OBESIDADE ========== -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label">Panorama · Fármacos Anti-Obesidade · B9 Aula 02</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc-sm">
+    <div class="section-title">Panorama — Fármacos para Obesidade e Interações Nutricionais</div>
+
+    <table class="mech-table" style="margin-bottom:3mm;">
+      <thead>
+        <tr>
+          <th>Fármaco</th>
+          <th>Classe / Mecanismo</th>
+          <th>Principal risco nutricional</th>
+          <th>Questão FGV</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Anfepramona</strong> (dietilpropiona)</td>
+          <td>Simpatomimético — libera dopamina e noradrenalina no hipotálamo</td>
+          <td class="warn">Efeito rebote: down-regulation de receptores dopaminérgicos → ↑apetite pós-suspensão</td>
+          <td><em>Q39/2025 (An)</em></td>
+        </tr>
+        <tr>
+          <td><strong>Sibutramina</strong></td>
+          <td>Inibidor recaptação noradrenalina + serotonina → ↑saciedade + termogênese</td>
+          <td class="warn">↑FC e ↑PA por excesso noradrenalina sináptica → monitorar CV</td>
+          <td><em>Q90/2025 (Ap)</em></td>
+        </tr>
+        <tr>
+          <td><strong>Termogênicos</strong> (cafeína, efedrina, sinefrina, capsaicina)</td>
+          <td>Agonistas adrenérgicos / ↑termogênese / ↑lipólise</td>
+          <td class="warn">Taquicardia, insônia, ansiedade; sem eficácia sustentada sem dieta e exercício</td>
+          <td><em>Q59/2025 (An)</em></td>
+        </tr>
+        <tr>
+          <td><strong>Orlistat</strong></td>
+          <td>Inibidor lipase pancreática → ↓absorção de gorduras (~30%)</td>
+          <td class="warn">↓Absorção vitaminas lipossolúveis (A, D, E, K) → suplementar com intervalo de 2h</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td><strong>GLP-1 agonistas</strong> (liraglutida 3,0 mg, semaglutida 2,4 mg)</td>
+          <td>Incretinomiméticos — ↑saciedade + ↓esvaziamento gástrico + ↓glucagon</td>
+          <td>Náusea/vômito (manejo: fracionar, evitar gordurosos); não causa hipoglicemia isolada</td>
+          <td><em>Q89/2025</em></td>
+        </tr>
+        <tr>
+          <td><strong>Naltrexona/bupropiona</strong> (Contrave)</td>
+          <td>Antagonismo opioide + inibição recaptação dopamina/noradrenalina</td>
+          <td>Náusea, constipação; risco de convulsão com dose elevada; não combinar com IMAOs</td>
+          <td>—</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="banca-box">
+      <div class="banca-box-title">Padrão FGV para fármacos anti-obesidade:</div>
+      <p>A FGV apresenta um paciente que <strong>já usa o fármaco</strong> e desenvolve uma complicação (↑FC, efeito rebote, deficiência vitamínica, taquicardia por termogênico). O candidato deve: (1) identificar o mecanismo pelo qual o fármaco causou o problema; (2) indicar o monitoramento nutricional adequado ou a conduta para resolver a complicação. Nunca é uma questão de "qual fármaco é mais eficaz" — sempre é sobre <strong>mecanismo + consequência nutricional</strong>.</p>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pf-logo">Extensivo ENARE <span>· by Residência Pro</span></div>
+    <div class="pf-right">2</div>
+  </div>
+</div>
+
+<!-- ========== PAGE 3 — ANFEPRAMONA + SIBUTRAMINA ========== -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label">Anfepramona · Sibutramina · NUT-FARM · B9 Aula 02</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc-sm">
+    <div class="section-title">Anfepramona · Sibutramina — Mecanismos e Riscos Nutricionais</div>
+
+    <div class="two-col">
+      <div class="col">
+        <div class="drug-block">
+          <div class="drug-name">Anfepramona (dietilpropiona) <span class="fgv-flag">Q39 2025</span></div>
+          <ul class="dot-list">
+            <li><strong>Classe:</strong> simpatomimético anorexígeno — análogo estrutural das anfetaminas</li>
+            <li><strong>Mecanismo:</strong> libera <em>dopamina e noradrenalina</em> nas sinapses hipotalâmicas → ↓fome + ↑saciedade</li>
+            <li><strong>Uso aprovado (ANVISA):</strong> máximo 12 semanas contínuas (terapêutico); tolerância se desenvolve progressivamente</li>
+            <li><strong>Efeito rebote (FGV Q39):</strong> uso prolongado → down-regulation dos receptores dopaminérgicos (regulação negativa) → tolerância ao efeito anorexígeno + rebound de apetite na suspensão</li>
+            <li><strong>Riscos cardiovasculares:</strong> ↑FC e ↑PA — contraindicada em cardiopatias, HAS, hipertireoidismo</li>
+            <li><strong>Dependência:</strong> potencial de abuso (substância controlada — portaria ANVISA)</li>
+          </ul>
+        </div>
+
+        <div class="banca-box" style="margin-top:1.5mm;">
+          <div class="banca-box-title">Ponto FGV Q39/2025 — Anfepramona:</div>
+          <p>O candidato deve identificar que a estabilização do peso + ↑apetite após meses de uso = <strong>down-regulation de receptores dopaminérgicos</strong> (não falha do paciente, não erro de dosagem). O efeito rebote após suspensão ocorre porque os receptores readaptam-se com excesso de sensibilidade relativa ao "déficit" de dopamina exógena.</p>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="drug-block">
+          <div class="drug-name">Sibutramina <span class="fgv-flag">Q90 2025</span></div>
+          <ul class="dot-list">
+            <li><strong>Classe:</strong> inibidor da recaptação de noradrenalina e serotonina (IRNS)</li>
+            <li><strong>Mecanismo:</strong> ↑noradrenalina e serotonina sinápticas no hipotálamo → ↑saciedade; ↑noradrenalina periférica → ↑termogênese (↑gasto energético em repouso)</li>
+            <li><strong>Principal risco nutricional/CV (FGV):</strong> excesso de noradrenalina sináptica → ativação adrenérgica cardiovascular → <em>↑frequência cardíaca + ↑pressão arterial</em></li>
+            <li><strong>Monitoramento obrigatório:</strong> FC e PA em toda consulta; suspender se ↑FC &gt;10 bpm acima do basal ou PA &gt;145/90 mmHg</li>
+            <li><strong>Contraindicações:</strong> HAS não controlada, cardiopatia isquêmica, AVC/AIT prévio, arritmia, uso concomitante de IMAOs</li>
+            <li><strong>Interação com dieta:</strong> alimentos estimulantes (cafeína, guaraná) somam ao efeito adrenérgico → risco de taquicardia</li>
+          </ul>
+        </div>
+
+        <div class="banca-box" style="margin-top:1.5mm;">
+          <div class="banca-box-title">Distrator FGV — Sibutramina:</div>
+          <p>Candidatos erram ao marcar vitaminas lipossolúveis como monitoramento da sibutramina (confundindo com orlistat). A sibutramina NÃO afeta absorção de vitaminas — seu risco é <strong>cardiovascular por noradrenalina sináptica</strong>. Monitorar FC e PA.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pf-logo">Extensivo ENARE <span>· by Residência Pro</span></div>
+    <div class="pf-right">3</div>
+  </div>
+</div>
+
+<!-- ========== PAGE 4 — TERMOGÊNICOS + ORLISTAT ========== -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label">Termogênicos · Orlistat · NUT-FARM · B9 Aula 02</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc-sm">
+    <div class="section-title">Termogênicos · Orlistat — Mecanismos e Interações</div>
+
+    <div class="two-col">
+      <div class="col">
+        <div class="drug-block">
+          <div class="drug-name">Termogênicos <span class="fgv-flag">Q59 2025</span></div>
+          <ul class="dot-list">
+            <li><strong>Exemplos:</strong> cafeína, efedrina (proibida), sinefrina, capsaicina, p-sinefrina, chá verde (catequinas + cafeína)</li>
+            <li><strong>Mecanismo:</strong> agonistas adrenérgicos (α e β) → ↑liberação catecolaminas → <em>↑lipólise, ↑termogênese, ↑metabolismo basal</em></li>
+            <li><strong>Ponto FGV (Q59/2025):</strong> a eficácia dos termogênicos é dependente da associação com <em>exercício físico e dieta hipocalórica</em> — isoladamente, o efeito é mínimo e transitório</li>
+            <li><strong>Efeitos adversos nutricionalmente relevantes:</strong> taquicardia, hipertensão, insônia, ansiedade, tremores — podem impedir a aderência ao exercício</li>
+            <li><strong>Tolerância:</strong> receptores adrenérgicos se dessensibilizam com uso contínuo → perda do efeito termogênico em semanas a meses</li>
+            <li><strong>Cafeína:</strong> inibe PDE → ↑AMPc → ↑lipólise; meia-vida ~5h; interação com anticoagulantes (↓absorção de ferro não-heme em excesso)</li>
+          </ul>
+        </div>
+
+        <div class="banca-box" style="margin-top:1.5mm;">
+          <div class="banca-box-title">Mecanismo An FGV — Termogênicos:</div>
+          <p>Q59/2025 exige entender que termogênicos <strong>não substituem dieta e exercício</strong> — são adjuvantes adrenérgicos. A FGV quer o candidato que compreende que o efeito é mediado por receptores adrenérgicos que sofrem regulação negativa, e que a eficácia é sinérgica com estilo de vida.</p>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="drug-block">
+          <div class="drug-name">Orlistat</div>
+          <ul class="dot-list">
+            <li><strong>Classe:</strong> inibidor da lipase pancreática e gástrica</li>
+            <li><strong>Mecanismo:</strong> inibe irreversivelmente a lipase → gordura não é hidrolisada em ácidos graxos livres → ~30% da gordura ingerida não é absorvida → eliminada nas fezes</li>
+            <li><strong>Consequência nutricional principal:</strong> ↓absorção de <em>vitaminas lipossolúveis (A, D, E, K)</em> — as vitaminas ficam "presas" na gordura não absorvida e são excretadas juntas</li>
+            <li><strong>Conduta:</strong> suplementar multivitamínico contendo A, D, E, K com <em>intervalo de 2 horas</em> antes ou após o orlistat (para garantir absorção do suplemento)</li>
+            <li><strong>Outros efeitos GI:</strong> esteatorreia (fezes gordurosas), flatulência com eliminação de gordura, urgência fecal — piores com dieta rica em gorduras; incentivam adesão à dieta hipogordurosa</li>
+            <li><strong>Interação medicamentosa:</strong> pode ↓absorção de ciclosporina e varfarina (monitorar INR); ↓absorção de hormônios tireoidianos (separar por 4h)</li>
+          </ul>
+        </div>
+
+        <div class="banca-box" style="margin-top:1.5mm;">
+          <div class="banca-box-title">Ponto FGV — Orlistat:</div>
+          <p>O efeito adverso principal é a <strong>deficiência de vitaminas lipossolúveis</strong>. A suplementação com <strong>intervalo de 2 horas</strong> é o detalhe técnico que a FGV ama cobrar — sem o intervalo, o suplemento se mistura às gorduras bloqueadas e também não é absorvido.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pf-logo">Extensivo ENARE <span>· by Residência Pro</span></div>
+    <div class="pf-right">4</div>
+  </div>
+</div>
+
+<!-- ========== PAGE 5 — GLP-1 NA OBESIDADE + COMPARATIVO ========== -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label">GLP-1 na Obesidade · Comparativo · NUT-FARM · B9 Aula 02</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc-sm">
+    <div class="section-title">GLP-1 na Obesidade · Comparativo dos Fármacos</div>
+
+    <div class="two-col" style="margin-bottom:3mm;">
+      <div class="col">
+        <div class="drug-block">
+          <div class="drug-name">GLP-1 agonistas — Doses anti-obesidade</div>
+          <ul class="dot-list">
+            <li><strong>Liraglutida 3,0 mg/dia</strong> (Saxenda) — dose maior que a antidiabética (1,8 mg); aprovada para IMC ≥30 ou ≥27 com comorbidade</li>
+            <li><strong>Semaglutida 2,4 mg/semana</strong> (Wegovy) — maior redução de peso entre os fármacos aprovados (~15% do peso corporal)</li>
+            <li><strong>Mecanismo na obesidade:</strong> ↓apetite hipotalâmico (centros de saciedade) + ↓esvaziamento gástrico (distensão prolongada) + ↓glucagon</li>
+            <li><strong>Orientação nutricional (revisão A01):</strong> fracionar refeições · evitar alimentos gordurosos · comer devagar · hidratação entre refeições</li>
+            <li><strong>Ponto diferencial A02:</strong> GLP-1 em doses anti-obesidade tem maior tendência à sarcopenia por déficit proteico — orientar ingestão proteica de 1,2–1,5 g/kg/dia durante a perda de peso</li>
+            <li><strong>Risco de hipoglicemia:</strong> apenas se associado a sulfonilureia ou insulina — isoladamente NÃO causa hipoglicemia</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="block-sub" style="margin-top:0;">Comparativo rápido — 4 fármacos</div>
+        <ul class="dot-list" style="gap:1.5mm;">
+          <li><strong>Anfepramona:</strong> libera dopamina → tolerância → efeito rebote; <em>controla</em> ↑apetite pós-suspensão</li>
+          <li><strong>Sibutramina:</strong> bloqueia recaptação noradrenalina → <em>monitorar FC e PA</em> em toda consulta; não confundir com vitaminas</li>
+          <li><strong>Termogênicos:</strong> agonismo adrenérgico → ↑lipólise; eficácia <em>dependente de exercício + dieta</em>; não substitui estilo de vida</li>
+          <li><strong>Orlistat:</strong> bloqueia lipase → ↓vitaminas lipossolúveis → <em>suplementar com 2h de intervalo</em></li>
+          <li><strong>GLP-1:</strong> saciedade central + ↓esvaziamento → <em>fracionar + evitar gordurosos</em>; atenção à proteína</li>
+        </ul>
+
+        <div class="banca-box" style="margin-top:2.5mm;">
+          <div class="banca-box-title">Regra de ouro para fármacos anti-obesidade:</div>
+          <p><strong>Anfepramona → dopamina/efeito rebote</strong><br>
+          <strong>Sibutramina → noradrenalina/monitorar FC</strong><br>
+          <strong>Termogênicos → adrenérgico/só funciona com dieta+exercício</strong><br>
+          <strong>Orlistat → vitaminas lipossolúveis/2 horas de intervalo</strong><br>
+          <strong>GLP-1 → fracionar/proteína/não hipoglicemia isolada</strong></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="banca-box">
+      <div class="banca-box-title">Distrator cruzado — Sibutramina × Orlistat:</div>
+      <p>A FGV adora trocar os efeitos adversos entre esses dois fármacos. Sibutramina NÃO afeta vitaminas lipossolúveis (isso é orlistat). Orlistat NÃO causa taquicardia (isso é sibutramina/termogênicos). Anfepramona NÃO causa deficiência vitamínica (isso é orlistat). Esse cruzamento aparece como distrator em questões de nível Ap e An.</p>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pf-logo">Extensivo ENARE <span>· by Residência Pro</span></div>
+    <div class="pf-right">5</div>
+  </div>
+</div>
+
+<!-- ========== PAGE 6 — QUESTÃO 01 ========== -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label">Questão 01 · NUT-FARM · B9 Aula 02</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc">
+    <div class="q-num">Questão 01</div>
+    <div class="q-badge-row">
+      <span class="q-badge q-badge-nc">Ap — Aplicação</span>
+      <span class="q-badge q-badge-tema">NUT-FARM · Sibutramina · Monitoramento Cardiovascular</span>
+    </div>
+
+    <div class="q-stem">
+      Mulher de 38 anos, obesidade grau II (IMC 36,5 kg/m²), sem cardiopatia prévia e com pressão arterial de 128/82 mmHg no início do tratamento, inicia sibutramina 10 mg/dia. Após 4 semanas, relata insônia leve e "coração acelerado". Na consulta de retorno, a FC é de 98 bpm (basal: 76 bpm) e a PA é 142/88 mmHg. Qual é o <strong>mecanismo farmacológico</strong> que explica o quadro cardiovascular e qual deve ser o <strong>monitoramento prioritário</strong> do nutricionista?
+    </div>
+
+    <div class="q-options">
+      <div class="q-opt">
+        <span class="q-opt-letter">A)</span>
+        <span class="q-opt-text">A sibutramina inibe a lipase pancreática, reduzindo a absorção de ácidos graxos essenciais e vitaminas lipossolúveis; o nutricionista deve monitorar os níveis séricos de vitaminas A, D, E e K.</span>
+      </div>
+      <div class="q-opt">
+        <span class="q-opt-letter">B)</span>
+        <span class="q-opt-text">A sibutramina inibe a recaptação de noradrenalina nas sinapses, aumentando sua concentração sináptica e causando ativação adrenérgica cardiovascular (↑FC e ↑PA); o nutricionista deve monitorar frequência cardíaca e pressão arterial em todo retorno.</span>
+      </div>
+      <div class="q-opt">
+        <span class="q-opt-letter">C)</span>
+        <span class="q-opt-text">A sibutramina libera dopamina hipotalâmica e causa tolerância progressiva; o monitoramento nutricional deve focar na reintrodução gradual de carboidratos para evitar o efeito rebote após a suspensão.</span>
+      </div>
+      <div class="q-opt">
+        <span class="q-opt-letter">D)</span>
+        <span class="q-opt-text">A sibutramina bloqueia receptores beta-adrenérgicos cardíacos, causando bradicardia reflexa; o nutricionista deve orientar restrição de sódio para compensar a retenção hídrica associada.</span>
+      </div>
+      <div class="q-opt">
+        <span class="q-opt-letter">E)</span>
+        <span class="q-opt-text">A sibutramina é um agonista serotoninérgico intestinal que causa dismotilidade gástrica e reduz a absorção de B12; monitorar cobalamina sérica a cada 6 meses.</span>
+      </div>
+    </div>
+
+    <div class="q-source">Padrão NUT-FARM · ENARE 2025 Q90 (nível Ap) · Referência: Diretriz SBD 2023; Protocolo ANVISA sibutramina</div>
+  </div>
+  <div class="pf">
+    <div class="pf-logo">Extensivo ENARE <span>· by Residência Pro</span></div>
+    <div class="pf-right">6</div>
+  </div>
+</div>
+
+<!-- ========== PAGE 7 — QUESTÃO 02 ========== -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label">Questão 02 · NUT-FARM · B9 Aula 02</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc">
+    <div class="q-num">Questão 02</div>
+    <div class="q-badge-row">
+      <span class="q-badge q-badge-nc">Ap — Aplicação</span>
+      <span class="q-badge q-badge-tema">NUT-FARM · Orlistat · Vitaminas Lipossolúveis</span>
+    </div>
+
+    <div class="q-stem">
+      Homem de 44 anos, obesidade grau I (IMC 31,8 kg/m²), inicia tratamento com orlistat 120 mg três vezes ao dia, associado a dieta hipocalórica. Após 3 meses, apresenta queda de cabelo, ressecamento de pele e redução da acuidade visual em ambientes de pouca luz. Exame laboratorial revela vitamina A sérica: 0,22 µmol/L (VR: 0,70–1,50 µmol/L). Qual conduta nutricional é <strong>mais adequada</strong> para esse caso?
+    </div>
+
+    <div class="q-options">
+      <div class="q-opt">
+        <span class="q-opt-letter">A)</span>
+        <span class="q-opt-text">Suspender o orlistat imediatamente, pois o fármaco causa dano hepatocítico irreversível que compromete a síntese de vitamina A; iniciar suplementação endovenosa.</span>
+      </div>
+      <div class="q-opt">
+        <span class="q-opt-letter">B)</span>
+        <span class="q-opt-text">Aumentar a ingestão de alimentos ricos em betacaroteno (cenoura, abóbora, manga) junto com as refeições que contêm orlistat para compensar a perda de vitamina A.</span>
+      </div>
+      <div class="q-opt">
+        <span class="q-opt-letter">C)</span>
+        <span class="q-opt-text">Suplementar vitamina A (e demais vitaminas lipossolúveis D, E, K), orientando a tomada do suplemento com intervalo de pelo menos 2 horas antes ou após o orlistat, para garantir a absorção adequada.</span>
+      </div>
+      <div class="q-opt">
+        <span class="q-opt-letter">D)</span>
+        <span class="q-opt-text">Acrescentar vitamina B12 e ácido fólico à prescrição, pois o orlistat inibe a absorção de vitaminas hidrossolúveis no jejuno, causando o quadro descrito.</span>
+      </div>
+      <div class="q-opt">
+        <span class="q-opt-letter">E)</span>
+        <span class="q-opt-text">Monitorar os níveis de noradrenalina sérica e restringir o consumo de alimentos estimulantes, pois o orlistat potencializa a ação adrenérgica e pode agravar a deficiência de vitamina A.</span>
+      </div>
+    </div>
+
+    <div class="q-source">Padrão NUT-FARM · ENARE 2025 (nível Ap) · Referência: FDA orlistat prescribing information; Diretriz ABESO 2023</div>
+  </div>
+  <div class="pf">
+    <div class="pf-logo">Extensivo ENARE <span>· by Residência Pro</span></div>
+    <div class="pf-right">7</div>
+  </div>
+</div>
+
+<!-- ========== PAGE 8 — QUESTÃO 03-ÂNCORA ========== -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label">Questão 03 — Âncora · NUT-FARM · B9 Aula 02</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc">
+    <div class="q-num">Questão 03 — Âncora</div>
+    <div class="q-badge-row">
+      <span class="q-badge q-badge-ancora">An — Análise</span>
+      <span class="q-badge q-badge-tema">NUT-FARM · Anfepramona · Efeito Rebote Dopaminérgico</span>
+    </div>
+
+    <div class="q-stem">
+      Paciente de 42 anos, obesidade grau II, inicia tratamento com anfepramona 75 mg/dia. Após 6 semanas, perda de 4 kg e boa supressão do apetite. A partir da 10ª semana, a perda de peso estabiliza e o paciente relata retorno progressivo da fome, com episódios de compulsão alimentar ao final do dia. O médico decide suspender o fármaco gradualmente. Sobre o <strong>mecanismo farmacológico</strong> subjacente e sua <strong>implicação nutricional</strong>, é CORRETO afirmar:
+    </div>
+
+    <div class="q-options">
+      <div class="q-opt">
+        <span class="q-opt-letter">A)</span>
+        <span class="q-opt-text">A anfepramona ativa receptores serotoninérgicos 5-HT2C hipotalâmicos; o uso prolongado leva à dessensibilização desses receptores, resultando em perda da saciedade e rebound de apetite.</span>
+      </div>
+      <div class="q-opt">
+        <span class="q-opt-letter">B)</span>
+        <span class="q-opt-text">A anfepramona inibe a lipase pancreática de forma competitiva; após a suspensão, a atividade lipolítica retorna abruptamente, elevando os ácidos graxos livres e estimulando a grelina hipotalâmica.</span>
+      </div>
+      <div class="q-opt">
+        <span class="q-opt-letter">C)</span>
+        <span class="q-opt-text">A anfepramona libera catecolaminas (principalmente dopamina) nas sinapses hipotalâmicas suprimindo o apetite; o uso prolongado induz regulação negativa (down-regulation) dos receptores dopaminérgicos, gerando tolerância e, na suspensão, efeito rebote com retorno e amplificação do apetite.</span>
+      </div>
+      <div class="q-opt">
+        <span class="q-opt-letter">D)</span>
+        <span class="q-opt-text">A anfepramona aumenta a secreção de insulina pancreática de forma glicose-independente; a hiperinsulinemia resultante provoca hipoglicemia reativa e desencadeia a fome observada na 10ª semana.</span>
+      </div>
+      <div class="q-opt">
+        <span class="q-opt-letter">E)</span>
+        <span class="q-opt-text">O fenômeno descrito é exclusivamente comportamental e não tem base farmacológica; a estabilização do peso é esperada com qualquer fármaco após 8–10 semanas, independente do mecanismo de ação.</span>
+      </div>
+    </div>
+
+    <div class="q-source">Padrão NUT-FARM · Nível An · Base: Q39/2025 FGV/EBSERH — anfepramona, efeito rebote hipotalâmico, receptores dopaminérgicos</div>
+  </div>
+  <div class="pf">
+    <div class="pf-logo">Extensivo ENARE <span>· by Residência Pro</span></div>
+    <div class="pf-right">8</div>
+  </div>
+</div>
+
+<!-- ========== PAGE 9 — GABARITO E DISCUSSÃO ========== -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label">Gabarito · NUT-FARM · B9 Aula 02</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc-sm">
+    <div class="section-title">Gabarito e Discussão</div>
+
+    <div class="gab-block">
+      <div class="gab-q-title">Q01 — Gabarito: <span>B</span></div>
+      <div class="gabarito-box">
+        <p><span class="correct">B — CORRETA:</span> A sibutramina inibe a recaptação de noradrenalina (e serotonina) nas sinapses hipotalâmicas → ↑noradrenalina sináptica → ativação dos receptores adrenérgicos cardiovasculares → <strong>↑FC e ↑PA</strong>. O monitoramento de FC e PA em cada retorno é obrigatório pelo protocolo ANVISA — suspender se FC subir &gt;10 bpm acima do basal ou PA ultrapassar 145/90 mmHg. O caso já mostra FC +22 bpm e PA limítrofe = conduta de revisão médica necessária.</p>
+        <p class="wrong">A) Inibição de lipase pancreática = orlistat. C) Dopamina/efeito rebote = anfepramona. D) Sibutramina NÃO bloqueia receptores β cardíacos — ela aumenta noradrenalina, o efeito é ↑FC, não bradicardia. E) B12 e serotonina intestinal não são mecanismos relevantes da sibutramina.</p>
+      </div>
+    </div>
+
+    <div class="gab-block">
+      <div class="gab-q-title">Q02 — Gabarito: <span>C</span></div>
+      <div class="gabarito-box">
+        <p><span class="correct">C — CORRETA:</span> Orlistat inibe a lipase pancreática → gordura não digerida não é absorvida → <strong>vitaminas lipossolúveis (A, D, E, K)</strong> ficam "presas" na gordura excretada → deficiência. O quadro de queda de cabelo + ressecamento de pele + cegueira noturna (↓acuidade em pouca luz) = deficiência clássica de <strong>vitamina A</strong>. Conduta: suplementar vitaminas A, D, E, K com <strong>intervalo de 2 horas</strong> antes ou após o orlistat para garantir absorção independente da gordura bloqueada.</p>
+        <p class="wrong">A) Orlistat não causa dano hepático irreversível — mecanismo é apenas luminal (inibição enzimática intestinal). B) Betacaroteno ingerido junto com o orlistat também não seria absorvido — o intervalo é essencial. D) Orlistat NÃO afeta vitaminas hidrossolúveis (isso seria metformina para B12). E) Orlistat não tem ação adrenérgica.</p>
+      </div>
+    </div>
+
+    <div class="gab-block">
+      <div class="gab-q-title">Q03 — Gabarito: <span>C</span></div>
+      <div class="gabarito-box">
+        <p><span class="correct">C — CORRETA:</span> Anfepramona (dietilpropiona) é um simpatomimético que libera <strong>dopamina (principalmente) e noradrenalina</strong> nas sinapses hipotalâmicas → supressão do apetite. Com uso prolongado (semanas a meses), ocorre <strong>down-regulation</strong> (regulação negativa) dos receptores dopaminérgicos pós-sinápticos → tolerância ao efeito anorexígeno. Na suspensão, os receptores readaptam-se: há período transitório de hipersensibilidade relativa à dopamina endógena, mas o hipotálamo interpreta a retirada do fármaco como déficit → <strong>efeito rebote</strong> com ↑apetite.</p>
+        <p class="wrong">A) Receptores serotoninérgicos = mecanismo da fenfluramina (retirada do mercado) — anfepramona é dopaminérgica/noradrenérgica. B) Anfepramona não tem mecanismo lipolítico direto; não inibe lipase pancreática. D) Anfepramona não estimula secreção insulínica. E) O efeito rebote tem base farmacológica definida (down-regulation de receptores dopaminérgicos).</p>
+      </div>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pf-logo">Extensivo ENARE <span>· by Residência Pro</span></div>
+    <div class="pf-right">9</div>
+  </div>
+</div>
+
+<!-- ========== PAGE 10 — SÍNTESE E REFERÊNCIAS ========== -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label">Síntese · Referências · B9 Aula 02</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc-sm">
+    <div class="section-title">Síntese — NUT-FARM: Fármacos para Obesidade</div>
+
+    <div class="synth-grid" style="margin-bottom:3.5mm;">
+      <div class="synth-card">
+        <div class="synth-title">Anfepramona</div>
+        <p>Libera <em>dopamina hipotalâmica</em> → suprime apetite. Uso prolongado = <strong>down-regulation de receptores dopaminérgicos</strong> → tolerância + efeito rebote (↑apetite pós-suspensão). Risco: dependência, taquicardia, HAS.</p>
+      </div>
+      <div class="synth-card">
+        <div class="synth-title">Sibutramina</div>
+        <p>Bloqueia recaptação de <em>noradrenalina + serotonina</em> → ↑FC + ↑PA. <strong>Monitorar FC e PA em todo retorno.</strong> Distrator: não afeta vitaminas. Suspender se FC +10 bpm acima do basal.</p>
+      </div>
+      <div class="synth-card">
+        <div class="synth-title">Termogênicos</div>
+        <p>Agonistas <em>adrenérgicos</em> → ↑lipólise + ↑termogênese. Eficácia <strong>dependente de exercício e dieta</strong> — sozinhos têm efeito mínimo. Tolerância por dessensibilização de receptores adrenérgicos.</p>
+      </div>
+      <div class="synth-card">
+        <div class="synth-title">Orlistat</div>
+        <p>Inibe lipase → ↓gordura absorvida → <em>↓vitaminas lipossolúveis (A, D, E, K)</em>. Suplementar com <strong>2 horas de intervalo</strong>. Betacaroteno junto ao orlistat também não é absorvido — o intervalo é obrigatório.</p>
+      </div>
+    </div>
+
+    <div class="banca-box" style="margin-bottom:3mm;">
+      <div class="banca-box-title">Tabela de associações rápidas — para a prova:</div>
+      <p><strong>Dopamina + efeito rebote</strong> → Anfepramona &nbsp;|&nbsp; <strong>Noradrenalina + ↑FC</strong> → Sibutramina<br>
+      <strong>Adrenérgico + exercício obrigatório</strong> → Termogênicos &nbsp;|&nbsp; <strong>Vitaminas lipossolúveis + 2h</strong> → Orlistat<br>
+      <strong>Fracionar + evitar gorduroso + proteína</strong> → GLP-1 agonistas (liraglutida/semaglutida)</p>
+    </div>
+
+    <div class="section-title" style="margin-top:1mm;">Referências</div>
+    <div class="ref-list">
+      <div class="ref-item">ASSOCIAÇÃO BRASILEIRA PARA O ESTUDO DA OBESIDADE E SÍNDROME METABÓLICA. <em>Diretriz Brasileira de Obesidade ABESO 2023</em>. São Paulo: ABESO, 2023.</div>
+      <div class="ref-item">AGÊNCIA NACIONAL DE VIGILÂNCIA SANITÁRIA. <em>RDC nº 204/2017 — Sibutramina: critérios de prescrição e monitoramento</em>. Brasília: ANVISA, 2017.</div>
+      <div class="ref-item">WITKAMP, R.F. Current and future drug targets in weight management. <em>Pharmaceutical Research</em>, v. 28, p. 2657–2676, 2011.</div>
+      <div class="ref-item">SOCIEDADE BRASILEIRA DE DIABETES. <em>Diretrizes da Sociedade Brasileira de Diabetes 2023</em>. São Paulo: SBD, 2023.</div>
+      <div class="ref-item">AMERICAN DIABETES ASSOCIATION. Standards of Medical Care in Diabetes — 2025. <em>Diabetes Care</em>, v. 48 (Suppl 1), 2025.</div>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pf-logo">Extensivo ENARE <span>· by Residência Pro</span></div>
+    <div class="pf-right">10</div>
+  </div>
+</div>
+
+</body>
+</html>

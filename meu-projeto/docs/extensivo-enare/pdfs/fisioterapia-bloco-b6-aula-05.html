@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Fisioterapia · Bloco B6 · Aula 05</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+@page { size: A4; margin: 0; }
+body { -webkit-print-color-adjust: exact; print-color-adjust: exact; font-family: 'Bricolage Grotesque', sans-serif; background: #fff; }
+
+.page { width: 210mm; height: 297mm; display: flex; flex-direction: column; overflow: hidden; page-break-after: always; }
+.page:last-child { page-break-after: avoid; }
+
+.ph { height: 14mm; flex-shrink: 0; display: flex; align-items: center; padding: 0 16mm; border-bottom: 0.5px solid #e0e0e0; }
+.ph-label { font-family: 'Barlow Condensed', sans-serif; font-size: 7.5pt; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #555; }
+.ph-label span { color: #0D8A8D; }
+.ph-right { margin-left: auto; font-family: 'Bricolage Grotesque', sans-serif; font-size: 7pt; color: #888; }
+
+.pf { height: 9mm; flex-shrink: 0; display: flex; align-items: center; padding: 0 16mm; border-top: 0.5px solid #e0e0e0; }
+.pf-logo { font-family: 'Playfair Display', serif; font-style: italic; font-size: 8pt; color: #333; }
+.pf-logo span { font-family: 'Space Grotesk', sans-serif; font-style: normal; font-weight: 300; font-size: 7pt; letter-spacing: 0.08em; text-transform: uppercase; color: #666; }
+.pf-num { margin-left: auto; font-family: 'Barlow Condensed', sans-serif; font-size: 8pt; font-weight: 700; letter-spacing: 0.1em; color: #0D8A8D; }
+
+.pc  { flex: 1; padding: 7mm 16mm 5mm; overflow: hidden; }
+.pc-sm { flex: 1; padding: 5mm 16mm 4mm; overflow: hidden; }
+
+/* Capa */
+.cover-stripe { height: 3mm; background: #0D8A8D; flex-shrink: 0; }
+.cover-tag { font-family: 'Barlow Condensed', sans-serif; font-size: 8pt; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: #0D8A8D; }
+.cover-title { font-family: 'Barlow Condensed', sans-serif; font-size: 42pt; font-weight: 800; line-height: 0.92; color: #070707; text-transform: uppercase; margin: 3mm 0 2mm; }
+.cover-subtitle { font-family: 'Barlow Condensed', sans-serif; font-size: 13pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #0D8A8D; margin-bottom: 6mm; }
+.cover-body { font-size: 9.5pt; color: #444; line-height: 1.5; max-width: 145mm; }
+
+/* Tipografia */
+h2.sec { font-family: 'Barlow Condensed', sans-serif; font-size: 15pt; font-weight: 800; text-transform: uppercase; color: #070707; border-bottom: 2px solid #0D8A8D; padding-bottom: 2mm; margin-bottom: 3.5mm; letter-spacing: 0.03em; }
+h3.sub { font-family: 'Barlow Condensed', sans-serif; font-size: 10pt; font-weight: 700; text-transform: uppercase; color: #0D8A8D; margin: 2.5mm 0 1.5mm; letter-spacing: 0.06em; }
+p { font-size: 8.5pt; line-height: 1.5; color: #222; margin-bottom: 2mm; }
+p.sm { font-size: 8pt; line-height: 1.45; }
+p.xs { font-size: 7.5pt; line-height: 1.4; }
+
+/* Competências */
+.comp-block { display: flex; gap: 3mm; margin-bottom: 2.8mm; }
+.comp-num { font-family: 'Barlow Condensed', sans-serif; font-size: 20pt; font-weight: 800; color: #0D8A8D; line-height: 1; flex-shrink: 0; width: 10mm; }
+.comp-body { flex: 1; }
+.comp-title { font-family: 'Barlow Condensed', sans-serif; font-size: 9.5pt; font-weight: 700; text-transform: uppercase; color: #070707; letter-spacing: 0.04em; margin-bottom: 0.5mm; }
+.comp-desc { font-size: 7.5pt; color: #444; line-height: 1.4; }
+
+.box-fgv { background: #f0f7f7; border-left: 3px solid #0D8A8D; padding: 2.5mm 3.5mm; margin-top: 2mm; }
+.box-fgv-title { font-family: 'Barlow Condensed', sans-serif; font-size: 8pt; font-weight: 700; text-transform: uppercase; color: #0D8A8D; letter-spacing: 0.08em; margin-bottom: 1mm; }
+.box-fgv p { font-size: 7.5pt; color: #333; margin: 0; }
+
+/* Layouts */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; }
+.col-box { background: #f9f9f9; border: 0.5px solid #ddd; border-radius: 2px; padding: 2.5mm 3mm; }
+.col-box-title { font-family: 'Barlow Condensed', sans-serif; font-size: 8.5pt; font-weight: 700; text-transform: uppercase; color: #070707; margin-bottom: 1.5mm; letter-spacing: 0.04em; }
+
+/* Table */
+table { width: 100%; border-collapse: collapse; font-size: 7.5pt; margin: 1.5mm 0; }
+th { background: #0D8A8D; color: #fff; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 7.5pt; text-transform: uppercase; letter-spacing: 0.05em; padding: 1.5mm 2mm; text-align: left; }
+td { padding: 1.5mm 2mm; border-bottom: 0.5px solid #e8e8e8; vertical-align: top; }
+tr:nth-child(even) td { background: #f7f7f7; }
+td strong { color: #0D8A8D; }
+
+/* Marcos motores sequência */
+.seq-grid { display: flex; gap: 2mm; margin: 2mm 0; }
+.seq-item { flex: 1; text-align: center; background: #f0f7f7; border: 1px solid #0D8A8D; border-radius: 3px; padding: 2mm 1mm; }
+.seq-age { font-family: 'Barlow Condensed', sans-serif; font-size: 9pt; font-weight: 700; color: #0D8A8D; display: block; }
+.seq-label { font-size: 6.5pt; color: #333; line-height: 1.3; }
+.seq-arrow { display: flex; align-items: center; color: #0D8A8D; font-size: 10pt; font-weight: 700; flex-shrink: 0; }
+
+/* Listas */
+ul.dot { list-style: none; padding: 0; margin: 1mm 0 2mm; }
+ul.dot li { font-size: 8pt; color: #222; padding-left: 3.5mm; position: relative; margin-bottom: 1mm; line-height: 1.4; }
+ul.dot li::before { content: '·'; position: absolute; left: 0; color: #0D8A8D; font-size: 12pt; line-height: 1; top: -1px; }
+
+/* Boxes */
+.box-alerta  { background: #fff8e1; border-left: 3px solid #f9a825; padding: 2mm 3mm; margin: 1.5mm 0; }
+.box-info    { background: #e8f5f5; border-left: 3px solid #0D8A8D; padding: 2mm 3mm; margin: 1.5mm 0; }
+.box-critico { background: #fce4ec; border-left: 3px solid #c62828; padding: 2mm 3mm; margin: 1.5mm 0; }
+
+/* Questões */
+.q-header { background: #0D8A8D; color: #fff; padding: 2.5mm 4mm; margin-bottom: 3mm; }
+.q-header-text { font-family: 'Barlow Condensed', sans-serif; font-size: 8.5pt; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+.q-stem { font-size: 9pt; color: #111; line-height: 1.55; margin-bottom: 3.5mm; }
+.q-stem strong { color: #070707; }
+.q-options { list-style: none; padding: 0; margin-bottom: 3mm; }
+.q-options li { font-size: 8.5pt; color: #333; padding: 1.5mm 0 1.5mm 6mm; border-bottom: 0.5px solid #f0f0f0; line-height: 1.4; }
+.q-options li .opt-letter { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; color: #0D8A8D; margin-right: 1.5mm; font-size: 9pt; }
+.q-options li.correta { color: #111; font-weight: 500; }
+.badge { display: inline-block; background: #0D8A8D; color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 7pt; font-weight: 700; letter-spacing: 0.08em; padding: 0.5mm 2mm; border-radius: 2px; margin-left: 2mm; text-transform: uppercase; vertical-align: middle; }
+.gabarito { background: #f5f5f5; border-top: 1.5px solid #0D8A8D; padding: 3mm 4mm; margin-top: 2mm; }
+.gabarito-title { font-family: 'Barlow Condensed', sans-serif; font-size: 8pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #555; margin-bottom: 1.5mm; }
+.gabarito p { font-size: 8pt; color: #333; line-height: 1.45; margin: 0; }
+
+/* Recuperação ativa */
+.rec-title { font-family: 'Barlow Condensed', sans-serif; font-size: 28pt; font-weight: 800; color: #070707; line-height: 1.05; text-transform: uppercase; margin-bottom: 4mm; }
+.rec-item { display: flex; gap: 2.5mm; margin-bottom: 2.5mm; align-items: flex-start; }
+.rec-star { color: #0D8A8D; font-size: 10pt; flex-shrink: 0; margin-top: 0.5mm; }
+.rec-text { font-size: 8.5pt; color: #222; line-height: 1.5; }
+.rec-divider { height: 0.5px; background: #0D8A8D; margin: 3.5mm 0 3mm; }
+.rec-test-title { font-family: 'Barlow Condensed', sans-serif; font-size: 9pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #0D8A8D; margin-bottom: 2.5mm; }
+.rec-q { display: flex; gap: 2mm; margin-bottom: 2mm; align-items: baseline; }
+.rec-q-num { font-family: 'Barlow Condensed', sans-serif; font-size: 10pt; font-weight: 700; color: #0D8A8D; flex-shrink: 0; width: 7mm; }
+.rec-q-line { flex: 1; font-size: 8.5pt; color: #333; line-height: 1.4; }
+
+/* Referências */
+.ref-title { font-family: 'Barlow Condensed', sans-serif; font-size: 18pt; font-weight: 800; color: #070707; text-transform: uppercase; margin-bottom: 5mm; border-bottom: 2px solid #0D8A8D; padding-bottom: 2mm; }
+.ref-item { font-size: 7.5pt; color: #333; line-height: 1.5; margin-bottom: 2.5mm; }
+.ref-notes { border: 0.5px solid #ddd; padding: 3mm 4mm; margin-top: 4mm; }
+.ref-notes-text { font-size: 8pt; color: #aaa; font-style: italic; }
+</style>
+</head>
+<body>
+
+<!-- P01: CAPA -->
+<div class="page">
+  <div class="cover-stripe"></div>
+  <div style="padding: 7mm 16mm 0; flex-shrink:0;">
+    <span class="cover-tag">EXTENSIVO ENARE · BLOCO B6 · FISIOTERAPIA</span>
+  </div>
+  <div style="flex:1; padding: 8mm 16mm 6mm; display:flex; flex-direction:column; justify-content:flex-end; overflow:hidden;">
+    <div class="cover-title">NEURO-<br>PLASTICI-<br>DADE E<br>PEDIÁTRICO</div>
+    <div class="cover-subtitle">LTP · EEF · TCE · ESPINHA BÍFIDA · DESENVOLVIMENTO MOTOR</div>
+    <div class="cover-body">Neuroplasticidade — LTP, neurogênese adulta e plasticidade dependente de uso (Q90/2025). EEF — contraindicações: osteomielite, trombose, epilepsia (Q97/2025). TCE grave — dano cerebral polar frontal e temporal (Q91/2025). Espinha bífida — ácido fólico pré-concepcional e mielomeningocele (Q87/2025). Desenvolvimento motor infantil — sequência cefalocaudal e marcos (Q100/2025).</div>
+  </div>
+  <div class="pf">
+    <span class="pf-logo"><em>Residência PRO</em> <span>by ELITE TREINAMENTOS</span></span>
+    <span class="pf-num">AULA 05 · FT-NEURO</span>
+  </div>
+</div>
+
+<!-- P02: COMPETÊNCIAS -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label"><span>COMPETÊNCIAS</span> · AULA 05</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc">
+    <h2 class="sec">O QUE VOCÊ VAI DOMINAR</h2>
+
+    <div class="comp-block">
+      <div class="comp-num">01</div>
+      <div class="comp-body">
+        <div class="comp-title">NEUROPLASTICIDADE — LTP E USO-DEPENDENTE (Q90/2025)</div>
+        <div class="comp-desc">Mecanismos adaptativos: LTP (potenciação de longa duração — NMDA-dependente), neurogênese adulta (hipocampo e bulbo olfatório), sprouting axonal. Plasticidade use-dependent: treino específico, intensivo e repetitivo → maior reorganização cortical. A FGV pede o mecanismo ou avalia afirmativas sobre plasticidade.</div>
+      </div>
+    </div>
+
+    <div class="comp-block">
+      <div class="comp-num">02</div>
+      <div class="comp-body">
+        <div class="comp-title">EEF — ELETROESTIMULAÇÃO FUNCIONAL (Q97/2025)</div>
+        <div class="comp-desc">EEF produz contração muscular funcional por corrente elétrica. Indicada para pé caído, AVC, lesão medular. Contraindicações (Q97/2025 — M): osteomielite ativa, trombose venosa profunda, epilepsia não controlada, marca-passo cardíaco. A FGV apresenta lista e pede a contraindicação correta.</div>
+      </div>
+    </div>
+
+    <div class="comp-block">
+      <div class="comp-num">03</div>
+      <div class="comp-body">
+        <div class="comp-title">TCE GRAVE — DANO CEREBRAL POLAR (Q91/2025)</div>
+        <div class="comp-desc">Colisão frontal: impacto contra a base do crânio → dano cerebral polar nos lobos frontais e temporais. Glasgow: grave ≤ 8, moderado 9–12, leve 13–15. Fisioterapia precoce: posicionamento, mobilização, prevenção de complicações. A FGV descreve o mecanismo e cobra a localização do dano.</div>
+      </div>
+    </div>
+
+    <div class="comp-block">
+      <div class="comp-num">04</div>
+      <div class="comp-body">
+        <div class="comp-title">ESPINHA BÍFIDA (Q87/2025) + DESENVOLVIMENTO MOTOR (Q100/2025)</div>
+        <div class="comp-desc">Espinha bífida: falha no fechamento do tubo neural. Ácido fólico pré-concepcional (400–800 μg/dia) reduz risco em até 70% (Q87/2025 — M). Mielomeningocele = forma mais grave. Desenvolvimento motor: sequência cefalocaudal — controle cefálico → rolar → sentar → engatinhar → andar (Q100/2025 — M).</div>
+      </div>
+    </div>
+
+    <div class="box-fgv">
+      <div class="box-fgv-title">PADRÃO FGV — FECHAMENTO DE FT-NEURO EM 2025: 5 QUESTÕES COMPLEMENTARES</div>
+      <p>Q87 (espinha bífida — M), Q90 (neuroplasticidade — C), Q91 (TCE polar — C), Q97 (EEF contraindicações — M), Q100 (desenvolvimento motor — M). A FGV fechou FT-NEURO com temas pediátricos e de neurociências — tendem a questões de memorização ou compreensão de mecanismo, sem cenários clínicos extensos.</p>
+    </div>
+  </div>
+  <div class="pf">
+    <span class="pf-logo"><em>Extensivo ENARE</em> <span>· by Residência PRO</span></span>
+    <span class="pf-num">02</span>
+  </div>
+</div>
+
+<!-- P03: NEUROPLASTICIDADE -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label"><span>FT-NEURO</span> · AULA 05</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc-sm">
+    <h2 class="sec">NEUROPLASTICIDADE — MECANISMOS ADAPTATIVOS</h2>
+    <p class="xs" style="margin-bottom:2mm;">Neuroplasticidade: capacidade do sistema nervoso de reorganizar sua estrutura e função em resposta à experiência, lesão ou treino. Base biológica da reabilitação neurológica.</p>
+
+    <div class="two-col" style="margin-bottom:2.5mm;">
+      <div>
+        <h3 class="sub" style="margin-top:0;">MECANISMOS CELULARES (Q90/2025)</h3>
+        <table>
+          <tr><th>Mecanismo</th><th>Definição</th></tr>
+          <tr><td><strong>LTP</strong></td><td>Potenciação de longa duração — ativação repetida de sinapses → fortalecimento permanente da transmissão (NMDA-dependente)</td></tr>
+          <tr><td><strong>Neurogênese adulta</strong></td><td>Formação de novos neurônios — hipocampo (giro denteado) e bulbo olfatório</td></tr>
+          <tr><td><strong>Sprouting axonal</strong></td><td>Brotamento de axônios íntegros para reinervar alvos desnervados</td></tr>
+          <tr><td><strong>Reorganização cortical</strong></td><td>Expansão ou retração de representações corticais por uso ou desuso</td></tr>
+          <tr><td><strong>Sinaptogênese</strong></td><td>Formação de novas sinapses — requer atividade e experiência</td></tr>
+        </table>
+      </div>
+
+      <div>
+        <h3 class="sub" style="margin-top:0;">PRINCÍPIOS USE-DEPENDENT</h3>
+        <ul class="dot">
+          <li><strong>Use it or lose it:</strong> áreas não usadas perdem representação cortical</li>
+          <li><strong>Use it and improve it:</strong> treino específico expande representação cortical da tarefa treinada</li>
+          <li><strong>Especificidade:</strong> treinar a tarefa que se quer melhorar — não há transferência automática</li>
+          <li><strong>Intensidade e repetição:</strong> limiar de estímulo deve ser atingido para induzir plasticidade durável</li>
+          <li><strong>Salência:</strong> treinos significativos e motivados produzem maior plasticidade</li>
+        </ul>
+
+        <div class="box-info">
+          <p class="xs"><strong>ETCC (2024 — Q70):</strong> anodo sobre o córtex motor aumenta excitabilidade (despolarização). Catodo reduz excitabilidade (hiperpolarização). Usado para potencializar o treino motor na reabilitação.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="box-alerta">
+      <p class="xs"><strong>Erro FGV (Q90/2025):</strong> afirmar que LTP ocorre independentemente do padrão de ativação, ou que neurogênese adulta "não contribui" para aprendizado. LTP exige coincidência temporal e alta frequência (NMDA). Neurogênese no hipocampo contribui para formação de memória e aprendizado.</p>
+    </div>
+  </div>
+  <div class="pf">
+    <span class="pf-logo"><em>Extensivo ENARE</em> <span>· by Residência PRO</span></span>
+    <span class="pf-num">03</span>
+  </div>
+</div>
+
+<!-- P04: EEF + TCE -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label"><span>FT-NEURO</span> · AULA 05</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc-sm">
+    <div class="two-col">
+      <div>
+        <h2 class="sec" style="font-size:13pt;">EEF (Q97/2025)</h2>
+        <p class="xs" style="margin-bottom:1.5mm;">Eletroestimulação Funcional: corrente elétrica aplicada sobre nervos motores para produzir contração muscular funcional durante uma atividade.</p>
+
+        <h3 class="sub" style="margin-top:0;">INDICAÇÕES</h3>
+        <ul class="dot">
+          <li>Pé caído pós-AVC ou lesão medular</li>
+          <li>Paralisia cerebral — controle de MMSS e MMII</li>
+          <li>AVC — recuperação de preensão e marcha</li>
+          <li>Fraqueza muscular em NMI com axônio motor intacto</li>
+        </ul>
+
+        <h3 class="sub">CONTRAINDICAÇÕES (Q97/2025)</h3>
+        <div class="box-critico">
+          <ul class="dot" style="margin:0;">
+            <li><strong>Osteomielite ativa</strong> na região a ser estimulada</li>
+            <li><strong>Trombose venosa profunda</strong> — risco de êmbolo</li>
+            <li><strong>Epilepsia não controlada</strong> — risco de convulsão</li>
+            <li><strong>Marca-passo cardíaco</strong> — interferência elétrica</li>
+            <li>Lesão de pele, infecção ativa, neoplasia na área</li>
+          </ul>
+        </div>
+
+        <div class="box-alerta" style="margin-top:1.5mm;">
+          <p class="xs"><strong>Importante:</strong> espasticidade e sensibilidade reduzida NÃO são contraindicações absolutas para EEF. A FGV testa se o candidato sabe distinguir as contraindicações reais.</p>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="sec" style="font-size:13pt;">TCE GRAVE (Q91/2025)</h2>
+        <p class="xs" style="margin-bottom:1.5mm;">Traumatismo cranioencefálico: lesão primária (impacto) + lesão secundária (edema, hipóxia, hipertensão intracraniana).</p>
+
+        <h3 class="sub" style="margin-top:0;">DANO CEREBRAL POLAR</h3>
+        <p class="xs">Colisão frontal: cérebro em movimento é freado bruscamente → lobos frontais e temporais impactam contra a base do crânio → <strong>dano polar frontal e temporal</strong> (Q91/2025).</p>
+        <p class="xs" style="margin-top:1mm;">Lesões associadas: contusão cortical, hemorragia temporal, lesão axonal difusa.</p>
+
+        <h3 class="sub">ESCALA DE GLASGOW (GCS)</h3>
+        <table>
+          <tr><th>Classificação</th><th>Score</th></tr>
+          <tr><td><strong>Grave</strong></td><td>≤ 8</td></tr>
+          <tr><td><strong>Moderado</strong></td><td>9 – 12</td></tr>
+          <tr><td><strong>Leve</strong></td><td>13 – 15</td></tr>
+        </table>
+
+        <h3 class="sub">FISIOTERAPIA PRECOCE NO TCE</h3>
+        <ul class="dot" style="margin:0;">
+          <li>Posicionamento neuroprotetor — cabeceira 30°</li>
+          <li>Mobilização passiva articular — prevenir contraturas</li>
+          <li>Higiene brônquica — prevenir pneumonia</li>
+          <li>Estimulação sensorial multimodal</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="pf">
+    <span class="pf-logo"><em>Extensivo ENARE</em> <span>· by Residência PRO</span></span>
+    <span class="pf-num">04</span>
+  </div>
+</div>
+
+<!-- P05: ESPINHA BÍFIDA + DESENVOLVIMENTO MOTOR -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label"><span>FT-NEURO</span> · AULA 05</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc-sm">
+    <div class="two-col">
+      <div>
+        <h2 class="sec" style="font-size:13pt;">ESPINHA BÍFIDA (Q87/2025)</h2>
+        <p class="xs" style="margin-bottom:1.5mm;">Defeito do fechamento do tubo neural na 4ª semana de gestação.</p>
+
+        <div class="box-info">
+          <p class="xs"><strong>Prevenção (Q87/2025):</strong> ácido fólico <strong>400–800 μg/dia</strong>, iniciado <strong>1–3 meses antes</strong> da concepção e mantido até o final do 1º trimestre → reduz risco em até 70%.</p>
+        </div>
+
+        <table style="margin-top:2mm; margin-bottom:2mm;">
+          <tr><th>Tipo</th><th>Características</th></tr>
+          <tr><td><strong>Oculta</strong></td><td>Fechamento cutâneo presente — assintomática na maioria</td></tr>
+          <tr><td><strong>Meningocele</strong></td><td>Protrusão das meninges — medula preservada no canal</td></tr>
+          <tr><td><strong>Mielomeningocele</strong></td><td>Medula + meninges expostas — déficits motor, sensitivo, bexiga neurogênica. Forma mais grave.</td></tr>
+        </table>
+
+        <p class="xs" style="color:#555;">Fisioterapia na mielomeningocele: similar ao TRM — nível de lesão define funcionalidade. Hidrocefalia associada (80%): derivação ventriculoperitoneal.</p>
+      </div>
+
+      <div>
+        <h2 class="sec" style="font-size:13pt;">DESENVOLVIMENTO MOTOR (Q100/2025)</h2>
+        <p class="xs" style="margin-bottom:1.5mm;">Sequência cefalocaudal e proximal-distal. Princípio: controle da cabeça antes do tronco, tronco antes dos membros.</p>
+
+        <div class="seq-grid">
+          <div class="seq-item"><span class="seq-age">2–3m</span><span class="seq-label">Controle cefálico</span></div>
+          <div class="seq-arrow">→</div>
+          <div class="seq-item"><span class="seq-age">4–5m</span><span class="seq-label">Rolar</span></div>
+          <div class="seq-arrow">→</div>
+          <div class="seq-item"><span class="seq-age">6–8m</span><span class="seq-label">Sentar (apoio → sem)</span></div>
+        </div>
+        <div class="seq-grid" style="margin-top:1.5mm;">
+          <div class="seq-item"><span class="seq-age">9–10m</span><span class="seq-label">Engatinhar</span></div>
+          <div class="seq-arrow">→</div>
+          <div class="seq-item"><span class="seq-age">10–11m</span><span class="seq-label">Em pé c/ apoio</span></div>
+          <div class="seq-arrow">→</div>
+          <div class="seq-item"><span class="seq-age">12–15m</span><span class="seq-label">Andar independente</span></div>
+        </div>
+
+        <div class="box-alerta" style="margin-top:2mm;">
+          <p class="xs"><strong>Variação normal:</strong> não engatinhar antes de andar é variação — não sinal de alarme. O alerta é ausência de marcha independente após 18 meses.</p>
+        </div>
+
+        <p class="xs" style="margin-top:1.5mm; color:#555;"><strong>Sinais de alarme motor:</strong> sem controle cefálico após 4 meses; sem sentar após 9 meses; sem marcha após 18 meses → investigar paralisia cerebral, AME ou miopatia.</p>
+      </div>
+    </div>
+  </div>
+  <div class="pf">
+    <span class="pf-logo"><em>Extensivo ENARE</em> <span>· by Residência PRO</span></span>
+    <span class="pf-num">05</span>
+  </div>
+</div>
+
+<!-- P06: Q1 — MEMORIZAÇÃO (Q100/2025 — Desenvolvimento motor) -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label"><span>FIXAÇÃO</span> · AULA 05</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc">
+    <div class="q-header">
+      <div class="q-header-text">QUESTÃO 01 DE 03 · B6 DESENVOLVIMENTO MOTOR — SEQUÊNCIA / MEMORIZAÇÃO</div>
+    </div>
+
+    <p class="q-stem">Sobre a sequência esperada de aquisição dos <strong>marcos do desenvolvimento motor grosso</strong> em lactentes, assinale a alternativa correta em relação à ordem cronológica:</p>
+
+    <ul class="q-options">
+      <li><span class="opt-letter">A</span> Sentar sem apoio → rolar → engatinhar → andar independente.</li>
+      <li><span class="opt-letter">B</span> Engatinhar → controle cefálico → sentar com apoio → rolar.</li>
+      <li class="correta"><span class="opt-letter">C</span> Controle cefálico → rolar → sentar sem apoio → engatinhar → andar independente. <span class="badge">CORRETA</span></li>
+      <li><span class="opt-letter">D</span> Rolar → andar independente → engatinhar → sentar sem apoio.</li>
+    </ul>
+
+    <div class="gabarito">
+      <div class="gabarito-title">GABARITO COMENTADO — C</div>
+      <p>O desenvolvimento motor segue o princípio <strong>cefalocaudal</strong> (da cabeça para os pés) e <strong>proximal-distal</strong> (do centro para a periferia). A sequência clássica: controle cefálico (2–3 meses) → rolar (4–5 meses) → sentar com apoio (6 meses) → sentar sem apoio (7–8 meses) → engatinhar (9–10 meses) → em pé com apoio (10–11 meses) → andar independente (12–15 meses). A = sentar sem apoio vem após o rolar — a sequência está invertida. B = engatinhar ocorre depois do controle cefálico e do sentar — inversão completa. D = andar não precede o engatinhar e o sentar — inversão grave.</p>
+    </div>
+  </div>
+  <div class="pf">
+    <span class="pf-logo"><em>Extensivo ENARE</em> <span>· by Residência PRO</span></span>
+    <span class="pf-num">06</span>
+  </div>
+</div>
+
+<!-- P07: Q2 — APLICAÇÃO (Q97/2025 — EEF contraindicações) -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label"><span>FIXAÇÃO</span> · AULA 05</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc">
+    <div class="q-header">
+      <div class="q-header-text">QUESTÃO 02 DE 03 · B6 EEF — CONTRAINDICAÇÕES / APLICAÇÃO</div>
+    </div>
+
+    <p class="q-stem">Paciente de 62 anos com diagnóstico de AVC isquêmico há 6 semanas, com hemiplegia espástica à esquerda e pé caído. O fisioterapeuta planeja iniciar <strong>Eletroestimulação Funcional (EEF)</strong> sobre o nervo fibular comum esquerdo para auxiliar a fase de balanço da marcha. Qual das seguintes condições, se presente neste paciente, representaria uma <strong>contraindicação</strong> para o uso da EEF?</p>
+
+    <ul class="q-options">
+      <li><span class="opt-letter">A</span> Espasticidade grau 2 na Escala de Ashworth Modificada no membro acometido.</li>
+      <li><span class="opt-letter">B</span> Sensibilidade tátil superficial parcialmente preservada no tornozelo esquerdo.</li>
+      <li class="correta"><span class="opt-letter">C</span> Trombose venosa profunda diagnosticada na perna esquerda na semana anterior. <span class="badge">CORRETA</span></li>
+      <li><span class="opt-letter">D</span> Uso de órtese tornozelo-pé no membro acometido durante a fisioterapia.</li>
+    </ul>
+
+    <div class="gabarito">
+      <div class="gabarito-title">GABARITO COMENTADO — C</div>
+      <p>A TVP é contraindicação absoluta para EEF na região acometida: a contração muscular elétrica pode deslocar o trombo e provocar embolia pulmonar. A = espasticidade não é contraindicação para EEF — ao contrário, a EEF pode ser usada como parte do manejo da espasticidade (estimulação do antagonista). B = sensibilidade reduzida não contraindicação absoluta, exige monitoramento cuidadoso da intensidade para evitar queimaduras. D = o uso de órtese é uma decisão clínica e não contraindica a EEF; podem ser complementares no manejo do pé caído.</p>
+    </div>
+  </div>
+  <div class="pf">
+    <span class="pf-logo"><em>Extensivo ENARE</em> <span>· by Residência PRO</span></span>
+    <span class="pf-num">07</span>
+  </div>
+</div>
+
+<!-- P08: Q3 — QUESTÃO-ÂNCORA (Q90/2025 — Neuroplasticidade) -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label"><span>FIXAÇÃO</span> · AULA 05</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc">
+    <div class="q-header">
+      <div class="q-header-text">QUESTÃO 03 DE 03 · B6 NEUROPLASTICIDADE — MECANISMOS / QUESTÃO-ÂNCORA (An)</div>
+    </div>
+
+    <p class="q-stem">Sobre os <strong>mecanismos de neuroplasticidade</strong> relevantes para a reabilitação neurológica, analise as afirmativas:</p>
+
+    <p style="font-size:8.5pt; color:#333; margin-bottom:3mm; line-height:1.5;">
+      I — A potenciação de longa duração (LTP) é induzida por ativação repetida e de alta frequência das sinapses, com participação dos receptores NMDA, e constitui um mecanismo celular de aprendizado e memória.<br>
+      II — A neuroplasticidade dependente de uso demonstra que treinos específicos, intensivos e repetitivos produzem maior reorganização cortical em comparação a treinos passivos ou sem especificidade de tarefa.<br>
+      III — A neurogênese adulta ocorre exclusivamente durante o desenvolvimento fetal, cessando completamente ao nascimento.<br>
+      IV — O sprouting axonal, ou brotamento axonal, é um mecanismo em que axônios adjacentes íntegros emitem ramos para reinervar alvos desnervados após lesão.
+    </p>
+
+    <ul class="q-options">
+      <li><span class="opt-letter">A</span> Apenas I e III.</li>
+      <li><span class="opt-letter">B</span> Apenas II e IV.</li>
+      <li class="correta"><span class="opt-letter">C</span> I, II e IV. <span class="badge">CORRETA</span></li>
+      <li><span class="opt-letter">D</span> I, II, III e IV.</li>
+    </ul>
+
+    <div class="gabarito">
+      <div class="gabarito-title">GABARITO COMENTADO — C</div>
+      <p>III está <strong>ERRADA</strong>: neurogênese adulta ocorre no sistema nervoso maduro — está documentada no giro denteado do hipocampo e no bulbo olfatório. Contribui para formação de memórias e adaptação ao ambiente. I está <strong>CORRETA</strong>: LTP exige ativação repetida e coincidente (regra de Hebb), mediada pelo receptor NMDA, e é o substrato celular do aprendizado. II está <strong>CORRETA</strong>: a plasticidade use-dependent explica por que a especificidade e intensidade do treino determinam a extensão da reorganização cortical. IV está <strong>CORRETA</strong>: sprouting é um mecanismo importante de recuperação parcial de função após lesão axonal.</p>
+    </div>
+  </div>
+  <div class="pf">
+    <span class="pf-logo"><em>Extensivo ENARE</em> <span>· by Residência PRO</span></span>
+    <span class="pf-num">08</span>
+  </div>
+</div>
+
+<!-- P09: RECUPERAÇÃO ATIVA -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label"><span>RECUPERAÇÃO ATIVA</span> · AULA 05</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc">
+    <div class="rec-title">SE ESQUECER<br>TUDO,<br>LEMBRE DISTO</div>
+
+    <div class="rec-item">
+      <span class="rec-star">★</span>
+      <span class="rec-text"><strong>Neuroplasticidade (Q90/2025):</strong> LTP = ativação repetida e de alta frequência → NMDA → potenciação sináptica. Neurogênese adulta existe (hipocampo + bulbo olfatório). Treino específico + intensivo + repetitivo = maior reorganização cortical.</span>
+    </div>
+
+    <div class="rec-item">
+      <span class="rec-star">★</span>
+      <span class="rec-text"><strong>EEF (Q97/2025):</strong> contraindicações = osteomielite ativa, TVP (risco de êmbolo), epilepsia não controlada, marca-passo. Espasticidade e sensibilidade reduzida NÃO são contraindicações absolutas.</span>
+    </div>
+
+    <div class="rec-item">
+      <span class="rec-star">★</span>
+      <span class="rec-text"><strong>TCE (Q91/2025):</strong> colisão frontal → dano cerebral polar frontal e temporal (impacto na base do crânio). Glasgow grave ≤ 8. Fisioterapia precoce: posicionamento 30°, mobilização passiva, higiene brônquica.</span>
+    </div>
+
+    <div class="rec-item">
+      <span class="rec-star">★</span>
+      <span class="rec-text"><strong>Espinha bífida (Q87/2025):</strong> ácido fólico 400–800 μg/dia, 1–3 meses antes da concepção → reduz risco em até 70%. Mielomeningocele = medula exposta = forma mais grave.</span>
+    </div>
+
+    <div class="rec-item">
+      <span class="rec-star">★</span>
+      <span class="rec-text"><strong>Desenvolvimento motor (Q100/2025):</strong> controle cefálico (2–3m) → rolar (4–5m) → sentar (6–8m) → engatinhar (9–10m) → andar (12–15m). Sem marcha após 18 meses = sinal de alarme.</span>
+    </div>
+
+    <div class="rec-divider"></div>
+    <div class="rec-test-title">TESTE-SE SEM OLHAR</div>
+
+    <div class="rec-q">
+      <span class="rec-q-num">01</span>
+      <span class="rec-q-line">O que é LTP? Qual receptor é essencial? Por que treino específico produz mais plasticidade que treino passivo?</span>
+    </div>
+    <div class="rec-q">
+      <span class="rec-q-num">02</span>
+      <span class="rec-q-line">Cite 4 contraindicações para EEF. Por que TVP é contraindicação?</span>
+    </div>
+    <div class="rec-q">
+      <span class="rec-q-num">03</span>
+      <span class="rec-q-line">Por que colisão frontal gera dano nos lobos frontais e temporais? O que é dano cerebral polar?</span>
+    </div>
+    <div class="rec-q">
+      <span class="rec-q-num">04</span>
+      <span class="rec-q-line">Qual a sequência completa dos marcos motores grossos? Qual a diferença entre mielomeningocele e meningocele?</span>
+    </div>
+  </div>
+  <div class="pf">
+    <span class="pf-logo"><em>Extensivo ENARE</em> <span>· by Residência PRO</span></span>
+    <span class="pf-num">09</span>
+  </div>
+</div>
+
+<!-- P10: REFERÊNCIAS -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label"><span>REFERÊNCIAS</span> · AULA 05</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc">
+    <div class="ref-title">REFERÊNCIAS — BLOCO B6 · AULA 05</div>
+
+    <div class="ref-item">KLEIM, J.A.; JONES, T.A. Principles of experience-dependent neural plasticity: implications for rehabilitation after brain damage. <em>Journal of Speech, Language, and Hearing Research,</em> v. 51, n. 1, p. S225–S239, 2008.</div>
+    <div class="ref-item">KANDEL, E.R. et al. <em>Principles of Neural Science.</em> 6. ed. New York: McGraw-Hill, 2021. Cap. 53 — Learning and memory.</div>
+    <div class="ref-item">PAPE, T.L.B. et al. Electrical stimulation for treating pressure ulcers. <em>Cochrane Database of Systematic Reviews,</em> 2012.</div>
+    <div class="ref-item">WILLISON, A.G. et al. Functional electrical stimulation for foot drop after stroke. <em>Cochrane Database of Systematic Reviews,</em> 2015.</div>
+    <div class="ref-item">BRAIN TRAUMA FOUNDATION. <em>Guidelines for the management of severe traumatic brain injury.</em> 4. ed. New York, 2016.</div>
+    <div class="ref-item">MINISTERIO DA SAÚDE. <em>Protocolo Clínico e Diretrizes Terapêuticas — Espinha Bífida.</em> Brasília: MS, 2019.</div>
+    <div class="ref-item">GESELL, A.; AMATRUDA, C.S. <em>Developmental Diagnosis: Normal and Abnormal Child Development.</em> 3. ed. New York: Harper and Row, 1974.</div>
+
+    <div class="ref-notes">
+      <span class="ref-notes-text">Espaço para anotações</span>
+    </div>
+  </div>
+  <div class="pf">
+    <span class="pf-logo"><em>Extensivo ENARE</em> <span>· by Residência PRO</span></span>
+    <span class="pf-num">10</span>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B6 · Aula 20 — FT-BIOPS: Dor Crônica, Sensibilização Central e Biopsicossocial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { -webkit-print-color-adjust: exact; print-color-adjust: exact; font-family: 'Bricolage Grotesque', sans-serif; background: #ccc; }
+
+  .page { width: 210mm; height: 297mm; display: flex; flex-direction: column; overflow: hidden; page-break-after: always; background: #F6F4ED; position: relative; }
+
+  .ph { height: 14mm; flex-shrink: 0; display: flex; align-items: center; justify-content: space-between; padding: 0 16mm; border-bottom: 0.4mm solid #E0DDD6; }
+  .ph-label { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 7.5pt; letter-spacing: 0.12em; color: #0D8A8D; text-transform: uppercase; }
+  .ph-right { font-family: 'Bricolage Grotesque', sans-serif; font-size: 7pt; color: #888; }
+
+  .pf { height: 9mm; flex-shrink: 0; display: flex; align-items: center; justify-content: space-between; padding: 0 16mm; border-top: 0.4mm solid #E0DDD6; }
+  .pf-logo { font-family: 'Playfair Display', serif; font-style: italic; font-size: 7.5pt; color: #0D8A8D; }
+  .pf-logo span { font-family: 'Space Grotesk', sans-serif; font-style: normal; font-weight: 300; font-size: 6.5pt; color: #888; text-transform: uppercase; letter-spacing: 0.08em; }
+  .pf-right { font-size: 7pt; color: #888; font-family: 'Bricolage Grotesque', sans-serif; }
+  .pf-right strong { color: #0D8A8D; font-weight: 600; }
+
+  .pc { flex: 1; padding: 7mm 16mm 5mm; overflow: hidden; }
+  .pc-sm { flex: 1; padding: 5mm 16mm 4mm; overflow: hidden; }
+
+  /* Cover */
+  .cover-eyebrow { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 8pt; letter-spacing: 0.15em; color: #0D8A8D; text-transform: uppercase; margin-bottom: 4mm; }
+  .cover-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 38pt; line-height: 0.95; color: #070707; text-transform: uppercase; margin-bottom: 5mm; }
+  .cover-sub { font-size: 9pt; color: #555; line-height: 1.5; margin-bottom: 7mm; max-width: 145mm; }
+
+  .stats-row { display: flex; gap: 0; margin-bottom: 7mm; }
+  .stat-item { display: flex; align-items: flex-start; gap: 3mm; padding-right: 7mm; border-right: 0.3mm solid #C0BDB6; margin-right: 7mm; }
+  .stat-item:last-child { border-right: none; }
+  .stat-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 28pt; color: #0D8A8D; line-height: 1; }
+  .stat-label { font-size: 7.5pt; color: #666; line-height: 1.3; padding-top: 1mm; }
+
+  .banca-box { border-left: 1.5mm solid #0D8A8D; background: rgba(13,138,141,0.06); padding: 3.5mm 4mm; border-radius: 0 2mm 2mm 0; }
+  .banca-box-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 8pt; letter-spacing: 0.08em; color: #0D8A8D; text-transform: uppercase; margin-bottom: 1.5mm; }
+  .banca-box p { font-size: 8pt; color: #444; line-height: 1.55; }
+
+  .section-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 16pt; color: #0D8A8D; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 3.5mm; padding-bottom: 1.5mm; border-bottom: 0.4mm solid #0D8A8D; }
+  .section-title-sm { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 13pt; color: #0D8A8D; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 2.5mm; }
+
+  .obj-list { display: flex; flex-direction: column; gap: 2.5mm; margin-bottom: 5mm; }
+  .obj-item { display: flex; gap: 3mm; align-items: flex-start; }
+  .obj-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 16pt; color: #0D8A8D; line-height: 1; min-width: 6mm; }
+  .obj-text { font-size: 8.5pt; color: #333; line-height: 1.45; padding-top: 1mm; }
+  .obj-text strong { color: #070707; font-weight: 600; }
+
+  .map-row { display: flex; gap: 3mm; margin-bottom: 4mm; }
+  .map-card { flex: 1; background: #fff; border-top: 1.5mm solid #0D8A8D; padding: 3mm 3.5mm; border-radius: 0 0 2mm 2mm; }
+  .map-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 20pt; color: #0D8A8D; line-height: 1; margin-bottom: 0.5mm; }
+  .map-card-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 9pt; color: #070707; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 1.5mm; }
+  .map-card p { font-size: 7pt; color: #666; line-height: 1.4; }
+
+  .block-sub { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 9.5pt; color: #070707; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 1.5mm; margin-top: 2.5mm; }
+
+  .two-col { display: flex; gap: 5mm; }
+  .col { flex: 1; }
+  .col-wide { flex: 1.4; }
+  .col-narrow { flex: 0.85; }
+
+  ul.dot-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 1.2mm; }
+  ul.dot-list li { font-size: 8pt; color: #333; line-height: 1.4; padding-left: 4mm; position: relative; }
+  ul.dot-list li::before { content: '·'; position: absolute; left: 0; color: #0D8A8D; font-weight: 700; font-size: 10pt; line-height: 1.1; }
+  ul.dot-list li strong { font-weight: 600; color: #070707; }
+  ul.dot-list li em { font-style: normal; color: #0D8A8D; font-weight: 600; }
+
+  .key-box { border: 0.3mm solid #0D8A8D; border-radius: 2mm; padding: 2.5mm 3.5mm; margin-top: 2.5mm; }
+  .key-box-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 7.5pt; text-transform: uppercase; letter-spacing: 0.08em; color: #0D8A8D; margin-bottom: 1mm; }
+  .key-box p { font-size: 7.5pt; color: #333; line-height: 1.45; }
+
+  .alert-box { background: rgba(180,30,30,0.06); border-left: 1.5mm solid #a01010; padding: 2.5mm 3.5mm; border-radius: 0 2mm 2mm 0; margin-top: 2mm; }
+  .alert-box p { font-size: 7.5pt; color: #333; line-height: 1.45; }
+  .alert-box strong { color: #a01010; font-weight: 600; }
+
+  /* Flags */
+  .flags-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2mm; margin: 2mm 0; }
+  .flag-card { background: #fff; border-radius: 2mm; padding: 2.5mm 3mm; border-left: 1.5mm solid #C6D834; }
+  .flag-name { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 8.5pt; color: #1F5C23; text-transform: uppercase; margin-bottom: 0.8mm; }
+  .flag-card p { font-size: 7pt; color: #555; line-height: 1.35; }
+
+  /* Model columns */
+  .model-cols { display: flex; gap: 2.5mm; margin: 2.5mm 0; }
+  .model-col { flex: 1; background: #fff; border-radius: 2mm; padding: 3mm; border-top: 1.5mm solid #0D8A8D; }
+  .model-col-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 9pt; color: #0D8A8D; text-transform: uppercase; margin-bottom: 1.5mm; text-align: center; }
+  .model-col ul { list-style: none; padding: 0; }
+  .model-col ul li { font-size: 7pt; color: #444; line-height: 1.35; padding-left: 3mm; position: relative; margin-bottom: 0.8mm; }
+  .model-col ul li::before { content: '·'; position: absolute; left: 0; color: #0D8A8D; font-weight: 700; }
+
+  /* SC features */
+  .sc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2mm; margin: 2mm 0; }
+  .sc-card { background: #fff; border-radius: 2mm; padding: 2.5mm 3mm; }
+  .sc-term { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 8.5pt; color: #070707; text-transform: uppercase; margin-bottom: 0.8mm; }
+  .sc-def { font-size: 7pt; color: #555; line-height: 1.35; }
+
+  /* Exercise mechanism */
+  .mech-row { display: flex; align-items: center; gap: 2mm; margin: 2mm 0; flex-wrap: wrap; }
+  .mech-box { background: #0D8A8D; color: #fff; border-radius: 2mm; padding: 1.5mm 3mm; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 8pt; text-transform: uppercase; }
+  .mech-arrow { color: #0D8A8D; font-weight: 700; font-size: 12pt; line-height: 1; }
+  .mech-result { background: rgba(13,138,141,0.1); border-radius: 2mm; padding: 1.5mm 3mm; font-size: 7.5pt; color: #333; }
+
+  /* Question pages */
+  .q-badge-row { display: flex; align-items: center; gap: 2.5mm; margin-bottom: 5mm; }
+  .q-badge { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 8pt; letter-spacing: 0.08em; text-transform: uppercase; padding: 1mm 3mm; border-radius: 1mm; }
+  .q-badge-nc { background: #070707; color: #F6F4ED; }
+  .q-badge-num { background: #0D8A8D; color: #fff; }
+  .q-badge-tema { background: rgba(13,138,141,0.12); color: #0D8A8D; }
+
+  .q-stem { font-size: 9.5pt; color: #222; line-height: 1.6; margin-bottom: 5mm; }
+  .q-stem strong { font-weight: 600; }
+
+  .q-options { display: flex; flex-direction: column; gap: 2.5mm; margin-bottom: 5mm; }
+  .q-opt { display: flex; gap: 2.5mm; align-items: flex-start; }
+  .q-opt-letter { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 10pt; color: #0D8A8D; min-width: 5mm; line-height: 1.3; }
+  .q-opt-text { font-size: 8.5pt; color: #333; line-height: 1.5; }
+
+  .gabarito-box { background: rgba(13,138,141,0.08); border: 0.3mm solid #0D8A8D; border-radius: 2mm; padding: 3mm 4mm; }
+  .gabarito-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 9pt; color: #0D8A8D; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 2mm; }
+  .gabarito-box p { font-size: 8pt; color: #333; line-height: 1.55; }
+  .gabarito-box p strong { font-weight: 700; }
+  .gabarito-box .correct { color: #1F5C23; font-weight: 700; }
+  .gabarito-box .wrong { color: #888; }
+
+  /* VoF */
+  .vof-table { width: 100%; border-collapse: collapse; margin-top: 2mm; }
+  .vof-table th { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 8pt; text-transform: uppercase; letter-spacing: 0.06em; background: #0D8A8D; color: #fff; padding: 2mm 3mm; text-align: left; }
+  .vof-table th.center { text-align: center; }
+  .vof-table td { font-size: 7.5pt; color: #333; padding: 2mm 3mm; border-bottom: 0.2mm solid #E0DDD6; line-height: 1.4; vertical-align: top; }
+  .vof-table tr:nth-child(even) td { background: rgba(13,138,141,0.04); }
+  .vof-table td.verdict { text-align: center; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 9pt; }
+  .vof-table td.v { color: #1F5C23; }
+  .vof-table td.f { color: #a01010; }
+
+  /* References */
+  .ref-list { display: flex; flex-direction: column; gap: 2.5mm; }
+  .ref-item { font-size: 7.5pt; color: #444; line-height: 1.5; }
+  .ref-item em { font-style: italic; }
+  .notes-box { margin-top: 5mm; border: 0.3mm dashed #C0BDB6; border-radius: 2mm; padding: 3mm 4mm; flex: 1; }
+  .notes-box p { font-size: 7pt; color: #aaa; font-style: italic; }
+</style>
+</head>
+<body>
+
+<!-- ========== PAGE 1 — CAPA ========== -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label">Bloco B6 · Fisioterapia · Aula 20</span>
+  </div>
+  <div class="pc">
+    <div class="cover-eyebrow">FT-BIOPS</div>
+    <div class="cover-title">Dor Crônica,<br>Sensibilização<br>Central e<br>Biopsicossocial</div>
+    <div class="cover-sub">Mecanismos da dor crônica · Sensibilização central: hiperalgesia e alodinia · Modelo biopsicossocial e yellow flags · Exercício como modulador da dor · Dor em hanseníase</div>
+
+    <div class="stats-row">
+      <div class="stat-item">
+        <div class="stat-num">3</div>
+        <div class="stat-label">Blocos de conteúdo</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">3</div>
+        <div class="stat-label">Questões FGV comentadas</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">6</div>
+        <div class="stat-label">Questões FGV mapeadas</div>
+      </div>
+    </div>
+
+    <div class="banca-box">
+      <div class="banca-box-title">Padrão FGV neste tema:</div>
+      <p>FT-BIOPS aparece em 4 questões em 2024 e 2 em 2025 — sempre com foco em sensibilização central, modelo biopsicossocial e exercício como tratamento. As questões são predominantemente de Compreensão (C) e Análise (An): a FGV não pede definições isoladas, mas exige que o aluno integre mecanismo + clínica + abordagem terapêutica no contexto de um paciente real (dor lombar crônica, hanseníase, projeto intersetorial). Dominar os yellow flags e os mecanismos da sensibilização central posiciona o aluno para acertar de 2 a 4 questões.</p>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pf-logo">Residência PRO <span>· by Residência Pro</span></div>
+    <div class="pf-right"><strong>Extensivo ENARE 2026</strong><br>Fisioterapia · Camila Nara</div>
+  </div>
+</div>
+
+<!-- ========== PAGE 2 — OBJETIVOS + MAPA ========== -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label">Objetivos · Aula 20</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc">
+    <div class="section-title">Objetivos de Aprendizagem</div>
+
+    <div class="obj-list">
+      <div class="obj-item">
+        <div class="obj-num">1</div>
+        <div class="obj-text"><strong>Sensibilização central:</strong> compreender os mecanismos de amplificação nociceptiva no SNC — wind-up, hiperalgesia, alodinia — e reconhecer as características clínicas que diferenciam dor nociceptiva de dor nociplástica.</div>
+      </div>
+      <div class="obj-item">
+        <div class="obj-num">2</div>
+        <div class="obj-text"><strong>Modelo biopsicossocial:</strong> identificar as três dimensões (biológica, psicológica, social) e os fatores psicossociais de cronificação (yellow flags) — catastrofização, medo-evitação, baixa autoeficácia, depressão — aplicados em cenários clínicos da prova.</div>
+      </div>
+      <div class="obj-item">
+        <div class="obj-num">3</div>
+        <div class="obj-text"><strong>Exercício como modulador da dor:</strong> reconhecer o mecanismo de analgesia induzida pelo exercício (AIE) — opioides endógenos, sistemas inibitórios descendentes — e sua indicação central no tratamento da dor crônica.</div>
+      </div>
+      <div class="obj-item">
+        <div class="obj-num">4</div>
+        <div class="obj-text"><strong>Dor em hanseníase:</strong> compreender a avaliação multicomponentes da dor neuropática periférica (monofilamentos, escala de dor, força muscular) e o papel da fisioterapia na prevenção de incapacidades.</div>
+      </div>
+    </div>
+
+    <div class="section-title-sm" style="margin-top:3mm;">Mapa da Aula</div>
+    <div class="map-row">
+      <div class="map-card">
+        <div class="map-num">1</div>
+        <div class="map-card-title">Sensibilização Central</div>
+        <p>Dor crônica · Mecanismos<br>Hiperalgesia · Alodinia<br>Wind-up · Nociplastia</p>
+      </div>
+      <div class="map-card">
+        <div class="map-num">2</div>
+        <div class="map-card-title">Modelo Biopsicossocial</div>
+        <p>3 dimensões · Yellow flags<br>CIF e fatores contextuais<br>Determinantes sociais</p>
+      </div>
+      <div class="map-card">
+        <div class="map-num">3</div>
+        <div class="map-card-title">Exercício e Hanseníase</div>
+        <p>Analgesia pelo exercício<br>Sistemas inibitórios descend.<br>Avaliação multicomponentes</p>
+      </div>
+    </div>
+
+    <div class="banca-box">
+      <div class="banca-box-title">Perfil de cobrança 2024–2025:</div>
+      <p>A FGV apresenta cenários clínicos (paciente com dor lombar crônica, projeto em comunidade) e exige identificar fatores psicossociais de cronificação, mecanismos de sensibilização central ou justificar a indicação de exercício como modulador da dor. O nível é An — não basta saber o conceito; é preciso aplicá-lo ao caso. Q22/2024 (C), Q54/2024 (An), Q65/2024 (C), Q75/2024 (Ap) — 2024 concentrou 4 questões; Q21/2025 (An) e Q41/2025 (An) — 2025 manteve presença.</p>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pf-logo">Extensivo ENARE <span>· by Residência Pro</span></div>
+    <div class="pf-right">2</div>
+  </div>
+</div>
+
+<!-- ========== PAGE 3 — BLOCO 1: SENSIBILIZAÇÃO CENTRAL ========== -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label">Sensibilização Central · Aula 20</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc-sm">
+    <div class="section-title">1. Dor Crônica e Sensibilização Central</div>
+
+    <div class="two-col">
+      <div class="col-wide">
+        <div class="block-sub">Definições Fundamentais</div>
+        <ul class="dot-list" style="margin-bottom:3mm;">
+          <li><strong>Dor crônica:</strong> dor persistente por <em>mais de 3 meses</em> — impacta função, humor, sono e qualidade de vida; frequentemente desvinculada de lesão tecidual ativa</li>
+          <li><strong>Sensibilização central (SC):</strong> amplificação do processamento nociceptivo no <em>sistema nervoso central</em> — respostas exageradas a estímulos normais ou sublimiares</li>
+          <li><strong>Nociplastia:</strong> 3ª categoria da IASP — dor que surge de nocicepção alterada, sem lesão tecidual clara nem dano nervoso (ex.: fibromialgia, dor lombar crônica inespecífica)</li>
+        </ul>
+
+        <div class="sc-grid">
+          <div class="sc-card">
+            <div class="sc-term">Wind-up</div>
+            <div class="sc-def">Somação temporal de estímulos repetidos → ↑ progressiva da resposta dos neurônios do corno dorsal — precursor da SC</div>
+          </div>
+          <div class="sc-card">
+            <div class="sc-term">Hiperalgesia</div>
+            <div class="sc-def">↑ resposta a estímulo doloroso — primária (local da lesão) ou secundária (área adjacente, via SC)</div>
+          </div>
+          <div class="sc-card">
+            <div class="sc-term">Alodinia</div>
+            <div class="sc-def">Dor provocada por estímulo normalmente não doloroso (ex.: toque leve, temperatura morna) — sinal forte de SC</div>
+          </div>
+          <div class="sc-card">
+            <div class="sc-term">LTP Espinhal</div>
+            <div class="sc-def">Potenciação de longa duração no corno dorsal — mecanismo central da SC mantida. Receptor NMDA é chave</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-narrow">
+        <div class="block-sub">Características Clínicas da SC</div>
+        <ul class="dot-list" style="margin-bottom:3mm;">
+          <li>Dor <em>desproporcional</em> ao estímulo ou à lesão aparente</li>
+          <li>Distribuição <strong>ampla</strong> — além do local da lesão original</li>
+          <li>Hipersensibilidade a múltiplos estímulos: luz, som, temperatura, pressão</li>
+          <li>Associação com <strong>fadiga, distúrbio de sono</strong> e disfunção cognitiva ("névoa mental")</li>
+          <li>Piora com estresse e fatores psicossociais</li>
+          <li>Resposta limitada a analgésicos anti-inflamatórios</li>
+        </ul>
+
+        <div class="key-box">
+          <div class="key-box-title">Q22/2024 · Q21/2025</div>
+          <p>Ambas as edições cobraram dor crônica musculoesquelética + sensibilização central. O padrão FGV: apresentar paciente com dor lombar + fatores psicossociais e pedir identificação dos mecanismos centrais e da abordagem adequada.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert-box">
+      <p><strong>Distrator FGV:</strong> Confundir dor crônica com lesão tecidual ativa. Na SC, a dor persiste mesmo após a cura tecidual — o SNC "aprende" a doer. A fisioterapia não busca curar a lesão (que não existe mais), mas <strong>modular o processamento central</strong> via exercício, educação em dor e manejo psicossocial.</p>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pf-logo">Extensivo ENARE <span>· by Residência Pro</span></div>
+    <div class="pf-right">3</div>
+  </div>
+</div>
+
+<!-- ========== PAGE 4 — BLOCO 2: MODELO BIOPSICOSSOCIAL ========== -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label">Modelo Biopsicossocial · Aula 20</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc-sm">
+    <div class="section-title">2. Modelo Biopsicossocial</div>
+
+    <div class="block-sub">Origem — Engel (1977)</div>
+    <p style="font-size:8pt;color:#333;line-height:1.45;margin-bottom:2.5mm;">Proposto como alternativa ao modelo biomédico (que considera apenas fatores biológicos), o modelo biopsicossocial reconhece que saúde e doença são determinadas pela interação de três dimensões — nenhuma isolada explica o quadro clínico completo.</p>
+
+    <div class="model-cols">
+      <div class="model-col">
+        <div class="model-col-title">Biológica</div>
+        <ul>
+          <li>Patologia estrutural e histológica</li>
+          <li>Inflamação, lesão tecidual</li>
+          <li>Genética, condicionamento físico</li>
+          <li>Comorbidades e medicamentos</li>
+        </ul>
+      </div>
+      <div class="model-col">
+        <div class="model-col-title">Psicológica</div>
+        <ul>
+          <li>Catastrofização da dor</li>
+          <li>Medo-evitação (kinesiofobia)</li>
+          <li>Baixa autoeficácia</li>
+          <li>Depressão, ansiedade, estresse</li>
+          <li>Crenças sobre a dor</li>
+        </ul>
+      </div>
+      <div class="model-col">
+        <div class="model-col-title">Social</div>
+        <ul>
+          <li>Suporte familiar e social</li>
+          <li>Condições de trabalho</li>
+          <li>Nível socioeconômico</li>
+          <li>Cultura e acesso à saúde</li>
+          <li>Determinantes sociais</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="two-col" style="margin-top:2mm;">
+      <div class="col">
+        <div class="block-sub">Yellow Flags — Fatores de Cronificação</div>
+        <div class="flags-grid">
+          <div class="flag-card">
+            <div class="flag-name">Catastrofização</div>
+            <p>Amplificação cognitiva da dor — "vai piorar sempre", "nunca vou melhorar"</p>
+          </div>
+          <div class="flag-card">
+            <div class="flag-name">Medo-evitação</div>
+            <p>Kinesiofobia — evitar movimento por medo de lesão; repouso excessivo piora a SC</p>
+          </div>
+          <div class="flag-card">
+            <div class="flag-name">Baixa autoeficácia</div>
+            <p>Crença de que não é capaz de lidar com a dor — prediz pior desfecho</p>
+          </div>
+          <div class="flag-card">
+            <div class="flag-name">Depressão/ansiedade</div>
+            <p>Comorbidades que amplificam a percepção de dor e reduzem adesão</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="block-sub">CIF e Determinantes Sociais</div>
+        <ul class="dot-list" style="margin-bottom:2.5mm;">
+          <li><strong>CIF</strong> é o instrumento que operacionaliza o modelo biopsicossocial: funções/estruturas + atividade + participação + <em>fatores contextuais</em> (ambientais e pessoais)</li>
+          <li>Q41/2025 — An: projeto intersetorial em comunidade com abordagem biopsicossocial e determinantes sociais de saúde</li>
+          <li><strong>Determinantes sociais</strong> (trabalho, renda, habitação) impactam diretamente a dor crônica — abordagem requer intersetorialidade</li>
+        </ul>
+        <div class="banca-box">
+          <div class="banca-box-title">Q54/2024 — Análise</div>
+          <p>FGV apresenta Maria com dor lombar e identifica fatores psicossociais (medo-evitação, catastrofização) como determinantes do quadro. A resposta correta reconhece esses fatores como <strong>yellow flags</strong> que exigem abordagem biopsicossocial.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pf-logo">Extensivo ENARE <span>· by Residência Pro</span></div>
+    <div class="pf-right">4</div>
+  </div>
+</div>
+
+<!-- ========== PAGE 5 — BLOCO 3: EXERCÍCIO E HANSENÍASE ========== -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label">Exercício e Hanseníase · Aula 20</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc-sm">
+    <div class="section-title">3. Exercício como Modulador da Dor · Hanseníase</div>
+
+    <div class="two-col">
+      <div class="col-wide">
+        <div class="block-sub">Analgesia Induzida pelo Exercício (AIE)</div>
+        <div class="mech-row">
+          <div class="mech-box">Exercício aeróbico ou resistido</div>
+          <div class="mech-arrow">→</div>
+          <div class="mech-result">Liberação de opioides endógenos (endorfinas, encefalinas)</div>
+        </div>
+        <div class="mech-row">
+          <div class="mech-box">Ativação vias inibitórias descendentes</div>
+          <div class="mech-arrow">→</div>
+          <div class="mech-result">↓ Transmissão nociceptiva no corno dorsal</div>
+        </div>
+        <div class="mech-row">
+          <div class="mech-box">↓ Sensibilização central</div>
+          <div class="mech-arrow">→</div>
+          <div class="mech-result">↑ Limiar de dor · ↓ Catastrofização · ↑ Autoeficácia</div>
+        </div>
+
+        <ul class="dot-list" style="margin-top:2mm;margin-bottom:3mm;">
+          <li>Exercício é a intervenção com <em>maior nível de evidência</em> para dor crônica musculoesquelética</li>
+          <li><strong>Kinesiofobia</strong> é o principal obstáculo — educação em neurociência da dor (PNE) precede o exercício</li>
+          <li>Q65/2024 — C: exercício terapêutico modula a dor crônica <em>no SNC</em> (não apenas perifericamente)</li>
+          <li>Modalidades: aeróbico moderado, resistido progressivo, ioga — todos têm efeito analgésico central</li>
+        </ul>
+      </div>
+
+      <div class="col-narrow">
+        <div class="block-sub">Dor em Hanseníase</div>
+        <ul class="dot-list" style="margin-bottom:2.5mm;">
+          <li><em>M. leprae</em> → dano progressivo de nervos periféricos → <strong>dor neuropática</strong></li>
+          <li>Pode ser: neurite aguda (inflamatória), dor crônica neuropática, dor pós-reação hanseníase</li>
+        </ul>
+
+        <div class="block-sub" style="margin-top:1.5mm;">Avaliação Multicomponentes (Q75/2024)</div>
+        <ul class="dot-list" style="margin-bottom:2.5mm;">
+          <li><strong>Sensitiva:</strong> monofilamentos de Semmes-Weinstein (espessura 0,05g–300g) — mapa de sensibilidade</li>
+          <li><strong>Intensidade:</strong> EVA ou NRS (0–10)</li>
+          <li><strong>Motor:</strong> goniometria + força muscular (MRC)</li>
+          <li><strong>Psicossocial:</strong> impacto na função, medo, estigma</li>
+        </ul>
+
+        <div class="key-box">
+          <div class="key-box-title">Fisioterapia na hanseníase</div>
+          <p>TENS para dor neuropática · Cuidados com a pele e prevenção de lesões por insensibilidade · Órteses para deformidades (garra ulnar, pé caído) · Educação para autocuidado e prevenção de incapacidades</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="banca-box" style="margin-top:2.5mm;">
+      <div class="banca-box-title">Ponto-chave FGV — Q65/2024</div>
+      <p>A FGV cobra que o mecanismo do exercício na dor crônica é <strong>central</strong> (modulação do SNC via sistemas inibitórios descendentes e neuroplasticidade), não apenas periférico (anti-inflamatório local). Resposta que menciona apenas efeitos periféricos do exercício está incompleta para dor crônica com SC.</p>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pf-logo">Extensivo ENARE <span>· by Residência Pro</span></div>
+    <div class="pf-right">5</div>
+  </div>
+</div>
+
+<!-- ========== PAGE 6 — QUESTÃO 1 (C) ========== -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label">Questão 1 · Aula 20</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc">
+    <div class="q-badge-row">
+      <span class="q-badge q-badge-nc">C — Compreensão</span>
+      <span class="q-badge q-badge-num">022 · ENARE 2024</span>
+      <span class="q-badge q-badge-tema">FT-BIOPS · Dor Crônica · Sensibilização Central</span>
+    </div>
+
+    <div class="q-stem">
+      Paciente do sexo feminino, 45 anos, professora, refere dor lombar há 14 meses, sem melhora com anti-inflamatórios e repouso. Apresenta dor desproporcional ao exame físico, hipersensibilidade ao toque na região lombar e adjacências, relato de dificuldade de concentração e sono não reparador. Não há alteração estrutural significativa na ressonância magnética. Com base no quadro descrito, o mecanismo fisiopatológico central que <strong>melhor explica</strong> a manutenção da dor é:
+    </div>
+
+    <div class="q-options">
+      <div class="q-opt">
+        <span class="q-opt-letter">A)</span>
+        <span class="q-opt-text">Inflamação tecidual periférica crônica com sensibilização dos nociceptores locais na região lombar, mantida por micro-lesões musculares repetitivas relacionadas à postura de trabalho.</span>
+      </div>
+      <div class="q-opt">
+        <span class="q-opt-letter">B)</span>
+        <span class="q-opt-text">Sensibilização central com amplificação do processamento nociceptivo no sistema nervoso central, caracterizada por hiperalgesia secundária, alodinia e sintomas associados como fadiga cognitiva e distúrbio de sono.</span>
+      </div>
+      <div class="q-opt">
+        <span class="q-opt-letter">C)</span>
+        <span class="q-opt-text">Compressão radicular crônica por espondilose lombar subclínica, não detectada pela ressonância magnética convencional mas confirmável por eletromiografia de superfície.</span>
+      </div>
+      <div class="q-opt">
+        <span class="q-opt-letter">D)</span>
+        <span class="q-opt-text">Simulação de sintomas motivada por afastamento laboral, uma vez que a ausência de correlação entre clínica e imagem é indicativa de fator não orgânico predominante.</span>
+      </div>
+    </div>
+
+    <div class="gabarito-box">
+      <div class="gabarito-title">Gabarito: B</div>
+      <p><span class="correct">B — VERDADEIRA:</span> O quadro descreve os marcadores clínicos clássicos da <strong>sensibilização central</strong>: dor desproporcional ao exame, hipersensibilidade além do local original (hiperalgesia secundária), alodinia ao toque, fadiga cognitiva e distúrbio de sono — tudo sem correlação estrutural significativa. É dor nociplástica mantida por amplificação central.</p>
+      <p class="wrong">A) Errada: A sensibilização periférica explica fases agudas; a ausência de lesão ativa e a hipersensibilidade generalizada indicam mecanismo central predominante.</p>
+      <p class="wrong">C) Errada: Compressão radicular produziria padrão dermatomal + alterações na EMG; não explicaria hipersensibilidade difusa, fadiga cognitiva e sono não reparador.</p>
+      <p class="wrong">D) Errada: Simulação é diagnóstico de exclusão; a SC tem base neurofisiológica comprovada — alodinia e hiperalgesia secundária são fenômenos reais, não fictícios.</p>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pf-logo">Extensivo ENARE <span>· by Residência Pro</span></div>
+    <div class="pf-right">6</div>
+  </div>
+</div>
+
+<!-- ========== PAGE 7 — QUESTÃO 2 (C) ========== -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label">Questão 2 · Aula 20</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc">
+    <div class="q-badge-row">
+      <span class="q-badge q-badge-nc">C — Compreensão</span>
+      <span class="q-badge q-badge-num">065 · ENARE 2024</span>
+      <span class="q-badge q-badge-tema">FT-BIOPS · Exercício Terapêutico · Modulação da Dor</span>
+    </div>
+
+    <div class="q-stem">
+      O exercício terapêutico é recomendado como intervenção de primeira linha no tratamento da dor crônica musculoesquelética. Seu efeito analgésico em pacientes com sensibilização central resulta, predominantemente, de mecanismo:
+    </div>
+
+    <div class="q-options">
+      <div class="q-opt">
+        <span class="q-opt-letter">A)</span>
+        <span class="q-opt-text">Periférico — redução da inflamação local por inibição de prostaglandinas e mediadores pró-inflamatórios no tecido muscular e articular afetado.</span>
+      </div>
+      <div class="q-opt">
+        <span class="q-opt-letter">B)</span>
+        <span class="q-opt-text">Estrutural — remodelação do tecido conjuntivo e fortalecimento muscular que reduzem a carga mecânica sobre estruturas dolorosas, eliminando o estímulo nociceptivo.</span>
+      </div>
+      <div class="q-opt">
+        <span class="q-opt-letter">C)</span>
+        <span class="q-opt-text">Central — ativação de sistemas inibitórios descendentes, liberação de opioides endógenos e modulação da neuroplasticidade no sistema nervoso central, reduzindo a amplificação nociceptiva.</span>
+      </div>
+      <div class="q-opt">
+        <span class="q-opt-letter">D)</span>
+        <span class="q-opt-text">Psicológico exclusivo — o exercício atua apenas por distração e melhora do humor, sem efeito neurofisiológico direto sobre os mecanismos de processamento da dor.</span>
+      </div>
+    </div>
+
+    <div class="gabarito-box">
+      <div class="gabarito-title">Gabarito: C</div>
+      <p><span class="correct">C — VERDADEIRA:</span> Na dor crônica com sensibilização central, o mecanismo predominante da analgesia induzida pelo exercício (AIE) é <strong>central</strong>: ativação de sistemas inibitórios descendentes (serotoninérgico, noradrenérgico, opioide endógeno) que suprimem a transmissão nociceptiva no corno dorsal, além de promover neuroplasticidade adaptativa e ↓ wind-up espinhal.</p>
+      <p class="wrong">A) Errada: O mecanismo periférico (anti-inflamatório) é relevante em dor aguda nociceptiva, mas insuficiente para explicar o efeito do exercício na SC, onde não há lesão ativa.</p>
+      <p class="wrong">B) Errada: A remodelação estrutural explica o benefício biomecânico, mas não a modulação da SC — pacientes com SC não têm necessariamente lesão estrutural que justifique esse mecanismo.</p>
+      <p class="wrong">D) Errada: O efeito psicológico (humor, autoeficácia) é real, mas o exercício tem mecanismo neurofisiológico direto documentado — liberação de opioides endógenos e ativação de vias inibitórias é mensurável.</p>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pf-logo">Extensivo ENARE <span>· by Residência Pro</span></div>
+    <div class="pf-right">7</div>
+  </div>
+</div>
+
+<!-- ========== PAGE 8 — QUESTÃO 3 — ÂNCORA (An) ========== -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label">Questão 3 · Âncora · Aula 20</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc">
+    <div class="q-badge-row">
+      <span class="q-badge q-badge-nc">An — Análise</span>
+      <span class="q-badge q-badge-num">021 · ENARE 2025</span>
+      <span class="q-badge q-badge-tema">FT-BIOPS · Dor Lombar Crônica · Biopsicossocial</span>
+    </div>
+
+    <div class="q-stem">
+      Carlos, 52 anos, operário, apresenta dor lombar há 18 meses. Mantém afastamento do trabalho há 6 meses. Relata medo intenso de movimentar a coluna ("se eu me mexer, vou piorar tudo"), crença de que a dor indica lesão grave, evita qualquer atividade física e apresenta humor deprimido. A ressonância magnética revela protrusão discal L4-L5 sem compressão radicular. Analisando o caso segundo o modelo biopsicossocial, os fatores que <strong>mais contribuem</strong> para a cronificação e o afastamento prolongado de Carlos são:
+    </div>
+
+    <div class="q-options">
+      <div class="q-opt">
+        <span class="q-opt-letter">A)</span>
+        <span class="q-opt-text">A protrusão discal L4-L5 e o afastamento laboral prolongado, que impedem a recuperação estrutural e justificam a manutenção do repouso até resolução da alteração anatômica.</span>
+      </div>
+      <div class="q-opt">
+        <span class="q-opt-letter">B)</span>
+        <span class="q-opt-text">A condição socioeconômica de operário e o vínculo empregatício ameaçado, que motivam a manutenção consciente dos sintomas para preservar o benefício previdenciário.</span>
+      </div>
+      <div class="q-opt">
+        <span class="q-opt-letter">C)</span>
+        <span class="q-opt-text">A kinesiofobia, a catastrofização, as crenças de evitação-medo e o humor deprimido — yellow flags psicossociais que amplificam a dor, perpetuam o repouso e cronificam o quadro independentemente da alteração estrutural.</span>
+      </div>
+      <div class="q-opt">
+        <span class="q-opt-letter">D)</span>
+        <span class="q-opt-text">A ausência de compressão radicular confirmada, que impossibilita o tratamento cirúrgico e indica que o caso não tem solução terapêutica eficaz disponível na fisioterapia convencional.</span>
+      </div>
+    </div>
+
+    <div class="gabarito-box">
+      <div class="gabarito-title">Gabarito: C</div>
+      <p><span class="correct">C — VERDADEIRA:</span> O quadro exibe os <strong>yellow flags</strong> clássicos: kinesiofobia ("vou piorar tudo" = medo-evitação), catastrofização ("lesão grave"), comportamento de evitação (repouso total) e humor deprimido. A protrusão L4-L5 sem compressão radicular é achado comum e não explica a intensidade funcional do quadro. São os fatores psicossociais — dimensão psicológica do modelo biopsicossocial — que cronificam.</p>
+      <p class="wrong">A) Errada: Protrusão discal sem compressão radicular é achado inespecífico, prevalente em assintomáticos. Repouso prolongado piora a SC e reforça o comportamento de evitação — é contraindicado.</p>
+      <p class="wrong">B) Errada: Atribuir motivação secundária sem evidência é inadequado clinicamente; mesmo que houvesse componente social, a kinesiofobia e catastrofização são mecanismos reais que independem da motivação consciente.</p>
+      <p class="wrong">D) Errada: Ausência de indicação cirúrgica é a situação ideal para fisioterapia — exercício, PNE e abordagem biopsicossocial têm alta eficácia em dor lombar crônica inespecífica com SC.</p>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pf-logo">Extensivo ENARE <span>· by Residência Pro</span></div>
+    <div class="pf-right">8</div>
+  </div>
+</div>
+
+<!-- ========== PAGE 9 — RECUPERAÇÃO ATIVA ========== -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label">Recuperação Ativa · Aula 20</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc-sm">
+    <div class="section-title">Recuperação Ativa — Fixação</div>
+    <p style="font-size:8.5pt;color:#555;margin-bottom:4mm;">Classifique cada afirmativa como <strong>V (Verdadeiro)</strong> ou <strong>F (Falso)</strong> sobre dor crônica, sensibilização central e modelo biopsicossocial:</p>
+
+    <table class="vof-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Afirmativa</th>
+          <th class="center">V/F</th>
+          <th>Justificativa</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Alodinia é a resposta exagerada a estímulos dolorosos, enquanto hiperalgesia é a dor provocada por estímulos normalmente não dolorosos.</td>
+          <td class="verdict f">F</td>
+          <td>Invertido: Alodinia = dor por estímulo não doloroso; Hiperalgesia = resposta exagerada a estímulo doloroso. (Q22/2024)</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>O exercício terapêutico modula a dor crônica predominantemente por mecanismo central — ativação de sistemas inibitórios descendentes e opioides endógenos.</td>
+          <td class="verdict v">V</td>
+          <td>Analgesia induzida pelo exercício (AIE) — mecanismo central predominante na SC. (Q65/2024)</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Catastrofização e kinesiofobia são fatores psicossociais (yellow flags) que contribuem para a cronificação da dor lombar.</td>
+          <td class="verdict v">V</td>
+          <td>Yellow flags = dimensão psicológica do modelo biopsicossocial; predizem cronificação e pior prognóstico. (Q54/2024, Q21/2025)</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Na hanseníase, a avaliação da dor deve incluir apenas a intensidade por EVA, sem necessidade de avaliação sensitiva ou motora complementar.</td>
+          <td class="verdict f">F</td>
+          <td>Avaliação multicomponentes: EVA + monofilamentos (sensitivo) + goniometria/força (motor) + impacto funcional. (Q75/2024)</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>A Classificação Internacional de Funcionalidade (CIF) operacionaliza o modelo biopsicossocial ao incluir fatores contextuais além das funções e estruturas.</td>
+          <td class="verdict v">V</td>
+          <td>CIF integra: funções/estruturas + atividade + participação + fatores contextuais (ambientais e pessoais). (Q41/2025)</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>Repouso prolongado é a conduta indicada para pacientes com dor lombar crônica e sensibilização central.</td>
+          <td class="verdict f">F</td>
+          <td>Repouso reforça kinesiofobia e perpetua a SC. Exercício progressivo + PNE é a abordagem de primeira linha. (Q21/2025)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="banca-box" style="margin-top:4mm;">
+      <div class="banca-box-title">Ponto-âncora para o dia da prova</div>
+      <p>FT-BIOPS = dor crônica + modelo biopsicossocial. A FGV sempre apresenta um paciente com yellow flags (catastrofização, kinesiofobia) e pergunta: por que a dor persiste? (SC) e o que fazer? (exercício + PNE + abordagem psicossocial). Repouso e foco exclusivo em estrutura = distrator.</p>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pf-logo">Extensivo ENARE <span>· by Residência Pro</span></div>
+    <div class="pf-right">9</div>
+  </div>
+</div>
+
+<!-- ========== PAGE 10 — REFERÊNCIAS ========== -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label">Referências · Aula 20</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc">
+    <div class="section-title">Referências — Bloco B6 · Aula 20</div>
+
+    <div class="ref-list">
+      <div class="ref-item">WOOLF, C.J. Central sensitization: implications for the diagnosis and treatment of pain. <em>Pain</em>, v. 152, n. 3 (Suppl), p. S2–S15, 2011.</div>
+      <div class="ref-item">ENGEL, G.L. The need for a new medical model: a challenge for biomedicine. <em>Science</em>, v. 196, n. 4286, p. 129–136, 1977.</div>
+      <div class="ref-item">TREEDE, R.D. et al. Chronic pain as a symptom or a disease: the IASP Classification of Chronic Pain for the International Classification of Diseases (ICD-11). <em>Pain</em>, v. 160, n. 1, p. 19–27, 2019.</div>
+      <div class="ref-item">WADDELL, G. et al. A Fear-Avoidance Beliefs Questionnaire (FABQ) and the role of fear-avoidance beliefs in chronic low back pain and disability. <em>Pain</em>, v. 52, p. 157–168, 1993.</div>
+      <div class="ref-item">LOUW, A. et al. The efficacy of pain neuroscience education on musculoskeletal pain: a systematic review of the literature. <em>Physiotherapy Theory and Practice</em>, v. 27, n. 5, p. 354–382, 2011.</div>
+      <div class="ref-item">SLUKA, K.A.; FREY-LAW, L.; HOEGER BEMENT, M. Exercise-induced pain and analgesia? Underlying mechanisms and clinical translation. <em>Pain</em>, v. 159, n. Suppl 1, p. S91–S97, 2018.</div>
+      <div class="ref-item">BRASIL. Ministério da Saúde. <em>Guia de Vigilância em Saúde</em>: Hanseníase. Brasília: Ministério da Saúde, 2022.</div>
+      <div class="ref-item">ORGANIZAÇÃO MUNDIAL DE SAÚDE. <em>Classificação Internacional de Funcionalidade, Incapacidade e Saúde (CIF)</em>. Genebra: OMS, 2001.</div>
+    </div>
+
+    <div class="notes-box">
+      <p>Espaço para anotações</p>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pf-logo">Extensivo ENARE <span>· by Residência Pro</span></div>
+    <div class="pf-right">10</div>
+  </div>
+</div>
+
+</body>
+</html>

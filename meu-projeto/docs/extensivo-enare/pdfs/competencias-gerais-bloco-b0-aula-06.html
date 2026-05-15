@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Competências Gerais · Bloco B0 · Aula 06 — Extensivo ENARE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Bricolage+Grotesque:wght@400;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --creme:          #F6F4ED;
+      --verde-lima:     #C6D834;
+      --verde-floresta: #1F5C23;
+      --teal:           #0D8A8D;
+      --preto:          #070707;
+      --cinza:          #9E9B94;
+      --cinza-borda:    #DDD9D1;
+      --creme-escuro:   #EDEAE2;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #CCC;
+      font-family: 'Bricolage Grotesque', sans-serif;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    @page { size: A4; margin: 0; }
+    .page {
+      width: 210mm;
+      height: 297mm;
+      position: relative;
+      overflow: hidden;
+      page-break-after: always;
+      background: var(--creme);
+      display: flex;
+      flex-direction: column;
+    }
+    @media screen {
+      .page { margin: 24px auto; box-shadow: 0 4px 32px rgba(0,0,0,0.18); }
+    }
+    .page-header {
+      height: 14mm;
+      background: var(--creme);
+      border-bottom: 2px solid var(--teal);
+      display: flex;
+      align-items: center;
+      padding: 0 18mm;
+      flex-shrink: 0;
+    }
+    .page-header-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 8pt;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--cinza);
+    }
+    .page-header-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 7.5pt;
+      font-weight: 300;
+      color: var(--cinza);
+      margin-left: auto;
+    }
+    .page-footer {
+      height: 11mm;
+      border-top: 0.5px solid var(--teal);
+      display: flex;
+      align-items: center;
+      padding: 0 18mm;
+      flex-shrink: 0;
+    }
+    .page-footer-brand {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 7pt;
+      font-weight: 300;
+      color: var(--cinza);
+    }
+    .page-footer-brand span { color: var(--teal); font-weight: 400; }
+    .page-footer-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 9pt;
+      font-weight: 600;
+      color: var(--cinza);
+      margin-left: auto;
+    }
+    .page-body { flex: 1; padding: 10mm 18mm 8mm; overflow: hidden; }
+    .h1 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 22pt;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--verde-floresta);
+      letter-spacing: 0.5px;
+      line-height: 1.05;
+      margin-bottom: 7mm;
+    }
+    .h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 16pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--verde-floresta);
+      letter-spacing: 0.5px;
+      margin-bottom: 4mm;
+      margin-top: 6mm;
+    }
+    .h2:first-child { margin-top: 0; }
+    .h3 {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 11pt;
+      font-weight: 600;
+      color: var(--preto);
+      margin-bottom: 2mm;
+      margin-top: 4mm;
+    }
+    p { font-size: 10.5pt; color: var(--preto); line-height: 1.55; margin-bottom: 3mm; }
+    .rule { border: none; border-top: 1px solid var(--cinza-borda); margin: 4mm 0; }
+    .box { border-radius: 6px; padding: 4mm 5mm; margin: 4mm 0; }
+    .box-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 9pt;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 1.5mm;
+      display: block;
+    }
+    .box-body { font-size: 10pt; line-height: 1.5; }
+    .box-pega  { background: var(--verde-lima); color: var(--verde-floresta); }
+    .box-pega .box-title { color: var(--verde-floresta); }
+    .box-dica  { background: var(--teal); color: var(--creme); }
+    .box-dica .box-title { color: var(--creme); }
+    .box-conceito { background: var(--verde-floresta); color: var(--creme); }
+    .box-conceito .box-title { color: var(--creme); }
+    table { width: 100%; border-collapse: collapse; margin: 3mm 0; font-size: 9.5pt; }
+    thead tr { background: var(--verde-floresta); color: var(--creme); }
+    thead th {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 3mm 4mm;
+      text-align: left;
+      font-size: 9pt;
+    }
+    tbody tr:nth-child(odd)  { background: var(--creme); }
+    tbody tr:nth-child(even) { background: var(--creme-escuro); }
+    tbody td { padding: 2.5mm 4mm; border-bottom: 0.5px solid var(--cinza-borda); line-height: 1.4; color: var(--preto); }
+    td.highlight { font-weight: 600; color: var(--verde-floresta); }
+    .lista { list-style: none; margin: 2mm 0 3mm; }
+    .lista li {
+      font-size: 10.5pt;
+      line-height: 1.55;
+      color: var(--preto);
+      padding-left: 5mm;
+      margin-bottom: 2mm;
+      position: relative;
+    }
+    .lista li::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 5px;
+      width: 5px; height: 5px;
+      background: var(--verde-lima);
+      border-radius: 50%;
+    }
+    .objective-item { display: flex; gap: 4mm; margin-bottom: 4mm; align-items: flex-start; }
+    .objective-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 20pt;
+      color: var(--verde-lima);
+      line-height: 1;
+      flex-shrink: 0;
+      width: 8mm;
+    }
+    .objective-text { font-size: 11pt; font-weight: 600; color: var(--preto); line-height: 1.4; padding-top: 1mm; }
+    .prereq-card {
+      background: var(--creme-escuro);
+      border-left: 4px solid var(--teal);
+      border-radius: 0 6px 6px 0;
+      padding: 3.5mm 5mm;
+      margin-top: 5mm;
+    }
+    .prereq-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 8pt;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 1mm;
+    }
+    .prereq-text { font-size: 10pt; color: var(--preto); line-height: 1.45; }
+    .seq-grid { display: flex; gap: 3mm; margin: 3mm 0; }
+    .seq-step {
+      flex: 1;
+      background: var(--creme-escuro);
+      border-top: 3px solid var(--verde-floresta);
+      border-radius: 0 0 6px 6px;
+      padding: 3mm 3.5mm;
+    }
+    .seq-step.active { border-top-color: var(--verde-lima); background: var(--verde-floresta); }
+    .seq-step.done { border-top-color: var(--teal); background: var(--creme-escuro); opacity: 0.7; }
+    .seq-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 14pt; color: var(--verde-lima); line-height: 1; }
+    .seq-step:not(.active) .seq-num { color: var(--verde-floresta); }
+    .seq-name { font-size: 8pt; font-weight: 600; color: var(--creme); margin-top: 1mm; line-height: 1.3; }
+    .seq-step:not(.active) .seq-name { color: var(--preto); }
+    .seq-desc { font-size: 7pt; color: rgba(246,244,237,0.75); margin-top: 0.5mm; line-height: 1.3; }
+    .seq-step:not(.active) .seq-desc { color: var(--cinza); }
+    .question-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 9pt;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 2mm;
+    }
+    .question-stem {
+      font-size: 10.5pt;
+      line-height: 1.6;
+      color: var(--preto);
+      background: var(--creme-escuro);
+      border-radius: 6px;
+      padding: 4mm 5mm;
+      margin-bottom: 4mm;
+    }
+    .question-stem strong { font-weight: 600; }
+    .alternatives { margin-bottom: 5mm; }
+    .alt { display: flex; gap: 3mm; padding: 2mm 0; border-bottom: 0.5px solid var(--cinza-borda); align-items: flex-start; }
+    .alt:last-child { border-bottom: none; }
+    .alt-letter {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 11pt;
+      color: var(--cinza);
+      flex-shrink: 0;
+      width: 5mm;
+      line-height: 1.4;
+    }
+    .alt.correct .alt-letter { color: var(--verde-floresta); }
+    .alt-text { font-size: 10pt; color: var(--preto); line-height: 1.45; }
+    .alt.correct .alt-text { color: var(--verde-floresta); font-weight: 600; }
+    .correct-badge {
+      display: inline-block;
+      background: var(--verde-lima);
+      color: var(--verde-floresta);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 7pt;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 1px 5px;
+      border-radius: 3px;
+      margin-left: 2mm;
+      vertical-align: middle;
+    }
+    .gabarito-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 10pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--verde-floresta);
+      border-top: 2px solid var(--verde-floresta);
+      padding-top: 3mm;
+      margin-top: 2mm;
+      margin-bottom: 2mm;
+    }
+    .gabarito-body { font-size: 9.5pt; line-height: 1.55; color: var(--preto); }
+    .gabarito-body strong { color: var(--verde-floresta); font-weight: 600; }
+    .gabarito-alt { margin-bottom: 2mm; padding-left: 4mm; border-left: 2px solid var(--cinza-borda); }
+    .gabarito-alt.correta { border-left-color: var(--verde-lima); }
+    .gabarito-alt strong { display: block; margin-bottom: 0.5mm; }
+    .ref-list { list-style: none; margin-top: 2mm; }
+    .ref-list li {
+      font-size: 9pt;
+      line-height: 1.55;
+      color: var(--preto);
+      margin-bottom: 3mm;
+      padding-left: 6mm;
+      text-indent: -6mm;
+    }
+    .annotation-area { margin-top: 5mm; border-top: 1px solid var(--cinza-borda); padding-top: 3mm; }
+    .annotation-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 8pt;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--cinza);
+      margin-bottom: 3mm;
+    }
+    .annotation-lines { display: flex; flex-direction: column; gap: 7mm; }
+    .annotation-line { border-bottom: 0.5px solid var(--cinza-borda); height: 0; }
+    .cover { background: var(--verde-floresta); display: flex; flex-direction: column; padding: 0; }
+    .cover-inner { flex: 1; display: flex; flex-direction: column; padding: 14mm 18mm 0; }
+    .cover-logo { margin-bottom: auto; }
+    .cover-meta { font-family: 'Space Grotesk', sans-serif; font-size: 8pt; font-weight: 400; letter-spacing: 3px; text-transform: uppercase; color: rgba(198,216,52,0.8); margin-bottom: 5mm; }
+    .cover-block-label { font-family: 'Barlow Condensed', sans-serif; font-size: 11pt; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: rgba(246,244,237,0.55); margin-bottom: 4mm; }
+    .cover-title { font-family: 'Barlow Condensed', sans-serif; font-size: 32pt; font-weight: 800; text-transform: uppercase; color: var(--creme); line-height: 1; margin-bottom: 3mm; }
+    .cover-subtitle { font-family: 'Barlow Condensed', sans-serif; font-size: 20pt; font-weight: 700; text-transform: uppercase; color: var(--verde-lima); line-height: 1.1; margin-bottom: 10mm; }
+    .cover-deco { font-family: 'Barlow Condensed', sans-serif; font-size: 180pt; font-weight: 800; color: rgba(246,244,237,0.05); line-height: 0.85; text-align: right; margin-right: -8mm; margin-bottom: -10mm; letter-spacing: -4px; flex-shrink: 0; }
+    .cover-bottom-strip { height: 4mm; background: var(--verde-lima); flex-shrink: 0; }
+    .recall-section { margin-bottom: 5mm; }
+    .recall-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--verde-floresta);
+      border-bottom: 2px solid var(--verde-floresta);
+      padding-bottom: 2mm;
+      margin-bottom: 3mm;
+    }
+    .sintese-item { display: flex; gap: 3mm; margin-bottom: 3mm; align-items: flex-start; }
+    .sintese-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 16pt;
+      color: var(--verde-lima);
+      line-height: 1;
+      flex-shrink: 0;
+      width: 7mm;
+    }
+    .sintese-text { font-size: 10pt; color: var(--preto); line-height: 1.5; padding-top: 1mm; }
+    .recall-q {
+      font-size: 10pt;
+      color: var(--preto);
+      line-height: 1.5;
+      padding: 2mm 0 2mm 4mm;
+      border-left: 2px solid var(--cinza-borda);
+      margin-bottom: 2.5mm;
+    }
+    .recall-q-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 9pt;
+      color: var(--teal);
+      display: inline;
+      margin-right: 2mm;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PÁGINA 1 — CAPA
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="page cover">
+    <div class="cover-inner">
+      <div class="cover-logo">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210 90" width="210" height="90">
+          <rect x="0" y="8" width="3" height="74" rx="1.5" fill="#C6D834"/>
+          <text x="12" y="26" font-family="'Playfair Display',Georgia,serif" font-style="italic" font-size="11" fill="#C6D834">extensivo</text>
+          <text x="11" y="70" font-family="'Barlow Condensed','Arial Narrow',sans-serif" font-weight="800" font-size="52" fill="#F6F4ED">ENARE</text>
+          <text x="12" y="88" font-family="'Space Grotesk','Helvetica Neue',sans-serif" font-weight="300" font-size="9" fill="rgba(246,244,237,0.5)">by Residência PRO</text>
+        </svg>
+      </div>
+      <div class="cover-meta">Competências Gerais · Módulo 3</div>
+      <div class="cover-block-label">Bloco B0 · Aula 06</div>
+      <div class="cover-title">APS — Parte 1:<br>Atributos e<br>Equipe de Saúde</div>
+      <div class="cover-subtitle">Starfield, ESF e<br>Territorialização</div>
+    </div>
+    <div class="cover-deco">06</div>
+    <div class="cover-bottom-strip"></div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PÁGINA 2 — OBJETIVOS
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="page">
+    <div class="page-header">
+      <span class="page-header-label">Competências Gerais · Bloco B0 · Aula 06</span>
+      <span class="page-header-title">Extensivo ENARE</span>
+    </div>
+
+    <div class="page-body">
+      <div class="h1">O que você vai aprender</div>
+
+      <div class="objective-item">
+        <div class="objective-num">01</div>
+        <div class="objective-text">Identificar os 4 atributos essenciais da APS segundo Starfield — primeiro contato, longitudinalidade, integralidade e coordenação — e distinguir cada um em cenários práticos de caso clínico</div>
+      </div>
+      <div class="objective-item">
+        <div class="objective-num">02</div>
+        <div class="objective-text">Descrever a composição mínima da Equipe de Saúde da Família (ESF), a lógica da territorialização e o conceito de adscrição — e reconhecer quando a PNAB está sendo cumprida ou violada</div>
+      </div>
+      <div class="objective-item">
+        <div class="objective-num">03</div>
+        <div class="objective-text">Aplicar o raciocínio de nível An: identificar qual esfera de governo viola sua responsabilidade quando prioriza o repasse de APS por critério de densidade demográfica, diferente do que a PNAB estabelece</div>
+      </div>
+
+      <hr class="rule" style="margin-top: 6mm;">
+
+      <div class="prereq-card">
+        <div class="prereq-label">Pré-requisito</div>
+        <div class="prereq-text">
+          <strong>Aulas 01–05:</strong> Fundamentos do SUS, legislação (Lei 8.080, Lei 8.142, Decreto 7.508) e Redes de Atenção à Saúde. A APS como centro coordenador da RAS, vista na Aula 04, é o contexto necessário para entender os atributos desta aula.
+        </div>
+      </div>
+
+      <div class="seq-grid" style="margin-top: 5mm;">
+        <div class="seq-step done">
+          <div class="seq-num">A01–05</div>
+          <div class="seq-name">Concluídas</div>
+          <div class="seq-desc">Base histórica, legal e RAS</div>
+        </div>
+        <div class="seq-step active">
+          <div class="seq-num">A06</div>
+          <div class="seq-name">APS — Parte 1</div>
+          <div class="seq-desc">Você está aqui</div>
+        </div>
+        <div class="seq-step">
+          <div class="seq-num">A07</div>
+          <div class="seq-name">APS — Parte 2</div>
+          <div class="seq-desc">PNAB, NASF-AB, PNSPI</div>
+        </div>
+        <div class="seq-step">
+          <div class="seq-num">A08–12</div>
+          <div class="seq-name">NR32 → Revisão</div>
+          <div class="seq-desc">5 aulas finais do bloco</div>
+        </div>
+      </div>
+
+      <p style="margin-top: 4mm; font-size: 9pt; color: var(--cinza);">
+        <strong style="color: var(--preto);">Duração estimada:</strong> 40 min &nbsp;·&nbsp;
+        <strong style="color: var(--preto);">Questões de fixação:</strong> 3 &nbsp;·&nbsp;
+        <strong style="color: var(--preto);">Aula:</strong> 6 de 12 do Bloco
+      </p>
+    </div>
+
+    <div class="page-footer">
+      <span class="page-footer-brand"><span>Extensivo ENARE</span> &nbsp;·&nbsp; by Residência PRO</span>
+      <span class="page-footer-num">02</span>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PÁGINA 3 — ATRIBUTOS DA APS (STARFIELD)
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="page">
+    <div class="page-header">
+      <span class="page-header-label">Competências Gerais · Bloco B0 · Aula 06</span>
+      <span class="page-header-title">Extensivo ENARE</span>
+    </div>
+
+    <div class="page-body">
+      <div class="h2">Os Atributos da APS segundo Starfield</div>
+
+      <p>Barbara Starfield identificou os atributos que definem uma Atenção Primária de qualidade. A PNAB incorporou esse modelo: qualquer questão sobre "atributo da APS" ou "atributo da Atenção Básica" remete a um dos elementos de Starfield.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th style="width:28%">Atributo</th>
+            <th>O que significa na prática</th>
+            <th style="width:22%">Palavra-chave</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="highlight">Primeiro contato</td>
+            <td>A UBS é a porta de entrada preferencial para toda necessidade de saúde</td>
+            <td>Porta de entrada · acesso</td>
+          </tr>
+          <tr>
+            <td class="highlight">Longitudinalidade</td>
+            <td>Acompanhamento do mesmo paciente pela mesma equipe ao longo do tempo, independente do motivo da consulta</td>
+            <td>Vínculo · continuidade</td>
+          </tr>
+          <tr>
+            <td class="highlight">Integralidade</td>
+            <td>Oferta articulada de ações de promoção, proteção e recuperação para o indivíduo e a família</td>
+            <td>Cuidado completo</td>
+          </tr>
+          <tr>
+            <td class="highlight">Coordenação</td>
+            <td>APS organiza o cuidado em todos os pontos da rede (referência, contrarreferência, comunicação)</td>
+            <td>Referência · encaminhamento</td>
+          </tr>
+          <tr>
+            <td>Orientação familiar</td>
+            <td>Considera o contexto da família no cuidado individual</td>
+            <td>Família como unidade</td>
+          </tr>
+          <tr>
+            <td>Orientação comunitária</td>
+            <td>Conhece e responde às necessidades da comunidade adscrita</td>
+            <td>Território · comunidade</td>
+          </tr>
+          <tr>
+            <td>Competência cultural</td>
+            <td>Respeita diversidade social, cultural e linguística da população</td>
+            <td>Diversidade</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="box box-pega" style="margin-top: 3mm;">
+        <span class="box-title">⚠️ Pega no ENARE — Longitudinalidade ≠ Integralidade</span>
+        <span class="box-body"><strong>Longitudinalidade</strong> = mesmo paciente + mesma equipe + tempo longo (vínculo). <strong>Integralidade</strong> = todas as ações de saúde cobertas (prevenção, promoção, recuperação). Em questões de caso, integralidade aparece como distrator clássico para longitudinalidade — e vice-versa. Identifique a palavra-chave: "mesma equipe ao longo do tempo" = longitudinalidade.</span>
+      </div>
+
+      <div class="box box-dica" style="margin-top: 3mm;">
+        <span class="box-title">💡 Longitudinalidade — Como reconhecer na questão</span>
+        <span class="box-body">Cenário típico: uma equipe acompanha o mesmo paciente do pré-natal, puerpério e infância dos filhos ao longo de anos. A resposta correta nomeia longitudinalidade — não continuidade (esse não é o termo técnico da PNAB).</span>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span class="page-footer-brand"><span>Extensivo ENARE</span> &nbsp;·&nbsp; by Residência PRO</span>
+      <span class="page-footer-num">03</span>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PÁGINA 4 — ESF: COMPOSIÇÃO E TERRITORIALIZAÇÃO
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="page">
+    <div class="page-header">
+      <span class="page-header-label">Competências Gerais · Bloco B0 · Aula 06</span>
+      <span class="page-header-title">Extensivo ENARE</span>
+    </div>
+
+    <div class="page-body">
+      <div class="h2">ESF — Composição e Territorialização</div>
+
+      <div class="h3">Composição mínima da Equipe de Saúde da Família</div>
+      <table>
+        <thead>
+          <tr>
+            <th>Profissional</th>
+            <th>Carga horária</th>
+            <th>Observação</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="highlight">Médico</td>
+            <td>40h/semana</td>
+            <td>Pode ser reduzida para 20h com ajuste proporcional de adscrição</td>
+          </tr>
+          <tr>
+            <td class="highlight">Enfermeiro</td>
+            <td>40h/semana</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td class="highlight">Técnico ou Auxiliar de Enfermagem</td>
+            <td>40h/semana</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td class="highlight">Agente Comunitário de Saúde (ACS)</td>
+            <td>40h/semana</td>
+            <td>Mínimo 1 por microárea; máximo 750 pessoas por ACS</td>
+          </tr>
+          <tr>
+            <td>Equipe de Saúde Bucal (ESB)</td>
+            <td>40h/semana</td>
+            <td><strong>Não obrigatória</strong> — componente adicional da ESF</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="box box-pega" style="margin-top: 3mm;">
+        <span class="box-title">⚠️ Pega no ENARE — Saúde Bucal</span>
+        <span class="box-body">A equipe de Saúde Bucal (cirurgião-dentista + auxiliar/técnico) é uma <strong>adição opcional</strong> à ESF — não compõe a equipe mínima obrigatória. Em questões de afirmativa V/F, "a composição mínima inclui saúde bucal" é <strong>FALSA</strong>.</span>
+      </div>
+
+      <div class="h3" style="margin-top: 4mm;">Territorialização e Adscrição</div>
+      <ul class="lista">
+        <li><strong>Adscrição:</strong> cada equipe ESF é responsável por uma população definida de 2.000 a 3.500 pessoas (máximo: 4.000 em áreas sem vulnerabilidade)</li>
+        <li><strong>Microárea:</strong> subdivisão do território de cada ACS — máximo 750 pessoas por ACS</li>
+        <li><strong>Território:</strong> base geográfica da equipe; o conhecimento do território é pré-condição para orientação comunitária e primeiro contato efetivo</li>
+        <li><strong>A APS não é periférica na RAS</strong> — é o centro coordenador. Encaminhamentos não significam perda do vínculo; a ESF mantém a longitudinalidade mesmo quando o paciente usa outros pontos da rede</li>
+      </ul>
+
+      <div class="box box-conceito">
+        <span class="box-title">📌 Adscrição × Universalidade</span>
+        <span class="box-body">A adscrição não viola a universalidade. O cadastramento em uma ESF organiza o acesso sem restringi-lo: qualquer pessoa pode ser atendida em urgência em qualquer UBS, independente de estar adscrira àquele território.</span>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span class="page-footer-brand"><span>Extensivo ENARE</span> &nbsp;·&nbsp; by Residência PRO</span>
+      <span class="page-footer-num">04</span>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PÁGINA 5 — RESPONSABILIDADES DAS ESFERAS NA APS
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="page">
+    <div class="page-header">
+      <span class="page-header-label">Competências Gerais · Bloco B0 · Aula 06</span>
+      <span class="page-header-title">Extensivo ENARE</span>
+    </div>
+
+    <div class="page-body">
+      <div class="h2">Responsabilidades das Esferas na APS</div>
+
+      <p>A PNAB distribui responsabilidades entre União, Estados e Municípios. Questões de nível An apresentam um gestor que toma uma decisão errada — o candidato precisa identificar qual esfera errou e por quê.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th style="width:22%">Esfera</th>
+            <th>Responsabilidade central na APS</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="highlight">União (federal)</td>
+            <td>Financiar e transferir recursos para estados e municípios; formular a PNAB; normatizar; apoiar técnica e financeiramente — <strong>sem discriminação por densidade demográfica</strong></td>
+          </tr>
+          <tr>
+            <td class="highlight">Estado</td>
+            <td>Apoio técnico e financeiro aos municípios; coordenação regional; habilitação de equipes; monitoramento</td>
+          </tr>
+          <tr>
+            <td class="highlight">Município</td>
+            <td>Execução direta da APS; contratação das equipes ESF; gestão das UBS; acompanhamento das famílias adscritas</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="box box-conceito" style="margin-top: 3mm;">
+        <span class="box-title">📌 Análise de Caso — Repasse por Densidade Demográfica</span>
+        <span class="box-body">O enunciado descreve um <strong>gestor federal</strong> que decide priorizar o repasse de recursos para a APS com base na <strong>densidade demográfica</strong> dos municípios — beneficiando cidades mais populosas. A questão é: <strong style="color:var(--verde-lima);">qual esfera violou sua responsabilidade?</strong><br><br>
+        <strong style="color:var(--verde-lima);">Resposta:</strong> A União. A PNAB determina que o repasse federal deve considerar critérios de equidade (vulnerabilidade, porte do município) — e não apenas densidade. Usar a densidade como critério exclusivo premia o que já é maior, violando a responsabilidade federal de reduzir desigualdades.</span>
+      </div>
+
+      <div class="box box-pega">
+        <span class="box-title">⚠️ Por que não é o Município?</span>
+        <span class="box-body">O gestor descrito no caso é <strong>federal</strong> — quem define o critério do repasse federal é a União, não o município. O município recebe o que a União transfere. A violação está em <strong>quem decide os critérios de repasse</strong>, não em quem gasta os recursos.</span>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span class="page-footer-brand"><span>Extensivo ENARE</span> &nbsp;·&nbsp; by Residência PRO</span>
+      <span class="page-footer-num">05</span>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PÁGINA 6 — FIXAÇÃO · QUESTÃO 01
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="page">
+    <div class="page-header">
+      <span class="page-header-label">Fixação — Aula 06</span>
+      <span class="page-header-title">Extensivo ENARE · Competências Gerais</span>
+    </div>
+
+    <div class="page-body">
+      <div class="h1" style="font-size:14pt; margin-bottom:5mm;">Questões Comentadas</div>
+
+      <div class="question-num">Questão 01 de 03 &nbsp;·&nbsp; CG-APS — Atributo da APS (Aplicação)</div>
+      <div class="question-stem">
+        Uma enfermeira atua há seis anos na mesma Equipe de Saúde da Família. Nesse período, ela realizou o pré-natal de diversas mulheres do território, acompanhou o puerpério e agora monitora o crescimento e o desenvolvimento dos filhos dessas mulheres. As famílias relatam que se sentem seguras porque "ela conhece nossa história de saúde". Esse padrão de atuação da enfermeira expressa diretamente qual atributo da Atenção Primária à Saúde conforme a Política Nacional de Atenção Básica?
+      </div>
+
+      <div class="alternatives">
+        <div class="alt">
+          <span class="alt-letter">A</span>
+          <span class="alt-text">Integralidade — pois a enfermeira oferece ações de promoção, prevenção e recuperação da saúde para as famílias do território ao longo de todas as fases da vida</span>
+        </div>
+        <div class="alt">
+          <span class="alt-letter">B</span>
+          <span class="alt-text">Coordenação — pois a enfermeira organiza a comunicação entre os diferentes pontos de atenção da rede para garantir a continuidade do cuidado das famílias</span>
+        </div>
+        <div class="alt">
+          <span class="alt-letter">C</span>
+          <span class="alt-text">Orientação familiar — pois o cuidado prestado considera a dinâmica familiar como unidade de atenção, não apenas o indivíduo isolado</span>
+        </div>
+        <div class="alt correct">
+          <span class="alt-letter">D</span>
+          <span class="alt-text">Longitudinalidade — pois a mesma profissional acompanha as mesmas famílias continuamente ao longo do tempo, construindo vínculo e conhecendo sua história de saúde<span class="correct-badge">Gabarito</span></span>
+        </div>
+        <div class="alt">
+          <span class="alt-letter">E</span>
+          <span class="alt-text">Primeiro contato — pois a UBS foi o ponto de entrada preferencial das famílias para todas as necessidades de saúde durante os seis anos de atuação da enfermeira</span>
+        </div>
+      </div>
+
+      <div class="gabarito-title">Gabarito Comentado</div>
+      <div class="gabarito-body">
+        <div class="gabarito-alt correta">
+          <strong>D — CORRETA.</strong> Longitudinalidade é o atributo que descreve o acompanhamento do mesmo paciente (ou família) pela mesma equipe ao longo do tempo, independente do motivo da procura. A palavra-chave é o <em>vínculo contínuo</em>: a enfermeira "conhece a história de saúde" porque está presente desde o pré-natal. Isso é longitudinalidade — não continuidade (termo não técnico) nem integralidade (que se refere ao escopo do cuidado, não ao tempo).
+        </div>
+        <div class="gabarito-alt">
+          <strong>A — Incorreta.</strong> Integralidade refere-se à cobertura de ações de promoção, proteção e recuperação — o escopo do cuidado. Não descreve a relação temporal entre profissional e paciente.
+        </div>
+        <div class="gabarito-alt">
+          <strong>B — Incorreta.</strong> Coordenação trata da comunicação entre pontos da rede, não da relação de vínculo de longo prazo entre equipe e família.
+        </div>
+        <div class="gabarito-alt">
+          <strong>E — Incorreta.</strong> Primeiro contato refere-se à posição da APS como porta de entrada — não ao vínculo temporal com a mesma equipe.
+        </div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span class="page-footer-brand"><span>Extensivo ENARE</span> &nbsp;·&nbsp; by Residência PRO</span>
+      <span class="page-footer-num">06</span>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PÁGINA 7 — FIXAÇÃO · QUESTÃO 02
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="page">
+    <div class="page-header">
+      <span class="page-header-label">Fixação — Aula 06</span>
+      <span class="page-header-title">Extensivo ENARE · Competências Gerais</span>
+    </div>
+
+    <div class="page-body">
+      <div class="question-num" style="margin-top:2mm;">Questão 02 de 03 &nbsp;·&nbsp; CG-APS — Responsabilidade da União (Análise)</div>
+      <div class="question-stem">
+        O Ministério da Saúde publica uma portaria estabelecendo que o repasse do Bloco de Financiamento da Atenção Básica aos municípios será distribuído proporcionalmente à densidade demográfica de cada município — beneficiando assim os municípios mais populosos com maior volume de recursos per capita. Considerando a Política Nacional de Atenção Básica e as responsabilidades das esferas de governo no SUS, a medida descrita constitui violação da responsabilidade de qual esfera?
+      </div>
+
+      <div class="alternatives">
+        <div class="alt">
+          <span class="alt-letter">A</span>
+          <span class="alt-text">Estado — pois compete aos estados distribuir os recursos federais entre os municípios de acordo com critérios de equidade regional</span>
+        </div>
+        <div class="alt">
+          <span class="alt-letter">B</span>
+          <span class="alt-text">Município — pois os municípios recebem os recursos e são responsáveis por sua alocação equânime entre as equipes do território</span>
+        </div>
+        <div class="alt correct">
+          <span class="alt-letter">C</span>
+          <span class="alt-text">União — pois a responsabilidade federal inclui garantir equidade no financiamento da APS, e priorizar por densidade demográfica favorece municípios já maiores, agravando desigualdades<span class="correct-badge">Gabarito</span></span>
+        </div>
+        <div class="alt">
+          <span class="alt-letter">D</span>
+          <span class="alt-text">Conselho Nacional de Saúde — pois é responsabilidade do controle social zelar para que os critérios de repasse federal respeitem o princípio da equidade</span>
+        </div>
+        <div class="alt">
+          <span class="alt-letter">E</span>
+          <span class="alt-text">Nenhuma esfera — a densidade demográfica é um critério técnico legítimo previsto na Lei 8.080/1990 para a distribuição de recursos entre municípios de porte diferente</span>
+        </div>
+      </div>
+
+      <div class="gabarito-title">Gabarito Comentado</div>
+      <div class="gabarito-body">
+        <div class="gabarito-alt correta">
+          <strong>C — CORRETA.</strong> O Ministério da Saúde (esfera federal) é quem define os critérios do repasse. A PNAB determina que o financiamento deve incorporar critérios de equidade — como vulnerabilidade social, porte do município e necessidades de saúde da população. Usar a densidade demográfica como único critério beneficia as cidades mais populosas, que já têm maior capacidade instalada, violando a responsabilidade da União de reduzir desigualdades regionais.
+        </div>
+        <div class="gabarito-alt">
+          <strong>A — Incorreta.</strong> Os estados não redistribuem o repasse federal entre municípios — o Ministério da Saúde transfere diretamente ao Fundo Municipal de Saúde. A decisão sobre os critérios do repasse é federal.
+        </div>
+        <div class="gabarito-alt">
+          <strong>B — Incorreta.</strong> Os municípios são receptores dos recursos federais, não definidores dos critérios. A violação está na origem (critério do repasse), não na destinação municipal.
+        </div>
+        <div class="gabarito-alt">
+          <strong>E — Incorreta.</strong> A Lei 8.080/1990 menciona critérios epidemiológicos e populacionais, mas não valida a densidade como critério exclusivo. O princípio da equidade — presente na mesma lei — exige compensar desigualdades, não reforçá-las.
+        </div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span class="page-footer-brand"><span>Extensivo ENARE</span> &nbsp;·&nbsp; by Residência PRO</span>
+      <span class="page-footer-num">07</span>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PÁGINA 8 — FIXAÇÃO · QUESTÃO 03
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="page">
+    <div class="page-header">
+      <span class="page-header-label">Fixação — Aula 06</span>
+      <span class="page-header-title">Extensivo ENARE · Competências Gerais</span>
+    </div>
+
+    <div class="page-body">
+      <div class="question-num" style="margin-top:2mm;">Questão 03 de 03 &nbsp;·&nbsp; CG-APS — Composição da ESF (Conhecimento)</div>
+      <div class="question-stem">
+        Sobre a composição e a carga horária da Equipe de Saúde da Família (ESF) conforme a Política Nacional de Atenção Básica, analise as afirmativas:<br><br>
+        <strong>I.</strong> A equipe mínima é composta por médico, enfermeiro, técnico ou auxiliar de enfermagem e agentes comunitários de saúde, sendo a equipe de saúde bucal um componente adicional não obrigatório.<br>
+        <strong>II.</strong> A carga horária do médico na ESF é fixada obrigatoriamente em 40 horas semanais, não sendo permitida qualquer flexibilização para 20 horas.<br>
+        <strong>III.</strong> Cada agente comunitário de saúde deve ser responsável por no máximo 750 pessoas de sua microárea.
+      </div>
+
+      <div class="alternatives">
+        <div class="alt">
+          <span class="alt-letter">A</span>
+          <span class="alt-text">Apenas I está correta</span>
+        </div>
+        <div class="alt correct">
+          <span class="alt-letter">B</span>
+          <span class="alt-text">I e III estão corretas<span class="correct-badge">Gabarito</span></span>
+        </div>
+        <div class="alt">
+          <span class="alt-letter">C</span>
+          <span class="alt-text">Apenas II está correta</span>
+        </div>
+        <div class="alt">
+          <span class="alt-letter">D</span>
+          <span class="alt-text">I, II e III estão corretas</span>
+        </div>
+        <div class="alt">
+          <span class="alt-letter">E</span>
+          <span class="alt-text">Apenas III está correta</span>
+        </div>
+      </div>
+
+      <div class="gabarito-title">Gabarito Comentado</div>
+      <div class="gabarito-body">
+        <div class="gabarito-alt correta">
+          <strong>B — CORRETA (I e III verdadeiras).</strong>
+        </div>
+        <div class="gabarito-alt correta">
+          <strong>I — VERDADEIRA.</strong> A composição mínima da ESF inclui médico, enfermeiro, técnico/auxiliar de enfermagem e ACS. A equipe de saúde bucal (cirurgião-dentista + auxiliar/técnico) é um componente opcional — não integra a equipe mínima obrigatória pela PNAB.
+        </div>
+        <div class="gabarito-alt">
+          <strong>II — FALSA.</strong> A PNAB permite que o médico atue com 20h/semana — neste caso, a adscrição populacional é reduzida proporcionalmente (de até 3.500 para até 1.750 pessoas). A carga de 40h é o padrão, mas há flexibilização prevista.
+        </div>
+        <div class="gabarito-alt correta">
+          <strong>III — VERDADEIRA.</strong> O limite de 750 pessoas por ACS está estabelecido na PNAB como parâmetro máximo para garantir a qualidade do acompanhamento familiar nas microáreas.
+        </div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span class="page-footer-brand"><span>Extensivo ENARE</span> &nbsp;·&nbsp; by Residência PRO</span>
+      <span class="page-footer-num">08</span>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PÁGINA 9 — RECUPERAÇÃO ATIVA
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="page">
+    <div class="page-header">
+      <span class="page-header-label">Recuperação Ativa — Aula 06</span>
+      <span class="page-header-title">Extensivo ENARE · Competências Gerais</span>
+    </div>
+
+    <div class="page-body">
+      <div class="recall-section">
+        <div class="recall-title">3 Sínteses Essenciais</div>
+
+        <div class="sintese-item">
+          <div class="sintese-num">1</div>
+          <div class="sintese-text"><strong>Longitudinalidade</strong> = mesmo profissional + mesma família + tempo longo = vínculo. Cenários de continuidade temporal pedem esse atributo. Integralidade é o distrator clássico — mas integralidade responde "o que" o cuidado cobre, longitudinalidade responde "por quanto tempo e com quem".</div>
+        </div>
+
+        <div class="sintese-item">
+          <div class="sintese-num">2</div>
+          <div class="sintese-text"><strong>Composição mínima da ESF:</strong> médico + enfermeiro + técnico/auxiliar de enfermagem + ACS. Saúde bucal é adicional, não obrigatória. Médico pode ter 20h com adscrição proporcional. ACS: máximo 750 pessoas por microárea.</div>
+        </div>
+
+        <div class="sintese-item">
+          <div class="sintese-num">3</div>
+          <div class="sintese-text"><strong>Responsabilidade federal na APS:</strong> a União financia com critérios de equidade — não por densidade demográfica isolada. Em questões de nível An: identifique o gestor descrito (federal, estadual, municipal) e avalie se a decisão tomada está dentro de sua competência e dentro do princípio de equidade.</div>
+        </div>
+      </div>
+
+      <hr class="rule">
+
+      <div class="recall-section">
+        <div class="recall-title">Teste-se — 5 Perguntas</div>
+
+        <div class="recall-q">
+          <span class="recall-q-num">Q1</span>
+          Uma equipe ESF acompanha a mesma família há 8 anos — pré-natal, infância, adolescência. Que atributo da APS isso expressa?
+        </div>
+        <div class="recall-q">
+          <span class="recall-q-num">Q2</span>
+          A equipe de saúde bucal faz parte da composição mínima obrigatória da ESF? Justifique com base na PNAB.
+        </div>
+        <div class="recall-q">
+          <span class="recall-q-num">Q3</span>
+          O gestor federal decide repassar mais recursos para municípios com maior número de equipes cadastradas. Esse critério viola a responsabilidade da União? Por quê?
+        </div>
+        <div class="recall-q">
+          <span class="recall-q-num">Q4</span>
+          Qual a diferença entre longitudinalidade e primeiro contato?
+        </div>
+        <div class="recall-q">
+          <span class="recall-q-num">Q5</span>
+          Um município tem 3.600 pessoas adscritas a uma equipe ESF com médico em regime de 40h. Isso está dentro do parâmetro da PNAB?
+        </div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span class="page-footer-brand"><span>Extensivo ENARE</span> &nbsp;·&nbsp; by Residência PRO</span>
+      <span class="page-footer-num">09</span>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PÁGINA 10 — REFERÊNCIAS E ANOTAÇÕES
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="page">
+    <div class="page-header">
+      <span class="page-header-label">Referências — Aula 06</span>
+      <span class="page-header-title">Extensivo ENARE · Competências Gerais</span>
+    </div>
+
+    <div class="page-body">
+      <div class="h2">Referências Bibliográficas</div>
+
+      <ul class="ref-list">
+        <li>BRASIL. Ministério da Saúde. <strong>Política Nacional de Atenção Básica (PNAB)</strong>. Portaria GM/MS nº 2.436, de 21 de setembro de 2017. Brasília: MS, 2017.</li>
+        <li>STARFIELD, Barbara. <strong>Atenção Primária: equilíbrio entre necessidades de saúde, serviços e tecnologia</strong>. Brasília: UNESCO/Ministério da Saúde, 2002.</li>
+        <li>BRASIL. Ministério da Saúde. <strong>Núcleo Ampliado de Saúde da Família e Atenção Básica (NASF-AB) e Programa Previne Brasil</strong>. Nota Técnica nº 3/2020-DESF/SAPS/MS. Brasília: MS, 2020.</li>
+        <li>BRASIL. Ministério da Saúde. <strong>Lei nº 8.080, de 19 de setembro de 1990</strong>. Dispõe sobre as condições para a promoção, proteção e recuperação da saúde, a organização e o funcionamento dos serviços correspondentes. Brasília: MS, 1990.</li>
+        <li>FUNDAÇÃO GETULIO VARGAS (FGV). <strong>ENARE 2025 — Prova e Gabarito Definitivo</strong>. Rio de Janeiro: EBSERH/FGV, 2025.</li>
+      </ul>
+
+      <div class="annotation-area">
+        <div class="annotation-label">Anotações</div>
+        <div class="annotation-lines">
+          <div class="annotation-line"></div>
+          <div class="annotation-line"></div>
+          <div class="annotation-line"></div>
+          <div class="annotation-line"></div>
+          <div class="annotation-line"></div>
+          <div class="annotation-line"></div>
+          <div class="annotation-line"></div>
+          <div class="annotation-line"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span class="page-footer-brand"><span>Extensivo ENARE</span> &nbsp;·&nbsp; by Residência PRO</span>
+      <span class="page-footer-num">10</span>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Nutrição Bloco B9 — Aula 37 | NUT-FUND: Água, Eletrólitos e Equilíbrio Ácido-Base</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --creme: #F6F4ED;
+    --verde: #1F5C23;
+    --accent: #C6D834;
+    --dark: #1a1a1a;
+    --muted: #555;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #d0d0d0; font-family: 'Bricolage Grotesque', sans-serif; }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    background: var(--creme);
+    margin: 10mm auto;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cover { background: var(--verde); color: var(--creme); }
+  .cover .top-bar {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10mm 12mm 0;
+  }
+  .cover .brand-text { display: flex; flex-direction: column; }
+  .cover .brand-name {
+    font-family: 'Playfair Display', serif; font-style: italic;
+    font-size: 13pt; color: var(--creme); letter-spacing: 0.02em;
+  }
+  .cover .brand-tag {
+    font-family: 'Space Grotesk', sans-serif; font-weight: 300;
+    font-size: 7pt; color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase;
+    margin-top: 1mm;
+  }
+  .cover .hero {
+    flex: 1; display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 8mm 14mm 6mm; text-align: center;
+  }
+  .cover .bloco-tag {
+    font-family: 'Space Grotesk', sans-serif; font-weight: 300;
+    font-size: 8pt; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 5mm;
+  }
+  .cover .aula-num {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 72pt;
+    line-height: 1; color: var(--creme); opacity: 0.12;
+    position: absolute; right: 12mm; top: 38mm;
+  }
+  .cover .modulo-badge {
+    background: var(--accent); color: var(--verde);
+    font-family: 'Barlow Condensed', sans-serif; font-size: 9pt;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    padding: 1.5mm 5mm; border-radius: 2mm; margin-bottom: 5mm;
+    display: inline-block;
+  }
+  .cover h1 {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 28pt;
+    line-height: 1.05; color: var(--creme); margin-bottom: 4mm;
+    text-transform: uppercase; letter-spacing: 0.02em;
+  }
+  .cover .subtitle {
+    font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300;
+    font-size: 11pt; color: rgba(246,244,237,0.72); margin-bottom: 8mm;
+    line-height: 1.4;
+  }
+  .cover .tags {
+    display: flex; gap: 3mm; flex-wrap: wrap; justify-content: center;
+  }
+  .cover .tag {
+    border: 1px solid rgba(198,216,52,0.5); color: var(--accent);
+    font-family: 'Space Grotesk', sans-serif; font-weight: 300;
+    font-size: 7.5pt; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 1mm 3.5mm; border-radius: 1.5mm;
+  }
+  .cover .bottom-bar {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 5mm 12mm 8mm;
+    border-top: 1px solid rgba(198,216,52,0.25);
+  }
+  .cover .series-info {
+    font-family: 'Space Grotesk', sans-serif; font-weight: 300;
+    font-size: 7.5pt; color: rgba(246,244,237,0.55); letter-spacing: 0.1em;
+  }
+  .cover .aula-label {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 11pt;
+    color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase;
+  }
+
+  .page-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 7mm 12mm 5mm;
+    border-bottom: 2px solid var(--verde);
+  }
+  .page-header .logo-area { display: flex; align-items: center; gap: 3mm; }
+  .page-header .brand-name-sm {
+    font-family: 'Playfair Display', serif; font-style: italic;
+    font-size: 10pt; color: var(--verde);
+  }
+  .page-header .page-meta {
+    font-family: 'Space Grotesk', sans-serif; font-weight: 300;
+    font-size: 7pt; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .page-content { flex: 1; padding: 6mm 12mm 5mm; }
+  .page-footer {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 3mm 12mm 5mm;
+    border-top: 1px solid rgba(31,92,35,0.2);
+  }
+  .page-footer .footer-text {
+    font-family: 'Space Grotesk', sans-serif; font-weight: 300;
+    font-size: 6.5pt; color: var(--muted); letter-spacing: 0.08em;
+  }
+  .page-footer .page-num {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 9pt;
+    color: var(--verde); letter-spacing: 0.1em;
+  }
+
+  .section-title {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 15pt;
+    color: var(--verde); text-transform: uppercase; letter-spacing: 0.05em;
+    margin-bottom: 4mm; padding-bottom: 2mm;
+    border-bottom: 2px solid var(--accent);
+  }
+  .subsection {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 11pt;
+    color: var(--verde); text-transform: uppercase; letter-spacing: 0.05em;
+    margin: 3.5mm 0 2mm;
+  }
+  p, li {
+    font-size: 8.5pt; line-height: 1.55; color: var(--dark);
+    font-family: 'Bricolage Grotesque', sans-serif; font-weight: 400;
+  }
+  ul, ol { padding-left: 4mm; margin-bottom: 2mm; }
+  li { margin-bottom: 1mm; }
+  strong { font-weight: 600; }
+
+  table { width: 100%; border-collapse: collapse; margin: 2.5mm 0; font-size: 7.8pt; }
+  th {
+    background: var(--verde); color: var(--creme);
+    font-family: 'Barlow Condensed', sans-serif; font-size: 8.5pt;
+    letter-spacing: 0.05em; text-transform: uppercase;
+    padding: 2mm 3mm; text-align: left;
+  }
+  td { padding: 1.8mm 3mm; border-bottom: 1px solid rgba(31,92,35,0.12); vertical-align: top; }
+  tr:nth-child(even) td { background: rgba(198,216,52,0.08); }
+  tr:last-child td { border-bottom: none; }
+
+  .highlight-box {
+    background: rgba(198,216,52,0.18); border-left: 3px solid var(--accent);
+    padding: 3mm 4mm; margin: 3mm 0; border-radius: 0 2mm 2mm 0;
+  }
+  .alert-box {
+    background: rgba(31,92,35,0.07); border-left: 3px solid var(--verde);
+    padding: 3mm 4mm; margin: 3mm 0; border-radius: 0 2mm 2mm 0;
+  }
+  .anchor-box {
+    background: var(--verde); color: var(--creme);
+    padding: 3mm 4mm; margin: 3mm 0; border-radius: 2mm;
+  }
+  .anchor-box p, .anchor-box li { color: var(--creme); font-size: 8pt; }
+  .anchor-box strong { color: var(--accent); }
+
+  .q-header { display: flex; align-items: baseline; gap: 3mm; margin-bottom: 3mm; }
+  .q-badge {
+    background: var(--verde); color: var(--creme);
+    font-family: 'Barlow Condensed', sans-serif; font-size: 10pt;
+    letter-spacing: 0.1em; padding: 1mm 3.5mm; border-radius: 1.5mm;
+    white-space: nowrap;
+  }
+  .q-type {
+    font-family: 'Space Grotesk', sans-serif; font-weight: 300;
+    font-size: 7pt; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .q-stem {
+    font-size: 8.5pt; line-height: 1.55; color: var(--dark);
+    margin-bottom: 3.5mm; font-family: 'Bricolage Grotesque', sans-serif;
+  }
+  .q-context {
+    background: rgba(31,92,35,0.06); border-radius: 2mm;
+    padding: 3mm 4mm; margin-bottom: 3mm;
+    font-size: 8pt; line-height: 1.5; color: var(--dark);
+    font-family: 'Bricolage Grotesque', sans-serif;
+  }
+  .alternatives { list-style: none; padding: 0; }
+  .alternatives li {
+    display: flex; gap: 2.5mm; align-items: flex-start;
+    padding: 2mm 0; border-bottom: 1px solid rgba(31,92,35,0.08);
+    font-size: 8.5pt; line-height: 1.45;
+  }
+  .alternatives li:last-child { border-bottom: none; }
+  .alt-letter {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 10pt;
+    color: var(--verde); font-weight: 800; min-width: 5mm;
+  }
+  .assertions { list-style: none; padding: 0; margin-bottom: 3mm; }
+  .assertions li {
+    display: flex; gap: 2.5mm; align-items: flex-start;
+    padding: 2mm 0; border-bottom: 1px solid rgba(31,92,35,0.08);
+    font-size: 8.5pt; line-height: 1.45;
+  }
+  .assert-num {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 10pt;
+    color: var(--verde); min-width: 5mm;
+  }
+
+  .gab-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3mm; margin: 3mm 0; }
+  .gab-card { border: 1.5px solid var(--verde); border-radius: 2mm; padding: 3mm 4mm; }
+  .gab-card .gab-q {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 9pt;
+    color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em;
+  }
+  .gab-card .gab-resp {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 22pt;
+    color: var(--verde); line-height: 1;
+  }
+  .gab-card .gab-tema { font-size: 7pt; color: var(--muted); font-family: 'Bricolage Grotesque', sans-serif; margin-top: 1mm; }
+  .gab-justificativa { margin: 2.5mm 0; padding: 2.5mm 3.5mm; }
+  .gab-justificativa .gab-title {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 9.5pt;
+    color: var(--verde); text-transform: uppercase; margin-bottom: 1.5mm; letter-spacing: 0.05em;
+  }
+  .correct { color: #1F5C23; font-weight: 600; }
+  .wrong { color: #b0392e; text-decoration: line-through; }
+
+  .sintese-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; margin: 3mm 0; }
+  .sintese-card { border: 1.5px solid rgba(31,92,35,0.3); border-radius: 2mm; padding: 3mm 4mm; }
+  .sintese-card .s-title {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 9pt;
+    color: var(--verde); text-transform: uppercase; letter-spacing: 0.08em;
+    margin-bottom: 2mm; padding-bottom: 1mm; border-bottom: 1px solid var(--accent);
+  }
+  .sintese-card p, .sintese-card li { font-size: 7.8pt; line-height: 1.5; }
+
+  @media print {
+    body { background: white; }
+    .page { margin: 0; page-break-after: always; }
+    .page:last-child { page-break-after: auto; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════
+     PÁGINA 1 — CAPA
+════════════════════════════════════════════ -->
+<div class="page cover">
+  <div class="top-bar">
+    <div class="brand-text">
+      <span class="brand-name">Extensivo ENARE</span>
+      <span class="brand-tag">Residências em Saúde · 2026</span>
+    </div>
+    <svg width="44" height="50" viewBox="0 0 44 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="22,2 41,13 41,37 22,48 3,37 3,13" fill="#F6F4ED" stroke="#C6D834" stroke-width="2"/>
+      <circle cx="22" cy="25" r="9" fill="#1F5C23"/>
+    </svg>
+  </div>
+  <div class="hero">
+    <div class="bloco-tag">Bloco B9 · Nutrição · Aula 37</div>
+    <div class="aula-num">37</div>
+    <div class="modulo-badge">NUT-FUND</div>
+    <h1>Água, Eletrólitos<br>e Equilíbrio Ácido-Base</h1>
+    <p class="subtitle">Compartimentos Hídricos · Na⁺ · K⁺ · Mg²⁺ · P<br>Acidose e Alcalose Metabólica e Respiratória · Ânion Gap</p>
+    <div class="tags">
+      <span class="tag">LIC / LEC</span>
+      <span class="tag">Sódio / Potássio</span>
+      <span class="tag">Magnésio</span>
+      <span class="tag">Fósforo</span>
+      <span class="tag">pH / HCO₃⁻</span>
+      <span class="tag">Ânion Gap</span>
+    </div>
+  </div>
+  <div class="bottom-bar">
+    <span class="series-info">Extensivo ENARE 2026 · Material de Apoio</span>
+    <span class="aula-label">Aula 37 / 39</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     PÁGINA 2 — COMPARTIMENTOS HÍDRICOS E REGULAÇÃO
+════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="25" viewBox="0 0 44 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="22,2 41,13 41,37 22,48 3,37 3,13" fill="#1F5C23" stroke="#C6D834" stroke-width="2.5"/>
+        <circle cx="22" cy="25" r="9" fill="#F6F4ED"/>
+      </svg>
+      <span class="brand-name-sm">Extensivo ENARE</span>
+    </div>
+    <span class="page-meta">NUT-FUND · Aula 37 · Bloco B9</span>
+  </div>
+  <div class="page-content">
+    <div class="section-title">Compartimentos Hídricos e Regulação da Água</div>
+
+    <div class="subsection">Distribuição da Água Corporal Total (ACT)</div>
+    <table>
+      <tr><th>Grupo</th><th>ACT (% peso corporal)</th><th>Observação</th></tr>
+      <tr><td>Adulto jovem (homem)</td><td>~60%</td><td>Referência padrão</td></tr>
+      <tr><td>Adulto jovem (mulher)</td><td>~50–55%</td><td>Maior % de gordura = menos água</td></tr>
+      <tr><td>Idoso</td><td>~50%</td><td>Sarcopenia + ↑ gordura</td></tr>
+      <tr><td>Neonato / lactente</td><td>~70–75%</td><td>Maior proporção hídrica</td></tr>
+      <tr><td>Obeso</td><td>~45–50%</td><td>Tecido adiposo = baixo teor hídrico</td></tr>
+    </table>
+
+    <div class="subsection">Compartimentos e Principais Íons</div>
+    <table>
+      <tr><th>Compartimento</th><th>% ACT</th><th>% Peso corporal</th><th>Cátion dominante</th></tr>
+      <tr><td><strong>LIC</strong> (intracelular)</td><td>~2/3 (~67%)</td><td>~40%</td><td><strong>K⁺</strong> (~150 mEq/L intracel.)</td></tr>
+      <tr><td><strong>LEC</strong> (extracelular)</td><td>~1/3 (~33%)</td><td>~20%</td><td><strong>Na⁺</strong> (~140 mEq/L extracel.)</td></tr>
+      <tr><td>— Plasma (intravascular)</td><td>~8%</td><td>~5%</td><td>Na⁺; proteínas plasmáticas</td></tr>
+      <tr><td>— Intersticial</td><td>~25%</td><td>~15%</td><td>Na⁺; sem proteínas</td></tr>
+    </table>
+
+    <div class="subsection">Regulação do Volume e Osmolaridade</div>
+    <ul>
+      <li><strong>ADH (vasopressina):</strong> secretado pela hipófise posterior → ↑ reabsorção de água no túbulo coletor → urina concentrada → ↓ osmolaridade plasmática.</li>
+      <li><strong>Aldosterona:</strong> secretada pelo córtex adrenal (SRAA) → ↑ reabsorção de Na⁺ no túbulo distal → retenção de água → ↑ volemia.</li>
+      <li><strong>Peptídeo natriurético atrial (ANP):</strong> liberado por distensão atrial → ↑ excreção renal de Na⁺ e água → ↓ volemia.</li>
+      <li><strong>Osmolaridade sérica normal:</strong> 285–295 mOsm/kg.</li>
+      <li><strong>Fórmula prática:</strong> Osm = 2 × [Na⁺] + [glicose]/18 + [ureia]/6.</li>
+    </ul>
+
+    <div class="subsection">Necessidades Hídricas e Desidratação</div>
+    <table>
+      <tr><th>Parâmetro</th><th>Referência</th></tr>
+      <tr><td>Adultos (geral)</td><td>35 ml/kg/dia ou 1–1,5 ml/kcal ingerida</td></tr>
+      <tr><td>Holliday-Segar (pediatria): 1°–10 kg</td><td>100 ml/kg/dia</td></tr>
+      <tr><td>Holliday-Segar: 10–20 kg (excedente)</td><td>+ 50 ml/kg/dia</td></tr>
+      <tr><td>Holliday-Segar: &gt;20 kg (excedente)</td><td>+ 20 ml/kg/dia</td></tr>
+    </table>
+    <table>
+      <tr><th>Grau</th><th>Perda de peso</th><th>Sinais clínicos</th></tr>
+      <tr><td>Leve</td><td>1–3%</td><td>Sede, oligúria discreta</td></tr>
+      <tr><td>Moderada</td><td>4–6%</td><td>Mucosas secas, fontanela deprimida (lactente), oligúria</td></tr>
+      <tr><td>Grave</td><td>≥7%</td><td>Hipotensão, confusão, choque hipovolêmico</td></tr>
+    </table>
+  </div>
+  <div class="page-footer">
+    <span class="footer-text">Extensivo ENARE 2026 · Bloco B9 Nutrição</span>
+    <span class="page-num">2 / 10</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     PÁGINA 3 — SÓDIO E POTÁSSIO
+════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="25" viewBox="0 0 44 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="22,2 41,13 41,37 22,48 3,37 3,13" fill="#1F5C23" stroke="#C6D834" stroke-width="2.5"/>
+        <circle cx="22" cy="25" r="9" fill="#F6F4ED"/>
+      </svg>
+      <span class="brand-name-sm">Extensivo ENARE</span>
+    </div>
+    <span class="page-meta">NUT-FUND · Aula 37 · Bloco B9</span>
+  </div>
+  <div class="page-content">
+    <div class="section-title">Sódio e Potássio — Distúrbios e Condutas</div>
+
+    <div class="subsection">Sódio (Na⁺) — Principal Cátion do LEC</div>
+    <table>
+      <tr><th>Distúrbio</th><th>Valor</th><th>Causas nutricionais/clínicas</th><th>Manifestações</th></tr>
+      <tr>
+        <td><strong>Hiponatremia</strong></td>
+        <td>&lt; 135 mEq/L</td>
+        <td>SIADH, IC, cirrose, hipotireoidismo, diuréticos tiazídicos, ingestão excessiva de água livre</td>
+        <td>Cefaleia, náusea, confusão, convulsão (edema cerebral)</td>
+      </tr>
+      <tr>
+        <td><strong>Normonatremia</strong></td>
+        <td>135–145 mEq/L</td>
+        <td>—</td><td>—</td>
+      </tr>
+      <tr>
+        <td><strong>Hipernatremia</strong></td>
+        <td>&gt; 145 mEq/L</td>
+        <td>Diabetes insipidus, ingestão hídrica insuficiente, diarreia hiperosmolar, febre intensa</td>
+        <td>Sede intensa, agitação, desidratação celular, confusão</td>
+      </tr>
+    </table>
+
+    <div class="alert-box">
+      <p><strong>SIADH → hiponatremia:</strong> O ADH inapropriado retém <em>água</em> (não sódio), diluindo o Na⁺ plasmático. Afirmativas que descrevem SIADH como causa de hipernatremia estão incorretas.</p>
+    </div>
+
+    <div class="subsection">Potássio (K⁺) — Principal Cátion do LIC</div>
+    <table>
+      <tr><th>Distúrbio</th><th>Valor</th><th>Causas</th><th>Manifestações / ECG</th></tr>
+      <tr>
+        <td><strong>Hipocalemia</strong></td>
+        <td>&lt; 3,5 mEq/L</td>
+        <td>Diuréticos tiazídicos e de alça, vômitos, diarreia, alcalose metabólica, realimentação, hipomagnesemia</td>
+        <td>Fraqueza, câimbras, íleo paralítico, arritmias; ECG: onda U, inversão T</td>
+      </tr>
+      <tr>
+        <td><strong>Hipercalemia</strong></td>
+        <td>&gt; 5,0 mEq/L</td>
+        <td>IRA/IRC, acidose metabólica, espironolactona, ECA, hemólise, rabdomiólise</td>
+        <td>Fraqueza progressiva, parestesia, arritmias letais; ECG: onda T apiculada (pico T)</td>
+      </tr>
+    </table>
+
+    <div class="highlight-box">
+      <p><strong>Hipocalemia refratária:</strong> Se o K⁺ não responde à suplementação, investigar e corrigir <strong>hipomagnesemia</strong> — o Mg²⁺ é necessário para a bomba Na⁺/K⁺-ATPase. Sem corrigir o Mg²⁺, o K⁺ não se normaliza.</p>
+    </div>
+
+    <div class="subsection">Cálcio (Ca²⁺) — Regulação Triaxial</div>
+    <ul>
+      <li>Normal sérico total: 8,5–10,5 mg/dL; ionizado: 4,5–5,5 mg/dL.</li>
+      <li><strong>PTH:</strong> ↑ Ca²⁺ (reabsorção óssea + renal + ↑ vit. D ativa).</li>
+      <li><strong>Vitamina D (calcitriol):</strong> ↑ absorção intestinal de Ca²⁺ e P.</li>
+      <li><strong>Calcitonina:</strong> ↓ Ca²⁺ (inibe reabsorção óssea).</li>
+      <li><strong>Hipocalcemia:</strong> tetania, sinal de Chvostek (percussão nervo facial → espasmo), sinal de Trousseau (cuff inflado → espasmo carpal).</li>
+      <li><strong>Hipercalcemia:</strong> "Bones, stones, groans, moans" — dor óssea, nefrolitíase, constipação, confusão.</li>
+    </ul>
+  </div>
+  <div class="page-footer">
+    <span class="footer-text">Extensivo ENARE 2026 · Bloco B9 Nutrição</span>
+    <span class="page-num">3 / 10</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     PÁGINA 4 — FÓSFORO E MAGNÉSIO
+════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="25" viewBox="0 0 44 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="22,2 41,13 41,37 22,48 3,37 3,13" fill="#1F5C23" stroke="#C6D834" stroke-width="2.5"/>
+        <circle cx="22" cy="25" r="9" fill="#F6F4ED"/>
+      </svg>
+      <span class="brand-name-sm">Extensivo ENARE</span>
+    </div>
+    <span class="page-meta">NUT-FUND · Aula 37 · Bloco B9</span>
+  </div>
+  <div class="page-content">
+    <div class="section-title">Fósforo e Magnésio — Funções e Distúrbios</div>
+
+    <div class="subsection">Fósforo (P) — Eletrólito Intracelular Central</div>
+    <table>
+      <tr><th>Aspecto</th><th>Detalhe</th></tr>
+      <tr><td>Distribuição</td><td>85% nos ossos/dentes, 14% intracelular, ~1% no plasma</td></tr>
+      <tr><td>Normal sérico</td><td>2,5–4,5 mg/dL (adulto); mais alto em crianças</td></tr>
+      <tr><td>Funções</td><td>Síntese de ATP, 2,3-DPG nos eritrócitos, fosfolipídios de membrana, sinalização celular</td></tr>
+      <tr><td><strong>Hipofosfatemia</strong></td><td>↓ ATP → fraqueza muscular, insuficiência respiratória (não consegue desmamar da VM); hemólise por ↓ 2,3-DPG; disfunção plaquetária; confusão mental</td></tr>
+      <tr><td>Causa clássica</td><td><strong>Síndrome de realimentação</strong> — reintrodução de glicose → insulina → P e K⁺ entram na célula → queda abrupta do P sérico</td></tr>
+      <tr><td>Outras causas</td><td>Alcoolismo, uso de antiácidos com alumínio (quelam P no intestino), desnutrição grave, hiperparatireoidismo</td></tr>
+      <tr><td>Hiperfosfatemia</td><td>DRC (principal causa), hipoparatireoidismo; leva a calcificações extraósseas</td></tr>
+    </table>
+
+    <div class="alert-box">
+      <p><strong>Hipofosfatemia na síndrome de realimentação:</strong> é o distúrbio eletrolítico mais característico e mais cobrado. A realimentação com glicose libera insulina → fosforilação de glicose dentro da célula → consumo de fosfato sérico → hipofosfatemia grave → risco de insuficiência respiratória e óbito. Protocolo: corrigir eletrólitos <em>antes</em> de iniciar a nutrição.</p>
+    </div>
+
+    <div class="subsection">Magnésio (Mg²⁺) — O "Regulador dos Reguladores"</div>
+    <table>
+      <tr><th>Aspecto</th><th>Detalhe</th></tr>
+      <tr><td>Normal sérico</td><td>1,7–2,2 mg/dL</td></tr>
+      <tr><td>Funções</td><td>Cofator de &gt;300 reações enzimáticas; ativa bomba Na⁺/K⁺-ATPase; regulação da excitabilidade neuromuscular; síntese de DNA/RNA/proteínas</td></tr>
+      <tr><td><strong>Hipomagnesemia</strong></td><td>Causa hipocalemia e hipocalcemia <em>refratárias</em> — sem corrigir Mg²⁺, os outros eletrólitos não se normalizam</td></tr>
+      <tr><td>Causas</td><td>Alcoolismo (causa mais comum), diarreia crônica, diuréticos de alça, má absorção, inibidores de bomba de prótons (uso crônico)</td></tr>
+      <tr><td>Manifestações</td><td>Tremores, tetania, arritmias, fraqueza; frequentemente assintomática até Mg²⁺ &lt; 1,2 mg/dL</td></tr>
+      <tr><td>Hipermagnesemia</td><td>Rara — insuficiência renal + uso de antiácidos/laxantes com Mg; sedação, hiporreflexia, parada cardíaca em concentrações muito altas</td></tr>
+    </table>
+
+    <div class="highlight-box">
+      <p><strong>Regra do magnésio:</strong> Hipocalemia refratária + hipocalcemia refratária = investigar hipomagnesemia. O Mg²⁺ é necessário para a retenção renal de K⁺ e para a secreção de PTH. Sem Mg²⁺, o rim "desperdiça" K⁺ e o PTH não funciona para elevar o Ca²⁺.</p>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="footer-text">Extensivo ENARE 2026 · Bloco B9 Nutrição</span>
+    <span class="page-num">4 / 10</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     PÁGINA 5 — EQUILÍBRIO ÁCIDO-BASE E ÂNION GAP
+════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="25" viewBox="0 0 44 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="22,2 41,13 41,37 22,48 3,37 3,13" fill="#1F5C23" stroke="#C6D834" stroke-width="2.5"/>
+        <circle cx="22" cy="25" r="9" fill="#F6F4ED"/>
+      </svg>
+      <span class="brand-name-sm">Extensivo ENARE</span>
+    </div>
+    <span class="page-meta">NUT-FUND · Aula 37 · Bloco B9</span>
+  </div>
+  <div class="page-content">
+    <div class="section-title">Equilíbrio Ácido-Base e Ânion Gap</div>
+
+    <div class="subsection">Valores de Referência e Distúrbios Primários</div>
+    <p style="margin-bottom:2mm;">pH normal: <strong>7,35–7,45</strong> | PaCO₂ normal: <strong>35–45 mmHg</strong> | HCO₃⁻ normal: <strong>22–26 mEq/L</strong></p>
+    <table>
+      <tr><th>Distúrbio</th><th>pH</th><th>PaCO₂</th><th>HCO₃⁻</th><th>Compensação</th></tr>
+      <tr>
+        <td><strong>Acidose metabólica</strong></td>
+        <td>↓</td><td>Normal→↓</td><td>↓ (primário)</td>
+        <td>Hiperventilação (Kussmaul) → ↓ CO₂</td>
+      </tr>
+      <tr>
+        <td><strong>Alcalose metabólica</strong></td>
+        <td>↑</td><td>Normal→↑</td><td>↑ (primário)</td>
+        <td>Hipoventilação → ↑ CO₂</td>
+      </tr>
+      <tr>
+        <td><strong>Acidose respiratória</strong></td>
+        <td>↓</td><td>↑ (primário)</td><td>Normal→↑</td>
+        <td>Renal: ↑ reabsorção de HCO₃⁻ (dias)</td>
+      </tr>
+      <tr>
+        <td><strong>Alcalose respiratória</strong></td>
+        <td>↑</td><td>↓ (primário)</td><td>Normal→↓</td>
+        <td>Renal: ↓ reabsorção de HCO₃⁻</td>
+      </tr>
+    </table>
+
+    <div class="subsection">Causas Nutricionalmente Relevantes</div>
+    <table>
+      <tr><th>Distúrbio</th><th>Causas clínicas / nutricionais</th></tr>
+      <tr>
+        <td><strong>Acidose metabólica</strong></td>
+        <td>Diarreia (perda de HCO₃⁻), cetoacidose diabética, acidose lática, insuficiência renal, jejum prolongado (acidose cetônica)</td>
+      </tr>
+      <tr>
+        <td><strong>Alcalose metabólica</strong></td>
+        <td>Vômitos frequentes (perda de HCl gástrico), uso excessivo de antiácidos, hipocalemia, diuréticos de alça (perda de Cl⁻ e H⁺)</td>
+      </tr>
+      <tr>
+        <td><strong>Acidose respiratória</strong></td>
+        <td>Hipoventilação: DPOC hipercápnico, obesidade grave (síndrome hipoventilação), sedação excessiva, bloqueio neuromuscular</td>
+      </tr>
+      <tr>
+        <td><strong>Alcalose respiratória</strong></td>
+        <td>Hiperventilação: ansiedade, dor, sepse inicial, altitude, gravidez, hiperalimentação com glicose (↑ CO₂ metabólico)</td>
+      </tr>
+    </table>
+
+    <div class="subsection">Ânion Gap (AG)</div>
+    <p style="margin-bottom:1.5mm;"><strong>AG = [Na⁺] − ([Cl⁻] + [HCO₃⁻])</strong> &nbsp;|&nbsp; Normal: 8–12 mEq/L</p>
+    <table>
+      <tr><th>AG</th><th>Interpretação</th><th>Exemplos</th></tr>
+      <tr>
+        <td><strong>AG elevado</strong> (&gt;12)</td>
+        <td>Acidose com ânion não medido acumulado</td>
+        <td>Cetoacidose diabética, acidose lática, uremia, intoxicações (metanol, etilenoglicol, salicilatos)</td>
+      </tr>
+      <tr>
+        <td><strong>AG normal</strong> (8–12)</td>
+        <td>Acidose hiperclorêmica — perda de HCO₃⁻ ou ganho de Cl⁻</td>
+        <td>Diarreia intensa, acidose tubular renal, reposição excessiva de NaCl</td>
+      </tr>
+    </table>
+
+    <div class="anchor-box">
+      <p><strong>Âncoras críticas desta aula:</strong></p>
+      <ul>
+        <li><strong>LIC = K⁺ (2/3 da ACT); LEC = Na⁺ (1/3)</strong> — nunca inverter</li>
+        <li><strong>SIADH → hiponatremia</strong> (ADH retém água, dilui Na⁺)</li>
+        <li><strong>Hipofosfatemia</strong> = principal distúrbio da síndrome de realimentação</li>
+        <li><strong>Hipocalemia/hipocalcemia refratárias</strong> → investigar hipomagnesemia</li>
+        <li><strong>Diarreia → acidose metabólica</strong> (perda HCO₃⁻); <strong>vômitos → alcalose metabólica</strong> (perda HCl)</li>
+      </ul>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="footer-text">Extensivo ENARE 2026 · Bloco B9 Nutrição</span>
+    <span class="page-num">5 / 10</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     PÁGINA 6 — QUESTÃO 01 (APLICAÇÃO · GAB B)
+════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="25" viewBox="0 0 44 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="22,2 41,13 41,37 22,48 3,37 3,13" fill="#1F5C23" stroke="#C6D834" stroke-width="2.5"/>
+        <circle cx="22" cy="25" r="9" fill="#F6F4ED"/>
+      </svg>
+      <span class="brand-name-sm">Extensivo ENARE</span>
+    </div>
+    <span class="page-meta">NUT-FUND · Aula 37 · Bloco B9</span>
+  </div>
+  <div class="page-content">
+    <div class="q-header">
+      <span class="q-badge">Q 01</span>
+      <span class="q-type">Aplicação · Eletrólitos + Ácido-Base</span>
+    </div>
+    <div class="q-context">
+      Paciente de 34 anos, internado com diarreia aquosa intensa há 3 dias (10–12 evacuações/dia). Gasometria arterial: pH = 7,28; PaCO₂ = 30 mmHg; HCO₃⁻ = 14 mEq/L. Eletrólitos: Na⁺ = 138 mEq/L; K⁺ = 2,8 mEq/L; Cl⁻ = 112 mEq/L.
+    </div>
+    <p class="q-stem">Com base nos dados apresentados, é CORRETO afirmar que:</p>
+    <ul class="alternatives">
+      <li>
+        <span class="alt-letter">A</span>
+        <span>O paciente apresenta alcalose metabólica, pois a diarreia promove perda de ácido clorídrico pelo trato gastrointestinal inferior, elevando o bicarbonato sérico e o pH sanguíneo.</span>
+      </li>
+      <li>
+        <span class="alt-letter">B</span>
+        <span>O paciente apresenta acidose metabólica (↓ pH, ↓ HCO₃⁻) com compensação respiratória (↓ PaCO₂ por hiperventilação) e hipocalemia: a diarreia causa perda de bicarbonato pelo intestino e de potássio pelas fezes, explicando o pH de 7,28, HCO₃⁻ de 14 mEq/L e K⁺ de 2,8 mEq/L.</span>
+      </li>
+      <li>
+        <span class="alt-letter">C</span>
+        <span>O paciente apresenta acidose respiratória com hipoventilação compensatória: a diarreia causa retenção de CO₂ ao reduzir a superfície de absorção intestinal de O₂, elevando a PaCO₂ e reduzindo o pH.</span>
+      </li>
+      <li>
+        <span class="alt-letter">D</span>
+        <span>O quadro é compatível com alcalose respiratória por hiperventilação reflexa, explicando o pH de 7,28 e a PaCO₂ de 30 mmHg como resposta do centro respiratório à desidratação intestinal.</span>
+      </li>
+    </ul>
+    <div class="alert-box" style="margin-top:4mm;">
+      <p><strong>Resolução:</strong> pH ↓ (7,28) + HCO₃⁻ ↓ (14) = <em>acidose metabólica</em>. PaCO₂ ↓ (30) = compensação respiratória (hiperventilação de Kussmaul). Causa: diarreia → perda de HCO₃⁻ intestinal. K⁺ = 2,8 mEq/L = hipocalemia (perda pelas fezes + saída de K⁺ da célula com a acidose). AG = 138 − (112+14) = 12 = normal → acidose hiperclorêmica, consistente com diarreia.</p>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="footer-text">Extensivo ENARE 2026 · Bloco B9 Nutrição</span>
+    <span class="page-num">6 / 10</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     PÁGINA 7 — QUESTÃO 02 (APLICAÇÃO · GAB C)
+════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="25" viewBox="0 0 44 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="22,2 41,13 41,37 22,48 3,37 3,13" fill="#1F5C23" stroke="#C6D834" stroke-width="2.5"/>
+        <circle cx="22" cy="25" r="9" fill="#F6F4ED"/>
+      </svg>
+      <span class="brand-name-sm">Extensivo ENARE</span>
+    </div>
+    <span class="page-meta">NUT-FUND · Aula 37 · Bloco B9</span>
+  </div>
+  <div class="page-content">
+    <div class="q-header">
+      <span class="q-badge">Q 02</span>
+      <span class="q-type">Aplicação · Eletrólitos + Síndrome de Realimentação</span>
+    </div>
+    <div class="q-context">
+      Paciente de 52 anos, com anorexia nervosa de longa data (IMC = 13,5 kg/m²), internado para reintrodução nutricional. No segundo dia de terapia nutricional parenteral com alta oferta de glicose, apresenta: P sérico = 1,1 mg/dL (ref. 2,5–4,5), K⁺ = 2,9 mEq/L, fraqueza muscular intensa e dificuldade de desmame da ventilação mecânica. O médico e a nutricionista reconhecem o quadro.
+    </div>
+    <p class="q-stem">Sobre o distúrbio apresentado e sua fisiopatologia, é CORRETO afirmar que:</p>
+    <ul class="alternatives">
+      <li>
+        <span class="alt-letter">A</span>
+        <span>O quadro é compatível com hiperfosfatemia da realimentação: a glicose inibiu a excreção renal de fósforo, elevando seu nível sérico e causando disfunção muscular e respiratória por excesso de fosfato intracelular.</span>
+      </li>
+      <li>
+        <span class="alt-letter">B</span>
+        <span>O baixo K⁺ é o distúrbio central da síndrome de realimentação; a hipofosfatemia é consequência secundária da hipocalemia e não apresenta relevância clínica independente nas primeiras 48 horas da reintrodução nutricional.</span>
+      </li>
+      <li>
+        <span class="alt-letter">C</span>
+        <span>O quadro é compatível com síndrome de realimentação: a reintrodução de glicose estimula a liberação de insulina, promovendo captação celular de fósforo, potássio e magnésio, com queda abrupta dos níveis séricos; a hipofosfatemia grave prejudica a síntese de ATP e compromete a função respiratória muscular.</span>
+      </li>
+      <li>
+        <span class="alt-letter">D</span>
+        <span>A dificuldade de desmame ventilatório é explicada pela alcalose metabólica induzida pela infusão de glicose, que estimula a hipoventilação reflexa e eleva a PaCO₂, comprometendo o drive respiratório.</span>
+      </li>
+    </ul>
+    <div class="alert-box" style="margin-top:4mm;">
+      <p><strong>Foco da questão:</strong> A síndrome de realimentação é caracterizada pela hipofosfatemia (± hipocalemia ± hipomagnesemia) após reintrodução de glicose → insulina → eletrólitos entram na célula → queda sérica abrupta. A hipofosfatemia grave → ↓ ATP → fraqueza muscular → incapacidade de desmamar da VM. O protocolo correto é corrigir eletrólitos antes de iniciar a nutrição.</p>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="footer-text">Extensivo ENARE 2026 · Bloco B9 Nutrição</span>
+    <span class="page-num">7 / 10</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     PÁGINA 8 — QUESTÃO 03 (ANÁLISE ÂNCORA · GAB C)
+════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="25" viewBox="0 0 44 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="22,2 41,13 41,37 22,48 3,37 3,13" fill="#1F5C23" stroke="#C6D834" stroke-width="2.5"/>
+        <circle cx="22" cy="25" r="9" fill="#F6F4ED"/>
+      </svg>
+      <span class="brand-name-sm">Extensivo ENARE</span>
+    </div>
+    <span class="page-meta">NUT-FUND · Aula 37 · Bloco B9</span>
+  </div>
+  <div class="page-content">
+    <div class="q-header">
+      <span class="q-badge">Q 03</span>
+      <span class="q-type">Análise Âncora · Água, Eletrólitos e Ácido-Base Integrados</span>
+    </div>
+    <p class="q-stem">Analise as afirmativas a seguir sobre eletrólitos e equilíbrio ácido-base:</p>
+    <ul class="assertions">
+      <li>
+        <span class="assert-num">I</span>
+        <span>A hipomagnesemia é um distúrbio autolimitado que não interfere no metabolismo de outros eletrólitos; sua principal etiologia é o hiperparatireoidismo primário, que eleva a excreção renal de magnésio.</span>
+      </li>
+      <li>
+        <span class="assert-num">II</span>
+        <span>O potássio é o principal cátion do líquido intracelular, com concentração intracelular de aproximadamente 150 mEq/L; hipocalemia pode ser desencadeada por diuréticos tiazídicos, de alça, vômitos e diarreia, e pode tornar-se refratária na presença de hipomagnesemia não corrigida.</span>
+      </li>
+      <li>
+        <span class="assert-num">III</span>
+        <span>Na acidose metabólica, o mecanismo compensatório respiratório é a hiperventilação (respiração de Kussmaul), que reduz a PaCO₂ e eleva o pH em direção à normalidade; esse mecanismo é ativado pela estimulação de quimiorreceptores centrais e periféricos pelo excesso de H⁺.</span>
+      </li>
+      <li>
+        <span class="assert-num">IV</span>
+        <span>A síndrome de secreção inapropriada de ADH (SIADH) leva à hipernatremia, pois o ADH atua diretamente nos túbulos renais retendo sódio e promovendo sua reabsorção ativa no nefro distal.</span>
+      </li>
+    </ul>
+    <p class="q-stem" style="margin-top:3mm;">Estão CORRETAS apenas as afirmativas:</p>
+    <ul class="alternatives">
+      <li><span class="alt-letter">A</span><span>I e IV</span></li>
+      <li><span class="alt-letter">B</span><span>I e III</span></li>
+      <li><span class="alt-letter">C</span><span>II e III</span></li>
+      <li><span class="alt-letter">D</span><span>II e IV</span></li>
+    </ul>
+    <div class="anchor-box" style="margin-top:4mm;">
+      <p><strong>Âncora desta questão:</strong></p>
+      <ul>
+        <li><strong>I — ERRADA:</strong> Hipomagnesemia <em>causa</em> hipocalemia e hipocalcemia refratárias — interfere em outros eletrólitos. Principal causa: alcoolismo/diuréticos de alça (não hiperparatireoidismo).</li>
+        <li><strong>II — CORRETA:</strong> K⁺ = principal cátion do LIC (~150 mEq/L intracelular). Hipocalemia refratária → investigar e corrigir hipomagnesemia.</li>
+        <li><strong>III — CORRETA:</strong> Acidose metabólica → hiperventilação (Kussmaul) → ↓ PaCO₂ → ↑ pH para normalidade.</li>
+        <li><strong>IV — ERRADA:</strong> SIADH → <em>HIPONATREMIA</em> (não hipernatremia). O ADH retém <em>água</em>, diluindo o Na⁺ sérico. Hipernatremia seria o oposto.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="footer-text">Extensivo ENARE 2026 · Bloco B9 Nutrição</span>
+    <span class="page-num">8 / 10</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     PÁGINA 9 — GABARITO COMENTADO
+════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="25" viewBox="0 0 44 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="22,2 41,13 41,37 22,48 3,37 3,13" fill="#1F5C23" stroke="#C6D834" stroke-width="2.5"/>
+        <circle cx="22" cy="25" r="9" fill="#F6F4ED"/>
+      </svg>
+      <span class="brand-name-sm">Extensivo ENARE</span>
+    </div>
+    <span class="page-meta">NUT-FUND · Aula 37 · Bloco B9</span>
+  </div>
+  <div class="page-content">
+    <div class="section-title">Gabarito Comentado</div>
+    <div class="gab-grid">
+      <div class="gab-card">
+        <div class="gab-q">Questão 01</div>
+        <div class="gab-resp">B</div>
+        <div class="gab-tema">Acidose metabólica + Hipocalemia</div>
+      </div>
+      <div class="gab-card">
+        <div class="gab-q">Questão 02</div>
+        <div class="gab-resp">C</div>
+        <div class="gab-tema">Síndrome de Realimentação</div>
+      </div>
+      <div class="gab-card">
+        <div class="gab-q">Questão 03</div>
+        <div class="gab-resp">C</div>
+        <div class="gab-tema">II e III corretas</div>
+      </div>
+    </div>
+
+    <div class="gab-justificativa highlight-box">
+      <div class="gab-title">Q01 — Gabarito B</div>
+      <p><span class="wrong">A</span> — Diarreia causa <em>acidose</em> metabólica (perda de HCO₃⁻ intestinal), não alcalose. Vômitos é que causam alcalose (perda de HCl).</p>
+      <p><span class="correct">B ✓</span> — pH ↓ + HCO₃⁻ ↓ = acidose metabólica; PaCO₂ ↓ = compensação respiratória (hiperventilação). K⁺ 2,8 mEq/L = hipocalemia por perda fecal. AG = 138−(112+14) = 12 = normal → acidose hiperclorêmica, típica da diarreia.</p>
+      <p><span class="wrong">C</span> — Acidose respiratória exigiria PaCO₂ ↑. A PaCO₂ está ↓ (30) — o contrário.</p>
+      <p><span class="wrong">D</span> — Alcalose respiratória teria pH ↑. O pH está ↓ (7,28).</p>
+    </div>
+
+    <div class="gab-justificativa highlight-box">
+      <div class="gab-title">Q02 — Gabarito C</div>
+      <p><span class="wrong">A</span> — É hipo, não hiperfosfatemia. A reintrodução de glicose causa captação celular de P, reduzindo o P sérico.</p>
+      <p><span class="wrong">B</span> — A hipofosfatemia é o distúrbio central (não o K⁺); tem relevância clínica imediata por comprometer a síntese de ATP.</p>
+      <p><span class="correct">C ✓</span> — Síndrome de realimentação: glicose → insulina → captação celular de P, K⁺, Mg²⁺ → hipofosfatemia grave → ↓ ATP → fraqueza muscular → falha do desmame ventilatório.</p>
+      <p><span class="wrong">D</span> — Alcalose metabólica não explica o desmame difícil por esse mecanismo. A falha é por fraqueza muscular diafragmática por depleção de ATP.</p>
+    </div>
+
+    <div class="gab-justificativa highlight-box">
+      <div class="gab-title">Q03 — Gabarito C (II e III)</div>
+      <p><span class="wrong">I — ERRADA:</span> Hipomagnesemia causa hipocalemia e hipocalcemia refratárias; principal causa = alcoolismo/diuréticos (não hiperparatireoidismo).</p>
+      <p><span class="correct">II — CORRETA ✓:</span> K⁺ = principal cátion do LIC (~150 mEq/L); hipocalemia refratária sugere hipomagnesemia não corrigida.</p>
+      <p><span class="correct">III — CORRETA ✓:</span> Acidose metabólica → quimiorreceptores ativados pelo ↑ H⁺ → hiperventilação → ↓ CO₂ → compensação do pH.</p>
+      <p><span class="wrong">IV — ERRADA:</span> SIADH → hiponatremia (ADH retém água, dilui Na⁺). Hipernatremia ocorre em diabetes insipidus (deficiência de ADH), não em SIADH.</p>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="footer-text">Extensivo ENARE 2026 · Bloco B9 Nutrição</span>
+    <span class="page-num">9 / 10</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     PÁGINA 10 — SÍNTESE FINAL
+════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="25" viewBox="0 0 44 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="22,2 41,13 41,37 22,48 3,37 3,13" fill="#1F5C23" stroke="#C6D834" stroke-width="2.5"/>
+        <circle cx="22" cy="25" r="9" fill="#F6F4ED"/>
+      </svg>
+      <span class="brand-name-sm">Extensivo ENARE</span>
+    </div>
+    <span class="page-meta">NUT-FUND · Aula 37 · Bloco B9</span>
+  </div>
+  <div class="page-content">
+    <div class="section-title">Síntese Final — NUT-FUND: Água, Eletrólitos e Ácido-Base</div>
+
+    <div class="sintese-grid">
+      <div class="sintese-card">
+        <div class="s-title">Compartimentos Hídricos</div>
+        <ul>
+          <li>ACT: ~60% peso (homem adulto)</li>
+          <li>LIC = 2/3 ACT | cátion: <strong>K⁺</strong></li>
+          <li>LEC = 1/3 ACT | cátion: <strong>Na⁺</strong></li>
+          <li>ADH → retém água; aldosterona → retém Na⁺</li>
+          <li>SIADH → hiponatremia (ADH dilui Na⁺)</li>
+        </ul>
+      </div>
+      <div class="sintese-card">
+        <div class="s-title">Sódio e Potássio</div>
+        <ul>
+          <li>Na⁺ normal: 135–145 mEq/L</li>
+          <li>K⁺ normal: 3,5–5,0 mEq/L (98% intracelular)</li>
+          <li>Hipocalemia: diuréticos, vômitos, diarreia</li>
+          <li>Hipercalemia: IRA, espironolactona, acidose</li>
+          <li>Hipocalemia refratária → checar Mg²⁺</li>
+        </ul>
+      </div>
+      <div class="sintese-card">
+        <div class="s-title">Fósforo e Magnésio</div>
+        <ul>
+          <li>Hipofosfatemia = marco da síndrome de realimentação</li>
+          <li>Mecanismo: glicose → insulina → P entra na célula</li>
+          <li>Consequência: ↓ ATP → falha respiratória</li>
+          <li>Mg²⁺: cofator de 300 enzimas; ativa Na⁺/K⁺-ATPase</li>
+          <li>Hipomagnesemia: principal causa = alcoolismo</li>
+        </ul>
+      </div>
+      <div class="sintese-card">
+        <div class="s-title">Ácido-Base — Regras Rápidas</div>
+        <ul>
+          <li>Diarreia → acidose metabólica (↓ HCO₃⁻)</li>
+          <li>Vômitos → alcalose metabólica (↓ HCl)</li>
+          <li>Compensação da acidose metabólica: hiperventilação</li>
+          <li>AG elevado: cetoacidose, acidose lática, uremia</li>
+          <li>AG normal: diarreia, acidose tubular renal</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="anchor-box" style="margin-top:3mm;">
+      <p><strong>As 5 âncoras desta aula:</strong></p>
+      <ul>
+        <li><strong>1.</strong> LIC = K⁺ (2/3 ACT); LEC = Na⁺ (1/3 ACT) — nunca inverter</li>
+        <li><strong>2.</strong> SIADH → hiponatremia (ADH retém água, dilui Na⁺; não retém sódio)</li>
+        <li><strong>3.</strong> Hipofosfatemia = distúrbio central da síndrome de realimentação → ↓ ATP → falha respiratória</li>
+        <li><strong>4.</strong> Hipocalemia/hipocalcemia refratárias → corrigir Mg²⁺ primeiro</li>
+        <li><strong>5.</strong> Diarreia = acidose metabólica (AG normal); vômitos = alcalose metabólica</li>
+      </ul>
+    </div>
+
+    <div class="sintese-grid" style="margin-top:3mm;">
+      <div class="sintese-card">
+        <div class="s-title">Distúrbios e Direção</div>
+        <ul>
+          <li>pH ↓ + HCO₃⁻ ↓ → acidose metabólica</li>
+          <li>pH ↑ + HCO₃⁻ ↑ → alcalose metabólica</li>
+          <li>pH ↓ + PaCO₂ ↑ → acidose respiratória</li>
+          <li>pH ↑ + PaCO₂ ↓ → alcalose respiratória</li>
+        </ul>
+      </div>
+      <div class="sintese-card">
+        <div class="s-title">Próxima Aula — 38</div>
+        <ul>
+          <li><strong>NUT-SAPU:</strong> Vigilância Alimentar e Nutricional</li>
+          <li>SISVAN — curvas e pontos de corte</li>
+          <li>VIGITEL e inquéritos populacionais</li>
+          <li>Indicadores de saúde nutricional coletiva</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="footer-text">Extensivo ENARE 2026 · Bloco B9 Nutrição</span>
+    <span class="page-num">10 / 10</span>
+  </div>
+</div>
+
+</body>
+</html>

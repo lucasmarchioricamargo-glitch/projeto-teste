@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Enfermagem · Bloco B4 · Aula 08 — Extensivo ENARE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Bricolage+Grotesque:wght@400;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root{--creme:#F6F4ED;--verde-lima:#C6D834;--verde-floresta:#1F5C23;--teal:#0D8A8D;--preto:#070707;--cinza:#9E9B94;--cinza-borda:#DDD9D1;--creme-escuro:#EDEAE2;}
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{background:#CCC;font-family:'Bricolage Grotesque',sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    @page{size:A4;margin:0;}
+    .page{width:210mm;height:297mm;position:relative;overflow:hidden;page-break-after:always;background:var(--creme);display:flex;flex-direction:column;}
+    @media screen{.page{margin:24px auto;box-shadow:0 4px 32px rgba(0,0,0,0.18);}}
+    .page-header{height:14mm;background:var(--creme);border-bottom:2px solid var(--teal);display:flex;align-items:center;padding:0 18mm;flex-shrink:0;}
+    .page-header-label{font-family:'Barlow Condensed',sans-serif;font-size:8pt;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--cinza);}
+    .page-header-title{font-family:'Space Grotesk',sans-serif;font-size:7.5pt;font-weight:300;color:var(--cinza);margin-left:auto;}
+    .page-footer{height:10mm;background:var(--creme);border-top:1px solid var(--cinza-borda);display:flex;align-items:center;padding:0 18mm;flex-shrink:0;}
+    .page-footer-brand{font-family:'Space Grotesk',sans-serif;font-size:7pt;font-weight:300;color:var(--cinza);}
+    .page-footer-num{font-family:'Barlow Condensed',sans-serif;font-size:9pt;font-weight:700;color:var(--teal);margin-left:auto;}
+    .page-content{flex:1;padding:10mm 18mm;overflow:hidden;}
+    .section-tag{font-family:'Barlow Condensed',sans-serif;font-size:7.5pt;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--teal);margin-bottom:4mm;}
+    .section-rule{width:100%;height:2px;background:var(--teal);margin-bottom:6mm;}
+    .capa{background:var(--teal);width:100%;height:100%;display:flex;flex-direction:column;padding:14mm 16mm 12mm;}
+    .capa-logo-ext{font-family:'Playfair Display',serif;font-style:italic;font-size:10pt;color:var(--verde-lima);letter-spacing:1px;}
+    .capa-logo-enare{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:38pt;color:var(--creme);line-height:0.85;letter-spacing:-1px;}
+    .capa-logo-sub{font-family:'Space Grotesk',sans-serif;font-weight:300;font-size:8.5pt;color:rgba(246,244,237,0.6);margin-top:2mm;}
+    .capa-area{font-family:'Barlow Condensed',sans-serif;font-size:7.5pt;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:rgba(246,244,237,0.55);margin-bottom:2mm;}
+    .capa-codigo{font-family:'Barlow Condensed',sans-serif;font-size:9pt;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--verde-lima);margin-bottom:5mm;}
+    .capa-titulo{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:46pt;color:var(--creme);line-height:0.88;text-transform:uppercase;letter-spacing:-1px;margin-bottom:4mm;}
+    .capa-subtitulo{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:14pt;color:var(--verde-lima);text-transform:uppercase;letter-spacing:1px;line-height:1.25;}
+    .capa-watermark{position:absolute;bottom:12mm;right:12mm;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:110pt;color:rgba(246,244,237,0.08);line-height:1;pointer-events:none;}
+    .obj-list{list-style:none;display:flex;flex-direction:column;gap:4mm;margin-bottom:6mm;}
+    .obj-item{display:flex;gap:3mm;align-items:flex-start;}
+    .obj-num{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:18pt;color:var(--teal);line-height:1;flex-shrink:0;width:8mm;}
+    .obj-text{font-size:9.5pt;line-height:1.5;color:var(--preto);padding-top:1mm;}
+    .obj-prereq{background:var(--creme-escuro);border-left:3px solid var(--cinza-borda);padding:3mm 4mm;border-radius:0 3px 3px 0;margin-top:4mm;}
+    .obj-prereq-label{font-family:'Barlow Condensed',sans-serif;font-size:7pt;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--cinza);margin-bottom:1mm;}
+    .obj-prereq-text{font-size:8.5pt;color:var(--preto);line-height:1.4;}
+    .meta-row{display:flex;gap:8mm;margin-top:5mm;padding-top:4mm;border-top:1px solid var(--cinza-borda);}
+    .meta-item{display:flex;flex-direction:column;gap:0.5mm;}
+    .meta-label{font-family:'Barlow Condensed',sans-serif;font-size:6.5pt;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--cinza);}
+    .meta-value{font-size:8pt;font-weight:600;color:var(--preto);}
+    h2{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:17pt;color:var(--teal);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:3mm;line-height:1.1;}
+    h3{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:10pt;color:var(--preto);text-transform:uppercase;letter-spacing:1px;margin:3mm 0 1.5mm;}
+    p{font-size:9pt;line-height:1.55;color:var(--preto);margin-bottom:3mm;}
+    table{width:100%;border-collapse:collapse;font-size:8pt;margin-bottom:4mm;}
+    th{background:var(--teal);color:var(--creme);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:7.5pt;letter-spacing:1px;text-transform:uppercase;padding:2mm 3mm;text-align:left;}
+    td{padding:2mm 3mm;border-bottom:1px solid var(--cinza-borda);vertical-align:top;line-height:1.4;}
+    tr:nth-child(even) td{background:var(--creme-escuro);}
+    .td-dest{font-weight:600;}
+    .box{padding:3.5mm 4mm;border-radius:4px;margin-bottom:4mm;}
+    .box-conceito{background:#e8f4e8;border-left:4px solid var(--verde-floresta);}
+    .box-conceito .box-label{color:var(--verde-floresta);}
+    .box-dica{background:#e5f4f4;border-left:4px solid var(--teal);}
+    .box-dica .box-label{color:var(--teal);}
+    .box-pega{background:#f5f9d4;border-left:4px solid var(--verde-lima);}
+    .box-pega .box-label{color:#7a8a00;}
+    .box-alerta{background:#fce8e8;border-left:4px solid #b03030;}
+    .box-alerta .box-label{color:#b03030;}
+    .box-label{font-family:'Barlow Condensed',sans-serif;font-size:7pt;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:1.5mm;display:block;}
+    .box p{font-size:8.5pt;margin-bottom:0;}
+    .box p+p{margin-top:2mm;}
+    .q-header{font-family:'Barlow Condensed',sans-serif;font-size:8pt;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--teal);margin-bottom:3mm;}
+    .q-stem{font-size:9.5pt;line-height:1.6;color:var(--preto);background:var(--creme-escuro);padding:4mm 5mm;border-radius:4px;margin-bottom:4mm;}
+    .q-opts{list-style:none;display:flex;flex-direction:column;gap:2.5mm;margin-bottom:4mm;}
+    .q-opt{display:flex;gap:3mm;align-items:flex-start;padding:2.5mm 3mm;border-radius:3px;border:1px solid var(--cinza-borda);font-size:9pt;line-height:1.45;}
+    .q-opt.correta{background:#e8f4e8;border-color:var(--verde-floresta);font-weight:600;}
+    .opt-letter{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:11pt;color:var(--teal);flex-shrink:0;line-height:1.2;}
+    .q-opt.correta .opt-letter{color:var(--verde-floresta);}
+    .badge-correta{background:var(--verde-floresta);color:var(--creme);font-family:'Barlow Condensed',sans-serif;font-size:6.5pt;font-weight:700;letter-spacing:1.5px;padding:1px 5px;border-radius:2px;margin-left:3mm;vertical-align:middle;text-transform:uppercase;}
+    .gabarito-box{background:var(--creme-escuro);border-top:2px solid var(--teal);padding:3.5mm 4mm;border-radius:0 0 4px 4px;}
+    .gabarito-title{font-family:'Barlow Condensed',sans-serif;font-size:7.5pt;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:2mm;}
+    .gabarito-text{font-size:8pt;line-height:1.55;color:var(--preto);}
+    .distrator{font-size:7.5pt;color:#555;margin-top:1.5mm;line-height:1.4;}
+    .distrator strong{color:var(--preto);}
+    .rec-box{background:var(--creme-escuro);border-radius:4px;padding:4mm 5mm;margin-bottom:4mm;}
+    .rec-item{display:flex;gap:2.5mm;align-items:flex-start;margin-bottom:2.5mm;font-size:9pt;line-height:1.5;}
+    .rec-star{color:var(--teal);font-weight:800;flex-shrink:0;}
+    .teste-list{list-style:none;display:flex;flex-direction:column;gap:3mm;}
+    .teste-item{font-size:8.5pt;line-height:1.5;padding-left:4mm;border-left:2px solid var(--cinza-borda);color:var(--preto);}
+    .teste-item strong{font-family:'Barlow Condensed',sans-serif;font-size:9pt;color:var(--teal);font-weight:700;letter-spacing:0.5px;}
+    .ref-list{list-style:none;display:flex;flex-direction:column;gap:2mm;}
+    .ref-item{font-size:7.5pt;line-height:1.55;color:var(--preto);padding-left:3mm;border-left:2px solid var(--cinza-borda);}
+    .anot-box{margin-top:5mm;border:1.5px dashed var(--cinza-borda);border-radius:4px;padding:4mm;height:52mm;display:flex;align-items:center;justify-content:center;}
+    .anot-label{font-family:'Barlow Condensed',sans-serif;font-size:8pt;letter-spacing:2px;text-transform:uppercase;color:var(--cinza-borda);}
+    /* PE etapas */
+    .pe-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:2mm;margin-bottom:4mm;}
+    .pe-card{border-radius:4px;padding:2.5mm 3mm;text-align:center;}
+    .pe-card.exclusivo{background:#fce8e8;border-top:3px solid #b03030;}
+    .pe-card.exclusivo .pe-num{color:#b03030;}
+    .pe-card.delegavel{background:#e8f4e8;border-top:3px solid var(--verde-floresta);}
+    .pe-card.delegavel .pe-num{color:var(--verde-floresta);}
+    .pe-card.misto{background:#fff9e6;border-top:3px solid #d4a000;}
+    .pe-card.misto .pe-num{color:#d4a000;}
+    .pe-num{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:13pt;line-height:1;margin-bottom:1mm;}
+    .pe-etapa{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:8pt;text-transform:uppercase;line-height:1.2;margin-bottom:1.5mm;}
+    .pe-card.exclusivo .pe-etapa{color:#b03030;}
+    .pe-card.delegavel .pe-etapa{color:var(--verde-floresta);}
+    .pe-card.misto .pe-etapa{color:#d4a000;}
+    .pe-detalhe{font-size:6.5pt;line-height:1.3;color:var(--preto);}
+    /* HAP */
+    .hap-grid{display:grid;grid-template-columns:1fr auto;gap:0;border:1px solid var(--cinza-borda);border-radius:4px;overflow:hidden;font-size:8pt;}
+    .hap-head{background:var(--teal);color:var(--creme);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:7.5pt;letter-spacing:1px;text-transform:uppercase;padding:2mm 3mm;display:flex;align-items:center;}
+    .hap-cel{padding:2mm 3mm;border-bottom:1px solid var(--cinza-borda);display:flex;align-items:center;line-height:1.4;}
+    .hap-cel.hap-val{width:14mm;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:12pt;color:var(--teal);border-left:1px solid var(--cinza-borda);background:var(--creme-escuro);}
+    .hap-cel.hap-val.head{font-size:7.5pt;color:var(--creme);background:var(--teal);}
+    .hap-cel:last-child{border-bottom:none;}
+    /* resolucoes */
+    .res-tag{display:inline-block;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:7pt;letter-spacing:1.5px;text-transform:uppercase;padding:1px 5px;border-radius:2px;margin-bottom:2mm;}
+    .res-tag.cofen{background:var(--teal);color:var(--creme);}
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════
+     P01 — CAPA
+     ═══════════════════════════════════════════════════════════ -->
+<div class="page" id="p01">
+  <div class="capa">
+    <div style="margin-bottom:auto;">
+      <span class="capa-logo-ext">extensivo</span><br>
+      <span class="capa-logo-enare">ENARE</span><br>
+      <span class="capa-logo-sub">by Residência PRO</span>
+    </div>
+    <div style="padding-bottom:2mm;">
+      <div class="capa-area">Enfermagem · Módulo Específico</div>
+      <div class="capa-codigo">Bloco B4 · Aula 08</div>
+      <div class="capa-titulo">COFEN I</div>
+      <div class="capa-subtitulo">PE, Prescrição<br>e Resoluções<br>2021–2024</div>
+    </div>
+  </div>
+  <div class="capa-watermark">08</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     P02 — OBJETIVOS
+     ═══════════════════════════════════════════════════════════ -->
+<div class="page" id="p02">
+  <div class="page-header">
+    <span class="page-header-label">Enfermagem · Bloco B4 · Aula 08</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <div class="section-tag">Objetivos de Aprendizagem</div>
+    <div class="section-rule"></div>
+
+    <ul class="obj-list">
+      <li class="obj-item">
+        <span class="obj-num">1</span>
+        <span class="obj-text">Aplicar a Res. COFEN 736/2024 identificando as etapas exclusivas do enfermeiro (diagnóstico, planejamento e avaliação) e as delegáveis à equipe de técnicos (implementação e coleta parcial de dados).</span>
+      </li>
+      <li class="obj-item">
+        <span class="obj-num">2</span>
+        <span class="obj-text">Reconhecer as condições que habilitam o enfermeiro a prescrever medicamentos (Res. 680/2021): programa de saúde pública + protocolo institucional aprovado + diagnóstico de enfermagem.</span>
+      </li>
+      <li class="obj-item">
+        <span class="obj-num">3</span>
+        <span class="obj-text">Aplicar o Código de Ética (Res. 564/2017) para justificar a ação autônoma do enfermeiro em situações de emergência — sem médico disponível — para preservar a vida do paciente.</span>
+      </li>
+    </ul>
+
+    <div class="obj-prereq">
+      <div class="obj-prereq-label">Pré-Requisito</div>
+      <div class="obj-prereq-text">Aula 01 — PE (Res. 736/2024) e NANDA-I já introduzidos na calibragem. Aula 02 — Res. 564/2017 citada no contexto do bundle séptico e Aula 05 — Res. 564 no IAM de VD.</div>
+    </div>
+
+    <div class="meta-row">
+      <div class="meta-item"><span class="meta-label">Bloco</span><span class="meta-value">B4 — Enfermagem</span></div>
+      <div class="meta-item"><span class="meta-label">Aula</span><span class="meta-value">08 de 24</span></div>
+      <div class="meta-item"><span class="meta-label">Tema</span><span class="meta-value">ENF-COFEN I</span></div>
+      <div class="meta-item"><span class="meta-label">Nível Cognitivo</span><span class="meta-value">M → An</span></div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">02</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     P03 — RES. 736/2024: PE E COMPETÊNCIAS
+     ═══════════════════════════════════════════════════════════ -->
+<div class="page" id="p03">
+  <div class="page-header">
+    <span class="page-header-label">Conteúdo Principal · Aula 08</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <h2>Res. 736/2024 — Processo de Enfermagem</h2>
+
+    <div class="pe-grid">
+      <div class="pe-card misto">
+        <div class="pe-num">1</div>
+        <div class="pe-etapa">Coleta de Dados</div>
+        <div class="pe-detalhe">Anamnese e exame físico. Realizada pelo enfermeiro; coleta de dados básicos pode ser feita pelo técnico sob supervisão.</div>
+      </div>
+      <div class="pe-card exclusivo">
+        <div class="pe-num">2</div>
+        <div class="pe-etapa">Diagnóstico de Enfermagem</div>
+        <div class="pe-detalhe"><strong>EXCLUSIVO do enfermeiro.</strong> Interpretação dos dados → NANDA-I 2024–2026. Técnico não pode formular diagnósticos.</div>
+      </div>
+      <div class="pe-card exclusivo">
+        <div class="pe-num">3</div>
+        <div class="pe-etapa">Planejamento</div>
+        <div class="pe-detalhe"><strong>EXCLUSIVO do enfermeiro.</strong> Definição de metas, prioridades e prescrição de enfermagem. Técnico não pode planejar.</div>
+      </div>
+      <div class="pe-card delegavel">
+        <div class="pe-num">4</div>
+        <div class="pe-etapa">Implementação</div>
+        <div class="pe-detalhe">Execução das intervenções. <strong>NÃO exclusiva</strong>: pode ser realizada por técnico sob supervisão do enfermeiro (exceto atos específicos).</div>
+      </div>
+      <div class="pe-card exclusivo">
+        <div class="pe-num">5</div>
+        <div class="pe-etapa">Avaliação</div>
+        <div class="pe-detalhe"><strong>EXCLUSIVO do enfermeiro.</strong> Juízo sobre o resultado das intervenções e redirecionamento do plano. Técnico não avalia o PE.</div>
+      </div>
+    </div>
+
+    <div class="box box-pega">
+      <span class="box-label">Pegadinha Recorrente FGV</span>
+      <p>A questão afirma que "todas as 5 etapas do PE são exclusivas do enfermeiro" → <strong>ERRADO</strong>. A implementação pode ser delegada ao técnico. A questão afirma que "o técnico pode formular diagnósticos de enfermagem com experiência" → <strong>ERRADO</strong>. Não há exceção para o técnico formular diagnósticos.</p>
+    </div>
+
+    <div class="box box-dica">
+      <span class="box-label">PE Obrigatório — Res. 358/2009 + 736/2024</span>
+      <p>O Processo de Enfermagem é obrigatório em <strong>todos os ambientes</strong> onde o cuidado de enfermagem é praticado — hospitais, UBS, domicílio, escola — independentemente do porte ou da complexidade da instituição. O PE não é exclusividade da UTI.</p>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">03</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     P04 — RES. 564/2017: CÓDIGO DE ÉTICA
+     ═══════════════════════════════════════════════════════════ -->
+<div class="page" id="p04">
+  <div class="page-header">
+    <span class="page-header-label">Conteúdo Principal · Aula 08</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <h2>Res. 564/2017 — Código de Ética de Enfermagem</h2>
+
+    <table style="margin-bottom:4mm;">
+      <thead><tr><th>Domínio</th><th>Conteúdo Principal</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="td-dest">Princípios fundamentais</td>
+          <td>Beneficência, não maleficência, autonomia, justiça, equidade e confidencialidade como pilares da prática de enfermagem</td>
+        </tr>
+        <tr>
+          <td class="td-dest">Direitos do profissional</td>
+          <td>Exercer a profissão com liberdade e autonomia técnica · Recusar procedimentos que violem a ética ou coloquem o paciente em risco · Participar de processos de avaliação da qualidade</td>
+        </tr>
+        <tr>
+          <td class="td-dest">Deveres e responsabilidades</td>
+          <td>Prestar cuidado integral e humanizado · Registrar corretamente todas as ações realizadas · Manter o sigilo profissional · Notificar eventos adversos</td>
+        </tr>
+        <tr>
+          <td class="td-dest">Vedações</td>
+          <td>Abandonar o paciente em situação de risco · Executar atos além da competência técnica sem cobertura legal · Emitir documentos falsos ou fraudulentos · Praticar atos discriminatórios</td>
+        </tr>
+        <tr>
+          <td class="td-dest"><strong>Autonomia em emergências</strong></td>
+          <td>O enfermeiro tem o DEVER de agir para preservar a vida do paciente em situações de emergência, mesmo sem prescrição médica — amparado pelo Código de Ética e pela expertise profissional</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="box box-alerta">
+      <span class="box-label">Situação de Emergência Sem Médico — Fundamento Ético</span>
+      <p>Quando a vida do paciente está em risco imediato e não há médico disponível, o enfermeiro tem o <strong>dever ético e legal de agir</strong> dentro de sua competência técnica — iniciando RCP, administrando fármacos de suporte básico/avançado em protocolo, controlando hemorragia. Omitir-se configura infração ética grave (abandono de paciente em risco).</p>
+    </div>
+
+    <div class="box box-conceito">
+      <span class="box-label">Sigilo Profissional — Exceções Legais</span>
+      <p>O sigilo pode ser quebrado quando: <strong>(1)</strong> o paciente autoriza por escrito; <strong>(2)</strong> há risco de vida para o paciente ou terceiros; <strong>(3)</strong> há determinação judicial; <strong>(4)</strong> há dever legal de notificação compulsória (doenças de notificação obrigatória — Portaria GM/MS 217/2023).</p>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">04</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     P05 — RES. 680/2021 + DIMENSIONAMENTO
+     ═══════════════════════════════════════════════════════════ -->
+<div class="page" id="p05">
+  <div class="page-header">
+    <span class="page-header-label">Conteúdo Principal · Aula 08</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <h2>Res. 680/2021 — Prescrição de Medicamentos</h2>
+
+    <p style="font-size:8.5pt;margin-bottom:3mm;">O enfermeiro pode prescrever medicamentos e produtos quando <strong>todos</strong> os três requisitos estiverem presentes simultaneamente:</p>
+
+    <table style="margin-bottom:4mm;">
+      <thead><tr><th>#</th><th>Requisito</th><th>Detalhe</th></tr></thead>
+      <tbody>
+        <tr><td style="text-align:center;font-weight:700;">1</td><td class="td-dest">Programa de saúde pública</td><td>HIPERDIA, pré-natal de baixo risco, tuberculose, hanseníase, imunização, planejamento familiar, entre outros programas oficiais</td></tr>
+        <tr><td style="text-align:center;font-weight:700;">2</td><td class="td-dest">Protocolo aprovado</td><td>Protocolo clínico elaborado e aprovado pela instituição ou secretaria de saúde — o enfermeiro não pode prescrever fora do protocolo</td></tr>
+        <tr><td style="text-align:center;font-weight:700;">3</td><td class="td-dest">Diagnóstico de enfermagem</td><td>A prescrição deve ser baseada no diagnóstico de enfermagem (NANDA-I), não no diagnóstico médico</td></tr>
+      </tbody>
+    </table>
+
+    <div class="box box-pega" style="margin-bottom:5mm;">
+      <span class="box-label">NÃO é prescrição autônoma irrestrita</span>
+      <p>A Res. 680/2021 <strong>não autoriza</strong> o enfermeiro a prescrever qualquer medicamento de sua escolha. A prescrição está estritamente limitada ao protocolo aprovado e à situação clínica prevista. Fora do protocolo, a prescrição é ato médico.</p>
+    </div>
+
+    <h2>Res. 543/2017 — Dimensionamento de Pessoal (HAP)</h2>
+
+    <div class="hap-grid">
+      <div class="hap-cel hap-head">Unidade / Complexidade</div>
+      <div class="hap-cel hap-val head">HAP</div>
+      <div class="hap-cel">UTI adulto / pediátrica / neonatal</div>
+      <div class="hap-cel hap-val">18h</div>
+      <div class="hap-cel">Semi-intensiva</div>
+      <div class="hap-cel hap-val">9,4h</div>
+      <div class="hap-cel">Internação em clínica médica/cirúrgica</div>
+      <div class="hap-cel hap-val">4,9h</div>
+      <div class="hap-cel">Internação em psiquiatria</div>
+      <div class="hap-cel hap-val">3,5h</div>
+    </div>
+
+    <div class="box box-dica" style="margin-bottom:0;">
+      <span class="box-label">Proporção Enfermeiro/Técnico — Res. 543/2017</span>
+      <p>Do total de horas de assistência: mínimo <strong>33%</strong> deve ser realizado pelo enfermeiro e máximo <strong>67%</strong> pelos técnicos/auxiliares. Em UTI, pelo menos 1 enfermeiro para cada 8 leitos (ou fração).</p>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">05</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     P06 — QUESTÃO 01
+     ═══════════════════════════════════════════════════════════ -->
+<div class="page" id="p06">
+  <div class="page-header">
+    <span class="page-header-label">Fixação · Aula 08</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <div class="q-header">Questão 01 de 03 · B4 COFEN I · Res. 736/2024 — PE · Memorização</div>
+
+    <div class="q-stem">
+      A Resolução COFEN n.º 736/2024 regulamenta o Processo de Enfermagem no Brasil, definindo competências para cada etapa. Sobre a distribuição de responsabilidades entre o enfermeiro e os demais membros da equipe de enfermagem, é correto afirmar que:
+    </div>
+
+    <ul class="q-opts">
+      <li class="q-opt">
+        <span class="opt-letter">A</span>
+        As cinco etapas do Processo de Enfermagem são de competência exclusiva do enfermeiro, sendo vedada qualquer participação do técnico de enfermagem em qualquer uma delas.
+      </li>
+      <li class="q-opt">
+        <span class="opt-letter">B</span>
+        O diagnóstico de enfermagem pode ser estabelecido por técnico de enfermagem com experiência mínima de cinco anos e supervisão direta do enfermeiro responsável.
+      </li>
+      <li class="q-opt correta">
+        <span class="opt-letter">C</span>
+        O diagnóstico, o planejamento e a avaliação são etapas exclusivas do enfermeiro; a implementação das intervenções pode ser executada por técnicos sob supervisão, exceto nos atos definidos como privativos do enfermeiro. <span class="badge-correta">Correta</span>
+      </li>
+      <li class="q-opt">
+        <span class="opt-letter">D</span>
+        A avaliação dos resultados pode ser delegada ao técnico de enfermagem quando o enfermeiro estiver impossibilitado de comparecer ao serviço, desde que haja registro formal da delegação.
+      </li>
+    </ul>
+
+    <div class="gabarito-box">
+      <div class="gabarito-title">Gabarito Comentado — C</div>
+      <div class="gabarito-text">A Res. 736/2024 é explícita: <strong>diagnóstico, planejamento e avaliação são exclusivos do enfermeiro</strong> — sem exceção por experiência, delegação ou impedimento. A implementação pode ser executada por técnicos sob supervisão (exceto procedimentos privativos definidos). A coleta de dados básicos também pode envolver técnicos.</div>
+      <div class="distrator"><strong>A —</strong> Errado: a implementação não é exclusiva. <strong>B —</strong> Errado: o diagnóstico de enfermagem é exclusivo do enfermeiro em qualquer circunstância. <strong>D —</strong> Errado: a avaliação jamais pode ser delegada ao técnico, mesmo com impedimento ou registro formal.</div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">06</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     P07 — QUESTÃO 02
+     ═══════════════════════════════════════════════════════════ -->
+<div class="page" id="p07">
+  <div class="page-header">
+    <span class="page-header-label">Fixação · Aula 08</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <div class="q-header">Questão 02 de 03 · B4 COFEN I · Res. 680/2021 — Prescrição · Aplicação</div>
+
+    <div class="q-stem">
+      Enfermeira de UBS coordena o Programa de Controle da Hipertensão Arterial (HIPERDIA). Paciente masculino, 61 anos, hipertenso há 8 anos, em acompanhamento regular, apresenta PA 162/104 mmHg na consulta de enfermagem. O protocolo municipal do HIPERDIA — aprovado pela Secretaria Municipal de Saúde — prevê ajuste de dose de anti-hipertensivo pelo enfermeiro para PA sistólica ≥160 mmHg em paciente já em tratamento. Com base na Res. COFEN 680/2021, a enfermeira pode:
+    </div>
+
+    <ul class="q-opts">
+      <li class="q-opt">
+        <span class="opt-letter">A</span>
+        Apenas orientar o paciente a retornar no dia seguinte para consulta médica, pois a prescrição de anti-hipertensivos é ato médico exclusivo em qualquer circunstância.
+      </li>
+      <li class="q-opt">
+        <span class="opt-letter">B</span>
+        Prescrever qualquer anti-hipertensivo de sua escolha, pois a existência de protocolo municipal confere autonomia irrestrita de prescrição ao enfermeiro.
+      </li>
+      <li class="q-opt correta">
+        <span class="opt-letter">C</span>
+        Prescrever o ajuste de dose previsto no protocolo institucional aprovado, pois estão presentes os três requisitos da Res. 680/2021: programa de saúde pública, protocolo aprovado e diagnóstico de enfermagem fundamentando a conduta. <span class="badge-correta">Correta</span>
+      </li>
+      <li class="q-opt">
+        <span class="opt-letter">D</span>
+        Prescrever o anti-hipertensivo apenas mediante contato telefônico prévio com o médico da unidade, pois a Res. 680/2021 exige respaldo médico para toda prescrição realizada pelo enfermeiro.
+      </li>
+    </ul>
+
+    <div class="gabarito-box">
+      <div class="gabarito-title">Gabarito Comentado — C</div>
+      <div class="gabarito-text">Os três requisitos da Res. 680/2021 estão cumpridos: (1) programa oficial de saúde pública (HIPERDIA); (2) protocolo aprovado pela secretaria de saúde; (3) diagnóstico de enfermagem (PA inadequadamente controlada). A prescrição é legalmente amparada e não requer autorização médica prévia.</div>
+      <div class="distrator"><strong>A —</strong> A Res. 680/2021 autoriza expressamente a prescrição em programas de saúde pública com protocolo aprovado. <strong>B —</strong> A autonomia NÃO é irrestrita — está limitada ao medicamento previsto no protocolo, na dosagem e situação definidos. <strong>D —</strong> A Res. 680/2021 não exige respaldo ou contato médico prévio quando o protocolo está aprovado.</div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">07</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     P08 — QUESTÃO 03 (ÂNCORA)
+     ═══════════════════════════════════════════════════════════ -->
+<div class="page" id="p08">
+  <div class="page-header">
+    <span class="page-header-label">Fixação · Aula 08</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <div class="q-header">Questão 03 de 03 · B4 COFEN I · Res. 564/2017 + Emergência · Análise</div>
+
+    <div class="q-stem">
+      Enfermeira em UPA de médio porte. Paciente feminina, 34 anos, chega à triagem 10 minutos após picada de abelha. Apresenta urticária generalizada, angioedema de face e lábios, sibilos difusos à ausculta, PA 72/40 mmHg e SpO₂ 88%. O único médico disponível está em procedimento cirúrgico de emergência na outra sala. A enfermeira reconhece quadro de anafilaxia grave. Sobre as ações de enfermagem e seu fundamento legal, assinale a alternativa correta:
+    </div>
+
+    <ul class="q-opts">
+      <li class="q-opt">
+        <span class="opt-letter">A</span>
+        A enfermeira deve aguardar a liberação do médico, pois a administração de adrenalina é ato médico exclusivo e qualquer ação autônoma configura exercício ilegal da medicina.
+      </li>
+      <li class="q-opt">
+        <span class="opt-letter">B</span>
+        A enfermeira pode agir, mas apenas se possuir título de especialista em enfermagem de urgência registrado no COREN, pois a Res. 564/2017 exige qualificação específica para atos autônomos.
+      </li>
+      <li class="q-opt correta">
+        <span class="opt-letter">C</span>
+        A enfermeira tem o dever ético e legal de agir imediatamente — administrar adrenalina 0,3 mg IM, instalar O₂ e obter acesso venoso — amparada pelo Código de Ética (Res. 564/2017), que obriga o enfermeiro a preservar a vida do paciente em situações de emergência quando não há médico disponível. Omitir-se configura infração ética grave. <span class="badge-correta">Correta</span>
+      </li>
+      <li class="q-opt">
+        <span class="opt-letter">D</span>
+        A enfermeira pode administrar apenas anti-histamínico oral, pois a adrenalina está fora do escopo de competência do enfermeiro mesmo em situações de emergência.
+      </li>
+    </ul>
+
+    <div class="gabarito-box">
+      <div class="gabarito-title">Gabarito Comentado — C</div>
+      <div class="gabarito-text">O Código de Ética (Res. 564/2017) <strong>obriga</strong> o enfermeiro a agir para preservar a vida em emergências — a omissão constitui infração ética grave ("abandono de paciente em risco iminente"). A adrenalina IM 0,3 mg está dentro do escopo técnico do enfermeiro (é o tratamento de primeira linha da anafilaxia). A especialização não é pré-requisito para atuar em emergências.</div>
+      <div class="distrator"><strong>A —</strong> Aguardar o médico em anafilaxia grave equivale a abandono: morte em minutos sem adrenalina. A Res. 564/2017 ampara a ação. <strong>B —</strong> A Res. 564/2017 não exige especialização para atos de emergência — exige competência técnica, que todo enfermeiro deve ter. <strong>D —</strong> Anti-histamínico oral é insuficiente e demorado; adrenalina IM é o tratamento definitivo — e está dentro da competência do enfermeiro em emergências.</div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">08</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     P09 — RECUPERAÇÃO ATIVA
+     ═══════════════════════════════════════════════════════════ -->
+<div class="page" id="p09">
+  <div class="page-header">
+    <span class="page-header-label">Recuperação Ativa · Aula 08</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <div class="section-tag">Se Esquecer Tudo, Lembre Disto</div>
+    <div class="section-rule"></div>
+
+    <div class="rec-box">
+      <div class="rec-item">
+        <span class="rec-star">★</span>
+        <span>PE (Res. 736/2024): etapas <strong>exclusivas do enfermeiro = diagnóstico + planejamento + avaliação</strong>. Implementação pode ser delegada ao técnico. Coleta básica também pode envolver técnico. PE obrigatório em TODOS os ambientes de saúde.</span>
+      </div>
+      <div class="rec-item">
+        <span class="rec-star">★</span>
+        <span>Prescrição pelo enfermeiro (Res. 680/2021): <strong>3 requisitos simultâneos</strong> — (1) programa de saúde pública + (2) protocolo aprovado + (3) diagnóstico de enfermagem. Sem um dos três: não pode prescrever.</span>
+      </div>
+      <div class="rec-item">
+        <span class="rec-star">★</span>
+        <span>Emergência sem médico (Res. 564/2017): o enfermeiro tem <strong>dever</strong> (não apenas permissão) de agir para preservar a vida. Omissão = infração ética grave. Adrenalina na anafilaxia está dentro do escopo do enfermeiro.</span>
+      </div>
+    </div>
+
+    <div class="section-tag" style="margin-top:2mm;">Teste-se Sem Olhar</div>
+    <div class="section-rule"></div>
+
+    <ul class="teste-list">
+      <li class="teste-item"><strong>Q1 —</strong> Quais são as três etapas do PE exclusivas do enfermeiro, segundo a Res. 736/2024?</li>
+      <li class="teste-item"><strong>Q2 —</strong> Quais são os três requisitos para que um enfermeiro possa prescrever medicamentos, segundo a Res. 680/2021?</li>
+      <li class="teste-item"><strong>Q3 —</strong> Qual o fundamento ético que ampara o enfermeiro a administrar adrenalina em anafilaxia sem médico presente?</li>
+      <li class="teste-item"><strong>Q4 —</strong> Quantas horas de assistência por paciente (HAP) são previstas para UTI adulto na Res. 543/2017?</li>
+    </ul>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">09</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     P10 — REFERÊNCIAS
+     ═══════════════════════════════════════════════════════════ -->
+<div class="page" id="p10">
+  <div class="page-header">
+    <span class="page-header-label">Referências · Aula 08</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <div class="section-tag">Referências — Bloco B4 · Aula 08</div>
+    <div class="section-rule"></div>
+
+    <ul class="ref-list">
+      <li class="ref-item">BRASIL. Conselho Federal de Enfermagem. <em>Resolução COFEN n.º 736/2024</em>. Regulamenta a execução do Processo de Enfermagem. Brasília: COFEN, 2024.</li>
+      <li class="ref-item">BRASIL. Conselho Federal de Enfermagem. <em>Resolução COFEN n.º 680/2021</em>. Atualiza e normatiza a prescrição de medicamentos e de produtos por enfermeiros. Brasília: COFEN, 2021.</li>
+      <li class="ref-item">BRASIL. Conselho Federal de Enfermagem. <em>Resolução COFEN n.º 564/2017</em>. Aprova o novo Código de Ética dos Profissionais de Enfermagem. Brasília: COFEN, 2017.</li>
+      <li class="ref-item">BRASIL. Conselho Federal de Enfermagem. <em>Resolução COFEN n.º 543/2017</em>. Atualiza e estabelece parâmetros para o dimensionamento do quadro de profissionais de enfermagem. Brasília: COFEN, 2017.</li>
+      <li class="ref-item">BRASIL. Conselho Federal de Enfermagem. <em>Resolução COFEN n.º 358/2009</em>. Dispõe sobre a Sistematização da Assistência de Enfermagem — SAE. Brasília: COFEN, 2009.</li>
+      <li class="ref-item">HERDMAN, T.H.; KAMITSURU, S.; LOPES, C.T. (Eds.). <em>NANDA International — Diagnósticos de Enfermagem 2024–2026</em>. 13. ed. Porto Alegre: Artmed, 2024.</li>
+    </ul>
+
+    <div class="anot-box">
+      <span class="anot-label">Espaço para Anotações</span>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">10</span>
+  </div>
+</div>
+
+</body>
+</html>

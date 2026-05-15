@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B9 · Aula 13 — DRC: Doença Renal Crônica e Terapias Renais Substitutivas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Bricolage+Grotesque:wght@300;400;500;600;700&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { -webkit-print-color-adjust: exact; print-color-adjust: exact; font-family: 'Bricolage Grotesque', sans-serif; background: #888; }
+
+  .page { width: 210mm; height: 297mm; display: flex; flex-direction: column; overflow: hidden; page-break-after: always; background: #F6F4ED; }
+  .ph { height: 14mm; flex-shrink: 0; display: flex; align-items: center; justify-content: space-between; padding: 0 16mm; border-bottom: 0.4mm solid #E0DDD6; }
+  .pf { height: 9mm; flex-shrink: 0; display: flex; align-items: center; justify-content: space-between; padding: 0 16mm; border-top: 0.4mm solid #E0DDD6; }
+  .pc { flex: 1; padding: 7mm 16mm 5mm; overflow: hidden; }
+  .pc-sm { flex: 1; padding: 5mm 16mm 4mm; overflow: hidden; }
+
+  .logo-wrap { display: flex; align-items: center; gap: 2mm; }
+  .logo-icon { width: 7mm; height: 7mm; background: #0D8A8D; border-radius: 1mm; display: flex; align-items: center; justify-content: center; }
+  .logo-icon svg { width: 4.5mm; height: 4.5mm; fill: #F6F4ED; }
+  .logo-text { font-family: 'Playfair Display', serif; font-style: italic; font-size: 5.5pt; color: #0D8A8D; letter-spacing: 0.02em; }
+  .logo-sub { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 4pt; color: #888; letter-spacing: 0.08em; text-transform: uppercase; }
+  .ph-center { font-family: 'Barlow Condensed', sans-serif; font-size: 6.5pt; font-weight: 700; color: #0D8A8D; letter-spacing: 0.12em; text-transform: uppercase; }
+  .ph-right { font-size: 5.5pt; color: #999; }
+  .pf-left { font-size: 5pt; color: #aaa; }
+  .pf-center { font-size: 5pt; color: #bbb; }
+  .pf-right { font-size: 5pt; color: #aaa; }
+
+  /* Cover */
+  .cover-band { background: #1F5C23; color: #F6F4ED; padding: 5mm 16mm 4.5mm; }
+  .cover-band .subgroup { font-family: 'Barlow Condensed', sans-serif; font-size: 7pt; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.75; margin-bottom: 1.5mm; }
+  .cover-band h1 { font-family: 'Barlow Condensed', sans-serif; font-size: 24pt; font-weight: 800; line-height: 1.05; letter-spacing: 0.02em; text-transform: uppercase; }
+  .cover-band .aula-label { font-size: 7pt; opacity: 0.7; margin-top: 1mm; }
+  .tag { display: inline-flex; align-items: center; font-family: 'Barlow Condensed', sans-serif; font-size: 6.5pt; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 1mm 2.5mm; border-radius: 0.8mm; }
+  .tag-green { background: #1F5C23; color: #F6F4ED; }
+  .tag-teal { background: #0D8A8D; color: #F6F4ED; }
+  .tag-lime { background: #C6D834; color: #070707; }
+  .tag-grey { background: #E0DDD6; color: #555; }
+  .tag-row { display: flex; gap: 2mm; flex-wrap: wrap; margin-bottom: 3mm; }
+  .cover-highlights { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2.5mm; margin-top: 2mm; }
+  .hl-box { background: #fff; border: 0.3mm solid #E0DDD6; border-radius: 1.2mm; padding: 3mm 3.5mm; }
+  .hl-box .hl-val { font-family: 'Barlow Condensed', sans-serif; font-size: 15pt; font-weight: 800; color: #1F5C23; line-height: 1; }
+  .hl-box .hl-lbl { font-size: 6pt; color: #666; margin-top: 0.8mm; line-height: 1.3; }
+  .cover-anchor { margin-top: 3.5mm; background: #0D8A8D; color: #F6F4ED; border-radius: 1.2mm; padding: 2.5mm 4mm; }
+  .cover-anchor .anc-title { font-family: 'Barlow Condensed', sans-serif; font-size: 6.5pt; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.75; margin-bottom: 1mm; }
+  .cover-anchor .anc-items { display: flex; gap: 4mm; flex-wrap: wrap; }
+  .cover-anchor .anc-item { font-size: 6.5pt; }
+  .cover-anchor .anc-item strong { font-weight: 700; color: #C6D834; }
+  .cover-qtype { margin-top: 3mm; display: flex; gap: 3mm; align-items: center; }
+  .qtype-badge { font-family: 'Barlow Condensed', sans-serif; font-size: 7pt; font-weight: 700; letter-spacing: 0.1em; padding: 1mm 3mm; border-radius: 0.8mm; text-transform: uppercase; }
+  .qtype-ap { background: #C6D834; color: #070707; }
+  .qtype-an { background: #1F5C23; color: #F6F4ED; }
+  .qtype-label { font-size: 6pt; color: #888; }
+
+  h2 { font-family: 'Barlow Condensed', sans-serif; font-size: 13pt; font-weight: 800; color: #1F5C23; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 3mm; border-bottom: 0.5mm solid #1F5C23; padding-bottom: 1.5mm; }
+  h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 10pt; font-weight: 700; color: #0D8A8D; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 2mm; margin-top: 3mm; }
+  h3:first-child { margin-top: 0; }
+  p { font-size: 7.5pt; line-height: 1.5; color: #2a2a2a; margin-bottom: 2mm; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 6.8pt; margin-bottom: 3mm; }
+  th { background: #1F5C23; color: #F6F4ED; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 7pt; letter-spacing: 0.06em; text-transform: uppercase; padding: 1.8mm 2.5mm; text-align: left; }
+  td { padding: 1.6mm 2.5mm; border-bottom: 0.25mm solid #E0DDD6; color: #2a2a2a; vertical-align: top; }
+  tr:nth-child(even) td { background: rgba(31,92,35,0.04); }
+  .td-green { color: #1F5C23; font-weight: 700; }
+  .td-red { color: #C0392B; font-weight: 700; }
+  .td-teal { color: #0D8A8D; font-weight: 700; }
+  .td-bold { font-weight: 700; }
+  .td-center { text-align: center; }
+
+  .box { border-radius: 1.2mm; padding: 3mm 4mm; margin-bottom: 3mm; }
+  .box-green { background: rgba(31,92,35,0.07); border-left: 1mm solid #1F5C23; }
+  .box-teal { background: rgba(13,138,141,0.08); border-left: 1mm solid #0D8A8D; }
+  .box-lime { background: rgba(198,216,52,0.15); border-left: 1mm solid #C6D834; }
+  .box-red { background: rgba(192,57,43,0.07); border-left: 1mm solid #C0392B; }
+  .box-amber { background: rgba(230,126,34,0.08); border-left: 1mm solid #E67E22; }
+  .box-title { font-family: 'Barlow Condensed', sans-serif; font-size: 7.5pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1.5mm; }
+  .box-green .box-title { color: #1F5C23; }
+  .box-teal .box-title { color: #0D8A8D; }
+  .box-lime .box-title { color: #5a6300; }
+  .box-red .box-title { color: #C0392B; }
+  .box-amber .box-title { color: #E67E22; }
+  .box p { margin-bottom: 1mm; font-size: 7pt; }
+  .box p:last-child { margin-bottom: 0; }
+
+  ul { padding-left: 4mm; margin-bottom: 2mm; }
+  ul li { font-size: 7.2pt; line-height: 1.45; color: #2a2a2a; margin-bottom: 0.8mm; }
+  ul li::marker { color: #1F5C23; }
+
+  .q-header { background: #1F5C23; color: #F6F4ED; border-radius: 1.5mm; padding: 2.5mm 4mm; margin-bottom: 3.5mm; display: flex; align-items: center; gap: 3mm; }
+  .q-num { font-family: 'Barlow Condensed', sans-serif; font-size: 18pt; font-weight: 800; line-height: 1; }
+  .q-meta { flex: 1; }
+  .q-meta .q-type { font-family: 'Barlow Condensed', sans-serif; font-size: 7pt; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.8; }
+  .q-meta .q-origin { font-size: 6.5pt; opacity: 0.7; }
+  .q-stem { font-size: 8pt; line-height: 1.55; color: #2a2a2a; margin-bottom: 3mm; background: #fff; border: 0.3mm solid #E0DDD6; border-radius: 1mm; padding: 3mm 4mm; }
+  .q-stem strong { color: #1F5C23; }
+  .options { display: flex; flex-direction: column; gap: 1.8mm; }
+  .opt { display: flex; gap: 2.5mm; align-items: flex-start; font-size: 7.5pt; line-height: 1.45; padding: 1.8mm 3mm; border-radius: 1mm; border: 0.25mm solid #E0DDD6; background: #fff; }
+  .opt-letter { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; color: #1F5C23; flex-shrink: 0; line-height: 1.2; }
+  .opt.correct { background: rgba(31,92,35,0.1); border-color: #1F5C23; }
+  .opt.correct .opt-letter { color: #1F5C23; }
+  .opt.distractor { background: rgba(192,57,43,0.05); border-color: #e8c8c5; }
+  .opt.distractor .opt-letter { color: #C0392B; }
+  .q-rationale { margin-top: 3mm; font-size: 6.8pt; line-height: 1.5; }
+  .q-rationale .rat-title { font-family: 'Barlow Condensed', sans-serif; font-size: 7pt; font-weight: 700; color: #1F5C23; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1mm; }
+
+  .answer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5mm; margin-top: 4mm; }
+  .ans-card { background: #1F5C23; color: #F6F4ED; border-radius: 2mm; padding: 5mm; text-align: center; }
+  .ans-card .ans-q { font-family: 'Barlow Condensed', sans-serif; font-size: 9pt; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.8; }
+  .ans-card .ans-letter { font-family: 'Barlow Condensed', sans-serif; font-size: 38pt; font-weight: 800; line-height: 1; color: #C6D834; }
+  .ans-card .ans-topic { font-size: 6pt; opacity: 0.75; margin-top: 1mm; line-height: 1.3; }
+
+  .synth-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; margin-bottom: 3mm; }
+  .synth-item { background: #fff; border: 0.3mm solid #E0DDD6; border-radius: 1mm; padding: 2.5mm 3mm; }
+  .synth-item .si-title { font-family: 'Barlow Condensed', sans-serif; font-size: 7pt; font-weight: 700; color: #1F5C23; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1mm; }
+  .synth-item .si-body { font-size: 6.5pt; line-height: 1.45; color: #333; }
+  .ref-block { background: #f5f4f0; border-radius: 1mm; padding: 2.5mm 3.5mm; }
+  .ref-block .ref-title { font-family: 'Barlow Condensed', sans-serif; font-size: 7pt; font-weight: 700; color: #666; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.5mm; }
+  .ref-block ul { margin: 0; padding-left: 3.5mm; }
+  .ref-block ul li { font-size: 6pt; color: #666; line-height: 1.4; margin-bottom: 0.5mm; }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; }
+
+  .an-items { display: flex; flex-direction: column; gap: 1.5mm; margin: 2.5mm 0; }
+  .an-item { display: flex; gap: 2.5mm; align-items: flex-start; font-size: 7.5pt; line-height: 1.45; padding: 1.8mm 3mm; border-radius: 1mm; background: #fff; border: 0.25mm solid #E0DDD6; }
+  .an-item.correct-item { background: rgba(31,92,35,0.1); border-color: #1F5C23; }
+  .an-item.wrong-item { background: rgba(192,57,43,0.05); border-color: #e8c8c5; }
+  .an-roman { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; flex-shrink: 0; line-height: 1.2; }
+  .correct-item .an-roman { color: #1F5C23; }
+  .wrong-item .an-roman { color: #C0392B; }
+
+  .mt1 { margin-top: 1mm; }
+  .mt2 { margin-top: 2mm; }
+  .mt3 { margin-top: 3mm; }
+  .fs6 { font-size: 6pt; }
+</style>
+</head>
+<body>
+
+<!-- ========== PAGE 1 — CAPA ========== -->
+<div class="page">
+  <div class="ph">
+    <div class="logo-wrap">
+      <div class="logo-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+      <div><div class="logo-text">Extensivo ENARE</div><div class="logo-sub">2026</div></div>
+    </div>
+    <div class="ph-center">Bloco B9 · Nutrição</div>
+    <div class="ph-right">PDF de Apoio · Aula 13</div>
+  </div>
+
+  <div class="cover-band">
+    <div class="subgroup">NUT-CLÍN · Nutrição Clínica</div>
+    <h1>Doença Renal Crônica<br>e Terapias Renais<br>Substitutivas</h1>
+    <div class="aula-label">Aula 13 de ~35 · Bloco B9</div>
+  </div>
+
+  <div class="pc-sm">
+    <div class="tag-row" style="margin-top:3mm">
+      <span class="tag tag-green">NUT-CLÍN</span>
+      <span class="tag tag-lime">Ap · An</span>
+      <span class="tag tag-teal">Alta frequência FGV</span>
+    </div>
+
+    <div class="cover-highlights">
+      <div class="hl-box">
+        <div class="hl-val">0,6–0,8</div>
+        <div class="hl-lbl">g/kg/dia proteína na DRC conservadora (E3–E4 sem diálise)</div>
+      </div>
+      <div class="hl-box">
+        <div class="hl-val">1,2–1,5</div>
+        <div class="hl-lbl">g/kg/dia proteína em CAPD — perdas peritoneais de albumina</div>
+      </div>
+      <div class="hl-box">
+        <div class="hl-val">&lt;800 mg</div>
+        <div class="hl-lbl">fósforo/dia desde E3–E4; aditivos inorgânicos: absorção &gt;90%</div>
+      </div>
+    </div>
+
+    <div class="cover-anchor mt2">
+      <div class="anc-title">Questões-âncora da banca FGV</div>
+      <div class="anc-items">
+        <div class="anc-item"><strong>2024 Q80</strong> · DRC conservadora, uremia, hipercalemia — dieta (Ap)</div>
+        <div class="anc-item"><strong>2024 Q81</strong> · Glomerulonefrite + hemodiálise — P e K (Ap)</div>
+        <div class="anc-item"><strong>2024 Q82</strong> · DRC E5, CAPD — objetivos TN (Ap)</div>
+        <div class="anc-item"><strong>2025 Q34/Q52/Q54</strong> · DRC E4, litíase renal, DRC + tiazídico (Ap/An)</div>
+        <div class="anc-item"><strong>2025 Q38</strong> · IC + DM2 + DRC3 + HAS — múltiplas restrições (An)</div>
+      </div>
+    </div>
+
+    <div class="cover-qtype mt2">
+      <span class="qtype-badge qtype-ap">Q1 · Ap</span>
+      <span class="qtype-badge qtype-ap">Q2 · Ap</span>
+      <span class="qtype-badge qtype-an">Q3 · An — âncora</span>
+      <span class="qtype-label" style="margin-left:2mm">Ap = Aplicação · An = Análise</span>
+    </div>
+  </div>
+
+  <div class="pf">
+    <span class="pf-left">Extensivo ENARE 2026</span>
+    <span class="pf-center">Bloco B9 · Nutrição · Aula 13</span>
+    <span class="pf-right">1 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PAGE 2 — DRC ESTÁGIOS E METAS NUTRICIONAIS ========== -->
+<div class="page">
+  <div class="ph">
+    <div class="logo-wrap"><div class="logo-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><div><div class="logo-text">Extensivo ENARE</div><div class="logo-sub">2026</div></div></div>
+    <div class="ph-center">DRC — Estágios e Metas</div>
+    <div class="ph-right">NUT-CLÍN · Aula 13</div>
+  </div>
+
+  <div class="pc-sm">
+    <h2>DRC — Estágios (KDIGO) e Metas Nutricionais</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="width:10%">Estágio</th>
+          <th style="width:18%">TFG (mL/min/1,73m²)</th>
+          <th style="width:18%">Proteína (g/kg/dia)</th>
+          <th style="width:18%">Calorias (kcal/kg/dia)</th>
+          <th style="width:36%">Restrições prioritárias</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="td-bold">E1–E2</td>
+          <td>≥ 60</td>
+          <td>0,8 (padrão)</td>
+          <td>30–35</td>
+          <td>Monitorar sódio; sem restrições rígidas</td>
+        </tr>
+        <tr>
+          <td class="td-bold">E3 (3a/3b)</td>
+          <td>30–59</td>
+          <td><strong class="td-green">0,6–0,8</strong></td>
+          <td>30–35</td>
+          <td>↓Na, início restrição P se hiperfosfatemia</td>
+        </tr>
+        <tr>
+          <td class="td-bold">E4</td>
+          <td>15–29</td>
+          <td><strong class="td-green">0,6–0,8</strong></td>
+          <td>30–35</td>
+          <td>↓Na, ↓P (&lt;800 mg/dia), ↓K se hipercalemia</td>
+        </tr>
+        <tr>
+          <td class="td-bold">E5 (HD)</td>
+          <td>&lt;15 (hemodiálise)</td>
+          <td><strong class="td-teal">1,2–1,4</strong> (↑por perdas dialíticas)</td>
+          <td>30–35</td>
+          <td>↓Na, ↓P, ↓K (&lt;2–3 g/dia), ↓fluidos</td>
+        </tr>
+        <tr>
+          <td class="td-bold">E5 (CAPD)</td>
+          <td>&lt;15 (diálise peritoneal)</td>
+          <td><strong class="td-teal">1,2–1,5</strong> (↑↑ perdas peritoneais)</td>
+          <td>Subtrair 400–800 kcal do dialisato</td>
+          <td>↓Na; K mais liberado (diálise contínua)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="two-col">
+      <div>
+        <h3>Por que proteína SOBE na diálise?</h3>
+        <div class="box box-teal">
+          <div class="box-title">Hemodiálise (HD)</div>
+          <p>Sessão remove aminoácidos e oligopeptídeos pelo filtro. Cada sessão (4h, 3×/semana) → perda de ~8–10 g de aminoácidos. Meta proteica ↑ para 1,2–1,4 g/kg/dia para compensar.</p>
+        </div>
+        <div class="box box-green" style="margin-bottom:0">
+          <div class="box-title">CAPD (Diálise Peritoneal)</div>
+          <p>Peritônio é membrana de troca. Perda diária de albumina e proteínas pelo dialisato: <strong>5–15 g/dia</strong>. Meta proteica mais alta: 1,2–1,5 g/kg/dia. Glicose do dialisato: 400–800 kcal/dia — descontar do plano alimentar (risco obesidade, DM).</p>
+        </div>
+      </div>
+      <div>
+        <h3>Fósforo — ponto crítico FGV</h3>
+        <div class="box box-amber">
+          <div class="box-title">Absorção diferencial do fósforo</div>
+          <p><strong>Fósforo orgânico</strong> (carnes, laticínios, leguminosas): absorção <strong>40–60%</strong> — fitato reduz absorção em vegetais</p>
+          <p><strong>Fósforo inorgânico</strong> (aditivos em alimentos processados, refrigerantes, embutidos): absorção <strong>&gt; 90%</strong> — mais perigoso na DRC</p>
+          <p style="margin-top:1mm">↑ consumo de alimentos ultraprocessados = maior hiperfosfatemia na DRC mesmo com aparente restrição de laticínios</p>
+        </div>
+
+        <div class="box box-red" style="margin-bottom:0">
+          <div class="box-title">Distrator FGV — DRC e proteína</div>
+          <p><strong>"DRC E4 sem diálise — aumentar proteína para compensar catabolismo urêmico"</strong> → ERRADO. Proteína elevada ↑ureia, ↑acidose, ↑progressão da DRC. Meta conservadora: 0,6–0,8 g/kg/dia.</p>
+          <p style="margin-top:0.5mm"><strong>"CAPD — mesma restrição proteica que conservador"</strong> → ERRADO. CAPD perde albumina pelo peritônio; meta 1,2–1,5 g/kg/dia.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pf">
+    <span class="pf-left">Extensivo ENARE 2026</span>
+    <span class="pf-center">Bloco B9 · Nutrição · Aula 13</span>
+    <span class="pf-right">2 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PAGE 3 — ELETRÓLITOS NA DRC ========== -->
+<div class="page">
+  <div class="ph">
+    <div class="logo-wrap"><div class="logo-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><div><div class="logo-text">Extensivo ENARE</div><div class="logo-sub">2026</div></div></div>
+    <div class="ph-center">Eletrólitos na DRC</div>
+    <div class="ph-right">NUT-CLÍN · Aula 13</div>
+  </div>
+
+  <div class="pc-sm">
+    <h2>Eletrólitos, Hidratação e Condições Especiais na DRC</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="width:14%">Eletrólito</th>
+          <th style="width:28%">Restrição e meta</th>
+          <th style="width:30%">Alimentos a limitar</th>
+          <th style="width:28%">Observação clínica</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="td-bold">Sódio</td>
+          <td>&lt; 2 g/dia (5 g de sal) desde E3</td>
+          <td>Embutidos, enlatados, temperos prontos, queijos curados, fast food</td>
+          <td>HAS associada: restrição mais rigorosa</td>
+        </tr>
+        <tr>
+          <td class="td-bold">Potássio</td>
+          <td>&lt; 2–3 g/dia se TFG &lt; 30 ou hipercalemia. <strong>Individualizar</strong></td>
+          <td>Banana, laranja, tomate, batata, abacate, espinafre, feijão</td>
+          <td>IECA/ARA-II + espironolactona → ↑risco hipercalemia</td>
+        </tr>
+        <tr>
+          <td class="td-bold">Fósforo</td>
+          <td>&lt; 800–1000 mg/dia desde E3–E4</td>
+          <td>Laticínios, carnes processadas, refrigerantes (cola), embutidos (aditivos)</td>
+          <td>Quelatores de fósforo (CaCO₃) → tomar com refeição</td>
+        </tr>
+        <tr>
+          <td class="td-bold">Cálcio</td>
+          <td>Monitorar — hiperparatiroidismo secundário</td>
+          <td>Restringir apenas se hipercalcemia</td>
+          <td>DRC → ↓1,25(OH)₂ vit D → ↓absorção Ca → HPT-2º</td>
+        </tr>
+        <tr>
+          <td class="td-bold">Fluidos</td>
+          <td>HD: diurese residual + 500–1000 mL</td>
+          <td>Monitorar edema, ganho interdialítico (&lt; 4–5% do peso seco)</td>
+          <td>CAPD: restrição hídrica menos rígida</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="two-col">
+      <div>
+        <h3>Litíase renal e DRC (2025 Q52)</h3>
+        <div class="box box-amber">
+          <div class="box-title">Dieta hiperproteica crônica → litíase cálcio</div>
+          <p>Excesso proteico → ↑ácido úrico (litíase úrica) e ↑cálcio urinário (hipercalciúria absortiva e renal) → cristais cálcio-oxalato e cálcio-fosfato</p>
+          <p style="margin-top:1mm"><strong>Prevenção:</strong> proteína moderada (0,8 g/kg) + ↑hidratação (diurese &gt; 2 L/dia) + ↓sódio (reabsorção tubular Ca acoplada ao Na)</p>
+          <p style="margin-top:0.5mm">Oxalato (espinafre, nozes, cacau) + quelação intestinal de cálcio → ↑oxalato livre → litíase oxalato</p>
+        </div>
+      </div>
+      <div>
+        <h3>DRC + Tiazídico (2025 Q54)</h3>
+        <div class="box box-teal">
+          <div class="box-title">Interação tiazídico × eletrólitos na DRC</div>
+          <p><strong>Tiazídicos</strong> (hidroclorotiazida, clortalidona): inibem cotransportador NaCl no túbulo distal</p>
+          <p style="margin-top:0.5mm">→ ↓excreção de <strong>cálcio</strong> (hipercalcemia) — monitorar<br>
+          → ↓magnésio (hipomagnesemia) — vigiar<br>
+          → ↓sódio (hiponatremia) — inicialmente<br>
+          → ↑ácido úrico (retarda excreção)</p>
+          <p style="margin-top:0.5mm">Na DRC + tiazídico: restrição de sódio mantida; monitorar cálcio e magnésio especificamente</p>
+        </div>
+
+        <div class="box box-red" style="margin-bottom:0">
+          <div class="box-title">Uremia — manifestações nutricionais</div>
+          <p>Acúmulo urêmico: anorexia, náusea, êmese, disgeusia (gosto metálico) → risco desnutrição. Vitamina B6, vitamina C e folato: perdas aumentadas na diálise — suplementar.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pf">
+    <span class="pf-left">Extensivo ENARE 2026</span>
+    <span class="pf-center">Bloco B9 · Nutrição · Aula 13</span>
+    <span class="pf-right">3 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PAGE 4 — HEMODIÁLISE vs CAPD vs CONSERVADOR ========== -->
+<div class="page">
+  <div class="ph">
+    <div class="logo-wrap"><div class="logo-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><div><div class="logo-text">Extensivo ENARE</div><div class="logo-sub">2026</div></div></div>
+    <div class="ph-center">HD vs. CAPD vs. Conservador</div>
+    <div class="ph-right">NUT-CLÍN · Aula 13</div>
+  </div>
+
+  <div class="pc-sm">
+    <h2>Comparativo: DRC Conservadora × Hemodiálise × CAPD</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="width:22%">Parâmetro</th>
+          <th style="width:26%">Conservador (E3–E4)</th>
+          <th style="width:26%">Hemodiálise (HD)</th>
+          <th style="width:26%">CAPD (Diálise Peritoneal)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="td-bold">Proteína</td>
+          <td class="td-green"><strong>0,6–0,8 g/kg/dia</strong> — ↓progressão</td>
+          <td class="td-teal"><strong>1,2–1,4 g/kg/dia</strong> — perdas dialíticas</td>
+          <td class="td-teal"><strong>1,2–1,5 g/kg/dia</strong> — perdas peritoneais albumina</td>
+        </tr>
+        <tr>
+          <td class="td-bold">Calorias</td>
+          <td>30–35 kcal/kg/dia</td>
+          <td>30–35 kcal/kg/dia</td>
+          <td>30–35 kcal/kg/dia <strong>menos</strong> calorias do dialisato (400–800 kcal/dia)</td>
+        </tr>
+        <tr>
+          <td class="td-bold">Potássio</td>
+          <td>Restringir se hipercalemia (TFG&lt;30)</td>
+          <td class="td-red"><strong>Restrito: &lt;2–3 g/dia</strong></td>
+          <td>Menos restrito — diálise contínua remove K eficientemente</td>
+        </tr>
+        <tr>
+          <td class="td-bold">Fósforo</td>
+          <td>&lt;800–1000 mg/dia desde E3</td>
+          <td>&lt;800–1000 mg/dia</td>
+          <td>&lt;800–1000 mg/dia</td>
+        </tr>
+        <tr>
+          <td class="td-bold">Fluidos</td>
+          <td>Individualizar por diurese</td>
+          <td><strong>Diurese + 500–1000 mL</strong> (ganho interdialítico &lt;4% peso)</td>
+          <td>Mais liberado — troca contínua; ajustar conforme diurese residual</td>
+        </tr>
+        <tr>
+          <td class="td-bold">Vitaminas</td>
+          <td>Vitamina D ativa (calcitriol) se deficiente</td>
+          <td>B6, C, folato suplementar (perdas dialíticas)</td>
+          <td>B6, C, folato suplementar; vitamina A: cautela (acúmulo)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="box box-lime mt1">
+      <div class="box-title">Regra mnemônica DRC e proteína — FGV</div>
+      <p><strong>Conservador</strong> (sem diálise, E3–E4) = <strong>MENOS proteína</strong> (0,6–0,8) → evita progressão da DRC e acúmulo de ureia · <strong>Hemodiálise</strong> = <strong>MAIS proteína</strong> (1,2–1,4) → compensar perdas dialíticas · <strong>CAPD</strong> = <strong>MAIS ainda</strong> (1,2–1,5) → albumina sai pelo peritônio diariamente</p>
+    </div>
+
+    <div class="two-col">
+      <div>
+        <div class="box box-green" style="margin-bottom:0">
+          <div class="box-title">Hiperparatiroidismo secundário na DRC</div>
+          <p>DRC → ↓TFG → ↓1-alfa-hidroxilase renal → ↓1,25(OH)₂-D₃ → ↓absorção Ca → ↑PTH → reabsorção óssea</p>
+          <p style="margin-top:0.5mm">Conduta: calcitriol (1,25(OH)₂-D₃ ativo) + quelatores de fósforo + monitoramento Ca×P</p>
+        </div>
+      </div>
+      <div>
+        <div class="box box-red" style="margin-bottom:0">
+          <div class="box-title">Distratores FGV frequentes</div>
+          <p><strong>"HD: potássio liberado pois diálise remove tudo"</strong> → ERRADO; entre sessões, K acumula → arritmia</p>
+          <p style="margin-top:0.5mm"><strong>"CAPD: mesma restrição hídrica que HD"</strong> → ERRADO; CAPD é contínua, restrição hídrica menos rígida</p>
+          <p style="margin-top:0.5mm"><strong>"Vitamina A suplementar em todos os estágios DRC"</strong> → ERRADO; risco de acúmulo em E5</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pf">
+    <span class="pf-left">Extensivo ENARE 2026</span>
+    <span class="pf-center">Bloco B9 · Nutrição · Aula 13</span>
+    <span class="pf-right">4 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PAGE 5 — COMORBIDADES E CONDUTA INTEGRADA ========== -->
+<div class="page">
+  <div class="ph">
+    <div class="logo-wrap"><div class="logo-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><div><div class="logo-text">Extensivo ENARE</div><div class="logo-sub">2026</div></div></div>
+    <div class="ph-center">DRC + Comorbidades — Conduta Integrada</div>
+    <div class="ph-right">NUT-CLÍN · Aula 13</div>
+  </div>
+
+  <div class="pc-sm">
+    <h2>DRC + Comorbidades — Conduta Nutricional Integrada</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="width:24%">Comorbidade + DRC</th>
+          <th style="width:38%">Restrição ou ajuste prioritário</th>
+          <th style="width:38%">Conflito a resolver / Ponto FGV</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="td-bold">DRC + HAS</td>
+          <td>↓↓ Sódio (&lt;1,5–2 g/dia); DASH adaptada (cuidado com K se hipercalemia)</td>
+          <td>DASH orienta ↑K (frutas/vegetais) — conflita com restrição de K em DRC+hipercalemia; individualizar</td>
+        </tr>
+        <tr>
+          <td class="td-bold">DRC + DM2</td>
+          <td>Controle glicêmico + restrição proteica moderada; evitar hiperglicemia (acelera progressão)</td>
+          <td>Proteína moderada (0,6–0,8) sem comprometer controle glicêmico; fibras auxiliam</td>
+        </tr>
+        <tr>
+          <td class="td-bold">DRC + IC</td>
+          <td>↓↓ Sódio + restrição hídrica rigorosa; monitorar balanço hídrico diário</td>
+          <td>IC aumenta necessidade de ↓sódio; DRC3 pode cursar com hipercalemia — vigiar IECA</td>
+        </tr>
+        <tr>
+          <td class="td-bold">DRC + Diurético tiazídico</td>
+          <td>↓Sódio mantida; monitorar Ca²⁺ (↑) e Mg²⁺ (↓)</td>
+          <td>Tiazídico ↓excreção Ca → hipercalcemia em DRC — não suplementar Ca sem avaliação</td>
+        </tr>
+        <tr>
+          <td class="td-bold">DRC + Litíase renal</td>
+          <td>↑Hidratação (diurese &gt;2 L/dia); ↓proteína; ↓sódio (↓calciúria); ↓oxalato</td>
+          <td>Dieta hiperproteica crônica = fator de risco independente para litíase cálcio</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="box box-lime mt1">
+      <div class="box-title">Princípio FGV 2025 Q38 — múltiplas restrições: introdução gradual</div>
+      <p>Paciente com IC + DM2 + DRC3 + HAS acumula múltiplas restrições dietéticas (sódio, potássio, fósforo, fluidos, CHO). <strong>A abordagem nutricional deve ser gradual e priorizada</strong> para evitar não adesão, desnutrição e piora da qualidade de vida. Introduzir todas as restrições simultaneamente leva à não adesão. Prioridade: sódio → fósforo → proteína → fluidos (individualizar por quadro dominante).</p>
+    </div>
+
+    <div class="two-col">
+      <div>
+        <div class="box box-teal" style="margin-bottom:0">
+          <div class="box-title">Síndrome urêmica — impacto nutricional</div>
+          <ul style="margin:0">
+            <li>Anorexia + náuseas + disgeusia → ↓ingestão espontânea</li>
+            <li>Catabolismo proteico → ↑ureia, ↑creatinina</li>
+            <li>Acidose metabólica → piora catabolismo</li>
+            <li>Inflamação crônica → resistência anabólica</li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <div class="box box-amber" style="margin-bottom:0">
+          <div class="box-title">Suplementação na DRC avançada</div>
+          <ul style="margin:0">
+            <li><strong>Calcitriol</strong> (vit D ativa): hiperparatiroidismo secundário</li>
+            <li><strong>Eritropoietina</strong>: anemia da DRC (↓eritropoietina renal)</li>
+            <li><strong>Ferro IV</strong>: anemia ferropriva associada (↑perdas em HD)</li>
+            <li><strong>B6 + folato + C</strong>: perdas dialíticas — repor em HD e CAPD</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pf">
+    <span class="pf-left">Extensivo ENARE 2026</span>
+    <span class="pf-center">Bloco B9 · Nutrição · Aula 13</span>
+    <span class="pf-right">5 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PAGE 6 — Q01 (Ap) DRC CONSERVADORA ========== -->
+<div class="page">
+  <div class="ph">
+    <div class="logo-wrap"><div class="logo-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><div><div class="logo-text">Extensivo ENARE</div><div class="logo-sub">2026</div></div></div>
+    <div class="ph-center">Questão 01 · Aplicação</div>
+    <div class="ph-right">NUT-CLÍN · Aula 13</div>
+  </div>
+
+  <div class="pc">
+    <div class="q-header">
+      <div class="q-num">Q01</div>
+      <div class="q-meta">
+        <div class="q-type">Aplicação (Ap) · NUT-CLÍN</div>
+        <div class="q-origin">Réplica calibrada · ENARE 2024 Q80 · Gabarito: B</div>
+      </div>
+      <span class="tag tag-lime">Ap</span>
+    </div>
+
+    <div class="q-stem">
+      Paciente feminina, 58 anos, com <strong>DRC estágio 4 (TFG = 22 mL/min/1,73m²)</strong> em tratamento conservador, apresentando síndrome urêmica leve, hipercalemia (K⁺ = 5,8 mEq/L) e hiperfosfatemia. Sem indicação de diálise no momento. Sobre a conduta nutricional neste caso, é CORRETO afirmar:
+    </div>
+
+    <div class="options">
+      <div class="opt distractor">
+        <span class="opt-letter">A</span>
+        <span>A proteína deve ser elevada a 1,5 g/kg/dia para compensar o catabolismo urêmico e preservar a massa muscular.</span>
+      </div>
+      <div class="opt correct">
+        <span class="opt-letter">B</span>
+        <span>A dieta deve incluir restrição proteica moderada (0,6–0,8 g/kg/dia) para retardar a progressão da DRC, além de restrição de potássio e fósforo conforme os níveis séricos.</span>
+      </div>
+      <div class="opt distractor">
+        <span class="opt-letter">C</span>
+        <span>O fósforo pode ser consumido livremente pois sua excreção renal está mantida até a fase de diálise.</span>
+      </div>
+      <div class="opt distractor">
+        <span class="opt-letter">D</span>
+        <span>A restrição de potássio não é necessária antes do início da diálise, pois os rins ainda têm alguma capacidade de excreção.</span>
+      </div>
+      <div class="opt distractor">
+        <span class="opt-letter">E</span>
+        <span>A meta calórica deve ser superior a 40 kcal/kg/dia para prevenir desnutrição em fase pré-dialítica.</span>
+      </div>
+    </div>
+
+    <div class="q-rationale">
+      <div class="rat-title">Raciocínio</div>
+      <p><strong>A) ERRADO:</strong> Proteína alta ↑ureia e acidose → acelera progressão da DRC. Meta conservadora E3–E4: 0,6–0,8 g/kg/dia. <strong>B) CORRETO:</strong> Restrição proteica moderada + controle de K (hipercalemia presente: K⁺ = 5,8) e P (hiperfosfatemia confirmada). <strong>C) ERRADO:</strong> Restrição de fósforo desde E3–E4 — hiperfosfatemia agrava hiperparatiroidismo e calcificação vascular. <strong>D) ERRADO:</strong> Hipercalemia já está presente (K⁺ = 5,8) → restrição imediata de K; IECA pode agravar. <strong>E) ERRADO:</strong> Meta calórica padrão: 30–35 kcal/kg/dia; hipercaloria não é necessária no conservador.</p>
+    </div>
+  </div>
+
+  <div class="pf">
+    <span class="pf-left">Extensivo ENARE 2026</span>
+    <span class="pf-center">Bloco B9 · Nutrição · Aula 13</span>
+    <span class="pf-right">6 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PAGE 7 — Q02 (Ap) DRC E5 CAPD ========== -->
+<div class="page">
+  <div class="ph">
+    <div class="logo-wrap"><div class="logo-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><div><div class="logo-text">Extensivo ENARE</div><div class="logo-sub">2026</div></div></div>
+    <div class="ph-center">Questão 02 · Aplicação</div>
+    <div class="ph-right">NUT-CLÍN · Aula 13</div>
+  </div>
+
+  <div class="pc">
+    <div class="q-header">
+      <div class="q-num">Q02</div>
+      <div class="q-meta">
+        <div class="q-type">Aplicação (Ap) · NUT-CLÍN</div>
+        <div class="q-origin">Réplica calibrada · ENARE 2024 Q82 · Gabarito: A</div>
+      </div>
+      <span class="tag tag-lime">Ap</span>
+    </div>
+
+    <div class="q-stem">
+      Paciente masculino, 63 anos, com <strong>DRC estágio 5 em diálise peritoneal contínua ambulatorial (CAPD)</strong> há 8 meses. Albumina sérica = 3,1 g/dL. A nutricionista revisa o plano alimentar. Sobre os objetivos nutricionais na CAPD, é CORRETO afirmar:
+    </div>
+
+    <div class="options">
+      <div class="opt correct">
+        <span class="opt-letter">A</span>
+        <span>A meta proteica deve ser 1,2–1,5 g/kg/dia para compensar as perdas de albumina e proteínas pelo dialisato peritoneal; o cálculo calórico deve descontar a glicose absorvida do dialisato (400–800 kcal/dia).</span>
+      </div>
+      <div class="opt distractor">
+        <span class="opt-letter">B</span>
+        <span>A restrição proteica deve ser 0,6 g/kg/dia, como na fase conservadora, pois a CAPD elimina o catabolismo urêmico.</span>
+      </div>
+      <div class="opt distractor">
+        <span class="opt-letter">C</span>
+        <span>A restrição hídrica na CAPD deve ser idêntica à da hemodiálise (diurese + 500 mL), pois ambas têm a mesma eficiência de remoção de fluidos.</span>
+      </div>
+      <div class="opt distractor">
+        <span class="opt-letter">D</span>
+        <span>O potássio deve ser restrito tão rigorosamente quanto na hemodiálise, pois a CAPD não remove o excesso adequadamente.</span>
+      </div>
+      <div class="opt distractor">
+        <span class="opt-letter">E</span>
+        <span>A glicose do dialisato não contribui para o balanço energético do paciente e não precisa ser computada no plano alimentar.</span>
+      </div>
+    </div>
+
+    <div class="q-rationale">
+      <div class="rat-title">Raciocínio</div>
+      <p><strong>A) CORRETO:</strong> CAPD perde albumina e proteínas pelo peritônio (5–15 g/dia) → meta proteica 1,2–1,5 g/kg/dia; glicose do dialisato contribui com 400–800 kcal/dia → descontar para evitar obesidade e hiperglicemia. <strong>B) ERRADO:</strong> CAPD exige MAIS proteína que o conservador, não menos. <strong>C) ERRADO:</strong> CAPD é contínua, remove fluido mais eficientemente; restrição hídrica é menos rígida que na HD (sessões intermitentes). <strong>D) ERRADO:</strong> CAPD é eficiente na remoção de K por ser contínua; restrição de K menos rígida que na HD. <strong>E) ERRADO:</strong> Glicose do dialisato é absorvida significativamente — deve ser computada no plano; ignoriá-la leva a hipercaloria e DM.</p>
+    </div>
+  </div>
+
+  <div class="pf">
+    <span class="pf-left">Extensivo ENARE 2026</span>
+    <span class="pf-center">Bloco B9 · Nutrição · Aula 13</span>
+    <span class="pf-right">7 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PAGE 8 — Q03 (An) ÂNCORA: IC + DM2 + DRC + HAS ========== -->
+<div class="page">
+  <div class="ph">
+    <div class="logo-wrap"><div class="logo-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><div><div class="logo-text">Extensivo ENARE</div><div class="logo-sub">2026</div></div></div>
+    <div class="ph-center">Questão 03 · Análise — Âncora</div>
+    <div class="ph-right">NUT-CLÍN · Aula 13</div>
+  </div>
+
+  <div class="pc">
+    <div class="q-header">
+      <div class="q-num">Q03</div>
+      <div class="q-meta">
+        <div class="q-type">Análise (An) · NUT-CLÍN · Questão-âncora</div>
+        <div class="q-origin">Réplica calibrada · ENARE 2025 Q38 · Gabarito: D</div>
+      </div>
+      <span class="tag tag-teal">An</span>
+    </div>
+
+    <div class="q-stem">
+      Paciente feminina, 71 anos, com <strong>insuficiência cardíaca (IC) NYHA III + DM2 + DRC estágio 3 + HAS</strong>. A nutricionista discute o plano alimentar com a equipe multidisciplinar. Analise as afirmativas sobre a conduta nutricional neste caso:
+    </div>
+
+    <div class="an-items">
+      <div class="an-item correct-item">
+        <span class="an-roman">I</span>
+        <span>A restrição de sódio rigorosa (&lt; 2 g/dia) está indicada nesta paciente, pois tanto a IC quanto a HAS se beneficiam da redução do sódio para controle do volume circulante e da pressão arterial.</span>
+      </div>
+      <div class="an-item wrong-item">
+        <span class="an-roman">II</span>
+        <span>A meta proteica deve ser elevada a 1,5–2,0 g/kg/dia para compensar o catabolismo gerado pela insuficiência cardíaca, independentemente do estágio da DRC.</span>
+      </div>
+      <div class="an-item wrong-item">
+        <span class="an-roman">III</span>
+        <span>A dieta DASH completa (rica em frutas, vegetais e laticínios) deve ser prescrita integralmente por ser a estratégia mais eficaz para controle combinado de HAS e DM2.</span>
+      </div>
+      <div class="an-item correct-item">
+        <span class="an-roman">IV</span>
+        <span>As múltiplas restrições dietéticas devem ser introduzidas de forma gradual e priorizada, considerando o quadro dominante, para evitar não adesão, desnutrição e deterioração da qualidade de vida.</span>
+      </div>
+    </div>
+
+    <div class="options" style="margin-top:2.5mm">
+      <div class="opt distractor"><span class="opt-letter">A</span><span>I e II apenas</span></div>
+      <div class="opt distractor"><span class="opt-letter">B</span><span>II e III apenas</span></div>
+      <div class="opt distractor"><span class="opt-letter">C</span><span>I, II e IV apenas</span></div>
+      <div class="opt correct"><span class="opt-letter">D</span><span>I e IV apenas</span></div>
+      <div class="opt distractor"><span class="opt-letter">E</span><span>III e IV apenas</span></div>
+    </div>
+
+    <div class="q-rationale">
+      <div class="rat-title">Raciocínio</div>
+      <p><strong>I — CORRETO:</strong> IC (controle de volemia) + HAS (controle de PA) = restrição de sódio é prioritária e sinérgica. <strong>II — FALSO:</strong> DRC E3 exige restrição proteica moderada (0,6–0,8 g/kg/dia) — proteína alta acelera progressão renal, independentemente da IC. <strong>III — FALSO:</strong> DASH orienta ↑K (frutas/vegetais) para HAS, mas DRC E3 com hipercalemia ou uso de IECA exige restrição de K; DASH plena não é segura neste cenário. <strong>IV — CORRETO:</strong> Múltiplas restrições simultâneas levam à não adesão; introdução gradual e priorizada é o princípio clínico adequado para pacientes com comorbidades múltiplas.</p>
+    </div>
+  </div>
+
+  <div class="pf">
+    <span class="pf-left">Extensivo ENARE 2026</span>
+    <span class="pf-center">Bloco B9 · Nutrição · Aula 13</span>
+    <span class="pf-right">8 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PAGE 9 — GABARITO ========== -->
+<div class="page">
+  <div class="ph">
+    <div class="logo-wrap"><div class="logo-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><div><div class="logo-text">Extensivo ENARE</div><div class="logo-sub">2026</div></div></div>
+    <div class="ph-center">Gabarito — Aula 13</div>
+    <div class="ph-right">NUT-CLÍN · Aula 13</div>
+  </div>
+
+  <div class="pc">
+    <h2>Gabarito</h2>
+
+    <div class="answer-grid">
+      <div class="ans-card">
+        <div class="ans-q">Questão 01</div>
+        <div class="ans-letter">B</div>
+        <div class="ans-topic">DRC E4 conservador — proteína 0,6–0,8 + ↓K + ↓P<br>Réplica ENARE 2024 Q80 (Ap)</div>
+      </div>
+      <div class="ans-card">
+        <div class="ans-q">Questão 02</div>
+        <div class="ans-letter">A</div>
+        <div class="ans-topic">CAPD — proteína 1,2–1,5; descontar glicose dialisato<br>Réplica ENARE 2024 Q82 (Ap)</div>
+      </div>
+      <div class="ans-card">
+        <div class="ans-q">Questão 03</div>
+        <div class="ans-letter">D</div>
+        <div class="ans-topic">IC+DM2+DRC+HAS: I e IV corretas — ↓Na rigoroso + restrições graduais<br>Réplica ENARE 2025 Q38 (An)</div>
+      </div>
+    </div>
+
+    <div class="box box-green" style="margin-top:5mm">
+      <div class="box-title">Distratores críticos desta aula</div>
+      <table style="margin-bottom:0">
+        <thead>
+          <tr><th>Afirmativa-armadilha</th><th>Por que é ERRADA</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>"DRC conservador: ↑proteína para compensar catabolismo"</td>
+            <td>Proteína alta acelera progressão da DRC; meta 0,6–0,8 g/kg/dia</td>
+          </tr>
+          <tr>
+            <td>"CAPD: mesma proteína que conservador (0,6 g/kg)"</td>
+            <td>CAPD perde albumina peritoneal; meta 1,2–1,5 g/kg/dia</td>
+          </tr>
+          <tr>
+            <td>"CAPD: igual restrição hídrica que HD"</td>
+            <td>CAPD é contínua → remoção hídrica mais eficiente → menos restritiva</td>
+          </tr>
+          <tr>
+            <td>"DASH completa é segura em DRC + HAS"</td>
+            <td>DASH orienta ↑K — conflito direto com restrição de K na DRC com hipercalemia</td>
+          </tr>
+          <tr>
+            <td>"Fósforo livre até início da diálise"</td>
+            <td>Restrição de P desde E3–E4; hiperfosfatemia → HPT secundário + calcificação vascular</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="pf">
+    <span class="pf-left">Extensivo ENARE 2026</span>
+    <span class="pf-center">Bloco B9 · Nutrição · Aula 13</span>
+    <span class="pf-right">9 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PAGE 10 — SÍNTESE + REFERÊNCIAS ========== -->
+<div class="page">
+  <div class="ph">
+    <div class="logo-wrap"><div class="logo-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><div><div class="logo-text">Extensivo ENARE</div><div class="logo-sub">2026</div></div></div>
+    <div class="ph-center">Síntese Final — Aula 13</div>
+    <div class="ph-right">NUT-CLÍN · Aula 13</div>
+  </div>
+
+  <div class="pc-sm">
+    <h2>Síntese — DRC e Terapias Renais Substitutivas</h2>
+
+    <div class="synth-grid">
+      <div class="synth-item">
+        <div class="si-title">Proteína por modalidade</div>
+        <div class="si-body">
+          <strong>Conservador E3–E4:</strong> 0,6–0,8 g/kg/dia<br>
+          <strong>Hemodiálise:</strong> 1,2–1,4 g/kg/dia<br>
+          <strong>CAPD:</strong> 1,2–1,5 g/kg/dia (albumina peritoneal)<br>
+          Lógica: diálise → MAIS proteína para compensar perdas
+        </div>
+      </div>
+      <div class="synth-item">
+        <div class="si-title">Eletrólitos-chave</div>
+        <div class="si-body">
+          <strong>Sódio:</strong> &lt;2 g/dia desde E3<br>
+          <strong>Fósforo:</strong> &lt;800 mg/dia desde E3; inorgânico absorção &gt;90%<br>
+          <strong>Potássio:</strong> restringir se hipercalemia (TFG&lt;30)<br>
+          <strong>CAPD:</strong> K menos restrito (diálise contínua)
+        </div>
+      </div>
+      <div class="synth-item">
+        <div class="si-title">CAPD — especificidades</div>
+        <div class="si-body">
+          Perdas de albumina: 5–15 g/dia pelo peritônio<br>
+          Glicose dialisato: descontar 400–800 kcal/dia<br>
+          Restrição hídrica menos rígida que HD<br>
+          Vitaminas B6, C, folato: suplementar
+        </div>
+      </div>
+      <div class="synth-item">
+        <div class="si-title">Comorbidades múltiplas</div>
+        <div class="si-body">
+          DASH + DRC + hipercalemia: conflito K<br>
+          IC + DRC: ↓↓sódio + ↓fluidos<br>
+          Litíase + DRC: ↑hidratação + proteína moderada<br>
+          <strong>Restrições múltiplas: introduzir gradualmente</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="box box-lime" style="margin-bottom:3mm">
+      <div class="box-title">Mapa mental DRC — decisão proteica</div>
+      <p><strong>TFG ≥ 60</strong> → 0,8 g/kg (padrão) · <strong>TFG 15–59 sem diálise</strong> → 0,6–0,8 g/kg (↓progressão) · <strong>HD</strong> → 1,2–1,4 g/kg (perdas dialíticas) · <strong>CAPD</strong> → 1,2–1,5 g/kg (albumina peritoneal) · Quanto mais suporte renal → mais proteína paradoxalmente necessária</p>
+    </div>
+
+    <div class="ref-block">
+      <div class="ref-title">Referências</div>
+      <ul>
+        <li>KDIGO 2012/2024 Clinical Practice Guideline for Evaluation and Management of CKD</li>
+        <li>BRASPEN — Diretrizes Nutrição em Nefrologia, 2023</li>
+        <li>NKF-KDOQI Clinical Practice Guidelines for Nutrition in CKD: 2020 Update</li>
+        <li>Kalantar-Zadeh K et al. Dietary restrictions in dialysis patients. Nat Rev Nephrol, 2017</li>
+        <li>Ikizler TA et al. ISPD guidelines for nutrition in peritoneal dialysis. Perit Dial Int, 2020</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="pf">
+    <span class="pf-left">Extensivo ENARE 2026</span>
+    <span class="pf-center">Bloco B9 · Nutrição · Aula 13</span>
+    <span class="pf-right">10 / 10</span>
+  </div>
+</div>
+
+</body>
+</html>

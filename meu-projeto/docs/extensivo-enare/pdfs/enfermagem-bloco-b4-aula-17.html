@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B4 · Aula 17 — IRAS + Biossegurança: Precauções, KPC, RSS e CCIH</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap');
+  @page { size:A4; margin:0; }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  body{ font-family:'Bricolage Grotesque',sans-serif; background:#fff; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  .page{ width:210mm; height:297mm; display:flex; flex-direction:column; overflow:hidden; page-break-after:always; }
+  .ph{ height:14mm; flex-shrink:0; display:flex; align-items:center; padding:0 16mm; border-bottom:1.5px solid #0D8A8D; }
+  .ph-label{ font-size:7.5pt; font-weight:500; letter-spacing:.12em; text-transform:uppercase; color:#555; }
+  .ph-right{ margin-left:auto; font-family:'Playfair Display',serif; font-style:italic; font-size:8pt; color:#888; }
+  .pf{ height:9mm; flex-shrink:0; display:flex; align-items:center; padding:0 16mm; border-top:1px solid #ddd; }
+  .pf-left{ font-size:7pt; color:#aaa; }
+  .pf-right{ margin-left:auto; font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:9pt; color:#bbb; }
+  .pc{ flex:1; padding:7mm 16mm 5mm; overflow:hidden; }
+  .pc-sm{ flex:1; padding:5mm 16mm 4mm; overflow:hidden; }
+  /* cover */
+  .cover{ background:#0D8A8D; width:210mm; height:297mm; display:flex; flex-direction:column; padding:18mm 16mm 14mm; overflow:hidden; page-break-after:always; }
+  .cover-logo-ext{ font-family:'Playfair Display',serif; font-style:italic; font-size:9pt; color:rgba(255,255,255,.7); margin-bottom:1mm; }
+  .cover-logo-main{ font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:36pt; color:#fff; line-height:1; }
+  .cover-logo-sub{ font-family:'Space Grotesk',sans-serif; font-weight:300; font-size:7pt; letter-spacing:.18em; text-transform:uppercase; color:rgba(255,255,255,.65); margin-top:1.5mm; }
+  .cover-module{ font-family:'Bricolage Grotesque',sans-serif; font-weight:600; font-size:7.5pt; letter-spacing:.18em; text-transform:uppercase; color:#C6D834; margin-top:5mm; }
+  .cover-aula{ font-family:'Bricolage Grotesque',sans-serif; font-weight:600; font-size:7.5pt; letter-spacing:.18em; text-transform:uppercase; color:rgba(255,255,255,.55); margin-top:1mm; }
+  .cover-title{ font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:48pt; color:#fff; line-height:1; margin-top:10mm; }
+  .cover-subtitle{ font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:11pt; letter-spacing:.05em; text-transform:uppercase; color:#C6D834; margin-top:5mm; line-height:1.35; }
+  .cover-num{ font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:90pt; color:rgba(255,255,255,.13); position:absolute; bottom:10mm; right:12mm; line-height:1; }
+  .cover-wrap{ position:relative; flex:1; }
+  /* typography */
+  h2{ font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:16pt; color:#0D8A8D; text-transform:uppercase; letter-spacing:.04em; margin-bottom:3mm; }
+  h3{ font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:8.5pt; letter-spacing:.1em; text-transform:uppercase; color:#0D8A8D; margin-bottom:2mm; }
+  h4{ font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:7.5pt; letter-spacing:.08em; text-transform:uppercase; color:#555; margin-bottom:1.5mm; }
+  p{ font-size:8pt; line-height:1.45; color:#222; margin-bottom:2mm; }
+  strong{ font-weight:600; }
+  .rule{ border:none; border-top:1.5px solid #0D8A8D; margin-bottom:4mm; }
+  /* obj page */
+  .obj-list{ list-style:none; margin-top:2mm; }
+  .obj-list li{ display:flex; gap:3mm; margin-bottom:3.5mm; font-size:8.5pt; line-height:1.4; color:#222; }
+  .obj-num{ font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:22pt; color:#0D8A8D; line-height:1; min-width:8mm; }
+  .prereq-box{ background:#f7f7f5; border-left:3px solid #0D8A8D; padding:3mm 4mm; margin-top:3mm; }
+  .prereq-box p{ margin:0; font-size:7.5pt; color:#444; }
+  .meta-row{ display:flex; gap:10mm; margin-top:4mm; padding-top:3mm; border-top:1px solid #eee; }
+  .meta-item label{ display:block; font-size:6.5pt; letter-spacing:.12em; text-transform:uppercase; color:#aaa; margin-bottom:.5mm; }
+  .meta-item span{ font-size:8pt; font-weight:600; color:#333; }
+  /* tables */
+  table{ width:100%; border-collapse:collapse; font-size:7.2pt; }
+  th{ background:#0D8A8D; color:#fff; font-family:'Bricolage Grotesque',sans-serif; font-weight:600; font-size:7pt; letter-spacing:.06em; text-transform:uppercase; padding:2.5mm 3mm; text-align:left; }
+  td{ padding:2mm 3mm; border-bottom:1px solid #eee; vertical-align:top; line-height:1.35; color:#222; }
+  tr:nth-child(even) td{ background:#f9f9f7; }
+  /* cards */
+  .card-grid-2{ display:grid; grid-template-columns:1fr 1fr; gap:3mm; }
+  .card-grid-3{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:2.5mm; }
+  .card{ background:#f7f7f5; border-radius:2mm; padding:3mm 4mm; }
+  .card-teal{ background:#0D8A8D; color:#fff; border-radius:2mm; padding:3mm 4mm; }
+  .card-lime{ background:#C6D834; border-radius:2mm; padding:3mm 4mm; }
+  .card-red{ background:#c0392b; color:#fff; border-radius:2mm; padding:3mm 4mm; }
+  .card-title{ font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:9pt; text-transform:uppercase; letter-spacing:.05em; margin-bottom:1.5mm; color:#0D8A8D; }
+  .card-teal .card-title,.card-red .card-title{ color:#fff; }
+  .card-lime .card-title{ color:#1F5C23; }
+  .card p,.card ul{ font-size:7.5pt; margin:0; }
+  .card-teal p,.card-teal ul,.card-red p,.card-red ul{ color:rgba(255,255,255,.92); }
+  .card-lime p,.card-lime ul{ color:#1F5C23; }
+  .card ul{ padding-left:3.5mm; }
+  .card li{ margin-bottom:.8mm; line-height:1.35; }
+  /* alert */
+  .alert{ background:#fff3cd; border-left:3px solid #C6D834; padding:2.5mm 3.5mm; margin-top:2mm; }
+  .alert p{ font-size:7.5pt; color:#333; margin:0; }
+  .alert-red{ background:#fde8e8; border-left:3px solid #c0392b; padding:2.5mm 3.5mm; margin-top:2mm; }
+  .alert-red p{ font-size:7.5pt; color:#333; margin:0; }
+  /* precaution badge */
+  .prec{ display:inline-block; font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:8pt; letter-spacing:.08em; text-transform:uppercase; padding:1.5mm 4mm; border-radius:1.5mm; margin-right:2mm; }
+  .prec-std{ background:#0D8A8D; color:#fff; }
+  .prec-cont{ background:#e67e22; color:#fff; }
+  .prec-drop{ background:#8e44ad; color:#fff; }
+  .prec-air{ background:#c0392b; color:#fff; }
+  /* questão */
+  .q-header{ font-family:'Bricolage Grotesque',sans-serif; font-weight:600; font-size:6.5pt; letter-spacing:.14em; text-transform:uppercase; color:#0D8A8D; margin-bottom:2.5mm; }
+  .q-stem{ background:#f5f5f3; border-left:3px solid #0D8A8D; padding:3.5mm 4mm; font-size:8pt; line-height:1.45; color:#222; margin-bottom:3mm; }
+  .opt{ display:flex; gap:2mm; align-items:flex-start; margin-bottom:2mm; font-size:8pt; color:#222; line-height:1.4; }
+  .opt-letter{ font-weight:700; min-width:4mm; }
+  .opt.correct .opt-letter{ color:#0D8A8D; }
+  .opt.correct{ font-weight:600; }
+  .badge-correta{ display:inline-block; background:#0D8A8D; color:#fff; font-size:6pt; font-weight:700; letter-spacing:.1em; padding:1px 5px; border-radius:1mm; margin-left:2mm; text-transform:uppercase; }
+  .gab-box{ background:#f0f8f8; border:1.5px solid #0D8A8D; border-radius:2mm; padding:3mm 4mm; margin-top:3mm; }
+  .gab-title{ font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:7pt; letter-spacing:.12em; text-transform:uppercase; color:#0D8A8D; margin-bottom:1.5mm; }
+  .gab-box p{ font-size:7.5pt; line-height:1.45; color:#222; margin:0; }
+  /* recall */
+  .recall-item{ display:flex; gap:2.5mm; align-items:flex-start; margin-bottom:2mm; }
+  .recall-star{ color:#C6D834; font-size:9pt; line-height:1.2; flex-shrink:0; }
+  .recall-item p{ font-size:8pt; line-height:1.4; color:#222; margin:0; }
+  .self-list{ list-style:none; counter-reset:self-c; margin-top:2mm; }
+  .self-list li{ font-size:8pt; color:#333; padding:2mm 0; border-bottom:1px solid #eee; line-height:1.35; }
+  .self-list li::before{ content:'0'counter(self-c)' — '; counter-increment:self-c; font-weight:700; color:#0D8A8D; font-size:7.5pt; }
+  /* refs */
+  .ref-item{ font-size:7.5pt; color:#333; line-height:1.4; margin-bottom:2.5mm; border-left:2px solid #eee; padding-left:3mm; }
+  .notes-box{ border:1px dashed #ccc; border-radius:2mm; padding:4mm; margin-top:3mm; }
+  .notes-box p{ font-size:8pt; color:#bbb; text-align:center; font-style:italic; margin:0; }
+</style>
+</head>
+<body>
+
+<!-- P01 CAPA -->
+<div class="cover">
+  <div>
+    <div class="cover-logo-ext">extensivo</div>
+    <div class="cover-logo-main">ENARE</div>
+    <div class="cover-logo-sub">by Residência PRO</div>
+    <div class="cover-module">Enfermagem · Módulo Específico</div>
+    <div class="cover-aula">Bloco B4 · Aula 17</div>
+  </div>
+  <div class="cover-wrap">
+    <div class="cover-title">IRAS +<br>BIOSSEGU-<br>RANÇA</div>
+    <div class="cover-subtitle">Precauções, KPC,<br>RSS e CCIH</div>
+    <div class="cover-num">17</div>
+  </div>
+</div>
+
+<!-- P02 OBJETIVOS -->
+<div class="page">
+  <div class="ph"><span class="ph-label">Enfermagem · Bloco B4 · Aula 17</span><span class="ph-right">Extensivo ENARE</span></div>
+  <div class="pc">
+    <h3>Objetivos de Aprendizagem</h3>
+    <hr class="rule">
+    <ul class="obj-list">
+      <li><span class="obj-num">1</span><span>Aplicar as precauções-padrão e as precauções baseadas na transmissão (contato, gotícula, aerossol) selecionando o EPI correto e o tipo de quarto para cada cenário clínico.</span></li>
+      <li><span class="obj-num">2</span><span>Identificar as principais IRAS (ITU/CAUTI, PAV, IPCS/CVC, ISC), seus critérios diagnósticos e as bundles preventivas de enfermagem preconizadas pelo PNSP/ANVISA.</span></li>
+      <li><span class="obj-num">3</span><span>Reconhecer o papel da CCIH, as responsabilidades do enfermeiro no controle de infecção, as diretrizes de gerenciamento de RSS (RDC 222/2018) e o perfil dos principais patógenos multirresistentes (KPC, MRSA, VRE, ESBL).</span></li>
+    </ul>
+    <div class="prereq-box"><p><strong>Pré-requisito:</strong> Microbiologia básica (bactérias gram+/gram−, mecanismos de resistência). Fundamentos de SAE (Aula 08). CME e esterilização (Aula 20 — introdução antecipada ao conceito de Spaulding).</p></div>
+    <div class="meta-row">
+      <div class="meta-item"><label>Bloco</label><span>B4 — Enfermagem</span></div>
+      <div class="meta-item"><label>Aula</label><span>17 de 24</span></div>
+      <div class="meta-item"><label>Tema</label><span>ENF-IRAS/Biosseg.</span></div>
+      <div class="meta-item"><label>Nível cognitivo</label><span>Ap → An</span></div>
+    </div>
+  </div>
+  <div class="pf"><span class="pf-left">Extensivo ENARE · by Residência PRO</span><span class="pf-right">02</span></div>
+</div>
+
+<!-- P03 PRECAUÇÕES -->
+<div class="page">
+  <div class="ph"><span class="ph-label">Conteúdo Principal · Aula 17</span><span class="ph-right">Extensivo ENARE</span></div>
+  <div class="pc-sm">
+    <h2>Precauções de Isolamento</h2>
+    <table style="font-size:6.8pt;">
+      <thead>
+        <tr><th style="width:18%;">Tipo</th><th style="width:30%;">Agentes / Indicação</th><th style="width:32%;">EPI obrigatório</th><th style="width:20%;">Quarto</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="prec prec-std">Padrão</span></td>
+          <td>Todo paciente, sempre. Sangue, fluidos, mucosas, pele não íntegra</td>
+          <td>Luvas (fluidos); máscara cirúrgica; avental; óculos (respingos)</td>
+          <td>Não obrigatório</td>
+        </tr>
+        <tr>
+          <td><span class="prec prec-cont">Contato</span></td>
+          <td>MRSA, VRE, KPC, <em>C. difficile</em>, escabiose, herpes zóster disseminado, feridas exsudativas</td>
+          <td>Luvas + avental ao entrar no quarto. Retirar antes de sair.</td>
+          <td>Individual ou coorte</td>
+        </tr>
+        <tr>
+          <td><span class="prec prec-drop">Gotícula</span></td>
+          <td>Influenza, meningite meningocócica, coqueluche, caxumba, rubéola</td>
+          <td>Máscara cirúrgica (dentro de 1 m do paciente)</td>
+          <td>Individual (porta fechada opcional se ≥1 m)</td>
+        </tr>
+        <tr>
+          <td><span class="prec prec-air">Aerossol</span></td>
+          <td>Tuberculose pulmonar ativa, sarampo, varicela, herpes zóster imunossuprimido, procedimentos geradores de aerossol</td>
+          <td>PFF2/N95 + avental + luvas + proteção ocular</td>
+          <td>Pressão negativa (PPAN) ou janela aberta</td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2mm;margin-top:2.5mm;">
+      <div class="alert"><p><strong>C. difficile:</strong> álcool gel NÃO mata esporos → água + sabão obrigatório. Precaução de contato.</p></div>
+      <div class="alert-red"><p><strong>TB pulmonar ativa:</strong> PFF2/N95 obrigatório. Máscara cirúrgica é insuficiente para aerossóis.</p></div>
+    </div>
+    <div style="margin-top:2.5mm;">
+      <h4>5 Momentos de Higiene das Mãos (OMS)</h4>
+      <p style="font-size:7.5pt;margin-top:1mm;">① Antes de tocar o paciente &nbsp;·&nbsp; ② Antes de procedimento asséptico &nbsp;·&nbsp; ③ Após risco de exposição a fluidos &nbsp;·&nbsp; ④ Após tocar o paciente &nbsp;·&nbsp; ⑤ Após contato com ambiente do paciente. &nbsp; Álcool gel 70% = 20–30 s &nbsp;·&nbsp; Água + sabão = 40–60 s.</p>
+    </div>
+  </div>
+  <div class="pf"><span class="pf-left">Extensivo ENARE · by Residência PRO</span><span class="pf-right">03</span></div>
+</div>
+
+<!-- P04 IRAS + BUNDLES -->
+<div class="page">
+  <div class="ph"><span class="ph-label">Conteúdo Principal · Aula 17</span><span class="ph-right">Extensivo ENARE</span></div>
+  <div class="pc-sm">
+    <h2>IRAS: Critérios e Bundles Preventivas</h2>
+    <table>
+      <thead>
+        <tr><th>IRAS</th><th>Critério diagnóstico (ANVISA/CDC)</th><th>Bundle de prevenção (enfermagem)</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>CAUTI</strong><br><span style="font-size:6.5pt;color:#888;">ITU assoc. cateter urinário</span></td>
+          <td>Cateter urinário instalado por &gt;2 dias + urocultura ≥10⁵ UFC/mL + sintoma (febre, disúria, dor suprapúbica)</td>
+          <td>Inserção estéril; fixação correta; bolsa sempre abaixo da bexiga; higiene do meato 1×/dia; remoção precoce (checagem diária da necessidade)</td>
+        </tr>
+        <tr>
+          <td><strong>PAV</strong><br><span style="font-size:6.5pt;color:#888;">Pneumonia assoc. ventilador</span></td>
+          <td>IOT &gt;48 h + nova imagem pulmonar + ≥2: febre/hipotermia, leucocitose/leucopenia, secreção purulenta</td>
+          <td>Cabeceira 30–45°; higiene oral c/ clorexidina 0,12% 2×/dia; cuff ≥20 cmH₂O; aspiração subglótica; interrupção diária de sedação; extubação precoce</td>
+        </tr>
+        <tr>
+          <td><strong>IPCS/CVC</strong><br><span style="font-size:6.5pt;color:#888;">Infecção primária corrente sanguínea</span></td>
+          <td>CVC presente + hemocultura positiva (sem foco alternativo) OU sinais locais de infecção no sítio</td>
+          <td>Técnica asséptica na inserção (máx. barreira); clorexidina alcoólica na antissepsia; curativo transparente; checagem diária da necessidade; troca de equipo 72–96 h</td>
+        </tr>
+        <tr>
+          <td><strong>ISC</strong><br><span style="font-size:6.5pt;color:#888;">Infecção sítio cirúrgico</span></td>
+          <td>Incisão com secreção purulenta, calor, rubor, edema; ou abertura deliberada pelo cirurgião; até 30 dias (1 ano com implante)</td>
+          <td>Banho pré-op c/ clorexidina degermante; tricotomia no momento da cirurgia (clipador); normotermia intraoperatória; glicemia &lt;180 mg/dL peri-op; antibiótico profilático até 60 min antes da incisão</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="pf"><span class="pf-left">Extensivo ENARE · by Residência PRO</span><span class="pf-right">04</span></div>
+</div>
+
+<!-- P05 KPC + CCIH + RSS -->
+<div class="page">
+  <div class="ph"><span class="ph-label">Conteúdo Principal · Aula 17</span><span class="ph-right">Extensivo ENARE</span></div>
+  <div class="pc-sm">
+    <h2>Multirresistentes, CCIH e RSS</h2>
+    <h4>Principais patógenos multirresistentes</h4>
+    <table style="margin-bottom:3mm;">
+      <thead>
+        <tr><th>Patógeno</th><th>Resistência</th><th>Precaução</th><th>Destaque clínico</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>KPC</strong> (<em>K. pneumoniae</em> carbapenemase)</td><td>Carbapenêmicos (ertapeném, meropeném)</td><td>Contato</td><td>Polimixina B/E ± ceftazidima-avibactam como last resort</td></tr>
+        <tr><td><strong>MRSA</strong></td><td>Meticilina/oxacilina (todos β-lactâmicos)</td><td>Contato</td><td>Vancomicina ou linezolida. Rastreio nasal com swab</td></tr>
+        <tr><td><strong>VRE</strong></td><td>Vancomicina</td><td>Contato</td><td>Linezolida ou daptomicina. Alta sobrevida em superfícies</td></tr>
+        <tr><td><strong>ESBL</strong></td><td>Cefalosporinas de 3ª/4ª geração</td><td>Contato</td><td>Carbapenêmico de escolha. Comum em <em>E. coli</em> e <em>Klebsiella</em></td></tr>
+      </tbody>
+    </table>
+    <div class="card-grid-2">
+      <div class="card">
+        <div class="card-title">CCIH — Composição</div>
+        <p>Comissão de Controle de Infecção Hospitalar. Obrigatória em todo hospital (Lei 9.431/1997). Composição mínima: médico(a) + enfermeiro(a) SCIH + farmacêutico(a) + microbiologista. O enfermeiro do SCIH coordena vigilância ativa, treinamentos e bundles.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">RSS — RDC 222/2018</div>
+        <p><strong>Grupo A</strong> (risco biológico): saco branco leitoso. Autoclave + incineração.<br>
+        <strong>Grupo B</strong> (químico): símbolo de risco, descarte conforme fabricante.<br>
+        <strong>Grupo D</strong> (comum): saco preto. Lixo urbano.<br>
+        <strong>Grupo E</strong> (perfurocortante): caixa amarela rígida (Descarpack). NUNCA reencapar agulha com 2 mãos.</p>
+      </div>
+    </div>
+    <div class="alert" style="margin-top:2.5mm;"><p><strong>Higiene das mãos (5 momentos OMS):</strong> (1) antes de tocar o paciente; (2) antes de procedimento asséptico; (3) após risco de exposição a fluidos; (4) após tocar o paciente; (5) após contato com ambiente do paciente. Álcool gel 70% = 20–30 s. Água + sabão = 40–60 s.</p></div>
+  </div>
+  <div class="pf"><span class="pf-left">Extensivo ENARE · by Residência PRO</span><span class="pf-right">05</span></div>
+</div>
+
+<!-- P06 Q1 — MEMORIZAÇÃO -->
+<div class="page">
+  <div class="ph"><span class="ph-label">Fixação · Aula 17</span><span class="ph-right">Extensivo ENARE</span></div>
+  <div class="pc">
+    <div class="q-header">Questão 01 de 03 · B4 IRAS/Biossegurança — Precauções de Isolamento · Memorização</div>
+    <div class="q-stem">
+      Paciente internado em UTI, com diagnóstico confirmado de tuberculose pulmonar bacilífera. Ao prestar cuidados (banho no leito, aspiração de vias aéreas), qual é o conjunto mínimo de EPIs que o enfermeiro deve utilizar e qual é o tipo de quarto adequado para esse paciente?
+    </div>
+    <div class="opt"><span class="opt-letter">A</span><span>Máscara cirúrgica + luvas. Quarto privativo com porta fechada (sem requisito de pressão negativa).</span></div>
+    <div class="opt"><span class="opt-letter">B</span><span>Máscara cirúrgica + avental + luvas. Quarto privativo; álcool gel é suficiente para higiene das mãos.</span></div>
+    <div class="opt correct"><span class="opt-letter">C</span><span>Respirador PFF2/N95 + avental + luvas + proteção ocular. Quarto com pressão negativa (ou janela aberta/ventilação para exterior). Precaução de aerossol. <span class="badge-correta">Correta</span></span></div>
+    <div class="opt"><span class="opt-letter">D</span><span>Máscara PFF2 + luvas. Quarto coletivo é permitido se todos os pacientes tiverem tuberculose ativa.</span></div>
+    <div class="gab-box">
+      <div class="gab-title">Gabarito Comentado — C</div>
+      <p>TB pulmonar bacilífera = transmissão por <strong>aerossol</strong> (partículas &lt;5 µm, permanecem em suspensão). Exige <strong>respirador PFF2/N95</strong> (máscara cirúrgica filtra partículas maiores — gotículas — mas não aerossóis). Quarto com <strong>pressão negativa</strong> ou ventilação para o exterior impede disseminação pelo ar. A/B — máscara cirúrgica é insuficiente para TB. D — coorte de TB é possível apenas em tuberculose sem resistência e com o mesmo perfil; mas a questão pede o isolamento padrão para TB ativa.</p>
+    </div>
+  </div>
+  <div class="pf"><span class="pf-left">Extensivo ENARE · by Residência PRO</span><span class="pf-right">06</span></div>
+</div>
+
+<!-- P07 Q2 — APLICAÇÃO -->
+<div class="page">
+  <div class="ph"><span class="ph-label">Fixação · Aula 17</span><span class="ph-right">Extensivo ENARE</span></div>
+  <div class="pc">
+    <div class="q-header">Questão 02 de 03 · B4 IRAS/Biossegurança — Bundle CAUTI · Aplicação</div>
+    <div class="q-stem">
+      Paciente de 70 anos, pós-operatório de cirurgia abdominal, com sonda vesical de demora (SVD) instalada há 5 dias. Ao realizar a visita de enfermagem, o técnico relata que a bolsa coletora está posicionada acima do nível da bexiga e que não realiza higiene do meato uretral desde a instalação. O paciente apresenta febre de 38,3 °C e disúria. Sobre as medidas de prevenção e controle de CAUTI, assinale a alternativa correta:
+    </div>
+    <div class="opt"><span class="opt-letter">A</span><span>A bolsa pode ficar acima da bexiga durante a deambulação; a febre é esperada no pós-operatório e não requer investigação adicional.</span></div>
+    <div class="opt"><span class="opt-letter">B</span><span>A principal medida neste momento é a troca da SVD por uma nova sonda, mantendo-a por mais 5 dias para garantir a diurese.</span></div>
+    <div class="opt correct"><span class="opt-letter">C</span><span>A bolsa deve sempre permanecer abaixo da bexiga (refluxo de urina aumenta risco de CAUTI); é necessária higiene do meato 1×/dia com água e sabão; e deve-se avaliar a necessidade de manutenção da SVD, considerando sua remoção precoce. <span class="badge-correta">Correta</span></span></div>
+    <div class="opt"><span class="opt-letter">D</span><span>A higiene do meato deve ser feita com clorexidina degermante 4% 3× ao dia para reduzir a colonização bacteriana no cateter.</span></div>
+    <div class="gab-box">
+      <div class="gab-title">Gabarito Comentado — C</div>
+      <p><strong>Bundle CAUTI (ANVISA/PNSP):</strong> (1) bolsa sempre <em>abaixo</em> da bexiga — posição acima causa refluxo de urina contaminada; (2) higiene do meato <em>1×/dia</em> com água e sabão (não clorexidina — irrita mucosa e não reduz CAUTI); (3) avaliar necessidade diária e <strong>remover precocemente</strong>. Com 5 dias de SVD + febre + disúria → critério provável de CAUTI + indicação de retirada e urocultura. A — bolsa elevada é erro técnico grave. B — troca de SVD sem indicação apenas aumenta risco. D — clorexidina no meato não é recomendada para prevenção de CAUTI.</p>
+    </div>
+  </div>
+  <div class="pf"><span class="pf-left">Extensivo ENARE · by Residência PRO</span><span class="pf-right">07</span></div>
+</div>
+
+<!-- P08 Q3 — ÂNCORA -->
+<div class="page">
+  <div class="ph"><span class="ph-label">Fixação · Aula 17</span><span class="ph-right">Extensivo ENARE</span></div>
+  <div class="pc">
+    <div class="q-header">Questão 03 de 03 · B4 IRAS/Biossegurança — KPC + RSS + CCIH · Análise (An)</div>
+    <div class="q-stem">
+      Em uma UTI adulto, é identificado paciente com cultura positiva para <em>Klebsiella pneumoniae</em> produtora de carbapenemase (KPC). Ao realizar o curativo do dreno abdominal, o enfermeiro descarta o material contaminado (gazes, luvas e seringa) em saco plástico preto. Após o procedimento, realiza higiene das mãos com álcool gel e retira o avental ainda dentro do quarto. Sobre as falhas identificadas, assinale a alternativa correta:
+    </div>
+    <div class="opt"><span class="opt-letter">A</span><span>Não há falhas; KPC requer apenas precaução-padrão e o descarte em saco preto é correto para material de curativo.</span></div>
+    <div class="opt"><span class="opt-letter">B</span><span>A única falha é o descarte em saco preto; o correto é saco amarelo para material biológico infectado.</span></div>
+    <div class="opt correct"><span class="opt-letter">C</span><span>Duas falhas: (1) material com risco biológico (gazes com secreção, luvas, seringas com resíduos) deve ser descartado em <strong>saco branco leitoso (Grupo A — RSS)</strong>, não em saco preto; (2) o avental de precaução de contato deve ser retirado <strong>antes de sair do quarto</strong>, não ao retirar-se já no corredor. NANDA-I: Proteção ineficaz (00043). <span class="badge-correta">Correta</span></span></div>
+    <div class="opt"><span class="opt-letter">D</span><span>A falha é apenas na higiene das mãos: para KPC, álcool gel é insuficiente — deve-se usar água e sabão, pois KPC forma esporos resistentes.</span></div>
+    <div class="gab-box">
+      <div class="gab-title">Gabarito Comentado — C</div>
+      <p><strong>RSS:</strong> Resíduo biológico (gazes com sangue/secreção, luvas, materiais com fluidos corporais) = <strong>Grupo A → saco branco leitoso</strong> (RDC 222/2018). Saco preto = Grupo D (lixo comum, sem risco biológico). <strong>Precaução de contato (KPC):</strong> avental e luvas devem ser removidos <em>dentro do quarto</em> antes de sair, para não contaminar o corredor. Álcool gel é eficaz para KPC (bactéria gram-negativa não esporulada — diferente de <em>C. difficile</em>). D — KPC NÃO forma esporos; álcool gel é adequado (a regra "água+sabão" se aplica a <em>C. difficile</em> e norovírus, não a KPC).</p>
+    </div>
+  </div>
+  <div class="pf"><span class="pf-left">Extensivo ENARE · by Residência PRO</span><span class="pf-right">08</span></div>
+</div>
+
+<!-- P09 RECUPERAÇÃO ATIVA -->
+<div class="page">
+  <div class="ph"><span class="ph-label">Recuperação Ativa · Aula 17</span><span class="ph-right">Extensivo ENARE</span></div>
+  <div class="pc">
+    <h3>Se Esquecer Tudo, Lembre Disto</h3>
+    <hr class="rule">
+    <div class="recall-item"><span class="recall-star">★</span><p><strong>Precauções-padrão:</strong> todo paciente, sempre — luvas, avental, máscara e óculos conforme risco de respingo. Base de toda precaução adicional.</p></div>
+    <div class="recall-item"><span class="recall-star">★</span><p><strong>TB = aerossol = PFF2/N95 + pressão negativa.</strong> Influenza = gotícula = máscara cirúrgica. KPC/MRSA/VRE = contato = luvas + avental ao entrar no quarto.</p></div>
+    <div class="recall-item"><span class="recall-star">★</span><p><strong>C. difficile:</strong> álcool gel NÃO mata esporos → água + sabão obrigatório. Precaução de contato. Tratar com fidaxomicina ou vancomicina oral (não IV).</p></div>
+    <div class="recall-item"><span class="recall-star">★</span><p><strong>Bundle PAV:</strong> cabeceira 30–45° + higiene oral clorexidina 0,12% + cuff ≥20 cmH₂O + interrupção diária de sedação + extubação precoce.</p></div>
+    <div class="recall-item"><span class="recall-star">★</span><p><strong>RSS Grupo A</strong> (biológico) = saco branco leitoso. <strong>Grupo D</strong> (comum) = saco preto. <strong>Grupo E</strong> (perfurocortante) = caixa amarela rígida. NUNCA reencapar agulha com as duas mãos.</p></div>
+    <h4 style="margin-top:3mm;">Teste-se Sem Olhar</h4>
+    <ul class="self-list">
+      <li>Qual precaução e qual EPI mínimo para paciente com MRSA em ferida exsudativa?</li>
+      <li>Cite as 5 medidas da bundle de prevenção de PAV.</li>
+      <li>Por que o álcool gel é ineficaz para <em>C. difficile</em> e eficaz para KPC?</li>
+      <li>Em qual grupo RSS (RDC 222/2018) se classifica uma bolsa de diálise peritoneal usada?</li>
+    </ul>
+  </div>
+  <div class="pf"><span class="pf-left">Extensivo ENARE · by Residência PRO</span><span class="pf-right">09</span></div>
+</div>
+
+<!-- P10 REFERÊNCIAS -->
+<div class="page">
+  <div class="ph"><span class="ph-label">Referências · Aula 17</span><span class="ph-right">Extensivo ENARE</span></div>
+  <div class="pc">
+    <h3>Referências — Bloco B4 · Aula 17</h3>
+    <hr class="rule">
+    <div class="ref-item">BRASIL. Agência Nacional de Vigilância Sanitária. <em>Medidas de Prevenção de Infecção Relacionada à Assistência à Saúde</em>. 2ª ed. Brasília: ANVISA, 2017. (Série Segurança do Paciente e Qualidade em Serviços de Saúde).</div>
+    <div class="ref-item">BRASIL. ANVISA. <em>Resolução RDC n.º 222/2018</em>. Regulamenta as Boas Práticas de Gerenciamento dos Resíduos de Serviços de Saúde. Brasília: ANVISA, 2018.</div>
+    <div class="ref-item">BRASIL. Ministério da Saúde. <em>Programa Nacional de Segurança do Paciente (PNSP)</em>. Portaria MS n.º 529/2013. Brasília: MS, 2013.</div>
+    <div class="ref-item">CENTERS FOR DISEASE CONTROL AND PREVENTION (CDC). <em>Guidelines for Isolation Precautions: Preventing Transmission of Infectious Agents in Healthcare Settings</em>. Atlanta: CDC, 2007 (updated 2019).</div>
+    <div class="ref-item">WORLD HEALTH ORGANIZATION (WHO). <em>WHO Guidelines on Hand Hygiene in Health Care</em>. Geneva: WHO, 2009.</div>
+    <div class="ref-item">HERDMAN, T.H.; KAMITSURU, S.; LOPES, C.T. (Eds.). <em>NANDA International — Diagnósticos de Enfermagem 2024–2026</em>. 13. ed. Porto Alegre: Artmed, 2024.</div>
+    <div class="notes-box"><p>Espaço para anotações</p></div>
+  </div>
+  <div class="pf"><span class="pf-left">Extensivo ENARE · by Residência PRO</span><span class="pf-right">10</span></div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Enfermagem · Bloco B4 · Aula 10 — Extensivo ENARE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Bricolage+Grotesque:wght@400;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --creme:          #F6F4ED;
+      --verde-lima:     #C6D834;
+      --verde-floresta: #1F5C23;
+      --teal:           #0D8A8D;
+      --preto:          #070707;
+      --cinza:          #9E9B94;
+      --cinza-borda:    #DDD9D1;
+      --creme-escuro:   #EDEAE2;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #CCC; font-family: 'Bricolage Grotesque', sans-serif; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    @page { size: A4; margin: 0; }
+    .page { width: 210mm; height: 297mm; position: relative; overflow: hidden; page-break-after: always; background: var(--creme); display: flex; flex-direction: column; }
+    @media screen { .page { margin: 24px auto; box-shadow: 0 4px 32px rgba(0,0,0,0.18); } }
+
+    .page-header { height: 14mm; background: var(--creme); border-bottom: 2px solid var(--teal); display: flex; align-items: center; padding: 0 18mm; flex-shrink: 0; }
+    .page-header-label { font-family: 'Barlow Condensed', sans-serif; font-size: 8pt; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--cinza); }
+    .page-header-title { font-family: 'Space Grotesk', sans-serif; font-size: 7.5pt; font-weight: 300; color: var(--cinza); margin-left: auto; }
+    .page-footer { height: 10mm; background: var(--creme); border-top: 1px solid var(--cinza-borda); display: flex; align-items: center; padding: 0 18mm; flex-shrink: 0; }
+    .page-footer-brand { font-family: 'Space Grotesk', sans-serif; font-size: 7pt; font-weight: 300; color: var(--cinza); }
+    .page-footer-num { font-family: 'Barlow Condensed', sans-serif; font-size: 9pt; font-weight: 700; color: var(--teal); margin-left: auto; }
+    .page-content { flex: 1; padding: 10mm 18mm; overflow: hidden; }
+
+    .section-tag { font-family: 'Barlow Condensed', sans-serif; font-size: 7.5pt; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--teal); margin-bottom: 4mm; }
+    .section-rule { width: 100%; height: 2px; background: var(--teal); margin-bottom: 6mm; }
+
+    .capa { background: var(--teal); width: 100%; height: 100%; display: flex; flex-direction: column; padding: 14mm 16mm 12mm; }
+    .capa-logo { display: flex; flex-direction: column; gap: 0; margin-bottom: auto; }
+    .capa-logo-ext { font-family: 'Playfair Display', serif; font-style: italic; font-size: 10pt; color: var(--verde-lima); letter-spacing: 1px; }
+    .capa-logo-enare { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 38pt; color: var(--creme); line-height: 0.85; letter-spacing: -1px; }
+    .capa-logo-sub { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 8.5pt; color: rgba(246,244,237,0.6); margin-top: 2mm; }
+    .capa-area { font-family: 'Barlow Condensed', sans-serif; font-size: 7.5pt; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: rgba(246,244,237,0.55); margin-bottom: 2mm; }
+    .capa-codigo { font-family: 'Barlow Condensed', sans-serif; font-size: 9pt; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--verde-lima); margin-bottom: 5mm; }
+    .capa-titulo { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 38pt; color: var(--creme); line-height: 0.9; text-transform: uppercase; letter-spacing: -1px; margin-bottom: 4mm; }
+    .capa-subtitulo { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 15pt; color: var(--verde-lima); text-transform: uppercase; letter-spacing: 1px; line-height: 1.2; }
+    .capa-watermark { position: absolute; bottom: 12mm; right: 12mm; font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 110pt; color: rgba(246,244,237,0.08); line-height: 1; pointer-events: none; }
+
+    .obj-list { list-style: none; display: flex; flex-direction: column; gap: 4mm; margin-bottom: 6mm; }
+    .obj-item { display: flex; gap: 3mm; align-items: flex-start; }
+    .obj-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 18pt; color: var(--teal); line-height: 1; flex-shrink: 0; width: 8mm; }
+    .obj-text { font-size: 9.5pt; line-height: 1.5; color: var(--preto); padding-top: 1mm; }
+    .obj-prereq { background: var(--creme-escuro); border-left: 3px solid var(--cinza-borda); padding: 3mm 4mm; border-radius: 0 3px 3px 0; margin-top: 4mm; }
+    .obj-prereq-label { font-family: 'Barlow Condensed', sans-serif; font-size: 7pt; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--cinza); margin-bottom: 1mm; }
+    .obj-prereq-text { font-size: 8.5pt; color: var(--preto); line-height: 1.4; }
+    .meta-row { display: flex; gap: 8mm; margin-top: 5mm; padding-top: 4mm; border-top: 1px solid var(--cinza-borda); }
+    .meta-item { display: flex; flex-direction: column; gap: 0.5mm; }
+    .meta-label { font-family: 'Barlow Condensed', sans-serif; font-size: 6.5pt; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--cinza); }
+    .meta-value { font-size: 8pt; font-weight: 600; color: var(--preto); }
+
+    h2 { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 17pt; color: var(--teal); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 3mm; line-height: 1.1; }
+    h3 { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 11pt; color: var(--preto); text-transform: uppercase; letter-spacing: 1px; margin: 4mm 0 2mm; }
+    p { font-size: 9pt; line-height: 1.55; color: var(--preto); margin-bottom: 3mm; }
+
+    table { width: 100%; border-collapse: collapse; font-size: 8.5pt; margin-bottom: 4mm; }
+    th { background: var(--teal); color: var(--creme); font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 8pt; letter-spacing: 1px; text-transform: uppercase; padding: 2.5mm 3mm; text-align: left; }
+    td { padding: 2mm 3mm; border-bottom: 1px solid var(--cinza-borda); vertical-align: top; line-height: 1.4; }
+    tr:nth-child(even) td { background: var(--creme-escuro); }
+    .td-dest { font-weight: 600; }
+
+    .box { padding: 3.5mm 4mm; border-radius: 4px; margin-bottom: 4mm; }
+    .box-alerta { background: #fff3cd; border-left: 4px solid #e6a817; }
+    .box-conceito { background: #e8f4e8; border-left: 4px solid var(--verde-floresta); }
+    .box-erro { background: #fdecea; border-left: 4px solid #c0392b; }
+    .box-label { font-family: 'Barlow Condensed', sans-serif; font-size: 7pt; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--cinza); margin-bottom: 1.5mm; }
+    .box-text { font-size: 8.5pt; line-height: 1.5; color: var(--preto); }
+
+    /* PHPN consultas timeline */
+    .timeline { display: flex; gap: 0; margin-bottom: 4mm; }
+    .tl-item { flex: 1; display: flex; flex-direction: column; align-items: center; position: relative; }
+    .tl-item:not(:last-child)::after { content: ''; position: absolute; top: 4mm; left: 50%; width: 100%; height: 2px; background: var(--cinza-borda); z-index: 0; }
+    .tl-dot { width: 8mm; height: 8mm; border-radius: 50%; background: var(--teal); display: flex; align-items: center; justify-content: center; z-index: 1; flex-shrink: 0; }
+    .tl-dot-text { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 7pt; color: var(--creme); }
+    .tl-sem { font-family: 'Barlow Condensed', sans-serif; font-size: 8pt; font-weight: 700; color: var(--teal); margin-top: 1.5mm; text-align: center; }
+    .tl-label { font-size: 7pt; color: var(--cinza); text-align: center; line-height: 1.3; margin-top: 0.5mm; }
+
+    /* exames grid 2 col */
+    .exames-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; margin-bottom: 4mm; }
+    .exames-card { background: var(--creme-escuro); border-radius: 4px; padding: 3mm 3.5mm; border-top: 3px solid var(--teal); }
+    .exames-card-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 9pt; text-transform: uppercase; letter-spacing: 0.5px; color: var(--teal); margin-bottom: 2mm; }
+    .exames-item { font-size: 7.8pt; line-height: 1.45; color: var(--preto); margin-bottom: 0.8mm; }
+
+    /* risco grid */
+    .risco-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; margin-bottom: 4mm; }
+    .risco-card { border-radius: 4px; padding: 3mm 3.5mm; }
+    .risco-habitual { background: #e8f4e8; border-top: 3px solid var(--verde-floresta); }
+    .risco-alto { background: #fdecea; border-top: 3px solid #c0392b; }
+    .risco-card-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9.5pt; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2mm; }
+    .risco-habitual .risco-card-title { color: var(--verde-floresta); }
+    .risco-alto .risco-card-title { color: #c0392b; }
+    .risco-item { font-size: 8pt; line-height: 1.45; color: var(--preto); margin-bottom: 0.8mm; }
+
+    /* vacinas */
+    .vac-table th { background: var(--verde-floresta); }
+
+    /* questões */
+    .q-header { font-family: 'Barlow Condensed', sans-serif; font-size: 7.5pt; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--teal); margin-bottom: 3mm; }
+    .q-enunciado { background: var(--creme-escuro); border-radius: 4px; padding: 4mm 5mm; font-size: 9pt; line-height: 1.6; color: var(--preto); margin-bottom: 4mm; }
+    .q-alternativas { display: flex; flex-direction: column; gap: 2.5mm; margin-bottom: 4mm; }
+    .q-alt { display: flex; gap: 3mm; padding: 2.5mm 3.5mm; border-radius: 4px; background: white; border: 1px solid var(--cinza-borda); font-size: 9pt; line-height: 1.5; color: var(--preto); }
+    .q-alt.correta { background: #e8f4e8; border-color: var(--verde-floresta); font-weight: 600; }
+    .q-alt-letra { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 11pt; color: var(--teal); flex-shrink: 0; line-height: 1.2; }
+    .q-alt.correta .q-alt-letra { color: var(--verde-floresta); }
+    .correta-badge { display: inline-block; font-family: 'Barlow Condensed', sans-serif; font-size: 7pt; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; background: var(--verde-floresta); color: white; padding: 0.5mm 2mm; border-radius: 2px; margin-left: 2mm; vertical-align: middle; }
+    .gabarito-box { background: var(--preto); color: var(--creme); border-radius: 4px; padding: 3.5mm 4mm; font-size: 8pt; line-height: 1.55; }
+    .gabarito-box-title { font-family: 'Barlow Condensed', sans-serif; font-size: 8pt; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--verde-lima); margin-bottom: 2mm; }
+    .gabarito-distratores { font-size: 7.5pt; line-height: 1.4; color: rgba(246,244,237,0.75); margin-top: 2mm; }
+
+    .ra-items { list-style: none; display: flex; flex-direction: column; gap: 3mm; }
+    .ra-item { display: flex; gap: 3mm; align-items: flex-start; font-size: 9pt; line-height: 1.5; color: var(--preto); }
+    .ra-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 10pt; color: var(--teal); flex-shrink: 0; width: 6mm; }
+    .ra-sub { font-family: 'Barlow Condensed', sans-serif; font-size: 7.5pt; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--cinza); margin-bottom: 3mm; }
+
+    .ref-list { list-style: none; display: flex; flex-direction: column; gap: 2.5mm; }
+    .ref-item { font-size: 8pt; line-height: 1.5; color: var(--preto); border-left: 3px solid var(--cinza-borda); padding-left: 3mm; }
+    .ref-item cite { font-style: italic; }
+    .notas-box { margin-top: 6mm; border: 1.5px dashed var(--cinza-borda); border-radius: 4px; padding: 4mm; flex: 1; display: flex; align-items: center; justify-content: center; }
+    .notas-label { font-family: 'Barlow Condensed', sans-serif; font-size: 8pt; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--cinza-borda); }
+  </style>
+</head>
+<body>
+
+<!-- ══ P01 CAPA ══ -->
+<div class="page">
+  <div class="capa">
+    <div class="capa-logo">
+      <span class="capa-logo-ext">extensivo</span>
+      <span class="capa-logo-enare">ENARE</span>
+      <span class="capa-logo-sub">by Residência PRO</span>
+    </div>
+    <div>
+      <div class="capa-area">Enfermagem · Módulo Específico</div>
+      <div class="capa-codigo">Bloco B4 · Aula 10</div>
+      <div class="capa-titulo">Saúde da<br>Mulher I</div>
+      <div class="capa-subtitulo">Pré-natal,<br>PHPN e<br>Risco Gestacional</div>
+    </div>
+    <div class="capa-watermark">10</div>
+  </div>
+</div>
+
+<!-- ══ P02 OBJETIVOS ══ -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-label">Enfermagem · Bloco B4 · Aula 10</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <div class="section-tag">Objetivos de Aprendizagem</div>
+    <div class="section-rule"></div>
+    <ul class="obj-list">
+      <li class="obj-item">
+        <span class="obj-num">1</span>
+        <span class="obj-text">Aplicar os critérios do PHPN (Portaria MS 569/2000): número mínimo de consultas, distribuição por trimestre, início no 1º trimestre e exames obrigatórios da 1ª consulta.</span>
+      </li>
+      <li class="obj-item">
+        <span class="obj-num">2</span>
+        <span class="obj-text">Identificar os exames de rotina do pré-natal de baixo risco, distinguindo os obrigatórios na 1ª consulta dos que devem ser repetidos no 3º trimestre (VDRL, anti-HIV, glicemia 75g TOTG).</span>
+      </li>
+      <li class="obj-item">
+        <span class="obj-num">3</span>
+        <span class="obj-text">Classificar o risco gestacional (habitual vs. alto risco), aplicar o diagnóstico NANDA-I pertinente e definir a conduta de referência ao pré-natal especializado quando indicado.</span>
+      </li>
+    </ul>
+    <div class="obj-prereq">
+      <div class="obj-prereq-label">Pré-requisito</div>
+      <div class="obj-prereq-text">Aula 01 — PE (Res. 736/2024) e NANDA-I 2024–2026 para aplicação do diagnóstico de enfermagem em cenários obstétricos. Conhecimento básico de anatomia e fisiologia feminina.</div>
+    </div>
+    <div class="meta-row">
+      <div class="meta-item"><div class="meta-label">Bloco</div><div class="meta-value">B4 — Enfermagem</div></div>
+      <div class="meta-item"><div class="meta-label">Aula</div><div class="meta-value">10 de 24</div></div>
+      <div class="meta-item"><div class="meta-label">Tema</div><div class="meta-value">ENF-Saúde Mulher I</div></div>
+      <div class="meta-item"><div class="meta-label">Nível cognitivo</div><div class="meta-value">M → An</div></div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">02</span>
+  </div>
+</div>
+
+<!-- ══ P03 PHPN ══ -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-label">Conteúdo Principal · Aula 10</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <h2>PHPN — Humanização do Pré-natal (Portaria MS 569/2000)</h2>
+    <p style="margin-bottom:3mm;">Mínimo <strong>6 consultas</strong> — distribuição por trimestre com início obrigatório no 1º trimestre (antes da 12ª semana).</p>
+
+    <div class="timeline" style="margin-bottom:5mm;">
+      <div class="tl-item">
+        <div class="tl-dot"><span class="tl-dot-text">C1</span></div>
+        <div class="tl-sem">até 12ª sem</div>
+        <div class="tl-label">1º trimestre<br>(obrigatório)</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"><span class="tl-dot-text">C2</span></div>
+        <div class="tl-sem">20ª sem</div>
+        <div class="tl-label">2º trimestre</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"><span class="tl-dot-text">C3</span></div>
+        <div class="tl-sem">26ª sem</div>
+        <div class="tl-label">2º trimestre</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"><span class="tl-dot-text">C4</span></div>
+        <div class="tl-sem">32ª sem</div>
+        <div class="tl-label">3º trimestre</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"><span class="tl-dot-text">C5</span></div>
+        <div class="tl-sem">36ª sem</div>
+        <div class="tl-label">3º trimestre</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"><span class="tl-dot-text">C6</span></div>
+        <div class="tl-sem">40ª sem</div>
+        <div class="tl-label">3º trimestre</div>
+      </div>
+    </div>
+
+    <table>
+      <thead>
+        <tr><th style="width:28%">Critério PHPN</th><th>Conteúdo</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="td-dest">Início</td><td>1ª consulta antes da 12ª semana gestacional (1º trimestre)</td></tr>
+        <tr><td class="td-dest">Nº de consultas</td><td>Mínimo 6 — 1 no 1T, 2 no 2T, 3 no 3T</td></tr>
+        <tr><td class="td-dest">Exames</td><td>Laboratoriais de rotina na 1ª consulta + repetição no 3T conforme protocolo</td></tr>
+        <tr><td class="td-dest">Vacinas</td><td>dTpa (27–36 sem), hepatite B (se sem esquema), influenza (qualquer trimestre)</td></tr>
+        <tr><td class="td-dest">Vinculação</td><td>Maternidade de referência definida antes de 37 semanas</td></tr>
+        <tr><td class="td-dest">Atividades educativas</td><td>Orientações sobre parto, amamentação, sinais de alarme e puerpério</td></tr>
+        <tr><td class="td-dest">DPP (Naegele)</td><td>DUM + 7 dias − 3 meses (ou + 280 dias = 40 semanas)</td></tr>
+      </tbody>
+    </table>
+
+    <div class="box box-alerta">
+      <div class="box-label">Pegadinha FGV — "6 consultas é o mínimo do PHPN, não o ideal"</div>
+      <div class="box-text">A OMS (2016) recomenda mínimo de <strong>8 consultas</strong> para reduzir mortalidade perinatal. No Brasil, o Caderno de Atenção Básica 32 (MS 2022) incorporou essa recomendação. Questões sobre PHPN cobram o critério de <strong>6 consultas</strong> (portaria original); questões sobre recomendação atual da OMS cobram <strong>8 consultas</strong>. Atenção ao enunciado.</div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">03</span>
+  </div>
+</div>
+
+<!-- ══ P04 EXAMES DE ROTINA ══ -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-label">Conteúdo Principal · Aula 10</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <h2>Exames de Rotina do Pré-natal</h2>
+    <div class="exames-grid">
+      <div class="exames-card">
+        <div class="exames-card-title">1ª Consulta — Obrigatórios</div>
+        <div class="exames-item">· <strong>Tipagem + Rh</strong> — incompatibilidade fetomaternal</div>
+        <div class="exames-item">· <strong>Hemograma</strong> — anemia, infecção</div>
+        <div class="exames-item">· <strong>Glicemia de jejum</strong> — DM pré-gestacional</div>
+        <div class="exames-item">· <strong>VDRL</strong> — sífilis (repetir no 3T e parto)</div>
+        <div class="exames-item">· <strong>Anti-HIV</strong> — PTMH (repetir no 3T e parto)</div>
+        <div class="exames-item">· <strong>HBsAg</strong> — hepatite B</div>
+        <div class="exames-item">· <strong>Toxoplasmose IgG/IgM</strong> — infecção aguda vs. imunidade</div>
+        <div class="exames-item">· <strong>EAS + urocultura</strong> — bacteriúria assintomática</div>
+        <div class="exames-item">· <strong>Citopatológico</strong> — neoplasia cervical (se necessário)</div>
+        <div class="exames-item">· <strong>USG obstétrico</strong> — IG, gemelaridade, malformação</div>
+      </div>
+      <div class="exames-card">
+        <div class="exames-card-title">Repetição — 3º Trimestre / Retorno</div>
+        <div class="exames-item">· <strong>VDRL</strong> — repetir na 28ª semana e no parto</div>
+        <div class="exames-item">· <strong>Anti-HIV</strong> — repetir na 28ª semana e no parto</div>
+        <div class="exames-item">· <strong>TOTG 75g (2h)</strong> — rastreio DMG entre 24–28 sem (critério: jejum ≥92, 1h ≥180, 2h ≥153 mg/dL)</div>
+        <div class="exames-item">· <strong>Hemograma</strong> — repetir na 28ª semana</div>
+        <div class="exames-item">· <strong>EAS + urocultura</strong> — repetir na 28ª semana</div>
+        <div class="exames-item">· <strong>Toxoplasmose IgM</strong> — repetir a cada 8 semanas se não imune (IgG−)</div>
+        <div class="exames-item">· <strong>Coombs indireto</strong> — Rh− não sensibilizada: a cada 4 semanas a partir da 24ª sem</div>
+        <div class="exames-item">· <strong>VDPR/streptococo B</strong> — swab vaginal/retal 35–37 sem</div>
+      </div>
+    </div>
+
+    <div class="box box-conceito">
+      <div class="box-label">Rh Negativo — Profilaxia com Imunoglobulina Anti-D</div>
+      <div class="box-text">Gestante Rh− com Coombs indireto <strong>negativo</strong> (não sensibilizada): administrar <strong>imunoglobulina anti-D 300 mcg IM</strong> na 28ª semana e até 72h após o parto (se RN Rh+). Também indicada após aborto, amniocentese ou trauma abdominal. Objetivo: prevenir sensibilização materna e doença hemolítica do RN na próxima gestação.</div>
+    </div>
+
+    <div class="box box-erro">
+      <div class="box-label">Bacteriúria assintomática na gestação — SEMPRE tratar</div>
+      <div class="box-text">Ao contrário da população geral, na gestante a bacteriúria assintomática (EAS + urocultura positivos, sem sintomas) <strong>deve ser tratada</strong> com antibiótico — risco de pielonefrite grave e trabalho de parto prematuro.</div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">04</span>
+  </div>
+</div>
+
+<!-- ══ P05 RISCO GESTACIONAL + VACINAS ══ -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-label">Conteúdo Principal · Aula 10</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <h2>Classificação de Risco Gestacional</h2>
+    <div class="risco-grid">
+      <div class="risco-card risco-habitual">
+        <div class="risco-card-title">Risco Habitual (Baixo Risco)</div>
+        <div class="risco-item">· Gestante sem comorbidades prévias</div>
+        <div class="risco-item">· Primeira gestação, sem perdas anteriores</div>
+        <div class="risco-item">· Idade entre 15–35 anos</div>
+        <div class="risco-item">· Gestação única, sem malformação</div>
+        <div class="risco-item">· Sem HAS, DM, cardiopatia, nefropatia</div>
+        <div class="risco-item" style="margin-top:2mm; font-style:italic; font-size:7.5pt;">Acompanhamento: UBS / Atenção Básica</div>
+      </div>
+      <div class="risco-card risco-alto">
+        <div class="risco-card-title">Alto Risco — Encaminhar</div>
+        <div class="risco-item">· <strong>HAS crônica</strong> ou pré-eclâmpsia</div>
+        <div class="risco-item">· <strong>DM pré-gestacional</strong> (tipo 1 ou 2)</div>
+        <div class="risco-item">· Cardiopatia, nefropatia, epilepsia grave</div>
+        <div class="risco-item">· Gemelaridade, malformação fetal confirmada</div>
+        <div class="risco-item">· ≥ 3 abortamentos espontâneos, prematuridade extrema prévia</div>
+        <div class="risco-item">· Isoimunização Rh (Coombs indireto +)</div>
+        <div class="risco-item" style="margin-top:2mm; font-style:italic; font-size:7.5pt;">Encaminhar: serviço de pré-natal de alto risco</div>
+      </div>
+    </div>
+
+    <h3>Vacinas no Pré-natal</h3>
+    <table class="vac-table">
+      <thead>
+        <tr><th style="width:25%">Vacina</th><th style="width:38%">Quando administrar</th><th>Observação</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="td-dest">dTpa</td>
+          <td>A partir da 20ª semana; ideal entre 27–36 semanas</td>
+          <td><strong>1 dose por gestação</strong> — protege contra coqueluche neonatal (imunidade passiva ao RN)</td>
+        </tr>
+        <tr>
+          <td class="td-dest">Hepatite B</td>
+          <td>Qualquer trimestre (se sem esquema completo)</td>
+          <td>3 doses (0, 1 e 6 meses). Verificar comprovante. Segura na gestação.</td>
+        </tr>
+        <tr>
+          <td class="td-dest">Influenza</td>
+          <td>Qualquer trimestre durante campanha anual</td>
+          <td>1 dose/ano. Gestantes são grupo prioritário. Reduz risco de hospitalização.</td>
+        </tr>
+        <tr>
+          <td class="td-dest">COVID-19</td>
+          <td>Qualquer trimestre conforme esquema vigente</td>
+          <td>Recomendada pelo MS. Não usar vacinas de vetor viral atenuado na gestação.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="box box-alerta">
+      <div class="box-label">Vacinas CONTRAINDICADAS na gestação</div>
+      <div class="box-text">Vacinas de vírus <strong>vivos atenuados</strong> são contraindicadas: <strong>tríplice viral</strong> (sarampo, caxumba, rubéola), <strong>varicela</strong>, <strong>febre amarela</strong> (exceto em situações de risco epidemiológico elevado — análise risco/benefício). Aplicar tríplice viral no puerpério imediato (antes da alta hospitalar) se a paciente não for imune.</div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">05</span>
+  </div>
+</div>
+
+<!-- ══ P06 Q1 MEMORIZAÇÃO ══ -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-label">Fixação · Aula 10</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <div class="q-header">Questão 01 de 03 · B4 Saúde da Mulher I · PHPN — Memorização</div>
+    <div class="q-enunciado">
+      Enfermeira de UBS, responsável pelo programa de pré-natal, orienta gestante primigesta de 8 semanas sobre o calendário de consultas e os exames obrigatórios previstos no Programa de Humanização do Pré-natal e Nascimento (PHPN). Sobre os critérios mínimos do PHPN, assinale a alternativa correta:
+    </div>
+    <div class="q-alternativas">
+      <div class="q-alt">
+        <span class="q-alt-letra">A</span>
+        <span>O PHPN estabelece mínimo de 8 consultas de pré-natal, com início antes da 16ª semana e distribuição de 2 consultas por trimestre.</span>
+      </div>
+      <div class="q-alt">
+        <span class="q-alt-letra">B</span>
+        <span>A gestante pode iniciar o pré-natal até a 20ª semana e ainda cumprir os critérios mínimos do PHPN, desde que realize as 6 consultas até o término da gestação.</span>
+      </div>
+      <div class="q-alt correta">
+        <span class="q-alt-letra">C</span>
+        <span>O PHPN exige mínimo de 6 consultas, sendo obrigatória a 1ª consulta no 1º trimestre (antes da 12ª semana), com distribuição de 1 consulta no 1T, 2 no 2T e 3 no 3T, além de vinculação à maternidade de referência antes de 37 semanas. <span class="correta-badge">Correta</span></span>
+      </div>
+      <div class="q-alt">
+        <span class="q-alt-letra">D</span>
+        <span>As 6 consultas mínimas do PHPN devem ser realizadas exclusivamente pelo médico obstetra, cabendo à enfermeira apenas as atividades educativas e a coleta de exames.</span>
+      </div>
+    </div>
+    <div class="gabarito-box">
+      <div class="gabarito-box-title">Gabarito Comentado — C</div>
+      O PHPN (Portaria MS 569/2000) estabelece: mínimo <strong>6 consultas</strong>, início <strong>antes da 12ª semana</strong> (1º trimestre), distribuição 1-2-3 (1T-2T-3T) e vinculação à maternidade de referência antes de 37 semanas. A enfermeira tem plena competência para conduzir consultas de pré-natal de baixo risco (Lei 7.498/1986 + Protocolo de Enfermagem na APS).
+      <div class="gabarito-distratores"><strong>A —</strong> 8 consultas é recomendação atual da OMS; o PHPN original estabelece 6. <strong>B —</strong> O início deve ser antes da 12ª semana; iniciar na 20ª viola o critério. <strong>D —</strong> A enfermeira é plenamente competente para realizar consultas de pré-natal de baixo risco.</div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">06</span>
+  </div>
+</div>
+
+<!-- ══ P07 Q2 APLICAÇÃO ══ -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-label">Fixação · Aula 10</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <div class="q-header">Questão 02 de 03 · B4 Saúde da Mulher I · Exames de Rotina · Aplicação</div>
+    <div class="q-enunciado">
+      Gestante G1P0, 28 semanas, comparece à consulta de retorno do pré-natal. Exames da 1ª consulta (8 semanas): hemograma, tipagem + Rh (O+), VDRL não reagente, anti-HIV não reagente, HBsAg negativo, glicemia de jejum 86 mg/dL, EAS normal, toxoplasmose IgG positivo/IgM negativo. Sobre os exames a solicitar nesta consulta de 28 semanas, a conduta mais adequada inclui:
+    </div>
+    <div class="q-alternativas">
+      <div class="q-alt">
+        <span class="q-alt-letra">A</span>
+        <span>Não há necessidade de solicitar novos exames nesta consulta, pois todos os exames realizados na 1ª consulta estão normais e a gestante é de baixo risco.</span>
+      </div>
+      <div class="q-alt">
+        <span class="q-alt-letra">B</span>
+        <span>Solicitar apenas TOTG 75g, pois a glicemia de jejum inicial foi normal e os demais exames não precisam ser repetidos no 3º trimestre.</span>
+      </div>
+      <div class="q-alt correta">
+        <span class="q-alt-letra">C</span>
+        <span>Solicitar VDRL, anti-HIV, hemograma, EAS com urocultura e TOTG 75g (rastreio de DMG entre 24–28 semanas) — todos devem ser repetidos no 3º trimestre, independentemente dos resultados iniciais normais. <span class="correta-badge">Correta</span></span>
+      </div>
+      <div class="q-alt">
+        <span class="q-alt-letra">D</span>
+        <span>Solicitar TOTG 75g e repetição da toxoplasmose IgM, pois a gestante não é imune (IgG positivo indica infecção prévia, não imunidade duradoura).</span>
+      </div>
+    </div>
+    <div class="gabarito-box">
+      <div class="gabarito-box-title">Gabarito Comentado — C</div>
+      Na 28ª semana, o protocolo exige repetição de: <strong>VDRL</strong> (sífilis pode ocorrer durante a gestação), <strong>anti-HIV</strong> (PTMH — janela imunológica), <strong>hemograma</strong> (anemia gestacional), <strong>EAS + urocultura</strong> (bacteriúria assintomática) e <strong>TOTG 75g</strong> (rastreio de DMG entre 24–28 sem). Resultados normais no 1T não dispensam a repetição no 3T.
+      <div class="gabarito-distratores"><strong>A —</strong> Resultados normais não dispensam repetição no protocolo. <strong>B —</strong> Apenas o TOTG é insuficiente — VDRL, anti-HIV, hemograma e EAS são obrigatórios. <strong>D —</strong> IgG+ para toxoplasmose indica imunidade prévia — não há necessidade de repetição (a gestante não é suscetível). A repetição é indicada apenas para IgG−/IgM− (sem imunidade).</div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">07</span>
+  </div>
+</div>
+
+<!-- ══ P08 Q3 ANÁLISE ÂNCORA ══ -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-label">Fixação · Aula 10</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <div class="q-header">Questão 03 de 03 · B4 Saúde da Mulher I · Risco Gestacional + NANDA-I · Análise</div>
+    <div class="q-enunciado">
+      Enfermeira de UBS realiza consulta de pré-natal em gestante G1P0, 20 semanas. PA: 152/98 mmHg (confirmada após 6 horas: 154/100 mmHg). Proteinúria 2+ na fita. Edema de MMII ++. Refere cefaleia persistente e visão turva. Histórico: sem HAS prévia ao diagnóstico da gravidez. Sobre o diagnóstico de enfermagem (NANDA-I 2024–2026) e a conduta imediata da enfermeira, assinale a alternativa correta:
+    </div>
+    <div class="q-alternativas">
+      <div class="q-alt">
+        <span class="q-alt-letra">A</span>
+        <span>Diagnóstico: Integridade tissular prejudicada. Conduta: orientar repouso em decúbito lateral esquerdo, hidratação e retorno em 7 dias para reavaliação da PA.</span>
+      </div>
+      <div class="q-alt">
+        <span class="q-alt-letra">B</span>
+        <span>Diagnóstico: Ansiedade. Conduta: realizar técnicas de relaxamento, orientar dieta hipossódica e agendar consulta médica na semana seguinte.</span>
+      </div>
+      <div class="q-alt correta">
+        <span class="q-alt-letra">C</span>
+        <span>Diagnóstico: Risco de perfusão tissular cerebral ineficaz. Conduta: classificar como alto risco gestacional e encaminhar imediatamente ao serviço de pré-natal de alto risco ou maternidade de referência — quadro compatível com pré-eclâmpsia grave. <span class="correta-badge">Correta</span></span>
+      </div>
+      <div class="q-alt">
+        <span class="q-alt-letra">D</span>
+        <span>Diagnóstico: Risco de infecção. Conduta: coletar urocultura, solicitar hemograma e prescrever antibiótico conforme protocolo municipal, mantendo acompanhamento na UBS.</span>
+      </div>
+    </div>
+    <div class="gabarito-box">
+      <div class="gabarito-box-title">Gabarito Comentado — C</div>
+      O quadro (PA ≥140/90 confirmada + proteinúria + cefaleia + visão borrada em gestante sem HAS prévia) caracteriza <strong>pré-eclâmpsia grave</strong> — critério de alto risco gestacional. O NANDA-I mais adequado é <strong>Risco de perfusão tissular cerebral ineficaz</strong> (hipertensão grave → risco de eclâmpsia). A conduta da enfermeira é encaminhar <strong>imediatamente</strong> — não manter na UBS, não aguardar retorno, não prescrever anti-hipertensivo sem avaliação especializada.
+      <div class="gabarito-distratores"><strong>A —</strong> Edema e proteinúria não são integridade tissular prejudicada; o problema central é vascular/cerebral. Retorno em 7 dias é conduta perigosa em pré-eclâmpsia grave. <strong>B —</strong> PA 152/98 + proteinúria não são ansiedade; a cefaleia e visão borrada são sinais de alarme. <strong>D —</strong> Não há evidência de infecção urinária como causa principal; o quadro é hipertensivo gestacional.</div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">08</span>
+  </div>
+</div>
+
+<!-- ══ P09 RECUPERAÇÃO ATIVA ══ -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-label">Recuperação Ativa · Aula 10</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <div class="section-tag">Se esquecer tudo, lembre disto</div>
+    <div class="section-rule"></div>
+    <ul class="obj-list" style="margin-bottom:8mm;">
+      <li class="obj-item">
+        <span class="obj-num" style="font-size:14pt;">★</span>
+        <span class="obj-text">PHPN: mínimo <strong>6 consultas</strong> — 1 no 1T (antes da 12ª sem), 2 no 2T, 3 no 3T — vinculação à maternidade antes de 37 sem. OMS recomenda 8 (questão diferente).</span>
+      </li>
+      <li class="obj-item">
+        <span class="obj-num" style="font-size:14pt;">★</span>
+        <span class="obj-text">Exames que se repetem no 3T (28ª sem): <strong>VDRL + anti-HIV + hemograma + EAS/urocultura + TOTG 75g</strong>. Toxoplasmose IgG+ = imunidade prévia = não repetir.</span>
+      </li>
+      <li class="obj-item">
+        <span class="obj-num" style="font-size:14pt;">★</span>
+        <span class="obj-text">PA ≥140/90 + proteinúria + cefaleia/visão borrada em gestante = <strong>pré-eclâmpsia grave → alto risco → encaminhar imediatamente</strong>. NANDA-I: Risco de perfusão tissular cerebral ineficaz.</span>
+      </li>
+    </ul>
+    <div class="ra-sub">Teste-se sem olhar</div>
+    <ul class="ra-items">
+      <li class="ra-item"><span class="ra-num">01 —</span>Quantas consultas mínimas o PHPN exige e como se distribuem por trimestre?</li>
+      <li class="ra-item"><span class="ra-num">02 —</span>Quais exames devem ser repetidos na 28ª semana de gestação e por quê?</li>
+      <li class="ra-item"><span class="ra-num">03 —</span>Gestante Rh− com Coombs indireto negativo: qual a conduta preventiva e em que momento?</li>
+      <li class="ra-item"><span class="ra-num">04 —</span>Quais vacinas são contraindicadas na gestação? Por qual razão?</li>
+    </ul>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">09</span>
+  </div>
+</div>
+
+<!-- ══ P10 REFERÊNCIAS ══ -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-label">Referências · Aula 10</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <div class="section-tag">Referências — Bloco B4 · Aula 10</div>
+    <div class="section-rule"></div>
+    <ul class="ref-list">
+      <li class="ref-item">BRASIL. Ministério da Saúde. <cite>Portaria MS n.º 569/2000.</cite> Institui o Programa de Humanização do Pré-natal e Nascimento (PHPN). Brasília: MS, 2000.</li>
+      <li class="ref-item">BRASIL. Ministério da Saúde. <cite>Cadernos de Atenção Básica n.º 32 — Atenção ao Pré-natal de Baixo Risco.</cite> 2. ed. Brasília: MS/DAB, 2022.</li>
+      <li class="ref-item">BRASIL. Ministério da Saúde. <cite>Gestação de Alto Risco — Manual Técnico.</cite> 5. ed. Brasília: Editora do Ministério da Saúde, 2012.</li>
+      <li class="ref-item">WHO. <cite>WHO recommendations on antenatal care for a positive pregnancy experience.</cite> Geneva: World Health Organization, 2016.</li>
+      <li class="ref-item">BRASIL. Conselho Federal de Enfermagem. <cite>Resolução COFEN n.º 736/2024.</cite> Regulamenta a execução do Processo de Enfermagem. Brasília: COFEN, 2024.</li>
+      <li class="ref-item">HERDMAN, T.H.; KAMITSURU, S.; LOPES, C.T. (Eds.). <cite>NANDA International — Diagnósticos de Enfermagem 2024–2026.</cite> 13. ed. Porto Alegre: Artmed, 2024.</li>
+    </ul>
+    <div class="notas-box">
+      <span class="notas-label">Espaço para anotações</span>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">10</span>
+  </div>
+</div>
+
+</body>
+</html>

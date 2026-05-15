@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Competências Gerais · Bloco B0 · Aula 02 — Extensivo ENARE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Bricolage+Grotesque:wght@400;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --creme:          #F6F4ED;
+      --verde-lima:     #C6D834;
+      --verde-floresta: #1F5C23;
+      --teal:           #0D8A8D;
+      --preto:          #070707;
+      --cinza:          #9E9B94;
+      --cinza-borda:    #DDD9D1;
+      --creme-escuro:   #EDEAE2;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #CCC;
+      font-family: 'Bricolage Grotesque', sans-serif;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    @page { size: A4; margin: 0; }
+
+    .page {
+      width: 210mm;
+      height: 297mm;
+      position: relative;
+      overflow: hidden;
+      page-break-after: always;
+      background: var(--creme);
+      display: flex;
+      flex-direction: column;
+    }
+
+    @media screen {
+      .page { margin: 24px auto; box-shadow: 0 4px 32px rgba(0,0,0,0.18); }
+    }
+
+    .page-header {
+      height: 14mm;
+      background: var(--creme);
+      border-bottom: 2px solid var(--teal);
+      display: flex;
+      align-items: center;
+      padding: 0 18mm;
+      flex-shrink: 0;
+    }
+    .page-header-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 8pt;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--cinza);
+    }
+    .page-header-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 7.5pt;
+      font-weight: 300;
+      color: var(--cinza);
+      margin-left: auto;
+    }
+
+    .page-footer {
+      height: 11mm;
+      border-top: 0.5px solid var(--teal);
+      display: flex;
+      align-items: center;
+      padding: 0 18mm;
+      flex-shrink: 0;
+    }
+    .page-footer-brand {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 7pt;
+      font-weight: 300;
+      color: var(--cinza);
+    }
+    .page-footer-brand span { color: var(--teal); font-weight: 400; }
+    .page-footer-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 9pt;
+      font-weight: 600;
+      color: var(--cinza);
+      margin-left: auto;
+    }
+
+    .page-body { flex: 1; padding: 10mm 18mm 8mm; overflow: hidden; }
+
+    .h1 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 22pt;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--verde-floresta);
+      letter-spacing: 0.5px;
+      line-height: 1.05;
+      margin-bottom: 7mm;
+    }
+    .h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 16pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--verde-floresta);
+      letter-spacing: 0.5px;
+      margin-bottom: 4mm;
+      margin-top: 6mm;
+    }
+    .h2:first-child { margin-top: 0; }
+    .h3 {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 11pt;
+      font-weight: 600;
+      color: var(--preto);
+      margin-bottom: 2mm;
+      margin-top: 4mm;
+    }
+    p { font-size: 10.5pt; color: var(--preto); line-height: 1.55; margin-bottom: 3mm; }
+
+    .rule { border: none; border-top: 1px solid var(--cinza-borda); margin: 4mm 0; }
+
+    .box { border-radius: 6px; padding: 4mm 5mm; margin: 4mm 0; }
+    .box-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 9pt;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 1.5mm;
+      display: block;
+    }
+    .box-body { font-size: 10pt; line-height: 1.5; }
+    .box-pega  { background: var(--verde-lima); color: var(--verde-floresta); }
+    .box-pega .box-title { color: var(--verde-floresta); }
+    .box-dica  { background: var(--teal); color: var(--creme); }
+    .box-dica .box-title { color: var(--creme); }
+    .box-conceito { background: var(--verde-floresta); color: var(--creme); }
+    .box-conceito .box-title { color: var(--creme); }
+
+    .lista { list-style: none; margin: 2mm 0 3mm; }
+    .lista li {
+      font-size: 10.5pt;
+      line-height: 1.55;
+      color: var(--preto);
+      padding-left: 5mm;
+      margin-bottom: 2mm;
+      position: relative;
+    }
+    .lista li::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 5px;
+      width: 5px; height: 5px;
+      background: var(--verde-lima);
+      border-radius: 50%;
+    }
+
+    .objective-item { display: flex; gap: 4mm; margin-bottom: 4mm; align-items: flex-start; }
+    .objective-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 20pt;
+      color: var(--verde-lima);
+      line-height: 1;
+      flex-shrink: 0;
+      width: 8mm;
+    }
+    .objective-text { font-size: 11pt; font-weight: 600; color: var(--preto); line-height: 1.4; padding-top: 1mm; }
+
+    .prereq-card {
+      background: var(--creme-escuro);
+      border-left: 4px solid var(--teal);
+      border-radius: 0 6px 6px 0;
+      padding: 3.5mm 5mm;
+      margin-top: 5mm;
+    }
+    .prereq-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 8pt;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 1mm;
+    }
+    .prereq-text { font-size: 10pt; color: var(--preto); line-height: 1.45; }
+
+    .question-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 9pt;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 2mm;
+    }
+    .question-stem {
+      font-size: 10.5pt;
+      line-height: 1.6;
+      color: var(--preto);
+      background: var(--creme-escuro);
+      border-radius: 6px;
+      padding: 4mm 5mm;
+      margin-bottom: 4mm;
+    }
+    .question-stem strong { font-weight: 600; }
+    .alternatives { margin-bottom: 5mm; }
+    .alt { display: flex; gap: 3mm; padding: 2mm 0; border-bottom: 0.5px solid var(--cinza-borda); align-items: flex-start; }
+    .alt:last-child { border-bottom: none; }
+    .alt-letter {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 11pt;
+      color: var(--cinza);
+      flex-shrink: 0;
+      width: 5mm;
+      line-height: 1.4;
+    }
+    .alt.correct .alt-letter { color: var(--verde-floresta); }
+    .alt-text { font-size: 10pt; color: var(--preto); line-height: 1.45; }
+    .alt.correct .alt-text { color: var(--verde-floresta); font-weight: 600; }
+    .correct-badge {
+      display: inline-block;
+      background: var(--verde-lima);
+      color: var(--verde-floresta);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 7pt;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 1px 5px;
+      border-radius: 3px;
+      margin-left: 2mm;
+      vertical-align: middle;
+    }
+    .gabarito-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 10pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--verde-floresta);
+      border-top: 2px solid var(--verde-floresta);
+      padding-top: 3mm;
+      margin-top: 2mm;
+      margin-bottom: 2mm;
+    }
+    .gabarito-body { font-size: 9.5pt; line-height: 1.55; color: var(--preto); }
+    .gabarito-body strong { color: var(--verde-floresta); font-weight: 600; }
+    .gabarito-alt { margin-bottom: 2mm; padding-left: 4mm; border-left: 2px solid var(--cinza-borda); }
+    .gabarito-alt.correta { border-left-color: var(--verde-lima); }
+    .gabarito-alt strong { display: block; margin-bottom: 0.5mm; }
+
+    .ref-list { list-style: none; margin-top: 2mm; }
+    .ref-list li {
+      font-size: 9pt;
+      line-height: 1.55;
+      color: var(--preto);
+      margin-bottom: 3mm;
+      padding-left: 6mm;
+      text-indent: -6mm;
+    }
+    .annotation-area { margin-top: 5mm; border-top: 1px solid var(--cinza-borda); padding-top: 3mm; }
+    .annotation-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 8pt;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--cinza);
+      margin-bottom: 3mm;
+    }
+    .annotation-lines { display: flex; flex-direction: column; gap: 7mm; }
+    .annotation-line { border-bottom: 0.5px solid var(--cinza-borda); height: 0; }
+
+    /* ── CAPA ── */
+    .cover { background: var(--verde-floresta); display: flex; flex-direction: column; padding: 0; }
+    .cover-inner { flex: 1; display: flex; flex-direction: column; padding: 14mm 18mm 0; }
+    .cover-logo { margin-bottom: auto; }
+    .cover-meta { font-family: 'Space Grotesk', sans-serif; font-size: 8pt; font-weight: 400; letter-spacing: 3px; text-transform: uppercase; color: rgba(198,216,52,0.8); margin-bottom: 5mm; }
+    .cover-block-label { font-family: 'Barlow Condensed', sans-serif; font-size: 11pt; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: rgba(246,244,237,0.55); margin-bottom: 4mm; }
+    .cover-title { font-family: 'Barlow Condensed', sans-serif; font-size: 38pt; font-weight: 800; text-transform: uppercase; color: var(--creme); line-height: 1; margin-bottom: 3mm; }
+    .cover-subtitle { font-family: 'Barlow Condensed', sans-serif; font-size: 20pt; font-weight: 700; text-transform: uppercase; color: var(--verde-lima); line-height: 1.1; margin-bottom: 10mm; }
+    .cover-deco { font-family: 'Barlow Condensed', sans-serif; font-size: 180pt; font-weight: 800; color: rgba(246,244,237,0.05); line-height: 0.85; text-align: right; margin-right: -8mm; margin-bottom: -10mm; letter-spacing: -4px; flex-shrink: 0; }
+    .cover-bottom-strip { height: 4mm; background: var(--verde-lima); flex-shrink: 0; }
+
+    /* ── LINHA DO TEMPO ── */
+    .timeline { margin: 4mm 0; }
+    .timeline-item { display: flex; gap: 4mm; margin-bottom: 3.5mm; align-items: flex-start; }
+    .timeline-year {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 12pt;
+      color: var(--verde-lima);
+      background: var(--verde-floresta);
+      border-radius: 4px;
+      padding: 1mm 3mm;
+      flex-shrink: 0;
+      min-width: 14mm;
+      text-align: center;
+      line-height: 1.3;
+    }
+    .timeline-content { flex: 1; }
+    .timeline-title {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 10.5pt;
+      font-weight: 600;
+      color: var(--preto);
+      margin-bottom: 0.5mm;
+    }
+    .timeline-desc { font-size: 9.5pt; color: var(--cinza); line-height: 1.45; }
+
+    /* ── RECALL ── */
+    .recall-section { margin-bottom: 5mm; }
+    .recall-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--verde-floresta);
+      border-bottom: 2px solid var(--verde-floresta);
+      padding-bottom: 2mm;
+      margin-bottom: 3mm;
+    }
+    .sintese-item { display: flex; gap: 3mm; margin-bottom: 3mm; align-items: flex-start; }
+    .sintese-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 16pt;
+      color: var(--verde-lima);
+      line-height: 1;
+      flex-shrink: 0;
+      width: 7mm;
+    }
+    .sintese-text { font-size: 10pt; color: var(--preto); line-height: 1.5; padding-top: 1mm; }
+    .recall-q {
+      font-size: 10pt;
+      color: var(--preto);
+      line-height: 1.5;
+      padding: 2mm 0 2mm 4mm;
+      border-left: 2px solid var(--cinza-borda);
+      margin-bottom: 2.5mm;
+    }
+    .recall-q-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 9pt;
+      color: var(--teal);
+      display: inline;
+      margin-right: 2mm;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PÁGINA 1 — CAPA
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="page cover">
+    <div class="cover-inner">
+      <div class="cover-logo">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210 90" width="210" height="90">
+          <rect x="0" y="8" width="3" height="74" rx="1.5" fill="#C6D834"/>
+          <text x="12" y="26" font-family="'Playfair Display',Georgia,serif" font-style="italic" font-size="11" fill="#C6D834">extensivo</text>
+          <text x="11" y="70" font-family="'Barlow Condensed','Arial Narrow',sans-serif" font-weight="800" font-size="52" fill="#F6F4ED">ENARE</text>
+          <text x="12" y="88" font-family="'Space Grotesk','Helvetica Neue',sans-serif" font-weight="300" font-size="9" fill="rgba(246,244,237,0.5)">by Residência PRO</text>
+        </svg>
+      </div>
+      <div class="cover-meta">Competências Gerais · Módulo 1</div>
+      <div class="cover-block-label">Bloco B0 · Aula 02</div>
+      <div class="cover-title">História<br>do SUS</div>
+      <div class="cover-subtitle">Do DNSP à Reforma<br>Sanitária e ao SUS</div>
+    </div>
+    <div class="cover-deco">02</div>
+    <div class="cover-bottom-strip"></div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PÁGINA 2 — OBJETIVOS
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="page">
+    <div class="page-header">
+      <span class="page-header-label">Competências Gerais · Bloco B0 · Aula 02</span>
+      <span class="page-header-title">Extensivo ENARE</span>
+    </div>
+
+    <div class="page-body">
+      <div class="h1">O que você vai aprender</div>
+
+      <div class="objective-item">
+        <div class="objective-num">01</div>
+        <div class="objective-text">Situar os marcos históricos que estruturaram o sistema de saúde brasileiro — do DNSP (1920) à criação do SUS pela CF/1988 — identificando o modelo vigente em cada período</div>
+      </div>
+      <div class="objective-item">
+        <div class="objective-num">02</div>
+        <div class="objective-text">Distinguir o modelo previdenciário-excludente do INAMPS do modelo universal do SUS e reconhecer as contradições que motivaram a Reforma Sanitária</div>
+      </div>
+      <div class="objective-item">
+        <div class="objective-num">03</div>
+        <div class="objective-text">Identificar os atores, o produto e as consequências imediatas da 8ª Conferência Nacional de Saúde (1986) em questões de cenário histórico</div>
+      </div>
+
+      <hr class="rule" style="margin-top: 6mm;">
+
+      <div class="prereq-card">
+        <div class="prereq-label">Pré-requisito</div>
+        <div class="prereq-text">
+          <strong>Aula 01 — especialmente o conceito de universalidade.</strong> Esta aula explica de onde veio o SUS — o que só faz sentido pleno quando o aluno já sabe o que o SUS garante. O ponto de partida é a ausência histórica dessa garantia.
+        </div>
+      </div>
+
+      <div class="box box-dica" style="margin-top: 5mm;">
+        <span class="box-title">💡 Dica de Prova</span>
+        <span class="box-body">CG-HIST apareceu em todas as edições do ENARE — 2 questões em 2024, 2 questões em 2025. A FGV cobra os marcos pelo ângulo de seus <strong style="color:var(--verde-lima);">atores, produtos e consequências</strong> — não como lista de datas para memorizar.</span>
+      </div>
+
+      <p style="margin-top: 5mm; font-size: 9pt; color: var(--cinza);">
+        <strong style="color: var(--preto);">Duração estimada da aula em vídeo:</strong> 30 min &nbsp;·&nbsp;
+        <strong style="color: var(--preto);">Questões de fixação neste PDF:</strong> 3 &nbsp;·&nbsp;
+        <strong style="color: var(--preto);">Aula:</strong> 2 de 12 do Bloco
+      </p>
+    </div>
+
+    <div class="page-footer">
+      <span class="page-footer-brand"><span>Extensivo ENARE</span> &nbsp;·&nbsp; by Residência PRO</span>
+      <span class="page-footer-num">02</span>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PÁGINA 3 — DO DNSP AO INAMPS
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="page">
+    <div class="page-header">
+      <span class="page-header-label">Competências Gerais · Bloco B0 · Aula 02</span>
+      <span class="page-header-title">Extensivo ENARE</span>
+    </div>
+
+    <div class="page-body">
+      <div class="h2">Do DNSP ao INAMPS: a saúde como privilégio</div>
+
+      <p>Antes do SUS, o acesso à saúde no Brasil dependia de onde o trabalhador se encaixava na estrutura econômica. Entender esse modelo é essencial para compreender por que o SUS foi criado — e por que a universalidade é seu fundamento mais radical.</p>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-year">1920</div>
+          <div class="timeline-content">
+            <div class="timeline-title">DNSP — Departamento Nacional de Saúde Pública</div>
+            <div class="timeline-desc">Criado por Carlos Chagas. Missão: fornecer e fiscalizar soros e vacinas, organizar higiene pública. Modelo campanhista — foco em endemias (varíola, febre amarela). Sem garantia de acesso à saúde individual.</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1923</div>
+          <div class="timeline-content">
+            <div class="timeline-title">Lei Eloy Chaves — IAPs (Institutos de Aposentadoria e Pensão)</div>
+            <div class="timeline-desc">Primeiro modelo previdenciário de saúde. Acesso vinculado à contribuição trabalhista por categoria profissional. Excluía rurais, domésticos e trabalhadores informais.</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1953</div>
+          <div class="timeline-content">
+            <div class="timeline-title">Ministério da Saúde — separado da Educação</div>
+            <div class="timeline-desc">Responsável por saúde pública coletiva — campanhas, endemias, vigilância. Não atendia individualmente a maior parte da população.</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1977</div>
+          <div class="timeline-content">
+            <div class="timeline-title">INAMPS — Instituto Nacional de Assistência Médica da Previdência Social</div>
+            <div class="timeline-desc">Fusão dos IAPs em INPS (1966) e posterior desmembramento. Modelo hospitalocêntrico e curativista. <strong>Acesso restrito ao contribuinte do INSS</strong> — trabalhadores com carteira assinada. Os demais dependiam de filantropia ou medicina privada.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="box box-conceito">
+        <span class="box-title">📌 O Trinômio Excludente</span>
+        <span class="box-body">No modelo pré-SUS: <strong style="color:var(--verde-lima);">trabalhador com carteira → INAMPS</strong> &nbsp;·&nbsp; trabalhador sem carteira → filantropia (Santas Casas) &nbsp;·&nbsp; com renda → medicina privada. <strong style="color:var(--verde-lima);">A maioria da população ficava fora do sistema oficial de saúde.</strong></span>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span class="page-footer-brand"><span>Extensivo ENARE</span> &nbsp;·&nbsp; by Residência PRO</span>
+      <span class="page-footer-num">03</span>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PÁGINA 4 — REFORMA SANITÁRIA E CRIAÇÃO DO SUS
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="page">
+    <div class="page-header">
+      <span class="page-header-label">Competências Gerais · Bloco B0 · Aula 02</span>
+      <span class="page-header-title">Extensivo ENARE</span>
+    </div>
+
+    <div class="page-body">
+      <div class="h2">A Reforma Sanitária e a Criação do SUS</div>
+
+      <div class="h3">Os atores do movimento sanitarista</div>
+      <p>A Reforma Sanitária foi construída ao longo dos anos 1970–80 por uma rede plural de atores articulados contra o modelo excludente do INAMPS:</p>
+      <ul class="lista">
+        <li><strong>Intelectuais e pesquisadores</strong> da saúde coletiva (Fiocruz, UNICAMP, USP) — formularam o conceito de saúde como "resultante das condições de vida"</li>
+        <li><strong>Movimentos sociais</strong> — centrais sindicais, associações de moradores, movimentos de mulheres e de trabalhadores rurais</li>
+        <li><strong>Profissionais de saúde</strong> — médicos, enfermeiros e outros profissionais organizados em entidades de classe</li>
+        <li><strong>Partidos de oposição</strong> — que incluíram a universalização da saúde em suas plataformas no processo de redemocratização</li>
+      </ul>
+
+      <div class="timeline" style="margin-top: 3mm;">
+        <div class="timeline-item">
+          <div class="timeline-year">1986</div>
+          <div class="timeline-content">
+            <div class="timeline-title">8ª Conferência Nacional de Saúde — Brasília</div>
+            <div class="timeline-desc">Primeira CNS com participação popular ampla (~4.000 participantes). Produto: <strong>Relatório Final</strong> — base para o capítulo de saúde da CF/1988 (Art. 196–200). Criou o <strong>CNRS</strong> (Conselho Nacional de Reforma Sanitária) para levar as propostas à Assembleia Constituinte.</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1988</div>
+          <div class="timeline-content">
+            <div class="timeline-title">Constituição Federal — Art. 196</div>
+            <div class="timeline-desc">"A saúde é direito de todos e dever do Estado." Rompeu com o modelo contributivo: o acesso à saúde deixou de depender de vínculo empregatício.</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1990</div>
+          <div class="timeline-content">
+            <div class="timeline-title">Leis 8.080 e 8.142 — Criação formal do SUS</div>
+            <div class="timeline-desc">Lei 8.080: organização, princípios e competências. Lei 8.142: participação da comunidade e transferências financeiras intergovernamentais.</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1993</div>
+          <div class="timeline-content">
+            <div class="timeline-title">Extinção do INAMPS</div>
+            <div class="timeline-desc">Suas funções foram absorvidas pelo SUS. Criado em 1977 — extinto em 1993: sete anos depois da 8ª CNS, não como consequência direta da Conferência.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="box box-pega">
+        <span class="box-title">⚠️ Pega no ENARE</span>
+        <span class="box-body">INAMPS: criado em <strong>1977</strong>, extinto em <strong>1993</strong>. Não foi extinto em 1986, não foi consequência direta da 8ª CNS. A FGV constrói distratores com datas erradas e relações de causalidade invertidas — essa linha cronológica resolve questões de afirmativas V/F.</span>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span class="page-footer-brand"><span>Extensivo ENARE</span> &nbsp;·&nbsp; by Residência PRO</span>
+      <span class="page-footer-num">04</span>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PÁGINA 5 — FIXAÇÃO · QUESTÃO 01
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="page">
+    <div class="page-header">
+      <span class="page-header-label">Fixação — Aula 02</span>
+      <span class="page-header-title">Extensivo ENARE · Competências Gerais</span>
+    </div>
+
+    <div class="page-body">
+      <div class="h1" style="font-size:14pt; margin-bottom:5mm;">Questões Comentadas</div>
+
+      <div class="question-num">Questão 01 de 03 &nbsp;·&nbsp; CG-HIST — DNSP e o modelo campanhista</div>
+      <div class="question-stem">
+        Em 1920, a reorganização dos serviços de saúde pública no Brasil, sob a liderança de Carlos Chagas, resultou na criação de um departamento federal responsável por fornecer e fiscalizar soros e vacinas e estruturar ações de higiene e controle de doenças endêmicas. Em relação a esse marco histórico, é correto afirmar que:
+      </div>
+
+      <div class="alternatives">
+        <div class="alt">
+          <span class="alt-letter">A</span>
+          <span class="alt-text">Inaugurou o modelo universal de acesso à saúde pública, garantindo atendimento a todos os cidadãos independente de vínculo empregatício ou contribuição previdenciária</span>
+        </div>
+        <div class="alt">
+          <span class="alt-letter">B</span>
+          <span class="alt-text">Estabeleceu os Institutos de Aposentadoria e Pensão como principal forma de financiamento da saúde pública, vinculando o acesso ao sistema à contribuição do trabalhador formal</span>
+        </div>
+        <div class="alt correct">
+          <span class="alt-letter">C</span>
+          <span class="alt-text">Constituiu uma estrutura federal de saúde pública organizada em torno de campanhas sanitárias e do controle de endemias, sem garantir acesso universal a ações de saúde individual<span class="correct-badge">Gabarito</span></span>
+        </div>
+        <div class="alt">
+          <span class="alt-letter">D</span>
+          <span class="alt-text">Representou o fim do modelo hospitalocêntrico e curativista, inaugurando a atenção integral com base territorial e com participação das comunidades na definição das prioridades sanitárias</span>
+        </div>
+        <div class="alt">
+          <span class="alt-letter">E</span>
+          <span class="alt-text">Criou o Conselho Nacional de Saúde com representação de usuários, trabalhadores e gestores, antecipando a estrutura de controle social que seria consolidada pela Lei 8.142/1990</span>
+        </div>
+      </div>
+
+      <div class="gabarito-title">Gabarito Comentado</div>
+      <div class="gabarito-body">
+        <div class="gabarito-alt correta">
+          <strong>C — CORRETA.</strong> O DNSP (1920) estruturou uma saúde pública organizada em torno de campanhas — vacinação, controle de epidemias, higiene coletiva. Não havia garantia de acesso à saúde individual: a maioria da população dependia de filantropia ou não tinha acesso. O modelo campanhista era verticalizado e interventor — precursor remoto, mas distante, do que viria a ser o SUS 70 anos depois.
+        </div>
+        <div class="gabarito-alt">
+          <strong>A — Incorreta.</strong> A universalidade só foi garantida com a CF/1988 e a Lei 8.080/1990. Em 1920, não havia nenhuma garantia de acesso universal à saúde individual — o DNSP atuava em saúde coletiva e campanhas.
+        </div>
+        <div class="gabarito-alt">
+          <strong>B — Incorreta.</strong> Os IAPs foram criados a partir de 1923 (Lei Eloy Chaves), não pelo DNSP. São marcos distintos — saúde pública coletiva e previdência social seguiram trajetórias separadas por décadas.
+        </div>
+        <div class="gabarito-alt">
+          <strong>D — Incorreta.</strong> A ruptura com o modelo hospitalocêntrico e a atenção com base territorial foram propostas pela Reforma Sanitária e incorporadas pelo SUS (1988/1990) — mais de 60 anos depois do DNSP.
+        </div>
+        <div class="gabarito-alt">
+          <strong>E — Incorreta.</strong> O Conselho Nacional de Saúde com participação popular foi consolidado pela Lei 8.142/1990. O CNS existia antes, mas com composição técnica — sem representação de usuários como instância de controle social.
+        </div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span class="page-footer-brand"><span>Extensivo ENARE</span> &nbsp;·&nbsp; by Residência PRO</span>
+      <span class="page-footer-num">05</span>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PÁGINA 6 — FIXAÇÃO · QUESTÃO 02
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="page">
+    <div class="page-header">
+      <span class="page-header-label">Fixação — Aula 02</span>
+      <span class="page-header-title">Extensivo ENARE · Competências Gerais</span>
+    </div>
+
+    <div class="page-body">
+      <div class="question-num" style="margin-top:2mm;">Questão 02 de 03 &nbsp;·&nbsp; CG-HIST — Atores da Reforma Sanitária</div>
+      <div class="question-stem">
+        A construção do arcabouço político e conceitual que resultou na criação do Sistema Único de Saúde não foi obra de um único setor. Sobre os atores que protagonizaram o movimento da Reforma Sanitária Brasileira e sua atuação na 8ª Conferência Nacional de Saúde (1986), é correto afirmar que:
+      </div>
+
+      <div class="alternatives">
+        <div class="alt">
+          <span class="alt-letter">A</span>
+          <span class="alt-text">A reforma foi conduzida exclusivamente por profissionais médicos organizados em conselhos de classe, sem participação de movimentos sociais ou atores políticos externos ao setor saúde</span>
+        </div>
+        <div class="alt">
+          <span class="alt-letter">B</span>
+          <span class="alt-text">Movimentos sociais e partidos de oposição participaram da 8ª CNS, mas suas propostas não foram incorporadas ao texto final, pois prevaleceu a posição técnica dos representantes do Ministério da Saúde</span>
+        </div>
+        <div class="alt">
+          <span class="alt-letter">C</span>
+          <span class="alt-text">A participação popular na 8ª CNS foi simbólica: a Assembleia Constituinte ignorou o Relatório Final aprovado na Conferência e elaborou o capítulo de saúde da CF/1988 de forma independente</span>
+        </div>
+        <div class="alt correct">
+          <span class="alt-letter">D</span>
+          <span class="alt-text">Intelectuais da saúde coletiva, movimentos sociais, profissionais de saúde e partidos de oposição foram protagonistas do movimento sanitarista e influenciaram diretamente o texto constitucional de 1988 por meio do Relatório Final da 8ª CNS<span class="correct-badge">Gabarito</span></span>
+        </div>
+        <div class="alt">
+          <span class="alt-letter">E</span>
+          <span class="alt-text">A participação da sociedade civil na formulação de políticas de saúde só foi garantida legalmente após a CF/1988, razão pela qual a 8ª CNS foi restrita a técnicos e gestores governamentais</span>
+        </div>
+      </div>
+
+      <div class="gabarito-title">Gabarito Comentado</div>
+      <div class="gabarito-body">
+        <div class="gabarito-alt correta">
+          <strong>D — CORRETA.</strong> A Reforma Sanitária foi um movimento plural e intersetorial. Intelectuais (Fiocruz, UNICAMP), movimentos sindicais e comunitários, profissionais de saúde e parlamentares de oposição articularam, durante a redemocratização dos anos 1980, a proposta de um sistema universal. A 8ª CNS (1986) foi o ápice desse processo — seu Relatório Final alimentou diretamente os Arts. 196–200 da CF/1988.
+        </div>
+        <div class="gabarito-alt">
+          <strong>A — Incorreta.</strong> A Reforma Sanitária foi explicitamente interdisciplinar e popular — uma de suas características centrais foi romper com a hegemonia médica na definição das políticas de saúde.
+        </div>
+        <div class="gabarito-alt">
+          <strong>B — Incorreta.</strong> O Relatório Final da 8ª CNS foi a base do capítulo constitucional de saúde — incorporado praticamente na íntegra nos Arts. 196–200 da CF/1988, não preterido pela posição técnica governamental.
+        </div>
+        <div class="gabarito-alt">
+          <strong>C — Incorreta.</strong> A participação foi ampla e efetiva — ~4.000 participantes, incluindo representantes de movimentos sociais. O Relatório Final foi a principal fonte do capítulo constitucional de saúde, não ignorado.
+        </div>
+        <div class="gabarito-alt">
+          <strong>E — Incorreta.</strong> A 8ª CNS ocorreu em 1986 — dois anos antes da CF/1988 — e contou com ampla participação social. A participação popular precedeu e fundamentou a garantia constitucional, não o contrário.
+        </div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span class="page-footer-brand"><span>Extensivo ENARE</span> &nbsp;·&nbsp; by Residência PRO</span>
+      <span class="page-footer-num">06</span>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PÁGINA 7 — FIXAÇÃO · QUESTÃO 03 (Questão-âncora)
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="page">
+    <div class="page-header">
+      <span class="page-header-label">Fixação — Aula 02</span>
+      <span class="page-header-title">Extensivo ENARE · Competências Gerais</span>
+    </div>
+
+    <div class="page-body">
+      <div class="question-num" style="margin-top:2mm;">Questão 03 de 03 &nbsp;·&nbsp; Questão-âncora · CG-HIST — Linha histórica INAMPS/SUS</div>
+      <div class="question-stem">
+        Considerando a trajetória histórica do sistema de saúde brasileiro, analise as afirmativas abaixo:<br><br>
+        I. O INAMPS, criado em 1977, garantia acesso universal à saúde a todos os cidadãos, independente de vínculo empregatício ou contribuição ao sistema previdenciário.<br><br>
+        II. A 8ª Conferência Nacional de Saúde (1986, Brasília) produziu um Relatório Final que subsidiou o capítulo de saúde da CF/1988 e criou o Conselho Nacional de Reforma Sanitária (CNRS) para articular propostas com a Assembleia Constituinte.<br><br>
+        III. O INAMPS foi extinto em 1986, imediatamente após a 8ª CNS, como consequência direta das deliberações da Conferência sobre a universalização do acesso à saúde.
+      </div>
+
+      <div class="alternatives">
+        <div class="alt">
+          <span class="alt-letter">A</span>
+          <span class="alt-text">Apenas I está correta</span>
+        </div>
+        <div class="alt correct">
+          <span class="alt-letter">B</span>
+          <span class="alt-text">Apenas II está correta<span class="correct-badge">Gabarito</span></span>
+        </div>
+        <div class="alt">
+          <span class="alt-letter">C</span>
+          <span class="alt-text">I e II estão corretas</span>
+        </div>
+        <div class="alt">
+          <span class="alt-letter">D</span>
+          <span class="alt-text">II e III estão corretas</span>
+        </div>
+        <div class="alt">
+          <span class="alt-letter">E</span>
+          <span class="alt-text">I, II e III estão corretas</span>
+        </div>
+      </div>
+
+      <div class="gabarito-title">Gabarito Comentado</div>
+      <div class="gabarito-body">
+        <div class="gabarito-alt correta">
+          <strong>B — CORRETA.</strong> Apenas II é verdadeira.
+        </div>
+        <div class="gabarito-alt">
+          <strong>I — Falsa.</strong> O INAMPS era o oposto da universalidade — garantia acesso apenas a trabalhadores contribuintes do INSS com carteira assinada. Trabalhadores informais, rurais e domésticos sem registro eram excluídos do sistema previdenciário de saúde.
+        </div>
+        <div class="gabarito-alt">
+          <strong>II — Verdadeira.</strong> A 8ª CNS (1986, Brasília) produziu o Relatório Final que serviu de base para os Arts. 196–200 da CF/1988 e criou o CNRS para levar as propostas à Assembleia Constituinte. É o marco central da Reforma Sanitária brasileira.
+        </div>
+        <div class="gabarito-alt">
+          <strong>III — Falsa.</strong> O INAMPS foi extinto em 1993 — não em 1986. A extinção veio como consequência da implantação progressiva do SUS (regulamentado em 1990), sete anos após a 8ª CNS. A relação é indireta e mediada pelo processo constitucional — não imediata.
+        </div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span class="page-footer-brand"><span>Extensivo ENARE</span> &nbsp;·&nbsp; by Residência PRO</span>
+      <span class="page-footer-num">07</span>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PÁGINA 8 — RECUPERAÇÃO ATIVA + SÍNTESE
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="page">
+    <div class="page-header">
+      <span class="page-header-label">Recuperação Ativa — Aula 02</span>
+      <span class="page-header-title">Extensivo ENARE · Competências Gerais</span>
+    </div>
+
+    <div class="page-body">
+
+      <div class="recall-section">
+        <div class="recall-title">Se esquecer tudo, lembre disto</div>
+        <div class="sintese-item">
+          <div class="sintese-num">1</div>
+          <div class="sintese-text"><strong>INAMPS (1977) = acesso por contribuição — excluía quem não tinha carteira assinada.</strong> SUS (1988/1990) = acesso universal, sem condicionantes. A FGV usa o INAMPS para construir distratores sobre universalidade — entender essa diferença resolve questões de V/F e de caso.</div>
+        </div>
+        <div class="sintese-item">
+          <div class="sintese-num">2</div>
+          <div class="sintese-text"><strong>A 8ª CNS (1986, Brasília) teve ~4.000 participantes e produziu o Relatório Final</strong> que fundamentou o capítulo de saúde da CF/1988. Criou o CNRS para subsidiar a Constituinte. A Conferência não criou o SUS — criou o arcabouço político que o tornou possível.</div>
+        </div>
+        <div class="sintese-item">
+          <div class="sintese-num">3</div>
+          <div class="sintese-text"><strong>INAMPS: criado em 1977, extinto em 1993.</strong> Não foi extinto em 1986 nem como consequência direta da 8ª CNS. A extinção veio sete anos depois, com a implantação do SUS. A FGV cobra essa cronologia com afirmativas sobre causalidade e datas.</div>
+        </div>
+      </div>
+
+      <hr class="rule">
+
+      <div class="recall-section" style="margin-top: 4mm;">
+        <div class="recall-title">Teste-se sem olhar</div>
+
+        <div class="recall-q">
+          <span class="recall-q-num">01</span>
+          O que era o INAMPS e por que o SUS representou uma ruptura com esse modelo? Cite o critério de exclusão central do INAMPS.
+        </div>
+        <div class="recall-q">
+          <span class="recall-q-num">02</span>
+          Cite três tipos de atores que protagonizaram a Reforma Sanitária e a 8ª Conferência Nacional de Saúde.
+        </div>
+        <div class="recall-q">
+          <span class="recall-q-num">03</span>
+          Qual foi o produto direto da 8ª CNS? Que órgão foi criado para levar as propostas à Assembleia Constituinte?
+        </div>
+        <div class="recall-q">
+          <span class="recall-q-num">04</span>
+          Em que ano o INAMPS foi extinto, por qual razão e o que o substituiu?
+        </div>
+      </div>
+
+    </div>
+
+    <div class="page-footer">
+      <span class="page-footer-brand"><span>Extensivo ENARE</span> &nbsp;·&nbsp; by Residência PRO</span>
+      <span class="page-footer-num">08</span>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PÁGINA 9 — REFERÊNCIAS + ANOTAÇÕES
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="page">
+    <div class="page-header">
+      <span class="page-header-label">Referências e Anotações — Aula 02</span>
+      <span class="page-header-title">Extensivo ENARE · Competências Gerais</span>
+    </div>
+
+    <div class="page-body">
+      <div class="h2">Referências Bibliográficas</div>
+
+      <ul class="ref-list">
+        <li>BRASIL. <strong>Constituição da República Federativa do Brasil, Art. 196–200.</strong> Brasília: Assembleia Nacional Constituinte, 1988. [Saúde como direito de todos e dever do Estado].</li>
+        <li>BRASIL. <strong>Lei nº 8.080, de 19 de setembro de 1990.</strong> Dispõe sobre as condições para a promoção, proteção e recuperação da saúde, a organização e o funcionamento dos serviços. Brasília, 1990.</li>
+        <li>BRASIL. <strong>Lei nº 8.142, de 28 de dezembro de 1990.</strong> Dispõe sobre a participação da comunidade na gestão do SUS e sobre as transferências financeiras intergovernamentais. Brasília, 1990.</li>
+        <li>ESCOREL, S. <strong>História das políticas de saúde no Brasil de 1964 a 1990.</strong> In: GIOVANELLA, L. et al. (orgs.). <em>Políticas e Sistema de Saúde no Brasil.</em> Rio de Janeiro: Editora Fiocruz, 2008.</li>
+        <li>PAIM, J. S. <strong>Reforma Sanitária Brasileira: contribuição para a compreensão e crítica.</strong> Salvador: EDUFBA; Rio de Janeiro: Editora Fiocruz, 2008.</li>
+        <li>FUNDAÇÃO GETULIO VARGAS (FGV). <strong>ENARE 2024 e 2025 — Provas e Gabaritos Definitivos.</strong> Rio de Janeiro: EBSERH/FGV, 2024–2025.</li>
+      </ul>
+
+      <div class="annotation-area">
+        <div class="annotation-label">Minhas anotações</div>
+        <div class="annotation-lines">
+          <div class="annotation-line"></div>
+          <div class="annotation-line"></div>
+          <div class="annotation-line"></div>
+          <div class="annotation-line"></div>
+          <div class="annotation-line"></div>
+          <div class="annotation-line"></div>
+          <div class="annotation-line"></div>
+          <div class="annotation-line"></div>
+          <div class="annotation-line"></div>
+          <div class="annotation-line"></div>
+          <div class="annotation-line"></div>
+          <div class="annotation-line"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span class="page-footer-brand"><span>Extensivo ENARE</span> &nbsp;·&nbsp; by Residência PRO</span>
+      <span class="page-footer-num">09</span>
+    </div>
+  </div>
+
+</body>
+</html>

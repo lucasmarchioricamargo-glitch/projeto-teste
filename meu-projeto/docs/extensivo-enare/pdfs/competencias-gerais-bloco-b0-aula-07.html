@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Competências Gerais · Bloco B0 · Aula 07 — Extensivo ENARE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Bricolage+Grotesque:wght@400;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --creme: #F6F4ED; --verde-lima: #C6D834; --verde-floresta: #1F5C23;
+      --teal: #0D8A8D; --preto: #070707; --cinza: #9E9B94;
+      --cinza-borda: #DDD9D1; --creme-escuro: #EDEAE2;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #CCC; font-family: 'Bricolage Grotesque', sans-serif; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    @page { size: A4; margin: 0; }
+    .page { width: 210mm; height: 297mm; position: relative; overflow: hidden; page-break-after: always; background: var(--creme); display: flex; flex-direction: column; }
+    @media screen { .page { margin: 24px auto; box-shadow: 0 4px 32px rgba(0,0,0,0.18); } }
+    .page-header { height: 14mm; background: var(--creme); border-bottom: 2px solid var(--teal); display: flex; align-items: center; padding: 0 18mm; flex-shrink: 0; }
+    .page-header-label { font-family: 'Barlow Condensed', sans-serif; font-size: 8pt; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--cinza); }
+    .page-header-title { font-family: 'Space Grotesk', sans-serif; font-size: 7.5pt; font-weight: 300; color: var(--cinza); margin-left: auto; }
+    .page-footer { height: 11mm; border-top: 0.5px solid var(--teal); display: flex; align-items: center; padding: 0 18mm; flex-shrink: 0; }
+    .page-footer-brand { font-family: 'Space Grotesk', sans-serif; font-size: 7pt; font-weight: 300; color: var(--cinza); }
+    .page-footer-brand span { color: var(--teal); font-weight: 400; }
+    .page-footer-num { font-family: 'Barlow Condensed', sans-serif; font-size: 9pt; font-weight: 600; color: var(--cinza); margin-left: auto; }
+    .page-body { flex: 1; padding: 10mm 18mm 8mm; overflow: hidden; }
+    .h1 { font-family: 'Barlow Condensed', sans-serif; font-size: 22pt; font-weight: 800; text-transform: uppercase; color: var(--verde-floresta); letter-spacing: 0.5px; line-height: 1.05; margin-bottom: 7mm; }
+    .h2 { font-family: 'Barlow Condensed', sans-serif; font-size: 16pt; font-weight: 700; text-transform: uppercase; color: var(--verde-floresta); letter-spacing: 0.5px; margin-bottom: 4mm; margin-top: 6mm; }
+    .h2:first-child { margin-top: 0; }
+    .h3 { font-family: 'Bricolage Grotesque', sans-serif; font-size: 11pt; font-weight: 600; color: var(--preto); margin-bottom: 2mm; margin-top: 4mm; }
+    p { font-size: 10.5pt; color: var(--preto); line-height: 1.55; margin-bottom: 3mm; }
+    .rule { border: none; border-top: 1px solid var(--cinza-borda); margin: 4mm 0; }
+    .box { border-radius: 6px; padding: 4mm 5mm; margin: 4mm 0; }
+    .box-title { font-family: 'Barlow Condensed', sans-serif; font-size: 9pt; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 1.5mm; display: block; }
+    .box-body { font-size: 10pt; line-height: 1.5; }
+    .box-pega { background: var(--verde-lima); color: var(--verde-floresta); }
+    .box-pega .box-title { color: var(--verde-floresta); }
+    .box-dica { background: var(--teal); color: var(--creme); }
+    .box-dica .box-title { color: var(--creme); }
+    .box-conceito { background: var(--verde-floresta); color: var(--creme); }
+    .box-conceito .box-title { color: var(--creme); }
+    table { width: 100%; border-collapse: collapse; margin: 3mm 0; font-size: 9.5pt; }
+    thead tr { background: var(--verde-floresta); color: var(--creme); }
+    thead th { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; padding: 3mm 4mm; text-align: left; font-size: 9pt; }
+    tbody tr:nth-child(odd) { background: var(--creme); }
+    tbody tr:nth-child(even) { background: var(--creme-escuro); }
+    tbody td { padding: 2.5mm 4mm; border-bottom: 0.5px solid var(--cinza-borda); line-height: 1.4; color: var(--preto); }
+    td.highlight { font-weight: 600; color: var(--verde-floresta); }
+    .lista { list-style: none; margin: 2mm 0 3mm; }
+    .lista li { font-size: 10.5pt; line-height: 1.55; color: var(--preto); padding-left: 5mm; margin-bottom: 2mm; position: relative; }
+    .lista li::before { content: ''; position: absolute; left: 0; top: 5px; width: 5px; height: 5px; background: var(--verde-lima); border-radius: 50%; }
+    .objective-item { display: flex; gap: 4mm; margin-bottom: 4mm; align-items: flex-start; }
+    .objective-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 20pt; color: var(--verde-lima); line-height: 1; flex-shrink: 0; width: 8mm; }
+    .objective-text { font-size: 11pt; font-weight: 600; color: var(--preto); line-height: 1.4; padding-top: 1mm; }
+    .prereq-card { background: var(--creme-escuro); border-left: 4px solid var(--teal); border-radius: 0 6px 6px 0; padding: 3.5mm 5mm; margin-top: 5mm; }
+    .prereq-label { font-family: 'Barlow Condensed', sans-serif; font-size: 8pt; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--teal); margin-bottom: 1mm; }
+    .prereq-text { font-size: 10pt; color: var(--preto); line-height: 1.45; }
+    .seq-grid { display: flex; gap: 3mm; margin: 3mm 0; }
+    .seq-step { flex: 1; background: var(--creme-escuro); border-top: 3px solid var(--verde-floresta); border-radius: 0 0 6px 6px; padding: 3mm 3.5mm; }
+    .seq-step.active { border-top-color: var(--verde-lima); background: var(--verde-floresta); }
+    .seq-step.done { opacity: 0.7; }
+    .seq-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 14pt; color: var(--verde-lima); line-height: 1; }
+    .seq-step:not(.active) .seq-num { color: var(--verde-floresta); }
+    .seq-name { font-size: 8pt; font-weight: 600; color: var(--creme); margin-top: 1mm; line-height: 1.3; }
+    .seq-step:not(.active) .seq-name { color: var(--preto); }
+    .seq-desc { font-size: 7pt; color: rgba(246,244,237,0.75); margin-top: 0.5mm; line-height: 1.3; }
+    .seq-step:not(.active) .seq-desc { color: var(--cinza); }
+    .question-num { font-family: 'Barlow Condensed', sans-serif; font-size: 9pt; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--teal); margin-bottom: 2mm; }
+    .question-stem { font-size: 10.5pt; line-height: 1.6; color: var(--preto); background: var(--creme-escuro); border-radius: 6px; padding: 4mm 5mm; margin-bottom: 4mm; }
+    .question-stem strong { font-weight: 600; }
+    .alternatives { margin-bottom: 5mm; }
+    .alt { display: flex; gap: 3mm; padding: 2mm 0; border-bottom: 0.5px solid var(--cinza-borda); align-items: flex-start; }
+    .alt:last-child { border-bottom: none; }
+    .alt-letter { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 11pt; color: var(--cinza); flex-shrink: 0; width: 5mm; line-height: 1.4; }
+    .alt.correct .alt-letter { color: var(--verde-floresta); }
+    .alt-text { font-size: 10pt; color: var(--preto); line-height: 1.45; }
+    .alt.correct .alt-text { color: var(--verde-floresta); font-weight: 600; }
+    .correct-badge { display: inline-block; background: var(--verde-lima); color: var(--verde-floresta); font-family: 'Barlow Condensed', sans-serif; font-size: 7pt; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 1px 5px; border-radius: 3px; margin-left: 2mm; vertical-align: middle; }
+    .gabarito-title { font-family: 'Barlow Condensed', sans-serif; font-size: 10pt; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--verde-floresta); border-top: 2px solid var(--verde-floresta); padding-top: 3mm; margin-top: 2mm; margin-bottom: 2mm; }
+    .gabarito-body { font-size: 9.5pt; line-height: 1.55; color: var(--preto); }
+    .gabarito-body strong { color: var(--verde-floresta); font-weight: 600; }
+    .gabarito-alt { margin-bottom: 2mm; padding-left: 4mm; border-left: 2px solid var(--cinza-borda); }
+    .gabarito-alt.correta { border-left-color: var(--verde-lima); }
+    .gabarito-alt strong { display: block; margin-bottom: 0.5mm; }
+    .ref-list { list-style: none; margin-top: 2mm; }
+    .ref-list li { font-size: 9pt; line-height: 1.55; color: var(--preto); margin-bottom: 3mm; padding-left: 6mm; text-indent: -6mm; }
+    .annotation-area { margin-top: 5mm; border-top: 1px solid var(--cinza-borda); padding-top: 3mm; }
+    .annotation-label { font-family: 'Barlow Condensed', sans-serif; font-size: 8pt; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--cinza); margin-bottom: 3mm; }
+    .annotation-lines { display: flex; flex-direction: column; gap: 7mm; }
+    .annotation-line { border-bottom: 0.5px solid var(--cinza-borda); height: 0; }
+    .cover { background: var(--verde-floresta); display: flex; flex-direction: column; padding: 0; }
+    .cover-inner { flex: 1; display: flex; flex-direction: column; padding: 14mm 18mm 0; }
+    .cover-logo { margin-bottom: auto; }
+    .cover-meta { font-family: 'Space Grotesk', sans-serif; font-size: 8pt; font-weight: 400; letter-spacing: 3px; text-transform: uppercase; color: rgba(198,216,52,0.8); margin-bottom: 5mm; }
+    .cover-block-label { font-family: 'Barlow Condensed', sans-serif; font-size: 11pt; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: rgba(246,244,237,0.55); margin-bottom: 4mm; }
+    .cover-title { font-family: 'Barlow Condensed', sans-serif; font-size: 32pt; font-weight: 800; text-transform: uppercase; color: var(--creme); line-height: 1; margin-bottom: 3mm; }
+    .cover-subtitle { font-family: 'Barlow Condensed', sans-serif; font-size: 20pt; font-weight: 700; text-transform: uppercase; color: var(--verde-lima); line-height: 1.1; margin-bottom: 10mm; }
+    .cover-deco { font-family: 'Barlow Condensed', sans-serif; font-size: 180pt; font-weight: 800; color: rgba(246,244,237,0.05); line-height: 0.85; text-align: right; margin-right: -8mm; margin-bottom: -10mm; letter-spacing: -4px; flex-shrink: 0; }
+    .cover-bottom-strip { height: 4mm; background: var(--verde-lima); flex-shrink: 0; }
+    .recall-section { margin-bottom: 5mm; }
+    .recall-title { font-family: 'Barlow Condensed', sans-serif; font-size: 11pt; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--verde-floresta); border-bottom: 2px solid var(--verde-floresta); padding-bottom: 2mm; margin-bottom: 3mm; }
+    .sintese-item { display: flex; gap: 3mm; margin-bottom: 3mm; align-items: flex-start; }
+    .sintese-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 16pt; color: var(--verde-lima); line-height: 1; flex-shrink: 0; width: 7mm; }
+    .sintese-text { font-size: 10pt; color: var(--preto); line-height: 1.5; padding-top: 1mm; }
+    .recall-q { font-size: 10pt; color: var(--preto); line-height: 1.5; padding: 2mm 0 2mm 4mm; border-left: 2px solid var(--cinza-borda); margin-bottom: 2.5mm; }
+    .recall-q-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 9pt; color: var(--teal); display: inline; margin-right: 2mm; }
+  </style>
+</head>
+<body>
+
+  <!-- PÁGINA 1 — CAPA -->
+  <div class="page cover">
+    <div class="cover-inner">
+      <div class="cover-logo">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210 90" width="210" height="90">
+          <rect x="0" y="8" width="3" height="74" rx="1.5" fill="#C6D834"/>
+          <text x="12" y="26" font-family="'Playfair Display',Georgia,serif" font-style="italic" font-size="11" fill="#C6D834">extensivo</text>
+          <text x="11" y="70" font-family="'Barlow Condensed','Arial Narrow',sans-serif" font-weight="800" font-size="52" fill="#F6F4ED">ENARE</text>
+          <text x="12" y="88" font-family="'Space Grotesk','Helvetica Neue',sans-serif" font-weight="300" font-size="9" fill="rgba(246,244,237,0.5)">by Residência PRO</text>
+        </svg>
+      </div>
+      <div class="cover-meta">Competências Gerais · Módulo 3</div>
+      <div class="cover-block-label">Bloco B0 · Aula 07</div>
+      <div class="cover-title">APS — Parte 2:<br>PNAB, NASF-AB<br>e PNSPI</div>
+      <div class="cover-subtitle">Apoio Matricial,<br>Idoso e Multiprofissional</div>
+    </div>
+    <div class="cover-deco">07</div>
+    <div class="cover-bottom-strip"></div>
+  </div>
+
+
+  <!-- PÁGINA 2 — OBJETIVOS -->
+  <div class="page">
+    <div class="page-header">
+      <span class="page-header-label">Competências Gerais · Bloco B0 · Aula 07</span>
+      <span class="page-header-title">Extensivo ENARE</span>
+    </div>
+    <div class="page-body">
+      <div class="h1">O que você vai aprender</div>
+      <div class="objective-item">
+        <div class="objective-num">01</div>
+        <div class="objective-text">Diferenciar o NASF-AB da equipe de Atenção Básica — especialmente o conceito de apoio matricial e a competência do planejamento conjunto, distinção central do NASF-AB em questões de caso</div>
+      </div>
+      <div class="objective-item">
+        <div class="objective-num">02</div>
+        <div class="objective-text">Reconhecer a infraestrutura da UBS prevista na PNAB e a PNSPI — Política Nacional de Saúde da Pessoa Idosa (Portaria 2.528/2006): finalidade de manutenção de autonomia e independência</div>
+      </div>
+      <div class="objective-item">
+        <div class="objective-num">03</div>
+        <div class="objective-text">Aplicar o raciocínio de nível An sobre trabalho em equipe multiprofissional na APS — identificar falha de comunicação como problema de integração da equipe, não de diagnóstico ou prescrição</div>
+      </div>
+      <hr class="rule" style="margin-top: 6mm;">
+      <div class="prereq-card">
+        <div class="prereq-label">Pré-requisito</div>
+        <div class="prereq-text"><strong>Aula 06 (Atributos da APS e ESF):</strong> O NASF-AB é um apoio à equipe ESF — entender a composição mínima da ESF é pré-condição para compreender o papel complementar do NASF-AB.</div>
+      </div>
+      <div class="seq-grid" style="margin-top: 5mm;">
+        <div class="seq-step done">
+          <div class="seq-num">A01–06</div>
+          <div class="seq-name">Concluídas</div>
+          <div class="seq-desc">Base legal, RAS e APS-1</div>
+        </div>
+        <div class="seq-step active">
+          <div class="seq-num">A07</div>
+          <div class="seq-name">APS — Parte 2</div>
+          <div class="seq-desc">Você está aqui</div>
+        </div>
+        <div class="seq-step">
+          <div class="seq-num">A08</div>
+          <div class="seq-name">NR-32</div>
+          <div class="seq-desc">Segurança no trabalho</div>
+        </div>
+        <div class="seq-step">
+          <div class="seq-num">A09–12</div>
+          <div class="seq-name">POP → Revisão</div>
+          <div class="seq-desc">4 aulas finais do bloco</div>
+        </div>
+      </div>
+      <p style="margin-top: 4mm; font-size: 9pt; color: var(--cinza);">
+        <strong style="color: var(--preto);">Duração estimada:</strong> 40 min &nbsp;·&nbsp;
+        <strong style="color: var(--preto);">Questões de fixação:</strong> 3 &nbsp;·&nbsp;
+        <strong style="color: var(--preto);">Aula:</strong> 7 de 12 do Bloco
+      </p>
+    </div>
+    <div class="page-footer">
+      <span class="page-footer-brand"><span>Extensivo ENARE</span> &nbsp;·&nbsp; by Residência PRO</span>
+      <span class="page-footer-num">02</span>
+    </div>
+  </div>
+
+
+  <!-- PÁGINA 3 — NASF-AB -->
+  <div class="page">
+    <div class="page-header">
+      <span class="page-header-label">Competências Gerais · Bloco B0 · Aula 07</span>
+      <span class="page-header-title">Extensivo ENARE</span>
+    </div>
+    <div class="page-body">
+      <div class="h2">NASF-AB — Apoio Matricial na APS</div>
+
+      <p>O Núcleo Ampliado de Saúde da Família e Atenção Básica (NASF-AB) foi criado para ampliar a resolutividade da APS sem substituir a equipe de referência. Após a Nota Técnica nº 3/2020-DESF/SAPS/MS, o NASF-AB passou a ser financiado como componente do Programa Previne Brasil — sem tipologias fixas de composição.</p>
+
+      <div class="box box-conceito">
+        <span class="box-title">📌 O diferencial do NASF-AB</span>
+        <span class="box-body">O NASF-AB não atende diretamente à população — ele apoia as equipes ESF por meio do <strong style="color:var(--verde-lima);">apoio matricial</strong>: planejamento conjunto de casos, discussão clínica, intervenções compartilhadas. A competência central e exclusiva do NASF-AB é o <strong style="color:var(--verde-lima);">planejamento conjunto com a equipe de AB</strong>.</span>
+      </div>
+
+      <table style="margin-top: 4mm;">
+        <thead>
+          <tr>
+            <th style="width:38%">Característica</th>
+            <th style="width:30%">Equipe ESF (referência)</th>
+            <th style="width:32%">NASF-AB (matriciador)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Atendimento individual direto</td>
+            <td>Sim — porta de entrada</td>
+            <td>Eventual (quando necessário)</td>
+          </tr>
+          <tr>
+            <td>Responsável pela população adscrita</td>
+            <td>Sim — vínculo longitudinal</td>
+            <td>Não — apoia, não adscrive</td>
+          </tr>
+          <tr>
+            <td>Planejamento conjunto de casos</td>
+            <td>Não é exclusivo da ESF</td>
+            <td class="highlight">Sim — competência central</td>
+          </tr>
+          <tr>
+            <td>Composição</td>
+            <td>Fixa (médico, enfermeiro, téc, ACS)</td>
+            <td>Flexível (psicólogo, fisio, nutricionista, etc.)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="box box-pega" style="margin-top: 3mm;">
+        <span class="box-title">⚠️ O que distingue o NASF-AB — Ponto de atenção</span>
+        <span class="box-body">Quando o enunciado descreve o NASF fazendo <em>"planejamento conjunto com a equipe de Atenção Básica"</em>, a resposta correta destaca o apoio matricial e o planejamento conjunto — não o atendimento individual. Distrator clássico: dizer que o NASF atende diretamente a população (falso como regra geral).</span>
+      </div>
+
+      <div class="h3" style="margin-top: 4mm;">PNSPI — Política Nacional de Saúde da Pessoa Idosa</div>
+      <p>Portaria GM/MS nº 2.528/2006. Finalidade principal: <strong>recuperar, manter e promover a autonomia e a independência do idoso</strong> — não apenas tratar doenças. O foco é funcional, não apenas clínico.</p>
+    </div>
+    <div class="page-footer">
+      <span class="page-footer-brand"><span>Extensivo ENARE</span> &nbsp;·&nbsp; by Residência PRO</span>
+      <span class="page-footer-num">03</span>
+    </div>
+  </div>
+
+
+  <!-- PÁGINA 4 — PNAB INFRAESTRUTURA E PNSPI -->
+  <div class="page">
+    <div class="page-header">
+      <span class="page-header-label">Competências Gerais · Bloco B0 · Aula 07</span>
+      <span class="page-header-title">Extensivo ENARE</span>
+    </div>
+    <div class="page-body">
+      <div class="h2">PNAB — Infraestrutura da UBS e PNSPI</div>
+
+      <div class="h3">Infraestrutura mínima da UBS (PNAB)</div>
+      <p>Questões de afirmativa V/F sobre a UBS misturam itens corretos com distratores sobre ambiência e condições de funcionamento:</p>
+
+      <ul class="lista">
+        <li><strong>Ambiência:</strong> A PNAB estabelece que a UBS deve ter estrutura adequada para atender as necessidades da população — sala de espera, consultórios, sala de vacina, banheiros acessíveis</li>
+        <li><strong>Acesso:</strong> A UBS deve ter horário de funcionamento compatível com a demanda — não apenas horário comercial</li>
+        <li><strong>Localização:</strong> Deve estar no território de referência da equipe, de fácil acesso à população adscrita</li>
+        <li><strong>Distrator recorrente:</strong> "A UBS deve ter equipamentos de diagnóstico por imagem" — <em>falso</em>: exames de imagem complexos são realizados em outros pontos da rede</li>
+      </ul>
+
+      <div class="box box-pega">
+        <span class="box-title">⚠️ Afirmativas V/F da FGV — Como analisar</span>
+        <span class="box-body">Nas questões de afirmativas sobre infraestrutura, procure distratores que ampliam o que a UBS deve ter além do previsto (imagem, especialidades) ou que restringem o que ela deve garantir (horário, acessibilidade). A PNAB estabelece padrões mínimos — qualquer afirmativa que exige mais ou menos que o mínimo é candidata a falsa.</span>
+      </div>
+
+      <div class="h3" style="margin-top: 4mm;">PNSPI em prática</div>
+      <table>
+        <thead>
+          <tr>
+            <th style="width:40%">Elemento</th>
+            <th>Conteúdo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="highlight">Finalidade</td>
+            <td>Recuperar, manter e promover a autonomia e a independência do idoso</td>
+          </tr>
+          <tr>
+            <td class="highlight">Público</td>
+            <td>Pessoa idosa — definida como ≥ 60 anos pelo Estatuto do Idoso (Lei 10.741/2003)</td>
+          </tr>
+          <tr>
+            <td class="highlight">Eixos</td>
+            <td>Envelhecimento ativo; atenção integral; apoio ao cuidador; formação profissional</td>
+          </tr>
+          <tr>
+            <td>Nível de questão</td>
+            <td>Memorização (M) — finalidade e portaria de origem</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="box box-dica" style="margin-top: 3mm;">
+        <span class="box-title">💡 Autonomia ≠ Independência</span>
+        <span class="box-body">Na PNSPI: <strong>autonomia</strong> = capacidade de tomar decisões (cognitivo/volitivo); <strong>independência</strong> = capacidade de realizar atividades sem ajuda (funcional/motor). A política busca ambas — essa distinção aparece como distrator em questões de afirmativa V/F.</span>
+      </div>
+    </div>
+    <div class="page-footer">
+      <span class="page-footer-brand"><span>Extensivo ENARE</span> &nbsp;·&nbsp; by Residência PRO</span>
+      <span class="page-footer-num">04</span>
+    </div>
+  </div>
+
+
+  <!-- PÁGINA 5 — TRABALHO MULTIPROFISSIONAL E COMUNICAÇÃO -->
+  <div class="page">
+    <div class="page-header">
+      <span class="page-header-label">Competências Gerais · Bloco B0 · Aula 07</span>
+      <span class="page-header-title">Extensivo ENARE</span>
+    </div>
+    <div class="page-body">
+      <div class="h2">Equipe Multiprofissional e Comunicação na APS</div>
+
+      <p>Questões de nível An sobre equipe multiprofissional apresentam falha de comunicação como cenário: pacientes de baixa escolaridade chegam à UBS sem compreender as prescrições médicas anteriores. O candidato deve identificar o que essa situação representa para a APS.</p>
+
+      <div class="box box-conceito">
+        <span class="box-title">📌 Raciocínio An — Falha de Comunicação na Equipe</span>
+        <span class="box-body">Quando pacientes não compreendem prescrições, isso não é apenas um problema de vocabulário — é uma <strong style="color:var(--verde-lima);">falha de integração multiprofissional</strong>. A APS pressupõe que a equipe garante que o usuário compreenda o cuidado recebido. O atributo violado é a <strong style="color:var(--verde-lima);">integralidade do cuidado</strong> — que inclui orientação, educação em saúde e comunicação efetiva, não apenas o procedimento técnico.</span>
+      </div>
+
+      <div class="h3" style="margin-top: 4mm;">Papéis na equipe multiprofissional</div>
+      <ul class="lista">
+        <li><strong>Médico:</strong> diagnóstico e prescrição — mas também explicação ao paciente sobre o tratamento</li>
+        <li><strong>Enfermeiro:</strong> orienta sobre administração de medicamentos, adesão e cuidados em domicílio</li>
+        <li><strong>ACS:</strong> visita domiciliar, reforça orientações, identifica dificuldades de adesão</li>
+        <li><strong>NASF-AB (farmacêutico, quando presente):</strong> orientação farmacêutica, reconciliação medicamentosa</li>
+      </ul>
+
+      <div class="h3" style="margin-top: 4mm;">A integração multiprofissional como atributo</div>
+      <p>A prescrição técnica correta não encerra o cuidado — a equipe só cumpriu sua função quando o paciente entende, adere e consegue executar o tratamento no domicílio. Comunicação efetiva é parte do trabalho clínico, não apenas uma cortesia.</p>
+
+      <div class="box box-pega">
+        <span class="box-title">⚠️ Distrator — Problema Individual vs. Sistêmico</span>
+        <span class="box-body">Aparecem como alternativas: "falha de formação do médico" ou "baixa escolaridade do paciente como causa". A resposta correta identifica o problema como <strong>sistêmico e de equipe</strong> — não atribui a causa a um profissional isolado nem ao paciente.</span>
+      </div>
+    </div>
+    <div class="page-footer">
+      <span class="page-footer-brand"><span>Extensivo ENARE</span> &nbsp;·&nbsp; by Residência PRO</span>
+      <span class="page-footer-num">05</span>
+    </div>
+  </div>
+
+
+  <!-- PÁGINA 6 — FIXAÇÃO Q1 -->
+  <div class="page">
+    <div class="page-header">
+      <span class="page-header-label">Fixação — Aula 07</span>
+      <span class="page-header-title">Extensivo ENARE · Competências Gerais</span>
+    </div>
+    <div class="page-body">
+      <div class="h1" style="font-size:14pt; margin-bottom:5mm;">Questões Comentadas</div>
+
+      <div class="question-num">Questão 01 de 03 &nbsp;·&nbsp; CG-APS — NASF-AB vs. Equipe AB (Memorização)</div>
+      <div class="question-stem">
+        Uma equipe de Saúde da Família recebe apoio de um Núcleo Ampliado de Saúde da Família e Atenção Básica (NASF-AB). Durante uma reunião de equipe, o profissional do NASF-AB e a enfermeira da ESF elaboram conjuntamente o plano de cuidados de uma família com um membro com transtorno mental e outro com doença crônica. Considerando as competências do NASF-AB segundo a Política Nacional de Atenção Básica, o que distingue fundamentalmente a atuação desse profissional da equipe de Atenção Básica de referência?
+      </div>
+
+      <div class="alternatives">
+        <div class="alt">
+          <span class="alt-letter">A</span>
+          <span class="alt-text">O profissional do NASF-AB atende diretamente à população adscrita sem necessidade de encaminhamento pela equipe de referência, o que aumenta a resolutividade da UBS</span>
+        </div>
+        <div class="alt correct">
+          <span class="alt-letter">B</span>
+          <span class="alt-text">O NASF-AB atua por meio do apoio matricial, realizando planejamento conjunto de casos com a equipe de referência, sem substituir sua responsabilidade pelo acompanhamento da família<span class="correct-badge">Gabarito</span></span>
+        </div>
+        <div class="alt">
+          <span class="alt-letter">C</span>
+          <span class="alt-text">O profissional do NASF-AB é responsável pela adscrição de uma microárea específica do território, com população própria e independente da equipe ESF</span>
+        </div>
+        <div class="alt">
+          <span class="alt-letter">D</span>
+          <span class="alt-text">O NASF-AB substitui a equipe ESF nos casos de alta complexidade clínica, assumindo a responsabilidade pelo cuidado enquanto a equipe de referência acompanha casos simples</span>
+        </div>
+        <div class="alt">
+          <span class="alt-letter">E</span>
+          <span class="alt-text">A atuação do NASF-AB limita-se à realização de procedimentos especializados que a equipe ESF não possui competência técnica para executar dentro da UBS</span>
+        </div>
+      </div>
+
+      <div class="gabarito-title">Gabarito Comentado</div>
+      <div class="gabarito-body">
+        <div class="gabarito-alt correta">
+          <strong>B — CORRETA.</strong> O apoio matricial é a lógica central do NASF-AB: o profissional especializado apoia a equipe de referência por meio de planejamento conjunto, discussão de casos e intervenções compartilhadas — sem adsorber a família nem substituir a responsabilidade da ESF. O cenário descrito (reunião de equipe + plano conjunto) é exatamente o apoio matricial em ação.
+        </div>
+        <div class="gabarito-alt">
+          <strong>A — Incorreta.</strong> O NASF-AB não atende diretamente à população como regra — sua função primária é o apoio à equipe, não o atendimento direto independente.
+        </div>
+        <div class="gabarito-alt">
+          <strong>C — Incorreta.</strong> O NASF-AB não tem território adscrito próprio — apoia as equipes ESF da área de abrangência, sem microárea específica.
+        </div>
+        <div class="gabarito-alt">
+          <strong>D e E — Incorretas.</strong> O NASF não substitui a ESF nem se limita a procedimentos. A responsabilidade pelo vínculo e acompanhamento da família permanece sempre na equipe de referência.
+        </div>
+      </div>
+    </div>
+    <div class="page-footer">
+      <span class="page-footer-brand"><span>Extensivo ENARE</span> &nbsp;·&nbsp; by Residência PRO</span>
+      <span class="page-footer-num">06</span>
+    </div>
+  </div>
+
+
+  <!-- PÁGINA 7 — FIXAÇÃO Q2 -->
+  <div class="page">
+    <div class="page-header">
+      <span class="page-header-label">Fixação — Aula 07</span>
+      <span class="page-header-title">Extensivo ENARE · Competências Gerais</span>
+    </div>
+    <div class="page-body">
+      <div class="question-num" style="margin-top:2mm;">Questão 02 de 03 &nbsp;·&nbsp; CG-APS — PNSPI (Memorização)</div>
+      <div class="question-stem">
+        A Política Nacional de Saúde da Pessoa Idosa (PNSPI), instituída pela Portaria nº 2.528/2006, estabelece a finalidade da atenção à saúde do idoso no âmbito do SUS. Qual das alternativas descreve corretamente essa finalidade?
+      </div>
+
+      <div class="alternatives">
+        <div class="alt">
+          <span class="alt-letter">A</span>
+          <span class="alt-text">Garantir o acesso universal dos idosos a serviços hospitalares de alta complexidade, priorizando o tratamento de doenças crônicas não transmissíveis prevalentes nessa faixa etária</span>
+        </div>
+        <div class="alt">
+          <span class="alt-letter">B</span>
+          <span class="alt-text">Promover o envelhecimento ativo por meio de programas de exercício físico supervisionado em Unidades Básicas de Saúde, com foco na prevenção de quedas e fraturas</span>
+        </div>
+        <div class="alt correct">
+          <span class="alt-letter">C</span>
+          <span class="alt-text">Recuperar, manter e promover a autonomia e a independência do idoso, direcionando medidas coletivas e individuais de saúde para esse fim<span class="correct-badge">Gabarito</span></span>
+        </div>
+        <div class="alt">
+          <span class="alt-letter">D</span>
+          <span class="alt-text">Assegurar a institucionalização de idosos dependentes em Instituições de Longa Permanência custeadas pelo SUS, garantindo cuidados paliativos adequados</span>
+        </div>
+        <div class="alt">
+          <span class="alt-letter">E</span>
+          <span class="alt-text">Organizar a rede de cuidados ao idoso com base no modelo de atenção às condições crônicas, integrando atenção primária, especializada e hospitalar</span>
+        </div>
+      </div>
+
+      <div class="gabarito-title">Gabarito Comentado</div>
+      <div class="gabarito-body">
+        <div class="gabarito-alt correta">
+          <strong>C — CORRETA.</strong> A PNSPI (Portaria 2.528/2006) define explicitamente sua finalidade: "recuperar, manter e promover a autonomia e a independência dos indivíduos idosos". O foco é <em>funcional</em> — não apenas curar doenças, mas garantir que o idoso mantenha capacidade de decisão (autonomia) e de ação (independência). Questão de memorização direta.
+        </div>
+        <div class="gabarito-alt">
+          <strong>A — Incorreta.</strong> A PNSPI não prioriza alta complexidade hospitalar — abrange atenção integral em todos os níveis, com ênfase na APS e na prevenção.
+        </div>
+        <div class="gabarito-alt">
+          <strong>B — Incorreta.</strong> Exercício físico pode ser uma ação da política, mas não é sua finalidade. A finalidade é autonomia e independência — mais amplo que prevenção de quedas.
+        </div>
+        <div class="gabarito-alt">
+          <strong>D — Incorreta.</strong> Institucionalização é um recurso de última instância — a política prioriza a manutenção do idoso no domicílio e na comunidade.
+        </div>
+      </div>
+    </div>
+    <div class="page-footer">
+      <span class="page-footer-brand"><span>Extensivo ENARE</span> &nbsp;·&nbsp; by Residência PRO</span>
+      <span class="page-footer-num">07</span>
+    </div>
+  </div>
+
+
+  <!-- PÁGINA 8 — FIXAÇÃO Q3 -->
+  <div class="page">
+    <div class="page-header">
+      <span class="page-header-label">Fixação — Aula 07</span>
+      <span class="page-header-title">Extensivo ENARE · Competências Gerais</span>
+    </div>
+    <div class="page-body">
+      <div class="question-num" style="margin-top:2mm;">Questão 03 de 03 &nbsp;·&nbsp; CG-APS — Equipe Multiprofissional (Análise)</div>
+      <div class="question-stem">
+        Uma equipe de Saúde da Família relata que pacientes hipertensos da área adscrita chegam às consultas de retorno sem ter administrado corretamente a medicação prescrita. Ao investigar o problema, a equipe constata que os pacientes, em sua maioria com baixa escolaridade, não compreendem as orientações escritas da prescrição. A análise da equipe indica que as prescrições estão clinicamente corretas. Considerando os princípios do trabalho em equipe na Atenção Primária à Saúde, essa situação representa:
+      </div>
+
+      <div class="alternatives">
+        <div class="alt">
+          <span class="alt-letter">A</span>
+          <span class="alt-text">Falha individual do médico prescritor, que deve adequar a linguagem das prescrições ao nível de escolaridade de cada paciente atendido</span>
+        </div>
+        <div class="alt">
+          <span class="alt-letter">B</span>
+          <span class="alt-text">Limitação intrínseca da população, que deve ser encaminhada a programas de alfabetização antes de participar do tratamento de condições crônicas</span>
+        </div>
+        <div class="alt correct">
+          <span class="alt-letter">C</span>
+          <span class="alt-text">Falha de integração da equipe multiprofissional, que não assegurou que o usuário compreendesse e pudesse executar o plano de cuidados no domicílio<span class="correct-badge">Gabarito</span></span>
+        </div>
+        <div class="alt">
+          <span class="alt-letter">D</span>
+          <span class="alt-text">Problema de adesão medicamentosa, cuja solução é a substituição das prescrições escritas por esquemas de medicação simplificados com menor número de comprimidos</span>
+        </div>
+        <div class="alt">
+          <span class="alt-letter">E</span>
+          <span class="alt-text">Lacuna na formação da equipe de enfermagem, que deveria realizar a transcrição verbal das prescrições para todos os pacientes analfabetos antes da alta da consulta</span>
+        </div>
+      </div>
+
+      <div class="gabarito-title">Gabarito Comentado</div>
+      <div class="gabarito-body">
+        <div class="gabarito-alt correta">
+          <strong>C — CORRETA.</strong> A APS exige que a equipe garanta que o usuário compreenda e consiga executar seu plano de cuidados — isso é responsabilidade coletiva da equipe multiprofissional (médico, enfermeiro, ACS, farmacêutico quando disponível). A situação descrita é uma falha de integração: a prescrição foi emitida, mas o cuidado não foi completado porque o usuário não consegue agir sobre ela. É o atributo da integralidade — que inclui orientação efetiva — sendo violado pela equipe.
+        </div>
+        <div class="gabarito-alt">
+          <strong>A — Incorreta.</strong> Isola a responsabilidade no médico — contrário ao modelo de equipe multiprofissional da APS.
+        </div>
+        <div class="gabarito-alt">
+          <strong>B — Incorreta.</strong> Atribui o problema ao paciente — viola o princípio da equidade e ignora a responsabilidade da equipe.
+        </div>
+        <div class="gabarito-alt">
+          <strong>E — Incorreta.</strong> Isola a responsabilidade na enfermagem — o problema é da equipe como sistema, não de um profissional específico.
+        </div>
+      </div>
+    </div>
+    <div class="page-footer">
+      <span class="page-footer-brand"><span>Extensivo ENARE</span> &nbsp;·&nbsp; by Residência PRO</span>
+      <span class="page-footer-num">08</span>
+    </div>
+  </div>
+
+
+  <!-- PÁGINA 9 — RECUPERAÇÃO ATIVA -->
+  <div class="page">
+    <div class="page-header">
+      <span class="page-header-label">Recuperação Ativa — Aula 07</span>
+      <span class="page-header-title">Extensivo ENARE · Competências Gerais</span>
+    </div>
+    <div class="page-body">
+      <div class="recall-section">
+        <div class="recall-title">3 Sínteses Essenciais</div>
+        <div class="sintese-item">
+          <div class="sintese-num">1</div>
+          <div class="sintese-text"><strong>NASF-AB:</strong> apoia por apoio matricial — planejamento conjunto com a ESF. Não é porta de entrada, não tem adscrição própria, não substitui a equipe de referência. Competência-chave: planejamento conjunto com a equipe de AB.</div>
+        </div>
+        <div class="sintese-item">
+          <div class="sintese-num">2</div>
+          <div class="sintese-text"><strong>PNSPI (Portaria 2.528/2006):</strong> finalidade = recuperar, manter e promover autonomia e independência do idoso. Autonomia = decisão (cognitivo); independência = ação (funcional). Questão de memorização.</div>
+        </div>
+        <div class="sintese-item">
+          <div class="sintese-num">3</div>
+          <div class="sintese-text"><strong>Equipe multiprofissional:</strong> a responsabilidade pelo cuidado completo é coletiva. Falha de comunicação com o paciente = falha de integração da equipe, não falha individual. A integralidade inclui garantir que o usuário compreenda e execute o plano.</div>
+        </div>
+      </div>
+      <hr class="rule">
+      <div class="recall-section">
+        <div class="recall-title">Teste-se — 5 Perguntas</div>
+        <div class="recall-q"><span class="recall-q-num">Q1</span> O que é apoio matricial e como ele difere do atendimento direto à população?</div>
+        <div class="recall-q"><span class="recall-q-num">Q2</span> A PNSPI prioriza institucionalização ou manutenção do idoso na comunidade?</div>
+        <div class="recall-q"><span class="recall-q-num">Q3</span> Um profissional de fisioterapia do NASF-AB adscreveu uma microárea e passou a acompanhar diretamente as famílias daquele território. Isso está correto? Por quê?</div>
+        <div class="recall-q"><span class="recall-q-num">Q4</span> Qual a diferença entre autonomia e independência na PNSPI?</div>
+        <div class="recall-q"><span class="recall-q-num">Q5</span> Pacientes não aderem ao tratamento por não compreenderem a prescrição. O problema é do médico, da enfermagem ou da equipe? Justifique com base no modelo multiprofissional da APS.</div>
+      </div>
+    </div>
+    <div class="page-footer">
+      <span class="page-footer-brand"><span>Extensivo ENARE</span> &nbsp;·&nbsp; by Residência PRO</span>
+      <span class="page-footer-num">09</span>
+    </div>
+  </div>
+
+
+  <!-- PÁGINA 10 — REFERÊNCIAS -->
+  <div class="page">
+    <div class="page-header">
+      <span class="page-header-label">Referências — Aula 07</span>
+      <span class="page-header-title">Extensivo ENARE · Competências Gerais</span>
+    </div>
+    <div class="page-body">
+      <div class="h2">Referências Bibliográficas</div>
+      <ul class="ref-list">
+        <li>BRASIL. Ministério da Saúde. <strong>Política Nacional de Atenção Básica (PNAB)</strong>. Portaria GM/MS nº 2.436, de 21 de setembro de 2017. Brasília: MS, 2017.</li>
+        <li>BRASIL. Ministério da Saúde. Secretaria de Atenção Primária à Saúde. <strong>Nota Técnica nº 3/2020-DESF/SAPS/MS</strong>. NASF-AB e Programa Previne Brasil. Brasília: MS, 2020.</li>
+        <li>BRASIL. Ministério da Saúde. <strong>Política Nacional de Saúde da Pessoa Idosa (PNSPI)</strong>. Portaria GM/MS nº 2.528, de 19 de outubro de 2006. Brasília: MS, 2006.</li>
+        <li>BRASIL. <strong>Lei nº 10.741, de 1º de outubro de 2003</strong>. Estatuto do Idoso. Brasília: Casa Civil, 2003.</li>
+        <li>FUNDAÇÃO GETULIO VARGAS (FGV). <strong>ENARE 2024 — Prova e Gabarito Definitivo</strong>. Rio de Janeiro: EBSERH/FGV, 2024.</li>
+        <li>FUNDAÇÃO GETULIO VARGAS (FGV). <strong>ENARE 2025 — Prova e Gabarito Definitivo</strong>. Rio de Janeiro: EBSERH/FGV, 2025.</li>
+      </ul>
+      <div class="annotation-area">
+        <div class="annotation-label">Anotações</div>
+        <div class="annotation-lines">
+          <div class="annotation-line"></div>
+          <div class="annotation-line"></div>
+          <div class="annotation-line"></div>
+          <div class="annotation-line"></div>
+          <div class="annotation-line"></div>
+          <div class="annotation-line"></div>
+          <div class="annotation-line"></div>
+          <div class="annotation-line"></div>
+        </div>
+      </div>
+    </div>
+    <div class="page-footer">
+      <span class="page-footer-brand"><span>Extensivo ENARE</span> &nbsp;·&nbsp; by Residência PRO</span>
+      <span class="page-footer-num">10</span>
+    </div>
+  </div>
+
+</body>
+</html>

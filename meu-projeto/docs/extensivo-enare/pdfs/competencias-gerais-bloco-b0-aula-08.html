@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Competências Gerais · Bloco B0 · Aula 08 — Extensivo ENARE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Bricolage+Grotesque:wght@400;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --creme:          #F6F4ED;
+      --verde-lima:     #C6D834;
+      --verde-floresta: #1F5C23;
+      --teal:           #0D8A8D;
+      --preto:          #070707;
+      --cinza:          #9E9B94;
+      --cinza-borda:    #DDD9D1;
+      --creme-escuro:   #EDEAE2;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #CCC;
+      font-family: 'Bricolage Grotesque', sans-serif;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    @page { size: A4; margin: 0; }
+    .page {
+      width: 210mm; height: 297mm; position: relative; overflow: hidden;
+      page-break-after: always; background: var(--creme);
+      display: flex; flex-direction: column;
+    }
+    @media screen { .page { margin: 24px auto; box-shadow: 0 4px 32px rgba(0,0,0,0.18); } }
+    .page-header {
+      height: 14mm; background: var(--creme); border-bottom: 2px solid var(--teal);
+      display: flex; align-items: center; padding: 0 18mm; flex-shrink: 0;
+    }
+    .page-header-label { font-family: 'Barlow Condensed', sans-serif; font-size: 8pt; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--cinza); }
+    .page-header-title { font-family: 'Space Grotesk', sans-serif; font-size: 7.5pt; font-weight: 300; color: var(--cinza); margin-left: auto; }
+    .page-footer {
+      height: 11mm; border-top: 0.5px solid var(--teal);
+      display: flex; align-items: center; padding: 0 18mm; flex-shrink: 0;
+    }
+    .page-footer-brand { font-family: 'Space Grotesk', sans-serif; font-size: 7pt; font-weight: 300; color: var(--cinza); }
+    .page-footer-brand span { color: var(--teal); font-weight: 400; }
+    .page-footer-num { font-family: 'Barlow Condensed', sans-serif; font-size: 9pt; font-weight: 600; color: var(--cinza); margin-left: auto; }
+    .page-body { flex: 1; padding: 10mm 18mm 8mm; overflow: hidden; }
+    .h1 { font-family: 'Barlow Condensed', sans-serif; font-size: 22pt; font-weight: 800; text-transform: uppercase; color: var(--verde-floresta); letter-spacing: 0.5px; line-height: 1.05; margin-bottom: 7mm; }
+    .h2 { font-family: 'Barlow Condensed', sans-serif; font-size: 16pt; font-weight: 700; text-transform: uppercase; color: var(--verde-floresta); letter-spacing: 0.5px; margin-bottom: 4mm; margin-top: 6mm; }
+    .h2:first-child { margin-top: 0; }
+    .h3 { font-family: 'Bricolage Grotesque', sans-serif; font-size: 11pt; font-weight: 600; color: var(--preto); margin-bottom: 2mm; margin-top: 4mm; }
+    p { font-size: 10.5pt; color: var(--preto); line-height: 1.55; margin-bottom: 3mm; }
+    .rule { border: none; border-top: 1px solid var(--cinza-borda); margin: 4mm 0; }
+    .box { border-radius: 6px; padding: 4mm 5mm; margin: 4mm 0; }
+    .box-title { font-family: 'Barlow Condensed', sans-serif; font-size: 9pt; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 1.5mm; display: block; }
+    .box-body { font-size: 10pt; line-height: 1.5; }
+    .box-pega  { background: var(--verde-lima); color: var(--verde-floresta); }
+    .box-pega .box-title { color: var(--verde-floresta); }
+    .box-dica  { background: var(--teal); color: var(--creme); }
+    .box-dica .box-title { color: var(--creme); }
+    .box-conceito { background: var(--verde-floresta); color: var(--creme); }
+    .box-conceito .box-title { color: var(--creme); }
+    table { width: 100%; border-collapse: collapse; margin: 3mm 0; font-size: 9.5pt; }
+    thead tr { background: var(--verde-floresta); color: var(--creme); }
+    thead th { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; padding: 3mm 4mm; text-align: left; font-size: 9pt; }
+    tbody tr:nth-child(odd)  { background: var(--creme); }
+    tbody tr:nth-child(even) { background: var(--creme-escuro); }
+    tbody td { padding: 2.5mm 4mm; border-bottom: 0.5px solid var(--cinza-borda); line-height: 1.4; color: var(--preto); }
+    td.highlight { font-weight: 600; color: var(--verde-floresta); }
+    .lista { list-style: none; margin: 2mm 0 3mm; }
+    .lista li { font-size: 10.5pt; line-height: 1.55; color: var(--preto); padding-left: 5mm; margin-bottom: 2mm; position: relative; }
+    .lista li::before { content: ''; position: absolute; left: 0; top: 5px; width: 5px; height: 5px; background: var(--verde-lima); border-radius: 50%; }
+    .objective-item { display: flex; gap: 4mm; margin-bottom: 4mm; align-items: flex-start; }
+    .objective-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 20pt; color: var(--verde-lima); line-height: 1; flex-shrink: 0; width: 8mm; }
+    .objective-text { font-size: 11pt; font-weight: 600; color: var(--preto); line-height: 1.4; padding-top: 1mm; }
+    .prereq-card { background: var(--creme-escuro); border-left: 4px solid var(--teal); border-radius: 0 6px 6px 0; padding: 3.5mm 5mm; margin-top: 5mm; }
+    .prereq-label { font-family: 'Barlow Condensed', sans-serif; font-size: 8pt; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--teal); margin-bottom: 1mm; }
+    .prereq-text { font-size: 10pt; color: var(--preto); line-height: 1.45; }
+    .seq-grid { display: flex; gap: 3mm; margin: 3mm 0; }
+    .seq-step { flex: 1; background: var(--creme-escuro); border-top: 3px solid var(--verde-floresta); border-radius: 0 0 6px 6px; padding: 3mm 3.5mm; }
+    .seq-step.active { border-top-color: var(--verde-lima); background: var(--verde-floresta); }
+    .seq-step.done { border-top-color: var(--teal); background: var(--creme-escuro); opacity: 0.7; }
+    .seq-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 14pt; color: var(--verde-lima); line-height: 1; }
+    .seq-step:not(.active) .seq-num { color: var(--verde-floresta); }
+    .seq-name { font-size: 8pt; font-weight: 600; color: var(--creme); margin-top: 1mm; line-height: 1.3; }
+    .seq-step:not(.active) .seq-name { color: var(--preto); }
+    .seq-desc { font-size: 7pt; color: rgba(246,244,237,0.75); margin-top: 0.5mm; line-height: 1.3; }
+    .seq-step:not(.active) .seq-desc { color: var(--cinza); }
+    .question-num { font-family: 'Barlow Condensed', sans-serif; font-size: 9pt; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--teal); margin-bottom: 2mm; }
+    .question-stem { font-size: 10.5pt; line-height: 1.6; color: var(--preto); background: var(--creme-escuro); border-radius: 6px; padding: 4mm 5mm; margin-bottom: 4mm; }
+    .question-stem strong { font-weight: 600; }
+    .alternatives { margin-bottom: 5mm; }
+    .alt { display: flex; gap: 3mm; padding: 2mm 0; border-bottom: 0.5px solid var(--cinza-borda); align-items: flex-start; }
+    .alt:last-child { border-bottom: none; }
+    .alt-letter { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 11pt; color: var(--cinza); flex-shrink: 0; width: 5mm; line-height: 1.4; }
+    .alt.correct .alt-letter { color: var(--verde-floresta); }
+    .alt-text { font-size: 10pt; color: var(--preto); line-height: 1.45; }
+    .alt.correct .alt-text { color: var(--verde-floresta); font-weight: 600; }
+    .correct-badge { display: inline-block; background: var(--verde-lima); color: var(--verde-floresta); font-family: 'Barlow Condensed', sans-serif; font-size: 7pt; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 1px 5px; border-radius: 3px; margin-left: 2mm; vertical-align: middle; }
+    .gabarito-title { font-family: 'Barlow Condensed', sans-serif; font-size: 10pt; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--verde-floresta); border-top: 2px solid var(--verde-floresta); padding-top: 3mm; margin-top: 2mm; margin-bottom: 2mm; }
+    .gabarito-body { font-size: 9.5pt; line-height: 1.55; color: var(--preto); }
+    .gabarito-body strong { color: var(--verde-floresta); font-weight: 600; }
+    .gabarito-alt { margin-bottom: 2mm; padding-left: 4mm; border-left: 2px solid var(--cinza-borda); }
+    .gabarito-alt.correta { border-left-color: var(--verde-lima); }
+    .gabarito-alt strong { display: block; margin-bottom: 0.5mm; }
+    .ref-list { list-style: none; margin-top: 2mm; }
+    .ref-list li { font-size: 9pt; line-height: 1.55; color: var(--preto); margin-bottom: 3mm; padding-left: 6mm; text-indent: -6mm; }
+    .annotation-area { margin-top: 5mm; border-top: 1px solid var(--cinza-borda); padding-top: 3mm; }
+    .annotation-label { font-family: 'Barlow Condensed', sans-serif; font-size: 8pt; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--cinza); margin-bottom: 3mm; }
+    .annotation-lines { display: flex; flex-direction: column; gap: 7mm; }
+    .annotation-line { border-bottom: 0.5px solid var(--cinza-borda); height: 0; }
+    .cover { background: var(--verde-floresta); display: flex; flex-direction: column; padding: 0; }
+    .cover-inner { flex: 1; display: flex; flex-direction: column; padding: 14mm 18mm 0; }
+    .cover-logo { margin-bottom: auto; }
+    .cover-meta { font-family: 'Space Grotesk', sans-serif; font-size: 8pt; font-weight: 400; letter-spacing: 3px; text-transform: uppercase; color: rgba(198,216,52,0.8); margin-bottom: 5mm; }
+    .cover-block-label { font-family: 'Barlow Condensed', sans-serif; font-size: 11pt; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: rgba(246,244,237,0.55); margin-bottom: 4mm; }
+    .cover-title { font-family: 'Barlow Condensed', sans-serif; font-size: 32pt; font-weight: 800; text-transform: uppercase; color: var(--creme); line-height: 1; margin-bottom: 3mm; }
+    .cover-subtitle { font-family: 'Barlow Condensed', sans-serif; font-size: 20pt; font-weight: 700; text-transform: uppercase; color: var(--verde-lima); line-height: 1.1; margin-bottom: 10mm; }
+    .cover-deco { font-family: 'Barlow Condensed', sans-serif; font-size: 180pt; font-weight: 800; color: rgba(246,244,237,0.05); line-height: 0.85; text-align: right; margin-right: -8mm; margin-bottom: -10mm; letter-spacing: -4px; flex-shrink: 0; }
+    .cover-bottom-strip { height: 4mm; background: var(--verde-lima); flex-shrink: 0; }
+    .recall-section { margin-bottom: 5mm; }
+    .recall-title { font-family: 'Barlow Condensed', sans-serif; font-size: 11pt; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--verde-floresta); border-bottom: 2px solid var(--verde-floresta); padding-bottom: 2mm; margin-bottom: 3mm; }
+    .sintese-item { display: flex; gap: 3mm; margin-bottom: 3mm; align-items: flex-start; }
+    .sintese-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 16pt; color: var(--verde-lima); line-height: 1; flex-shrink: 0; width: 7mm; }
+    .sintese-text { font-size: 10pt; color: var(--preto); line-height: 1.5; padding-top: 1mm; }
+    .recall-q { font-size: 10pt; color: var(--preto); line-height: 1.5; padding: 2mm 0 2mm 4mm; border-left: 2px solid var(--cinza-borda); margin-bottom: 2.5mm; }
+    .recall-q-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 9pt; color: var(--teal); display: inline; margin-right: 2mm; }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PÁGINA 1 — CAPA
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="page cover">
+    <div class="cover-inner">
+      <div class="cover-logo">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210 90" width="210" height="90">
+          <rect x="0" y="8" width="3" height="74" rx="1.5" fill="#C6D834"/>
+          <text x="12" y="26" font-family="'Playfair Display',Georgia,serif" font-style="italic" font-size="11" fill="#C6D834">extensivo</text>
+          <text x="11" y="70" font-family="'Barlow Condensed','Arial Narrow',sans-serif" font-weight="800" font-size="52" fill="#F6F4ED">ENARE</text>
+          <text x="12" y="88" font-family="'Space Grotesk','Helvetica Neue',sans-serif" font-weight="300" font-size="9" fill="rgba(246,244,237,0.5)">by Residência PRO</text>
+        </svg>
+      </div>
+      <div class="cover-meta">Competências Gerais · Módulo 3</div>
+      <div class="cover-block-label">Bloco B0 · Aula 08</div>
+      <div class="cover-title">NR-32:<br>Segurança e<br>Saúde no Trabalho</div>
+      <div class="cover-subtitle">Agentes Biológicos<br>e Classificação de Risco</div>
+    </div>
+    <div class="cover-deco">08</div>
+    <div class="cover-bottom-strip"></div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PÁGINA 2 — OBJETIVOS
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="page">
+    <div class="page-header">
+      <span class="page-header-label">Competências Gerais · Bloco B0 · Aula 08</span>
+      <span class="page-header-title">Extensivo ENARE</span>
+    </div>
+    <div class="page-body">
+      <div class="h1">O que você vai aprender</div>
+
+      <div class="objective-item">
+        <div class="objective-num">01</div>
+        <div class="objective-text">Identificar os tipos de risco ocupacional na NR-32 — biológico, químico, físico e ergonômico — e distingui-los em cenários práticos de serviços de saúde</div>
+      </div>
+      <div class="objective-item">
+        <div class="objective-num">02</div>
+        <div class="objective-text">Enumerar os agentes biológicos conforme definidos pela NR-32 (microrganismos, parasitas, prions, tecidos e fluidos corporais, vetores e toxinas) e reconhecer quais pertencem a essa categoria</div>
+      </div>
+      <div class="objective-item">
+        <div class="objective-num">03</div>
+        <div class="objective-text">Aplicar a classificação de risco biológico por classes (1 a 4) — especialmente a Classe 2, que combina risco individual moderado com baixo risco de disseminação comunitária e tratamento disponível</div>
+      </div>
+
+      <hr class="rule" style="margin-top: 6mm;">
+
+      <div class="prereq-card">
+        <div class="prereq-label">Pré-requisito</div>
+        <div class="prereq-text">
+          <strong>Aulas 06–07 (APS):</strong> O contexto de equipe multiprofissional em serviços de saúde, visto na Aula 07, é o cenário onde a NR-32 se aplica. Saber quem compõe a equipe ajuda a identificar os trabalhadores expostos aos riscos regulamentados por esta norma.
+        </div>
+      </div>
+
+      <div class="seq-grid" style="margin-top: 5mm;">
+        <div class="seq-step done">
+          <div class="seq-num">A01–07</div>
+          <div class="seq-name">Concluídas</div>
+          <div class="seq-desc">Legislação, RAS e APS</div>
+        </div>
+        <div class="seq-step active">
+          <div class="seq-num">A08</div>
+          <div class="seq-name">NR-32</div>
+          <div class="seq-desc">Você está aqui</div>
+        </div>
+        <div class="seq-step">
+          <div class="seq-num">A09</div>
+          <div class="seq-name">Populações</div>
+          <div class="seq-desc">ECR, ribeirinha, LGBTQIA+</div>
+        </div>
+        <div class="seq-step">
+          <div class="seq-num">A10–12</div>
+          <div class="seq-name">PNH → Revisão</div>
+          <div class="seq-desc">3 aulas finais do bloco</div>
+        </div>
+      </div>
+
+      <p style="margin-top: 4mm; font-size: 9pt; color: var(--cinza);">
+        <strong style="color: var(--preto);">Duração estimada:</strong> 35 min &nbsp;·&nbsp;
+        <strong style="color: var(--preto);">Questões de fixação:</strong> 3 &nbsp;·&nbsp;
+        <strong style="color: var(--preto);">Aula:</strong> 8 de 12 do Bloco
+      </p>
+    </div>
+    <div class="page-footer">
+      <span class="page-footer-brand"><span>Extensivo ENARE</span> &nbsp;·&nbsp; by Residência PRO</span>
+      <span class="page-footer-num">02</span>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PÁGINA 3 — NR-32: VISÃO GERAL E TIPOS DE RISCO
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="page">
+    <div class="page-header">
+      <span class="page-header-label">Competências Gerais · Bloco B0 · Aula 08</span>
+      <span class="page-header-title">Extensivo ENARE</span>
+    </div>
+    <div class="page-body">
+      <div class="h2">NR-32 — Visão Geral e Tipos de Risco</div>
+
+      <p>A Norma Regulamentadora 32 (Portaria MTE nº 485/2005) estabelece diretrizes para proteção da saúde e segurança dos trabalhadores de serviços de saúde. Aplica-se a todo estabelecimento de assistência à saúde da população, incluindo aqueles que desenvolvem ações de promoção, proteção, assistência, pesquisa, ensino e controle em saúde.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th style="width:28%">Tipo de Risco</th>
+            <th>Definição</th>
+            <th style="width:30%">Exemplos em serviços de saúde</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="highlight">Biológico</td>
+            <td>Exposição a agentes capazes de causar infecção, alergia ou toxicidade</td>
+            <td>Sangue, fluidos corporais, microrganismos patogênicos</td>
+          </tr>
+          <tr>
+            <td class="highlight">Químico</td>
+            <td>Contato com substâncias químicas que podem causar dano à saúde</td>
+            <td>Desinfetantes (glutaraldeído, formol), quimioterápicos, anestésicos halogenados</td>
+          </tr>
+          <tr>
+            <td class="highlight">Físico</td>
+            <td>Exposição a agentes físicos em intensidade prejudicial à saúde</td>
+            <td>Radiação ionizante (RX), calor, ruído, vibrações</td>
+          </tr>
+          <tr>
+            <td class="highlight">Ergonômico</td>
+            <td>Condições que geram sobrecarga física ou mental ao trabalhador</td>
+            <td>Movimentação de pacientes, jornadas prolongadas, trabalho noturno</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="box box-pega" style="margin-top: 3mm;">
+        <span class="box-title">⚠️ Distrator — Tipo de Risco do Sangue</span>
+        <span class="box-body">Em cenários de acidente com sangue ou fluidos corporais, o risco é <strong>biológico</strong> — não químico. A confusão ocorre porque o sangue contém substâncias orgânicas, mas a NR-32 classifica sangue e fluidos como agentes biológicos (item 32.2). Risco químico se aplica a reagentes de laboratório, desinfetantes e medicamentos antineoplásicos.</span>
+      </div>
+
+      <div class="box box-dica" style="margin-top: 3mm;">
+        <span class="box-title">💡 Regra para identificar o risco na questão</span>
+        <span class="box-body">Leia o agente envolvido — não o mecanismo. <strong>Sangue, fluidos, microrganismos, tecidos = biológico.</strong> Formaldeído, glutaraldeído, quimioterápico = químico. Raio-X, calor = físico. Postura, jornada = ergonômico.</span>
+      </div>
+    </div>
+    <div class="page-footer">
+      <span class="page-footer-brand"><span>Extensivo ENARE</span> &nbsp;·&nbsp; by Residência PRO</span>
+      <span class="page-footer-num">03</span>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PÁGINA 4 — AGENTES BIOLÓGICOS NA NR-32
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="page">
+    <div class="page-header">
+      <span class="page-header-label">Competências Gerais · Bloco B0 · Aula 08</span>
+      <span class="page-header-title">Extensivo ENARE</span>
+    </div>
+    <div class="page-body">
+      <div class="h2">Agentes Biológicos — Lista e Exemplos</div>
+
+      <p>A NR-32 define como agentes biológicos os elementos capazes de causar infecção, alergia ou toxicidade ao trabalhador. A lista correta é o principal ponto cobrado em questões de memorização sobre esta norma.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th style="width:35%">Agente Biológico</th>
+            <th>Definição / Exemplos práticos</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="highlight">Microrganismos</td>
+            <td>Bactérias, vírus, fungos — incluindo geneticamente modificados</td>
+          </tr>
+          <tr>
+            <td class="highlight">Prions</td>
+            <td>Proteínas infecciosas; ex.: agente da doença de Creutzfeldt-Jakob</td>
+          </tr>
+          <tr>
+            <td class="highlight">Parasitas</td>
+            <td>Protozoários, helmintos, ectoparasitas; ex.: Plasmodium, Toxoplasma</td>
+          </tr>
+          <tr>
+            <td class="highlight">Tecidos e fluidos corporais</td>
+            <td>Sangue, líquor, líquido amniótico, sêmen, secreções, tecidos humanos e animais</td>
+          </tr>
+          <tr>
+            <td class="highlight">Vetores</td>
+            <td>Animais que transmitem agentes; ex.: mosquitos, carrapatos em contexto hospitalar</td>
+          </tr>
+          <tr>
+            <td class="highlight">Toxinas de origem biológica</td>
+            <td>Toxinas produzidas por microrganismos; ex.: toxina botulínica, aflatoxinas</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="box box-conceito" style="margin-top: 3mm;">
+        <span class="box-title">📌 O que NÃO é agente biológico pela NR-32</span>
+        <span class="box-body">Reagentes laboratoriais (ácidos, bases, solventes) = <strong style="color:var(--verde-lima);">químico</strong>. Material perfurocortante (agulha, bisturi) = instrumento que <em>pode</em> veicular agente biológico, mas o próprio instrumento é risco de acidente — a classificação do risco depende do que ele carrega. Resíduos sólidos infectantes = risco biológico <em>pelo que contêm</em>, não pela forma física.</span>
+      </div>
+
+      <div class="box box-pega" style="margin-top: 3mm;">
+        <span class="box-title">⚠️ Pega — "Culturas de células" estão na lista?</span>
+        <span class="box-body">Sim — a NR-32 inclui <strong>culturas de células</strong> como agente biológico (item 32.2.1). Em questões de afirmativa V/F, a alternativa que exclui culturas de células da lista é <strong>FALSA</strong>.</span>
+      </div>
+    </div>
+    <div class="page-footer">
+      <span class="page-footer-brand"><span>Extensivo ENARE</span> &nbsp;·&nbsp; by Residência PRO</span>
+      <span class="page-footer-num">04</span>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PÁGINA 5 — CLASSIFICAÇÃO DE RISCO BIOLÓGICO
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="page">
+    <div class="page-header">
+      <span class="page-header-label">Competências Gerais · Bloco B0 · Aula 08</span>
+      <span class="page-header-title">Extensivo ENARE</span>
+    </div>
+    <div class="page-body">
+      <div class="h2">Classificação de Risco Biológico — Classes 1 a 4</div>
+
+      <p>A NR-32 adota a classificação de risco biológico em quatro classes, com base no risco individual, no risco de disseminação comunitária e na disponibilidade de tratamento ou profilaxia.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th style="width:15%">Classe</th>
+            <th style="width:22%">Risco individual</th>
+            <th style="width:28%">Risco comunitário</th>
+            <th>Tratamento / Profilaxia</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="highlight">1</td>
+            <td>Baixo</td>
+            <td>Baixo</td>
+            <td>Não causa doença em adultos saudáveis; sem medidas específicas necessárias</td>
+          </tr>
+          <tr>
+            <td class="highlight" style="color:var(--teal);">2 ★</td>
+            <td>Moderado</td>
+            <td>Baixo — disseminação limitada</td>
+            <td>Tratamento eficaz e profilaxia disponíveis</td>
+          </tr>
+          <tr>
+            <td class="highlight">3</td>
+            <td>Alto</td>
+            <td>Baixo a moderado</td>
+            <td>Tratamento disponível, mas pode não prevenir disseminação</td>
+          </tr>
+          <tr>
+            <td class="highlight">4</td>
+            <td>Alto</td>
+            <td>Alto</td>
+            <td>Sem tratamento eficaz ou profilaxia disponíveis</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="box box-conceito" style="margin-top: 3mm;">
+        <span class="box-title">📌 Classe 2 — O Mais Cobrado</span>
+        <span class="box-body">A <strong style="color:var(--verde-lima);">Classe 2</strong> é a mais frequente em questões de memorização sobre NR-32. A tríade a memorizar:<br>
+        (1) <strong style="color:var(--verde-lima);">Risco individual moderado</strong><br>
+        (2) <strong style="color:var(--verde-lima);">Baixo risco de disseminação comunitária</strong><br>
+        (3) <strong style="color:var(--verde-lima);">Tratamento e profilaxia disponíveis</strong><br><br>
+        Exemplos de agentes Classe 2: Mycobacterium tuberculosis (em algumas classificações), hepatite B, hepatite C, HIV. A maioria dos agentes encontrados em laboratórios clínicos hospitalares é Classe 2.</span>
+      </div>
+
+      <div class="box box-pega" style="margin-top: 3mm;">
+        <span class="box-title">⚠️ Não confundir Classe 2 com Classe 3</span>
+        <span class="box-body">Classe 3 = <strong>alto</strong> risco individual (não moderado). Classe 2 = risco <strong>moderado</strong>. O distrator clássico é substituir "moderado" por "elevado" na descrição da Classe 2 — transformando-a na Classe 3.</span>
+      </div>
+    </div>
+    <div class="page-footer">
+      <span class="page-footer-brand"><span>Extensivo ENARE</span> &nbsp;·&nbsp; by Residência PRO</span>
+      <span class="page-footer-num">05</span>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PÁGINA 6 — FIXAÇÃO · QUESTÃO 01
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="page">
+    <div class="page-header">
+      <span class="page-header-label">Fixação — Aula 08</span>
+      <span class="page-header-title">Extensivo ENARE · Competências Gerais</span>
+    </div>
+    <div class="page-body">
+      <div class="h1" style="font-size:14pt; margin-bottom:5mm;">Questões Comentadas</div>
+
+      <div class="question-num">Questão 01 de 03 &nbsp;·&nbsp; CG-NR32 — Agentes Biológicos (Memorização)</div>
+      <div class="question-stem">
+        A Norma Regulamentadora 32 (NR-32) estabelece medidas de proteção à segurança e à saúde dos trabalhadores dos serviços de saúde e define os agentes biológicos que devem ser objeto de medidas preventivas. Assinale a alternativa que apresenta corretamente os elementos incluídos na categoria de agentes biológicos pela NR-32:
+      </div>
+
+      <div class="alternatives">
+        <div class="alt">
+          <span class="alt-letter">A</span>
+          <span class="alt-text">Microrganismos, agentes químicos desinfetantes, vetores e prions utilizados em procedimentos de esterilização em serviços de saúde</span>
+        </div>
+        <div class="alt correct">
+          <span class="alt-letter">B</span>
+          <span class="alt-text">Microrganismos, prions, parasitas, tecidos e fluidos corporais humanos ou animais, vetores e toxinas de origem biológica<span class="correct-badge">Gabarito</span></span>
+        </div>
+        <div class="alt">
+          <span class="alt-letter">C</span>
+          <span class="alt-text">Vírus e bactérias isolados, radiações ionizantes e calor excessivo presentes em ambientes hospitalares</span>
+        </div>
+        <div class="alt">
+          <span class="alt-letter">D</span>
+          <span class="alt-text">Microrganismos patogênicos, reagentes laboratoriais ácidos e básicos, e resíduos sólidos de serviços de saúde</span>
+        </div>
+        <div class="alt">
+          <span class="alt-letter">E</span>
+          <span class="alt-text">Somente vírus e bactérias com comprovada transmissibilidade humana, excluindo prions e parasitas por não apresentarem capacidade de disseminação direta</span>
+        </div>
+      </div>
+
+      <div class="gabarito-title">Gabarito Comentado</div>
+      <div class="gabarito-body">
+        <div class="gabarito-alt correta">
+          <strong>B — CORRETA.</strong> A NR-32 define como agentes biológicos: microrganismos (bactérias, vírus, fungos — incluindo geneticamente modificados), prions, parasitas, culturas de células, tecidos e fluidos corporais humanos ou animais, vetores e toxinas de origem biológica. A alternativa B contém os elementos centrais dessa lista.
+        </div>
+        <div class="gabarito-alt">
+          <strong>A — Incorreta.</strong> Inclui "agentes químicos desinfetantes" — que são risco químico, não biológico.
+        </div>
+        <div class="gabarito-alt">
+          <strong>C — Incorreta.</strong> Radiações ionizantes e calor são riscos físicos — não biológicos.
+        </div>
+        <div class="gabarito-alt">
+          <strong>D — Incorreta.</strong> Reagentes laboratoriais ácidos e básicos são risco químico.
+        </div>
+        <div class="gabarito-alt">
+          <strong>E — Incorreta.</strong> Prions e parasitas estão explicitamente incluídos na lista de agentes biológicos da NR-32.
+        </div>
+      </div>
+    </div>
+    <div class="page-footer">
+      <span class="page-footer-brand"><span>Extensivo ENARE</span> &nbsp;·&nbsp; by Residência PRO</span>
+      <span class="page-footer-num">06</span>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PÁGINA 7 — FIXAÇÃO · QUESTÃO 02
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="page">
+    <div class="page-header">
+      <span class="page-header-label">Fixação — Aula 08</span>
+      <span class="page-header-title">Extensivo ENARE · Competências Gerais</span>
+    </div>
+    <div class="page-body">
+      <div class="question-num" style="margin-top:2mm;">Questão 02 de 03 &nbsp;·&nbsp; CG-NR32 — Classificação de Risco Biológico (Memorização)</div>
+      <div class="question-stem">
+        De acordo com a classificação de risco biológico adotada pela NR-32, os agentes pertencentes à <strong>Classe de Risco 2</strong> são aqueles que apresentam, como conjunto de características:
+      </div>
+
+      <div class="alternatives">
+        <div class="alt">
+          <span class="alt-letter">A</span>
+          <span class="alt-text">Baixíssimo risco individual e coletivo, sem capacidade de causar doença em adultos imunocompetentes e sem necessidade de medidas preventivas específicas</span>
+        </div>
+        <div class="alt">
+          <span class="alt-letter">B</span>
+          <span class="alt-text">Alto risco individual e elevado risco de disseminação comunitária, com doença grave e sem tratamento eficaz ou profilaxia disponíveis</span>
+        </div>
+        <div class="alt correct">
+          <span class="alt-letter">C</span>
+          <span class="alt-text">Risco individual moderado e baixo risco de disseminação comunitária, com tratamento eficaz e profilaxia disponíveis<span class="correct-badge">Gabarito</span></span>
+        </div>
+        <div class="alt">
+          <span class="alt-letter">D</span>
+          <span class="alt-text">Alto risco individual, doença grave e potencialmente letal, com possibilidade de disseminação por via aérea e tratamento disponível apenas para alguns casos</span>
+        </div>
+        <div class="alt">
+          <span class="alt-letter">E</span>
+          <span class="alt-text">Risco individual elevado e risco coletivo máximo, com doença altamente transmissível e sem qualquer tratamento ou profilaxia eficazes conhecidos</span>
+        </div>
+      </div>
+
+      <div class="gabarito-title">Gabarito Comentado</div>
+      <div class="gabarito-body">
+        <div class="gabarito-alt correta">
+          <strong>C — CORRETA.</strong> Classe 2 = tríade: risco individual <em>moderado</em> (não baixo, não alto), baixo risco de disseminação comunitária, tratamento e profilaxia disponíveis. Exemplos: vírus da hepatite B, hepatite C, HIV. São agentes comuns em laboratórios clínicos.
+        </div>
+        <div class="gabarito-alt">
+          <strong>A — Incorreta.</strong> Descreve a Classe 1 — agentes de baixíssimo risco que não causam doença em imunocompetentes.
+        </div>
+        <div class="gabarito-alt">
+          <strong>D — Incorreta.</strong> Descreve a Classe 3 — alto risco individual, doença grave, possibilidade de disseminação aérea.
+        </div>
+        <div class="gabarito-alt">
+          <strong>B e E — Incorretas.</strong> Ambas descrevem características da Classe 4 — sem tratamento eficaz e alto risco de disseminação. B e E diferem em grau, mas nenhuma corresponde à Classe 2.
+        </div>
+      </div>
+    </div>
+    <div class="page-footer">
+      <span class="page-footer-brand"><span>Extensivo ENARE</span> &nbsp;·&nbsp; by Residência PRO</span>
+      <span class="page-footer-num">07</span>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PÁGINA 8 — FIXAÇÃO · QUESTÃO 03 (ÂNCORA)
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="page">
+    <div class="page-header">
+      <span class="page-header-label">Fixação — Aula 08</span>
+      <span class="page-header-title">Extensivo ENARE · Competências Gerais</span>
+    </div>
+    <div class="page-body">
+      <div class="question-num" style="margin-top:2mm;">Questão 03 de 03 &nbsp;·&nbsp; CG-NR32 — Tipo de Risco em Cenário (Aplicação) · Questão-âncora</div>
+      <div class="question-stem">
+        Um técnico de laboratório clínico realiza coleta de sangue venoso em paciente com diagnóstico confirmado de hepatite C. Durante o procedimento, a luva protetora se rompe e há contato direto da mão do profissional com o sangue do paciente. Considerando a NR-32, qual é o tipo de risco ocupacional ao qual o trabalhador foi exposto nessa situação?
+      </div>
+
+      <div class="alternatives">
+        <div class="alt">
+          <span class="alt-letter">A</span>
+          <span class="alt-text">Risco químico, pois o sangue contém substâncias bioquímicas — como proteínas, enzimas e metabólitos — que podem causar reações adversas no organismo do trabalhador exposto</span>
+        </div>
+        <div class="alt">
+          <span class="alt-letter">B</span>
+          <span class="alt-text">Risco físico, pois a ruptura da luva configura contato com material externo ao corpo humano, classificado como agente físico pela NR-32</span>
+        </div>
+        <div class="alt">
+          <span class="alt-letter">C</span>
+          <span class="alt-text">Risco ergonômico, pois a postura adotada durante a venopunção e a repetitividade do movimento de coleta representam sobrecarga músculo-esquelética ao profissional</span>
+        </div>
+        <div class="alt correct">
+          <span class="alt-letter">D</span>
+          <span class="alt-text">Risco biológico, pois o sangue humano é classificado como fluido corporal que pode conter microrganismos e outros agentes biológicos causadores de doenças<span class="correct-badge">Gabarito</span></span>
+        </div>
+        <div class="alt">
+          <span class="alt-letter">E</span>
+          <span class="alt-text">Riscos simultâneos biológico e químico, pois o sangue contém tanto agentes infecciosos quanto substâncias orgânicas com propriedades tóxicas ao ser humano</span>
+        </div>
+      </div>
+
+      <div class="gabarito-title">Gabarito Comentado</div>
+      <div class="gabarito-body">
+        <div class="gabarito-alt correta">
+          <strong>D — CORRETA.</strong> O sangue humano é expressamente classificado como fluido corporal e, portanto, agente biológico pela NR-32 (item 32.2). O risco de exposição ao sangue de paciente com hepatite C é <em>biológico</em> — independente de quais substâncias químicas o sangue contenha. A classificação parte do agente, não das propriedades químicas.
+        </div>
+        <div class="gabarito-alt">
+          <strong>A — Incorreta.</strong> O fato de o sangue conter proteínas e enzimas não o transforma em risco químico. Risco químico na NR-32 refere-se a substâncias químicas industriais (desinfetantes, solventes, antineoplásicos) — não à composição bioquímica natural do sangue.
+        </div>
+        <div class="gabarito-alt">
+          <strong>B — Incorreta.</strong> Risco físico (calor, radiação, ruído, vibração) não se aplica a contato com sangue. A ruptura da luva é o mecanismo do acidente, não o tipo de risco.
+        </div>
+        <div class="gabarito-alt">
+          <strong>E — Incorreta.</strong> A NR-32 classifica o sangue como agente biológico — não como agente químico simultâneo. A alternativa E cria uma dupla classificação que não existe na norma.
+        </div>
+      </div>
+    </div>
+    <div class="page-footer">
+      <span class="page-footer-brand"><span>Extensivo ENARE</span> &nbsp;·&nbsp; by Residência PRO</span>
+      <span class="page-footer-num">08</span>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PÁGINA 9 — RECUPERAÇÃO ATIVA
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="page">
+    <div class="page-header">
+      <span class="page-header-label">Recuperação Ativa — Aula 08</span>
+      <span class="page-header-title">Extensivo ENARE · Competências Gerais</span>
+    </div>
+    <div class="page-body">
+      <div class="recall-section">
+        <div class="recall-title">3 Sínteses Essenciais</div>
+
+        <div class="sintese-item">
+          <div class="sintese-num">1</div>
+          <div class="sintese-text"><strong>Agentes biológicos (NR-32):</strong> microrganismos, prions, parasitas, tecidos e fluidos corporais, vetores, toxinas de origem biológica. Sangue = fluido corporal = risco biológico — não químico. Reagentes de laboratório = risco químico.</div>
+        </div>
+
+        <div class="sintese-item">
+          <div class="sintese-num">2</div>
+          <div class="sintese-text"><strong>Classe 2 — tríade:</strong> risco individual <em>moderado</em> + baixo risco de disseminação comunitária + tratamento e profilaxia disponíveis. Classe 1 = baixíssimo risco. Classe 3 = alto risco individual. Classe 4 = sem tratamento.</div>
+        </div>
+
+        <div class="sintese-item">
+          <div class="sintese-num">3</div>
+          <div class="sintese-text"><strong>Como classificar o risco em cenário:</strong> identifique o agente (não o mecanismo). Sangue, secreção, tecido → biológico. Formaldeído, antineoplásico → químico. Raio-X, calor → físico. Sobrecarga postural, jornada → ergonômico.</div>
+        </div>
+      </div>
+
+      <hr class="rule">
+
+      <div class="recall-section">
+        <div class="recall-title">Teste-se — 5 Perguntas</div>
+
+        <div class="recall-q">
+          <span class="recall-q-num">Q1</span>
+          Um enfermeiro manipula glutaraldeído para esterilização de materiais e sente ardência nos olhos. Qual tipo de risco pela NR-32?
+        </div>
+        <div class="recall-q">
+          <span class="recall-q-num">Q2</span>
+          Cite os seis elementos que compõem a lista de agentes biológicos da NR-32.
+        </div>
+        <div class="recall-q">
+          <span class="recall-q-num">Q3</span>
+          Qual a diferença entre Classe 2 e Classe 3 no risco biológico?
+        </div>
+        <div class="recall-q">
+          <span class="recall-q-num">Q4</span>
+          Prions estão incluídos na lista de agentes biológicos da NR-32? Justifique.
+        </div>
+        <div class="recall-q">
+          <span class="recall-q-num">Q5</span>
+          Um radiologista é exposto a raios-X sem proteção adequada. Qual tipo de risco? E se ele se ferir com uma seringa usada — qual seria o risco predominante?
+        </div>
+      </div>
+    </div>
+    <div class="page-footer">
+      <span class="page-footer-brand"><span>Extensivo ENARE</span> &nbsp;·&nbsp; by Residência PRO</span>
+      <span class="page-footer-num">09</span>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PÁGINA 10 — REFERÊNCIAS E ANOTAÇÕES
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="page">
+    <div class="page-header">
+      <span class="page-header-label">Referências — Aula 08</span>
+      <span class="page-header-title">Extensivo ENARE · Competências Gerais</span>
+    </div>
+    <div class="page-body">
+      <div class="h2">Referências Bibliográficas</div>
+
+      <ul class="ref-list">
+        <li>BRASIL. Ministério do Trabalho e Emprego. <strong>Norma Regulamentadora 32 — Segurança e Saúde no Trabalho em Serviços de Saúde</strong>. Portaria MTE nº 485, de 11 de novembro de 2005. Brasília: MTE, 2005.</li>
+        <li>BRASIL. Ministério da Saúde. <strong>Classificação de Risco dos Agentes Biológicos</strong>. 3. ed. Brasília: Ministério da Saúde, 2017. (Série A. Normas e Manuais Técnicos).</li>
+        <li>BRASIL. Agência Nacional de Vigilância Sanitária (ANVISA). <strong>RDC nº 222, de 28 de março de 2018</strong>. Regulamento técnico para gerenciamento de resíduos de serviços de saúde. Brasília: ANVISA, 2018.</li>
+        <li>FUNDAÇÃO GETULIO VARGAS (FGV). <strong>ENARE 2024 — Prova e Gabarito Definitivo</strong>. Rio de Janeiro: EBSERH/FGV, 2024.</li>
+        <li>FUNDAÇÃO GETULIO VARGAS (FGV). <strong>ENARE 2025 — Prova e Gabarito Definitivo</strong>. Rio de Janeiro: EBSERH/FGV, 2025.</li>
+      </ul>
+
+      <div class="annotation-area">
+        <div class="annotation-label">Anotações</div>
+        <div class="annotation-lines">
+          <div class="annotation-line"></div>
+          <div class="annotation-line"></div>
+          <div class="annotation-line"></div>
+          <div class="annotation-line"></div>
+          <div class="annotation-line"></div>
+          <div class="annotation-line"></div>
+          <div class="annotation-line"></div>
+          <div class="annotation-line"></div>
+        </div>
+      </div>
+    </div>
+    <div class="page-footer">
+      <span class="page-footer-brand"><span>Extensivo ENARE</span> &nbsp;·&nbsp; by Residência PRO</span>
+      <span class="page-footer-num">10</span>
+    </div>
+  </div>
+
+</body>
+</html>

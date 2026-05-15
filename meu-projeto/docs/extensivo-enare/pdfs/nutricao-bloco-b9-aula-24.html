@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nutrição Bloco B9 — Aula 24 | Extensivo ENARE 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;600;700&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #d0d0d0; font-family: 'Bricolage Grotesque', sans-serif; }
+  .page {
+    width: 210mm; min-height: 297mm; background: #F6F4ED;
+    margin: 8mm auto; position: relative; overflow: hidden;
+    display: flex; flex-direction: column;
+  }
+  .page-header {
+    background: #1F5C23; padding: 5mm 7mm 4mm;
+    display: flex; align-items: center; gap: 5mm; flex-shrink: 0;
+  }
+  .page-header .logo-svg { width: 12mm; height: 12mm; flex-shrink: 0; }
+  .header-text { flex: 1; }
+  .header-course { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7pt; color: #C6D834; letter-spacing: 0.08em; text-transform: uppercase; }
+  .header-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 13pt; color: #F6F4ED; line-height: 1.1; text-transform: uppercase; }
+  .header-sub { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; font-size: 7.5pt; color: #C6D834; margin-top: 0.5mm; }
+  .header-page-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 18pt; color: #C6D834; }
+  .page-footer {
+    background: #1F5C23; padding: 2.5mm 7mm;
+    display: flex; justify-content: space-between; align-items: center;
+    margin-top: auto; flex-shrink: 0;
+  }
+  .footer-left { font-family: 'Playfair Display', serif; font-style: italic; font-size: 8pt; color: #C6D834; }
+  .footer-right { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7pt; color: #F6F4ED; opacity: 0.75; }
+  .page-body { flex: 1; padding: 5mm 7mm 4mm; display: flex; flex-direction: column; gap: 3mm; }
+  /* COVER */
+  .cover-page { justify-content: space-between; min-height: 297mm; }
+  .cover-header { background: #F6F4ED; padding: 6mm 7mm 4mm; display: flex; align-items: center; gap: 5mm; flex-shrink: 0; border-bottom: 0.5mm solid #1F5C23; }
+  .cover-header .logo-svg { width: 14mm; height: 14mm; flex-shrink: 0; }
+  .cover-header-text .course-tag { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7pt; color: #1F5C23; letter-spacing: 0.1em; text-transform: uppercase; }
+  .cover-header-text .brand { font-family: 'Playfair Display', serif; font-style: italic; font-size: 13pt; color: #1F5C23; line-height: 1.1; }
+  .cover-hero { flex: 1; background: #1F5C23; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 10mm; gap: 4mm; text-align: center; }
+  .cover-bloco-tag { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 8pt; color: #C6D834; letter-spacing: 0.15em; text-transform: uppercase; border: 0.3mm solid #C6D834; padding: 1mm 4mm; border-radius: 1mm; }
+  .cover-aula-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 60pt; color: #F6F4ED; line-height: 1; }
+  .cover-modulo { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 11pt; color: #C6D834; letter-spacing: 0.2em; text-transform: uppercase; }
+  .cover-titulo { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 26pt; color: #F6F4ED; text-transform: uppercase; line-height: 1.05; max-width: 160mm; }
+  .cover-subtitulo { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; font-size: 10pt; color: #C6D834; max-width: 140mm; line-height: 1.4; }
+  .cover-divider { width: 20mm; height: 0.4mm; background: #C6D834; opacity: 0.6; }
+  .cover-footer-band { background: #F6F4ED; border-top: 0.5mm solid #1F5C23; padding: 4mm 7mm; display: flex; justify-content: space-between; align-items: center; }
+  .cover-footer-band .series { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 600; font-size: 8pt; color: #1F5C23; }
+  .cover-footer-band .year { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 14pt; color: #1F5C23; }
+  /* SECTIONS */
+  .section-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 13pt; color: #1F5C23; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 0.4mm solid #C6D834; padding-bottom: 1mm; margin-bottom: 2mm; }
+  .section-subtitle { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 10pt; color: #1F5C23; text-transform: uppercase; letter-spacing: 0.04em; margin: 2.5mm 0 1mm; }
+  p, li { font-family: 'Bricolage Grotesque', sans-serif; font-size: 8pt; color: #1a1a1a; line-height: 1.45; }
+  ul, ol { padding-left: 4mm; }
+  li { margin-bottom: 0.8mm; }
+  strong { font-weight: 700; color: #1F5C23; }
+  em { font-style: italic; }
+  .highlight-box { background: #1F5C23; color: #F6F4ED; border-radius: 1.5mm; padding: 3mm 4mm; margin: 1.5mm 0; }
+  .highlight-box p, .highlight-box li { color: #F6F4ED; font-size: 7.8pt; }
+  .highlight-box strong { color: #C6D834; }
+  .highlight-box .box-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 10pt; color: #C6D834; text-transform: uppercase; margin-bottom: 1.5mm; letter-spacing: 0.05em; }
+  .accent-box { background: #C6D834; border-radius: 1.5mm; padding: 3mm 4mm; margin: 1.5mm 0; }
+  .accent-box p, .accent-box li { color: #1a1a1a; font-size: 7.8pt; }
+  .accent-box strong { color: #1F5C23; }
+  .accent-box .box-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 10pt; color: #1F5C23; text-transform: uppercase; margin-bottom: 1.5mm; }
+  .outline-box { border: 0.4mm solid #1F5C23; border-radius: 1.5mm; padding: 3mm 4mm; margin: 1.5mm 0; }
+  .outline-box .box-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9.5pt; color: #1F5C23; text-transform: uppercase; margin-bottom: 1.5mm; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; margin: 1mm 0; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2.5mm; margin: 1mm 0; }
+  table { width: 100%; border-collapse: collapse; margin: 1.5mm 0; font-size: 7.5pt; }
+  th { background: #1F5C23; color: #F6F4ED; font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 8pt; text-transform: uppercase; padding: 2mm 2.5mm; text-align: left; }
+  td { padding: 1.8mm 2.5mm; border-bottom: 0.2mm solid #d0cec7; font-size: 7.5pt; vertical-align: top; color: #1a1a1a; }
+  tr:nth-child(even) td { background: rgba(198,216,52,0.12); }
+  td strong { color: #1F5C23; }
+  .question-tag { display: inline-block; background: #1F5C23; color: #C6D834; font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; padding: 0.8mm 3mm; border-radius: 1mm; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 2mm; }
+  .question-type-tag { display: inline-block; background: #C6D834; color: #1F5C23; font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 8pt; padding: 0.6mm 2.5mm; border-radius: 1mm; margin-left: 2mm; text-transform: uppercase; }
+  .question-text { font-family: 'Bricolage Grotesque', sans-serif; font-size: 8.5pt; color: #1a1a1a; line-height: 1.5; margin-bottom: 3mm; padding: 3mm 4mm; background: #fff; border-left: 1mm solid #1F5C23; border-radius: 0 1.5mm 1.5mm 0; }
+  .alternatives { display: flex; flex-direction: column; gap: 1.5mm; }
+  .alt { font-family: 'Bricolage Grotesque', sans-serif; font-size: 8pt; color: #1a1a1a; padding: 2mm 3mm; border: 0.3mm solid #c8c6c0; border-radius: 1mm; line-height: 1.4; }
+  .alt-label { font-weight: 700; color: #1F5C23; margin-right: 1.5mm; }
+  .answer-section { margin-top: 4mm; border-top: 0.4mm solid #C6D834; padding-top: 3mm; }
+  .answer-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 10pt; color: #1F5C23; text-transform: uppercase; margin-bottom: 2mm; }
+  .answer-gab { display: inline-block; background: #1F5C23; color: #C6D834; font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 14pt; padding: 1mm 5mm; border-radius: 1.5mm; margin-bottom: 2mm; }
+  .answer-body { font-family: 'Bricolage Grotesque', sans-serif; font-size: 8pt; color: #1a1a1a; line-height: 1.5; }
+  .answer-body strong { color: #1F5C23; }
+  .gab-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3mm; margin: 2mm 0; }
+  .gab-card { background: #1F5C23; border-radius: 2mm; padding: 3.5mm 4mm; display: flex; flex-direction: column; align-items: center; gap: 1.5mm; }
+  .gab-card .q-label { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7pt; color: #C6D834; text-transform: uppercase; letter-spacing: 0.1em; }
+  .gab-card .q-letter { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 32pt; color: #F6F4ED; line-height: 1; }
+  .gab-card .q-type { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 600; font-size: 6.5pt; color: #C6D834; text-align: center; }
+  .synthesis-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; flex: 1; }
+  .synth-block { background: #1F5C23; border-radius: 2mm; padding: 4mm; }
+  .synth-block .synth-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9.5pt; color: #C6D834; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 2mm; border-bottom: 0.3mm solid rgba(198,216,52,0.4); padding-bottom: 1mm; }
+  .synth-block p, .synth-block li { color: #F6F4ED; font-size: 7.5pt; line-height: 1.45; }
+  .synth-block strong { color: #C6D834; }
+  .synth-block ul { padding-left: 3.5mm; }
+  @media print {
+    body { background: none; }
+    .page { margin: 0; width: 210mm; min-height: 297mm; page-break-after: always; break-after: page; }
+    .page:last-child { page-break-after: avoid; break-after: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!--  P1 — CAPA                                                   -->
+<!-- ============================================================ -->
+<div class="page cover-page">
+  <div class="cover-header">
+    <svg class="logo-svg" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="24,2 44,13 44,35 24,46 4,35 4,13" fill="#F6F4ED" stroke="#1F5C23" stroke-width="2.5"/>
+      <circle cx="24" cy="24" r="8" fill="#1F5C23"/>
+    </svg>
+    <div class="cover-header-text">
+      <div class="course-tag">Extensivo ENARE 2026 · Nutrição · Bloco B9</div>
+      <div class="brand">Elite Treinamentos em Saúde</div>
+    </div>
+  </div>
+  <div class="cover-hero">
+    <div class="cover-bloco-tag">Bloco B9 · NUT-CLÍN</div>
+    <div class="cover-aula-num">24</div>
+    <div class="cover-divider"></div>
+    <div class="cover-modulo">Nutrição Clínica</div>
+    <div class="cover-titulo">Obesidade — Diagnóstico, Tratamento Dietético e Cirurgia Bariátrica</div>
+    <div class="cover-subtitulo">IMC · CA · Déficit calórico · VLCD · Indicações bariátrica · Técnicas cirúrgicas · Dumping · Deficiências pós-op</div>
+  </div>
+  <div class="cover-footer-band">
+    <div class="series">PDF de Apoio · Aula 24 de 39</div>
+    <div class="year">ENARE 2026</div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!--  P2 — DIAGNÓSTICO E CLASSIFICAÇÃO                           -->
+<!-- ============================================================ -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="24,2 44,13 44,35 24,46 4,35 4,13" fill="none" stroke="#C6D834" stroke-width="2.5"/>
+      <circle cx="24" cy="24" r="8" fill="#C6D834"/>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Extensivo ENARE 2026 · Nutrição · Bloco B9 · NUT-CLÍN</div>
+      <div class="header-title">Obesidade — Diagnóstico e Avaliação Antropométrica</div>
+      <div class="header-sub">IMC OMS · Circunferência Abdominal · RCE · Composição Corporal · Fenótipos</div>
+    </div>
+    <div class="header-page-num">02</div>
+  </div>
+  <div class="page-body">
+
+    <div class="section-title">Classificação pelo IMC (OMS)</div>
+    <table>
+      <tr><th>IMC (kg/m²)</th><th>Classificação</th><th>Risco de Comorbidades</th></tr>
+      <tr><td>&lt;18,5</td><td><strong>Baixo peso</strong></td><td>Aumentado (desnutrição)</td></tr>
+      <tr><td>18,5–24,9</td><td><strong>Eutrofia</strong></td><td>Médio</td></tr>
+      <tr><td>25,0–29,9</td><td><strong>Sobrepeso</strong></td><td>Levemente aumentado</td></tr>
+      <tr><td>30,0–34,9</td><td><strong>Obesidade Grau I</strong></td><td>Moderado</td></tr>
+      <tr><td>35,0–39,9</td><td><strong>Obesidade Grau II</strong></td><td>Grave</td></tr>
+      <tr><td>≥40,0</td><td><strong>Obesidade Grau III (mórbida)</strong></td><td>Muito grave</td></tr>
+    </table>
+
+    <div class="accent-box">
+      <div class="box-title">IMC em Populações Especiais</div>
+      <p><strong>Idoso:</strong> IMC &lt;22 = baixo peso; 22–27 = adequado (pontos de corte diferentes do adulto). <strong>Asiáticos:</strong> OMS propõe ponto de corte ≥23 para sobrepeso e ≥27,5 para obesidade. <strong>Crianças/adolescentes:</strong> IMC por idade (escore-Z ou percentis OMS).</p>
+    </div>
+
+    <div class="section-title">Medidas de Adiposidade Central</div>
+    <div class="two-col">
+      <div>
+        <div class="section-subtitle">Circunferência Abdominal (CA)</div>
+        <table>
+          <tr><th>Referência</th><th>Homens</th><th>Mulheres</th></tr>
+          <tr><td>OMS</td><td>≥102 cm (alto risco)</td><td>≥88 cm (alto risco)</td></tr>
+          <tr><td>IDF (latinos)</td><td>≥90 cm</td><td>≥80 cm</td></tr>
+          <tr><td>SBC (SM)</td><td>≥102 cm</td><td>≥88 cm (NCEP)</td></tr>
+        </table>
+        <p style="margin-top:1.5mm; font-size:7.2pt;"><em>Aferida no ponto médio entre a crista ilíaca e a última costela</em></p>
+      </div>
+      <div>
+        <div class="section-subtitle">Outros Índices</div>
+        <div class="outline-box">
+          <div class="box-title">RCE (Relação Cintura-Estatura)</div>
+          <ul>
+            <li>RCE = Cintura ÷ Estatura</li>
+            <li><strong>≥0,5 = risco metabólico</strong> (independente de sexo e etnia)</li>
+            <li>Mais sensível que IMC para gordura visceral</li>
+          </ul>
+        </div>
+        <div class="outline-box" style="margin-top:1.5mm">
+          <div class="box-title">RCQ (Relação Cintura-Quadril)</div>
+          <ul>
+            <li>Alto risco: H &gt;1,0; M &gt;0,85</li>
+            <li>Androide (maçã): maior risco CV</li>
+            <li>Ginoide (pera): menor risco metabólico</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <div class="box-title">Fenótipos de Obesidade — ENARE cobra</div>
+      <div class="two-col">
+        <ul>
+          <li><strong>Obeso Metabolicamente Saudável (OMS):</strong> IMC ≥30 sem síndrome metabólica; adiposidade predominantemente subcutânea; ~30% dos obesos</li>
+          <li><strong>TOFI ("Thin Outside, Fat Inside"):</strong> IMC normal com adiposidade visceral excessiva; risco metabólico elevado apesar de peso normal</li>
+        </ul>
+        <ul>
+          <li><strong>Obesidade sarcopênica:</strong> ↑gordura + ↓massa muscular; comum no idoso; pior prognóstico; IMC pode ser "normal" por perda muscular</li>
+          <li>Composição corporal: <strong>DXA</strong> (padrão-ouro); BIA (prático); dobras cutâneas (Durnin, Jackson-Pollock); circunferências</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde</div>
+    <div class="footer-right">Nutrição · Bloco B9 · Aula 24 · p.2</div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!--  P3 — TRATAMENTO DIETÉTICO DA OBESIDADE                     -->
+<!-- ============================================================ -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="24,2 44,13 44,35 24,46 4,35 4,13" fill="none" stroke="#C6D834" stroke-width="2.5"/>
+      <circle cx="24" cy="24" r="8" fill="#C6D834"/>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Extensivo ENARE 2026 · Nutrição · Bloco B9 · NUT-CLÍN</div>
+      <div class="header-title">Tratamento Dietético da Obesidade</div>
+      <div class="header-sub">Déficit calórico · LCD · VLCD · Padrões alimentares · Proteínas e saciedade · Crononutrição</div>
+    </div>
+    <div class="header-page-num">03</div>
+  </div>
+  <div class="page-body">
+
+    <div class="section-title">Metas e Déficit Calórico</div>
+    <div class="highlight-box">
+      <div class="box-title">Diretriz AHA/ACC/TOS 2013 — Meta de Perda de Peso</div>
+      <p>Déficit de <strong>500–750 kcal/dia</strong> → perda de 0,5–0,75 kg/semana. Meta inicial: <strong>≥5% do peso corporal</strong> em 6 meses (benefícios metabólicos já com 5–10% de redução). Redução de 5% → ↓TG 20%, ↓glicemia em jejum, melhora PA e HDL.</p>
+    </div>
+
+    <table>
+      <tr><th>Abordagem</th><th>Valor Calórico</th><th>Indicação / Observação</th></tr>
+      <tr><td><strong>Dieta Hipocalórica (LCD)</strong></td><td>800–1.500 kcal/dia (déficit 500–750 kcal)</td><td>Abordagem padrão; sustentável a longo prazo</td></tr>
+      <tr><td><strong>VLCD (Very Low Calorie Diet)</strong></td><td>400–800 kcal/dia</td><td>Supervisionada; indicada para perda rápida pré-cirurgia ou comorbidade grave; risco de déficits; máximo 12–16 semanas</td></tr>
+      <tr><td><strong>Dieta Low-Carb</strong></td><td>&lt;130 g CHO/dia</td><td>↓TG, ↑HDL; eficaz no curto prazo; similar ao low-fat em 12 meses</td></tr>
+      <tr><td><strong>Dieta Cetogênica</strong></td><td>&lt;50 g CHO/dia</td><td>Suprime apetite; contraindicada em DRC avançada, gravidez; requer suplementação eletrolítica</td></tr>
+      <tr><td><strong>Dieta Mediterrânea</strong></td><td>Variável; hipocalórica</td><td>Maior adesão; melhor qualidade de vida; redução CV além da perda de peso</td></tr>
+    </table>
+
+    <div class="section-subtitle">Macronutrientes na Obesidade</div>
+    <div class="two-col">
+      <div>
+        <div class="outline-box">
+          <div class="box-title">Proteína — Estratégia-chave</div>
+          <ul>
+            <li><strong>1,2–1,5 g/kg/dia</strong> → preserva massa muscular durante restrição</li>
+            <li>↑saciedade (via GLP-1, PYY, ↑termogênese)</li>
+            <li>Efeito térmico maior que CHO e LIP (TEF ~25–30%)</li>
+            <li>Fontes: carnes magras, ovos, laticínios desnatados, leguminosas</li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <div class="outline-box">
+          <div class="box-title">Fibra e Saciedade</div>
+          <ul>
+            <li>≥25–30 g/dia → ↑saciedade, ↓energia ingerida</li>
+            <li>Fibra solúvel: gel viscoso → retarda esvaziamento gástrico</li>
+            <li>↑mastigação: maior saciedade vs alimentos ultraprocessados</li>
+            <li>Baixa densidade energética (≤1,5 kcal/g) → estratégia volumétrica</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="accent-box">
+      <div class="box-title">Crononutrição — Timing Alimentar</div>
+      <p>Evidências crescentes indicam que <strong>quando se come importa além de quanto se come</strong>. Jantar tardio e alimentação noturna associados a maior adiposidade visceral, pior controle glicêmico e HAS. <strong>Alimentação com restrição de tempo (TRE/Jejum Intermitente):</strong> janela alimentar de 8–10h → ↓peso, ↓TG, melhora sensibilidade insulínica sem redução declarada da ingestão calórica em alguns estudos.</p>
+    </div>
+
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde</div>
+    <div class="footer-right">Nutrição · Bloco B9 · Aula 24 · p.3</div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!--  P4 — CIRURGIA BARIÁTRICA                                   -->
+<!-- ============================================================ -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="24,2 44,13 44,35 24,46 4,35 4,13" fill="none" stroke="#C6D834" stroke-width="2.5"/>
+      <circle cx="24" cy="24" r="8" fill="#C6D834"/>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Extensivo ENARE 2026 · Nutrição · Bloco B9 · NUT-CLÍN</div>
+      <div class="header-title">Cirurgia Bariátrica — Indicações e Técnicas</div>
+      <div class="header-sub">Critérios CFM · Bypass Roux-en-Y · Sleeve · Banda · Duodenal Switch · Suplementação pré-op</div>
+    </div>
+    <div class="header-page-num">04</div>
+  </div>
+  <div class="page-body">
+
+    <div class="section-title">Indicações — Resolução CFM 2.131/2015 (Brasil)</div>
+    <div class="highlight-box">
+      <div class="box-title">Critérios para Cirurgia Bariátrica</div>
+      <div class="two-col">
+        <ul>
+          <li><strong>IMC ≥40 kg/m²</strong> sem comorbidades associadas</li>
+          <li><strong>IMC ≥35 kg/m²</strong> + comorbidade grave (DM2, HAS, apneia do sono, dislipidemia, DRGE, osteoartrite, etc.)</li>
+          <li><strong>IMC ≥30 kg/m²</strong> + DM2 com controle metabólico inadequado (cirurgia metabólica — aprovada pelo CFM)</li>
+        </ul>
+        <ul>
+          <li>Falha de tratamento clínico ≥2 anos</li>
+          <li>Idade: 16–65 anos (acima de 65, avaliação individualizada)</li>
+          <li>Avaliação multidisciplinar obrigatória</li>
+          <li><strong>Contraindicações:</strong> dependência de álcool/drogas, transtorno psiquiátrico grave não tratado, cirrose grave (Child B/C sem transplante previsto)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-subtitle">Técnicas Cirúrgicas</div>
+    <table>
+      <tr><th>Técnica</th><th>Mecanismo</th><th>Perda de Excesso de Peso</th><th>Deficiências Prioritárias</th></tr>
+      <tr><td><strong>Bypass Gástrico (RYGB)</strong></td><td>Restritivo + Disabsortivo (desvio duodeno e jejuno proximal)</td><td>60–80% em 1–2 anos</td><td>B12, Fe, Ca, Vit D, Tiamina, Folato, Zinco</td></tr>
+      <tr><td><strong>Sleeve (Gastrectomia Vertical)</strong></td><td>Restritivo (ressecção 75–80% do estômago) + ↓grelina</td><td>50–70% em 1–2 anos</td><td>B12, Fe, Vit D (menor que bypass)</td></tr>
+      <tr><td><strong>Banda Gástrica Ajustável</strong></td><td>Restritivo puro</td><td>40–50%; menor taxa de remissão do DM2</td><td>Déficits nutricionais menores; B1, B12</td></tr>
+      <tr><td><strong>Duodenal Switch (DS/BPD)</strong></td><td>Restritivo + Disabsortivo severo</td><td>70–90% (maior perda)</td><td>Vit ADEK, Fe, Ca, B12, PTN (atenção especial)</td></tr>
+    </table>
+
+    <div class="two-col">
+      <div class="accent-box">
+        <div class="box-title">Suplementação Pré-operatória</div>
+        <ul>
+          <li><strong>Tiamina (B1):</strong> repor antes da cirurgia se vômitos ou deficiência; deficiência causa encefalopatia de Wernicke</li>
+          <li>Avaliar e corrigir Fe, B12, Vit D, Ca pré-op</li>
+          <li>VLCD 2–4 semanas pré-op: reduz volume hepático → facilita cirurgia laparoscópica</li>
+        </ul>
+      </div>
+      <div class="accent-box">
+        <div class="box-title">Cálcio — Cuidado Especial</div>
+        <ul>
+          <li>Usar <strong>cálcio citrato</strong> (não carbonato) no pós-bariátrica</li>
+          <li>Carbonato precisa de pH ácido (estômago menor → hipocloridria)</li>
+          <li>Citrato: absorção independente de pH</li>
+          <li>Dose: 1.200–1.500 mg/dia (dividido em doses ≤500 mg)</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde</div>
+    <div class="footer-right">Nutrição · Bloco B9 · Aula 24 · p.4</div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!--  P5 — PÓS-OPERATÓRIO E SÍNDROME DE DUMPING                 -->
+<!-- ============================================================ -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="24,2 44,13 44,35 24,46 4,35 4,13" fill="none" stroke="#C6D834" stroke-width="2.5"/>
+      <circle cx="24" cy="24" r="8" fill="#C6D834"/>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Extensivo ENARE 2026 · Nutrição · Bloco B9 · NUT-CLÍN</div>
+      <div class="header-title">Pós-Operatório, Dumping e Deficiências Nutricionais</div>
+      <div class="header-sub">Dieta pós-bariátrica · Dumping precoce/tardio · B12 · Fe · Tiamina · Ca/Vit D</div>
+    </div>
+    <div class="header-page-num">05</div>
+  </div>
+  <div class="page-body">
+
+    <div class="section-title">Síndrome de Dumping</div>
+    <div class="two-col">
+      <div class="highlight-box">
+        <div class="box-title">Dumping Precoce (10–30 min pós-refeição)</div>
+        <ul>
+          <li>Esvaziamento gástrico rápido → alimento hiperosmolar no intestino delgado</li>
+          <li><strong>Sintomas:</strong> náusea, vômito, diarreia, dor abdominal, distensão, flushing, taquicardia, sudorese, hipotensão</li>
+          <li>Mecanismo: ↑osmolaridade luminal → influxo de líquido → distensão + liberação de peptídeos vasoativos (VIP, GLP-1)</li>
+        </ul>
+      </div>
+      <div class="highlight-box">
+        <div class="box-title">Dumping Tardio (1–3 h pós-refeição)</div>
+        <ul>
+          <li>Absorção rápida de CHO simples → pico de glicemia → pico de insulina → <strong>hipoglicemia reativa</strong></li>
+          <li><strong>Sintomas:</strong> fraqueza, confusão mental, sudorese, palpitações (semelhantes à hipoglicemia comum)</li>
+          <li>Mais específico do bypass gástrico</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="accent-box">
+      <div class="box-title">Conduta Nutricional no Dumping</div>
+      <p><strong>Fracionar:</strong> 6–8 refeições pequenas ao dia. <strong>Separar líquidos de sólidos:</strong> não ingerir líquidos 30 min antes e 30–60 min após as refeições. <strong>↓Açúcares simples e frutose</strong> (principal gatilho do tardio). <strong>↑Proteínas e fibras</strong> (retardam esvaziamento gástrico). Mastigar bem; comer devagar. Deitar após as refeições (controverso mas reduz esvaziamento).</p>
+    </div>
+
+    <div class="section-title">Deficiências Nutricionais Pós-Bariátrica</div>
+    <table>
+      <tr><th>Nutriente</th><th>Motivo do Déficit</th><th>Suplementação</th></tr>
+      <tr><td><strong>Vitamina B12</strong></td><td>Fator intrínseco reduzido (↓produção parietal); desvio duodeno</td><td>1.000 µg/dia sublingual ou IM mensal; monitorar anualmente</td></tr>
+      <tr><td><strong>Ferro</strong></td><td>Desvio do duodeno (sítio de absorção Fe²⁺); hipocloridria (↓conversão Fe³⁺→Fe²⁺)</td><td>45–60 mg Fe elementar/dia; vitamina C junto; não junto de Ca</td></tr>
+      <tr><td><strong>Tiamina (B1)</strong></td><td>Vômitos persistentes pós-op; reserva corporal mínima (18 dias)</td><td>100 mg/dia VO ou IV se déficit; previne Wernicke</td></tr>
+      <tr><td><strong>Cálcio + Vit D</strong></td><td>↓absorção por hipocloridria; desvio duodeno; ↓exposição solar</td><td>Ca citrato 1.200–1.500 mg/dia; Vit D 3.000 UI/dia (titular pela 25-OH-D)</td></tr>
+      <tr><td><strong>Folato</strong></td><td>↓ingestão; desvio; ↑necessidade (gestantes bariátricas: risco DTN)</td><td>400 µg/dia (geral); 5 mg/dia (gestante pós-bariátrica)</td></tr>
+      <tr><td><strong>Zinco</strong></td><td>Desvio do sítio absortivo proximal; ↓ingestão proteica</td><td>8–11 mg/dia (geral); monitorar zincemia</td></tr>
+    </table>
+
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde</div>
+    <div class="footer-right">Nutrição · Bloco B9 · Aula 24 · p.5</div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!--  P6 — QUESTÃO 01                                             -->
+<!-- ============================================================ -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="24,2 44,13 44,35 24,46 4,35 4,13" fill="none" stroke="#C6D834" stroke-width="2.5"/>
+      <circle cx="24" cy="24" r="8" fill="#C6D834"/>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Extensivo ENARE 2026 · Nutrição · Bloco B9 · NUT-CLÍN</div>
+      <div class="header-title">Questão 01 — Obesidade e Bariátrica</div>
+      <div class="header-sub">Nível: Aplicação · Indicações e deficiências pós-bariátrica</div>
+    </div>
+    <div class="header-page-num">06</div>
+  </div>
+  <div class="page-body">
+    <span class="question-tag">Q01</span>
+    <span class="question-type-tag">Aplicação</span>
+
+    <div class="question-text">
+      Mulher de 38 anos, IMC 37 kg/m², portadora de DM2 com HbA1c de 9,8% em uso de duas drogas antidiabéticas, HAS e apneia obstrutiva do sono. Após dois anos de tratamento clínico sem atingir metas, a equipe multidisciplinar discute a indicação de cirurgia bariátrica. O nutricionista orienta sobre a suplementação de cálcio no pós-operatório de bypass gástrico em Y de Roux. A forma de cálcio CORRETAMENTE indicada nesse contexto é:
+    </div>
+
+    <div class="alternatives">
+      <div class="alt"><span class="alt-label">A)</span> Carbonato de cálcio, pois apresenta maior concentração de cálcio elementar por comprimido e é mais barato</div>
+      <div class="alt"><span class="alt-label">B)</span> Cálcio citrato, pois sua absorção é independente do pH gástrico, sendo mais adequado ao hipocloridria pós-operatória</div>
+      <div class="alt"><span class="alt-label">C)</span> Gluconato de cálcio intravenoso, por ser a via de maior biodisponibilidade após bypass</div>
+      <div class="alt"><span class="alt-label">D)</span> Carbonato de cálcio, desde que administrado em conjunto com omeprazol para acidificação do meio gástrico</div>
+    </div>
+
+    <div class="answer-section">
+      <div class="answer-title">Resolução</div>
+      <div class="answer-gab">Gabarito: B</div>
+      <div class="answer-body">
+        <p>O bypass gástrico (RYGB) implica <strong>hipocloridria</strong> (bolsa gástrica pequena, com poucos parietal cells) e desvio do duodeno e jejuno proximal. O <strong>carbonato de cálcio</strong> precisa de meio ácido para ser ionizado (Ca²⁺ livre) e absorvido — em ambiente hipoclorídrico, sua absorção cai drasticamente. O <strong>cálcio citrato</strong> é solúvel em pH neutro e alcalino, com absorção independente da acidez gástrica, sendo a forma recomendada por todas as diretrizes pós-bariátrica (ASMBS, SBM).</p>
+        <p>Dose: 1.200–1.500 mg/dia de cálcio elementar, divididos em doses de ≤500 mg (limite de absorção por vez). Omeprazol (D) não acidifica o estômago — pelo contrário, é inibidor de bomba de prótons. Gluconato IV (C) é para hipocalcemia aguda grave, não suplementação oral crônica.</p>
+      </div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde</div>
+    <div class="footer-right">Nutrição · Bloco B9 · Aula 24 · p.6</div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!--  P7 — QUESTÃO 02                                             -->
+<!-- ============================================================ -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="24,2 44,13 44,35 24,46 4,35 4,13" fill="none" stroke="#C6D834" stroke-width="2.5"/>
+      <circle cx="24" cy="24" r="8" fill="#C6D834"/>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Extensivo ENARE 2026 · Nutrição · Bloco B9 · NUT-CLÍN</div>
+      <div class="header-title">Questão 02 — Obesidade e Bariátrica</div>
+      <div class="header-sub">Nível: Aplicação · Síndrome de Dumping — conduta nutricional</div>
+    </div>
+    <div class="header-page-num">07</div>
+  </div>
+  <div class="page-body">
+    <span class="question-tag">Q02</span>
+    <span class="question-type-tag">Aplicação</span>
+
+    <div class="question-text">
+      Homem de 45 anos, submetido a bypass gástrico em Y de Roux há 3 meses, relata episódios de sudorese, taquicardia, náuseas e diarreia cerca de 20 minutos após as refeições, especialmente quando ingere sucos e doces. Também refere episódios de fraqueza e confusão mental 1–2 horas após as refeições, com melhora ao ingerir alimento. Qual é a conduta nutricional MAIS ADEQUADA?
+    </div>
+
+    <div class="alternatives">
+      <div class="alt"><span class="alt-label">A)</span> Aumentar o volume das refeições para 3 grandes refeições ao dia e ingerir líquidos junto com os alimentos para diluir o conteúdo gástrico</div>
+      <div class="alt"><span class="alt-label">B)</span> Suspender totalmente proteínas e gorduras da dieta, mantendo apenas carboidratos complexos e líquidos em grandes volumes</div>
+      <div class="alt"><span class="alt-label">C)</span> Fracionar as refeições em 6–8 pequenas porções, separar líquidos de sólidos (aguardar 30–60 min), restringir açúcares simples e aumentar o aporte de proteínas e fibras</div>
+      <div class="alt"><span class="alt-label">D)</span> Prescrever suplementação de glucagon para controle dos episódios tardios de hipoglicemia reativa</div>
+    </div>
+
+    <div class="answer-section">
+      <div class="answer-title">Resolução</div>
+      <div class="answer-gab">Gabarito: C</div>
+      <div class="answer-body">
+        <p>O paciente apresenta <strong>dumping precoce</strong> (sintomas 20 min após: esvaziamento hiperosmolar no intestino) <em>e</em> <strong>dumping tardio</strong> (sintomas 1–2 h: hipoglicemia reativa por hiperinsulinismo).</p>
+        <p><strong>Conduta nutricional baseada em evidências:</strong></p>
+        <ul>
+          <li><strong>Fracionamento 6–8 refeições</strong> — menor volume por vez → menor esvaziamento gástrico rápido</li>
+          <li><strong>Separar líquidos de sólidos</strong> (30–60 min após) — líquidos aceleram esvaziamento; sólidos com fibra retardam</li>
+          <li><strong>↓Açúcares simples</strong> (principal gatilho do tardio): sucos, doces, bebidas adoçadas</li>
+          <li><strong>↑Proteínas e fibras</strong> — retardam esvaziamento; estabilizam glicemia</li>
+        </ul>
+        <p><strong>A errada:</strong> grandes refeições e líquidos junto pioram o dumping. <strong>B errada:</strong> proteína e gordura são os macronutrientes que menos provocam dumping. <strong>D errada:</strong> glucagon não é conduta nutricional; hipoglicemia reativa resolve com manejo dietético.</p>
+      </div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde</div>
+    <div class="footer-right">Nutrição · Bloco B9 · Aula 24 · p.7</div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!--  P8 — QUESTÃO 03 (ANÁLISE ÂNCORA)                           -->
+<!-- ============================================================ -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="24,2 44,13 44,35 24,46 4,35 4,13" fill="none" stroke="#C6D834" stroke-width="2.5"/>
+      <circle cx="24" cy="24" r="8" fill="#C6D834"/>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Extensivo ENARE 2026 · Nutrição · Bloco B9 · NUT-CLÍN</div>
+      <div class="header-title">Questão 03 — Obesidade e Bariátrica</div>
+      <div class="header-sub">Nível: Análise Âncora · Deficiências nutricionais e tratamento dietético</div>
+    </div>
+    <div class="header-page-num">08</div>
+  </div>
+  <div class="page-body">
+    <span class="question-tag">Q03</span>
+    <span class="question-type-tag">Análise Âncora</span>
+
+    <div class="question-text">
+      Acerca do tratamento nutricional da obesidade e do manejo pós-operatório de cirurgia bariátrica, analise as afirmativas:
+      <br><br>
+      <strong>I.</strong> A VLCD (Very Low Calorie Diet), com valor calórico de 400–800 kcal/dia, é adequada para uso autônomo e prolongado por pacientes obesos ambulatoriais, sem necessidade de supervisão médica, por ser composta por alimentos convencionais.
+      <br><br>
+      <strong>II.</strong> No pós-operatório de bypass gástrico em Y de Roux, a deficiência de ferro é frequente em razão do desvio do duodeno e jejuno proximal, que são os principais sítios de absorção do ferro não-heme, associada à hipocloridria que prejudica a conversão de Fe³⁺ em Fe²⁺.
+      <br><br>
+      <strong>III.</strong> O aumento do aporte proteico para 1,2–1,5 g/kg/dia durante tratamento dietético da obesidade tem como objetivo principal preservar a massa muscular durante o déficit calórico, além de promover maior saciedade pelo elevado efeito térmico da proteína.
+      <br><br>
+      <strong>IV.</strong> O carbonato de cálcio é a forma preferencial para suplementação de cálcio no pós-operatório de bypass gástrico, pois apresenta maior percentual de cálcio elementar (40%) em comparação ao citrato de cálcio (21%).
+    </div>
+
+    <div class="alternatives">
+      <div class="alt"><span class="alt-label">A)</span> Apenas I e IV estão corretas</div>
+      <div class="alt"><span class="alt-label">B)</span> Apenas I, III e IV estão corretas</div>
+      <div class="alt"><span class="alt-label">C)</span> Apenas II e III estão corretas</div>
+      <div class="alt"><span class="alt-label">D)</span> I, II, III e IV estão corretas</div>
+    </div>
+
+    <div class="answer-section">
+      <div class="answer-title">Resolução</div>
+      <div class="answer-gab">Gabarito: C</div>
+      <div class="answer-body">
+        <p><strong>I — ERRADA:</strong> A VLCD (&lt;800 kcal/dia) exige <strong>supervisão médica e multiprofissional rigorosa</strong>. Riscos: arritmias por déficit de K⁺/Mg²⁺, cálculos biliares (perda rápida), déficits de micronutrientes, perda de massa muscular. Não é autônoma. Máximo recomendado: 12–16 semanas sob acompanhamento.</p>
+        <p><strong>II — CORRETA:</strong> Duodeno (sítio principal de absorção de Fe) é desviado no RYGB → ↓absorção. Hipocloridria (bolsa gástrica pequena) → ↓conversão Fe³⁺→Fe²⁺ (forma reduzida absorvível). Suplementar com Fe elementar 45–60 mg/dia + vitamina C (que reduz Fe³⁺ para Fe²⁺).</p>
+        <p><strong>III — CORRETA:</strong> Em restrição calórica, o catabolismo tende a incluir proteínas musculares. PTN ↑(1,2–1,5 g/kg) preserva a massa magra (↑síntese proteica) e promove saciedade via GLP-1, PYY e efeito térmico (~25–30% das kcal proteicas são dissipadas como calor).</p>
+        <p><strong>IV — ERRADA:</strong> Embora o carbonato contenha 40% de Ca elementar vs 21% do citrato, sua absorção depende de pH ácido — impraticável após bypass (hipocloridria). O que importa é a <strong>biodisponibilidade</strong>, não o percentual elementar. Citrato é absorvido mesmo em pH neutro/alcalino → forma correta pós-bariátrica.</p>
+      </div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde</div>
+    <div class="footer-right">Nutrição · Bloco B9 · Aula 24 · p.8</div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!--  P9 — GABARITO                                               -->
+<!-- ============================================================ -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="24,2 44,13 44,35 24,46 4,35 4,13" fill="none" stroke="#C6D834" stroke-width="2.5"/>
+      <circle cx="24" cy="24" r="8" fill="#C6D834"/>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Extensivo ENARE 2026 · Nutrição · Bloco B9 · NUT-CLÍN</div>
+      <div class="header-title">Gabarito — Aula 24</div>
+      <div class="header-sub">Obesidade — Diagnóstico, Tratamento Dietético e Cirurgia Bariátrica</div>
+    </div>
+    <div class="header-page-num">09</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">Gabarito das Questões</div>
+    <div class="gab-grid">
+      <div class="gab-card">
+        <div class="q-label">Questão 01</div>
+        <div class="q-letter">B</div>
+        <div class="q-type">Aplicação</div>
+      </div>
+      <div class="gab-card">
+        <div class="q-label">Questão 02</div>
+        <div class="q-letter">C</div>
+        <div class="q-type">Aplicação</div>
+      </div>
+      <div class="gab-card">
+        <div class="q-label">Questão 03</div>
+        <div class="q-letter">C</div>
+        <div class="q-type">Análise Âncora</div>
+      </div>
+    </div>
+
+    <div class="section-title" style="margin-top:4mm">Pontos-Chave para a Prova</div>
+    <div class="two-col">
+      <div class="highlight-box">
+        <div class="box-title">IMC e Indicações Bariátrica</div>
+        <ul>
+          <li>Obesidade III: IMC ≥40; II: 35–39,9; I: 30–34,9</li>
+          <li>Bariátrica: IMC ≥40 (sem comorbidade) ou ≥35 + comorbidade grave</li>
+          <li>Cirurgia metabólica DM2: IMC ≥30 com controle inadequado (CFM)</li>
+          <li>CA risco: H ≥102/M ≥88 (OMS); H ≥90/M ≥80 (IDF-latinos)</li>
+          <li>RCE ≥0,5 = risco (qualquer sexo/etnia)</li>
+        </ul>
+      </div>
+      <div class="highlight-box">
+        <div class="box-title">Cálcio Pós-Bariátrica</div>
+        <ul>
+          <li><strong>CITRATO</strong> (não carbonato!) — absorção pH-independente</li>
+          <li>Carbonato precisa de ácido → hipocloridria pós-RYGB → ↓absorção</li>
+          <li>Dose: 1.200–1.500 mg/dia; porções ≤500 mg/vez</li>
+          <li>Associar Vit D 3.000 UI/dia; titular 25-OH-D</li>
+        </ul>
+      </div>
+    </div>
+    <div class="two-col" style="margin-top:2mm">
+      <div class="accent-box">
+        <div class="box-title">Dumping — Diagnóstico Diferencial</div>
+        <ul>
+          <li>Precoce (10–30 min): osmótico + vasomotor → náusea, diarreia, taquicardia</li>
+          <li>Tardio (1–3 h): hipoglicemia reativa → confusão, sudorese, fraqueza</li>
+          <li>Conduta: 6–8 refeições; separar líquidos 30–60 min; ↓açúcar simples; ↑PTN e fibra</li>
+        </ul>
+      </div>
+      <div class="accent-box">
+        <div class="box-title">Deficiências Pós-Bariátrica</div>
+        <ul>
+          <li>B12: sublingual 1.000 µg/dia ou IM mensal</li>
+          <li>Fe: 45–60 mg Fe elementar + Vit C; não junto com Ca</li>
+          <li>Tiamina: 100 mg/dia; previne Wernicke (vômitos pós-op)</li>
+          <li>Folato gestante pós-bariátrica: 5 mg/dia (risco DTN)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde</div>
+    <div class="footer-right">Nutrição · Bloco B9 · Aula 24 · p.9</div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!--  P10 — SÍNTESE FINAL                                         -->
+<!-- ============================================================ -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="24,2 44,13 44,35 24,46 4,35 4,13" fill="none" stroke="#C6D834" stroke-width="2.5"/>
+      <circle cx="24" cy="24" r="8" fill="#C6D834"/>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Extensivo ENARE 2026 · Nutrição · Bloco B9 · NUT-CLÍN</div>
+      <div class="header-title">Síntese Final — Aula 24</div>
+      <div class="header-sub">Obesidade e Cirurgia Bariátrica — Mapa Mental de Revisão</div>
+    </div>
+    <div class="header-page-num">10</div>
+  </div>
+  <div class="page-body">
+    <div class="synthesis-grid">
+
+      <div class="synth-block">
+        <div class="synth-title">Classificação IMC (OMS)</div>
+        <ul>
+          <li>&lt;18,5 = baixo peso</li>
+          <li>18,5–24,9 = eutrofia</li>
+          <li>25–29,9 = sobrepeso</li>
+          <li><strong>30–34,9 = obesidade I</strong></li>
+          <li><strong>35–39,9 = obesidade II</strong></li>
+          <li><strong>≥40 = obesidade III (mórbida)</strong></li>
+          <li>Idoso: &lt;22 baixo peso; 22–27 adequado</li>
+        </ul>
+      </div>
+
+      <div class="synth-block">
+        <div class="synth-title">Tratamento Dietético</div>
+        <ul>
+          <li>Déficit <strong>500–750 kcal/dia</strong> → 0,5–0,75 kg/sem</li>
+          <li>Meta: ≥5% em 6 meses → benefícios metabólicos</li>
+          <li>PTN <strong>1,2–1,5 g/kg</strong> preserva massa magra + saciedade</li>
+          <li>VLCD 400–800 kcal: supervisionada, máx 12–16 sem</li>
+          <li>Low-carb: ↓TG, ↑HDL; similar low-fat em 12m</li>
+          <li>Fibras ≥25–30 g/dia → ↑saciedade</li>
+        </ul>
+      </div>
+
+      <div class="synth-block">
+        <div class="synth-title">Indicações Bariátrica (CFM)</div>
+        <ul>
+          <li><strong>IMC ≥40</strong> sem comorbidade</li>
+          <li><strong>IMC ≥35 + comorbidade grave</strong></li>
+          <li><strong>IMC ≥30 + DM2</strong> sem controle (cirurgia metabólica)</li>
+          <li>Falha clínica ≥2 anos; avaliação multidisciplinar</li>
+          <li>Bypass: mais eficaz; maior perda; mais deficiências</li>
+          <li>Sleeve: ↓grelina; menos disabsortivo</li>
+        </ul>
+      </div>
+
+      <div class="synth-block">
+        <div class="synth-title">Deficiências Pós-op</div>
+        <ul>
+          <li><strong>B12:</strong> ↓FI → sublingual 1.000 µg ou IM</li>
+          <li><strong>Fe:</strong> desvio duodeno + hipocloridria → 45–60 mg + Vit C</li>
+          <li><strong>Tiamina:</strong> vômitos → Wernicke → 100 mg/dia</li>
+          <li><strong>Ca:</strong> citrato 1.200–1.500 mg (não carbonato!)</li>
+          <li><strong>Vit D:</strong> 3.000 UI/dia; titular 25-OH-D</li>
+          <li><strong>Folato gestante:</strong> 5 mg/dia (risco DTN)</li>
+        </ul>
+      </div>
+
+      <div class="synth-block">
+        <div class="synth-title">Dumping Pós-Bariátrica</div>
+        <ul>
+          <li><strong>Precoce (10–30 min):</strong> osmótico → náusea, diarreia, taquicardia, flushing</li>
+          <li><strong>Tardio (1–3 h):</strong> hipoglicemia reativa → confusão, fraqueza, sudorese</li>
+          <li>Conduta: 6–8 refeições pequenas</li>
+          <li>Separar líquidos 30–60 min após sólidos</li>
+          <li>↓Açúcares simples; ↑PTN e fibra</li>
+        </ul>
+      </div>
+
+      <div class="synth-block">
+        <div class="synth-title">Fenótipos e Medidas</div>
+        <ul>
+          <li>CA H ≥102/M ≥88 (OMS); H ≥90/M ≥80 (IDF-latinos)</li>
+          <li><strong>RCE ≥0,5 = risco</strong> (qualquer sexo)</li>
+          <li>OMS: obeso metabolicamente saudável (~30% obesos)</li>
+          <li>TOFI: IMC normal + gordura visceral ↑</li>
+          <li>Obesidade sarcopênica: ↑gordura + ↓músculo (idoso)</li>
+          <li>Composição corporal: DXA (padrão-ouro)</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde</div>
+    <div class="footer-right">Nutrição · Bloco B9 · Aula 24 · p.10</div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Nutrição Bloco B9 — Aula 36 | NUT-DIETÉTICA: Técnica Dietética Avançada</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --creme: #F6F4ED;
+    --verde: #1F5C23;
+    --accent: #C6D834;
+    --dark: #1a1a1a;
+    --muted: #555;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #d0d0d0; font-family: 'Bricolage Grotesque', sans-serif; }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    background: var(--creme);
+    margin: 10mm auto;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── CAPA ── */
+  .cover { background: var(--verde); color: var(--creme); }
+  .cover .top-bar {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10mm 12mm 0;
+  }
+  .cover .brand-text { display: flex; flex-direction: column; }
+  .cover .brand-name {
+    font-family: 'Playfair Display', serif; font-style: italic;
+    font-size: 13pt; color: var(--creme); letter-spacing: 0.02em;
+  }
+  .cover .brand-tag {
+    font-family: 'Space Grotesk', sans-serif; font-weight: 300;
+    font-size: 7pt; color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase;
+    margin-top: 1mm;
+  }
+  .cover .hero {
+    flex: 1; display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 8mm 14mm 6mm; text-align: center;
+  }
+  .cover .bloco-tag {
+    font-family: 'Space Grotesk', sans-serif; font-weight: 300;
+    font-size: 8pt; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 5mm;
+  }
+  .cover .aula-num {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 72pt;
+    line-height: 1; color: var(--creme); opacity: 0.12;
+    position: absolute; right: 12mm; top: 38mm;
+  }
+  .cover .modulo-badge {
+    background: var(--accent); color: var(--verde);
+    font-family: 'Barlow Condensed', sans-serif; font-size: 9pt;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    padding: 1.5mm 5mm; border-radius: 2mm; margin-bottom: 5mm;
+    display: inline-block;
+  }
+  .cover h1 {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 30pt;
+    line-height: 1.05; color: var(--creme); margin-bottom: 4mm;
+    text-transform: uppercase; letter-spacing: 0.02em;
+  }
+  .cover .subtitle {
+    font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300;
+    font-size: 11pt; color: rgba(246,244,237,0.72); margin-bottom: 8mm;
+    line-height: 1.4;
+  }
+  .cover .tags {
+    display: flex; gap: 3mm; flex-wrap: wrap; justify-content: center;
+  }
+  .cover .tag {
+    border: 1px solid rgba(198,216,52,0.5); color: var(--accent);
+    font-family: 'Space Grotesk', sans-serif; font-weight: 300;
+    font-size: 7.5pt; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 1mm 3.5mm; border-radius: 1.5mm;
+  }
+  .cover .bottom-bar {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 5mm 12mm 8mm;
+    border-top: 1px solid rgba(198,216,52,0.25);
+  }
+  .cover .series-info {
+    font-family: 'Space Grotesk', sans-serif; font-weight: 300;
+    font-size: 7.5pt; color: rgba(246,244,237,0.55); letter-spacing: 0.1em;
+  }
+  .cover .aula-label {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 11pt;
+    color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase;
+  }
+
+  /* ── PÁGINAS INTERNAS ── */
+  .page-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 7mm 12mm 5mm;
+    border-bottom: 2px solid var(--verde);
+  }
+  .page-header .logo-area { display: flex; align-items: center; gap: 3mm; }
+  .page-header .brand-name-sm {
+    font-family: 'Playfair Display', serif; font-style: italic;
+    font-size: 10pt; color: var(--verde);
+  }
+  .page-header .page-meta {
+    font-family: 'Space Grotesk', sans-serif; font-weight: 300;
+    font-size: 7pt; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .page-content { flex: 1; padding: 6mm 12mm 5mm; }
+  .page-footer {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 3mm 12mm 5mm;
+    border-top: 1px solid rgba(31,92,35,0.2);
+  }
+  .page-footer .footer-text {
+    font-family: 'Space Grotesk', sans-serif; font-weight: 300;
+    font-size: 6.5pt; color: var(--muted); letter-spacing: 0.08em;
+  }
+  .page-footer .page-num {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 9pt;
+    color: var(--verde); letter-spacing: 0.1em;
+  }
+
+  /* ── TIPOGRAFIA ── */
+  .section-title {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 15pt;
+    color: var(--verde); text-transform: uppercase; letter-spacing: 0.05em;
+    margin-bottom: 4mm; padding-bottom: 2mm;
+    border-bottom: 2px solid var(--accent);
+  }
+  .subsection {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 11pt;
+    color: var(--verde); text-transform: uppercase; letter-spacing: 0.05em;
+    margin: 3.5mm 0 2mm;
+  }
+  p, li {
+    font-size: 8.5pt; line-height: 1.55; color: var(--dark);
+    font-family: 'Bricolage Grotesque', sans-serif; font-weight: 400;
+  }
+  ul, ol { padding-left: 4mm; margin-bottom: 2mm; }
+  li { margin-bottom: 1mm; }
+  strong { font-weight: 600; }
+
+  /* ── TABELAS ── */
+  table { width: 100%; border-collapse: collapse; margin: 2.5mm 0; font-size: 7.8pt; }
+  th {
+    background: var(--verde); color: var(--creme);
+    font-family: 'Barlow Condensed', sans-serif; font-size: 8.5pt;
+    letter-spacing: 0.05em; text-transform: uppercase;
+    padding: 2mm 3mm; text-align: left;
+  }
+  td { padding: 1.8mm 3mm; border-bottom: 1px solid rgba(31,92,35,0.12); vertical-align: top; }
+  tr:nth-child(even) td { background: rgba(198,216,52,0.08); }
+  tr:last-child td { border-bottom: none; }
+
+  /* ── DESTAQUES ── */
+  .highlight-box {
+    background: rgba(198,216,52,0.18); border-left: 3px solid var(--accent);
+    padding: 3mm 4mm; margin: 3mm 0; border-radius: 0 2mm 2mm 0;
+  }
+  .alert-box {
+    background: rgba(31,92,35,0.07); border-left: 3px solid var(--verde);
+    padding: 3mm 4mm; margin: 3mm 0; border-radius: 0 2mm 2mm 0;
+  }
+  .anchor-box {
+    background: var(--verde); color: var(--creme);
+    padding: 3mm 4mm; margin: 3mm 0; border-radius: 2mm;
+  }
+  .anchor-box p, .anchor-box li { color: var(--creme); font-size: 8pt; }
+  .anchor-box strong { color: var(--accent); }
+
+  /* ── FÓRMULA ── */
+  .formula-box {
+    background: rgba(31,92,35,0.05); border: 1.5px solid var(--verde);
+    padding: 3mm 5mm; margin: 2.5mm 0; border-radius: 2mm; text-align: center;
+  }
+  .formula-box .formula {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 12pt;
+    color: var(--verde); letter-spacing: 0.05em;
+  }
+  .formula-box .formula-note {
+    font-family: 'Bricolage Grotesque', sans-serif; font-size: 7.5pt;
+    color: var(--muted); margin-top: 1mm;
+  }
+
+  /* ── QUESTÕES ── */
+  .q-header { display: flex; align-items: baseline; gap: 3mm; margin-bottom: 3mm; }
+  .q-badge {
+    background: var(--verde); color: var(--creme);
+    font-family: 'Barlow Condensed', sans-serif; font-size: 10pt;
+    letter-spacing: 0.1em; padding: 1mm 3.5mm; border-radius: 1.5mm;
+    white-space: nowrap;
+  }
+  .q-type {
+    font-family: 'Space Grotesk', sans-serif; font-weight: 300;
+    font-size: 7pt; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .q-stem {
+    font-size: 8.5pt; line-height: 1.55; color: var(--dark);
+    margin-bottom: 3.5mm; font-family: 'Bricolage Grotesque', sans-serif;
+  }
+  .q-context {
+    background: rgba(31,92,35,0.06); border-radius: 2mm;
+    padding: 3mm 4mm; margin-bottom: 3mm;
+    font-size: 8pt; line-height: 1.5; color: var(--dark);
+    font-family: 'Bricolage Grotesque', sans-serif;
+  }
+  .alternatives { list-style: none; padding: 0; }
+  .alternatives li {
+    display: flex; gap: 2.5mm; align-items: flex-start;
+    padding: 2mm 0; border-bottom: 1px solid rgba(31,92,35,0.08);
+    font-size: 8.5pt; line-height: 1.45;
+  }
+  .alternatives li:last-child { border-bottom: none; }
+  .alt-letter {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 10pt;
+    color: var(--verde); font-weight: 800; min-width: 5mm;
+  }
+  .assertions { list-style: none; padding: 0; margin-bottom: 3mm; }
+  .assertions li {
+    display: flex; gap: 2.5mm; align-items: flex-start;
+    padding: 2mm 0; border-bottom: 1px solid rgba(31,92,35,0.08);
+    font-size: 8.5pt; line-height: 1.45;
+  }
+  .assert-num {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 10pt;
+    color: var(--verde); min-width: 5mm;
+  }
+
+  /* ── GABARITO ── */
+  .gab-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3mm; margin: 3mm 0; }
+  .gab-card { border: 1.5px solid var(--verde); border-radius: 2mm; padding: 3mm 4mm; }
+  .gab-card .gab-q {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 9pt;
+    color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em;
+  }
+  .gab-card .gab-resp {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 22pt;
+    color: var(--verde); line-height: 1;
+  }
+  .gab-card .gab-tema { font-size: 7pt; color: var(--muted); font-family: 'Bricolage Grotesque', sans-serif; margin-top: 1mm; }
+  .gab-justificativa { margin: 2.5mm 0; padding: 2.5mm 3.5mm; }
+  .gab-justificativa .gab-title {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 9.5pt;
+    color: var(--verde); text-transform: uppercase; margin-bottom: 1.5mm; letter-spacing: 0.05em;
+  }
+  .correct { color: #1F5C23; font-weight: 600; }
+  .wrong { color: #b0392e; text-decoration: line-through; }
+
+  /* ── SÍNTESE ── */
+  .sintese-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; margin: 3mm 0; }
+  .sintese-card { border: 1.5px solid rgba(31,92,35,0.3); border-radius: 2mm; padding: 3mm 4mm; }
+  .sintese-card .s-title {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 9pt;
+    color: var(--verde); text-transform: uppercase; letter-spacing: 0.08em;
+    margin-bottom: 2mm; padding-bottom: 1mm; border-bottom: 1px solid var(--accent);
+  }
+  .sintese-card p, .sintese-card li { font-size: 7.8pt; line-height: 1.5; }
+
+  @media print {
+    body { background: white; }
+    .page { margin: 0; page-break-after: always; }
+    .page:last-child { page-break-after: auto; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════
+     PÁGINA 1 — CAPA
+════════════════════════════════════════════ -->
+<div class="page cover">
+  <div class="top-bar">
+    <div class="brand-text">
+      <span class="brand-name">Extensivo ENARE</span>
+      <span class="brand-tag">Residências em Saúde · 2026</span>
+    </div>
+    <svg width="44" height="50" viewBox="0 0 44 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="22,2 41,13 41,37 22,48 3,37 3,13" fill="#F6F4ED" stroke="#C6D834" stroke-width="2"/>
+      <circle cx="22" cy="25" r="9" fill="#1F5C23"/>
+    </svg>
+  </div>
+
+  <div class="hero">
+    <div class="bloco-tag">Bloco B9 · Nutrição · Aula 36</div>
+    <div class="aula-num">36</div>
+    <div class="modulo-badge">NUT-DIETÉTICA</div>
+    <h1>Técnica Dietética<br>Avançada</h1>
+    <p class="subtitle">FC e FK · Métodos de Cocção · Perdas Nutricionais<br>Per Capita · Indicadores de UAN · AQPC</p>
+    <div class="tags">
+      <span class="tag">Fator de Correção</span>
+      <span class="tag">Fator de Cocção</span>
+      <span class="tag">Per Capita</span>
+      <span class="tag">RI / Sobra</span>
+      <span class="tag">AQPC</span>
+      <span class="tag">Frituras</span>
+    </div>
+  </div>
+
+  <div class="bottom-bar">
+    <span class="series-info">Extensivo ENARE 2026 · Material de Apoio</span>
+    <span class="aula-label">Aula 36 / 39</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     PÁGINA 2 — FC E FK: CONCEITOS E CÁLCULOS
+════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="25" viewBox="0 0 44 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="22,2 41,13 41,37 22,48 3,37 3,13" fill="#1F5C23" stroke="#C6D834" stroke-width="2.5"/>
+        <circle cx="22" cy="25" r="9" fill="#F6F4ED"/>
+      </svg>
+      <span class="brand-name-sm">Extensivo ENARE</span>
+    </div>
+    <span class="page-meta">NUT-DIETÉTICA · Aula 36 · Bloco B9</span>
+  </div>
+
+  <div class="page-content">
+    <div class="section-title">Fator de Correção (FC) e Fator de Cocção (FK)</div>
+
+    <div class="subsection">Fator de Correção (FC)</div>
+    <div class="formula-box">
+      <div class="formula">FC = Peso Bruto (PB) / Peso Líquido (PL)</div>
+      <div class="formula-note">FC é SEMPRE &gt; 1 · Peso Bruto = Peso Líquido × FC</div>
+    </div>
+    <ul>
+      <li><strong>Peso Bruto (PB):</strong> peso do alimento como adquirido, com cascas, sementes, gorduras aparentes e partes não comestíveis.</li>
+      <li><strong>Peso Líquido (PL):</strong> peso após pré-preparo — cascas retiradas, aparas removidas, partes não comestíveis descartadas.</li>
+      <li>FC > 1 sempre — porque o PB inclui perdas. Quanto maior o FC, maior o desperdício no pré-preparo.</li>
+      <li><strong>Uso prático:</strong> PB necessário = PL desejado × FC → indica quanto comprar.</li>
+    </ul>
+    <table>
+      <tr><th>Alimento</th><th>FC aproximado</th><th>Principal perda</th></tr>
+      <tr><td>Frango com osso</td><td>1,80–2,00</td><td>Osso, pele, gordura</td></tr>
+      <tr><td>Carne bovina com gordura</td><td>1,20–1,35</td><td>Gordura aparente, aparas</td></tr>
+      <tr><td>Banana-prata</td><td>1,40–1,50</td><td>Casca</td></tr>
+      <tr><td>Manga Tommy</td><td>1,45–1,60</td><td>Casca, caroço</td></tr>
+      <tr><td>Cenoura</td><td>1,15–1,20</td><td>Casca</td></tr>
+      <tr><td>Cebola</td><td>1,15–1,25</td><td>Casca externa, raiz</td></tr>
+      <tr><td>Alface</td><td>1,05–1,10</td><td>Folhas deterioradas, talos</td></tr>
+      <tr><td>Tomate</td><td>1,05–1,10</td><td>Pedúnculo</td></tr>
+    </table>
+
+    <div class="subsection">Fator de Cocção (FK)</div>
+    <div class="formula-box">
+      <div class="formula">FK = Peso Cozido (PC) / Peso Cru Limpo (PL)</div>
+      <div class="formula-note">FK &gt; 1 = absorve água · FK &lt; 1 = perde água/gordura · Peso Cozido = Peso Líquido × FK</div>
+    </div>
+    <table>
+      <tr><th>Alimento</th><th>FK aproximado</th><th>Direção</th></tr>
+      <tr><td>Arroz branco cozido</td><td>2,5–3,0</td><td>&gt; 1 (absorve água)</td></tr>
+      <tr><td>Feijão cozido</td><td>2,3–2,5</td><td>&gt; 1 (absorve água)</td></tr>
+      <tr><td>Macarrão cozido</td><td>2,0–2,5</td><td>&gt; 1 (absorve água)</td></tr>
+      <tr><td>Frango cozido/assado</td><td>0,70–0,80</td><td>&lt; 1 (perde água e gordura)</td></tr>
+      <tr><td>Carne bovina grelhada</td><td>0,65–0,75</td><td>&lt; 1 (perde água e gordura)</td></tr>
+      <tr><td>Batata cozida com casca</td><td>0,90–1,00</td><td>≈ 1</td></tr>
+    </table>
+
+    <div class="subsection">Encadeamento FC → FK: Cálculo do Per Capita Bruto a partir do Cozido</div>
+    <div class="formula-box">
+      <div class="formula">PB = (PC ÷ FK) × FC</div>
+      <div class="formula-note">PC = per capita cozido desejado · FK = fator de cocção · FC = fator de correção</div>
+    </div>
+    <div class="highlight-box">
+      <p><strong>Passo a passo:</strong> (1) PC ÷ FK = PL (peso líquido/cru) → (2) PL × FC = PB (peso bruto a adquirir). Nunca multiplicar PC diretamente por FC sem antes reverter o FK.</p>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span class="footer-text">Extensivo ENARE 2026 · Bloco B9 Nutrição</span>
+    <span class="page-num">2 / 10</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     PÁGINA 3 — MÉTODOS DE COCÇÃO E PERDAS NUTRICIONAIS
+════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="25" viewBox="0 0 44 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="22,2 41,13 41,37 22,48 3,37 3,13" fill="#1F5C23" stroke="#C6D834" stroke-width="2.5"/>
+        <circle cx="22" cy="25" r="9" fill="#F6F4ED"/>
+      </svg>
+      <span class="brand-name-sm">Extensivo ENARE</span>
+    </div>
+    <span class="page-meta">NUT-DIETÉTICA · Aula 36 · Bloco B9</span>
+  </div>
+
+  <div class="page-content">
+    <div class="section-title">Métodos de Cocção e Perdas Nutricionais</div>
+
+    <div class="subsection">Classificação dos Métodos de Cocção</div>
+    <table>
+      <tr><th>Categoria</th><th>Métodos</th><th>Meio condutor</th></tr>
+      <tr><td><strong>Calor úmido</strong></td><td>Ebulição, vapor, escaldamento, brasear</td><td>Água ou vapor d'água</td></tr>
+      <tr><td><strong>Calor seco</strong></td><td>Assar (forno), grelhar, tostar</td><td>Ar quente e superfície aquecida</td></tr>
+      <tr><td><strong>Calor seco por gordura</strong></td><td>Saltear, refogar, fritar (rasa e imersão)</td><td>Gordura/óleo aquecido</td></tr>
+      <tr><td><strong>Calor misto</strong></td><td>Brasear, guisar, estufar</td><td>Inicial seco → úmido</td></tr>
+      <tr><td><strong>Cocção especial</strong></td><td>Micro-ondas, pressão, sous vide</td><td>Ondas eletromagnéticas / pressão / banho-maria</td></tr>
+    </table>
+
+    <div class="subsection">Impacto nos Nutrientes por Método</div>
+    <table>
+      <tr><th>Método</th><th>Vitaminas hidrossolúveis</th><th>Minerais</th><th>Proteínas/Lipídios</th></tr>
+      <tr>
+        <td><strong>Ebulição em água</strong></td>
+        <td>Maiores perdas: vit. C, B1, folato lixiviam para a água (30–60%)</td>
+        <td>Perda significativa por lixiviação</td>
+        <td>Desnaturação proteica; hidrólise parcial de lipídios</td>
+      </tr>
+      <tr>
+        <td><strong>Vapor</strong></td>
+        <td>Perdas menores que ebulição (~15–25%)</td>
+        <td>Perdas mínimas (sem contato com água)</td>
+        <td>Preservação boa; melhor método para vegetais</td>
+      </tr>
+      <tr>
+        <td><strong>Micro-ondas</strong></td>
+        <td>Perdas baixas (tempo curto, sem água abundante)</td>
+        <td>Preservação boa</td>
+        <td>Similar ao vapor</td>
+      </tr>
+      <tr>
+        <td><strong>Assar (forno)</strong></td>
+        <td>Perdas intermediárias (calor seco, sem lixiviação)</td>
+        <td>Concentra minerais (perde água, não minerais)</td>
+        <td>Oxidação de lipídios em temperaturas altas</td>
+      </tr>
+      <tr>
+        <td><strong>Fritura</strong></td>
+        <td>Perdas por calor; vit. C e B instáveis</td>
+        <td>Concentração por desidratação</td>
+        <td>Absorção de gordura (5–40%)</td>
+      </tr>
+    </table>
+
+    <div class="subsection">Frituras — Temperaturas e Acroleína</div>
+    <table>
+      <tr><th>Temperatura</th><th>Efeito</th></tr>
+      <tr><td><strong>Abaixo de 150°C</strong></td><td>Absorção excessiva de gordura → alimento encharcado, pesado</td></tr>
+      <tr><td><strong>180°C (ideal)</strong></td><td>Selamento rápido da superfície → menor absorção de gordura, textura crocante</td></tr>
+      <tr><td><strong>Acima de 200°C</strong></td><td>Decomposição do glicerol → formação de <strong>acroleína</strong> (fumaça irritante, potencialmente tóxica)</td></tr>
+    </table>
+
+    <div class="alert-box">
+      <p><strong>Acroleína:</strong> produto da decomposição térmica do glicerol em temperaturas acima de 200°C. É irritante para mucosas (olhos, vias respiratórias) e classifica-se como potencialmente carcinogênico. O ponto de fumaça de cada óleo indica o limiar de formação — ao atingir, a fritura deve ser interrompida.</p>
+    </div>
+
+    <div class="subsection">Escaldamento (Branqueamento)</div>
+    <ul>
+      <li><strong>Objetivo:</strong> inativar enzimas oxidativas (peroxidases, polifenoloxidases) → previne escurecimento enzimático e degradação de nutrientes durante armazenamento.</li>
+      <li>Método: imersão breve em água a 85–100°C ou vapor, seguida de choque térmico (água com gelo).</li>
+      <li>Preserva a cor verde dos vegetais (clorofila estabilizada) e textura.</li>
+      <li>Obrigatório antes do congelamento de vegetais (evita degradação enzimática durante estocagem).</li>
+    </ul>
+  </div>
+
+  <div class="page-footer">
+    <span class="footer-text">Extensivo ENARE 2026 · Bloco B9 Nutrição</span>
+    <span class="page-num">3 / 10</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     PÁGINA 4 — INDICADORES DE UAN: RI, SOBRA E AQPC
+════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="25" viewBox="0 0 44 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="22,2 41,13 41,37 22,48 3,37 3,13" fill="#1F5C23" stroke="#C6D834" stroke-width="2.5"/>
+        <circle cx="22" cy="25" r="9" fill="#F6F4ED"/>
+      </svg>
+      <span class="brand-name-sm">Extensivo ENARE</span>
+    </div>
+    <span class="page-meta">NUT-DIETÉTICA · Aula 36 · Bloco B9</span>
+  </div>
+
+  <div class="page-content">
+    <div class="section-title">Indicadores de UAN: RI, Sobra Limpa e AQPC</div>
+
+    <div class="subsection">Resto Ingestão (RI)</div>
+    <div class="formula-box">
+      <div class="formula">RI (%) = (Peso do Resto / Peso Distribuído) × 100</div>
+      <div class="formula-note">Resto = alimento que sobrou no prato do comensal após a refeição</div>
+    </div>
+    <table>
+      <tr><th>Parâmetro</th><th>RI Aceitável</th></tr>
+      <tr><td>Coletividade sadia (UAN padrão)</td><td>≤ 10%</td></tr>
+      <tr><td>Hospital / clientela enferma</td><td>≤ 20% (alguns autores até 30%)</td></tr>
+    </table>
+    <ul>
+      <li><strong>RI alto:</strong> indica baixa aceitabilidade do cardápio, porção excessiva ou preparação inadequada.</li>
+      <li><strong>RI baixo:</strong> pode indicar porção insuficiente (risco de insatisfação) ou cardápio bem aceito.</li>
+    </ul>
+
+    <div class="subsection">Sobra Limpa</div>
+    <div class="formula-box">
+      <div class="formula">Sobra Limpa (%) = (Peso da Sobra Limpa / Peso Produzido) × 100</div>
+      <div class="formula-note">Sobra limpa = alimento preparado e não distribuído, ainda em condições de consumo</div>
+    </div>
+    <ul>
+      <li>Parâmetro aceitável: <strong>≤ 3%</strong> do peso total produzido.</li>
+      <li>Sobra limpa alta = superprodução → desperdício de insumos e custo.</li>
+      <li>Diferente de "sobra suja" (restos dos pratos dos comensais = componente do RI).</li>
+    </ul>
+
+    <div class="subsection">AQPC — Avaliação Qualitativa das Preparações e Cardápios</div>
+    <ul>
+      <li><strong>Método:</strong> avaliação qualitativa — analisa características do cardápio sem calcular VCT ou macronutrientes.</li>
+      <li><strong>NÃO calcula:</strong> calorias, proteínas, carboidratos, lipídios.</li>
+      <li><strong>Avalia:</strong> repetição de cores, técnicas de preparo, presença de frituras, alimentos sulfurosos (flatulentos), leguminosas, folhosos, frutas.</li>
+      <li><strong>Pontos negativos no AQPC:</strong> monotonia de cor/técnica, excesso de frituras, poucos folhosos e frutas.</li>
+      <li><strong>Pontos positivos:</strong> variedade de cores, presença de leguminosas diariamente, frutas, folhosos crus, método de cozimento predominante a vapor/grelhado.</li>
+    </ul>
+
+    <div class="alert-box">
+      <p><strong>Ponto de prova:</strong> AQPC é qualitativo — não calcula VCT. Afirmativas que afirmam "o AQPC avalia o valor calórico total e a adequação de macronutrientes" estão incorretas. É uma ferramenta de gestão de cardápios, não de cálculo dietético.</p>
+    </div>
+
+    <div class="subsection">Per Capita e Porcionamento</div>
+    <table>
+      <tr><th>Conceito</th><th>Definição</th><th>Uso</th></tr>
+      <tr><td>Per capita bruto</td><td>Peso adquirido por comensal (inclui partes não comestíveis)</td><td>Compras e licitações</td></tr>
+      <tr><td>Per capita líquido</td><td>Peso após pré-preparo por comensal</td><td>Planejamento de preparo</td></tr>
+      <tr><td>Per capita cozido</td><td>Peso da preparação pronta por comensal</td><td>Porcionamento no balcão</td></tr>
+    </table>
+  </div>
+
+  <div class="page-footer">
+    <span class="footer-text">Extensivo ENARE 2026 · Bloco B9 Nutrição</span>
+    <span class="page-num">4 / 10</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     PÁGINA 5 — EQUIVALÊNCIAS, IG/CG E DIETAS ESPECIAIS
+════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="25" viewBox="0 0 44 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="22,2 41,13 41,37 22,48 3,37 3,13" fill="#1F5C23" stroke="#C6D834" stroke-width="2.5"/>
+        <circle cx="22" cy="25" r="9" fill="#F6F4ED"/>
+      </svg>
+      <span class="brand-name-sm">Extensivo ENARE</span>
+    </div>
+    <span class="page-meta">NUT-DIETÉTICA · Aula 36 · Bloco B9</span>
+  </div>
+
+  <div class="page-content">
+    <div class="section-title">Equivalências Alimentares, IG/CG e Consistências</div>
+
+    <div class="subsection">Grupos de Substituição e Equivalências</div>
+    <table>
+      <tr><th>Grupo</th><th>Equivalências comuns</th></tr>
+      <tr>
+        <td><strong>Carnes e ovos</strong></td>
+        <td>100 g carne bovina ≈ 100 g frango ≈ 100 g peixe ≈ 2 ovos (equivalência proteica)</td>
+      </tr>
+      <tr>
+        <td><strong>Leguminosas</strong></td>
+        <td>½ xíc. feijão ≈ ½ xíc. lentilha ≈ ½ xíc. grão-de-bico ≈ ½ xíc. ervilha cozida</td>
+      </tr>
+      <tr>
+        <td><strong>Cereais/tubérculos</strong></td>
+        <td>4 col. sopa arroz cozido ≈ 4 col. sopa macarrão ≈ 1 batata média ≈ 2 fatias pão de forma</td>
+      </tr>
+      <tr>
+        <td><strong>Lácteos</strong></td>
+        <td>1 copo leite ≈ 2 col. sopa leite em pó ≈ 1 pote iogurte (200 g) ≈ 30 g queijo minas</td>
+      </tr>
+      <tr>
+        <td><strong>Gorduras</strong></td>
+        <td>1 col. sopa azeite ≈ 1 col. sopa manteiga ≈ 1 col. sopa margarina (equivalência calórica)</td>
+      </tr>
+    </table>
+
+    <div class="subsection">Índice Glicêmico (IG) e Carga Glicêmica (CG)</div>
+    <div class="formula-box">
+      <div class="formula">CG = (IG × g de CHO disponível na porção) ÷ 100</div>
+      <div class="formula-note">IG &lt;55 = baixo · 55–70 = médio · &gt;70 = alto &nbsp;|&nbsp; CG &lt;10 = baixa · 10–19 = média · ≥20 = alta</div>
+    </div>
+    <ul>
+      <li><strong>Exemplo clássico — melancia:</strong> IG alto (~72) mas CG baixa (~4) pela pouca quantidade de CHO por porção (100g = ~5g CHO disponível).</li>
+      <li><strong>Fibras, gordura e proteína</strong> na mesma refeição → ↓ IG da refeição como um todo.</li>
+      <li>O IG é determinado em relação à glicose (= 100) ou ao pão branco (= 70).</li>
+    </ul>
+
+    <div class="subsection">Consistências de Dietas — Progressão Hospitalar</div>
+    <table>
+      <tr><th>Consistência</th><th>Características</th><th>Indicação</th></tr>
+      <tr><td><strong>Líquida restrita</strong></td><td>Apenas líquidos claros (água, chás, caldo coado)</td><td>Pós-operatório imediato, íleo paralítico</td></tr>
+      <tr><td><strong>Líquida completa</strong></td><td>Líquidos e semilíquidos (leite, suco, caldo com partículas)</td><td>Disfagia grave, pós-cirúrgico inicial</td></tr>
+      <tr><td><strong>Pastosa</strong></td><td>Alimentos macios, sem grumos, sem necessidade de mastigação</td><td>Disfagia leve-moderada, próteses dentárias</td></tr>
+      <tr><td><strong>Branda</strong></td><td>Alimentos cozidos macios, mastigação fácil, sem frituras e crus duros</td><td>Recuperação GI, pós-cirúrgico tardio</td></tr>
+      <tr><td><strong>Normal/Geral</strong></td><td>Sem restrição de consistência</td><td>Pacientes sem limitação</td></tr>
+    </table>
+
+    <div class="anchor-box">
+      <p><strong>Âncoras críticas desta aula:</strong></p>
+      <ul>
+        <li><strong>FC sempre &gt; 1;</strong> FK pode ser &gt; 1 (cereais/leguminosas) ou &lt; 1 (carnes)</li>
+        <li><strong>PB = (PC ÷ FK) × FC</strong> — nunca multiplicar PC diretamente por FC</li>
+        <li><strong>Fritura ideal = 180°C;</strong> acima de 200°C = acroleína (tóxica)</li>
+        <li><strong>Vapor &gt; ebulição</strong> na preservação de vitaminas hidrossolúveis</li>
+        <li><strong>AQPC = qualitativo</strong> — NÃO calcula VCT; RI ≤ 10% (sadia) e sobra limpa ≤ 3%</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span class="footer-text">Extensivo ENARE 2026 · Bloco B9 Nutrição</span>
+    <span class="page-num">5 / 10</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     PÁGINA 6 — QUESTÃO 01 (APLICAÇÃO · GAB B)
+════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="25" viewBox="0 0 44 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="22,2 41,13 41,37 22,48 3,37 3,13" fill="#1F5C23" stroke="#C6D834" stroke-width="2.5"/>
+        <circle cx="22" cy="25" r="9" fill="#F6F4ED"/>
+      </svg>
+      <span class="brand-name-sm">Extensivo ENARE</span>
+    </div>
+    <span class="page-meta">NUT-DIETÉTICA · Aula 36 · Bloco B9</span>
+  </div>
+
+  <div class="page-content">
+    <div class="q-header">
+      <span class="q-badge">Q 01</span>
+      <span class="q-type">Aplicação · Cálculo FC e FK</span>
+    </div>
+
+    <div class="q-context">
+      A nutricionista responsável por uma UAN precisa calcular a quantidade de frango com osso a ser adquirida para servir 100 refeições, com per capita cozido de 120 g por comensal. O fator de cocção (FK) do frango assado é 0,75 e o fator de correção (FC) do frango com osso é 1,85.
+    </div>
+
+    <p class="q-stem">Qual a quantidade total de frango com osso, em quilogramas, que a nutricionista deve solicitar na compra?</p>
+
+    <ul class="alternatives">
+      <li>
+        <span class="alt-letter">A</span>
+        <span>16,0 kg — calculado aplicando apenas o FK: (120 g ÷ 0,75) × 100 = 16.000 g.</span>
+      </li>
+      <li>
+        <span class="alt-letter">B</span>
+        <span>29,6 kg — calculado revertendo o FK para obter o peso líquido e, em seguida, aplicando o FC: (120 g ÷ 0,75) × 1,85 × 100 = 29.600 g.</span>
+      </li>
+      <li>
+        <span class="alt-letter">C</span>
+        <span>22,2 kg — calculado aplicando apenas o FC sobre o per capita cozido: 120 g × 1,85 × 100 = 22.200 g.</span>
+      </li>
+      <li>
+        <span class="alt-letter">D</span>
+        <span>12,0 kg — calculado sem nenhuma correção: 120 g × 100 = 12.000 g.</span>
+      </li>
+    </ul>
+
+    <div class="alert-box" style="margin-top:4mm;">
+      <p><strong>Resolução passo a passo:</strong></p>
+      <p>① Per capita líquido = PC ÷ FK = 120 g ÷ 0,75 = <strong>160 g</strong></p>
+      <p>② Per capita bruto = PL × FC = 160 g × 1,85 = <strong>296 g</strong></p>
+      <p>③ Total (100 refeições) = 296 g × 100 = <strong>29.600 g = 29,6 kg</strong></p>
+      <p style="margin-top:1.5mm;"><strong>Erros comuns:</strong> A aplica só FK (esquece FC); C aplica só FC (esquece FK); D não aplica nenhum fator.</p>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span class="footer-text">Extensivo ENARE 2026 · Bloco B9 Nutrição</span>
+    <span class="page-num">6 / 10</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     PÁGINA 7 — QUESTÃO 02 (APLICAÇÃO · GAB C)
+════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="25" viewBox="0 0 44 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="22,2 41,13 41,37 22,48 3,37 3,13" fill="#1F5C23" stroke="#C6D834" stroke-width="2.5"/>
+        <circle cx="22" cy="25" r="9" fill="#F6F4ED"/>
+      </svg>
+      <span class="brand-name-sm">Extensivo ENARE</span>
+    </div>
+    <span class="page-meta">NUT-DIETÉTICA · Aula 36 · Bloco B9</span>
+  </div>
+
+  <div class="page-content">
+    <div class="q-header">
+      <span class="q-badge">Q 02</span>
+      <span class="q-type">Aplicação · Indicadores de UAN (RI e Sobra Limpa)</span>
+    </div>
+
+    <div class="q-context">
+      Após o almoço de uma UAN corporativa, a nutricionista registrou os seguintes dados: peso total de alimento produzido = 80 kg; peso de alimento distribuído = 50 kg; peso de sobra limpa (não distribuída, em condições de consumo) = 2,4 kg; peso de resto ingestão (sobra nos pratos dos comensais) = 6 kg.
+    </div>
+
+    <p class="q-stem">Com base nos parâmetros de aceitabilidade para coletividade sadia, é CORRETO afirmar que:</p>
+
+    <ul class="alternatives">
+      <li>
+        <span class="alt-letter">A</span>
+        <span>O RI de 12% e a sobra limpa de 4,8% estão ambos acima dos parâmetros aceitáveis, indicando baixa aceitabilidade do cardápio e superprodução simultâneas.</span>
+      </li>
+      <li>
+        <span class="alt-letter">B</span>
+        <span>O RI de 8% está dentro do parâmetro aceitável (≤ 10%); já a sobra limpa de 4,8% está acima do limite, indicando superprodução significativa.</span>
+      </li>
+      <li>
+        <span class="alt-letter">C</span>
+        <span>O RI de 12% está acima do parâmetro aceitável (≤ 10%) para coletividade sadia, sugerindo baixa aceitabilidade do cardápio; a sobra limpa de 3% está exatamente no limite máximo aceitável (≤ 3% do produzido).</span>
+      </li>
+      <li>
+        <span class="alt-letter">D</span>
+        <span>O RI de 6% e a sobra limpa de 3% estão ambos dentro dos parâmetros aceitáveis, não havendo necessidade de intervenção na gestão do cardápio.</span>
+      </li>
+    </ul>
+
+    <div class="alert-box" style="margin-top:4mm;">
+      <p><strong>Resolução:</strong></p>
+      <p>① RI = (Resto / Distribuído) × 100 = (6 / 50) × 100 = <strong>12%</strong> → acima de 10% → <em>fora do parâmetro</em></p>
+      <p>② Sobra limpa = (Sobra / Produzido) × 100 = (2,4 / 80) × 100 = <strong>3%</strong> → no limite máximo de 3% → <em>dentro do parâmetro</em></p>
+      <p style="margin-top:1.5mm;"><strong>Erros comuns:</strong> B calcula RI sobre o produzido (8%) em vez do distribuído; A e D apresentam valores incorretos.</p>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span class="footer-text">Extensivo ENARE 2026 · Bloco B9 Nutrição</span>
+    <span class="page-num">7 / 10</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     PÁGINA 8 — QUESTÃO 03 (ANÁLISE ÂNCORA · GAB C)
+════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="25" viewBox="0 0 44 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="22,2 41,13 41,37 22,48 3,37 3,13" fill="#1F5C23" stroke="#C6D834" stroke-width="2.5"/>
+        <circle cx="22" cy="25" r="9" fill="#F6F4ED"/>
+      </svg>
+      <span class="brand-name-sm">Extensivo ENARE</span>
+    </div>
+    <span class="page-meta">NUT-DIETÉTICA · Aula 36 · Bloco B9</span>
+  </div>
+
+  <div class="page-content">
+    <div class="q-header">
+      <span class="q-badge">Q 03</span>
+      <span class="q-type">Análise Âncora · Técnica Dietética Integrada</span>
+    </div>
+
+    <p class="q-stem">Analise as afirmativas a seguir sobre técnica dietética:</p>
+
+    <ul class="assertions">
+      <li>
+        <span class="assert-num">I</span>
+        <span>A avaliação qualitativa das preparações e cardápios (AQPC) é o método padrão para calcular o valor calórico total e a adequação de macronutrientes de cardápios coletivos, sendo obrigatória sua utilização na elaboração de cardápios hospitalares segundo a Resolução CFN 600/2018.</span>
+      </li>
+      <li>
+        <span class="assert-num">II</span>
+        <span>O fator de cocção (FK) é menor que 1 para carnes e aves submetidas a métodos de cocção com calor seco (grelhadas, assadas), pois esses alimentos perdem água e gordura durante o processo, resultando em peso cozido inferior ao peso cru limpo.</span>
+      </li>
+      <li>
+        <span class="assert-num">III</span>
+        <span>O fator de correção (FC) é sempre maior que 1, pois relaciona o peso bruto (antes do pré-preparo, com partes não comestíveis) ao peso líquido (após pré-preparo); seu uso permite determinar a quantidade a ser adquirida a partir do per capita líquido planejado.</span>
+      </li>
+      <li>
+        <span class="assert-num">IV</span>
+        <span>A temperatura ideal para fritura por imersão é acima de 200°C, pois nessa faixa ocorre o selamento rápido da superfície do alimento, reduzindo a absorção de gordura e preservando as propriedades organolépticas; temperaturas abaixo dessa faixa produzem a acroleína.</span>
+      </li>
+    </ul>
+
+    <p class="q-stem" style="margin-top:3mm;">Estão CORRETAS apenas as afirmativas:</p>
+
+    <ul class="alternatives">
+      <li><span class="alt-letter">A</span><span>I e III</span></li>
+      <li><span class="alt-letter">B</span><span>I e IV</span></li>
+      <li><span class="alt-letter">C</span><span>II e III</span></li>
+      <li><span class="alt-letter">D</span><span>II e IV</span></li>
+    </ul>
+
+    <div class="anchor-box" style="margin-top:4mm;">
+      <p><strong>Âncora desta questão:</strong></p>
+      <ul>
+        <li><strong>I — ERRADA:</strong> AQPC é qualitativa — NÃO calcula VCT nem macronutrientes. Não está na Res. CFN 600/2018 como obrigatória para hospitais.</li>
+        <li><strong>II — CORRETA:</strong> FK &lt; 1 para carnes/aves grelhadas/assadas (perdem água e gordura → peso cozido &lt; peso cru limpo).</li>
+        <li><strong>III — CORRETA:</strong> FC sempre &gt; 1 (PB/PL, com PB sempre maior por incluir partes não comestíveis).</li>
+        <li><strong>IV — ERRADA:</strong> Temperatura ideal = 180°C. Acima de 200°C forma-se acroleína (tóxica). A descrição está invertida.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span class="footer-text">Extensivo ENARE 2026 · Bloco B9 Nutrição</span>
+    <span class="page-num">8 / 10</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     PÁGINA 9 — GABARITO COMENTADO
+════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="25" viewBox="0 0 44 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="22,2 41,13 41,37 22,48 3,37 3,13" fill="#1F5C23" stroke="#C6D834" stroke-width="2.5"/>
+        <circle cx="22" cy="25" r="9" fill="#F6F4ED"/>
+      </svg>
+      <span class="brand-name-sm">Extensivo ENARE</span>
+    </div>
+    <span class="page-meta">NUT-DIETÉTICA · Aula 36 · Bloco B9</span>
+  </div>
+
+  <div class="page-content">
+    <div class="section-title">Gabarito Comentado</div>
+
+    <div class="gab-grid">
+      <div class="gab-card">
+        <div class="gab-q">Questão 01</div>
+        <div class="gab-resp">B</div>
+        <div class="gab-tema">Cálculo FC + FK</div>
+      </div>
+      <div class="gab-card">
+        <div class="gab-q">Questão 02</div>
+        <div class="gab-resp">C</div>
+        <div class="gab-tema">RI + Sobra Limpa</div>
+      </div>
+      <div class="gab-card">
+        <div class="gab-q">Questão 03</div>
+        <div class="gab-resp">C</div>
+        <div class="gab-tema">II e III corretas</div>
+      </div>
+    </div>
+
+    <div class="gab-justificativa highlight-box">
+      <div class="gab-title">Q01 — Gabarito B (29,6 kg)</div>
+      <p><span class="wrong">A (16,0 kg)</span> — Aplicou apenas o FK, esquecendo o FC: (120÷0,75)×100 = 16.000 g. Erro: não multiplicou pelo FC=1,85.</p>
+      <p><span class="correct">B ✓ (29,6 kg)</span> — Correto: (120÷0,75) = 160g (PL) → 160×1,85 = 296g (PB) → 296×100 = 29.600g = 29,6 kg.</p>
+      <p><span class="wrong">C (22,2 kg)</span> — Aplicou apenas o FC, esquecendo o FK: 120×1,85×100 = 22.200 g. Erro clássico: multiplicou o PC pelo FC sem corrigir pelo FK.</p>
+      <p><span class="wrong">D (12,0 kg)</span> — Não aplicou nenhum fator: 120×100 = 12.000 g. Equivale ao total cozido sem qualquer correção.</p>
+    </div>
+
+    <div class="gab-justificativa highlight-box">
+      <div class="gab-title">Q02 — Gabarito C</div>
+      <p><span class="wrong">A</span> — RI calculado corretamente (12%) mas sobra limpa erroneamente calculada sobre o distribuído (2,4/50=4,8%) em vez do produzido.</p>
+      <p><span class="wrong">B</span> — RI calculado erroneamente sobre o produzido (6/80=7,5%≈8%) em vez do distribuído; e sobra sobre o distribuído = 4,8%.</p>
+      <p><span class="correct">C ✓</span> — RI = 6/50×100 = 12% (acima de 10%, fora do parâmetro); sobra limpa = 2,4/80×100 = 3% (exatamente no limite máximo, aceitável).</p>
+      <p><span class="wrong">D</span> — RI de 6% está errado (não há como obter 6% com os dados fornecidos usando a fórmula correta).</p>
+    </div>
+
+    <div class="gab-justificativa highlight-box">
+      <div class="gab-title">Q03 — Gabarito C (II e III)</div>
+      <p><span class="wrong">I — ERRADA:</span> AQPC é um instrumento QUALITATIVO — não calcula VCT. Não é obrigatória pela Res. CFN 600/2018 para hospitais.</p>
+      <p><span class="correct">II — CORRETA ✓:</span> FK &lt; 1 para carnes/aves grelhadas/assadas, pois perdem água e gordura → peso cozido &lt; peso cru limpo.</p>
+      <p><span class="correct">III — CORRETA ✓:</span> FC = PB/PL → sempre &gt; 1 (PB inclui partes não comestíveis). PB = PL × FC.</p>
+      <p><span class="wrong">IV — ERRADA:</span> Temperatura ideal para fritura = 180°C; acroleína forma-se ACIMA de 200°C, não abaixo. A alternativa inverteu os conceitos.</p>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span class="footer-text">Extensivo ENARE 2026 · Bloco B9 Nutrição</span>
+    <span class="page-num">9 / 10</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     PÁGINA 10 — SÍNTESE FINAL
+════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="logo-area">
+      <svg width="22" height="25" viewBox="0 0 44 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="22,2 41,13 41,37 22,48 3,37 3,13" fill="#1F5C23" stroke="#C6D834" stroke-width="2.5"/>
+        <circle cx="22" cy="25" r="9" fill="#F6F4ED"/>
+      </svg>
+      <span class="brand-name-sm">Extensivo ENARE</span>
+    </div>
+    <span class="page-meta">NUT-DIETÉTICA · Aula 36 · Bloco B9</span>
+  </div>
+
+  <div class="page-content">
+    <div class="section-title">Síntese Final — NUT-DIETÉTICA</div>
+
+    <div class="sintese-grid">
+      <div class="sintese-card">
+        <div class="s-title">Fator de Correção (FC)</div>
+        <ul>
+          <li>FC = PB / PL → sempre <strong>&gt; 1</strong></li>
+          <li>PB = PL × FC (quanto comprar)</li>
+          <li>Frango com osso ≈ 1,85; banana ≈ 1,45</li>
+          <li>FC alto = maior desperdício no pré-preparo</li>
+        </ul>
+      </div>
+      <div class="sintese-card">
+        <div class="s-title">Fator de Cocção (FK)</div>
+        <ul>
+          <li>FK = PC / PL (cru limpo)</li>
+          <li>FK &gt; 1: cereais, leguminosas (absorvem água)</li>
+          <li>FK &lt; 1: carnes, aves (perdem água/gordura)</li>
+          <li>PB = (PC ÷ FK) × FC</li>
+        </ul>
+      </div>
+      <div class="sintese-card">
+        <div class="s-title">Indicadores de UAN</div>
+        <ul>
+          <li>RI = Resto / Distribuído × 100</li>
+          <li>RI aceitável: <strong>≤ 10%</strong> (sadia) | ≤ 20% (hospital)</li>
+          <li>Sobra limpa = Sobra / Produzido × 100</li>
+          <li>Sobra aceitável: <strong>≤ 3%</strong></li>
+        </ul>
+      </div>
+      <div class="sintese-card">
+        <div class="s-title">Métodos de Cocção</div>
+        <ul>
+          <li>Vapor &lt; ebulição em perdas de vit. hidrossolúveis</li>
+          <li>Fritura ideal: <strong>180°C</strong></li>
+          <li>Acima de 200°C → <strong>acroleína</strong> (tóxica)</li>
+          <li>Abaixo de 150°C → absorção excessiva de gordura</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="anchor-box" style="margin-top:3mm;">
+      <p><strong>As 5 âncoras desta aula:</strong></p>
+      <ul>
+        <li><strong>1.</strong> FC sempre &gt; 1; FK pode ser &gt; 1 (cereais absorvem água) ou &lt; 1 (carnes perdem água)</li>
+        <li><strong>2.</strong> PB = (PC ÷ FK) × FC — nunca aplicar FC direto sobre o per capita cozido</li>
+        <li><strong>3.</strong> Fritura: 180°C = ideal; &gt;200°C = acroleína; &lt;150°C = encharcamento</li>
+        <li><strong>4.</strong> AQPC = qualitativo (sem cálculo de VCT) — RI ≤10% e sobra limpa ≤3%</li>
+        <li><strong>5.</strong> RI calculado sobre peso distribuído; sobra limpa calculada sobre peso produzido</li>
+      </ul>
+    </div>
+
+    <div class="sintese-grid" style="margin-top:3mm;">
+      <div class="sintese-card">
+        <div class="s-title">AQPC — Resumo</div>
+        <ul>
+          <li>Qualitativo: cor, técnica, frituras, leguminosas</li>
+          <li>NÃO calcula VCT nem macronutrientes</li>
+          <li>Ferramenta de gestão de cardápios</li>
+          <li>Avalia monotonia e equilíbrio visual do cardápio</li>
+        </ul>
+      </div>
+      <div class="sintese-card">
+        <div class="s-title">Próxima Aula — 37</div>
+        <ul>
+          <li><strong>NUT-FUND:</strong> Água, Eletrólitos e Equilíbrio Ácido-Base</li>
+          <li>Compartimentos hídricos e regulação</li>
+          <li>Sódio, potássio, cloro e fósforo</li>
+          <li>Distúrbios: acidose, alcalose, desidratação</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span class="footer-text">Extensivo ENARE 2026 · Bloco B9 Nutrição</span>
+    <span class="page-num">10 / 10</span>
+  </div>
+</div>
+
+</body>
+</html>

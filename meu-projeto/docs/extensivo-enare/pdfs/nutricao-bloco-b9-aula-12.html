@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B9 · Aula 12 — TCE, DPOC, Tuberculose e Pediátrico UTI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Bricolage+Grotesque:wght@300;400;500;600;700&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { -webkit-print-color-adjust: exact; print-color-adjust: exact; font-family: 'Bricolage Grotesque', sans-serif; background: #888; }
+
+  .page { width: 210mm; height: 297mm; display: flex; flex-direction: column; overflow: hidden; page-break-after: always; background: #F6F4ED; }
+  .ph { height: 14mm; flex-shrink: 0; display: flex; align-items: center; justify-content: space-between; padding: 0 16mm; border-bottom: 0.4mm solid #E0DDD6; }
+  .pf { height: 9mm; flex-shrink: 0; display: flex; align-items: center; justify-content: space-between; padding: 0 16mm; border-top: 0.4mm solid #E0DDD6; }
+  .pc { flex: 1; padding: 7mm 16mm 5mm; overflow: hidden; }
+  .pc-sm { flex: 1; padding: 5mm 16mm 4mm; overflow: hidden; }
+
+  /* Header / Footer */
+  .logo-wrap { display: flex; align-items: center; gap: 2mm; }
+  .logo-icon { width: 7mm; height: 7mm; background: #0D8A8D; border-radius: 1mm; display: flex; align-items: center; justify-content: center; }
+  .logo-icon svg { width: 4.5mm; height: 4.5mm; fill: #F6F4ED; }
+  .logo-text { font-family: 'Playfair Display', serif; font-style: italic; font-size: 5.5pt; color: #0D8A8D; letter-spacing: 0.02em; }
+  .logo-sub { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 4pt; color: #888; letter-spacing: 0.08em; text-transform: uppercase; }
+  .ph-center { font-family: 'Barlow Condensed', sans-serif; font-size: 6.5pt; font-weight: 700; color: #0D8A8D; letter-spacing: 0.12em; text-transform: uppercase; }
+  .ph-right { font-family: 'Bricolage Grotesque', sans-serif; font-size: 5.5pt; font-weight: 400; color: #999; }
+  .pf-left { font-size: 5pt; color: #aaa; }
+  .pf-center { font-size: 5pt; color: #bbb; }
+  .pf-right { font-size: 5pt; color: #aaa; }
+
+  /* Cover */
+  .cover-band { background: #0D8A8D; color: #F6F4ED; padding: 5mm 16mm 4.5mm; }
+  .cover-band .subgroup { font-family: 'Barlow Condensed', sans-serif; font-size: 7pt; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.75; margin-bottom: 1.5mm; }
+  .cover-band h1 { font-family: 'Barlow Condensed', sans-serif; font-size: 21pt; font-weight: 800; line-height: 1.05; letter-spacing: 0.02em; text-transform: uppercase; }
+  .cover-band .aula-label { font-size: 7pt; font-weight: 400; opacity: 0.7; margin-top: 1mm; }
+  .cover-meta { padding: 4mm 16mm 0; }
+  .cover-meta .tag-row { display: flex; gap: 2mm; flex-wrap: wrap; margin-bottom: 3mm; }
+  .tag { display: inline-flex; align-items: center; gap: 1mm; font-family: 'Barlow Condensed', sans-serif; font-size: 6.5pt; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 1mm 2.5mm; border-radius: 0.8mm; }
+  .tag-teal { background: #0D8A8D; color: #F6F4ED; }
+  .tag-green { background: #1F5C23; color: #F6F4ED; }
+  .tag-lime { background: #C6D834; color: #070707; }
+  .tag-grey { background: #E0DDD6; color: #555; }
+  .tag-red { background: #C0392B; color: #fff; }
+  .cover-highlights { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2.5mm; margin-top: 2mm; }
+  .hl-box { background: #fff; border: 0.3mm solid #E0DDD6; border-radius: 1.2mm; padding: 3mm 3.5mm; }
+  .hl-box .hl-val { font-family: 'Barlow Condensed', sans-serif; font-size: 14pt; font-weight: 800; color: #0D8A8D; line-height: 1; }
+  .hl-box .hl-lbl { font-size: 6pt; color: #666; margin-top: 0.8mm; line-height: 1.3; }
+  .cover-anchor { margin-top: 3.5mm; background: #1F5C23; color: #F6F4ED; border-radius: 1.2mm; padding: 2.5mm 4mm; }
+  .cover-anchor .anc-title { font-family: 'Barlow Condensed', sans-serif; font-size: 6.5pt; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.75; margin-bottom: 1mm; }
+  .cover-anchor .anc-items { display: flex; gap: 4mm; flex-wrap: wrap; }
+  .cover-anchor .anc-item { font-size: 6.5pt; }
+  .cover-anchor .anc-item strong { font-weight: 700; color: #C6D834; }
+  .cover-qtype { margin-top: 3mm; display: flex; gap: 3mm; align-items: center; }
+  .qtype-badge { font-family: 'Barlow Condensed', sans-serif; font-size: 7pt; font-weight: 700; letter-spacing: 0.1em; padding: 1mm 3mm; border-radius: 0.8mm; text-transform: uppercase; }
+  .qtype-ap { background: #C6D834; color: #070707; }
+  .qtype-an { background: #0D8A8D; color: #F6F4ED; }
+  .qtype-label { font-size: 6pt; color: #888; }
+
+  /* Content elements */
+  h2 { font-family: 'Barlow Condensed', sans-serif; font-size: 13pt; font-weight: 800; color: #0D8A8D; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 3mm; border-bottom: 0.5mm solid #0D8A8D; padding-bottom: 1.5mm; }
+  h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 10pt; font-weight: 700; color: #1F5C23; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 2mm; margin-top: 3mm; }
+  h3:first-child { margin-top: 0; }
+  p { font-size: 7.5pt; line-height: 1.5; color: #2a2a2a; margin-bottom: 2mm; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 6.8pt; margin-bottom: 3mm; }
+  th { background: #0D8A8D; color: #F6F4ED; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 7pt; letter-spacing: 0.06em; text-transform: uppercase; padding: 1.8mm 2.5mm; text-align: left; }
+  td { padding: 1.6mm 2.5mm; border-bottom: 0.25mm solid #E0DDD6; color: #2a2a2a; vertical-align: top; }
+  tr:nth-child(even) td { background: rgba(13,138,141,0.04); }
+  .td-green { color: #1F5C23; font-weight: 700; }
+  .td-red { color: #C0392B; font-weight: 700; }
+  .td-teal { color: #0D8A8D; font-weight: 700; }
+  .td-bold { font-weight: 700; }
+
+  /* Info boxes */
+  .box { border-radius: 1.2mm; padding: 3mm 4mm; margin-bottom: 3mm; }
+  .box-teal { background: rgba(13,138,141,0.08); border-left: 1mm solid #0D8A8D; }
+  .box-green { background: rgba(31,92,35,0.07); border-left: 1mm solid #1F5C23; }
+  .box-lime { background: rgba(198,216,52,0.15); border-left: 1mm solid #C6D834; }
+  .box-red { background: rgba(192,57,43,0.07); border-left: 1mm solid #C0392B; }
+  .box-amber { background: rgba(230,126,34,0.08); border-left: 1mm solid #E67E22; }
+  .box-title { font-family: 'Barlow Condensed', sans-serif; font-size: 7.5pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1.5mm; }
+  .box-teal .box-title { color: #0D8A8D; }
+  .box-green .box-title { color: #1F5C23; }
+  .box-lime .box-title { color: #5a6300; }
+  .box-red .box-title { color: #C0392B; }
+  .box-amber .box-title { color: #E67E22; }
+  .box p { margin-bottom: 1mm; font-size: 7pt; }
+  .box p:last-child { margin-bottom: 0; }
+
+  /* Lists */
+  ul { padding-left: 4mm; margin-bottom: 2mm; }
+  ul li { font-size: 7.2pt; line-height: 1.45; color: #2a2a2a; margin-bottom: 0.8mm; }
+  ul li::marker { color: #0D8A8D; }
+
+  /* Question pages */
+  .q-header { background: #0D8A8D; color: #F6F4ED; border-radius: 1.5mm; padding: 2.5mm 4mm; margin-bottom: 3.5mm; display: flex; align-items: center; gap: 3mm; }
+  .q-num { font-family: 'Barlow Condensed', sans-serif; font-size: 18pt; font-weight: 800; line-height: 1; }
+  .q-meta { flex: 1; }
+  .q-meta .q-type { font-family: 'Barlow Condensed', sans-serif; font-size: 7pt; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.8; }
+  .q-meta .q-origin { font-size: 6.5pt; opacity: 0.7; }
+  .q-stem { font-size: 8pt; line-height: 1.55; color: #2a2a2a; margin-bottom: 3mm; background: #fff; border: 0.3mm solid #E0DDD6; border-radius: 1mm; padding: 3mm 4mm; }
+  .q-stem strong { color: #0D8A8D; }
+  .options { display: flex; flex-direction: column; gap: 1.8mm; }
+  .opt { display: flex; gap: 2.5mm; align-items: flex-start; font-size: 7.5pt; line-height: 1.45; padding: 1.8mm 3mm; border-radius: 1mm; border: 0.25mm solid #E0DDD6; background: #fff; }
+  .opt-letter { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; color: #0D8A8D; flex-shrink: 0; line-height: 1.2; }
+  .opt.correct { background: rgba(31,92,35,0.1); border-color: #1F5C23; }
+  .opt.correct .opt-letter { color: #1F5C23; }
+  .opt.distractor { background: rgba(192,57,43,0.05); border-color: #e8c8c5; }
+  .opt.distractor .opt-letter { color: #C0392B; }
+  .q-rationale { margin-top: 3mm; font-size: 6.8pt; line-height: 1.5; }
+  .q-rationale .rat-title { font-family: 'Barlow Condensed', sans-serif; font-size: 7pt; font-weight: 700; color: #1F5C23; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1mm; }
+
+  /* Answer page */
+  .answer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5mm; margin-top: 4mm; }
+  .ans-card { background: #0D8A8D; color: #F6F4ED; border-radius: 2mm; padding: 5mm; text-align: center; }
+  .ans-card .ans-q { font-family: 'Barlow Condensed', sans-serif; font-size: 9pt; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.8; }
+  .ans-card .ans-letter { font-family: 'Barlow Condensed', sans-serif; font-size: 38pt; font-weight: 800; line-height: 1; color: #C6D834; }
+  .ans-card .ans-topic { font-size: 6pt; opacity: 0.75; margin-top: 1mm; line-height: 1.3; }
+
+  /* Synthesis page */
+  .synth-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; margin-bottom: 3mm; }
+  .synth-item { background: #fff; border: 0.3mm solid #E0DDD6; border-radius: 1mm; padding: 2.5mm 3mm; }
+  .synth-item .si-title { font-family: 'Barlow Condensed', sans-serif; font-size: 7pt; font-weight: 700; color: #0D8A8D; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1mm; }
+  .synth-item .si-body { font-size: 6.5pt; line-height: 1.45; color: #333; }
+  .ref-block { background: #f5f4f0; border-radius: 1mm; padding: 2.5mm 3.5mm; }
+  .ref-block .ref-title { font-family: 'Barlow Condensed', sans-serif; font-size: 7pt; font-weight: 700; color: #666; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.5mm; }
+  .ref-block ul { margin: 0; padding-left: 3.5mm; }
+  .ref-block ul li { font-size: 6pt; color: #666; line-height: 1.4; margin-bottom: 0.5mm; }
+
+  /* 2-col layout */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; }
+
+  /* Pill */
+  .pill { display: inline-block; font-family: 'Barlow Condensed', sans-serif; font-size: 6.5pt; font-weight: 700; padding: 0.5mm 2mm; border-radius: 0.7mm; text-transform: uppercase; letter-spacing: 0.06em; }
+  .pill-teal { background: #0D8A8D; color: #F6F4ED; }
+  .pill-lime { background: #C6D834; color: #070707; }
+  .pill-red { background: #C0392B; color: #fff; }
+
+  /* An question */
+  .an-items { display: flex; flex-direction: column; gap: 1.5mm; margin: 2.5mm 0; }
+  .an-item { display: flex; gap: 2.5mm; align-items: flex-start; font-size: 7.5pt; line-height: 1.45; padding: 1.8mm 3mm; border-radius: 1mm; background: #fff; border: 0.25mm solid #E0DDD6; }
+  .an-item.correct-item { background: rgba(31,92,35,0.1); border-color: #1F5C23; }
+  .an-item.wrong-item { background: rgba(192,57,43,0.05); border-color: #e8c8c5; }
+  .an-roman { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; flex-shrink: 0; line-height: 1.2; }
+  .correct-item .an-roman { color: #1F5C23; }
+  .wrong-item .an-roman { color: #C0392B; }
+
+  .fs6 { font-size: 6pt; }
+  .mt1 { margin-top: 1mm; }
+  .mt2 { margin-top: 2mm; }
+  .mt3 { margin-top: 3mm; }
+  .mb0 { margin-bottom: 0; }
+</style>
+</head>
+<body>
+
+<!-- ========== PAGE 1 — CAPA ========== -->
+<div class="page">
+  <div class="ph">
+    <div class="logo-wrap">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      </div>
+      <div>
+        <div class="logo-text">Extensivo ENARE</div>
+        <div class="logo-sub">2026</div>
+      </div>
+    </div>
+    <div class="ph-center">Bloco B9 · Nutrição</div>
+    <div class="ph-right">PDF de Apoio · Aula 12</div>
+  </div>
+
+  <div class="cover-band">
+    <div class="subgroup">NUT-TNUTR · Terapia Nutricional</div>
+    <h1>TCE, DPOC, Tuberculose<br>e Pediátrico UTI:<br>TN em Casos Especiais</h1>
+    <div class="aula-label">Aula 12 de ~35 · Bloco B9</div>
+  </div>
+
+  <div class="pc-sm">
+    <div class="cover-meta">
+      <div class="tag-row">
+        <span class="tag tag-teal">NUT-TNUTR</span>
+        <span class="tag tag-lime">Ap · An</span>
+        <span class="tag tag-green">Alta prioridade FGV 2025</span>
+      </div>
+
+      <div class="cover-highlights">
+        <div class="hl-box">
+          <div class="hl-val">↑Lipídios</div>
+          <div class="hl-lbl">DPOC — ↓QR → ↓CO₂ → ↓trabalho respiratório</div>
+        </div>
+        <div class="hl-box">
+          <div class="hl-val">Pós-pilórica</div>
+          <div class="hl-lbl">TCE + gastroparesia → bypassa estômago, ↓aspiração</div>
+        </div>
+        <div class="hl-box">
+          <div class="hl-val">Zn + Se</div>
+          <div class="hl-lbl">Tuberculose ativa — modulação imune e ↓estresse oxidativo</div>
+        </div>
+      </div>
+
+      <div class="cover-anchor mt2">
+        <div class="anc-title">Questões-âncora da banca FGV</div>
+        <div class="anc-items">
+          <div class="anc-item"><strong>2025 Q27</strong> · DPOC grave + sarcopenia — macro ↑lipídios ↓carboidratos (An)</div>
+          <div class="anc-item"><strong>2025 Q36</strong> · Tuberculose + desnutrição grave — hiperproteica + Zn/Se (An)</div>
+          <div class="anc-item"><strong>2025 Q25</strong> · Pediátrico TCE — NE incremental, fase metabólica (An)</div>
+          <div class="anc-item"><strong>2025 Q30</strong> · TCE + gastroparesia — NE pós-pilórica, aspiração (An)</div>
+        </div>
+      </div>
+
+      <div class="cover-qtype mt2">
+        <span class="qtype-badge qtype-ap">Q1 · Ap</span>
+        <span class="qtype-badge qtype-ap">Q2 · Ap</span>
+        <span class="qtype-badge qtype-an">Q3 · An — âncora</span>
+        <span class="qtype-label" style="margin-left:2mm">Ap = Aplicação · An = Análise</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="pf">
+    <span class="pf-left">Extensivo ENARE 2026</span>
+    <span class="pf-center">Bloco B9 · Nutrição · Aula 12</span>
+    <span class="pf-right">1 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PAGE 2 — TCE: METABOLISMO E TN ========== -->
+<div class="page">
+  <div class="ph">
+    <div class="logo-wrap">
+      <div class="logo-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+      <div><div class="logo-text">Extensivo ENARE</div><div class="logo-sub">2026</div></div>
+    </div>
+    <div class="ph-center">TCE — Metabolismo e TN</div>
+    <div class="ph-right">NUT-TNUTR · Aula 12</div>
+  </div>
+
+  <div class="pc-sm">
+    <h2>Traumatismo Cranioencefálico — Metabolismo e TN</h2>
+
+    <div class="two-col">
+      <div>
+        <h3>Fases metabólicas do TCE</h3>
+        <table style="margin-bottom:2mm">
+          <thead>
+            <tr><th>Fase</th><th>Período</th><th>Metabolismo</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="td-bold">Ebb (hipometabolismo relativo)</td>
+              <td>D1–D3</td>
+              <td>↓metabolismo, edema cerebral agudo — <strong>NE incremental</strong> (50–75% meta)</td>
+            </tr>
+            <tr>
+              <td class="td-bold">Flow (hipermetabolismo)</td>
+              <td>D4+</td>
+              <td>↑catabolismo, ↑proteólise — avançar para meta plena; 2,0–2,5 g/kg/dia proteína</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="box box-teal">
+          <div class="box-title">Metas nutricionais no TCE</div>
+          <p><strong>Caloria:</strong> 25–35 kcal/kg/dia (fase hipermetabólica)</p>
+          <p><strong>Proteína:</strong> 1,5–2,5 g/kg/dia (2,5 no TCE grave com catabolismo intenso)</p>
+          <p><strong>NE precoce:</strong> iniciar ≤24–48h — neuroproteção, barreira intestinal, ↓infecção</p>
+          <p><strong>Via:</strong> gástrica se sem gastroparesia; pós-pilórica se RGV elevado</p>
+        </div>
+      </div>
+
+      <div>
+        <h3>Pediátrico TCE — especificidades</h3>
+        <div class="box box-green">
+          <div class="box-title">NE incremental pediátrico (2025 Q25)</div>
+          <p><strong>D1–D3 (fase ebb):</strong> iniciar NE com 50–75% da meta calórica — hipometabolismo relativo; forçar meta plena é prejudicial (hipercaloria na fase aguda → hiperglicemia, ↑oxidação)</p>
+          <p><strong>D4+ (fase flow):</strong> hipermetabolismo estabelecido → atingir meta plena progressivamente</p>
+          <p><strong>Erro clássico FGV:</strong> "esperar estabilização neurológica para iniciar NE" → FALSO; NE precoce é benéfica mesmo no TCE grave</p>
+        </div>
+
+        <div class="box box-amber" style="margin-bottom:0">
+          <div class="box-title">Metas pediátricas por faixa etária</div>
+          <p><strong>Lactente:</strong> proteína 2,5–3,5 g/kg/dia; kcal 80–120 kcal/kg/dia</p>
+          <p><strong>Pré-escolar/Escolar:</strong> proteína 1,5–2,5 g/kg/dia; kcal 50–80 kcal/kg/dia</p>
+          <p><strong>Adolescente:</strong> proteína 1,5–2,0 g/kg/dia — semelhante ao adulto</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="box box-red" style="margin-bottom:0">
+      <div class="box-title">Distratores FGV — TCE e pediátrico</div>
+      <p><strong>"NE deve aguardar estabilização neurológica (≥ D7)"</strong> → ERRADO — iniciar ≤48h · <strong>"Meta plena imediata em pediátrico TCE"</strong> → ERRADO — fase ebb exige incremento gradual · <strong>"NP é preferível à NE nos primeiros dias"</strong> → ERRADO — NE é via de escolha salvo impossibilidade técnica</p>
+    </div>
+  </div>
+
+  <div class="pf">
+    <span class="pf-left">Extensivo ENARE 2026</span>
+    <span class="pf-center">Bloco B9 · Nutrição · Aula 12</span>
+    <span class="pf-right">2 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PAGE 3 — TCE + GASTROPARESIA: NE PÓS-PILÓRICA ========== -->
+<div class="page">
+  <div class="ph">
+    <div class="logo-wrap">
+      <div class="logo-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+      <div><div class="logo-text">Extensivo ENARE</div><div class="logo-sub">2026</div></div>
+    </div>
+    <div class="ph-center">TCE + Gastroparesia — NE Pós-Pilórica</div>
+    <div class="ph-right">NUT-TNUTR · Aula 12</div>
+  </div>
+
+  <div class="pc-sm">
+    <h2>TCE + Gastroparesia — NE Pós-Pilórica e Aspiração</h2>
+
+    <div class="two-col">
+      <div>
+        <h3>Gastroparesia no TCE grave</h3>
+        <ul>
+          <li>Frequente em TCE grave: ↑PIC, uso de opioides, imobilidade prolongada</li>
+          <li>Manifestação: RGV &gt; 500 mL/6h (ou &gt; 250 mL em algumas diretrizes), regurgitação, distensão</li>
+          <li>Monitoramento rotineiro de RGV: abandonado pelo BRASPEN 2023 (ver A08) — mas avaliação clínica persiste</li>
+        </ul>
+
+        <div class="box box-teal">
+          <div class="box-title">NE pós-pilórica — conceito central</div>
+          <p><strong>Definição:</strong> posicionamento distal ao piloro (2ª–4ª porção duodenal ou jejuno proximal) — "bypass gástrico"</p>
+          <p><strong>Acesso:</strong> sonda nasoenteral/nasojejunal (fluoroscopia ou endoscopia) ou jejunostomia cirúrgica</p>
+          <p><strong>Vantagem:</strong> contorna o esvaziamento gástrico comprometido, mantém TGI distal funcional, permite NE</p>
+          <p><strong>"Bypass gástrico" na literatura de TN</strong> = NE pós-pilórica (não confundir com gastroplastia bariátrica)</p>
+        </div>
+      </div>
+
+      <div>
+        <h3>Aspiração e pneumonia associada à VM</h3>
+        <div class="box box-green">
+          <div class="box-title">Benefícios da NE pós-pilórica</div>
+          <p>↓ Risco de aspiração pulmonar</p>
+          <p>↓ Pneumonia associada à ventilação mecânica (PAV)</p>
+          <p>↓ Resíduo gástrico com refluxo</p>
+          <p>Permite atingir meta nutricional mesmo com gastroparesia</p>
+        </div>
+
+        <div class="box box-amber">
+          <div class="box-title">Medidas adjuvantes anti-aspiração</div>
+          <ul style="margin:0">
+            <li>Cabeceira elevada 30–45° (sempre)</li>
+            <li>Higiene oral com clorexidina (↓PAV)</li>
+            <li>Procinéticos (metoclopramida, eritromicina) antes de tentar pós-pilórica</li>
+          </ul>
+        </div>
+
+        <div class="box box-red" style="margin-bottom:0">
+          <div class="box-title">Quando indicar NP no TCE</div>
+          <p>NP somente se NE pós-pilórica é <strong>tecnicamente impossível</strong> OU NE pós-pilórica falha em fornecer ≥60% da meta após 48–72h de tentativa. NP não é primeira escolha no TCE mesmo com gastroparesia.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="box box-lime mt1" style="margin-bottom:0">
+      <div class="box-title">Algoritmo TCE + gastroparesia (FGV 2025 Q30)</div>
+      <p>RGV elevado / regurgitação → <strong>1º) tentar procinéticos</strong> → <strong>2º) NE pós-pilórica</strong> → <strong>3º) NP central</strong> somente se pós-pilórica impossível ou insuficiente. Aspiração silenciosa: risco existe mesmo com NE — não é contraindicação absoluta à NE.</p>
+    </div>
+  </div>
+
+  <div class="pf">
+    <span class="pf-left">Extensivo ENARE 2026</span>
+    <span class="pf-center">Bloco B9 · Nutrição · Aula 12</span>
+    <span class="pf-right">3 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PAGE 4 — DPOC + SARCOPENIA ========== -->
+<div class="page">
+  <div class="ph">
+    <div class="logo-wrap">
+      <div class="logo-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+      <div><div class="logo-text">Extensivo ENARE</div><div class="logo-sub">2026</div></div>
+    </div>
+    <div class="ph-center">DPOC Grave + Sarcopenia</div>
+    <div class="ph-right">NUT-TNUTR · Aula 12</div>
+  </div>
+
+  <div class="pc-sm">
+    <h2>DPOC Grave + Sarcopenia — TN Específica</h2>
+
+    <div class="two-col">
+      <div>
+        <h3>Fisiopatologia nutricional no DPOC</h3>
+        <ul>
+          <li>Hipermetabolismo crônico + ↑trabalho respiratório → gasto energético elevado</li>
+          <li>Catabolismo proteico persistente → sarcopenia e perda de massa muscular respiratória (diafragma)</li>
+          <li>Anorexia crônica por dispneia, fadiga muscular durante refeição</li>
+          <li>Exacerbação aguda: ↑ainda mais o catabolismo</li>
+        </ul>
+
+        <div class="box box-teal">
+          <div class="box-title">Composição macro — ponto central FGV (2025 Q27)</div>
+          <p><strong>↑Lipídios (40–55% das kcal)</strong></p>
+          <p><strong>↓Carboidratos (30–40% das kcal)</strong></p>
+          <p><strong>Razão:</strong> quociente respiratório (QR)</p>
+          <ul style="margin:0.5mm 0 0 3mm">
+            <li>Lipídios: QR = 0,7 → menor produção de CO₂ por kcal</li>
+            <li>Carboidratos: QR = 1,0 → maior produção de CO₂</li>
+            <li>Proteínas: QR = 0,8</li>
+          </ul>
+          <p style="margin-top:1mm">↑Lipídios → ↓QR → ↓CO₂ produzido → ↓trabalho ventilatório → benefício direto no DPOC</p>
+        </div>
+      </div>
+
+      <div>
+        <h3>Metas nutricionais no DPOC</h3>
+        <table style="margin-bottom:2mm">
+          <thead>
+            <tr><th>Parâmetro</th><th>Meta</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="td-bold">Calorias</td>
+              <td>25–35 kcal/kg/dia (<strong>não hipercalorar</strong> — ↑CO₂)</td>
+            </tr>
+            <tr>
+              <td class="td-bold">Proteína</td>
+              <td><strong>1,5–2,0 g/kg/dia</strong> — preservar massa muscular, especialmente com sarcopenia</td>
+            </tr>
+            <tr>
+              <td class="td-bold">Lipídios</td>
+              <td>40–55% das kcal totais</td>
+            </tr>
+            <tr>
+              <td class="td-bold">Carboidratos</td>
+              <td>30–40% das kcal (reduzir em ventilados)</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="box box-amber">
+          <div class="box-title">Sarcopenia + disfagia leve</div>
+          <p>Disfagia leve associada ao DPOC <strong>não contraindica proteína via oral</strong> — ajuste de textura (IDDSI 5–6) e consistência. Restrição proteica piora sarcopenia e mortalidade.</p>
+        </div>
+
+        <div class="box box-green" style="margin-bottom:0">
+          <div class="box-title">Suplementação adjuvante</div>
+          <ul style="margin:0">
+            <li><strong>BCAA/leucina:</strong> ↑síntese proteica muscular</li>
+            <li><strong>Ômega-3 (EPA):</strong> ↓inflamação, ↑síntese muscular</li>
+            <li><strong>Vitamina D:</strong> se deficiente — função muscular e imune</li>
+            <li><strong>Creatina:</strong> pode ser considerada na sarcopenia grave</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="box box-red" style="margin-bottom:0">
+      <div class="box-title">Distratores FGV — DPOC</div>
+      <p><strong>"↑Carboidratos para energia rápida no DPOC"</strong> → ERRADO — ↑carboidratos = ↑CO₂ = ↑carga ventilatória · <strong>"↓Proteína para reduzir ureia"</strong> → ERRADO — proteína deve ser ALTA (1,5–2,0 g/kg) · <strong>"Hipercalorar para compensar catabolismo"</strong> → ERRADO — hipercaloria → ↑CO₂ → agravar ventilação</p>
+    </div>
+  </div>
+
+  <div class="pf">
+    <span class="pf-left">Extensivo ENARE 2026</span>
+    <span class="pf-center">Bloco B9 · Nutrição · Aula 12</span>
+    <span class="pf-right">4 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PAGE 5 — TUBERCULOSE + DESNUTRIÇÃO ========== -->
+<div class="page">
+  <div class="ph">
+    <div class="logo-wrap">
+      <div class="logo-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+      <div><div class="logo-text">Extensivo ENARE</div><div class="logo-sub">2026</div></div>
+    </div>
+    <div class="ph-center">Tuberculose + Desnutrição Grave</div>
+    <div class="ph-right">NUT-TNUTR · Aula 12</div>
+  </div>
+
+  <div class="pc-sm">
+    <h2>Tuberculose Ativa + Desnutrição Grave — TN em UTI</h2>
+
+    <div class="two-col">
+      <div>
+        <h3>Fisiopatologia TN na tuberculose</h3>
+        <ul>
+          <li>Inflamação crônica granulomatosa → ↑citocinas (TNF-α, IL-6) → catabolismo</li>
+          <li>Hipermetabolismo por febre prolongada + infecção ativa</li>
+          <li>Anorexia inflamatória + má absorção → desnutrição grave frequente</li>
+          <li>Ciclo vicioso: desnutrição → ↓imunidade celular → ↑susceptibilidade TBC e piora da doença</li>
+        </ul>
+
+        <div class="box box-teal">
+          <div class="box-title">TN na TBC — condutas-chave (2025 Q36)</div>
+          <p><strong>Meta calórica:</strong> 35–40 kcal/kg/dia em UTI com TBC + desnutrição grave</p>
+          <p><strong>Meta proteica:</strong> <strong>1,5–2,5 g/kg/dia</strong> — hiperproteica; reconstrução imune e muscular</p>
+          <p><strong>Via:</strong> NE se TGI funcionante; NP se TGI comprometido (raro)</p>
+        </div>
+
+        <div class="box box-green" style="margin-bottom:0">
+          <div class="box-title">Micronutrientes essenciais na TBC</div>
+          <table style="margin-bottom:0">
+            <thead><tr><th>Micronutriente</th><th>Papel / Dose</th></tr></thead>
+            <tbody>
+              <tr>
+                <td class="td-bold td-teal">Zinco</td>
+                <td>Cofator imunidade celular (linfócitos T), ↓inflamação; <strong>15–30 mg/dia</strong></td>
+              </tr>
+              <tr>
+                <td class="td-bold td-teal">Selênio</td>
+                <td>Glutationa peroxidase — ↓estresse oxidativo; imunomudulação; <strong>200 µg/dia</strong> em UTI</td>
+              </tr>
+              <tr>
+                <td class="td-bold td-teal">Vitamina D</td>
+                <td>Regulação TH1/TH2, ativação macrófagos contra Mycobacterium — suplementar se deficiente</td>
+              </tr>
+              <tr>
+                <td class="td-bold td-teal">Vitamina A</td>
+                <td>Integridade de mucosas, imunidade inata; suplementar em desnutrição grave</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div>
+        <h3>Interação TBC × fármacos × nutrição</h3>
+        <div class="box box-amber">
+          <div class="box-title">Rifampicina e piridoxina</div>
+          <p><strong>Isoniazida:</strong> antagoniza piridoxina (B6) → neuropatia periférica; suplementar B6 25–50 mg/dia em todos os pacientes em tratamento</p>
+          <p><strong>Rifampicina:</strong> indutor CYP3A4 — acelera metabolismo de vitamina D → risco de hipovitaminose D</p>
+          <p><strong>Etambutol:</strong> quelante de zinco → pode agravar deficiência; vigiar</p>
+        </div>
+
+        <div class="box box-red">
+          <div class="box-title">Distratores FGV — TBC + desnutrição</div>
+          <p><strong>"Restringir proteína para não sobrecarregar sistema imune"</strong> → ERRADO — proteína alta é necessária</p>
+          <p><strong>"Zinco e selênio não têm evidência em TBC"</strong> → ERRADO — modulação imune comprovada</p>
+          <p><strong>"Reduzir calorias na fase aguda para prevenir realimentação"</strong> → ERRADO — TBC + UTI = hipermetabolismo intenso; meta calórica elevada</p>
+        </div>
+
+        <div class="box box-lime" style="margin-bottom:0">
+          <div class="box-title">Resumo TBC + UTI + desnutrição</div>
+          <p>NE hiperproteica (1,5–2,5 g/kg) + 35–40 kcal/kg/dia + Zn + Se + vit D + B6. Não restringir proteína. Via enteral sempre que possível.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pf">
+    <span class="pf-left">Extensivo ENARE 2026</span>
+    <span class="pf-center">Bloco B9 · Nutrição · Aula 12</span>
+    <span class="pf-right">5 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PAGE 6 — Q01 (Ap) — DPOC + SARCOPENIA ========== -->
+<div class="page">
+  <div class="ph">
+    <div class="logo-wrap">
+      <div class="logo-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+      <div><div class="logo-text">Extensivo ENARE</div><div class="logo-sub">2026</div></div>
+    </div>
+    <div class="ph-center">Questão 01 · Aplicação</div>
+    <div class="ph-right">NUT-TNUTR · Aula 12</div>
+  </div>
+
+  <div class="pc">
+    <div class="q-header">
+      <div class="q-num">Q01</div>
+      <div class="q-meta">
+        <div class="q-type">Aplicação (Ap) · NUT-TNUTR</div>
+        <div class="q-origin">Réplica calibrada · ENARE 2025 Q27 · Gabarito: E</div>
+      </div>
+      <span class="tag tag-lime">Ap</span>
+    </div>
+
+    <div class="q-stem">
+      Paciente masculino, 69 anos, com <strong>DPOC GOLD IV e sarcopenia grave</strong>, internado em UTI por exacerbação aguda com necessidade de ventilação não invasiva. IMC = 18 kg/m², força de preensão reduzida. A nutricionista planeja a terapia nutricional. Sobre as recomendações nutricionais no DPOC grave com sarcopenia, é CORRETO afirmar:
+    </div>
+
+    <div class="options">
+      <div class="opt distractor">
+        <span class="opt-letter">A</span>
+        <span>A oferta calórica deve ser maximizada acima de 45 kcal/kg/dia para compensar o catabolismo e reconstruir a massa muscular rapidamente.</span>
+      </div>
+      <div class="opt distractor">
+        <span class="opt-letter">B</span>
+        <span>A proteína deve ser restrita a menos de 0,8 g/kg/dia para reduzir a produção de ureia e aliviar a sobrecarga do aparelho respiratório.</span>
+      </div>
+      <div class="opt distractor">
+        <span class="opt-letter">C</span>
+        <span>A fração de carboidratos deve ser elevada para 65–70% das calorias totais, por fornecerem energia de disponibilização mais rápida durante a exacerbação.</span>
+      </div>
+      <div class="opt distractor">
+        <span class="opt-letter">D</span>
+        <span>A presença de disfagia leve associada ao DPOC contraindica a oferta proteica por via oral, sendo necessária nutrição parenteral para garantir o aporte.</span>
+      </div>
+      <div class="opt correct">
+        <span class="opt-letter">E</span>
+        <span>A dieta deve ter maior proporção de lipídios (40–55% das calorias) e menor de carboidratos, pois lipídios apresentam menor quociente respiratório (QR = 0,7), reduzindo a produção de CO₂ e o trabalho ventilatório.</span>
+      </div>
+    </div>
+
+    <div class="q-rationale">
+      <div class="rat-title">Raciocínio</div>
+      <p><strong>A) ERRADO:</strong> Hipercaloria → ↑CO₂ produzido → ↑carga ventilatória; meta = 25–35 kcal/kg/dia. <strong>B) ERRADO:</strong> Proteína alta (1,5–2,0 g/kg/dia) é obrigatória — sarcopenia exige preservação de massa muscular respiratória (diafragma). <strong>C) ERRADO:</strong> ↑Carboidratos = QR = 1,0 = maior produção de CO₂ — prejudica ventilação. <strong>D) ERRADO:</strong> Disfagia leve → ajuste de textura (IDDSI 5–6), não restrição de proteína nem NP. <strong>E) CORRETO:</strong> QR lipídios (0,7) &lt; QR proteínas (0,8) &lt; QR carboidratos (1,0) → ↑lipídios = ↓CO₂ produzido = ↓trabalho respiratório.</p>
+    </div>
+  </div>
+
+  <div class="pf">
+    <span class="pf-left">Extensivo ENARE 2026</span>
+    <span class="pf-center">Bloco B9 · Nutrição · Aula 12</span>
+    <span class="pf-right">6 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PAGE 7 — Q02 (Ap) — TUBERCULOSE + DESNUTRIÇÃO ========== -->
+<div class="page">
+  <div class="ph">
+    <div class="logo-wrap">
+      <div class="logo-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+      <div><div class="logo-text">Extensivo ENARE</div><div class="logo-sub">2026</div></div>
+    </div>
+    <div class="ph-center">Questão 02 · Aplicação</div>
+    <div class="ph-right">NUT-TNUTR · Aula 12</div>
+  </div>
+
+  <div class="pc">
+    <div class="q-header">
+      <div class="q-num">Q02</div>
+      <div class="q-meta">
+        <div class="q-type">Aplicação (Ap) · NUT-TNUTR</div>
+        <div class="q-origin">Réplica calibrada · ENARE 2025 Q36 · Gabarito: E</div>
+      </div>
+      <span class="tag tag-lime">Ap</span>
+    </div>
+
+    <div class="q-stem">
+      Paciente masculino, 41 anos, com <strong>tuberculose pulmonar ativa e desnutrição grave</strong> (IMC = 14,8 kg/m²), internado em UTI por insuficiência respiratória. Cursa com febre persistente, catabolismo intenso e perda de massa muscular acentuada. Sobre a conduta nutricional neste caso, é CORRETO afirmar:
+    </div>
+
+    <div class="options">
+      <div class="opt distractor">
+        <span class="opt-letter">A</span>
+        <span>A proteína deve ser restrita a menos de 0,8 g/kg/dia para não sobrecarregar o sistema imune já comprometido pela tuberculose ativa.</span>
+      </div>
+      <div class="opt distractor">
+        <span class="opt-letter">B</span>
+        <span>A suplementação de zinco não apresenta benefício comprovado na tuberculose, pois a imunodeficiência é exclusivamente celular e independe desse mineral.</span>
+      </div>
+      <div class="opt distractor">
+        <span class="opt-letter">C</span>
+        <span>A via parenteral deve ser preferida à enteral por ser mais eficaz na modulação da resposta imune em estados de infecção crônica grave.</span>
+      </div>
+      <div class="opt distractor">
+        <span class="opt-letter">D</span>
+        <span>A meta calórica deve ser reduzida a 15–20 kcal/kg/dia nos primeiros dias para evitar síndrome de realimentação em paciente com desnutrição grave.</span>
+      </div>
+      <div class="opt correct">
+        <span class="opt-letter">E</span>
+        <span>A terapia nutricional deve ser hiperproteica (1,5–2,5 g/kg/dia), com meta calórica elevada (35–40 kcal/kg/dia) e suplementação de zinco e selênio para modulação da resposta imune e redução do estresse oxidativo.</span>
+      </div>
+    </div>
+
+    <div class="q-rationale">
+      <div class="rat-title">Raciocínio</div>
+      <p><strong>A) ERRADO:</strong> Proteína alta reconstrói imunidade celular e massa muscular — restrição piora prognóstico. <strong>B) ERRADO:</strong> Zinco é cofator essencial de linfócitos T e da imunidade celular — deficiência agrava TBC; suplementação benéfica. <strong>C) ERRADO:</strong> NE é sempre preferida se TGI funcionante; NP não modula imunidade melhor que NE. <strong>D) ERRADO:</strong> Síndrome de realimentação deve ser prevenida com cuidado, mas TBC + UTI = hipermetabolismo intenso; meta 35–40 kcal/kg/dia (com monitoramento de fosfato, não redução intensa). <strong>E) CORRETO:</strong> Hiperproteica + zinco (imunidade celular) + selênio (glutationa peroxidase, ↓oxidação) + meta calórica elevada — conduta baseada nas diretrizes ESPEN e BRASPEN para infecção crônica grave.</p>
+    </div>
+  </div>
+
+  <div class="pf">
+    <span class="pf-left">Extensivo ENARE 2026</span>
+    <span class="pf-center">Bloco B9 · Nutrição · Aula 12</span>
+    <span class="pf-right">7 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PAGE 8 — Q03 (An) ÂNCORA — TCE + GASTROPARESIA ========== -->
+<div class="page">
+  <div class="ph">
+    <div class="logo-wrap">
+      <div class="logo-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+      <div><div class="logo-text">Extensivo ENARE</div><div class="logo-sub">2026</div></div>
+    </div>
+    <div class="ph-center">Questão 03 · Análise — Âncora</div>
+    <div class="ph-right">NUT-TNUTR · Aula 12</div>
+  </div>
+
+  <div class="pc">
+    <div class="q-header">
+      <div class="q-num">Q03</div>
+      <div class="q-meta">
+        <div class="q-type">Análise (An) · NUT-TNUTR · Questão-âncora</div>
+        <div class="q-origin">Réplica calibrada · ENARE 2025 Q30 · Gabarito: A</div>
+      </div>
+      <span class="tag tag-teal">An</span>
+    </div>
+
+    <div class="q-stem">
+      Paciente masculino, 31 anos, vítima de <strong>TCE grave</strong> (Glasgow 5), intubado em UTI. No D2, nutricionista tenta iniciar NE via sonda gástrica, porém observa resíduo gástrico persistentemente elevado (> 500 mL/6h) e episódio de regurgitação. A equipe discute a conduta. Analise as afirmativas:
+    </div>
+
+    <div class="an-items">
+      <div class="an-item wrong-item">
+        <span class="an-roman">I</span>
+        <span>O resíduo gástrico elevado indica que a NE deve ser definitivamente suspensa e substituída imediatamente por NPT central, pois o TGI está inapto para qualquer estímulo nutricional.</span>
+      </div>
+      <div class="an-item correct-item">
+        <span class="an-roman">II</span>
+        <span>A NE pós-pilórica (sonda nasojejunal ou jejunostomia) é a estratégia indicada para contornar a gastroparesia e manter a alimentação enteral no TCE grave.</span>
+      </div>
+      <div class="an-item correct-item">
+        <span class="an-roman">III</span>
+        <span>O posicionamento da sonda em região pós-pilórica reduz o risco de aspiração pulmonar e de pneumonia associada à ventilação mecânica em relação à sonda gástrica.</span>
+      </div>
+      <div class="an-item correct-item">
+        <span class="an-roman">IV</span>
+        <span>A NPT está indicada quando a NE pós-pilórica é tecnicamente impossível ou não fornece aporte nutricional adequado após tentativa adequada, não como primeira escolha diante do RGV elevado.</span>
+      </div>
+    </div>
+
+    <div class="options" style="margin-top:2.5mm">
+      <div class="opt correct"><span class="opt-letter">A</span><span>II, III e IV apenas</span></div>
+      <div class="opt distractor"><span class="opt-letter">B</span><span>I e III apenas</span></div>
+      <div class="opt distractor"><span class="opt-letter">C</span><span>I, II e III apenas</span></div>
+      <div class="opt distractor"><span class="opt-letter">D</span><span>II e IV apenas</span></div>
+      <div class="opt distractor"><span class="opt-letter">E</span><span>I e IV apenas</span></div>
+    </div>
+
+    <div class="q-rationale">
+      <div class="rat-title">Raciocínio</div>
+      <p><strong>I — FALSO:</strong> RGV elevado → estratégia é pós-pilórica, não suspensão da NE. TGI distal permanece funcionante mesmo com gastroparesia. <strong>II — CORRETO:</strong> NE pós-pilórica bypassa o esvaziamento gástrico comprometido — solução padrão na gastroparesia do TCE. <strong>III — CORRETO:</strong> Posição pós-pilórica reduz refluxo e aspiração → menor PAV. <strong>IV — CORRETO:</strong> NP é indicada apenas quando NE pós-pilórica é inviável ou insuficiente — não é a resposta imediata ao RGV elevado.</p>
+    </div>
+  </div>
+
+  <div class="pf">
+    <span class="pf-left">Extensivo ENARE 2026</span>
+    <span class="pf-center">Bloco B9 · Nutrição · Aula 12</span>
+    <span class="pf-right">8 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PAGE 9 — GABARITO ========== -->
+<div class="page">
+  <div class="ph">
+    <div class="logo-wrap">
+      <div class="logo-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+      <div><div class="logo-text">Extensivo ENARE</div><div class="logo-sub">2026</div></div>
+    </div>
+    <div class="ph-center">Gabarito — Aula 12</div>
+    <div class="ph-right">NUT-TNUTR · Aula 12</div>
+  </div>
+
+  <div class="pc">
+    <h2>Gabarito</h2>
+
+    <div class="answer-grid">
+      <div class="ans-card">
+        <div class="ans-q">Questão 01</div>
+        <div class="ans-letter">E</div>
+        <div class="ans-topic">DPOC — ↑lipídios (QR 0,7) → ↓CO₂ → ↓trabalho ventilatório<br>Réplica ENARE 2025 Q27 (Ap)</div>
+      </div>
+      <div class="ans-card">
+        <div class="ans-q">Questão 02</div>
+        <div class="ans-letter">E</div>
+        <div class="ans-topic">TBC — hiperproteica + zinco + selênio (imune + oxidação)<br>Réplica ENARE 2025 Q36 (Ap)</div>
+      </div>
+      <div class="ans-card">
+        <div class="ans-q">Questão 03</div>
+        <div class="ans-letter">A</div>
+        <div class="ans-topic">TCE + gastroparesia: NE pós-pilórica (II + III + IV corretas)<br>Réplica ENARE 2025 Q30 (An)</div>
+      </div>
+    </div>
+
+    <div class="box box-teal" style="margin-top:5mm">
+      <div class="box-title">Resumo dos distratores críticos desta aula</div>
+      <table style="margin-bottom:0">
+        <thead>
+          <tr><th>Afirmativa-armadilha</th><th>Por que é ERRADA</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>"↑Carboidratos no DPOC para energia rápida"</td>
+            <td>QR carboidratos = 1,0 → maior CO₂ → ↑trabalho ventilatório</td>
+          </tr>
+          <tr>
+            <td>"↓Proteína no DPOC para reduzir ureia"</td>
+            <td>Proteína 1,5–2,0 g/kg/dia — essencial contra sarcopenia diafragmática</td>
+          </tr>
+          <tr>
+            <td>"Disfagia leve contraindica proteína oral"</td>
+            <td>Ajuste de textura (IDDSI 5–6); restrição proteica piora sarcopenia</td>
+          </tr>
+          <tr>
+            <td>"RGV elevado no TCE = suspender NE e iniciar NP"</td>
+            <td>Conduta correta: NE pós-pilórica (nasojejunal) → NP somente se falha</td>
+          </tr>
+          <tr>
+            <td>"Zinco e selênio sem papel na TBC"</td>
+            <td>Zinco: imunidade celular; selênio: glutationa peroxidase — ambos essenciais</td>
+          </tr>
+          <tr>
+            <td>"Meta calórica baixa em TBC + desnutrição"</td>
+            <td>TBC + UTI = hipermetabolismo intenso; meta 35–40 kcal/kg/dia</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="pf">
+    <span class="pf-left">Extensivo ENARE 2026</span>
+    <span class="pf-center">Bloco B9 · Nutrição · Aula 12</span>
+    <span class="pf-right">9 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PAGE 10 — SÍNTESE + REFERÊNCIAS ========== -->
+<div class="page">
+  <div class="ph">
+    <div class="logo-wrap">
+      <div class="logo-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+      <div><div class="logo-text">Extensivo ENARE</div><div class="logo-sub">2026</div></div>
+    </div>
+    <div class="ph-center">Síntese Final — Aula 12</div>
+    <div class="ph-right">NUT-TNUTR · Aula 12</div>
+  </div>
+
+  <div class="pc-sm">
+    <h2>Síntese — TCE, DPOC, Tuberculose e Pediátrico UTI</h2>
+
+    <div class="synth-grid">
+      <div class="synth-item">
+        <div class="si-title">TCE grave — TN</div>
+        <div class="si-body">
+          NE ≤ 24–48h (precoce, mesmo no grave)<br>
+          <strong>Pediátrico:</strong> NE incremental D1–D3 (50–75%) → meta plena D4+<br>
+          Proteína: 1,5–2,5 g/kg/dia (fase hipermetabólica)<br>
+          Gastroparesia → NE pós-pilórica; NP somente se falha
+        </div>
+      </div>
+      <div class="synth-item">
+        <div class="si-title">TCE + Gastroparesia</div>
+        <div class="si-body">
+          RGV elevado → <strong>1º procinéticos → 2º NE pós-pilórica → 3º NP</strong><br>
+          Pós-pilórica: ↓aspiração, ↓PAV, bypassa estômago<br>
+          NP = apenas quando pós-pilórica inviável ou insuficiente<br>
+          Cabeceira 30–45° sempre
+        </div>
+      </div>
+      <div class="synth-item">
+        <div class="si-title">DPOC + Sarcopenia</div>
+        <div class="si-body">
+          <strong>↑Lipídios (40–55%)</strong> + <strong>↓Carboidratos (30–40%)</strong><br>
+          QR lipídios = 0,7 → ↓CO₂ → ↓trabalho ventilatório<br>
+          Proteína: 1,5–2,0 g/kg/dia (preservar MM)<br>
+          Não hipercalorar · Disfagia leve → ajuste textura, não NP
+        </div>
+      </div>
+      <div class="synth-item">
+        <div class="si-title">Tuberculose + Desnutrição</div>
+        <div class="si-body">
+          TN hiperproteica: 1,5–2,5 g/kg/dia<br>
+          Meta calórica: 35–40 kcal/kg/dia<br>
+          <strong>Zinco:</strong> imunidade celular (15–30 mg/dia)<br>
+          <strong>Selênio:</strong> ↓estresse oxidativo (200 µg/dia)<br>
+          Vitamina D + B6 (isoniazida → antagonismo B6)
+        </div>
+      </div>
+    </div>
+
+    <div class="box box-lime" style="margin-bottom:3mm">
+      <div class="box-title">Mapa das questões FGV 2025 — NUT-TNUTR casos especiais</div>
+      <p><strong>Q25:</strong> Pediátrico TCE → NE incremental fase metabólica aguda · <strong>Q27:</strong> DPOC + sarcopenia → ↑lipídios ↓carboidratos · <strong>Q30:</strong> TCE + gastroparesia → NE pós-pilórica é a via antes da NP · <strong>Q36:</strong> TBC + desnutrição → hiperproteica + Zn + Se · Todos nível An — padrão de 2025.</p>
+    </div>
+
+    <div class="ref-block">
+      <div class="ref-title">Referências</div>
+      <ul>
+        <li>BRASPEN — Diretrizes de Terapia Nutricional, 2023</li>
+        <li>ESPEN Guidelines on Clinical Nutrition in the ICU. Clin Nutr, 2019 (Singer et al.)</li>
+        <li>ASPEN/SCCM Guidelines — Critically Ill Adult Patients. JPEN, 2022</li>
+        <li>Carney N et al. Brain Trauma Foundation Guidelines for TBI, 4ª ed., 2017</li>
+        <li>ESPEN Guidelines on Clinical Nutrition in Neurology. Clin Nutr, 2018</li>
+        <li>WHO — Guideline: Nutritional care and support for patients with tuberculosis, 2013</li>
+        <li>Ferrie S et al. A nutrition support algorithm for ICU patients. Nutrients, 2018</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="pf">
+    <span class="pf-left">Extensivo ENARE 2026</span>
+    <span class="pf-center">Bloco B9 · Nutrição · Aula 12</span>
+    <span class="pf-right">10 / 10</span>
+  </div>
+</div>
+
+</body>
+</html>

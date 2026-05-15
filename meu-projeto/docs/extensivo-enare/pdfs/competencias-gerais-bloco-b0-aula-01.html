@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Competências Gerais · Bloco B0 · Aula 01 — Extensivo ENARE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Bricolage+Grotesque:wght@400;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --creme:          #F6F4ED;
+      --verde-lima:     #C6D834;
+      --verde-floresta: #1F5C23;
+      --teal:           #0D8A8D;
+      --preto:          #070707;
+      --cinza:          #9E9B94;
+      --cinza-borda:    #DDD9D1;
+      --creme-escuro:   #EDEAE2;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #CCC;
+      font-family: 'Bricolage Grotesque', sans-serif;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    @page { size: A4; margin: 0; }
+
+    .page {
+      width: 210mm;
+      height: 297mm;
+      position: relative;
+      overflow: hidden;
+      page-break-after: always;
+      background: var(--creme);
+      display: flex;
+      flex-direction: column;
+    }
+
+    @media screen {
+      .page { margin: 24px auto; box-shadow: 0 4px 32px rgba(0,0,0,0.18); }
+    }
+
+    .page-header {
+      height: 14mm;
+      background: var(--creme);
+      border-bottom: 2px solid var(--teal);
+      display: flex;
+      align-items: center;
+      padding: 0 18mm;
+      flex-shrink: 0;
+    }
+    .page-header-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 8pt;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--cinza);
+    }
+    .page-header-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 7.5pt;
+      font-weight: 300;
+      color: var(--cinza);
+      margin-left: auto;
+    }
+
+    .page-footer {
+      height: 11mm;
+      border-top: 0.5px solid var(--teal);
+      display: flex;
+      align-items: center;
+      padding: 0 18mm;
+      flex-shrink: 0;
+    }
+    .page-footer-brand {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 7pt;
+      font-weight: 300;
+      color: var(--cinza);
+    }
+    .page-footer-brand span { color: var(--teal); font-weight: 400; }
+    .page-footer-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 9pt;
+      font-weight: 600;
+      color: var(--cinza);
+      margin-left: auto;
+    }
+
+    .page-body { flex: 1; padding: 10mm 18mm 8mm; overflow: hidden; }
+
+    .h1 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 22pt;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--verde-floresta);
+      letter-spacing: 0.5px;
+      line-height: 1.05;
+      margin-bottom: 7mm;
+    }
+    .h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 16pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--verde-floresta);
+      letter-spacing: 0.5px;
+      margin-bottom: 4mm;
+      margin-top: 6mm;
+    }
+    .h2:first-child { margin-top: 0; }
+    .h3 {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 11pt;
+      font-weight: 600;
+      color: var(--preto);
+      margin-bottom: 2mm;
+      margin-top: 4mm;
+    }
+    p { font-size: 10.5pt; color: var(--preto); line-height: 1.55; margin-bottom: 3mm; }
+
+    .rule { border: none; border-top: 1px solid var(--cinza-borda); margin: 4mm 0; }
+
+    .box { border-radius: 6px; padding: 4mm 5mm; margin: 4mm 0; }
+    .box-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 9pt;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 1.5mm;
+      display: block;
+    }
+    .box-body { font-size: 10pt; line-height: 1.5; }
+    .box-pega  { background: var(--verde-lima); color: var(--verde-floresta); }
+    .box-pega .box-title { color: var(--verde-floresta); }
+    .box-dica  { background: var(--teal); color: var(--creme); }
+    .box-dica .box-title { color: var(--creme); }
+    .box-conceito { background: var(--verde-floresta); color: var(--creme); }
+    .box-conceito .box-title { color: var(--creme); }
+
+    table { width: 100%; border-collapse: collapse; margin: 3mm 0; font-size: 9.5pt; }
+    thead tr { background: var(--verde-floresta); color: var(--creme); }
+    thead th {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 3mm 4mm;
+      text-align: left;
+      font-size: 9pt;
+    }
+    tbody tr:nth-child(odd)  { background: var(--creme); }
+    tbody tr:nth-child(even) { background: var(--creme-escuro); }
+    tbody td { padding: 2.5mm 4mm; border-bottom: 0.5px solid var(--cinza-borda); line-height: 1.4; color: var(--preto); }
+    td.highlight { font-weight: 600; color: var(--verde-floresta); }
+
+    .lista { list-style: none; margin: 2mm 0 3mm; }
+    .lista li {
+      font-size: 10.5pt;
+      line-height: 1.55;
+      color: var(--preto);
+      padding-left: 5mm;
+      margin-bottom: 2mm;
+      position: relative;
+    }
+    .lista li::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 5px;
+      width: 5px; height: 5px;
+      background: var(--verde-lima);
+      border-radius: 50%;
+    }
+
+    .objective-item { display: flex; gap: 4mm; margin-bottom: 4mm; align-items: flex-start; }
+    .objective-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 20pt;
+      color: var(--verde-lima);
+      line-height: 1;
+      flex-shrink: 0;
+      width: 8mm;
+    }
+    .objective-text { font-size: 11pt; font-weight: 600; color: var(--preto); line-height: 1.4; padding-top: 1mm; }
+
+    .prereq-card {
+      background: var(--creme-escuro);
+      border-left: 4px solid var(--teal);
+      border-radius: 0 6px 6px 0;
+      padding: 3.5mm 5mm;
+      margin-top: 5mm;
+    }
+    .prereq-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 8pt;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 1mm;
+    }
+    .prereq-text { font-size: 10pt; color: var(--preto); line-height: 1.45; }
+
+    .seq-grid { display: flex; gap: 3mm; margin: 3mm 0; }
+    .seq-step {
+      flex: 1;
+      background: var(--creme-escuro);
+      border-top: 3px solid var(--verde-floresta);
+      border-radius: 0 0 6px 6px;
+      padding: 3mm 3.5mm;
+    }
+    .seq-step.active { border-top-color: var(--verde-lima); background: var(--verde-floresta); }
+    .seq-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 14pt; color: var(--verde-lima); line-height: 1; }
+    .seq-step:not(.active) .seq-num { color: var(--verde-floresta); }
+    .seq-name { font-size: 8pt; font-weight: 600; color: var(--creme); margin-top: 1mm; line-height: 1.3; }
+    .seq-step:not(.active) .seq-name { color: var(--preto); }
+    .seq-desc { font-size: 7pt; color: rgba(246,244,237,0.75); margin-top: 0.5mm; line-height: 1.3; }
+    .seq-step:not(.active) .seq-desc { color: var(--cinza); }
+
+    .question-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 9pt;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 2mm;
+    }
+    .question-stem {
+      font-size: 10.5pt;
+      line-height: 1.6;
+      color: var(--preto);
+      background: var(--creme-escuro);
+      border-radius: 6px;
+      padding: 4mm 5mm;
+      margin-bottom: 4mm;
+    }
+    .question-stem strong { font-weight: 600; }
+    .alternatives { margin-bottom: 5mm; }
+    .alt { display: flex; gap: 3mm; padding: 2mm 0; border-bottom: 0.5px solid var(--cinza-borda); align-items: flex-start; }
+    .alt:last-child { border-bottom: none; }
+    .alt-letter {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 11pt;
+      color: var(--cinza);
+      flex-shrink: 0;
+      width: 5mm;
+      line-height: 1.4;
+    }
+    .alt.correct .alt-letter { color: var(--verde-floresta); }
+    .alt-text { font-size: 10pt; color: var(--preto); line-height: 1.45; }
+    .alt.correct .alt-text { color: var(--verde-floresta); font-weight: 600; }
+    .correct-badge {
+      display: inline-block;
+      background: var(--verde-lima);
+      color: var(--verde-floresta);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 7pt;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 1px 5px;
+      border-radius: 3px;
+      margin-left: 2mm;
+      vertical-align: middle;
+    }
+    .gabarito-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 10pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--verde-floresta);
+      border-top: 2px solid var(--verde-floresta);
+      padding-top: 3mm;
+      margin-top: 2mm;
+      margin-bottom: 2mm;
+    }
+    .gabarito-body { font-size: 9.5pt; line-height: 1.55; color: var(--preto); }
+    .gabarito-body strong { color: var(--verde-floresta); font-weight: 600; }
+    .gabarito-alt { margin-bottom: 2mm; padding-left: 4mm; border-left: 2px solid var(--cinza-borda); }
+    .gabarito-alt.correta { border-left-color: var(--verde-lima); }
+    .gabarito-alt strong { display: block; margin-bottom: 0.5mm; }
+
+    .ref-list { list-style: none; margin-top: 2mm; }
+    .ref-list li {
+      font-size: 9pt;
+      line-height: 1.55;
+      color: var(--preto);
+      margin-bottom: 3mm;
+      padding-left: 6mm;
+      text-indent: -6mm;
+    }
+    .annotation-area { margin-top: 5mm; border-top: 1px solid var(--cinza-borda); padding-top: 3mm; }
+    .annotation-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 8pt;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--cinza);
+      margin-bottom: 3mm;
+    }
+    .annotation-lines { display: flex; flex-direction: column; gap: 7mm; }
+    .annotation-line { border-bottom: 0.5px solid var(--cinza-borda); height: 0; }
+
+    /* ── CAPA ── */
+    .cover { background: var(--verde-floresta); display: flex; flex-direction: column; padding: 0; }
+    .cover-inner { flex: 1; display: flex; flex-direction: column; padding: 14mm 18mm 0; }
+    .cover-logo { margin-bottom: auto; }
+    .cover-meta { font-family: 'Space Grotesk', sans-serif; font-size: 8pt; font-weight: 400; letter-spacing: 3px; text-transform: uppercase; color: rgba(198,216,52,0.8); margin-bottom: 5mm; }
+    .cover-block-label { font-family: 'Barlow Condensed', sans-serif; font-size: 11pt; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: rgba(246,244,237,0.55); margin-bottom: 4mm; }
+    .cover-title { font-family: 'Barlow Condensed', sans-serif; font-size: 32pt; font-weight: 800; text-transform: uppercase; color: var(--creme); line-height: 1; margin-bottom: 3mm; }
+    .cover-subtitle { font-family: 'Barlow Condensed', sans-serif; font-size: 20pt; font-weight: 700; text-transform: uppercase; color: var(--verde-lima); line-height: 1.1; margin-bottom: 10mm; }
+    .cover-deco { font-family: 'Barlow Condensed', sans-serif; font-size: 180pt; font-weight: 800; color: rgba(246,244,237,0.05); line-height: 0.85; text-align: right; margin-right: -8mm; margin-bottom: -10mm; letter-spacing: -4px; flex-shrink: 0; }
+    .cover-bottom-strip { height: 4mm; background: var(--verde-lima); flex-shrink: 0; }
+
+    /* ── TWO-COL ENUNCIADO ── */
+    .two-col { display: flex; gap: 5mm; margin: 4mm 0; }
+    .two-col-item { flex: 1; border-radius: 6px; padding: 4mm 4.5mm; }
+    .two-col-item.col-a { background: var(--creme-escuro); border-top: 3px solid var(--cinza); }
+    .two-col-item.col-b { background: var(--creme-escuro); border-top: 3px solid var(--verde-lima); }
+    .two-col-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 7.5pt;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 2mm;
+    }
+    .two-col-item.col-a .two-col-label { color: var(--cinza); }
+    .two-col-item.col-b .two-col-label { color: var(--verde-floresta); }
+    .two-col-enunciado { font-size: 9.5pt; color: var(--preto); line-height: 1.55; font-style: italic; margin-bottom: 2mm; }
+    .two-col-note { font-size: 8.5pt; color: var(--cinza); line-height: 1.4; }
+
+    /* ── RECALL ── */
+    .recall-section { margin-bottom: 5mm; }
+    .recall-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--verde-floresta);
+      border-bottom: 2px solid var(--verde-floresta);
+      padding-bottom: 2mm;
+      margin-bottom: 3mm;
+    }
+    .sintese-item { display: flex; gap: 3mm; margin-bottom: 3mm; align-items: flex-start; }
+    .sintese-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 16pt;
+      color: var(--verde-lima);
+      line-height: 1;
+      flex-shrink: 0;
+      width: 7mm;
+    }
+    .sintese-text { font-size: 10pt; color: var(--preto); line-height: 1.5; padding-top: 1mm; }
+    .recall-q {
+      font-size: 10pt;
+      color: var(--preto);
+      line-height: 1.5;
+      padding: 2mm 0 2mm 4mm;
+      border-left: 2px solid var(--cinza-borda);
+      margin-bottom: 2.5mm;
+    }
+    .recall-q-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 9pt;
+      color: var(--teal);
+      display: inline;
+      margin-right: 2mm;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PÁGINA 1 — CAPA
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="page cover">
+    <div class="cover-inner">
+      <div class="cover-logo">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210 90" width="210" height="90">
+          <rect x="0" y="8" width="3" height="74" rx="1.5" fill="#C6D834"/>
+          <text x="12" y="26" font-family="'Playfair Display',Georgia,serif" font-style="italic" font-size="11" fill="#C6D834">extensivo</text>
+          <text x="11" y="70" font-family="'Barlow Condensed','Arial Narrow',sans-serif" font-weight="800" font-size="52" fill="#F6F4ED">ENARE</text>
+          <text x="12" y="88" font-family="'Space Grotesk','Helvetica Neue',sans-serif" font-weight="300" font-size="9" fill="rgba(246,244,237,0.5)">by Residência PRO</text>
+        </svg>
+      </div>
+      <div class="cover-meta">Competências Gerais · Módulo 1</div>
+      <div class="cover-block-label">Bloco B0 · Aula 01</div>
+      <div class="cover-title">O ENARE e as<br>Competências<br>Gerais</div>
+      <div class="cover-subtitle">Fundamentos do SUS<br>e lógica da banca</div>
+    </div>
+    <div class="cover-deco">01</div>
+    <div class="cover-bottom-strip"></div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PÁGINA 2 — OBJETIVOS
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="page">
+    <div class="page-header">
+      <span class="page-header-label">Competências Gerais · Bloco B0 · Aula 01</span>
+      <span class="page-header-title">Extensivo ENARE</span>
+    </div>
+
+    <div class="page-body">
+      <div class="h1">O que você vai aprender</div>
+
+      <div class="objective-item">
+        <div class="objective-num">01</div>
+        <div class="objective-text">Identificar os marcos históricos que construíram o SUS — da 8ª Conferência Nacional de Saúde (1986) à promulgação da Lei 8.080/1990 — e aplicá-los em questões de cenário</div>
+      </div>
+      <div class="objective-item">
+        <div class="objective-num">02</div>
+        <div class="objective-text">Distinguir os princípios doutrinários do SUS (universalidade, integralidade, equidade) e reconhecer quando cada um é aplicado ou violado em situações concretas do serviço público de saúde</div>
+      </div>
+      <div class="objective-item">
+        <div class="objective-num">03</div>
+        <div class="objective-text">Compreender como a FGV constrói questões de Competências Gerais — situações reais do SUS em que o profissional precisa identificar o princípio, a norma ou o atributo em jogo</div>
+      </div>
+
+      <hr class="rule" style="margin-top: 6mm;">
+
+      <div class="prereq-card">
+        <div class="prereq-label">Pré-requisito</div>
+        <div class="prereq-text">
+          <strong>Esta é a Aula 01 — não há pré-requisito de conteúdo anterior.</strong> O ponto de partida é o texto constitucional (Art. 196 da CF/1988) e a Lei 8.080/1990. Todas as aulas seguintes constroem sobre essa base.
+        </div>
+      </div>
+
+      <div class="box box-dica" style="margin-top: 5mm;">
+        <span class="box-title">💡 Dica de Prova</span>
+        <span class="box-body">As Competências Gerais (Q1–Q20) são as mesmas para todos os candidatos do ENARE, independente da área de prova. O investimento neste bloco beneficia qualquer profissional inscrito.</span>
+      </div>
+
+      <p style="margin-top: 5mm; font-size: 9pt; color: var(--cinza);">
+        <strong style="color: var(--preto);">Duração estimada da aula em vídeo:</strong> 35 min &nbsp;·&nbsp;
+        <strong style="color: var(--preto);">Questões de fixação neste PDF:</strong> 3 &nbsp;·&nbsp;
+        <strong style="color: var(--preto);">Aula:</strong> 1 de 12 do Bloco
+      </p>
+    </div>
+
+    <div class="page-footer">
+      <span class="page-footer-brand"><span>Extensivo ENARE</span> &nbsp;·&nbsp; by Residência PRO</span>
+      <span class="page-footer-num">02</span>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PÁGINA 3 — O QUE SÃO AS COMPETÊNCIAS GERAIS
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="page">
+    <div class="page-header">
+      <span class="page-header-label">Competências Gerais · Bloco B0 · Aula 01</span>
+      <span class="page-header-title">Extensivo ENARE</span>
+    </div>
+
+    <div class="page-body">
+      <div class="h2">O que são as Competências Gerais</div>
+
+      <p>O ENARE avalia dois domínios em cada candidato: <strong>20 questões de Competências Gerais</strong> (Q1–Q20) e <strong>80 questões específicas da área de prova</strong> (Q21–Q100). As Competências Gerais são obrigatórias para todos — o profissional de Enfermagem, de Fisioterapia e de Saúde Coletiva fazem exatamente as mesmas 20 questões.</p>
+
+      <div class="box box-conceito">
+        <span class="box-title">📌 Conceito-chave</span>
+        <span class="box-body">As Competências Gerais testam o que todo profissional de saúde do SUS precisa saber — independente da profissão. O SUS é o cenário de toda questão: legislação, rede, princípios, políticas e boas práticas são cobrados como <strong style="color:var(--verde-lima);">ferramentas de trabalho no serviço público</strong>, não como conteúdo teórico isolado.</span>
+      </div>
+
+      <div class="h3" style="margin-top: 5mm;">Os 11 temas do bloco</div>
+      <p>A FGV distribui as 20 questões entre 11 temas fixos, todos presentes nas últimas edições do ENARE:</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th style="width:20%">Código</th>
+            <th>Tema</th>
+            <th style="width:24%">Peso médio</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="highlight">CG-APS</td><td>Atenção Primária à Saúde (PNAB, ESF, NASF-AB, atributos)</td><td>~3–4 questões</td></tr>
+          <tr><td class="highlight">CG-RAS</td><td>Redes de Atenção à Saúde</td><td>~2–3 questões</td></tr>
+          <tr><td>CG-HIST</td><td>História da Saúde e Reforma Sanitária</td><td>~2 questões</td></tr>
+          <tr><td>CG-POP</td><td>Populações Específicas (ribeirinha, rua, LGBTQIA+)</td><td>~2 questões</td></tr>
+          <tr><td class="highlight">CG-NR32</td><td>NR-32 — Segurança no Trabalho em Saúde</td><td>~2 questões (fixo)</td></tr>
+          <tr><td>CG-SEG</td><td>Segurança do Paciente (PNSP, NSP, RDC 36/2013)</td><td>~1–2 questões</td></tr>
+          <tr><td>CG-PNH</td><td>Política Nacional de Humanização</td><td>~1–2 questões</td></tr>
+          <tr><td>CG-VIG</td><td>Vigilância em Saúde (ANVISA, Res. CNS 588)</td><td>~1–2 questões</td></tr>
+          <tr><td>CG-LEG</td><td>Legislação SUS (Decreto 7.508, Lei 8.142)</td><td>~1–2 questões</td></tr>
+          <tr><td>CG-PNEPS</td><td>Política Nacional de Educação Permanente em Saúde</td><td>~1 questão (fixo)</td></tr>
+          <tr><td>CG-BIOT</td><td>Bioética Principialista</td><td>~1 questão (fixo)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="page-footer">
+      <span class="page-footer-brand"><span>Extensivo ENARE</span> &nbsp;·&nbsp; by Residência PRO</span>
+      <span class="page-footer-num">03</span>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PÁGINA 4 — COMO A FGV COBRA AS COMPETÊNCIAS GERAIS
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="page">
+    <div class="page-header">
+      <span class="page-header-label">Competências Gerais · Bloco B0 · Aula 01</span>
+      <span class="page-header-title">Extensivo ENARE</span>
+    </div>
+
+    <div class="page-body">
+      <div class="h2">Como a FGV Cobra as Competências Gerais</div>
+
+      <p>A FGV não pergunta "o que diz a Portaria X". Ela apresenta situações do dia a dia do SUS e exige que o candidato identifique qual princípio, atributo ou norma está sendo aplicado — ou violado.</p>
+
+      <div class="two-col">
+        <div class="two-col-item col-a">
+          <div class="two-col-label">Pergunta conceitual direta</div>
+          <div class="two-col-enunciado">"A Lei nº 8.080/1990 define os princípios doutrinários do SUS. Qual alternativa os apresenta corretamente?"</div>
+          <div class="two-col-note">→ Exige recordar a lista. Alternativas erradas incluem termos próximos como "descentralização" ou "participação social".</div>
+        </div>
+        <div class="two-col-item col-b">
+          <div class="two-col-label">Cenário aplicado — padrão FGV atual</div>
+          <div class="two-col-enunciado">"Uma UBS orienta um trabalhador rural sem carteira assinada a se inscrever no INSS antes de ser atendido. Essa conduta viola qual princípio do SUS?"</div>
+          <div class="two-col-note">→ Exige reconhecer o princípio em ação num caso real — não na lista teórica.</div>
+        </div>
+      </div>
+
+      <div class="box box-conceito" style="margin-top: 2mm;">
+        <span class="box-title">📌 A diferença fundamental</span>
+        <span class="box-body">O cenário aplicado exige raciocínio, não recordação. O candidato age como profissional do SUS que precisa tomar uma decisão — não como estudante que aprendeu a lista de cabeça.</span>
+      </div>
+
+      <div class="h3" style="margin-top: 4mm;">O que isso significa na prática</div>
+      <ul class="lista">
+        <li>Uma gestante acompanhada pela mesma equipe do pré-natal ao puerpério → qual atributo da APS está sendo exercido?</li>
+        <li>Um gestor que prioriza repasse financeiro por critério de densidade demográfica → qual esfera violou sua responsabilidade no SUS?</li>
+        <li>Um profissional em coleta laboratorial em contato com sangue de paciente → qual categoria de risco pela NR-32?</li>
+        <li>Um médico que se recusa a orientar um paciente sobre método anticonceptivo → qual princípio bioético foi violado?</li>
+      </ul>
+
+      <div class="box box-pega">
+        <span class="box-title">⚠️ Pega no ENARE</span>
+        <span class="box-body">Distrator frequente: a FGV coloca princípios <strong>"vizinhos"</strong> como alternativas — universalidade × equidade, integralidade × longitudinalidade. Entender a distinção entre eles resolve mais questões do que decorar definições isoladas.</span>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span class="page-footer-brand"><span>Extensivo ENARE</span> &nbsp;·&nbsp; by Residência PRO</span>
+      <span class="page-footer-num">04</span>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PÁGINA 5 — COMO USAR ESTE BLOCO
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="page">
+    <div class="page-header">
+      <span class="page-header-label">Competências Gerais · Bloco B0 · Aula 01</span>
+      <span class="page-header-title">Extensivo ENARE</span>
+    </div>
+
+    <div class="page-body">
+      <div class="h2">Como Usar Este Bloco</div>
+
+      <p>O Bloco B0 cobre os 11 temas em <strong>12 aulas</strong>. A sequência começa pelos fundamentos históricos e legislativos do SUS — essa base sustenta todos os temas seguintes.</p>
+
+      <div class="seq-grid">
+        <div class="seq-step active">
+          <div class="seq-num">A01</div>
+          <div class="seq-name">Calibragem</div>
+          <div class="seq-desc">Você está aqui</div>
+        </div>
+        <div class="seq-step">
+          <div class="seq-num">A02</div>
+          <div class="seq-name">História do SUS</div>
+          <div class="seq-desc">DNSP → 8ª CNS → CF/88</div>
+        </div>
+        <div class="seq-step">
+          <div class="seq-num">A03</div>
+          <div class="seq-name">Legislação SUS</div>
+          <div class="seq-desc">Lei 8.080, 8.142, Dec. 7.508</div>
+        </div>
+        <div class="seq-step">
+          <div class="seq-num">A04–05</div>
+          <div class="seq-name">RAS com casos</div>
+          <div class="seq-desc">Integração, fluxos, hierarquia</div>
+        </div>
+        <div class="seq-step">
+          <div class="seq-num">A06–12</div>
+          <div class="seq-name">APS → Revisão</div>
+          <div class="seq-desc">7 aulas progressivas</div>
+        </div>
+      </div>
+
+      <div class="h3" style="margin-top: 5mm;">Por que começar pela História e pela Lei</div>
+      <p>A Reforma Sanitária e a Lei 8.080/1990 são o pano de fundo de toda questão de Competências Gerais. Ao entender por que o SUS foi criado e o que ele garante, o candidato consegue raciocinar sobre qualquer cenário apresentado — mesmo sem ter memorizado o artigo específico.</p>
+
+      <div class="h3">Integração obrigatória com o bloco específico</div>
+      <ul class="lista">
+        <li><strong>CG-APS e CG-RAS (A04–A07):</strong> exigem domínio das A02–A03 como base de raciocínio</li>
+        <li><strong>CG-NR32 (A08):</strong> tema independente — pode ser estudado em qualquer posição</li>
+        <li><strong>CG-POP (A09):</strong> usa o conceito de APS (acesso, ESF, eCR) como contexto</li>
+      </ul>
+
+      <div class="box box-dica">
+        <span class="box-title">💡 Dica de Prova</span>
+        <span class="box-body">Antes de responder qualquer questão de Competências Gerais, pergunte: <strong style="color:var(--verde-lima);">"Qual princípio, norma ou atributo do SUS está sendo aplicado ou violado neste cenário?"</strong> Essa pergunta recalibra o raciocínio para o que a FGV espera.</span>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span class="page-footer-brand"><span>Extensivo ENARE</span> &nbsp;·&nbsp; by Residência PRO</span>
+      <span class="page-footer-num">05</span>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PÁGINA 6 — FIXAÇÃO · QUESTÃO 01
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="page">
+    <div class="page-header">
+      <span class="page-header-label">Fixação — Aula 01</span>
+      <span class="page-header-title">Extensivo ENARE · Competências Gerais</span>
+    </div>
+
+    <div class="page-body">
+      <div class="h1" style="font-size:14pt; margin-bottom:5mm;">Questões Comentadas</div>
+
+      <div class="question-num">Questão 01 de 03 &nbsp;·&nbsp; CG-LEG — Princípios Doutrinários do SUS</div>
+      <div class="question-stem">
+        Um trabalhador rural sem vínculo empregatício formal procura atendimento em uma Unidade Básica de Saúde reclamando de dor abdominal há três dias. A recepcionista informa que o atendimento é restrito a pessoas cadastradas no território e que trabalhadores sem carteira assinada devem buscar serviços filantrópicos. Com base na Constituição Federal de 1988 e na Lei nº 8.080/1990, a orientação da recepcionista viola diretamente qual princípio doutrinário do SUS?
+      </div>
+
+      <div class="alternatives">
+        <div class="alt">
+          <span class="alt-letter">A</span>
+          <span class="alt-text">Integralidade — pois a UBS não ofereceu atenção integral, limitando-se ao atendimento de urgência e negando ações de promoção e prevenção ao trabalhador</span>
+        </div>
+        <div class="alt">
+          <span class="alt-letter">B</span>
+          <span class="alt-text">Equidade — pois o trabalhador rural tem necessidades de saúde diferenciadas que justificam atenção especial não garantida pelo serviço</span>
+        </div>
+        <div class="alt correct">
+          <span class="alt-letter">C</span>
+          <span class="alt-text">Universalidade — pois o acesso às ações e serviços de saúde é direito de todos, independente de vínculo empregatício, contribuição previdenciária ou condição socioeconômica<span class="correct-badge">Gabarito</span></span>
+        </div>
+        <div class="alt">
+          <span class="alt-letter">D</span>
+          <span class="alt-text">Descentralização — pois a UBS deveria encaminhar o caso para o gestor municipal antes de negar o atendimento ao trabalhador</span>
+        </div>
+        <div class="alt">
+          <span class="alt-letter">E</span>
+          <span class="alt-text">Resolutividade — pois a unidade de saúde não demonstrou capacidade de resolver o problema de saúde do trabalhador dentro de seu nível de atenção</span>
+        </div>
+      </div>
+
+      <div class="gabarito-title">Gabarito Comentado</div>
+      <div class="gabarito-body">
+        <div class="gabarito-alt correta">
+          <strong>C — CORRETA.</strong> A universalidade garante acesso a todos, sem condicionantes — não importa se o trabalhador tem carteira assinada, se é contribuinte do INSS ou se mora no território adscrito. A CF/1988 e a Lei 8.080/1990 são explícitas: saúde é direito de todos e dever do Estado. Condicionar o atendimento ao vínculo formal de emprego viola diretamente esse princípio.
+        </div>
+        <div class="gabarito-alt">
+          <strong>A — Incorreta.</strong> Integralidade refere-se à oferta articulada de ações de promoção, proteção e recuperação — não foi violada aqui, pois o problema foi o acesso negado, não a fragmentação do cuidado oferecido.
+        </div>
+        <div class="gabarito-alt">
+          <strong>B — Incorreta.</strong> Equidade reconhece desigualdades e propõe tratar diferentemente quem é diferente para alcançar igualdade de oportunidades — contexto distinto da negativa de acesso por critério formal de emprego.
+        </div>
+        <div class="gabarito-alt">
+          <strong>D — Incorreta.</strong> Descentralização é um princípio organizativo (divisão de responsabilidades entre esferas), não doutrinário. Não se aplica a casos de negativa de atendimento.
+        </div>
+        <div class="gabarito-alt">
+          <strong>E — Incorreta.</strong> Resolutividade se refere à capacidade de resolver o problema de saúde identificado — pressupõe que o atendimento já foi iniciado. Aqui o atendimento foi negado antes de qualquer avaliação.
+        </div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span class="page-footer-brand"><span>Extensivo ENARE</span> &nbsp;·&nbsp; by Residência PRO</span>
+      <span class="page-footer-num">06</span>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PÁGINA 7 — FIXAÇÃO · QUESTÃO 02
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="page">
+    <div class="page-header">
+      <span class="page-header-label">Fixação — Aula 01</span>
+      <span class="page-header-title">Extensivo ENARE · Competências Gerais</span>
+    </div>
+
+    <div class="page-body">
+      <div class="question-num" style="margin-top:2mm;">Questão 02 de 03 &nbsp;·&nbsp; CG-APS — Atributo da Atenção Primária</div>
+      <div class="question-stem">
+        Uma equipe de Saúde da Família atua há quatro anos no mesmo território. Nesse período, a mesma enfermeira realizou pré-natal, acompanhou puerpério e agora monitora o crescimento e desenvolvimento dos filhos dessas mulheres. Ao receber solicitação de transferência para outra UBS, a comunidade apresentou abaixo-assinado pedindo sua permanência, afirmando conhecer sua história de saúde e confiar em seu julgamento clínico. Esse vínculo entre a mesma equipe e a mesma população, ao longo do tempo, é expressão de qual atributo da Atenção Primária à Saúde conforme a Política Nacional de Atenção Básica?
+      </div>
+
+      <div class="alternatives">
+        <div class="alt">
+          <span class="alt-letter">A</span>
+          <span class="alt-text">Integralidade — pois a mesma equipe ofereceu ações de pré-natal, puerpério e puericultura, cobrindo diferentes ciclos de vida da mesma família</span>
+        </div>
+        <div class="alt">
+          <span class="alt-letter">B</span>
+          <span class="alt-text">Acessibilidade — pois a equipe manteve presença contínua no território e garantiu acesso regular da população ao serviço de saúde</span>
+        </div>
+        <div class="alt correct">
+          <span class="alt-letter">C</span>
+          <span class="alt-text">Longitudinalidade — pois a mesma equipe acompanhou as mesmas pessoas ao longo do tempo, construindo vínculo, confiança e conhecimento acumulado da história de saúde de cada uma<span class="correct-badge">Gabarito</span></span>
+        </div>
+        <div class="alt">
+          <span class="alt-letter">D</span>
+          <span class="alt-text">Coordenação do cuidado — pois a equipe articulou diferentes profissionais e níveis de atenção para garantir a continuidade do acompanhamento da gestante</span>
+        </div>
+        <div class="alt">
+          <span class="alt-letter">E</span>
+          <span class="alt-text">Adscrição — pois a equipe estava vinculada a um território definido e conhecia a população que ali residia, conforme preconizado pela PNAB</span>
+        </div>
+      </div>
+
+      <div class="gabarito-title">Gabarito Comentado</div>
+      <div class="gabarito-body">
+        <div class="gabarito-alt correta">
+          <strong>C — CORRETA.</strong> Longitudinalidade descreve o vínculo duradouro entre a mesma equipe e a mesma população ao longo do tempo — não apenas um atendimento contínuo, mas uma relação que se acumula e gera confiança e conhecimento mútuo. A FGV cobra esse atributo através de cenários de vínculo — não pedindo sua definição teórica.
+        </div>
+        <div class="gabarito-alt">
+          <strong>A — Incorreta.</strong> Integralidade refere-se à oferta articulada de ações em diferentes dimensões (promoção, proteção, recuperação). O cenário enfatiza a dimensão temporal do vínculo, não a abrangência das ações oferecidas.
+        </div>
+        <div class="gabarito-alt">
+          <strong>B — Incorreta.</strong> Acessibilidade diz respeito à facilidade de entrada no serviço (localização, horário, ausência de barreiras). O cenário descreve o vínculo já estabelecido — não a facilidade de acesso inicial.
+        </div>
+        <div class="gabarito-alt">
+          <strong>D — Incorreta.</strong> Coordenação do cuidado refere-se à articulação entre os diferentes pontos da rede (referência/contrarreferência). O cenário não apresenta encaminhamentos — foca o vínculo intra-equipe ao longo do tempo.
+        </div>
+        <div class="gabarito-alt">
+          <strong>E — Incorreta.</strong> Adscrição (ou territorialização) define a vinculação da equipe a um território e a uma população. É o pré-requisito para a longitudinalidade, não o atributo em si — o que o cenário evidencia é o aprofundamento desse vínculo ao longo de quatro anos.
+        </div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span class="page-footer-brand"><span>Extensivo ENARE</span> &nbsp;·&nbsp; by Residência PRO</span>
+      <span class="page-footer-num">07</span>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PÁGINA 8 — FIXAÇÃO · QUESTÃO 03 (Questão-âncora)
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="page">
+    <div class="page-header">
+      <span class="page-header-label">Fixação — Aula 01</span>
+      <span class="page-header-title">Extensivo ENARE · Competências Gerais</span>
+    </div>
+
+    <div class="page-body">
+      <div class="question-num" style="margin-top:2mm;">Questão 03 de 03 &nbsp;·&nbsp; Questão-âncora · CG-HIST — Marco da Reforma Sanitária</div>
+      <div class="question-stem">
+        Em 1986, um evento reuniu profissionais de saúde, pesquisadores, movimentos sociais e representantes da sociedade civil e consolidou o arcabouço político e conceitual que fundamentaria a criação do Sistema Único de Saúde pela Constituição Federal de 1988. Sobre esse evento e suas consequências imediatas, é correto afirmar que:
+      </div>
+
+      <div class="alternatives">
+        <div class="alt">
+          <span class="alt-letter">A</span>
+          <span class="alt-text">Tratou-se da 6ª Conferência Nacional de Saúde, realizada em São Paulo, que pela primeira vez aprovou o princípio da universalidade como diretriz nacional do sistema de saúde</span>
+        </div>
+        <div class="alt">
+          <span class="alt-letter">B</span>
+          <span class="alt-text">O evento legitimou o modelo hospitalocêntrico e previdenciário do INAMPS como base do novo sistema, reservando o acesso universal apenas para segurados contribuintes</span>
+        </div>
+        <div class="alt correct">
+          <span class="alt-letter">C</span>
+          <span class="alt-text">A 8ª Conferência Nacional de Saúde, realizada em Brasília, consolidou a proposta da Reforma Sanitária e criou o Conselho Nacional de Reforma Sanitária (CNRS) para subsidiar a Assembleia Constituinte<span class="correct-badge">Gabarito</span></span>
+        </div>
+        <div class="alt">
+          <span class="alt-letter">D</span>
+          <span class="alt-text">A criação do INAMPS foi a consequência direta do evento, que centralizou o financiamento da saúde no modelo previdenciário contributivo como resposta às demandas populares</span>
+        </div>
+        <div class="alt">
+          <span class="alt-letter">E</span>
+          <span class="alt-text">O documento final delegou ao Conselho Federal de Medicina a regulamentação das políticas de saúde pública no país, com poder normativo supraestadual</span>
+        </div>
+      </div>
+
+      <div class="gabarito-title">Gabarito Comentado</div>
+      <div class="gabarito-body">
+        <div class="gabarito-alt correta">
+          <strong>C — CORRETA.</strong> A 8ª CNS (1986, Brasília) reuniu cerca de 4.000 participantes e produziu o Relatório Final que serviu de base para o capítulo de saúde da CF/1988 (Art. 196–200). O CNRS foi criado para levar as propostas à Assembleia Constituinte. A FGV cobrou esse marco em questões de Competências Gerais em mais de uma edição recente — sempre pelo ângulo de seus atores e consequências.
+        </div>
+        <div class="gabarito-alt">
+          <strong>A — Incorreta.</strong> O evento foi a <em>8ª</em> CNS, não a 6ª; foi realizada em Brasília, não em São Paulo.
+        </div>
+        <div class="gabarito-alt">
+          <strong>B — Incorreta.</strong> A 8ª CNS propôs o oposto: romper com o modelo excludente do INAMPS e garantir acesso universal, sem exigência de contribuição previdenciária.
+        </div>
+        <div class="gabarito-alt">
+          <strong>D — Incorreta.</strong> O INAMPS foi criado em 1977, antes da 8ª CNS. Foi extinto em 1993, como consequência da implantação do SUS — não do evento de 1986.
+        </div>
+        <div class="gabarito-alt">
+          <strong>E — Incorreta.</strong> O CFM regula a medicina, não as políticas de saúde pública. O órgão criado para subsidiar as políticas foi o CNRS, com composição ampla da sociedade civil.
+        </div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span class="page-footer-brand"><span>Extensivo ENARE</span> &nbsp;·&nbsp; by Residência PRO</span>
+      <span class="page-footer-num">08</span>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PÁGINA 9 — RECUPERAÇÃO ATIVA + SÍNTESE
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="page">
+    <div class="page-header">
+      <span class="page-header-label">Recuperação Ativa — Aula 01</span>
+      <span class="page-header-title">Extensivo ENARE · Competências Gerais</span>
+    </div>
+
+    <div class="page-body">
+
+      <div class="recall-section">
+        <div class="recall-title">Se esquecer tudo, lembre disto</div>
+        <div class="sintese-item">
+          <div class="sintese-num">1</div>
+          <div class="sintese-text"><strong>Universalidade é o princípio-guardião do acesso.</strong> Qualquer condicionante para atendimento no SUS — emprego, contribuição, documento, endereço — viola a universalidade. A FGV usa esse princípio para testar se o candidato sabe que o SUS é para todos, sem exceção.</div>
+        </div>
+        <div class="sintese-item">
+          <div class="sintese-num">2</div>
+          <div class="sintese-text"><strong>A 8ª CNS (1986, Brasília) é o marco da Reforma Sanitária.</strong> Ela gerou o relatório que fundamentou o capítulo de saúde da CF/1988. O INAMPS existia antes e foi extinto depois — não foi consequência da conferência.</div>
+        </div>
+        <div class="sintese-item">
+          <div class="sintese-num">3</div>
+          <div class="sintese-text"><strong>Longitudinalidade é o vínculo que se acumula no tempo.</strong> Mesmo equipe, mesma população, ao longo de anos — não é sinônimo de continuidade de cuidado, que pode ser feita por equipes diferentes. A FGV cobra esse atributo por cenário, não por definição.</div>
+        </div>
+      </div>
+
+      <hr class="rule">
+
+      <div class="recall-section" style="margin-top: 4mm;">
+        <div class="recall-title">Teste-se sem olhar</div>
+
+        <div class="recall-q">
+          <span class="recall-q-num">01</span>
+          Qual é o nome do princípio do SUS que garante acesso a todos, independente de vínculo empregatício, renda ou contribuição? Em qual lei ele está estabelecido?
+        </div>
+        <div class="recall-q">
+          <span class="recall-q-num">02</span>
+          Em que ano e em qual cidade ocorreu a 8ª Conferência Nacional de Saúde? Qual foi o principal produto desse evento para a história do SUS?
+        </div>
+        <div class="recall-q">
+          <span class="recall-q-num">03</span>
+          Cite três princípios doutrinários e dois princípios organizativos do SUS conforme a Lei 8.080/1990.
+        </div>
+        <div class="recall-q">
+          <span class="recall-q-num">04</span>
+          Uma equipe acompanha a mesma família há cinco anos. Qual atributo da APS isso descreve — e como ele se diferencia de "coordenação do cuidado"?
+        </div>
+        <div class="recall-q">
+          <span class="recall-q-num">05</span>
+          O INAMPS foi criado antes ou depois da 8ª CNS? Em que ano foi extinto e por qual motivo?
+        </div>
+      </div>
+
+    </div>
+
+    <div class="page-footer">
+      <span class="page-footer-brand"><span>Extensivo ENARE</span> &nbsp;·&nbsp; by Residência PRO</span>
+      <span class="page-footer-num">09</span>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PÁGINA 10 — REFERÊNCIAS + ANOTAÇÕES
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="page">
+    <div class="page-header">
+      <span class="page-header-label">Referências e Anotações — Aula 01</span>
+      <span class="page-header-title">Extensivo ENARE · Competências Gerais</span>
+    </div>
+
+    <div class="page-body">
+      <div class="h2">Referências Bibliográficas</div>
+
+      <ul class="ref-list">
+        <li>BRASIL. <strong>Constituição da República Federativa do Brasil, Art. 196–200.</strong> Brasília: Assembleia Nacional Constituinte, 1988. [Saúde como direito de todos e dever do Estado].</li>
+        <li>BRASIL. <strong>Lei nº 8.080, de 19 de setembro de 1990.</strong> Dispõe sobre as condições para a promoção, proteção e recuperação da saúde, a organização e o funcionamento dos serviços. Brasília, 1990.</li>
+        <li>BRASIL. <strong>Lei nº 8.142, de 28 de dezembro de 1990.</strong> Dispõe sobre a participação da comunidade na gestão do SUS e sobre as transferências financeiras. Brasília, 1990.</li>
+        <li>BRASIL. <strong>Decreto nº 7.508, de 28 de junho de 2011.</strong> Regulamenta a Lei nº 8.080/1990 — organização do SUS, planejamento e assistência à saúde. Brasília: Presidência da República, 2011.</li>
+        <li>BRASIL. Ministério da Saúde. <strong>Política Nacional de Atenção Básica (PNAB).</strong> Portaria GM/MS nº 2.436, de 21 de setembro de 2017. Brasília: Ministério da Saúde, 2017.</li>
+        <li>FUNDAÇÃO GETULIO VARGAS (FGV). <strong>ENARE 2024 e 2025 — Provas e Gabaritos Definitivos.</strong> Rio de Janeiro: EBSERH/FGV, 2024–2025.</li>
+      </ul>
+
+      <div class="annotation-area">
+        <div class="annotation-label">Minhas anotações</div>
+        <div class="annotation-lines">
+          <div class="annotation-line"></div>
+          <div class="annotation-line"></div>
+          <div class="annotation-line"></div>
+          <div class="annotation-line"></div>
+          <div class="annotation-line"></div>
+          <div class="annotation-line"></div>
+          <div class="annotation-line"></div>
+          <div class="annotation-line"></div>
+          <div class="annotation-line"></div>
+          <div class="annotation-line"></div>
+          <div class="annotation-line"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span class="page-footer-brand"><span>Extensivo ENARE</span> &nbsp;·&nbsp; by Residência PRO</span>
+      <span class="page-footer-num">10</span>
+    </div>
+  </div>
+
+</body>
+</html>

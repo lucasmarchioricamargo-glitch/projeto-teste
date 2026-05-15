@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Fisioterapia · Bloco B6 · Aula 03</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+@page { size: A4; margin: 0; }
+body { -webkit-print-color-adjust: exact; print-color-adjust: exact; font-family: 'Bricolage Grotesque', sans-serif; background: #fff; }
+
+.page { width: 210mm; height: 297mm; display: flex; flex-direction: column; overflow: hidden; page-break-after: always; }
+.page:last-child { page-break-after: avoid; }
+
+.ph { height: 14mm; flex-shrink: 0; display: flex; align-items: center; padding: 0 16mm; border-bottom: 0.5px solid #e0e0e0; }
+.ph-label { font-family: 'Barlow Condensed', sans-serif; font-size: 7.5pt; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #555; }
+.ph-label span { color: #0D8A8D; }
+.ph-right { margin-left: auto; font-family: 'Bricolage Grotesque', sans-serif; font-size: 7pt; color: #888; }
+
+.pf { height: 9mm; flex-shrink: 0; display: flex; align-items: center; padding: 0 16mm; border-top: 0.5px solid #e0e0e0; }
+.pf-logo { font-family: 'Playfair Display', serif; font-style: italic; font-size: 8pt; color: #333; }
+.pf-logo span { font-family: 'Space Grotesk', sans-serif; font-style: normal; font-weight: 300; font-size: 7pt; letter-spacing: 0.08em; text-transform: uppercase; color: #666; }
+.pf-num { margin-left: auto; font-family: 'Barlow Condensed', sans-serif; font-size: 8pt; font-weight: 700; letter-spacing: 0.1em; color: #0D8A8D; }
+
+.pc  { flex: 1; padding: 7mm 16mm 5mm; overflow: hidden; }
+.pc-sm { flex: 1; padding: 5mm 16mm 4mm; overflow: hidden; }
+
+/* Capa */
+.cover-stripe { height: 3mm; background: #0D8A8D; flex-shrink: 0; }
+.cover-tag { font-family: 'Barlow Condensed', sans-serif; font-size: 8pt; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: #0D8A8D; }
+.cover-title { font-family: 'Barlow Condensed', sans-serif; font-size: 48pt; font-weight: 800; line-height: 0.9; color: #070707; text-transform: uppercase; margin: 3mm 0 2mm; }
+.cover-subtitle { font-family: 'Barlow Condensed', sans-serif; font-size: 14pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #0D8A8D; margin-bottom: 6mm; }
+.cover-body { font-size: 9.5pt; color: #444; line-height: 1.5; max-width: 145mm; }
+
+/* Tipografia */
+h2.sec { font-family: 'Barlow Condensed', sans-serif; font-size: 15pt; font-weight: 800; text-transform: uppercase; color: #070707; border-bottom: 2px solid #0D8A8D; padding-bottom: 2mm; margin-bottom: 4mm; letter-spacing: 0.03em; }
+h3.sub { font-family: 'Barlow Condensed', sans-serif; font-size: 10pt; font-weight: 700; text-transform: uppercase; color: #0D8A8D; margin: 2.5mm 0 1.5mm; letter-spacing: 0.06em; }
+p { font-size: 8.5pt; line-height: 1.5; color: #222; margin-bottom: 2mm; }
+p.sm { font-size: 8pt; line-height: 1.45; }
+p.xs { font-size: 7.5pt; line-height: 1.4; }
+
+/* Competências */
+.comp-block { display: flex; gap: 3mm; margin-bottom: 3mm; }
+.comp-num { font-family: 'Barlow Condensed', sans-serif; font-size: 20pt; font-weight: 800; color: #0D8A8D; line-height: 1; flex-shrink: 0; width: 10mm; }
+.comp-body { flex: 1; }
+.comp-title { font-family: 'Barlow Condensed', sans-serif; font-size: 9.5pt; font-weight: 700; text-transform: uppercase; color: #070707; letter-spacing: 0.04em; margin-bottom: 0.5mm; }
+.comp-desc { font-size: 7.5pt; color: #444; line-height: 1.4; }
+
+.box-fgv { background: #f0f7f7; border-left: 3px solid #0D8A8D; padding: 2.5mm 3.5mm; margin-top: 2.5mm; }
+.box-fgv-title { font-family: 'Barlow Condensed', sans-serif; font-size: 8pt; font-weight: 700; text-transform: uppercase; color: #0D8A8D; letter-spacing: 0.08em; margin-bottom: 1mm; }
+.box-fgv p { font-size: 7.5pt; color: #333; margin: 0; }
+
+/* Two-column */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; }
+.col-box { background: #f9f9f9; border: 0.5px solid #ddd; border-radius: 2px; padding: 2.5mm 3mm; }
+.col-box-title { font-family: 'Barlow Condensed', sans-serif; font-size: 8.5pt; font-weight: 700; text-transform: uppercase; color: #070707; margin-bottom: 1.5mm; letter-spacing: 0.04em; }
+
+/* Table */
+table { width: 100%; border-collapse: collapse; font-size: 7.5pt; margin: 1.5mm 0; }
+th { background: #0D8A8D; color: #fff; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 7.5pt; text-transform: uppercase; letter-spacing: 0.05em; padding: 1.5mm 2mm; text-align: left; }
+td { padding: 1.5mm 2mm; border-bottom: 0.5px solid #e8e8e8; vertical-align: top; }
+tr:nth-child(even) td { background: #f7f7f7; }
+td strong { color: #0D8A8D; }
+
+/* Listas */
+ul.dot { list-style: none; padding: 0; margin: 1mm 0 2mm; }
+ul.dot li { font-size: 8pt; color: #222; padding-left: 3.5mm; position: relative; margin-bottom: 1mm; line-height: 1.4; }
+ul.dot li::before { content: '·'; position: absolute; left: 0; color: #0D8A8D; font-size: 12pt; line-height: 1; top: -1px; }
+
+/* Boxes */
+.box-alerta { background: #fff8e1; border-left: 3px solid #f9a825; padding: 2mm 3mm; margin: 1.5mm 0; }
+.box-info  { background: #e8f5f5; border-left: 3px solid #0D8A8D; padding: 2mm 3mm; margin: 1.5mm 0; }
+.box-critico { background: #fce4ec; border-left: 3px solid #c62828; padding: 2mm 3mm; margin: 1.5mm 0; }
+
+/* Questões */
+.q-header { background: #0D8A8D; color: #fff; padding: 2.5mm 4mm; margin-bottom: 3mm; }
+.q-header-text { font-family: 'Barlow Condensed', sans-serif; font-size: 8.5pt; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+.q-stem { font-size: 9pt; color: #111; line-height: 1.55; margin-bottom: 3.5mm; }
+.q-stem strong { color: #070707; }
+.q-options { list-style: none; padding: 0; margin-bottom: 3mm; }
+.q-options li { font-size: 8.5pt; color: #333; padding: 1.5mm 0 1.5mm 6mm; border-bottom: 0.5px solid #f0f0f0; line-height: 1.4; }
+.q-options li .opt-letter { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; color: #0D8A8D; margin-right: 1.5mm; font-size: 9pt; }
+.q-options li.correta { color: #111; font-weight: 500; }
+.badge { display: inline-block; background: #0D8A8D; color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 7pt; font-weight: 700; letter-spacing: 0.08em; padding: 0.5mm 2mm; border-radius: 2px; margin-left: 2mm; text-transform: uppercase; vertical-align: middle; }
+.gabarito { background: #f5f5f5; border-top: 1.5px solid #0D8A8D; padding: 3mm 4mm; margin-top: 2mm; }
+.gabarito-title { font-family: 'Barlow Condensed', sans-serif; font-size: 8pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #555; margin-bottom: 1.5mm; }
+.gabarito p { font-size: 8pt; color: #333; line-height: 1.45; margin: 0; }
+
+/* Recuperação ativa */
+.rec-title { font-family: 'Barlow Condensed', sans-serif; font-size: 28pt; font-weight: 800; color: #070707; line-height: 1.05; text-transform: uppercase; margin-bottom: 4mm; }
+.rec-item { display: flex; gap: 2.5mm; margin-bottom: 2.5mm; align-items: flex-start; }
+.rec-star { color: #0D8A8D; font-size: 10pt; flex-shrink: 0; margin-top: 0.5mm; }
+.rec-text { font-size: 8.5pt; color: #222; line-height: 1.5; }
+.rec-divider { height: 0.5px; background: #0D8A8D; margin: 3.5mm 0 3mm; }
+.rec-test-title { font-family: 'Barlow Condensed', sans-serif; font-size: 9pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #0D8A8D; margin-bottom: 2.5mm; }
+.rec-q { display: flex; gap: 2mm; margin-bottom: 2mm; align-items: baseline; }
+.rec-q-num { font-family: 'Barlow Condensed', sans-serif; font-size: 10pt; font-weight: 700; color: #0D8A8D; flex-shrink: 0; width: 7mm; }
+.rec-q-line { flex: 1; font-size: 8.5pt; color: #333; line-height: 1.4; }
+
+/* Referências */
+.ref-title { font-family: 'Barlow Condensed', sans-serif; font-size: 18pt; font-weight: 800; color: #070707; text-transform: uppercase; margin-bottom: 5mm; border-bottom: 2px solid #0D8A8D; padding-bottom: 2mm; }
+.ref-item { font-size: 7.5pt; color: #333; line-height: 1.5; margin-bottom: 2.5mm; }
+.ref-notes { border: 0.5px solid #ddd; padding: 3mm 4mm; margin-top: 4mm; }
+.ref-notes-text { font-size: 8pt; color: #aaa; font-style: italic; }
+</style>
+</head>
+<body>
+
+<!-- P01: CAPA -->
+<div class="page">
+  <div class="cover-stripe"></div>
+  <div style="padding: 7mm 16mm 0; flex-shrink:0;">
+    <span class="cover-tag">EXTENSIVO ENARE · BLOCO B6 · FISIOTERAPIA</span>
+  </div>
+  <div style="flex:1; padding: 8mm 16mm 6mm; display:flex; flex-direction:column; justify-content:flex-end; overflow:hidden;">
+    <div class="cover-title">DOENÇAS<br>DEGENE-<br>RATIVAS</div>
+    <div class="cover-subtitle">PARKINSON · ELA · ESCLEROSE MÚLTIPLA · AME</div>
+    <div class="cover-body">Doença de Parkinson segundo a Diretriz Europeia — 5 áreas-chave e cueing strategies (Q83/2025). Parkinsonismo Plus/AMS — hipotensão ortostática e manejo fisioterapêutico (Q89/2025). ELA — manejo progressivo por fase (Q94/2025). Esclerose Múltipla — conservação de energia e exercício (Q95/2025). Atrofia Muscular Espinhal — tipos 1–4 e fisioterapia respiratória (Q86/2025).</div>
+  </div>
+  <div class="pf">
+    <span class="pf-logo"><em>Residência PRO</em> <span>by ELITE TREINAMENTOS</span></span>
+    <span class="pf-num">AULA 03 · FT-NEURO</span>
+  </div>
+</div>
+
+<!-- P02: COMPETÊNCIAS -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label"><span>COMPETÊNCIAS</span> · AULA 03</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc">
+    <h2 class="sec">O QUE VOCÊ VAI DOMINAR</h2>
+
+    <div class="comp-block">
+      <div class="comp-num">01</div>
+      <div class="comp-body">
+        <div class="comp-title">PARKINSON + PARKINSONISMO PLUS (Q83 e Q89/2025)</div>
+        <div class="comp-desc">Cinco áreas-chave da Diretriz Europeia (Q83/2025 — M): transferências, marcha, equilíbrio, capacidade física e atividades manuais. Cueing strategies para freezing of gait. Parkinsonismo Plus/AMS — hipotensão ortostática: sentar na beira da cama + meias compressivas (Q89/2025 — Ap).</div>
+      </div>
+    </div>
+
+    <div class="comp-block">
+      <div class="comp-num">02</div>
+      <div class="comp-body">
+        <div class="comp-title">ELA — MANEJO INDIVIDUALIZADO POR FASE (Q94/2025)</div>
+        <div class="comp-desc">Fase precoce: força sem fadiga excessiva. Fase intermediária: fraqueza crescente, complicações bulbares (Q67/2024). Fase avançada: CVF &lt; 50% → VNI; PCF &lt; 270 L/min → CoughAssist. A FGV apresenta a fase da doença e cobra a conduta correta para aquele momento.</div>
+      </div>
+    </div>
+
+    <div class="comp-block">
+      <div class="comp-num">03</div>
+      <div class="comp-body">
+        <div class="comp-title">ESCLEROSE MÚLTIPLA — FADIGA E CONSERVAÇÃO (Q95/2025)</div>
+        <div class="comp-desc">Fadiga = causa mais prevalente de limitação funcional na EM. Técnicas de conservação de energia: fracionamento de tarefas, pausas programadas, priorização. Exercício aeróbico = indicado (evidência nível I). Uhthoff: calor piora sintomas temporariamente — resfriamento pré-exercício.</div>
+      </div>
+    </div>
+
+    <div class="comp-block">
+      <div class="comp-num">04</div>
+      <div class="comp-body">
+        <div class="comp-title">AME — TIPOS E FISIOTERAPIA RESPIRATÓRIA (Q86/2025)</div>
+        <div class="comp-desc">AME tipo 1 (nunca senta), 2 (senta, não anda), 3 (anda, perde), 4 (adulto). Tipos 1–2: fisioterapia respiratória segue protocolo idêntico ao da ELA — CVF periódica, CoughAssist, VNI. Q86/2025 cobra o fundamento da fisioterapia respiratória nos tipos mais graves.</div>
+      </div>
+    </div>
+
+    <div class="box-fgv">
+      <div class="box-fgv-title">PADRÃO FGV — DOENÇAS DEGENERATIVAS: 2 EM 2024 → 5 EM 2025</div>
+      <p>2024: Q67 (ELA fase intermediária — Ap) + Q74 (Parkinson — sensitivo/KPPS — Ap). 2025: Q83 (Parkinson — diretriz), Q86 (AME — respiratório), Q89 (AMS — disautonomia), Q94 (ELA — manejo) e Q95 (EM — conservação). A FGV distribui entre todas as condições — não concentra em uma única.</p>
+    </div>
+  </div>
+  <div class="pf">
+    <span class="pf-logo"><em>Extensivo ENARE</em> <span>· by Residência PRO</span></span>
+    <span class="pf-num">02</span>
+  </div>
+</div>
+
+<!-- P03: PARKINSON + PARKINSONISMO PLUS -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label"><span>FT-NEURO</span> · AULA 03</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc-sm">
+    <h2 class="sec">DOENÇA DE PARKINSON — DIRETRIZ EUROPEIA</h2>
+    <p class="xs" style="margin-bottom:2mm;">Keus et al., 2014 | Atualização 2021. Fisioterapia recomendada em todas as fases — evidência nível A para marcha, equilíbrio e qualidade de vida.</p>
+
+    <h3 class="sub">5 ÁREAS-CHAVE DA DIRETRIZ (Q83/2025)</h3>
+    <table style="margin-bottom:2.5mm;">
+      <tr><th>Área</th><th>Foco principal</th><th>Intervenção prioritária</th></tr>
+      <tr><td><strong>1. Transferências</strong></td><td>Levantar, deitar, entrar/sair de cadeiras e veículos</td><td>Treinamento sequencial de transferências</td></tr>
+      <tr><td><strong>2. Marcha</strong></td><td>Freezing of gait (FOG), comprimento e ritmo do passo</td><td>Cueing strategies + treadmill</td></tr>
+      <tr><td><strong>3. Equilíbrio</strong></td><td>Instabilidade postural, prevenção de quedas</td><td>Tai Chi, treino dupla tarefa</td></tr>
+      <tr><td><strong>4. Capacidade física</strong></td><td>Condicionamento geral, força e flexibilidade</td><td>Exercício aeróbico progressivo</td></tr>
+      <tr><td><strong>5. Atividades de MMSS</strong></td><td>Escrita, destreza manual, LSVT BIG</td><td>Amplitude exagerada, retroalimentação</td></tr>
+    </table>
+
+    <div class="two-col">
+      <div class="col-box">
+        <div class="col-box-title">CUEING STRATEGIES — FOG</div>
+        <ul class="dot" style="margin:0;">
+          <li><strong>Visual:</strong> faixa no chão, laser no tênis → módulo o passo</li>
+          <li><strong>Auditivo:</strong> metrônomo, música com batida → ritmo externo</li>
+          <li><strong>Cognitivo:</strong> atenção consciente ao passo → bypass dos gânglios basais</li>
+        </ul>
+        <p class="xs" style="margin-top:1.5mm; color:#555;">LSVT BIG: amplitude exagerada — recalibra percepção de movimento. 4 semanas, 4×/semana.</p>
+      </div>
+      <div class="col-box">
+        <div class="col-box-title">PARKINSONISMO PLUS / AMS (Q89/2025)</div>
+        <p class="xs" style="margin-bottom:1.5mm;">AMS diferencia-se do Parkinson: simetria, tremor em repouso ausente, resposta mínima à levodopa, <strong>disautonomia precoce</strong> — hipotensão ortostática grave.</p>
+        <p class="xs" style="margin-bottom:1mm;"><strong>Hipotensão ortostática:</strong> ↓PAS ≥20 mmHg em 3 min após ortostatismo.</p>
+        <ul class="dot" style="margin:0;">
+          <li>Sentar na beira da cama 1–2 min antes de se levantar</li>
+          <li>Meias compressivas (retorno venoso)</li>
+          <li>Cabeceira elevada a 30°</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="box-alerta" style="margin-top:2mm;">
+      <p class="xs"><strong>Erro frequente FGV:</strong> confundir Parkinson com Parkinsonismo Plus. Na AMS, a levodopa não funciona bem e a disautonomia é proeminente desde o início — diferente do Parkinson típico onde a disautonomia é tardia.</p>
+    </div>
+  </div>
+  <div class="pf">
+    <span class="pf-logo"><em>Extensivo ENARE</em> <span>· by Residência PRO</span></span>
+    <span class="pf-num">03</span>
+  </div>
+</div>
+
+<!-- P04: ELA -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label"><span>FT-NEURO</span> · AULA 03</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc-sm">
+    <h2 class="sec">ELA — MANEJO PROGRESSIVO POR FASE</h2>
+    <p class="xs" style="margin-bottom:2mm;">ELA: lesão mista NMS + NMI. Sobrevida média 3–5 anos. Função respiratória é o desfecho crítico — manejo precoce prolonga sobrevida. A FGV cobra conduta específica por fase (Q67/2024 — intermediária; Q94/2025 — individualizado).</p>
+
+    <table style="margin-bottom:2.5mm;">
+      <tr><th>Fase</th><th>Quadro clínico</th><th>Fisioterapia prioritária</th></tr>
+      <tr>
+        <td><strong>Precoce</strong><br><span style="font-size:7pt; color:#666;">CVF &gt; 80%</span></td>
+        <td>Fraqueza localizada, fadiga após esforço, marcha preservada</td>
+        <td>Exercício resistido moderado; amplitude articular; orientações ergonômicas</td>
+      </tr>
+      <tr>
+        <td><strong>Intermediária</strong><br><span style="font-size:7pt; color:#666;">CVF 50–80%</span></td>
+        <td>Fraqueza crescente, complicações bulbares (disfagia, sialorreia), queda</td>
+        <td>Conservação de energia; adaptações de AVD; Air Stacking; posicionamento anti-aspiração</td>
+      </tr>
+      <tr>
+        <td><strong>Avançada</strong><br><span style="font-size:7pt; color:#666;">CVF &lt; 50%</span></td>
+        <td>Dependência funcional, fraqueza de musculatura respiratória</td>
+        <td>VNI (indicar com CVF &lt; 50% ou SNP &lt; 40 cmH₂O); CoughAssist (PCF &lt; 270 L/min)</td>
+      </tr>
+    </table>
+
+    <h3 class="sub">MARCOS RESPIRATÓRIOS — QUANDO AGIR</h3>
+    <table style="margin-bottom:2mm;">
+      <tr><th>Parâmetro</th><th>Valor crítico</th><th>Conduta</th></tr>
+      <tr><td><strong>CVF</strong></td><td>&lt; 50% do previsto</td><td>VNI — independente de sintomas noturnos</td></tr>
+      <tr><td><strong>Sniff nasal (SNP)</strong></td><td>&lt; 40 cmH₂O</td><td>VNI — quando CVF não confiável (fraqueza facial)</td></tr>
+      <tr><td><strong>PCF</strong></td><td>&lt; 270 L/min</td><td>Tosse assistida ou Air Stacking</td></tr>
+      <tr><td><strong>PCF</strong></td><td>&lt; 160 L/min</td><td>MI-E (CoughAssist) obrigatório</td></tr>
+    </table>
+
+    <div class="two-col">
+      <div class="box-info">
+        <p class="xs"><strong>VNI na ELA:</strong> prolonga sobrevida 7–12 meses. Iniciar BILEVEL noturno. Avançar para uso diurno conforme progressão. Não substituir por oxigênio isolado — risco de hipercapnia.</p>
+      </div>
+      <div class="box-critico">
+        <p class="xs"><strong>Exercício motor na ELA:</strong> intensidade moderada apenas — sem exercício de alta intensidade. Não há neuroplasticidade reversível no NMI da ELA. Fadiga excessiva piora o prognóstico motor.</p>
+      </div>
+    </div>
+  </div>
+  <div class="pf">
+    <span class="pf-logo"><em>Extensivo ENARE</em> <span>· by Residência PRO</span></span>
+    <span class="pf-num">04</span>
+  </div>
+</div>
+
+<!-- P05: EM + AME -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label"><span>FT-NEURO</span> · AULA 03</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc-sm">
+    <div class="two-col">
+      <div>
+        <h2 class="sec" style="font-size:13pt;">ESCLEROSE MÚLTIPLA</h2>
+
+        <h3 class="sub" style="margin-top:0;">FADIGA E CONSERVAÇÃO (Q95/2025)</h3>
+        <p class="xs">Fadiga = sintoma mais prevalente na EM e principal causa de limitação funcional. Piora progressiva ao longo do dia.</p>
+        <ul class="dot">
+          <li><strong>Fracionamento de tarefas:</strong> pausas programadas, não esperar o limite</li>
+          <li><strong>Priorização:</strong> identificar atividades essenciais vs. dispensáveis</li>
+          <li><strong>Recursos adaptativos:</strong> assento no banho, utensílios leves, automação</li>
+          <li>Repouso ativo (não absoluto) — repouso absoluto gera descondicionamento</li>
+        </ul>
+
+        <div class="box-alerta">
+          <p class="xs"><strong>Erro FGV (Q95/2025):</strong> prescrever repouso absoluto na fadiga da EM. Exercício aeróbico progressivo tem evidência nível I para redução da fadiga — contraindica-se o sedentarismo, não o exercício.</p>
+        </div>
+
+        <h3 class="sub">UHTHOFF — CALOR E EXERCÍCIO</h3>
+        <p class="xs">Calor → piora <em>temporária e reversível</em> dos sintomas. Mecanismo: bloqueio de condução em fibras desmielinizadas sensíveis ao calor. Estratégias de resfriamento: colete de gelo pré-exercício, ambiente climatizado, horário fresco.</p>
+        <p class="xs" style="margin-top:1mm;">Escalas de fadiga: <strong>MFIS</strong> (Modified Fatigue Impact Scale — físico + cognitivo + psicossocial) | <strong>FSS</strong> (Fatigue Severity Scale — score ≥ 4 = significativo).</p>
+      </div>
+
+      <div>
+        <h2 class="sec" style="font-size:13pt;">AME — TIPOS</h2>
+        <p class="xs" style="margin-bottom:2mm;">Deleção/mutação do gene <em>SMN1</em> → degeneração de motoneurônios do corno anterior medular (NMI).</p>
+
+        <table style="margin-bottom:2mm;">
+          <tr><th>Tipo</th><th>Marco motor</th><th>Início</th></tr>
+          <tr><td><strong>1</strong> (Werdnig-Hoffmann)</td><td>Nunca senta</td><td>&lt; 6 meses</td></tr>
+          <tr><td><strong>2</strong></td><td>Senta, nunca anda</td><td>6–18 meses</td></tr>
+          <tr><td><strong>3</strong> (Kugelberg-Welander)</td><td>Anda, perde gradual</td><td>&gt; 18 meses</td></tr>
+          <tr><td><strong>4</strong></td><td>Adulto, progressão lenta</td><td>Adulto</td></tr>
+        </table>
+
+        <div class="box-info">
+          <p class="xs"><strong>AME tipos 1 e 2 (Q86/2025):</strong> fisioterapia respiratória = protocolo idêntico ao da ELA. CVF periódica, Air Stacking, CoughAssist quando PCF &lt; 270, VNI quando CVF &lt; 50%.</p>
+        </div>
+
+        <p class="xs" style="margin-top:2mm; color:#555;">AME tipo 3: preservar marcha o máximo possível. Não tentar funcionalidade acima do tipo — risco de fadiga excessiva e queda. AME tipo 2: ortótica anti-escoliose, CIL, posicionamento.</p>
+      </div>
+    </div>
+  </div>
+  <div class="pf">
+    <span class="pf-logo"><em>Extensivo ENARE</em> <span>· by Residência PRO</span></span>
+    <span class="pf-num">05</span>
+  </div>
+</div>
+
+<!-- P06: Q1 — MEMORIZAÇÃO (Q83/2025 — Parkinson diretriz europeia) -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label"><span>FIXAÇÃO</span> · AULA 03</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc">
+    <div class="q-header">
+      <div class="q-header-text">QUESTÃO 01 DE 03 · B6 PARKINSON — DIRETRIZ EUROPEIA / MEMORIZAÇÃO</div>
+    </div>
+
+    <p class="q-stem">De acordo com a <strong>Diretriz Europeia de Fisioterapia para a Doença de Parkinson</strong> (Keus et al.), quais são as <strong>cinco áreas-chave</strong> prioritárias de intervenção fisioterapêutica?</p>
+
+    <ul class="q-options">
+      <li><span class="opt-letter">A</span> Marcha, equilíbrio, força muscular, postura e cognição.</li>
+      <li class="correta"><span class="opt-letter">B</span> Transferências, marcha, equilíbrio, capacidade física e atividades manuais dos membros superiores. <span class="badge">CORRETA</span></li>
+      <li><span class="opt-letter">C</span> Cueing, treadmill, LSVT BIG, Tai Chi e prevenção de quedas.</li>
+      <li><span class="opt-letter">D</span> Deglutição, marcha, equilíbrio, comunicação e atividades de vida diária.</li>
+    </ul>
+
+    <div class="gabarito">
+      <div class="gabarito-title">GABARITO COMENTADO — B</div>
+      <p>A Diretriz Europeia define cinco áreas-chave: <strong>transferências</strong> (levantar, deitar, entrar/sair de veículos); <strong>marcha</strong> (freezing, ritmo, comprimento do passo); <strong>equilíbrio</strong> (instabilidade postural, quedas); <strong>capacidade física</strong> (condicionamento geral, força, flexibilidade); e <strong>atividades manuais dos MMSS</strong> (escrita, destreza, LSVT BIG). A = inclui cognição, que é escopo de neuropsicologia — não das 5 áreas da fisioterapia. C = são técnicas/intervenções, não as áreas prioritárias em si. D = deglutição e comunicação são escopos da fonoaudiologia.</p>
+    </div>
+  </div>
+  <div class="pf">
+    <span class="pf-logo"><em>Extensivo ENARE</em> <span>· by Residência PRO</span></span>
+    <span class="pf-num">06</span>
+  </div>
+</div>
+
+<!-- P07: Q2 — APLICAÇÃO (Q89/2025 — Parkinsonismo Plus/AMS disautonomia) -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label"><span>FIXAÇÃO</span> · AULA 03</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc">
+    <div class="q-header">
+      <div class="q-header-text">QUESTÃO 02 DE 03 · B6 PARKINSONISMO PLUS — DISAUTONOMIA / APLICAÇÃO</div>
+    </div>
+
+    <p class="q-stem">Paciente de 59 anos com diagnóstico de <strong>Atrofia de Múltiplos Sistemas (AMS)</strong> relata episódios diários de tontura e mal-estar ao se levantar da cama. Monitorização: PA 148/92 mmHg em decúbito dorsal → 82/54 mmHg após 3 minutos em ortostatismo. Qual orientação fisioterapêutica é mais adequada para o manejo desta complicação?</p>
+
+    <ul class="q-options">
+      <li><span class="opt-letter">A</span> Prescrever exercício aeróbico de alta intensidade para estimular o sistema nervoso simpático e aumentar o tônus vascular.</li>
+      <li><span class="opt-letter">B</span> Orientar o paciente a levantar-se rapidamente da cama para ativar o reflexo barorrecptor antes que a pressão caia.</li>
+      <li><span class="opt-letter">C</span> Recomendar repouso absoluto em decúbito dorsal plano, evitando qualquer mudança postural até estabilização hemodinâmica.</li>
+      <li class="correta"><span class="opt-letter">D</span> Orientar sentar na beira da cama por 1–2 minutos antes de se levantar e usar meias compressivas para favorecer o retorno venoso. <span class="badge">CORRETA</span></li>
+    </ul>
+
+    <div class="gabarito">
+      <div class="gabarito-title">GABARITO COMENTADO — D</div>
+      <p>Na AMS, a disautonomia provoca hipotensão ortostática grave por falha do barorreflexo. A estratégia fisioterapêutica é <strong>prevenir a queda pressional</strong>, não acelerá-la: sentar na beira da cama permite adaptação gradual → menos pooling venoso periférico ao ficar em pé. Meias compressivas aumentam retorno venoso e pré-carga. A = exercício de alta intensidade em ambiente quente piora a hipotensão ortostática na AMS (vasodilatação periférica + redistribuição do fluxo). B = levantar rápido é exatamente o mecanismo desencadeador — contraindicado. C = repouso contínuo causa descondicionamento e piora a hipotensão ortostática a longo prazo.</p>
+    </div>
+  </div>
+  <div class="pf">
+    <span class="pf-logo"><em>Extensivo ENARE</em> <span>· by Residência PRO</span></span>
+    <span class="pf-num">07</span>
+  </div>
+</div>
+
+<!-- P08: Q3 — QUESTÃO-ÂNCORA (Q95/2025 — EM conservação de energia) -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label"><span>FIXAÇÃO</span> · AULA 03</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc">
+    <div class="q-header">
+      <div class="q-header-text">QUESTÃO 03 DE 03 · B6 EM — FADIGA E CONSERVAÇÃO / QUESTÃO-ÂNCORA (An)</div>
+    </div>
+
+    <p class="q-stem">Paciente com <strong>Esclerose Múltipla</strong> remitente-recorrente relata fadiga intensa que se agrava progressivamente ao longo do dia, limitando a realização de atividades domésticas à tarde. FSS = 5,8. Sobre o manejo fisioterapêutico, analise as afirmativas:</p>
+
+    <p style="font-size:8.5pt; color:#333; margin-bottom:3mm; line-height:1.5;">
+      I — Prescrever repouso absoluto durante toda a tarde para preservar a energia disponível na EM.<br>
+      II — Ensinar técnicas de conservação de energia: fracionar tarefas, planejar pausas programadas e priorizar atividades essenciais.<br>
+      III — Prescrever exercício aeróbico progressivo supervisionado, pois há evidência nível I para redução da fadiga na EM.<br>
+      IV — Contraindicar toda atividade física até resolução completa dos episódios de fadiga.
+    </p>
+
+    <ul class="q-options">
+      <li><span class="opt-letter">A</span> Apenas I e IV.</li>
+      <li class="correta"><span class="opt-letter">B</span> Apenas II e III. <span class="badge">CORRETA</span></li>
+      <li><span class="opt-letter">C</span> I, II e III.</li>
+      <li><span class="opt-letter">D</span> II, III e IV.</li>
+    </ul>
+
+    <div class="gabarito">
+      <div class="gabarito-title">GABARITO COMENTADO — B</div>
+      <p>I está <strong>ERRADA</strong>: repouso absoluto causa descondicionamento físico e piora a fadiga na EM a médio prazo — o objetivo é <em>manejar</em> a fadiga, não evitar toda atividade. IV está <strong>ERRADA</strong> pelo mesmo motivo: contraindicar atividade física na EM é conduta obsoleta. II está <strong>CORRETA</strong>: conservação de energia (pacing, pausas, priorização) é a intervenção não-farmacológica de primeira linha para fadiga na EM. III está <strong>CORRETA</strong>: exercício aeróbico progressivo tem evidência nível I para redução da fadiga e melhora de qualidade de vida na EM. As estratégias de resfriamento (Uhthoff) permitem o treino de forma segura.</p>
+    </div>
+  </div>
+  <div class="pf">
+    <span class="pf-logo"><em>Extensivo ENARE</em> <span>· by Residência PRO</span></span>
+    <span class="pf-num">08</span>
+  </div>
+</div>
+
+<!-- P09: RECUPERAÇÃO ATIVA -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label"><span>RECUPERAÇÃO ATIVA</span> · AULA 03</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc">
+    <div class="rec-title">SE ESQUECER<br>TUDO,<br>LEMBRE DISTO</div>
+
+    <div class="rec-item">
+      <span class="rec-star">★</span>
+      <span class="rec-text"><strong>Parkinson — 5 áreas-chave (Q83/2025):</strong> transferências, marcha, equilíbrio, capacidade física e atividades manuais de MMSS. Cueing: visual (faixa), auditivo (metrônomo), cognitivo (atenção ao passo). LSVT BIG = amplitude exagerada.</span>
+    </div>
+
+    <div class="rec-item">
+      <span class="rec-star">★</span>
+      <span class="rec-text"><strong>Parkinsonismo Plus/AMS (Q89/2025):</strong> hipotensão ortostática → sentar na beira da cama 1–2 min antes de levantar + meias compressivas. NÃO levantar rápido. NÃO exercício de alta intensidade em calor.</span>
+    </div>
+
+    <div class="rec-item">
+      <span class="rec-star">★</span>
+      <span class="rec-text"><strong>ELA (Q94/2025):</strong> manejo por fase. CVF &lt; 50% = VNI já. PCF &lt; 270 = tosse assistida. PCF &lt; 160 = CoughAssist. Oxigênio isolado = CONTRAINDICADO (hipercapnia). Alta intensidade motora = contraindicada.</span>
+    </div>
+
+    <div class="rec-item">
+      <span class="rec-star">★</span>
+      <span class="rec-text"><strong>EM (Q95/2025):</strong> fadiga → conservação de energia (pacing + pausas + priorização) + exercício aeróbico progressivo (evidência nível I). Repouso absoluto = errado. Uhthoff = temporário, não precipita recidiva.</span>
+    </div>
+
+    <div class="rec-item">
+      <span class="rec-star">★</span>
+      <span class="rec-text"><strong>AME (Q86/2025):</strong> tipo 1 = nunca senta; 2 = senta, não anda; 3 = anda, perde gradual; 4 = adulto. Tipos 1–2: fisioterapia respiratória = protocolo ELA (CVF, CoughAssist, VNI).</span>
+    </div>
+
+    <div class="rec-divider"></div>
+    <div class="rec-test-title">TESTE-SE SEM OLHAR</div>
+
+    <div class="rec-q">
+      <span class="rec-q-num">01</span>
+      <span class="rec-q-line">Cite as 5 áreas-chave da Diretriz Europeia de Fisioterapia para Parkinson. Qual técnica usa cueing auditivo para o freezing of gait?</span>
+    </div>
+    <div class="rec-q">
+      <span class="rec-q-num">02</span>
+      <span class="rec-q-line">Qual a diferença entre Parkinson típico e Parkinsonismo Plus/AMS em relação à disautonomia e à resposta à levodopa?</span>
+    </div>
+    <div class="rec-q">
+      <span class="rec-q-num">03</span>
+      <span class="rec-q-line">Por que o exercício aeróbico NÃO é contraindicado na EM apesar da fadiga? Cite dois princípios do manejo.</span>
+    </div>
+    <div class="rec-q">
+      <span class="rec-q-num">04</span>
+      <span class="rec-q-line">Qual valor de CVF justifica VNI na ELA? Por que oxigênio isolado é contraindicado nessa condição?</span>
+    </div>
+  </div>
+  <div class="pf">
+    <span class="pf-logo"><em>Extensivo ENARE</em> <span>· by Residência PRO</span></span>
+    <span class="pf-num">09</span>
+  </div>
+</div>
+
+<!-- P10: REFERÊNCIAS -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label"><span>REFERÊNCIAS</span> · AULA 03</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc">
+    <div class="ref-title">REFERÊNCIAS — BLOCO B6 · AULA 03</div>
+
+    <div class="ref-item">KEUS, S.H.J. et al. <em>European Physiotherapy Guideline for Parkinson's Disease.</em> The Netherlands: KNGF/ParkinsonNet, 2014. Atualização 2021.</div>
+    <div class="ref-item">MILLER, R.G. et al. Practice parameter update: The care of the patient with amyotrophic lateral sclerosis — drug, nutritional, and respiratory therapies (an evidence-based review). <em>Neurology,</em> v. 73, n. 15, p. 1218–1226, 2009.</div>
+    <div class="ref-item">ANDERSEN, P.M. et al. EFNS guidelines on the clinical management of amyotrophic lateral sclerosis. <em>European Journal of Neurology,</em> v. 19, n. 3, p. 360–375, 2012.</div>
+    <div class="ref-item">MOTL, R.W.; GOSNEY, J.L. Effect of exercise training on quality of life in multiple sclerosis: a meta-analysis. <em>Multiple Sclerosis,</em> v. 14, n. 1, p. 129–135, 2008.</div>
+    <div class="ref-item">DALGAS, U. et al. Exercise as medicine in multiple sclerosis. <em>Journal of Neurology,</em> v. 266, n. 7, p. 1777–1788, 2019.</div>
+    <div class="ref-item">MERCURI, E. et al. Diagnosis and management of spinal muscular atrophy: Part 1. <em>The Lancet Neurology,</em> v. 17, n. 10, p. 883–897, 2018.</div>
+    <div class="ref-item">CONSENSUS COMMITTEE OF THE AMERICAN AUTONOMIC SOCIETY. Consensus statement on the definition of orthostatic hypotension, pure autonomic failure, and multiple system atrophy. <em>Clinical Autonomic Research,</em> v. 6, p. 125–126, 1996.</div>
+
+    <div class="ref-notes">
+      <span class="ref-notes-text">Espaço para anotações</span>
+    </div>
+  </div>
+  <div class="pf">
+    <span class="pf-logo"><em>Extensivo ENARE</em> <span>· by Residência PRO</span></span>
+    <span class="pf-num">10</span>
+  </div>
+</div>
+
+</body>
+</html>

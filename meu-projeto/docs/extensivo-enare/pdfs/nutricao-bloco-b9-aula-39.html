@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nutrição B9 — Aula 39 | NUT-INT: Revisão Integrativa — Casos Clínicos</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #d0d0d0;
+    font-family: 'Bricolage Grotesque', sans-serif;
+  }
+
+  .page {
+    width: 210mm;
+    height: 297mm;
+    background: #F6F4ED;
+    margin: 8mm auto;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  @media print {
+    body { background: none; margin: 0; }
+    .page {
+      margin: 0;
+      page-break-after: always;
+      box-shadow: none;
+    }
+  }
+
+  @page { size: A4; margin: 0; }
+
+  /* ── HEADER (páginas internas) ── */
+  .page-header {
+    background: #1F5C23;
+    padding: 4mm 6mm;
+    display: flex;
+    align-items: center;
+    gap: 4mm;
+    flex-shrink: 0;
+  }
+
+  .logo-svg { width: 10mm; height: 10mm; flex-shrink: 0; }
+
+  .header-text { flex: 1; }
+  .header-course {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: #C6D834;
+    font-size: 6.5pt;
+    letter-spacing: 0.03em;
+  }
+  .header-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    color: #F6F4ED;
+    font-size: 11pt;
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .header-badge {
+    background: #C6D834;
+    color: #1F5C23;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 7pt;
+    padding: 1mm 3mm;
+    border-radius: 2mm;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+  }
+
+  /* ── FOOTER ── */
+  .page-footer {
+    background: #1F5C23;
+    padding: 2mm 6mm;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+  }
+  .footer-left {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    color: #C6D834;
+    font-size: 6pt;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .footer-right {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    color: #F6F4ED;
+    font-size: 8pt;
+    letter-spacing: 0.06em;
+  }
+
+  /* ── PAGE BODY ── */
+  .page-body {
+    flex: 1;
+    padding: 5mm 7mm;
+    display: flex;
+    flex-direction: column;
+    gap: 3mm;
+    overflow: hidden;
+  }
+
+  /* ── SECTION TITLE ── */
+  .section-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 13pt;
+    color: #1F5C23;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 0.8mm solid #C6D834;
+    padding-bottom: 1.5mm;
+    margin-bottom: 1mm;
+  }
+
+  /* ── CONTENT BOX ── */
+  .box {
+    background: #fff;
+    border-left: 1.2mm solid #1F5C23;
+    border-radius: 1mm;
+    padding: 3mm 4mm;
+    font-size: 7.8pt;
+    line-height: 1.45;
+    color: #222;
+  }
+  .box.accent { border-left-color: #C6D834; }
+  .box.alert  { border-left-color: #c0392b; background: #fff8f7; }
+  .box.dark   { background: #1F5C23; color: #F6F4ED; border-left-color: #C6D834; }
+
+  .box-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 9pt;
+    color: #1F5C23;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 1.5mm;
+  }
+  .box.dark .box-title { color: #C6D834; }
+  .box.alert .box-title { color: #c0392b; }
+
+  /* ── TABLE ── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 7.5pt;
+  }
+  th {
+    background: #1F5C23;
+    color: #F6F4ED;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 8pt;
+    text-transform: uppercase;
+    padding: 1.5mm 2.5mm;
+    text-align: left;
+    letter-spacing: 0.03em;
+  }
+  td {
+    padding: 1.5mm 2.5mm;
+    border-bottom: 0.3mm solid #e0ddd5;
+    vertical-align: top;
+    color: #222;
+    line-height: 1.4;
+  }
+  tr:nth-child(even) td { background: #f4f2eb; }
+  td strong { color: #1F5C23; }
+
+  /* ── CHIPS / TAGS ── */
+  .chip {
+    display: inline-block;
+    background: #C6D834;
+    color: #1F5C23;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 7pt;
+    padding: 0.5mm 2mm;
+    border-radius: 1mm;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-right: 1mm;
+  }
+  .chip.green { background: #1F5C23; color: #F6F4ED; }
+  .chip.red   { background: #c0392b; color: #fff; }
+
+  /* ── 2-COL GRID ── */
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5mm; }
+  .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2mm; }
+
+  /* ── CASE BLOCK ── */
+  .case-block {
+    background: #fff;
+    border: 0.5mm solid #1F5C23;
+    border-radius: 1.5mm;
+    overflow: hidden;
+    font-size: 7.8pt;
+    line-height: 1.45;
+  }
+  .case-header {
+    background: #1F5C23;
+    color: #F6F4ED;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 9pt;
+    text-transform: uppercase;
+    padding: 2mm 3.5mm;
+    letter-spacing: 0.04em;
+  }
+  .case-header span { color: #C6D834; }
+  .case-body { padding: 2.5mm 3.5mm; }
+  .case-row { display: flex; gap: 2mm; margin-bottom: 1mm; flex-wrap: wrap; }
+  .case-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    color: #1F5C23;
+    font-size: 8pt;
+    text-transform: uppercase;
+    min-width: 22mm;
+    flex-shrink: 0;
+  }
+
+  /* ── QUESTÃO ── */
+  .q-stem {
+    background: #fff;
+    border: 0.5mm solid #ddd;
+    border-radius: 1.5mm;
+    padding: 3mm 4mm;
+    font-size: 8pt;
+    line-height: 1.5;
+    color: #222;
+    margin-bottom: 2mm;
+  }
+  .q-stem-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 9pt;
+    color: #1F5C23;
+    text-transform: uppercase;
+    margin-bottom: 1.5mm;
+  }
+  .q-option {
+    display: flex;
+    gap: 2mm;
+    padding: 1.5mm 2.5mm;
+    border-radius: 1mm;
+    margin-bottom: 1mm;
+    border: 0.4mm solid #e0ddd5;
+    background: #fff;
+    font-size: 7.8pt;
+    line-height: 1.4;
+    align-items: flex-start;
+  }
+  .q-option.correct {
+    background: #f0f8f0;
+    border-color: #1F5C23;
+  }
+  .q-option.wrong {
+    background: #fff8f7;
+    border-color: #e0a0a0;
+  }
+  .q-letter {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 9pt;
+    color: #1F5C23;
+    min-width: 4mm;
+    flex-shrink: 0;
+    margin-top: -0.3mm;
+  }
+  .q-option.correct .q-letter { color: #1F5C23; }
+  .q-option.wrong   .q-letter { color: #c0392b; }
+
+  /* ── AFIRMATIVA (Q03) ── */
+  .afirmativa {
+    display: flex;
+    gap: 2mm;
+    padding: 2mm 3mm;
+    border-radius: 1mm;
+    margin-bottom: 1.5mm;
+    font-size: 7.8pt;
+    line-height: 1.45;
+    align-items: flex-start;
+  }
+  .afirmativa.certa  { background: #f0f8f0; border-left: 1mm solid #1F5C23; }
+  .afirmativa.errada { background: #fff8f7; border-left: 1mm solid #c0392b; }
+  .af-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 9pt;
+    min-width: 5mm;
+    flex-shrink: 0;
+  }
+  .afirmativa.certa  .af-num { color: #1F5C23; }
+  .afirmativa.errada .af-num { color: #c0392b; }
+  .af-verdict {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 8pt;
+    padding: 0.3mm 2mm;
+    border-radius: 0.8mm;
+    flex-shrink: 0;
+  }
+  .afirmativa.certa  .af-verdict { background: #1F5C23; color: #F6F4ED; }
+  .afirmativa.errada .af-verdict { background: #c0392b; color: #fff; }
+
+  /* ── GABARITO ── */
+  .gab-box {
+    display: flex;
+    gap: 3mm;
+    align-items: center;
+    background: #1F5C23;
+    color: #F6F4ED;
+    border-radius: 1.5mm;
+    padding: 2.5mm 4mm;
+    margin-bottom: 2mm;
+  }
+  .gab-letter {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 20pt;
+    color: #C6D834;
+    line-height: 1;
+  }
+  .gab-info { flex: 1; font-size: 7.8pt; line-height: 1.4; }
+  .gab-info strong {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 9pt;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  /* ── SÍNTESE ── */
+  .sintese-item {
+    display: flex;
+    gap: 2mm;
+    padding: 2mm 3mm;
+    border-radius: 1mm;
+    margin-bottom: 1.5mm;
+    background: #fff;
+    border-left: 1mm solid #1F5C23;
+    font-size: 7.8pt;
+    line-height: 1.4;
+    align-items: flex-start;
+  }
+  .sintese-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    color: #1F5C23;
+    font-size: 10pt;
+    min-width: 5mm;
+    flex-shrink: 0;
+    margin-top: -0.5mm;
+  }
+
+  /* ── MAP MODULO ── */
+  .modulo-card {
+    background: #fff;
+    border: 0.5mm solid #C6D834;
+    border-top: 1mm solid #1F5C23;
+    border-radius: 1.5mm;
+    padding: 2.5mm 3mm;
+    font-size: 7.3pt;
+    line-height: 1.4;
+  }
+  .modulo-card .mod-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    color: #1F5C23;
+    font-size: 8.5pt;
+    text-transform: uppercase;
+    margin-bottom: 1mm;
+  }
+  .modulo-card ul { list-style: none; padding: 0; }
+  .modulo-card ul li::before { content: "▸ "; color: #C6D834; font-size: 7pt; }
+
+  /* ── CAPA ── */
+  .cover {
+    background: #1F5C23;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: 12mm;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -20mm;
+    right: -20mm;
+    width: 80mm;
+    height: 80mm;
+    background: rgba(198,216,52,0.12);
+    border-radius: 50%;
+  }
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -15mm;
+    left: -15mm;
+    width: 60mm;
+    height: 60mm;
+    background: rgba(198,216,52,0.08);
+    border-radius: 50%;
+  }
+  .cover-inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 5mm;
+    width: 100%;
+  }
+  .cover-logo { width: 22mm; height: 22mm; }
+  .cover-brand {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: #C6D834;
+    font-size: 11pt;
+    letter-spacing: 0.05em;
+  }
+  .cover-tagline {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    color: rgba(246,244,237,0.6);
+    font-size: 7pt;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+  .cover-divider {
+    width: 30mm;
+    height: 0.3mm;
+    background: rgba(198,216,52,0.4);
+  }
+  .cover-bloco {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    color: #C6D834;
+    font-size: 9pt;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    background: rgba(198,216,52,0.12);
+    padding: 1.5mm 4mm;
+    border-radius: 1mm;
+  }
+  .cover-aula-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    color: rgba(246,244,237,0.3);
+    font-size: 52pt;
+    line-height: 1;
+    letter-spacing: -1mm;
+  }
+  .cover-module {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    color: #C6D834;
+    font-size: 10pt;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .cover-main-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    color: #F6F4ED;
+    font-size: 22pt;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    line-height: 1.1;
+  }
+  .cover-sub {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 300;
+    color: rgba(246,244,237,0.7);
+    font-size: 8pt;
+    line-height: 1.5;
+    max-width: 140mm;
+  }
+  .cover-footer-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(198,216,52,0.15);
+    border-top: 0.5mm solid rgba(198,216,52,0.3);
+    padding: 3mm 8mm;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .cover-footer-bar span {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    color: rgba(246,244,237,0.5);
+    font-size: 6pt;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════════
+     P1 — CAPA
+════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="cover">
+    <div class="cover-inner">
+
+      <svg class="cover-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#F6F4ED" stroke="#C6D834" stroke-width="4"/>
+        <circle cx="50" cy="50" r="24" fill="#1F5C23"/>
+        <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#F6F4ED">E</text>
+      </svg>
+
+      <div class="cover-brand">Elite Treinamentos em Saúde</div>
+      <div class="cover-tagline">Extensivo ENARE 2026</div>
+      <div class="cover-divider"></div>
+      <div class="cover-bloco">Nutrição · Bloco B9</div>
+      <div class="cover-aula-num">39</div>
+      <div class="cover-module">NUT-INT</div>
+      <div class="cover-main-title">Revisão Integrativa<br>Casos Clínicos</div>
+      <div class="cover-sub">
+        Casos clínicos que cruzam múltiplos módulos do Bloco B9 · Abordagem FGV ·
+        Diagnóstico nutricional integrado · Condutas prioritárias
+      </div>
+
+    </div>
+    <div class="cover-footer-bar">
+      <span>PDF de Apoio · Uso Exclusivo Extensivo ENARE 2026</span>
+      <span>Aula 39 · Bloco B9 · Nutrição</span>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════
+     P2 — ABORDAGEM FGV / MAPA DOS 6 EIXOS
+════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Nutrição B9</div>
+      <div class="header-title">NUT-INT · Revisão Integrativa — Como a FGV Cobra Casos Clínicos</div>
+    </div>
+    <div class="header-badge">Aula 39</div>
+  </div>
+
+  <div class="page-body">
+    <div class="section-title">Lógica FGV: Vinheta → Módulo-Âncora → Conduta</div>
+
+    <div class="box">
+      <div class="box-title">Estrutura das Questões Integrativas ENARE</div>
+      A FGV apresenta um <strong>caso clínico com múltiplos dados</strong> (diagnóstico, medicamentos, exames laboratoriais, contexto institucional) e exige que o candidato <strong>identifique o módulo-âncora</strong>, aplique o protocolo correto e verifique possíveis interações entre sistemas. O erro mais comum é responder apenas a uma camada do caso.
+    </div>
+
+    <div class="section-title">Os 6 Eixos Mais Cobrados no ENARE (Bloco B9)</div>
+
+    <div class="grid2">
+      <div class="modulo-card">
+        <div class="mod-title">NUT-ETICA · Ética e Legislação</div>
+        <ul>
+          <li>AMR obrigatória (indep. do porte)</li>
+          <li>RT+ART em todos os serviços</li>
+          <li>Privativas vs. não privativas (Lei 8.234)</li>
+          <li>Sigilo: exceção = risco de vida</li>
+        </ul>
+      </div>
+      <div class="modulo-card">
+        <div class="mod-title">NUT-FARM · Interações Droga-Nutriente</div>
+        <ul>
+          <li>Quelação (tetraciclina/Ca/Mg/Fe)</li>
+          <li>Varfarina+Vit.K: manter constante</li>
+          <li>IMAO+tiramina: restrição TOTAL</li>
+          <li>Grapefruit → CYP3A4 irreversível</li>
+        </ul>
+      </div>
+      <div class="modulo-card">
+        <div class="mod-title">NUT-FUND · Água, Eletrólitos, pH</div>
+        <ul>
+          <li>Síndrome de realimentação → hipoP</li>
+          <li>Hipocalemia refratária → checar Mg</li>
+          <li>SIADH → hiponatremia (dilucional)</li>
+          <li>Acidose metabólica → Kussmaul</li>
+        </ul>
+      </div>
+      <div class="modulo-card">
+        <div class="mod-title">NUT-TNUTR · Terapia Nutricional</div>
+        <ul>
+          <li>TNE preferida à TNP (gut if it works)</li>
+          <li>Encefalopatia: proteína ≥1,2g/kg</li>
+          <li>DRC HD: proteína 1,2 · P/K/Na restritos</li>
+          <li>Síndrome intestino curto: TNP precoce</li>
+        </ul>
+      </div>
+      <div class="modulo-card">
+        <div class="mod-title">NUT-DIETÉTICA · Técnica Dietética</div>
+        <ul>
+          <li>FC sempre &gt;1; FK pode ser &lt;1 (carnes)</li>
+          <li>Fritura ideal: 180°C (acroleína &gt;200°C)</li>
+          <li>RI ≤10% (sadia) / ≤20% (hospitalar)</li>
+          <li>AQPC: qualitativo, não calcula VCT</li>
+        </ul>
+      </div>
+      <div class="modulo-card">
+        <div class="mod-title">NUT-SAPU · Vigilância Alimentar</div>
+        <ul>
+          <li>SISVAN: OMS 2006 (&lt;5a) → prescritiva</li>
+          <li>Idosos: Lipschitz (&gt;27 = excesso)</li>
+          <li>Gestantes: ganho inversamente ∝ IMC</li>
+          <li>VIGITEL: autorreferido, não nacional</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="box accent">
+      <strong>Armadilhas clássicas da FGV:</strong> (1) Confundir Lipschitz (idoso) com OMS adulto; (2) Dizer que Vit. K deve ser eliminada na varfarina — errado, deve ser <em>constante</em>; (3) Reduzir proteína na encefalopatia hepática — errado, ≥1,2g/kg; (4) Afirmar que VIGITEL é representativo do Brasil inteiro; (5) Classificar grapefruit como inibidor reversível da CYP3A4 — é <strong>irreversível</strong>.
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">2 / 10</div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════
+     P3 — CASO CLÍNICO 1: DRC + INTERAÇÕES + SAPU
+════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Nutrição B9</div>
+      <div class="header-title">NUT-INT · Caso Clínico 1 — DRC em Hemodiálise + Interações Farmacológicas</div>
+    </div>
+    <div class="header-badge">Aula 39</div>
+  </div>
+
+  <div class="page-body">
+    <div class="case-block">
+      <div class="case-header">Caso Clínico 1 · <span>DRC + Hemodiálise + Interação Droga-Nutriente</span></div>
+      <div class="case-body">
+        <div class="case-row"><span class="case-label">Paciente:</span> Maria, 62 anos, DRC estágio 5 em hemodiálise 3×/semana há 18 meses</div>
+        <div class="case-row"><span class="case-label">Medicamentos:</span> Varfarina 5mg/dia; Carbonato de cálcio 1,5g/dia (quelante de P); Eritropoetina SC</div>
+        <div class="case-row"><span class="case-label">Prescrição nova:</span> Médico prescreveu doxiciclina (tetraciclina) para infecção de pele</div>
+        <div class="case-row"><span class="case-label">Antropometria:</span> Peso 72kg · Altura 1,60m · IMC = 72 ÷ 2,56 = <strong>28,1 kg/m²</strong></div>
+        <div class="case-row"><span class="case-label">Exames:</span> K⁺ 5,4 mEq/L · P 5,9mg/dL · Na⁺ 138 mEq/L · TP/INR 2,4</div>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div>
+        <div class="section-title" style="font-size:9pt">Diagnóstico Nutricional — SISVAN</div>
+        <div class="box">
+          <div class="box-title">Critério Lipschitz (idosos ≥60 anos)</div>
+          IMC 28,1 kg/m² → <strong>&gt;27 = Excesso de Peso</strong><br>
+          <span style="color:#c0392b">⚠ Armadilha:</span> OMS adulto classificaria como sobrepeso (25–29,9), mas pela idade usa-se Lipschitz, e o ponto de corte é DIFERENTE: <strong>22–27 = eutrofia</strong>.
+        </div>
+      </div>
+      <div>
+        <div class="section-title" style="font-size:9pt">Interação: Doxiciclina + Ca²⁺</div>
+        <div class="box alert">
+          <div class="box-title">Quelação → ↓ Absorção do Antibiótico</div>
+          Carbonato de cálcio + tetraciclinas/fluorquinolonas formam <strong>quelatos insolúveis</strong> no TGI → redução da absorção do antibiótico.<br><br>
+          <strong>Conduta:</strong> Administrar doxiciclina <strong>1 hora antes</strong> ou <strong>2 horas após</strong> o carbonato de cálcio. Separar rigorosamente.
+        </div>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div>
+        <div class="section-title" style="font-size:9pt">Interação: Varfarina + Vit. K</div>
+        <div class="box">
+          <div class="box-title">Regra: Manter CONSTANTE — nunca eliminar</div>
+          Vit. K dietética antagoniza o efeito da varfarina. A conduta NÃO é eliminar, pois variações bruscas desestabilizam o INR.<br>
+          <strong>Meta:</strong> ingestão diária constante (ex.: 90–120 µg). INR-alvo 2,0–3,0 (FA) ou 2,5–3,5 (prótese valvar).
+        </div>
+      </div>
+      <div>
+        <div class="section-title" style="font-size:9pt">Metas Nutricionais em HD</div>
+        <div class="box">
+          <table>
+            <tr><th>Nutriente</th><th>Meta</th></tr>
+            <tr><td>Proteína</td><td><strong>1,2 g/kg/dia</strong></td></tr>
+            <tr><td>Energia</td><td>30–35 kcal/kg/dia</td></tr>
+            <tr><td>K⁺</td><td>&lt;3.000 mg/dia</td></tr>
+            <tr><td>Fósforo</td><td>&lt;800 mg/dia</td></tr>
+            <tr><td>Sódio</td><td>&lt;2.000 mg/dia</td></tr>
+            <tr><td>Líquidos</td><td>500 ml + diurese residual</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="box dark">
+      <div class="box-title">Âncoras Integrativas do Caso 1</div>
+      (1) IMC 28,1 → Lipschitz → <strong>EXCESSO</strong> (não eutróficas); (2) Doxiciclina + Ca → quelação → separar 1h/2h; (3) Varfarina + Vit. K → <strong>CONSTANTE</strong>; (4) Proteína em HD → <strong>1,2g/kg</strong> (não restrita como no pré-diálise).
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">3 / 10</div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════
+     P4 — CASO CLÍNICO 2: CIRROSE + ACIDOSE + REALIMENTAÇÃO
+════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Nutrição B9</div>
+      <div class="header-title">NUT-INT · Caso Clínico 2 — Cirrose + Gasometria + Síndrome de Realimentação</div>
+    </div>
+    <div class="header-badge">Aula 39</div>
+  </div>
+
+  <div class="page-body">
+    <div class="case-block">
+      <div class="case-header">Caso Clínico 2 · <span>Cirrose Etílica + Encefalopatia + Risco de Realimentação</span></div>
+      <div class="case-body">
+        <div class="case-row"><span class="case-label">Paciente:</span> Pedro, 50 anos, cirrose alcoólica Child-Pugh C, internado há 6 dias com pouca ingestão oral</div>
+        <div class="case-row"><span class="case-label">Clínica:</span> Encefalopatia hepática grau I–II · Ascite moderada · Albumina 2,1g/dL</div>
+        <div class="case-row"><span class="case-label">Gasometria:</span> pH 7,30 · PaCO₂ 28 mmHg · HCO₃⁻ 13 mEq/L · SatO₂ 95%</div>
+        <div class="case-row"><span class="case-label">Eletrólitos:</span> Na⁺ 132 · K⁺ 3,1 · P 2,0mg/dL · Mg²⁺ 1,4mg/dL · Glicemia 88mg/dL</div>
+        <div class="case-row"><span class="case-label">Conduta:</span> Equipe decide iniciar TNE via sonda nasoenteral</div>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div>
+        <div class="section-title" style="font-size:9pt">Interpretação Gasométrica</div>
+        <div class="box">
+          <table>
+            <tr><th>Parâmetro</th><th>Valor</th><th>Interpretação</th></tr>
+            <tr><td>pH</td><td>7,30</td><td><strong style="color:#c0392b">↓ Acidose</strong></td></tr>
+            <tr><td>HCO₃⁻</td><td>13 mEq/L</td><td><strong style="color:#c0392b">↓ Distúrbio primário</strong></td></tr>
+            <tr><td>PaCO₂</td><td>28 mmHg</td><td>↓ Compensação respiratória</td></tr>
+          </table>
+          <br>
+          <strong>Diagnóstico:</strong> <span style="color:#c0392b">Acidose Metabólica</span> com compensação respiratória (Kussmaul).<br>
+          PaCO₂ esperado: 1,5 × 13 + 8 = 27,5 → compensação adequada.
+        </div>
+      </div>
+      <div>
+        <div class="section-title" style="font-size:9pt">Síndrome de Realimentação</div>
+        <div class="box alert">
+          <div class="box-title">Risco Presente (jejum prolongado + alcoolismo)</div>
+          Ao iniciar glicose → ↑ insulina → influxo celular de P, K, Mg → <strong>hipofosfatemia</strong> (distúrbio central) → ↓ATP → fraqueza, falha desmame VM, arritmias.<br><br>
+          <strong>Conduta:</strong> Iniciar com <strong>10–15 kcal/kg/dia</strong>; monitorar P, K, Mg²⁺ nos primeiros 3–5 dias.
+        </div>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div>
+        <div class="section-title" style="font-size:9pt">Encefalopatia Hepática e Proteína</div>
+        <div class="box">
+          <div class="box-title">NÃO reduzir proteína — meta ≥1,2g/kg/dia</div>
+          Restrição proteica severa piora o catabolismo muscular e a encefalopatia a longo prazo. BCAA (isoleucina, leucina, valina) pode ser considerado em casos refratários.<br>
+          <strong>Meta proteica:</strong> 1,2–1,5g/kg/dia peso seco.
+        </div>
+      </div>
+      <div>
+        <div class="section-title" style="font-size:9pt">Eletrólitos Críticos</div>
+        <div class="box">
+          <table>
+            <tr><th>Eletrólito</th><th>Valor</th><th>Risco</th></tr>
+            <tr><td>P</td><td>2,0 mg/dL</td><td><strong style="color:#c0392b">Hipofosfatemia</strong></td></tr>
+            <tr><td>K⁺</td><td>3,1 mEq/L</td><td><strong style="color:#c0392b">Hipocalemia</strong></td></tr>
+            <tr><td>Mg²⁺</td><td>1,4 mg/dL</td><td><strong style="color:#c0392b">Hipomagnesemia</strong></td></tr>
+          </table>
+          <br>
+          Hipocalemia refratária → checar Mg²⁺ primeiro!
+        </div>
+      </div>
+    </div>
+
+    <div class="box dark">
+      <div class="box-title">Âncoras Integrativas do Caso 2</div>
+      (1) pH↓ + HCO₃⁻↓ + PaCO₂↓ → <strong>Acidose metabólica compensada</strong>; (2) TNE: iniciar com <strong>10–15 kcal/kg/dia</strong> (não 30); (3) Encefalopatia: proteína <strong>≥1,2g/kg</strong>, não reduzir; (4) Monitorar P/K/Mg nos primeiros 3–5 dias de realimentação.
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">4 / 10</div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════
+     P5 — CASO CLÍNICO 3: UAN + ÉTICA + FUNCIONAIS
+════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Nutrição B9</div>
+      <div class="header-title">NUT-INT · Caso Clínico 3 — UAN Hospitalar + Ética Profissional + Alimentos Funcionais</div>
+    </div>
+    <div class="header-badge">Aula 39</div>
+  </div>
+
+  <div class="page-body">
+    <div class="case-block">
+      <div class="case-header">Caso Clínico 3 · <span>UAN Hospitalar + Ética + Funcionais</span></div>
+      <div class="case-body">
+        <div class="case-row"><span class="case-label">Serviço:</span> UAN de hospital universitário com 650 refeições/dia. Nutricionista é Responsável Técnica (RT)</div>
+        <div class="case-row"><span class="case-label">AQPC:</span> Análise semanal revelou: 4 dias com fritura, 2 dias sem leguminosas, cores repetidas</div>
+        <div class="case-row"><span class="case-label">Cálculo:</span> Compra de frango: PC=150g/ref · FC=1,85 · FK=0,78 · 200 refeições</div>
+        <div class="case-row"><span class="case-label">Ética:</span> Paciente com hipercolesterolemia pergunta sobre alimentos funcionais para reduzir o colesterol</div>
+        <div class="case-row"><span class="case-label">Dilema:</span> Colega informa que auxiliar de cozinha adulterou rótulo de produto vencido</div>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div>
+        <div class="section-title" style="font-size:9pt">AMR e RT — Legislação</div>
+        <div class="box">
+          <div class="box-title">CFN 600/2018 — UAN hospitalar 650 ref/dia</div>
+          <strong>650 ref/dia &gt; 500 ref/dia</strong> → faixa 501–1.000:<br>
+          AMR = <strong>1 NT + 40h/semana</strong> (jornada mínima de referência)<br>
+          RT obrigatória + ART no CREA/CFN.<br><br>
+          <strong>Cálculo de compra:</strong><br>
+          PL = PC ÷ FK = 150 ÷ 0,78 = <strong>192,3g</strong><br>
+          PB = PL × FC = 192,3 × 1,85 = <strong>355,8g</strong><br>
+          Total = 355,8 × 200 = <strong>71.160g ≈ 71,2 kg</strong>
+        </div>
+      </div>
+      <div>
+        <div class="section-title" style="font-size:9pt">AQPC e Alimentos Funcionais</div>
+        <div class="box">
+          <div class="box-title">AQPC + Orientação Funcional</div>
+          <strong>AQPC:</strong> 4 dias com fritura = inadequado (preconiza-se no máximo 2×/sem); 2 dias sem leguminosas = inadequado. AQPC é qualitativo — NÃO calcula VCT nem macros.<br><br>
+          <strong>Para hipercolesterolemia:</strong><br>
+          · Beta-glucana <strong>≥3g/dia</strong> (aveia) → ANVISA aprovada<br>
+          · Fitosteróis <strong>1,5–3g/dia</strong> → ↓ absorção colesterol<br>
+          · Proteína de soja <strong>≥25g/dia</strong> → ↓ LDL<br>
+          · Licopeno → antioxidante, mas <strong>NÃO ↓ colesterol</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-title" style="font-size:9pt">Dilema Ético: Adulteração de Produto Alimentar</div>
+    <div class="box alert">
+      <div class="box-title">Risco à Saúde Coletiva → Exceção ao Sigilo Profissional</div>
+      A Resolução CFN 599/2018 estabelece que o sigilo profissional <strong>não é absoluto</strong>: a exceção ocorre quando há <strong>risco à vida ou à saúde</strong> individual ou coletiva. A adulteração de rótulo com produto vencido configura risco à saúde dos comensais → o nutricionista RT <strong>deve notificar</strong> a autoridade sanitária competente (VISA) e a direção do serviço, independentemente do constrangimento.<br>
+      <strong>Armadilha FGV:</strong> Afirmar que o sigilo impede qualquer notificação = ERRADO.
+    </div>
+
+    <div class="box dark">
+      <div class="box-title">Âncoras Integrativas do Caso 3</div>
+      (1) 650 ref/dia → AMR <strong>40h/sem</strong>; (2) PB = PL × FC (calcular via FK primeiro); (3) Beta-glucana ≥3g/dia (∥ fitosteróis 1,5–3g/dia) → ↓ LDL (licopeno ≠ ↓colesterol); (4) Sigilo: exceção por risco coletivo = notificar VISA.
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">5 / 10</div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════
+     P6 — Q01 APLICAÇÃO (GAB B)
+════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Nutrição B9</div>
+      <div class="header-title">NUT-INT · Q01 — Aplicação · Caso DRC: Interação + Dieta + SISVAN</div>
+    </div>
+    <div class="header-badge">Aula 39</div>
+  </div>
+
+  <div class="page-body">
+    <div class="q-stem">
+      <div class="q-stem-label">Questão 01 · Aplicação</div>
+      Maria, 62 anos, portadora de doença renal crônica estágio 5 em hemodiálise 3×/semana, faz uso contínuo de varfarina 5mg/dia e carbonato de cálcio 1,5g/dia como quelante de fósforo. Apresenta peso de 72kg, altura de 1,60m e IMC de 28,1 kg/m². O médico prescreveu doxiciclina para tratamento de infecção cutânea. Sobre a conduta nutricional e farmacológica correta, assinale a alternativa <strong>VERDADEIRA</strong>:
+    </div>
+
+    <div class="q-option wrong">
+      <span class="q-letter">A</span>
+      <span>O carbonato de cálcio deve ser ingerido simultaneamente à doxiciclina para facilitar a absorção do antibiótico, e a vitamina K deve ser completamente eliminada da dieta para potencializar o efeito anticoagulante da varfarina.</span>
+    </div>
+    <div class="q-option correct">
+      <span class="q-letter">B</span>
+      <span>A doxiciclina deve ser administrada 1 hora antes ou 2 horas após o carbonato de cálcio para evitar a quelação que reduz sua absorção; o consumo de vitamina K deve ser mantido constante na dieta para estabilização do INR.</span>
+    </div>
+    <div class="q-option wrong">
+      <span class="q-letter">C</span>
+      <span>O IMC de 28,1 kg/m² classifica Maria como eutrófica pelo critério de Lipschitz para idosos, e a meta proteica em pacientes em hemodiálise é de 0,6g/kg/dia, igual à indicada para DRC sem diálise.</span>
+    </div>
+    <div class="q-option wrong">
+      <span class="q-letter">D</span>
+      <span>A quelação entre doxiciclina e carbonato de cálcio aumenta a biodisponibilidade do antibiótico por formação de complexos absorvíveis; a meta proteica em hemodiálise é 0,8g/kg/dia conforme recomendações internacionais atuais.</span>
+    </div>
+
+    <div class="box" style="margin-top:2mm">
+      <div class="box-title">Análise das Alternativas</div>
+      <table>
+        <tr><th>Alt.</th><th>Erro / Acerto</th></tr>
+        <tr><td><strong>A</strong></td><td>DUPLO ERRO: Ca REDUZ absorção da doxiciclina (quelação → não tomar junto); Vit. K deve ser CONSTANTE, não eliminada</td></tr>
+        <tr><td><strong style="color:#1F5C23">B ✓</strong></td><td>CORRETA: quelação → separar 1h antes/2h após; Vit. K constante para INR estável</td></tr>
+        <tr><td><strong>C</strong></td><td>IMC 28,1 &gt; 27 = EXCESSO (Lipschitz, não eutrofia); proteína em HD = 1,2g/kg (não 0,6)</td></tr>
+        <tr><td><strong>D</strong></td><td>Quelação REDUZ biodisponibilidade (não aumenta); meta proteica em HD = 1,2g/kg (não 0,8)</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">6 / 10</div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════
+     P7 — Q02 APLICAÇÃO (GAB C)
+════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Nutrição B9</div>
+      <div class="header-title">NUT-INT · Q02 — Aplicação · Caso Cirrose: Gasometria + Realimentação + TNE</div>
+    </div>
+    <div class="header-badge">Aula 39</div>
+  </div>
+
+  <div class="page-body">
+    <div class="q-stem">
+      <div class="q-stem-label">Questão 02 · Aplicação</div>
+      Pedro, 50 anos, com cirrose alcoólica Child-Pugh C, está internado há 6 dias com pouca ingestão oral. Apresenta encefalopatia hepática grau I–II, ascite moderada e albumina 2,1g/dL. Gasometria arterial: pH 7,30, PaCO₂ 28 mmHg, HCO₃⁻ 13 mEq/L. Eletrólitos: K⁺ 3,1 mEq/L, fósforo sérico 2,0mg/dL, Mg²⁺ 1,4mg/dL. A equipe decide iniciar terapia nutricional enteral. Qual conjunto de condutas é <strong>MAIS ADEQUADO</strong>?
+    </div>
+
+    <div class="q-option wrong">
+      <span class="q-letter">A</span>
+      <span>Iniciar TNE com dieta hipoproteica de 0,6g/kg/dia para controle rigoroso da encefalopatia, sem necessidade de monitorar eletrólitos nas primeiras 24h, pois o risco de síndrome de realimentação só existe em pacientes com jejum absoluto superior a 10 dias consecutivos.</span>
+    </div>
+    <div class="q-option wrong">
+      <span class="q-letter">B</span>
+      <span>Classificar a gasometria como alcalose respiratória (PaCO₂ abaixo do normal), iniciar TNE com aporte calórico de 30 kcal/kg/dia desde o primeiro dia de suporte, e suplementar zinco e selênio como medida principal para reversão da encefalopatia hepática.</span>
+    </div>
+    <div class="q-option correct">
+      <span class="q-letter">C</span>
+      <span>Classificar como acidose metabólica com compensação respiratória; iniciar TNE com aporte progressivo de 10–15 kcal/kg/dia; manter proteína ≥1,2g/kg/dia; monitorar fósforo, potássio e magnésio nos primeiros 3–5 dias pelo risco de síndrome de realimentação.</span>
+    </div>
+    <div class="q-option wrong">
+      <span class="q-letter">D</span>
+      <span>A encefalopatia hepática grau II contraindica absolutamente o suporte nutricional enteral por risco de aspiração; é obrigatório iniciar nutrição parenteral total exclusiva com aminoácidos de cadeia ramificada (BCAA) como única fonte proteica.</span>
+    </div>
+
+    <div class="box" style="margin-top:2mm">
+      <div class="box-title">Análise das Alternativas</div>
+      <table>
+        <tr><th>Alt.</th><th>Erro / Acerto</th></tr>
+        <tr><td><strong>A</strong></td><td>Proteína ≥1,2g/kg (restrição severa piora catabolismo); realimentação pode ocorrer em &lt;10 dias de hipoingesta + alcoolismo</td></tr>
+        <tr><td><strong>B</strong></td><td>pH ↓ + HCO₃⁻ ↓ = ACIDOSE (não alcalose); iniciar 10–15 kcal/kg (não 30); BCAA não é conduta principal de EH</td></tr>
+        <tr><td><strong style="color:#1F5C23">C ✓</strong></td><td>CORRETA: acidose metabólica compensada; TNE progressiva; proteína ≥1,2g/kg; monitorar P/K/Mg (síndrome de realimentação)</td></tr>
+        <tr><td><strong>D</strong></td><td>EH não contraindica TNE; TNP não é obrigatória; BCAA não é exclusiva — usar proteína convencional ≥1,2g/kg</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">7 / 10</div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════
+     P8 — Q03 ANÁLISE ÂNCORA (GAB C — II e III CERTAS)
+════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Nutrição B9</div>
+      <div class="header-title">NUT-INT · Q03 — Análise Âncora · Revisão Integrativa Bloco B9</div>
+    </div>
+    <div class="header-badge">Aula 39</div>
+  </div>
+
+  <div class="page-body">
+    <div class="q-stem">
+      <div class="q-stem-label">Questão 03 · Análise Âncora (Afirmativas)</div>
+      Sobre os principais módulos do Bloco B9 do Extensivo ENARE 2026 — Nutrição, analise as afirmativas e marque a alternativa correta:
+    </div>
+
+    <div class="afirmativa errada">
+      <span class="af-num">I.</span>
+      <div>
+        <span class="af-verdict">ERRADA</span><br>
+        A Resolução CFN 600/2018 dispensa a Responsabilidade Técnica (RT) e a Anotação de Responsabilidade Técnica (ART) para estabelecimentos de alimentação coletiva de pequeno porte (até 100 refeições/dia), sendo a exigência de RT exclusiva para serviços hospitalares de grande porte.
+      </div>
+    </div>
+
+    <div class="afirmativa certa">
+      <span class="af-num">II.</span>
+      <div>
+        <span class="af-verdict">CORRETA</span><br>
+        Na síndrome de realimentação, o distúrbio eletrolítico central é a hipofosfatemia, desencadeada pela hiperinsulinemia secundária ao aporte de glicose, que promove influxo celular de fósforo e redução sérica abrupta, podendo causar fraqueza muscular grave, arritmias e falha no desmame da ventilação mecânica.
+      </div>
+    </div>
+
+    <div class="afirmativa certa">
+      <span class="af-num">III.</span>
+      <div>
+        <span class="af-verdict">CORRETA</span><br>
+        O grapefruit inibe irreversivelmente a CYP3A4 intestinal, aumentando a biodisponibilidade de sinvastatina e lovastatina (metabolizadas pela CYP3A4) e elevando o risco de miopatia; a pravastatina e a rosuvastatina não são afetadas porque não dependem da CYP3A4 para seu metabolismo.
+      </div>
+    </div>
+
+    <div class="afirmativa errada">
+      <span class="af-num">IV.</span>
+      <div>
+        <span class="af-verdict">ERRADA</span><br>
+        As curvas de crescimento da OMS 2006, por terem sido construídas com crianças de diversas populações do mundo, têm caráter descritivo, representando como as crianças de diferentes contextos socioeconômicos efetivamente crescem na prática clínica cotidiana.
+      </div>
+    </div>
+
+    <div class="grid3" style="margin-top:2mm">
+      <div class="q-option wrong"><span class="q-letter">A</span> <span>Apenas I e III são corretas</span></div>
+      <div class="q-option wrong"><span class="q-letter">B</span> <span>Apenas II e IV são corretas</span></div>
+      <div class="q-option correct"><span class="q-letter">C</span> <span>Apenas II e III são corretas</span></div>
+      <div class="q-option wrong"><span class="q-letter">D</span> <span>Apenas I, II e III são corretas</span></div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">8 / 10</div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════
+     P9 — GABARITO COMENTADO
+════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Nutrição B9</div>
+      <div class="header-title">NUT-INT · Gabarito Comentado</div>
+    </div>
+    <div class="header-badge">Aula 39</div>
+  </div>
+
+  <div class="page-body">
+    <div class="section-title">Gabarito Oficial</div>
+
+    <div class="gab-box">
+      <div class="gab-letter">B</div>
+      <div class="gab-info">
+        <strong>Q01 — Aplicação · Caso DRC</strong><br>
+        Doxiciclina deve ser separada do carbonato de cálcio (quelação → 1h antes ou 2h após). Vitamina K: manter constante para estabilização do INR (não eliminar). IMC 28,1 → Lipschitz → excesso de peso.
+      </div>
+    </div>
+
+    <div class="gab-box">
+      <div class="gab-letter">C</div>
+      <div class="gab-info">
+        <strong>Q02 — Aplicação · Caso Cirrose</strong><br>
+        pH 7,30 + HCO₃⁻ 13 + PaCO₂ 28 = acidose metabólica com compensação respiratória. TNE: 10–15 kcal/kg/dia progressivo. Proteína ≥1,2g/kg (não restringir na EH). Monitorar P/K/Mg nas primeiras 72–120h (risco de realimentação).
+      </div>
+    </div>
+
+    <div class="gab-box">
+      <div class="gab-letter">C</div>
+      <div class="gab-info">
+        <strong>Q03 — Análise Âncora · Afirmativas II e III corretas</strong><br>
+        I errada (RT+ART obrigatórias independente do porte — CFN 600/2018). II correta (hipofosfatemia = centro da realimentação). III correta (grapefruit → CYP3A4 irreversível → sinvastatina/lovastatina afetadas; pravastatina não). IV errada (OMS 2006 = PRESCRITIVA, não descritiva).
+      </div>
+    </div>
+
+    <div class="section-title" style="margin-top:2mm">Por Que os Distratores Enganam</div>
+
+    <div class="box">
+      <table>
+        <tr><th>Questão</th><th>Distrator Mais Perigoso</th><th>Por Que Erram</th></tr>
+        <tr>
+          <td><strong>Q01 Alt. A</strong></td>
+          <td>"Eliminar Vit. K" da varfarina</td>
+          <td>Candidatos confundem "antagonismo" com "eliminar". Correto: manter CONSTANTE para INR estável</td>
+        </tr>
+        <tr>
+          <td><strong>Q02 Alt. B</strong></td>
+          <td>"Alcalose respiratória" (PaCO₂ baixo)</td>
+          <td>Olham só o PaCO₂ e ignoram pH e HCO₃⁻. O distúrbio primário define o tipo; compensação é secundária</td>
+        </tr>
+        <tr>
+          <td><strong>Q03 Af. IV</strong></td>
+          <td>OMS 2006 "descritiva"</td>
+          <td>Confundem com referências NCHS/CDC (descritivas). OMS 2006 = PRESCRITIVA (condições ideais, MGRS)</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="box accent">
+      <strong>Regra de Ouro Q03:</strong> Afirmativas II e III sempre corretas (padrão Âncora desta aula). Quando em dúvida entre "II e III" e outra combinação, verifique se I e IV têm os marcadores de erro característicos (RT dispensada = errado; descritiva = errado).
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">9 / 10</div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════
+     P10 — SÍNTESE FINAL · BLOCO B9 COMPLETO
+════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Nutrição B9</div>
+      <div class="header-title">NUT-INT · Síntese Final — Bloco B9 Nutrição Completo</div>
+    </div>
+    <div class="header-badge">Aula 39</div>
+  </div>
+
+  <div class="page-body">
+    <div class="section-title">10 Âncoras Absolutas do Bloco B9 — Nutrição ENARE</div>
+
+    <div class="sintese-item">
+      <span class="sintese-num">1</span>
+      <span><strong>Varfarina + Vit. K:</strong> manter CONSTANTE na dieta — nunca eliminar. Variações bruscas desestabilizam o INR (NUT-FARM).</span>
+    </div>
+    <div class="sintese-item">
+      <span class="sintese-num">2</span>
+      <span><strong>Quelação:</strong> tetraciclinas/fluorquinolonas + Ca/Mg/Fe/Zn → tomar 1h antes ou 2h após o quelante. Reduz — nunca aumenta — a absorção do antibiótico (NUT-FARM).</span>
+    </div>
+    <div class="sintese-item">
+      <span class="sintese-num">3</span>
+      <span><strong>Síndrome de realimentação:</strong> distúrbio central = hipofosfatemia (insulina → P entra na célula). Iniciar 10–15 kcal/kg/dia; monitorar P/K/Mg 3–5 dias (NUT-FUND).</span>
+    </div>
+    <div class="sintese-item">
+      <span class="sintese-num">4</span>
+      <span><strong>Acidose metabólica:</strong> pH↓ + HCO₃⁻↓ → compensação: hiperventilação (Kussmaul) → PaCO₂↓. Olhar o distúrbio primário antes da compensação (NUT-FUND).</span>
+    </div>
+    <div class="sintese-item">
+      <span class="sintese-num">5</span>
+      <span><strong>Encefalopatia hepática:</strong> proteína ≥1,2g/kg/dia — restrição piora catabolismo. TNE é a via preferida; TNP não é obrigatória (NUT-TNUTR/Hepatologia).</span>
+    </div>
+    <div class="sintese-item">
+      <span class="sintese-num">6</span>
+      <span><strong>OMS 2006 vs. OMS 2007:</strong> &lt;5 anos = OMS 2006 (PRESCRITIVA); 5–19 anos = OMS 2007 (descritiva). Lipschitz para idosos: &lt;22=BP; 22–27=eutrofia; &gt;27=excesso (NUT-SAPU).</span>
+    </div>
+    <div class="sintese-item">
+      <span class="sintese-num">7</span>
+      <span><strong>Grapefruit → CYP3A4:</strong> inibição IRREVERSÍVEL. Sinvastatina e lovastatina afetadas. Pravastatina e rosuvastatina: NÃO afetadas (NUT-FARM).</span>
+    </div>
+    <div class="sintese-item">
+      <span class="sintese-num">8</span>
+      <span><strong>RT + ART:</strong> obrigatórias em TODOS os serviços de alimentação, independente do porte. AMR: ≤500 ref/dia = 30h/sem; 501–1.000 = 40h/sem (NUT-ETICA / CFN 600/2018).</span>
+    </div>
+    <div class="sintese-item">
+      <span class="sintese-num">9</span>
+      <span><strong>Alimentos funcionais ANVISA:</strong> alegação funcional ≠ cura/doença. Beta-glucana ≥3g/dia; fitosteróis 1,5–3g/dia; licopeno = antioxidante (NÃO ↓ colesterol diretamente) (NUT-FUNC).</span>
+    </div>
+    <div class="sintese-item">
+      <span class="sintese-num">10</span>
+      <span><strong>AQPC:</strong> ferramenta QUALITATIVA — não calcula VCT, não calcula macronutrientes. Avalia cor, técnica de cocção, frituras, leguminosas, folhosos (NUT-DIETÉTICA).</span>
+    </div>
+
+    <div class="box dark" style="margin-top:1mm">
+      <div class="box-title">Encerramento do Bloco B9 — Nutrição · Extensivo ENARE 2026</div>
+      <div style="font-size:7.8pt;line-height:1.5">
+        Bloco B9 concluído: <strong>39 aulas</strong> · Módulos cobertos: NUT-CLÍN, NUT-TNUTR, NUT-ETICA, NUT-FARM, NUT-FUNC, NUT-DIETÉTICA, NUT-FUND, NUT-SAPU e NUT-INT. Material produzido para maximizar a performance na banca <strong>FGV/ENARE 2026</strong>. Revise os casos clínicos integradores desta aula como preparação final para a prova.
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">10 / 10</div>
+  </div>
+</div>
+
+</body>
+</html>

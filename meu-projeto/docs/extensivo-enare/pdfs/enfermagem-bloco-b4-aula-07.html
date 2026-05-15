@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Enfermagem · Bloco B4 · Aula 07 — Extensivo ENARE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Bricolage+Grotesque:wght@400;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root{--creme:#F6F4ED;--verde-lima:#C6D834;--verde-floresta:#1F5C23;--teal:#0D8A8D;--preto:#070707;--cinza:#9E9B94;--cinza-borda:#DDD9D1;--creme-escuro:#EDEAE2;}
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{background:#CCC;font-family:'Bricolage Grotesque',sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    @page{size:A4;margin:0;}
+    .page{width:210mm;height:297mm;position:relative;overflow:hidden;page-break-after:always;background:var(--creme);display:flex;flex-direction:column;}
+    @media screen{.page{margin:24px auto;box-shadow:0 4px 32px rgba(0,0,0,0.18);}}
+    .page-header{height:14mm;background:var(--creme);border-bottom:2px solid var(--teal);display:flex;align-items:center;padding:0 18mm;flex-shrink:0;}
+    .page-header-label{font-family:'Barlow Condensed',sans-serif;font-size:8pt;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--cinza);}
+    .page-header-title{font-family:'Space Grotesk',sans-serif;font-size:7.5pt;font-weight:300;color:var(--cinza);margin-left:auto;}
+    .page-footer{height:10mm;background:var(--creme);border-top:1px solid var(--cinza-borda);display:flex;align-items:center;padding:0 18mm;flex-shrink:0;}
+    .page-footer-brand{font-family:'Space Grotesk',sans-serif;font-size:7pt;font-weight:300;color:var(--cinza);}
+    .page-footer-num{font-family:'Barlow Condensed',sans-serif;font-size:9pt;font-weight:700;color:var(--teal);margin-left:auto;}
+    .page-content{flex:1;padding:10mm 18mm;overflow:hidden;}
+    .section-tag{font-family:'Barlow Condensed',sans-serif;font-size:7.5pt;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--teal);margin-bottom:4mm;}
+    .section-rule{width:100%;height:2px;background:var(--teal);margin-bottom:6mm;}
+    .capa{background:var(--teal);width:100%;height:100%;display:flex;flex-direction:column;padding:14mm 16mm 12mm;}
+    .capa-logo-ext{font-family:'Playfair Display',serif;font-style:italic;font-size:10pt;color:var(--verde-lima);letter-spacing:1px;}
+    .capa-logo-enare{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:38pt;color:var(--creme);line-height:0.85;letter-spacing:-1px;}
+    .capa-logo-sub{font-family:'Space Grotesk',sans-serif;font-weight:300;font-size:8.5pt;color:rgba(246,244,237,0.6);margin-top:2mm;}
+    .capa-area{font-family:'Barlow Condensed',sans-serif;font-size:7.5pt;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:rgba(246,244,237,0.55);margin-bottom:2mm;}
+    .capa-codigo{font-family:'Barlow Condensed',sans-serif;font-size:9pt;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--verde-lima);margin-bottom:5mm;}
+    .capa-titulo{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:46pt;color:var(--creme);line-height:0.88;text-transform:uppercase;letter-spacing:-1px;margin-bottom:4mm;}
+    .capa-subtitulo{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:14pt;color:var(--verde-lima);text-transform:uppercase;letter-spacing:1px;line-height:1.25;}
+    .capa-watermark{position:absolute;bottom:12mm;right:12mm;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:110pt;color:rgba(246,244,237,0.08);line-height:1;pointer-events:none;}
+    .obj-list{list-style:none;display:flex;flex-direction:column;gap:4mm;margin-bottom:6mm;}
+    .obj-item{display:flex;gap:3mm;align-items:flex-start;}
+    .obj-num{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:18pt;color:var(--teal);line-height:1;flex-shrink:0;width:8mm;}
+    .obj-text{font-size:9.5pt;line-height:1.5;color:var(--preto);padding-top:1mm;}
+    .obj-prereq{background:var(--creme-escuro);border-left:3px solid var(--cinza-borda);padding:3mm 4mm;border-radius:0 3px 3px 0;margin-top:4mm;}
+    .obj-prereq-label{font-family:'Barlow Condensed',sans-serif;font-size:7pt;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--cinza);margin-bottom:1mm;}
+    .obj-prereq-text{font-size:8.5pt;color:var(--preto);line-height:1.4;}
+    .meta-row{display:flex;gap:8mm;margin-top:5mm;padding-top:4mm;border-top:1px solid var(--cinza-borda);}
+    .meta-item{display:flex;flex-direction:column;gap:0.5mm;}
+    .meta-label{font-family:'Barlow Condensed',sans-serif;font-size:6.5pt;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--cinza);}
+    .meta-value{font-size:8pt;font-weight:600;color:var(--preto);}
+    h2{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:17pt;color:var(--teal);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:3mm;line-height:1.1;}
+    h3{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:10pt;color:var(--preto);text-transform:uppercase;letter-spacing:1px;margin:3mm 0 1.5mm;}
+    p{font-size:9pt;line-height:1.55;color:var(--preto);margin-bottom:3mm;}
+    table{width:100%;border-collapse:collapse;font-size:8pt;margin-bottom:4mm;}
+    th{background:var(--teal);color:var(--creme);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:7.5pt;letter-spacing:1px;text-transform:uppercase;padding:2mm 3mm;text-align:left;}
+    td{padding:2mm 3mm;border-bottom:1px solid var(--cinza-borda);vertical-align:top;line-height:1.4;}
+    tr:nth-child(even) td{background:var(--creme-escuro);}
+    .td-dest{font-weight:600;}
+    .box{padding:3.5mm 4mm;border-radius:4px;margin-bottom:4mm;}
+    .box-conceito{background:#e8f4e8;border-left:4px solid var(--verde-floresta);}
+    .box-conceito .box-label{color:var(--verde-floresta);}
+    .box-dica{background:#e5f4f4;border-left:4px solid var(--teal);}
+    .box-dica .box-label{color:var(--teal);}
+    .box-pega{background:#f5f9d4;border-left:4px solid var(--verde-lima);}
+    .box-pega .box-label{color:#7a8a00;}
+    .box-alerta{background:#fce8e8;border-left:4px solid #b03030;}
+    .box-alerta .box-label{color:#b03030;}
+    .box-label{font-family:'Barlow Condensed',sans-serif;font-size:7pt;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:1.5mm;display:block;}
+    .box p{font-size:8.5pt;margin-bottom:0;}
+    .box p+p{margin-top:2mm;}
+    .q-header{font-family:'Barlow Condensed',sans-serif;font-size:8pt;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--teal);margin-bottom:3mm;}
+    .q-stem{font-size:9.5pt;line-height:1.6;color:var(--preto);background:var(--creme-escuro);padding:4mm 5mm;border-radius:4px;margin-bottom:4mm;}
+    .q-opts{list-style:none;display:flex;flex-direction:column;gap:2.5mm;margin-bottom:4mm;}
+    .q-opt{display:flex;gap:3mm;align-items:flex-start;padding:2.5mm 3mm;border-radius:3px;border:1px solid var(--cinza-borda);font-size:9pt;line-height:1.45;}
+    .q-opt.correta{background:#e8f4e8;border-color:var(--verde-floresta);font-weight:600;}
+    .opt-letter{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:11pt;color:var(--teal);flex-shrink:0;line-height:1.2;}
+    .q-opt.correta .opt-letter{color:var(--verde-floresta);}
+    .badge-correta{background:var(--verde-floresta);color:var(--creme);font-family:'Barlow Condensed',sans-serif;font-size:6.5pt;font-weight:700;letter-spacing:1.5px;padding:1px 5px;border-radius:2px;margin-left:3mm;vertical-align:middle;text-transform:uppercase;}
+    .gabarito-box{background:var(--creme-escuro);border-top:2px solid var(--teal);padding:3.5mm 4mm;border-radius:0 0 4px 4px;}
+    .gabarito-title{font-family:'Barlow Condensed',sans-serif;font-size:7.5pt;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:2mm;}
+    .gabarito-text{font-size:8pt;line-height:1.55;color:var(--preto);}
+    .distrator{font-size:7.5pt;color:#555;margin-top:1.5mm;line-height:1.4;}
+    .distrator strong{color:var(--preto);}
+    .rec-box{background:var(--creme-escuro);border-radius:4px;padding:4mm 5mm;margin-bottom:4mm;}
+    .rec-item{display:flex;gap:2.5mm;align-items:flex-start;margin-bottom:2.5mm;font-size:9pt;line-height:1.5;}
+    .rec-star{color:var(--teal);font-weight:800;flex-shrink:0;}
+    .teste-list{list-style:none;display:flex;flex-direction:column;gap:3mm;}
+    .teste-item{font-size:8.5pt;line-height:1.5;padding-left:4mm;border-left:2px solid var(--cinza-borda);color:var(--preto);}
+    .teste-item strong{font-family:'Barlow Condensed',sans-serif;font-size:9pt;color:var(--teal);font-weight:700;letter-spacing:0.5px;}
+    .ref-list{list-style:none;display:flex;flex-direction:column;gap:2mm;}
+    .ref-item{font-size:7.5pt;line-height:1.55;color:var(--preto);padding-left:3mm;border-left:2px solid var(--cinza-borda);}
+    .anot-box{margin-top:5mm;border:1.5px dashed var(--cinza-borda);border-radius:4px;padding:4mm;height:52mm;display:flex;align-items:center;justify-content:center;}
+    .anot-label{font-family:'Barlow Condensed',sans-serif;font-size:8pt;letter-spacing:2px;text-transform:uppercase;color:var(--cinza-borda);}
+    /* Aldrete */
+    .aldrete-grid{display:grid;grid-template-columns:auto 1fr auto auto auto;gap:0;border:1px solid var(--cinza-borda);border-radius:4px;overflow:hidden;margin-bottom:4mm;font-size:8pt;}
+    .ald-head{background:var(--teal);color:var(--creme);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:7.5pt;letter-spacing:1px;text-transform:uppercase;padding:2mm 3mm;display:flex;align-items:center;}
+    .ald-cell{padding:2mm 3mm;border-bottom:1px solid var(--cinza-borda);display:flex;align-items:flex-start;line-height:1.4;}
+    .ald-cell.param{font-weight:600;width:32mm;flex-shrink:0;border-right:1px solid var(--cinza-borda);background:var(--creme-escuro);}
+    .ald-cell.score{width:7mm;flex-shrink:0;border-right:1px solid var(--cinza-borda);font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:11pt;color:var(--teal);justify-content:center;}
+    .ald-cell.desc{flex:1;font-size:7.5pt;}
+    .ald-cell:last-of-type{border-bottom:none;}
+    /* cols2 */
+    .cols2{display:grid;grid-template-columns:1fr 1fr;gap:3mm;margin-bottom:4mm;}
+    .info-card{background:var(--creme-escuro);border:1px solid var(--cinza-borda);border-radius:4px;padding:3mm 4mm;}
+    .info-titulo{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:9.5pt;color:var(--teal);text-transform:uppercase;margin-bottom:2mm;}
+    .info-text{font-size:7.5pt;line-height:1.45;color:var(--preto);}
+    /* hipotermia strip */
+    .hipo-strip{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2mm;margin-bottom:3mm;}
+    .hipo-card{border-radius:4px;padding:2.5mm 3mm;}
+    .hipo-card.def{background:#e5f4f4;border-left:3px solid var(--teal);}
+    .hipo-card.cons{background:#fce8e8;border-left:3px solid #b03030;}
+    .hipo-card.prev{background:#e8f4e8;border-left:3px solid var(--verde-floresta);}
+    .hipo-titulo{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:8pt;text-transform:uppercase;margin-bottom:1.5mm;}
+    .hipo-card.def .hipo-titulo{color:var(--teal);}
+    .hipo-card.cons .hipo-titulo{color:#b03030;}
+    .hipo-card.prev .hipo-titulo{color:var(--verde-floresta);}
+    .hipo-text{font-size:7.5pt;line-height:1.4;color:var(--preto);}
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════
+     P01 — CAPA
+     ═══════════════════════════════════════════════════════════ -->
+<div class="page" id="p01">
+  <div class="capa">
+    <div style="margin-bottom:auto;">
+      <span class="capa-logo-ext">extensivo</span><br>
+      <span class="capa-logo-enare">ENARE</span><br>
+      <span class="capa-logo-sub">by Residência PRO</span>
+    </div>
+    <div style="padding-bottom:2mm;">
+      <div class="capa-area">Enfermagem · Módulo Específico</div>
+      <div class="capa-codigo">Bloco B4 · Aula 07</div>
+      <div class="capa-titulo">Periop II</div>
+      <div class="capa-subtitulo">Intraoperatório,<br>SRPA e Cirurgias<br>Específicas</div>
+    </div>
+  </div>
+  <div class="capa-watermark">07</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     P02 — OBJETIVOS
+     ═══════════════════════════════════════════════════════════ -->
+<div class="page" id="p02">
+  <div class="page-header">
+    <span class="page-header-label">Enfermagem · Bloco B4 · Aula 07</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <div class="section-tag">Objetivos de Aprendizagem</div>
+    <div class="section-rule"></div>
+
+    <ul class="obj-list">
+      <li class="obj-item">
+        <span class="obj-num">1</span>
+        <span class="obj-text">Identificar os posicionamentos cirúrgicos e suas complicações de enfermagem — com destaque para litotomia (síndrome compartimental de MMII) e prona (lesão ocular e facial).</span>
+      </li>
+      <li class="obj-item">
+        <span class="obj-num">2</span>
+        <span class="obj-text">Aplicar a Escala de Aldrete-Kroulik para avaliar alta da SRPA: 5 parâmetros (0–2 cada), pontuação máxima 10 e alta com ≥8 pontos.</span>
+      </li>
+      <li class="obj-item">
+        <span class="obj-num">3</span>
+        <span class="obj-text">Reconhecer laringoespasmo pós-extubação como emergência da SRPA — estridor + SpO₂ em queda + uso de musculatura acessória — e selecionar o NANDA-I prioritário: <em>Desobstrução ineficaz das vias aéreas</em>.</span>
+      </li>
+    </ul>
+
+    <div class="obj-prereq">
+      <div class="obj-prereq-label">Pré-Requisito</div>
+      <div class="obj-prereq-text">Aula 06 — Avaliação pré-operatória, checklist OMS e fármacos críticos. Aula 03 — NANDA-I: Desobstrução ineficaz das vias aéreas (já introduzido no contexto de TOT/traqueostomia).</div>
+    </div>
+
+    <div class="meta-row">
+      <div class="meta-item"><span class="meta-label">Bloco</span><span class="meta-value">B4 — Enfermagem</span></div>
+      <div class="meta-item"><span class="meta-label">Aula</span><span class="meta-value">07 de 24</span></div>
+      <div class="meta-item"><span class="meta-label">Tema</span><span class="meta-value">ENF-PERIO II</span></div>
+      <div class="meta-item"><span class="meta-label">Nível Cognitivo</span><span class="meta-value">M → An</span></div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">02</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     P03 — POSICIONAMENTOS CIRÚRGICOS
+     ═══════════════════════════════════════════════════════════ -->
+<div class="page" id="p03">
+  <div class="page-header">
+    <span class="page-header-label">Conteúdo Principal · Aula 07</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <h2>Posicionamentos Cirúrgicos e Complicações</h2>
+
+    <table>
+      <thead>
+        <tr><th>Posição</th><th>Indicação Principal</th><th>Complicação de Enfermagem</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="td-dest">Supino (decúbito dorsal)</td>
+          <td>Cirurgia abdominal, cardíaca, vascular</td>
+          <td>UPP em occipital, cotovelos e calcâneos; proteção com coxins obrigatória</td>
+        </tr>
+        <tr>
+          <td class="td-dest">Litotomia</td>
+          <td>Ginecologia, urologia, colorretal</td>
+          <td><strong>Síndrome compartimental dos MMII</strong> (litotomia &gt;2h); lesão dos nervos femoral e ciático; trombose venosa</td>
+        </tr>
+        <tr>
+          <td class="td-dest">Trendelenburg</td>
+          <td>Pelve, laparoscopia pélvica</td>
+          <td>Edema cerebral e facial; hipóxia (diafragma deslocado → ↓ volumes pulmonares); ↑ PIC</td>
+        </tr>
+        <tr>
+          <td class="td-dest">Prona (decúbito ventral)</td>
+          <td>Coluna, neurocirurgia posterior</td>
+          <td><strong>Lesão ocular</strong> (glaucoma agudo por compressão); úlcera facial; compressão abdominal; obstrução do TOT</td>
+        </tr>
+        <tr>
+          <td class="td-dest">Lateral (decúbito lateral)</td>
+          <td>Toracotomia, nefrectomia, quadril</td>
+          <td>Lesão do plexo braquial (braço dependente); UPP em maléolo e trocânter</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="box box-alerta">
+      <span class="box-label">Síndrome Compartimental — Litotomia Prolongada</span>
+      <p>Compressão vascular da posição + reperfusão ao término da cirurgia → edema muscular → ↑ pressão no compartimento → isquemia. Sinais: dor intensa desproporcional, edema, tensão muscular, parestesias. Conduta: comunicar médico <strong>imediatamente</strong>; verificar pulso, enchimento capilar e temperatura das extremidades; <strong>não elevar os MMII</strong> (reduz a perfusão já comprometida).</p>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">03</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     P04 — CUIDADOS INTRAOPERATÓRIOS + HIPOTERMIA
+     ═══════════════════════════════════════════════════════════ -->
+<div class="page" id="p04">
+  <div class="page-header">
+    <span class="page-header-label">Conteúdo Principal · Aula 07</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <h2>Cuidados Intraoperatórios</h2>
+
+    <div class="cols2" style="margin-bottom:5mm;">
+      <div class="info-card">
+        <div class="info-titulo">Enfermeiro Circulante</div>
+        <div class="info-text">Mantém a segurança da sala cirúrgica (campo estéril) · Realiza a contagem de instrumentos, agulhas e compressas (antes e após a cirurgia) · Registra intercorrências · Coordena o Sign Out do Checklist OMS · Comunicação com equipe intra/extraoperatória</div>
+      </div>
+      <div class="info-card">
+        <div class="info-titulo">Enfermeiro Instrumentador</div>
+        <div class="info-text">Prepara e mantém a mesa cirúrgica estéril · Passa instrumentos ao cirurgião · Realiza contagem conjunta de materiais · Mantém a cadeia estéril: nunca vira as costas para a mesa estéril · Conhece o procedimento para antecipar as necessidades do cirurgião</div>
+      </div>
+    </div>
+
+    <h2>Hipotermia Perioperatória</h2>
+    <div class="hipo-strip">
+      <div class="hipo-card def">
+        <div class="hipo-titulo">Definição</div>
+        <div class="hipo-text">Temperatura central &lt;36°C. Frequente (30–70% das cirurgias sem aquecimento ativo). Cuidado: aferir temperatura axilar/timpânica na SRPA</div>
+      </div>
+      <div class="hipo-card cons">
+        <div class="hipo-titulo">Consequências</div>
+        <div class="hipo-text">Tremores (↑ consumo O₂) · Coagulopatia (↓ função plaquetária) · Infecção de sítio cirúrgico (ISC) · Arritmias cardíacas · ↑ tempo de recuperação anestésica</div>
+      </div>
+      <div class="hipo-card prev">
+        <div class="hipo-titulo">Prevenção</div>
+        <div class="hipo-text">Manta elétrica de aquecimento ativo · Fluidos IV aquecidos · Temperatura da sala &gt;21°C · Cobertores e aquecimento de MMII desde o pré-op</div>
+      </div>
+    </div>
+
+    <div class="box box-conceito">
+      <span class="box-label">Drenos Cirúrgicos — Tipos e Cuidados</span>
+      <p><strong>Jackson-Pratt (sucção ativa):</strong> mastectomia, abdominoplastia — esvaziar quando ½ cheio, anotar volume e características. <strong>Penrose (passivo):</strong> não tracionar, substituir curativo úmido imediatamente. <strong>Kehr (biliar):</strong> colecistectomia aberta — drenagem biliar amarelo-ouro; posição de Fowler facilita drenagem. Registrar débito de todos os drenos no balanço hídrico.</p>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">04</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     P05 — SRPA + ALDRETE-KROULIK
+     ═══════════════════════════════════════════════════════════ -->
+<div class="page" id="p05">
+  <div class="page-header">
+    <span class="page-header-label">Conteúdo Principal · Aula 07</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <h2>SRPA — Escala de Aldrete-Kroulik</h2>
+
+    <p style="font-size:8.5pt;margin-bottom:3mm;">A Escala de Aldrete-Kroulik avalia as condições de alta da Sala de Recuperação Pós-Anestésica (SRPA). Cinco parâmetros, cada um pontuado de 0 a 2. <strong>Alta indicada quando pontuação total ≥8 (máximo 10).</strong></p>
+
+    <table style="margin-bottom:4mm;">
+      <thead>
+        <tr><th>Parâmetro</th><th>Pontuação</th><th>Critério</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="td-dest" rowspan="3" style="border-right:1px solid var(--cinza-borda);">Atividade motora</td><td style="text-align:center;font-weight:700;">2</td><td>Move 4 extremidades voluntariamente</td></tr>
+        <tr><td style="text-align:center;font-weight:700;">1</td><td>Move 2 extremidades</td></tr>
+        <tr><td style="text-align:center;font-weight:700;border-bottom:2px solid var(--teal);">0</td><td style="border-bottom:2px solid var(--teal);">Incapaz de mover extremidades</td></tr>
+        <tr><td class="td-dest" rowspan="3" style="border-right:1px solid var(--cinza-borda);">Respiração</td><td style="text-align:center;font-weight:700;">2</td><td>Profunda e capaz de tossir</td></tr>
+        <tr><td style="text-align:center;font-weight:700;">1</td><td>Superficial ou dispneia</td></tr>
+        <tr><td style="text-align:center;font-weight:700;border-bottom:2px solid var(--teal);">0</td><td style="border-bottom:2px solid var(--teal);">Apneia ou respiração assistida</td></tr>
+        <tr><td class="td-dest" rowspan="3" style="border-right:1px solid var(--cinza-borda);">PA (vs pré-op)</td><td style="text-align:center;font-weight:700;">2</td><td>Variação ≤20%</td></tr>
+        <tr><td style="text-align:center;font-weight:700;">1</td><td>Variação 20–49%</td></tr>
+        <tr><td style="text-align:center;font-weight:700;border-bottom:2px solid var(--teal);">0</td><td style="border-bottom:2px solid var(--teal);">Variação ≥50%</td></tr>
+        <tr><td class="td-dest" rowspan="3" style="border-right:1px solid var(--cinza-borda);">Consciência</td><td style="text-align:center;font-weight:700;">2</td><td>Alerta e orientado</td></tr>
+        <tr><td style="text-align:center;font-weight:700;">1</td><td>Desperta ao chamado</td></tr>
+        <tr><td style="text-align:center;font-weight:700;border-bottom:2px solid var(--teal);">0</td><td style="border-bottom:2px solid var(--teal);">Não responde</td></tr>
+        <tr><td class="td-dest" rowspan="3" style="border-right:1px solid var(--cinza-borda);">SpO₂</td><td style="text-align:center;font-weight:700;">2</td><td>&gt;92% em ar ambiente</td></tr>
+        <tr><td style="text-align:center;font-weight:700;">1</td><td>Necessita O₂ para manter &gt;90%</td></tr>
+        <tr><td style="text-align:center;font-weight:700;">0</td><td>&lt;90% mesmo com O₂</td></tr>
+      </tbody>
+    </table>
+
+    <div class="box box-pega">
+      <span class="box-label">Posicionamento Seguro na SRPA</span>
+      <p>Paciente sedado/sonolenso → <strong>decúbito lateral de segurança</strong> (posição de Sims) para prevenir broncoaspiração em caso de vômito. Nunca deixar o paciente em decúbito dorsal puro até estar totalmente acordado e com reflexos de proteção presentes.</p>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">05</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     P06 — QUESTÃO 01
+     ═══════════════════════════════════════════════════════════ -->
+<div class="page" id="p06">
+  <div class="page-header">
+    <span class="page-header-label">Fixação · Aula 07</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <div class="q-header">Questão 01 de 03 · B4 Periop II · Aldrete-Kroulik · Memorização</div>
+
+    <div class="q-stem">
+      Sobre a Escala de Aldrete-Kroulik, utilizada pelo enfermeiro para avaliar as condições de alta da Sala de Recuperação Pós-Anestésica (SRPA), é correto afirmar que:
+    </div>
+
+    <ul class="q-opts">
+      <li class="q-opt">
+        <span class="opt-letter">A</span>
+        A escala avalia 5 parâmetros com pontuação de 0 a 3 cada, totalizando pontuação máxima de 15 pontos, sendo indicada a alta quando o paciente atingir ≥12 pontos.
+      </li>
+      <li class="q-opt correta">
+        <span class="opt-letter">B</span>
+        A escala avalia atividade motora, respiração, circulação (pressão arterial), consciência e saturação de oxigênio; cada parâmetro varia de 0 a 2 pontos, e a alta da SRPA é indicada quando a pontuação total for ≥8 (máximo 10). <span class="badge-correta">Correta</span>
+      </li>
+      <li class="q-opt">
+        <span class="opt-letter">C</span>
+        A alta da SRPA pode ser autorizada pelo enfermeiro quando o paciente apresentar Glasgow 15 e SpO₂ ≥95%, independentemente dos demais critérios da escala.
+      </li>
+      <li class="q-opt">
+        <span class="opt-letter">D</span>
+        A escala original de Aldrete avalia apenas três parâmetros (atividade, respiração e consciência); a versão modificada eliminou a avaliação da SpO₂ por ser redundante com o parâmetro respiração.
+      </li>
+    </ul>
+
+    <div class="gabarito-box">
+      <div class="gabarito-title">Gabarito Comentado — B</div>
+      <div class="gabarito-text">A Escala de Aldrete-Kroulik (versão modificada) tem <strong>5 parâmetros × 2 pontos = máximo 10 pontos</strong>. Alta com ≥8 pontos. O parâmetro SpO₂ substituiu a "cor da pele" da versão original de Aldrete (1970), tornando a avaliação mais objetiva e mensurável.</div>
+      <div class="distrator"><strong>A —</strong> Pontuação máxima é 10, não 15; mínimo para alta é 8, não 12. <strong>C —</strong> Glasgow e SpO₂ são apenas 2 dos 5 critérios — a pontuação completa deve ser aplicada. <strong>D —</strong> A versão modificada de Aldrete-Kroulik <em>inclui</em> SpO₂ (substituiu cor da pele); não a eliminou.</div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">06</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     P07 — QUESTÃO 02
+     ═══════════════════════════════════════════════════════════ -->
+<div class="page" id="p07">
+  <div class="page-header">
+    <span class="page-header-label">Fixação · Aula 07</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <div class="q-header">Questão 02 de 03 · B4 Periop II · Posicionamento + Complicação · Aplicação</div>
+
+    <div class="q-stem">
+      Paciente feminina, 54 anos, submetida a histerectomia total por via vaginal em posição de litotomia por 3h e 20 minutos. Na SRPA, refere dor intensa e progressiva em ambas as panturrilhas, edema bilateral de membros inferiores e sensação de "endurecimento" muscular. Qual a complicação mais provável e a conduta de enfermagem prioritária?
+    </div>
+
+    <ul class="q-opts">
+      <li class="q-opt">
+        <span class="opt-letter">A</span>
+        Hipotermia perioperatória — instalar manta de aquecimento ativo e monitorizar temperatura central.
+      </li>
+      <li class="q-opt">
+        <span class="opt-letter">B</span>
+        Trombose venosa profunda (TVP) — elevar os membros inferiores e acionar médico para anticoagulação.
+      </li>
+      <li class="q-opt correta">
+        <span class="opt-letter">C</span>
+        Síndrome compartimental dos membros inferiores relacionada à litotomia prolongada — comunicar o médico imediatamente, verificar perfusão distal (pulso, enchimento capilar, temperatura) e <strong>não elevar os MMII</strong>. <span class="badge-correta">Correta</span>
+      </li>
+      <li class="q-opt">
+        <span class="opt-letter">D</span>
+        Reação alérgica ao látex — remover fontes de látex, administrar adrenalina e monitorizar parâmetros hemodinâmicos.
+      </li>
+    </ul>
+
+    <div class="gabarito-box">
+      <div class="gabarito-title">Gabarito Comentado — C</div>
+      <div class="gabarito-text">Litotomia &gt;2h + dor intensa desproporcional + edema + tensão muscular = quadro clássico de <strong>síndrome compartimental</strong>. A elevação dos MMII está <strong>contraindicada</strong>: reduz ainda mais a pressão de perfusão arterial no compartimento isquêmico. É emergência cirúrgica (fasciotomia).</div>
+      <div class="distrator"><strong>A —</strong> Hipotermia não causa dor localizada e edema bilateral de panturrilhas. <strong>B —</strong> TVP é diagnóstico diferencial válido, mas a elevar MMII melhora retorno venoso e é conduta aceitável na TVP — e contraindicada na síndrome compartimental. O quadro clínico (tensão + dor desproporcional + endurecimento) aponta para compartimental. <strong>D —</strong> Alergia ao látex causa anafilaxia sistêmica, não dor muscular localizada.</div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">07</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     P08 — QUESTÃO 03 (ÂNCORA)
+     ═══════════════════════════════════════════════════════════ -->
+<div class="page" id="p08">
+  <div class="page-header">
+    <span class="page-header-label">Fixação · Aula 07</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <div class="q-header">Questão 03 de 03 · B4 Periop II · NANDA-I + Laringoespasmo · Análise</div>
+
+    <div class="q-stem">
+      Paciente masculino, 48 anos, 20 minutos após extubação em SRPA. Apresenta estridor inspiratório de alta intensidade, SpO₂ de 84% (em ar ambiente), frequência respiratória de 32 irpm, uso intenso de musculatura acessória (tiragem intercostal e supraclavicular), agitação e cianose perioral. Qual o diagnóstico de enfermagem NANDA-I 2024–2026 prioritário e a conduta imediata?
+    </div>
+
+    <ul class="q-opts">
+      <li class="q-opt">
+        <span class="opt-letter">A</span>
+        Troca gasosa prejudicada relacionada ao broncoespasmo pós-anestésico — instalar O₂ por máscara e aguardar melhora espontânea.
+      </li>
+      <li class="q-opt">
+        <span class="opt-letter">B</span>
+        Padrão respiratório ineficaz relacionado à sedação residual — estimular o paciente verbalmente e monitorar SpO₂.
+      </li>
+      <li class="q-opt correta">
+        <span class="opt-letter">C</span>
+        Desobstrução ineficaz das vias aéreas relacionada ao laringoespasmo pós-extubação, evidenciada por estridor inspiratório, SpO₂ 84%, tiragem intercostal e cianose — acionar médico imediatamente, aplicar O₂ sob pressão positiva (ventilação com ambu e máscara), posicionar com extensão da cabeça e elevação do mento. <span class="badge-correta">Correta</span>
+      </li>
+      <li class="q-opt">
+        <span class="opt-letter">D</span>
+        Risco de aspiração relacionado à sedação residual e reflexos protetores prejudicados — posicionar em decúbito lateral de segurança e monitorar.
+      </li>
+    </ul>
+
+    <div class="gabarito-box">
+      <div class="gabarito-title">Gabarito Comentado — C</div>
+      <div class="gabarito-text">Laringoespasmo = espasmo reflexo das cordas vocais pós-extubação. Estridor intenso + SpO₂ 84% + tiragem = obstrução mecânica de via aérea alta → <strong>Desobstrução ineficaz das vias aéreas</strong> (00031, NANDA-I). A conduta imediata é ventilação com pressão positiva (ambu) para "quebrar" o espasmo. Se refratário: succinilcolina IV. <em>Troca gasosa prejudicada</em> é consequência da obstrução, não a causa-raiz.</div>
+      <div class="distrator"><strong>A —</strong> Broncoespasmo produz sibilos expiratórios, não estridor inspiratório; aguardar melhora é perigoso com SpO₂ 84%. <strong>B —</strong> Sedação residual causa hipoventilação silenciosa, não estridor. <strong>D —</strong> "Risco de aspiração" é distrator: a manifestação já está instalada (obstrução ativa) — nunca usar diagnóstico de risco diante do evento estabelecido.</div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">08</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     P09 — RECUPERAÇÃO ATIVA
+     ═══════════════════════════════════════════════════════════ -->
+<div class="page" id="p09">
+  <div class="page-header">
+    <span class="page-header-label">Recuperação Ativa · Aula 07</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <div class="section-tag">Se Esquecer Tudo, Lembre Disto</div>
+    <div class="section-rule"></div>
+
+    <div class="rec-box">
+      <div class="rec-item">
+        <span class="rec-star">★</span>
+        <span>Litotomia prolongada (&gt;2h) → síndrome compartimental de MMII: dor intensa + edema + tensão muscular. Conduta: médico imediato + verificar perfusão distal + <strong>NÃO elevar os MMII</strong> (reduz perfusão arterial distal).</span>
+      </div>
+      <div class="rec-item">
+        <span class="rec-star">★</span>
+        <span>Aldrete-Kroulik: <strong>5 parâmetros × 2 pontos = máx 10 · alta ≥8</strong>. Parâmetros: atividade motora, respiração, PA, consciência, SpO₂. A SpO₂ substituiu "cor da pele" da versão original.</span>
+      </div>
+      <div class="rec-item">
+        <span class="rec-star">★</span>
+        <span>Laringoespasmo pós-extubação: estridor inspiratório + SpO₂ em queda + tiragem → NANDA-I: <strong>Desobstrução ineficaz das vias aéreas</strong>. Conduta: O₂ com pressão positiva (ambu + máscara) + hiperextensão + acionar médico. Não confundir com broncoespasmo (sibilos expiratórios).</span>
+      </div>
+    </div>
+
+    <div class="section-tag" style="margin-top:2mm;">Teste-se Sem Olhar</div>
+    <div class="section-rule"></div>
+
+    <ul class="teste-list">
+      <li class="teste-item"><strong>Q1 —</strong> Quais são os 5 parâmetros da Escala de Aldrete-Kroulik e qual é a pontuação mínima para alta da SRPA?</li>
+      <li class="teste-item"><strong>Q2 —</strong> Por que a posição de litotomia prolongada causa síndrome compartimental? Por que NÃO se eleva os MMII nessa situação?</li>
+      <li class="teste-item"><strong>Q3 —</strong> Qual a diferença entre laringoespasmo e broncoespasmo no exame físico da ausculta pulmonar?</li>
+      <li class="teste-item"><strong>Q4 —</strong> Qual é o posicionamento seguro para um paciente sonolento na SRPA que ainda não recuperou os reflexos de proteção?</li>
+    </ul>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">09</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     P10 — REFERÊNCIAS
+     ═══════════════════════════════════════════════════════════ -->
+<div class="page" id="p10">
+  <div class="page-header">
+    <span class="page-header-label">Referências · Aula 07</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <div class="section-tag">Referências — Bloco B4 · Aula 07</div>
+    <div class="section-rule"></div>
+
+    <ul class="ref-list">
+      <li class="ref-item">ALDRETE, J.A.; KROULIK, D. A postanesthetic recovery score. <em>Anesthesia and Analgesia</em>, v. 49, n. 6, p. 924–934, 1970. (Escala original; versão modificada com SpO₂: Aldrete, 1995).</li>
+      <li class="ref-item">ROTHROCK, J.C. <em>Alexander — Cuidados de Enfermagem ao Paciente Cirúrgico</em>. 15. ed. Rio de Janeiro: Elsevier, 2015. cap. 5 (Posicionamento do paciente cirúrgico) e cap. 8 (Cuidados pós-anestésicos).</li>
+      <li class="ref-item">BRASIL. Conselho Federal de Enfermagem. <em>Resolução COFEN n.º 564/2017</em>. Código de Ética dos Profissionais de Enfermagem. Brasília: COFEN, 2017.</li>
+      <li class="ref-item">ORGANIZAÇÃO MUNDIAL DA SAÚDE (OMS). <em>Checklist Cirúrgico Seguro da OMS</em>. Genebra: OMS, 2009.</li>
+      <li class="ref-item">SMELTZER, S.C.; BARE, B.G. <em>Brunner e Suddarth</em>. 14. ed. Rio de Janeiro: Guanabara Koogan, 2019. cap. 18 (Cuidados intraoperatórios) e cap. 19 (Cuidados pós-operatórios de enfermagem).</li>
+      <li class="ref-item">HERDMAN, T.H.; KAMITSURU, S.; LOPES, C.T. (Eds.). <em>NANDA International — Diagnósticos de Enfermagem 2024–2026</em>. 13. ed. Porto Alegre: Artmed, 2024. (Desobstrução ineficaz das vias aéreas — diagnóstico 00031).</li>
+    </ul>
+
+    <div class="anot-box">
+      <span class="anot-label">Espaço para Anotações</span>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">10</span>
+  </div>
+</div>
+
+</body>
+</html>

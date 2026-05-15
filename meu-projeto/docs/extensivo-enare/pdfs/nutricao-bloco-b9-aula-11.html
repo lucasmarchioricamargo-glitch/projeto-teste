@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B9 · Aula 11 — Fórmulas Enterais, NP e Síndrome do Intestino Curto</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Bricolage+Grotesque:wght@300;400;500;600;700&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { -webkit-print-color-adjust: exact; print-color-adjust: exact; font-family: 'Bricolage Grotesque', sans-serif; background: #888; }
+
+  .page { width: 210mm; height: 297mm; display: flex; flex-direction: column; overflow: hidden; page-break-after: always; background: #F6F4ED; }
+  .ph { height: 14mm; flex-shrink: 0; display: flex; align-items: center; justify-content: space-between; padding: 0 16mm; border-bottom: 0.4mm solid #E0DDD6; }
+  .pf { height: 9mm; flex-shrink: 0; display: flex; align-items: center; justify-content: space-between; padding: 0 16mm; border-top: 0.4mm solid #E0DDD6; }
+  .pc { flex: 1; padding: 7mm 16mm 5mm; overflow: hidden; }
+  .pc-sm { flex: 1; padding: 5mm 16mm 4mm; overflow: hidden; }
+
+  /* Header / Footer */
+  .logo-wrap { display: flex; align-items: center; gap: 2mm; }
+  .logo-icon { width: 7mm; height: 7mm; background: #0D8A8D; border-radius: 1mm; display: flex; align-items: center; justify-content: center; }
+  .logo-icon svg { width: 4.5mm; height: 4.5mm; fill: #F6F4ED; }
+  .logo-text { font-family: 'Playfair Display', serif; font-style: italic; font-size: 5.5pt; color: #0D8A8D; letter-spacing: 0.02em; }
+  .logo-sub { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 4pt; color: #888; letter-spacing: 0.08em; text-transform: uppercase; }
+  .ph-center { font-family: 'Barlow Condensed', sans-serif; font-size: 6.5pt; font-weight: 700; color: #0D8A8D; letter-spacing: 0.12em; text-transform: uppercase; }
+  .ph-right { font-family: 'Bricolage Grotesque', sans-serif; font-size: 5.5pt; font-weight: 400; color: #999; }
+  .pf-left { font-size: 5pt; color: #aaa; }
+  .pf-center { font-size: 5pt; color: #bbb; }
+  .pf-right { font-size: 5pt; color: #aaa; }
+
+  /* Cover */
+  .cover-band { background: #0D8A8D; color: #F6F4ED; padding: 5mm 16mm 4.5mm; }
+  .cover-band .subgroup { font-family: 'Barlow Condensed', sans-serif; font-size: 7pt; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.75; margin-bottom: 1.5mm; }
+  .cover-band h1 { font-family: 'Barlow Condensed', sans-serif; font-size: 23pt; font-weight: 800; line-height: 1.05; letter-spacing: 0.02em; text-transform: uppercase; }
+  .cover-band .aula-label { font-size: 7pt; font-weight: 400; opacity: 0.7; margin-top: 1mm; }
+  .cover-meta { padding: 4mm 16mm 0; }
+  .cover-meta .tag-row { display: flex; gap: 2mm; flex-wrap: wrap; margin-bottom: 3mm; }
+  .tag { display: inline-flex; align-items: center; gap: 1mm; font-family: 'Barlow Condensed', sans-serif; font-size: 6.5pt; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 1mm 2.5mm; border-radius: 0.8mm; }
+  .tag-teal { background: #0D8A8D; color: #F6F4ED; }
+  .tag-green { background: #1F5C23; color: #F6F4ED; }
+  .tag-lime { background: #C6D834; color: #070707; }
+  .tag-grey { background: #E0DDD6; color: #555; }
+  .tag-red { background: #C0392B; color: #fff; }
+  .tag-amber { background: #E67E22; color: #fff; }
+  .cover-highlights { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2.5mm; margin-top: 2mm; }
+  .hl-box { background: #fff; border: 0.3mm solid #E0DDD6; border-radius: 1.2mm; padding: 3mm 3.5mm; }
+  .hl-box .hl-val { font-family: 'Barlow Condensed', sans-serif; font-size: 16pt; font-weight: 800; color: #0D8A8D; line-height: 1; }
+  .hl-box .hl-lbl { font-size: 6pt; color: #666; margin-top: 0.8mm; line-height: 1.3; }
+  .cover-anchor { margin-top: 3.5mm; background: #1F5C23; color: #F6F4ED; border-radius: 1.2mm; padding: 2.5mm 4mm; }
+  .cover-anchor .anc-title { font-family: 'Barlow Condensed', sans-serif; font-size: 6.5pt; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.75; margin-bottom: 1mm; }
+  .cover-anchor .anc-items { display: flex; gap: 4mm; flex-wrap: wrap; }
+  .cover-anchor .anc-item { font-size: 6.5pt; }
+  .cover-anchor .anc-item strong { font-weight: 700; color: #C6D834; }
+  .cover-qtype { margin-top: 3mm; display: flex; gap: 3mm; align-items: center; }
+  .qtype-badge { font-family: 'Barlow Condensed', sans-serif; font-size: 7pt; font-weight: 700; letter-spacing: 0.1em; padding: 1mm 3mm; border-radius: 0.8mm; text-transform: uppercase; }
+  .qtype-ap { background: #C6D834; color: #070707; }
+  .qtype-an { background: #0D8A8D; color: #F6F4ED; }
+  .qtype-label { font-size: 6pt; color: #888; }
+
+  /* Content elements */
+  h2 { font-family: 'Barlow Condensed', sans-serif; font-size: 13pt; font-weight: 800; color: #0D8A8D; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 3mm; border-bottom: 0.5mm solid #0D8A8D; padding-bottom: 1.5mm; }
+  h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 10pt; font-weight: 700; color: #1F5C23; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 2mm; margin-top: 3mm; }
+  h3:first-child { margin-top: 0; }
+  p { font-size: 7.5pt; line-height: 1.5; color: #2a2a2a; margin-bottom: 2mm; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 6.8pt; margin-bottom: 3mm; }
+  th { background: #0D8A8D; color: #F6F4ED; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 7pt; letter-spacing: 0.06em; text-transform: uppercase; padding: 1.8mm 2.5mm; text-align: left; }
+  td { padding: 1.6mm 2.5mm; border-bottom: 0.25mm solid #E0DDD6; color: #2a2a2a; vertical-align: top; }
+  tr:nth-child(even) td { background: rgba(13,138,141,0.04); }
+  .td-center { text-align: center; }
+  .td-green { color: #1F5C23; font-weight: 700; }
+  .td-red { color: #C0392B; font-weight: 700; }
+  .td-teal { color: #0D8A8D; font-weight: 700; }
+  .td-bold { font-weight: 700; }
+
+  /* Info boxes */
+  .box { border-radius: 1.2mm; padding: 3mm 4mm; margin-bottom: 3mm; }
+  .box-teal { background: rgba(13,138,141,0.08); border-left: 1mm solid #0D8A8D; }
+  .box-green { background: rgba(31,92,35,0.07); border-left: 1mm solid #1F5C23; }
+  .box-lime { background: rgba(198,216,52,0.15); border-left: 1mm solid #C6D834; }
+  .box-red { background: rgba(192,57,43,0.07); border-left: 1mm solid #C0392B; }
+  .box-amber { background: rgba(230,126,34,0.08); border-left: 1mm solid #E67E22; }
+  .box-title { font-family: 'Barlow Condensed', sans-serif; font-size: 7.5pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1.5mm; }
+  .box-teal .box-title { color: #0D8A8D; }
+  .box-green .box-title { color: #1F5C23; }
+  .box-lime .box-title { color: #5a6300; }
+  .box-red .box-title { color: #C0392B; }
+  .box-amber .box-title { color: #E67E22; }
+  .box p { margin-bottom: 1mm; font-size: 7pt; }
+  .box p:last-child { margin-bottom: 0; }
+
+  /* Lists */
+  ul { padding-left: 4mm; margin-bottom: 2mm; }
+  ul li { font-size: 7.2pt; line-height: 1.45; color: #2a2a2a; margin-bottom: 0.8mm; }
+  ul li::marker { color: #0D8A8D; }
+  ol { padding-left: 5mm; margin-bottom: 2mm; }
+  ol li { font-size: 7.2pt; line-height: 1.45; color: #2a2a2a; margin-bottom: 0.8mm; }
+
+  /* Question pages */
+  .q-header { background: #0D8A8D; color: #F6F4ED; border-radius: 1.5mm; padding: 2.5mm 4mm; margin-bottom: 3.5mm; display: flex; align-items: center; gap: 3mm; }
+  .q-num { font-family: 'Barlow Condensed', sans-serif; font-size: 18pt; font-weight: 800; line-height: 1; }
+  .q-meta { flex: 1; }
+  .q-meta .q-type { font-family: 'Barlow Condensed', sans-serif; font-size: 7pt; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.8; }
+  .q-meta .q-origin { font-size: 6.5pt; opacity: 0.7; }
+  .q-stem { font-size: 8pt; line-height: 1.55; color: #2a2a2a; margin-bottom: 3mm; background: #fff; border: 0.3mm solid #E0DDD6; border-radius: 1mm; padding: 3mm 4mm; }
+  .q-stem strong { color: #0D8A8D; }
+  .options { display: flex; flex-direction: column; gap: 1.8mm; }
+  .opt { display: flex; gap: 2.5mm; align-items: flex-start; font-size: 7.5pt; line-height: 1.45; padding: 1.8mm 3mm; border-radius: 1mm; border: 0.25mm solid #E0DDD6; background: #fff; }
+  .opt-letter { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; color: #0D8A8D; flex-shrink: 0; line-height: 1.2; }
+  .opt.correct { background: rgba(31,92,35,0.1); border-color: #1F5C23; }
+  .opt.correct .opt-letter { color: #1F5C23; }
+  .opt.distractor { background: rgba(192,57,43,0.05); border-color: #e8c8c5; }
+  .opt.distractor .opt-letter { color: #C0392B; }
+  .q-rationale { margin-top: 3mm; font-size: 6.8pt; line-height: 1.5; }
+  .q-rationale .rat-title { font-family: 'Barlow Condensed', sans-serif; font-size: 7pt; font-weight: 700; color: #1F5C23; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1mm; }
+
+  /* Answer page */
+  .answer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5mm; margin-top: 4mm; }
+  .ans-card { background: #0D8A8D; color: #F6F4ED; border-radius: 2mm; padding: 5mm; text-align: center; }
+  .ans-card .ans-q { font-family: 'Barlow Condensed', sans-serif; font-size: 9pt; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.8; }
+  .ans-card .ans-letter { font-family: 'Barlow Condensed', sans-serif; font-size: 38pt; font-weight: 800; line-height: 1; color: #C6D834; }
+  .ans-card .ans-topic { font-size: 6pt; opacity: 0.75; margin-top: 1mm; line-height: 1.3; }
+
+  /* Synthesis page */
+  .synth-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; margin-bottom: 3mm; }
+  .synth-item { background: #fff; border: 0.3mm solid #E0DDD6; border-radius: 1mm; padding: 2.5mm 3mm; }
+  .synth-item .si-title { font-family: 'Barlow Condensed', sans-serif; font-size: 7pt; font-weight: 700; color: #0D8A8D; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1mm; }
+  .synth-item .si-body { font-size: 6.5pt; line-height: 1.45; color: #333; }
+  .ref-block { background: #f5f4f0; border-radius: 1mm; padding: 2.5mm 3.5mm; }
+  .ref-block .ref-title { font-family: 'Barlow Condensed', sans-serif; font-size: 7pt; font-weight: 700; color: #666; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.5mm; }
+  .ref-block ul { margin: 0; padding-left: 3.5mm; }
+  .ref-block ul li { font-size: 6pt; color: #666; line-height: 1.4; margin-bottom: 0.5mm; }
+
+  /* 2-col layout */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; }
+
+  /* Highlight pill */
+  .pill { display: inline-block; font-family: 'Barlow Condensed', sans-serif; font-size: 6.5pt; font-weight: 700; padding: 0.5mm 2mm; border-radius: 0.7mm; text-transform: uppercase; letter-spacing: 0.06em; }
+  .pill-teal { background: #0D8A8D; color: #F6F4ED; }
+  .pill-green { background: #1F5C23; color: #F6F4ED; }
+  .pill-lime { background: #C6D834; color: #070707; }
+  .pill-red { background: #C0392B; color: #fff; }
+  .pill-amber { background: #E67E22; color: #fff; }
+
+  /* Small text */
+  .fs6 { font-size: 6pt; }
+  .fs65 { font-size: 6.5pt; }
+  .fs7 { font-size: 7pt; }
+  .mt1 { margin-top: 1mm; }
+  .mt2 { margin-top: 2mm; }
+  .mt3 { margin-top: 3mm; }
+  .mb1 { margin-bottom: 1mm; }
+  .mb2 { margin-bottom: 2mm; }
+  .bold { font-weight: 700; }
+  .teal { color: #0D8A8D; }
+  .green { color: #1F5C23; }
+  .red { color: #C0392B; }
+
+  /* An question specifics */
+  .an-items { display: flex; flex-direction: column; gap: 1.5mm; margin: 2.5mm 0; }
+  .an-item { display: flex; gap: 2.5mm; align-items: flex-start; font-size: 7.5pt; line-height: 1.45; padding: 1.8mm 3mm; border-radius: 1mm; background: #fff; border: 0.25mm solid #E0DDD6; }
+  .an-item.correct-item { background: rgba(31,92,35,0.1); border-color: #1F5C23; }
+  .an-item.wrong-item { background: rgba(192,57,43,0.05); border-color: #e8c8c5; }
+  .an-roman { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; flex-shrink: 0; line-height: 1.2; }
+  .correct-item .an-roman { color: #1F5C23; }
+  .wrong-item .an-roman { color: #C0392B; }
+</style>
+</head>
+<body>
+
+<!-- ========== PAGE 1 — CAPA ========== -->
+<div class="page">
+  <div class="ph">
+    <div class="logo-wrap">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      </div>
+      <div>
+        <div class="logo-text">Extensivo ENARE</div>
+        <div class="logo-sub">2026</div>
+      </div>
+    </div>
+    <div class="ph-center">Bloco B9 · Nutrição</div>
+    <div class="ph-right">PDF de Apoio · Aula 11</div>
+  </div>
+
+  <div class="cover-band">
+    <div class="subgroup">NUT-TNUTR · Terapia Nutricional</div>
+    <h1>Fórmulas Enterais,<br>Nutrição Parenteral<br>e Síndrome do<br>Intestino Curto</h1>
+    <div class="aula-label">Aula 11 de ~35 · Bloco B9</div>
+  </div>
+
+  <div class="pc-sm">
+    <div class="cover-meta">
+      <div class="tag-row">
+        <span class="tag tag-teal">NUT-TNUTR</span>
+        <span class="tag tag-lime">Ap · An</span>
+        <span class="tag tag-green">Alta prioridade FGV</span>
+      </div>
+
+      <div class="cover-highlights">
+        <div class="hl-box">
+          <div class="hl-val">&lt;200 cm</div>
+          <div class="hl-lbl">intestino delgado restante → definição SIC adulto</div>
+        </div>
+        <div class="hl-box">
+          <div class="hl-val">≤900</div>
+          <div class="hl-lbl">mOsm/L → limite NP periférica</div>
+        </div>
+        <div class="hl-box">
+          <div class="hl-val">2,5 g/kg</div>
+          <div class="hl-lbl">lipídios/dia → dose máxima NP (previne hipertrigliceridemia)</div>
+        </div>
+      </div>
+
+      <div class="cover-anchor mt2">
+        <div class="anc-title">Questões-âncora da banca FGV</div>
+        <div class="anc-items">
+          <div class="anc-item"><strong>2024 Q85</strong> · Fórmulas enterais — osmolalidade, componentes, densidade (Ap)</div>
+          <div class="anc-item"><strong>2024 Q86</strong> · NP — composição: glicose, lipídios, glutamina (C)</div>
+          <div class="anc-item"><strong>2025 Q29</strong> · SIC — NP periférica vs. central hiperosmolar (An)</div>
+        </div>
+      </div>
+
+      <div class="cover-qtype mt2">
+        <span class="qtype-badge qtype-ap">Q1 · Ap</span>
+        <span class="qtype-badge qtype-ap">Q2 · Ap</span>
+        <span class="qtype-badge qtype-an">Q3 · An — âncora</span>
+        <span class="qtype-label" style="margin-left:2mm">Ap = Aplicação · An = Análise</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="pf">
+    <span class="pf-left">Extensivo ENARE 2026</span>
+    <span class="pf-center">Bloco B9 · Nutrição · Aula 11</span>
+    <span class="pf-right">1 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PAGE 2 — FÓRMULAS ENTERAIS: CLASSIFICAÇÃO ========== -->
+<div class="page">
+  <div class="ph">
+    <div class="logo-wrap">
+      <div class="logo-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+      <div><div class="logo-text">Extensivo ENARE</div><div class="logo-sub">2026</div></div>
+    </div>
+    <div class="ph-center">Fórmulas Enterais — Classificação</div>
+    <div class="ph-right">NUT-TNUTR · Aula 11</div>
+  </div>
+
+  <div class="pc-sm">
+    <h2>Fórmulas Enterais — Classificação e Composição</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="width:18%">Tipo</th>
+          <th style="width:28%">Proteína / Substrato</th>
+          <th style="width:28%">Indicação principal</th>
+          <th style="width:26%">Observação FGV</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="td-bold td-teal">Polimérica</td>
+          <td>Proteínas <strong>intactas</strong> (caseína, whey, soja)</td>
+          <td>Padrão — TGI funcionante, boa absorção</td>
+          <td>Mais usada em NE hospitalar</td>
+        </tr>
+        <tr>
+          <td class="td-bold td-teal">Oligomérica<br><span class="fs6">(semielementar)</span></td>
+          <td>Peptídeos di/tripeptídeos — proteína <strong>parcialmente hidrolisada</strong></td>
+          <td>Má absorção: SIC fase inicial, Crohn ativo, pancreatite grave, fístula</td>
+          <td><span class="pill pill-lime">FGV cobrou 2024 Q85</span> distinguir de elementar</td>
+        </tr>
+        <tr>
+          <td class="td-bold td-teal">Elementar</td>
+          <td>Aminoácidos <strong>livres</strong> — mínima digestão</td>
+          <td>Alergia a proteínas (APLV grave), mucosite severa, TGI gravemente comprometido</td>
+          <td>Maior osmolalidade → maior risco diarreia osmótica</td>
+        </tr>
+        <tr>
+          <td class="td-bold td-teal">Modular</td>
+          <td>Único macronutriente (proteico, lipídico ou glicídico)</td>
+          <td>Suplementação específica, ajuste personalizado</td>
+          <td>Não é fórmula completa isolada</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Parâmetros físico-químicos</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Parâmetro</th>
+          <th>Padrão</th>
+          <th>Hiperosmolar</th>
+          <th>Hipocalórica / Hipercalórica</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="td-bold">Osmolalidade</td>
+          <td>300–450 mOsm/kg</td>
+          <td>> 450 mOsm/kg</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td class="td-bold">Densidade calórica</td>
+          <td>1,0 kcal/mL</td>
+          <td>—</td>
+          <td>Hipercalórica: <strong>1,5–2,0 kcal/mL</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="box box-teal mt1">
+      <div class="box-title">Fórmulas especializadas — destaques FGV</div>
+      <table style="margin-bottom:0">
+        <thead>
+          <tr><th>Tipo</th><th>Composição diferencial</th><th>Indicação-chave</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="td-bold">Imunomoduladora</td>
+            <td>Arginina + ômega-3 + nucleotídeos</td>
+            <td>Cirurgia oncológica alto risco + NRS≥3 (ERAS)</td>
+          </tr>
+          <tr>
+            <td class="td-bold">Pulmonar</td>
+            <td>↑Lipídios (50–55%) + ↓Carboidratos</td>
+            <td>SDRA, insuf. respiratória → ↓produção de CO₂</td>
+          </tr>
+          <tr>
+            <td class="td-bold">Renal</td>
+            <td>↓Proteína, ↓K⁺/Na⁺/P</td>
+            <td>IRA sem diálise, DRC conservadora</td>
+          </tr>
+          <tr>
+            <td class="td-bold">Diabética</td>
+            <td>↑Fibras, ↓índice glicêmico, frutooligossacarídeos</td>
+            <td>DM2, hiperglicemia de estresse em UTI</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="box box-red" style="margin-bottom:0">
+      <div class="box-title">Distrator clássico FGV — fórmulas</div>
+      <p><strong>"Fórmulas oligoméricas contêm proteínas intactas"</strong> → ERRADO. Proteínas intactas = <strong>poliméricas</strong>. Oligoméricas = peptídeos (parcialmente hidrolisadas).</p>
+      <p><strong>"Fórmulas hipercalóricas têm 1,0 kcal/mL"</strong> → ERRADO. Densidade padrão = 1,0; hipercalórica = <strong>1,5–2,0 kcal/mL</strong>.</p>
+    </div>
+  </div>
+
+  <div class="pf">
+    <span class="pf-left">Extensivo ENARE 2026</span>
+    <span class="pf-center">Bloco B9 · Nutrição · Aula 11</span>
+    <span class="pf-right">2 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PAGE 3 — NUTRIÇÃO PARENTERAL: COMPOSIÇÃO ========== -->
+<div class="page">
+  <div class="ph">
+    <div class="logo-wrap">
+      <div class="logo-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+      <div><div class="logo-text">Extensivo ENARE</div><div class="logo-sub">2026</div></div>
+    </div>
+    <div class="ph-center">Nutrição Parenteral — Composição</div>
+    <div class="ph-right">NUT-TNUTR · Aula 11</div>
+  </div>
+
+  <div class="pc-sm">
+    <h2>Nutrição Parenteral — Composição e Macronutrientes</h2>
+
+    <div class="two-col">
+      <div>
+        <h3>Componentes da NPT</h3>
+        <table>
+          <thead>
+            <tr><th>Componente</th><th>Dose / Limite</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="td-bold">Glicose</td>
+              <td>Principal fonte energética; máx <strong>5 mg/kg/min</strong>; 60–70% das kcal não proteicas</td>
+            </tr>
+            <tr>
+              <td class="td-bold">Lipídios</td>
+              <td>TCL + TCM (± ômega-3); máx <strong>2,5 g/kg/dia</strong>; suspender se TG > 400 mg/dL</td>
+            </tr>
+            <tr>
+              <td class="td-bold">Aminoácidos</td>
+              <td>Fórmulas padrão; BCAA em encefalopatia; <strong>alanil-glutamina</strong> 0,5 g/kg/dia no crítico</td>
+            </tr>
+            <tr>
+              <td class="td-bold">Eletrólitos</td>
+              <td>Na⁺, K⁺, Mg²⁺, Ca²⁺, fosfato — individualizados diariamente</td>
+            </tr>
+            <tr>
+              <td class="td-bold">Vitaminas + oligoelementos</td>
+              <td>Suplementação diária obrigatória (zinco, selênio, vitamina C, E, K)</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="box box-amber mt1">
+          <div class="box-title">Glutamina IV — ponto FGV 2024 Q86</div>
+          <p>Administrada como <strong>dipeptídeo alanil-glutamina</strong> (estável em solução), não na forma livre (instável). Dose: 0,3–0,5 g/kg/dia. Indicada em paciente crítico com NP.</p>
+        </div>
+      </div>
+
+      <div>
+        <h3>Indicações de NP</h3>
+        <ul>
+          <li>TGI <strong>não funcionante</strong> por ≥ 7 dias</li>
+          <li>Íleo prolongado ou obstrução intestinal</li>
+          <li>Fístula entérica de <strong>alto débito</strong> (> 500 mL/dia)</li>
+          <li>Mucosites graus III–IV (quimioterapia)</li>
+          <li>Síndrome do intestino curto grave (SIC)</li>
+          <li>Pancreatite grave sem acesso enteral</li>
+        </ul>
+
+        <div class="box box-red mt1">
+          <div class="box-title">NP não é primeira linha</div>
+          <p>NP só se indica quando TGI é <strong>inacessível ou não funcionante</strong>. TGI funcionante → sempre preferir NE, mesmo parcial. NE + NP complementar = estratégia mista (aceitável).</p>
+        </div>
+
+        <h3 style="margin-top:2.5mm">Complicações da NP</h3>
+        <ul>
+          <li><strong>Mecânica:</strong> pneumotórax, hemotórax (CVC)</li>
+          <li><strong>Infecciosa:</strong> infecção de cateter (CRBSI); principal complicação crônica</li>
+          <li><strong>Metabólica:</strong> hiperglicemia, hipertrigliceridemia, síndrome de realimentação</li>
+          <li><strong>Hepática:</strong> colestase associada à NP prolongada</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="box box-teal" style="margin-bottom:0">
+      <div class="box-title">Síndrome de realimentação — alerta crítico</div>
+      <p>Queda brusca de fosfato, potássio e magnésio ao iniciar NP/NE após jejum prolongado. Prevenção: iniciar com 10–20 kcal/kg/dia, reposição prévia de eletrólitos e tiamina. Risco máximo nos <strong>primeiros 3–5 dias</strong> de realimentação.</p>
+    </div>
+  </div>
+
+  <div class="pf">
+    <span class="pf-left">Extensivo ENARE 2026</span>
+    <span class="pf-center">Bloco B9 · Nutrição · Aula 11</span>
+    <span class="pf-right">3 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PAGE 4 — NP PERIFÉRICA VS CENTRAL + SIC ========== -->
+<div class="page">
+  <div class="ph">
+    <div class="logo-wrap">
+      <div class="logo-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+      <div><div class="logo-text">Extensivo ENARE</div><div class="logo-sub">2026</div></div>
+    </div>
+    <div class="ph-center">NP Periférica vs. Central · SIC</div>
+    <div class="ph-right">NUT-TNUTR · Aula 11</div>
+  </div>
+
+  <div class="pc-sm">
+    <h2>NP Periférica vs. Central — Comparação Crítica</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="width:22%">Parâmetro</th>
+          <th style="width:39%">NP Periférica</th>
+          <th style="width:39%">NP Central (CVC)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="td-bold">Osmolalidade</td>
+          <td class="td-red"><strong>≤ 900 mOsm/L</strong> (risco flebite acima)</td>
+          <td class="td-green"><strong>≥ 1.200–1.500 mOsm/L</strong> — suporta soluções hiperosmolares</td>
+        </tr>
+        <tr>
+          <td class="td-bold">Concentração glicose</td>
+          <td class="td-red">≤ 10–12,5%</td>
+          <td class="td-green">Até 50–70%</td>
+        </tr>
+        <tr>
+          <td class="td-bold">Aminoácidos</td>
+          <td class="td-red">≤ 3%</td>
+          <td class="td-green">Até 10–15%</td>
+        </tr>
+        <tr>
+          <td class="td-bold">Duração indicada</td>
+          <td>Curto prazo: <strong>&lt; 7–14 dias</strong></td>
+          <td>Longo prazo — sem restrição de duração</td>
+        </tr>
+        <tr>
+          <td class="td-bold">Uso em SIC grave</td>
+          <td class="td-red"><strong>INADEQUADA</strong> para NPT total completa crônica</td>
+          <td class="td-green"><strong>NECESSÁRIA</strong> — única via para NPT domiciliar completa</td>
+        </tr>
+        <tr>
+          <td class="td-bold">Complicação</td>
+          <td>Flebite, tromboflebite</td>
+          <td>Infecção de cateter (CRBSI), pneumotórax (inserção)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Síndrome do Intestino Curto (SIC)</h3>
+
+    <div class="two-col">
+      <div>
+        <div class="box box-teal">
+          <div class="box-title">Definição e prognóstico</div>
+          <p><strong>Adulto:</strong> &lt; 200 cm de intestino delgado remanescente</p>
+          <p><strong>Neonato:</strong> &lt; 100 cm (ou &lt; 25% do esperado para IG)</p>
+          <p><strong>Melhor prognóstico:</strong> cólon preservado + válvula ileocecal intacta</p>
+          <p><strong>Pior prognóstico:</strong> ressecção ampla sem cólon, sem VIC</p>
+        </div>
+
+        <div class="box box-green" style="margin-bottom:0">
+          <div class="box-title">Adaptação intestinal</div>
+          <p><strong>Fase aguda (0–3 meses):</strong> NP total, hidratação, controle diarreia</p>
+          <p><strong>Fase de adaptação (3–12 meses):</strong> introdução gradual de NE trófica — estimula adaptação mucosa; NE trófica é ESSENCIAL mesmo com diarreia</p>
+          <p><strong>Fase de manutenção:</strong> transição máxima para VO/NE; NP domiciliar se dependência crônica</p>
+          <p><strong>GLP-2 (teduglutida):</strong> análogo recombinante — promove crescimento das vilosidades; indicado na SIC dependente de NP</p>
+        </div>
+      </div>
+
+      <div>
+        <div class="box box-amber">
+          <div class="box-title">Por que NP central na SIC?</div>
+          <p>A NPT completa (meta calórico-proteica plena) exige soluções com osmolalidade <strong>≥ 1.200–1.500 mOsm/L</strong>. A NP periférica é limitada a ≤ 900 mOsm/L — insuficiente para oferta total em SIC grave.</p>
+          <p class="mt1">Logo: <strong>NP periférica não é adequada para NPT domiciliar de longo prazo na SIC</strong>. Este é o ponto central da 2025 Q29.</p>
+        </div>
+
+        <div class="box box-red" style="margin-bottom:0">
+          <div class="box-title">Distrator clássico — SIC e NE</div>
+          <p><strong>"Evitar NE na fase de adaptação para prevenir diarreia"</strong> → ERRADO. NE trófica — mesmo em pequenos volumes — é obrigatória para estimular adaptação intestinal (hiperplasia vilositária, proliferação enterócitos).</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pf">
+    <span class="pf-left">Extensivo ENARE 2026</span>
+    <span class="pf-center">Bloco B9 · Nutrição · Aula 11</span>
+    <span class="pf-right">4 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PAGE 5 — CONDUTAS INTEGRADAS + CENÁRIOS ESPECIAIS ========== -->
+<div class="page">
+  <div class="ph">
+    <div class="logo-wrap">
+      <div class="logo-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+      <div><div class="logo-text">Extensivo ENARE</div><div class="logo-sub">2026</div></div>
+    </div>
+    <div class="ph-center">Condutas Integradas — Cenários Especiais</div>
+    <div class="ph-right">NUT-TNUTR · Aula 11</div>
+  </div>
+
+  <div class="pc-sm">
+    <h2>Cenários Especiais — Fórmula, Via e NP</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="width:22%">Cenário clínico</th>
+          <th style="width:28%">Via / Fórmula</th>
+          <th style="width:24%">Meta proteica</th>
+          <th style="width:26%">Ponto-chave FGV</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="td-bold">SIC fase aguda</td>
+          <td>NP central total</td>
+          <td>1,5–2,0 g/kg/dia</td>
+          <td>NP central — osmolalidade necessária</td>
+        </tr>
+        <tr>
+          <td class="td-bold">SIC fase adaptação</td>
+          <td>NP central + NE trófica oligomérica</td>
+          <td>1,5–2,0 g/kg/dia</td>
+          <td>NE trófica ESSENCIAL — não suprimir</td>
+        </tr>
+        <tr>
+          <td class="td-bold">SDRA / Insuf. respiratória</td>
+          <td>NE + fórmula <strong>pulmonar</strong> (↑lipídios ≥50%)</td>
+          <td>1,5–2,0 g/kg/dia</td>
+          <td>↓Carboidratos → ↓QR → ↓CO₂ → ↓carga ventilatória</td>
+        </tr>
+        <tr>
+          <td class="td-bold">Pancreatite grave (SAP)</td>
+          <td>NE pós-pilórica; NP se via impossível</td>
+          <td>1,2–1,5 g/kg/dia</td>
+          <td>NE pós-pilórica não estimula pâncreas exócrino</td>
+        </tr>
+        <tr>
+          <td class="td-bold">Fístula entérica alto débito</td>
+          <td>NP central até fechamento; NE distal se possível</td>
+          <td>1,5–2,0 g/kg/dia</td>
+          <td>Fístula &gt; 500 mL/dia = indicação de NP</td>
+        </tr>
+        <tr>
+          <td class="td-bold">Mucosites graus III–IV</td>
+          <td>NP se via oral impossível</td>
+          <td>1,2–1,5 g/kg/dia</td>
+          <td>Reiniciar NE assim que mucosite melhora</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 style="margin-top:2mm">Desmame da NP — critérios</h3>
+
+    <div class="two-col">
+      <div>
+        <div class="box box-green">
+          <div class="box-title">Quando reduzir NP</div>
+          <ul style="margin:0">
+            <li>NE supre > 60% das necessidades calóricas → reduzir NP proporcionalmente</li>
+            <li>NE supre > 80% → suspender NP</li>
+            <li>VO possível e tolerada → priorizar + reduzir NE e NP</li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <div class="box box-teal" style="margin-bottom:0">
+          <div class="box-title">Monitoramento da NP</div>
+          <ul style="margin:0">
+            <li>Glicemia: manter 140–180 mg/dL em UTI</li>
+            <li>Triglicerídeos: dosar 2×/semana; suspender lipídios se &gt; 400 mg/dL</li>
+            <li>Eletrólitos diários na fase inicial</li>
+            <li>Fosfato: vigilância síndrome de realimentação</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="box box-lime" style="margin-bottom:0">
+      <div class="box-title">Resumo decisório: escolha da via</div>
+      <p><strong>TGI funcionante → NE (sempre)</strong> · TGI inacessível/não funcionante → NP central · SIC dependente crônico → NP central domiciliar · NP periférica: apenas transitória (&lt;14 dias), nunca para NPT completa</p>
+    </div>
+  </div>
+
+  <div class="pf">
+    <span class="pf-left">Extensivo ENARE 2026</span>
+    <span class="pf-center">Bloco B9 · Nutrição · Aula 11</span>
+    <span class="pf-right">5 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PAGE 6 — Q01 (Ap) — FÓRMULAS ENTERAIS ========== -->
+<div class="page">
+  <div class="ph">
+    <div class="logo-wrap">
+      <div class="logo-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+      <div><div class="logo-text">Extensivo ENARE</div><div class="logo-sub">2026</div></div>
+    </div>
+    <div class="ph-center">Questão 01 · Aplicação</div>
+    <div class="ph-right">NUT-TNUTR · Aula 11</div>
+  </div>
+
+  <div class="pc">
+    <div class="q-header">
+      <div class="q-num">Q01</div>
+      <div class="q-meta">
+        <div class="q-type">Aplicação (Ap) · NUT-TNUTR</div>
+        <div class="q-origin">Réplica calibrada · ENARE 2024 Q85 · Gabarito: D</div>
+      </div>
+      <span class="tag tag-lime">Ap</span>
+    </div>
+
+    <div class="q-stem">
+      Nutricionista é solicitada para indicar a fórmula enteral mais adequada para uma paciente de 52 anos, submetida a ressecção de 130 cm do intestino delgado por isquemia mesentérica, encontrando-se na <strong>fase de adaptação da síndrome do intestino curto</strong>, com comprometimento da capacidade absortiva e diarreia osmótica. Sobre as características e classificação das fórmulas enterais, é CORRETO afirmar:
+    </div>
+
+    <div class="options">
+      <div class="opt distractor">
+        <span class="opt-letter">A</span>
+        <span>Fórmulas poliméricas contêm proteínas parcialmente hidrolisadas em peptídeos e são a primeira escolha em estados de má absorção intestinal.</span>
+      </div>
+      <div class="opt distractor">
+        <span class="opt-letter">B</span>
+        <span>A osmolalidade padrão das fórmulas enterais é superior a 700 mOsm/kg, sendo necessária diluição inicial para todos os pacientes hospitalizados.</span>
+      </div>
+      <div class="opt distractor">
+        <span class="opt-letter">C</span>
+        <span>Fórmulas hipercalóricas possuem densidade de 1,0 kcal/mL e são indicadas exclusivamente para pacientes com restrição de volume hídrico.</span>
+      </div>
+      <div class="opt correct">
+        <span class="opt-letter">D</span>
+        <span>Fórmulas oligoméricas, com proteínas parcialmente hidrolisadas em di e tripeptídeos, apresentam maior osmolalidade e são indicadas em estados de comprometimento digestório e absortivo, como na fase de adaptação da síndrome do intestino curto.</span>
+      </div>
+      <div class="opt distractor">
+        <span class="opt-letter">E</span>
+        <span>Fórmulas elementares, compostas por aminoácidos livres, são o padrão universal para nutrição enteral hospitalar por dispensar qualquer processo digestório.</span>
+      </div>
+    </div>
+
+    <div class="q-rationale">
+      <div class="rat-title">Raciocínio</div>
+      <p><strong>A) ERRADO:</strong> Poliméricas = proteínas <strong>intactas</strong>; indicadas quando TGI é funcionante. <strong>B) ERRADO:</strong> Osmolalidade padrão = 300–450 mOsm/kg (não > 700). <strong>C) ERRADO:</strong> Hipercalóricas = 1,5–2,0 kcal/mL; densidade 1,0 = padrão. <strong>D) CORRETO:</strong> Oligoméricas têm peptídeos di/tripeptídeos — absorção por transportadores de membrana sem necessidade de digestão completa — ideais em má absorção (SIC, Crohn, pancreatite, fístula). <strong>E) ERRADO:</strong> Elementares são reservadas para casos graves (alergia, mucosite severa); não são padrão universal.</p>
+    </div>
+  </div>
+
+  <div class="pf">
+    <span class="pf-left">Extensivo ENARE 2026</span>
+    <span class="pf-center">Bloco B9 · Nutrição · Aula 11</span>
+    <span class="pf-right">6 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PAGE 7 — Q02 (Ap) — NUTRIÇÃO PARENTERAL ========== -->
+<div class="page">
+  <div class="ph">
+    <div class="logo-wrap">
+      <div class="logo-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+      <div><div class="logo-text">Extensivo ENARE</div><div class="logo-sub">2026</div></div>
+    </div>
+    <div class="ph-center">Questão 02 · Aplicação</div>
+    <div class="ph-right">NUT-TNUTR · Aula 11</div>
+  </div>
+
+  <div class="pc">
+    <div class="q-header">
+      <div class="q-num">Q02</div>
+      <div class="q-meta">
+        <div class="q-type">Aplicação (Ap) · NUT-TNUTR</div>
+        <div class="q-origin">Réplica calibrada · ENARE 2024 Q86 · Gabarito: B</div>
+      </div>
+      <span class="tag tag-lime">Ap</span>
+    </div>
+
+    <div class="q-stem">
+      Paciente masculino, 67 anos, em pós-operatório de ressecção gástrica por adenocarcinoma, evolui com íleo prolongado há 8 dias e impossibilidade de progressão da dieta enteral. A equipe decide iniciar nutrição parenteral total (NPT) via cateter venoso central. Sobre a composição e os limites da NPT, qual afirmativa é CORRETA?
+    </div>
+
+    <div class="options">
+      <div class="opt distractor">
+        <span class="opt-letter">A</span>
+        <span>A glutamina deve ser administrada exclusivamente na forma de L-glutamina livre na NPT do paciente crítico, pois é a forma mais estável em solução aquosa.</span>
+      </div>
+      <div class="opt correct">
+        <span class="opt-letter">B</span>
+        <span>Os lipídios na NPT devem ser limitados a 2,5 g/kg/dia, incluindo triglicerídeos de cadeia longa e média; doses maiores aumentam o risco de hipertrigliceridemia e disfunção imune.</span>
+      </div>
+      <div class="opt distractor">
+        <span class="opt-letter">C</span>
+        <span>A concentração de glicose na NPT não impõe limites práticos à velocidade de infusão, desde que a insulina seja ajustada para manter a normoglicemia.</span>
+      </div>
+      <div class="opt distractor">
+        <span class="opt-letter">D</span>
+        <span>A NPT periférica pode ser administrada com qualquer osmolalidade, desde que a velocidade de infusão seja reduzida para prevenir flebite.</span>
+      </div>
+      <div class="opt distractor">
+        <span class="opt-letter">E</span>
+        <span>Em paciente com íleo prolongado pós-operatório superior a 7 dias, a NPT está contraindicada por aumentar o risco de translocação bacteriana intestinal.</span>
+      </div>
+    </div>
+
+    <div class="q-rationale">
+      <div class="rat-title">Raciocínio</div>
+      <p><strong>A) ERRADO:</strong> L-glutamina livre é <strong>instável</strong> em solução aquosa. Na NP, usa-se <strong>dipeptídeo alanil-glutamina</strong> (estável). <strong>B) CORRETO:</strong> Lipídios máx 2,5 g/kg/dia; suspender se TG > 400 mg/dL. <strong>C) ERRADO:</strong> Glicose deve ser infundida a ≤ 5 mg/kg/min — excesso → esteatose hepática, hiperglicemia grave, hipercapnia. <strong>D) ERRADO:</strong> NP periférica limitada a ≤ 900 mOsm/L — acima disso, risco de flebite independente da velocidade. <strong>E) ERRADO:</strong> NP é <em>indicada</em> quando TGI é não funcionante. A translocação bacteriana aumenta com jejum enteral prolongado; NP é a solução, não a causa.</p>
+    </div>
+  </div>
+
+  <div class="pf">
+    <span class="pf-left">Extensivo ENARE 2026</span>
+    <span class="pf-center">Bloco B9 · Nutrição · Aula 11</span>
+    <span class="pf-right">7 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PAGE 8 — Q03 (An) ÂNCORA — SIC: NP PERIFÉRICA vs CENTRAL ========== -->
+<div class="page">
+  <div class="ph">
+    <div class="logo-wrap">
+      <div class="logo-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+      <div><div class="logo-text">Extensivo ENARE</div><div class="logo-sub">2026</div></div>
+    </div>
+    <div class="ph-center">Questão 03 · Análise — Âncora</div>
+    <div class="ph-right">NUT-TNUTR · Aula 11</div>
+  </div>
+
+  <div class="pc">
+    <div class="q-header">
+      <div class="q-num">Q03</div>
+      <div class="q-meta">
+        <div class="q-type">Análise (An) · NUT-TNUTR · Questão-âncora</div>
+        <div class="q-origin">Réplica calibrada · ENARE 2025 Q29 · Gabarito: E</div>
+      </div>
+      <span class="tag tag-teal">An</span>
+    </div>
+
+    <div class="q-stem">
+      Paciente masculino, 42 anos, submetido a enterectomia ampla por volvulus mesentérico, com <strong>90 cm de intestino delgado remanescente sem válvula ileocecal</strong>, evolui com síndrome do intestino curto grave. Na fase de manutenção, a equipe discute o tipo de acesso para NPT domiciliar de longo prazo. Analise as afirmativas:
+    </div>
+
+    <div class="an-items">
+      <div class="an-item wrong-item">
+        <span class="an-roman">I</span>
+        <span>A NPT periférica é preferível para uso domiciliar crônico por apresentar menor risco de infecção de cateter em relação ao cateter venoso central.</span>
+      </div>
+      <div class="an-item correct-item">
+        <span class="an-roman">II</span>
+        <span>A NPT periférica não é adequada para terapia nutricional parenteral total de longo prazo, pois sua osmolalidade é limitada a ≤ 900 mOsm/L, o que impede a oferta calórico-proteica suficiente para suprir as necessidades do paciente com SIC.</span>
+      </div>
+      <div class="an-item correct-item">
+        <span class="an-roman">III</span>
+        <span>A NPT central, com acesso em veia de grande calibre (subclávia ou jugular interna), suporta soluções hiperosmolares acima de 1.200 mOsm/L, sendo necessária para NPT total completa e domiciliar de longo prazo.</span>
+      </div>
+      <div class="an-item wrong-item">
+        <span class="an-roman">IV</span>
+        <span>Na fase de adaptação da síndrome do intestino curto, deve-se suprimir qualquer estímulo enteral para prevenir diarreia osmótica e permitir recuperação da mucosa.</span>
+      </div>
+    </div>
+
+    <div class="options" style="margin-top:2.5mm">
+      <div class="opt distractor"><span class="opt-letter">A</span><span>I e IV apenas</span></div>
+      <div class="opt distractor"><span class="opt-letter">B</span><span>I e III apenas</span></div>
+      <div class="opt distractor"><span class="opt-letter">C</span><span>I, II e III apenas</span></div>
+      <div class="opt distractor"><span class="opt-letter">D</span><span>II e IV apenas</span></div>
+      <div class="opt correct"><span class="opt-letter">E</span><span>II e III apenas</span></div>
+    </div>
+
+    <div class="q-rationale">
+      <div class="rat-title">Raciocínio</div>
+      <p><strong>I — FALSO:</strong> Embora NP periférica evite riscos do CVC, ela é <em>inadequada</em> para NPT completa longa — limita oferta calórica. Menor risco infeccioso não justifica uso crônico. <strong>II — CORRETO:</strong> Osmolalidade ≤ 900 mOsm/L impede concentrações de glicose e aminoácidos suficientes para NPT total. <strong>III — CORRETO:</strong> Acesso central suporta hiperosmolaridade (≥ 1.200 mOsm/L) — necessária para NPT domiciliar completa. <strong>IV — FALSO:</strong> NE trófica (mesmo mínima) é <em>obrigatória</em> na fase de adaptação — estimula proliferação enterocitária e hiperplasia vilositária. Suprimir NE retarda a adaptação.</p>
+    </div>
+  </div>
+
+  <div class="pf">
+    <span class="pf-left">Extensivo ENARE 2026</span>
+    <span class="pf-center">Bloco B9 · Nutrição · Aula 11</span>
+    <span class="pf-right">8 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PAGE 9 — GABARITO ========== -->
+<div class="page">
+  <div class="ph">
+    <div class="logo-wrap">
+      <div class="logo-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+      <div><div class="logo-text">Extensivo ENARE</div><div class="logo-sub">2026</div></div>
+    </div>
+    <div class="ph-center">Gabarito — Aula 11</div>
+    <div class="ph-right">NUT-TNUTR · Aula 11</div>
+  </div>
+
+  <div class="pc">
+    <h2>Gabarito</h2>
+
+    <div class="answer-grid">
+      <div class="ans-card">
+        <div class="ans-q">Questão 01</div>
+        <div class="ans-letter">D</div>
+        <div class="ans-topic">Fórmulas oligoméricas — peptídeos, má absorção, SIC adaptação<br>Réplica ENARE 2024 Q85 (Ap)</div>
+      </div>
+      <div class="ans-card">
+        <div class="ans-q">Questão 02</div>
+        <div class="ans-letter">B</div>
+        <div class="ans-topic">NP — lipídios máx 2,5 g/kg/dia; alanil-glutamina (dipeptídeo estável)<br>Réplica ENARE 2024 Q86 (Ap)</div>
+      </div>
+      <div class="ans-card">
+        <div class="ans-q">Questão 03</div>
+        <div class="ans-letter">E</div>
+        <div class="ans-topic">SIC — NP central necessária (hiperosmolar); NE trófica obrigatória na adaptação<br>Réplica ENARE 2025 Q29 (An)</div>
+      </div>
+    </div>
+
+    <div class="box box-teal" style="margin-top:5mm">
+      <div class="box-title">Resumo dos distratores críticos desta aula</div>
+      <table style="margin-bottom:0">
+        <thead>
+          <tr><th>Afirmativa-armadilha</th><th>Por que é ERRADA</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>"Polimérica = proteínas hidrolisadas"</td>
+            <td>Polimérica = intactas; hidrolisadas = oligomérica</td>
+          </tr>
+          <tr>
+            <td>"Glutamina IV = L-glutamina livre"</td>
+            <td>L-glutamina é instável; usa-se <strong>dipeptídeo alanil-glutamina</strong></td>
+          </tr>
+          <tr>
+            <td>"NP periférica = adequada para SIC crônico"</td>
+            <td>Osmolalidade ≤ 900 mOsm/L impede NPT total; necessária NP central</td>
+          </tr>
+          <tr>
+            <td>"NE deve ser suprimida na fase de adaptação do SIC"</td>
+            <td>NE trófica é obrigatória para estimular adaptação intestinal (GLP-2, vilosidades)</td>
+          </tr>
+          <tr>
+            <td>"NP é contraindicada com íleo prolongado — risco translocação"</td>
+            <td>NP é <em>indicada</em> no íleo; translocação aumenta COM jejum sem TN</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="pf">
+    <span class="pf-left">Extensivo ENARE 2026</span>
+    <span class="pf-center">Bloco B9 · Nutrição · Aula 11</span>
+    <span class="pf-right">9 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PAGE 10 — SÍNTESE + REFERÊNCIAS ========== -->
+<div class="page">
+  <div class="ph">
+    <div class="logo-wrap">
+      <div class="logo-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+      <div><div class="logo-text">Extensivo ENARE</div><div class="logo-sub">2026</div></div>
+    </div>
+    <div class="ph-center">Síntese Final — Aula 11</div>
+    <div class="ph-right">NUT-TNUTR · Aula 11</div>
+  </div>
+
+  <div class="pc-sm">
+    <h2>Síntese — Fórmulas, NP e SIC</h2>
+
+    <div class="synth-grid">
+      <div class="synth-item">
+        <div class="si-title">Fórmulas enterais — hierarquia</div>
+        <div class="si-body">
+          <strong>Polimérica</strong> → padrão (TGI funcionante)<br>
+          <strong>Oligomérica</strong> → má absorção (SIC, Crohn, fístula)<br>
+          <strong>Elementar</strong> → alergia grave, mucosite intensa<br>
+          Hipercalórica: 1,5–2,0 kcal/mL · Padrão: 1,0 kcal/mL<br>
+          Osmolalidade padrão: 300–450 mOsm/kg
+        </div>
+      </div>
+      <div class="synth-item">
+        <div class="si-title">NP — limites críticos</div>
+        <div class="si-body">
+          Glicose: ≤ 5 mg/kg/min<br>
+          Lipídios: ≤ 2,5 g/kg/dia (suspender se TG > 400 mg/dL)<br>
+          Glutamina: <strong>dipeptídeo alanil-glutamina</strong> (não L-livre)<br>
+          NP periférica: ≤ 900 mOsm/L; &lt; 14 dias<br>
+          NP central: &gt; 1.200 mOsm/L; longo prazo
+        </div>
+      </div>
+      <div class="synth-item">
+        <div class="si-title">Síndrome do Intestino Curto</div>
+        <div class="si-body">
+          Adulto: &lt; 200 cm ID remanescente<br>
+          Fase aguda: NP central total<br>
+          Fase adaptação: NP + NE trófica <strong>obrigatória</strong><br>
+          GLP-2 (teduglutida): promove adaptação<br>
+          NP central domiciliar se dependência crônica
+        </div>
+      </div>
+      <div class="synth-item">
+        <div class="si-title">Indicações de NP</div>
+        <div class="si-body">
+          TGI não funcionante ≥ 7 dias<br>
+          Fístula entérica &gt; 500 mL/dia<br>
+          Mucosites graus III–IV<br>
+          SIC grave · Obstrução intestinal<br>
+          <strong>TGI funcionante → NE sempre preferível</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="box box-lime" style="margin-bottom:3mm">
+      <div class="box-title">Mapa mental — decisão clínica</div>
+      <p><strong>Via enteral possível?</strong> → SIM → NE (polimérica se TGI normal; oligomérica se má absorção) · NÃO → NP central se NPT total necessária; NP periférica apenas se transitória &lt; 14 dias · <strong>SIC crônico</strong> → NP central domiciliar + NE trófica progressiva</p>
+    </div>
+
+    <div class="ref-block">
+      <div class="ref-title">Referências</div>
+      <ul>
+        <li>BRASPEN — Diretrizes de Terapia Nutricional, 2023</li>
+        <li>ESPEN Guidelines on Parenteral Nutrition. Clin Nutr, 2019</li>
+        <li>ESPEN Guideline on Short Bowel Syndrome. Clin Nutr, 2016</li>
+        <li>ASPEN Clinical Guidelines: Parenteral Nutrition Ordering, Order Review. JPEN, 2014</li>
+        <li>Pironi L et al. ESPEN-endorsed recommendations on intestinal failure. Clin Nutr, 2020</li>
+        <li>Jeppesen PB. Teduglutide for short bowel syndrome. Curr Opin Clin Nutr Metab Care, 2014</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="pf">
+    <span class="pf-left">Extensivo ENARE 2026</span>
+    <span class="pf-center">Bloco B9 · Nutrição · Aula 11</span>
+    <span class="pf-right">10 / 10</span>
+  </div>
+</div>
+
+</body>
+</html>

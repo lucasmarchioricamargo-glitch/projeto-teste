@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B9 · Aula 03 — NUT-FARM: Anticoagulantes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { -webkit-print-color-adjust: exact; print-color-adjust: exact; font-family: 'Bricolage Grotesque', sans-serif; background: #ccc; }
+
+  .page { width: 210mm; height: 297mm; display: flex; flex-direction: column; overflow: hidden; page-break-after: always; background: #F6F4ED; }
+
+  .ph { height: 14mm; flex-shrink: 0; display: flex; align-items: center; justify-content: space-between; padding: 0 16mm; border-bottom: 0.4mm solid #E0DDD6; }
+  .ph-label { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 7.5pt; letter-spacing: 0.12em; color: #0D8A8D; text-transform: uppercase; }
+  .ph-right { font-size: 7pt; color: #888; }
+
+  .pf { height: 9mm; flex-shrink: 0; display: flex; align-items: center; justify-content: space-between; padding: 0 16mm; border-top: 0.4mm solid #E0DDD6; }
+  .pf-logo { font-family: 'Playfair Display', serif; font-style: italic; font-size: 7.5pt; color: #0D8A8D; }
+  .pf-logo span { font-family: 'Space Grotesk', sans-serif; font-style: normal; font-weight: 300; font-size: 6.5pt; color: #888; text-transform: uppercase; letter-spacing: 0.08em; }
+  .pf-right { font-size: 7pt; color: #888; }
+  .pf-right strong { color: #0D8A8D; font-weight: 600; }
+
+  .pc { flex: 1; padding: 7mm 16mm 5mm; overflow: hidden; }
+  .pc-sm { flex: 1; padding: 5mm 16mm 4mm; overflow: hidden; }
+
+  .cover-eyebrow { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 8pt; letter-spacing: 0.15em; color: #0D8A8D; text-transform: uppercase; margin-bottom: 4mm; }
+  .cover-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 40pt; line-height: 0.93; color: #070707; text-transform: uppercase; margin-bottom: 5mm; }
+  .cover-sub { font-size: 9pt; color: #555; line-height: 1.5; margin-bottom: 6mm; max-width: 150mm; }
+
+  .stats-row { display: flex; gap: 0; margin-bottom: 6mm; }
+  .stat-item { display: flex; align-items: flex-start; gap: 3mm; padding-right: 7mm; border-right: 0.3mm solid #C0BDB6; margin-right: 7mm; }
+  .stat-item:last-child { border-right: none; }
+  .stat-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 26pt; color: #0D8A8D; line-height: 1; }
+  .stat-label { font-size: 7.5pt; color: #666; line-height: 1.3; padding-top: 1mm; }
+
+  .banca-box { border-left: 1.5mm solid #0D8A8D; background: rgba(13,138,141,0.06); padding: 3mm 4mm; border-radius: 0 2mm 2mm 0; }
+  .banca-box-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 8pt; letter-spacing: 0.08em; color: #0D8A8D; text-transform: uppercase; margin-bottom: 1mm; }
+  .banca-box p { font-size: 7.5pt; color: #444; line-height: 1.5; }
+
+  .warn-box { border-left: 1.5mm solid #a01010; background: rgba(160,16,16,0.05); padding: 3mm 4mm; border-radius: 0 2mm 2mm 0; margin-top: 2mm; }
+  .warn-box-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 8pt; letter-spacing: 0.08em; color: #a01010; text-transform: uppercase; margin-bottom: 1mm; }
+  .warn-box p { font-size: 7.5pt; color: #444; line-height: 1.5; }
+
+  .section-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 15pt; color: #0D8A8D; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 3mm; padding-bottom: 1.2mm; border-bottom: 0.4mm solid #0D8A8D; }
+  .block-sub { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 9pt; color: #070707; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 1.5mm; margin-top: 2.5mm; }
+
+  .two-col { display: flex; gap: 5mm; }
+  .col { flex: 1; }
+
+  ul.dot-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.9mm; }
+  ul.dot-list li { font-size: 7.5pt; color: #333; line-height: 1.38; padding-left: 4mm; position: relative; }
+  ul.dot-list li::before { content: '·'; position: absolute; left: 0; color: #0D8A8D; font-weight: 700; font-size: 10pt; line-height: 1.1; }
+  ul.dot-list li strong { font-weight: 600; color: #070707; }
+  ul.dot-list li em { font-style: normal; color: #0D8A8D; font-weight: 600; }
+  ul.dot-list li.danger::before { color: #a01010; }
+  ul.dot-list li.danger strong { color: #a01010; }
+
+  .drug-block { border-left: 1.5mm solid #070707; padding: 2mm 3mm; margin-bottom: 2.5mm; background: rgba(255,255,255,0.4); border-radius: 0 1.5mm 1.5mm 0; }
+  .drug-name { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 9pt; color: #070707; text-transform: uppercase; margin-bottom: 0.8mm; }
+  .drug-block ul.dot-list { gap: 0.7mm; }
+
+  .fgv-flag { display: inline-block; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 6.5pt; background: #0D8A8D; color: #fff; padding: 0.3mm 2mm; border-radius: 1mm; text-transform: uppercase; letter-spacing: 0.06em; margin-left: 1mm; vertical-align: middle; }
+
+  /* Food table */
+  .food-table { width: 100%; border-collapse: collapse; margin-top: 1mm; }
+  .food-table th { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 7.5pt; text-transform: uppercase; letter-spacing: 0.04em; background: #070707; color: #F6F4ED; padding: 1.5mm 2.5mm; text-align: left; }
+  .food-table td { font-size: 7pt; color: #333; padding: 1.5mm 2.5mm; border-bottom: 0.2mm solid #E0DDD6; line-height: 1.3; vertical-align: top; }
+  .food-table tr:nth-child(even) td { background: rgba(13,138,141,0.04); }
+  .food-table td.high { color: #a01010; font-weight: 600; }
+  .food-table td.med { color: #c06010; font-weight: 600; }
+  .food-table td.low { color: #1F5C23; font-weight: 600; }
+
+  /* Interaction matrix */
+  .int-table { width: 100%; border-collapse: collapse; }
+  .int-table th { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 7pt; text-transform: uppercase; letter-spacing: 0.04em; background: #070707; color: #F6F4ED; padding: 1.2mm 2mm; text-align: left; }
+  .int-table td { font-size: 7pt; color: #333; padding: 1.2mm 2mm; border-bottom: 0.2mm solid #E0DDD6; line-height: 1.3; vertical-align: top; }
+  .int-table tr:nth-child(even) td { background: rgba(13,138,141,0.04); }
+  .int-table td.up { color: #a01010; font-weight: 600; }
+  .int-table td.down { color: #1F5C23; font-weight: 600; }
+  .int-table td strong { font-weight: 600; color: #070707; }
+  .int-table td em { font-style: normal; color: #0D8A8D; font-weight: 600; }
+
+  /* Questions */
+  .q-badge-row { display: flex; align-items: center; gap: 2.5mm; margin-bottom: 4mm; flex-wrap: wrap; }
+  .q-badge { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 8pt; letter-spacing: 0.08em; text-transform: uppercase; padding: 1mm 3mm; border-radius: 1mm; }
+  .q-badge-nc { background: #070707; color: #F6F4ED; }
+  .q-badge-tema { background: rgba(13,138,141,0.12); color: #0D8A8D; }
+  .q-badge-ancora { background: #0D8A8D; color: #fff; }
+  .q-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 11pt; color: #0D8A8D; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 2.5mm; }
+  .q-stem { font-size: 8.5pt; color: #222; line-height: 1.55; margin-bottom: 4mm; }
+  .q-stem strong { font-weight: 600; }
+  .q-options { display: flex; flex-direction: column; gap: 2mm; margin-bottom: 3mm; }
+  .q-opt { display: flex; gap: 2.5mm; align-items: flex-start; }
+  .q-opt-letter { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 10pt; color: #0D8A8D; min-width: 5mm; line-height: 1.3; }
+  .q-opt-text { font-size: 7.5pt; color: #333; line-height: 1.45; }
+  .q-source { font-size: 6.5pt; color: #888; font-style: italic; }
+
+  /* Gabarito */
+  .gab-block { margin-bottom: 3.5mm; }
+  .gab-q-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 10pt; color: #070707; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1.5mm; }
+  .gab-q-title span { color: #0D8A8D; }
+  .gabarito-box { background: rgba(13,138,141,0.07); border: 0.3mm solid #0D8A8D; border-radius: 2mm; padding: 2.5mm 4mm; }
+  .gabarito-box p { font-size: 7.5pt; color: #333; line-height: 1.5; margin-bottom: 1mm; }
+  .gabarito-box p:last-child { margin-bottom: 0; }
+  .gabarito-box p strong { font-weight: 700; }
+  .correct { color: #1F5C23; font-weight: 700; }
+  .wrong { color: #777; }
+
+  .synth-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5mm; margin-bottom: 3.5mm; }
+  .synth-card { background: #fff; border-radius: 2mm; padding: 2.5mm 3mm; border-top: 1.5mm solid #0D8A8D; }
+  .synth-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 8pt; color: #070707; text-transform: uppercase; margin-bottom: 1mm; }
+  .synth-card p { font-size: 7pt; color: #555; line-height: 1.35; }
+  .synth-card p strong { color: #070707; font-weight: 600; }
+  .synth-card p em { color: #0D8A8D; font-style: normal; font-weight: 600; }
+
+  .ref-list { display: flex; flex-direction: column; gap: 1.5mm; }
+  .ref-item { font-size: 7pt; color: #444; line-height: 1.4; }
+  .ref-item em { font-style: italic; }
+</style>
+</head>
+<body>
+
+<!-- ========== PAGE 1 — CAPA ========== -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label">Bloco B9 · Nutrição · Aula 03</span>
+  </div>
+  <div class="pc">
+    <div class="cover-eyebrow">Bloco B9 · NUT-FARM · Aula 03 de ~35</div>
+    <div class="cover-title">NUT-FARM:<br>Anticoagulantes</div>
+    <div class="cover-sub">Varfarina e interação com vitamina K · Consistência alimentar e monitoramento do INR · Alimentos que aumentam e diminuem o efeito anticoagulante · Cranberry, vitamina E e antibióticos · Novos anticoagulantes orais (NOACs)</div>
+
+    <div class="stats-row">
+      <div class="stat-item">
+        <div class="stat-num">Q83</div>
+        <div class="stat-label">Varfarina + vit. K<br>ENARE 2025 (Ap)</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">INR</div>
+        <div class="stat-label">Parâmetro central<br>de monitoramento</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">Ap/An</div>
+        <div class="stat-label">Nível cognitivo<br>FGV 2025</div>
+      </div>
+    </div>
+
+    <div class="banca-box">
+      <div class="banca-box-title">O que a FGV cobra em anticoagulantes:</div>
+      <p>A questão Q83/2025 exigiu que o candidato identificasse os alimentos ricos em vitamina K que devem ter consumo <strong>consistente</strong> (e não eliminado) durante o uso de varfarina. A FGV quer o candidato que sabe que a orientação NÃO é "eliminar couve e brócolis", mas sim <strong>manter consumo habitual e estável</strong> — variações bruscas são o verdadeiro problema. Para o ENARE 2026, espera-se também interações mais complexas: cranberry, vitamina E em altas doses e antibióticos.</p>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pf-logo">Residência PRO <span>· by Residência Pro</span></div>
+    <div class="pf-right"><strong>Extensivo ENARE 2026</strong><br>Nutrição · Convidado</div>
+  </div>
+</div>
+
+<!-- ========== PAGE 2 — VARFARINA: MECANISMO E INR ========== -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label">Varfarina · Mecanismo · INR · B9 Aula 03</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc-sm">
+    <div class="section-title">Varfarina — Mecanismo de Ação e Monitoramento</div>
+
+    <div class="two-col">
+      <div class="col">
+        <div class="drug-block">
+          <div class="drug-name">Varfarina — Mecanismo <span class="fgv-flag">Q83 2025</span></div>
+          <ul class="dot-list">
+            <li><strong>Classe:</strong> antagonista da vitamina K (cumarínico)</li>
+            <li><strong>Mecanismo:</strong> inibe a <em>vitamina K epóxido redutase (VKOR)</em> → impede a regeneração da vitamina K na forma reduzida ativa → ↓carboxilação dos fatores de coagulação dependentes de vitamina K</li>
+            <li><strong>Fatores afetados:</strong> II (protrombina), VII, IX, X (fatores pró-coagulantes) + proteínas C e S (anticoagulantes) — todos dependentes de vitamina K</li>
+            <li><strong>Efeito anticoagulante:</strong> proporcional à quantidade de vitamina K disponível — mais vitamina K circulante = ↓efeito; menos vitamina K = ↑efeito</li>
+            <li><strong>Variabilidade interindividual:</strong> polimorfismos em VKORC1 e CYP2C9 explicam diferenças de dose entre pacientes</li>
+          </ul>
+        </div>
+
+        <div class="drug-block">
+          <div class="drug-name">INR — International Normalized Ratio</div>
+          <ul class="dot-list">
+            <li><strong>INR normal (sem anticoagulante):</strong> ~1,0</li>
+            <li><strong>Faixa terapêutica padrão:</strong> <em>2,0 a 3,0</em> (fibrilação atrial, TVP, EP)</li>
+            <li><strong>Prótese valvar mecânica:</strong> INR 2,5 a 3,5 (risco maior de trombose)</li>
+            <li><strong>INR &lt;2,0:</strong> subterapeútico → risco de trombose/AVC</li>
+            <li><strong>INR &gt;3,0–3,5:</strong> supraterapeútico → risco de sangramento</li>
+            <li><strong>Frequência de monitoramento:</strong> semanal no início → mensal quando estável; qualquer mudança alimentar relevante deve ser comunicada</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="block-sub" style="margin-top:0;">Vitamina K — o determinante nutricional</div>
+        <ul class="dot-list">
+          <li><strong>Vitamina K1 (filoquinona):</strong> principal fonte alimentar — vegetais verdes folhosos; absorção depende de gordura dietética (vitamina lipossolúvel)</li>
+          <li><strong>Vitamina K2 (menaquinonas):</strong> sintetizada pela microbiota intestinal; presente em alimentos fermentados, fígado, ovos</li>
+          <li><strong>Princípio fundamental:</strong> a vitamina K compete com a varfarina no VKOR — quanto mais vitamina K disponível, menor o efeito anticoagulante</li>
+          <li><strong>Orientação central (FGV):</strong> manter ingestão de vitamina K <em>CONSISTENTE</em> — não eliminar; variações bruscas (comer muito ou pouco em dias diferentes) desestabilizam o INR</li>
+        </ul>
+
+        <div class="banca-box" style="margin-top:2mm;">
+          <div class="banca-box-title">Distrator clássico FGV — Varfarina:</div>
+          <p>A resposta errada mais comum é "eliminar todos os alimentos com vitamina K". A conduta correta é <strong>manter o consumo estável e habitual</strong>. Eliminar a vitamina K tornaria o efeito da varfarina imprevisível e aumentaria o risco de sangramento. O objetivo é consistência, não ausência.</p>
+        </div>
+
+        <div class="warn-box">
+          <div class="warn-box-title">Alerta prático:</div>
+          <p>Paciente que "resolve" comer muita salada verde por 3 dias → ↑vitamina K → INR cai para zona subterapeútica → risco de trombose. Paciente que para de comer vegetais → ↓vitamina K → INR sobe → risco de sangramento. Qualquer extremo é perigoso.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pf-logo">Extensivo ENARE <span>· by Residência Pro</span></div>
+    <div class="pf-right">2</div>
+  </div>
+</div>
+
+<!-- ========== PAGE 3 — ALIMENTOS E VITAMINA K ========== -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label">Alimentos · Vitamina K · Varfarina · B9 Aula 03</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc-sm">
+    <div class="section-title">Alimentos com Vitamina K — Estratégia Nutricional com Varfarina</div>
+
+    <div class="two-col" style="margin-bottom:3mm;">
+      <div class="col">
+        <table class="food-table">
+          <thead>
+            <tr>
+              <th>Alimento</th>
+              <th>Vit. K (µg/100g)</th>
+              <th>Impacto no INR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Couve (crua)</strong></td><td class="high">817 µg</td><td class="high">↓↓ INR se ↑ingestão</td></tr>
+            <tr><td><strong>Espinafre</strong></td><td class="high">483 µg</td><td class="high">↓↓ INR se ↑ingestão</td></tr>
+            <tr><td><strong>Brócolis</strong></td><td class="high">102 µg</td><td class="high">↓ INR se ↑ingestão</td></tr>
+            <tr><td><strong>Fígado bovino</strong></td><td class="high">~106 µg</td><td class="high">↓ INR + armazenamento K2</td></tr>
+            <tr><td><strong>Abacate</strong></td><td class="med">21 µg</td><td class="med">Moderado — consistência</td></tr>
+            <tr><td><strong>Óleo de soja</strong></td><td class="med">183 µg</td><td class="med">↓ INR em uso diário</td></tr>
+            <tr><td><strong>Azeite extravirgem</strong></td><td class="low">60 µg</td><td class="low">Baixo — uso moderado</td></tr>
+            <tr><td>Cenoura, tomate, frutas</td><td class="low">&lt;10 µg</td><td class="low">Desprezível</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col">
+        <div class="block-sub" style="margin-top:0;">Estratégia nutricional correta</div>
+        <ul class="dot-list" style="gap:1.2mm;">
+          <li><strong>NÃO eliminar:</strong> o paciente pode comer couve, espinafre, brócolis — deve manter quantidade habitual</li>
+          <li><strong>Padronizar:</strong> se come 1 porção de vegetais verdes/dia, manter essa frequência; não variar entre 0 e 4 porções</li>
+          <li><strong>Comunicar mudanças:</strong> iniciar dieta vegetariana, dieta de emagrecimento ou qualquer alteração significativa → avisar equipe e checar INR</li>
+          <li><strong>Cozinhar não elimina vitamina K:</strong> brócolis cozido contém ~141 µg — similar ao cru; a vitamina K é estável ao calor</li>
+          <li><strong>Abacate:</strong> quantidade moderada é aceitável — deve ser consistente; fígado deve ser consumido no máximo 1x/semana</li>
+        </ul>
+
+        <div class="banca-box" style="margin-top:2mm;">
+          <div class="banca-box-title">Caso prático (padrão Q83/2025):</div>
+          <p>Paciente em varfarina com INR estável 2,5 começa a tomar suco verde diário (couve + espinafre + brócolis). Na próxima consulta, INR = 1,6. Conduta do nutricionista: <strong>orientar substituição ou redução do suco verde + ajuste médico de dose + novo INR em 7 dias</strong>. Não suspender a varfarina, não eliminar vegetais permanentemente — apenas estabilizar a ingestão de vitamina K.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pf-logo">Extensivo ENARE <span>· by Residência Pro</span></div>
+    <div class="pf-right">3</div>
+  </div>
+</div>
+
+<!-- ========== PAGE 4 — INTERAÇÕES COMPLEXAS COM VARFARINA ========== -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label">Interações Complexas · Varfarina · B9 Aula 03</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc-sm">
+    <div class="section-title">Interações Complexas — Varfarina e ↑INR</div>
+
+    <table class="int-table" style="margin-bottom:3mm;">
+      <thead>
+        <tr>
+          <th>Agente</th>
+          <th>Mecanismo</th>
+          <th>Efeito no INR</th>
+          <th>Conduta nutricional</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Suco de toranja (grapefruit)</strong></td>
+          <td>Inibe CYP3A4 → ↑concentração varfarina</td>
+          <td class="up">↑↑ INR (sangramento)</td>
+          <td>Evitar ou limitar; informar equipe</td>
+        </tr>
+        <tr>
+          <td><strong>Suco de cranberry</strong></td>
+          <td>Inibe CYP2C9 (metabolizador principal da varfarina-S)</td>
+          <td class="up">↑↑ INR</td>
+          <td><em>Evitar</em> durante uso de varfarina; risco de sangramento grave</td>
+        </tr>
+        <tr>
+          <td><strong>Vitamina E &gt;400 UI/dia</strong></td>
+          <td>Efeito anticoagulante aditivo; inibe agregação plaquetária</td>
+          <td class="up">↑ INR</td>
+          <td>Não suplementar acima de 400 UI; comunicar ao médico</td>
+        </tr>
+        <tr>
+          <td><strong>Antibióticos amplo espectro</strong></td>
+          <td>Elimina microbiota produtora de vitamina K2 (menaquinonas) → ↓síntese endógena de K</td>
+          <td class="up">↑ INR</td>
+          <td>Monitorar INR durante e após antibioticoterapia</td>
+        </tr>
+        <tr>
+          <td><strong>Álcool (agudo)</strong></td>
+          <td>Inibe CYP2C9 → ↑varfarina + efeito anticoagulante direto</td>
+          <td class="up">↑ INR (risco hemorragia)</td>
+          <td>Contraindicado; máximo 1 dose/dia se não abstinente</td>
+        </tr>
+        <tr>
+          <td><strong>Álcool (crônico)</strong></td>
+          <td>Induz CYP2C9 → ↑metabolismo varfarina + dano hepático → ↓síntese fatores coagulação</td>
+          <td class="up">↑ INR variável</td>
+          <td>Contraindicado; INR instável e imprevisível</td>
+        </tr>
+        <tr>
+          <td><strong>Vegetais verdes ↑↑</strong></td>
+          <td>Vitamina K1 compete com varfarina no VKOR</td>
+          <td class="down">↓ INR (trombose)</td>
+          <td>Manter quantidade estável; não aumentar abruptamente</td>
+        </tr>
+        <tr>
+          <td><strong>Ômega-3 &gt;3g/dia</strong></td>
+          <td>Antiagregante plaquetário aditivo</td>
+          <td class="up">↑ risco sangramento</td>
+          <td>Doses terapêuticas (&lt;2g/dia) geralmente seguras; monitorar</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="banca-box">
+      <div class="banca-box-title">Interações que ↑INR (aumentam risco de sangramento) — resumo:</div>
+      <p><strong>Cranberry</strong> (inibe CYP2C9) · <strong>Toranja</strong> (inibe CYP3A4) · <strong>Vitamina E &gt;400 UI</strong> (anticoagulante aditivo) · <strong>Antibióticos</strong> (↓K2 da microbiota) · <strong>Álcool agudo</strong> (inibe CYP2C9). A FGV pode combinar 2–3 desses fatores em uma única questão An — como no cenário clínico desta aula.</p>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pf-logo">Extensivo ENARE <span>· by Residência Pro</span></div>
+    <div class="pf-right">4</div>
+  </div>
+</div>
+
+<!-- ========== PAGE 5 — OUTROS ANTICOAGULANTES ========== -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label">NOACs · Heparina · AAS · B9 Aula 03</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc-sm">
+    <div class="section-title">Outros Anticoagulantes — NOACs, Heparina e AAS</div>
+
+    <div class="two-col">
+      <div class="col">
+        <div class="drug-block">
+          <div class="drug-name">NOACs / DOACs (Novos Anticoagulantes Orais)</div>
+          <ul class="dot-list">
+            <li><strong>Inibidores Xa:</strong> rivaroxabana (Xarelto), apixabana (Eliquis), edoxabana</li>
+            <li><strong>Inibidor IIa (trombina):</strong> dabigatrana (Pradaxa)</li>
+            <li><strong>Vantagem nutricional:</strong> NÃO dependem de vitamina K → INR não é parâmetro útil; sem restrição alimentar rígida</li>
+            <li><strong>Rivaroxabana:</strong> deve ser tomada <em>com a refeição principal</em> para garantir absorção adequada (dose alta 20 mg — sem alimento, absorção cai ~30%)</li>
+            <li><strong>Interação toranja:</strong> rivaroxabana e apixabana são substratos de CYP3A4 e P-gp → toranja e suplementos de hipérico (erva-de-são-joão) podem ↑ou↓ níveis</li>
+            <li><strong>Dabigatrana:</strong> sensível ao pH gástrico — IBP reduz levemente a absorção; evitar álcool</li>
+          </ul>
+        </div>
+
+        <div class="drug-block">
+          <div class="drug-name">Heparina e HBPM</div>
+          <ul class="dot-list">
+            <li>Via parenteral (IV ou SC) — sem interações alimentares diretas relevantes</li>
+            <li>HBPM (enoxaparina): monitorar anti-Xa em obesos (dose peso-dependente); ↑risco sangramento com ômega-3 em altas doses</li>
+            <li>Uso hospitalar — contexto de terapia nutricional enteral/parenteral</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="drug-block">
+          <div class="drug-name">AAS (Ácido Acetilsalicílico) — Antiagregante</div>
+          <ul class="dot-list">
+            <li><strong>Mecanismo:</strong> inibe COX-1 irreversivelmente → ↓tromboxano A2 → ↓agregação plaquetária</li>
+            <li><strong>Interação nutricional:</strong> álcool + AAS = ↑risco de lesão gástrica; tomar com alimentos para reduzir irritação gástrica</li>
+            <li><strong>Ômega-3:</strong> efeito antiagregante sinérgico — combinação AAS + ômega-3 aumenta tempo de sangramento</li>
+            <li><strong>Alimentos que inibem a COX naturalmente:</strong> açafrão (curcumina), gengibre, alho — efeito aditivo leve com AAS</li>
+          </ul>
+        </div>
+
+        <div class="banca-box" style="margin-top:1mm;">
+          <div class="banca-box-title">Diferencial varfarina × NOACs para a prova:</div>
+          <p><strong>Varfarina:</strong> vitamina K importa → consistência alimentar + monitorar INR + interações CYP2C9 (cranberry, álcool)<br>
+          <strong>NOACs:</strong> vitamina K não importa → sem restrição alimentar principal; mas toranja (CYP3A4/P-gp) é relevante para rivaroxabana/apixabana<br>
+          <strong>Rivaroxabana:</strong> deve ser tomada COM alimento (dose alta) — detalhe de absorção que a FGV pode cobrar</p>
+        </div>
+
+        <div class="banca-box" style="margin-top:2mm;">
+          <div class="banca-box-title">Hipérico (erva-de-são-joão) — ponto oculto:</div>
+          <p>Hipericina (componente do hipérico) induz fortemente CYP3A4 e P-gp → ↓concentração de varfarina e NOACs → ↓efeito anticoagulante → risco trombose. O paciente que usa "chá de hipérico" pode ter INR subterapeútico sem saber. A FGV pode cobrar isso como subtópico de NUT-FARM.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pf-logo">Extensivo ENARE <span>· by Residência Pro</span></div>
+    <div class="pf-right">5</div>
+  </div>
+</div>
+
+<!-- ========== PAGE 6 — QUESTÃO 01 ========== -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label">Questão 01 · NUT-FARM · B9 Aula 03</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc">
+    <div class="q-num">Questão 01</div>
+    <div class="q-badge-row">
+      <span class="q-badge q-badge-nc">Ap — Aplicação</span>
+      <span class="q-badge q-badge-tema">NUT-FARM · Varfarina · Vitamina K · INR</span>
+    </div>
+
+    <div class="q-stem">
+      Mulher de 67 anos, fibrilação atrial crônica, em uso de varfarina 5 mg/dia com INR estável em 2,4 nos últimos 3 meses. Neste mês, passou a tomar um suco verde diário composto por couve, espinafre e brócolis, como parte de uma dieta saudável orientada por uma aplicação de celular. Na consulta de retorno, o INR está em 1,5. O médico não alterou o fármaco nem a dose. Qual é a <strong>melhor explicação para a queda do INR</strong> e a conduta nutricional correta?
+    </div>
+
+    <div class="q-options">
+      <div class="q-opt">
+        <span class="q-opt-letter">A)</span>
+        <span class="q-opt-text">O suco verde aumentou a ingestão de vitamina C, que compete com a varfarina nos sítios de ligação às proteínas plasmáticas, reduzindo sua biodisponibilidade e o efeito anticoagulante.</span>
+      </div>
+      <div class="q-opt">
+        <span class="q-opt-letter">B)</span>
+        <span class="q-opt-text">A couve e o espinafre são ricos em magnésio, que precipita a varfarina no lúmen intestinal e reduz sua absorção; a conduta é eliminar todos os vegetais verdes permanentemente da dieta.</span>
+      </div>
+      <div class="q-opt">
+        <span class="q-opt-letter">C)</span>
+        <span class="q-opt-text">A vitamina K1 presente em grandes quantidades nos vegetais verdes folhosos compete com a varfarina na vitamina K epóxido redutase, restabelecendo a carboxilação dos fatores de coagulação e reduzindo o INR; a conduta é manter ingestão de vitamina K estável e consistente, não eliminá-la.</span>
+      </div>
+      <div class="q-opt">
+        <span class="q-opt-letter">D)</span>
+        <span class="q-opt-text">O clorofil contido nos vegetais verdes induz o CYP2C9 hepático, acelerando o metabolismo da varfarina e reduzindo sua concentração plasmática; a conduta é substituir a varfarina por um NOAC que não sofra essa interação.</span>
+      </div>
+      <div class="q-opt">
+        <span class="q-opt-letter">E)</span>
+        <span class="q-opt-text">A fibra solúvel do brócolis e da couve adsorve a varfarina no intestino, reduzindo sua absorção; a conduta é tomar a varfarina 4 horas antes ou depois do suco verde.</span>
+      </div>
+    </div>
+
+    <div class="q-source">Padrão NUT-FARM · ENARE 2025 Q83 (nível Ap) · Referência: Agence Française de Sécurité Sanitaire; SBD 2023</div>
+  </div>
+  <div class="pf">
+    <div class="pf-logo">Extensivo ENARE <span>· by Residência Pro</span></div>
+    <div class="pf-right">6</div>
+  </div>
+</div>
+
+<!-- ========== PAGE 7 — QUESTÃO 02 ========== -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label">Questão 02 · NUT-FARM · B9 Aula 03</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc">
+    <div class="q-num">Questão 02</div>
+    <div class="q-badge-row">
+      <span class="q-badge q-badge-nc">Ap — Aplicação</span>
+      <span class="q-badge q-badge-tema">NUT-FARM · Varfarina · Orientação Nutricional · Consistência</span>
+    </div>
+
+    <div class="q-stem">
+      Homem de 72 anos, trombose venosa profunda recorrente, inicia varfarina com meta de INR entre 2,0 e 3,0. Ao receber a alta hospitalar, solicita orientação nutricional ao nutricionista sobre o que pode ou não comer. Qual é a orientação <strong>mais correta</strong> a ser fornecida sobre vitamina K e alimentação?
+    </div>
+
+    <div class="q-options">
+      <div class="q-opt">
+        <span class="q-opt-letter">A)</span>
+        <span class="q-opt-text">Eliminar completamente todos os alimentos com vitamina K da dieta — couve, espinafre, brócolis, fígado e abacate devem ser completamente evitados para garantir o máximo efeito anticoagulante e manter o INR dentro da faixa.</span>
+      </div>
+      <div class="q-opt">
+        <span class="q-opt-letter">B)</span>
+        <span class="q-opt-text">Manter a ingestão de alimentos ricos em vitamina K de forma consistente e habitual ao longo da semana, sem variações bruscas, comunicando ao médico qualquer alteração alimentar significativa para que a dose de varfarina seja ajustada se necessário.</span>
+      </div>
+      <div class="q-opt">
+        <span class="q-opt-letter">C)</span>
+        <span class="q-opt-text">Consumir grandes porções de vegetais ricos em vitamina K apenas aos finais de semana para minimizar o impacto diário no INR, mantendo os dias úteis livres de vitamina K.</span>
+      </div>
+      <div class="q-opt">
+        <span class="q-opt-letter">D)</span>
+        <span class="q-opt-text">Suplementar vitamina K2 (menaquinona) diariamente para garantir um nível estável desse nutriente e reduzir a variabilidade do INR, independentemente da ingestão alimentar.</span>
+      </div>
+      <div class="q-opt">
+        <span class="q-opt-letter">E)</span>
+        <span class="q-opt-text">Substituir os vegetais verdes por alimentos ricos em vitamina D, pois esta vitamina tem estrutura semelhante à vitamina K e pode compensar funcionalmente sua ausência nos fatores de coagulação.</span>
+      </div>
+    </div>
+
+    <div class="q-source">Padrão NUT-FARM · ENARE 2025 (nível Ap) · Referência: ACCP Antithrombotic Therapy Guidelines 2012; Protocolo AHA 2023</div>
+  </div>
+  <div class="pf">
+    <div class="pf-logo">Extensivo ENARE <span>· by Residência Pro</span></div>
+    <div class="pf-right">7</div>
+  </div>
+</div>
+
+<!-- ========== PAGE 8 — QUESTÃO 03-ÂNCORA ========== -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label">Questão 03 — Âncora · NUT-FARM · B9 Aula 03</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc">
+    <div class="q-num">Questão 03 — Âncora</div>
+    <div class="q-badge-row">
+      <span class="q-badge q-badge-ancora">An — Análise</span>
+      <span class="q-badge q-badge-tema">NUT-FARM · Varfarina · Múltiplas Interações · INR</span>
+    </div>
+
+    <div class="q-stem">
+      Paciente de 68 anos, prótese valvar mecânica mitral, em uso de varfarina 7,5 mg/dia com INR estável em 2,8 nos últimos 2 meses. Nos últimos 15 dias: iniciou suplemento de vitamina E 400 UI/dia por conta própria; passou a tomar suco de cranberry diariamente (2 copos/dia); e está em uso de amoxicilina + clavulanato há 10 dias por pneumonia. Na consulta de emergência, INR = 4,2. Sobre os <strong>mecanismos</strong> que explicam a elevação do INR, é CORRETO afirmar:
+    </div>
+
+    <div class="q-options">
+      <div class="q-opt">
+        <span class="q-opt-letter">A)</span>
+        <span class="q-opt-text">A vitamina E em altas doses induz o CYP2C9 e acelera o metabolismo da varfarina; o cranberry é rico em vitamina K e eleva diretamente os fatores de coagulação; o antibiótico não interfere no INR.</span>
+      </div>
+      <div class="q-opt">
+        <span class="q-opt-letter">B)</span>
+        <span class="q-opt-text">O cranberry inibe a varfarina ao se ligar à albumina sérica; a vitamina E reduz a síntese hepática de vitamina K; o antibiótico aumenta a absorção intestinal de varfarina por alterar a motilidade.</span>
+      </div>
+      <div class="q-opt">
+        <span class="q-opt-letter">C)</span>
+        <span class="q-opt-text">A vitamina E em altas doses possui efeito anticoagulante aditivo (inibe a carboxilação vitamina K-dependente); o cranberry inibe o CYP2C9, enzima responsável pelo metabolismo da varfarina, elevando seus níveis plasmáticos; o antibiótico de amplo espectro elimina a microbiota intestinal produtora de vitamina K2, reduzindo a síntese endógena — os três mecanismos convergem para elevar o INR.</span>
+      </div>
+      <div class="q-opt">
+        <span class="q-opt-letter">D)</span>
+        <span class="q-opt-text">O suco de cranberry é uma fonte rica em vitamina C que potencializa a absorção da varfarina no intestino delgado; a vitamina E compete com os fatores de coagulação nos sítios de ligação à vitamina K.</span>
+      </div>
+      <div class="q-opt">
+        <span class="q-opt-letter">E)</span>
+        <span class="q-opt-text">A combinação vitamina E + cranberry provoca sinergismo pró-coagulante por mecanismo inflamatório, enquanto o antibiótico reduz o INR ao eliminar bactérias patogênicas produtoras de toxinas anticoagulantes.</span>
+      </div>
+    </div>
+
+    <div class="q-source">Padrão NUT-FARM · Nível An · Múltiplas interações: vitamina E (anticoagulante aditivo) + cranberry (inibe CYP2C9) + antibiótico (↓microbiota K2)</div>
+  </div>
+  <div class="pf">
+    <div class="pf-logo">Extensivo ENARE <span>· by Residência Pro</span></div>
+    <div class="pf-right">8</div>
+  </div>
+</div>
+
+<!-- ========== PAGE 9 — GABARITO E DISCUSSÃO ========== -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label">Gabarito · NUT-FARM · B9 Aula 03</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc-sm">
+    <div class="section-title">Gabarito e Discussão</div>
+
+    <div class="gab-block">
+      <div class="gab-q-title">Q01 — Gabarito: <span>C</span></div>
+      <div class="gabarito-box">
+        <p><span class="correct">C — CORRETA:</span> A <strong>vitamina K1 (filoquinona)</strong> em vegetais verdes folhosos (couve, espinafre, brócolis) compete diretamente com a varfarina na enzima VKOR → restaura a carboxilação dos fatores II, VII, IX, X → ↓efeito anticoagulante → <strong>↓INR</strong>. Couve contém ~817 µg de vitamina K1/100g — doses diárias elevadas pelo suco verde explicam a queda de 2,4 para 1,5 em poucas semanas. Conduta: manter ingestão de vitamina K <strong>consistente</strong> (não eliminar); comunicar mudanças alimentares; ajustar dose com suporte médico.</p>
+        <p class="wrong">A) Vitamina C não tem interação com varfarina por esse mecanismo. B) Magnésio não precipita varfarina; eliminar vegetais permanentemente seria perigoso (INR subiria demais). D) Clorofila não induz CYP2C9; substituir por NOAC sem necessidade clínica. E) Fibra tem interação mínima — o mecanismo principal é a vitamina K, não a fibra.</p>
+      </div>
+    </div>
+
+    <div class="gab-block">
+      <div class="gab-q-title">Q02 — Gabarito: <span>B</span></div>
+      <div class="gabarito-box">
+        <p><span class="correct">B — CORRETA:</span> A orientação fundamental com varfarina é <strong>consistência da ingestão de vitamina K</strong> — o paciente pode comer couve, espinafre, brócolis, abacate e fígado, mas deve manter quantidades <strong>estáveis e habituais</strong> ao longo da semana, sem variações bruscas. Qualquer mudança alimentar significativa deve ser comunicada para que a dose seja ajustada. Eliminação total aumenta risco de superdose da varfarina e sangramento.</p>
+        <p class="wrong">A) Eliminar vitamina K totalmente causaria INR supraterapêutico e risco de sangramento — conduta incorreta. C) Consumo concentrado aos fins de semana causaria oscilações semanais no INR — pior cenário. D) Suplementar K2 sem indicação médica poderia reduzir o efeito anticoagulante. E) Vitaminas D e K não têm função equivalente na coagulação.</p>
+      </div>
+    </div>
+
+    <div class="gab-block">
+      <div class="gab-q-title">Q03 — Gabarito: <span>C</span></div>
+      <div class="gabarito-box">
+        <p><span class="correct">C — CORRETA:</span> Três mecanismos distintos convergem: (1) <strong>Vitamina E &gt;400 UI</strong>: efeito anticoagulante aditivo (inibe carboxilação vitamina K-dependente e agregação plaquetária); (2) <strong>Cranberry</strong>: inibe o <strong>CYP2C9</strong> hepático — principal enzima metabolizadora da varfarina-S → ↓metabolismo → ↑concentração plasmática de varfarina → ↑INR; (3) <strong>Antibiótico amplo espectro</strong>: elimina microbiota intestinal produtora de <strong>menaquinonas (vitamina K2)</strong> → ↓síntese endógena de vitamina K → ↓antagonismo da varfarina → ↑efeito anticoagulante. INR de 4,2 em paciente com prótese mecânica = risco elevado de hemorragia grave.</p>
+        <p class="wrong">A) Vitamina E não induz CYP2C9 — o sentido é oposto (efeito aditivo, não por indução enzimática); cranberry NÃO é fonte de vitamina K. B) Mecanismos todos incorretos. D/E) Sem base farmacológica válida.</p>
+      </div>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pf-logo">Extensivo ENARE <span>· by Residência Pro</span></div>
+    <div class="pf-right">9</div>
+  </div>
+</div>
+
+<!-- ========== PAGE 10 — SÍNTESE E REFERÊNCIAS ========== -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-label">Síntese · Referências · B9 Aula 03</span>
+    <span class="ph-right">Extensivo ENARE</span>
+  </div>
+  <div class="pc-sm">
+    <div class="section-title">Síntese — NUT-FARM: Anticoagulantes</div>
+
+    <div class="synth-grid" style="margin-bottom:3mm;">
+      <div class="synth-card">
+        <div class="synth-title">Regra de Ouro — Varfarina</div>
+        <p><strong>Consistência</strong>, não eliminação. Manter vitamina K <em>estável</em> toda semana. Comunicar mudanças alimentares. Monitorar INR. Couve e espinafre são permitidos — em quantidade habitual.</p>
+      </div>
+      <div class="synth-card">
+        <div class="synth-title">Cranberry + Varfarina</div>
+        <p>Cranberry inibe <em>CYP2C9</em> → ↑varfarina plasmática → <strong>↑INR</strong> → risco de hemorragia. Evitar suco de cranberry durante tratamento. Toranja também inibe CYP3A4.</p>
+      </div>
+      <div class="synth-card">
+        <div class="synth-title">Antibiótico + Varfarina</div>
+        <p>Antibiótico amplo espectro elimina microbiota → <em>↓vitamina K2 endógena</em> → <strong>↑INR</strong>. Monitorar INR durante e após antibioticoterapia. Risco de sangramento aumentado.</p>
+      </div>
+      <div class="synth-card">
+        <div class="synth-title">NOACs × Varfarina</div>
+        <p>NOACs (rivaroxabana, apixabana, dabigatrana): <em>não dependem de vitamina K</em> → sem restrição alimentar principal. Rivaroxabana: tomar <strong>com a refeição</strong> (dose alta). Toranja: relevante para rivaroxabana/apixabana.</p>
+      </div>
+    </div>
+
+    <div class="banca-box" style="margin-bottom:3mm;">
+      <div class="banca-box-title">Mapa de interações varfarina → efeito no INR:</div>
+      <p><strong>↑INR (↑sangramento):</strong> cranberry · toranja · vitamina E &gt;400 UI · antibióticos · álcool agudo · hipérico (paradoxalmente via eliminação K2)<br>
+      <strong>↓INR (↑trombose):</strong> vegetais verdes em excesso · hipérico (via CYP3A4, ↑metabolismo) · dieta hiperproteica (↓absorção varfarina)</p>
+    </div>
+
+    <div class="section-title" style="margin-top:1mm;">Referências</div>
+    <div class="ref-list">
+      <div class="ref-item">ANSELL, J. et al. Pharmacology and management of the vitamin K antagonists. <em>Chest</em>, v. 133 (Suppl), p. 160S–198S, 2008.</div>
+      <div class="ref-item">AMERICAN COLLEGE OF CHEST PHYSICIANS. Antithrombotic Therapy and Prevention of Thrombosis, 9th ed. <em>Chest</em>, 2012.</div>
+      <div class="ref-item">BOOTH, S.L.; CENTURELLI, M.A. Vitamin K: a practical guide to the dietary management of patients on warfarin. <em>Nutr Rev</em>, v. 57, p. 288–296, 1999.</div>
+      <div class="ref-item">MEDICINES AND HEALTHCARE PRODUCTS REGULATORY AGENCY (MHRA). <em>Warfarin and cranberry juice</em>. Drug Safety Update, 2004.</div>
+      <div class="ref-item">HOLBROOK, A.M. et al. Systematic overview of warfarin and its drug and food interactions. <em>Arch Intern Med</em>, v. 165, p. 1095–1106, 2005.</div>
+    </div>
+  </div>
+  <div class="pf">
+    <div class="pf-logo">Extensivo ENARE <span>· by Residência Pro</span></div>
+    <div class="pf-right">10</div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Enfermagem · Bloco B4 · Aula 01 — Extensivo ENARE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Bricolage+Grotesque:wght@400;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --creme:          #F6F4ED;
+      --verde-lima:     #C6D834;
+      --verde-floresta: #1F5C23;
+      --teal:           #0D8A8D;
+      --preto:          #070707;
+      --cinza:          #9E9B94;
+      --cinza-borda:    #DDD9D1;
+      --creme-escuro:   #EDEAE2;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #CCC; font-family: 'Bricolage Grotesque', sans-serif; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    @page { size: A4; margin: 0; }
+    .page { width: 210mm; height: 297mm; position: relative; overflow: hidden; page-break-after: always; background: var(--creme); display: flex; flex-direction: column; }
+    @media screen { .page { margin: 24px auto; box-shadow: 0 4px 32px rgba(0,0,0,0.18); } }
+
+    /* HEADER/FOOTER */
+    .page-header { height: 14mm; background: var(--creme); border-bottom: 2px solid var(--teal); display: flex; align-items: center; padding: 0 18mm; flex-shrink: 0; }
+    .page-header-label { font-family: 'Barlow Condensed', sans-serif; font-size: 8pt; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--cinza); }
+    .page-header-title { font-family: 'Space Grotesk', sans-serif; font-size: 7.5pt; font-weight: 300; color: var(--cinza); margin-left: auto; }
+    .page-footer { height: 10mm; background: var(--creme); border-top: 1px solid var(--cinza-borda); display: flex; align-items: center; padding: 0 18mm; flex-shrink: 0; }
+    .page-footer-brand { font-family: 'Space Grotesk', sans-serif; font-size: 7pt; font-weight: 300; color: var(--cinza); }
+    .page-footer-num { font-family: 'Barlow Condensed', sans-serif; font-size: 9pt; font-weight: 700; color: var(--teal); margin-left: auto; }
+
+    /* CONTENT */
+    .page-content { flex: 1; padding: 10mm 18mm; overflow: hidden; }
+
+    /* SECTION TITLE */
+    .section-tag { font-family: 'Barlow Condensed', sans-serif; font-size: 7.5pt; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--teal); margin-bottom: 4mm; }
+    .section-rule { width: 100%; height: 2px; background: var(--teal); margin-bottom: 6mm; }
+
+    /* CAPA */
+    .capa { background: var(--teal); width: 100%; height: 100%; display: flex; flex-direction: column; padding: 14mm 16mm 12mm; }
+    .capa-logo { display: flex; flex-direction: column; gap: 0; margin-bottom: auto; }
+    .capa-logo-ext { font-family: 'Playfair Display', serif; font-style: italic; font-size: 10pt; color: var(--verde-lima); letter-spacing: 1px; }
+    .capa-logo-enare { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 38pt; color: var(--creme); line-height: 0.85; letter-spacing: -1px; }
+    .capa-logo-sub { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 8.5pt; color: rgba(246,244,237,0.6); margin-top: 2mm; }
+    .capa-area { font-family: 'Barlow Condensed', sans-serif; font-size: 7.5pt; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: rgba(246,244,237,0.55); margin-bottom: 2mm; }
+    .capa-codigo { font-family: 'Barlow Condensed', sans-serif; font-size: 9pt; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--verde-lima); margin-bottom: 5mm; }
+    .capa-titulo { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 44pt; color: var(--creme); line-height: 0.9; text-transform: uppercase; letter-spacing: -1px; margin-bottom: 4mm; }
+    .capa-subtitulo { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 15pt; color: var(--verde-lima); text-transform: uppercase; letter-spacing: 1px; line-height: 1.2; }
+    .capa-watermark { position: absolute; bottom: 12mm; right: 12mm; font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 110pt; color: rgba(246,244,237,0.08); line-height: 1; pointer-events: none; }
+
+    /* OBJETIVOS */
+    .obj-list { list-style: none; display: flex; flex-direction: column; gap: 4mm; margin-bottom: 6mm; }
+    .obj-item { display: flex; gap: 3mm; align-items: flex-start; }
+    .obj-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 18pt; color: var(--teal); line-height: 1; flex-shrink: 0; width: 8mm; }
+    .obj-text { font-size: 9.5pt; line-height: 1.5; color: var(--preto); padding-top: 1mm; }
+    .obj-prereq { background: var(--creme-escuro); border-left: 3px solid var(--cinza-borda); padding: 3mm 4mm; border-radius: 0 3px 3px 0; margin-top: 4mm; }
+    .obj-prereq-label { font-family: 'Barlow Condensed', sans-serif; font-size: 7pt; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--cinza); margin-bottom: 1mm; }
+    .obj-prereq-text { font-size: 8.5pt; color: var(--preto); line-height: 1.4; }
+    .meta-row { display: flex; gap: 8mm; margin-top: 5mm; padding-top: 4mm; border-top: 1px solid var(--cinza-borda); }
+    .meta-item { display: flex; flex-direction: column; gap: 0.5mm; }
+    .meta-label { font-family: 'Barlow Condensed', sans-serif; font-size: 6.5pt; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--cinza); }
+    .meta-value { font-size: 8pt; font-weight: 600; color: var(--preto); }
+
+    /* CONTEÚDO */
+    h2 { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 17pt; color: var(--teal); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 3mm; line-height: 1.1; }
+    h3 { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 11pt; color: var(--preto); text-transform: uppercase; letter-spacing: 1px; margin: 4mm 0 2mm; }
+    p { font-size: 9pt; line-height: 1.55; color: var(--preto); margin-bottom: 3mm; }
+
+    /* TABELAS */
+    table { width: 100%; border-collapse: collapse; font-size: 8.5pt; margin-bottom: 4mm; }
+    th { background: var(--teal); color: var(--creme); font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 8pt; letter-spacing: 1px; text-transform: uppercase; padding: 2.5mm 3mm; text-align: left; }
+    td { padding: 2mm 3mm; border-bottom: 1px solid var(--cinza-borda); vertical-align: top; line-height: 1.4; }
+    tr:nth-child(even) td { background: var(--creme-escuro); }
+    .td-dest { font-weight: 600; }
+
+    /* BOXES */
+    .box { padding: 3.5mm 4mm; border-radius: 4px; margin-bottom: 4mm; }
+    .box-conceito { background: #e8f4e8; border-left: 4px solid var(--verde-floresta); }
+    .box-conceito .box-label { color: var(--verde-floresta); }
+    .box-dica { background: #e5f4f4; border-left: 4px solid var(--teal); }
+    .box-dica .box-label { color: var(--teal); }
+    .box-pega { background: #f5f9d4; border-left: 4px solid var(--verde-lima); }
+    .box-pega .box-label { color: #7a8a00; }
+    .box-label { font-family: 'Barlow Condensed', sans-serif; font-size: 7pt; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 1.5mm; display: block; }
+    .box p { font-size: 8.5pt; margin-bottom: 0; }
+    .box p + p { margin-top: 2mm; }
+
+    /* QUESTÕES */
+    .q-header { font-family: 'Barlow Condensed', sans-serif; font-size: 8pt; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--teal); margin-bottom: 3mm; }
+    .q-stem { font-size: 9.5pt; line-height: 1.6; color: var(--preto); background: var(--creme-escuro); padding: 4mm 5mm; border-radius: 4px; margin-bottom: 4mm; }
+    .q-opts { list-style: none; display: flex; flex-direction: column; gap: 2.5mm; margin-bottom: 4mm; }
+    .q-opt { display: flex; gap: 3mm; align-items: flex-start; padding: 2.5mm 3mm; border-radius: 3px; border: 1px solid var(--cinza-borda); font-size: 9pt; line-height: 1.45; }
+    .q-opt.correta { background: #e8f4e8; border-color: var(--verde-floresta); font-weight: 600; }
+    .opt-letter { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 11pt; color: var(--teal); flex-shrink: 0; line-height: 1.2; }
+    .q-opt.correta .opt-letter { color: var(--verde-floresta); }
+    .badge-correta { background: var(--verde-floresta); color: var(--creme); font-family: 'Barlow Condensed', sans-serif; font-size: 6.5pt; font-weight: 700; letter-spacing: 1.5px; padding: 1px 5px; border-radius: 2px; margin-left: 3mm; vertical-align: middle; text-transform: uppercase; }
+    .gabarito-box { background: var(--creme-escuro); border-top: 2px solid var(--teal); padding: 3.5mm 4mm; border-radius: 0 0 4px 4px; margin-top: 0; }
+    .gabarito-title { font-family: 'Barlow Condensed', sans-serif; font-size: 7.5pt; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--teal); margin-bottom: 2mm; }
+    .gabarito-text { font-size: 8pt; line-height: 1.55; color: var(--preto); }
+    .distrator { font-size: 7.5pt; color: #555; margin-top: 1.5mm; line-height: 1.4; }
+    .distrator strong { color: var(--preto); }
+
+    /* BLOCO 4 — SEQUÊNCIA */
+    .seq-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5mm; margin-top: 3mm; }
+    .seq-card { background: var(--creme-escuro); border: 1px solid var(--cinza-borda); border-radius: 4px; padding: 2.5mm 3mm; }
+    .seq-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; color: var(--teal); margin-bottom: 0.5mm; }
+    .seq-tema { font-size: 7.5pt; font-weight: 600; color: var(--preto); line-height: 1.3; margin-bottom: 0.5mm; }
+    .seq-cod { font-family: 'Barlow Condensed', sans-serif; font-size: 6.5pt; letter-spacing: 1px; color: var(--cinza); text-transform: uppercase; }
+    .seq-card.atual { background: var(--teal); border-color: var(--teal); }
+    .seq-card.atual .seq-num { color: var(--verde-lima); }
+    .seq-card.atual .seq-tema { color: var(--creme); }
+    .seq-card.atual .seq-cod { color: rgba(246,244,237,0.65); }
+
+    /* CALIBRAGEM */
+    .calib-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; margin-bottom: 4mm; }
+    .calib-card { border-radius: 4px; padding: 3mm 4mm; }
+    .calib-card.antes { background: var(--creme-escuro); border: 1px solid var(--cinza-borda); }
+    .calib-card.depois { background: #e5f4f4; border: 1px solid var(--teal); }
+    .calib-card-label { font-family: 'Barlow Condensed', sans-serif; font-size: 7pt; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--cinza); margin-bottom: 2mm; }
+    .calib-card.depois .calib-card-label { color: var(--teal); }
+    .calib-card p { font-size: 8pt; line-height: 1.5; margin-bottom: 2mm; font-style: italic; }
+    .calib-card-note { font-size: 7.5pt; color: var(--cinza); line-height: 1.4; font-style: normal !important; }
+
+    /* RECUPERAÇÃO */
+    .rec-box { background: var(--creme-escuro); border-radius: 4px; padding: 4mm 5mm; margin-bottom: 4mm; }
+    .rec-label { font-family: 'Barlow Condensed', sans-serif; font-size: 8pt; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--teal); margin-bottom: 3mm; }
+    .rec-item { display: flex; gap: 2.5mm; align-items: flex-start; margin-bottom: 2.5mm; font-size: 9pt; line-height: 1.5; }
+    .rec-star { color: var(--teal); font-weight: 800; flex-shrink: 0; }
+    .teste-list { list-style: none; display: flex; flex-direction: column; gap: 3mm; }
+    .teste-item { font-size: 8.5pt; line-height: 1.5; padding-left: 4mm; border-left: 2px solid var(--cinza-borda); color: var(--preto); }
+    .teste-item strong { font-family: 'Barlow Condensed', sans-serif; font-size: 9pt; color: var(--teal); font-weight: 700; letter-spacing: 0.5px; }
+
+    /* REFERÊNCIAS */
+    .ref-list { list-style: none; display: flex; flex-direction: column; gap: 2mm; }
+    .ref-item { font-size: 7.5pt; line-height: 1.55; color: var(--preto); padding-left: 3mm; border-left: 2px solid var(--cinza-borda); }
+    .anot-box { margin-top: 5mm; border: 1.5px dashed var(--cinza-borda); border-radius: 4px; padding: 4mm; height: 50mm; display: flex; align-items: center; justify-content: center; }
+    .anot-label { font-family: 'Barlow Condensed', sans-serif; font-size: 8pt; letter-spacing: 2px; text-transform: uppercase; color: var(--cinza-borda); }
+
+    /* NANDA CARD */
+    .nanda-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; margin-bottom: 4mm; }
+    .nanda-card { background: var(--creme-escuro); border: 1px solid var(--cinza-borda); border-radius: 4px; padding: 3mm; }
+    .nanda-card-title { font-family: 'Barlow Condensed', sans-serif; font-size: 8.5pt; font-weight: 700; color: var(--teal); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 1.5mm; }
+    .nanda-card p { font-size: 7.5pt; line-height: 1.45; margin-bottom: 0; }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════
+     P01 — CAPA
+     ═══════════════════════════════════════════════════════════ -->
+<div class="page" id="p01">
+  <div class="capa">
+    <div class="capa-logo">
+      <span class="capa-logo-ext">extensivo</span>
+      <span class="capa-logo-enare">ENARE</span>
+      <span class="capa-logo-sub">by Residência PRO</span>
+    </div>
+
+    <div style="margin-top: auto; padding-bottom: 2mm;">
+      <div class="capa-area">Enfermagem · Módulo Específico</div>
+      <div class="capa-codigo">Bloco B4 · Aula 01</div>
+      <div class="capa-titulo">CALIBRA-<br>GEM B4</div>
+      <div class="capa-subtitulo">Processo de Enfermagem<br>+ NANDA-I 2024–2026</div>
+    </div>
+  </div>
+  <div class="capa-watermark">01</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     P02 — OBJETIVOS DE APRENDIZAGEM
+     ═══════════════════════════════════════════════════════════ -->
+<div class="page" id="p02">
+  <div class="page-header">
+    <span class="page-header-label">Enfermagem · Bloco B4 · Aula 01</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <div class="section-tag">Objetivos de Aprendizagem</div>
+    <div class="section-rule"></div>
+
+    <ol class="obj-list">
+      <li class="obj-item">
+        <span class="obj-num">1</span>
+        <span class="obj-text">Descrever as cinco etapas do Processo de Enfermagem conforme a Resolução COFEN n.º 736/2024, identificando quais etapas são exclusivas do enfermeiro e quais podem ser realizadas com supervisão pela equipe de técnicos.</span>
+      </li>
+      <li class="obj-item">
+        <span class="obj-num">2</span>
+        <span class="obj-text">Identificar a estrutura de um diagnóstico de enfermagem na NANDA-I 2024–2026, distinguindo os diagnósticos de alta incidência no ENARE (perfusão cerebral ineficaz, débito cardíaco diminuído, troca gasosa prejudicada) e sua relação com os achados clínicos que os sustentam.</span>
+      </li>
+      <li class="obj-item">
+        <span class="obj-num">3</span>
+        <span class="obj-text">Aplicar o raciocínio diagnóstico de Enfermagem em cenários de caso clínico, selecionando o diagnóstico NANDA-I 2024–2026 prioritário a partir da análise de dados objetivos do paciente.</span>
+      </li>
+    </ol>
+
+    <div class="obj-prereq">
+      <div class="obj-prereq-label">Pré-requisito</div>
+      <div class="obj-prereq-text">Bloco B0 — Competências Gerais concluído. Não é necessário conhecimento prévio de NANDA-I ou legislação COFEN.</div>
+    </div>
+
+    <div class="meta-row">
+      <div class="meta-item">
+        <span class="meta-label">Bloco</span>
+        <span class="meta-value">B4 — Enfermagem</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Aula</span>
+        <span class="meta-value">01 de 24</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Tipo</span>
+        <span class="meta-value">Calibragem</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Temas centrais</span>
+        <span class="meta-value">ENF-SAE · ENF-NANDA</span>
+      </div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">02</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     P03 — PROCESSO DE ENFERMAGEM (Res. 736/2024)
+     ═══════════════════════════════════════════════════════════ -->
+<div class="page" id="p03">
+  <div class="page-header">
+    <span class="page-header-label">Conteúdo Principal · Aula 01</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <h2>Processo de Enfermagem</h2>
+    <p>O PE é o método científico que organiza o cuidado de enfermagem. A <strong>Resolução COFEN n.º 736/2024</strong> atualizou as normas do Processo de Enfermagem, consolidando quem pode executar cada etapa.</p>
+
+    <table>
+      <thead><tr><th>Etapa</th><th>O que é</th><th>Quem executa</th></tr></thead>
+      <tbody>
+        <tr><td class="td-dest">1. Coleta de dados</td><td>Anamnese, exame físico, revisão de prontuário</td><td>Enfermeiro — pode ser assistido pelo técnico sob supervisão</td></tr>
+        <tr><td class="td-dest">2. Diagnóstico de enfermagem</td><td>Análise dos dados e identificação dos problemas (NANDA-I)</td><td><strong>Exclusiva do enfermeiro</strong></td></tr>
+        <tr><td class="td-dest">3. Planejamento</td><td>Definição de resultados esperados (NOC) e intervenções (NIC)</td><td><strong>Exclusiva do enfermeiro</strong></td></tr>
+        <tr><td class="td-dest">4. Implementação</td><td>Execução das intervenções planejadas</td><td>Enfermeiro + equipe de técnicos <em>(não exclusiva — exceto nos casos previstos)</em></td></tr>
+        <tr><td class="td-dest">5. Avaliação</td><td>Verificação dos resultados e reformulação do plano</td><td><strong>Exclusiva do enfermeiro</strong></td></tr>
+      </tbody>
+    </table>
+
+    <div class="box box-pega">
+      <span class="box-label">Pegadinha de prova</span>
+      <p>A Res. 736/2024 deixou explícito que a <strong>implementação não é exclusiva do enfermeiro</strong> — ponto cobrado na Q47/2025. O distrator clássico afirma que "todas as etapas do PE são exclusivas do enfermeiro", o que é falso. Diagnóstico, planejamento e avaliação são exclusivos; implementação, não.</p>
+    </div>
+
+    <div class="box box-conceito">
+      <span class="box-label">SAE × PE</span>
+      <p><strong>SAE</strong> (Sistematização da Assistência de Enfermagem) é o <em>processo gerencial</em> e <em>institucional</em> que garante a implementação do PE. O PE é o <em>método</em> — a SAE é o <em>suporte organizacional</em> para que o PE aconteça. O ENARE cobra o PE como aplicação clínica, não a SAE como listagem de etapas.</p>
+    </div>
+
+    <h3>Prontuário Eletrônico e Registros (Res. 754/2024)</h3>
+    <p>A Res. COFEN n.º 754/2024 regulamenta os registros de enfermagem em formato eletrônico: assinatura digital é admitida, rasuras são vedadas, e o registro deve ser imediato após cada intervenção. O PE documentado no prontuário eletrônico reforça os protocolos institucionais e agiliza a comunicação entre equipes.</p>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">03</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     P04 — NANDA-I 2024–2026
+     ═══════════════════════════════════════════════════════════ -->
+<div class="page" id="p04">
+  <div class="page-header">
+    <span class="page-header-label">Conteúdo Principal · Aula 01</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <h2>NANDA-I 2024–2026</h2>
+    <p>A NANDA-I (North American Nursing Diagnosis Association International) publica edições bianuais. A edição <strong>2024–2026</strong> é a referência vigente citada explicitamente pelo ENARE. Diagnósticos com redação diferente de edições anteriores são armadilha.</p>
+
+    <h3>Estrutura do Diagnóstico de Enfermagem</h3>
+    <table>
+      <thead><tr><th>Componente</th><th>Definição</th><th>Exemplo</th></tr></thead>
+      <tbody>
+        <tr><td class="td-dest">Título diagnóstico</td><td>Nome padronizado do diagnóstico</td><td>Perfusão cerebral ineficaz</td></tr>
+        <tr><td class="td-dest">Definição</td><td>Descrição clara do diagnóstico</td><td>Redução na circulação de sangue no cérebro</td></tr>
+        <tr><td class="td-dest">Fatores relacionados</td><td>Causas ou condições associadas</td><td>Hipertensão intracraniana</td></tr>
+        <tr><td class="td-dest">Características definidoras</td><td>Sinais e sintomas observáveis</td><td>Alteração do nível de consciência, anisocoria</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Diagnósticos de Alta Incidência no ENARE</h3>
+    <div class="nanda-grid">
+      <div class="nanda-card">
+        <div class="nanda-card-title">Perfusão cerebral ineficaz</div>
+        <p>Indicado em: TCE com Glasgow reduzido, hematoma, Tríade de Cushing (bradicardia + hipertensão + alteração respiratória), anisocoria.</p>
+      </div>
+      <div class="nanda-card">
+        <div class="nanda-card-title">Débito cardíaco diminuído</div>
+        <p>Indicado em: ICC grave, FE reduzida, B3 à ausculta, estertores bibasais, edema, dispneia.</p>
+      </div>
+      <div class="nanda-card">
+        <div class="nanda-card-title">Troca gasosa prejudicada</div>
+        <p>Indicado em: pneumotórax hipertensivo, ausência de MV, desvio de traqueia, turgência jugular.</p>
+      </div>
+      <div class="nanda-card">
+        <div class="nanda-card-title">Perfusão tissular ineficaz</div>
+        <p>Indicado em: choque hipovolêmico, sinais periféricos de má perfusão (palidez, extremidades frias, TEC alargado).</p>
+      </div>
+    </div>
+
+    <h3>Trilogia NNN — NANDA / NIC / NOC</h3>
+    <table>
+      <thead><tr><th>Sistema</th><th>Foco</th><th>Pergunta que responde</th></tr></thead>
+      <tbody>
+        <tr><td class="td-dest">NANDA-I</td><td>Diagnósticos de enfermagem</td><td>"Qual é o problema do paciente?"</td></tr>
+        <tr><td class="td-dest">NOC</td><td>Resultados esperados (outcomes)</td><td>"O que queremos atingir?"</td></tr>
+        <tr><td class="td-dest">NIC</td><td>Intervenções de enfermagem</td><td>"O que o enfermeiro vai fazer?"</td></tr>
+      </tbody>
+    </table>
+
+    <div class="box box-dica">
+      <span class="box-label">Dica de prova</span>
+      <p>O ENARE cobra a <strong>correspondência entre achados clínicos e diagnóstico NANDA-I</strong> — não a definição teórica do diagnóstico. Pratique sempre assim: leia o caso, liste os dados objetivos (Glasgow, FC, SpO₂, PA) e pergunte: "Qual sistema está com perfusão comprometida?"</p>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">04</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     P05 — CALIBRAGEM: LÓGICA DO ENARE PARA ENFERMAGEM
+     ═══════════════════════════════════════════════════════════ -->
+<div class="page" id="p05">
+  <div class="page-header">
+    <span class="page-header-label">Calibragem · Aula 01</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <h2>Como o ENARE Cobra Enfermagem</h2>
+    <p>O ENARE 2025/2026 consolidou uma mudança de perfil que já vinha se desenhando: a prova saiu do modelo de memorização isolada para o modelo de <strong>conduta clínica em cenário</strong>. Os dois exemplos abaixo mostram a diferença na prática.</p>
+
+    <div class="calib-grid">
+      <div class="calib-card antes">
+        <div class="calib-card-label">Formato desatualizado</div>
+        <p>"Qual é a primeira etapa do Processo de Enfermagem?"</p>
+        <div class="calib-card-note">Resposta direta, sem contexto. Este formato praticamente desapareceu — SAE como listagem de etapas zerou em 2025.</div>
+      </div>
+      <div class="calib-card depois">
+        <div class="calib-card-label">Formato atual (padrão ENARE 2025)</div>
+        <p>"Um enfermeiro avalia um paciente com Glasgow 9, bradicardia e anisocoria após TCE. Qual diagnóstico de enfermagem NANDA-I 2024–2026 é prioritário?"</p>
+        <div class="calib-card-note">Cenário completo → raciocínio clínico → diagnóstico correto. O candidato precisa saber usar o PE, não enunciá-lo.</div>
+      </div>
+    </div>
+
+    <div class="box box-conceito">
+      <span class="box-label">O que muda na sua preparação</span>
+      <p><strong>Não memorize listas de etapas</strong> — pratique o raciocínio. Para cada caso clínico, pergunte: (1) Quais dados objetivos estão disponíveis? (2) Qual sistema está comprometido? (3) Qual diagnóstico NANDA-I 2024–2026 nomeia esse comprometimento? (4) Qual conduta o enfermeiro toma com base na Res. 564/2017 ou em protocolo institucional?</p>
+    </div>
+
+    <h3>Perfil de Cobranças — Enfermagem B4</h3>
+    <table>
+      <thead><tr><th>Tema</th><th>Peso médio</th><th>Tendência 2026</th></tr></thead>
+      <tbody>
+        <tr><td class="td-dest">UTI + condutas autônomas</td><td>18,8%</td><td>Alta — pilar da área</td></tr>
+        <tr><td class="td-dest">Perioperatório</td><td>6,9%</td><td>Alta — explosão em 2025</td></tr>
+        <tr><td class="td-dest">Legislação profissional (COFEN)</td><td>5,6%</td><td>Alta — resoluções 2021–2024</td></tr>
+        <tr><td class="td-dest">Saúde da Mulher + Pré-natal</td><td>9,4%</td><td>Média — deve se recuperar</td></tr>
+        <tr><td class="td-dest">Farmacologia + Terapia IV</td><td>5,6%</td><td>Alta — além do cálculo de gotas</td></tr>
+        <tr><td class="td-dest">Geriatria + escalas</td><td>6,9%</td><td>Média — estável</td></tr>
+        <tr><td class="td-dest">NANDA-I 2024–2026</td><td>3,8%</td><td>Alta — edição explicitada</td></tr>
+      </tbody>
+    </table>
+
+    <div class="box box-dica">
+      <span class="box-label">Estratégia para este bloco</span>
+      <p>Este bloco é composto por 24 aulas. A sequência segue a <strong>ordem decrescente de peso</strong> na prova, intercalada com temas que se reforçam entre si. A Aula 01 (esta) e a A16 (NANDA aprofundado) são os alicerces que conectam todos os outros temas.</p>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">05</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     P06 — BLOCO 4: SEQUÊNCIA DE AULAS B4
+     ═══════════════════════════════════════════════════════════ -->
+<div class="page" id="p06">
+  <div class="page-header">
+    <span class="page-header-label">Sequência do Bloco B4 · Aula 01</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <div class="section-tag">Como Usar Este Bloco</div>
+    <div class="section-rule"></div>
+
+    <p style="font-size:8.5pt; margin-bottom:4mm;">O Bloco B4 cobre as 80 questões específicas de Enfermagem do ENARE. As 24 aulas seguem a ordem de relevância da banca, com os temas de maior peso concentrados nas primeiras aulas.</p>
+
+    <div class="seq-grid">
+      <div class="seq-card atual">
+        <div class="seq-num">A01</div>
+        <div class="seq-tema">Calibragem: PE + NANDA-I</div>
+        <div class="seq-cod">ENF-SAE · NANDA</div>
+      </div>
+      <div class="seq-card">
+        <div class="seq-num">A02</div>
+        <div class="seq-tema">UTI I — Choque, sépsis, hemodinâmica</div>
+        <div class="seq-cod">ENF-UTI</div>
+      </div>
+      <div class="seq-card">
+        <div class="seq-num">A03</div>
+        <div class="seq-tema">UTI II — Via aérea (TOT, traqueostomia, VNI, gasometria)</div>
+        <div class="seq-cod">ENF-UTI</div>
+      </div>
+      <div class="seq-card">
+        <div class="seq-num">A04</div>
+        <div class="seq-tema">UTI III — Neurológico crítico (TCE, Glasgow, AVC, NEWS)</div>
+        <div class="seq-cod">ENF-UTI</div>
+      </div>
+      <div class="seq-card">
+        <div class="seq-num">A05</div>
+        <div class="seq-tema">UTI IV — Cardiológico crítico (SCA, IAM, bradiarritmia)</div>
+        <div class="seq-cod">ENF-UTI</div>
+      </div>
+      <div class="seq-card">
+        <div class="seq-num">A06</div>
+        <div class="seq-tema">Perioperatório I — Pré-op + medicamentos críticos</div>
+        <div class="seq-cod">ENF-PERIO</div>
+      </div>
+      <div class="seq-card">
+        <div class="seq-num">A07</div>
+        <div class="seq-tema">Perioperatório II — Intra/pós-op + cirurgias específicas</div>
+        <div class="seq-cod">ENF-PERIO</div>
+      </div>
+      <div class="seq-card">
+        <div class="seq-num">A08</div>
+        <div class="seq-tema">COFEN I — PE (Res. 736) + resoluções 2021–2024</div>
+        <div class="seq-cod">ENF-COFEN</div>
+      </div>
+      <div class="seq-card">
+        <div class="seq-num">A09</div>
+        <div class="seq-tema">COFEN II — Código de Ética + Res. 564/2017</div>
+        <div class="seq-cod">ENF-COFEN</div>
+      </div>
+      <div class="seq-card">
+        <div class="seq-num">A10</div>
+        <div class="seq-tema">Saúde da Mulher I — Pré-natal + PHPN</div>
+        <div class="seq-cod">ENF-MUL</div>
+      </div>
+      <div class="seq-card">
+        <div class="seq-num">A11</div>
+        <div class="seq-tema">Saúde da Mulher II — Aleitamento, anatomia, vulvovaginite</div>
+        <div class="seq-cod">ENF-MUL</div>
+      </div>
+      <div class="seq-card">
+        <div class="seq-num">A12</div>
+        <div class="seq-tema">Farmacologia I — Terapia IV, CVC, capital venoso</div>
+        <div class="seq-cod">ENF-FARM</div>
+      </div>
+      <div class="seq-card">
+        <div class="seq-num">A13</div>
+        <div class="seq-tema">Farmacologia II — Fármacos alto risco UTI + cálculo</div>
+        <div class="seq-cod">ENF-FARM</div>
+      </div>
+      <div class="seq-card">
+        <div class="seq-num">A14</div>
+        <div class="seq-tema">Geriatria I — Síndromes geriátricas, fragilidade, demências</div>
+        <div class="seq-cod">ENF-GER</div>
+      </div>
+      <div class="seq-card">
+        <div class="seq-num">A15</div>
+        <div class="seq-tema">Geriatria II — Escalas (Katz, Barthel, Lawton)</div>
+        <div class="seq-cod">ENF-GER</div>
+      </div>
+      <div class="seq-card">
+        <div class="seq-num">A16</div>
+        <div class="seq-tema">NANDA-I 2024–2026 — Diagnósticos críticos + NNN</div>
+        <div class="seq-cod">ENF-NANDA</div>
+      </div>
+      <div class="seq-card">
+        <div class="seq-num">A17</div>
+        <div class="seq-tema">IRAS + Biossegurança — Precauções, KPC, RSS, CCIH</div>
+        <div class="seq-cod">ENF-IRAS</div>
+      </div>
+      <div class="seq-card">
+        <div class="seq-num">A18</div>
+        <div class="seq-tema">Saúde da Criança I — PNI, puericultura, nutrição pediátrica</div>
+        <div class="seq-cod">ENF-PED</div>
+      </div>
+      <div class="seq-card">
+        <div class="seq-num">A19</div>
+        <div class="seq-tema">Saúde da Criança II — IM, semiologia, urgências pediátricas</div>
+        <div class="seq-cod">ENF-PED</div>
+      </div>
+      <div class="seq-card">
+        <div class="seq-num">A20</div>
+        <div class="seq-tema">CME — Spaulding, RDC 15/2012, autoclave, esterilidade</div>
+        <div class="seq-cod">ENF-CME</div>
+      </div>
+      <div class="seq-card">
+        <div class="seq-num">A21</div>
+        <div class="seq-tema">Semiologia + Urgência — Padrões resp., anafilaxia, trauma</div>
+        <div class="seq-cod">ENF-SEMI · ENF-URG</div>
+      </div>
+      <div class="seq-card">
+        <div class="seq-num">A22</div>
+        <div class="seq-tema">Gestão + Saúde Mental + PCR (AHA 2020)</div>
+        <div class="seq-cod">ENF-GEST · SM · PCR</div>
+      </div>
+      <div class="seq-card">
+        <div class="seq-num">A23</div>
+        <div class="seq-tema">Feridas + Nutrição enteral/parenteral + Saúde do Homem</div>
+        <div class="seq-cod">ENF-FERIDA · NUT · HOMEM</div>
+      </div>
+      <div class="seq-card">
+        <div class="seq-num">A24</div>
+        <div class="seq-tema">Revisão Geral B4</div>
+        <div class="seq-cod">Integração</div>
+      </div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">06</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     P07 — QUESTÃO 01
+     ═══════════════════════════════════════════════════════════ -->
+<div class="page" id="p07">
+  <div class="page-header">
+    <span class="page-header-label">Fixação · Aula 01</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <div class="q-header">Questão 01 de 03 · B4 Calibragem · PE + Legislação Profissional · Compreensão</div>
+
+    <div class="q-stem">
+      A Resolução COFEN n.º 736/2024 atualizou as normas do Processo de Enfermagem no Brasil. Sobre a distribuição de competências entre o enfermeiro e os demais membros da equipe de enfermagem nas etapas do PE, é correto afirmar que:
+    </div>
+
+    <ul class="q-opts">
+      <li class="q-opt">
+        <span class="opt-letter">A</span>
+        Todas as cinco etapas do PE são de competência exclusiva do enfermeiro, vedada qualquer participação do técnico de enfermagem em qualquer fase.
+      </li>
+      <li class="q-opt">
+        <span class="opt-letter">B</span>
+        O diagnóstico de enfermagem pode ser estabelecido por técnico de enfermagem com experiência mínima de cinco anos na área clínica, mediante supervisão do enfermeiro.
+      </li>
+      <li class="q-opt correta">
+        <span class="opt-letter">C</span>
+        A implementação das intervenções de enfermagem não é etapa exclusiva do enfermeiro, podendo ser realizada pela equipe de técnicos sob sua supervisão, exceto nos casos em que a resolução estabelece obrigatoriedade de execução direta. <span class="badge-correta">Correta</span>
+      </li>
+      <li class="q-opt">
+        <span class="opt-letter">D</span>
+        A avaliação dos resultados obtidos ao término do ciclo do PE pode ser delegada ao técnico de enfermagem quando o enfermeiro estiver impossibilitado de comparecer ao serviço.
+      </li>
+    </ul>
+
+    <div class="gabarito-box">
+      <div class="gabarito-title">Gabarito Comentado — C</div>
+      <div class="gabarito-text">A Res. 736/2024 é explícita: diagnóstico, planejamento e avaliação são <strong>exclusivos do enfermeiro</strong>. A implementação pode ser executada por técnicos sob supervisão — exceto nos casos expressamente definidos. Esse ponto distingue uma compreensão correta da lei de uma leitura equivocada de "tudo é exclusivo do enfermeiro".</div>
+      <div class="distrator"><strong>A —</strong> Incorreta: afirma que todas as etapas são exclusivas, o que conflita com a Res. 736/2024 quanto à implementação. <strong>B —</strong> Incorreta: o diagnóstico de enfermagem é exclusivo do enfermeiro, sem exceção por tempo de experiência do técnico. <strong>D —</strong> Incorreta: a avaliação é etapa exclusiva; não pode ser delegada ao técnico em nenhuma situação.</div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">07</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     P08 — QUESTÃO 02
+     ═══════════════════════════════════════════════════════════ -->
+<div class="page" id="p08">
+  <div class="page-header">
+    <span class="page-header-label">Fixação · Aula 01</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <div class="q-header">Questão 02 de 03 · B4 Calibragem · NANDA-I 2024–2026 · Aplicação</div>
+
+    <div class="q-stem">
+      Paciente masculino, 68 anos, internado com diagnóstico de insuficiência cardíaca descompensada. Ao exame físico: dispneia aos mínimos esforços, SpO₂ 91% em ar ambiente, estertores bibasais, edema de tornozelos com cacifo 2+, terceira bulha (B3) audível à ausculta precordial. Ecocardiograma revela fração de ejeção de 32%. Com base nos achados, qual o diagnóstico de enfermagem NANDA-I 2024–2026 prioritário?
+    </div>
+
+    <ul class="q-opts">
+      <li class="q-opt">
+        <span class="opt-letter">A</span>
+        Padrão respiratório ineficaz relacionado à fadiga muscular respiratória, evidenciado por dispneia e SpO₂ reduzida.
+      </li>
+      <li class="q-opt">
+        <span class="opt-letter">B</span>
+        Troca gasosa prejudicada relacionada à congestão pulmonar, evidenciada por SpO₂ 91% e estertores bibasais.
+      </li>
+      <li class="q-opt correta">
+        <span class="opt-letter">C</span>
+        Débito cardíaco diminuído relacionado à alteração na contratilidade miocárdica, evidenciado por FE 32%, B3, estertores bibasais e edema periférico. <span class="badge-correta">Correta</span>
+      </li>
+      <li class="q-opt">
+        <span class="opt-letter">D</span>
+        Intolerância à atividade relacionada ao desequilíbrio entre oferta e demanda de oxigênio, evidenciada por dispneia aos mínimos esforços.
+      </li>
+    </ul>
+
+    <div class="gabarito-box">
+      <div class="gabarito-title">Gabarito Comentado — C</div>
+      <div class="gabarito-text">O conjunto de achados (FE baixa, B3, estertores bibasais e edema periférico) aponta para disfunção da bomba cardíaca como causa primária. O diagnóstico NANDA-I 2024–2026 que nomeia essa disfunção é <strong>Débito cardíaco diminuído</strong>. É o diagnóstico de causa — os demais (troca gasosa, intolerância, padrão respiratório) são consequências que surgem a partir dele e podem compor o plano de cuidados, mas não são o diagnóstico prioritário.</div>
+      <div class="distrator"><strong>A —</strong> Incorreta: padrão respiratório ineficaz indica problema no mecanismo ventilatório, não no bombeamento cardíaco. <strong>B —</strong> Incorreta: troca gasosa prejudicada pode ocorrer secundariamente, mas não é o diagnóstico primário neste cenário. <strong>D —</strong> Incorreta: intolerância à atividade é diagnóstico consequente, não a causa central da descompensação.</div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">08</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     P09 — QUESTÃO 03 (ÂNCORA)
+     ═══════════════════════════════════════════════════════════ -->
+<div class="page" id="p09">
+  <div class="page-header">
+    <span class="page-header-label">Fixação · Aula 01</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <div class="q-header">Questão 03 de 03 · B4 Calibragem · NANDA-I 2024–2026 + TCE · Análise (Âncora)</div>
+
+    <div class="q-stem">
+      Paciente masculino, 32 anos, admitido na urgência após acidente automobilístico. Ao exame: escala de Glasgow 9 (O2/V2/M5), frequência cardíaca 48 bpm, pressão arterial 170/95 mmHg, midríase à direita não reagente à luz, ausência de resposta verbal espontânea. Tomografia computadorizada evidencia hematoma extradural temporal direito com desvio de linha média de 7 mm. O enfermeiro da equipe elabora o plano de cuidados com base na NANDA-I 2024–2026. Qual o diagnóstico de enfermagem prioritário neste cenário?
+    </div>
+
+    <ul class="q-opts">
+      <li class="q-opt">
+        <span class="opt-letter">A</span>
+        Risco de perfusão cerebral ineficaz — o hematoma ainda não comprometeu completamente o fluxo, configurando risco, não diagnóstico real.
+      </li>
+      <li class="q-opt">
+        <span class="opt-letter">B</span>
+        Confusão aguda — o Glasgow 9 indica desorientação e déficit cognitivo como manifestação principal.
+      </li>
+      <li class="q-opt correta">
+        <span class="opt-letter">C</span>
+        Perfusão cerebral ineficaz — o conjunto de dados (Glasgow 9, Tríade de Cushing incompleta, anisocoria e desvio de linha média) confirma comprometimento ativo da circulação cerebral. <span class="badge-correta">Correta</span>
+      </li>
+      <li class="q-opt">
+        <span class="opt-letter">D</span>
+        Padrão respiratório ineficaz — a alteração do nível de consciência pode comprometer o drive respiratório, sendo o diagnóstico imediato mais urgente.
+      </li>
+    </ul>
+
+    <div class="gabarito-box">
+      <div class="gabarito-title">Gabarito Comentado — C</div>
+      <div class="gabarito-text">A Tríade de Cushing (bradicardia + hipertensão + alteração respiratória) é sinal de hipertensão intracraniana estabelecida. Somada à anisocoria e ao Glasgow 9, confirma perfusão cerebral <em>ineficaz</em> — não apenas risco. Na NANDA-I 2024–2026, o diagnóstico <strong>Perfusão cerebral ineficaz</strong> exige características definidoras presentes; aqui estão todas confirmadas. O diagnóstico "risco de" (opção A) seria aplicado apenas se os dados ainda não confirmassem comprometimento real da circulação.</div>
+      <div class="distrator"><strong>A —</strong> Incorreta: com hematoma, desvio de linha média e Tríade de Cushing, o comprometimento é real, não apenas risco. <strong>B —</strong> Incorreta: confusão aguda é manifestação, não a causa raiz; não é diagnóstico prioritário diante de hipertensão intracraniana. <strong>D —</strong> Incorreta: padrão respiratório ineficaz pode ser consequência, mas a prioridade é o comprometimento da perfusão cerebral.</div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">09</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     P10 — RECUPERAÇÃO ATIVA + SÍNTESE
+     ═══════════════════════════════════════════════════════════ -->
+<div class="page" id="p10">
+  <div class="page-header">
+    <span class="page-header-label">Recuperação Ativa · Aula 01</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <div class="section-tag">Se Esquecer Tudo, Lembre Disto</div>
+    <div class="section-rule"></div>
+
+    <div class="rec-box">
+      <div class="rec-item">
+        <span class="rec-star">★</span>
+        <span>A Res. 736/2024 define que <strong>diagnóstico, planejamento e avaliação são exclusivos do enfermeiro</strong>; a implementação pode ser executada por técnicos sob supervisão — exceto onde a resolução exige execução direta pelo enfermeiro.</span>
+      </div>
+      <div class="rec-item">
+        <span class="rec-star">★</span>
+        <span>Na NANDA-I 2024–2026, o diagnóstico <strong>Perfusão cerebral ineficaz</strong> é indicado quando há dados que confirmam comprometimento real (Glasgow baixo + anisocoria + Tríade de Cushing) — não apenas risco.</span>
+      </div>
+      <div class="rec-item">
+        <span class="rec-star">★</span>
+        <span>O ENARE cobra raciocínio clínico: <strong>cenário → dados objetivos → diagnóstico NANDA-I prioritário</strong>. SAE como lista de etapas praticamente desapareceu da prova.</span>
+      </div>
+    </div>
+
+    <div class="section-tag" style="margin-top:4mm;">Teste-se sem Olhar</div>
+    <div class="section-rule"></div>
+
+    <ul class="teste-list">
+      <li class="teste-item"><strong>Q1 —</strong> Quais três etapas do Processo de Enfermagem são exclusivas do enfermeiro segundo a Res. 736/2024?</li>
+      <li class="teste-item"><strong>Q2 —</strong> Um paciente tem Glasgow 9, bradicardia e anisocoria após TCE grave. Qual diagnóstico NANDA-I 2024–2026 é prioritário — "Risco de perfusão cerebral ineficaz" ou "Perfusão cerebral ineficaz"? Por quê?</li>
+      <li class="teste-item"><strong>Q3 —</strong> Qual a diferença entre NANDA-I, NIC e NOC? O que cada sistema responde?</li>
+      <li class="teste-item"><strong>Q4 —</strong> Qual diagnóstico NANDA-I corresponde ao cenário: ICC descompensada com FE 32%, B3 e estertores bibasais?</li>
+      <li class="teste-item"><strong>Q5 —</strong> Por que o diagnóstico "Intolerância à atividade" não é prioritário em um paciente com ICC descompensada, mesmo que ele refira dispneia aos mínimos esforços?</li>
+    </ul>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">10</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     P11 — REFERÊNCIAS + ANOTAÇÕES
+     ═══════════════════════════════════════════════════════════ -->
+<div class="page" id="p11">
+  <div class="page-header">
+    <span class="page-header-label">Referências · Aula 01</span>
+    <span class="page-header-title">Extensivo ENARE</span>
+  </div>
+  <div class="page-content">
+    <div class="section-tag">Referências — Bloco B4 · Aula 01</div>
+    <div class="section-rule"></div>
+
+    <ul class="ref-list">
+      <li class="ref-item">BRASIL. Conselho Federal de Enfermagem. <em>Resolução COFEN n.º 736, de 17 de janeiro de 2024.</em> Regulamenta o Processo de Enfermagem e dispõe sobre as competências da equipe de enfermagem. Brasília: COFEN, 2024.</li>
+      <li class="ref-item">BRASIL. Conselho Federal de Enfermagem. <em>Resolução COFEN n.º 754, de 2024.</em> Regulamenta os registros de enfermagem em formato eletrônico. Brasília: COFEN, 2024.</li>
+      <li class="ref-item">BRASIL. Conselho Federal de Enfermagem. <em>Resolução COFEN n.º 358, de 15 de outubro de 2009.</em> Dispõe sobre a Sistematização da Assistência de Enfermagem. Brasília: COFEN, 2009.</li>
+      <li class="ref-item">HERDMAN, T.H.; KAMITSURU, S.; LOPES, C.T. (Eds.). <em>NANDA International — Diagnósticos de Enfermagem: definições e classificação 2024–2026.</em> 13. ed. Porto Alegre: Artmed, 2024.</li>
+      <li class="ref-item">MOORHEAD, S. et al. <em>Classificação dos Resultados de Enfermagem (NOC).</em> 6. ed. Rio de Janeiro: Elsevier, 2019.</li>
+      <li class="ref-item">BULECHEK, G.M. et al. <em>Classificação das Intervenções de Enfermagem (NIC).</em> 7. ed. Rio de Janeiro: Elsevier, 2020.</li>
+      <li class="ref-item">POTTER, P.A.; PERRY, A.G. <em>Fundamentos de Enfermagem.</em> 9. ed. Rio de Janeiro: Elsevier, 2018. cap. 15–20 (Processo de Enfermagem e raciocínio clínico).</li>
+    </ul>
+
+    <div class="anot-box">
+      <span class="anot-label">Espaço para anotações</span>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-brand">Extensivo ENARE · by Residência PRO</span>
+    <span class="page-footer-num">11</span>
+  </div>
+</div>
+
+</body>
+</html>
