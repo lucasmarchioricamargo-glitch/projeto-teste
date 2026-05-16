@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Farmácia — Bloco B5 Aula 21 | Extensivo ENARE 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap');
+  :root { --creme: #F6F4ED; --verde: #1F5C23; --amarelo: #C6D834; --escuro: #0C2B0E; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #d0d0d0; font-family: 'Bricolage Grotesque', sans-serif; }
+  .page { width: 210mm; height: 297mm; background: var(--creme); margin: 0 auto 12px; position: relative; overflow: hidden; page-break-after: always; }
+  .header { background: var(--verde); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .header-logo { display: flex; align-items: center; gap: 8px; }
+  .header-logo svg { width: 32px; height: 32px; }
+  .header-brand { display: flex; flex-direction: column; line-height: 1; }
+  .header-brand .marca { font-family: 'Playfair Display', serif; font-style: italic; color: #fff; font-size: 13px; letter-spacing: 0.5px; }
+  .header-brand .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 7px; letter-spacing: 1.5px; text-transform: uppercase; }
+  .header-info { text-align: right; }
+  .header-info .disciplina { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
+  .header-info .aula-ref { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.7); font-size: 8px; letter-spacing: 0.5px; }
+  .footer { position: absolute; bottom: 0; left: 0; right: 0; background: var(--verde); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .footer span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.6); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .footer .pg { color: var(--amarelo); font-weight: 400; }
+  .body { padding: 14px 18px 30px; height: calc(297mm - 52px - 22px); overflow: hidden; }
+  .capa-page { background: var(--verde); }
+  .capa-header { background: var(--creme); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .capa-header .marca { font-family: 'Playfair Display', serif; font-style: italic; color: var(--verde); font-size: 14px; }
+  .capa-header .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--verde); font-size: 7.5px; letter-spacing: 2px; text-transform: uppercase; }
+  .capa-body { padding: 28px 24px 0; display: flex; flex-direction: column; height: calc(297mm - 52px - 22px); }
+  .capa-eyebrow { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; }
+  .capa-titulo { font-family: 'Barlow Condensed', sans-serif; color: #fff; font-size: 50px; line-height: 0.95; text-transform: uppercase; letter-spacing: -0.5px; margin-bottom: 6px; }
+  .capa-titulo span { color: var(--amarelo); }
+  .capa-subtitulo { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; color: rgba(255,255,255,0.65); font-size: 12px; letter-spacing: 0.3px; margin-bottom: 22px; line-height: 1.5; }
+  .capa-badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+  .capa-badge { background: rgba(198,216,52,0.15); border: 1px solid var(--amarelo); color: var(--amarelo); font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 8px; border-radius: 2px; }
+  .capa-divider { width: 40px; height: 3px; background: var(--amarelo); margin-bottom: 20px; }
+  .capa-topicos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .capa-topico { display: flex; align-items: flex-start; gap: 7px; }
+  .capa-topico-num { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 18px; line-height: 1; min-width: 18px; }
+  .capa-topico-txt { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 400; color: rgba(255,255,255,0.8); font-size: 9.5px; line-height: 1.4; }
+  .capa-footer-strip { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.25); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .capa-footer-strip span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.45); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .secao-titulo { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 18px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid var(--amarelo); padding-bottom: 3px; margin-bottom: 9px; line-height: 1; }
+  .subsecao { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.5px; margin: 7px 0 3px; }
+  p { font-size: 9px; line-height: 1.55; color: #1a1a1a; margin-bottom: 4px; font-weight: 400; }
+  .destaque { background: var(--amarelo); color: var(--escuro); font-weight: 600; padding: 1px 4px; border-radius: 2px; font-size: 8.5px; }
+  .alerta { background: rgba(198,216,52,0.18); border-left: 3px solid var(--amarelo); padding: 5px 8px; margin: 5px 0; border-radius: 0 3px 3px 0; }
+  .alerta p { margin: 0; font-size: 8.5px; }
+  .alerta strong { color: var(--verde); }
+  table { width: 100%; border-collapse: collapse; margin: 5px 0; font-size: 8px; }
+  th { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; padding: 4px 6px; text-align: left; }
+  td { padding: 3px 6px; border-bottom: 1px solid rgba(31,92,35,0.12); vertical-align: top; line-height: 1.4; color: #1a1a1a; }
+  tr:nth-child(even) td { background: rgba(31,92,35,0.04); }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 5px 0; }
+  .card { background: rgba(31,92,35,0.06); border: 1px solid rgba(31,92,35,0.15); border-radius: 4px; padding: 7px 8px; }
+  .card-title { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 11px; text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 3px; }
+  .card p { font-size: 8px; line-height: 1.5; }
+  .questao-header { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; padding: 4px 10px; border-radius: 3px 3px 0 0; display: flex; justify-content: space-between; align-items: center; }
+  .questao-header .fonte { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; color: var(--amarelo); letter-spacing: 0.5px; }
+  .questao-body { border: 1px solid rgba(31,92,35,0.2); border-top: none; border-radius: 0 0 3px 3px; padding: 7px 10px; margin-bottom: 7px; }
+  .questao-enunciado { font-size: 8.5px; line-height: 1.55; color: #111; margin-bottom: 5px; font-weight: 500; }
+  .alternativas { list-style: none; }
+  .alternativas li { font-size: 8px; line-height: 1.5; padding: 2px 0; color: #222; display: flex; gap: 5px; }
+  .alternativas li .letra { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: var(--verde); font-size: 9px; min-width: 10px; }
+  .alternativas li.correta .letra { color: var(--amarelo); }
+  .alternativas li.correta { background: rgba(198,216,52,0.15); border-left: 2px solid var(--amarelo); padding-left: 4px; }
+  .gabarito-box { background: var(--verde); border-radius: 4px; padding: 8px 12px; margin: 6px 0; }
+  .gabarito-box .gab-title { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+  .gabarito-box p { color: rgba(255,255,255,0.9); font-size: 8px; line-height: 1.55; }
+  .gabarito-box strong { color: var(--amarelo); }
+  .sintese-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-top: 6px; }
+  .sintese-item { background: rgba(31,92,35,0.07); border-left: 3px solid var(--verde); padding: 5px 7px; border-radius: 0 3px 3px 0; }
+  .sintese-item .si-label { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px; }
+  .sintese-item p { font-size: 7.5px; line-height: 1.5; }
+  ul.lista { padding-left: 14px; margin: 3px 0; }
+  ul.lista li { font-size: 8.5px; line-height: 1.55; color: #1a1a1a; margin-bottom: 1px; }
+  @media print { body { background: none; } .page { margin: 0; box-shadow: none; } }
+</style>
+</head>
+<body>
+
+<div class="page capa-page">
+  <div class="capa-header">
+    <div style="display:flex;align-items:center;gap:8px;"><svg width="34" height="34" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#1F5C23"/></svg><div><div class="marca">Elite Treinamentos</div><div class="tagline">Extensivo ENARE 2026</div></div></div>
+    <div style="text-align:right;"><div style="font-family:'Barlow Condensed',sans-serif;color:var(--verde);font-size:11px;letter-spacing:1px;text-transform:uppercase;">Bloco B5 · Aula 21</div><div style="font-family:'Space Grotesk',sans-serif;font-weight:300;color:#888;font-size:7.5px;letter-spacing:0.5px;">Farmácia</div></div>
+  </div>
+  <div class="capa-body">
+    <div class="capa-eyebrow">Bloco B5 · FARM-VIGISAN · Aula 21 de 22</div>
+    <div class="capa-titulo">Vigi-<br>lância <span>·<br>Tecnovi-<br>gilância</span></div>
+    <div class="capa-subtitulo">ANVISA, SNVS, Rede Sentinela, Tecnovigilância,<br>Hemovigilância e o sistema VigiPós-Comercialização</div>
+    <div class="capa-badge-row">
+      <div class="capa-badge">FARM-VIGISAN ★</div>
+      <div class="capa-badge">ANVISA · NOTIVISA</div>
+      <div class="capa-badge">Rede Sentinela</div>
+      <div class="capa-badge">Tecno · Hemo</div>
+    </div>
+    <div class="capa-divider"></div>
+    <div class="capa-topicos">
+      <div class="capa-topico"><div class="capa-topico-num">01</div><div class="capa-topico-txt">SNVS: Sistema Nacional de Vigilância Sanitária</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">02</div><div class="capa-topico-txt">ANVISA: estrutura e atribuições</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">03</div><div class="capa-topico-txt">Tecnovigilância: produtos para saúde</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">04</div><div class="capa-topico-txt">Hemovigilância: sangue e hemoderivados</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">05</div><div class="capa-topico-txt">Rede Sentinela e NOTIVISA</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">06</div><div class="capa-topico-txt">Queixa técnica vs evento adverso</div></div>
+    </div>
+  </div>
+  <div class="capa-footer-strip"><span>Extensivo ENARE 2026</span><span>Elite Treinamentos em Saúde</span><span>Página 1 de 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-VIGISAN</div><div class="aula-ref">Bloco B5 · Aula 21 · SNVS</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Sistema Nacional de Vigilância Sanitária (SNVS)</div>
+    <p>O <strong>SNVS</strong> é o conjunto de ações capazes de eliminar, diminuir ou prevenir riscos à saúde, intervir nos problemas sanitários decorrentes do meio ambiente, produção, circulação de bens e prestação de serviços. Base legal: <strong>Lei 8.080/1990, art. 6º, I</strong> (Lei do SUS) e <strong>Lei 9.782/1999</strong> (cria a ANVISA).</p>
+
+    <div class="subsecao">Estrutura do SNVS</div>
+    <table>
+      <tr><th>Esfera</th><th>Órgão</th><th>Função principal</th></tr>
+      <tr><td>Federal</td><td>ANVISA (autarquia especial)</td><td>Regulamentação, registro, fiscalização e monitoramento pós-comercialização</td></tr>
+      <tr><td>Estadual</td><td>VISA Estadual / Secretarias de Saúde</td><td>Inspeções e fiscalização sanitária; ações estaduais</td></tr>
+      <tr><td>Municipal</td><td>VISA Municipal</td><td>Inspeções locais; licenciamento sanitário; atendimento direto à população</td></tr>
+    </table>
+
+    <div class="subsecao">Áreas de Atuação da Vigilância Sanitária</div>
+    <ul class="lista">
+      <li>Medicamentos e correlatos (drogas, produtos farmacêuticos, dispositivos médicos)</li>
+      <li>Alimentos e bebidas</li>
+      <li>Cosméticos e produtos de higiene</li>
+      <li>Saneantes</li>
+      <li>Serviços de saúde (estabelecimentos, profissionais, processos)</li>
+      <li>Sangue e hemoderivados</li>
+      <li>Tecidos e órgãos para transplante</li>
+      <li>Ambientes (ar, água, resíduos)</li>
+      <li>Portos, aeroportos e fronteiras</li>
+    </ul>
+
+    <div class="subsecao">Atribuições da ANVISA (Lei 9.782/1999)</div>
+    <ul class="lista">
+      <li>Concessão de registro de medicamentos</li>
+      <li>Autorização de funcionamento e licenciamento de estabelecimentos</li>
+      <li>Inspeção sanitária e ações fiscais (em parceria com estados/municípios)</li>
+      <li>Monitoramento pós-comercialização (farmacovigilância, tecnovigilância, hemovigilância)</li>
+      <li>Avaliação pré-clínica e ensaios clínicos</li>
+      <li>Anuência prévia em patentes farmacêuticas</li>
+      <li>Educação sanitária e divulgação de informações</li>
+      <li>Operação dos sistemas NOTIVISA, VigiMed, SNGPC</li>
+    </ul>
+
+    <div class="subsecao">Subsistemas Pós-Comercialização (VigiPós)</div>
+    <p>A ANVISA opera vários subsistemas integrados para monitoramento pós-comercialização:</p>
+    <table>
+      <tr><th>Subsistema</th><th>Foco</th></tr>
+      <tr><td>Farmacovigilância (VigiMed)</td><td>RAMs de medicamentos — Aula 17</td></tr>
+      <tr><td>Tecnovigilância</td><td>Eventos adversos com produtos para saúde (dispositivos médicos)</td></tr>
+      <tr><td>Hemovigilância</td><td>Eventos adversos com sangue e hemocomponentes</td></tr>
+      <tr><td>Cosmetovigilância</td><td>Eventos adversos com cosméticos</td></tr>
+      <tr><td>Vigilância de Eventos Adversos a Saneantes</td><td>Acidentes com produtos de limpeza/higiene</td></tr>
+      <tr><td>NOTIVISA</td><td>Plataforma para Tecno, Hemo, Cosmetovigilância e outros (Notivisa-Medicamentos foi descontinuado em 2018, substituído pelo VigiMed)</td></tr>
+    </table>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> SNVS opera em 3 esferas; ANVISA é autarquia especial; sistemas pós-comercialização cobrem medicamentos (VigiMed), produtos para saúde (Tecno), sangue (Hemo), cosméticos. NOTIVISA continua para Tecno, Hemo, Cosmeto; VigiMed é específico para medicamentos.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-VIGISAN · Tecnovigilância</span><span>Extensivo ENARE 2026</span><span class="pg">2 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-VIGISAN</div><div class="aula-ref">Bloco B5 · Aula 21 · Tecnovigilância</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Tecnovigilância — Produtos para Saúde</div>
+    <p>A <strong>tecnovigilância</strong> é o conjunto de ações de monitoramento pós-comercialização de produtos para saúde no Brasil. Cobrada em ENARE 2024 (Q39, Q89, Q90). Regulamentada pela <strong>RDC ANVISA 67/2009</strong> e atualizações.</p>
+
+    <div class="subsecao">O que é Produto para Saúde?</div>
+    <p>Definição ampla pela ANVISA (RDC 185/2001): qualquer instrumento, aparelho, equipamento, material ou outro artigo (não-medicamento) destinado por seu fabricante a ser utilizado no ser humano para fins de:</p>
+    <ul class="lista">
+      <li>Diagnóstico, prevenção, monitoramento, tratamento ou alívio de doença</li>
+      <li>Diagnóstico, monitoramento, tratamento, alívio ou compensação de lesão</li>
+      <li>Investigação, substituição, modificação da anatomia ou de processo fisiológico</li>
+      <li>Controle de concepção</li>
+    </ul>
+
+    <p><strong>Exemplos:</strong> seringa, agulha, cateter (CVC, periférico), stent, marca-passo, prótese ortopédica, válvula cardíaca, tubo endotraqueal, equipamento de diálise, glicosímetro, bomba de infusão, equipo de soro, sonda vesical, dispositivo intra-uterino, lentes de contato, tomógrafo, eletrocardiógrafo.</p>
+
+    <div class="subsecao">Classificação de Risco (RDC 185/2001)</div>
+    <table>
+      <tr><th>Classe</th><th>Risco</th><th>Exemplos</th></tr>
+      <tr><td>I</td><td>Baixo</td><td>Algodão, gaze, atadura, espéculo, fralda descartável</td></tr>
+      <tr><td>II</td><td>Médio</td><td>Seringa, agulha, equipo, sonda, glicosímetro, bomba de infusão</td></tr>
+      <tr><td>III</td><td>Alto</td><td>Tomógrafo, raio-X, monitor multiparâmetros, hemodializador</td></tr>
+      <tr><td>IV</td><td>Máximo</td><td>Marca-passo, válvula cardíaca, stent, prótese ortopédica, dispositivos implantáveis</td></tr>
+    </table>
+
+    <div class="subsecao">Tipos de Eventos Notificáveis</div>
+    <table>
+      <tr><th>Tipo</th><th>Definição</th><th>Exemplo</th></tr>
+      <tr><td><strong>Evento adverso</strong></td><td>Efeito não-desejado na saúde do paciente, usuário ou outro, associado a produto para saúde</td><td>Infecção em paciente com cateter venoso central; lesão por fio-guia rígido em cateterismo</td></tr>
+      <tr><td><strong>Queixa técnica</strong></td><td>Suspeita de alteração ou irregularidade do produto, relacionada a qualidade, segurança, identidade, eficácia (mesmo sem dano)</td><td>Seringa entupida; embalagem violada; rótulo errado; produto vencido em estoque; defeito de equipamento</td></tr>
+      <tr><td><strong>Falha de funcionamento</strong></td><td>Produto não funciona conforme especificado, com potencial de dano</td><td>Bomba de infusão com erro de calibração; marca-passo com bateria falhando</td></tr>
+      <tr><td><strong>Recall</strong></td><td>Recolhimento de produto do mercado por iniciativa do fabricante ou determinação ANVISA</td><td>Lote contaminado; defeito de fabricação</td></tr>
+    </table>
+
+    <div class="subsecao">Casos Históricos</div>
+    <ul class="lista">
+      <li><strong>Próteses de silicone PIP</strong> (2011): contaminação industrial; recall global</li>
+      <li><strong>DIU Filshie</strong>: deslocamento de clipes</li>
+      <li><strong>Cateter central</strong>: infecção por contaminação de lote</li>
+      <li><strong>Sondas vesicais</strong>: cordel quebrável → lesão</li>
+      <li><strong>Equipamentos de diálise</strong>: contaminação do circuito → bacteremia</li>
+      <li><strong>Implantes ortopédicos</strong>: corrosão por metal cobalto-cromo</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Notificação via NOTIVISA:</strong> distinto do VigiMed (medicamentos), o NOTIVISA cobre tecnovigilância. Pode ser notificado por profissional de saúde, paciente, NSP, distribuidor. Prazo: imediato para eventos graves; 30 dias para outros. Fabricante é obrigado a investigar e responder.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-VIGISAN · Tecnovigilância</span><span>Extensivo ENARE 2026</span><span class="pg">3 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-VIGISAN</div><div class="aula-ref">Bloco B5 · Aula 21 · Hemovigilância</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Hemovigilância</div>
+    <p>A <strong>hemovigilância</strong> é o monitoramento pós-comercialização de eventos adversos com sangue, hemocomponentes e hemoderivados. Regulamentada pela <strong>RDC ANVISA 34/2014</strong> e Manual de Hemovigilância (ANVISA). Sistema integrado com a hemorrede nacional.</p>
+
+    <div class="subsecao">Conceitos</div>
+    <table>
+      <tr><th>Termo</th><th>Definição</th></tr>
+      <tr><td>Sangue total</td><td>Sangue coletado sem fracionamento</td></tr>
+      <tr><td>Hemocomponentes</td><td>Concentrado de hemácias, plasma fresco congelado, plaquetas, crioprecipitado — separados por fracionamento</td></tr>
+      <tr><td>Hemoderivados</td><td>Produtos industrializados derivados do plasma (albumina, fatores de coagulação, imunoglobulinas)</td></tr>
+      <tr><td>Reação transfusional imediata</td><td>Ocorre em até 24h após início da transfusão</td></tr>
+      <tr><td>Reação transfusional tardia</td><td>Ocorre após 24h</td></tr>
+    </table>
+
+    <div class="subsecao">Reações Transfusionais Mais Importantes</div>
+    <table>
+      <tr><th>Reação</th><th>Causa / Características</th><th>Conduta</th></tr>
+      <tr><td><strong>Hemolítica aguda</strong></td><td>Incompatibilidade ABO; mais grave; pode ser fatal. Febre, dor lombar, hemoglobinúria, hipotensão, CIVD</td><td>Suspender imediatamente; manter acesso venoso; suporte de função renal; testar incompatibilidade</td></tr>
+      <tr><td>Reação febril não-hemolítica</td><td>Citocinas dos leucócitos do doador; comum; febre, calafrios</td><td>Antitérmico; usar hemocomponentes leucorreduzidos</td></tr>
+      <tr><td>Reação alérgica leve</td><td>Anticorpos contra proteínas plasmáticas; urticária, prurido</td><td>Anti-histamínico; pode continuar a transfusão se leve</td></tr>
+      <tr><td>Anafilaxia</td><td>IgA em paciente com deficiência de IgA; grave</td><td>Suspender; epinefrina; suporte; transfusão futura com componentes lavados ou de doador IgA-negativo</td></tr>
+      <tr><td>TRALI (Transfusion-Related Acute Lung Injury)</td><td>Lesão pulmonar aguda em até 6h após transfusão; mortalidade alta</td><td>Suporte ventilatório</td></tr>
+      <tr><td>TACO (Transfusion-Associated Circulatory Overload)</td><td>Sobrecarga circulatória; comum em idosos com IC</td><td>Diurético; ajustar velocidade de infusão</td></tr>
+      <tr><td>Doença Enxerto-vs-Hospedeiro Transfusional</td><td>Linfócitos do doador atacam o receptor imunossuprimido; raríssima mas fatal</td><td>Prevenção: irradiar hemocomponentes em imunossuprimidos</td></tr>
+      <tr><td>Hemolítica tardia</td><td>Aloimunização prévia (anticorpos contra antígenos Rh, Kell, Duffy); febre tardia, queda de Hb</td><td>Acompanhamento</td></tr>
+      <tr><td>Infecção transfusional</td><td>HIV, hepatites B/C, sífilis, Chagas, malária, citomegalovírus — rara hoje</td><td>Testagem prévia universal mandatória</td></tr>
+    </table>
+
+    <div class="subsecao">Notificação em Hemovigilância</div>
+    <p>Via <strong>NOTIVISA</strong> e/ou sistema próprio da hemorrede. Toda reação transfusional deve ser notificada — graves em até 24h, não-graves em 7 dias. Conduta clínica imediata + comunicação ao hemocentro local + investigação para identificar causa.</p>
+
+    <div class="subsecao">Papel do Farmacêutico em Hemovigilância</div>
+    <ul class="lista">
+      <li>Atuação em farmácia hospitalar com banco de hemocomponentes ou hemoderivados</li>
+      <li>Validação de prescrição transfusional (indicação, volume, velocidade)</li>
+      <li>Gestão de hemoderivados (albumina, fatores, imunoglobulinas) na CAF</li>
+      <li>Educação da equipe sobre uso racional</li>
+      <li>Participação em comissões transfusionais</li>
+      <li>Suporte em reações alérgicas (anti-histamínico, epinefrina disponível)</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Foco da hemovigilância:</strong> reduzir reações transfusionais por melhoria contínua. Hoje, com testes universais, infecção transfusional é raríssima; reações imuno-mediadas (hemolíticas, febris, TRALI) continuam mais frequentes. Uso restritivo de transfusão (gatilho Hb 7 g/dL em pacientes estáveis) reduz risco.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-VIGISAN · Tecnovigilância</span><span>Extensivo ENARE 2026</span><span class="pg">4 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-VIGISAN</div><div class="aula-ref">Bloco B5 · Aula 21 · Rede Sentinela</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Rede Sentinela</div>
+
+    <p>A <strong>Rede Sentinela</strong> é uma estratégia da ANVISA para fortalecer a vigilância pós-comercialização em serviços de saúde. Composta por hospitais voluntários que se comprometem a notificar sistematicamente eventos adversos relacionados a produtos sob vigilância sanitária (medicamentos, produtos para saúde, sangue, cosméticos, saneantes).</p>
+
+    <div class="subsecao">Características da Rede</div>
+    <ul class="lista">
+      <li>Composta por 200+ hospitais brasileiros (públicos, privados, universitários)</li>
+      <li>Voluntariedade, com termo de cooperação técnica</li>
+      <li>Cada hospital tem um <strong>Gerente de Risco</strong> (preferencialmente farmacêutico) responsável pela coordenação</li>
+      <li>Equipe multiprofissional (farmacêutico, enfermeiro, médico, gestor)</li>
+      <li>Notificações via NOTIVISA + VigiMed</li>
+      <li>Capacitação contínua pela ANVISA</li>
+      <li>Compartilhamento de informações entre hospitais da rede</li>
+      <li>Suporte técnico-científico</li>
+    </ul>
+
+    <div class="subsecao">Atribuições do Hospital Sentinela</div>
+    <ol>
+      <li>Notificar eventos adversos relacionados a produtos sob vigilância</li>
+      <li>Investigar causas de eventos</li>
+      <li>Implementar medidas preventivas locais</li>
+      <li>Participar de auditorias e visitas técnicas</li>
+      <li>Capacitar equipe interna</li>
+      <li>Compartilhar boas práticas com a rede</li>
+    </ol>
+
+    <div class="subsecao">Relação com NSP (RDC 36/2013)</div>
+    <p>O <strong>Núcleo de Segurança do Paciente</strong> (NSP) é obrigatório em todo hospital pela RDC 36/2013. Em hospitais da Rede Sentinela, o NSP frequentemente <em>absorve</em> as atividades de notificação à ANVISA, integrando vigilância pós-comercialização e segurança do paciente. Estrutura ideal:</p>
+    <ul class="lista">
+      <li>NSP coordena o Plano de Segurança</li>
+      <li>Gerente de Risco lidera notificações à ANVISA</li>
+      <li>CCIH cuida de IRAS</li>
+      <li>PGA cuida de antimicrobianos</li>
+      <li>Farmácia clínica cuida de RAMs e reconciliação</li>
+      <li>Integração via comitês com representação cruzada</li>
+    </ul>
+
+    <div class="subsecao">Sistemas Eletrônicos Integrados</div>
+    <table>
+      <tr><th>Sistema</th><th>Finalidade</th></tr>
+      <tr><td>NOTIVISA</td><td>Notificação de eventos adversos a produtos para saúde, sangue, cosméticos, saneantes</td></tr>
+      <tr><td>VigiMed</td><td>Notificação de RAMs (substituiu Notivisa-Medicamentos em 2018)</td></tr>
+      <tr><td>SNGPC</td><td>Sistema Nacional de Gerenciamento de Produtos Controlados — registro de medicamentos da Portaria 344/1998 dispensados em farmácias</td></tr>
+      <tr><td>e-SUS Hospitalar</td><td>Notificação de IRAS e eventos hospitalares</td></tr>
+      <tr><td>Saúde Digital</td><td>Plataformas integradas com Conecte SUS</td></tr>
+    </table>
+
+    <div class="subsecao">Indicadores da Rede Sentinela</div>
+    <ul class="lista">
+      <li>Número de notificações por hospital/ano</li>
+      <li>Tipo de notificação (RAM, EA produto para saúde, queixa técnica, reação transfusional)</li>
+      <li>Tempo médio entre evento e notificação</li>
+      <li>Taxa de respostas dos fabricantes</li>
+      <li>Ações regulatórias decorrentes</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> Rede Sentinela = parceria voluntária; foco em notificação pós-comercialização; integra com NSP e NOTIVISA/VigiMed. Não confundir com Rede de Atenção à Saúde (RAS) do SUS. ENARE 2024 cobrou em Q39 — Rede Sentinela.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-VIGISAN · Tecnovigilância</span><span>Extensivo ENARE 2026</span><span class="pg">5 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-VIGISAN</div><div class="aula-ref">Bloco B5 · Aula 21 · Queixa Técnica</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Queixa Técnica e Casos Práticos</div>
+
+    <div class="subsecao">Queixa Técnica — Definição Operacional</div>
+    <p>Notificação de <em>desvio de qualidade</em> de produto sob vigilância sanitária, com ou sem dano ao paciente. Difere do evento adverso porque o foco é a <em>qualidade do produto</em>, não necessariamente o efeito clínico.</p>
+
+    <div class="subsecao">Exemplos de Queixa Técnica</div>
+    <table>
+      <tr><th>Produto</th><th>Queixa</th></tr>
+      <tr><td>Medicamento</td><td>Pó dentro do frasco; mudança de cor; precipitação na suspensão; rótulo errado; ampola com vazamento; embalagem violada</td></tr>
+      <tr><td>Seringa</td><td>Êmbolo travado; agulha embotada; bolha de ar; tampa solta</td></tr>
+      <tr><td>Equipamento</td><td>Calibração fora; software com erro; bateria que não dura; alarme falho</td></tr>
+      <tr><td>Material descartável</td><td>Embalagem aberta no recebimento; data de validade falsa; produto não estéril (embalagem rota)</td></tr>
+      <tr><td>Cosmético</td><td>Mudança de odor; separação de fase; precipitação; embalagem com defeito</td></tr>
+      <tr><td>Saneante</td><td>Hipoclorito sem cloro residual; produto fora da concentração declarada</td></tr>
+    </table>
+
+    <div class="subsecao">Diferença Operacional: EA × Queixa Técnica</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Evento Adverso (EA)</div>
+        <p>Efeito não-desejado <em>na saúde</em> de paciente, usuário ou outro. Requer impacto clínico (dano potencial ou efetivo). Ex.: paciente desenvolve infecção após cateterismo com material defeituoso.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Queixa Técnica</div>
+        <p>Desvio de <em>qualidade do produto</em>, sem necessidade de impacto clínico direto. Ex.: o cateter abriu na embalagem antes de ser usado; ou foi detectado mau funcionamento durante manuseio. Mesmo sem chegar a paciente, é notificável.</p>
+      </div>
+    </div>
+
+    <div class="subsecao">Fluxo de Notificação</div>
+    <ol>
+      <li>Identificar o evento ou queixa</li>
+      <li>Coletar informações: lote, fabricante, data de validade, descrição detalhada</li>
+      <li>Preservar produto/embalagem para investigação (não descartar)</li>
+      <li>Acessar NOTIVISA</li>
+      <li>Preencher formulário específico (medicamento / produto saúde / sangue / cosmético / saneante)</li>
+      <li>Receber protocolo</li>
+      <li>Comunicar fabricante (boa prática; obrigatório em alguns casos)</li>
+      <li>Aguardar resposta ANVISA / fabricante</li>
+      <li>Implementar medidas locais (suspender lote, treinar equipe)</li>
+    </ol>
+
+    <div class="subsecao">RDC 222/2018 — Resíduos de Serviços de Saúde</div>
+    <p>Já visto em Aulas 13 e 16. Recapitulação dos grupos:</p>
+    <ul class="lista">
+      <li><strong>A</strong> — Biológicos (potencialmente infectantes): saco branco leitoso</li>
+      <li><strong>B</strong> — Químicos (medicamentos, quimio): saco/contêiner laranja</li>
+      <li><strong>C</strong> — Radioativos: símbolo de radiação</li>
+      <li><strong>D</strong> — Comuns: saco preto</li>
+      <li><strong>E</strong> — Perfurocortantes: caixa rígida amarela (Descarpack)</li>
+    </ul>
+
+    <div class="subsecao">Atribuições do Farmacêutico em VigiSan</div>
+    <ul class="lista">
+      <li>Identificar queixas técnicas no recebimento (validade, integridade, lote, fabricante)</li>
+      <li>Investigar eventos relacionados a produtos no uso clínico</li>
+      <li>Liderar notificações via NOTIVISA</li>
+      <li>Educar equipe sobre identificação e notificação</li>
+      <li>Manter rastreabilidade de lotes em uso (especialmente em fármacos de alto risco e quimioterápicos)</li>
+      <li>Participar do Plano de Gerenciamento de Resíduos (PGRSS)</li>
+      <li>Atuar em Comitê de Vigilância em Serviços de Saúde</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Importância prática:</strong> queixa técnica frequentemente <em>antecede</em> recall global de produto. Notificar contribui para a detecção precoce de falhas sistêmicas. Conservar a embalagem/produto é crítico — sem amostra, a investigação é impossível.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-VIGISAN · Tecnovigilância</span><span>Extensivo ENARE 2026</span><span class="pg">6 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-VIGISAN</div><div class="aula-ref">Bloco B5 · Aula 21 · Questões ENARE</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 01</span><span class="fonte">Tecnovigilância · NC: Compreensão</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Sobre a Tecnovigilância no Brasil, é CORRETO afirmar:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Tem como foco RAMs de medicamentos sob prescrição.</span></li>
+        <li class="correta"><span class="letra">B</span><span>É o subsistema VigiPós-Comercialização da ANVISA dedicado a produtos para saúde (dispositivos médicos como cateteres, próteses, equipamentos); notificações via NOTIVISA por profissionais, instituições e usuários; abrange eventos adversos, queixas técnicas e falhas de funcionamento.</span></li>
+        <li><span class="letra">C</span><span>É opcional para hospitais; sem obrigação legal.</span></li>
+        <li><span class="letra">D</span><span>Substituiu o VigiMed em 2018.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> a Tecnovigilância é o subsistema da ANVISA dedicado a <em>produtos para saúde</em> (dispositivos médicos — cateteres, próteses, equipamentos, descartáveis). Regulamentada pela RDC 67/2009. Notificações via NOTIVISA. Cobertura: eventos adversos (efeito clínico não-desejado), queixas técnicas (desvio de qualidade sem necessariamente impacto clínico) e falhas de funcionamento. Atuação multistakeholder: profissionais, instituições, usuários, distribuidores, fabricantes.</p>
+      <p><strong>Por que as outras erram:</strong> A — esse é o foco da Farmacovigilância (VigiMed), não da Tecnovigilância · C — RDC 36/2013 obriga NSP; Rede Sentinela é voluntária mas a notificação de evento grave é regulatória · D — VigiMed substituiu o Notivisa-Medicamentos em 2018, não a Tecnovigilância.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-VIGISAN · Tecnovigilância</span><span>Extensivo ENARE 2026</span><span class="pg">7 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-VIGISAN</div><div class="aula-ref">Bloco B5 · Aula 21 · Questões ENARE</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 02</span><span class="fonte">Hemovigilância · NC: Análise</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Paciente recebe transfusão de concentrado de hemácias e, 20 minutos após o início, evolui com febre, dor lombar, hipotensão e hemoglobinúria. Conduta CORRETA:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Manter a transfusão e tratar sintomas com antitérmico.</span></li>
+        <li class="correta"><span class="letra">B</span><span>SUSPENDER IMEDIATAMENTE a transfusão; manter acesso venoso com SF; chamar equipe médica; coletar amostras (sangue, urina) para investigação; suporte de função renal; notificar reação transfusional ao banco de sangue e via NOTIVISA. Cenário compatível com reação hemolítica aguda — provável incompatibilidade ABO.</span></li>
+        <li><span class="letra">C</span><span>Diminuir a velocidade da infusão pela metade.</span></li>
+        <li><span class="letra">D</span><span>Substituir o concentrado de hemácias por plasma fresco congelado.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> a tétrade <em>febre + dor lombar + hipotensão + hemoglobinúria</em> em transfusão recente é altamente sugestiva de <strong>reação hemolítica aguda por incompatibilidade ABO</strong> — emergência clínica com mortalidade significativa. Conduta padrão (Manual de Hemovigilância ANVISA): suspensão imediata; manter acesso com SF para hidratação e proteção renal; suporte clínico (vasopressor se necessário, considerar diurético osmótico); coleta de amostras para confirmação; testes de compatibilidade reverificados; notificação obrigatória (banco de sangue, NOTIVISA).</p>
+      <p><strong>Por que as outras erram:</strong> A — manter a transfusão é erro grave; risco de óbito · C — diminuir velocidade não interrompe o processo hemolítico · D — substituir hemocomponente sem suspender o atual não é conduta adequada; primeira ação é parar.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-VIGISAN · Tecnovigilância</span><span>Extensivo ENARE 2026</span><span class="pg">8 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-VIGISAN</div><div class="aula-ref">Bloco B5 · Aula 21 · Gabarito Integrado</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 03</span><span class="fonte">Queixa Técnica · NC: Aplicação</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Farmacêutico hospitalar recebe lote de 200 frascos de amoxicilina em pó para suspensão e identifica que 12 frascos apresentam mudança de cor (do branco para amarelado), embora dentro do prazo de validade. Conduta CORRETA:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Dispensar normalmente, pois a validade está mantida.</span></li>
+        <li class="correta"><span class="letra">B</span><span>Configurar QUEIXA TÉCNICA: segregar os frascos afetados (não dispensar); notificar via NOTIVISA com lote, fabricante, validade, descrição; comunicar ao fabricante; preservar os frascos para investigação; aguardar resposta antes de descartar; notificar gerência/NSP/Rede Sentinela.</span></li>
+        <li><span class="letra">C</span><span>Descartar os frascos imediatamente sem notificar.</span></li>
+        <li><span class="letra">D</span><span>Dispensar apenas para uso veterinário ou tópico.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> mudança de cor sem outras explicações configura <strong>queixa técnica</strong> — desvio de qualidade do produto que requer notificação à ANVISA, mesmo sem ter chegado ao paciente. Conduta padrão: segregar (não dispensar), preservar amostras (essenciais para investigação do fabricante), notificar via NOTIVISA, comunicar ao fabricante (boa prática), aguardar resposta. Descartar antes da notificação inviabiliza a investigação. O fabricante pode emitir recall global se o problema for sistêmico — sua identificação proativa pelo farmacêutico hospitalar é parte essencial do sistema pós-comercialização.</p>
+      <p><strong>Por que as outras erram:</strong> A — dispensar produto com sinais de alteração é violação de boas práticas e risco ao paciente · C — descartar sem notificar impede investigação coletiva · D — desvio para outras vias é prática proibida (medicamento humano não pode ser desviado).</p>
+    </div>
+
+    <div class="subsecao" style="margin-top:6px;">Gabarito Comentado — Análise Integrada</div>
+    <table>
+      <tr><th>Questão</th><th>Gabarito</th><th>Tema</th><th>Conceito-Chave</th></tr>
+      <tr><td><strong>01</strong></td><td><span class="destaque">B</span></td><td>Tecnovigilância</td><td>Produtos para saúde; NOTIVISA; EA, queixa técnica, falha de funcionamento</td></tr>
+      <tr><td><strong>02</strong></td><td><span class="destaque">B</span></td><td>Reação Hemolítica Aguda</td><td>SUSPENDER + SF + coleta + NOTIVISA + banco; emergência</td></tr>
+      <tr><td><strong>03</strong></td><td><span class="destaque">B</span></td><td>Queixa Técnica</td><td>Segregar + notificar + preservar; descartar prematuro inviabiliza investigação</td></tr>
+    </table>
+  </div>
+  <div class="footer"><span>FARM-VIGISAN · Tecnovigilância</span><span>Extensivo ENARE 2026</span><span class="pg">9 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-VIGISAN</div><div class="aula-ref">Bloco B5 · Aula 21 · Síntese</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Síntese — Vigilância Sanitária</div>
+    <div class="sintese-grid">
+      <div class="sintese-item">
+        <div class="si-label">SNVS</div>
+        <p>Lei 8.080/1990 + Lei 9.782/1999 (ANVISA). 3 esferas: federal (ANVISA), estadual e municipal. Áreas: medicamentos, alimentos, cosméticos, saneantes, serviços de saúde, sangue, tecidos, ambiente, portos.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Subsistemas Pós-Comercialização</div>
+        <p>VigiMed (medicamentos — substituiu Notivisa-Medicamentos 2018). NOTIVISA (Tecno, Hemo, Cosmeto, Saneantes). Tecnovigilância (RDC 67/2009). Hemovigilância (RDC 34/2014). SNGPC (Portaria 344/1998).</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Tecnovigilância</div>
+        <p>Produtos para saúde (4 classes de risco: I-IV; IV = implantáveis). EA + queixa técnica + falha de funcionamento. Casos históricos: PIP, DIU Filshie. Notificação via NOTIVISA.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Hemovigilância</div>
+        <p>Reações: hemolítica aguda (ABO — emergência), febril (citocinas), alérgica (urticária), anafilaxia (IgA), TRALI, TACO, GVHD-T. Conduta: SUSPENDER + SF + coleta + notificar. Gatilho transfusional restritivo (Hb 7).</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Rede Sentinela + NSP</div>
+        <p>Rede Sentinela: 200+ hospitais voluntários; gerente de risco; notificação sistemática. NSP (RDC 36/2013): obrigatório em todo hospital; coordena plano de segurança; integra com Rede Sentinela.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Próxima Aula</div>
+        <p><strong>Aula 22 — Casos Integrativos e Revisão Final B5.</strong> Simulado integrativo com multicasos: interação + conduta + norma + cálculo + Beers + ITE + segurança. Síntese do bloco B5 Farmácia.</p>
+      </div>
+    </div>
+    <div class="alerta" style="margin-top:5px;">
+      <p><strong>Regra de ouro — VigiSan no ENARE:</strong> SNVS = 3 esferas; ANVISA federal. VigiMed para medicamentos; NOTIVISA para produtos saúde, sangue, cosméticos. Tecnovigilância = dispositivos médicos (4 classes risco). Hemo: reação hemolítica aguda = SUSPENDER imediato. Rede Sentinela = voluntária; NSP = obrigatório.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-VIGISAN · Tecnovigilância</span><span>Extensivo ENARE 2026</span><span class="pg">10 / 10</span></div>
+</div>
+
+</body>
+</html>
