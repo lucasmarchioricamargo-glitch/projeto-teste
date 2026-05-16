@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Farmácia — Bloco B5 Aula 08 | Extensivo ENARE 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap');
+  :root { --creme: #F6F4ED; --verde: #1F5C23; --amarelo: #C6D834; --escuro: #0C2B0E; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #d0d0d0; font-family: 'Bricolage Grotesque', sans-serif; }
+  .page { width: 210mm; height: 297mm; background: var(--creme); margin: 0 auto 12px; position: relative; overflow: hidden; page-break-after: always; }
+  .header { background: var(--verde); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .header-logo { display: flex; align-items: center; gap: 8px; }
+  .header-logo svg { width: 32px; height: 32px; }
+  .header-brand { display: flex; flex-direction: column; line-height: 1; }
+  .header-brand .marca { font-family: 'Playfair Display', serif; font-style: italic; color: #fff; font-size: 13px; letter-spacing: 0.5px; }
+  .header-brand .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 7px; letter-spacing: 1.5px; text-transform: uppercase; }
+  .header-info { text-align: right; }
+  .header-info .disciplina { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
+  .header-info .aula-ref { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.7); font-size: 8px; letter-spacing: 0.5px; }
+  .footer { position: absolute; bottom: 0; left: 0; right: 0; background: var(--verde); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .footer span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.6); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .footer .pg { color: var(--amarelo); font-weight: 400; }
+  .body { padding: 14px 18px 30px; height: calc(297mm - 52px - 22px); overflow: hidden; }
+  .capa-page { background: var(--verde); }
+  .capa-header { background: var(--creme); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .capa-header .marca { font-family: 'Playfair Display', serif; font-style: italic; color: var(--verde); font-size: 14px; }
+  .capa-header .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--verde); font-size: 7.5px; letter-spacing: 2px; text-transform: uppercase; }
+  .capa-body { padding: 28px 24px 0; display: flex; flex-direction: column; height: calc(297mm - 52px - 22px); }
+  .capa-eyebrow { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; }
+  .capa-titulo { font-family: 'Barlow Condensed', sans-serif; color: #fff; font-size: 50px; line-height: 0.95; text-transform: uppercase; letter-spacing: -0.5px; margin-bottom: 6px; }
+  .capa-titulo span { color: var(--amarelo); }
+  .capa-subtitulo { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; color: rgba(255,255,255,0.65); font-size: 12px; letter-spacing: 0.3px; margin-bottom: 22px; line-height: 1.5; }
+  .capa-badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+  .capa-badge { background: rgba(198,216,52,0.15); border: 1px solid var(--amarelo); color: var(--amarelo); font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 8px; border-radius: 2px; }
+  .capa-divider { width: 40px; height: 3px; background: var(--amarelo); margin-bottom: 20px; }
+  .capa-topicos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .capa-topico { display: flex; align-items: flex-start; gap: 7px; }
+  .capa-topico-num { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 18px; line-height: 1; min-width: 18px; }
+  .capa-topico-txt { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 400; color: rgba(255,255,255,0.8); font-size: 9.5px; line-height: 1.4; }
+  .capa-footer-strip { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.25); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .capa-footer-strip span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.45); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .secao-titulo { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 18px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid var(--amarelo); padding-bottom: 3px; margin-bottom: 9px; line-height: 1; }
+  .subsecao { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.5px; margin: 7px 0 3px; }
+  p { font-size: 9px; line-height: 1.55; color: #1a1a1a; margin-bottom: 4px; font-weight: 400; }
+  .destaque { background: var(--amarelo); color: var(--escuro); font-weight: 600; padding: 1px 4px; border-radius: 2px; font-size: 8.5px; }
+  .alerta { background: rgba(198,216,52,0.18); border-left: 3px solid var(--amarelo); padding: 5px 8px; margin: 5px 0; border-radius: 0 3px 3px 0; }
+  .alerta p { margin: 0; font-size: 8.5px; }
+  .alerta strong { color: var(--verde); }
+  table { width: 100%; border-collapse: collapse; margin: 5px 0; font-size: 8px; }
+  th { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; padding: 4px 6px; text-align: left; }
+  td { padding: 3px 6px; border-bottom: 1px solid rgba(31,92,35,0.12); vertical-align: top; line-height: 1.4; color: #1a1a1a; }
+  tr:nth-child(even) td { background: rgba(31,92,35,0.04); }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 5px 0; }
+  .card { background: rgba(31,92,35,0.06); border: 1px solid rgba(31,92,35,0.15); border-radius: 4px; padding: 7px 8px; }
+  .card-title { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 11px; text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 3px; }
+  .card p { font-size: 8px; line-height: 1.5; }
+  .questao-header { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; padding: 4px 10px; border-radius: 3px 3px 0 0; display: flex; justify-content: space-between; align-items: center; }
+  .questao-header .fonte { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; color: var(--amarelo); letter-spacing: 0.5px; }
+  .questao-body { border: 1px solid rgba(31,92,35,0.2); border-top: none; border-radius: 0 0 3px 3px; padding: 7px 10px; margin-bottom: 7px; }
+  .questao-enunciado { font-size: 8.5px; line-height: 1.55; color: #111; margin-bottom: 5px; font-weight: 500; }
+  .alternativas { list-style: none; }
+  .alternativas li { font-size: 8px; line-height: 1.5; padding: 2px 0; color: #222; display: flex; gap: 5px; }
+  .alternativas li .letra { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: var(--verde); font-size: 9px; min-width: 10px; }
+  .alternativas li.correta .letra { color: var(--amarelo); }
+  .alternativas li.correta { background: rgba(198,216,52,0.15); border-left: 2px solid var(--amarelo); padding-left: 4px; }
+  .gabarito-box { background: var(--verde); border-radius: 4px; padding: 8px 12px; margin: 6px 0; }
+  .gabarito-box .gab-title { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+  .gabarito-box p { color: rgba(255,255,255,0.9); font-size: 8px; line-height: 1.55; }
+  .gabarito-box strong { color: var(--amarelo); }
+  .sintese-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-top: 6px; }
+  .sintese-item { background: rgba(31,92,35,0.07); border-left: 3px solid var(--verde); padding: 5px 7px; border-radius: 0 3px 3px 0; }
+  .sintese-item .si-label { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px; }
+  .sintese-item p { font-size: 7.5px; line-height: 1.5; }
+  ul.lista { padding-left: 14px; margin: 3px 0; }
+  ul.lista li { font-size: 8.5px; line-height: 1.55; color: #1a1a1a; margin-bottom: 1px; }
+  @media print { body { background: none; } .page { margin: 0; box-shadow: none; } }
+</style>
+</head>
+<body>
+
+<div class="page capa-page">
+  <div class="capa-header">
+    <div style="display:flex;align-items:center;gap:8px;"><svg width="34" height="34" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#1F5C23"/></svg><div><div class="marca">Elite Treinamentos</div><div class="tagline">Extensivo ENARE 2026</div></div></div>
+    <div style="text-align:right;"><div style="font-family:'Barlow Condensed',sans-serif;color:var(--verde);font-size:11px;letter-spacing:1px;text-transform:uppercase;">Bloco B5 · Aula 08</div><div style="font-family:'Space Grotesk',sans-serif;font-weight:300;color:#888;font-size:7.5px;letter-spacing:0.5px;">Farmácia</div></div>
+  </div>
+  <div class="capa-body">
+    <div class="capa-eyebrow">Bloco B5 · FARM-CLIN · Aula 08 de 22</div>
+    <div class="capa-titulo">Atenção <span>Farma-<br>cêu-<br>tica</span></div>
+    <div class="capa-subtitulo">Consenso 2012: conceito, objetivo, ciclo, etapas exclusivas,<br>PRMs, Farmácia Clínica vs AF e Cuidado Farmacêutico</div>
+    <div class="capa-badge-row">
+      <div class="capa-badge">FARM-CLIN ★★★</div>
+      <div class="capa-badge">Hepler &amp; Strand 1990</div>
+      <div class="capa-badge">PRMs · PCNE · Granada</div>
+      <div class="capa-badge">Cuidado Farmacêutico</div>
+    </div>
+    <div class="capa-divider"></div>
+    <div class="capa-topicos">
+      <div class="capa-topico"><div class="capa-topico-num">01</div><div class="capa-topico-txt">Origens: Hepler &amp; Strand, Consenso de Granada</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">02</div><div class="capa-topico-txt">Definição da AF e seus 4 objetivos centrais</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">03</div><div class="capa-topico-txt">PRMs: classificação Granada e PCNE</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">04</div><div class="capa-topico-txt">Etapas do método Dáder</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">05</div><div class="capa-topico-txt">Diferença: Farmácia Clínica vs AF</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">06</div><div class="capa-topico-txt">Cuidado Farmacêutico (CFF 2014 — termo atual)</div></div>
+    </div>
+  </div>
+  <div class="capa-footer-strip"><span>Extensivo ENARE 2026</span><span>Elite Treinamentos em Saúde</span><span>Página 1 de 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-CLIN</div><div class="aula-ref">Bloco B5 · Aula 08 · Fundamentos da AF</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Origem e Definição da Atenção Farmacêutica</div>
+    <p>Em <strong>1990</strong>, Hepler &amp; Strand publicaram o artigo seminal "Opportunities and responsibilities in pharmaceutical care", definindo o <em>pharmaceutical care</em>. A proposta era refundar a prática farmacêutica em uma <strong>filosofia de cuidado centrado no paciente</strong>, em ruptura com o modelo dispensacional puramente técnico. No Brasil, o <strong>Consenso Brasileiro de Atenção Farmacêutica (2002)</strong>, organizado pela OPAS, traduziu o modelo. A Resolução CFF 357/2001 e posteriormente o <em>Caderno Cuidado Farmacêutico na Atenção Básica (MS 2014)</em> consolidaram o termo "cuidado farmacêutico" como guarda-chuva atualizado.</p>
+
+    <div class="subsecao">Definição Operacional (Consenso 2002, OPAS-Brasil)</div>
+    <p>"Modelo de prática farmacêutica desenvolvida no contexto da Assistência Farmacêutica, que compreende atitudes, valores éticos, comportamentos, habilidades, compromissos e corresponsabilidades na <strong>prevenção de doenças, promoção e recuperação da saúde</strong>, de forma integrada à equipe de saúde. Implica a <em>interação direta do farmacêutico com o usuário</em>, visando à farmacoterapia racional e à obtenção de resultados definidos e mensuráveis voltados à melhoria da qualidade de vida".</p>
+
+    <div class="subsecao">4 Objetivos Centrais (Hepler &amp; Strand)</div>
+    <ul class="lista">
+      <li><strong>1. Curar uma doença</strong> — diagnóstico já estabelecido</li>
+      <li><strong>2. Reduzir/eliminar sintomas</strong> — manejo sintomático</li>
+      <li><strong>3. Lentificar/parar um processo patológico</strong> — controle de doença crônica</li>
+      <li><strong>4. Prevenir uma doença ou sintoma</strong> — profilaxia, imunização, mudanças de hábito</li>
+    </ul>
+    <p>A AF mede-se pelo <em>resultado clínico do paciente</em>, não pela quantidade de receitas dispensadas ou pelo volume de vendas.</p>
+
+    <div class="subsecao">Termos Correlatos e Relação Hierárquica</div>
+    <table>
+      <tr><th>Termo</th><th>Escopo</th></tr>
+      <tr><td><strong>Assistência Farmacêutica (PNAF, Res. CNS 338/2004)</strong></td><td>Política pública: seleção, programação, aquisição, armazenamento, distribuição, dispensação. Inclui AF como uma das atividades-fim</td></tr>
+      <tr><td>Farmácia Clínica (1960, EUA)</td><td>Prática hospitalar centrada no medicamento e em problemas relacionados (otimização farmacoterapêutica, validação de prescrição, monitorização de níveis séricos)</td></tr>
+      <tr><td><strong>Atenção Farmacêutica</strong> (Hepler &amp; Strand, 1990; Consenso 2002)</td><td>Modelo de prática centrada no <em>paciente</em>: identificação de PRMs, intervenção, seguimento; ambulatorial ou hospitalar</td></tr>
+      <tr><td><strong>Cuidado Farmacêutico</strong> (CFF, 2014)</td><td>Termo atual abrangente: inclui AF + Farmácia Clínica + prescrição + procedimentos clínicos (Res. 585/586/2013)</td></tr>
+    </table>
+
+    <div class="alerta">
+      <p><strong>Pegadinha FGV:</strong> Farmácia Clínica é orientada ao <em>medicamento e à intervenção pontual</em>; Atenção Farmacêutica é orientada ao <em>paciente em seguimento longitudinal</em>; Cuidado Farmacêutico é o conceito atual englobante. Assistência Farmacêutica = política pública, não modelo de cuidado.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-CLIN · Atenção Farmacêutica</span><span>Extensivo ENARE 2026</span><span class="pg">2 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-CLIN</div><div class="aula-ref">Bloco B5 · Aula 08 · PRMs</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Problemas Relacionados a Medicamentos (PRMs) — Classificação</div>
+
+    <p>O <strong>PRM</strong> é o evento ou circunstância da farmacoterapia que potencialmente compromete o desfecho clínico desejado pelo paciente. A identificação e resolução de PRMs é o cerne da AF.</p>
+
+    <div class="subsecao">Classificação de Granada (3ª revisão, 2007)</div>
+    <p>A 3ª revisão Granada introduz a distinção entre <em>PRM</em> (causa) e <em>RNM — Resultado Negativo associado à Medicação</em> (consequência clínica). PRM é evento; RNM é resultado mensurável.</p>
+    <table>
+      <tr><th>Categoria</th><th>Subcategoria — Granada</th></tr>
+      <tr><td rowspan="2"><strong>Necessidade</strong></td><td>Problema de saúde <em>não tratado</em> (paciente sofre por falta de medicamento)</td></tr>
+      <tr><td>Efeito de medicamento <em>desnecessário</em> (paciente usa medicamento sem indicação)</td></tr>
+      <tr><td rowspan="2"><strong>Efetividade</strong></td><td>Inefetividade <em>não quantitativa</em> (medicamento certo, mas sem efeito — adesão, biodisponibilidade)</td></tr>
+      <tr><td>Inefetividade <em>quantitativa</em> (subdose)</td></tr>
+      <tr><td rowspan="2"><strong>Segurança</strong></td><td>Insegurança <em>não quantitativa</em> (RAM idiossincrática)</td></tr>
+      <tr><td>Insegurança <em>quantitativa</em> (sobredose ou intoxicação)</td></tr>
+    </table>
+
+    <div class="subsecao">Classificação PCNE (Pharmaceutical Care Network Europe)</div>
+    <p>A PCNE V9.1 (2022) é a referência europeia. Estrutura em 3 domínios: <strong>P</strong>roblemas (P), <strong>C</strong>ausas (C) e <strong>I</strong>ntervenções (I). Cada PRM é codificado por código numérico hierárquico.</p>
+    <table>
+      <tr><th>Domínio</th><th>Códigos principais</th></tr>
+      <tr><td><strong>Problemas (P)</strong></td><td>P1 efetividade (P1.1 falha terapêutica completa, P1.2 efeito subótimo, P1.3 sintomas/doença não tratada); P2 segurança (RAM); P3 outros (custo, satisfação)</td></tr>
+      <tr><td><strong>Causas (C)</strong></td><td>C1 seleção do medicamento; C2 forma farmacêutica; C3 dose; C4 duração; C5 dispensação; C6 administração; C7 adesão; C8 paciente/psicológica; C9 transferência (transição cuidado)</td></tr>
+      <tr><td><strong>Intervenções (I)</strong></td><td>I0 sem intervenção; I1 ao prescritor (sugestão, troca, ajuste); I2 ao paciente (orientação, educação); I3 ao medicamento (mudança, dose, suspensão); I4 outra</td></tr>
+    </table>
+
+    <div class="subsecao">Exemplos Práticos de PRMs</div>
+    <ul class="lista">
+      <li><strong>Inefetividade quantitativa</strong>: paciente com HAS estágio 2 controlado apenas com hidroclorotiazida 12,5 mg → subdose; intervenção: aumentar para 25 mg ou associar IECA</li>
+      <li><strong>Insegurança não quantitativa</strong>: rash em uso de SMX-TMP → RAM tipo B; intervenção: suspender e substituir por alternativa, registrar alergia</li>
+      <li><strong>Necessidade — não tratado</strong>: paciente em AAS pós-IAM sem estatina → indicação clara não preenchida; intervenção: sugerir estatina de alta intensidade</li>
+      <li><strong>Adesão (C7)</strong>: idoso com Alzheimer em polifarmácia sem auxiliar; intervenção: reorganização em porta-comprimidos diário, envolver cuidador</li>
+      <li><strong>Transferência (C9)</strong>: paciente alta hospitalar sem prescrição clara dos novos medicamentos; reconciliação na alta é a intervenção</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Granada vs PCNE:</strong> Granada classifica por <em>tipo de problema</em> (necessidade/efetividade/segurança); PCNE separa explicitamente <em>problema, causa e intervenção</em>. ENARE pode pedir qualquer das duas — saber identificar PRM/RNM pelo contexto é o essencial. O Granada também distingue PRM (causa) de RNM (resultado).</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-CLIN · Atenção Farmacêutica</span><span>Extensivo ENARE 2026</span><span class="pg">3 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-CLIN</div><div class="aula-ref">Bloco B5 · Aula 08 · Método Dáder</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Método Dáder — Etapas do Seguimento Farmacoterapêutico</div>
+
+    <p>O <strong>Método Dáder</strong>, desenvolvido em Granada (Espanha) na década de 90 pelo Grupo de Investigação em Atenção Farmacêutica, é o protocolo mais utilizado em prova e prática brasileira. Estrutura o processo em <strong>7 etapas sequenciais e cíclicas</strong>.</p>
+
+    <table>
+      <tr><th>Etapa</th><th>Descrição</th></tr>
+      <tr><td><strong>1. Oferta do serviço</strong></td><td>Apresentação do farmacêutico, explicação do serviço, consentimento informado escrito ou registrado</td></tr>
+      <tr><td><strong>2. Entrevista farmacêutica inicial</strong></td><td>Coleta sistematizada: problemas de saúde, medicamentos em uso, adesão, hábitos. Documentação em ficha estruturada</td></tr>
+      <tr><td><strong>3. Estado de situação</strong></td><td>Síntese cruzada: problemas de saúde × medicamentos × parâmetros clínicos × resultados</td></tr>
+      <tr><td><strong>4. Estudo / fase de avaliação</strong></td><td>Análise da farmacoterapia: identificação de PRMs/RNMs; revisão da literatura; hierarquização</td></tr>
+      <tr><td><strong>5. Plano de ação</strong></td><td>Definição das intervenções a propor; priorização; pacto com o paciente</td></tr>
+      <tr><td><strong>6. Intervenção farmacêutica</strong></td><td>Execução: comunicação ao médico/paciente; educação; ajuste do plano</td></tr>
+      <tr><td><strong>7. Avaliação dos resultados</strong></td><td>Verificação dos desfechos; retorno à etapa de estudo se necessário (ciclo)</td></tr>
+    </table>
+
+    <div class="subsecao">Documentação Mínima — Ficha Dáder</div>
+    <ul class="lista">
+      <li>Dados sociodemográficos e contato</li>
+      <li>Hábitos (alcool, tabaco, dieta, exercício)</li>
+      <li>Alergias e RAMs prévias</li>
+      <li>Problemas de saúde (data de início, controle, sintomas)</li>
+      <li>Medicamentos em uso (prescritos, OTC, fitoterápicos): nome, dose, frequência, início, prescritor, adesão</li>
+      <li>Parâmetros (PA, glicemia, HbA1c, INR, etc.)</li>
+      <li>Avaliação do farmacêutico e plano de intervenções</li>
+      <li>Registros do seguimento por consulta</li>
+    </ul>
+
+    <div class="subsecao">Indicadores de Resultado em AF</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Indicadores Clínicos</div>
+        <p>Controle pressórico (% pacientes com PA &lt; 140/90); HbA1c (% com &lt; 7%); LDL-c (% no alvo); adesão ≥ 80% (Morisky-Green); redução de internações por DM/HAS; redução de hipoglicemia em DM.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Indicadores de Processo</div>
+        <p>Número de pacientes atendidos; PRMs identificados; intervenções aceitas pelo médico (%); taxa de seguimento concluído; satisfação do paciente; tempo médio por consulta.</p>
+      </div>
+    </div>
+
+    <div class="alerta">
+      <p><strong>Atribuição privativa:</strong> seguimento farmacoterapêutico estruturado é função do farmacêutico (Res. 585/2013). Em hospital, integra a rotina assistencial — todo paciente em polifarmácia, transição de cuidado, ou em fármaco de alto risco deve receber AF. Em ambulatório, ambulatórios específicos (anticoagulação, oncologia, geriatria) são modelos consolidados.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-CLIN · Atenção Farmacêutica</span><span>Extensivo ENARE 2026</span><span class="pg">4 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-CLIN</div><div class="aula-ref">Bloco B5 · Aula 08 · Cuidado Farmacêutico Atual</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Cuidado Farmacêutico no SUS — Operacionalização</div>
+
+    <p>O <strong>Caderno Cuidado Farmacêutico na Atenção Básica</strong> (MS, 2014) e a <em>Política Nacional de Promoção do Uso Racional de Medicamentos</em> consolidam, no Brasil, o cuidado farmacêutico como prática integrada à equipe da USF. O farmacêutico passa a atuar em <em>consulta individual</em>, atividades educativas em grupo, matriciamento e visita domiciliar.</p>
+
+    <div class="subsecao">Onde o Cuidado Farmacêutico Acontece</div>
+    <table>
+      <tr><th>Cenário</th><th>Práticas características</th></tr>
+      <tr><td>USF</td><td>Consultório farmacêutico; gestão de condição crônica (HAS/DM); educação em saúde; matriciamento da equipe</td></tr>
+      <tr><td>UPA / Pronto-atendimento</td><td>Validação rápida de prescrição; reconciliação de admissão; suporte a antimicrobianos; alta segura</td></tr>
+      <tr><td>Hospital</td><td>Farmácia clínica em UTI, oncologia, pediatria; reconciliação na admissão e alta; PGA; manejo de fármacos de alto risco</td></tr>
+      <tr><td>Ambulatórios especializados</td><td>Anticoagulação (TAO), antirretroviral, oncologia, transplante, oncoematologia, IC, DM, asma</td></tr>
+      <tr><td>Farmácia comunitária</td><td>AF; MIPs; cuidado domiciliar; rastreamento; orientação em condições agudas</td></tr>
+      <tr><td>Atenção domiciliar (SAD/Melhor em Casa)</td><td>Cuidado integrado a paciente domiciliar; ajustes; educação ao cuidador</td></tr>
+    </table>
+
+    <div class="subsecao">Procedimentos Clínicos do Farmacêutico (Res. CFF 654/2018)</div>
+    <ul class="lista">
+      <li>Aferição de pressão arterial</li>
+      <li>Verificação de glicemia capilar</li>
+      <li>Teste rápido (gravidez, infecção de garganta — pontual, dengue/COVID em protocolos)</li>
+      <li>Aferição de temperatura, FC, SatO₂</li>
+      <li>Vacinação na farmácia (em estabelecimento com sala adequada e regulamentação local)</li>
+      <li>Curativo de lesões superficiais</li>
+      <li>Educação sobre técnicas de aplicação (insulina, inaladores, autoinjetores GLP-1)</li>
+    </ul>
+
+    <div class="subsecao">Caso Padrão — AF em DM</div>
+    <p>Paciente de 56 anos, DM2 há 8 anos, HbA1c 8,3% em uso de metformina 850 mg 12/12h e glibenclamida 10 mg/dia. Apresenta episódios noturnos de tremor e sudorese — provável hipoglicemia. PA 138/88. Adesão refere "esquecer às vezes a glibenclamida da noite".</p>
+    <p><strong>Avaliação:</strong> múltiplos PRMs identificados — (1) insegurança quantitativa (glibenclamida em idoso com hipoglicemia noturna), (2) inefetividade quantitativa (HbA1c &gt; alvo apesar de dose plena), (3) baixa adesão (C7). <strong>Plano</strong>: (a) comunicação ao médico sugerindo troca da glibenclamida por gliclazida MR ou iSGLT-2 (DAPA-CKD); (b) educação sobre hipoglicemia noturna (lanche com proteína antes de dormir; ajuste de horário); (c) reorganização da posologia com porta-comprimidos diário; (d) reavaliação em 30 dias com nova glicemia/glicemia capilar diária e adesão. <strong>Documentar</strong> em prontuário + ficha Dáder. <strong>Retorno</strong> em 30 dias.</p>
+
+    <div class="alerta">
+      <p><strong>Atribuição privativa em AF:</strong> consulta com paciente em condição crônica é central no escopo do farmacêutico residente. O cuidado farmacêutico é tarefa-eixo do residente em saúde multiprofissional — diferentemente do farmacêutico técnico que só dispensa, o residente assume a função clínica em sua plenitude.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-CLIN · Atenção Farmacêutica</span><span>Extensivo ENARE 2026</span><span class="pg">5 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-CLIN</div><div class="aula-ref">Bloco B5 · Aula 08 · Resultados e Indicadores</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Evidências e Modelos de Pagamento</div>
+
+    <p>A AF tem corpo de evidências robusto. Revisões sistemáticas (Holland, Tully, Christensen et al.) mostram: <em>redução de internações hospitalares por reações adversas, redução de mortalidade em IC, melhora de adesão em DM/HAS, otimização da prescrição em geriatria</em>. No SUS, programas como o <em>Q-Farma</em> e o Cuidado Farmacêutico em Belo Horizonte demonstram impacto clínico mensurável.</p>
+
+    <div class="subsecao">Modelos de Pagamento e Sustentabilidade</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Pagamento por Serviço Farmacêutico</div>
+        <p>Modelo crescente no Brasil (privado): planos de saúde reembolsam consulta farmacêutica em algumas linhas de cuidado (oncologia, geriatria). No SUS, financiamento via PAB (Piso de Atenção Básica) + tetos estaduais; ainda não há código específico de procedimento ambulatorial farmacêutico no SUS Tabela.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Resultados em Clínica</div>
+        <p>Redução de eventos adversos evitáveis (até 50% em ambulatórios estruturados); melhora de HbA1c (0,5–1,0% médio); ↑ adesão Morisky; redução de readmissão hospitalar; redução de polifarmácia em idosos via desprescrição estruturada.</p>
+      </div>
+    </div>
+
+    <div class="subsecao">Cuidado Farmacêutico × COVID-19 / Pandemias</div>
+    <p>Durante a pandemia, o farmacêutico assumiu papel central em telefarmácia, dispensação remota, vacinação na farmácia, manejo de COVID leve em domicílio, fornecimento de informação técnica (combate à infodemia), apoio a politerapia em COVID prolongado. A Res. CFF 738/2023 atualizou a telefarmácia para regimes permanentes pós-pandemia.</p>
+
+    <div class="subsecao">Indicadores ANS — Linhas de Cuidado</div>
+    <ul class="lista">
+      <li>HAS controlada (PA &lt; 140/90 ou &lt; 130/80 em DM) em ≥ 60% dos pacientes acompanhados</li>
+      <li>DM2 com HbA1c &lt; 7% em ≥ 50% dos pacientes em seguimento</li>
+      <li>Adesão Morisky ≥ 80% em ≥ 70% dos pacientes</li>
+      <li>Redução de RAMs notificadas (intervenções farmacêuticas)</li>
+      <li>Cobertura vacinal em adultos &gt; 65 anos (gripe, pneumococo, herpes-zóster)</li>
+    </ul>
+
+    <div class="subsecao">Desafios à Implementação no SUS</div>
+    <ul class="lista">
+      <li><strong>Estrutura física:</strong> consultório farmacêutico (espaço próprio, computador, prontuário eletrônico) é exigência da Res. CFF 585/2013 — ainda escasso em muitas USFs</li>
+      <li><strong>Carga assistencial:</strong> 1 farmacêutico para 1.000+ pacientes nas USFs limita consultas individuais; matriciamento e atividade em grupo são soluções</li>
+      <li><strong>Reconhecimento profissional:</strong> integração com médicos e enfermeiros depende de protocolos institucionais e formação interprofissional</li>
+      <li><strong>Sistema de informação:</strong> prontuários eletrônicos com módulo farmacêutico ainda insuficientes na maioria dos serviços públicos</li>
+      <li><strong>Educação permanente:</strong> a complexidade do cuidado farmacêutico exige formação continuada — papel das residências e cursos de especialização</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Mensagem central:</strong> AF não é "ato burocrático adicional" — é mudança estrutural da prática. O residente que aprende AF na residência leva esse modelo para toda a vida profissional. O ENARE 2026 cobrará casos de aplicação direta — saber identificar o PRM, classificar, intervir e documentar é o que diferencia o farmacêutico clínico do dispensador.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-CLIN · Atenção Farmacêutica</span><span>Extensivo ENARE 2026</span><span class="pg">6 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-CLIN</div><div class="aula-ref">Bloco B5 · Aula 08 · Questões ENARE</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 01</span><span class="fonte">AF · Conceitos · NC: Compreensão</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Sobre os conceitos correlatos em Farmácia, é correto afirmar:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Atenção Farmacêutica e Assistência Farmacêutica são sinônimos.</span></li>
+        <li><span class="letra">B</span><span>Farmácia Clínica é prática <em>hospitalar exclusiva</em> e não pode ser realizada em ambiente ambulatorial.</span></li>
+        <li class="correta"><span class="letra">C</span><span>Cuidado Farmacêutico, conforme CFF 2014, é o termo abrangente que engloba a Atenção Farmacêutica, a Farmácia Clínica e os procedimentos clínicos privativos do farmacêutico.</span></li>
+        <li><span class="letra">D</span><span>Atenção Farmacêutica refere-se exclusivamente à dispensação de medicamentos com orientação técnica.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — C</div>
+      <p><strong>Por que C está correta:</strong> o CFF adotou em 2014 o termo <em>Cuidado Farmacêutico</em> como guarda-chuva, com base no Caderno MS-CFF de 2014. Engloba: AF (Hepler &amp; Strand, 1990; Consenso 2002), Farmácia Clínica (1960, EUA), prescrição farmacêutica (Res. 585/586/2013), procedimentos clínicos (Res. 654/2018), serviços farmacêuticos diretos (consulta, conciliação, seguimento, educação).</p>
+      <p><strong>Por que as outras erram:</strong> A — Assistência Farmacêutica é <em>política pública</em> (Res. CNS 338/2004) que estrutura todo o ciclo do medicamento; AF é modelo de prática específico · B — Farmácia Clínica nasce em hospital, mas hoje se realiza em qualquer cenário (ambulatórios, USF, domicílio) · D — AF é amplamente mais que dispensação; é seguimento estruturado centrado em PRMs e desfechos do paciente.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-CLIN · Atenção Farmacêutica</span><span>Extensivo ENARE 2026</span><span class="pg">7 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-CLIN</div><div class="aula-ref">Bloco B5 · Aula 08 · Questões ENARE</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 02</span><span class="fonte">PRM · Classificação · NC: Aplicação</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Idosa de 75 anos em uso de metoprolol 50 mg 12/12h há 5 anos para HAS apresenta-se com bradicardia (FC 48 bpm) e fadiga após ter passado a usar verapamil 80 mg 8/8h prescrito recentemente. Aplicando a classificação Granada 3ª revisão, qual é o PRM identificado?</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Necessidade — problema de saúde não tratado.</span></li>
+        <li><span class="letra">B</span><span>Efetividade — não quantitativa.</span></li>
+        <li class="correta"><span class="letra">C</span><span>Segurança — insegurança não quantitativa (interação farmacodinâmica entre verapamil e metoprolol = bradicardia/BAV).</span></li>
+        <li><span class="letra">D</span><span>Efetividade — quantitativa.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — C</div>
+      <p><strong>Por que C está correta:</strong> a associação de <em>BCC não-diidropiridínico</em> (verapamil ou diltiazem) com <em>betabloqueador</em> potencializa o bloqueio cronotrópico e dromotrópico — interação farmacodinâmica sinérgica com risco de bradicardia severa e BAV total. É <em>insegurança</em>, e <em>não quantitativa</em> (não é apenas excesso de dose; é o mecanismo combinado que produz o evento adverso). Classificação Granada → categoria Segurança, subcategoria não quantitativa. <strong>Intervenção PCNE</strong>: I1 ao prescritor — sugerir substituição do verapamil por BCC-DHP (anlodipino) ou reavaliação do metoprolol.</p>
+      <p><strong>Por que as outras erram:</strong> A — não há problema não tratado; HAS está tratada · B — a metoprolol pode estar inefetiva, mas o evento clínico atual é toxicidade, não falha · D — quantitativa seria dose excessiva isolada, não interação por mecanismo.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-CLIN · Atenção Farmacêutica</span><span>Extensivo ENARE 2026</span><span class="pg">8 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-CLIN</div><div class="aula-ref">Bloco B5 · Aula 08 · Gabarito Integrado</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 03</span><span class="fonte">Método Dáder · NC: Compreensão</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Em consultório farmacêutico de USF, ao iniciar seguimento de paciente em polifarmácia, qual é a sequência correta das 7 etapas do método Dáder?</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Estudo → entrevista → estado de situação → oferta do serviço → plano de ação → intervenção → avaliação.</span></li>
+        <li class="correta"><span class="letra">B</span><span>Oferta do serviço → entrevista farmacêutica → estado de situação → estudo → plano de ação → intervenção → avaliação dos resultados.</span></li>
+        <li><span class="letra">C</span><span>Entrevista → estudo → estado de situação → intervenção → oferta → plano → avaliação.</span></li>
+        <li><span class="letra">D</span><span>Plano → estudo → intervenção → estado de situação → oferta → entrevista → avaliação.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p>A sequência canônica do Método Dáder é: <strong>(1) Oferta do serviço</strong> com consentimento informado; <strong>(2) Entrevista farmacêutica</strong> para coletar dados; <strong>(3) Estado de situação</strong> integrando os dados; <strong>(4) Estudo</strong> para identificar PRMs/RNMs com base em literatura; <strong>(5) Plano de ação</strong> com pacto; <strong>(6) Intervenção farmacêutica</strong> efetiva; <strong>(7) Avaliação dos resultados</strong>, retornando ao estudo se necessário. O processo é cíclico — após a etapa 7, retorna-se ao estudo (4) para incorporar os novos dados.</p>
+    </div>
+
+    <div class="subsecao" style="margin-top:6px;">Gabarito Comentado — Análise Integrada</div>
+    <table>
+      <tr><th>Questão</th><th>Gabarito</th><th>Tema</th><th>Conceito-Chave</th></tr>
+      <tr><td><strong>01</strong></td><td><span class="destaque">C</span></td><td>Cuidado Farmacêutico</td><td>Termo guarda-chuva (CFF 2014): AF + Farmácia Clínica + procedimentos + prescrição</td></tr>
+      <tr><td><strong>02</strong></td><td><span class="destaque">C</span></td><td>PRM — Granada</td><td>Insegurança não quantitativa (interação farmacodinâmica BCC não-DHP + βB)</td></tr>
+      <tr><td><strong>03</strong></td><td><span class="destaque">B</span></td><td>Método Dáder — 7 etapas</td><td>Oferta → Entrevista → Estado → Estudo → Plano → Intervenção → Avaliação (cíclico)</td></tr>
+    </table>
+  </div>
+  <div class="footer"><span>FARM-CLIN · Atenção Farmacêutica</span><span>Extensivo ENARE 2026</span><span class="pg">9 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-CLIN</div><div class="aula-ref">Bloco B5 · Aula 08 · Síntese</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Síntese — Atenção Farmacêutica</div>
+    <div class="sintese-grid">
+      <div class="sintese-item">
+        <div class="si-label">Origens e Definição</div>
+        <p>Hepler &amp; Strand 1990; Consenso 2002 (OPAS-Brasil); CFF 2014 (termo Cuidado Farmacêutico). 4 objetivos: curar; reduzir sintoma; lentificar/parar processo; prevenir.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Termos Correlatos</div>
+        <p>Assistência Farmacêutica = política pública (Res. CNS 338/2004). Farmácia Clínica = origem hospitalar; foco no medicamento. AF = foco no paciente em seguimento. Cuidado = englobante.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">PRMs — Granada e PCNE</div>
+        <p>Granada: 3 categorias (Necessidade, Efetividade, Segurança); cada uma com 2 subcategorias. PCNE V9.1: Problema, Causa, Intervenção codificados. PRM (causa) × RNM (resultado).</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Método Dáder — 7 etapas</div>
+        <p>Oferta → Entrevista → Estado de Situação → Estudo → Plano → Intervenção → Avaliação. Cíclico. Ficha Dáder = registro estruturado obrigatório.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Cuidado Farmacêutico no SUS</div>
+        <p>Caderno MS 2014. Consulta farmacêutica em USF, hospital, ambulatórios especializados. Procedimentos clínicos (Res. 654/2018): PA, glicemia, vacina, curativo. Indicadores: HbA1c, adesão, RAMs.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Próxima Aula</div>
+        <p><strong>Aula 09 — CIM (Centro de Informação sobre Medicamentos).</strong> Portaria MS 3.916/1998, composição da equipe (cluster novo 2025 — 4q), condutas em interações (varfarina + AAS).</p>
+      </div>
+    </div>
+    <div class="alerta" style="margin-top:5px;">
+      <p><strong>Regra de ouro — AF no ENARE:</strong> identificar PRM pela categoria Granada (Necessidade/Efetividade/Segurança × quantitativa/não); aplicar Dáder em sequência correta; distinguir AF (modelo de prática), Cuidado (guarda-chuva), Assistência (política pública) e Farmácia Clínica (orientada ao medicamento).</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-CLIN · Atenção Farmacêutica</span><span>Extensivo ENARE 2026</span><span class="pg">10 / 10</span></div>
+</div>
+
+</body>
+</html>
