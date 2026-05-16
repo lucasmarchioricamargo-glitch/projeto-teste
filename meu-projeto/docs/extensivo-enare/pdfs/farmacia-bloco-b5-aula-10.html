@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Farmácia — Bloco B5 Aula 10 | Extensivo ENARE 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap');
+  :root { --creme: #F6F4ED; --verde: #1F5C23; --amarelo: #C6D834; --escuro: #0C2B0E; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #d0d0d0; font-family: 'Bricolage Grotesque', sans-serif; }
+  .page { width: 210mm; height: 297mm; background: var(--creme); margin: 0 auto 12px; position: relative; overflow: hidden; page-break-after: always; }
+  .header { background: var(--verde); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .header-logo { display: flex; align-items: center; gap: 8px; }
+  .header-logo svg { width: 32px; height: 32px; }
+  .header-brand { display: flex; flex-direction: column; line-height: 1; }
+  .header-brand .marca { font-family: 'Playfair Display', serif; font-style: italic; color: #fff; font-size: 13px; letter-spacing: 0.5px; }
+  .header-brand .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 7px; letter-spacing: 1.5px; text-transform: uppercase; }
+  .header-info { text-align: right; }
+  .header-info .disciplina { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
+  .header-info .aula-ref { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.7); font-size: 8px; letter-spacing: 0.5px; }
+  .footer { position: absolute; bottom: 0; left: 0; right: 0; background: var(--verde); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .footer span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.6); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .footer .pg { color: var(--amarelo); font-weight: 400; }
+  .body { padding: 14px 18px 30px; height: calc(297mm - 52px - 22px); overflow: hidden; }
+  .capa-page { background: var(--verde); }
+  .capa-header { background: var(--creme); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .capa-header .marca { font-family: 'Playfair Display', serif; font-style: italic; color: var(--verde); font-size: 14px; }
+  .capa-header .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--verde); font-size: 7.5px; letter-spacing: 2px; text-transform: uppercase; }
+  .capa-body { padding: 28px 24px 0; display: flex; flex-direction: column; height: calc(297mm - 52px - 22px); }
+  .capa-eyebrow { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; }
+  .capa-titulo { font-family: 'Barlow Condensed', sans-serif; color: #fff; font-size: 50px; line-height: 0.95; text-transform: uppercase; letter-spacing: -0.5px; margin-bottom: 6px; }
+  .capa-titulo span { color: var(--amarelo); }
+  .capa-subtitulo { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; color: rgba(255,255,255,0.65); font-size: 12px; letter-spacing: 0.3px; margin-bottom: 22px; line-height: 1.5; }
+  .capa-badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+  .capa-badge { background: rgba(198,216,52,0.15); border: 1px solid var(--amarelo); color: var(--amarelo); font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 8px; border-radius: 2px; }
+  .capa-divider { width: 40px; height: 3px; background: var(--amarelo); margin-bottom: 20px; }
+  .capa-topicos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .capa-topico { display: flex; align-items: flex-start; gap: 7px; }
+  .capa-topico-num { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 18px; line-height: 1; min-width: 18px; }
+  .capa-topico-txt { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 400; color: rgba(255,255,255,0.8); font-size: 9.5px; line-height: 1.4; }
+  .capa-footer-strip { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.25); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .capa-footer-strip span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.45); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .secao-titulo { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 18px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid var(--amarelo); padding-bottom: 3px; margin-bottom: 9px; line-height: 1; }
+  .subsecao { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.5px; margin: 7px 0 3px; }
+  p { font-size: 9px; line-height: 1.55; color: #1a1a1a; margin-bottom: 4px; font-weight: 400; }
+  .destaque { background: var(--amarelo); color: var(--escuro); font-weight: 600; padding: 1px 4px; border-radius: 2px; font-size: 8.5px; }
+  .alerta { background: rgba(198,216,52,0.18); border-left: 3px solid var(--amarelo); padding: 5px 8px; margin: 5px 0; border-radius: 0 3px 3px 0; }
+  .alerta p { margin: 0; font-size: 8.5px; }
+  .alerta strong { color: var(--verde); }
+  table { width: 100%; border-collapse: collapse; margin: 5px 0; font-size: 8px; }
+  th { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; padding: 4px 6px; text-align: left; }
+  td { padding: 3px 6px; border-bottom: 1px solid rgba(31,92,35,0.12); vertical-align: top; line-height: 1.4; color: #1a1a1a; }
+  tr:nth-child(even) td { background: rgba(31,92,35,0.04); }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 5px 0; }
+  .card { background: rgba(31,92,35,0.06); border: 1px solid rgba(31,92,35,0.15); border-radius: 4px; padding: 7px 8px; }
+  .card-title { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 11px; text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 3px; }
+  .card p { font-size: 8px; line-height: 1.5; }
+  .questao-header { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; padding: 4px 10px; border-radius: 3px 3px 0 0; display: flex; justify-content: space-between; align-items: center; }
+  .questao-header .fonte { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; color: var(--amarelo); letter-spacing: 0.5px; }
+  .questao-body { border: 1px solid rgba(31,92,35,0.2); border-top: none; border-radius: 0 0 3px 3px; padding: 7px 10px; margin-bottom: 7px; }
+  .questao-enunciado { font-size: 8.5px; line-height: 1.55; color: #111; margin-bottom: 5px; font-weight: 500; }
+  .alternativas { list-style: none; }
+  .alternativas li { font-size: 8px; line-height: 1.5; padding: 2px 0; color: #222; display: flex; gap: 5px; }
+  .alternativas li .letra { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: var(--verde); font-size: 9px; min-width: 10px; }
+  .alternativas li.correta .letra { color: var(--amarelo); }
+  .alternativas li.correta { background: rgba(198,216,52,0.15); border-left: 2px solid var(--amarelo); padding-left: 4px; }
+  .gabarito-box { background: var(--verde); border-radius: 4px; padding: 8px 12px; margin: 6px 0; }
+  .gabarito-box .gab-title { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+  .gabarito-box p { color: rgba(255,255,255,0.9); font-size: 8px; line-height: 1.55; }
+  .gabarito-box strong { color: var(--amarelo); }
+  .sintese-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-top: 6px; }
+  .sintese-item { background: rgba(31,92,35,0.07); border-left: 3px solid var(--verde); padding: 5px 7px; border-radius: 0 3px 3px 0; }
+  .sintese-item .si-label { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px; }
+  .sintese-item p { font-size: 7.5px; line-height: 1.5; }
+  ul.lista { padding-left: 14px; margin: 3px 0; }
+  ul.lista li { font-size: 8.5px; line-height: 1.55; color: #1a1a1a; margin-bottom: 1px; }
+  .formula { background: rgba(31,92,35,0.08); border: 1px dashed var(--verde); border-radius: 4px; padding: 5px 8px; margin: 4px 0; font-family: 'Space Grotesk', sans-serif; font-size: 8.5px; color: var(--escuro); }
+  .formula strong { color: var(--verde); }
+  @media print { body { background: none; } .page { margin: 0; box-shadow: none; } }
+</style>
+</head>
+<body>
+
+<div class="page capa-page">
+  <div class="capa-header">
+    <div style="display:flex;align-items:center;gap:8px;"><svg width="34" height="34" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#1F5C23"/></svg><div><div class="marca">Elite Treinamentos</div><div class="tagline">Extensivo ENARE 2026</div></div></div>
+    <div style="text-align:right;"><div style="font-family:'Barlow Condensed',sans-serif;color:var(--verde);font-size:11px;letter-spacing:1px;text-transform:uppercase;">Bloco B5 · Aula 10</div><div style="font-family:'Space Grotesk',sans-serif;font-weight:300;color:#888;font-size:7.5px;letter-spacing:0.5px;">Farmácia</div></div>
+  </div>
+  <div class="capa-body">
+    <div class="capa-eyebrow">Bloco B5 · FARM-FARMACOEPID · Aula 10 de 22</div>
+    <div class="capa-titulo">DDD <span>&<br>Estudos<br>de Utili-<br>zação</span></div>
+    <div class="capa-subtitulo">Farmacoepidemiologia I: ATC, DDD, DOT, padrões de consumo<br>e métodos de mensuração — cluster que dobrou em 2025</div>
+    <div class="capa-badge-row">
+      <div class="capa-badge">FARM-FARMACOEPID ★★★</div>
+      <div class="capa-badge">OMS · ATC/DDD</div>
+      <div class="capa-badge">DDD/1.000 hab/dia</div>
+      <div class="capa-badge">DUR · Drug Utilization</div>
+    </div>
+    <div class="capa-divider"></div>
+    <div class="capa-topicos">
+      <div class="capa-topico"><div class="capa-topico-num">01</div><div class="capa-topico-txt">Farmacoepidemiologia: campos e aplicações</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">02</div><div class="capa-topico-txt">ATC: classificação anatômica-terapêutica-química</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">03</div><div class="capa-topico-txt">DDD: conceito, cálculo e interpretação</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">04</div><div class="capa-topico-txt">DDD/1.000 hab/dia vs DDD/100 leitos-dia</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">05</div><div class="capa-topico-txt">Estudos de Utilização de Medicamentos (DUR)</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">06</div><div class="capa-topico-txt">Limitações da DDD e quando preferir DOT</div></div>
+    </div>
+  </div>
+  <div class="capa-footer-strip"><span>Extensivo ENARE 2026</span><span>Elite Treinamentos em Saúde</span><span>Página 1 de 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-FARMACOEPID</div><div class="aula-ref">Bloco B5 · Aula 10 · Farmacoepidemiologia</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Farmacoepidemiologia — Campos de Atuação</div>
+    <p>A <strong>farmacoepidemiologia</strong> é a disciplina que aplica métodos epidemiológicos para estudar o uso e os efeitos dos medicamentos em populações. Engloba farmacovigilância (efeitos adversos), estudos de utilização de medicamentos (DUR), avaliações de efetividade comparada (CER), farmacoeconomia e estudos de equidade no acesso. A FGV cobrou farmacoepidemiologia em ENARE 2024 (Q28, Q30, Q31, Q38) e expandiu em 2025 (Q34, Q35, Q36, Q88, Q95–Q98) — <em>tema que dobrou de tamanho</em>.</p>
+
+    <div class="subsecao">Definições Operacionais</div>
+    <table>
+      <tr><th>Campo</th><th>Foco</th></tr>
+      <tr><td><strong>Farmacovigilância</strong></td><td>Detecção e gestão de RAMs (sinal, RDC 406/2020, VigiMed) — Aula 17</td></tr>
+      <tr><td><strong>Estudos de Utilização de Medicamentos (DUR)</strong></td><td>Caracterização do consumo: quem usa, quanto, indicação, padrão temporal</td></tr>
+      <tr><td><strong>Efetividade Comparada</strong></td><td>Comparar fármacos do "mundo real" (post-marketing) — diferentemente da eficácia em ECR</td></tr>
+      <tr><td><strong>Farmacoeconomia</strong></td><td>Análise de custo-efetividade, custo-utilidade, custo-benefício (CONITEC no SUS)</td></tr>
+      <tr><td><strong>Estudos de Equidade</strong></td><td>Disparidades de acesso por região, renda, raça, sexo</td></tr>
+    </table>
+
+    <div class="subsecao">Desenhos Epidemiológicos em Farmacoepidemiologia</div>
+    <ul class="lista">
+      <li><strong>Ensaios clínicos randomizados (ECR)</strong>: gold standard para eficácia; restritos por critérios de inclusão</li>
+      <li><strong>Coorte (prospectiva e retrospectiva)</strong>: seguimento de expostos vs não-expostos; bom para RAMs raras com longo tempo de latência</li>
+      <li><strong>Caso-controle</strong>: comparação de "casos" (com evento) com "controles" (sem evento); eficiente para RAMs raras</li>
+      <li><strong>Transversal</strong>: snapshot de uso em um momento; útil para prevalência de uso</li>
+      <li><strong>Ecológico</strong>: comparação populacional (ex.: consumo de antimicrobianos × resistência regional)</li>
+      <li><strong>Estudos pragmáticos</strong>: ECR com critérios amplos, refletindo prática real</li>
+    </ul>
+
+    <div class="subsecao">Importância Para a Residência</div>
+    <p>O residente em farmácia atua em ambiente onde a farmacoepidemiologia é base para decisões: <em>seleção de fármacos para o formulário hospitalar</em>, <em>auditoria de uso de antimicrobianos (PGA)</em>, <em>avaliação de protocolos institucionais</em>. Saber medir consumo (DDD, DOT) e interpretar estudos (revisão sistemática, coorte) é habilidade prática diária.</p>
+
+    <div class="alerta">
+      <p><strong>Tendência ENARE 2025–2026:</strong> a FGV expandiu o tema com aprofundamento metodológico — PICO, coorte retrospectiva para RAMs, estimativa de prevalência. Não basta "saber o que é DDD" — é preciso interpretar resultados e identificar adequação metodológica.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-FARMACOEPID · DDD</span><span>Extensivo ENARE 2026</span><span class="pg">2 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-FARMACOEPID</div><div class="aula-ref">Bloco B5 · Aula 10 · Sistema ATC</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Sistema ATC — Classificação Anatômica, Terapêutica e Química</div>
+    <p>O <strong>ATC (Anatomical Therapeutic Chemical Classification System)</strong>, criado e mantido pelo <strong>WHO Collaborating Centre for Drug Statistics Methodology (Oslo)</strong>, classifica medicamentos em <em>5 níveis hierárquicos</em>. É a base de qualquer estudo internacional de consumo de medicamentos.</p>
+
+    <div class="subsecao">Estrutura dos 5 Níveis</div>
+    <table>
+      <tr><th>Nível</th><th>Descrição</th><th>Exemplo (digoxina)</th></tr>
+      <tr><td>1º</td><td>Grupo anatômico principal (1 letra)</td><td><strong>C</strong> — Sistema cardiovascular</td></tr>
+      <tr><td>2º</td><td>Subgrupo terapêutico (2 dígitos)</td><td><strong>C01</strong> — Terapia cardíaca</td></tr>
+      <tr><td>3º</td><td>Subgrupo farmacológico (1 letra)</td><td><strong>C01A</strong> — Glicosídeos cardíacos</td></tr>
+      <tr><td>4º</td><td>Subgrupo químico (1 letra)</td><td><strong>C01AA</strong> — Glicosídeos digitálicos</td></tr>
+      <tr><td>5º</td><td>Substância química específica (2 dígitos)</td><td><strong>C01AA05</strong> — Digoxina</td></tr>
+    </table>
+
+    <div class="subsecao">Mais Exemplos</div>
+    <ul class="lista">
+      <li><strong>A10BA02</strong> — Metformina (A = Sistema digestivo e metabolismo; 10 = Antidiabéticos; B = Antidiabéticos não-insulínicos; A = Biguanidas; 02 = Metformina)</li>
+      <li><strong>C09AA02</strong> — Enalapril (C = Cardiovascular; 09 = SRAA; A = IECA; A = IECA simples; 02 = Enalapril)</li>
+      <li><strong>J01DD04</strong> — Ceftriaxona (J = Anti-infecciosos sistêmicos; 01 = Antibacterianos; D = Outros β-lactâmicos; D = Cefalosporinas 3ª geração; 04 = Ceftriaxona)</li>
+      <li><strong>N06AB06</strong> — Sertralina (N = Sistema nervoso; 06 = Psicoanalépticos; A = Antidepressivos; B = ISRS; 06 = Sertralina)</li>
+    </ul>
+
+    <div class="subsecao">14 Grupos Anatômicos Principais (1º Nível)</div>
+    <table>
+      <tr><th>Letra</th><th>Sistema</th></tr>
+      <tr><td>A</td><td>Aparelho digestivo e metabolismo</td></tr>
+      <tr><td>B</td><td>Sangue e órgãos hematopoiéticos</td></tr>
+      <tr><td>C</td><td>Sistema cardiovascular</td></tr>
+      <tr><td>D</td><td>Dermatológicos</td></tr>
+      <tr><td>G</td><td>Sistema geniturinário e hormônios sexuais</td></tr>
+      <tr><td>H</td><td>Preparações hormonais sistêmicas (excluindo sexuais e insulinas)</td></tr>
+      <tr><td>J</td><td>Anti-infecciosos sistêmicos</td></tr>
+      <tr><td>L</td><td>Antineoplásicos e imunomoduladores</td></tr>
+      <tr><td>M</td><td>Sistema musculoesquelético</td></tr>
+      <tr><td>N</td><td>Sistema nervoso</td></tr>
+      <tr><td>P</td><td>Antiparasitários, inseticidas, repelentes</td></tr>
+      <tr><td>R</td><td>Sistema respiratório</td></tr>
+      <tr><td>S</td><td>Órgãos sensoriais</td></tr>
+      <tr><td>V</td><td>Vários</td></tr>
+    </table>
+
+    <div class="alerta">
+      <p><strong>Por que importa:</strong> ATC permite agregar dados de consumo entre instituições, países e ao longo do tempo. Sem ATC, comparar "uso de IECA na Suécia × no Brasil" seria impossível. Toda métrica DDD é referenciada ao código ATC do fármaco.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-FARMACOEPID · DDD</span><span>Extensivo ENARE 2026</span><span class="pg">3 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-FARMACOEPID</div><div class="aula-ref">Bloco B5 · Aula 10 · DDD</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">DDD — Dose Diária Definida</div>
+
+    <p>A <strong>DDD (Defined Daily Dose)</strong> é a <em>dose diária presumida de manutenção</em> para a <em>indicação principal</em> em <em>adultos</em>, definida pelo WHO Collaborating Centre for Drug Statistics Methodology. <strong>Não é dose recomendada</strong> — é unidade de medida internacional para fins estatísticos.</p>
+
+    <div class="subsecao">Definição Operacional (OMS)</div>
+    <div class="formula">
+      DDD = dose diária <strong>presumida</strong> de manutenção, para a <strong>indicação principal</strong>, em <strong>adultos de 70 kg</strong>.<br>
+      Cada DDD é fixada por substância e por via de administração; é <strong>arbitrária mas internacionalmente padronizada</strong>.
+    </div>
+
+    <div class="subsecao">Exemplos de DDDs Internacionais</div>
+    <table>
+      <tr><th>Fármaco</th><th>ATC</th><th>DDD (g/dia)</th><th>Via</th></tr>
+      <tr><td>Amoxicilina</td><td>J01CA04</td><td>1 g</td><td>VO/IV</td></tr>
+      <tr><td>Ceftriaxona</td><td>J01DD04</td><td>2 g</td><td>IV/IM</td></tr>
+      <tr><td>Ciprofloxacino</td><td>J01MA02</td><td>1 g</td><td>VO; 0,8 g IV</td></tr>
+      <tr><td>Meropenem</td><td>J01DH02</td><td>3 g</td><td>IV</td></tr>
+      <tr><td>Vancomicina</td><td>J01XA01</td><td>2 g</td><td>IV</td></tr>
+      <tr><td>Metformina</td><td>A10BA02</td><td>2 g</td><td>VO</td></tr>
+      <tr><td>Enalapril</td><td>C09AA02</td><td>10 mg</td><td>VO</td></tr>
+      <tr><td>Sinvastatina</td><td>C10AA01</td><td>30 mg</td><td>VO</td></tr>
+      <tr><td>Sertralina</td><td>N06AB06</td><td>50 mg</td><td>VO</td></tr>
+    </table>
+
+    <div class="subsecao">Cálculo da DDD em Estudos de Consumo</div>
+    <p>Para uma dada substância:</p>
+    <div class="formula">
+      <strong>Total de DDDs = Quantidade total consumida (em mg ou g) ÷ DDD definida pela OMS</strong>
+    </div>
+    <p>Para normalizar por população e tempo:</p>
+    <div class="formula">
+      <strong>DDD/1.000 habitantes/dia</strong> = (Total de DDDs × 1.000) ÷ (população × dias do período)<br>
+      <strong>DDD/100 leitos-dia</strong> = (Total de DDDs × 100) ÷ (n° pacientes-dia no período)
+    </div>
+
+    <div class="subsecao">Exemplo de Aplicação</div>
+    <p>Um hospital com 200 leitos consumiu 6.000 g de ceftriaxona em 30 dias. Pacientes-dia totais = 5.500.</p>
+    <ul class="lista">
+      <li>Total de DDDs = 6.000 g ÷ 2 g (DDD ceftriaxona) = <strong>3.000 DDDs</strong></li>
+      <li>DDD/100 leitos-dia = (3.000 × 100) ÷ 5.500 = <strong>54,5 DDDs/100 leitos-dia</strong></li>
+    </ul>
+    <p>Interpretação: durante o período, foi como se cada 100 leitos tivessem 54,5 pacientes recebendo a "dose padrão" de ceftriaxona por dia. Esse valor pode ser comparado com outros hospitais semelhantes para identificar uso excessivo ou insuficiente.</p>
+
+    <div class="subsecao">DDD Ambulatorial — Exemplo</div>
+    <p>Em estudo de utilização ambulatorial, "87 DDD de antidepressivos/1.000 hab/dia" em uma região significa que <em>8,7% da população adulta tomam, em média, uma dose padrão diária do fármaco</em>. Esse indicador é muito utilizado em comparações OECD e relatórios de saúde pública.</p>
+
+    <div class="alerta">
+      <p><strong>Limitações da DDD:</strong> (a) é arbitrária; não corresponde necessariamente à dose prescrita; (b) subestima em pediatria, idoso polimedicado e ajuste renal; (c) pouco sensível em mudanças posológicas dentro da mesma classe; (d) não captura adesão real. Em hospital, a DOT (days of therapy) é mais fiel ao tempo de exposição.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-FARMACOEPID · DDD</span><span>Extensivo ENARE 2026</span><span class="pg">4 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-FARMACOEPID</div><div class="aula-ref">Bloco B5 · Aula 10 · Estudos DUR</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Estudos de Utilização de Medicamentos (DUR)</div>
+
+    <p>Os <strong>estudos de utilização de medicamentos</strong> (Drug Utilization Research — DUR ou Drug Utilization Studies — DUS) descrevem o uso da farmacoterapia em uma população definida. A OMS define DUR como "<em>marketing, distribuição, prescrição e uso de medicamentos em uma sociedade, com particular ênfase nas consequências médicas, sociais e econômicas</em>". O ENARE 2024 (Q28, Q30, Q31) e 2025 (Q88, Q95) cobraram explicitamente conceitos e tipos.</p>
+
+    <div class="subsecao">Tipos de Estudos DUR (Classificação OMS)</div>
+    <table>
+      <tr><th>Tipo</th><th>Pergunta</th></tr>
+      <tr><td><strong>1. Quantitativo descritivo</strong></td><td>Quanto se usa? Padrão de consumo (DDD/1.000 hab/dia)</td></tr>
+      <tr><td><strong>2. Qualitativo</strong></td><td>Como se usa? Indicações, posologia adequada, duração de tratamento</td></tr>
+      <tr><td><strong>3. De prescrição</strong></td><td>Quem prescreve? Especialidade, perfil demográfico do prescritor</td></tr>
+      <tr><td><strong>4. Indicação-prescrição</strong></td><td>Para quê se prescreve? Adequação à indicação clínica</td></tr>
+      <tr><td><strong>5. Prescrição-indicação</strong></td><td>Quais fármacos são usados em uma dada doença?</td></tr>
+      <tr><td><strong>6. Consequências práticas (uso e desfechos)</strong></td><td>Quais resultados clínicos? RAM, eficácia em "mundo real", adesão</td></tr>
+    </table>
+
+    <div class="subsecao">Aplicações Práticas</div>
+    <ul class="lista">
+      <li><strong>Auditoria de antimicrobianos:</strong> base do PGA — identificar padrão de uso indevido (ex.: cefalosporina de 3ª geração em ITU não complicada)</li>
+      <li><strong>Política de medicamentos:</strong> mapear consumo em rede para subsidiar elaboração de listas (RENAME, REMUME)</li>
+      <li><strong>Identificação de problemas terapêuticos:</strong> uso prolongado de IBP, BZD crônico em idoso, polifarmácia</li>
+      <li><strong>Equidade de acesso:</strong> comparar consumo entre regiões/SES para detectar disparidades</li>
+      <li><strong>Avaliação pós-intervenção:</strong> medir impacto de intervenções educacionais ou regulatórias (ex.: queda de uso de antibiótico após campanha)</li>
+    </ul>
+
+    <div class="subsecao">Desenho Metodológico de um Estudo DUR</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Pergunta + Pop. Estudada</div>
+        <p>Definir clara e operacionalmente: qual fármaco/classe? Qual população? Quais critérios de inclusão/exclusão? Período de coleta? Setting (USF, hospital, comunidade)?</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Fonte de Dados</div>
+        <p>Prontuário eletrônico; sistema de gestão de medicamentos (SUS-Hórus, Conecte SUS, SISCEAF); SNGPC; bases nacionais (DATASUS); ANS (saúde suplementar); pesquisa primária por entrevista.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Indicadores</div>
+        <p>DDD/1.000 hab/dia; DOT/1.000 pacientes-dia; prevalência de uso; razão de DDD entre fármacos da mesma classe; adesão (proporção de dias cobertos — PDC); custo per capita.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Análise + Comparação</div>
+        <p>Comparar com benchmark institucional, regional, internacional. Análise temporal (séries históricas). Estratificação por faixa etária, sexo, comorbidade. Interpretação contextualizada.</p>
+      </div>
+    </div>
+
+    <div class="alerta">
+      <p><strong>Mensagem do residente:</strong> a residência farmacêutica é momento ideal para conduzir estudos DUR de pequeno porte na própria unidade — antibioticoterapia no Pronto-atendimento, uso de IBP na enfermaria, prescrição de BZD na USF. São estudos com baixo custo e alto impacto institucional, frequentemente publicáveis e elegíveis a apresentação em congressos.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-FARMACOEPID · DDD</span><span>Extensivo ENARE 2026</span><span class="pg">5 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-FARMACOEPID</div><div class="aula-ref">Bloco B5 · Aula 10 · DDD vs DOT</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">DDD vs DOT — Qual Métrica Usar?</div>
+
+    <p>A escolha entre <strong>DDD e DOT</strong> é tema de prova: <em>cada métrica responde a uma pergunta diferente</em>.</p>
+
+    <table>
+      <tr><th>Critério</th><th>DDD</th><th>DOT</th></tr>
+      <tr><td>O que mede</td><td>Dose total consumida ÷ dose padrão</td><td>Número de dias em que houve administração</td></tr>
+      <tr><td>Unidade típica</td><td>DDDs/1.000 hab/dia (ambulatorial); DDDs/100 leitos-dia (hospitalar)</td><td>DOTs/1.000 pacientes-dia</td></tr>
+      <tr><td>Sensibilidade a ajustes</td><td>Subestima em redução de dose (mantém dias, mas reduz mg total)</td><td>Insensível à dose; conta apenas o dia</td></tr>
+      <tr><td>Pediatria</td><td>Inadequada (subestima)</td><td>Adequada</td></tr>
+      <tr><td>Comparação internacional</td><td>Excelente (padrão OMS)</td><td>Variável (sem padrão internacional</td></tr>
+      <tr><td>Stewardship hospitalar</td><td>Suplementar</td><td>Preferida pela CDC/IDSA</td></tr>
+    </table>
+
+    <div class="subsecao">Quando Cada Uma é Preferida</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Use DDD</div>
+        <p>Comparação <em>entre instituições, regiões, países</em>. Estudos populacionais (ambulatoriais). Comparação histórica longa. Avaliação de uso global de uma classe (ex.: consumo de antidepressivos por município).</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Use DOT</div>
+        <p>Hospital — especialmente UTI. Pediatria. Stewardship de antimicrobianos. Quando há heterogeneidade de doses (ajuste renal, dose escalonada). Avaliação de tempo de exposição (correlação com resistência, IRAS).</p>
+      </div>
+    </div>
+
+    <div class="subsecao">Outros Indicadores Relacionados</div>
+    <ul class="lista">
+      <li><strong>LOT (Length of Therapy)</strong>: número de dias <em>únicos</em> de qualquer antimicrobiano, mesmo combinado. Útil em terapia múltipla</li>
+      <li><strong>Cobertura PDC (Proportion of Days Covered)</strong>: indicador de adesão em condição crônica</li>
+      <li><strong>MPR (Medication Possession Ratio)</strong>: razão de posse de medicamento; similar ao PDC</li>
+      <li><strong>Razão de uso entre classes</strong>: ex.: razão de cefalosporina de 3ª/total — &gt; 30% sugere uso excessivo</li>
+      <li><strong>Custo por DDD</strong>: indicador farmacoeconômico</li>
+    </ul>
+
+    <div class="subsecao">Exemplo Comparativo</div>
+    <p>UTI com 30 leitos. Vancomicina foi prescrita em 12 pacientes durante 30 dias, com média de 6 dias por paciente. Doses heterogêneas devido a ajustes renais. Total consumido: 380 g.</p>
+    <ul class="lista">
+      <li><strong>Total DDDs vanco</strong> = 380 ÷ 2 g = 190 DDDs</li>
+      <li><strong>Pacientes-dia</strong> = 30 leitos × 30 dias = 900 pacientes-dia</li>
+      <li><strong>DDD/100 leitos-dia</strong> = (190 × 100) ÷ 900 = <strong>21,1</strong></li>
+      <li><strong>DOTs</strong> = 12 pacientes × 6 dias = 72 dias de terapia</li>
+      <li><strong>DOT/1.000 pacientes-dia</strong> = (72 × 1.000) ÷ 900 = <strong>80</strong></li>
+    </ul>
+    <p>Em PGA hospitalar, o indicador mais utilizado seria DOT (80 DOTs/1.000 pacientes-dia) — refletindo melhor o tempo de exposição da população.</p>
+
+    <div class="alerta">
+      <p><strong>Tendência atual:</strong> DOT é a métrica recomendada em <em>National Healthcare Safety Network (NHSN/CDC)</em> para reportar uso de antimicrobianos hospitalares (Antimicrobial Use Option). A DDD continua relevante em comparação internacional. Use as duas em complementaridade.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-FARMACOEPID · DDD</span><span>Extensivo ENARE 2026</span><span class="pg">6 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-FARMACOEPID</div><div class="aula-ref">Bloco B5 · Aula 10 · Questões ENARE</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 01</span><span class="fonte">DDD · Cálculo · NC: Aplicação</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Em hospital de 200 leitos, o farmacêutico responsável pelo PGA registrou consumo de 8.000 g de ceftriaxona (DDD OMS = 2 g/dia) durante o mês de março, com total de 5.000 pacientes-dia. Qual é o consumo expresso em DDD/100 leitos-dia?</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>40 DDD/100 leitos-dia.</span></li>
+        <li><span class="letra">B</span><span>60 DDD/100 leitos-dia.</span></li>
+        <li class="correta"><span class="letra">C</span><span>80 DDD/100 leitos-dia.</span></li>
+        <li><span class="letra">D</span><span>160 DDD/100 leitos-dia.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — C</div>
+      <p><strong>Cálculo passo a passo:</strong></p>
+      <p>• Total de DDDs = 8.000 g ÷ 2 g/DDD = <strong>4.000 DDDs</strong>.<br>
+      • DDD/100 leitos-dia = (4.000 × 100) ÷ 5.000 pacientes-dia = <strong>80</strong>.</p>
+      <p>Interpretação: durante março, foi como se 80 a cada 100 pacientes-dia tivessem recebido a dose padrão de ceftriaxona por dia. Esse valor pode ser comparado com benchmarks nacionais (RDC ANVISA — programa nacional de monitoramento) e com outros hospitais de mesmo porte para identificar uso excessivo. Em hospital terciário, valores tipicamente situam-se entre 15–40 DDD/100 leitos-dia para ceftriaxona; 80 representa consumo elevado.</p>
+      <p><strong>Por que as outras erram:</strong> A (40) — usaria 1.000 pacientes-dia como divisor por erro · B (60) — não corresponde a nenhuma combinação correta · D (160) — dobraria o numerador por erro.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-FARMACOEPID · DDD</span><span>Extensivo ENARE 2026</span><span class="pg">7 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-FARMACOEPID</div><div class="aula-ref">Bloco B5 · Aula 10 · Questões ENARE</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 02</span><span class="fonte">DDD vs DOT · NC: Análise</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Sobre as métricas DDD (Defined Daily Dose) e DOT (Days of Therapy), no contexto de stewardship antimicrobiano hospitalar, assinale a alternativa CORRETA:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>DDD é a métrica preferida em pediatria pois inclui ajuste por peso corporal.</span></li>
+        <li class="correta"><span class="letra">B</span><span>DOT contabiliza o número de dias em que o paciente recebeu pelo menos uma dose do antimicrobiano e é menos sensível a heterogeneidade de doses (ajustes por função renal); é a métrica preferida pela CDC/IDSA em hospitais.</span></li>
+        <li><span class="letra">C</span><span>DDD e DOT são sinônimos e podem ser usadas indistintamente.</span></li>
+        <li><span class="letra">D</span><span>DOT é a métrica padrão da OMS para comparação internacional.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> a DOT conta <em>dias de exposição</em> independentemente da dose. Em UTI com ajustes posológicos frequentes (renais, pediátricos), a DOT é mais fiel ao tempo de exposição real, que é o parâmetro relevante para pressão seletiva (resistência) e para IRAS. CDC/IDSA recomendam DOT como métrica primária em programas de stewardship hospitalar.</p>
+      <p><strong>Por que as outras erram:</strong> A — DDD subestima em pediatria; é DOT que é preferida em pediatria · C — não são sinônimos; medem coisas diferentes · D — DDD (não DOT) é padrão internacional para comparação populacional (OMS); DOT é padrão CDC para hospitais nos EUA.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-FARMACOEPID · DDD</span><span>Extensivo ENARE 2026</span><span class="pg">8 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-FARMACOEPID</div><div class="aula-ref">Bloco B5 · Aula 10 · Gabarito Integrado</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 03</span><span class="fonte">DUR · Tipos · NC: Compreensão</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Farmacêutico residente conduzirá estudo no hospital para responder à pergunta: "Em pacientes com pneumonia adquirida no hospital atendidos no último ano, quais classes de antimicrobianos foram efetivamente utilizadas e em qual proporção?". Esse desenho caracteriza-se como estudo de utilização de medicamentos do tipo:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Quantitativo descritivo apenas.</span></li>
+        <li class="correta"><span class="letra">B</span><span>Prescrição-indicação (parte de uma doença/condição e investiga quais fármacos são utilizados).</span></li>
+        <li><span class="letra">C</span><span>Indicação-prescrição (parte de um fármaco e investiga em quais doenças ele é usado).</span></li>
+        <li><span class="letra">D</span><span>Consequências práticas (uso e desfechos clínicos).</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> a OMS classifica os estudos DUR em 6 categorias. O <em>prescrição-indicação</em> parte de uma <em>doença/condição</em> (pneumonia hospitalar) e investiga <em>quais fármacos foram usados</em> e em que proporção. Útil para auditar adequação a guidelines (ex.: cobertura adequada de patógenos hospitalares, descalonamento conforme cultura).</p>
+      <p><strong>Por que as outras erram:</strong> A — quantitativo descritivo mede consumo global (DDD/1.000 hab/dia), sem necessariamente vincular a indicação específica · C — indicação-prescrição é o oposto: parte do <em>fármaco</em> e investiga em <em>quais doenças</em> ele foi prescrito (ex.: para quais condições omeprazol foi prescrito) · D — consequências práticas requer também desfechos clínicos (cura, RAM, mortalidade), não só uso.</p>
+    </div>
+
+    <div class="subsecao" style="margin-top:6px;">Gabarito Comentado — Análise Integrada</div>
+    <table>
+      <tr><th>Questão</th><th>Gabarito</th><th>Tema</th><th>Conceito-Chave</th></tr>
+      <tr><td><strong>01</strong></td><td><span class="destaque">C</span></td><td>DDD/100 leitos-dia</td><td>(g consumidas ÷ DDD) × 100 ÷ pacientes-dia = 80</td></tr>
+      <tr><td><strong>02</strong></td><td><span class="destaque">B</span></td><td>DDD vs DOT</td><td>DOT mede tempo (preferida em hospital); DDD mede dose-equivalente (padrão internacional)</td></tr>
+      <tr><td><strong>03</strong></td><td><span class="destaque">B</span></td><td>Tipos DUR (OMS)</td><td>Prescrição-indicação: parte da doença → investiga fármacos usados</td></tr>
+    </table>
+  </div>
+  <div class="footer"><span>FARM-FARMACOEPID · DDD</span><span>Extensivo ENARE 2026</span><span class="pg">9 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-FARMACOEPID</div><div class="aula-ref">Bloco B5 · Aula 10 · Síntese</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Síntese — DDD e Estudos de Utilização</div>
+    <div class="sintese-grid">
+      <div class="sintese-item">
+        <div class="si-label">Farmacoepidemiologia</div>
+        <p>Aplicação de métodos epidemiológicos ao estudo do uso e efeitos de medicamentos. Engloba farmacovigilância, DUR, efetividade comparada, farmacoeconomia, equidade. Desenhos: ECR, coorte, caso-controle, transversal, ecológico.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">ATC (OMS Oslo)</div>
+        <p>5 níveis hierárquicos: anatômico (1 letra) → subgrupo terapêutico (2 dígitos) → farmacológico (1 letra) → químico (1 letra) → substância (2 dígitos). 14 grupos principais (A, B, C, D, G, H, J, L, M, N, P, R, S, V). Ex.: C01AA05 = digoxina.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">DDD — Conceito</div>
+        <p>Dose diária presumida de manutenção para indicação principal em adulto de 70 kg. Não é dose recomendada; é unidade estatística internacional. Cada DDD é fixada por substância e via.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">DDD — Cálculo</div>
+        <p>Total DDDs = quantidade consumida (g) ÷ DDD da OMS. DDD/1.000 hab/dia = (DDDs × 1.000) ÷ (pop × dias). DDD/100 leitos-dia = (DDDs × 100) ÷ pacientes-dia.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">DUR — Tipos</div>
+        <p>1. Quantitativo descritivo; 2. Qualitativo; 3. De prescrição; 4. Indicação-prescrição; 5. Prescrição-indicação; 6. Consequências práticas (uso + desfecho). Definição operacional pela OMS.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Próxima Aula</div>
+        <p><strong>Aula 11 — Farmacoepidemiologia II: Métodos e MBE.</strong> PICO, estudos de coorte para RAMs, revisão sistemática, estimativa de prevalência, hierarquia de evidência GRADE.</p>
+      </div>
+    </div>
+    <div class="alerta" style="margin-top:5px;">
+      <p><strong>Regra de ouro — DDD no ENARE:</strong> DDD = unidade arbitrária para fins estatísticos (não é dose recomendada). Cálculo em DDD/100 leitos-dia para hospital; DDD/1.000 hab/dia para ambulatório. ATC = 5 níveis hierárquicos. DOT é a preferida em PGA hospitalar (CDC/IDSA). DUR tem 6 tipos OMS — distinguir prescrição-indicação (parte da doença) de indicação-prescrição (parte do fármaco).</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-FARMACOEPID · DDD</span><span>Extensivo ENARE 2026</span><span class="pg">10 / 10</span></div>
+</div>
+
+</body>
+</html>
