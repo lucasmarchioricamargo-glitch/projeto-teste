@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Farmácia — Bloco B5 Aula 22 | Extensivo ENARE 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap');
+  :root { --creme: #F6F4ED; --verde: #1F5C23; --amarelo: #C6D834; --escuro: #0C2B0E; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #d0d0d0; font-family: 'Bricolage Grotesque', sans-serif; }
+  .page { width: 210mm; height: 297mm; background: var(--creme); margin: 0 auto 12px; position: relative; overflow: hidden; page-break-after: always; }
+  .header { background: var(--verde); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .header-logo { display: flex; align-items: center; gap: 8px; }
+  .header-logo svg { width: 32px; height: 32px; }
+  .header-brand { display: flex; flex-direction: column; line-height: 1; }
+  .header-brand .marca { font-family: 'Playfair Display', serif; font-style: italic; color: #fff; font-size: 13px; letter-spacing: 0.5px; }
+  .header-brand .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 7px; letter-spacing: 1.5px; text-transform: uppercase; }
+  .header-info { text-align: right; }
+  .header-info .disciplina { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
+  .header-info .aula-ref { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.7); font-size: 8px; letter-spacing: 0.5px; }
+  .footer { position: absolute; bottom: 0; left: 0; right: 0; background: var(--verde); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .footer span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.6); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .footer .pg { color: var(--amarelo); font-weight: 400; }
+  .body { padding: 14px 18px 30px; height: calc(297mm - 52px - 22px); overflow: hidden; }
+  .capa-page { background: var(--verde); }
+  .capa-header { background: var(--creme); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .capa-header .marca { font-family: 'Playfair Display', serif; font-style: italic; color: var(--verde); font-size: 14px; }
+  .capa-header .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--verde); font-size: 7.5px; letter-spacing: 2px; text-transform: uppercase; }
+  .capa-body { padding: 28px 24px 0; display: flex; flex-direction: column; height: calc(297mm - 52px - 22px); }
+  .capa-eyebrow { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; }
+  .capa-titulo { font-family: 'Barlow Condensed', sans-serif; color: #fff; font-size: 50px; line-height: 0.95; text-transform: uppercase; letter-spacing: -0.5px; margin-bottom: 6px; }
+  .capa-titulo span { color: var(--amarelo); }
+  .capa-subtitulo { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; color: rgba(255,255,255,0.65); font-size: 12px; letter-spacing: 0.3px; margin-bottom: 22px; line-height: 1.5; }
+  .capa-badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+  .capa-badge { background: rgba(198,216,52,0.15); border: 1px solid var(--amarelo); color: var(--amarelo); font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 8px; border-radius: 2px; }
+  .capa-divider { width: 40px; height: 3px; background: var(--amarelo); margin-bottom: 20px; }
+  .capa-topicos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .capa-topico { display: flex; align-items: flex-start; gap: 7px; }
+  .capa-topico-num { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 18px; line-height: 1; min-width: 18px; }
+  .capa-topico-txt { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 400; color: rgba(255,255,255,0.8); font-size: 9.5px; line-height: 1.4; }
+  .capa-footer-strip { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.25); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .capa-footer-strip span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.45); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .secao-titulo { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 18px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid var(--amarelo); padding-bottom: 3px; margin-bottom: 9px; line-height: 1; }
+  .subsecao { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.5px; margin: 7px 0 3px; }
+  p { font-size: 9px; line-height: 1.55; color: #1a1a1a; margin-bottom: 4px; font-weight: 400; }
+  .destaque { background: var(--amarelo); color: var(--escuro); font-weight: 600; padding: 1px 4px; border-radius: 2px; font-size: 8.5px; }
+  .alerta { background: rgba(198,216,52,0.18); border-left: 3px solid var(--amarelo); padding: 5px 8px; margin: 5px 0; border-radius: 0 3px 3px 0; }
+  .alerta p { margin: 0; font-size: 8.5px; }
+  .alerta strong { color: var(--verde); }
+  table { width: 100%; border-collapse: collapse; margin: 5px 0; font-size: 8px; }
+  th { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; padding: 4px 6px; text-align: left; }
+  td { padding: 3px 6px; border-bottom: 1px solid rgba(31,92,35,0.12); vertical-align: top; line-height: 1.4; color: #1a1a1a; }
+  tr:nth-child(even) td { background: rgba(31,92,35,0.04); }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 5px 0; }
+  .card { background: rgba(31,92,35,0.06); border: 1px solid rgba(31,92,35,0.15); border-radius: 4px; padding: 7px 8px; }
+  .card-title { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 11px; text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 3px; }
+  .card p { font-size: 8px; line-height: 1.5; }
+  .questao-header { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; padding: 4px 10px; border-radius: 3px 3px 0 0; display: flex; justify-content: space-between; align-items: center; }
+  .questao-header .fonte { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; color: var(--amarelo); letter-spacing: 0.5px; }
+  .questao-body { border: 1px solid rgba(31,92,35,0.2); border-top: none; border-radius: 0 0 3px 3px; padding: 7px 10px; margin-bottom: 7px; }
+  .questao-enunciado { font-size: 8.5px; line-height: 1.55; color: #111; margin-bottom: 5px; font-weight: 500; }
+  .alternativas { list-style: none; }
+  .alternativas li { font-size: 8px; line-height: 1.5; padding: 2px 0; color: #222; display: flex; gap: 5px; }
+  .alternativas li .letra { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: var(--verde); font-size: 9px; min-width: 10px; }
+  .alternativas li.correta .letra { color: var(--amarelo); }
+  .alternativas li.correta { background: rgba(198,216,52,0.15); border-left: 2px solid var(--amarelo); padding-left: 4px; }
+  .gabarito-box { background: var(--verde); border-radius: 4px; padding: 8px 12px; margin: 6px 0; }
+  .gabarito-box .gab-title { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+  .gabarito-box p { color: rgba(255,255,255,0.9); font-size: 8px; line-height: 1.55; }
+  .gabarito-box strong { color: var(--amarelo); }
+  .sintese-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-top: 6px; }
+  .sintese-item { background: rgba(31,92,35,0.07); border-left: 3px solid var(--verde); padding: 5px 7px; border-radius: 0 3px 3px 0; }
+  .sintese-item .si-label { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px; }
+  .sintese-item p { font-size: 7.5px; line-height: 1.5; }
+  ul.lista { padding-left: 14px; margin: 3px 0; }
+  ul.lista li { font-size: 8.5px; line-height: 1.55; color: #1a1a1a; margin-bottom: 1px; }
+  @media print { body { background: none; } .page { margin: 0; box-shadow: none; } }
+</style>
+</head>
+<body>
+
+<div class="page capa-page">
+  <div class="capa-header">
+    <div style="display:flex;align-items:center;gap:8px;"><svg width="34" height="34" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#1F5C23"/></svg><div><div class="marca">Elite Treinamentos</div><div class="tagline">Extensivo ENARE 2026</div></div></div>
+    <div style="text-align:right;"><div style="font-family:'Barlow Condensed',sans-serif;color:var(--verde);font-size:11px;letter-spacing:1px;text-transform:uppercase;">Bloco B5 · Aula 22</div><div style="font-family:'Space Grotesk',sans-serif;font-weight:300;color:#888;font-size:7.5px;letter-spacing:0.5px;">Farmácia</div></div>
+  </div>
+  <div class="capa-body">
+    <div class="capa-eyebrow">Bloco B5 · Simulado Final · Aula 22 de 22</div>
+    <div class="capa-titulo">Revi-<br>são <span>·<br>Simu-<br>lado<br>Final</span></div>
+    <div class="capa-subtitulo">10 questões integradas estilo ENARE 2026 com gabarito<br>comentado completo cobrindo todos os módulos do Bloco B5</div>
+    <div class="capa-badge-row">
+      <div class="capa-badge">SIMULADO INTEGRATIVO</div>
+      <div class="capa-badge">10 Questões</div>
+      <div class="capa-badge">Todos os Módulos</div>
+      <div class="capa-badge">Gabarito Comentado</div>
+    </div>
+    <div class="capa-divider"></div>
+    <div class="capa-topicos">
+      <div class="capa-topico"><div class="capa-topico-num">Q1</div><div class="capa-topico-txt">Antimicrobiano + PGA</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">Q2</div><div class="capa-topico-txt">DM SBD 2024 + Beers</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">Q3</div><div class="capa-topico-txt">Lítio + interação + IR</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">Q4</div><div class="capa-topico-txt">Prescrição farmacêutica</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">Q5</div><div class="capa-topico-txt">CIM + Varfarina + AAS</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">Q6</div><div class="capa-topico-txt">DDD vs DOT + descalonamento</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">Q7</div><div class="capa-topico-txt">Vincristina + Segurança</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">Q8</div><div class="capa-topico-txt">CEAF + PNAF</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">Q9</div><div class="capa-topico-txt">Ética + Publicidade</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">Q10</div><div class="capa-topico-txt">Reação transfusional</div></div>
+    </div>
+  </div>
+  <div class="capa-footer-strip"><span>Extensivo ENARE 2026</span><span>Elite Treinamentos em Saúde</span><span>Página 1 de 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — Simulado Final</div><div class="aula-ref">Bloco B5 · Aula 22 · Questões 01-02</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 01</span><span class="fonte">Antimicrobianos + PGA · NC: Análise</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Paciente de 65 anos com sepse pulmonar admitido em UTI inicia empiricamente meropenem 1 g IV 8/8h + vancomicina 1 g IV 12/12h + linezolida 600 mg IV 12/12h. Em 48h, cultura traqueal revela Klebsiella pneumoniae sensível a meropenem (sem ESBL/KPC); sem isolamento de S. aureus. Conduta do farmacêutico do PGA:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Manter as três drogas por 14 dias.</span></li>
+        <li class="correta"><span class="letra">B</span><span>Sugerir descalonamento: manter meropenem; suspender vancomicina e linezolida (ausência de Gram+ identificado); reavaliar em 5 dias com PCT e clínica; definir duração total de 7 dias para PAV em Gram-negativo não-NF.</span></li>
+        <li><span class="letra">C</span><span>Trocar meropenem por colistina.</span></li>
+        <li><span class="letra">D</span><span>Suspender todos os antimicrobianos e iniciar amoxi-clav VO.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p>Descalonamento é princípio central do PGA: com cultura definindo Klebsiella sensível a meropenem (sem multirresistência), mantém-se apenas o agente eficaz mais estreito e suspende-se o que cobria Gram+ (vanco) e VRE/MRSA refratário (linezolida). Duração 7 dias é padrão IDSA para PAV em Gram-negativo não-fermentador (Pseudomonas exigiria 14 dias).</p>
+    </div>
+
+    <div class="questao-header"><span>Questão 02</span><span class="fonte">DM + Beers · NC: Aplicação</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Idosa de 78 anos com DM2 controlado por glibenclamida 10 mg/dia e metformina 850 mg 12/12h. HbA1c 6,8%; episódios noturnos de tremor e sudorese; queda recente. TFG 38 mL/min. Conduta CORRETA:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Manter o esquema; HbA1c está adequada.</span></li>
+        <li class="correta"><span class="letra">B</span><span>Sugerir ao prescritor: substituir glibenclamida (PIM Beers — sulfonilureia de longa ação com hipoglicemia em idoso) por gliclazida MR ou iSGLT-2; manter metformina (TFG &gt; 30 permite); revisar dose de metformina conforme função renal; reforçar educação sobre hipoglicemia noturna.</span></li>
+        <li><span class="letra">C</span><span>Suspender metformina por TFG &lt; 45.</span></li>
+        <li><span class="letra">D</span><span>Aumentar a glibenclamida para 15 mg/dia.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p>Glibenclamida é PIM nos Critérios Beers (sulfonilureia longa, alta meia-vida, hipoglicemia grave em idoso). Os episódios noturnos são clássicos. Conduta: substituir por agente mais seguro (gliclazida MR; ou iSGLT-2 se DRC permite). Metformina é mantida em TFG &gt; 30 — só suspende &lt; 30. Importante: HbA1c "boa demais" em idoso pode mascarar hipoglicemia frequente.</p>
+    </div>
+  </div>
+  <div class="footer"><span>Simulado Integrativo</span><span>Extensivo ENARE 2026</span><span class="pg">2 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — Simulado Final</div><div class="aula-ref">Bloco B5 · Aula 22 · Questões 03-04</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 03</span><span class="fonte">Lítio + Interação · NC: Análise</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Paciente de 50 anos com TB-I em uso de carbonato de lítio 900 mg/dia (litemia 0,8 mEq/L) inicia hidroclorotiazida 25 mg/dia + ibuprofeno 400 mg 8/8h há 5 dias. Apresenta tremor grosseiro, ataxia, confusão, IRA aguda (Cr 2,2 vs basal 1,1). Litemia atual = ?</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Provavelmente diminuída.</span></li>
+        <li class="correta"><span class="letra">B</span><span>Provavelmente elevada (&gt; 2 mEq/L) — interação farmacocinética: tiazídico aumenta reabsorção tubular de lítio; AINE reduz prostaglandinas renais e perfusão; IRA agrega. Conduta: suspender lítio + tiazídico + AINE; SF 0,9%; dosar litemia; hemodiálise se &gt; 2,5 com sintomas.</span></li>
+        <li><span class="letra">C</span><span>Inalterada.</span></li>
+        <li><span class="letra">D</span><span>Diminuída pela ação do ibuprofeno.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p>Combinação clássica de aumento de litemia: tiazídico + AINE + IECA/BRA ou volume contracted state. Tiazídico reduz Na+ corporal → ↑ reabsorção tubular de Li+. AINE reduz fluxo renal. Tudo isso combinado com IRA aguda explica os sinais neurológicos. Litemia provavelmente &gt; 2 mEq/L. Tratamento: suspender agentes precipitantes, SF 0,9% (não SG5%), hemodiálise se grave. NUNCA suspender só o lítio sem corrigir os agravantes.</p>
+    </div>
+
+    <div class="questao-header"><span>Questão 04</span><span class="fonte">Prescrição Farmacêutica · NC: Compreensão</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Em ambulatório de anticoagulação com protocolo colaborativo, farmacêutico ajusta dose de varfarina e solicita exames laboratoriais. A prescrição farmacêutica está fundamentada em qual instrumento legal/normativo?</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Apenas Lei 13.021/2014.</span></li>
+        <li class="correta"><span class="letra">B</span><span>Res. CFF 586/2013 (prescrição farmacêutica — modalidade colaborativa via protocolo escrito) + Res. CFF 585/2013 (atribuições clínicas, incluindo solicitação de exames) + Lei 13.021/2014 (farmácia/farmacêutico como saúde).</span></li>
+        <li><span class="letra">C</span><span>Apenas Decreto 7.508/2011.</span></li>
+        <li><span class="letra">D</span><span>Lei 5.991/1973.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p>A prescrição farmacêutica colaborativa exige protocolo escrito (Res. 586/2013, art. 5º). O ajuste de varfarina em ambulatório de TAO é cenário clássico, com protocolo institucional definido em parceria com cardiologia/hematologia. A solicitação de exames laboratoriais (INR, função renal) é atribuição privativa (Res. 585/2013, art. 11–24). A Lei 13.021/2014 dá base legal ampla. Lei 5.991/1973 é da dispensação; Decreto 7.508/2011 é sobre regionalização do SUS.</p>
+    </div>
+  </div>
+  <div class="footer"><span>Simulado Integrativo</span><span>Extensivo ENARE 2026</span><span class="pg">3 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — Simulado Final</div><div class="aula-ref">Bloco B5 · Aula 22 · Questões 05-06</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 05</span><span class="fonte">CIM · NC: Aplicação</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Médico assistente consulta o CIM hospitalar: paciente idoso em uso de varfarina (INR 2,5) recebeu prescrição adicional de SMX-TMP 800/160 mg 12/12h para ITU. Qual a resposta correta do CIM?</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Não há interação relevante.</span></li>
+        <li class="correta"><span class="letra">B</span><span>Há duas interações: (1) SMX inibe CYP2C9 → ↑ INR (risco hemorrágico); (2) TMP bloqueia ENaC → ↑ potássio (especialmente se IECA/BRA associado). Conduta: reduzir varfarina ~25-50% empiricamente, INR em 3 dias; monitorar potássio em 5–7 dias; considerar nitrofurantoína ou fosfomicina se ITU baixa não complicada (alternativa segura).</span></li>
+        <li><span class="letra">C</span><span>Trocar varfarina por DOAC.</span></li>
+        <li><span class="letra">D</span><span>Manter ambos e dobrar dose da varfarina para "compensar".</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p>Interação clássica varfarina + SMX-TMP: <em>dupla via</em> (CYP2C9 + ENaC). Resposta CIM ideal: identificar mecanismo, propor alternativa (nitrofurantoína ou fosfomicina se ITU baixa; pivmecilinam onde disponível), comunicar prescritor, orientar monitoração (INR + K+). Resposta com fontes (Lexicomp, UpToDate). Não cabe ao CIM substituir varfarina por DOAC autonomamente (decisão clínica do médico assistente).</p>
+    </div>
+
+    <div class="questao-header"><span>Questão 06</span><span class="fonte">DDD/DOT · NC: Aplicação</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Em UTI de 30 leitos, 12 pacientes receberam meropenem em algum momento do mês, com média de 5 dias por paciente. Quantidade total consumida: 540 g. Pacientes-dia totais: 900. DDD OMS = 3 g. Calcule DOT/1.000 pacientes-dia:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>20.</span></li>
+        <li class="correta"><span class="letra">B</span><span>67.</span></li>
+        <li><span class="letra">C</span><span>100.</span></li>
+        <li><span class="letra">D</span><span>200.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Cálculo:</strong> DOTs = 12 pacientes × 5 dias = 60 DOTs. DOT/1.000 pacientes-dia = (60 × 1.000) ÷ 900 = <strong>67 DOTs/1.000 pacientes-dia</strong>.</p>
+      <p>(DDDs seriam 540/3 = 180; DDD/100 leitos-dia = (180×100)/900 = 20 — alternativa A é DDD, não DOT. Saber distinguir métricas.)</p>
+    </div>
+  </div>
+  <div class="footer"><span>Simulado Integrativo</span><span>Extensivo ENARE 2026</span><span class="pg">4 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — Simulado Final</div><div class="aula-ref">Bloco B5 · Aula 22 · Questões 07-08</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 07</span><span class="fonte">Vincristina + Segurança · NC: Análise</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Em hospital oncológico pediátrico, paciente com LLA recebe metotrexato intratecal e vincristina IV no mesmo dia. Qual conjunto de medidas previne o erro fatal de administração de vincristina por via intratecal?</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Preparar ambos em seringas idênticas para padronização.</span></li>
+        <li class="correta"><span class="letra">B</span><span>Diluir vincristina em mini-bag de 50 mL SF (incompatível com kit de punção lombar); etiqueta destacada "PARA IV — NÃO USAR INTRATECAL"; separação espacial e temporal da preparação de quimio IT; dupla checagem independente antes da administração; rastreabilidade BCMA + dupla conferência por enfermeira.</span></li>
+        <li><span class="letra">C</span><span>Administrar vincristina antes do metotrexato IT para evitar confusão.</span></li>
+        <li><span class="letra">D</span><span>Manter vincristina em frasco original sem rótulo adicional.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p>Combo OMS/ISMP/ANVISA para vincristina = mini-bag + etiqueta + separação + dupla checagem. Erro IT = mortalidade próxima a 100%. Padronizar embalagens (mini-bag em vez de seringa) torna fisicamente impossível administrar por punção lombar. Letras alternativas tornam o sistema MAIS perigoso.</p>
+    </div>
+
+    <div class="questao-header"><span>Questão 08</span><span class="fonte">CEAF + PNAF · NC: Compreensão</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Paciente com hepatite C crônica recebe sofosbuvir + velpatasvir 400/100 mg/dia por 12 semanas. O financiamento e dispensação enquadram-se em qual componente da AF?</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Componente Básico (CBAF).</span></li>
+        <li><span class="letra">B</span><span>Componente Especializado — Grupo 1A (compra federal, dispensação estadual).</span></li>
+        <li class="correta"><span class="letra">C</span><span>Componente Estratégico (CESAF — 100% financiado pelo Ministério da Saúde, dispensação via SES; programa estratégico do PNHV/PNCT).</span></li>
+        <li><span class="letra">D</span><span>Não é coberto pelo SUS.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — C</div>
+      <p>Antivirais para hepatite C (sofosbuvir + velpatasvir, ledipasvir, glecaprevir/pibrentasvir) são parte do Programa Nacional de Hepatites Virais (PNHV) — Componente Estratégico (CESAF). Financiamento centralizado pelo MS; dispensação via Secretarias Estaduais. Mesmo princípio para ARVs em HIV, tuberculostáticos e hansenostáticos. Não confundir com CEAF (especializado) — CESAF é "programa estratégico", financiamento exclusivamente federal.</p>
+    </div>
+  </div>
+  <div class="footer"><span>Simulado Integrativo</span><span>Extensivo ENARE 2026</span><span class="pg">5 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — Simulado Final</div><div class="aula-ref">Bloco B5 · Aula 22 · Questões 09-10</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 09</span><span class="fonte">Ética + Publicidade · NC: Compreensão</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Farmacêutico esteticista divulga em redes sociais: "Tratamento facial 100% seguro, sem qualquer reação adversa, garantindo resultado em 30 dias!" + fotos antes/depois de pacientes. Considerando a Res. CFF 724/2022, esse comportamento configura:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Conduta permitida pela liberdade de expressão.</span></li>
+        <li class="correta"><span class="letra">B</span><span>MÚLTIPLAS VIOLAÇÕES éticas: (1) "100% seguro" — afirmação enganosa (Res. 724/2022 + CDC); (2) "garantindo resultado" — promessa terapêutica vedada; (3) fotos antes/depois com finalidade comercial — vedação expressa do Cap. X. Conduta: notificação ao CRF; possíveis penalidades de censura ou suspensão; reeducação ética.</span></li>
+        <li><span class="letra">C</span><span>Permitido se a clínica é registrada na ANVISA.</span></li>
+        <li><span class="letra">D</span><span>Permitido com autorização verbal dos pacientes.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p>O cenário traz <em>três vedações simultâneas</em> da Res. CFF 724/2022. Cada uma já configura infração isoladamente. Em conjunto, eleva a gravidade. Penalidades possíveis: advertência → censura confidencial → censura pública → suspensão (1 mês a 1 ano) → cassação. O CFF/CRF tem competência fiscalizatória; o paciente pode também acionar Justiça por publicidade enganosa (CDC, Lei 8.078/1990).</p>
+    </div>
+
+    <div class="questao-header"><span>Questão 10</span><span class="fonte">Reação Transfusional · NC: Análise</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Paciente recebe transfusão de concentrado de hemácias; 20 min após início, evolui com febre 39 °C, dor lombar intensa, hemoglobinúria visível e hipotensão. O farmacêutico clínico do banco de sangue orienta:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Reduzir velocidade pela metade.</span></li>
+        <li class="correta"><span class="letra">B</span><span>SUSPENDER IMEDIATAMENTE; manter acesso venoso com SF 0,9%; chamar equipe médica para suporte (vasopressor se necessário); coletar amostras de sangue e urina; reverificar testes de compatibilidade; suporte de função renal; notificação obrigatória ao banco de sangue e via NOTIVISA (reação hemolítica aguda — emergência médica, provável incompatibilidade ABO).</span></li>
+        <li><span class="letra">C</span><span>Administrar antitérmico e continuar a transfusão.</span></li>
+        <li><span class="letra">D</span><span>Substituir concentrado de hemácias por plasma fresco.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p>Tétrade clássica de reação hemolítica aguda — incompatibilidade ABO. Conduta padronizada Manual de Hemovigilância ANVISA: suspensão imediata + SF 0,9% para manter perfusão renal + suporte clínico + investigação laboratorial + notificação obrigatória. Mortalidade pode chegar a 10–40%. Letras A, C, D agravam o quadro ou são irrelevantes.</p>
+    </div>
+  </div>
+  <div class="footer"><span>Simulado Integrativo</span><span>Extensivo ENARE 2026</span><span class="pg">6 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — Simulado Final</div><div class="aula-ref">Bloco B5 · Aula 22 · Gabarito Consolidado</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Gabarito Consolidado — 10 Questões</div>
+
+    <table>
+      <tr><th>Q</th><th>Gab</th><th>Tema</th><th>Conceito-Chave</th></tr>
+      <tr><td><strong>01</strong></td><td><span class="destaque">B</span></td><td>PGA + Descalonamento</td><td>Manter meropenem; suspender vanco + linezolida; 7 dias PAV Gram−</td></tr>
+      <tr><td><strong>02</strong></td><td><span class="destaque">B</span></td><td>DM + Beers</td><td>Glibenclamida PIM; substituir por gliclazida MR; manter metformina TFG&gt;30</td></tr>
+      <tr><td><strong>03</strong></td><td><span class="destaque">B</span></td><td>Lítio + tiazídico + AINE</td><td>↑ litemia; tríplice; suspender + SF + diálise se &gt; 2,5</td></tr>
+      <tr><td><strong>04</strong></td><td><span class="destaque">B</span></td><td>Prescrição farmacêutica colaborativa</td><td>Res. 585 + 586 + Lei 13.021/2014</td></tr>
+      <tr><td><strong>05</strong></td><td><span class="destaque">B</span></td><td>CIM — Varfarina + SMX-TMP</td><td>Dupla interação CYP2C9 + ENaC; reduzir varfarina + monitorar K+</td></tr>
+      <tr><td><strong>06</strong></td><td><span class="destaque">B</span></td><td>DOT/1.000 pac-dia</td><td>(12×5 × 1000)/900 = 67</td></tr>
+      <tr><td><strong>07</strong></td><td><span class="destaque">B</span></td><td>Vincristina — Never IT</td><td>Mini-bag 50 mL + etiqueta + separação + dupla checagem</td></tr>
+      <tr><td><strong>08</strong></td><td><span class="destaque">C</span></td><td>CESAF (não CEAF)</td><td>PNHV — Componente Estratégico; 100% federal</td></tr>
+      <tr><td><strong>09</strong></td><td><span class="destaque">B</span></td><td>Ética — Múltiplas vedações</td><td>"100% seguro" + "garantia" + fotos antes/depois</td></tr>
+      <tr><td><strong>10</strong></td><td><span class="destaque">B</span></td><td>Reação hemolítica aguda</td><td>SUSPENDER + SF + coleta + NOTIVISA + suporte</td></tr>
+    </table>
+
+    <div class="subsecao">Pegadinhas Recorrentes da FGV</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Distinguir Conceitos</div>
+        <p>DDD × DOT (ambulatorial vs hospital); EA × RAM × erro × quase-falha; CEAF × CESAF × CBAF; Tipo A × B (Rawlins-Thompson); Farmácia × Drogaria; intencional × não-intencional (reconciliação); referência × genérico × similar.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Alternativas Mais Plausíveis Erradas</div>
+        <p>FGV escolhe distratores baseados em <em>conceitos próximos mas distintos</em>. Estudar diferenças sutis. Ex.: "Beers exclui glibenclamida no idoso" é correto; "Beers exclui metformina no idoso" é falso.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Atribuições NÃO do Farmacêutico</div>
+        <p>Emitir laudo microbiológico, decidir esquema antimicrobiano sem médico, prescrever controlados (B1, C1), substituir clinicamente fármacos sem protocolo, suspender autonomamente.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Sempre Suspeitar de</div>
+        <p>Idosos polifarmácia (Beers); fármacos de ITE (digoxina, lítio, varfarina); QT prolongado (amio, macrolídeo, fluorquino); hipercalemia (IECA+espirono+AINE); tiazídico em lítio; gestação (IECA/BRA/valproato/lítio = X ou D).</p>
+      </div>
+    </div>
+
+    <div class="alerta">
+      <p><strong>Tendência ENARE 2026:</strong> manter peso em FARM-FARMACOTERAP (~25–30%) + FARM-CLIN (cluster prescrição farmacêutica + CIM consolidado) + crescimento em FARM-FARMACOEPID (MBE, PICO, GRADE) + estabilidade em FARM-SEGSAUDE e FARM-ETICA. Tema novo possível: telefarmácia (Res. 738/2023, 765/2024) e LGPD.</p>
+    </div>
+  </div>
+  <div class="footer"><span>Simulado Integrativo</span><span>Extensivo ENARE 2026</span><span class="pg">7 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — Simulado Final</div><div class="aula-ref">Bloco B5 · Aula 22 · Mapa de Conhecimento</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Mapa de Conhecimento — Bloco B5 Farmácia</div>
+
+    <div class="sintese-grid">
+      <div class="sintese-item">
+        <div class="si-label">FARM-FARMACOTERAP</div>
+        <p>Antimicrobianos (PGA, DOT, resistência) · Cardiometabólicos (DM SBD 2024, GLP-1, IC HFrEF, digoxina ITE) · Neuropsi (lítio, tramadol CYP2D6, Beers 2023) · Populações especiais (FDA, TFG, Child-Pugh) · Cálculos (TFG, infusão, gasometria, HbA1c, opioides).</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">FARM-CLIN</div>
+        <p>Prescrição farmacêutica (Res. 585/586/2013 — cluster novo 2025, 7q) · AF e Cuidado Farmacêutico (Hepler, Consenso 2002, Dáder, PRMs Granada/PCNE) · CIM (Portaria 3.916/1998, equipe, fontes terciárias, varfarina+AAS — cluster novo 2025, 4q).</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">FARM-INTERACT</div>
+        <p>Mecanismos: farmacocinética (CYP450, P-gp, absorção) vs farmacodinâmica (sinergismo, antagonismo). QT (amio + macro/quino, antipsi). Hipercalemia (IECA + espirono + AINE; triplo whammy). Varfarina (CYP2C9 + dieta vit K).</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">FARM-FARMACOEPID</div>
+        <p>DDD (OMS, ATC, ambulatorial); DOT (hospital — CDC/IDSA). DUR (6 tipos OMS). PICO/PECO. Desenhos (ECR, coorte, caso-controle). GRADE (4 níveis qualidade). Naranjo (10 perguntas, ≥9 definida).</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">FARM-FARMTEC</div>
+        <p>ITE (RDC 742/2022) — digoxina, varfarina, lítio, fenitoína, ciclosporina, levotiroxina, vanco, aminoglicosídeo, clozapina. RDC 67/2007 (BPM). CMI (LFH NPT positiva; CSB IIA2 quimio negativa). ISO 14644-1 (5/7/8). Bioequivalência 80–125% / 90–111% MITE.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">FARM-SEGSAUDE</div>
+        <p>ISMP alta vigilância (insulina, opioide, anticoag, KCl, quimio). Vincristina mini-bag. Erro × RAM × EA × quase-falha. Dupla checagem. RDC 36/2013 (NSP). Reconciliação 3 momentos. IRAS (CCIH, bundles). CDI (sabão+água, vanco VO).</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">FARM-POLIT</div>
+        <p>PNM (1998) + PNAF (2004) tripartite. Ciclo AF (6 etapas). CBAF (HAS/DM/AB); CESAF (HIV/TB/PNHV — 100% federal); CEAF (Grupos 1A/1B/2/3). RENAME, REMUME, Farmácia Popular. Lei 13.021/2014.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">FARM-LOGIST</div>
+        <p>Dose unitária (padrão SBRAFH/JCI). Automação (Pyxis, smart pumps, BCMA). Curva ABC (valor 20/80) + XYZ (criticidade). MAM (média móvel). Lei 14.133/2021 (pregão; convite extinto). FEFO/PVPS. Portaria 344/1998 (SNGPC).</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">FARM-ETICA</div>
+        <p>Res. CFF 724/2022. Vedações: antes/depois (Q21/2025), "100% seguro" (Q23), prescrição digital (Q22), indução genérico (Q39), publicidade (Q40). Penalidades: advertência → censura conf. → censura pública → suspensão → cassação. LGPD.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">FARM-VIGISAN + FARMACOVIGIL</div>
+        <p>SNVS (Lei 9.782/1999 ANVISA). VigiMed (RAM — 2018+); NOTIVISA (Tecno, Hemo, Cosmeto, Saneantes). RDC 406/2020 (farmacovigilância). Rawlins-Thompson A/B/C/D/E. Tecnovigilância (4 classes risco). Hemovigilância (hemolítica aguda = emergência).</p>
+      </div>
+    </div>
+
+    <div class="alerta" style="margin-top:5px;">
+      <p><strong>11 módulos cobrindo 22 aulas. Cluster maior: FARM-FARMACOTERAP (5 aulas). Cluster novo 2025: prescrição farmacêutica (7q) + CIM (4q). Tendência crescente: FARM-FARMACOEPID (dobrou em 2025).</strong></p>
+    </div>
+  </div>
+  <div class="footer"><span>Simulado Integrativo</span><span>Extensivo ENARE 2026</span><span class="pg">8 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — Simulado Final</div><div class="aula-ref">Bloco B5 · Aula 22 · Plano de Estudos</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Plano de Estudos — Reta Final</div>
+
+    <div class="subsecao">Distribuição Sugerida por Módulo (2024 + 2025 médias)</div>
+    <table>
+      <tr><th>Módulo</th><th>% médio</th><th>Prioridade de revisão</th></tr>
+      <tr><td>FARM-FARMACOTERAP</td><td>~30%</td><td>★★★★ — domínio amplo essencial</td></tr>
+      <tr><td>FARM-CLIN</td><td>~20%</td><td>★★★★ — cluster crescente (prescrição + CIM)</td></tr>
+      <tr><td>FARM-FARMACOEPID</td><td>~10%</td><td>★★★ — crescente (PICO, GRADE, Naranjo)</td></tr>
+      <tr><td>FARM-FARMTEC</td><td>~7%</td><td>★★ — ITE + CMI + RDCs específicas</td></tr>
+      <tr><td>FARM-SEGSAUDE</td><td>~7%</td><td>★★★ — ISMP, vincristina, RDC 36/2013</td></tr>
+      <tr><td>FARM-POLIT</td><td>~7%</td><td>★★★ — PNAF, CEAF, Lei 13.021</td></tr>
+      <tr><td>FARM-LOGIST</td><td>~5%</td><td>★★ — curva ABC, MAM, Lei 14.133</td></tr>
+      <tr><td>FARM-ETICA</td><td>~6%</td><td>★★★ — vedações específicas</td></tr>
+      <tr><td>FARM-FARMACOVIGIL</td><td>~3%</td><td>★★ — Rawlins-Thompson, RDC 406</td></tr>
+      <tr><td>FARM-VIGISAN</td><td>~3%</td><td>★ — Tecno, Hemo, NOTIVISA</td></tr>
+      <tr><td>FARM-INTERACT</td><td>~5%</td><td>★★★★ — perpassa toda a prova</td></tr>
+    </table>
+
+    <div class="subsecao">Estratégia de Estudo (Últimas 8 Semanas)</div>
+    <table>
+      <tr><th>Semanas</th><th>Foco</th></tr>
+      <tr><td>1–2</td><td>Revisão pesada de FARM-FARMACOTERAP (Aulas 01–05) + FARM-INTERACT (Aula 06)</td></tr>
+      <tr><td>3</td><td>FARM-CLIN — Prescrição farmacêutica + AF + CIM (Aulas 07, 08, 09)</td></tr>
+      <tr><td>4</td><td>FARM-FARMACOEPID (Aulas 10, 11) — PICO/GRADE</td></tr>
+      <tr><td>5</td><td>FARM-FARMTEC + FARM-SEGSAUDE (Aulas 12–16)</td></tr>
+      <tr><td>6</td><td>FARM-FARMACOVIGIL + FARM-POLIT (Aulas 17, 18)</td></tr>
+      <tr><td>7</td><td>FARM-LOGIST + FARM-ETICA + FARM-VIGISAN (Aulas 19, 20, 21)</td></tr>
+      <tr><td>8</td><td>Simulados integrativos (Aula 22) + resolução de provas anteriores (ENARE 2024, 2025)</td></tr>
+    </table>
+
+    <div class="subsecao">Atributos Diferenciais do Candidato Bem-Preparado</div>
+    <ul class="lista">
+      <li><strong>Cálculos limpos</strong>: TFG (Cockcroft), DOT/DDD, infusões, conversão opioide, Naranjo</li>
+      <li><strong>Mecanismos memorizados</strong>: CYP3A4 inibidores/indutores; QT prolongadores; ITE</li>
+      <li><strong>Legislação atualizada</strong>: Lei 13.021/2014, Res. 585/586/2013, Res. 724/2022, RDC 406/2020, RDC 742/2022, Lei 14.133/2021</li>
+      <li><strong>Diretrizes recentes</strong>: SBD 2024, ADA 2024, IDSA, NICE, AHA/ACC</li>
+      <li><strong>Prática clínica</strong>: aplicação em casos reais; Beers 2023; reconciliação em transições</li>
+      <li><strong>Ética prática</strong>: identificar vedações da publicidade e conflito de interesse</li>
+      <li><strong>Multiprofissional</strong>: domínio do papel do farmacêutico em equipe (CCIH, PGA, NSP, CFT)</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Mensagem final:</strong> a prova é exigente mas previsível em estrutura. FGV mantém padrões. Saber identificar a "pegadinha" típica (atribuição incorreta, alternativa quase-correta, conceito quase-igual) é o que distingue 60% de aprovação dos 80%+. Boa sorte!</p>
+    </div>
+  </div>
+  <div class="footer"><span>Simulado Integrativo</span><span>Extensivo ENARE 2026</span><span class="pg">9 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — Simulado Final</div><div class="aula-ref">Bloco B5 · Aula 22 · Conclusão</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Conclusão — Bloco B5 Farmácia Encerrado</div>
+
+    <p><strong>Parabéns!</strong> Você completou as 22 aulas do Bloco B5 — Farmácia do Extensivo ENARE 2026 da Elite Treinamentos em Saúde.</p>
+
+    <div class="subsecao">O Que Você Domina Após Este Bloco</div>
+    <ul class="lista">
+      <li>Os 11 módulos temáticos da Farmácia ENARE: FARMACOTERAP, CLIN, FARMACOEPID, FARMTEC, SEGSAUDE, POLIT, LOGIST, ETICA, FARMACOVIGIL, VIGISAN, INTERACT</li>
+      <li>Os 22 grandes temas com tabelas, casos clínicos e questões estilo FGV</li>
+      <li>~66 questões resolvidas com gabarito comentado completo</li>
+      <li>Identidade visual e estética padronizadas para revisão rápida</li>
+      <li>Síntese final ao alcance de minutos de revisão</li>
+    </ul>
+
+    <div class="subsecao">Recursos Complementares</div>
+    <ul class="lista">
+      <li>Provas oficiais ENARE 2024 e 2025 (disponíveis em fontes/provas)</li>
+      <li>Gabaritos definitivos com análise comparativa</li>
+      <li>Estudo de banca FGV-Farmácia (`analise-banca-fgv-farmacia.md`)</li>
+      <li>Diretrizes citadas: SBD 2024, IDSA, AHA/ACC, ASCO, KDIGO 2024, Beers 2023</li>
+      <li>RDCs ANVISA atualizadas (36/2013, 67/2007, 220/2004, 222/2018, 406/2020, 742/2022, 471/2021)</li>
+      <li>Resoluções CFF (585/2013, 586/2013, 654/2018, 724/2022, 738/2023, 765/2024)</li>
+    </ul>
+
+    <div class="subsecao">Onde Seguir</div>
+    <p>Recomendações:</p>
+    <ol>
+      <li><strong>Resolução de provas anteriores</strong>: ENARE 2023, 2024, 2025 — completas</li>
+      <li><strong>Simulados temáticos</strong>: faça simulados por módulo para identificar pontos fracos</li>
+      <li><strong>Estudo em grupo</strong>: discussão de casos clínicos com colegas de residência</li>
+      <li><strong>Plantões clínicos</strong>: aplicar conceitos no dia-a-dia (reconciliação, validação, PGA, AF)</li>
+      <li><strong>Diretrizes atualizadas</strong>: acompanhar SBD, SBC, IDSA — anualmente</li>
+      <li><strong>Cuidado integral</strong>: lembrar que a residência é formação clínica, não preparação para prova</li>
+    </ol>
+
+    <div class="subsecao">Princípios para a Prática Profissional</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Cuidado Centrado no Paciente</div>
+        <p>Toda decisão deve passar pelo crivo "isso é o melhor para o paciente?". A farmácia é estabelecimento de saúde, não comércio. O farmacêutico residente é profissional clínico, não dispensador.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Trabalho em Equipe Multiprofissional</div>
+        <p>Em equipe multi: respeitar autonomia profissional, contribuir tecnicamente, comunicar com clareza, documentar intervenções, integrar-se nas decisões clínicas. A residência é o modelo.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Atualização Permanente</div>
+        <p>A farmacologia muda rapidamente (GLP-1, iSGLT-2, biológicos). Estatutos legais evoluem (RDC, CFF, Lei). Manter-se atualizado é dever ético e profissional.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Cultura Justa</div>
+        <p>Erros acontecem; aprender com eles em vez de punir é o caminho. Cultura justa, RCA, transparência. Notificar e melhorar sistemas é responsabilidade ética.</p>
+      </div>
+    </div>
+
+    <div class="alerta">
+      <p><strong>Boa sorte na ENARE 2026!</strong> Confie no preparo construído ao longo desse Extensivo. Cada aula foi montada com base em <em>2 anos de provas FGV/ENARE</em> + diretrizes nacionais + diretrizes internacionais. Você está pronto. Vai lá!</p>
+    </div>
+  </div>
+  <div class="footer"><span>Simulado Integrativo</span><span>Extensivo ENARE 2026</span><span class="pg">10 / 10</span></div>
+</div>
+
+</body>
+</html>
