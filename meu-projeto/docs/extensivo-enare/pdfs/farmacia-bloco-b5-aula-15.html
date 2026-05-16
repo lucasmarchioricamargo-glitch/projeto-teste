@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Farmácia — Bloco B5 Aula 15 | Extensivo ENARE 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap');
+  :root { --creme: #F6F4ED; --verde: #1F5C23; --amarelo: #C6D834; --escuro: #0C2B0E; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #d0d0d0; font-family: 'Bricolage Grotesque', sans-serif; }
+  .page { width: 210mm; height: 297mm; background: var(--creme); margin: 0 auto 12px; position: relative; overflow: hidden; page-break-after: always; }
+  .header { background: var(--verde); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .header-logo { display: flex; align-items: center; gap: 8px; }
+  .header-logo svg { width: 32px; height: 32px; }
+  .header-brand { display: flex; flex-direction: column; line-height: 1; }
+  .header-brand .marca { font-family: 'Playfair Display', serif; font-style: italic; color: #fff; font-size: 13px; letter-spacing: 0.5px; }
+  .header-brand .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 7px; letter-spacing: 1.5px; text-transform: uppercase; }
+  .header-info { text-align: right; }
+  .header-info .disciplina { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
+  .header-info .aula-ref { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.7); font-size: 8px; letter-spacing: 0.5px; }
+  .footer { position: absolute; bottom: 0; left: 0; right: 0; background: var(--verde); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .footer span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.6); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .footer .pg { color: var(--amarelo); font-weight: 400; }
+  .body { padding: 14px 18px 30px; height: calc(297mm - 52px - 22px); overflow: hidden; }
+  .capa-page { background: var(--verde); }
+  .capa-header { background: var(--creme); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .capa-header .marca { font-family: 'Playfair Display', serif; font-style: italic; color: var(--verde); font-size: 14px; }
+  .capa-header .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--verde); font-size: 7.5px; letter-spacing: 2px; text-transform: uppercase; }
+  .capa-body { padding: 28px 24px 0; display: flex; flex-direction: column; height: calc(297mm - 52px - 22px); }
+  .capa-eyebrow { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; }
+  .capa-titulo { font-family: 'Barlow Condensed', sans-serif; color: #fff; font-size: 50px; line-height: 0.95; text-transform: uppercase; letter-spacing: -0.5px; margin-bottom: 6px; }
+  .capa-titulo span { color: var(--amarelo); }
+  .capa-subtitulo { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; color: rgba(255,255,255,0.65); font-size: 12px; letter-spacing: 0.3px; margin-bottom: 22px; line-height: 1.5; }
+  .capa-badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+  .capa-badge { background: rgba(198,216,52,0.15); border: 1px solid var(--amarelo); color: var(--amarelo); font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 8px; border-radius: 2px; }
+  .capa-divider { width: 40px; height: 3px; background: var(--amarelo); margin-bottom: 20px; }
+  .capa-topicos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .capa-topico { display: flex; align-items: flex-start; gap: 7px; }
+  .capa-topico-num { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 18px; line-height: 1; min-width: 18px; }
+  .capa-topico-txt { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 400; color: rgba(255,255,255,0.8); font-size: 9.5px; line-height: 1.4; }
+  .capa-footer-strip { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.25); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .capa-footer-strip span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.45); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .secao-titulo { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 18px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid var(--amarelo); padding-bottom: 3px; margin-bottom: 9px; line-height: 1; }
+  .subsecao { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.5px; margin: 7px 0 3px; }
+  p { font-size: 9px; line-height: 1.55; color: #1a1a1a; margin-bottom: 4px; font-weight: 400; }
+  .destaque { background: var(--amarelo); color: var(--escuro); font-weight: 600; padding: 1px 4px; border-radius: 2px; font-size: 8.5px; }
+  .alerta { background: rgba(198,216,52,0.18); border-left: 3px solid var(--amarelo); padding: 5px 8px; margin: 5px 0; border-radius: 0 3px 3px 0; }
+  .alerta p { margin: 0; font-size: 8.5px; }
+  .alerta strong { color: var(--verde); }
+  table { width: 100%; border-collapse: collapse; margin: 5px 0; font-size: 8px; }
+  th { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; padding: 4px 6px; text-align: left; }
+  td { padding: 3px 6px; border-bottom: 1px solid rgba(31,92,35,0.12); vertical-align: top; line-height: 1.4; color: #1a1a1a; }
+  tr:nth-child(even) td { background: rgba(31,92,35,0.04); }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 5px 0; }
+  .card { background: rgba(31,92,35,0.06); border: 1px solid rgba(31,92,35,0.15); border-radius: 4px; padding: 7px 8px; }
+  .card-title { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 11px; text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 3px; }
+  .card p { font-size: 8px; line-height: 1.5; }
+  .questao-header { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; padding: 4px 10px; border-radius: 3px 3px 0 0; display: flex; justify-content: space-between; align-items: center; }
+  .questao-header .fonte { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; color: var(--amarelo); letter-spacing: 0.5px; }
+  .questao-body { border: 1px solid rgba(31,92,35,0.2); border-top: none; border-radius: 0 0 3px 3px; padding: 7px 10px; margin-bottom: 7px; }
+  .questao-enunciado { font-size: 8.5px; line-height: 1.55; color: #111; margin-bottom: 5px; font-weight: 500; }
+  .alternativas { list-style: none; }
+  .alternativas li { font-size: 8px; line-height: 1.5; padding: 2px 0; color: #222; display: flex; gap: 5px; }
+  .alternativas li .letra { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: var(--verde); font-size: 9px; min-width: 10px; }
+  .alternativas li.correta .letra { color: var(--amarelo); }
+  .alternativas li.correta { background: rgba(198,216,52,0.15); border-left: 2px solid var(--amarelo); padding-left: 4px; }
+  .gabarito-box { background: var(--verde); border-radius: 4px; padding: 8px 12px; margin: 6px 0; }
+  .gabarito-box .gab-title { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+  .gabarito-box p { color: rgba(255,255,255,0.9); font-size: 8px; line-height: 1.55; }
+  .gabarito-box strong { color: var(--amarelo); }
+  .sintese-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-top: 6px; }
+  .sintese-item { background: rgba(31,92,35,0.07); border-left: 3px solid var(--verde); padding: 5px 7px; border-radius: 0 3px 3px 0; }
+  .sintese-item .si-label { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px; }
+  .sintese-item p { font-size: 7.5px; line-height: 1.5; }
+  ul.lista { padding-left: 14px; margin: 3px 0; }
+  ul.lista li { font-size: 8.5px; line-height: 1.55; color: #1a1a1a; margin-bottom: 1px; }
+  @media print { body { background: none; } .page { margin: 0; box-shadow: none; } }
+</style>
+</head>
+<body>
+
+<div class="page capa-page">
+  <div class="capa-header">
+    <div style="display:flex;align-items:center;gap:8px;"><svg width="34" height="34" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#1F5C23"/></svg><div><div class="marca">Elite Treinamentos</div><div class="tagline">Extensivo ENARE 2026</div></div></div>
+    <div style="text-align:right;"><div style="font-family:'Barlow Condensed',sans-serif;color:var(--verde);font-size:11px;letter-spacing:1px;text-transform:uppercase;">Bloco B5 · Aula 15</div><div style="font-family:'Space Grotesk',sans-serif;font-weight:300;color:#888;font-size:7.5px;letter-spacing:0.5px;">Farmácia</div></div>
+  </div>
+  <div class="capa-body">
+    <div class="capa-eyebrow">Bloco B5 · FARM-SEGSAUDE · Aula 15 de 22</div>
+    <div class="capa-titulo">Recon-<br>ciliação <span>Medi-<br>camen-<br>tosa</span></div>
+    <div class="capa-subtitulo">Admissão, transferência, alta hospitalar:<br>discrepâncias, BPMH e oncologia como casos cobrados</div>
+    <div class="capa-badge-row">
+      <div class="capa-badge">FARM-SEGSAUDE ★★</div>
+      <div class="capa-badge">BPMH · 3 etapas</div>
+      <div class="capa-badge">JCI Meta 8</div>
+      <div class="capa-badge">Discrepâncias</div>
+    </div>
+    <div class="capa-divider"></div>
+    <div class="capa-topicos">
+      <div class="capa-topico"><div class="capa-topico-num">01</div><div class="capa-topico-txt">Conceito, objetivo e momentos críticos</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">02</div><div class="capa-topico-txt">BPMH — Best Possible Medication History</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">03</div><div class="capa-topico-txt">Tipos de discrepância (intencional × não)</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">04</div><div class="capa-topico-txt">Oncologia (ENARE 2025) e fitoterápicos</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">05</div><div class="capa-topico-txt">Reconciliação na alta e transição segura</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">06</div><div class="capa-topico-txt">Indicadores institucionais e barreiras</div></div>
+    </div>
+  </div>
+  <div class="capa-footer-strip"><span>Extensivo ENARE 2026</span><span>Elite Treinamentos em Saúde</span><span>Página 1 de 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-SEGSAUDE</div><div class="aula-ref">Bloco B5 · Aula 15 · Conceito</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Reconciliação Medicamentosa — Conceito e Objetivo</div>
+    <p>A <strong>reconciliação medicamentosa</strong> é o processo formal de obter, validar e comparar a lista completa de medicamentos do paciente em <em>transições de cuidado</em> (admissão, transferência intra-hospitalar, alta) com a prescrição vigente, identificando e resolvendo discrepâncias. Cobrada em ENARE 2025 (Q59 — reconciliação oncológica). Atribuição privativa do farmacêutico clínico (Res. CFF 585/2013); Meta 8 das Metas Internacionais de Segurança (JCI).</p>
+
+    <div class="subsecao">Por Que É Crítica</div>
+    <ul class="lista">
+      <li>Estudos mostram <strong>50–70% das admissões hospitalares</strong> têm discrepâncias entre a medicação prévia e a prescrição inicial</li>
+      <li>Cerca de <strong>30%</strong> dessas discrepâncias têm potencial de causar dano clinicamente significativo</li>
+      <li>Eventos adversos relacionados a medicamentos são causa frequente de readmissão em &lt; 30 dias</li>
+      <li>Transição inadequada é fator de risco para óbito em idoso polimedicado</li>
+      <li>Reconciliação reduz EAs evitáveis em 40–80% conforme estudos</li>
+    </ul>
+
+    <div class="subsecao">Três Momentos Críticos da Reconciliação</div>
+    <table>
+      <tr><th>Momento</th><th>Objetivo</th><th>Tempo ideal</th></tr>
+      <tr><td><strong>Admissão</strong></td><td>Capturar todos os medicamentos pré-internação para comparar à prescrição hospitalar inicial</td><td>Até 24h da admissão (CMS/JCI)</td></tr>
+      <tr><td><strong>Transferência intra-hospitalar</strong></td><td>Garantir continuidade ou ajuste consciente na transição entre unidades (enfermaria → UTI; UTI → enfermaria)</td><td>No momento da transferência</td></tr>
+      <tr><td><strong>Alta</strong></td><td>Conciliar prescrição da alta com medicação pré-admissão e medicação hospitalar; orientar paciente sobre o que continuar, suspender ou trocar</td><td>Antes da alta efetiva, com tempo para orientação</td></tr>
+    </table>
+
+    <div class="subsecao">Etapas Operacionais</div>
+    <ol>
+      <li><strong>Coletar BPMH</strong> (Best Possible Medication History) — lista mais completa possível</li>
+      <li><strong>Comparar</strong> com prescrição vigente</li>
+      <li><strong>Identificar discrepâncias</strong> e classificar (intencional vs não-intencional)</li>
+      <li><strong>Comunicar</strong> ao prescritor as discrepâncias não-intencionais</li>
+      <li><strong>Documentar</strong> em prontuário com data, hora, profissional</li>
+      <li><strong>Resolver</strong> com ação corretiva (manter, suspender, ajustar, substituir)</li>
+      <li><strong>Educar</strong> o paciente sobre o plano final, especialmente na alta</li>
+    </ol>
+
+    <div class="alerta">
+      <p><strong>Indicador-chave:</strong> a meta institucional típica é &gt; 90% dos pacientes admitidos com reconciliação completa em 24h; &gt; 95% dos altos com lista de medicamentos conciliada; redução de EA evitável em &gt; 50% (alvo da segurança do paciente).</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-SEGSAUDE · Reconciliação</span><span>Extensivo ENARE 2026</span><span class="pg">2 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-SEGSAUDE</div><div class="aula-ref">Bloco B5 · Aula 15 · BPMH</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">BPMH — Best Possible Medication History</div>
+    <p>O <strong>BPMH</strong> é a "<em>melhor história medicamentosa possível</em>": lista completa, validada por pelo menos <em>duas fontes</em>, dos medicamentos em uso pré-internação. Padrão JCI/SHM/ISMP.</p>
+
+    <div class="subsecao">Componentes da Anamnese Medicamentosa</div>
+    <table>
+      <tr><th>Categoria</th><th>O que perguntar</th></tr>
+      <tr><td>Medicamentos prescritos</td><td>Nome, dose, frequência, duração, prescritor; CID; data de início</td></tr>
+      <tr><td>OTC / MIPs</td><td>"Você toma algo para dor, dormir, gripe, azia sem receita?"</td></tr>
+      <tr><td>Fitoterápicos / suplementos</td><td>"Chás, ervas, vitaminas, ginseng, ginkgo, hypericum?"</td></tr>
+      <tr><td>Vacinas</td><td>Estado vacinal (gripe, pneumococo, hepatite, COVID, herpes-zóster em idoso)</td></tr>
+      <tr><td>Drogas recreativas / álcool / tabaco</td><td>Frequência e quantidade; cessação recente</td></tr>
+      <tr><td>Medicamentos descontinuados recentemente</td><td>Especialmente cortes recentes (dependência, abstinência)</td></tr>
+      <tr><td>Alergias e RAMs prévias</td><td>Nome do fármaco, tipo de reação, severidade</td></tr>
+      <tr><td>Adesão</td><td>Morisky-Green, Brief Medication Questionnaire; conferir cartelas trazidas</td></tr>
+      <tr><td>Cuidador</td><td>Quem administra o medicamento; em quem está armazenado</td></tr>
+    </table>
+
+    <div class="subsecao">Fontes para Validação (Mínimo 2)</div>
+    <ul class="lista">
+      <li><strong>Paciente</strong> (entrevista, se capaz)</li>
+      <li><strong>Familiar / cuidador</strong></li>
+      <li><strong>Embalagens trazidas</strong> de casa (cartelas, frascos, comprimidos)</li>
+      <li><strong>Receituários anteriores</strong></li>
+      <li><strong>Farmácia comunitária</strong> habitual (telefone)</li>
+      <li><strong>Sistema eletrônico</strong> (Conecte SUS, Hórus, prontuário eletrônico institucional)</li>
+      <li><strong>Cartão de saúde</strong> e relatos médicos</li>
+      <li><strong>Outras instituições</strong> de saúde anteriores (clínicas, hospitais)</li>
+    </ul>
+
+    <div class="subsecao">Boas Práticas na Entrevista Medicamentosa</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Técnica de Pergunta</div>
+        <p>Perguntas abertas primeiro ("Conte-me sobre os medicamentos que você toma em casa"); depois fechadas e direcionadas ("Você usa algo para pressão? Diabetes? Ansiedade? Dor crônica?"). Evite jargão técnico. Solicite trazer as embalagens.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Atenção a Lacunas Comuns</div>
+        <p>Pacientes frequentemente esquecem: colírio, inalador, adesivo transdérmico, hormônio, contraceptivo, "vitamina", suplemento de cálcio, anti-inflamatório de quando-em-quando, "chá natural" da vovó, fitoterápico para emagrecer.</p>
+      </div>
+    </div>
+
+    <div class="subsecao">Documentação do BPMH</div>
+    <p>Registrar em ficha estruturada com: nome do fármaco em DCB, concentração, dose, frequência, via, hora habitual de tomada, data de início, indicação clínica conhecida, prescritor, adesão (% estimada), fonte da informação (paciente / familiar / embalagem / sistema), data e hora da coleta, assinatura do farmacêutico + CRF.</p>
+
+    <div class="alerta">
+      <p><strong>Tempo da coleta:</strong> BPMH típica leva 20–40 min em paciente polimedicado. Em paciente complexo (transplantado, oncológico, geriátrico), pode ultrapassar 60 min. É <em>investimento de tempo de alto valor</em>: cada minuto previne erros caros. Em hospital com farmacêutico clínico estruturado, BPMH é tarefa-eixo da admissão.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-SEGSAUDE · Reconciliação</span><span>Extensivo ENARE 2026</span><span class="pg">3 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-SEGSAUDE</div><div class="aula-ref">Bloco B5 · Aula 15 · Discrepâncias</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Tipos de Discrepâncias</div>
+    <p>Identificada a lista pré-admissão (BPMH) e comparada à prescrição vigente, classificam-se as <strong>discrepâncias</strong>:</p>
+
+    <table>
+      <tr><th>Tipo</th><th>Descrição</th><th>Ação</th></tr>
+      <tr><td><strong>Intencional documentada</strong></td><td>Mudança consciente do prescritor, registrada em prontuário (ex.: suspender AINE em paciente com sangramento gástrico)</td><td>Confirmar racional; comunicar paciente; sem conduta corretiva</td></tr>
+      <tr><td><strong>Intencional não-documentada</strong></td><td>Mudança consciente do prescritor mas sem registro explícito</td><td>Documentar em prontuário; comunicar equipe</td></tr>
+      <tr><td><strong>Não-intencional (omissão)</strong></td><td>Medicamento de uso crônico não foi prescrito por descuido (ex.: levotiroxina esquecida)</td><td>Reintroduzir; comunicar prescritor; alerta de risco</td></tr>
+      <tr><td><strong>Não-intencional (duplicação)</strong></td><td>Mesma classe ou mesmo fármaco prescrito duas vezes (ex.: IECA + BRA simultâneos sem indicação)</td><td>Suspender duplicação; revisar racional</td></tr>
+      <tr><td><strong>Não-intencional (dose / frequência errada)</strong></td><td>Diferença não-justificada</td><td>Ajustar; reconciliar</td></tr>
+      <tr><td><strong>Não-intencional (interação)</strong></td><td>Combinação contraindicada ou que requer ajuste</td><td>Modificar; comunicar prescritor</td></tr>
+    </table>
+
+    <div class="subsecao">Exemplos Clínicos</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Discrepância Intencional Adequada</div>
+        <p>Paciente em uso domiciliar de varfarina internado para colecistectomia eletiva: suspensão consciente da varfarina 5 dias antes (substituição por enoxaparina ponte) é <em>intencional</em> e <em>documentada</em>. Conduta farmacêutica: validar a presença do registro; reforçar ao paciente quando reiniciar varfarina; agendar TAO.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Discrepância Não-intencional Crítica</div>
+        <p>Paciente em uso de levotiroxina 100 mcg/dia há 10 anos é internado para AVC; prescrição inicial omite levotiroxina. Em 3 dias, paciente desenvolve hipotireoidismo agudo, hiponatremia (SIADH) e piora do estado neurológico. Conduta farmacêutica: identificar omissão na reconciliação de admissão; comunicar prescritor; reintroduzir; investigar causa raiz.</p>
+      </div>
+    </div>
+
+    <div class="subsecao">Causas Sistêmicas de Discrepâncias Não-intencionais</div>
+    <ul class="lista">
+      <li>Anamnese incompleta na admissão (paciente desorientado, sem familiar; tempo curto)</li>
+      <li>Prontuário fragmentado entre instituições (sem interoperabilidade)</li>
+      <li>Equipe assistencial desconhece toda a medicação prévia</li>
+      <li>Foco na queixa principal sem revisão da medicação crônica</li>
+      <li>Pressão de fluxo (UTI, PS) reduzindo tempo dedicado à anamnese</li>
+      <li>Transferência de plantão sem passagem estruturada</li>
+      <li>Falta de farmacêutico clínico dedicado</li>
+    </ul>
+
+    <div class="subsecao">Resolução</div>
+    <p>Para cada discrepância identificada como não-intencional, o farmacêutico deve:</p>
+    <ol>
+      <li>Documentar em ficha de reconciliação</li>
+      <li>Notificar formalmente o prescritor (sistema eletrônico ou pessoalmente)</li>
+      <li>Propor a correção (reintrodução, ajuste, suspensão)</li>
+      <li>Confirmar implementação</li>
+      <li>Registrar no prontuário eletrônico</li>
+      <li>Acompanhar evolução clínica</li>
+      <li>Em discrepâncias significativas, notificar Núcleo de Segurança</li>
+    </ol>
+
+    <div class="alerta">
+      <p><strong>Estudos brasileiros</strong>: hospitais públicos com programa de reconciliação estruturada (HC-UFMG, FCMSCSP, HSL-SP) reportam taxa de discrepância não-intencional na admissão entre 30–50% — destes, 15–25% com potencial de dano clinicamente significativo. Reconciliação é, portanto, uma das atividades de farmácia clínica com <em>maior retorno de segurança</em>.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-SEGSAUDE · Reconciliação</span><span>Extensivo ENARE 2026</span><span class="pg">4 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-SEGSAUDE</div><div class="aula-ref">Bloco B5 · Aula 15 · Oncologia</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Reconciliação em Oncologia e Cenários Especiais</div>
+
+    <div class="subsecao">Caso Oncológico — ENARE 2025 (Q59)</div>
+    <p>A FGV apresentou cenário de paciente oncológica em quimioterapia ambulatorial admitida para ciclo de quimio adjuvante. A reconciliação medicamentosa identificou múltiplas pendências:</p>
+    <ul class="lista">
+      <li><strong>Uso de Hypericum perforatum (erva de São João)</strong> não declarado pela paciente em anamnese inicial: indutor de CYP3A4 → reduz eficácia da quimioterapia (paclitaxel, ciclofosfamida, doxorrubicina)</li>
+      <li><strong>Suco de toranja diário</strong> reportado em entrevista detalhada: inibe CYP3A4 → aumenta exposição a tamoxifeno, ciclosporina, alguns quimio</li>
+      <li><strong>Probiótico iniciado por conta própria</strong>: em paciente neutropênico, risco de infecção oportunista</li>
+      <li><strong>Uso de AINE para "dor leve"</strong> sem orientação: risco de mielossupressão e sangramento somado a quimio</li>
+      <li><strong>Suplemento de antioxidante</strong>: pode reduzir eficácia da quimio em alguns esquemas</li>
+      <li><strong>Levotiroxina</strong> em uso há 12 anos, omitida da prescrição hospitalar inicial</li>
+    </ul>
+
+    <div class="subsecao">Conduta Farmacêutica</div>
+    <ol>
+      <li>Suspender Hypericum imediatamente (informar paciente sobre a interação)</li>
+      <li>Orientar a evitar suco de toranja durante quimio (substituir por outros sucos)</li>
+      <li>Suspender probiótico em ciclo de quimio com risco neutropênico</li>
+      <li>Reintroduzir levotiroxina na prescrição hospitalar (omissão não-intencional)</li>
+      <li>Substituir AINE por paracetamol para dor leve (ou prescrição médica de analgésico mais seguro em quimio)</li>
+      <li>Educar sobre comunicação ativa do uso de fitoterápicos, suplementos e medicamentos OTC ao oncologista e ao farmacêutico</li>
+      <li>Documentar todas as intervenções em prontuário</li>
+      <li>Registrar a alergia conhecida e os PRMs identificados</li>
+    </ol>
+
+    <div class="subsecao">Fitoterápicos e Suplementos a Evitar em Quimio (ASCO/NCCN)</div>
+    <table>
+      <tr><th>Substância</th><th>Risco em quimio</th></tr>
+      <tr><td>Hypericum perforatum (erva de São João)</td><td>Indutor CYP3A4 → ↓ paclitaxel, ciclofosfamida, doxorrubicina; ↓ tamoxifeno</td></tr>
+      <tr><td>Echinacea</td><td>Imunomodulador; possível interferência em imunoterapia</td></tr>
+      <tr><td>Antioxidantes em alta dose (vit C, E, beta-caroteno)</td><td>Pode reduzir eficácia de radioterapia e alguns quimio (dependente de estresse oxidativo)</td></tr>
+      <tr><td>Suco de toranja</td><td>Inibidor CYP3A4 → ↑ tamoxifeno, ciclosporina, etoposídeo</td></tr>
+      <tr><td>Probióticos</td><td>Em neutropenia profunda: risco de bacteremia/fungemia</td></tr>
+      <tr><td>Ginkgo</td><td>Antiagregante; risco hemorrágico em trombocitopenia</td></tr>
+      <tr><td>Ginseng</td><td>Imunomodulador; interfere com anticoagulação</td></tr>
+      <tr><td>Cúrcuma em alta dose</td><td>Anticoagulante; pode interferir com fármacos hepato-metabolizados</td></tr>
+    </table>
+
+    <div class="subsecao">Reconciliação em Transplantado e Imunossupressão Crônica</div>
+    <p>Pacientes transplantados (renal, hepático, cardíaco, hematopoiético) tomam imunossupressores de ITE (tacrolimo, ciclosporina, micofenolato, sirolimo). Reconciliação é especialmente crítica:</p>
+    <ul class="lista">
+      <li>Conferir <em>marca específica</em> e <em>formulação</em> (intercambialidade restrita em alguns imunossupressores)</li>
+      <li>Verificar interações com novos fármacos (antibióticos macrolídeos, azólicos, anticonvulsivantes alteram tacrolimo/ciclosporina via CYP3A4)</li>
+      <li>Monitorar níveis séricos (TDM) após admissão</li>
+      <li>Profilaxia infecciosa: cotrimoxazol (PCP), valganciclovir (CMV) — não omitir</li>
+      <li>Atenção a vacinas: vivas contraindicadas em imunossupressão</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Lição operacional:</strong> em oncologia e em transplante, BPMH detalhada (incluindo perguntas explícitas sobre fitoterápicos, sucos, suplementos) é prática-padrão. Paciente raramente fala espontaneamente — é preciso perguntar com perguntas direcionadas. Documentar tudo.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-SEGSAUDE · Reconciliação</span><span>Extensivo ENARE 2026</span><span class="pg">5 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-SEGSAUDE</div><div class="aula-ref">Bloco B5 · Aula 15 · Alta Hospitalar</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Reconciliação na Alta — Transição Segura</div>
+
+    <p>A reconciliação <strong>na alta</strong> é, talvez, a mais decisiva das três fases. Estudos mostram que <em>22–48% dos pacientes</em> sofrem evento adverso após alta hospitalar, e <em>60% desses</em> são relacionados a medicamentos.</p>
+
+    <div class="subsecao">Componentes da Reconciliação na Alta</div>
+    <ol>
+      <li><strong>Lista pré-admissão</strong> (BPMH)</li>
+      <li><strong>Medicamentos hospitalares</strong> da alta (últimas 24h)</li>
+      <li><strong>Prescrição final da alta</strong></li>
+      <li>Comparação tripla: o que continuar, o que suspender, o que adicionar</li>
+      <li>Identificar e resolver discrepâncias</li>
+      <li><strong>Orientação ao paciente</strong> com material escrito (BPMH atualizada, lista de medicamentos da alta com horários, indicação, RAMs a observar, sinais de alerta)</li>
+      <li>Reforçar consultas de retorno e ajuste com prescritor</li>
+      <li>Comunicar à USF ou ao médico assistente externo</li>
+    </ol>
+
+    <div class="subsecao">Material Educativo Padrão para Paciente na Alta</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Lista de Medicamentos (Resumo)</div>
+        <p>Tabela: nome do medicamento; dose; horário; indicação; cuidado especial; duração. Em linguagem simples; com ilustrações quando útil; em fonte legível (≥ 12pt).</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Sinais de Alerta para Voltar</div>
+        <p>Listar sintomas que demandam reavaliação (sangramento, alergia, hipoglicemia, hipotensão, dor torácica, dispneia). Telefone de contato. Endereço de USF / Pronto-Atendimento.</p>
+      </div>
+    </div>
+
+    <div class="subsecao">Técnica Teach-Back</div>
+    <p>Após orientação, pedir ao paciente para repetir, em suas palavras, o que foi orientado: "Vou te pedir que me conte de novo como você vai tomar esse remédio em casa". Não é teste; é verificação de compreensão. Reconhecidamente reduz erros pós-alta em até 30%.</p>
+
+    <div class="subsecao">Discrepâncias Específicas da Alta</div>
+    <table>
+      <tr><th>Tipo</th><th>Exemplo</th></tr>
+      <tr><td>Manter medicamento desnecessariamente</td><td>IBP iniciado durante UTI permanece na alta sem indicação ativa</td></tr>
+      <tr><td>Suspender medicamento crônico</td><td>Levotiroxina não-retomada na alta após sua omissão durante a internação</td></tr>
+      <tr><td>Duplicação</td><td>BCC iniciado em UTI mantido + retorno do BCC pré-internação</td></tr>
+      <tr><td>Dose inadequada</td><td>Anti-hipertensivo em dose de UTI mantido na alta (geralmente menor que dose ambulatorial)</td></tr>
+      <tr><td>Indicação concluída</td><td>Antibiótico em dia 7/14 sem clareza se a alta é com ou sem continuação</td></tr>
+      <tr><td>Sem orientação ao paciente</td><td>Prescrição mas paciente não sabe como tomar, indicação, cuidados</td></tr>
+    </table>
+
+    <div class="subsecao">Indicadores de Qualidade — Reconciliação</div>
+    <ul class="lista">
+      <li>% admissões com BPMH completa em 24h</li>
+      <li>% pacientes com discrepâncias identificadas</li>
+      <li>% discrepâncias não-intencionais resolvidas antes da alta</li>
+      <li>% altas com lista de medicamentos conciliada</li>
+      <li>% altas com orientação documentada ao paciente (teach-back)</li>
+      <li>Taxa de readmissão em 30 dias relacionada a medicamentos</li>
+      <li>EAMs evitáveis pós-alta (sistema de notificação)</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Cuidado pós-alta:</strong> contato telefônico do farmacêutico 48–72h pós-alta para verificar adesão, dúvidas, eventos adversos precoces — estratégia validada (estudos Schnipper, Kripalani) com redução de readmissão e EA significativa. Modelos como o <em>Coleman Care Transitions Intervention</em> incluem farmacêutico no time multidisciplinar.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-SEGSAUDE · Reconciliação</span><span>Extensivo ENARE 2026</span><span class="pg">6 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-SEGSAUDE</div><div class="aula-ref">Bloco B5 · Aula 15 · Questões ENARE</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 01</span><span class="fonte">Conceito · NC: Compreensão</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">A reconciliação medicamentosa em transições de cuidado é processo essencial em segurança do paciente. É CORRETO afirmar que:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>É atividade administrativa simples; pode ser delegada a técnico em farmácia.</span></li>
+        <li class="correta"><span class="letra">B</span><span>É atribuição privativa do farmacêutico clínico (Res. CFF 585/2013) e Meta 8 das Metas Internacionais de Segurança (JCI), realizada nos três momentos: admissão, transferência intra-hospitalar e alta. Tem evidência de redução de eventos adversos evitáveis.</span></li>
+        <li><span class="letra">C</span><span>Deve ser realizada apenas na alta hospitalar para garantir continuidade.</span></li>
+        <li><span class="letra">D</span><span>Não é parte da prática do farmacêutico residente.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> reconciliação é atribuição clínica privativa (Res. CFF 585/2013), correspondendo à Meta 8 das Metas Internacionais de Segurança (JCI), realizada nos três momentos: admissão, transferência intra-hospitalar e alta. Evidências sólidas (revisões sistemáticas, Cochrane 2018; Mueller et al. 2012): redução significativa de eventos adversos evitáveis e readmissão. Padrão JCI e ANVISA (RDC 36/2013).</p>
+      <p><strong>Por que as outras erram:</strong> A — atividade clínica de alta complexidade; não delegável · C — reconciliação se realiza em <em>todas as transições</em>, não só na alta · D — é eixo da residência multiprofissional em farmácia.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-SEGSAUDE · Reconciliação</span><span>Extensivo ENARE 2026</span><span class="pg">7 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-SEGSAUDE</div><div class="aula-ref">Bloco B5 · Aula 15 · Questões ENARE</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 02</span><span class="fonte">Oncologia · Fitoterápico · NC: Análise</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Paciente com câncer de mama em quimioterapia com paclitaxel + doxorrubicina, em reconciliação medicamentosa pré-ciclo, revela uso de Hypericum perforatum 300 mg/dia, suco de toranja matinal e probiótico. Qual a conduta CORRETA?</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Manter os três produtos; reforçar consumo regular pelo benefício antioxidante.</span></li>
+        <li class="correta"><span class="letra">B</span><span>Suspender Hypericum (indutor CYP3A4, reduz eficácia da quimio); orientar a evitar suco de toranja (inibidor CYP3A4, pode aumentar toxicidade); suspender probiótico em paciente com risco neutropênico; educar paciente sobre comunicação ativa de fitoterápicos e suplementos; documentar em prontuário.</span></li>
+        <li><span class="letra">C</span><span>Manter Hypericum e suspender apenas o suco de toranja.</span></li>
+        <li><span class="letra">D</span><span>Trocar paclitaxel por outro quimioterápico para evitar interação.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong></p>
+      <p>• <strong>Hypericum (erva de São João):</strong> indutor potente do CYP3A4 e P-gp; reduz exposição a paclitaxel (metabolizado por CYP3A4) e doxorrubicina; pode comprometer eficácia da quimio. Suspensão obrigatória em quimioterapia.<br>
+      • <strong>Suco de toranja:</strong> inibidor de CYP3A4 intestinal; aumenta biodisponibilidade de fármacos 3A4-dependentes; risco de toxicidade aumentada em quimio com janela estreita. Evitar consumo concomitante.<br>
+      • <strong>Probiótico:</strong> em paciente com risco neutropênico (nadir 7–10 dias pós-paclitaxel), risco de bacteremia/fungemia por translocação. Diretrizes ASCO/ESMO desencorajam uso em neutropenia.</p>
+      <p>Conduta global: suspensão dos três + educação + documentação + reforço de comunicação ativa em consultas oncológicas.</p>
+      <p><strong>Por que as outras erram:</strong> A — manter todos é prejudicial · C — Hypericum também precisa ser suspenso · D — trocar quimio é decisão clínica complexa e desnecessária quando se pode controlar a interação.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-SEGSAUDE · Reconciliação</span><span>Extensivo ENARE 2026</span><span class="pg">8 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-SEGSAUDE</div><div class="aula-ref">Bloco B5 · Aula 15 · Gabarito Integrado</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 03</span><span class="fonte">Discrepância · NC: Aplicação</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Idoso de 78 anos em uso domiciliar crônico de varfarina 5 mg (INR 2,5), enalapril 20 mg, sinvastatina 40 mg, levotiroxina 75 mcg e metformina 1.700 mg/dia. Admitido por AVC isquêmico. Prescrição inicial hospitalar (24h após admissão): AAS 100 mg, enalapril 20 mg, atorvastatina 80 mg, metformina 1.000 mg/dia. Sobre as discrepâncias detectadas, é CORRETO afirmar:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Sem discrepâncias significativas; manter a prescrição inicial.</span></li>
+        <li class="correta"><span class="letra">B</span><span>Discrepância intencional adequada: troca de sinvastatina por atorvastatina 80 mg (alta intensidade pós-AVC). Discrepância intencional adequada: suspensão temporária de varfarina (AVC isquêmico com substituição planejada por antiagregante). Discrepância NÃO-INTENCIONAL crítica: omissão da levotiroxina — necessita reintrodução imediata. Discrepância a investigar: redução de metformina (pode ser intencional por TFG ou não-intencional).</span></li>
+        <li><span class="letra">C</span><span>A única intervenção necessária é remover a sinvastatina porque atorvastatina é genérico.</span></li>
+        <li><span class="letra">D</span><span>A suspensão da varfarina é discrepância não-intencional crítica.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Análise das discrepâncias:</strong></p>
+      <ul class="lista">
+        <li><strong>Estatinas (sinvastatina → atorvastatina 80 mg):</strong> intencional adequada — pós-AVC, diretrizes recomendam estatina de alta intensidade (atorvastatina 40–80 ou rosuvastatina 20–40)</li>
+        <li><strong>Varfarina suspensa, AAS iniciado:</strong> intencional adequada — em AVC isquêmico não-cardioembólico, antiagregação é padrão; varfarina será reintroduzida ou substituída conforme etiologia</li>
+        <li><strong>Levotiroxina omitida:</strong> <em>discrepância não-intencional crítica</em> — paciente em uso crônico de levotiroxina não pode ser descontinuado abruptamente sem indicação clara; hipotireoidismo agudo + IRA hospitalar = SIADH, hiponatremia, agravamento neurológico. Conduta farmacêutica: reintrodução imediata, comunicação com prescritor</li>
+        <li><strong>Metformina (1.700 → 1.000 mg):</strong> a investigar — pode ser intencional por TFG (paciente idoso com possível redução de função renal — checar) ou não-intencional. Investigar racional</li>
+      </ul>
+      <p><strong>Por que as outras erram:</strong> A — sim, há discrepâncias significativas · C — a troca por atorvastatina é intencional adequada, não um erro · D — varfarina foi adequadamente suspensa.</p>
+    </div>
+
+    <div class="subsecao" style="margin-top:6px;">Gabarito Comentado — Análise Integrada</div>
+    <table>
+      <tr><th>Questão</th><th>Gabarito</th><th>Tema</th><th>Conceito-Chave</th></tr>
+      <tr><td><strong>01</strong></td><td><span class="destaque">B</span></td><td>Reconciliação — Conceito</td><td>Atribuição privativa farmacêutica; Meta 8 JCI; 3 momentos</td></tr>
+      <tr><td><strong>02</strong></td><td><span class="destaque">B</span></td><td>Oncologia + Fitoterápico</td><td>Suspender Hypericum + toranja + probiótico em quimio neutropênica</td></tr>
+      <tr><td><strong>03</strong></td><td><span class="destaque">B</span></td><td>Classificação de Discrepâncias</td><td>Identificar intencionais adequadas e não-intencionais críticas; reintroduzir levotiroxina</td></tr>
+    </table>
+  </div>
+  <div class="footer"><span>FARM-SEGSAUDE · Reconciliação</span><span>Extensivo ENARE 2026</span><span class="pg">9 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-SEGSAUDE</div><div class="aula-ref">Bloco B5 · Aula 15 · Síntese</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Síntese — Reconciliação Medicamentosa</div>
+    <div class="sintese-grid">
+      <div class="sintese-item">
+        <div class="si-label">Conceito</div>
+        <p>Processo formal de obter, validar e comparar a lista de medicamentos em transições de cuidado. Identifica e resolve discrepâncias. Atribuição privativa do farmacêutico (Res. CFF 585). Meta 8 JCI. Realizada em 3 momentos.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">3 Momentos</div>
+        <p>1. Admissão (até 24h). 2. Transferência intra-hospitalar (no momento). 3. Alta (antes da alta efetiva). Cada momento tem objetivo, etapas e indicador específicos.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">BPMH</div>
+        <p>Melhor história medicamentosa possível: 2+ fontes (paciente, familiar, embalagens, sistema, USF, farmácia comunitária). Inclui OTC, fitoterápicos, suplementos, drogas, álcool. Documentar com data, hora, profissional. Investimento de 20–60 min.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Tipos de Discrepância</div>
+        <p>Intencional (documentada/não) × Não-intencional (omissão, duplicação, dose, frequência, interação). Identificar, comunicar, resolver, documentar. Notificar Núcleo de Segurança em discrepâncias significativas.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Cenários Especiais</div>
+        <p>Oncologia: fitoterápicos, suco de toranja, probiótico, antioxidantes. Transplante: imunossupressores (TDM, marca específica). Idoso: polifarmácia, Beers. Pediatria: dose por peso, fórmulas. Alta com teach-back.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Próxima Aula</div>
+        <p><strong>Aula 16 — IRAS e Antimicrobianos no Ambiente Hospitalar.</strong> Atribuições do farmacêutico no controle de IRAS; uso racional de antimicrobianos no PGA; relação com CCIH; cobrado em ENARE 2025 (Q63 — atribuições INCORRETAS).</p>
+      </div>
+    </div>
+    <div class="alerta" style="margin-top:5px;">
+      <p><strong>Regra de ouro — Reconciliação no ENARE:</strong> 3 momentos (admissão, transferência, alta); BPMH com 2+ fontes; distinguir intencional × não-intencional; foco em fármacos crônicos (levotiroxina, lítio, ITE) que se perdem em prescrições novas; em oncologia, perguntar ATIVO sobre fitoterápicos, sucos e probióticos; teach-back na alta.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-SEGSAUDE · Reconciliação</span><span>Extensivo ENARE 2026</span><span class="pg">10 / 10</span></div>
+</div>
+
+</body>
+</html>
