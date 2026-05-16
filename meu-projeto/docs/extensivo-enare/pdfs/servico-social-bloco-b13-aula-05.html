@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Serviço Social — Bloco B13 Aula 05 | Extensivo ENARE 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap');
+  :root { --creme: #F6F4ED; --verde: #1F5C23; --amarelo: #C6D834; --escuro: #0C2B0E; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #d0d0d0; font-family: 'Bricolage Grotesque', sans-serif; }
+  .page { width: 210mm; height: 297mm; background: var(--creme); margin: 0 auto 12px; position: relative; overflow: hidden; page-break-after: always; }
+  .header { background: var(--verde); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .header-logo { display: flex; align-items: center; gap: 8px; }
+  .header-logo svg { width: 32px; height: 32px; }
+  .header-brand { display: flex; flex-direction: column; line-height: 1; }
+  .header-brand .marca { font-family: 'Playfair Display', serif; font-style: italic; color: #fff; font-size: 13px; letter-spacing: 0.5px; }
+  .header-brand .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 7px; letter-spacing: 1.5px; text-transform: uppercase; }
+  .header-info { text-align: right; }
+  .header-info .disciplina { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
+  .header-info .aula-ref { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.7); font-size: 8px; letter-spacing: 0.5px; }
+  .footer { position: absolute; bottom: 0; left: 0; right: 0; background: var(--verde); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .footer span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.6); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .footer .pg { color: var(--amarelo); font-weight: 400; }
+  .body { padding: 14px 18px 30px; height: calc(297mm - 52px - 22px); overflow: hidden; }
+  .capa-page { background: var(--verde); }
+  .capa-header { background: var(--creme); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .capa-header .marca { font-family: 'Playfair Display', serif; font-style: italic; color: var(--verde); font-size: 14px; }
+  .capa-header .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--verde); font-size: 7.5px; letter-spacing: 2px; text-transform: uppercase; }
+  .capa-body { padding: 28px 24px 0; display: flex; flex-direction: column; height: calc(297mm - 52px - 22px); }
+  .capa-eyebrow { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; }
+  .capa-titulo { font-family: 'Barlow Condensed', sans-serif; color: #fff; font-size: 50px; line-height: 0.95; text-transform: uppercase; letter-spacing: -0.5px; margin-bottom: 6px; }
+  .capa-titulo span { color: var(--amarelo); }
+  .capa-subtitulo { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; color: rgba(255,255,255,0.65); font-size: 12px; letter-spacing: 0.3px; margin-bottom: 22px; line-height: 1.5; }
+  .capa-badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+  .capa-badge { background: rgba(198,216,52,0.15); border: 1px solid var(--amarelo); color: var(--amarelo); font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 8px; border-radius: 2px; }
+  .capa-divider { width: 40px; height: 3px; background: var(--amarelo); margin-bottom: 20px; }
+  .capa-topicos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .capa-topico { display: flex; align-items: flex-start; gap: 7px; }
+  .capa-topico-num { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 18px; line-height: 1; min-width: 18px; }
+  .capa-topico-txt { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 400; color: rgba(255,255,255,0.8); font-size: 9.5px; line-height: 1.4; }
+  .capa-footer-strip { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.25); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .capa-footer-strip span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.45); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .secao-titulo { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 18px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid var(--amarelo); padding-bottom: 3px; margin-bottom: 9px; line-height: 1; }
+  .subsecao { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.5px; margin: 7px 0 3px; }
+  p { font-size: 9px; line-height: 1.55; color: #1a1a1a; margin-bottom: 4px; font-weight: 400; }
+  .destaque { background: var(--amarelo); color: var(--escuro); font-weight: 600; padding: 1px 4px; border-radius: 2px; font-size: 8.5px; }
+  .alerta { background: rgba(198,216,52,0.18); border-left: 3px solid var(--amarelo); padding: 5px 8px; margin: 5px 0; border-radius: 0 3px 3px 0; }
+  .alerta p { margin: 0; font-size: 8.5px; }
+  .alerta strong { color: var(--verde); }
+  table { width: 100%; border-collapse: collapse; margin: 5px 0; font-size: 8px; }
+  th { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; padding: 4px 6px; text-align: left; }
+  td { padding: 3px 6px; border-bottom: 1px solid rgba(31,92,35,0.12); vertical-align: top; line-height: 1.4; color: #1a1a1a; }
+  tr:nth-child(even) td { background: rgba(31,92,35,0.04); }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 5px 0; }
+  .card { background: rgba(31,92,35,0.06); border: 1px solid rgba(31,92,35,0.15); border-radius: 4px; padding: 7px 8px; }
+  .card-title { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 11px; text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 3px; }
+  .card p { font-size: 8px; line-height: 1.5; }
+  .questao-header { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; padding: 4px 10px; border-radius: 3px 3px 0 0; display: flex; justify-content: space-between; align-items: center; }
+  .questao-header .fonte { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; color: var(--amarelo); letter-spacing: 0.5px; }
+  .questao-body { border: 1px solid rgba(31,92,35,0.2); border-top: none; border-radius: 0 0 3px 3px; padding: 7px 10px; margin-bottom: 7px; }
+  .questao-enunciado { font-size: 8.5px; line-height: 1.55; color: #111; margin-bottom: 5px; font-weight: 500; }
+  .alternativas { list-style: none; }
+  .alternativas li { font-size: 8px; line-height: 1.5; padding: 2px 0; color: #222; display: flex; gap: 5px; }
+  .alternativas li .letra { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: var(--verde); font-size: 9px; min-width: 10px; }
+  .alternativas li.correta .letra { color: var(--amarelo); }
+  .alternativas li.correta { background: rgba(198,216,52,0.15); border-left: 2px solid var(--amarelo); padding-left: 4px; }
+  .gabarito-box { background: var(--verde); border-radius: 4px; padding: 8px 12px; margin: 6px 0; }
+  .gabarito-box .gab-title { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+  .gabarito-box p { color: rgba(255,255,255,0.9); font-size: 8px; line-height: 1.55; }
+  .gabarito-box strong { color: var(--amarelo); }
+  .sintese-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-top: 6px; }
+  .sintese-item { background: rgba(31,92,35,0.07); border-left: 3px solid var(--verde); padding: 5px 7px; border-radius: 0 3px 3px 0; }
+  .sintese-item .si-label { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px; }
+  .sintese-item p { font-size: 7.5px; line-height: 1.5; }
+  ul.lista { padding-left: 14px; margin: 3px 0; }
+  ul.lista li { font-size: 8.5px; line-height: 1.55; color: #1a1a1a; margin-bottom: 1px; }
+  @media print { body { background: none; } .page { margin: 0; box-shadow: none; } }
+</style>
+</head>
+<body>
+
+<div class="page capa-page">
+  <div class="capa-header">
+    <div style="display:flex;align-items:center;gap:8px;"><svg width="34" height="34" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#1F5C23"/></svg><div><div class="marca">Elite Treinamentos</div><div class="tagline">Extensivo ENARE 2026</div></div></div>
+    <div style="text-align:right;"><div style="font-family:'Barlow Condensed',sans-serif;color:var(--verde);font-size:11px;letter-spacing:1px;text-transform:uppercase;">Bloco B13 · Aula 05</div><div style="font-family:'Space Grotesk',sans-serif;font-weight:300;color:#888;font-size:7.5px;letter-spacing:0.5px;">Serviço Social</div></div>
+  </div>
+  <div class="capa-body">
+    <div class="capa-eyebrow">Bloco B13 · SS-FUND · Aula 05 de 21</div>
+    <div class="capa-titulo">Forma-<br>ção <span>Social<br>Brasi-<br>leira</span></div>
+    <div class="capa-subtitulo">Freyre, Sérgio Buarque, Florestan e Darcy Ribeiro:<br>interpretações críticas da desigualdade brasileira</div>
+    <div class="capa-badge-row">
+      <div class="capa-badge">SS-FUND ★★★</div>
+      <div class="capa-badge">Cluster Novo 2025 — 4q</div>
+      <div class="capa-badge">Mestiçagem · Cordialidade</div>
+      <div class="capa-badge">Dependência · Povo</div>
+    </div>
+    <div class="capa-divider"></div>
+    <div class="capa-topicos">
+      <div class="capa-topico"><div class="capa-topico-num">01</div><div class="capa-topico-txt">Por que estudar formação social brasileira no SS</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">02</div><div class="capa-topico-txt">Gilberto Freyre: Casa-Grande & Senzala</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">03</div><div class="capa-topico-txt">Sérgio Buarque: Raízes do Brasil e homem cordial</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">04</div><div class="capa-topico-txt">Caio Prado Jr.: sentido da colonização</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">05</div><div class="capa-topico-txt">Florestan Fernandes: capitalismo dependente</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">06</div><div class="capa-topico-txt">Darcy Ribeiro: povo brasileiro e 5 brasis</div></div>
+    </div>
+  </div>
+  <div class="capa-footer-strip"><span>Extensivo ENARE 2026</span><span>Elite Treinamentos em Saúde</span><span>Página 1 de 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-FUND</div><div class="aula-ref">Bloco B13 · Aula 05 · Por que importa</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Por Que a Formação Social Brasileira no SS?</div>
+
+    <p>O <strong>SS brasileiro</strong> opera num país com <em>singularidades históricas</em> que precisam ser compreendidas: colonização exploratória, escravidão de quase 4 séculos, escravo como objeto, latifúndio, mestiçagem, modernização tardia, capitalismo dependente, ditadura militar, redemocratização recente. Sem entender esse pano de fundo, a análise da questão social brasileira fica empobrecida.</p>
+
+    <p>A FGV cobrou explicitamente em <strong>ENARE 2025</strong> quatro questões sobre formação social brasileira (Q63, Q74, Q77, Q79, Q80), com referências a Sérgio Buarque, Gilberto Freyre, Florestan Fernandes e Darcy Ribeiro — todos zero em 2024. <em>Cluster novo</em> consolidado pela banca.</p>
+
+    <div class="subsecao">Visão Geral dos Intérpretes do Brasil</div>
+    <table>
+      <tr><th>Autor</th><th>Obra-chave</th><th>Ano</th><th>Tese central</th></tr>
+      <tr><td>Gilberto Freyre</td><td>Casa-Grande &amp; Senzala</td><td>1933</td><td>Mestiçagem; democracia racial; patriarcalismo brando</td></tr>
+      <tr><td>Sérgio Buarque de Holanda</td><td>Raízes do Brasil</td><td>1936</td><td>Homem cordial; patrimonialismo; herança ibérica</td></tr>
+      <tr><td>Caio Prado Júnior</td><td>Formação do Brasil Contemporâneo</td><td>1942</td><td>Sentido da colonização: produzir para o mercado externo (exportação)</td></tr>
+      <tr><td>Celso Furtado</td><td>Formação Econômica do Brasil</td><td>1959</td><td>Desenvolvimento desigual; ciclos econômicos; subdesenvolvimento</td></tr>
+      <tr><td>Florestan Fernandes</td><td>A Revolução Burguesa no Brasil</td><td>1975</td><td>Revolução burguesa autocrática; capitalismo dependente; "modernização sem modernidade"</td></tr>
+      <tr><td>Florestan Fernandes</td><td>A Integração do Negro na Sociedade de Classes</td><td>1965</td><td>Pós-abolição: marginalização do negro; raça e classe entrelaçadas</td></tr>
+      <tr><td>Roberto Schwarz</td><td>Ideias Fora do Lugar</td><td>1977</td><td>Liberalismo importado conflita com escravidão; ideias "fora do lugar"</td></tr>
+      <tr><td>Darcy Ribeiro</td><td>O Povo Brasileiro</td><td>1995</td><td>5 brasis (crioulo, caboclo, sertanejo, caipira, sulino); povo novo emergente</td></tr>
+      <tr><td>Jessé Souza</td><td>A Tolice da Inteligência Brasileira</td><td>2015</td><td>Crítica à interpretação culturalista; pacto de classes; ralé estrutural</td></tr>
+      <tr><td>Lélia Gonzalez</td><td>Por um Feminismo Afro-Latino-Americano</td><td>1988</td><td>Amefricanidade; mulher negra como sujeito; crítica ao mito da democracia racial</td></tr>
+      <tr><td>Silvio Almeida</td><td>Racismo Estrutural</td><td>2018</td><td>Racismo é estrutural, não apenas individual ou institucional</td></tr>
+    </table>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> a FGV pode pedir identificação do autor a partir de fragmento, comparação entre teses, ou aplicação a contexto contemporâneo. Saber distinguir Freyre (mestiçagem como positiva — "democracia racial") de Florestan (mito da democracia racial — crítica) é essencial. Cobrado em ENARE 2025.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-FUND · Formação Social Brasileira</span><span>Extensivo ENARE 2026</span><span class="pg">2 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-FUND</div><div class="aula-ref">Bloco B13 · Aula 05 · Freyre</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Gilberto Freyre — Casa-Grande &amp; Senzala (1933)</div>
+
+    <p><strong>Gilberto Freyre (1900–1987)</strong>, sociólogo pernambucano, publica em 1933 a obra que se tornou clássico da interpretação do Brasil. Cobrado em ENARE 2025 (Q74). Sua perspectiva é <em>culturalista</em> e influenciada por Franz Boas (antropologia cultural americana).</p>
+
+    <div class="subsecao">Tese Central</div>
+    <p>O Brasil é uma sociedade <strong>mestiça</strong>, formada na intimidade entre Casa-Grande (senhor branco europeu, católico, latifundiário) e Senzala (escravo africano). A mestiçagem (biológica e cultural) seria <em>traço positivo</em>, fonte de uma alegada <strong>"democracia racial"</strong> brasileira, em contraste com a segregação racial dos EUA.</p>
+
+    <div class="subsecao">Conceitos-chave</div>
+    <ul class="lista">
+      <li><strong>Patriarcalismo brando</strong>: o senhor seria menos cruel que em outras colonizações; relação senhor-escravo "íntima" mediada por mulheres negras (mãe-preta, mucama)</li>
+      <li><strong>Mestiçagem positiva</strong>: a mistura racial criou uma cultura única, sincrética (festa, religião, alimentação)</li>
+      <li><strong>Hibridismo cultural</strong>: incorporação de elementos africanos e indígenas na cultura brasileira</li>
+      <li><strong>"Democracia racial"</strong> (formulação posterior a 1933): ausência de segregação institucional; convivência racial</li>
+      <li><strong>Casa-Grande</strong>: símbolo da estrutura patriarcal; centro econômico, político, religioso, cultural</li>
+      <li><strong>Senzala</strong>: outro polo, com saberes, religiosidade, técnicas africanas que penetraram na Casa-Grande</li>
+    </ul>
+
+    <div class="subsecao">Críticas Posteriores</div>
+    <p>A obra de Freyre, embora pioneira, foi <em>amplamente criticada</em>:</p>
+    <ul class="lista">
+      <li><strong>Florestan Fernandes</strong>: o "mito da democracia racial" oculta o racismo estrutural brasileiro. Não havia "convivência harmoniosa" — havia exploração e violência</li>
+      <li><strong>Lélia Gonzalez</strong>: a "mãe-preta" e a "mucama" foram figuras de exploração sexual e reprodutiva, não de "intimidade afetiva"; crítica feminista</li>
+      <li><strong>Silvio Almeida</strong>: o mito da democracia racial é instrumento ideológico do racismo estrutural brasileiro — ocultando desigualdades</li>
+      <li><strong>Crítica à apologia do patriarcalismo</strong>: a "brandura" do escravismo brasileiro é factualmente falsa — Brasil teve uma das mais violentas escravidões das Américas; recebeu ~40% dos escravizados; a abolição (1888) foi a última do continente</li>
+      <li><strong>Crítica à miscigenação como solução</strong>: o "embranquecimento" foi política do Estado brasileiro pós-abolição; Freyre acabou legitimando, mesmo que não fosse essa sua intenção</li>
+    </ul>
+
+    <div class="subsecao">Atualidade da Crítica a Freyre</div>
+    <p>Hoje, a sociologia e o SS brasileiros tratam o <em>mito da democracia racial</em> como <em>ideologia conservadora</em> a ser superada. Reconhece-se:</p>
+    <ul class="lista">
+      <li>Racismo estrutural (Silvio Almeida) como fundamento da sociedade brasileira</li>
+      <li>Genocídio do povo negro (Abdias do Nascimento) como categoria sócio-histórica</li>
+      <li>Desigualdade racial em todos os indicadores sociais (renda, escolaridade, mortalidade, encarceramento)</li>
+      <li>Pós-abolição (Florestan) como modernização sem inclusão dos ex-escravizados</li>
+      <li>A "harmonia racial" como narrativa para silenciar conflitos e impedir políticas afirmativas</li>
+    </ul>
+
+    <p><strong>O SS brasileiro</strong>, em diretrizes do CFESS (Resoluções sobre raça/etnia), assume posição crítica ao mito da democracia racial e em defesa do enfrentamento ao racismo estrutural.</p>
+
+    <div class="alerta">
+      <p><strong>Pegadinha FGV:</strong> Freyre NÃO é interpretação crítica adotada pelo SS. Ele descreve "democracia racial", "patriarcalismo brando", "mestiçagem positiva" — categorias <em>refutadas</em> pelo SS contemporâneo. ENARE 2025 (Q74) cobra interpretação CRÍTICA do mito; o residente que adota Freyre acriticamente erra.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-FUND · Formação Social Brasileira</span><span>Extensivo ENARE 2026</span><span class="pg">3 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-FUND</div><div class="aula-ref">Bloco B13 · Aula 05 · Sérgio Buarque</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Sérgio Buarque de Holanda — Raízes do Brasil (1936)</div>
+
+    <p><strong>Sérgio Buarque de Holanda (1902–1982)</strong> publica em 1936 a obra que se tornou referência da interpretação do Brasil. Cobrado em ENARE 2025 (Q63).</p>
+
+    <div class="subsecao">Tese Central</div>
+    <p>O Brasil herdou da colonização ibérica (Portugal/Espanha) traços específicos que dificultam a construção de uma sociedade moderna, racional e democrática. O <strong>"homem cordial"</strong> seria o tipo brasileiro: gentil, afetivo, avesso ao formalismo e à impessoalidade.</p>
+
+    <div class="subsecao">Conceitos-chave</div>
+    <ul class="lista">
+      <li><strong>Homem cordial</strong>: NÃO significa "homem bom" ou "cortês". Significa o homem que vive em base afetiva ("coração", lat. <em>cor</em>) — bom OU mau (passional, vingativo). É o oposto da racionalidade impessoal weberiana</li>
+      <li><strong>Patrimonialismo</strong> (categoria weberiana): mistura entre público e privado; o Estado é tratado como propriedade pessoal; o funcionário usa o cargo para fins privados</li>
+      <li><strong>Personalismo</strong>: relações sociais baseadas em vínculos pessoais (amizade, família, compadrio) em vez de regras impessoais</li>
+      <li><strong>Avesso à democracia institucional</strong>: o brasileiro tem dificuldade com normas universais; prefere o "jeitinho", o favor, a exceção</li>
+      <li><strong>Aventureiro × trabalhador</strong>: tipos ideais (influência weberiana); o português colonizador seria "aventureiro" (busca riqueza fácil, sem regularidade); o anglo-saxão "trabalhador" (ascese)</li>
+      <li><strong>Semeador × ladrilhador</strong>: portugueses semeavam (cidades caóticas); espanhóis ladrilhavam (cidades planejadas em xadrez)</li>
+      <li><strong>Herança ibérica</strong>: feudalismo tardio, contra-reforma católica, falta de tradição democrática protestante</li>
+    </ul>
+
+    <div class="subsecao">Distinção Importante: Homem Cordial NÃO É Homem Educado</div>
+    <p>Esta é a <em>pegadinha mais clássica</em> da prova. A expressão "homem cordial" é frequentemente mal-interpretada:</p>
+    <table>
+      <tr><th>Sentido errado (vulgar)</th><th>Sentido correto (Sérgio Buarque)</th></tr>
+      <tr><td>Pessoa gentil, educada, cortês, simpática</td><td>Pessoa que age por impulso afetivo, sem mediação racional</td></tr>
+      <tr><td>Característica positiva do brasileiro</td><td>Característica problemática que <em>dificulta</em> a modernidade institucional</td></tr>
+      <tr><td>Hospitalidade, amizade fácil</td><td>Confusão entre público e privado; informalidade; jeitinho; favoritismo</td></tr>
+      <tr><td>Sinônimo de "bom caráter"</td><td>Pode ser bom OU mau — o que importa é a base afetiva, não racional</td></tr>
+    </table>
+
+    <p>Sérgio Buarque deixou claro em prefácio posterior: "<em>O 'homem cordial' designa um modo de agir que dá primazia ao 'coração' sobre a 'razão', não significando que seja bondoso. A cordialidade brasileira é também violenta, intolerante com a impessoalidade, hostil à norma universal.</em>"</p>
+
+    <div class="subsecao">Críticas Contemporâneas a Sérgio Buarque</div>
+    <ul class="lista">
+      <li>A categoria "homem cordial" pode reificar uma essência nacional, ignorando classes</li>
+      <li>Jessé Souza critica o "culturalismo" — preferência por causas culturais sobre estruturais econômicas</li>
+      <li>Florestan Fernandes prefere análises de classes a categorias culturais</li>
+      <li>Apesar das críticas, a categoria continua útil para entender o patrimonialismo brasileiro</li>
+    </ul>
+
+    <div class="subsecao">Aplicação ao SS</div>
+    <p>O conceito de patrimonialismo de Sérgio Buarque (via Weber) é útil para o SS analisar:</p>
+    <ul class="lista">
+      <li>Apropriação privada de recursos públicos (corrupção endêmica)</li>
+      <li>"Jeitinho" como anti-direito (privilégio em vez de cidadania)</li>
+      <li>Clientelismo nas políticas sociais ("voto de cabresto", troca de favores)</li>
+      <li>Resistência ao Estado de direito e à impessoalidade burocrática</li>
+      <li>Conservadorismo cultural avesso à modernidade democrática plena</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> "homem cordial" = ação por afeto, NÃO ação por razão. NÃO significa "homem educado". Patrimonialismo = mistura público/privado. Sérgio Buarque é interpretação crítica útil mas tem limites (culturalismo). Cobrado explicitamente em ENARE 2025 (Q63).</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-FUND · Formação Social Brasileira</span><span>Extensivo ENARE 2026</span><span class="pg">4 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-FUND</div><div class="aula-ref">Bloco B13 · Aula 05 · Caio Prado e Florestan</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Caio Prado Jr. e Florestan Fernandes — Interpretações Marxistas do Brasil</div>
+
+    <div class="subsecao">Caio Prado Júnior (1907–1990)</div>
+    <p>Historiador e intelectual marxista. Publica <strong>Formação do Brasil Contemporâneo</strong> (1942) e <strong>História Econômica do Brasil</strong> (1945). Foi o primeiro a aplicar consistentemente o método marxista à interpretação do Brasil.</p>
+
+    <ul class="lista">
+      <li><strong>Sentido da colonização</strong>: o Brasil foi colonizado para <em>produzir mercadorias para o mercado externo</em> (açúcar, ouro, café). Não houve um povoamento europeu autônomo, mas uma empresa econômica de exploração</li>
+      <li><strong>Capitalismo desde o início</strong>: contra a tese de "feudalismo brasileiro" defendida pelo PCB tradicional, Caio Prado afirma que o Brasil sempre foi capitalista, mesmo na colônia, articulado ao comércio mundial</li>
+      <li><strong>Marginalidade da população</strong>: enorme massa de homens livres e pobres entre o senhor latifundiário e o escravo; sem lugar definido na produção</li>
+      <li><strong>Latifúndio + monocultura + escravidão</strong>: tripé estrutural do Brasil colonial e da herança contemporânea</li>
+      <li><strong>Revolução Brasileira</strong> (1966): obra que defende reformas estruturais (agrária, urbana, política, fiscal) — não uma "revolução socialista" abstrata</li>
+    </ul>
+
+    <div class="subsecao">Florestan Fernandes (1920–1995)</div>
+    <p>Sociólogo paulista, considerado o maior sociólogo brasileiro do século XX. Cobrado em ENARE 2025 (Q77, Q79, Q80) com 3 questões. Obras centrais:</p>
+
+    <table>
+      <tr><th>Obra</th><th>Ano</th><th>Tese</th></tr>
+      <tr><td>A Integração do Negro na Sociedade de Classes</td><td>1965</td><td>Crítica do mito da democracia racial; pós-abolição marginaliza o negro; raça e classe entrelaçadas no Brasil</td></tr>
+      <tr><td>A Revolução Burguesa no Brasil</td><td>1975</td><td>Revolução burguesa autocrática (sem participação popular); modernização sem democratização; capitalismo dependente</td></tr>
+      <tr><td>Capitalismo Dependente e Classes Sociais</td><td>1973</td><td>Países periféricos no capitalismo: subordinação ao centro; superexploração do trabalho</td></tr>
+      <tr><td>O Padrão de Industrialização e a Periferia</td><td>diversos</td><td>Industrialização tardia, desigual, sem reformas agrárias e sociais</td></tr>
+      <tr><td>O Que é Revolução?</td><td>1981</td><td>Síntese sobre transformação social</td></tr>
+    </table>
+
+    <div class="subsecao">Conceitos Centrais de Florestan</div>
+    <ul class="lista">
+      <li><strong>Revolução burguesa autocrática</strong>: a burguesia brasileira modernizou o capitalismo sem democratizar a sociedade; aliança com latifúndio e capital estrangeiro</li>
+      <li><strong>Capitalismo dependente</strong>: o Brasil é capitalista, mas subordinado aos centros (EUA, Europa); transferência de mais-valor para o centro</li>
+      <li><strong>"Modernização sem modernidade"</strong>: técnica importada sem direitos democráticos; "vantagens" de classes dominantes sem inclusão da massa</li>
+      <li><strong>Pós-abolição</strong>: o negro foi "libertado" sem terras, sem alfabetização, sem cidadania efetiva → marginalização estrutural até hoje</li>
+      <li><strong>Crítica ao "racismo assimilacionista"</strong> (Q80/2025): a estratégia brasileira de "branquear" via miscigenação e imigração europeia, que excluiu o negro</li>
+      <li><strong>"Domínio do campo senhorial"</strong>: mesmo na modernização industrial, as elites mantiveram o poder agrário (Q79/2025)</li>
+      <li><strong>Sociologia militante</strong>: Florestan foi engajado politicamente; integrou o PT; deputado constituinte 1986</li>
+    </ul>
+
+    <div class="subsecao">Florestan e o SS Contemporâneo</div>
+    <p>Florestan Fernandes é referência <em>central</em> para a perspectiva crítica do SS brasileiro. Suas categorias (capitalismo dependente, revolução burguesa autocrática, racismo estrutural pós-abolição) fundamentam:</p>
+    <ul class="lista">
+      <li>Análise da questão social brasileira em sua especificidade</li>
+      <li>Compreensão do racismo como parte do capitalismo brasileiro, não acidente</li>
+      <li>Crítica ao desenvolvimentismo conservador</li>
+      <li>Defesa de reformas estruturais (agrária, urbana, racial, de gênero)</li>
+      <li>Articulação SS-classe trabalhadora-movimentos sociais</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Florestan crítica explicitamente Freyre:</strong> o "mito da democracia racial" é ideologia de classe dominante; oculta o racismo estrutural. Cobrado em ENARE 2025: 3 questões com Florestan (Q77, Q79, Q80). É a interpretação <em>crítica</em> hegemônica do SS contemporâneo sobre o Brasil.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-FUND · Formação Social Brasileira</span><span>Extensivo ENARE 2026</span><span class="pg">5 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-FUND</div><div class="aula-ref">Bloco B13 · Aula 05 · Darcy Ribeiro</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Darcy Ribeiro — O Povo Brasileiro (1995)</div>
+
+    <p><strong>Darcy Ribeiro (1922–1997)</strong>, antropólogo e indigenista, publica em 1995 sua síntese sobre a formação do povo brasileiro. Combina elementos da antropologia com perspectiva engajada. Cobrado em ENARE 2025 (Q77, Q80) com 2 questões.</p>
+
+    <div class="subsecao">Tese Central</div>
+    <p>O Brasil formou-se pela <em>mestiçagem</em> de três matrizes (indígena, africana, europeia ibérica) e por um <strong>processo de "transfiguração étnica"</strong> que criou um <em>povo novo</em>, com identidade cultural própria. Cinco "brasis" regionais articulam essa formação.</p>
+
+    <div class="subsecao">Os Cinco Brasis</div>
+    <table>
+      <tr><th>Brasil</th><th>Região</th><th>Origem</th></tr>
+      <tr><td>Brasil Crioulo</td><td>Costa açucareira (PE, BA, MA)</td><td>Engenhos de açúcar; massiva presença afro-descendente</td></tr>
+      <tr><td>Brasil Caboclo</td><td>Amazônia</td><td>Indígena + colonizador português; cultura ribeirinha</td></tr>
+      <tr><td>Brasil Sertanejo</td><td>Sertão nordestino</td><td>Pecuária extensiva; tipo "sertanejo"</td></tr>
+      <tr><td>Brasil Caipira</td><td>Sudeste (SP, MG, RJ, GO)</td><td>Mineração; café; cultura caipira</td></tr>
+      <tr><td>Brasil Sulino</td><td>Sul (PR, SC, RS)</td><td>Imigração europeia tardia; pecuária; agricultura familiar</td></tr>
+    </table>
+
+    <div class="subsecao">Conceitos-chave</div>
+    <ul class="lista">
+      <li><strong>Transfiguração étnica</strong>: o brasileiro não é a soma das três raças; é uma <em>nova identidade</em>, sintetizada e diferente das matrizes</li>
+      <li><strong>Povo novo</strong>: tipologia de Darcy — povos transplantados (EUA), testemunhos (México, Peru), emergentes (Brasil, Cuba, Caribe). O Brasil é "emergente" — surge da síntese cultural</li>
+      <li><strong>Racismo assimilacionista</strong> (cobrado em Q80/2025): estratégia brasileira de "branquear" via miscigenação, em vez da segregação estadunidense ou do extermínio sul-africano</li>
+      <li><strong>Industrialização e modernização</strong> (Q77/2025): introduziram mudanças mas mantiveram desigualdades estruturais herdadas da colônia</li>
+      <li><strong>O "Brasil emergente"</strong>: identidade cultural própria, multiplicidade regional, capacidade criativa (música, dança, religião, alimentação)</li>
+      <li><strong>Crítica à elite</strong>: as elites brasileiras nunca aceitaram o povo brasileiro como ele é; quiseram "europeizá-lo" ou "americanizá-lo"; "elite atrasada"</li>
+    </ul>
+
+    <div class="subsecao">Outras Obras de Darcy</div>
+    <ul class="lista">
+      <li><strong>As Américas e a Civilização (1969)</strong>: tipologia de civilizações americanas</li>
+      <li><strong>Os Brasileiros (1985)</strong>: estudo sociológico atualizado</li>
+      <li><strong>Diários Índios (1996)</strong>: experiências de contato com indígenas</li>
+      <li><strong>UnB e UENF</strong>: Darcy participou da criação da UnB (1962) e UENF (1993); pensador e administrador</li>
+    </ul>
+
+    <div class="subsecao">Darcy no SS</div>
+    <p>Darcy Ribeiro fornece ao SS:</p>
+    <ul class="lista">
+      <li>Compreensão da diversidade regional do Brasil</li>
+      <li>Visão crítica da "modernização sem inclusão"</li>
+      <li>Categoria de "transfiguração étnica" para entender identidade brasileira</li>
+      <li>Crítica à miscigenação como estratégia de branqueamento (racismo assimilacionista)</li>
+      <li>Posição engajada e politizada — referência para o intelectual público</li>
+    </ul>
+
+    <div class="subsecao">Outros Intérpretes Importantes (Vigília para 2026)</div>
+    <table>
+      <tr><th>Autor</th><th>Contribuição</th></tr>
+      <tr><td>Roberto Schwarz</td><td>"Ideias fora do lugar" — liberalismo importado conflita com escravidão</td></tr>
+      <tr><td>Antonio Candido</td><td>Crítica literária e formação cultural brasileira</td></tr>
+      <tr><td>Jessé Souza</td><td>Crítica à interpretação culturalista; "ralé estrutural"; "pacto de classes"</td></tr>
+      <tr><td>Lélia Gonzalez</td><td>Amefricanidade; crítica feminista negra ao mito da democracia racial</td></tr>
+      <tr><td>Abdias do Nascimento</td><td>Genocídio do povo negro; quilombismo</td></tr>
+      <tr><td>Silvio Almeida</td><td>Racismo estrutural (livro 2018)</td></tr>
+      <tr><td>Djamila Ribeiro</td><td>Pequeno Manual Antirracista; lugar de fala</td></tr>
+      <tr><td>Conceição Evaristo</td><td>Escrevivência; literatura e formação social</td></tr>
+    </table>
+
+    <div class="alerta">
+      <p><strong>Resumo das interpretações:</strong> Freyre (mestiçagem positiva — criticada); Sérgio Buarque (homem cordial, patrimonialismo); Caio Prado (sentido da colonização exportadora); Florestan (capitalismo dependente, racismo estrutural pós-abolição); Darcy (transfiguração étnica, 5 brasis, povo novo). O SS contemporâneo dialoga criticamente com todos — mas o eixo é a tradição marxista (Caio Prado, Florestan, hoje Silvio Almeida).</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-FUND · Formação Social Brasileira</span><span>Extensivo ENARE 2026</span><span class="pg">6 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-FUND</div><div class="aula-ref">Bloco B13 · Aula 05 · Questões ENARE</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 01</span><span class="fonte">Sérgio Buarque · Homem Cordial · NC: Análise</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Em "Raízes do Brasil" (1936), Sérgio Buarque de Holanda elabora a categoria do "homem cordial". Sobre esse conceito, é CORRETO afirmar:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Refere-se ao brasileiro como pessoa naturalmente educada, gentil e cortês.</span></li>
+        <li class="correta"><span class="letra">B</span><span>O "homem cordial" age por impulso AFETIVO ("coração", lat. cor), em oposição à racionalidade impessoal weberiana; pode ser tanto bondoso quanto passional/violento. A cordialidade dificulta a construção de uma sociedade moderna, democrática, com normas universais; favorece o patrimonialismo, o "jeitinho", o personalismo.</span></li>
+        <li><span class="letra">C</span><span>É sinônimo da "democracia racial" de Gilberto Freyre.</span></li>
+        <li><span class="letra">D</span><span>Designa um tipo característico do norte do Brasil — caboclo amazônico.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> a categoria "homem cordial" deriva de <em>cor</em> (coração) e designa o brasileiro que age por afeto, não por racionalidade. Pode ser bom OU violento — o ponto é a base afetiva, não a moralidade. Sérgio Buarque <em>critica</em> esse traço como obstáculo à modernidade democrática brasileira. Está vinculado ao patrimonialismo (Weber) — confusão entre público e privado. Cobrado em ENARE 2025 (Q63).</p>
+      <p><strong>Por que as outras erram:</strong> A — pegadinha mais clássica; "cordial" não significa "cortês" no sentido de Sérgio Buarque · C — Freyre (democracia racial) ≠ Sérgio Buarque · D — caboclo é categoria de Darcy Ribeiro (5 brasis).</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-FUND · Formação Social Brasileira</span><span>Extensivo ENARE 2026</span><span class="pg">7 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-FUND</div><div class="aula-ref">Bloco B13 · Aula 05 · Questões ENARE</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 02</span><span class="fonte">Florestan Fernandes · Pós-abolição · NC: Análise</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Florestan Fernandes, em "A Integração do Negro na Sociedade de Classes" (1965), defende qual tese central?</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>O Brasil é uma "democracia racial" graças à miscigenação harmoniosa.</span></li>
+        <li class="correta"><span class="letra">B</span><span>O mito da "democracia racial" oculta o racismo estrutural brasileiro. O pós-abolição (1888) "libertou" o negro sem terra, sem educação, sem cidadania, levando à marginalização estrutural. Raça e classe estão entrelaçadas no Brasil; o pré-conceito racial é integrado à exploração de classe, não substituível por ela.</span></li>
+        <li><span class="letra">C</span><span>O racismo brasileiro é apenas individual, sem componente estrutural.</span></li>
+        <li><span class="letra">D</span><span>A abolição em 1888 resolveu plenamente as desigualdades raciais brasileiras.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> Florestan Fernandes é o crítico central do mito da democracia racial. Demonstra que o pós-abolição libertou o negro sem efetivar inclusão: sem reforma agrária, sem educação universal, sem trabalho qualificado, sem direitos políticos plenos. Resultado: marginalização estrutural que persiste. Raça e classe se entrelaçam (não se substituem). Antecede Silvio Almeida (racismo estrutural) em uma elaboração marxista da questão. Cobrado em ENARE 2025 (Q77 e Q79).</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-FUND · Formação Social Brasileira</span><span>Extensivo ENARE 2026</span><span class="pg">8 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-FUND</div><div class="aula-ref">Bloco B13 · Aula 05 · Gabarito Integrado</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 03</span><span class="fonte">Darcy Ribeiro · NC: Compreensão</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Darcy Ribeiro, em "O Povo Brasileiro" (1995), defende qual interpretação sobre a formação social do país?</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>O Brasil é uma extensão direta de Portugal, sem identidade cultural própria.</span></li>
+        <li class="correta"><span class="letra">B</span><span>O Brasil resulta de uma "transfiguração étnica" — síntese cultural das matrizes indígena, africana e europeia ibérica, formando um "povo novo" emergente, com identidade própria. Articula-se em cinco regiões (Crioulo, Caboclo, Sertanejo, Caipira, Sulino). Critica o "racismo assimilacionista" — estratégia de branqueamento via miscigenação que excluiu o negro.</span></li>
+        <li><span class="letra">C</span><span>O Brasil é um caso de "democracia racial" plena.</span></li>
+        <li><span class="letra">D</span><span>O povo brasileiro é homogêneo, sem diferenças regionais relevantes.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> Darcy elabora a categoria "transfiguração étnica" — não soma das três raças, mas síntese cultural <em>nova</em>. Os 5 brasis (Crioulo, Caboclo, Sertanejo, Caipira, Sulino) articulam a diversidade regional. Critica o "racismo assimilacionista" — estratégia de "branquear" o Brasil via miscigenação e imigração europeia, excluindo o negro. Cobrado em ENARE 2025 (Q77, Q80).</p>
+    </div>
+
+    <div class="subsecao" style="margin-top:6px;">Gabarito Comentado — Análise Integrada</div>
+    <table>
+      <tr><th>Questão</th><th>Gabarito</th><th>Tema</th><th>Conceito-Chave</th></tr>
+      <tr><td><strong>01</strong></td><td><span class="destaque">B</span></td><td>Sérgio Buarque — Homem Cordial</td><td>Ação por afeto (cor), NÃO por gentileza; patrimonialismo</td></tr>
+      <tr><td><strong>02</strong></td><td><span class="destaque">B</span></td><td>Florestan — Pós-abolição</td><td>Mito da democracia racial; marginalização estrutural</td></tr>
+      <tr><td><strong>03</strong></td><td><span class="destaque">B</span></td><td>Darcy Ribeiro — 5 Brasis</td><td>Transfiguração étnica; povo novo; racismo assimilacionista</td></tr>
+    </table>
+  </div>
+  <div class="footer"><span>SS-FUND · Formação Social Brasileira</span><span>Extensivo ENARE 2026</span><span class="pg">9 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-FUND</div><div class="aula-ref">Bloco B13 · Aula 05 · Síntese</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Síntese — Formação Social Brasileira</div>
+    <div class="sintese-grid">
+      <div class="sintese-item">
+        <div class="si-label">Gilberto Freyre (1933)</div>
+        <p>Casa-Grande &amp; Senzala. Mestiçagem positiva; patriarcalismo brando; "democracia racial". <em>Criticada</em> pelo SS contemporâneo — oculta racismo estrutural.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Sérgio Buarque (1936)</div>
+        <p>Raízes do Brasil. "Homem cordial" = age por AFETO (não por educação); patrimonialismo (Weber); herança ibérica; resistência à modernidade institucional democrática. Cobrado em Q63/2025.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Caio Prado Jr. (1942)</div>
+        <p>Formação do Brasil Contemporâneo. "Sentido da colonização" = produzir para mercado externo. Latifúndio + monocultura + escravidão. Capitalismo desde o início (contra a tese feudalista do PCB).</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Florestan Fernandes (1965, 1975)</div>
+        <p>Integração do Negro; Revolução Burguesa. Crítica ao mito da democracia racial; pós-abolição marginaliza o negro; capitalismo dependente; revolução burguesa autocrática; modernização sem democratização. Cobrado em 3 questões da ENARE 2025.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Darcy Ribeiro (1995)</div>
+        <p>O Povo Brasileiro. Transfiguração étnica; 5 brasis (Crioulo, Caboclo, Sertanejo, Caipira, Sulino); povo novo; racismo assimilacionista (branqueamento via miscigenação). Cobrado em Q77, Q80/2025.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Próxima Aula</div>
+        <p><strong>Aula 06 — SUAS: Estrutura e Proteção Social.</strong> CF 1988, LOAS, NOB-SUAS, SUAS federativo, paternalismo vs assistencialismo. Cluster NOVO 2025 (0→9q!).</p>
+      </div>
+    </div>
+    <div class="alerta" style="margin-top:5px;">
+      <p><strong>Regra de ouro — Formação Social Brasileira no ENARE:</strong> 4 questões em 2025 (cluster novo). Freyre = criticado (mito da democracia racial). Sérgio Buarque = homem cordial (afeto, não educação). Caio Prado = sentido exportador. Florestan = capitalismo dependente + crítica racial. Darcy = transfiguração + 5 brasis + racismo assimilacionista. Eixo do SS: tradição marxista (Caio Prado, Florestan, Silvio Almeida).</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-FUND · Formação Social Brasileira</span><span>Extensivo ENARE 2026</span><span class="pg">10 / 10</span></div>
+</div>
+
+</body>
+</html>
