@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Serviço Social — Bloco B13 Aula 09 | Extensivo ENARE 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap');
+  :root { --creme: #F6F4ED; --verde: #1F5C23; --amarelo: #C6D834; --escuro: #0C2B0E; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #d0d0d0; font-family: 'Bricolage Grotesque', sans-serif; }
+  .page { width: 210mm; height: 297mm; background: var(--creme); margin: 0 auto 12px; position: relative; overflow: hidden; page-break-after: always; }
+  .header { background: var(--verde); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .header-logo { display: flex; align-items: center; gap: 8px; }
+  .header-logo svg { width: 32px; height: 32px; }
+  .header-brand { display: flex; flex-direction: column; line-height: 1; }
+  .header-brand .marca { font-family: 'Playfair Display', serif; font-style: italic; color: #fff; font-size: 13px; letter-spacing: 0.5px; }
+  .header-brand .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 7px; letter-spacing: 1.5px; text-transform: uppercase; }
+  .header-info { text-align: right; }
+  .header-info .disciplina { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
+  .header-info .aula-ref { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.7); font-size: 8px; letter-spacing: 0.5px; }
+  .footer { position: absolute; bottom: 0; left: 0; right: 0; background: var(--verde); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .footer span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.6); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .footer .pg { color: var(--amarelo); font-weight: 400; }
+  .body { padding: 14px 18px 30px; height: calc(297mm - 52px - 22px); overflow: hidden; }
+  .capa-page { background: var(--verde); }
+  .capa-header { background: var(--creme); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .capa-header .marca { font-family: 'Playfair Display', serif; font-style: italic; color: var(--verde); font-size: 14px; }
+  .capa-header .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--verde); font-size: 7.5px; letter-spacing: 2px; text-transform: uppercase; }
+  .capa-body { padding: 28px 24px 0; display: flex; flex-direction: column; height: calc(297mm - 52px - 22px); }
+  .capa-eyebrow { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; }
+  .capa-titulo { font-family: 'Barlow Condensed', sans-serif; color: #fff; font-size: 50px; line-height: 0.95; text-transform: uppercase; letter-spacing: -0.5px; margin-bottom: 6px; }
+  .capa-titulo span { color: var(--amarelo); }
+  .capa-subtitulo { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; color: rgba(255,255,255,0.65); font-size: 12px; letter-spacing: 0.3px; margin-bottom: 22px; line-height: 1.5; }
+  .capa-badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+  .capa-badge { background: rgba(198,216,52,0.15); border: 1px solid var(--amarelo); color: var(--amarelo); font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 8px; border-radius: 2px; }
+  .capa-divider { width: 40px; height: 3px; background: var(--amarelo); margin-bottom: 20px; }
+  .capa-topicos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .capa-topico { display: flex; align-items: flex-start; gap: 7px; }
+  .capa-topico-num { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 18px; line-height: 1; min-width: 18px; }
+  .capa-topico-txt { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 400; color: rgba(255,255,255,0.8); font-size: 9.5px; line-height: 1.4; }
+  .capa-footer-strip { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.25); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .capa-footer-strip span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.45); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .secao-titulo { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 18px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid var(--amarelo); padding-bottom: 3px; margin-bottom: 9px; line-height: 1; }
+  .subsecao { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.5px; margin: 7px 0 3px; }
+  p { font-size: 9px; line-height: 1.55; color: #1a1a1a; margin-bottom: 4px; font-weight: 400; }
+  .destaque { background: var(--amarelo); color: var(--escuro); font-weight: 600; padding: 1px 4px; border-radius: 2px; font-size: 8.5px; }
+  .alerta { background: rgba(198,216,52,0.18); border-left: 3px solid var(--amarelo); padding: 5px 8px; margin: 5px 0; border-radius: 0 3px 3px 0; }
+  .alerta p { margin: 0; font-size: 8.5px; }
+  .alerta strong { color: var(--verde); }
+  table { width: 100%; border-collapse: collapse; margin: 5px 0; font-size: 8px; }
+  th { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; padding: 4px 6px; text-align: left; }
+  td { padding: 3px 6px; border-bottom: 1px solid rgba(31,92,35,0.12); vertical-align: top; line-height: 1.4; color: #1a1a1a; }
+  tr:nth-child(even) td { background: rgba(31,92,35,0.04); }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 5px 0; }
+  .card { background: rgba(31,92,35,0.06); border: 1px solid rgba(31,92,35,0.15); border-radius: 4px; padding: 7px 8px; }
+  .card-title { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 11px; text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 3px; }
+  .card p { font-size: 8px; line-height: 1.5; }
+  .questao-header { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; padding: 4px 10px; border-radius: 3px 3px 0 0; display: flex; justify-content: space-between; align-items: center; }
+  .questao-header .fonte { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; color: var(--amarelo); letter-spacing: 0.5px; }
+  .questao-body { border: 1px solid rgba(31,92,35,0.2); border-top: none; border-radius: 0 0 3px 3px; padding: 7px 10px; margin-bottom: 7px; }
+  .questao-enunciado { font-size: 8.5px; line-height: 1.55; color: #111; margin-bottom: 5px; font-weight: 500; }
+  .alternativas { list-style: none; }
+  .alternativas li { font-size: 8px; line-height: 1.5; padding: 2px 0; color: #222; display: flex; gap: 5px; }
+  .alternativas li .letra { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: var(--verde); font-size: 9px; min-width: 10px; }
+  .alternativas li.correta .letra { color: var(--amarelo); }
+  .alternativas li.correta { background: rgba(198,216,52,0.15); border-left: 2px solid var(--amarelo); padding-left: 4px; }
+  .gabarito-box { background: var(--verde); border-radius: 4px; padding: 8px 12px; margin: 6px 0; }
+  .gabarito-box .gab-title { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+  .gabarito-box p { color: rgba(255,255,255,0.9); font-size: 8px; line-height: 1.55; }
+  .gabarito-box strong { color: var(--amarelo); }
+  .sintese-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-top: 6px; }
+  .sintese-item { background: rgba(31,92,35,0.07); border-left: 3px solid var(--verde); padding: 5px 7px; border-radius: 0 3px 3px 0; }
+  .sintese-item .si-label { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px; }
+  .sintese-item p { font-size: 7.5px; line-height: 1.5; }
+  ul.lista { padding-left: 14px; margin: 3px 0; }
+  ul.lista li { font-size: 8.5px; line-height: 1.55; color: #1a1a1a; margin-bottom: 1px; }
+  @media print { body { background: none; } .page { margin: 0; box-shadow: none; } }
+</style>
+</head>
+<body>
+
+<div class="page capa-page">
+  <div class="capa-header">
+    <div style="display:flex;align-items:center;gap:8px;"><svg width="34" height="34" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#1F5C23"/></svg><div><div class="marca">Elite Treinamentos</div><div class="tagline">Extensivo ENARE 2026</div></div></div>
+    <div style="text-align:right;"><div style="font-family:'Barlow Condensed',sans-serif;color:var(--verde);font-size:11px;letter-spacing:1px;text-transform:uppercase;">Bloco B13 · Aula 09</div><div style="font-family:'Space Grotesk',sans-serif;font-weight:300;color:#888;font-size:7.5px;letter-spacing:0.5px;">Serviço Social</div></div>
+  </div>
+  <div class="capa-body">
+    <div class="capa-eyebrow">Bloco B13 · SS-POLITICA · Aula 09 de 21</div>
+    <div class="capa-titulo">Seguri-<br>dade <span>&amp;<br>Políticas<br>Sociais</span></div>
+    <div class="capa-subtitulo">CF/1988 tripé, Welfare, seletividade/distributividade,<br>controle social e crítica ao filantrocapitalismo</div>
+    <div class="capa-badge-row">
+      <div class="capa-badge">SS-POLITICA ★★★</div>
+      <div class="capa-badge">CF/1988 Art. 194</div>
+      <div class="capa-badge">Welfare · Beveridge</div>
+      <div class="capa-badge">Filantrocapitalismo</div>
+    </div>
+    <div class="capa-divider"></div>
+    <div class="capa-topicos">
+      <div class="capa-topico"><div class="capa-topico-num">01</div><div class="capa-topico-txt">Welfare State: Bismarck e Beveridge</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">02</div><div class="capa-topico-txt">CF/1988: Seguridade Social como tripé</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">03</div><div class="capa-topico-txt">Princípios da Seguridade (Art. 194)</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">04</div><div class="capa-topico-txt">Saúde, Previdência e Assistência — comparativo</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">05</div><div class="capa-topico-txt">Controle social: Conselhos e Conferências</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">06</div><div class="capa-topico-txt">Crítica: assistencialização e filantrocapitalismo</div></div>
+    </div>
+  </div>
+  <div class="capa-footer-strip"><span>Extensivo ENARE 2026</span><span>Elite Treinamentos em Saúde</span><span>Página 1 de 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-POLITICA</div><div class="aula-ref">Bloco B13 · Aula 09 · Welfare</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Welfare State — Histórico</div>
+
+    <p>O <strong>Estado de Bem-Estar Social (Welfare State)</strong> é uma construção histórica do capitalismo do século XX. Surge como resposta às lutas trabalhistas, à Grande Depressão (1929) e às duas guerras mundiais. Marco fundamental da política social moderna. Cobrado em ENARE 2024 e 2025 (várias questões).</p>
+
+    <div class="subsecao">Modelo Bismarckiano (Alemanha, 1881-1889)</div>
+    <p>Otto von Bismarck (1815-1898), chanceler alemão, instituiu o <strong>primeiro sistema de seguridade social</strong> da história moderna. Características:</p>
+    <ul class="lista">
+      <li>1883 — Seguro Saúde (financiamento empregadores + trabalhadores)</li>
+      <li>1884 — Seguro Acidente do Trabalho</li>
+      <li>1889 — Seguro Velhice e Invalidez</li>
+      <li><strong>Caráter contributivo</strong>: vinculado ao trabalho assalariado</li>
+      <li><strong>Caráter conservador</strong>: visava conter o avanço da social-democracia e do socialismo</li>
+      <li><strong>Lógica do seguro</strong>: contribuição prévia = direito a benefício</li>
+      <li><strong>Cobertura restrita</strong>: apenas trabalhadores formais</li>
+    </ul>
+
+    <div class="subsecao">Modelo Beveridgeano (Reino Unido, 1942)</div>
+    <p>O <strong>Plano Beveridge (William Beveridge, 1942)</strong> propôs o "Welfare State universal" no Reino Unido pós-2ª Guerra. Marco do modelo universalista. Características:</p>
+    <ul class="lista">
+      <li><strong>Princípios</strong>: combater os "5 gigantes" — Doença (Disease), Ignorância (Ignorance), Indigência (Want), Esquadria (Squalor), Ociosidade (Idleness)</li>
+      <li><strong>Universalidade</strong>: cobertura para todos os cidadãos, independente de contribuição</li>
+      <li><strong>Financiamento</strong>: orçamento geral (impostos), não apenas contribuição</li>
+      <li><strong>Direito de cidadania</strong>: assistência como direito, não como caridade</li>
+      <li><strong>NHS</strong>: National Health Service (1948) — sistema universal de saúde inspirou o SUS brasileiro</li>
+      <li><strong>Pleno emprego</strong>: política econômica subordinada a fim social</li>
+    </ul>
+
+    <div class="subsecao">Tipologia de Esping-Andersen (1990) — "Os Três Mundos do Welfare"</div>
+    <table>
+      <tr><th>Tipo</th><th>Características</th><th>Países</th></tr>
+      <tr><td><strong>Liberal</strong></td><td>Mercado central; Estado mínimo; benefícios residuais e focalizados; baixa desmercantilização</td><td>EUA, Reino Unido, Canadá, Austrália</td></tr>
+      <tr><td><strong>Conservador-corporativista</strong></td><td>Bismarckiano; vinculado ao trabalho; desigualdade reproduzida; família como provedora</td><td>Alemanha, França, Itália, Áustria</td></tr>
+      <tr><td><strong>Social-democrata</strong></td><td>Universalista; alta desmercantilização; igualdade como meta; serviços robustos</td><td>Suécia, Noruega, Dinamarca, Finlândia</td></tr>
+    </table>
+
+    <p>Para a América Latina, alguns autores (Draibe, Boschetti) propõem categorias adicionais: "<em>regime dual</em>" (formais com seguro contributivo + informais com programas focalizados/assistencialistas).</p>
+
+    <div class="subsecao">Os "Trinta Gloriosos" (1945-1975)</div>
+    <p>Período do auge do Welfare State nos países centrais:</p>
+    <ul class="lista">
+      <li>Crescimento econômico contínuo</li>
+      <li>Baixo desemprego</li>
+      <li>Expansão dos direitos sociais</li>
+      <li>Compromisso fordista entre capital e trabalho</li>
+      <li>Pacto social-democrata</li>
+      <li>Convergência: capitalismo + bem-estar social</li>
+    </ul>
+
+    <p>Crise dos anos 1970 (crise do petróleo, queda da taxa de lucro, estagflação) iniciou o desmonte progressivo do Welfare clássico e abriu caminho ao neoliberalismo.</p>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> Bismarck (1881-1889) = primeiro sistema contributivo. Beveridge (1942) = universalismo. Esping-Andersen = tipologia (liberal/conservador/social-democrata). Brasil = híbrido — CF/1988 tem inspiração beveridgeana (universalismo da saúde, assistência) mas mantém modelo contributivo na Previdência (bismarckiano). Cobrado em ENARE 2024.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-POLITICA · Seguridade</span><span>Extensivo ENARE 2026</span><span class="pg">2 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-POLITICA</div><div class="aula-ref">Bloco B13 · Aula 09 · CF/1988</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">CF/1988 — Seguridade Social Tripartite</div>
+
+    <p>A Constituição Federal de 1988 estabeleceu a <strong>Seguridade Social</strong> como conjunto integrado de ações dos Poderes Públicos e da sociedade, destinadas a assegurar os direitos relativos à <em>Saúde, Previdência e Assistência Social</em> (CF/1988, art. 194). Foi a "Constituição Cidadã" que rompeu com o legado autoritário e benemerente. Cobrado em ENARE 2025 (Q21, Q29, Q97).</p>
+
+    <div class="subsecao">CF/1988 — Texto Constitucional</div>
+    <p><strong>Art. 194.</strong> "A seguridade social compreende um conjunto integrado de ações de iniciativa dos Poderes Públicos e da sociedade, destinadas a assegurar os direitos relativos à saúde, à previdência e à assistência social."</p>
+
+    <p>Parágrafo único — Compete ao Poder Público, nos termos da lei, organizar a seguridade social, com base nos seguintes objetivos:</p>
+    <ul class="lista">
+      <li><strong>I — Universalidade da cobertura e do atendimento</strong></li>
+      <li><strong>II — Uniformidade e equivalência dos benefícios</strong> e serviços às populações urbanas e rurais</li>
+      <li><strong>III — Seletividade e distributividade</strong> na prestação dos benefícios e serviços</li>
+      <li><strong>IV — Irredutibilidade do valor dos benefícios</strong></li>
+      <li><strong>V — Equidade na forma de participação no custeio</strong></li>
+      <li><strong>VI — Diversidade da base de financiamento</strong>, identificando-se, em rubricas contábeis específicas para cada área, as receitas e as despesas vinculadas a ações de saúde, previdência e assistência social</li>
+      <li><strong>VII — Caráter democrático e descentralizado da administração</strong>, mediante gestão quadripartite, com participação dos trabalhadores, dos empregadores, dos aposentados e do Governo nos órgãos colegiados</li>
+    </ul>
+
+    <div class="subsecao">Comparativo dos 3 Pilares</div>
+    <table>
+      <tr><th>Aspecto</th><th>Saúde</th><th>Previdência</th><th>Assistência Social</th></tr>
+      <tr><td>Acesso</td><td>Universal (todos)</td><td>Contributivo</td><td>Universal "a quem dela necessitar"</td></tr>
+      <tr><td>Contribuição</td><td>NÃO exigida</td><td>SIM exigida</td><td>NÃO exigida</td></tr>
+      <tr><td>Marco legal infra</td><td>Lei 8.080/1990 (LOS)</td><td>Lei 8.213/1991 e ECs (103/2019)</td><td>Lei 8.742/1993 (LOAS) + Lei 12.435/2011</td></tr>
+      <tr><td>Sistema</td><td>SUS</td><td>RGPS (privado) + RPPS (servidor público)</td><td>SUAS</td></tr>
+      <tr><td>Gestor federal</td><td>MS — Ministério da Saúde</td><td>MPS — Ministério da Previdência Social</td><td>MDS — Ministério do Desenvolvimento Social</td></tr>
+      <tr><td>Princípios CF</td><td>Universalidade, integralidade, equidade, descentralização, participação</td><td>Seguro social contributivo</td><td>Universalidade, descentralização, participação</td></tr>
+      <tr><td>Conselho de controle</td><td>CNS — Conselho Nacional de Saúde</td><td>CNPS — Conselho Nacional Previdência Social</td><td>CNAS — Conselho Nacional de Assistência Social</td></tr>
+    </table>
+
+    <div class="subsecao">Seletividade e Distributividade — Conceito Crítico</div>
+    <p>Princípio frequentemente mal interpretado. Não significa <em>focalização</em> em sentido neoliberal. Significa:</p>
+    <ul class="lista">
+      <li><strong>Seletividade</strong>: o Estado seleciona quais serviços e benefícios prestar conforme as necessidades sociais identificadas</li>
+      <li><strong>Distributividade</strong>: distribui esses serviços de forma a reduzir desigualdades — princípio redistributivo</li>
+      <li>Aplica-se à Previdência (benefícios contributivos selecionados) e à Assistência (focada em "quem dela necessitar")</li>
+      <li>NÃO se aplica à Saúde (que é universal — todos têm direito independente da necessidade comprovada)</li>
+      <li>Crítica: o neoliberalismo distorce o princípio, transformando-o em "focalização nos mais pobres" como forma de restringir cobertura</li>
+    </ul>
+
+    <div class="subsecao">Financiamento da Seguridade Social (CF/1988 Art. 195)</div>
+    <p>Diversificação obrigatória da base de financiamento:</p>
+    <ul class="lista">
+      <li>Empregadores (Folha de pagamento, lucro, faturamento — CSLL, COFINS, PIS/PASEP)</li>
+      <li>Trabalhadores (INSS, IRRF)</li>
+      <li>Recursos do orçamento geral (todos os entes federados)</li>
+      <li>Concursos de prognósticos (loterias)</li>
+      <li>Importador (PIS/COFINS importação)</li>
+      <li>DRU — Desvinculação de Receitas da União (controvertida; permite usar até 30% das receitas para outras finalidades)</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> tripé = Saúde + Previdência + Assistência. 7 princípios do Art. 194. Distinguir Previdência (contributiva) das outras duas. Seletividade/distributividade NÃO é focalização neoliberal. Cobrado em ENARE 2025 (Q21).</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-POLITICA · Seguridade</span><span>Extensivo ENARE 2026</span><span class="pg">3 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-POLITICA</div><div class="aula-ref">Bloco B13 · Aula 09 · Previdência</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Previdência Social — Sistema Contributivo</div>
+
+    <p>A Previdência Social é o pilar <em>contributivo</em> da Seguridade. Diferente da Saúde e Assistência, requer contribuição prévia para acesso a benefícios. Cobertura: 70% da PEA (PNAD/IBGE).</p>
+
+    <div class="subsecao">Regimes Previdenciários</div>
+    <table>
+      <tr><th>Regime</th><th>Vinculação</th><th>Lei</th></tr>
+      <tr><td>RGPS — Regime Geral de Previdência Social</td><td>Trabalhadores da iniciativa privada e servidores não estatutários</td><td>Lei 8.213/1991</td></tr>
+      <tr><td>RPPS — Regime Próprio dos Servidores Públicos</td><td>Servidores estatutários (União, Estados, Municípios)</td><td>Lei 9.717/1998; constituições próprias</td></tr>
+      <tr><td>RPC — Regime de Previdência Complementar</td><td>Voluntário; ente público (FUNPRESP, etc.) ou privado (PGBL, VGBL)</td><td>LC 108 e 109/2001</td></tr>
+      <tr><td>Segurado Especial</td><td>Agricultor familiar, pescador artesanal, indígena (regime simplificado)</td><td>Lei 8.213/1991 art. 11</td></tr>
+    </table>
+
+    <div class="subsecao">Benefícios Previdenciários (RGPS)</div>
+    <ul class="lista">
+      <li><strong>Aposentadoria por idade</strong>: homem 65, mulher 62 (regra atual EC 103/2019; transição)</li>
+      <li><strong>Aposentadoria por tempo de contribuição</strong>: abolida pela EC 103/2019; vigem regras de transição</li>
+      <li><strong>Aposentadoria por incapacidade permanente</strong> (antiga aposentadoria por invalidez)</li>
+      <li><strong>Aposentadoria especial</strong>: trabalhadores expostos a agentes nocivos</li>
+      <li><strong>Auxílio por incapacidade temporária</strong> (antigo auxílio-doença)</li>
+      <li><strong>Auxílio-acidente</strong>: indeniza acidente do trabalho com sequelas</li>
+      <li><strong>Salário-família</strong>: trabalhadores de baixa renda com filhos &lt; 14 anos</li>
+      <li><strong>Salário-maternidade</strong>: 120 dias (CLT, MEI, segurada especial)</li>
+      <li><strong>Pensão por morte</strong>: dependentes</li>
+      <li><strong>Auxílio-reclusão</strong>: dependentes de segurado de baixa renda recluso</li>
+    </ul>
+
+    <div class="subsecao">EC 103/2019 — Reforma da Previdência</div>
+    <ul class="lista">
+      <li>Idade mínima para aposentadoria: 65 homem; 62 mulher (RGPS)</li>
+      <li>Tempo mínimo de contribuição: 20 anos homem; 15 anos mulher (regras com transição)</li>
+      <li>Regras de transição (idade + tempo de contribuição) para quem já contribuía</li>
+      <li>Aposentadoria especial: regras endurecidas</li>
+      <li>BPC: idade do idoso elevada para 65 anos</li>
+      <li>Pensão por morte: cálculo alterado (cota familiar + cotas por dependente)</li>
+      <li>Cálculo do benefício: 60% + 2% por ano além de 20 anos contribuição</li>
+      <li>Críticas do conjunto CFESS-CRESS e movimentos: endurecimento de critérios; transferência de risco ao trabalhador; idade mínima desigual entre homens/mulheres reduzida</li>
+    </ul>
+
+    <div class="subsecao">Princípios da Previdência (LOPS — Lei 8.213/1991)</div>
+    <ul class="lista">
+      <li>Universalidade de participação nos planos previdenciários</li>
+      <li>Uniformidade e equivalência dos benefícios urbanos/rurais</li>
+      <li>Seletividade e distributividade</li>
+      <li>Irredutibilidade do valor</li>
+      <li>Equidade no custeio</li>
+      <li>Caráter democrático e descentralizado</li>
+    </ul>
+
+    <div class="subsecao">Atuação do AS na Previdência</div>
+    <p>O AS atua no INSS em:</p>
+    <ul class="lista">
+      <li><strong>Avaliação social</strong> do BPC</li>
+      <li><strong>Avaliação biopsicossocial</strong> da PCD (em conjunto com perito médico)</li>
+      <li><strong>Reabilitação profissional</strong> (CRP — Centro de Reabilitação Profissional)</li>
+      <li><strong>Plantão social</strong>: orientação a segurados</li>
+      <li><strong>Análise técnica</strong> de casos complexos</li>
+      <li><strong>Atendimento a famílias</strong> em situações de violação</li>
+      <li><strong>Pesquisa</strong> sobre demandas e perfis</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Pegadinhas FGV:</strong> Previdência é CONTRIBUTIVA (diferente da Saúde e Assistência). EC 103/2019 endureceu regras. AS atua no INSS com função clínica reconhecida. Não confundir BPC (assistencial) com aposentadoria (contributiva).</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-POLITICA · Seguridade</span><span>Extensivo ENARE 2026</span><span class="pg">4 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-POLITICA</div><div class="aula-ref">Bloco B13 · Aula 09 · Controle Social</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Controle Social — Conselhos e Conferências</div>
+
+    <p>O <strong>controle social</strong> é princípio fundamental da Seguridade Social pós-CF/1988. Significa a participação da sociedade no planejamento, execução e fiscalização das políticas públicas. Cobrado em ENARE 2025 (Q32, Q50).</p>
+
+    <div class="subsecao">Conceito de Controle Social</div>
+    <p>Não se confunde com "controle dos pobres" ou "vigilância autoritária". Significa <em>controle da sociedade sobre o Estado e suas políticas</em>. Decorre do princípio democrático e participativo da CF/1988 (art. 1º, parágrafo único; arts. 194, 198, 204, 205-216).</p>
+
+    <p>É exercido por:</p>
+    <ul class="lista">
+      <li><strong>Conselhos de políticas públicas</strong>: paritários, deliberativos, com atribuições definidas em lei</li>
+      <li><strong>Conferências</strong>: encontros periódicos para deliberar diretrizes</li>
+      <li><strong>Ouvidorias</strong>: canal de atendimento à reclamação/sugestão da sociedade</li>
+      <li><strong>Audiências públicas</strong>: discussão de temas específicos</li>
+      <li><strong>Orçamento participativo</strong>: experiências locais (Porto Alegre desde 1989)</li>
+      <li><strong>Movimentos sociais</strong>: pressão organizada da sociedade civil</li>
+      <li><strong>Conselhos de classe</strong>: profissionais (CRESS, CRP, CRM, COREN)</li>
+    </ul>
+
+    <div class="subsecao">Conselhos da Seguridade Social</div>
+    <table>
+      <tr><th>Conselho</th><th>Política</th><th>Composição</th></tr>
+      <tr><td>CNS — Conselho Nacional de Saúde</td><td>Saúde</td><td>50% usuários + 25% trabalhadores + 25% governo/prestadores</td></tr>
+      <tr><td>CNAS — Conselho Nacional de Assistência Social</td><td>Assistência Social</td><td>50% governo + 50% sociedade civil (paridade)</td></tr>
+      <tr><td>CNPS — Conselho Nacional de Previdência Social</td><td>Previdência Social</td><td>Tripartite: governo + empregadores + trabalhadores + aposentados</td></tr>
+    </table>
+
+    <div class="subsecao">Características dos Conselhos</div>
+    <ul class="lista">
+      <li><strong>Deliberativos</strong>: têm poder de decisão sobre diretrizes e orçamentos</li>
+      <li><strong>Paritários</strong> ou com composição definida (sociedade civil + governo)</li>
+      <li><strong>Permanentes</strong>: caráter contínuo</li>
+      <li><strong>Independentes</strong>: secretarias executivas autônomas</li>
+      <li><strong>Atribuições</strong>: aprovação de planos, normas, orçamentos; fiscalização de fundos; convocação de conferências</li>
+      <li><strong>Mandato</strong>: representantes da sociedade civil eleitos por seus pares; mandatos definidos</li>
+      <li><strong>Reuniões regulares</strong>: publicidade das atas</li>
+    </ul>
+
+    <div class="subsecao">Conferências</div>
+    <p>Conferências são encontros periódicos para deliberar diretrizes nacionais das políticas públicas. Realizadas em ciclo escalonado:</p>
+    <ol>
+      <li><strong>Conferências municipais</strong>: cada município realiza</li>
+      <li><strong>Conferências estaduais</strong>: deliberam diretrizes regionais; elegem delegados nacionais</li>
+      <li><strong>Conferência nacional</strong>: aprova diretrizes para o ciclo</li>
+    </ol>
+
+    <p>Periodicidade: cada 4 anos (para Assistência Social), 4 anos (Saúde), conforme cada política.</p>
+
+    <div class="subsecao">Conferências Históricas — Marcos</div>
+    <table>
+      <tr><th>Conferência</th><th>Ano</th><th>Marco</th></tr>
+      <tr><td>VIII Conferência Nacional de Saúde</td><td>1986</td><td>Reforma Sanitária; base do SUS</td></tr>
+      <tr><td>I Conferência Nacional de Assistência Social</td><td>1995</td><td>Após LOAS; consolida participação</td></tr>
+      <tr><td>IV Conferência Nacional de AS</td><td>2003</td><td>Aprovação das diretrizes do SUAS</td></tr>
+      <tr><td>X Conferência Nacional de AS</td><td>2017</td><td>Críticas à EC 95/2016; defesa do SUAS</td></tr>
+      <tr><td>XII Conferência Nacional de Saúde</td><td>2003</td><td>Consolidação participativa do SUS</td></tr>
+      <tr><td>17ª Conferência Nacional de Saúde</td><td>2023</td><td>Retomada democrática; Saúde para Todos</td></tr>
+    </table>
+
+    <div class="subsecao">Limites do Controle Social</div>
+    <p>Apesar dos avanços, a categoria SS aponta tensões:</p>
+    <ul class="lista">
+      <li>Burocratização dos conselhos</li>
+      <li>Esvaziamento político em alguns períodos</li>
+      <li>Captura por interesses governamentais</li>
+      <li>Falta de paridade real (formalmente sim, na prática desigual)</li>
+      <li>Conferências realizadas sem implementação efetiva das deliberações</li>
+      <li>Desmobilização social pós-anos 2000</li>
+      <li>Desafio de articular controle social com lutas mais amplas</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> controle social = participação da sociedade na gestão pública. Conselhos (deliberativos, paritários, permanentes) + Conferências (periódicas, escalonadas). CNS = saúde; CNAS = assistência; CNPS = previdência. Cobrado em ENARE 2025 (Q32).</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-POLITICA · Seguridade</span><span>Extensivo ENARE 2026</span><span class="pg">5 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-POLITICA</div><div class="aula-ref">Bloco B13 · Aula 09 · Filantrocapitalismo</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Filantrocapitalismo e Assistencialização da Seguridade</div>
+
+    <p>A categoria <strong>filantrocapitalismo</strong> foi cobrada em ENARE 2025 (Q42). Refere-se ao fenômeno contemporâneo em que grandes empresas e fundações privadas substituem o Estado no provimento de políticas sociais, com lógica empresarial.</p>
+
+    <div class="subsecao">Conceito de Filantrocapitalismo</div>
+    <p>Termo cunhado por Matthew Bishop e Michael Green (2008) para descrever a "filantropia empresarial" — corporações e bilionários financiando causas sociais. No SS, é categoria <em>crítica</em>: revela como o capital se apropria do social.</p>
+
+    <div class="subsecao">Características</div>
+    <ul class="lista">
+      <li>Grandes empresas criam fundações para "responsabilidade social"</li>
+      <li>Bilionários (Gates, Buffett, Soros, Faria, Setubal no Brasil) destinam recursos a causas sociais</li>
+      <li>Lógica empresarial aplicada ao social: "métricas de impacto", "ROI social", "scaling"</li>
+      <li>Substituição do papel do Estado pela iniciativa privada</li>
+      <li>Apropriação da pauta social como diferencial competitivo</li>
+      <li>Marketing social (greenwashing, pinkwashing, etc.)</li>
+      <li>"Empreendedorismo social" como ideologia</li>
+      <li>Vinculação a marcas e produtos ("produto social")</li>
+      <li>Desresponsabilização do poder público</li>
+    </ul>
+
+    <div class="subsecao">Crítica do SS ao Filantrocapitalismo</div>
+    <ul class="lista">
+      <li><strong>Substitui direito por favor</strong>: política pública é direito; filantropia é caridade modernizada</li>
+      <li><strong>Despolitiza</strong>: a questão social é tratada como caso de "ineficiência" gerencial, não como contradição estrutural</li>
+      <li><strong>Selecionista</strong>: empresas escolhem o que financiar, sem critérios democráticos</li>
+      <li><strong>Incompatível com universalidade</strong>: cobertura parcial, focalizada, descontínua</li>
+      <li><strong>Conflita com PEP do SS</strong>: vinculação à classe trabalhadora vs interesse do capital</li>
+      <li><strong>Legitima a desigualdade</strong>: o filantropo bilionário lava a imagem do sistema que produziu a desigualdade</li>
+      <li><strong>"Caridade tributária"</strong>: deduções fiscais financiam a filantropia com dinheiro público</li>
+    </ul>
+
+    <div class="subsecao">Assistencialização da Seguridade Social</div>
+    <p>Conceito crítico desenvolvido por Mota, Boschetti, Behring, Stein, Sposati — entre outras. Refere-se à tendência (desde os anos 1990) de:</p>
+    <ul class="lista">
+      <li>Reduzir a Seguridade a programas focalizados (transferência de renda) em detrimento dos serviços universais</li>
+      <li>Substituir direitos universais (saúde, educação) por benefícios temporários (Bolsa Família)</li>
+      <li>Desfinanciar serviços (SUS, SUAS) para financiar transferências</li>
+      <li>"Mercantilizar" o que não pode ser mercantilizado</li>
+      <li>Despolitizar — transferência de renda atende sem questionar estrutura</li>
+      <li>"Assistencializar" — tudo é reduzido à lógica assistencial, mesmo políticas que não deveriam (saúde, educação)</li>
+    </ul>
+
+    <div class="subsecao">Mota, "Cultura da Crise" e a Assistencialização</div>
+    <p>Ana Elizabete Mota, em "A Cultura da Crise e a Seguridade Social" (1995/2009), desenvolve:</p>
+    <ul class="lista">
+      <li>Anos 1990 institucionalizaram a "crise" como narrativa</li>
+      <li>Reformas neoliberais aproveitaram a crise para reduzir direitos</li>
+      <li>Seguridade da CF/1988 foi capturada por lógica fragmentária</li>
+      <li>Saúde foi "comprimida" via terceirização (OSs, fundações privadas)</li>
+      <li>Previdência foi alvo de reformas sucessivas (EC 20/1998; 41/2003; 47/2005; 103/2019)</li>
+      <li>Assistência foi reduzida a transferência de renda em detrimento de serviços</li>
+      <li>"Tripé" foi desarticulado</li>
+    </ul>
+
+    <div class="subsecao">Privatizações na Saúde</div>
+    <p>Articulada à assistencialização, há a privatização:</p>
+    <ul class="lista">
+      <li>Organizações Sociais (OS) — Lei 9.637/1998: terceirização da gestão de hospitais públicos</li>
+      <li>Fundações estatais de direito privado: hospitais federais terceirizados a fundações</li>
+      <li>OSCIPs — Lei 9.790/1999: parcerias público-privadas</li>
+      <li>Crescimento da saúde suplementar (planos privados)</li>
+      <li>Mercantilização: hospitais como empresas que visam lucro</li>
+      <li>Crítica da categoria CFESS-ABEPSS</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> filantrocapitalismo (Q42/2025) = filantropia empresarial substituindo o Estado; despolitiza, focaliza, legitima a desigualdade. Assistencialização (Mota) = redução da Seguridade a programas focalizados. Perspectiva crítica do SS é obrigatória.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-POLITICA · Seguridade</span><span>Extensivo ENARE 2026</span><span class="pg">6 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-POLITICA</div><div class="aula-ref">Bloco B13 · Aula 09 · Questões ENARE</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 01</span><span class="fonte">CF/1988 · Tripé · NC: Compreensão</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Sobre a Seguridade Social na CF/1988 (art. 194), é CORRETO afirmar:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>É composta apenas pela Previdência Social.</span></li>
+        <li class="correta"><span class="letra">B</span><span>Compreende as ações nas áreas de Saúde, Previdência e Assistência Social. Tem como princípios: universalidade, uniformidade/equivalência urbano-rural, seletividade/distributividade, irredutibilidade dos benefícios, equidade no custeio, diversidade da base de financiamento e gestão democrática quadripartite (governo, empregadores, trabalhadores, aposentados).</span></li>
+        <li><span class="letra">C</span><span>É financiada exclusivamente por contribuições do trabalhador.</span></li>
+        <li><span class="letra">D</span><span>Aplica-se apenas a trabalhadores formais.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> CF/1988 art. 194 estabelece o tripé Saúde + Previdência + Assistência. 7 princípios (parágrafo único do art. 194). Financiamento diversificado (art. 195) — empregadores, trabalhadores, orçamento, loterias, etc. Gestão quadripartite. Cobrado em ENARE 2025 (Q21).</p>
+      <p><strong>Por que as outras erram:</strong> A — apenas Previdência é incorreto · C — financiamento diversificado, não apenas trabalhador · D — Saúde e Assistência são universais.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-POLITICA · Seguridade</span><span>Extensivo ENARE 2026</span><span class="pg">7 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-POLITICA</div><div class="aula-ref">Bloco B13 · Aula 09 · Questões ENARE</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 02</span><span class="fonte">Welfare · Modelos · NC: Análise</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Relacione cada modelo de Welfare State à sua característica predominante:</p>
+      <p class="questao-enunciado" style="font-style:italic;">I. Bismarckiano (Alemanha 1881-1889).<br>
+      II. Beveridgeano (UK 1942).<br>
+      III. Social-democrata (Esping-Andersen).<br>
+      <br>
+      ( ) Universalismo financiado por impostos; cobertura para todos os cidadãos; combate aos "5 gigantes" — Doença, Ignorância, Indigência, Esquadria, Ociosidade.<br>
+      ( ) Sistema contributivo vinculado ao trabalho assalariado; foi resposta à ascensão da social-democracia; cobertura restrita a trabalhadores formais.<br>
+      ( ) Alta desmercantilização; igualdade como meta; serviços universais robustos; financiamento via tributação progressiva.</p>
+      <p class="questao-enunciado">Sequência correta:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>I, II, III.</span></li>
+        <li class="correta"><span class="letra">B</span><span>II, I, III.</span></li>
+        <li><span class="letra">C</span><span>III, I, II.</span></li>
+        <li><span class="letra">D</span><span>I, III, II.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Correspondência:</strong></p>
+      <p>• 1ª descrição (universalismo, impostos, 5 gigantes) = <strong>II. Beveridgeano</strong><br>
+      • 2ª descrição (contributivo, trabalho assalariado, resposta à social-democracia) = <strong>I. Bismarckiano</strong><br>
+      • 3ª descrição (alta desmercantilização, igualdade, serviços robustos) = <strong>III. Social-democrata (Esping-Andersen)</strong></p>
+      <p>Sequência: II, I, III → alternativa B.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-POLITICA · Seguridade</span><span>Extensivo ENARE 2026</span><span class="pg">8 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-POLITICA</div><div class="aula-ref">Bloco B13 · Aula 09 · Gabarito e Síntese</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 03</span><span class="fonte">Filantrocapitalismo · NC: Análise</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">O conceito de "filantrocapitalismo" (cobrado em ENARE 2025) refere-se a:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Sinônimo de Welfare State universalista.</span></li>
+        <li class="correta"><span class="letra">B</span><span>Fenômeno em que grandes corporações e bilionários assumem o protagonismo no financiamento de causas sociais, aplicando lógica empresarial ("métricas de impacto", "ROI social") e substituindo gradualmente o papel do Estado. Criticado pelo SS por: despolitizar a questão social, transformar direito em favor, legitimar a desigualdade, ser incompatível com universalidade.</span></li>
+        <li><span class="letra">C</span><span>Modelo de financiamento da Seguridade Social brasileira pós-CF/1988.</span></li>
+        <li><span class="letra">D</span><span>Forma de previdência complementar pública.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> filantrocapitalismo = filantropia empresarial substituindo o Estado. Termo de Bishop e Green (2008). No SS é categoria crítica: revela como o capital se apropria do social com lógica empresarial. Substitui direito por favor; despolitiza; é selecionista; legitima a desigualdade. Cobrado em ENARE 2025 (Q42).</p>
+    </div>
+
+    <div class="subsecao">Síntese — Seguridade Social e Políticas Sociais</div>
+    <div class="sintese-grid">
+      <div class="sintese-item"><div class="si-label">Welfare State</div><p>Bismarck (1881-1889) = contributivo; Beveridge (1942) = universalismo + 5 gigantes; Esping-Andersen = liberal/conservador/social-democrata. "30 gloriosos" (1945-1975).</p></div>
+      <div class="sintese-item"><div class="si-label">CF/1988 Art. 194</div><p>Seguridade = Saúde + Previdência + Assistência. 7 princípios. Financiamento diversificado (art. 195). Gestão quadripartite.</p></div>
+      <div class="sintese-item"><div class="si-label">3 Pilares Comparados</div><p>Saúde = universal não contributiva. Previdência = contributiva. Assistência = universal não contributiva "a quem dela necessitar". Cada um tem lei própria, sistema, gestor.</p></div>
+      <div class="sintese-item"><div class="si-label">EC 103/2019</div><p>Reforma da Previdência: idade mínima 65/62; tempo contribuição 20/15; cálculo 60%+2%; BPC idoso elevado a 65. Crítica do conjunto CFESS-CRESS.</p></div>
+      <div class="sintese-item"><div class="si-label">Controle Social</div><p>Conselhos paritários, deliberativos, permanentes (CNS, CNAS, CNPS). Conferências periódicas. Articula sociedade civil + governo. Marco da CF/1988.</p></div>
+      <div class="sintese-item"><div class="si-label">Crítica do SS</div><p>Assistencialização (Mota): redução da Seguridade a programas focalizados. Filantrocapitalismo (Q42/2025): empresas substituem Estado. Privatizações (OS, OSCIPs). Mercantilização. Perspectiva crítica obrigatória.</p></div>
+    </div>
+
+    <div class="alerta" style="margin-top:5px;">
+      <p><strong>Regra de ouro — Seguridade no ENARE:</strong> Tripé CF/1988 (Saúde + Previdência + Assistência). 7 princípios art. 194. Previdência = contributiva; Saúde e Assistência = não contributivas. Welfare: Bismarck × Beveridge × social-democrata. Controle social via Conselhos paritários. Crítica do SS ao filantrocapitalismo e assistencialização.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-POLITICA · Seguridade</span><span>Extensivo ENARE 2026</span><span class="pg">9 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-POLITICA</div><div class="aula-ref">Bloco B13 · Aula 09 · Próxima Aula</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Estado, Sociedade Civil e Políticas Sociais</div>
+
+    <div class="subsecao">Estado em Marx, Gramsci e Poulantzas</div>
+    <table>
+      <tr><th>Autor</th><th>Visão do Estado</th></tr>
+      <tr><td>Karl Marx (clássico)</td><td>"Comitê executivo da burguesia"; aparelho a serviço da classe dominante; visão instrumentalista</td></tr>
+      <tr><td>Antonio Gramsci</td><td>Estado ampliado = sociedade política (Estado) + sociedade civil (hegemonia ideológica). Disputa de hegemonia. Guerra de posição.</td></tr>
+      <tr><td>Nicos Poulantzas</td><td>Estado como "condensação de relações de força entre classes". Autonomia relativa. Crítica ao instrumentalismo.</td></tr>
+      <tr><td>Bob Jessop</td><td>Abordagem estratégico-relacional do Estado; síntese contemporânea</td></tr>
+    </table>
+
+    <div class="subsecao">Sociedade Civil — Diferentes Concepções</div>
+    <ul class="lista">
+      <li><strong>Hegel</strong>: esfera intermediária entre família e Estado; mercado e contratos</li>
+      <li><strong>Marx</strong>: campo das relações de produção; econômico</li>
+      <li><strong>Gramsci</strong>: aparelhos privados de hegemonia (igrejas, sindicatos, escolas, mídia); espaço de disputa</li>
+      <li><strong>Liberais</strong> contemporâneos: "terceiro setor"; ONGs; iniciativa privada não-mercantil</li>
+      <li><strong>Crítica do SS</strong>: terceiro setor frequentemente substitui o Estado (filantropização)</li>
+    </ul>
+
+    <div class="subsecao">Política Social — Diferentes Perspectivas</div>
+    <table>
+      <tr><th>Perspectiva</th><th>Visão da Política Social</th></tr>
+      <tr><td>Liberal/Conservadora</td><td>Política social como gasto; deve ser focalizada e mínima; mercado é a solução</td></tr>
+      <tr><td>Social-democrata</td><td>Política social como universalismo; redistribuição; Estado provedor</td></tr>
+      <tr><td>Marxista crítica</td><td>Política social como concessão arrancada pelas lutas; campo de disputas; ambígua (atende necessidades e ao mesmo tempo legitima a ordem)</td></tr>
+      <tr><td>Pós-estruturalista</td><td>Foucault: política social como tecnologia de governamentalidade; produção de subjetividades</td></tr>
+    </table>
+
+    <div class="subsecao">Tipologias de Políticas Sociais</div>
+    <ul class="lista">
+      <li><strong>Universais × Focalizadas</strong>: cobertura ampla vs. dirigida a grupos específicos</li>
+      <li><strong>Distributivas × Redistributivas</strong>: ampliam acesso vs. transferem renda entre classes</li>
+      <li><strong>Setoriais × Intersetoriais</strong>: por área específica (saúde, educação) vs. integradas</li>
+      <li><strong>Curativas × Preventivas</strong>: foco em consequência vs. causa</li>
+      <li><strong>Contributivas × Não-Contributivas</strong>: Previdência vs. Saúde/Assistência</li>
+      <li><strong>Federativas × Centralizadas</strong>: descentralizadas (SUS, SUAS) vs. centralizadas</li>
+    </ul>
+
+    <div class="subsecao">Próxima Aula</div>
+    <div class="alerta">
+      <p><strong>Aula 10 — Direitos Humanos e DUDH.</strong> Cluster novo cobrado em 2025 (4 questões de DUDH). Conteúdo: Declaração Universal dos Direitos Humanos (1948), Pacto Internacional dos Direitos Econômicos, Sociais e Culturais (PIDESC), Declaração de Viena (1993), Pacto de San José (1969), Convenção sobre Direitos das Pessoas com Deficiência (2006), Convenção 169 da OIT. Aplicação ao SS brasileiro.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-POLITICA · Seguridade</span><span>Extensivo ENARE 2026</span><span class="pg">10 / 10</span></div>
+</div>
+
+</body>
+</html>
