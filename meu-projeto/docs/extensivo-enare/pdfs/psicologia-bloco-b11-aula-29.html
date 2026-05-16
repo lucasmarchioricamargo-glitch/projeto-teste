@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Psicologia — Bloco B11 Aula 29 | Extensivo ENARE 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap');
+
+  :root {
+    --creme: #F6F4ED;
+    --verde: #1F5C23;
+    --amarelo: #C6D834;
+    --escuro: #0C2B0E;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #d0d0d0;
+    font-family: 'Bricolage Grotesque', sans-serif;
+  }
+
+  .page {
+    width: 210mm;
+    height: 297mm;
+    background: var(--creme);
+    margin: 0 auto 12px;
+    position: relative;
+    overflow: hidden;
+    page-break-after: always;
+  }
+
+  .header {
+    background: var(--verde);
+    padding: 10px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .header-logo { display: flex; align-items: center; gap: 8px; }
+  .header-logo svg { width: 32px; height: 32px; }
+  .header-brand { display: flex; flex-direction: column; line-height: 1; }
+  .header-brand .marca {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: #fff;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+  }
+  .header-brand .tagline {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    color: var(--amarelo);
+    font-size: 7px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+  .header-info { text-align: right; }
+  .header-info .disciplina {
+    font-family: 'Barlow Condensed', sans-serif;
+    color: var(--amarelo);
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .header-info .aula-ref {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    color: rgba(255,255,255,0.7);
+    font-size: 8px;
+    letter-spacing: 0.5px;
+  }
+
+  .footer {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: var(--verde);
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 18px;
+  }
+  .footer span {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    color: rgba(255,255,255,0.6);
+    font-size: 7px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+  }
+  .footer .pg { color: var(--amarelo); font-weight: 400; }
+
+  .body {
+    padding: 14px 18px 30px;
+    height: calc(297mm - 52px - 22px);
+    overflow: hidden;
+  }
+
+  .capa-page { background: var(--verde); }
+  .capa-header {
+    background: var(--creme);
+    padding: 10px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .capa-header .marca {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: var(--verde);
+    font-size: 14px;
+  }
+  .capa-header .tagline {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    color: var(--verde);
+    font-size: 7.5px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .capa-body {
+    padding: 28px 24px 0;
+    display: flex;
+    flex-direction: column;
+    height: calc(297mm - 52px - 22px);
+  }
+  .capa-eyebrow {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    color: var(--amarelo);
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .capa-titulo {
+    font-family: 'Barlow Condensed', sans-serif;
+    color: #fff;
+    font-size: 50px;
+    line-height: 0.95;
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
+    margin-bottom: 6px;
+  }
+  .capa-titulo span { color: var(--amarelo); }
+  .capa-subtitulo {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 300;
+    color: rgba(255,255,255,0.65);
+    font-size: 12px;
+    letter-spacing: 0.3px;
+    margin-bottom: 22px;
+    line-height: 1.5;
+  }
+  .capa-badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+  .capa-badge {
+    background: rgba(198,216,52,0.15);
+    border: 1px solid var(--amarelo);
+    color: var(--amarelo);
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    font-size: 7.5px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+  }
+  .capa-divider { width: 40px; height: 3px; background: var(--amarelo); margin-bottom: 20px; }
+  .capa-topicos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .capa-topico { display: flex; align-items: flex-start; gap: 7px; }
+  .capa-topico-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    color: var(--amarelo);
+    font-size: 18px;
+    line-height: 1;
+    min-width: 18px;
+  }
+  .capa-topico-txt {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 400;
+    color: rgba(255,255,255,0.8);
+    font-size: 9.5px;
+    line-height: 1.4;
+  }
+  .capa-footer-strip {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: rgba(0,0,0,0.25);
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 18px;
+  }
+  .capa-footer-strip span {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    color: rgba(255,255,255,0.45);
+    font-size: 7px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+  }
+
+  .secao-titulo {
+    font-family: 'Barlow Condensed', sans-serif;
+    color: var(--verde);
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid var(--amarelo);
+    padding-bottom: 3px;
+    margin-bottom: 9px;
+    line-height: 1;
+  }
+  .subsecao {
+    font-family: 'Barlow Condensed', sans-serif;
+    color: var(--verde);
+    font-size: 12.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 7px 0 3px;
+  }
+  p {
+    font-size: 9px;
+    line-height: 1.55;
+    color: #1a1a1a;
+    margin-bottom: 4px;
+    font-weight: 400;
+  }
+  .destaque {
+    background: var(--amarelo);
+    color: var(--escuro);
+    font-weight: 600;
+    padding: 1px 4px;
+    border-radius: 2px;
+    font-size: 8.5px;
+  }
+  .alerta {
+    background: rgba(198,216,52,0.18);
+    border-left: 3px solid var(--amarelo);
+    padding: 5px 8px;
+    margin: 5px 0;
+    border-radius: 0 3px 3px 0;
+  }
+  .alerta p { margin: 0; font-size: 8.5px; }
+  .alerta strong { color: var(--verde); }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 5px 0;
+    font-size: 8px;
+  }
+  th {
+    background: var(--verde);
+    color: #fff;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 4px 6px;
+    text-align: left;
+  }
+  td {
+    padding: 3px 6px;
+    border-bottom: 1px solid rgba(31,92,35,0.12);
+    vertical-align: top;
+    line-height: 1.4;
+    color: #1a1a1a;
+  }
+  tr:nth-child(even) td { background: rgba(31,92,35,0.04); }
+
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 5px 0; }
+  .card {
+    background: rgba(31,92,35,0.06);
+    border: 1px solid rgba(31,92,35,0.15);
+    border-radius: 4px;
+    padding: 7px 8px;
+  }
+  .card-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    color: var(--verde);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    margin-bottom: 3px;
+  }
+  .card p { font-size: 8px; line-height: 1.5; }
+
+  .questao-header {
+    background: var(--verde);
+    color: #fff;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 4px 10px;
+    border-radius: 3px 3px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .questao-header .fonte {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    font-size: 7.5px;
+    color: var(--amarelo);
+    letter-spacing: 0.5px;
+  }
+  .questao-body {
+    border: 1px solid rgba(31,92,35,0.2);
+    border-top: none;
+    border-radius: 0 0 3px 3px;
+    padding: 7px 10px;
+    margin-bottom: 7px;
+  }
+  .questao-enunciado {
+    font-size: 8.5px;
+    line-height: 1.55;
+    color: #111;
+    margin-bottom: 5px;
+    font-weight: 500;
+  }
+  .alternativas { list-style: none; }
+  .alternativas li {
+    font-size: 8px;
+    line-height: 1.5;
+    padding: 2px 0;
+    color: #222;
+    display: flex;
+    gap: 5px;
+  }
+  .alternativas li .letra {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    color: var(--verde);
+    font-size: 9px;
+    min-width: 10px;
+  }
+  .alternativas li.correta .letra { color: var(--amarelo); }
+  .alternativas li.correta {
+    background: rgba(198,216,52,0.15);
+    border-left: 2px solid var(--amarelo);
+    padding-left: 4px;
+  }
+
+  .gabarito-box {
+    background: var(--verde);
+    border-radius: 4px;
+    padding: 8px 12px;
+    margin: 6px 0;
+  }
+  .gabarito-box .gab-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    color: var(--amarelo);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
+  .gabarito-box p { color: rgba(255,255,255,0.9); font-size: 8px; line-height: 1.55; }
+  .gabarito-box strong { color: var(--amarelo); }
+
+  .sintese-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 7px;
+    margin-top: 6px;
+  }
+  .sintese-item {
+    background: rgba(31,92,35,0.07);
+    border-left: 3px solid var(--verde);
+    padding: 5px 7px;
+    border-radius: 0 3px 3px 0;
+  }
+  .sintese-item .si-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    color: var(--verde);
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+  .sintese-item p { font-size: 7.5px; line-height: 1.5; }
+
+  ul.lista { padding-left: 14px; margin: 3px 0; }
+  ul.lista li {
+    font-size: 8.5px;
+    line-height: 1.55;
+    color: #1a1a1a;
+    margin-bottom: 1px;
+  }
+
+  @media print {
+    body { background: none; }
+    .page { margin: 0; box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ========== PÁGINA 1 — CAPA ========== -->
+<div class="page capa-page">
+  <div class="capa-header">
+    <div style="display:flex;align-items:center;gap:8px;">
+      <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#1F5C23"/>
+      </svg>
+      <div>
+        <div class="marca">Elite Treinamentos</div>
+        <div class="tagline">Extensivo ENARE 2026</div>
+      </div>
+    </div>
+    <div style="text-align:right;">
+      <div style="font-family:'Barlow Condensed',sans-serif;color:var(--verde);font-size:11px;letter-spacing:1px;text-transform:uppercase;">Bloco B11 · Aula 29</div>
+      <div style="font-family:'Space Grotesk',sans-serif;font-weight:300;color:#888;font-size:7.5px;letter-spacing:0.5px;">Psicologia</div>
+    </div>
+  </div>
+
+  <div class="capa-body">
+    <div class="capa-eyebrow">Bloco B11 · PSI-TEORIA · Aula 29 de 30</div>
+    <div class="capa-titulo">Aborda-<br>gens <span>Psico-<br>tera-<br>pêuticas</span></div>
+    <div class="capa-subtitulo">Psicanálise, TCC, Behaviorismo, Humanismo e Gestalt:<br>fundamentos, técnicas e aplicações no SUS</div>
+
+    <div class="capa-badge-row">
+      <div class="capa-badge">PSI-TEORIA</div>
+      <div class="capa-badge">Freud · Lacan · Beck</div>
+      <div class="capa-badge">Rogers · Skinner · Perls</div>
+      <div class="capa-badge">TCC · ACP · SUS</div>
+    </div>
+
+    <div class="capa-divider"></div>
+
+    <div class="capa-topicos">
+      <div class="capa-topico">
+        <div class="capa-topico-num">01</div>
+        <div class="capa-topico-txt">Psicanálise: inconsciente, aparelho psíquico, mecanismos de defesa</div>
+      </div>
+      <div class="capa-topico">
+        <div class="capa-topico-num">02</div>
+        <div class="capa-topico-txt">TCC (Beck/Ellis): tríade cognitiva, distorções, modelo ABC</div>
+      </div>
+      <div class="capa-topico">
+        <div class="capa-topico-num">03</div>
+        <div class="capa-topico-txt">Behaviorismo: condicionamento clássico e operante</div>
+      </div>
+      <div class="capa-topico">
+        <div class="capa-topico-num">04</div>
+        <div class="capa-topico-txt">Humanismo (Rogers/Maslow): ACP, empatia, autorrealização</div>
+      </div>
+      <div class="capa-topico">
+        <div class="capa-topico-num">05</div>
+        <div class="capa-topico-txt">Gestalt (Perls): figura-fundo, aqui-e-agora, contato</div>
+      </div>
+      <div class="capa-topico">
+        <div class="capa-topico-num">06</div>
+        <div class="capa-topico-txt">Comparativo e aplicações no contexto do SUS</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="capa-footer-strip">
+    <span>Extensivo ENARE 2026</span>
+    <span>Elite Treinamentos em Saúde</span>
+    <span>Página 1 de 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 2 — PSICANÁLISE ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Psicologia — PSI-TEORIA</div>
+      <div class="aula-ref">Bloco B11 · Aula 29 · Abordagens Psicoterapêuticas</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="secao-titulo">Psicanálise — Freud e Lacan</div>
+
+    <p>A psicanálise, fundada por Sigmund Freud (1856–1939), parte do pressuposto de que o comportamento humano é determinado por <strong>processos inconscientes</strong>. A psicopatologia resulta de conflitos entre as instâncias psíquicas e de desejos reprimidos que não encontram expressão direta.</p>
+
+    <div class="subsecao">Aparelho Psíquico — 2ª Tópica (Id, Ego, Superego)</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Id · Ego · Superego</div>
+        <p><strong>Id:</strong> reservatório pulsional; opera pelo princípio do prazer; inconsciente.<br>
+        <strong>Ego:</strong> media id e realidade; princípio da realidade; parcialmente consciente.<br>
+        <strong>Superego:</strong> instância moral (introjeção das normas parentais/sociais); pode ser rígido e punitivo.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Principais Mecanismos de Defesa</div>
+        <p><strong>Repressão:</strong> afastamento do conteúdo angustiante da consciência (mecanismo central).<br>
+        <strong>Projeção:</strong> atribui ao outro sentimentos próprios inaceitáveis.<br>
+        <strong>Formação reativa:</strong> transforma o impulso em seu oposto.<br>
+        <strong>Sublimação:</strong> desvio da pulsão para fins socialmente valorizados (o mais maduro).<br>
+        <strong>Negação:</strong> recusa da realidade dolorosa.<br>
+        <strong>Racionalização:</strong> justificativa lógica para ato motivado inconscientemente.</p>
+      </div>
+    </div>
+
+    <div class="subsecao">Técnica Psicanalítica</div>
+    <ul class="lista">
+      <li><strong>Livre associação:</strong> paciente fala tudo que vem à mente, sem censura — via de acesso ao inconsciente</li>
+      <li><strong>Interpretação:</strong> terapeuta desvela o sentido latente de sonhos, atos falhos, sintomas e transferência</li>
+      <li><strong>Transferência:</strong> paciente revive com o analista padrões relacionais de figuras significativas do passado — motor e obstáculo do tratamento</li>
+      <li><strong>Contratransferência:</strong> reações emocionais do analista ao paciente — instrumento técnico quando elaborada</li>
+      <li><strong>Resistência:</strong> forças que se opõem ao processo analítico e ao acesso ao inconsciente</li>
+    </ul>
+
+    <div class="subsecao">Lacan — Contribuição para Concurso</div>
+    <p>Jacques Lacan (1901–1981) releu Freud via linguística estrutural: <strong>"O inconsciente é estruturado como uma linguagem."</strong> Três registros: <strong>Real</strong> (impossível de simbolizar), <strong>Imaginário</strong> (imagem, identificação) e <strong>Simbólico</strong> (linguagem, lei, Outro). O sujeito lacaniano é <em>dividido</em> (barrado) pelo efeito da linguagem. Relevante para questões sobre psicose (foraclusão do Nome-do-Pai), perversão e neurose.</p>
+
+    <div class="alerta">
+      <p><strong>Atenção FGV — Psicanálise:</strong> Sublimação é o mecanismo de defesa mais maduro (não é patológico). Repressão ≠ supressão (supressão é consciente; repressão é inconsciente). Transferência é fenômeno universal — ocorre em toda relação terapêutica, não só na psicanálise.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>PSI-TEORIA · Abordagens Psicoterapêuticas</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">2 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 3 — TCC + BEHAVIORISMO ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Psicologia — PSI-TEORIA</div>
+      <div class="aula-ref">Bloco B11 · Aula 29 · Abordagens Psicoterapêuticas</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="secao-titulo">TCC e Behaviorismo</div>
+
+    <div class="subsecao">Terapia Cognitivo-Comportamental — Aaron Beck</div>
+    <p>A TCC baseia-se no modelo de que <strong>cognições (pensamentos) influenciam emoções e comportamentos</strong>. O sofrimento psíquico resulta de <em>pensamentos automáticos negativos</em> e <em>distorções cognitivas</em> ancoradas em <em>crenças centrais</em> (esquemas) disfuncionais.</p>
+
+    <table>
+      <tr>
+        <th>Nível cognitivo</th>
+        <th>Descrição</th>
+        <th>Exemplo</th>
+      </tr>
+      <tr>
+        <td><strong>Pensamentos automáticos</strong></td>
+        <td>Fluxo espontâneo; surgem rapidamente; ativados por situações</td>
+        <td>"Errei essa questão, sou incapaz."</td>
+      </tr>
+      <tr>
+        <td><strong>Distorções cognitivas</strong></td>
+        <td>Erros sistemáticos no processamento da informação</td>
+        <td>Catastrofização · Leitura mental · Personalização · Tudo-ou-nada · Abstração seletiva</td>
+      </tr>
+      <tr>
+        <td><strong>Crenças centrais (esquemas)</strong></td>
+        <td>Convicções absolutas sobre si, o mundo e o futuro (tríade cognitiva de Beck)</td>
+        <td>"Sou incompetente", "O mundo é perigoso", "O futuro é sem esperança" (depressão).</td>
+      </tr>
+    </table>
+
+    <div class="subsecao">TREC — Albert Ellis (Terapia Racional Emotiva Comportamental)</div>
+    <p><strong>Modelo ABC:</strong> A (Activating event — evento ativador) → B (Belief — crença racional ou irracional) → C (Consequence — consequência emocional/comportamental). A perturbação não é causada por A, mas pela crença irracional B. Técnica: reestruturação das crenças irracionais em racionais (disputa — D → efeito — E).</p>
+
+    <div class="subsecao">Behaviorismo — Condicionamento Clássico (Pavlov) e Operante (Skinner)</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Condicionamento Clássico — Pavlov</div>
+        <p>Associação entre estímulo neutro (EN) e estímulo incondicionado (EI) → o EN torna-se estímulo condicionado (EC), produzindo resposta condicionada (RC). Base das fobias: EC (situação) → RC (ansiedade). Dessensibilização sistemática = extinção por emparelhamento com relaxamento.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Condicionamento Operante — Skinner</div>
+        <p><strong>Reforço positivo:</strong> adiciona estímulo agradável → aumenta comportamento.<br>
+        <strong>Reforço negativo:</strong> remove estímulo aversivo → aumenta comportamento.<br>
+        <strong>Punição positiva:</strong> adiciona estímulo aversivo → diminui comportamento.<br>
+        <strong>Punição negativa:</strong> remove estímulo agradável → diminui comportamento.<br>
+        <strong>Extinção:</strong> remove reforço → diminui comportamento gradualmente.</p>
+      </div>
+    </div>
+
+    <div class="alerta" style="margin-top:4px;">
+      <p><strong>Pegadinha FGV — Reforço Negativo ≠ Punição:</strong> Reforço negativo <em>aumenta</em> o comportamento (remove algo desagradável). Punição <em>diminui</em> o comportamento. FGV frequentemente apresenta descrição de reforço negativo e oferece "punição" como alternativa — não confunda. Ex.: tomar analgésico alivia dor (remove aversivo) → reforça o comportamento de tomar analgésico = reforço negativo.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>PSI-TEORIA · Abordagens Psicoterapêuticas</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">3 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 4 — HUMANISMO + GESTALT ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Psicologia — PSI-TEORIA</div>
+      <div class="aula-ref">Bloco B11 · Aula 29 · Abordagens Psicoterapêuticas</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="secao-titulo">Humanismo e Gestalt</div>
+
+    <div class="subsecao">Abordagem Centrada na Pessoa — Carl Rogers</div>
+    <p>Rogers (1902–1987) propôs que todo ser humano possui uma <strong>tendência atualizante</strong> — impulso inato para o crescimento e autorrealização. O sofrimento resulta de incongruência entre o <em>self ideal</em> (quem a pessoa acha que deveria ser) e o <em>self real</em> (quem é). A relação terapêutica, em si mesma, é o agente de mudança.</p>
+
+    <div class="subsecao">3 Condições Necessárias e Suficientes (Rogers)</div>
+    <table>
+      <tr>
+        <th>Condição</th>
+        <th>Definição</th>
+        <th>Como se expressa na clínica</th>
+      </tr>
+      <tr>
+        <td><strong>Empatia</strong></td>
+        <td>Capacidade de compreender o mundo interno do cliente como se fosse o seu, sem perder o "como se"</td>
+        <td>Reflexo acurado dos sentimentos; validação sem fusão com o cliente</td>
+      </tr>
+      <tr>
+        <td><strong>Consideração Positiva Incondicional (CPI)</strong></td>
+        <td>Aceitação completa do cliente sem julgamento ou condições de valor</td>
+        <td>Ausência de aprovação/reprovação; o terapeuta valoriza o cliente independente do comportamento</td>
+      </tr>
+      <tr>
+        <td><strong>Congruência (autenticidade)</strong></td>
+        <td>O terapeuta é genuíno — não há discrepância entre o que sente, pensa e expressa</td>
+        <td>Terapeuta pode compartilhar sentimentos relevantes de forma autêntica, sem máscara profissional</td>
+      </tr>
+    </table>
+
+    <div class="subsecao">Hierarquia das Necessidades — Abraham Maslow</div>
+    <p>Maslow (1908–1970) propôs que as necessidades humanas são organizadas em <strong>5 níveis hierárquicos</strong>, das mais básicas às mais elevadas: <strong>(1) Fisiológicas</strong> (sobrevivência: alimentação, sono) → <strong>(2) Segurança</strong> (proteção, estabilidade) → <strong>(3) Sociais/Pertencimento</strong> (amor, relacionamentos) → <strong>(4) Estima</strong> (reconhecimento, autoestima) → <strong>(5) Autorrealização</strong> (potencial máximo). Necessidades inferiores devem ser satisfeitas antes das superiores.</p>
+
+    <div class="subsecao">Gestalt-Terapia — Fritz Perls</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Princípios Centrais</div>
+        <p><strong>Figura-fundo:</strong> a percepção emerge do contraste entre figura (foco de atenção) e fundo (contexto). Saúde = flexibilidade na alternância figura-fundo.<br>
+        <strong>Aqui-e-agora:</strong> a experiência presente é o foco — o passado e futuro importam na medida em que se atualizam no presente.<br>
+        <strong>Totalidade:</strong> o todo é mais que a soma das partes; organismo-ambiente como campo integrado.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Interrupções de Contato</div>
+        <p><strong>Retroflexão:</strong> volta contra si o que dirigiria ao ambiente (autoagressão).<br>
+        <strong>Projeção:</strong> atribui ao ambiente o que é próprio.<br>
+        <strong>Deflexão:</strong> desvia a energia do contato genuíno (humor, tangencialidade).<br>
+        <strong>Confluência:</strong> dissolução da fronteira eu-outro; perde-se a distinção entre si e o ambiente.<br>
+        <strong>Introjeção:</strong> incorpora padrões externos sem assimilação crítica.</p>
+      </div>
+    </div>
+
+    <div class="alerta" style="margin-top:4px;">
+      <p><strong>Rogers no SUS:</strong> A ACP fundamenta a <em>escuta qualificada</em> preconizada pelo Ministério da Saúde. As 3 condições rogerianas são referência para o trabalho do psicólogo na APS, no CAPS e em qualquer dispositivo de cuidado em saúde mental. FGV testa: quais são as condições necessárias e suficientes, e o que significa cada uma.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>PSI-TEORIA · Abordagens Psicoterapêuticas</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">4 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 5 — COMPARATIVO + APLICAÇÕES SUS ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Psicologia — PSI-TEORIA</div>
+      <div class="aula-ref">Bloco B11 · Aula 29 · Abordagens Psicoterapêuticas</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="secao-titulo">Comparativo e Aplicações no SUS</div>
+
+    <table>
+      <tr>
+        <th>Abordagem</th>
+        <th>Foco</th>
+        <th>Motor da mudança</th>
+        <th>Técnicas-chave</th>
+        <th>Evidência/SUS</th>
+      </tr>
+      <tr>
+        <td><strong>Psicanálise</strong></td>
+        <td>Inconsciente, conflito pulsional</td>
+        <td>Interpretação, elaboração da transferência</td>
+        <td>Livre associação, interpretação de sonhos e atos falhos</td>
+        <td>Saúde mental CAPS; casos complexos de longa duração</td>
+      </tr>
+      <tr>
+        <td><strong>TCC</strong></td>
+        <td>Cognições disfuncionais e comportamentos</td>
+        <td>Reestruturação cognitiva + experimentos comportamentais</td>
+        <td>Registro de pensamentos, exposição gradual, ativação comportamental</td>
+        <td>Alta evidência em depressão, ansiedade, TOC, TEPT. Protocolo SUS via RAPS</td>
+      </tr>
+      <tr>
+        <td><strong>Behaviorismo</strong></td>
+        <td>Comportamento observável</td>
+        <td>Condicionamento / reforço contingente</td>
+        <td>Dessensibilização sistemática, economia de fichas, modelagem</td>
+        <td>TEA, reabilitação, saúde do trabalhador, manejo de comportamento</td>
+      </tr>
+      <tr>
+        <td><strong>ACP — Rogers</strong></td>
+        <td>Self, autorrealização, congruência</td>
+        <td>Relação terapêutica (empatia + CPI + congruência)</td>
+        <td>Escuta ativa, reflexo empático, autenticidade</td>
+        <td>Escuta qualificada APS; acolhimento; grupos de apoio no CAPS</td>
+      </tr>
+      <tr>
+        <td><strong>Gestalt</strong></td>
+        <td>Experiência presente, contato, awareness</td>
+        <td>Consciência expandida da experiência (awareness)</td>
+        <td>Cadeira vazia, experimentos, foco no aqui-e-agora</td>
+        <td>Contextos clínicos e grupais; uso em CAPS e clínicas-escola</td>
+      </tr>
+    </table>
+
+    <div class="subsecao" style="margin-top:5px;">CFP e Pluralismo Teórico</div>
+    <p>O CFP reconhece o <strong>pluralismo de abordagens</strong> como constitutivo da psicologia brasileira. Não há abordagem oficial obrigatória. O psicólogo deve ter formação consistente em pelo menos uma abordagem e declarar qual utiliza. No SUS, o trabalho em equipe multiprofissional demanda flexibilidade técnica — o modelo biopsicossocial integra elementos de diferentes abordagens.</p>
+
+    <div class="subsecao">Abordagens de 3ª Geração da TCC</div>
+    <ul class="lista">
+      <li><strong>ACT (Terapia de Aceitação e Compromisso — Hayes):</strong> aceitação da experiência interna + ação guiada por valores; desfusão cognitiva; mindfulness. Evidência em dor crônica, ansiedade, depressão.</li>
+      <li><strong>DBT (Terapia Comportamental Dialética — Linehan):</strong> desenvolvida para TPB; mindfulness + regulação emocional + tolerância ao sofrimento + efetividade interpessoal.</li>
+      <li><strong>MBCT (TCC baseada em Mindfulness — Segal/Williams/Teasdale):</strong> prevenção de recaída em depressão recorrente.</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Atenção — o que cai no ENARE sobre abordagens:</strong> FGV testa (1) autoria de conceitos — quem criou o quê; (2) confusão de técnicas entre abordagens; (3) aplicação ao contexto do SUS; (4) diferença entre reforço negativo e punição; (5) as 3 condições rogerianas. Abordagens de 3ª geração (ACT, DBT) aparecem com frequência crescente desde 2024.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>PSI-TEORIA · Abordagens Psicoterapêuticas</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">5 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 6 — QUESTÃO 01 ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Psicologia — PSI-TEORIA</div>
+      <div class="aula-ref">Bloco B11 · Aula 29 · Questões ENARE</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="secao-titulo">Questões — Estilo ENARE/FGV</div>
+
+    <div class="questao-header">
+      <span>Questão 01</span>
+      <span class="fonte">TCC · Distorções Cognitivas · Beck</span>
+    </div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Uma psicóloga atende em CAPS II um usuário com diagnóstico de depressão maior que, ao relatar uma situação em que recebeu feedback positivo do chefe, afirma: "Ele disse que fiz um bom trabalho, mas na verdade está me preparando para demitir — nenhuma coisa boa dura para mim." Em seguida, acrescenta: "Ou sou um fracasso total ou sou perfeito, não existe meio-termo." Com base no modelo cognitivo de Aaron Beck, as distorções cognitivas presentes nesses dois relatos são, respectivamente:</p>
+      <ul class="alternativas">
+        <li>
+          <span class="letra">A</span>
+          <span>Abstração seletiva e personalização.</span>
+        </li>
+        <li>
+          <span class="letra">B</span>
+          <span>Catastrofização e racionalização.</span>
+        </li>
+        <li class="correta">
+          <span class="letra">C</span>
+          <span>Leitura mental (inferência arbitrária) e pensamento tudo-ou-nada (dicotômico).</span>
+        </li>
+        <li>
+          <span class="letra">D</span>
+          <span>Generalização excessiva e abstração seletiva.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — C</div>
+      <p><strong>Leitura mental (inferência arbitrária):</strong> o usuário infere a intenção do chefe ("está me preparando para demitir") sem evidência objetiva — lê o pensamento alheio de forma negativa. <strong>Pensamento tudo-ou-nada (dicotômico):</strong> "fracasso total ou perfeito, sem meio-termo" — visão em dois extremos excludentes, sem gradação.</p>
+      <p><strong>Por que as outras erram:</strong> A = abstração seletiva = focar detalhe negativo ignorando o contexto positivo; personalização = atribuir a si responsabilidade por eventos externos · B = catastrofização = prever o pior cenário catastrófico; racionalização é mecanismo de defesa psicanalítico, não distorção da TCC · D = generalização excessiva = tirar conclusão ampla de evento isolado; a segunda distorção é dicotômica, não abstração seletiva.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>PSI-TEORIA · Abordagens Psicoterapêuticas</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">6 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 7 — QUESTÃO 02 ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Psicologia — PSI-TEORIA</div>
+      <div class="aula-ref">Bloco B11 · Aula 29 · Questões ENARE</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="questao-header">
+      <span>Questão 02</span>
+      <span class="fonte">Rogers · ACP · Condições Terapêuticas</span>
+    </div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Uma psicóloga que atua na Atenção Primária à Saúde (APS) adota a Abordagem Centrada na Pessoa (ACP) de Carl Rogers em seus atendimentos. Durante uma consulta, um usuário relata comportamentos de risco (uso abusivo de álcool, relações sexuais desprotegidas) que ela pessoalmente reprovaria. A psicóloga, mantendo-se autêntica em sua postura interna, decide não emitir julgamentos sobre o comportamento e expressar interesse genuíno pelo bem-estar do usuário, independentemente das atitudes relatadas. Essa postura corresponde a qual condição necessária e suficiente proposta por Rogers?</p>
+      <ul class="alternativas">
+        <li>
+          <span class="letra">A</span>
+          <span>Congruência — a psicóloga expressa seus sentimentos reais de forma autêntica, incluindo a discordância com os comportamentos do usuário.</span>
+        </li>
+        <li>
+          <span class="letra">B</span>
+          <span>Empatia — a psicóloga compreende os sentimentos do usuário como se estivesse em seu lugar, compartilhando subjetivamente de suas experiências.</span>
+        </li>
+        <li class="correta">
+          <span class="letra">C</span>
+          <span>Consideração Positiva Incondicional — a psicóloga aceita e valoriza o usuário sem condicionar o cuidado à aprovação de seus comportamentos.</span>
+        </li>
+        <li>
+          <span class="letra">D</span>
+          <span>Neutralidade terapêutica — princípio rogeriano que orienta o terapeuta a não interferir na narrativa do cliente com julgamentos morais.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — C</div>
+      <p><strong>Consideração Positiva Incondicional (CPI):</strong> aceitação completa do cliente sem condicionar o cuidado à aprovação de seus atos ou valores. A psicóloga pode discordar internamente do comportamento (mantém sua visão moral) mas não impõe essa discordância ao usuário — cuida independentemente. Isso é CPI, não ausência de valores.</p>
+      <p><strong>Por que as outras erram:</strong> A = congruência = autenticidade do terapeuta (expressar o que sente, sem máscara); neste caso, a psicóloga <em>não</em> expressa sua discordância — o foco é na aceitação incondicional · B = empatia = compreender o mundo interno do cliente; a conduta descrita é sobre aceitação, não sobre compreensão empática · D = "neutralidade terapêutica" é conceito da psicanálise (Freud), não da ACP rogeriana — distrator clássico de FGV.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>PSI-TEORIA · Abordagens Psicoterapêuticas</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">7 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 8 — QUESTÃO 03 ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Psicologia — PSI-TEORIA</div>
+      <div class="aula-ref">Bloco B11 · Aula 29 · Questões ENARE</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="questao-header">
+      <span>Questão 03</span>
+      <span class="fonte">Behaviorismo · Skinner · Condicionamento Operante</span>
+    </div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Uma psicóloga que atua em serviço de saúde mental infanto-juvenil elabora um programa de manejo comportamental para uma criança de 7 anos com diagnóstico de TDAH. No programa, são utilizadas duas estratégias: (I) quando a criança conclui uma tarefa escolar com atenção sustentada, ela ganha um ponto que pode ser trocado por uma atividade de lazer preferida; (II) quando a criança apresenta comportamento impulsivo em sala, a professora interrompe imediatamente a atividade que a criança aprecia e a criança fica sem jogar no recreio. Com base no condicionamento operante de Skinner, as estratégias I e II são classificadas, respectivamente, como:</p>
+      <ul class="alternativas">
+        <li>
+          <span class="letra">A</span>
+          <span>Reforço negativo e punição positiva.</span>
+        </li>
+        <li>
+          <span class="letra">B</span>
+          <span>Reforço negativo e punição negativa.</span>
+        </li>
+        <li class="correta">
+          <span class="letra">C</span>
+          <span>Reforço positivo e punição negativa.</span>
+        </li>
+        <li>
+          <span class="letra">D</span>
+          <span>Reforço positivo e punição positiva.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — C</div>
+      <p><strong>Estratégia I — Reforço positivo:</strong> adiciona estímulo apetitivo (pontos → lazer) após comportamento desejado (atenção sustentada) → <em>aumenta</em> a probabilidade do comportamento. É um sistema de economia de fichas (token economy), forma clássica de reforço positivo.</p>
+      <p><strong>Estratégia II — Punição negativa:</strong> <em>remove</em> estímulo apetitivo (atividade apreciada, recreio) após comportamento indesejado (impulsividade) → <em>diminui</em> a probabilidade do comportamento. O que define punição negativa é a remoção (negativo = subtração) de algo agradável.</p>
+      <p><strong>Distinções-chave:</strong> Positivo = adição de estímulo · Negativo = remoção de estímulo · Reforço = aumenta comportamento · Punição = diminui comportamento. Punição <em>positiva</em> seria adicionar estímulo aversivo (palmada, bronca) — não é o caso da estratégia II.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>PSI-TEORIA · Abordagens Psicoterapêuticas</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">8 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 9 — GABARITO COMENTADO INTEGRADO ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Psicologia — PSI-TEORIA</div>
+      <div class="aula-ref">Bloco B11 · Aula 29 · Gabarito Integrado</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="secao-titulo">Gabarito Comentado — Análise Integrada</div>
+
+    <table>
+      <tr>
+        <th>Questão</th>
+        <th>Gabarito</th>
+        <th>Tema</th>
+        <th>Conceito-Chave</th>
+      </tr>
+      <tr>
+        <td><strong>01</strong></td>
+        <td><span class="destaque">C</span></td>
+        <td>TCC — Distorções Cognitivas</td>
+        <td>Leitura mental + pensamento dicotômico (tudo-ou-nada)</td>
+      </tr>
+      <tr>
+        <td><strong>02</strong></td>
+        <td><span class="destaque">C</span></td>
+        <td>Rogers — ACP</td>
+        <td>Consideração Positiva Incondicional = aceitar sem condicionar ao comportamento</td>
+      </tr>
+      <tr>
+        <td><strong>03</strong></td>
+        <td><span class="destaque">C</span></td>
+        <td>Skinner — Condicionamento Operante</td>
+        <td>Reforço positivo (adiciona agradável) + punição negativa (remove agradável)</td>
+      </tr>
+    </table>
+
+    <div class="subsecao" style="margin-top:8px;">Mapa das Armadilhas por Abordagem</div>
+
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Psicanálise — Armadilhas</div>
+        <p>Sublimação = mais madura (NÃO é patológica). Repressão (inconsciente) ≠ supressão (consciente). Transferência é fenômeno universal, não exclusivo da psicanálise. Lacan: inconsciente estruturado como linguagem — NÃO é biológico.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">TCC — Armadilhas</div>
+        <p>Beck = modelo cognitivo (pensamentos automáticos, distorções, crenças). Ellis = TREC, modelo ABC (A→B→C). Catastrofização ≠ generalização ≠ leitura mental — FGV descreve e pede a distorção específica. Racionalização é mecanismo de defesa psicanalítico, não distorção da TCC.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Behaviorismo — Armadilhas</div>
+        <p>Reforço negativo <em>aumenta</em> comportamento (remove aversivo). Punição negativa <em>diminui</em> comportamento (remove agradável). Positivo = adição; negativo = remoção. Condicionamento clássico (Pavlov) = resposta reflexa. Operante (Skinner) = consequência modifica o comportamento.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Rogers/Gestalt — Armadilhas</div>
+        <p>CPI ≠ concordância com o comportamento. Empatia = "como se" (não se funde). Congruência = autenticidade do terapeuta (NÃO é neutralidade psicanalítica). Na Gestalt: retroflexão = volta contra si (≠ projeção = atribui ao outro). Confluência = perda da fronteira ego-mundo.</p>
+      </div>
+    </div>
+
+    <div class="alerta" style="margin-top:5px;">
+      <p><strong>Regra de ouro para identificar a abordagem:</strong> inconsciente + transferência + defesas = Psicanálise · pensamentos automáticos + distorções + crenças = TCC · reforço + punição + extinção = Behaviorismo · empatia + CPI + congruência + tendência atualizante = ACP Rogers · aqui-e-agora + figura-fundo + awareness + contato = Gestalt.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>PSI-TEORIA · Abordagens Psicoterapêuticas</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">9 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 10 — SÍNTESE ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Psicologia — PSI-TEORIA</div>
+      <div class="aula-ref">Bloco B11 · Aula 29 · Síntese</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="secao-titulo">Síntese — Abordagens Psicoterapêuticas</div>
+
+    <div class="sintese-grid">
+      <div class="sintese-item">
+        <div class="si-label">Psicanálise (Freud/Lacan)</div>
+        <p>Motor: inconsciente. Aparelho: id + ego + superego. Técnica: livre associação, interpretação, elaboração da transferência. Defesas: repressão (central), sublimação (mais madura), projeção, formação reativa, negação. Lacan: inconsciente = linguagem; Real/Imaginário/Simbólico.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">TCC (Beck/Ellis/3ª Geração)</div>
+        <p>Beck: pensamentos automáticos → distorções → crenças centrais (tríade cognitiva: eu/mundo/futuro). Ellis: A→B→C (crenças irracionais geram consequências). Técnicas: registro, reestruturação, exposição. 3ª geração: ACT (aceitação + valores), DBT (TPB), MBCT (mindfulness).</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Behaviorismo (Pavlov/Skinner)</div>
+        <p>Clássico (Pavlov): EN + EI → EC → RC. Operante (Skinner): reforço positivo (+ agradável ↑) · reforço negativo (- aversivo ↑) · punição positiva (+ aversivo ↓) · punição negativa (- agradável ↓) · extinção (sem reforço ↓).</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Humanismo — Rogers / Maslow</div>
+        <p>Rogers: tendência atualizante; 3 condições = empatia + CPI + congruência. ACP fundamenta escuta qualificada no SUS. Maslow: pirâmide (fisiológico → segurança → pertencimento → estima → autorrealização). Necessidades básicas antes das superiores.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Gestalt (Perls)</div>
+        <p>Figura-fundo · aqui-e-agora · totalidade organismo-ambiente. Interrupções de contato: retroflexão (volta contra si) · projeção (atribui ao outro) · deflexão (desvia energia) · confluência (dissolve fronteira eu-outro) · introjeção (incorpora sem assimilar). Awareness = consciência expandida.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Próxima Aula</div>
+        <p><strong>Aula 30 — REVISÃO INTEGRADORA:</strong> Simulado Final do Bloco B11 com 10 questões integradas cobrindo todos os módulos — PSI-ETICA, PSI-CLINICA, PSI-ORGAN, PSI-AVALIA, PSI-SAUDE, PSI-APS, PSI-TEORIA — estilo ENARE 2026 com gabarito comentado completo.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>PSI-TEORIA · Abordagens Psicoterapêuticas</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">10 / 10</span>
+  </div>
+</div>
+
+</body>
+</html>
