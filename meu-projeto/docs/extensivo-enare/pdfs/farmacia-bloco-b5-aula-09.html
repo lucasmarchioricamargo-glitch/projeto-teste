@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Farmácia — Bloco B5 Aula 09 | Extensivo ENARE 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap');
+  :root { --creme: #F6F4ED; --verde: #1F5C23; --amarelo: #C6D834; --escuro: #0C2B0E; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #d0d0d0; font-family: 'Bricolage Grotesque', sans-serif; }
+  .page { width: 210mm; height: 297mm; background: var(--creme); margin: 0 auto 12px; position: relative; overflow: hidden; page-break-after: always; }
+  .header { background: var(--verde); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .header-logo { display: flex; align-items: center; gap: 8px; }
+  .header-logo svg { width: 32px; height: 32px; }
+  .header-brand { display: flex; flex-direction: column; line-height: 1; }
+  .header-brand .marca { font-family: 'Playfair Display', serif; font-style: italic; color: #fff; font-size: 13px; letter-spacing: 0.5px; }
+  .header-brand .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 7px; letter-spacing: 1.5px; text-transform: uppercase; }
+  .header-info { text-align: right; }
+  .header-info .disciplina { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
+  .header-info .aula-ref { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.7); font-size: 8px; letter-spacing: 0.5px; }
+  .footer { position: absolute; bottom: 0; left: 0; right: 0; background: var(--verde); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .footer span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.6); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .footer .pg { color: var(--amarelo); font-weight: 400; }
+  .body { padding: 14px 18px 30px; height: calc(297mm - 52px - 22px); overflow: hidden; }
+  .capa-page { background: var(--verde); }
+  .capa-header { background: var(--creme); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .capa-header .marca { font-family: 'Playfair Display', serif; font-style: italic; color: var(--verde); font-size: 14px; }
+  .capa-header .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--verde); font-size: 7.5px; letter-spacing: 2px; text-transform: uppercase; }
+  .capa-body { padding: 28px 24px 0; display: flex; flex-direction: column; height: calc(297mm - 52px - 22px); }
+  .capa-eyebrow { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; }
+  .capa-titulo { font-family: 'Barlow Condensed', sans-serif; color: #fff; font-size: 50px; line-height: 0.95; text-transform: uppercase; letter-spacing: -0.5px; margin-bottom: 6px; }
+  .capa-titulo span { color: var(--amarelo); }
+  .capa-subtitulo { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; color: rgba(255,255,255,0.65); font-size: 12px; letter-spacing: 0.3px; margin-bottom: 22px; line-height: 1.5; }
+  .capa-badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+  .capa-badge { background: rgba(198,216,52,0.15); border: 1px solid var(--amarelo); color: var(--amarelo); font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 8px; border-radius: 2px; }
+  .capa-divider { width: 40px; height: 3px; background: var(--amarelo); margin-bottom: 20px; }
+  .capa-topicos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .capa-topico { display: flex; align-items: flex-start; gap: 7px; }
+  .capa-topico-num { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 18px; line-height: 1; min-width: 18px; }
+  .capa-topico-txt { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 400; color: rgba(255,255,255,0.8); font-size: 9.5px; line-height: 1.4; }
+  .capa-footer-strip { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.25); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .capa-footer-strip span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.45); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .secao-titulo { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 18px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid var(--amarelo); padding-bottom: 3px; margin-bottom: 9px; line-height: 1; }
+  .subsecao { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.5px; margin: 7px 0 3px; }
+  p { font-size: 9px; line-height: 1.55; color: #1a1a1a; margin-bottom: 4px; font-weight: 400; }
+  .destaque { background: var(--amarelo); color: var(--escuro); font-weight: 600; padding: 1px 4px; border-radius: 2px; font-size: 8.5px; }
+  .alerta { background: rgba(198,216,52,0.18); border-left: 3px solid var(--amarelo); padding: 5px 8px; margin: 5px 0; border-radius: 0 3px 3px 0; }
+  .alerta p { margin: 0; font-size: 8.5px; }
+  .alerta strong { color: var(--verde); }
+  table { width: 100%; border-collapse: collapse; margin: 5px 0; font-size: 8px; }
+  th { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; padding: 4px 6px; text-align: left; }
+  td { padding: 3px 6px; border-bottom: 1px solid rgba(31,92,35,0.12); vertical-align: top; line-height: 1.4; color: #1a1a1a; }
+  tr:nth-child(even) td { background: rgba(31,92,35,0.04); }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 5px 0; }
+  .card { background: rgba(31,92,35,0.06); border: 1px solid rgba(31,92,35,0.15); border-radius: 4px; padding: 7px 8px; }
+  .card-title { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 11px; text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 3px; }
+  .card p { font-size: 8px; line-height: 1.5; }
+  .questao-header { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; padding: 4px 10px; border-radius: 3px 3px 0 0; display: flex; justify-content: space-between; align-items: center; }
+  .questao-header .fonte { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; color: var(--amarelo); letter-spacing: 0.5px; }
+  .questao-body { border: 1px solid rgba(31,92,35,0.2); border-top: none; border-radius: 0 0 3px 3px; padding: 7px 10px; margin-bottom: 7px; }
+  .questao-enunciado { font-size: 8.5px; line-height: 1.55; color: #111; margin-bottom: 5px; font-weight: 500; }
+  .alternativas { list-style: none; }
+  .alternativas li { font-size: 8px; line-height: 1.5; padding: 2px 0; color: #222; display: flex; gap: 5px; }
+  .alternativas li .letra { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: var(--verde); font-size: 9px; min-width: 10px; }
+  .alternativas li.correta .letra { color: var(--amarelo); }
+  .alternativas li.correta { background: rgba(198,216,52,0.15); border-left: 2px solid var(--amarelo); padding-left: 4px; }
+  .gabarito-box { background: var(--verde); border-radius: 4px; padding: 8px 12px; margin: 6px 0; }
+  .gabarito-box .gab-title { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+  .gabarito-box p { color: rgba(255,255,255,0.9); font-size: 8px; line-height: 1.55; }
+  .gabarito-box strong { color: var(--amarelo); }
+  .sintese-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-top: 6px; }
+  .sintese-item { background: rgba(31,92,35,0.07); border-left: 3px solid var(--verde); padding: 5px 7px; border-radius: 0 3px 3px 0; }
+  .sintese-item .si-label { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px; }
+  .sintese-item p { font-size: 7.5px; line-height: 1.5; }
+  ul.lista { padding-left: 14px; margin: 3px 0; }
+  ul.lista li { font-size: 8.5px; line-height: 1.55; color: #1a1a1a; margin-bottom: 1px; }
+  @media print { body { background: none; } .page { margin: 0; box-shadow: none; } }
+</style>
+</head>
+<body>
+
+<div class="page capa-page">
+  <div class="capa-header">
+    <div style="display:flex;align-items:center;gap:8px;"><svg width="34" height="34" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#1F5C23"/></svg><div><div class="marca">Elite Treinamentos</div><div class="tagline">Extensivo ENARE 2026</div></div></div>
+    <div style="text-align:right;"><div style="font-family:'Barlow Condensed',sans-serif;color:var(--verde);font-size:11px;letter-spacing:1px;text-transform:uppercase;">Bloco B5 · Aula 09</div><div style="font-family:'Space Grotesk',sans-serif;font-weight:300;color:#888;font-size:7.5px;letter-spacing:0.5px;">Farmácia</div></div>
+  </div>
+  <div class="capa-body">
+    <div class="capa-eyebrow">Bloco B5 · FARM-CLIN · Aula 09 de 22</div>
+    <div class="capa-titulo">CIM <span>·<br>Centro de<br>Informa-<br>ção sobre<br>Medic.</span></div>
+    <div class="capa-subtitulo">Portaria MS 3.916/1998, composição da equipe e condutas<br>baseadas em evidências — cluster novo da ENARE 2025</div>
+    <div class="capa-badge-row">
+      <div class="capa-badge">FARM-CLIN ★★★</div>
+      <div class="capa-badge">Portaria 3.916/1998</div>
+      <div class="capa-badge">Pirâmide de Evidência</div>
+      <div class="capa-badge">Varfarina + AAS</div>
+    </div>
+    <div class="capa-divider"></div>
+    <div class="capa-topicos">
+      <div class="capa-topico"><div class="capa-topico-num">01</div><div class="capa-topico-txt">CIM: histórico, definição e objetivos</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">02</div><div class="capa-topico-txt">Portaria 3.916/1998: estrutura e composição</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">03</div><div class="capa-topico-txt">Equipe e infraestrutura física</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">04</div><div class="capa-topico-txt">Tipos de informação: ativa vs passiva</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">05</div><div class="capa-topico-txt">Pirâmide de evidência e fontes terciárias</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">06</div><div class="capa-topico-txt">Caso clássico: varfarina + AAS</div></div>
+    </div>
+  </div>
+  <div class="capa-footer-strip"><span>Extensivo ENARE 2026</span><span>Elite Treinamentos em Saúde</span><span>Página 1 de 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-CLIN</div><div class="aula-ref">Bloco B5 · Aula 09 · CIM — Fundamentos</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Centro de Informação sobre Medicamentos — Fundamentos</div>
+    <p>O <strong>CIM</strong> é um serviço farmacêutico que provê <em>informação objetiva, técnica, atualizada e baseada em evidências</em> sobre medicamentos. Atende profissionais de saúde, pacientes, gestores e órgãos regulatórios. O primeiro CIM foi instalado em Kentucky (EUA) em 1962; no Brasil, o serviço se consolidou a partir dos anos 1980, com o CEBRIM/CFF como referência nacional. A FGV cobrou o tema em <strong>4 questões da ENARE 2025</strong> (Q79, Q80, Q83, Q84) — cluster novo consolidado.</p>
+
+    <div class="subsecao">Definição e Objetivos</div>
+    <p>Segundo a <strong>Portaria MS 3.916/1998</strong> (PNM — Política Nacional de Medicamentos), o CIM tem como objetivo: "<em>prover serviços de informação técnica e independente sobre medicamentos a profissionais de saúde e à sociedade, contribuindo para o uso racional</em>". Não é apenas "consulta de bula": é serviço estruturado de resposta a questões clínicas com metodologia padronizada.</p>
+
+    <div class="subsecao">Histórico no Brasil</div>
+    <table>
+      <tr><th>Marco</th><th>Significado</th></tr>
+      <tr><td>1980 — Primeiros CIMs em universidades públicas</td><td>UFRGS, UFRJ, UFMG iniciam serviços piloto</td></tr>
+      <tr><td>1992 — CEBRIM/CFF</td><td>Centro Brasileiro de Informação sobre Medicamentos vinculado ao CFF</td></tr>
+      <tr><td>1998 — Portaria MS 3.916/1998 (PNM)</td><td>CIM é institucionalizado como diretriz da Política Nacional de Medicamentos</td></tr>
+      <tr><td>2004 — Res. CNS 338 (PNAF)</td><td>CIM reafirmado como eixo de informação na Assistência Farmacêutica</td></tr>
+      <tr><td>2014 — Caderno CFF/MS de Cuidado Farmacêutico</td><td>CIM como suporte ao seguimento farmacoterapêutico</td></tr>
+      <tr><td>SismedBrasil / SISCIM</td><td>Sistema de registro padronizado das consultas em rede nacional</td></tr>
+    </table>
+
+    <div class="subsecao">CIM × Outros Serviços</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">CIM</div>
+        <p>Foco: informação técnico-científica. Respostas a consultas pontuais; produção de boletins informativos; assessoria à CFT (Comissão de Farmácia e Terapêutica). Atende a equipe profissional e o paciente.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Toxicovigilância / CCI</div>
+        <p>CCI (Centro de Controle de Intoxicações): atendimento a casos agudos de intoxicação; orientação ao SAMU/PA. CIATox = referência regional. Diferente do CIM, que é informação eletiva, não emergencial.</p>
+      </div>
+    </div>
+
+    <div class="subsecao">Tipos de Atividade</div>
+    <ul class="lista">
+      <li><strong>Informação passiva (sob demanda):</strong> resposta a consultas de profissionais ou pacientes em fluxo definido (e-mail, telefone, presencial). Mais frequente.</li>
+      <li><strong>Informação ativa:</strong> produção de boletins, alertas, infográficos, treinamentos, materiais educativos. Antecipa-se a problemas detectados na prática.</li>
+      <li><strong>Assessoria técnica institucional:</strong> apoio à Comissão de Farmácia e Terapêutica (seleção de medicamentos para o formulário hospitalar), à CCIH (antimicrobianos), à equipe de stewardship.</li>
+      <li><strong>Educação permanente:</strong> capacitação interna e produção de evidências locais.</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Atenção:</strong> CIM não substitui consultoria farmacêutica clínica direta ao paciente — fornece <em>informação</em>, não <em>cuidado contínuo</em>. O farmacêutico clínico aplica a informação no contexto do paciente. Em hospital, frequentemente o farmacêutico clínico <em>consulta o CIM</em> para uma dúvida pontual, e depois <em>aplica</em> na rotina assistencial.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-CLIN · CIM</span><span>Extensivo ENARE 2026</span><span class="pg">2 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-CLIN</div><div class="aula-ref">Bloco B5 · Aula 09 · Estrutura e Equipe</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Estrutura, Equipe e Funcionamento</div>
+
+    <div class="subsecao">Composição Mínima da Equipe</div>
+    <p>De acordo com diretrizes da Portaria 3.916/1998 e da Sociedade Brasileira de Farmácia Hospitalar (SBRAFH), o CIM deve contar com equipe mínima de <strong>farmacêuticos</strong>. Em CIMs maiores ou universitários, soma-se equipe complementar:</p>
+    <ul class="lista">
+      <li><strong>Coordenador farmacêutico</strong> — preferencialmente com pós-graduação em Farmacologia Clínica, Farmácia Clínica ou Atenção Farmacêutica</li>
+      <li><strong>Farmacêuticos consultores</strong> — em número proporcional à demanda de consultas</li>
+      <li><strong>Estagiários farmacêuticos / residentes</strong> — sob supervisão; o CIM é cenário central de residência multiprofissional em saúde</li>
+      <li><strong>Apoio administrativo</strong> — registro, organização do arquivo, agendamento</li>
+      <li><strong>Bibliotecário/documentalista</strong> (em CIMs universitários) — gestão de bases de dados e literatura</li>
+    </ul>
+
+    <div class="subsecao">Infraestrutura Física Mínima</div>
+    <table>
+      <tr><th>Recurso</th><th>Descrição</th></tr>
+      <tr><td>Sala dedicada</td><td>Privacidade para atendimento; computadores; telefone; impressora</td></tr>
+      <tr><td>Acesso a bases de dados</td><td>Micromedex, UpToDate, Lexicomp, PubMed/Medline, Embase, Cochrane Library, LILACS, ANVISA, OMS, FDA, EMA</td></tr>
+      <tr><td>Acervo bibliográfico</td><td>Goodman &amp; Gilman, Martindale, Drug Facts and Comparisons, Bulário ANVISA, livros de farmacovigilância e toxicologia</td></tr>
+      <tr><td>Software de registro</td><td>SISCIM ou planilha estruturada com dados da consulta, fontes, resposta e desfecho</td></tr>
+      <tr><td>Canal de comunicação</td><td>E-mail institucional, telefone, formulário web, mensagem corporativa</td></tr>
+    </table>
+
+    <div class="subsecao">Fluxo de Atendimento (Método de Resposta a Consultas)</div>
+    <table>
+      <tr><th>Etapa</th><th>Atividade</th></tr>
+      <tr><td>1. Recebimento da consulta</td><td>Registrar dados do solicitante (profissional/paciente), contexto, urgência</td></tr>
+      <tr><td>2. Classificação</td><td>Tipo de consulta: identificação do produto, posologia, RAM, interação, indicação, equivalência, fitoterapia, etc.</td></tr>
+      <tr><td>3. Reformulação da pergunta clínica</td><td>Estruturar em PICO quando aplicável: paciente/problema, intervenção, comparação, desfecho</td></tr>
+      <tr><td>4. Busca em fontes</td><td>Estratégia hierárquica: terciária (revisões) → secundária (índices) → primária (artigos)</td></tr>
+      <tr><td>5. Avaliação crítica</td><td>Qualidade metodológica; nível de evidência; conflitos; aplicabilidade ao caso</td></tr>
+      <tr><td>6. Elaboração da resposta</td><td>Síntese técnica, contextualizada, com referências; em linguagem adequada ao solicitante</td></tr>
+      <tr><td>7. Comunicação e seguimento</td><td>Envio formal; verificação de adequação; documentação para arquivo e indicador</td></tr>
+    </table>
+
+    <div class="subsecao">Indicadores de Avaliação do CIM</div>
+    <ul class="lista">
+      <li>Número de consultas atendidas por mês/ano e por tipo</li>
+      <li>Tempo médio de resposta (urgente &lt; 2h, eletivo &lt; 24h)</li>
+      <li>Taxa de respostas com fontes terciárias adequadas (≥ 80%)</li>
+      <li>Satisfação do usuário (escala Likert)</li>
+      <li>Produção de boletins, alertas e materiais educativos</li>
+      <li>Participação em comitês institucionais (CFT, CCIH, segurança do paciente)</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Diferencial de profissionalismo:</strong> resposta de CIM nunca é "minha opinião" — é informação <em>referenciada</em>. A resposta deve trazer: (a) síntese clínica clara; (b) fontes e nível de evidência; (c) aplicabilidade ao caso; (d) eventuais limitações ou conflitos.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-CLIN · CIM</span><span>Extensivo ENARE 2026</span><span class="pg">3 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-CLIN</div><div class="aula-ref">Bloco B5 · Aula 09 · Pirâmide de Evidência</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Pirâmide de Evidência e Fontes de Informação</div>
+
+    <p>A resposta do CIM deve seguir a <strong>hierarquia de fontes</strong>. A pirâmide clássica organiza as fontes em três níveis. O farmacêutico do CIM consulta primeiro o topo da pirâmide (síntese das evidências) e desce para a base apenas se necessário (ou para validar a fonte secundária/terciária).</p>
+
+    <div class="subsecao">Fontes Terciárias — Topo da Pirâmide</div>
+    <p>Resumos da evidência por autores reconhecidos. <strong>Primeira escolha</strong> para consultas rotineiras. Atualização variável.</p>
+    <table>
+      <tr><th>Recurso</th><th>Foco</th></tr>
+      <tr><td>Micromedex (Truven Health/IBM)</td><td>Posologia, RAMs, interações, monografias completas; padrão hospitalar</td></tr>
+      <tr><td>UpToDate</td><td>Síntese clínica completa por especialidade — abordagem clínica</td></tr>
+      <tr><td>Lexicomp</td><td>Foco em farmacoterapia, interações, dispensação</td></tr>
+      <tr><td>Goodman &amp; Gilman</td><td>Tratado clássico de farmacologia</td></tr>
+      <tr><td>Martindale (The Complete Drug Reference)</td><td>Monografias internacionais; padrão para fármacos não disponíveis no Brasil</td></tr>
+      <tr><td>AHFS Drug Information</td><td>Fonte profissional americana</td></tr>
+      <tr><td>BNF (British National Formulary)</td><td>Referência britânica; ótimo para pediatria</td></tr>
+      <tr><td>RDC ANVISA / Bulário Eletrônico</td><td>Referência regulatória brasileira</td></tr>
+      <tr><td>RENAME / RENAFITO</td><td>Listas oficiais SUS</td></tr>
+    </table>
+
+    <div class="subsecao">Fontes Secundárias — Meio</div>
+    <p>Índices e bases que permitem identificar fontes primárias relevantes.</p>
+    <ul class="lista">
+      <li><strong>PubMed/Medline:</strong> base bibliográfica internacional principal</li>
+      <li><strong>Embase:</strong> complementar ao PubMed; foco em farmacologia europeia</li>
+      <li><strong>LILACS / SciELO:</strong> literatura latino-americana</li>
+      <li><strong>Cochrane Library:</strong> revisões sistemáticas e meta-análises (também é terciária)</li>
+      <li><strong>BVS Brasil:</strong> portal integrado</li>
+      <li><strong>Reactions Weekly / IPA:</strong> RAMs e farmacovigilância</li>
+    </ul>
+
+    <div class="subsecao">Fontes Primárias — Base</div>
+    <p>Artigos originais: ensaios clínicos randomizados, estudos de coorte, caso-controle, transversais, séries de casos, relatos.</p>
+
+    <div class="subsecao">Níveis de Evidência (Oxford CEBM)</div>
+    <table>
+      <tr><th>Nível</th><th>Tipo de evidência</th></tr>
+      <tr><td>1a</td><td>Revisão sistemática de ECR com homogeneidade</td></tr>
+      <tr><td>1b</td><td>ECR individual com intervalo de confiança estreito</td></tr>
+      <tr><td>2a</td><td>Revisão sistemática de coortes</td></tr>
+      <tr><td>2b</td><td>Coorte individual ou ECR de baixa qualidade</td></tr>
+      <tr><td>3a</td><td>Revisão sistemática de caso-controle</td></tr>
+      <tr><td>3b</td><td>Caso-controle individual</td></tr>
+      <tr><td>4</td><td>Série de casos, coorte ou caso-controle de baixa qualidade</td></tr>
+      <tr><td>5</td><td>Opinião de especialistas sem revisão crítica explícita</td></tr>
+    </table>
+
+    <div class="alerta">
+      <p><strong>Regra prática:</strong> consultas eletivas → fonte terciária; consultas com inconsistência → secundária para encontrar primária; consultas regulatórias → ANVISA + bulário oficial. <em>Nunca</em> responder com base em fonte única quando há contradição. Documentar todas as fontes consultadas.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-CLIN · CIM</span><span>Extensivo ENARE 2026</span><span class="pg">4 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-CLIN</div><div class="aula-ref">Bloco B5 · Aula 09 · Caso Varfarina + AAS</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Caso Clássico — Varfarina + AAS</div>
+    <p>A FGV apresentou este caso na ENARE 2025 em duas questões: Q79 (conduta do CIM) e Q83 (alternativas sem interação). É o protótipo da consulta clínica ao CIM em ambiente hospitalar.</p>
+
+    <div class="subsecao">Cenário</div>
+    <p>Paciente de 67 anos, em uso de varfarina 5 mg/dia para FA não-valvar (INR estável 2,5). Médico assistente prescreve AAS 100 mg/dia para profilaxia secundária por suspeita de IAM antigo. Paciente vem ao CIM com cartela trazida da farmácia. Pergunta-se ao CIM: "Há interação? O que orientar?"</p>
+
+    <div class="subsecao">Resposta Estruturada do CIM</div>
+    <table>
+      <tr><th>Componente</th><th>Conteúdo</th></tr>
+      <tr><td><strong>Interação identificada</strong></td><td>SIM — interação farmacodinâmica de risco hemorrágico aditivo (categoria D ou X dependendo da fonte; Lexicomp = X em pacientes selecionados); a varfarina inibe a coagulação (fatores II, VII, IX, X); o AAS inibe a agregação plaquetária via COX-1 → hemostasia comprometida em <em>duas frentes</em></td></tr>
+      <tr><td><strong>Risco</strong></td><td>Aumento significativo do risco de sangramento, especialmente gastrointestinal e intracraniano. Estudos demonstram aumento de 1,5–2× nos eventos hemorrágicos maiores</td></tr>
+      <tr><td><strong>Quando a associação é aceitável</strong></td><td>Em situações específicas — síndrome coronariana aguda recente com FA simultânea (terapia dupla varfarina + AAS por curto período, &lt; 3 meses, sob orientação cardiológica). Em todos os casos, considerar IBP gastroprotetor (pantoprazol — menos interação com clopidogrel que omeprazol)</td></tr>
+      <tr><td><strong>Conduta CIM correta</strong></td><td>(1) <em>Informar</em> ao paciente e ao prescritor sobre a interação, com referências (UpToDate; AHA/ACC Guideline 2024); (2) <em>Sugerir alternativa sem interação</em>: se profilaxia secundária recente de IAM, manter terapia conforme protocolo, mas com IBP; se análise mostra que AAS é redundante para profilaxia em FA (varfarina já protege contra eventos isquêmicos cardioembólicos), considerar suspensão do AAS; (3) <em>Não suspender autonomamente</em> nenhum dos dois — papel do CIM é informar e propor; decisão clínica é do médico assistente</td></tr>
+      <tr><td><strong>Documentação</strong></td><td>Registrar a consulta no SISCIM; fontes citadas (Lexicomp, UpToDate, Goodman &amp; Gilman, AHA 2024); resposta enviada por escrito ao prescritor; cópia em prontuário; retorno em 7 dias para verificar desfecho</td></tr>
+    </table>
+
+    <div class="subsecao">Pontos Importantes da Q79–Q84 (ENARE 2025)</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Q79 — Conduta do CIM</div>
+        <p>O CIM deve informar a interação e <em>comunicar ao prescritor</em>; <em>não pode suspender autonomamente</em> nenhum dos medicamentos. Conduta correta inclui orientar o paciente sobre sinais de sangramento e manter comunicação com a equipe.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Q83 — Alternativas</div>
+        <p>Alternativas analgésicas sem interação com varfarina: <em>paracetamol em dose &lt; 2 g/dia</em> (em altas doses pode aumentar INR), <em>codeína em curto prazo</em>, <em>tramadol com cuidado</em>. Evitar AINEs (sangramento + interação). Para profilaxia secundária CV, manter aspirina apenas se indicado com IBP.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Q80 — Organização do CIM</div>
+        <p>Portaria 3.916/1998 estrutura o CIM como serviço farmacêutico de informação técnica. Equipe predominante de farmacêuticos, com apoio bibliográfico e estrutura física dedicada.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Q84 — Composição da Equipe</div>
+        <p>Equipe predominantemente formada por <em>farmacêuticos</em>. Inclusão de estagiários/residentes farmacêuticos sob supervisão. Eventualmente bibliotecário e apoio administrativo.</p>
+      </div>
+    </div>
+
+    <div class="alerta">
+      <p><strong>Padrão de resposta a interação medicamentosa:</strong> (1) identificar mecanismo (farmacodinâmico vs farmacocinético); (2) quantificar risco (clínico, em comparação ao benefício); (3) propor alternativas; (4) plano de monitorização; (5) orientações ao paciente. <em>Nunca</em> "suspender o medicamento" sem comunicação com o prescritor — papel do CIM é informativo e consultivo, não impositivo.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-CLIN · CIM</span><span>Extensivo ENARE 2026</span><span class="pg">5 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-CLIN</div><div class="aula-ref">Bloco B5 · Aula 09 · CIM em Atuação</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">CIM em Atuação — Tipos de Consultas e Outros Casos</div>
+
+    <div class="subsecao">Tipos de Consultas Frequentes</div>
+    <table>
+      <tr><th>Categoria</th><th>Exemplo</th></tr>
+      <tr><td>Posologia / ajuste</td><td>"Qual a dose de meropenem em ClCr 28 mL/min?" (ver Aula 04)</td></tr>
+      <tr><td>RAM / efeito adverso</td><td>"Paciente em isoniazida com aumento de transaminases — manter?" (Lei de Hy)</td></tr>
+      <tr><td>Interações</td><td>"Posso prescrever azitromicina em paciente em amiodarona?" (QT)</td></tr>
+      <tr><td>Indicação clínica</td><td>"Sacubitril-valsartana tem evidência em HFpEF? Qual o nível?" (DELIVER, EMPEROR-Preserved)</td></tr>
+      <tr><td>Estabilidade / preparo</td><td>"Reconstituição de vancomicina em quanto tempo? Quantos dias na geladeira?"</td></tr>
+      <tr><td>Equivalência terapêutica</td><td>"Bioequivalência de losartana genérica? Substituir o de referência?"</td></tr>
+      <tr><td>Gestação / lactação</td><td>"Sertralina é segura em amamentação?" (L2 Hale)</td></tr>
+      <tr><td>Fitoterapia</td><td>"Erva de São João + sertralina? Posso combinar?"</td></tr>
+      <tr><td>Off-label</td><td>"Anfotericina B lipossomal em leishmaniose visceral pediátrica?"</td></tr>
+      <tr><td>Comparação de classe</td><td>"DOACs vs varfarina em FA — qual escolher?"</td></tr>
+    </table>
+
+    <div class="subsecao">Outros Casos-modelo</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Caso 1 — Vancomicina + ClCr</div>
+        <p>Paciente 60 anos, ClCr 35, infecção por MRSA. Pergunta: "Dose inicial?" Resposta CIM: dose de ataque 25–30 mg/kg + manutenção ajustada por ClCr (15 mg/kg 24/24h); coletar nível-vale antes da 4ª dose; alvo 15–20 mg/L em infecção grave (referência: IDSA 2020).</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Caso 2 — Hipoglicemiantes em gestação</div>
+        <p>Gestante com DM2 mal controlada em metformina 850 mg 12/12h. Pergunta: "Substituir por insulina?" Resposta CIM: metformina é categoria B; em pré-gestação, manter é aceitável até alcançar alvo glicêmico (HbA1c &lt; 6%); a maioria dos centros prefere insulina a partir do 2º trimestre. Referências: ADA 2024, SBD 2024.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Caso 3 — Pediatria — Codeína</div>
+        <p>Pergunta: "Tosse em criança 4 anos — pode usar codeína?" Resposta CIM: contraindicada em &lt; 12 anos (CYP2D6 UM, FDA Black Box 2017; ANVISA segue). Alternativas: dextrometorfano com cautela, mel em maiores de 1 ano (Cochrane), hidratação.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Caso 4 — Fitoterápico + ARV</div>
+        <p>Pergunta: "Paciente HIV em dolutegravir, quer usar Hypericum (erva de São João) para humor." Resposta CIM: <em>contraindicado</em> — indutor potente de CYP3A4 e P-gp, reduz exposição a ARVs; risco de falha terapêutica e resistência. Sugestão: encaminhar para avaliação psiquiátrica; ISRS são alternativas mais seguras.</p>
+      </div>
+    </div>
+
+    <div class="subsecao">Boletim Informativo — Exemplo de Atividade Ativa</div>
+    <p>Estrutura típica de boletim do CIM (mensal ou trimestral):</p>
+    <ul class="lista">
+      <li>Capa com tema central</li>
+      <li>Editorial</li>
+      <li>Atualização regulatória (RDC ANVISA, portarias MS)</li>
+      <li>Alerta de farmacovigilância (RAMs novas, retirada de produtos)</li>
+      <li>Atualização terapêutica (novas evidências em condição prevalente)</li>
+      <li>Casos do mês</li>
+      <li>Bibliografia e referências completas</li>
+    </ul>
+    <p>O boletim funciona como educação permanente da equipe e amplia o alcance do CIM além das consultas pontuais.</p>
+
+    <div class="alerta">
+      <p><strong>Mensagem central:</strong> o CIM é o "cérebro de informação" do hospital ou da rede. Quando bem estruturado, qualquer profissional (médico, enfermeiro, farmacêutico, paciente) tem porto seguro para resposta técnica em horas. Em residência, todo residente farmacêutico deve atuar no CIM ao menos em um período da formação.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-CLIN · CIM</span><span>Extensivo ENARE 2026</span><span class="pg">6 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-CLIN</div><div class="aula-ref">Bloco B5 · Aula 09 · Questões ENARE</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 01</span><span class="fonte">CIM · Conduta · NC: Aplicação</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Médico assistente solicita ao CIM informação sobre paciente em uso crônico de varfarina 5 mg/dia (INR 2,5) que recebeu prescrição adicional de AAS 100 mg/dia para profilaxia cardiovascular. Qual a conduta do CIM mais apropriada?</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Suspender autonomamente a varfarina e orientar o paciente.</span></li>
+        <li><span class="letra">B</span><span>Não há interação relevante; manter os dois.</span></li>
+        <li class="correta"><span class="letra">C</span><span>Informar a interação farmacodinâmica de risco hemorrágico aditivo ao prescritor com fontes (Lexicomp, AHA 2024); sugerir reavaliação da indicação do AAS; orientar IBP gastroprotetor (ex.: pantoprazol) caso a associação seja mantida; orientar o paciente sobre sinais de sangramento; documentar no SISCIM.</span></li>
+        <li><span class="letra">D</span><span>Substituir varfarina por DOAC sem consultar o médico assistente.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — C</div>
+      <p><strong>Por que C está correta:</strong> a varfarina e o AAS têm interação farmacodinâmica aditiva pelo bloqueio combinado da coagulação (cascata + agregação plaquetária). A conduta do CIM é informar, propor alternativas e documentar — <em>nunca</em> intervir autonomamente. A decisão final é do médico assistente; o farmacêutico do CIM contribui com a base de evidências e propõe alternativas baseadas em pacto multidisciplinar.</p>
+      <p><strong>Por que as outras erram:</strong> A — suspender autonomamente é prerrogativa do prescritor, não do CIM · B — minimizar a interação é erro técnico grave · D — substituir varfarina por DOAC é decisão clínica complexa que envolve indicação, função renal, comorbidades, custo — não é prerrogativa do CIM.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-CLIN · CIM</span><span>Extensivo ENARE 2026</span><span class="pg">7 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-CLIN</div><div class="aula-ref">Bloco B5 · Aula 09 · Questões ENARE</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 02</span><span class="fonte">CIM · Pirâmide de Evidência · NC: Compreensão</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Farmacêutico do CIM atende consulta urgente: "Qual a melhor estatina para paciente em uso de claritromicina?". Aplicando o método de resposta a consultas, qual a fonte de primeira consulta mais adequada?</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Buscar diretamente em ensaios clínicos randomizados (fontes primárias) no PubMed.</span></li>
+        <li class="correta"><span class="letra">B</span><span>Consultar fontes terciárias (Micromedex, UpToDate, Lexicomp) e diretrizes (AHA/ACC) — fornecem síntese atualizada com referências para o caso clínico.</span></li>
+        <li><span class="letra">C</span><span>Consultar apenas o bulário ANVISA.</span></li>
+        <li><span class="letra">D</span><span>Pedir parecer ao prescritor.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> a regra metodológica do CIM é começar pelo topo da pirâmide — fontes terciárias sintetizam evidências, são atualizadas e fornecem referências. Para o caso (estatina + claritromicina), Micromedex/Lexicomp/UpToDate respondem direto: claritromicina inibe CYP3A4 → ↑ exposição a sinvastatina e atorvastatina → risco de rabdomiólise. Alternativas: pravastatina, rosuvastatina ou fluvastatina (sem 3A4) durante o curso, ou suspender estatina temporariamente.</p>
+      <p><strong>Por que as outras erram:</strong> A — pular para primárias é ineficiente para consultas eletivas com síntese já disponível · C — bulário é parte, mas não cobre síntese clínica · D — pedir parecer ao prescritor inverte o papel do CIM, que existe justamente para fornecer essa informação.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-CLIN · CIM</span><span>Extensivo ENARE 2026</span><span class="pg">8 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-CLIN</div><div class="aula-ref">Bloco B5 · Aula 09 · Gabarito Integrado</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 03</span><span class="fonte">CIM · Equipe · NC: Compreensão</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Segundo a Portaria MS 3.916/1998 e diretrizes nacionais, a equipe mínima do Centro de Informação sobre Medicamentos (CIM) deve ser composta predominantemente por:</p>
+      <ul class="alternativas">
+        <li class="correta"><span class="letra">A</span><span>Farmacêuticos, com apoio administrativo, podendo contar com bibliotecário, estagiários e residentes farmacêuticos sob supervisão.</span></li>
+        <li><span class="letra">B</span><span>Médicos, enfermeiros e técnicos em farmácia.</span></li>
+        <li><span class="letra">C</span><span>Técnicos em farmácia capacitados sob supervisão remota.</span></li>
+        <li><span class="letra">D</span><span>Apenas estagiários farmacêuticos.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — A</div>
+      <p><strong>Por que A está correta:</strong> a Portaria MS 3.916/1998 e as diretrizes da SBRAFH/CFF estabelecem que o CIM é serviço farmacêutico — equipe mínima formada por <em>farmacêuticos</em>, com possibilidade de apoio administrativo, bibliotecário/documentalista (em CIMs universitários) e estagiários/residentes sob supervisão. Médicos podem ser interconsultores, não membros da equipe-base.</p>
+      <p><strong>Por que as outras erram:</strong> B — médicos e enfermeiros são <em>usuários</em> do CIM, não compõem a equipe-base · C — técnico em farmácia não pode emitir respostas independentes do CIM; pode apoiar administrativamente · D — estagiários sempre atuam sob supervisão farmacêutica.</p>
+    </div>
+
+    <div class="subsecao" style="margin-top:6px;">Gabarito Comentado — Análise Integrada</div>
+    <table>
+      <tr><th>Questão</th><th>Gabarito</th><th>Tema</th><th>Conceito-Chave</th></tr>
+      <tr><td><strong>01</strong></td><td><span class="destaque">C</span></td><td>Conduta CIM — Varfarina + AAS</td><td>Informar + sugerir alternativa + IBP + orientação ao paciente; não suspender autonomamente</td></tr>
+      <tr><td><strong>02</strong></td><td><span class="destaque">B</span></td><td>Pirâmide de Evidência</td><td>Iniciar por fontes terciárias (Micromedex/UpToDate/Lexicomp); descer se necessário</td></tr>
+      <tr><td><strong>03</strong></td><td><span class="destaque">A</span></td><td>Equipe CIM</td><td>Predominância de farmacêuticos; apoio bibliográfico e administrativo</td></tr>
+    </table>
+  </div>
+  <div class="footer"><span>FARM-CLIN · CIM</span><span>Extensivo ENARE 2026</span><span class="pg">9 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-CLIN</div><div class="aula-ref">Bloco B5 · Aula 09 · Síntese</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Síntese — CIM</div>
+    <div class="sintese-grid">
+      <div class="sintese-item">
+        <div class="si-label">Definição</div>
+        <p>Serviço farmacêutico que provê informação técnica e independente sobre medicamentos. Origem em Kentucky 1962; Brasil consolida nos anos 1980. CEBRIM/CFF é referência nacional. Portaria MS 3.916/1998 (PNM) o institucionaliza.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Atividades</div>
+        <p>Passiva: resposta a consultas pontuais. Ativa: boletins, alertas, materiais educativos. Assessoria a CFT e CCIH. Educação permanente. Diferente do CCI (intoxicação aguda).</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Equipe</div>
+        <p>Predominância de farmacêuticos. Coordenador com pós em Farmacologia Clínica/AF. Apoio administrativo. Em CIMs universitários: bibliotecário. Estagiários e residentes sob supervisão. Médicos = interconsultores, não membros da equipe-base.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Fluxo de Resposta</div>
+        <p>1. Recebimento → 2. Classificação → 3. Reformulação PICO → 4. Busca em fontes (top-down) → 5. Avaliação crítica → 6. Resposta com referências → 7. Comunicação e documentação no SISCIM.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Pirâmide de Evidência</div>
+        <p>Terciárias (Micromedex, UpToDate, Lexicomp, Martindale, BNF) — 1ª escolha. Secundárias (PubMed, Embase, LILACS, Cochrane) — busca dirigida. Primárias (ECR, coortes) — quando contraditório ou novo. Oxford CEBM: nível 1a = revisão sistemática de ECRs.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Próxima Aula</div>
+        <p><strong>Aula 10 — Farmacoepidemiologia I: DDD e Estudos de Utilização.</strong> Definição DDD (OMS), cálculo, interpretação, ATC, estudos retrospectivos. Cluster crescente em ENARE (+100% em 2025).</p>
+      </div>
+    </div>
+    <div class="alerta" style="margin-up:5px;">
+      <p><strong>Regra de ouro — CIM no ENARE:</strong> Portaria 3.916/1998 institucionaliza; equipe = farmacêuticos; fluxo padronizado (oferta → registro → PICO → fontes terciárias → resposta com referências); conduta = informar e propor, nunca suspender autonomamente. Caso clássico: varfarina + AAS = interação farmacodinâmica, orientar + IBP + monitorar.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-CLIN · CIM</span><span>Extensivo ENARE 2026</span><span class="pg">10 / 10</span></div>
+</div>
+
+</body>
+</html>
