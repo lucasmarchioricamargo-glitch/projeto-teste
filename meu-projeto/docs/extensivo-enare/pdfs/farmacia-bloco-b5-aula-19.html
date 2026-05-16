@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Farmácia — Bloco B5 Aula 19 | Extensivo ENARE 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap');
+  :root { --creme: #F6F4ED; --verde: #1F5C23; --amarelo: #C6D834; --escuro: #0C2B0E; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #d0d0d0; font-family: 'Bricolage Grotesque', sans-serif; }
+  .page { width: 210mm; height: 297mm; background: var(--creme); margin: 0 auto 12px; position: relative; overflow: hidden; page-break-after: always; }
+  .header { background: var(--verde); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .header-logo { display: flex; align-items: center; gap: 8px; }
+  .header-logo svg { width: 32px; height: 32px; }
+  .header-brand { display: flex; flex-direction: column; line-height: 1; }
+  .header-brand .marca { font-family: 'Playfair Display', serif; font-style: italic; color: #fff; font-size: 13px; letter-spacing: 0.5px; }
+  .header-brand .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 7px; letter-spacing: 1.5px; text-transform: uppercase; }
+  .header-info { text-align: right; }
+  .header-info .disciplina { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
+  .header-info .aula-ref { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.7); font-size: 8px; letter-spacing: 0.5px; }
+  .footer { position: absolute; bottom: 0; left: 0; right: 0; background: var(--verde); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .footer span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.6); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .footer .pg { color: var(--amarelo); font-weight: 400; }
+  .body { padding: 14px 18px 30px; height: calc(297mm - 52px - 22px); overflow: hidden; }
+  .capa-page { background: var(--verde); }
+  .capa-header { background: var(--creme); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .capa-header .marca { font-family: 'Playfair Display', serif; font-style: italic; color: var(--verde); font-size: 14px; }
+  .capa-header .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--verde); font-size: 7.5px; letter-spacing: 2px; text-transform: uppercase; }
+  .capa-body { padding: 28px 24px 0; display: flex; flex-direction: column; height: calc(297mm - 52px - 22px); }
+  .capa-eyebrow { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; }
+  .capa-titulo { font-family: 'Barlow Condensed', sans-serif; color: #fff; font-size: 50px; line-height: 0.95; text-transform: uppercase; letter-spacing: -0.5px; margin-bottom: 6px; }
+  .capa-titulo span { color: var(--amarelo); }
+  .capa-subtitulo { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; color: rgba(255,255,255,0.65); font-size: 12px; letter-spacing: 0.3px; margin-bottom: 22px; line-height: 1.5; }
+  .capa-badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+  .capa-badge { background: rgba(198,216,52,0.15); border: 1px solid var(--amarelo); color: var(--amarelo); font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 8px; border-radius: 2px; }
+  .capa-divider { width: 40px; height: 3px; background: var(--amarelo); margin-bottom: 20px; }
+  .capa-topicos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .capa-topico { display: flex; align-items: flex-start; gap: 7px; }
+  .capa-topico-num { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 18px; line-height: 1; min-width: 18px; }
+  .capa-topico-txt { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 400; color: rgba(255,255,255,0.8); font-size: 9.5px; line-height: 1.4; }
+  .capa-footer-strip { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.25); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .capa-footer-strip span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.45); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .secao-titulo { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 18px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid var(--amarelo); padding-bottom: 3px; margin-bottom: 9px; line-height: 1; }
+  .subsecao { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.5px; margin: 7px 0 3px; }
+  p { font-size: 9px; line-height: 1.55; color: #1a1a1a; margin-bottom: 4px; font-weight: 400; }
+  .destaque { background: var(--amarelo); color: var(--escuro); font-weight: 600; padding: 1px 4px; border-radius: 2px; font-size: 8.5px; }
+  .alerta { background: rgba(198,216,52,0.18); border-left: 3px solid var(--amarelo); padding: 5px 8px; margin: 5px 0; border-radius: 0 3px 3px 0; }
+  .alerta p { margin: 0; font-size: 8.5px; }
+  .alerta strong { color: var(--verde); }
+  table { width: 100%; border-collapse: collapse; margin: 5px 0; font-size: 8px; }
+  th { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; padding: 4px 6px; text-align: left; }
+  td { padding: 3px 6px; border-bottom: 1px solid rgba(31,92,35,0.12); vertical-align: top; line-height: 1.4; color: #1a1a1a; }
+  tr:nth-child(even) td { background: rgba(31,92,35,0.04); }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 5px 0; }
+  .card { background: rgba(31,92,35,0.06); border: 1px solid rgba(31,92,35,0.15); border-radius: 4px; padding: 7px 8px; }
+  .card-title { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 11px; text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 3px; }
+  .card p { font-size: 8px; line-height: 1.5; }
+  .questao-header { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; padding: 4px 10px; border-radius: 3px 3px 0 0; display: flex; justify-content: space-between; align-items: center; }
+  .questao-header .fonte { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; color: var(--amarelo); letter-spacing: 0.5px; }
+  .questao-body { border: 1px solid rgba(31,92,35,0.2); border-top: none; border-radius: 0 0 3px 3px; padding: 7px 10px; margin-bottom: 7px; }
+  .questao-enunciado { font-size: 8.5px; line-height: 1.55; color: #111; margin-bottom: 5px; font-weight: 500; }
+  .alternativas { list-style: none; }
+  .alternativas li { font-size: 8px; line-height: 1.5; padding: 2px 0; color: #222; display: flex; gap: 5px; }
+  .alternativas li .letra { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: var(--verde); font-size: 9px; min-width: 10px; }
+  .alternativas li.correta .letra { color: var(--amarelo); }
+  .alternativas li.correta { background: rgba(198,216,52,0.15); border-left: 2px solid var(--amarelo); padding-left: 4px; }
+  .gabarito-box { background: var(--verde); border-radius: 4px; padding: 8px 12px; margin: 6px 0; }
+  .gabarito-box .gab-title { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+  .gabarito-box p { color: rgba(255,255,255,0.9); font-size: 8px; line-height: 1.55; }
+  .gabarito-box strong { color: var(--amarelo); }
+  .sintese-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-top: 6px; }
+  .sintese-item { background: rgba(31,92,35,0.07); border-left: 3px solid var(--verde); padding: 5px 7px; border-radius: 0 3px 3px 0; }
+  .sintese-item .si-label { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px; }
+  .sintese-item p { font-size: 7.5px; line-height: 1.5; }
+  ul.lista { padding-left: 14px; margin: 3px 0; }
+  ul.lista li { font-size: 8.5px; line-height: 1.55; color: #1a1a1a; margin-bottom: 1px; }
+  @media print { body { background: none; } .page { margin: 0; box-shadow: none; } }
+</style>
+</head>
+<body>
+
+<div class="page capa-page">
+  <div class="capa-header">
+    <div style="display:flex;align-items:center;gap:8px;"><svg width="34" height="34" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#1F5C23"/></svg><div><div class="marca">Elite Treinamentos</div><div class="tagline">Extensivo ENARE 2026</div></div></div>
+    <div style="text-align:right;"><div style="font-family:'Barlow Condensed',sans-serif;color:var(--verde);font-size:11px;letter-spacing:1px;text-transform:uppercase;">Bloco B5 · Aula 19</div><div style="font-family:'Space Grotesk',sans-serif;font-weight:300;color:#888;font-size:7.5px;letter-spacing:0.5px;">Farmácia</div></div>
+  </div>
+  <div class="capa-body">
+    <div class="capa-eyebrow">Bloco B5 · FARM-LOGIST · Aula 19 de 22</div>
+    <div class="capa-titulo">Logística <span>·<br>Distri-<br>buição<br>Hospi-<br>talar</span></div>
+    <div class="capa-subtitulo">Sistemas de distribuição, automação, curva ABC,<br>Média Aritmética Móvel e Licitações no SUS</div>
+    <div class="capa-badge-row">
+      <div class="capa-badge">FARM-LOGIST ★★</div>
+      <div class="capa-badge">Dose Unitária</div>
+      <div class="capa-badge">Curva ABC · MAM</div>
+      <div class="capa-badge">Lei 14.133/2021</div>
+    </div>
+    <div class="capa-divider"></div>
+    <div class="capa-topicos">
+      <div class="capa-topico"><div class="capa-topico-num">01</div><div class="capa-topico-txt">Sistemas de distribuição: 4 modelos</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">02</div><div class="capa-topico-txt">Dose unitária: vantagens e implementação</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">03</div><div class="capa-topico-txt">Automação: Pyxis, AccuDose, smart cabinet</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">04</div><div class="capa-topico-txt">Curva ABC e gestão estratégica</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">05</div><div class="capa-topico-txt">MAM, ponto de pedido, estoque de segurança</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">06</div><div class="capa-topico-txt">Lei 14.133/2021: licitação e modalidades</div></div>
+    </div>
+  </div>
+  <div class="capa-footer-strip"><span>Extensivo ENARE 2026</span><span>Elite Treinamentos em Saúde</span><span>Página 1 de 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-LOGIST</div><div class="aula-ref">Bloco B5 · Aula 19 · Sistemas</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Sistemas de Distribuição Hospitalar</div>
+    <p>Os <strong>sistemas de distribuição de medicamentos</strong> no hospital determinam como o medicamento sai da CAF (Central de Abastecimento Farmacêutico) e chega ao paciente. Cobrado em ENARE 2024 e 2025 — especialmente sobre <em>dose unitária</em>. Cada sistema tem vantagens, desvantagens, custo de implantação e impacto em segurança.</p>
+
+    <table>
+      <tr><th>Sistema</th><th>Característica</th><th>Vantagens</th><th>Desvantagens</th></tr>
+      <tr><td><strong>Coletivo</strong></td><td>Estoque por unidade/setor (ex.: enfermaria tem armário com diversos medicamentos); equipe de enfermagem prepara cada dose à beira do leito</td><td>Baixo custo de implantação; rápido acesso à medicação</td><td>Alto risco de erros; alta perda por validade; difícil controle; sub-uso ou over-uso</td></tr>
+      <tr><td><strong>Individualizado</strong></td><td>Medicamentos preparados pela farmácia para cada paciente, com identificação, em embalagem por dose</td><td>Reduz erros vs coletivo; permite controle por paciente</td><td>Não chega ao nível de dose unitária; trabalho intermediário</td></tr>
+      <tr><td><strong>Dose Unitária</strong></td><td>Cada dose individualizada, identificada, pronta para administração, com rótulo (paciente + medicamento + dose + horário + via)</td><td>Padrão-ouro de segurança; reduz erros em até 60–80%; reduz perdas; facilita auditoria</td><td>Alto custo de implantação; requer farmácia central robusta; trabalho intensivo de manipulação inicial</td></tr>
+      <tr><td><strong>Misto</strong></td><td>Combinação de coletivo (urgência) + dose unitária (rotina); estratégia comum em hospitais médio-grandes</td><td>Equilibra custo e segurança</td><td>Coexistência exige protocolos claros</td></tr>
+    </table>
+
+    <div class="subsecao">Dose Unitária — Padrão Recomendado</div>
+    <p>É o sistema preferido pela <strong>SBRAFH (Sociedade Brasileira de Farmácia Hospitalar)</strong>, JCI e CDC. Cada dose é preparada e identificada na farmácia central, evitando manipulação à beira do leito. Implementação completa requer:</p>
+    <ul class="lista">
+      <li>Farmácia central com área de fracionamento e re-embalagem (RDC 67/2007 para preparações magistrais; recomendações SBRAFH para industrializados)</li>
+      <li>Etiquetagem padronizada com nome, dose, lote, validade, paciente, horário</li>
+      <li>Carrinho de dose unitária com gavetas por paciente</li>
+      <li>Validação farmacêutica de cada prescrição</li>
+      <li>Sistema eletrônico de prescrição (CPOE) e dispensação por código de barras (BCMA)</li>
+      <li>Integração com bombas inteligentes em UTI</li>
+    </ul>
+
+    <div class="subsecao">Cobrado em ENARE 2025 (Q76 — Dose Unitária com Afirmativas)</div>
+    <p>Atenção a afirmativas sobre <em>exceções</em> em dose unitária. Em hospitais com sistema de dose unitária implementado:</p>
+    <ul class="lista">
+      <li>Reservas de emergência (epinefrina, atropina, antagonista de opioides) em unidades de emergência continuam disponíveis em armário de emergência</li>
+      <li>Medicações de uso comum em pediatria (paracetamol, dipirona) podem ser estocadas em pequenas quantidades</li>
+      <li>Carrinho de PCR (parada cardiorrespiratória) tem composição padrão fora do sistema de dose unitária</li>
+      <li>Soros padrão (SF, SG, RL) podem ser estocados nas unidades em quantidades controladas</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Mensagem:</strong> dose unitária é o ideal de segurança, mas o sistema deve coexistir com exceções clinicamente necessárias (emergência, soros básicos). Hospital de grande porte adota dose unitária na maioria das prescrições + sistema coletivo controlado para alguns itens.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-LOGIST · Distribuição</span><span>Extensivo ENARE 2026</span><span class="pg">2 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-LOGIST</div><div class="aula-ref">Bloco B5 · Aula 19 · Automação</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Automação na Farmácia Hospitalar</div>
+
+    <p>A <strong>automação</strong> é um dos eixos de modernização da farmácia hospitalar. Reduz erros, aumenta produtividade, melhora controle de estoque e libera tempo do farmacêutico para atividades clínicas. ENARE 2025 (Q73, Q74) cobrou afirmativas sobre equipamentos automatizados.</p>
+
+    <div class="subsecao">Tipos de Equipamentos</div>
+    <table>
+      <tr><th>Equipamento</th><th>Função</th><th>Exemplos</th></tr>
+      <tr><td><strong>Dispensadores Automatizados</strong></td><td>Armário inteligente com acesso controlado por usuário; dispensação verificada eletronicamente</td><td>Pyxis MedStation, Omnicell Anywhere, AccuDose, BD Pyxis</td></tr>
+      <tr><td>Sistema de re-embalagem</td><td>Embala doses unitárias a partir de produto a granel</td><td>Baxter ATC-212, Pacmed PASS-100, AutoDose</td></tr>
+      <tr><td>Sistemas robóticos de dispensação</td><td>Robôs para preparação de dose unitária em escala</td><td>Robot-Rx (McKesson), Riva (Intelligent Hospital Systems) para preparação de injetáveis</td></tr>
+      <tr><td>Bombas inteligentes (smart pumps)</td><td>Biblioteca de fármacos com limites; alerta antes da programação errada</td><td>Plum 360, Alaris System</td></tr>
+      <tr><td>BCMA (código de barras)</td><td>Validação eletrônica na administração</td><td>Cerner, Epic, Tasy</td></tr>
+      <tr><td>CPOE (prescrição eletrônica)</td><td>Prescrição com Clinical Decision Support; alerta de alergia, interação, dose</td><td>Modules dos sistemas hospitalares</td></tr>
+    </table>
+
+    <div class="subsecao">Dispensadores Automatizados (ADCs)</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Funcionamento</div>
+        <p>Armário com gavetas controladas eletronicamente. Acesso pelo profissional via login (biometria, senha). Sistema só libera gaveta após confirmação da prescrição e identificação do paciente. Registra cada dispensação com data, hora, profissional, paciente, lote.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Vantagens</div>
+        <p>Reduz erros de dispensação; controla estoque em tempo real; rastreabilidade total; reduz tempo da enfermagem buscando medicação; integra com prescrição eletrônica; alerta de validade/baixo estoque; segurança em controle especial (Lista A, B1 — Portaria 344/1998).</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Limitações</div>
+        <p>Alto custo de implantação ($50k–500k por unidade); manutenção; dependência da tecnologia; risco em falha de sistema; preparações magistrais ainda manuais; cumprimento de fluxo de estoque exige rotina.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Cobrado em ENARE 2025</div>
+        <p>Q73 e Q74 abordaram afirmativas sobre vantagens dos sistemas automatizados — reduz erros e melhora controle, mas não substitui o farmacêutico na validação clínica da prescrição.</p>
+      </div>
+    </div>
+
+    <div class="subsecao">Bombas Inteligentes (Smart Pumps)</div>
+    <p>Bombas de infusão com biblioteca de fármacos preprogramada. O profissional seleciona o fármaco, a concentração e a dose; a bomba alerta se está fora dos limites institucionais (limite suave — alerta; limite duro — bloqueia programação). Reduz erros de infusão em até 80% em UTI. Especialmente útil para vasoativos, opioides, insulina IV, quimio.</p>
+
+    <div class="subsecao">BCMA — Bar Code Medication Administration</div>
+    <p>Sistema em que o profissional na administração escaneia: (1) sua identificação; (2) pulseira do paciente; (3) etiqueta do medicamento. O sistema confirma se a tríade está correta, exibe a prescrição atual, registra hora e profissional. Reduz erros de identificação e administração em até 80%.</p>
+
+    <div class="alerta">
+      <p><strong>Limitação importante:</strong> automação <em>não substitui</em> a validação clínica do farmacêutico. Sistema bem programado evita erros operacionais; o farmacêutico clínico ainda precisa validar adequação clínica (dose por TFG, interação, alergia, indicação). Tecnologia + farmacêutico clínico = melhor de dois mundos.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-LOGIST · Distribuição</span><span>Extensivo ENARE 2026</span><span class="pg">3 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-LOGIST</div><div class="aula-ref">Bloco B5 · Aula 19 · Curva ABC e MAM</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Gestão de Estoque — Curva ABC e Métodos de Programação</div>
+
+    <div class="subsecao">Curva ABC (Análise de Pareto)</div>
+    <p>A curva ABC classifica os itens do estoque por <em>valor financeiro acumulado</em>. Permite priorização da gestão. Cobrada em ENARE 2024 (Q47).</p>
+    <table>
+      <tr><th>Classe</th><th>% itens</th><th>% valor financeiro</th><th>Gestão</th></tr>
+      <tr><td><strong>A</strong></td><td>~20%</td><td>~80%</td><td>Controle rigoroso; revisão semanal; previsão precisa; estoque de segurança calibrado; auditoria frequente</td></tr>
+      <tr><td><strong>B</strong></td><td>~30%</td><td>~15%</td><td>Controle moderado; revisão mensal; equilíbrio entre disponibilidade e custo</td></tr>
+      <tr><td><strong>C</strong></td><td>~50%</td><td>~5%</td><td>Controle simples; revisão trimestral; estoque relaxado</td></tr>
+    </table>
+
+    <p><strong>Exemplo:</strong> em hospital de 200 leitos com 1.000 itens de farmácia, classe A pode conter ~200 itens — todos os antineoplásicos, biológicos, imunossupressores, antimicrobianos restritos — responsáveis por 80% do gasto.</p>
+
+    <div class="subsecao">Outras Análises Complementares</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Análise XYZ</div>
+        <p>Classifica por <em>criticidade clínica</em>:<br>
+        X: criticidade baixa (vitaminas, dipirona — pode faltar sem dano grave).<br>
+        Y: criticidade média (anti-hipertensivos comuns).<br>
+        Z: alta criticidade (antineoplásicos, antibióticos restritos, vasopressores — falta = risco de óbito).</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Combinação ABC + XYZ</div>
+        <p>Cria matriz 3×3: itens AZ (alto valor + alta criticidade — vancomicina, biológicos) = prioridade máxima; itens CX (baixo valor + baixa criticidade — gaze) = gestão automatizada simples.</p>
+      </div>
+    </div>
+
+    <div class="subsecao">Métodos de Programação de Compras</div>
+    <table>
+      <tr><th>Método</th><th>Cálculo</th><th>Vantagens</th></tr>
+      <tr><td><strong>Consumo Médio Mensal (CMM)</strong></td><td>Soma de consumo dos N meses ÷ N meses</td><td>Simples; bom para consumo estável</td></tr>
+      <tr><td><strong>Média Aritmética Móvel (MAM)</strong></td><td>Média dos últimos N meses, atualizada mensalmente (substitui o mais antigo pelo mais recente)</td><td>Reduz efeito de outliers; melhor para sazonalidade leve</td></tr>
+      <tr><td><strong>Média Ponderada</strong></td><td>Pesos maiores para meses recentes</td><td>Melhor responsividade a tendências</td></tr>
+      <tr><td><strong>Demanda Epidemiológica</strong></td><td>Prevalência × dose × duração × cobertura</td><td>Indicado para programas (TB, HIV, DM); inclui dimensão de saúde pública</td></tr>
+    </table>
+
+    <div class="subsecao">Indicadores de Gestão de Estoque</div>
+    <ul class="lista">
+      <li><strong>Estoque de segurança</strong>: quantidade adicional para cobrir variações de demanda e lead time de reposição. Tipicamente cobre 30–60 dias</li>
+      <li><strong>Ponto de pedido</strong>: nível em que se gera nova compra; calculado a partir de CMM × lead time + estoque de segurança</li>
+      <li><strong>Lote econômico (EOQ)</strong>: quantidade que minimiza custos de pedido + armazenamento (Fórmula de Wilson)</li>
+      <li><strong>Giro de estoque</strong>: número de vezes em que o estoque é renovado por ano. Ideal: &gt; 6× (≤ 2 meses de estoque médio)</li>
+      <li><strong>Cobertura de estoque</strong>: quantos meses o estoque atual cobre</li>
+      <li><strong>Perda por validade</strong>: % de itens descartados por expiração; meta &lt; 1–2%</li>
+      <li><strong>Ruptura (stockout)</strong>: % de itens da REMUME/RENAME indisponíveis em algum momento. Meta &lt; 5%</li>
+    </ul>
+
+    <div class="subsecao">Sistema FEFO / FIFO / PEPS / PVPS</div>
+    <table>
+      <tr><th>Sistema</th><th>Significado</th><th>Aplicação</th></tr>
+      <tr><td><strong>FEFO (First Expire, First Out) / PVPS</strong></td><td>O que vence primeiro, sai primeiro</td><td>Padrão para farmácia hospitalar — reduz perdas por validade</td></tr>
+      <tr><td>FIFO (First In, First Out) / PEPS</td><td>O que entra primeiro, sai primeiro</td><td>Comum em armazéns gerais; menos seguro que FEFO em medicamentos</td></tr>
+      <tr><td>LIFO (Last In, First Out)</td><td>O que entra por último, sai primeiro</td><td>NÃO usado em farmácia hospitalar (aumenta perdas de validade)</td></tr>
+    </table>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> a curva ABC é baseada em VALOR financeiro (~20% itens / 80% valor). MAM é método de média móvel para programação. FEFO/PVPS é o padrão para evitar perdas. Lei 14.133/2021 substituiu a Lei 8.666/1993 para licitações públicas.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-LOGIST · Distribuição</span><span>Extensivo ENARE 2026</span><span class="pg">4 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-LOGIST</div><div class="aula-ref">Bloco B5 · Aula 19 · Licitação</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Aquisição Pública — Lei 14.133/2021</div>
+
+    <p>A <strong>Lei 14.133/2021</strong> (nova Lei de Licitações) substituiu progressivamente a Lei 8.666/1993 a partir de 2023. Estabelece princípios e modalidades de licitação na administração pública direta e indireta. Cobrada em ENARE 2025 (Q70 — modalidade convite ainda existia na Lei 8.666; foi extinta).</p>
+
+    <div class="subsecao">Modalidades na Lei 14.133/2021</div>
+    <table>
+      <tr><th>Modalidade</th><th>Característica</th></tr>
+      <tr><td><strong>Pregão (eletrônico ou presencial)</strong></td><td>Aquisição de bens e serviços comuns; menor preço; modalidade mais utilizada para medicamentos. Prazo definido; SRP (Sistema de Registro de Preços) permite atas com vigência de 1 ano + prorrogações</td></tr>
+      <tr><td><strong>Concorrência</strong></td><td>Para contratações de maior vulto ou complexidade; ampla participação</td></tr>
+      <tr><td><strong>Concurso</strong></td><td>Para escolha de trabalho técnico, artístico, científico</td></tr>
+      <tr><td><strong>Leilão</strong></td><td>Para venda de bens públicos inservíveis</td></tr>
+      <tr><td><strong>Diálogo competitivo</strong></td><td>Modalidade nova; soluções inovadoras complexas</td></tr>
+      <tr><td><strong>Dispensa</strong></td><td>Casos previstos em lei (urgência, baixo valor, fornecedor único)</td></tr>
+      <tr><td><strong>Inexigibilidade</strong></td><td>Inviabilidade de competição (fornecedor exclusivo)</td></tr>
+    </table>
+
+    <p><strong>Importante</strong>: a <em>modalidade "convite"</em> da Lei 8.666/1993 foi <strong>extinta</strong> na Lei 14.133/2021. Sua função foi absorvida por outros instrumentos (dispensa para pequeno valor, pregão).</p>
+
+    <div class="subsecao">Critérios de Julgamento</div>
+    <ul class="lista">
+      <li>Menor preço</li>
+      <li>Maior desconto</li>
+      <li>Melhor técnica</li>
+      <li>Técnica e preço</li>
+      <li>Maior lance (leilão)</li>
+      <li>Maior retorno econômico (PPP)</li>
+    </ul>
+
+    <div class="subsecao">Sistema de Registro de Preços (SRP)</div>
+    <p>O <strong>SRP</strong> é a ferramenta mais utilizada em medicamentos no SUS. O órgão realiza o pregão e registra os preços em ata por 12 meses (prorrogável). Durante a vigência, faz compras conforme demanda, sem repetir processo licitatório a cada compra.</p>
+    <ul class="lista">
+      <li>Reduz tempo de aquisição em compras recorrentes</li>
+      <li>Permite que outros órgãos "caronem" a ata (com autorização)</li>
+      <li>Garantia de preço fixo durante a vigência</li>
+      <li>Indicado para itens de uso contínuo (RENAME, antimicrobianos comuns, insumos)</li>
+    </ul>
+
+    <div class="subsecao">Participação do Farmacêutico em Licitações</div>
+    <ul class="lista">
+      <li>Elaboração de <strong>termo de referência</strong>: descrição técnica do item (DCB, concentração, forma, embalagem, especificações)</li>
+      <li>Análise de propostas e documentação técnica</li>
+      <li>Conferência do produto na entrega (lote, validade, condições)</li>
+      <li>Acompanhamento da execução do contrato</li>
+      <li>Penalização do fornecedor em caso de inadimplência</li>
+    </ul>
+
+    <div class="subsecao">DCN/DCB</div>
+    <p>Em compras públicas, deve-se usar a <strong>Denominação Comum Brasileira (DCB)</strong>, em conformidade com a DCI/INN (Denominação Comum Internacional). Especificar marca = restrição da competição = irregularidade. Apenas em casos excepcionais com justificativa técnica robusta.</p>
+
+    <div class="alerta">
+      <p><strong>Pegadinha FGV (ENARE 2025 Q70):</strong> a modalidade "convite" da Lei 8.666/1993 não existe mais na Lei 14.133/2021. Alternativa correta para pequenas aquisições urgentes é a <em>dispensa por baixo valor</em> ou <em>pregão simplificado</em>. Saber que pregão é a modalidade mais comum para medicamentos.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-LOGIST · Distribuição</span><span>Extensivo ENARE 2026</span><span class="pg">5 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-LOGIST</div><div class="aula-ref">Bloco B5 · Aula 19 · Armazenamento e Resíduos</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Armazenamento e Resíduos</div>
+
+    <div class="subsecao">Condições de Armazenamento</div>
+    <table>
+      <tr><th>Categoria</th><th>Temperatura</th><th>UR</th><th>Observações</th></tr>
+      <tr><td>Temperatura ambiente</td><td>15–30 °C</td><td>40–70%</td><td>Maioria dos sólidos orais e líquidos</td></tr>
+      <tr><td>Refrigerado</td><td>2–8 °C</td><td>—</td><td>Vacinas, insulinas, biológicos, alguns antibióticos reconstituídos, anfotericina lipossomal</td></tr>
+      <tr><td>Congelado</td><td>−15 a −25 °C</td><td>—</td><td>Plasma, alguns vacíneos especiais</td></tr>
+      <tr><td>Ultra-congelado</td><td>−70 °C ou menos</td><td>—</td><td>Vacinas mRNA COVID-19 (Pfizer original); transplante de medula; tecidos</td></tr>
+      <tr><td>Termolábeis no transporte</td><td>2–8 °C</td><td>—</td><td>Cadeia fria com caixas térmicas, gelox; data-logger de temperatura</td></tr>
+    </table>
+
+    <div class="subsecao">Armazenamento de Controle Especial (Portaria 344/1998)</div>
+    <ul class="lista">
+      <li>Armazenamento em <strong>cofre ou local seguro</strong> com chave/segurança eletrônica</li>
+      <li>Lista A (entorpecentes A1, A2, A3): acesso muito restrito</li>
+      <li>Lista B (psicotrópicos B1, B2): controle rigoroso</li>
+      <li>Lista C (controle especial C1–C5): controle moderado</li>
+      <li>Registro em sistema SNGPC (Sistema Nacional de Gerenciamento de Produtos Controlados — ANVISA) com balanço mensal</li>
+      <li>Receituários específicos por lista (amarelo A; azul B; branco em duas vias C)</li>
+    </ul>
+
+    <div class="subsecao">Lay-out da CAF (Central de Abastecimento Farmacêutico)</div>
+    <ul class="lista">
+      <li>Área de recepção e conferência</li>
+      <li>Área de armazenamento por categoria</li>
+      <li>Câmara fria para termolábeis</li>
+      <li>Cofre para controle especial</li>
+      <li>Área de fracionamento / re-embalagem</li>
+      <li>Área de preparação de dose unitária</li>
+      <li>Área de manipulação (se aplicável — RDC 67/2007)</li>
+      <li>Área administrativa</li>
+      <li>Vestiário e refeitório</li>
+    </ul>
+
+    <div class="subsecao">Resíduos da Farmácia Hospitalar — RDC 222/2018</div>
+    <p>A gestão de resíduos segue o Plano de Gerenciamento de Resíduos de Serviços de Saúde (PGRSS). Já visto em Aula 13. Para farmácia hospitalar, foco em:</p>
+    <ul class="lista">
+      <li><strong>Grupo B (químicos)</strong>: medicamentos vencidos, antineoplásicos, hormônios, ATB; armazenamento em contêiner laranja/identificado; destinação final por empresa licenciada para incineração</li>
+      <li><strong>Grupo A (biológicos)</strong>: ampolas com sangue ou fluidos corporais</li>
+      <li><strong>Grupo E (perfurocortantes)</strong>: caixa rígida amarela (Descarpack)</li>
+      <li><strong>Logística reversa</strong>: alguns medicamentos podem ser devolvidos ao fabricante (programa "Devolução Consciente"); medicamentos vencidos do usuário geral podem ser entregues em postos de descarte (RDC ANVISA 188/2020)</li>
+    </ul>
+
+    <div class="subsecao">Indicadores Logísticos de Qualidade</div>
+    <ul class="lista">
+      <li>Adesão a FEFO/PVPS (% lotes corretamente organizados)</li>
+      <li>Perda por validade (alvo &lt; 1–2%)</li>
+      <li>Ruptura de estoque (alvo &lt; 5% para RENAME)</li>
+      <li>Acuracidade do estoque (alvo &gt; 95% — diferença físico vs sistema)</li>
+      <li>Tempo médio de entrega à unidade (de pedido a chegada)</li>
+      <li>Conformidade com cadeia fria (% itens em temperatura adequada na recepção e armazenamento)</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Atribuição do farmacêutico responsável pela CAF:</strong> validar recebimento; verificar boas práticas; garantir condições de armazenamento; aplicar FEFO; gerir controle especial conforme Portaria 344; monitorar temperatura com data-loggers; treinar equipe de auxiliares; relatar não-conformidades; manter registros para auditoria.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-LOGIST · Distribuição</span><span>Extensivo ENARE 2026</span><span class="pg">6 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-LOGIST</div><div class="aula-ref">Bloco B5 · Aula 19 · Questões ENARE</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 01</span><span class="fonte">Dose Unitária · NC: Aplicação</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Sobre o sistema de dose unitária na distribuição hospitalar de medicamentos, é INCORRETO afirmar:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Cada dose é preparada individualmente pela farmácia central, identificada com paciente, medicamento, dose, horário e via.</span></li>
+        <li><span class="letra">B</span><span>É o padrão recomendado pela SBRAFH, JCI e CDC; reduz erros em 60–80% em comparação ao sistema coletivo.</span></li>
+        <li class="correta"><span class="letra">C</span><span>Pode ser implementado sem necessidade de validação farmacêutica das prescrições, pois a preparação automatizada substitui o trabalho clínico.</span></li>
+        <li><span class="letra">D</span><span>Permite coexistência com estoques de emergência (carrinho de PCR, medicações de emergência em UTI) que ficam fora do sistema padrão.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — C (afirmativa INCORRETA)</div>
+      <p><strong>Por que C está incorreta:</strong> a dose unitária <em>não substitui</em> a validação farmacêutica clínica da prescrição — ao contrário, exige ainda mais. O sistema garante que cada dose preparada seja correta operacionalmente (paciente, dose, identificação), mas a adequação clínica (dose por TFG, interação, alergia, indicação) é responsabilidade do farmacêutico clínico. Automação + farmacêutico clínico são complementares, não substituíveis.</p>
+      <p><strong>Por que as outras estão corretas:</strong> A — definição básica do sistema · B — padrão SBRAFH/JCI com redução comprovada de erros · D — exceções clínicas (PCR, vasoativos de emergência) são padrão em qualquer hospital com dose unitária.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-LOGIST · Distribuição</span><span>Extensivo ENARE 2026</span><span class="pg">7 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-LOGIST</div><div class="aula-ref">Bloco B5 · Aula 19 · Questões ENARE</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 02</span><span class="fonte">MAM · NC: Aplicação</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Para programar a compra mensal de losartana 50 mg comprimidos para uma USF, foram registrados os seguintes consumos nos últimos 6 meses: jan = 4.000 comprimidos; fev = 4.200; mar = 4.500; abr = 4.300; mai = 4.600; jun = 4.400. Aplicando a Média Aritmética Móvel (MAM) dos últimos 3 meses, qual a previsão de consumo para julho?</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>4.000.</span></li>
+        <li><span class="letra">B</span><span>4.250.</span></li>
+        <li class="correta"><span class="letra">C</span><span>4.433.</span></li>
+        <li><span class="letra">D</span><span>4.600.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — C</div>
+      <p><strong>Cálculo MAM dos últimos 3 meses (abr + mai + jun):</strong></p>
+      <p>MAM = (4.300 + 4.600 + 4.400) ÷ 3 = 13.300 ÷ 3 = <strong>4.433 comprimidos</strong> (aproximadamente).</p>
+      <p>A MAM dos últimos 3 meses é a média móvel mais comum em programação farmacêutica. Para os meses subsequentes, atualiza-se substituindo o mais antigo pelo mais recente (jul é então adicionado e abr é descartado para a próxima MAM).</p>
+      <p><strong>Por que as outras erram:</strong> A (4.000) — uso apenas do janeiro · B (4.250) — média dos 6 meses (4.000+4.200+4.300+4.500+4.600+4.400)/6 = 4.333 (mais próximo de C; B é incorreto) · D (4.600) — uso apenas do mês mais alto. Para previsão futura, MAM reduz volatilidade.</p>
+      <p><strong>Conceito-chave:</strong> MAM é método de programação por média móvel; reduz efeito de outliers; bom para itens com consumo estável. Em itens sazonais, considerar média ponderada ou ajuste por época do ano.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-LOGIST · Distribuição</span><span>Extensivo ENARE 2026</span><span class="pg">8 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-LOGIST</div><div class="aula-ref">Bloco B5 · Aula 19 · Gabarito Integrado</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 03</span><span class="fonte">Curva ABC · NC: Compreensão</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Sobre a curva ABC aplicada à gestão de estoque farmacêutico hospitalar, é CORRETO afirmar:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Classifica os itens por criticidade clínica (alto/médio/baixo risco).</span></li>
+        <li class="correta"><span class="letra">B</span><span>Classifica os itens por valor financeiro acumulado: classe A (~20% dos itens / 80% do valor); B (~30% / 15%); C (~50% / 5%). Permite priorização de gestão (revisão rigorosa em A; relaxada em C).</span></li>
+        <li><span class="letra">C</span><span>É sinônimo da análise XYZ (criticidade clínica).</span></li>
+        <li><span class="letra">D</span><span>É aplicada apenas em farmácia comunitária privada.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> a curva ABC (Princípio de Pareto / 80-20) classifica itens por <strong>valor financeiro</strong>. Permite priorização da gestão:</p>
+      <ul class="lista">
+        <li>Classe A: 20% dos itens / 80% do valor → controle rigoroso, revisão semanal</li>
+        <li>Classe B: 30% / 15% → controle moderado, revisão mensal</li>
+        <li>Classe C: 50% / 5% → controle simples, revisão trimestral</li>
+      </ul>
+      <p><strong>Por que as outras erram:</strong> A — criticidade clínica é a análise XYZ (não ABC) · C — XYZ é distinta de ABC; podem ser combinadas em matriz · D — aplicada em qualquer farmácia com gestão de estoque (hospitalar pública, privada, comunitária).</p>
+      <p><strong>Conceito complementar:</strong> em farmácia hospitalar moderna, combina-se ABC (valor) com XYZ (criticidade) em matriz 3×3 para priorização integrada.</p>
+    </div>
+
+    <div class="subsecao" style="margin-top:6px;">Gabarito Comentado — Análise Integrada</div>
+    <table>
+      <tr><th>Questão</th><th>Gabarito</th><th>Tema</th><th>Conceito-Chave</th></tr>
+      <tr><td><strong>01</strong></td><td><span class="destaque">C</span></td><td>Dose Unitária (incorreta)</td><td>Automação NÃO substitui validação farmacêutica clínica</td></tr>
+      <tr><td><strong>02</strong></td><td><span class="destaque">C</span></td><td>MAM 3 meses</td><td>(abr+mai+jun) ÷ 3 = 4.433</td></tr>
+      <tr><td><strong>03</strong></td><td><span class="destaque">B</span></td><td>Curva ABC</td><td>Valor financeiro (Pareto); 20/80, 30/15, 50/5</td></tr>
+    </table>
+  </div>
+  <div class="footer"><span>FARM-LOGIST · Distribuição</span><span>Extensivo ENARE 2026</span><span class="pg">9 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-LOGIST</div><div class="aula-ref">Bloco B5 · Aula 19 · Síntese</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Síntese — Logística e Distribuição</div>
+    <div class="sintese-grid">
+      <div class="sintese-item">
+        <div class="si-label">Sistemas de Distribuição</div>
+        <p>Coletivo (alto risco), individualizado (intermediário), dose unitária (padrão-ouro — reduz erros 60–80%), misto (combinação). Dose unitária é a recomendação SBRAFH/JCI.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Automação</div>
+        <p>Dispensadores (Pyxis, Omnicell): gavetas controladas eletronicamente; reduz erros; rastreabilidade. Smart pumps: biblioteca + limites; reduz erros de infusão 80%. BCMA: código de barras na administração. NÃO substitui validação clínica.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Curva ABC + MAM</div>
+        <p>ABC: por valor financeiro (20/80, 30/15, 50/5) — prioriza gestão. XYZ: por criticidade clínica. MAM: média móvel dos últimos N meses; ex.: (abr+mai+jun)/3. FEFO/PVPS = padrão (vence primeiro, sai primeiro).</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Lei 14.133/2021</div>
+        <p>Substituiu 8.666/1993 (modalidade "convite" extinta). Modalidades: pregão (mais comum em medicamentos), concorrência, leilão, diálogo competitivo, dispensa, inexigibilidade. SRP (registro de preços) = compra recorrente. DCN/DCB obrigatória, sem marca.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Armazenamento</div>
+        <p>15–30 °C (ambiente); 2–8 °C (refrigerado: vacinas, insulinas, biológicos); ultra (−70 °C: mRNA). Cofre para controle especial (Portaria 344/1998 — A, B, C). SNGPC para registro. CAF organizada por categoria.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Próxima Aula</div>
+        <p><strong>Aula 20 — Ética Profissional em Farmácia.</strong> Res. CFF 724/2022 (Código de Ética), publicidade, prescrição digital, indução de troca de genérico, fotos antes/depois, vedações.</p>
+      </div>
+    </div>
+    <div class="alerta" style="margin-top:5px;">
+      <p><strong>Regra de ouro — Logística no ENARE:</strong> dose unitária = padrão de segurança; automação + farmacêutico clínico = complementares; curva ABC por valor; XYZ por criticidade; MAM = média móvel; Lei 14.133/2021 substituiu 8.666 (modalidade convite extinta); FEFO/PVPS padrão; Portaria 344/1998 controla armazenamento de psicotrópicos.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-LOGIST · Distribuição</span><span>Extensivo ENARE 2026</span><span class="pg">10 / 10</span></div>
+</div>
+
+</body>
+</html>
