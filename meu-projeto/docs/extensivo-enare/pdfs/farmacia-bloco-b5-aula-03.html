@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Farmácia — Bloco B5 Aula 03 | Extensivo ENARE 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap');
+
+  :root {
+    --creme: #F6F4ED;
+    --verde: #1F5C23;
+    --amarelo: #C6D834;
+    --escuro: #0C2B0E;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #d0d0d0;
+    font-family: 'Bricolage Grotesque', sans-serif;
+  }
+
+  .page {
+    width: 210mm;
+    height: 297mm;
+    background: var(--creme);
+    margin: 0 auto 12px;
+    position: relative;
+    overflow: hidden;
+    page-break-after: always;
+  }
+
+  .header {
+    background: var(--verde);
+    padding: 10px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .header-logo { display: flex; align-items: center; gap: 8px; }
+  .header-logo svg { width: 32px; height: 32px; }
+  .header-brand { display: flex; flex-direction: column; line-height: 1; }
+  .header-brand .marca {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: #fff;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+  }
+  .header-brand .tagline {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    color: var(--amarelo);
+    font-size: 7px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+  .header-info { text-align: right; }
+  .header-info .disciplina {
+    font-family: 'Barlow Condensed', sans-serif;
+    color: var(--amarelo);
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .header-info .aula-ref {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    color: rgba(255,255,255,0.7);
+    font-size: 8px;
+    letter-spacing: 0.5px;
+  }
+
+  .footer {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: var(--verde);
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 18px;
+  }
+  .footer span {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    color: rgba(255,255,255,0.6);
+    font-size: 7px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+  }
+  .footer .pg { color: var(--amarelo); font-weight: 400; }
+
+  .body {
+    padding: 14px 18px 30px;
+    height: calc(297mm - 52px - 22px);
+    overflow: hidden;
+  }
+
+  .capa-page { background: var(--verde); }
+  .capa-header {
+    background: var(--creme);
+    padding: 10px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .capa-header .marca {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: var(--verde);
+    font-size: 14px;
+  }
+  .capa-header .tagline {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    color: var(--verde);
+    font-size: 7.5px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .capa-body {
+    padding: 28px 24px 0;
+    display: flex;
+    flex-direction: column;
+    height: calc(297mm - 52px - 22px);
+  }
+  .capa-eyebrow {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    color: var(--amarelo);
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .capa-titulo {
+    font-family: 'Barlow Condensed', sans-serif;
+    color: #fff;
+    font-size: 50px;
+    line-height: 0.95;
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
+    margin-bottom: 6px;
+  }
+  .capa-titulo span { color: var(--amarelo); }
+  .capa-subtitulo {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 300;
+    color: rgba(255,255,255,0.65);
+    font-size: 12px;
+    letter-spacing: 0.3px;
+    margin-bottom: 22px;
+    line-height: 1.5;
+  }
+  .capa-badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+  .capa-badge {
+    background: rgba(198,216,52,0.15);
+    border: 1px solid var(--amarelo);
+    color: var(--amarelo);
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    font-size: 7.5px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+  }
+  .capa-divider { width: 40px; height: 3px; background: var(--amarelo); margin-bottom: 20px; }
+  .capa-topicos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .capa-topico { display: flex; align-items: flex-start; gap: 7px; }
+  .capa-topico-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    color: var(--amarelo);
+    font-size: 18px;
+    line-height: 1;
+    min-width: 18px;
+  }
+  .capa-topico-txt {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 400;
+    color: rgba(255,255,255,0.8);
+    font-size: 9.5px;
+    line-height: 1.4;
+  }
+  .capa-footer-strip {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: rgba(0,0,0,0.25);
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 18px;
+  }
+  .capa-footer-strip span {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    color: rgba(255,255,255,0.45);
+    font-size: 7px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+  }
+
+  .secao-titulo {
+    font-family: 'Barlow Condensed', sans-serif;
+    color: var(--verde);
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid var(--amarelo);
+    padding-bottom: 3px;
+    margin-bottom: 9px;
+    line-height: 1;
+  }
+  .subsecao {
+    font-family: 'Barlow Condensed', sans-serif;
+    color: var(--verde);
+    font-size: 12.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 7px 0 3px;
+  }
+  p {
+    font-size: 9px;
+    line-height: 1.55;
+    color: #1a1a1a;
+    margin-bottom: 4px;
+    font-weight: 400;
+  }
+  .destaque {
+    background: var(--amarelo);
+    color: var(--escuro);
+    font-weight: 600;
+    padding: 1px 4px;
+    border-radius: 2px;
+    font-size: 8.5px;
+  }
+  .alerta {
+    background: rgba(198,216,52,0.18);
+    border-left: 3px solid var(--amarelo);
+    padding: 5px 8px;
+    margin: 5px 0;
+    border-radius: 0 3px 3px 0;
+  }
+  .alerta p { margin: 0; font-size: 8.5px; }
+  .alerta strong { color: var(--verde); }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 5px 0;
+    font-size: 8px;
+  }
+  th {
+    background: var(--verde);
+    color: #fff;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 4px 6px;
+    text-align: left;
+  }
+  td {
+    padding: 3px 6px;
+    border-bottom: 1px solid rgba(31,92,35,0.12);
+    vertical-align: top;
+    line-height: 1.4;
+    color: #1a1a1a;
+  }
+  tr:nth-child(even) td { background: rgba(31,92,35,0.04); }
+
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 5px 0; }
+  .card {
+    background: rgba(31,92,35,0.06);
+    border: 1px solid rgba(31,92,35,0.15);
+    border-radius: 4px;
+    padding: 7px 8px;
+  }
+  .card-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    color: var(--verde);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    margin-bottom: 3px;
+  }
+  .card p { font-size: 8px; line-height: 1.5; }
+
+  .questao-header {
+    background: var(--verde);
+    color: #fff;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 4px 10px;
+    border-radius: 3px 3px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .questao-header .fonte {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    font-size: 7.5px;
+    color: var(--amarelo);
+    letter-spacing: 0.5px;
+  }
+  .questao-body {
+    border: 1px solid rgba(31,92,35,0.2);
+    border-top: none;
+    border-radius: 0 0 3px 3px;
+    padding: 7px 10px;
+    margin-bottom: 7px;
+  }
+  .questao-enunciado {
+    font-size: 8.5px;
+    line-height: 1.55;
+    color: #111;
+    margin-bottom: 5px;
+    font-weight: 500;
+  }
+  .alternativas { list-style: none; }
+  .alternativas li {
+    font-size: 8px;
+    line-height: 1.5;
+    padding: 2px 0;
+    color: #222;
+    display: flex;
+    gap: 5px;
+  }
+  .alternativas li .letra {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    color: var(--verde);
+    font-size: 9px;
+    min-width: 10px;
+  }
+  .alternativas li.correta .letra { color: var(--amarelo); }
+  .alternativas li.correta {
+    background: rgba(198,216,52,0.15);
+    border-left: 2px solid var(--amarelo);
+    padding-left: 4px;
+  }
+
+  .gabarito-box {
+    background: var(--verde);
+    border-radius: 4px;
+    padding: 8px 12px;
+    margin: 6px 0;
+  }
+  .gabarito-box .gab-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    color: var(--amarelo);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
+  .gabarito-box p { color: rgba(255,255,255,0.9); font-size: 8px; line-height: 1.55; }
+  .gabarito-box strong { color: var(--amarelo); }
+
+  .sintese-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 7px;
+    margin-top: 6px;
+  }
+  .sintese-item {
+    background: rgba(31,92,35,0.07);
+    border-left: 3px solid var(--verde);
+    padding: 5px 7px;
+    border-radius: 0 3px 3px 0;
+  }
+  .sintese-item .si-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    color: var(--verde);
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+  .sintese-item p { font-size: 7.5px; line-height: 1.5; }
+
+  ul.lista { padding-left: 14px; margin: 3px 0; }
+  ul.lista li {
+    font-size: 8.5px;
+    line-height: 1.55;
+    color: #1a1a1a;
+    margin-bottom: 1px;
+  }
+
+  @media print {
+    body { background: none; }
+    .page { margin: 0; box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ========== PÁGINA 1 — CAPA ========== -->
+<div class="page capa-page">
+  <div class="capa-header">
+    <div style="display:flex;align-items:center;gap:8px;">
+      <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#1F5C23"/>
+      </svg>
+      <div>
+        <div class="marca">Elite Treinamentos</div>
+        <div class="tagline">Extensivo ENARE 2026</div>
+      </div>
+    </div>
+    <div style="text-align:right;">
+      <div style="font-family:'Barlow Condensed',sans-serif;color:var(--verde);font-size:11px;letter-spacing:1px;text-transform:uppercase;">Bloco B5 · Aula 03</div>
+      <div style="font-family:'Space Grotesk',sans-serif;font-weight:300;color:#888;font-size:7.5px;letter-spacing:0.5px;">Farmácia</div>
+    </div>
+  </div>
+
+  <div class="capa-body">
+    <div class="capa-eyebrow">Bloco B5 · FARM-FARMACOTERAP · Aula 03 de 22</div>
+    <div class="capa-titulo">Neuro-<br>psiquia-<br>tria <span>·<br>SNC e<br>Idoso</span></div>
+    <div class="capa-subtitulo">Farmacoterapia III: lítio (ITE), sertralina, tramadol (CYP2D6),<br>antipsicóticos e polifarmácia no idoso (Beers 2023)</div>
+
+    <div class="capa-badge-row">
+      <div class="capa-badge">FARM-FARMACOTERAP</div>
+      <div class="capa-badge">Lítio · ITE</div>
+      <div class="capa-badge">Tramadol · CYP2D6</div>
+      <div class="capa-badge">Beers 2023 · Idoso</div>
+    </div>
+
+    <div class="capa-divider"></div>
+
+    <div class="capa-topicos">
+      <div class="capa-topico">
+        <div class="capa-topico-num">01</div>
+        <div class="capa-topico-txt">Lítio: ITE 0,6–1,2 mEq/L, monitorização e intoxicação</div>
+      </div>
+      <div class="capa-topico">
+        <div class="capa-topico-num">02</div>
+        <div class="capa-topico-txt">ISRS e IRSN: sertralina, fluoxetina, venlafaxina</div>
+      </div>
+      <div class="capa-topico">
+        <div class="capa-topico-num">03</div>
+        <div class="capa-topico-txt">Tramadol: CYP2D6, síndrome serotoninérgica, pediatria</div>
+      </div>
+      <div class="capa-topico">
+        <div class="capa-topico-num">04</div>
+        <div class="capa-topico-txt">Antipsicóticos: SEP, NMS, metabolismo, clozapina</div>
+      </div>
+      <div class="capa-topico">
+        <div class="capa-topico-num">05</div>
+        <div class="capa-topico-txt">Anticonvulsivantes: carbamazepina, valproato, lamotrigina</div>
+      </div>
+      <div class="capa-topico">
+        <div class="capa-topico-num">06</div>
+        <div class="capa-topico-txt">Polifarmácia no idoso: Critérios Beers 2023</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="capa-footer-strip">
+    <span>Extensivo ENARE 2026</span>
+    <span>Elite Treinamentos em Saúde</span>
+    <span>Página 1 de 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 2 — LÍTIO ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Farmácia — FARM-FARMACOTERAP</div>
+      <div class="aula-ref">Bloco B5 · Aula 03 · Lítio</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="secao-titulo">Lítio — Estabilizador de Humor com ITE</div>
+
+    <p>O <strong>carbonato de lítio</strong> é o estabilizador de humor de referência no transtorno bipolar (TB). Foi cobrado pela FGV em ENARE 2024 (Q53 e Q56 — manejo e intoxicação). Possui <strong>índice terapêutico estreito (ITE)</strong>, com janela estreitíssima entre eficácia e toxicidade, e <strong>eliminação 100% renal</strong> — qualquer variação na função renal ou na volemia altera o nível sérico de forma significativa.</p>
+
+    <div class="subsecao">Mecanismo e Posologia</div>
+    <p><strong>Mecanismo</strong>: modulação de segundos mensageiros (inositol trifosfato, GSK-3β), estabilização da membrana neuronal e ajuste da neurotransmissão glutamatérgica. <strong>Posologia</strong>: 600–1.800 mg/dia VO divididos em 2–3 tomadas. Steady state em 4–7 dias. Coleta da litemia: 12h após a última dose (vale).</p>
+
+    <div class="subsecao">Janela Terapêutica</div>
+    <table>
+      <tr>
+        <th>Litemia (mEq/L)</th>
+        <th>Faixa clínica</th>
+        <th>Conduta</th>
+      </tr>
+      <tr>
+        <td>&lt; 0,4</td>
+        <td>Subterapêutico</td>
+        <td>Ajustar dose; reavaliar adesão</td>
+      </tr>
+      <tr>
+        <td>0,4–0,6</td>
+        <td>Manutenção em idosos</td>
+        <td>Faixa aceitável para idoso/comorbidade renal</td>
+      </tr>
+      <tr>
+        <td><strong>0,6–1,0</strong></td>
+        <td><strong>Manutenção (alvo)</strong></td>
+        <td>Faixa-alvo na maioria dos pacientes</td>
+      </tr>
+      <tr>
+        <td>1,0–1,2</td>
+        <td>Episódio agudo (mania)</td>
+        <td>Aceitável em fase aguda com monitorização rigorosa</td>
+      </tr>
+      <tr>
+        <td>1,5–2,5</td>
+        <td>Toxicidade leve a moderada</td>
+        <td>Suspender; hidratação; monitorar</td>
+      </tr>
+      <tr>
+        <td>&gt; 2,5</td>
+        <td>Toxicidade grave</td>
+        <td>Hemodiálise (clearance preserva-se até 2 g/h)</td>
+      </tr>
+    </table>
+
+    <div class="subsecao">Intoxicação Litêmica — Sinais e Manejo</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Sinais Clínicos por Gravidade</div>
+        <p><strong>Leve (1,5–2,0):</strong> tremor fino, GI (náusea, diarreia), poliúria, polidipsia.<br>
+        <strong>Moderada (2,0–2,5):</strong> confusão, ataxia, fasciculações, hiperreflexia, EEG anormal.<br>
+        <strong>Grave (&gt; 2,5):</strong> crise convulsiva, coma, IRA, arritmia, choque.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Fatores Precipitantes Cobrados</div>
+        <p><strong>Desidratação</strong> (gastroenterite, calor); <strong>IECA/BRA/AINE/tiazídico</strong> (↑ reabsorção tubular de Na+ → ↑ Li+); <strong>IRA</strong>; <strong>dieta hipossódica</strong>; <strong>cafeína</strong> em altas doses (↑ excreção). Cetorolaco e ibuprofeno são os AINEs mais implicados.</p>
+      </div>
+    </div>
+
+    <div class="subsecao">RAMs Crônicas</div>
+    <ul class="lista">
+      <li><strong>Tireoide:</strong> hipotireoidismo (15–20% — TSH semestral); bócio difuso</li>
+      <li><strong>Renal:</strong> diabetes insípido nefrogênico (DIN) — poliúria refratária a ADH; nefropatia intersticial crônica em uso prolongado &gt; 10 anos</li>
+      <li><strong>Cardíaco:</strong> alterações inespecíficas de ST/T; raramente disfunção sinusal</li>
+      <li><strong>Cutâneo:</strong> piora de psoríase, acne</li>
+      <li><strong>Teratogenicidade:</strong> anomalia de Ebstein (1º trimestre); ainda assim, pode ser mantido em gestação de risco-benefício favorável (Categoria D)</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Acompanhamento farmacêutico do paciente em lítio:</strong> litemia + função renal (creatinina, ClCr) + TSH a cada 6 meses; evitar AINEs, IECA, BRA e tiazídicos; orientar hidratação consistente; reforçar dieta com sal habitual; suspender antes de procedimentos cirúrgicos. Em intoxicação: suspensão imediata, soro fisiológico (não SG5%) e diálise se &gt; 2,5 mEq/L ou em sintomáticos com lesão renal.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>FARM-FARMACOTERAP · Neuropsiquiatria</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">2 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 3 — ISRS, IRSN ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Farmácia — FARM-FARMACOTERAP</div>
+      <div class="aula-ref">Bloco B5 · Aula 03 · Antidepressivos</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="secao-titulo">Antidepressivos — ISRS, IRSN, TCA e IMAO</div>
+
+    <p>Os <strong>ISRS</strong> são primeira linha em depressão e transtornos de ansiedade. <em>Sertralina</em> foi cobrada na ENARE 2025 (Q60 — associação com álcool e zolpidem). Latência terapêutica: 2–4 semanas. Risco de virada maníaca em TB não tratado. Suspensão abrupta → síndrome de descontinuação (paroxetina &gt; venlafaxina).</p>
+
+    <div class="subsecao">Classes e Perfil Farmacológico</div>
+    <table>
+      <tr>
+        <th>Classe</th>
+        <th>Representantes</th>
+        <th>Pontos-chave</th>
+      </tr>
+      <tr>
+        <td><strong>ISRS</strong></td>
+        <td>Sertralina, fluoxetina, paroxetina, citalopram, escitalopram</td>
+        <td>1ª linha; perfil seguro; RAMs: GI (1ª semana), disfunção sexual, hiponatremia (SIADH em idoso), prolongamento de QT (citalopram &gt; 40 mg)</td>
+      </tr>
+      <tr>
+        <td><strong>IRSN</strong></td>
+        <td>Venlafaxina, duloxetina, desvenlafaxina</td>
+        <td>Atuam em 5-HT e NE; benefício em dor neuropática (duloxetina); hipertensão dose-dependente; síndrome de descontinuação intensa (venlafaxina)</td>
+      </tr>
+      <tr>
+        <td><strong>Atípicos</strong></td>
+        <td>Bupropiona, mirtazapina, trazodona, agomelatina, vortioxetina</td>
+        <td>Bupropiona: dopaminérgica/noradrenérgica; risco de convulsão (evitar em TCA/bulimia); zero disfunção sexual. Mirtazapina: ↑ peso e sono (idoso com insônia)</td>
+      </tr>
+      <tr>
+        <td><strong>TCA</strong></td>
+        <td>Amitriptilina, nortriptilina, clomipramina, imipramina</td>
+        <td>Eficazes mas com perfil anticolinérgico, alfa-bloqueio (hipotensão), cardiotoxicidade (alargamento de QRS, arritmia) e overdose letal — <em>evitar em idoso (Beers)</em>; nortriptilina é a menos pior</td>
+      </tr>
+      <tr>
+        <td><strong>IMAO</strong></td>
+        <td>Fenelzina, tranilcipromina, selegilina</td>
+        <td>Reservados para depressão refratária; <em>crise hipertensiva</em> com tiramina (queijo, vinho, embutidos); washout de 14 dias para ISRS</td>
+      </tr>
+    </table>
+
+    <div class="subsecao">Síndrome Serotoninérgica vs Síndrome Neuroléptica Maligna</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Síndrome Serotoninérgica</div>
+        <p><strong>Tríade de Sternbach:</strong> alteração mental + hiperatividade autonômica (febre, taquicardia, sudorese, midríase) + alterações neuromusculares (clônus, hiperreflexia, tremor, rigidez). <strong>Início rápido</strong> (horas). Combinações de risco: ISRS + IMAO, ISRS + tramadol, ISRS + linezolida, ISRS + triptanos. Manejo: suspender o agente, suporte, ciproheptadina em casos graves.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Síndrome Neuroléptica Maligna (SNM)</div>
+        <p>Causada por antipsicóticos (haloperidol, clorpromazina). Tétrade: hipertermia + rigidez "em cano de chumbo" + instabilidade autonômica + alteração mental. <strong>Início lento</strong> (dias–semanas). Laboratório: ↑↑ CK, mioglobinúria, leucocitose. Manejo: suspender antipsicótico, suporte UTI, dantroleno ± bromocriptina.</p>
+      </div>
+    </div>
+
+    <div class="alerta">
+      <p><strong>Sertralina + álcool + zolpidem (ENARE 2025):</strong> três depressores do SNC com ação distinta — sertralina aumenta a sedação, álcool potencializa a ação GABAérgica do zolpidem, e zolpidem (agonista BZ1) somado ao álcool tem risco aumentado de amnésia anterógrada, comportamentos automáticos (sonambulismo, dirigir, comer) e depressão respiratória. Orientação farmacêutica: contraindicar uso simultâneo, recomendar higiene do sono, reavaliar prescrição de zolpidem em uso crônico.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>FARM-FARMACOTERAP · Neuropsiquiatria</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">3 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 4 — TRAMADOL E OPIOIDES ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Farmácia — FARM-FARMACOTERAP</div>
+      <div class="aula-ref">Bloco B5 · Aula 03 · Tramadol e Opioides</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="secao-titulo">Tramadol — Farmacogenética e Populações Especiais</div>
+
+    <p>O <strong>tramadol</strong> é o opioide mais cobrado nas últimas ENAREs por sua complexidade farmacogenética. É <em>pró-fármaco</em>: para exercer atividade analgésica completa, deve ser metabolizado pelo <strong>CYP2D6</strong> a <em>O-desmetiltramadol (M1)</em>, que apresenta afinidade µ-opióide ~200× superior à molécula-mãe. Adicionalmente, o tramadol inibe a recaptação de serotonina e noradrenalina — o que o coloca em risco de <em>síndrome serotoninérgica</em> quando combinado com ISRS, IRSN, IMAO, linezolida ou triptanos.</p>
+
+    <div class="subsecao">Fenótipos CYP2D6 — Implicação Clínica</div>
+    <table>
+      <tr>
+        <th>Fenótipo</th>
+        <th>Atividade</th>
+        <th>Consequência com tramadol</th>
+      </tr>
+      <tr>
+        <td><strong>Metabolizador pobre (PM)</strong></td>
+        <td>~7% caucasianos; alelos *3, *4, *5, *6</td>
+        <td>Conversão a M1 mínima → falha analgésica; doses elevadas aumentam efeitos centrais sem analgesia</td>
+      </tr>
+      <tr>
+        <td>Metabolizador intermediário (IM)</td>
+        <td>Alelo *10 (frequente em asiáticos)</td>
+        <td>Resposta analgésica reduzida</td>
+      </tr>
+      <tr>
+        <td>Metabolizador extensivo (EM)</td>
+        <td>Padrão da população</td>
+        <td>Resposta esperada (analgesia clinicamente útil)</td>
+      </tr>
+      <tr>
+        <td><strong>Metabolizador ultrarrápido (UM)</strong></td>
+        <td>Duplicações gênicas (CYP2D6*1xN, *2xN); até 30% em norte-africanos</td>
+        <td>Conversão excessiva a M1 → <em>concentração elevada de opióide</em> → depressão respiratória, especialmente em pediatria com apneia do sono</td>
+      </tr>
+    </table>
+
+    <div class="subsecao">Alertas Regulatórios e Populações Especiais</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Pediatria — Contraindicações da ANVISA/FDA</div>
+        <p><strong>Tramadol é contraindicado em &lt; 12 anos</strong> e em adolescentes 12–18 anos com obesidade, apneia do sono ou comprometimento respiratório (FDA Black Box 2017; ANVISA atualizada). A combinação CYP2D6 UM + apneia do sono em criança pós-amigdalectomia já causou óbitos relatados (ENARE 2025 Q41 — caso emblemático).</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Idoso e Insuficiência Renal/Hepática</div>
+        <p>Aumentar intervalo (12/12h) ou reduzir dose se ClCr &lt; 30 mL/min. Tramadol reduz o limiar convulsivo — risco aumentado em epilépticos, hiponatrêmicos, em uso de bupropiona ou ISRS. Idoso em uso de ISRS + tramadol = <em>combinação de risco para síndrome serotoninérgica e convulsão</em>.</p>
+      </div>
+    </div>
+
+    <div class="subsecao">Outros Opioides — Comparativo</div>
+    <table>
+      <tr>
+        <th>Opioide</th>
+        <th>Particularidades</th>
+      </tr>
+      <tr>
+        <td>Morfina</td>
+        <td>Padrão para dor oncológica; metabólito ativo M6G acumula em IR; sem teto analgésico</td>
+      </tr>
+      <tr>
+        <td>Codeína</td>
+        <td>Pró-fármaco CYP2D6 (mesma fragilidade do tramadol); contraindicada em &lt; 12 anos pelo mesmo motivo</td>
+      </tr>
+      <tr>
+        <td>Fentanil</td>
+        <td>Alta potência (~100× morfina); transdérmico só em pacientes opioide-tolerantes; risco de queimadura/calor; metabolismo CYP3A4 (interação com claritromicina, fluconazol)</td>
+      </tr>
+      <tr>
+        <td>Metadona</td>
+        <td>Meia-vida longa e variável (8–60h); prolonga QT; útil em opioid use disorder e dor refratária; risco de acúmulo</td>
+      </tr>
+      <tr>
+        <td>Buprenorfina</td>
+        <td>Agonista parcial µ + antagonista κ; "teto" para depressão respiratória; tratamento de OUD</td>
+      </tr>
+      <tr>
+        <td>Naloxona</td>
+        <td>Antagonista; reversão de depressão respiratória opióide; meia-vida curta (re-narcotização possível)</td>
+      </tr>
+    </table>
+
+    <div class="alerta">
+      <p><strong>Conduta farmacêutica em prescrição de opioide:</strong> validar prescrição em receituário azul/amarelo (Portaria 344/1998 — lista A1/A2), orientar sinais de toxicidade (depressão respiratória, mioclonia, sedação excessiva, constipação), prescrever laxativo profilático (osmótico ou estimulante), oferecer naloxona em casa para pacientes de alto risco, monitorar uso concomitante com BZD (combinação com risco de mortalidade — FDA Black Box).</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>FARM-FARMACOTERAP · Neuropsiquiatria</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">4 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 5 — ANTIPSICÓTICOS E ANTICONVULSIVANTES ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Farmácia — FARM-FARMACOTERAP</div>
+      <div class="aula-ref">Bloco B5 · Aula 03 · Antipsicóticos / Anticonvulsivantes</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="secao-titulo">Antipsicóticos — Tipicos e Atípicos</div>
+
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Típicos (1ª geração)</div>
+        <p>Haloperidol, clorpromazina, flufenazina, levomepromazina. Bloqueio D2 robusto → eficaz em sintomas positivos. <strong>Síndrome extrapiramidal (SEP)</strong> proeminente: distonia aguda (rev. com biperideno), parkinsonismo, acatisia, discinesia tardia. Hiperprolactinemia. Risco de SNM. Haloperidol é o mais usado em delirium hospitalar em dose baixa (0,5–2 mg).</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Atípicos (2ª geração)</div>
+        <p>Risperidona, olanzapina, quetiapina, aripiprazol, ziprasidona, clozapina. Bloqueio D2 + 5HT2A → menos SEP, atuam em sintomas negativos. <strong>RAMs metabólicas</strong>: ganho de peso, dislipidemia, DM (olanzapina &gt; clozapina &gt; quetiapina). Olanzapina = melhor controle, pior perfil metabólico. Aripiprazol = agonista parcial D2 (menor SEP, menor metabolismo).</p>
+      </div>
+    </div>
+
+    <div class="subsecao">Clozapina — Antipsicótico com Monitorização Especial</div>
+    <p>Indicada em <em>esquizofrenia refratária</em> (falha a 2 antipsicóticos). Eficácia superior comprovada (CATIE, CUtLASS). RAMs raras mas graves: <strong>agranulocitose</strong> (0,8%) — exige <em>hemograma semanal</em> nas primeiras 18 semanas, depois quinzenal e mensal; suspender se neutrófilos &lt; 1.500/mm³. Outras: miocardite (1º mês), convulsões, sialorreia paradoxal, hiperglicemia, íleo paralítico. Acompanhamento farmacêutico crítico: gerenciar adesão ao programa de monitorização.</p>
+
+    <div class="secao-titulo" style="margin-top:8px;">Anticonvulsivantes</div>
+
+    <table>
+      <tr>
+        <th>Fármaco</th>
+        <th>Indicações</th>
+        <th>Particularidades</th>
+      </tr>
+      <tr>
+        <td><strong>Carbamazepina</strong></td>
+        <td>Epilepsia focal, neuralgia do trigêmeo, TB</td>
+        <td>Indutor potente CYP3A4 (reduz contraceptivos, varfarina); SJS/TEN em HLA-B*1502 (asiáticos — rastreio); hiponatremia (SIADH); ITE</td>
+      </tr>
+      <tr>
+        <td>Fenitoína</td>
+        <td>Epilepsia, status epilepticus IV</td>
+        <td>Cinética não-linear (saturação); ITE (alvo 10–20 µg/mL); hipertrofia gengival, hirsutismo, neuropatia periférica</td>
+      </tr>
+      <tr>
+        <td><strong>Ácido valproico</strong></td>
+        <td>Epilepsia generalizada, mioclonia, TB</td>
+        <td>Hepatotoxicidade, pancreatite, trombocitopenia, hiperamonemia; <em>teratogênico — defeitos de tubo neural</em>; evitar em mulher em idade fértil</td>
+      </tr>
+      <tr>
+        <td><strong>Lamotrigina</strong></td>
+        <td>Epilepsia focal, TB-depressão</td>
+        <td>Titulação <em>lenta</em> obrigatória — risco de SJS/TEN especialmente em pediatria e com valproato (que inibe sua glicuronidação)</td>
+      </tr>
+      <tr>
+        <td>Levetiracetam</td>
+        <td>Epilepsia (focal, generalizada)</td>
+        <td>Excelente perfil farmacocinético (sem CYP); RAM: irritabilidade, mudanças de humor; ajuste por ClCr</td>
+      </tr>
+      <tr>
+        <td>Gabapentina / Pregabalina</td>
+        <td>Dor neuropática, ansiedade (pregabalina); off-label epilepsia focal</td>
+        <td>Sedação, edema, ganho de peso; risco de abuso (pregabalina = lista C1 no Brasil); reduzir em ClCr baixa</td>
+      </tr>
+    </table>
+
+    <div class="alerta">
+      <p><strong>Síndrome de Stevens-Johnson e ENARE 2025 (Q91 — RAM tipo B):</strong> carbamazepina, lamotrigina, alopurinol e sulfas são os fármacos mais associados a SJS/TEN. É reação <em>imune-mediada, idiossincrática, imprevisível pela farmacologia</em> — classificada como RAM tipo B. HLA-B*1502 prediz risco em pacientes asiáticos para carbamazepina; HLA-B*5801 prediz risco com alopurinol. Suspensão imediata e contraindicação permanente.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>FARM-FARMACOTERAP · Neuropsiquiatria</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">5 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 6 — POLIFARMÁCIA NO IDOSO + BEERS ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Farmácia — FARM-FARMACOTERAP</div>
+      <div class="aula-ref">Bloco B5 · Aula 03 · Polifarmácia no Idoso</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="secao-titulo">Polifarmácia no Idoso — Critérios Beers 2023</div>
+
+    <p>A <strong>polifarmácia</strong> (≥ 5 medicamentos) é o cenário típico do idoso brasileiro com pluripatologia. A FGV cobrou o tema em ENARE 2024 (caso clínico de glibenclamida + dieta hospitalar) e 2025 (Q62 — polimedicação no idoso). Os <strong>Critérios Beers 2023</strong> (AGS — American Geriatrics Society) listam medicamentos potencialmente inapropriados (PIM) para idosos ≥ 65 anos. Os <em>STOPP/START</em> (versão europeia) complementam o Beers indicando também o que <em>deveria ser prescrito</em>.</p>
+
+    <div class="subsecao">Top Medicamentos Potencialmente Inapropriados — Beers 2023</div>
+    <table>
+      <tr>
+        <th>Classe</th>
+        <th>Fármacos</th>
+        <th>Por que evitar</th>
+      </tr>
+      <tr>
+        <td><strong>BZD</strong></td>
+        <td>Diazepam, alprazolam, clonazepam, lorazepam</td>
+        <td>Quedas, fraturas, delirium, declínio cognitivo, dependência; <em>evitar para ansiedade/insônia crônica</em></td>
+      </tr>
+      <tr>
+        <td><strong>Z-drugs</strong></td>
+        <td>Zolpidem, zopiclona</td>
+        <td>Mesmas RAMs dos BZD (quedas, delirium, comportamentos automáticos noturnos)</td>
+      </tr>
+      <tr>
+        <td><strong>Sulfonilureia de longa ação</strong></td>
+        <td>Glibenclamida</td>
+        <td>Hipoglicemia prolongada e severa; preferir gliclazida, glimepirida ou outras classes</td>
+      </tr>
+      <tr>
+        <td>Anticolinérgicos / antihistamínicos 1ª g.</td>
+        <td>Difenidramina, prometazina, hidroxizina, amitriptilina</td>
+        <td>Confusão, retenção urinária, glaucoma, sedação, quedas</td>
+      </tr>
+      <tr>
+        <td>AINEs por uso prolongado</td>
+        <td>Ibuprofeno, naproxeno, diclofenaco</td>
+        <td>HDA, IRA, retenção hídrica, ↑ PA; risco maior com idade ≥ 75 ou DRC</td>
+      </tr>
+      <tr>
+        <td>Antipsicóticos em demência sem agitação grave</td>
+        <td>Haloperidol, risperidona, olanzapina</td>
+        <td>↑ mortalidade, AVC, sedação, delirium; uso apenas em SBP grave refratária ao não farmacológico</td>
+      </tr>
+      <tr>
+        <td>Relaxantes musculares</td>
+        <td>Ciclobenzaprina, carisoprodol</td>
+        <td>Anticolinérgicos centrais; sedação; pouca eficácia</td>
+      </tr>
+      <tr>
+        <td>Megestrol</td>
+        <td>—</td>
+        <td>Risco de trombose; benefício marginal em anorexia</td>
+      </tr>
+    </table>
+
+    <div class="subsecao">Atribuição do Farmacêutico — Desprescrição</div>
+    <ul class="lista">
+      <li><strong>Revisão estruturada de medicamentos:</strong> aplicar Beers/STOPP/START sistematicamente em pacientes ≥ 65 anos em polifarmácia</li>
+      <li><strong>Cascata iatrogênica:</strong> identificar quando RAM de um fármaco gerou prescrição de outro (ex.: edema por anlodipino → diurético desnecessário)</li>
+      <li><strong>Reconciliação medicamentosa:</strong> em admissão hospitalar, alta e transição de cuidado (cobrado em ENARE 2025 Q59)</li>
+      <li><strong>Plano de desprescrição:</strong> retirada gradual com priorização do impacto clínico; comunicação com médico assistente; envolvimento de cuidadores</li>
+      <li><strong>Monitorização de PIM:</strong> indicadores institucionais (% de idosos com ≥ 1 PIM, quedas relacionadas a medicamentos, internações por RAM)</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Caso típico FGV — Polifarmácia:</strong> idosa de 78 anos com 7 medicamentos, queda no banheiro à noite. Lista: amitriptilina (anticolinérgico, Beers); alprazolam (BZD, Beers); glibenclamida (Beers); ibuprofeno crônico (Beers + interação com IECA e lítio); enalapril; ômeprazol há 5 anos (Beers se &gt; 8 semanas sem indicação); cálcio + colecalciferol. Conduta farmacêutica: identificar 5 PIM, sugerir desprescrição/substituição estruturada, orientar medidas não farmacológicas para insônia e dor, reavaliar HbA1c para troca da glibenclamida.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>FARM-FARMACOTERAP · Neuropsiquiatria</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">6 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 7 — QUESTÃO 01 ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Farmácia — FARM-FARMACOTERAP</div>
+      <div class="aula-ref">Bloco B5 · Aula 03 · Questões ENARE</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="questao-header">
+      <span>Questão 01</span>
+      <span class="fonte">Lítio · ITE · NC: Aplicação</span>
+    </div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Paciente de 52 anos, com transtorno bipolar tipo I, em uso de carbonato de lítio 900 mg/dia (litemia atual 0,8 mEq/L), procura a farmácia clínica em CAPS para orientação. Refere que iniciou hidroclorotiazida 25 mg/dia por hipertensão recém-diagnosticada há duas semanas. Atualmente apresenta tremor fino, náuseas, poliúria e leve confusão. Qual é a conduta farmacêutica mais adequada?</p>
+      <ul class="alternativas">
+        <li>
+          <span class="letra">A</span>
+          <span>Manter a hidroclorotiazida; orientar hidratação abundante e nova litemia em 30 dias.</span>
+        </li>
+        <li class="correta">
+          <span class="letra">B</span>
+          <span>Suspender provisoriamente a hidroclorotiazida em comunicação com o prescritor, solicitar litemia e função renal de urgência, e orientar hidratação isotônica; trocar para anti-hipertensivo sem efeito sobre lítio (BCC-DHP ou IECA com monitorização).</span>
+        </li>
+        <li>
+          <span class="letra">C</span>
+          <span>Aumentar a dose do lítio para compensar a redução de absorção pelo diurético.</span>
+        </li>
+        <li>
+          <span class="letra">D</span>
+          <span>Suspender o lítio definitivamente, pois o paciente apresenta intoxicação irreversível.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> os diuréticos tiazídicos (hidroclorotiazida, clortalidona, indapamida) aumentam a reabsorção tubular proximal de sódio e, indiretamente, de lítio, podendo elevar a litemia em 30–50%. O paciente apresenta sinais de <em>intoxicação litêmica leve a moderada</em>: tremor fino, GI, poliúria e confusão — quadro compatível com litemia ≥ 1,5 mEq/L. Conduta correta: comunicação com o prescritor para suspensão da hidroclorotiazida, solicitação de litemia e função renal de urgência, hidratação isotônica (soro fisiológico), e troca por anti-hipertensivo seguro com lítio (BCC di-hidropiridínico ou IECA com monitorização estrita; preferir BCC pela menor interação). Essa intervenção é atribuição privativa do farmacêutico em farmácia clínica (Res. CFF 585/2013).</p>
+      <p><strong>Por que as outras erram:</strong> A — manter o tiazídico é manter o agravante; reavaliação em 30 dias é tempo demais com sinais clínicos atuais · C — aumentar o lítio em paciente com sinais de intoxicação é erro grave (não há "redução de absorção"; a interação é farmacocinética por aumento da reabsorção, ou seja, o paciente está com lítio elevado, não baixo) · D — intoxicação litêmica é reversível com manejo adequado; suspender definitivamente um estabilizador eficaz em TB exige avaliação especializada e não é decisão de uma única visita farmacêutica.</p>
+      <p><strong>Conceito-chave:</strong> tiazídicos + lítio = ↑ litemia (interação farmacocinética); IECA/BRA + lítio = ↑ litemia (similar); AINEs + lítio = ↑↑ litemia. Em paciente em lítio, evitar essas associações ou monitorar litemia em 5–7 dias após mudança.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>FARM-FARMACOTERAP · Neuropsiquiatria</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">7 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 8 — QUESTÃO 02 ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Farmácia — FARM-FARMACOTERAP</div>
+      <div class="aula-ref">Bloco B5 · Aula 03 · Questões ENARE</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="questao-header">
+      <span>Questão 02</span>
+      <span class="fonte">Tramadol · CYP2D6 · NC: Análise</span>
+    </div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Criança de 6 anos, 22 kg, no pós-operatório imediato de adenotonsilectomia, com diagnóstico de síndrome da apneia obstrutiva do sono (SAOS), apresenta dor moderada. A prescrição médica inicial é tramadol 2 mg/kg VO 6/6h. Considerando as recomendações da ANVISA/FDA e a farmacogenética envolvida, qual é a conduta farmacêutica correta?</p>
+      <ul class="alternativas">
+        <li>
+          <span class="letra">A</span>
+          <span>Dispensar a prescrição, pois 2 mg/kg é dose segura em pediatria.</span>
+        </li>
+        <li>
+          <span class="letra">B</span>
+          <span>Sugerir aumento da dose para 3 mg/kg para garantir analgesia adequada.</span>
+        </li>
+        <li class="correta">
+          <span class="letra">C</span>
+          <span>Não dispensar; contactar o prescritor para troca por dipirona ou paracetamol associado a opioide alternativo, pois tramadol é contraindicado em menores de 12 anos e contraindicado em qualquer idade pediátrica com SAOS — risco de depressão respiratória letal por metabolizadores ultrarrápidos CYP2D6.</span>
+        </li>
+        <li>
+          <span class="letra">D</span>
+          <span>Substituir tramadol por codeína na mesma dose miligrama por miligrama.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — C</div>
+      <p><strong>Por que C está correta:</strong> a ANVISA (alinhada à FDA Black Box de 2017) <em>contraindica tramadol em menores de 12 anos</em>, e contraindica tramadol e codeína em qualquer idade pediátrica com apneia obstrutiva do sono, pós-amigdalectomia/adenotonsilectomia ou comprometimento respiratório. O motivo: tramadol e codeína são pró-fármacos ativados pelo <em>CYP2D6</em> em metabólitos com alta afinidade µ-opióide. <em>Metabolizadores ultrarrápidos (UM)</em>, presentes em até 1–3% da população branca e até 30% em norte-africanos, convertem doses padrão em concentrações altas de opióide ativo — com risco de <em>depressão respiratória grave e óbito</em>, especialmente em criança pós-cirúrgica com SAOS. Conduta correta: contactar o prescritor, propor analgesia escalonada não opioide (dipirona, paracetamol, AINE em pacientes selecionados) e opioides com menor variabilidade farmacogenética se necessário (oxicodona, morfina em dose ajustada, com monitorização).</p>
+      <p><strong>Por que as outras erram:</strong> A — dose calculada está dentro do intervalo posológico de bula adulta, mas a contraindicação é etária e por comorbidade respiratória, não dose-dependente · B — aumentar a dose é agravar o risco · D — codeína tem o <em>mesmo</em> perfil farmacogenético (também pró-fármaco CYP2D6) e tem a <em>mesma</em> contraindicação ANVISA/FDA em pediatria; substituir um pelo outro não resolve.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>FARM-FARMACOTERAP · Neuropsiquiatria</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">8 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 9 — QUESTÃO 03 + GABARITO INTEGRADO ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Farmácia — FARM-FARMACOTERAP</div>
+      <div class="aula-ref">Bloco B5 · Aula 03 · Gabarito Integrado</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="questao-header">
+      <span>Questão 03</span>
+      <span class="fonte">Polifarmácia · Beers 2023 · NC: Análise</span>
+    </div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Paciente de 76 anos, em uso domiciliar de 8 medicamentos para HAS, DM2, insônia e dor crônica, é internado por queda no banheiro com fratura de fêmur. Análise da farmacoterapia: enalapril 20 mg/dia; hidroclorotiazida 25 mg/dia; glibenclamida 10 mg/dia; amitriptilina 25 mg à noite; clonazepam 1 mg à noite; ibuprofeno 600 mg 8/8h; ômeprazol 20 mg/dia (uso há 5 anos); cálcio + vitamina D. Aplicando os Critérios Beers 2023, quais medicamentos são potencialmente inapropriados (PIM) para esta paciente?</p>
+      <ul class="alternativas">
+        <li>
+          <span class="letra">A</span>
+          <span>Apenas amitriptilina e clonazepam.</span>
+        </li>
+        <li>
+          <span class="letra">B</span>
+          <span>Glibenclamida, amitriptilina e clonazepam.</span>
+        </li>
+        <li class="correta">
+          <span class="letra">C</span>
+          <span>Glibenclamida, amitriptilina, clonazepam, ibuprofeno crônico e ômeprazol em uso prolongado sem indicação ativa.</span>
+        </li>
+        <li>
+          <span class="letra">D</span>
+          <span>Enalapril, hidroclorotiazida, glibenclamida e amitriptilina.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — C</div>
+      <p><strong>Por que C está correta:</strong> os 5 PIM Beers 2023 nesta paciente são: <strong>(1) glibenclamida</strong> — sulfonilureia de longa ação com metabólito ativo, hipoglicemia prolongada e grave em idoso; <strong>(2) amitriptilina</strong> — antidepressivo tricíclico com potente atividade anticolinérgica central, sedação, hipotensão ortostática, retenção urinária e cardiotoxicidade — múltiplos critérios Beers; <strong>(3) clonazepam</strong> — BZD em uso crônico para insônia (não para epilepsia); ↑ quedas, fraturas, declínio cognitivo, dependência; <strong>(4) ibuprofeno crônico</strong> — AINE em uso prolongado em idoso, com IECA e tiazídico: triple whammy renal (IECA + diurético + AINE → IRA aguda); HDA; aumento de PA; <strong>(5) ômeprazol &gt; 8 semanas sem indicação ativa</strong> — IBP em uso prolongado: ↑ fraturas, infecção por C. difficile, pneumonia, deficiência de B12, Mg e Ca; deve ser desprescrito gradualmente. Enalapril e hidroclorotiazida não são PIM <em>per se</em> mas devem ser reavaliados pelo risco renal combinado com AINE.</p>
+      <p><strong>Por que as outras erram:</strong> A e B subestimam o número de PIM · D inclui enalapril e hidroclorotiazida que não são PIM Beers <em>per se</em>.</p>
+    </div>
+
+    <div class="subsecao" style="margin-top:6px;">Gabarito Comentado — Análise Integrada</div>
+    <table>
+      <tr>
+        <th>Questão</th>
+        <th>Gabarito</th>
+        <th>Tema</th>
+        <th>Conceito-Chave</th>
+      </tr>
+      <tr>
+        <td><strong>01</strong></td>
+        <td><span class="destaque">B</span></td>
+        <td>Lítio — Interação com tiazídico</td>
+        <td>Tiazídico ↑ litemia; suspender e trocar por BCC-DHP</td>
+      </tr>
+      <tr>
+        <td><strong>02</strong></td>
+        <td><span class="destaque">C</span></td>
+        <td>Tramadol — CYP2D6 em pediatria com SAOS</td>
+        <td>Contraindicação ANVISA/FDA; risco de depressão respiratória em UM CYP2D6</td>
+      </tr>
+      <tr>
+        <td><strong>03</strong></td>
+        <td><span class="destaque">C</span></td>
+        <td>Beers 2023 — 5 PIM (glibenclamida, amitriptilina, clonazepam, ibuprofeno, ômeprazol)</td>
+        <td>Polifarmácia + queda = revisão Beers/STOPP + desprescrição estruturada</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="footer">
+    <span>FARM-FARMACOTERAP · Neuropsiquiatria</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">9 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 10 — SÍNTESE ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Farmácia — FARM-FARMACOTERAP</div>
+      <div class="aula-ref">Bloco B5 · Aula 03 · Síntese</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="secao-titulo">Síntese — Neuropsiquiatria</div>
+
+    <div class="sintese-grid">
+      <div class="sintese-item">
+        <div class="si-label">Lítio</div>
+        <p>ITE 0,6–1,0 (manutenção); excreção 100% renal. Interações: tiazídico, IECA, BRA, AINE → ↑ litemia. RAMs crônicas: hipotireoidismo, DIN, nefropatia. Intoxicação: tremor, GI, confusão; manejo com SF + diálise se &gt; 2,5.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">ISRS + Síndrome Serotoninérgica</div>
+        <p>Sertralina = 1ª linha; latência 2–4 semanas. Combinações de risco: ISRS + IMAO, ISRS + tramadol, ISRS + linezolida. Tríade de Sternbach (mental + autonômico + neuromuscular). Diferente de SNM (rigidez "cano de chumbo" + hipertermia + dias).</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Tramadol e Opioides</div>
+        <p>Tramadol = pró-fármaco CYP2D6 → M1; contraindicado em &lt; 12 anos e SAOS pediátrica (ANVISA/FDA). UM CYP2D6 → depressão respiratória. Tramadol + ISRS = serotoninérgica. Codeína = mesma fragilidade. Naloxona reverte; meia-vida curta.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Antipsicóticos e Clozapina</div>
+        <p>Típicos: SEP + hiperprolactinemia. Atípicos: metabólico (peso, DM); olanzapina = pior. Clozapina: refratários; hemograma semanal (agranulocitose); miocardite, sialorreia. SNM: rigidez + hipertermia + autonômico — dantroleno.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Polifarmácia e Beers 2023</div>
+        <p>≥ 5 medicamentos = polifarmácia. Beers PIM: BZD, Z-drugs, glibenclamida, anticolinérgicos (amitriptilina, difenidramina), AINE crônico, antipsicóticos em demência sem agitação grave. Aplicar Beers/STOPP/START em todo idoso ≥ 65. Farmacêutico = desprescrição estruturada.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Próxima Aula</div>
+        <p><strong>Aula 04 — Farmacoterapia IV: Populações Especiais.</strong> Aprofundamento em pediatria, gestação (categorias FDA, IECA/BRA/valproato/tetraciclina contraindicados), nefropatas (ajuste por TFG), hepatopatas (Child-Pugh) e idoso polimedicado.</p>
+      </div>
+    </div>
+
+    <div class="alerta" style="margin-top:5px;">
+      <p><strong>Regra de ouro — Neuropsiquiatria no ENARE:</strong> ITE no SNC = lítio (renal), carbamazepina e fenitoína (hepático) + digoxina (renal); tramadol/codeína = CYP2D6 → contraindicados em &lt; 12 anos e SAOS pediátrica; ISRS + tramadol = serotoninérgica; Beers 2023 = lista obrigatória em &gt; 65 anos (BZD, glibenclamida, amitriptilina, AINE crônico).</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>FARM-FARMACOTERAP · Neuropsiquiatria</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">10 / 10</span>
+  </div>
+</div>
+
+</body>
+</html>
