@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Psicologia B11 — Aula 06 | PSI-SAUDE: Matriciamento, eMulti e Psicólogo na APS</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #d0d0d0; font-family: 'Bricolage Grotesque', sans-serif; }
+  .page { width: 210mm; height: 297mm; background: #F6F4ED; margin: 8mm auto; position: relative; overflow: hidden; display: flex; flex-direction: column; }
+  @media print { body { background: none; margin: 0; } .page { margin: 0; page-break-after: always; box-shadow: none; } }
+  @page { size: A4; margin: 0; }
+
+  .page-header { background: #1F5C23; padding: 4mm 6mm; display: flex; align-items: center; gap: 4mm; flex-shrink: 0; }
+  .logo-svg { width: 10mm; height: 10mm; flex-shrink: 0; }
+  .header-text { flex: 1; }
+  .header-course { font-family: 'Playfair Display', serif; font-style: italic; color: #C6D834; font-size: 6.5pt; letter-spacing: 0.03em; }
+  .header-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: #F6F4ED; font-size: 11pt; line-height: 1; text-transform: uppercase; letter-spacing: 0.04em; }
+  .header-badge { background: #C6D834; color: #1F5C23; font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 7pt; padding: 1mm 3mm; border-radius: 2mm; text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap; }
+
+  .page-footer { background: #1F5C23; padding: 2mm 6mm; display: flex; justify-content: space-between; align-items: center; flex-shrink: 0; }
+  .footer-left { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: #C6D834; font-size: 6pt; letter-spacing: 0.05em; text-transform: uppercase; }
+  .footer-right { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: #F6F4ED; font-size: 8pt; letter-spacing: 0.06em; }
+
+  .page-body { flex: 1; padding: 5mm 7mm; display: flex; flex-direction: column; gap: 3mm; overflow: hidden; }
+
+  .section-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 13pt; color: #1F5C23; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 0.8mm solid #C6D834; padding-bottom: 1.5mm; margin-bottom: 1mm; }
+
+  .box { background: #fff; border-left: 1.2mm solid #1F5C23; border-radius: 1mm; padding: 3mm 4mm; font-size: 7.8pt; line-height: 1.45; color: #222; }
+  .box.accent { border-left-color: #C6D834; }
+  .box.alert  { border-left-color: #c0392b; background: #fff8f7; }
+  .box.dark   { background: #1F5C23; color: #F6F4ED; border-left-color: #C6D834; }
+  .box-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; color: #1F5C23; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 1.5mm; }
+  .box.dark .box-title  { color: #C6D834; }
+  .box.alert .box-title { color: #c0392b; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 7.5pt; }
+  th { background: #1F5C23; color: #F6F4ED; font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 8pt; text-transform: uppercase; padding: 1.5mm 2.5mm; text-align: left; letter-spacing: 0.03em; }
+  td { padding: 1.5mm 2.5mm; border-bottom: 0.3mm solid #e0ddd5; vertical-align: top; color: #222; line-height: 1.4; }
+  tr:nth-child(even) td { background: #f4f2eb; }
+  td strong { color: #1F5C23; }
+
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5mm; }
+  .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2mm; }
+
+  .instr-item { display: flex; gap: 3mm; align-items: flex-start; padding: 2mm 3mm; background: #fff; border-radius: 1mm; margin-bottom: 1.5mm; font-size: 7.8pt; line-height: 1.4; border-left: 1mm solid #C6D834; }
+  .instr-icon { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 11pt; color: #1F5C23; min-width: 6mm; flex-shrink: 0; }
+  .instr-content strong { color: #1F5C23; font-family: 'Barlow Condensed', sans-serif; font-size: 9pt; text-transform: uppercase; display: block; margin-bottom: 0.3mm; }
+
+  .fluxo { display: flex; align-items: center; gap: 1.5mm; flex-wrap: nowrap; }
+  .fluxo-step { background: #1F5C23; color: #F6F4ED; font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 7pt; padding: 1.5mm 2mm; border-radius: 1mm; text-transform: uppercase; text-align: center; flex: 1; line-height: 1.3; }
+  .fluxo-arrow { color: #C6D834; font-size: 10pt; font-weight: 800; flex-shrink: 0; }
+
+  .q-stem { background: #fff; border: 0.5mm solid #ddd; border-radius: 1.5mm; padding: 3mm 4mm; font-size: 8pt; line-height: 1.5; color: #222; margin-bottom: 2mm; }
+  .q-stem-label { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; color: #1F5C23; text-transform: uppercase; margin-bottom: 1.5mm; }
+  .q-option { display: flex; gap: 2mm; padding: 1.5mm 2.5mm; border-radius: 1mm; margin-bottom: 1mm; border: 0.4mm solid #e0ddd5; background: #fff; font-size: 7.8pt; line-height: 1.4; align-items: flex-start; }
+  .q-option.correct { background: #f0f8f0; border-color: #1F5C23; }
+  .q-option.wrong   { background: #fff8f7; border-color: #e0a0a0; }
+  .q-letter { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; color: #1F5C23; min-width: 4mm; flex-shrink: 0; margin-top: -0.3mm; }
+  .q-option.correct .q-letter { color: #1F5C23; }
+  .q-option.wrong   .q-letter { color: #c0392b; }
+
+  .afirmativa { display: flex; gap: 2mm; padding: 2mm 3mm; border-radius: 1mm; margin-bottom: 1.5mm; font-size: 7.8pt; line-height: 1.45; align-items: flex-start; }
+  .afirmativa.certa  { background: #f0f8f0; border-left: 1mm solid #1F5C23; }
+  .afirmativa.errada { background: #fff8f7; border-left: 1mm solid #c0392b; }
+  .af-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; min-width: 5mm; flex-shrink: 0; }
+  .afirmativa.certa  .af-num { color: #1F5C23; }
+  .afirmativa.errada .af-num { color: #c0392b; }
+  .af-verdict { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 8pt; padding: 0.3mm 2mm; border-radius: 0.8mm; flex-shrink: 0; }
+  .afirmativa.certa  .af-verdict { background: #1F5C23; color: #F6F4ED; }
+  .afirmativa.errada .af-verdict { background: #c0392b; color: #fff; }
+
+  .gab-box { display: flex; gap: 3mm; align-items: center; background: #1F5C23; color: #F6F4ED; border-radius: 1.5mm; padding: 2.5mm 4mm; margin-bottom: 2mm; }
+  .gab-letter { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 20pt; color: #C6D834; line-height: 1; }
+  .gab-info { flex: 1; font-size: 7.8pt; line-height: 1.4; }
+  .gab-info strong { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; text-transform: uppercase; letter-spacing: 0.03em; }
+
+  .sintese-item { display: flex; gap: 2mm; padding: 2mm 3mm; border-radius: 1mm; margin-bottom: 1.5mm; background: #fff; border-left: 1mm solid #1F5C23; font-size: 7.8pt; line-height: 1.4; align-items: flex-start; }
+  .sintese-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: #1F5C23; font-size: 10pt; min-width: 5mm; flex-shrink: 0; margin-top: -0.5mm; }
+
+  .cover { background: #1F5C23; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; overflow: hidden; padding: 12mm; }
+  .cover::before { content: ''; position: absolute; top: -20mm; right: -20mm; width: 80mm; height: 80mm; background: rgba(198,216,52,0.12); border-radius: 50%; }
+  .cover::after  { content: ''; position: absolute; bottom: -15mm; left: -15mm; width: 60mm; height: 60mm; background: rgba(198,216,52,0.08); border-radius: 50%; }
+  .cover-inner { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 5mm; width: 100%; }
+  .cover-logo { width: 22mm; height: 22mm; }
+  .cover-brand { font-family: 'Playfair Display', serif; font-style: italic; color: #C6D834; font-size: 11pt; letter-spacing: 0.05em; }
+  .cover-tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(246,244,237,0.6); font-size: 7pt; text-transform: uppercase; letter-spacing: 0.12em; }
+  .cover-divider { width: 30mm; height: 0.3mm; background: rgba(198,216,52,0.4); }
+  .cover-bloco { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: #C6D834; font-size: 9pt; text-transform: uppercase; letter-spacing: 0.1em; background: rgba(198,216,52,0.12); padding: 1.5mm 4mm; border-radius: 1mm; }
+  .cover-aula-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: rgba(246,244,237,0.3); font-size: 52pt; line-height: 1; letter-spacing: -1mm; }
+  .cover-module { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: #C6D834; font-size: 10pt; text-transform: uppercase; letter-spacing: 0.08em; }
+  .cover-main-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: #F6F4ED; font-size: 20pt; text-transform: uppercase; letter-spacing: 0.03em; line-height: 1.1; }
+  .cover-sub { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; color: rgba(246,244,237,0.7); font-size: 8pt; line-height: 1.5; max-width: 140mm; }
+  .cover-footer-bar { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(198,216,52,0.15); border-top: 0.5mm solid rgba(198,216,52,0.3); padding: 3mm 8mm; display: flex; justify-content: space-between; align-items: center; }
+  .cover-footer-bar span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(246,244,237,0.5); font-size: 6pt; text-transform: uppercase; letter-spacing: 0.08em; }
+</style>
+</head>
+<body>
+
+<!-- P1 — CAPA -->
+<div class="page">
+  <div class="cover">
+    <div class="cover-inner">
+      <svg class="cover-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#F6F4ED" stroke="#C6D834" stroke-width="4"/>
+        <circle cx="50" cy="50" r="24" fill="#1F5C23"/>
+        <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#F6F4ED">E</text>
+      </svg>
+      <div class="cover-brand">Elite Treinamentos em Saúde</div>
+      <div class="cover-tagline">Extensivo ENARE 2026</div>
+      <div class="cover-divider"></div>
+      <div class="cover-bloco">Psicologia · Bloco B11</div>
+      <div class="cover-aula-num">06</div>
+      <div class="cover-module">PSI-SAUDE</div>
+      <div class="cover-main-title">Matriciamento, eMulti<br>e Psicólogo na APS</div>
+      <div class="cover-sub">Apoio matricial · Consulta conjunta · Gastão Wagner · eMulti (Port. 2.979/2021) ·
+        NASF → eMulti · Psicólogo na ESF · CAPSi e matriciamento · Casos ENARE 2024/2025</div>
+    </div>
+    <div class="cover-footer-bar">
+      <span>PDF de Apoio · Uso Exclusivo Extensivo ENARE 2026</span>
+      <span>Aula 06 · Bloco B11 · Psicologia</span>
+    </div>
+  </div>
+</div>
+
+<!-- P2 — PSICÓLOGO NA APS: PAPEL E INTEGRALIDADE -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">PSI-SAUDE · Psicólogo na APS — Papel, Funções e Integralidade</div>
+    </div>
+    <div class="header-badge">Aula 06</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">Psicólogo na Atenção Básica — Identidade do Papel</div>
+
+    <div class="box">
+      <div class="box-title">Não é "consultório dentro da UBS"</div>
+      O psicólogo na APS opera com lógica radicalmente diferente do consultório privado. Sua atuação é <strong>territorializada</strong>, <strong>multiprofissional</strong> e orientada pela <strong>integralidade</strong> — o sujeito é atendido como um todo, em seu contexto de vida.<br><br>
+      <strong>Três eixos de atuação simultâneos:</strong><br>
+      (1) <em>Clínico-assistencial:</em> atendimento individual, grupal e familiar na UBS/ESF<br>
+      (2) <em>Técnico-pedagógico:</em> apoio à equipe de saúde — matriciamento, educação permanente, discussão de casos<br>
+      (3) <em>Coletivo e comunitário:</em> ações de promoção da saúde, grupos comunitários, intersetorialidade
+    </div>
+
+    <div class="section-title">Funções do Psicólogo na APS (Q31/2025)</div>
+
+    <div class="grid2">
+      <div class="box accent">
+        <div class="box-title">Prevenção e Promoção da Saúde</div>
+        · Grupos de saúde mental na comunidade (depressão, ansiedade, luto)<br>
+        · Ações de educação em saúde com equipe e usuários<br>
+        · Rastreamento de risco (suicídio, violência, uso de substâncias)<br>
+        · Apoio a situações de crise no território<br>
+        · Articulação intersetorial (escola, CRAS, associações)
+      </div>
+      <div class="box">
+        <div class="box-title">Integralidade na Prática (Q29/2024)</div>
+        Integralidade = cuidar do sujeito além do queixo principal.<br><br>
+        Ex.: gestante com ansiedade apresentada em consulta pré-natal → o psicólogo não atua sozinho; a <strong>equipe inteira</strong> acolhe a dimensão emocional, não apenas o profissional de SM. A integralidade exige que <em>todo profissional de saúde</em> seja capaz de escuta básica e acolhimento psicológico.
+      </div>
+    </div>
+
+    <div class="section-title">Tecnologias do Cuidado em Saúde (Merhy) — Q26/2024</div>
+
+    <table>
+      <tr>
+        <th>Tipo</th>
+        <th>Definição</th>
+        <th>Exemplos na Psicologia APS</th>
+      </tr>
+      <tr>
+        <td><strong>Leve</strong></td>
+        <td>Relacionais — produzidas no encontro entre sujeitos</td>
+        <td>Escuta clínica, vínculo, acolhimento, autonomia do usuário</td>
+      </tr>
+      <tr>
+        <td><strong>Leve-dura</strong></td>
+        <td>Saberes estruturados que orientam a relação</td>
+        <td>Abordagem motivacional, PTS, matriciamento, clínica ampliada</td>
+      </tr>
+      <tr>
+        <td><strong>Dura</strong></td>
+        <td>Equipamentos e instrumentos objetivos</td>
+        <td>Prontuário, testes psicológicos, laudos, fichas de notificação</td>
+      </tr>
+    </table>
+
+    <div class="box dark">
+      <div class="box-title">Ponto Crítico — APS não é Triagem para o CAPS</div>
+      Erro clássico na prova: entender o psicólogo na APS como "profissional que encaminha para o especialista". A APS resolve a maioria dos casos de SM — encaminhamento ao CAPS deve ser para <strong>transtornos graves com critério clínico</strong>. A longitudinalidade e o vínculo são <em>ativos terapêuticos</em> da APS, não devem ser desperdiçados com encaminhamentos desnecessários.
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">2 / 10</div>
+  </div>
+</div>
+
+<!-- P3 — MATRICIAMENTO: CONCEITO E INSTRUMENTOS -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">PSI-SAUDE · Apoio Matricial — Conceito (Gastão Wagner) e Instrumentos</div>
+    </div>
+    <div class="header-badge">Aula 06</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">Apoio Matricial — O que é (Gastão Wagner de Sousa Campos)</div>
+
+    <div class="box">
+      <div class="box-title">Definição e Lógica</div>
+      O <strong>apoio matricial</strong> é uma metodologia de gestão do cuidado que busca assegurar suporte especializado a equipes de referência (eSF/APS) de forma <strong>técnico-pedagógica</strong> e <strong>clínico-assistencial</strong>.<br><br>
+      · <em>Técnico-pedagógico:</em> o especialista apoia a equipe sem assumir o caso — transmite saber, amplia a capacidade clínica da equipe de referência<br>
+      · <em>Clínico-assistencial:</em> o especialista intervém diretamente com o usuário (consulta conjunta, visita domiciliar) — sem "roubar" o vínculo da equipe de referência<br><br>
+      <strong>Equipe de referência</strong> = eSF (responsável longitudinal pelo usuário)<br>
+      <strong>Equipe de apoio</strong> = eMulti / CAPS / especialistas que suportam a eSF
+    </div>
+
+    <div class="section-title">Instrumentos do Apoio Matricial (Q79/2024)</div>
+
+    <div class="instr-item">
+      <div class="instr-icon">①</div>
+      <div class="instr-content">
+        <strong>Consulta Conjunta</strong>
+        Profissional da eMulti/CAPS atende junto com o médico/enfermeiro da eSF. O usuário recebe cuidado integrado e a equipe aprende na prática. <em>Principal instrumento clínico-assistencial do matriciamento.</em>
+      </div>
+    </div>
+    <div class="instr-item">
+      <div class="instr-icon">②</div>
+      <div class="instr-content">
+        <strong>Discussão de Caso / Reunião Clínica</strong>
+        O especialista participa de reuniões da equipe de referência para discutir casos complexos. Foco em apoio técnico-pedagógico — a equipe amplia seu repertório sem transferir a responsabilidade.
+      </div>
+    </div>
+    <div class="instr-item">
+      <div class="instr-icon">③</div>
+      <div class="instr-content">
+        <strong>Projeto Terapêutico Singular (PTS) Compartilhado</strong>
+        Elaborado entre equipe de referência e matriciador com o usuário. Define metas, responsabilidades e acompanhamento — evita fragmentação do cuidado.
+      </div>
+    </div>
+    <div class="instr-item">
+      <div class="instr-icon">④</div>
+      <div class="instr-content">
+        <strong>Visita Domiciliar Conjunta</strong>
+        Apoiador e equipe de referência visitam o usuário no domicílio — especialmente para casos com dificuldade de acesso ao serviço (mobilidade reduzida, reclusão, saúde mental grave).
+      </div>
+    </div>
+    <div class="instr-item">
+      <div class="instr-icon">⑤</div>
+      <div class="instr-content">
+        <strong>Educação Permanente</strong>
+        Capacitação contínua da equipe de referência — o especialista como educador no serviço, não apenas como prestador de procedimentos.
+      </div>
+    </div>
+
+    <div class="box dark">
+      <div class="box-title">Matriciamento ≠ Encaminhamento (Q80/2024, Q72/2025)</div>
+      No modelo matricial, o psicólogo da eMulti <strong>não assume o caso da equipe de referência</strong> — ele a apoia para que aumente sua capacidade de cuidar. <strong>A co-responsabilização permanece com a eSF.</strong> Quando Carla (Q80/2024) recebe suporte da eMulti, a equipe de eSF continua sendo a referência do paciente — o psicólogo entra como apoiador, não como substituto.
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">3 / 10</div>
+  </div>
+</div>
+
+<!-- P4 — eMULTI: EQUIPE MULTIPROFISSIONAL NA APS -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">PSI-SAUDE · eMulti — Equipe Multiprofissional na APS (Port. 2.979/2021)</div>
+    </div>
+    <div class="header-badge">Aula 06</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">eMulti: Substituição do NASF</div>
+
+    <div class="box accent">
+      <div class="box-title">NASF → eMulti: A Transição (Portaria 2.979/2021)</div>
+      O <strong>NASF-AB (Núcleo Ampliado de Saúde da Família)</strong> foi descontinuado em 2020 e substituído pela <strong>eMulti (Equipe Multiprofissional)</strong>, instituída pelo Programa Previne Brasil (Portaria 2.979/2021). A lógica se mantém — apoio matricial à eSF — mas a estrutura e o financiamento mudaram. Questões anteriores a 2022 que citam NASF podem ser equivalentes a questões atuais sobre eMulti.
+    </div>
+
+    <div class="section-title">Composição e Modalidades</div>
+
+    <table>
+      <tr>
+        <th>Modalidade</th>
+        <th>Composição</th>
+        <th>Carga Horária Mínima</th>
+      </tr>
+      <tr>
+        <td><strong>eMulti Modalidade 1</strong></td>
+        <td>≥ 3 profissionais de categorias diferentes (inclui psicólogo, assistente social, fisioterapeuta, nutricionista, farmacêutico, TO, fonoaudiólogo)</td>
+        <td>80h semanais totais</td>
+      </tr>
+      <tr>
+        <td><strong>eMulti Modalidade 2</strong></td>
+        <td>≥ 5 profissionais de diferentes categorias</td>
+        <td>150h semanais totais</td>
+      </tr>
+      <tr>
+        <td><strong>eMulti Modalidade 3</strong></td>
+        <td>≥ 7 profissionais de diferentes categorias</td>
+        <td>200h semanais totais</td>
+      </tr>
+    </table>
+
+    <div class="section-title">Ações da eMulti — O que Faz e o que Não Faz (Q35/2024, Q74/2025)</div>
+
+    <div class="grid2">
+      <div class="box">
+        <div class="box-title">Ações Prioritárias da eMulti</div>
+        · Apoio técnico às equipes de eSF (matriciamento)<br>
+        · Grupos terapêuticos e de promoção à saúde<br>
+        · Atendimentos individuais e compartilhados<br>
+        · Visitas domiciliares conjuntas com eSF<br>
+        · Discussão de casos e educação permanente<br>
+        · PTS compartilhado para casos complexos<br>
+        · Ações intersetoriais no território
+      </div>
+      <div class="box alert">
+        <div class="box-title">Exceção — O que NÃO é função da eMulti (Q35/2024)</div>
+        · <strong>Práticas setoriais exclusivas</strong> de outras áreas (ex: reabilitação especializada de nível terciário)<br>
+        · Substituir a eSF na relação longitudinal com o usuário<br>
+        · Funcionar como serviço especializado independente<br>
+        · Absorver toda a demanda de SM — casos graves vão ao CAPS<br><br>
+        <em>FGV testou: qual ação NÃO é prioritária → a ação setorial exclusiva é a exceção (Gab E/2024).</em>
+      </div>
+    </div>
+
+    <div class="box dark">
+      <div class="box-title">eMulti Integra Práticas na APS (Q74/2025)</div>
+      A eMulti opera na lógica de <strong>integração interprofissional</strong>: não é um grupo de especialistas que atende independentemente, mas uma equipe que <em>integra saberes em torno do mesmo usuário e território</em>. O psicólogo não atua como "psicólogo do consultório" dentro da UBS — ele compartilha casos, faz apoio matricial e participa das reuniões de equipe ampliada. Esta distinção foi testada diretamente na Q74/2025 (Gab A).
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">4 / 10</div>
+  </div>
+</div>
+
+<!-- P5 — CAPSi, INFÂNCIA E ADOLESCÊNCIA + CASOS ENARE -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">PSI-SAUDE · CAPSi, Matriciamento Infanto-Juvenil e Casos ENARE FGV</div>
+    </div>
+    <div class="header-badge">Aula 06</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">CAPSi e Matriciamento para Infância e Adolescência</div>
+
+    <div class="box">
+      <div class="box-title">CAPSi como Matriciador da APS (Q46/2025)</div>
+      O CAPSi não apenas recebe encaminhamentos — ele também <strong>matricia a APS</strong> para casos de TM infanto-juvenil leve a moderado. O fluxo correto para a adolescente Nicole (Q46/2025 — cortes nos braços e restrição alimentar) foi: <strong>encaminhar para CAPSi com matriciamento da equipe da ESF</strong>, mantendo o vínculo com a APS e ampliando a capacidade da equipe de lidar com o sofrimento adolescente no território.
+    </div>
+
+    <div class="fluxo" style="margin: 1mm 0 2mm 0;">
+      <div class="fluxo-step">APS detecta<br>sofrimento mental</div>
+      <div class="fluxo-arrow">→</div>
+      <div class="fluxo-step">Leve/moderado:<br>eMulti matricia APS</div>
+      <div class="fluxo-arrow">→</div>
+      <div class="fluxo-step">Complexo:<br>APS + CAPSi juntos</div>
+      <div class="fluxo-arrow">→</div>
+      <div class="fluxo-step">Grave:<br>CAPSi assume referência</div>
+    </div>
+
+    <div class="section-title">Casos ENARE FGV — Padrão Matriciamento/eMulti</div>
+
+    <table>
+      <tr>
+        <th>Q / Edição</th>
+        <th>Subtema</th>
+        <th>O que a FGV testou</th>
+        <th>Gab</th>
+      </tr>
+      <tr>
+        <td><strong>Q79/2024</strong></td>
+        <td>Instrumentos do matriciamento</td>
+        <td>Identificar o conjunto correto de instrumentos — consulta conjunta, discussão de caso, PTS, visita domiciliar, educação permanente</td>
+        <td>E</td>
+      </tr>
+      <tr>
+        <td><strong>Q80/2024</strong></td>
+        <td>Carla/UBS — apoio matricial</td>
+        <td>Psicólogo da eMulti apoia equipe eSF; a co-responsabilização permanece com a eSF, não transferida ao especialista</td>
+        <td>A</td>
+      </tr>
+      <tr>
+        <td><strong>Q35/2024</strong></td>
+        <td>eMulti — ação excepcional</td>
+        <td>Identificar ação que NÃO é prioritária da eMulti → prática setorial exclusiva (reabilitação terciária especializada)</td>
+        <td>E</td>
+      </tr>
+      <tr>
+        <td><strong>Q31/2025</strong></td>
+        <td>Psicólogo na AB — prevenção</td>
+        <td>Funções do psicólogo na APS incluem prevenção primária e secundária, não só atendimento clínico individual</td>
+        <td>A</td>
+      </tr>
+      <tr>
+        <td><strong>Q46/2025</strong></td>
+        <td>Nicole — matriciamento CAPSi</td>
+        <td>Adolescente com automutilação e restrição alimentar → matriciamento CAPSi mantendo eSF como referência</td>
+        <td>C</td>
+      </tr>
+      <tr>
+        <td><strong>Q72/2025</strong></td>
+        <td>Matriciamento — I e II corretas</td>
+        <td>Afirmativas corretas sobre apoio matricial: técnico-pedagógico + clínico-assistencial; co-responsabilidade da eSF</td>
+        <td>B</td>
+      </tr>
+      <tr>
+        <td><strong>Q74/2025</strong></td>
+        <td>eMulti na APS</td>
+        <td>eMulti integra práticas interprofissionais — não é serviço especializado independente dentro da UBS</td>
+        <td>A</td>
+      </tr>
+    </table>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">5 / 10</div>
+  </div>
+</div>
+
+<!-- P6 — Q01: APLICAÇÃO -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">Q01 — Aplicação · Apoio Matricial na APS (modelo Q80/2024)</div>
+    </div>
+    <div class="header-badge">Aula 06</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">Questão 01 — Aplicação (Gab B)</div>
+
+    <div class="q-stem">
+      <div class="q-stem-label">Enunciado</div>
+      Bruna, psicóloga da eMulti vinculada a uma ESF, recebe solicitação da médica de família sobre Seu Benedito, 62 anos, diabético, que nas últimas três consultas se apresenta abatido, apático e referindo "não ter mais ânimo para nada". A médica solicita interconsulta psicológica, relatando que a equipe não sabe como abordar a dimensão emocional presente no caso. Qual é a conduta mais adequada de Bruna no modelo de apoio matricial?
+    </div>
+
+    <div class="q-option wrong">
+      <div class="q-letter">A</div>
+      <div>Assumir integralmente o acompanhamento de Benedito, orientando a médica a encaminhá-lo exclusivamente à psicóloga, pois questões emocionais são de competência do profissional de psicologia e fogem do escopo da equipe de ESF.</div>
+    </div>
+    <div class="q-option correct">
+      <div class="q-letter">B</div>
+      <div>Realizar consulta conjunta com a médica de família, avaliando Benedito de forma integrada, e em seguida discutir o caso com a equipe ampliada — orientando estratégias de escuta e cuidado que a própria equipe pode realizar, mantendo a co-responsabilização da eSF pelo acompanhamento longitudinal.</div>
+    </div>
+    <div class="q-option wrong">
+      <div class="q-letter">C</div>
+      <div>Encaminhar Benedito ao CAPS II, pois sintomas de apatia e abatimento em diabético crônico configuram transtorno mental grave que requer serviço especializado em saúde mental.</div>
+    </div>
+    <div class="q-option wrong">
+      <div class="q-letter">D</div>
+      <div>Elaborar protocolo escrito de manejo emocional de doenças crônicas e entregar à médica para que esta aplique de forma padronizada em todos os pacientes com perfil semelhante, sem necessidade de envolvimento direto da psicóloga.</div>
+    </div>
+
+    <div class="box accent" style="margin-top:3mm;">
+      <div class="box-title">Por que B está correto</div>
+      O apoio matricial opera em dois eixos: <strong>clínico-assistencial</strong> (consulta conjunta com o usuário) e <strong>técnico-pedagógico</strong> (discussão de caso que amplia a capacidade da equipe). A co-responsabilização permanece com a <strong>eSF</strong> — Bruna não assume o caso nem encaminha desnecessariamente. A (assumir exclusivamente) e C (encaminhar ao CAPS sem critério clínico para TM grave) violam a lógica matricial. D não é apoio matricial — é protocolo descontextualizado.
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">6 / 10</div>
+  </div>
+</div>
+
+<!-- P7 — Q02: APLICAÇÃO -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">Q02 — Aplicação · eMulti, Adolescência e CAPSi (modelo Q46/2025)</div>
+    </div>
+    <div class="header-badge">Aula 06</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">Questão 02 — Aplicação (Gab C)</div>
+
+    <div class="q-stem">
+      <div class="q-stem-label">Enunciado</div>
+      Luísa, 15 anos, é usuária cadastrada em uma ESF. A enfermeira da equipe identifica na consulta de rotina marcas de cortes nos braços e, ao questionar sobre alimentação, a adolescente relata que está comendo muito pouco "de propósito". A equipe de eSF não tem experiência com automutilação ou transtornos alimentares e solicita orientação à psicóloga da eMulti. Qual conduta da psicóloga é mais adequada?
+    </div>
+
+    <div class="q-option wrong">
+      <div class="q-letter">A</div>
+      <div>Orientar a equipe por escrito sobre automutilação e anorexia, dispensando Luísa até que o comportamento piore e justifique encaminhamento ao CAPSi.</div>
+    </div>
+    <div class="q-option wrong">
+      <div class="q-letter">B</div>
+      <div>Encaminhar Luísa exclusivamente ao CAPSi e comunicar à família, encerrando o vínculo da adolescente com a ESF para evitar fragmentação do cuidado.</div>
+    </div>
+    <div class="q-option correct">
+      <div class="q-letter">C</div>
+      <div>Realizar avaliação psicológica de Luísa junto à equipe de eSF por meio de consulta conjunta; co-referenciar para o CAPSi dado o sofrimento psíquico significativo; manter o acompanhamento matricial da ESF com suporte do CAPSi para que a equipe amplie sua capacidade de cuidado com adolescentes em sofrimento.</div>
+    </div>
+    <div class="q-option wrong">
+      <div class="q-letter">D</div>
+      <div>Assumir integralmente o caso de Luísa na UBS, atendendo-a semanalmente, sem envolver o CAPSi pois o serviço especializado é indicado apenas para transtornos mentais com diagnóstico formal estabelecido.</div>
+    </div>
+
+    <div class="box accent" style="margin-top:3mm;">
+      <div class="box-title">Por que C está correto</div>
+      Este cenário é análogo ao da Q46/2025 (Nicole). A conduta correta articula <strong>três movimentos</strong>: (1) avaliação conjunta via consulta compartilhada; (2) co-referenciamento ao CAPSi, que é o serviço especializado para TM infanto-juvenil significativo; (3) matriciamento contínuo — o CAPSi apoia a eSF para que esta não perca o vínculo com a adolescente. B está errado por "encerrar o vínculo com a ESF" — a longitudinalidade da APS é um ativo, não um problema.
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">7 / 10</div>
+  </div>
+</div>
+
+<!-- P8 — Q03: ANÁLISE ÂNCORA -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">Q03 — Análise Âncora · Matriciamento, eMulti e Co-responsabilização</div>
+    </div>
+    <div class="header-badge">Aula 06</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">Questão 03 — Análise (Gab C)</div>
+
+    <div class="q-stem">
+      <div class="q-stem-label">Enunciado</div>
+      Sobre o apoio matricial em saúde mental e a atuação da Equipe Multiprofissional (eMulti) na Atenção Primária à Saúde, analise as afirmativas:
+    </div>
+
+    <div class="afirmativa errada">
+      <div class="af-num">I.</div>
+      <div style="flex:1;">O apoio matricial substitui o modelo de encaminhamento tradicional pela transferência integral da responsabilidade pelo caso ao especialista da eMulti, que assume o cuidado e libera a equipe de eSF para foco em demandas somáticas.</div>
+      <div class="af-verdict">ERRADA</div>
+    </div>
+
+    <div class="afirmativa certa">
+      <div class="af-num">II.</div>
+      <div style="flex:1;">A consulta conjunta é instrumento do apoio matricial que permite ao especialista da eMulti intervir diretamente com o usuário sem retirar a co-responsabilização da equipe de referência, que mantém o vínculo longitudinal com o paciente.</div>
+      <div class="af-verdict">CERTA</div>
+    </div>
+
+    <div class="afirmativa certa">
+      <div class="af-num">III.</div>
+      <div style="flex:1;">O psicólogo da eMulti atua nos eixos técnico-pedagógico (apoio à equipe de eSF por meio de discussão de casos e educação permanente) e clínico-assistencial (atendimentos diretos ao usuário compartilhados com a equipe de referência).</div>
+      <div class="af-verdict">CERTA</div>
+    </div>
+
+    <div class="afirmativa errada">
+      <div class="af-num">IV.</div>
+      <div style="flex:1;">A eMulti foi criada para substituir os Agentes Comunitários de Saúde (ACS) na execução de visitas domiciliares e atividades de campo, assumindo as funções territoriais que a eSF não consegue executar por restrição de tempo.</div>
+      <div class="af-verdict">ERRADA</div>
+    </div>
+
+    <div class="box dark" style="margin-top:2mm;">
+      <div class="box-title">Análise do Gabarito — C (II e III corretas)</div>
+      <strong>I — ERRADA:</strong> o matriciamento não transfere a responsabilidade — a co-responsabilização permanece com a eSF; o especialista apoia sem "roubar" o vínculo (base Q80/2024 e Q72/2025). <strong>II — CERTA:</strong> consulta conjunta = instrumento clínico-assistencial do matriciamento com co-responsabilização da eSF mantida. <strong>III — CERTA:</strong> os dois eixos (técnico-pedagógico e clínico-assistencial) de Gastão Wagner são âncoras fixas do assunto. <strong>IV — ERRADA:</strong> eMulti não substitui ACS — são funções distintas; ACS faz vínculo territorial comunitário; eMulti faz apoio técnico especializado às equipes.
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">8 / 10</div>
+  </div>
+</div>
+
+<!-- P9 — GABARITO -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">Gabarito Comentado — Aula 06</div>
+    </div>
+    <div class="header-badge">Aula 06</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">Gabarito Comentado</div>
+
+    <div class="gab-box">
+      <div class="gab-letter">B</div>
+      <div class="gab-info">
+        <strong>Q01 — Aplicação · Apoio matricial para Seu Benedito (eMulti + eSF)</strong><br>
+        Consulta conjunta (ação clínico-assistencial) + discussão de caso com equipe (técnico-pedagógica) + co-responsabilização da eSF mantida. Não assumir o caso (viola matriciamento) e não encaminhar ao CAPS sem critério de TM grave.
+      </div>
+    </div>
+
+    <div class="gab-box">
+      <div class="gab-letter">C</div>
+      <div class="gab-info">
+        <strong>Q02 — Aplicação · Luísa (automutilação + restrição alimentar) — modelo Q46/2025</strong><br>
+        Avaliação conjunta + co-referenciamento CAPSi + matriciamento da ESF pelo CAPSi. A ESF não perde o vínculo — o CAPSi apoia. Encerrar o vínculo com a ESF (B) é sempre erro.
+      </div>
+    </div>
+
+    <div class="gab-box">
+      <div class="gab-letter">C</div>
+      <div class="gab-info">
+        <strong>Q03 — Análise · II e III corretas</strong><br>
+        II: consulta conjunta = instrumento do matriciamento com co-responsabilização mantida. III: dois eixos do psicólogo na eMulti (técnico-pedagógico + clínico-assistencial). I errada (não transfere responsabilidade). IV errada (eMulti não substitui ACS).
+      </div>
+    </div>
+
+    <div class="section-title" style="margin-top:2mm;">Mapa de Erros — Padrão FGV Matriciamento/eMulti</div>
+
+    <table>
+      <tr>
+        <th>Distrator Frequente</th>
+        <th>Por que é erro</th>
+        <th>Correto</th>
+      </tr>
+      <tr>
+        <td>"Psicólogo assume o caso da eSF"</td>
+        <td>Co-responsabilização permanece com eSF</td>
+        <td>Apoio matricial: suporta sem substituir</td>
+      </tr>
+      <tr>
+        <td>"Qualquer sofrimento → CAPS"</td>
+        <td>APS resolve maioria dos casos de SM</td>
+        <td>Encaminhar apenas TM grave com critério</td>
+      </tr>
+      <tr>
+        <td>"eMulti = NASF com outro nome"</td>
+        <td>Estrutura e financiamento mudaram (Port. 2.979/2021)</td>
+        <td>eMulti: modelo atual; NASF descontinuado</td>
+      </tr>
+      <tr>
+        <td>"CAPSi encerra vínculo com a ESF"</td>
+        <td>A ESF mantém longitudinalidade com o usuário</td>
+        <td>CAPSi e ESF atuam em parceria matricial</td>
+      </tr>
+      <tr>
+        <td>"eMulti substitui ACS"</td>
+        <td>São funções distintas no modelo de APS</td>
+        <td>eMulti = apoio especializado; ACS = vínculo territorial</td>
+      </tr>
+    </table>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">9 / 10</div>
+  </div>
+</div>
+
+<!-- P10 — SÍNTESE FINAL -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">Síntese Final — Aula 06 · Âncoras de Alta Incidência FGV</div>
+    </div>
+    <div class="header-badge">Aula 06</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">10 Âncoras Absolutas — Aula 06</div>
+
+    <div class="sintese-item">
+      <div class="sintese-num">01</div>
+      <div><strong>Apoio matricial (Gastão Wagner):</strong> suporte técnico-pedagógico E clínico-assistencial às equipes de referência — não substitui a eSF, amplia sua capacidade.</div>
+    </div>
+    <div class="sintese-item">
+      <div class="sintese-num">02</div>
+      <div><strong>Co-responsabilização permanece com a eSF:</strong> no matriciamento, a equipe de referência mantém o vínculo longitudinal com o usuário — o especialista apoia sem "roubar o caso".</div>
+    </div>
+    <div class="sintese-item">
+      <div class="sintese-num">03</div>
+      <div><strong>Consulta conjunta:</strong> principal instrumento clínico-assistencial do matriciamento — especialista + profissional de referência atendem juntos o usuário.</div>
+    </div>
+    <div class="sintese-item">
+      <div class="sintese-num">04</div>
+      <div><strong>eMulti (Portaria 2.979/2021):</strong> substitui o NASF-AB; integra práticas interprofissionais na APS; não é serviço especializado independente dentro da UBS.</div>
+    </div>
+    <div class="sintese-item">
+      <div class="sintese-num">05</div>
+      <div><strong>Psicólogo na APS:</strong> três eixos simultâneos — clínico-assistencial (atendimento direto), técnico-pedagógico (apoio à equipe), coletivo/comunitário (promoção à saúde).</div>
+    </div>
+    <div class="sintese-item">
+      <div class="sintese-num">06</div>
+      <div><strong>APS não é triagem para o CAPS:</strong> a APS resolve a maioria dos casos de SM — encaminhar ao CAPS exige critério de TM grave, não apenas dificuldade da equipe.</div>
+    </div>
+    <div class="sintese-item">
+      <div class="sintese-num">07</div>
+      <div><strong>CAPSi matricia a APS:</strong> não apenas recebe encaminhamentos — apoia a eSF para que amplie sua capacidade de cuidado com crianças e adolescentes em sofrimento.</div>
+    </div>
+    <div class="sintese-item">
+      <div class="sintese-num">08</div>
+      <div><strong>Tecnologias de Merhy (Q26/2024):</strong> leve (relação/vínculo), leve-dura (saberes como PTS e matriciamento), dura (equipamentos/laudos) — o trabalho vivo em ato é o núcleo do cuidado.</div>
+    </div>
+    <div class="sintese-item">
+      <div class="sintese-num">09</div>
+      <div><strong>Integralidade na APS (Q29/2024):</strong> cuidar do sujeito além da queixa principal — toda a equipe acolhe a dimensão emocional, não só o especialista de SM.</div>
+    </div>
+    <div class="sintese-item">
+      <div class="sintese-num">10</div>
+      <div><strong>eMulti ≠ ACS:</strong> eMulti faz apoio técnico especializado às equipes; ACS faz vínculo comunitário territorial — funções distintas e complementares na lógica da APS.</div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">10 / 10</div>
+  </div>
+</div>
+
+</body>
+</html>

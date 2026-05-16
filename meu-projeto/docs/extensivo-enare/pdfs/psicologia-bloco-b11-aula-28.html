@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Psicologia — Bloco B11 Aula 28 | Extensivo ENARE 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap');
+
+  :root {
+    --creme: #F6F4ED;
+    --verde: #1F5C23;
+    --amarelo: #C6D834;
+    --escuro: #0C2B0E;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #d0d0d0;
+    font-family: 'Bricolage Grotesque', sans-serif;
+  }
+
+  .page {
+    width: 210mm;
+    height: 297mm;
+    background: var(--creme);
+    margin: 0 auto 12px;
+    position: relative;
+    overflow: hidden;
+    page-break-after: always;
+  }
+
+  .header {
+    background: var(--verde);
+    padding: 10px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .header-logo { display: flex; align-items: center; gap: 8px; }
+  .header-logo svg { width: 32px; height: 32px; }
+  .header-brand { display: flex; flex-direction: column; line-height: 1; }
+  .header-brand .marca {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: #fff;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+  }
+  .header-brand .tagline {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    color: var(--amarelo);
+    font-size: 7px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+  .header-info { text-align: right; }
+  .header-info .disciplina {
+    font-family: 'Barlow Condensed', sans-serif;
+    color: var(--amarelo);
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .header-info .aula-ref {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    color: rgba(255,255,255,0.7);
+    font-size: 8px;
+    letter-spacing: 0.5px;
+  }
+
+  .footer {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: var(--verde);
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 18px;
+  }
+  .footer span {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    color: rgba(255,255,255,0.6);
+    font-size: 7px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+  }
+  .footer .pg { color: var(--amarelo); font-weight: 400; }
+
+  .body {
+    padding: 14px 18px 30px;
+    height: calc(297mm - 52px - 22px);
+    overflow: hidden;
+  }
+
+  /* CAPA */
+  .capa-page { background: var(--verde); }
+  .capa-header {
+    background: var(--creme);
+    padding: 10px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .capa-header .marca {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: var(--verde);
+    font-size: 14px;
+  }
+  .capa-header .tagline {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    color: var(--verde);
+    font-size: 7.5px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .capa-body {
+    padding: 28px 24px 0;
+    display: flex;
+    flex-direction: column;
+    height: calc(297mm - 52px - 22px);
+  }
+  .capa-eyebrow {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    color: var(--amarelo);
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .capa-titulo {
+    font-family: 'Barlow Condensed', sans-serif;
+    color: #fff;
+    font-size: 52px;
+    line-height: 0.95;
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
+    margin-bottom: 6px;
+  }
+  .capa-titulo span { color: var(--amarelo); }
+  .capa-subtitulo {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 300;
+    color: rgba(255,255,255,0.65);
+    font-size: 12px;
+    letter-spacing: 0.3px;
+    margin-bottom: 22px;
+    line-height: 1.5;
+  }
+  .capa-badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+  .capa-badge {
+    background: rgba(198,216,52,0.15);
+    border: 1px solid var(--amarelo);
+    color: var(--amarelo);
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    font-size: 7.5px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+  }
+  .capa-divider { width: 40px; height: 3px; background: var(--amarelo); margin-bottom: 20px; }
+  .capa-topicos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .capa-topico { display: flex; align-items: flex-start; gap: 7px; }
+  .capa-topico-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    color: var(--amarelo);
+    font-size: 18px;
+    line-height: 1;
+    min-width: 18px;
+  }
+  .capa-topico-txt {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 400;
+    color: rgba(255,255,255,0.8);
+    font-size: 9.5px;
+    line-height: 1.4;
+  }
+  .capa-footer-strip {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: rgba(0,0,0,0.25);
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 18px;
+  }
+  .capa-footer-strip span {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    color: rgba(255,255,255,0.45);
+    font-size: 7px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+  }
+
+  /* TIPOGRAFIA */
+  .secao-titulo {
+    font-family: 'Barlow Condensed', sans-serif;
+    color: var(--verde);
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid var(--amarelo);
+    padding-bottom: 3px;
+    margin-bottom: 9px;
+    line-height: 1;
+  }
+  .subsecao {
+    font-family: 'Barlow Condensed', sans-serif;
+    color: var(--verde);
+    font-size: 12.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 7px 0 3px;
+  }
+  p {
+    font-size: 9px;
+    line-height: 1.55;
+    color: #1a1a1a;
+    margin-bottom: 4px;
+    font-weight: 400;
+  }
+  .destaque {
+    background: var(--amarelo);
+    color: var(--escuro);
+    font-weight: 600;
+    padding: 1px 4px;
+    border-radius: 2px;
+    font-size: 8.5px;
+  }
+  .alerta {
+    background: rgba(198,216,52,0.18);
+    border-left: 3px solid var(--amarelo);
+    padding: 5px 8px;
+    margin: 5px 0;
+    border-radius: 0 3px 3px 0;
+  }
+  .alerta p { margin: 0; font-size: 8.5px; }
+  .alerta strong { color: var(--verde); }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 5px 0;
+    font-size: 8px;
+  }
+  th {
+    background: var(--verde);
+    color: #fff;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 4px 6px;
+    text-align: left;
+  }
+  td {
+    padding: 3px 6px;
+    border-bottom: 1px solid rgba(31,92,35,0.12);
+    vertical-align: top;
+    line-height: 1.4;
+    color: #1a1a1a;
+  }
+  tr:nth-child(even) td { background: rgba(31,92,35,0.04); }
+
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 5px 0; }
+  .card {
+    background: rgba(31,92,35,0.06);
+    border: 1px solid rgba(31,92,35,0.15);
+    border-radius: 4px;
+    padding: 7px 8px;
+  }
+  .card-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    color: var(--verde);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    margin-bottom: 3px;
+  }
+  .card p { font-size: 8px; line-height: 1.5; }
+
+  .questao-header {
+    background: var(--verde);
+    color: #fff;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 4px 10px;
+    border-radius: 3px 3px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .questao-header .fonte {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    font-size: 7.5px;
+    color: var(--amarelo);
+    letter-spacing: 0.5px;
+  }
+  .questao-body {
+    border: 1px solid rgba(31,92,35,0.2);
+    border-top: none;
+    border-radius: 0 0 3px 3px;
+    padding: 7px 10px;
+    margin-bottom: 7px;
+  }
+  .questao-enunciado {
+    font-size: 8.5px;
+    line-height: 1.55;
+    color: #111;
+    margin-bottom: 5px;
+    font-weight: 500;
+  }
+  .alternativas { list-style: none; }
+  .alternativas li {
+    font-size: 8px;
+    line-height: 1.5;
+    padding: 2px 0;
+    color: #222;
+    display: flex;
+    gap: 5px;
+  }
+  .alternativas li .letra {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    color: var(--verde);
+    font-size: 9px;
+    min-width: 10px;
+  }
+  .alternativas li.correta .letra { color: var(--amarelo); }
+  .alternativas li.correta {
+    background: rgba(198,216,52,0.15);
+    border-left: 2px solid var(--amarelo);
+    padding-left: 4px;
+  }
+
+  .gabarito-box {
+    background: var(--verde);
+    border-radius: 4px;
+    padding: 8px 12px;
+    margin: 6px 0;
+  }
+  .gabarito-box .gab-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    color: var(--amarelo);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
+  .gabarito-box p { color: rgba(255,255,255,0.9); font-size: 8px; line-height: 1.55; }
+  .gabarito-box strong { color: var(--amarelo); }
+
+  .sintese-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 7px;
+    margin-top: 6px;
+  }
+  .sintese-item {
+    background: rgba(31,92,35,0.07);
+    border-left: 3px solid var(--verde);
+    padding: 5px 7px;
+    border-radius: 0 3px 3px 0;
+  }
+  .sintese-item .si-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    color: var(--verde);
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+  .sintese-item p { font-size: 7.5px; line-height: 1.5; }
+
+  ul.lista { padding-left: 14px; margin: 3px 0; }
+  ul.lista li {
+    font-size: 8.5px;
+    line-height: 1.55;
+    color: #1a1a1a;
+    margin-bottom: 1px;
+  }
+
+  @media print {
+    body { background: none; }
+    .page { margin: 0; box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ========== PÁGINA 1 — CAPA ========== -->
+<div class="page capa-page">
+  <div class="capa-header">
+    <div style="display:flex;align-items:center;gap:8px;">
+      <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#1F5C23"/>
+      </svg>
+      <div>
+        <div class="marca">Elite Treinamentos</div>
+        <div class="tagline">Extensivo ENARE 2026</div>
+      </div>
+    </div>
+    <div style="text-align:right;">
+      <div style="font-family:'Barlow Condensed',sans-serif;color:var(--verde);font-size:11px;letter-spacing:1px;text-transform:uppercase;">Bloco B11 · Aula 28</div>
+      <div style="font-family:'Space Grotesk',sans-serif;font-weight:300;color:#888;font-size:7.5px;letter-spacing:0.5px;">Psicologia</div>
+    </div>
+  </div>
+
+  <div class="capa-body">
+    <div class="capa-eyebrow">Bloco B11 · PSI-TEORIA · Aula 28 de 30</div>
+    <div class="capa-titulo">Psicologia<br>do <span>Desen-<br>volvi-<br>mento</span></div>
+    <div class="capa-subtitulo">Piaget, Vygotsky, Erikson e Winnicott:<br>estágios, mediação e aplicações na saúde</div>
+
+    <div class="capa-badge-row">
+      <div class="capa-badge">PSI-TEORIA</div>
+      <div class="capa-badge">Piaget · Vygotsky</div>
+      <div class="capa-badge">Erikson · Winnicott</div>
+      <div class="capa-badge">ZDP · Estágios · Desenvolvimento</div>
+    </div>
+
+    <div class="capa-divider"></div>
+
+    <div class="capa-topicos">
+      <div class="capa-topico">
+        <div class="capa-topico-num">01</div>
+        <div class="capa-topico-txt">Piaget: 4 estágios do desenvolvimento cognitivo</div>
+      </div>
+      <div class="capa-topico">
+        <div class="capa-topico-num">02</div>
+        <div class="capa-topico-txt">Vygotsky: ZDP, mediação simbólica e aprendizagem social</div>
+      </div>
+      <div class="capa-topico">
+        <div class="capa-topico-num">03</div>
+        <div class="capa-topico-txt">Erikson: 8 estágios psicossociais e crises do ciclo vital</div>
+      </div>
+      <div class="capa-topico">
+        <div class="capa-topico-num">04</div>
+        <div class="capa-topico-txt">Winnicott: holding, objeto transicional e espaço potencial</div>
+      </div>
+      <div class="capa-topico">
+        <div class="capa-topico-num">05</div>
+        <div class="capa-topico-txt">Comparativo entre as teorias: pontos de convergência</div>
+      </div>
+      <div class="capa-topico">
+        <div class="capa-topico-num">06</div>
+        <div class="capa-topico-txt">Aplicações na saúde: SUS, RAPS, CAPS infanto-juvenil</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="capa-footer-strip">
+    <span>Extensivo ENARE 2026</span>
+    <span>Elite Treinamentos em Saúde</span>
+    <span>Página 1 de 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 2 — PIAGET ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Psicologia — PSI-TEORIA</div>
+      <div class="aula-ref">Bloco B11 · Aula 28 · Psicologia do Desenvolvimento</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="secao-titulo">Piaget — Desenvolvimento Cognitivo</div>
+
+    <p>Jean Piaget (1896–1980) propôs que o desenvolvimento cognitivo ocorre por meio de <strong>estágios invariantes e universais</strong>, impulsionados por dois mecanismos: <strong>assimilação</strong> (incorporar nova informação aos esquemas existentes) e <strong>acomodação</strong> (modificar esquemas ante informação incompatível). O <strong>equilíbrio</strong> entre ambos promove o avanço cognitivo.</p>
+
+    <div class="subsecao">4 Estágios do Desenvolvimento Cognitivo</div>
+    <table>
+      <tr>
+        <th>Estágio</th>
+        <th>Faixa etária</th>
+        <th>Características centrais</th>
+        <th>Marco-chave</th>
+      </tr>
+      <tr>
+        <td><strong>Sensório-motor</strong></td>
+        <td>0 – 2 anos</td>
+        <td>Conhecimento via ação sensorial e motora. Inteligência prática. Sem representação mental simbólica inicial.</td>
+        <td><strong>Permanência do objeto</strong> (~8–12 meses): o objeto existe mesmo fora do campo visual.</td>
+      </tr>
+      <tr>
+        <td><strong>Pré-operatório</strong></td>
+        <td>2 – 7 anos</td>
+        <td>Pensamento simbólico, linguagem, jogo simbólico. Egocentrismo cognitivo, animismo, centração, irreversibilidade.</td>
+        <td><strong>Função semiótica</strong>: capacidade de representar o real por símbolos e signos. Ausência de conservação.</td>
+      </tr>
+      <tr>
+        <td><strong>Operatório concreto</strong></td>
+        <td>7 – 12 anos</td>
+        <td>Operações lógicas sobre objetos concretos. Conservação, classificação, seriação, reversibilidade.</td>
+        <td><strong>Conservação</strong> (quantidade, volume, massa): a transformação não altera a substância.</td>
+      </tr>
+      <tr>
+        <td><strong>Operatório formal</strong></td>
+        <td>12 anos em diante</td>
+        <td>Pensamento hipotético-dedutivo, raciocínio abstrato, capacidade de operar sobre possibilidades.</td>
+        <td><strong>Raciocínio hipotético-dedutivo</strong>: formula hipóteses e as testa sistematicamente.</td>
+      </tr>
+    </table>
+
+    <div class="subsecao">Conceitos-Chave para Concurso</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Egocentrismo (Pré-operatório)</div>
+        <p>Incapacidade de adotar o ponto de vista do outro — NÃO é egoísmo moral. Evidenciado no Teste das Três Montanhas: a criança acredita que os outros veem o que ela vê.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Conservação (Operatório Concreto)</div>
+        <p>Compreensão de que a quantidade não se altera com a mudança de forma. FGV testa: criança que falha na conservação está no estágio pré-operatório; que passa, no operatório concreto.</p>
+      </div>
+    </div>
+
+    <div class="alerta" style="margin-top:5px;">
+      <p><strong>Pegadinha FGV — Piaget:</strong> Os estágios são <em>universais e invariantes na ordem</em>, mas a idade é aproximada e influenciada pela cultura/experiência. FGV pode afirmar que a ordem pode variar — alternativa ERRADA. Piaget também NÃO negava o papel social, mas priorizava a maturação biológica; contraste com Vygotsky, que prioriza a cultura.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>PSI-TEORIA · Psicologia do Desenvolvimento</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">2 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 3 — VYGOTSKY ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Psicologia — PSI-TEORIA</div>
+      <div class="aula-ref">Bloco B11 · Aula 28 · Psicologia do Desenvolvimento</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="secao-titulo">Vygotsky — Desenvolvimento Sociocultural</div>
+
+    <p>Lev Vygotsky (1896–1934) propôs uma teoria <strong>histórico-cultural</strong>: o desenvolvimento cognitivo é fundamentalmente social — mediado por instrumentos (ferramentas físicas) e signos (linguagem, sistemas simbólicos) e construído na interação com o outro. O aprendizado precede e impulsiona o desenvolvimento.</p>
+
+    <div class="subsecao">Zona de Desenvolvimento Proximal (ZDP)</div>
+    <p>A <strong>ZDP</strong> é a distância entre o <em>Nível de Desenvolvimento Real</em> (o que a criança faz sozinha) e o <em>Nível de Desenvolvimento Potencial</em> (o que ela faz com ajuda de um adulto ou par mais capaz).</p>
+
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Nível de Desenvolvimento Real</div>
+        <p>Funções já amadurecidas. O que a criança realiza de forma <strong>independente</strong> e autônoma. Resultado de ciclos de desenvolvimento já completados. É o ponto de partida da avaliação do desenvolvimento.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Nível de Desenvolvimento Potencial</div>
+        <p>O que a criança realiza <strong>com auxílio</strong> de alguém mais experiente. Representa funções em processo de maturação — o futuro próximo do desenvolvimento. A intervenção educativa/terapêutica deve atuar nesta zona.</p>
+      </div>
+    </div>
+
+    <div class="subsecao">Conceitos Centrais</div>
+    <table>
+      <tr>
+        <th>Conceito</th>
+        <th>Definição</th>
+        <th>Aplicação na saúde</th>
+      </tr>
+      <tr>
+        <td><strong>Mediação</strong></td>
+        <td>O humano não age diretamente sobre o mundo — usa <em>instrumentos</em> (ferramentas) e <em>signos</em> (linguagem, escrita) como mediadores. O psicólogo/cuidador é mediador humano.</td>
+        <td>No CAPS IJ, o terapeuta é mediador que estrutura interações para promover desenvolvimento de crianças e adolescentes.</td>
+      </tr>
+      <tr>
+        <td><strong>Internalização</strong></td>
+        <td>Processo pelo qual funções que surgem no plano interpsicológico (entre pessoas) tornam-se intrapsicológicas (internas ao sujeito). "O que é social torna-se individual."</td>
+        <td>Regulação emocional aprendida na relação com cuidadores torna-se autorregulação interna.</td>
+      </tr>
+      <tr>
+        <td><strong>Linguagem e pensamento</strong></td>
+        <td>Inicialmente independentes (0–2 anos), convergem (~2 anos). A fala egocêntrica (para si mesma) não é regressão — é instrumento de planejamento que se internaliza em fala interior.</td>
+        <td>Intervenções com linguagem (narrativa, escuta ativa) como mediadores do processo terapêutico.</td>
+      </tr>
+      <tr>
+        <td><strong>Andaimes (scaffolding)</strong></td>
+        <td>Suporte temporário oferecido pelo mais experiente, graduado conforme a competência cresce — retirado progressivamente à medida que o aprendiz ganha autonomia.</td>
+        <td>Psicólogo no CAPS retira gradualmente o suporte à medida que o usuário desenvolve autonomia.</td>
+      </tr>
+    </table>
+
+    <div class="alerta">
+      <p><strong>Piaget × Vygotsky no ENARE:</strong> Piaget → biológico/maturacional, estágios universais, aprendizado segue o desenvolvimento. Vygotsky → social/cultural, ZDP, o aprendizado <em>precede</em> e impulsiona o desenvolvimento. FGV costuma contrapor os dois — saiba qual afirmação pertence a quem.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>PSI-TEORIA · Psicologia do Desenvolvimento</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">3 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 4 — ERIKSON ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Psicologia — PSI-TEORIA</div>
+      <div class="aula-ref">Bloco B11 · Aula 28 · Psicologia do Desenvolvimento</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="secao-titulo">Erikson — Estágios Psicossociais</div>
+
+    <p>Erik Erikson (1902–1994) expandiu Freud para o ciclo vital completo. Propôs <strong>8 estágios psicossociais</strong>: cada estágio apresenta uma <em>crise</em> (conflito entre duas forças opostas) cuja resolução favorável gera uma <em>virtude</em> (força do ego). Crises não resolvidas comprometem estágios posteriores.</p>
+
+    <table>
+      <tr>
+        <th>Estágio</th>
+        <th>Fase</th>
+        <th>Crise psicossocial</th>
+        <th>Virtude gerada</th>
+        <th>Relação-chave</th>
+      </tr>
+      <tr>
+        <td><strong>1</strong></td>
+        <td>0–18 meses</td>
+        <td>Confiança básica × Desconfiança</td>
+        <td>Esperança</td>
+        <td>Mãe / cuidador primário</td>
+      </tr>
+      <tr>
+        <td><strong>2</strong></td>
+        <td>18m–3 anos</td>
+        <td>Autonomia × Vergonha e Dúvida</td>
+        <td>Vontade</td>
+        <td>Pais</td>
+      </tr>
+      <tr>
+        <td><strong>3</strong></td>
+        <td>3–6 anos</td>
+        <td>Iniciativa × Culpa</td>
+        <td>Propósito</td>
+        <td>Família nuclear</td>
+      </tr>
+      <tr>
+        <td><strong>4</strong></td>
+        <td>6–12 anos</td>
+        <td>Diligência (Indústria) × Inferioridade</td>
+        <td>Competência</td>
+        <td>Escola e pares</td>
+      </tr>
+      <tr>
+        <td><strong>5</strong></td>
+        <td>12–20 anos</td>
+        <td>Identidade × Confusão de papel</td>
+        <td>Fidelidade</td>
+        <td>Grupo de pares</td>
+      </tr>
+      <tr>
+        <td><strong>6</strong></td>
+        <td>20–40 anos</td>
+        <td>Intimidade × Isolamento</td>
+        <td>Amor</td>
+        <td>Parceiros íntimos / amizades</td>
+      </tr>
+      <tr>
+        <td><strong>7</strong></td>
+        <td>40–65 anos</td>
+        <td>Generatividade × Estagnação</td>
+        <td>Cuidado</td>
+        <td>Família ampliada / trabalho</td>
+      </tr>
+      <tr>
+        <td><strong>8</strong></td>
+        <td>65+ anos</td>
+        <td>Integridade do ego × Desespero</td>
+        <td>Sabedoria</td>
+        <td>Humanidade</td>
+      </tr>
+    </table>
+
+    <div class="subsecao">Aplicações no Contexto da Saúde</div>
+    <ul class="lista">
+      <li><strong>Estágio 1 (Confiança × Desconfiança):</strong> base do apego — cuidado sensível e consistente do cuidador. Relacionado à Winnicott (holding). Desconfiança básica → dificuldade de vínculos terapêuticos</li>
+      <li><strong>Estágio 5 (Identidade × Confusão):</strong> adolescência — crise de identidade normal. CAPS IJ: adolescentes em sofrimento mental frequentemente apresentam confusão de papel agravada. Psicólogo apoia construção identitária.</li>
+      <li><strong>Estágio 7 (Generatividade × Estagnação):</strong> adulto maduro — crise relevante em saúde do trabalhador (burnout = expressão de estagnação). Psicólogo promove ressignificação do trabalho e das relações.</li>
+      <li><strong>Estágio 8 (Integridade × Desespero):</strong> idoso — cuidados paliativos, revisão de vida, elaboração do luto antecipatório. Psicólogo apoia a integração da trajetória vital.</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Atenção FGV:</strong> Erikson é <em>psicossocial</em> (ego + sociedade), NÃO exclusivamente psicanalítico. A crise é <em>normativa</em> (esperada, não patológica). Resolução negativa NÃO impede progressão de estágio, mas deixa sequelas no ego. FGV testa a diferença entre crise eriksoniana (normativa) e crise psiquiátrica (patológica).</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>PSI-TEORIA · Psicologia do Desenvolvimento</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">4 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 5 — WINNICOTT + COMPARATIVO ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Psicologia — PSI-TEORIA</div>
+      <div class="aula-ref">Bloco B11 · Aula 28 · Psicologia do Desenvolvimento</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="secao-titulo">Winnicott — Desenvolvimento Emocional Primitivo</div>
+
+    <p>Donald Winnicott (1896–1971), pediatra e psicanalista britânico, focou no <strong>desenvolvimento emocional primitivo</strong> e na relação mãe-bebê como matriz do desenvolvimento psíquico saudável. Sua perspectiva influencia o trabalho clínico com bebês, crianças, adolescentes e contextos de saúde mental.</p>
+
+    <div class="subsecao">Conceitos Fundamentais</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Mãe Suficientemente Boa</div>
+        <p>Não a mãe perfeita — a mãe que oferece cuidado <em>suficientemente bom</em>: atende às necessidades do bebê no início com alta sintonia (ilusão de onipotência), e vai gradualmente frustrando de forma tolerável (desilusão). A ilusão é necessária; a desilusão gradual, saudável.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Holding (Sustentação)</div>
+        <p>Cuidado físico e psíquico que sustenta o bebê — inclui o manejo corporal e a presença confiável do ambiente. Base da confiança básica. Falhas graves no holding → ansiedades primitivas (aniquilamento, desintegração). Análogo ao estágio 1 de Erikson.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Objeto Transicional</div>
+        <p>Primeiro objeto "não-eu" (fralda, ursinho): nem totalmente interno nem externo — ocupa a zona intermediária. Função: ajudar a criança a lidar com a separação da mãe. Protótipo do uso criativo dos objetos e da cultura.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Espaço Potencial / Transicional</div>
+        <p>Área de experiência entre o mundo interno (subjetivo) e externo (objetivo). Território do brincar, da arte, da criatividade e, na vida adulta, da cultura e da psicoterapia. "O brincar é em si uma terapia."</p>
+      </div>
+    </div>
+
+    <div class="subsecao" style="margin-top:6px;">Comparativo das Teorias</div>
+    <table>
+      <tr>
+        <th>Dimensão</th>
+        <th>Piaget</th>
+        <th>Vygotsky</th>
+        <th>Erikson</th>
+        <th>Winnicott</th>
+      </tr>
+      <tr>
+        <td><strong>Ênfase</strong></td>
+        <td>Cognitiva/biológica</td>
+        <td>Social/cultural</td>
+        <td>Psicossocial/ego</td>
+        <td>Emocional/relacional</td>
+      </tr>
+      <tr>
+        <td><strong>Motor do desenvolvimento</strong></td>
+        <td>Maturação + equilibração</td>
+        <td>Interação social + linguagem</td>
+        <td>Crises normativas</td>
+        <td>Relação mãe-bebê + ambiente</td>
+      </tr>
+      <tr>
+        <td><strong>Papel do outro</strong></td>
+        <td>Secundário</td>
+        <td>Central (ZDP)</td>
+        <td>Importante (relações-chave)</td>
+        <td>Fundamental (holding)</td>
+      </tr>
+      <tr>
+        <td><strong>Ciclo coberto</strong></td>
+        <td>Infância → adolescência</td>
+        <td>Infância → adolescência</td>
+        <td>Nascimento → velhice</td>
+        <td>Primeiros anos de vida</td>
+      </tr>
+    </table>
+
+    <div class="alerta" style="margin-top:5px;">
+      <p><strong>Winnicott no ENARE:</strong> Falha grave no holding → base de transtornos graves de personalidade e psicose. Objeto transicional é fenômeno saudável — NÃO é apego patológico nem sinal de transtorno. Espaço potencial = lugar da psicoterapia: o terapeuta cria esse espaço para o paciente brincar/criar significados.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>PSI-TEORIA · Psicologia do Desenvolvimento</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">5 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 6 — QUESTÃO 01 ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Psicologia — PSI-TEORIA</div>
+      <div class="aula-ref">Bloco B11 · Aula 28 · Questões ENARE</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="secao-titulo">Questões — Estilo ENARE/FGV</div>
+
+    <div class="questao-header">
+      <span>Questão 01</span>
+      <span class="fonte">Piaget × Vygotsky · ZDP</span>
+    </div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Uma psicóloga escolar observa que uma criança de 8 anos não consegue resolver determinado problema matemático de forma autônoma, mas o resolve corretamente quando orientada pela professora com perguntas-guia. Com base na teoria de Vygotsky, a situação descrita ilustra qual conceito e qual implicação pedagógica dela decorre?</p>
+      <ul class="alternativas">
+        <li>
+          <span class="letra">A</span>
+          <span>Equilíbrio cognitivo — a criança está no estágio operatório concreto e a professora oferece a acomodação necessária ao novo esquema.</span>
+        </li>
+        <li>
+          <span class="letra">B</span>
+          <span>Egocentrismo cognitivo — a criança precisa de mediação externa porque ainda não superou o pensamento centrado em si mesma.</span>
+        </li>
+        <li class="correta">
+          <span class="letra">C</span>
+          <span>Zona de Desenvolvimento Proximal — a intervenção pedagógica deve atuar nessa zona, pois é onde o aprendizado impulsiona o desenvolvimento.</span>
+        </li>
+        <li>
+          <span class="letra">D</span>
+          <span>Nível de Desenvolvimento Real — a resolução com ajuda indica que o problema está dentro do repertório consolidado da criança.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — C</div>
+      <p><strong>Zona de Desenvolvimento Proximal (ZDP):</strong> distância entre o que a criança faz sozinha (nível real: falha no problema) e o que faz com ajuda (nível potencial: resolve com as perguntas-guia). Vygotsky defende que a intervenção pedagógica/terapêutica deve atuar na ZDP — é nela que o aprendizado antecede e promove o desenvolvimento.</p>
+      <p><strong>Por que as outras erram:</strong> A = equilíbrio/acomodação são de Piaget, não Vygotsky · B = egocentrismo é de Piaget (pré-operatório, 2–7 anos); aos 8 anos a criança já o superou · D = nível real é o que a criança faz <em>sem ajuda</em>; com ajuda = nível potencial, dentro da ZDP.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>PSI-TEORIA · Psicologia do Desenvolvimento</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">6 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 7 — QUESTÃO 02 ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Psicologia — PSI-TEORIA</div>
+      <div class="aula-ref">Bloco B11 · Aula 28 · Questões ENARE</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="questao-header">
+      <span>Questão 02</span>
+      <span class="fonte">Erikson · Estágios Psicossociais</span>
+    </div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Um adolescente de 16 anos atendido no CAPS Infanto-Juvenil apresenta intensa dificuldade em responder "quem sou eu", experimenta diferentes identidades de forma inconsistente, tem conflito com família e pares, e interrompe projetos escolares repetidamente. A psicóloga reconhece que esse quadro, embora cause sofrimento, pode ser compreendido como expressão de uma crise normativa do desenvolvimento. De acordo com a teoria eriksoniana, a crise vivenciada por esse adolescente corresponde a:</p>
+      <ul class="alternativas">
+        <li>
+          <span class="letra">A</span>
+          <span>Generatividade versus Estagnação — fase de questionamento sobre o legado deixado ao mundo.</span>
+        </li>
+        <li>
+          <span class="letra">B</span>
+          <span>Iniciativa versus Culpa — crise na qual a criança experimenta papéis e enfrenta sanções morais do superego.</span>
+        </li>
+        <li>
+          <span class="letra">C</span>
+          <span>Intimidade versus Isolamento — dificuldade de estabelecer vínculos afetivos profundos e compromissos relacionais.</span>
+        </li>
+        <li class="correta">
+          <span class="letra">D</span>
+          <span>Identidade versus Confusão de papel — crise normativa da adolescência, cujo desfecho favorável gera a virtude da fidelidade.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — D</div>
+      <p><strong>Estágio 5 de Erikson — Identidade × Confusão de papel (12–20 anos):</strong> a crise central da adolescência. O adolescente experimenta diferentes papéis sociais em busca de identidade coerente. A confusão de papel — dificuldade de integrar os papéis experimentados — é o polo negativo. Resolução favorável gera <strong>fidelidade</strong> (capacidade de compromisso com valores e ideais). Crise normativa ≠ patologia.</p>
+      <p><strong>Por que as outras erram:</strong> A = estágio 7 (40–65 anos), adulto maduro · B = estágio 3 (3–6 anos), pré-escolar · C = estágio 6 (20–40 anos), adulto jovem — a intimidade vem após a identidade ser consolidada.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>PSI-TEORIA · Psicologia do Desenvolvimento</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">7 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 8 — QUESTÃO 03 ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Psicologia — PSI-TEORIA</div>
+      <div class="aula-ref">Bloco B11 · Aula 28 · Questões ENARE</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="questao-header">
+      <span>Questão 03</span>
+      <span class="fonte">Winnicott · Objeto Transicional · Holding</span>
+    </div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Uma criança de 2 anos, sempre que a mãe se ausenta, agarra fortemente um ursinho de pelúcia e acalma-se. Os pais relatam ao pediatra que a criança não consegue dormir sem o brinquedo. Preocupados, questionam se isso é sinal de transtorno. A psicóloga da UBS orienta a família com base na teoria do desenvolvimento emocional de Winnicott. De acordo com essa teoria, a conduta da criança deve ser compreendida como:</p>
+      <ul class="alternativas">
+        <li>
+          <span class="letra">A</span>
+          <span>Apego ansioso inseguro — a criança utiliza o objeto para compensar a falha de sintonização da mãe ao longo do primeiro ano de vida.</span>
+        </li>
+        <li>
+          <span class="letra">B</span>
+          <span>Regressão defensiva — a criança recua ao estágio sensório-motor ante a ansiedade de separação, utilizando a experiência tátil como regulação.</span>
+        </li>
+        <li class="correta">
+          <span class="letra">C</span>
+          <span>Uso do objeto transicional — fenômeno saudável que ocupa a área intermediária entre o mundo interno e externo, auxiliando a criança a tolerar a ausência da mãe.</span>
+        </li>
+        <li>
+          <span class="letra">D</span>
+          <span>Fixação no estágio oral — o apego ao objeto material indica persistência de necessidades orais não satisfeitas na fase de dependência absoluta.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — C</div>
+      <p><strong>Objeto transicional (Winnicott):</strong> o ursinho é o primeiro "não-eu" que a criança usa para lidar com a separação da mãe — ocupa o espaço potencial entre o mundo interno (a mãe internalizada) e o mundo externo (a mãe ausente). É fenômeno <strong>saudável e esperado</strong>, não patológico. Indica que a criança está processando a separação de forma criativa.</p>
+      <p><strong>Por que as outras erram:</strong> A = apego ansioso é conceito de Bowlby/Ainsworth, não Winnicott; além disso, o uso do objeto transicional é saudável por definição · B = regressão e estágios sensório-motores são de Piaget e Freud, não de Winnicott · D = fixação oral é conceito freudiano clássico, não winnicottiano; Winnicott distingue dependência absoluta/relativa de fixação.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>PSI-TEORIA · Psicologia do Desenvolvimento</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">8 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 9 — GABARITO COMENTADO INTEGRADO ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Psicologia — PSI-TEORIA</div>
+      <div class="aula-ref">Bloco B11 · Aula 28 · Gabarito Integrado</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="secao-titulo">Gabarito Comentado — Análise Integrada</div>
+
+    <table>
+      <tr>
+        <th>Questão</th>
+        <th>Gabarito</th>
+        <th>Tema</th>
+        <th>Conceito-Chave</th>
+      </tr>
+      <tr>
+        <td><strong>01</strong></td>
+        <td><span class="destaque">C</span></td>
+        <td>Vygotsky — ZDP</td>
+        <td>ZDP = potencial com ajuda; intervenção deve atuar nessa zona</td>
+      </tr>
+      <tr>
+        <td><strong>02</strong></td>
+        <td><span class="destaque">D</span></td>
+        <td>Erikson — Estágio 5</td>
+        <td>Identidade × Confusão de papel; adolescência; virtude = fidelidade</td>
+      </tr>
+      <tr>
+        <td><strong>03</strong></td>
+        <td><span class="destaque">C</span></td>
+        <td>Winnicott — Objeto Transicional</td>
+        <td>Fenômeno saudável; espaço intermediário; separação materna</td>
+      </tr>
+    </table>
+
+    <div class="subsecao" style="margin-top:8px;">Armadilhas Mais Cobradas pelo ENARE/FGV</div>
+
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Armadilha 1 — Confundir Piaget e Vygotsky</div>
+        <p>FGV atribui conceitos de um ao outro. Regra: Piaget = biológico, estágios universais, aprendizado segue maturação. Vygotsky = social, ZDP, aprendizado precede e impulsiona desenvolvimento. Egocentrismo e conservação = Piaget. ZDP e mediação = Vygotsky.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Armadilha 2 — Erikson e Faixas Etárias</div>
+        <p>FGV apresenta crise e pede a faixa ou apresenta faixa e pede a crise. Decorar: adolescência (12–20) = Identidade × Confusão. Adulto jovem (20–40) = Intimidade × Isolamento. Adulto maduro (40–65) = Generatividade × Estagnação. Velhice (65+) = Integridade × Desespero.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Armadilha 3 — Objeto Transicional como Patologia</div>
+        <p>FGV descreve comportamento saudável e oferece alternativas patológicas. Objeto transicional = saudável, esperado, auxiliar do desenvolvimento. NÃO é apego patológico, NÃO é regressão, NÃO é fixação oral. Winnicott destaca: o problema ocorre quando o objeto <em>não pode</em> ser usufruído (ambiente falhou).</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Armadilha 4 — Crise Normativa × Patologia</div>
+        <p>Erikson: crise normativa (esperada no ciclo vital) ≠ transtorno psiquiátrico. A confusão de identidade na adolescência é crise normativa, não diagnóstico. FGV pode apresentar quadro e pedir diagnóstico DSM — lembre que Erikson descreve fenômenos do desenvolvimento normal, não categorias diagnósticas.</p>
+      </div>
+    </div>
+
+    <div class="alerta" style="margin-top:6px;">
+      <p><strong>Relação entre os autores:</strong> Erikson (Estágio 1: Confiança × Desconfiança) ↔ Winnicott (holding adequado → confiança no ambiente). Vygotsky (ZDP, andaime) ↔ Winnicott (espaço potencial: terapeuta cria zona de suporte gradual). Piaget (operatório formal) ↔ Erikson (Estágio 5: crise de identidade emerge quando o adolescente pode raciocinar hipoteticamente sobre quem poderia ser).</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>PSI-TEORIA · Psicologia do Desenvolvimento</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">9 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 10 — SÍNTESE ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Psicologia — PSI-TEORIA</div>
+      <div class="aula-ref">Bloco B11 · Aula 28 · Síntese</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="secao-titulo">Síntese — Psicologia do Desenvolvimento</div>
+
+    <div class="sintese-grid">
+      <div class="sintese-item">
+        <div class="si-label">Piaget — Estágios Cognitivos</div>
+        <p>4 estágios universais e invariantes: <strong>sensório-motor</strong> (0–2a, permanência do objeto) → <strong>pré-operatório</strong> (2–7a, egocentrismo, ausência de conservação) → <strong>operatório concreto</strong> (7–12a, conservação, reversibilidade) → <strong>operatório formal</strong> (12+, hipotético-dedutivo). Motor: maturação + equilibração.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Vygotsky — Sociocultural</div>
+        <p>ZDP = distância entre nível real (faz sozinho) e potencial (faz com ajuda). Aprendizado <em>precede</em> desenvolvimento. Mediação por instrumentos e signos. Internalização: interpsicológico → intrapsicológico. Andaimes: suporte graduado e retirado progressivamente. Motor: interação social + linguagem.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Erikson — 8 Estágios Psicossociais</div>
+        <p>Ciclo vital completo. Crise normativa em cada estágio. Mais cobrados: E1 Confiança × Desconfiança (0–18m, esperança) · E5 Identidade × Confusão (12–20a, fidelidade) · E7 Generatividade × Estagnação (40–65a, cuidado) · E8 Integridade × Desespero (65+, sabedoria). Resolução favorável = virtude do ego.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Winnicott — Emocional Primitivo</div>
+        <p>Mãe suficientemente boa: ilusão → desilusão gradual. Holding = sustentação física e psíquica (falha grave → ansiedades primitivas). Objeto transicional = saudável, espaço intermediário, lida com separação. Espaço potencial = território do brincar, da criatividade e da psicoterapia.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Convergências e Aplicações</div>
+        <p>Todos destacam a <strong>relação</strong> como central ao desenvolvimento saudável. No SUS: Vygotsky fundamenta práticas pedagógicas e de grupo no CAPS · Erikson orienta compreensão das crises do ciclo vital (infanto-juvenil, adulto, idoso) · Winnicott embasa cuidados com primeira infância e saúde mental materna.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Próxima Aula</div>
+        <p><strong>Aula 29 — PSI-TEORIA:</strong> Abordagens Psicoterapêuticas — Psicanálise (Freud, Lacan), TCC (Beck, Ellis), Humanismo (Rogers), Comportamental (Skinner, Pavlov) e Gestalt (Perls): fundamentos, técnicas e aplicações no SUS.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>PSI-TEORIA · Psicologia do Desenvolvimento</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">10 / 10</span>
+  </div>
+</div>
+
+</body>
+</html>

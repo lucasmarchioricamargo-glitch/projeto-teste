@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Psicologia B11 — Aula 15 | PSI-AVALIA: Avaliação Psicológica</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #d0d0d0; font-family: 'Bricolage Grotesque', sans-serif; }
+  .page { width: 210mm; height: 297mm; background: #F6F4ED; margin: 8mm auto; position: relative; overflow: hidden; display: flex; flex-direction: column; }
+  @media print { body { background: none; margin: 0; } .page { margin: 0; page-break-after: always; box-shadow: none; } }
+  @page { size: A4; margin: 0; }
+
+  .page-header { background: #1F5C23; padding: 4mm 6mm; display: flex; align-items: center; gap: 4mm; flex-shrink: 0; }
+  .logo-svg { width: 10mm; height: 10mm; flex-shrink: 0; }
+  .header-text { flex: 1; }
+  .header-course { font-family: 'Playfair Display', serif; font-style: italic; color: #C6D834; font-size: 6.5pt; letter-spacing: 0.03em; }
+  .header-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: #F6F4ED; font-size: 11pt; line-height: 1; text-transform: uppercase; letter-spacing: 0.04em; }
+  .header-badge { background: #C6D834; color: #1F5C23; font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 7pt; padding: 1mm 3mm; border-radius: 2mm; text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap; }
+
+  .page-footer { background: #1F5C23; padding: 2mm 6mm; display: flex; justify-content: space-between; align-items: center; flex-shrink: 0; }
+  .footer-left { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: #C6D834; font-size: 6pt; letter-spacing: 0.05em; text-transform: uppercase; }
+  .footer-right { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: #F6F4ED; font-size: 8pt; letter-spacing: 0.06em; }
+
+  .page-body { flex: 1; padding: 5mm 7mm; display: flex; flex-direction: column; gap: 3mm; overflow: hidden; }
+
+  .section-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 13pt; color: #1F5C23; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 0.8mm solid #C6D834; padding-bottom: 1.5mm; margin-bottom: 1mm; }
+
+  .box { background: #fff; border-left: 1.2mm solid #1F5C23; border-radius: 1mm; padding: 3mm 4mm; font-size: 7.8pt; line-height: 1.45; color: #222; }
+  .box.accent { border-left-color: #C6D834; }
+  .box.alert  { border-left-color: #c0392b; background: #fff8f7; }
+  .box.dark   { background: #1F5C23; color: #F6F4ED; border-left-color: #C6D834; }
+  .box-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; color: #1F5C23; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 1.5mm; }
+  .box.dark .box-title  { color: #C6D834; }
+  .box.alert .box-title { color: #c0392b; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 7.5pt; }
+  th { background: #1F5C23; color: #F6F4ED; font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 8pt; text-transform: uppercase; padding: 1.5mm 2.5mm; text-align: left; letter-spacing: 0.03em; }
+  td { padding: 1.5mm 2.5mm; border-bottom: 0.3mm solid #e0ddd5; vertical-align: top; color: #222; line-height: 1.4; }
+  tr:nth-child(even) td { background: #f4f2eb; }
+  td strong { color: #1F5C23; }
+
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5mm; }
+
+  .afirmativa { display: flex; gap: 2mm; padding: 2mm 3mm; border-radius: 1mm; margin-bottom: 1.5mm; font-size: 7.8pt; line-height: 1.45; align-items: flex-start; }
+  .afirmativa.certa  { background: #f0f8f0; border-left: 1mm solid #1F5C23; }
+  .afirmativa.errada { background: #fff8f7; border-left: 1mm solid #c0392b; }
+  .af-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; min-width: 5mm; flex-shrink: 0; }
+  .afirmativa.certa  .af-num { color: #1F5C23; }
+  .afirmativa.errada .af-num { color: #c0392b; }
+  .af-verdict { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 8pt; padding: 0.3mm 2mm; border-radius: 0.8mm; flex-shrink: 0; }
+  .afirmativa.certa  .af-verdict { background: #1F5C23; color: #F6F4ED; }
+  .afirmativa.errada .af-verdict { background: #c0392b; color: #fff; }
+
+  .q-stem { background: #fff; border: 0.5mm solid #ddd; border-radius: 1.5mm; padding: 3mm 4mm; font-size: 8pt; line-height: 1.5; color: #222; margin-bottom: 2mm; }
+  .q-stem-label { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; color: #1F5C23; text-transform: uppercase; margin-bottom: 1.5mm; }
+  .q-option { display: flex; gap: 2mm; padding: 1.5mm 2.5mm; border-radius: 1mm; margin-bottom: 1mm; border: 0.4mm solid #e0ddd5; background: #fff; font-size: 7.8pt; line-height: 1.4; align-items: flex-start; }
+  .q-option.correct { background: #f0f8f0; border-color: #1F5C23; }
+  .q-option.wrong   { background: #fff8f7; border-color: #e0a0a0; }
+  .q-letter { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; color: #1F5C23; min-width: 4mm; flex-shrink: 0; margin-top: -0.3mm; }
+  .q-option.correct .q-letter { color: #1F5C23; }
+  .q-option.wrong   .q-letter { color: #c0392b; }
+
+  .gab-box { display: flex; gap: 3mm; align-items: center; background: #1F5C23; color: #F6F4ED; border-radius: 1.5mm; padding: 2.5mm 4mm; margin-bottom: 2mm; }
+  .gab-letter { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 20pt; color: #C6D834; line-height: 1; }
+  .gab-info { flex: 1; font-size: 7.8pt; line-height: 1.4; }
+  .gab-info strong { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; text-transform: uppercase; letter-spacing: 0.03em; }
+
+  .sintese-item { display: flex; gap: 2mm; padding: 2mm 3mm; border-radius: 1mm; margin-bottom: 1.5mm; background: #fff; border-left: 1mm solid #1F5C23; font-size: 7.8pt; line-height: 1.4; align-items: flex-start; }
+  .sintese-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: #1F5C23; font-size: 10pt; min-width: 5mm; flex-shrink: 0; margin-top: -0.5mm; }
+
+  .cover { background: #1F5C23; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; overflow: hidden; padding: 12mm; }
+  .cover::before { content: ''; position: absolute; top: -20mm; right: -20mm; width: 80mm; height: 80mm; background: rgba(198,216,52,0.12); border-radius: 50%; }
+  .cover::after  { content: ''; position: absolute; bottom: -15mm; left: -15mm; width: 60mm; height: 60mm; background: rgba(198,216,52,0.08); border-radius: 50%; }
+  .cover-inner { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 5mm; width: 100%; }
+  .cover-logo { width: 22mm; height: 22mm; }
+  .cover-brand { font-family: 'Playfair Display', serif; font-style: italic; color: #C6D834; font-size: 11pt; letter-spacing: 0.05em; }
+  .cover-tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(246,244,237,0.6); font-size: 7pt; text-transform: uppercase; letter-spacing: 0.12em; }
+  .cover-divider { width: 30mm; height: 0.3mm; background: rgba(198,216,52,0.4); }
+  .cover-bloco { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: #C6D834; font-size: 9pt; text-transform: uppercase; letter-spacing: 0.1em; background: rgba(198,216,52,0.12); padding: 1.5mm 4mm; border-radius: 1mm; }
+  .cover-aula-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: rgba(246,244,237,0.3); font-size: 52pt; line-height: 1; letter-spacing: -1mm; }
+  .cover-module { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: #C6D834; font-size: 10pt; text-transform: uppercase; letter-spacing: 0.08em; }
+  .cover-main-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: #F6F4ED; font-size: 20pt; text-transform: uppercase; letter-spacing: 0.03em; line-height: 1.1; }
+  .cover-sub { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; color: rgba(246,244,237,0.7); font-size: 8pt; line-height: 1.5; max-width: 140mm; }
+  .cover-footer-bar { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(198,216,52,0.15); border-top: 0.5mm solid rgba(198,216,52,0.3); padding: 3mm 8mm; display: flex; justify-content: space-between; align-items: center; }
+  .cover-footer-bar span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(246,244,237,0.5); font-size: 6pt; text-transform: uppercase; letter-spacing: 0.08em; }
+</style>
+</head>
+<body>
+
+<!-- P1 — CAPA -->
+<div class="page">
+  <div class="cover">
+    <div class="cover-inner">
+      <svg class="cover-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#F6F4ED" stroke="#C6D834" stroke-width="4"/>
+        <circle cx="50" cy="50" r="24" fill="#1F5C23"/>
+        <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#F6F4ED">E</text>
+      </svg>
+      <div class="cover-brand">Elite Treinamentos em Saúde</div>
+      <div class="cover-tagline">Extensivo ENARE 2026</div>
+      <div class="cover-divider"></div>
+      <div class="cover-bloco">Psicologia · Bloco B11</div>
+      <div class="cover-aula-num">15</div>
+      <div class="cover-module">PSI-AVALIA</div>
+      <div class="cover-main-title">Avaliação Psicológica</div>
+      <div class="cover-sub">Conceito e processo multimétodo · SATEPSI (Res. CFP 009/2018): categorias favorável/desfavorável ·
+        Documentos psicológicos (Res. CFP 006/2019): laudo, relatório, parecer, atestado ·
+        Avaliação em seleção de pessoal: vedações éticas · Principais instrumentos ·
+        Testes projetivos, psicométricos e de personalidade · Casos ENARE</div>
+    </div>
+    <div class="cover-footer-bar">
+      <span>PDF de Apoio · Uso Exclusivo Extensivo ENARE 2026</span>
+      <span>Aula 15 · Bloco B11 · Psicologia</span>
+    </div>
+  </div>
+</div>
+
+<!-- P2 — CONCEITO, PROCESSO E PRINCÍPIOS -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">PSI-AVALIA · Conceito, Processo e Princípios da Avaliação Psicológica</div>
+    </div>
+    <div class="header-badge">Aula 15</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">O que é Avaliação Psicológica</div>
+
+    <div class="box dark">
+      <div class="box-title">Definição — Res. CFP 009/2018</div>
+      Processo estruturado de investigação de fenômenos psicológicos, realizado exclusivamente por psicólogo, por meio de <strong style="color:#C6D834;">métodos, técnicas e instrumentos</strong> que levem a hipóteses interpretativas. Vai muito além da simples aplicação de testes — integra:<br><br>
+      · <strong style="color:#C6D834;">Entrevista psicológica</strong> (sempre presente — porta de entrada do processo)<br>
+      · <strong style="color:#C6D834;">Observação clínica</strong> (comportamento, linguagem não verbal, afeto)<br>
+      · <strong style="color:#C6D834;">Instrumentos psicológicos</strong> (testes aprovados no SATEPSI)<br>
+      · <strong style="color:#C6D834;">Análise documental</strong> (prontuários, laudos anteriores, relatórios escolares)<br>
+      · <strong style="color:#C6D834;">Informações de terceiros</strong> (família, escola, equipe de saúde) — quando pertinente
+    </div>
+
+    <div class="grid2">
+      <div class="box">
+        <div class="box-title">Etapas do Processo Avaliativo</div>
+        <strong>1. Demanda e contrato:</strong> definir objetivo, quem solicitou, para quê<br>
+        <strong>2. Coleta de dados:</strong> entrevistas, testes, observação, documentos<br>
+        <strong>3. Análise e integração:</strong> triangulação de fontes — conclusão fundamentada<br>
+        <strong>4. Devolução:</strong> comunicar resultados ao avaliado e/ou solicitante de forma acolhedora<br>
+        <strong>5. Documento escrito:</strong> laudo, relatório ou parecer conforme o contexto
+      </div>
+      <div class="box accent">
+        <div class="box-title">Princípios Éticos — Código CFP</div>
+        · Só avalia com <strong>consentimento informado</strong> (exceto mandato judicial)<br>
+        · <strong>Finalidade específica:</strong> laudo elaborado para um objetivo — não vale para outros fins<br>
+        · <strong>Validade temporal:</strong> resultado reflete momento da avaliação — não é vitalício<br>
+        · <strong>Sigilo dos protocolos:</strong> resultado comunica-se; protocolos brutos ficam com o psicólogo<br>
+        · <strong>Não discriminação:</strong> vedado usar avaliação para excluir por características pessoais não relacionadas ao objetivo
+      </div>
+    </div>
+
+    <div class="section-title">Contextos de Aplicação</div>
+
+    <table>
+      <tr><th>Contexto</th><th>Objetivo Principal</th><th>Instrumentos Típicos</th></tr>
+      <tr>
+        <td><strong>Clínico</strong></td>
+        <td>Diagnóstico, planejamento terapêutico, prognóstico</td>
+        <td>Entrevista + testes de personalidade, inteligência, humor</td>
+      </tr>
+      <tr>
+        <td><strong>Organizacional / Seleção</strong></td>
+        <td>Verificar adequação ao perfil do cargo</td>
+        <td>Testes de atenção, raciocínio, personalidade — SATEPSI obrigatório</td>
+      </tr>
+      <tr>
+        <td><strong>Educacional</strong></td>
+        <td>Avaliação de aprendizagem, dificuldades, superdotação</td>
+        <td>Testes de inteligência, raciocínio, escalas de desenvolvimento</td>
+      </tr>
+      <tr>
+        <td><strong>Forense / Jurídico</strong></td>
+        <td>Subsidiar decisão judicial (interdição, guarda, inimputabilidade)</td>
+        <td>Testes de personalidade, inteligência, testes projetivos</td>
+      </tr>
+      <tr>
+        <td><strong>Neuropsicológico</strong></td>
+        <td>Avaliar funções cognitivas, sequelas neurológicas</td>
+        <td>Bender, Wechsler (WAIS/WISC), testes de atenção e memória</td>
+      </tr>
+    </table>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">2 / 10</div>
+  </div>
+</div>
+
+<!-- P3 — SATEPSI E INSTRUMENTOS -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">PSI-AVALIA · SATEPSI — Sistema de Avaliação de Testes Psicológicos</div>
+    </div>
+    <div class="header-badge">Aula 15</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">SATEPSI — Res. CFP 009/2018</div>
+
+    <div class="box dark">
+      <div class="box-title">Sistema de Avaliação de Testes Psicológicos</div>
+      Banco de dados público do CFP que classifica todos os instrumentos psicológicos disponíveis no Brasil quanto à sua <strong style="color:#C6D834;">qualidade técnica e científica</strong>. A consulta é obrigatória antes de qualquer uso de instrumento.<br><br>
+      <strong style="color:#C6D834;">Categorias de classificação:</strong><br>
+      · <strong style="color:#C6D834;">FAVORÁVEL:</strong> aprovado — pode ser usado em avaliação psicológica<br>
+      · <strong style="color:#C6D834;">DESFAVORÁVEL:</strong> reprovado — uso VEDADO em avaliação psicológica; psicólogo que usa comete infração ética<br>
+      · <strong style="color:#C6D834;">PROVISÓRIO:</strong> aprovação temporária durante processo de normatização/validação — pode ser usado com restrições<br><br>
+      <em>Instrumentos sem registro no SATEPSI = uso vedado.</em>
+    </div>
+
+    <div class="box alert">
+      <div class="box-title">Pegadinhas FGV sobre SATEPSI</div>
+      · Psicólogo NÃO pode usar instrumento de status <strong>desfavorável</strong> mesmo com justificativa teórica no laudo — VEDADO<br>
+      · O SATEPSI avalia a <strong>qualidade técnico-científica</strong> do instrumento, NÃO a capacidade do psicólogo de aplicá-lo<br>
+      · Instrumentos podem mudar de categoria ao longo do tempo — psicólogo deve consultar periodicamente<br>
+      · SATEPSI é online e público — qualquer pessoa pode consultar, mas apenas psicólogos podem usar os instrumentos
+    </div>
+
+    <div class="section-title">Principais Instrumentos Psicológicos — Panorama</div>
+
+    <table>
+      <tr><th>Instrumento</th><th>Tipo</th><th>O que Avalia</th><th>Contexto Principal</th></tr>
+      <tr>
+        <td><strong>Rorschach</strong></td>
+        <td>Projetivo</td>
+        <td>Personalidade, estrutura psíquica, processos perceptivos</td>
+        <td>Clínico, forense</td>
+      </tr>
+      <tr>
+        <td><strong>TAT (Murray)</strong></td>
+        <td>Projetivo</td>
+        <td>Necessidades, conflitos, temas motivacionais</td>
+        <td>Clínico</td>
+      </tr>
+      <tr>
+        <td><strong>HTP (Buck)</strong></td>
+        <td>Projetivo gráfico</td>
+        <td>Personalidade, autoimagem, relações familiares</td>
+        <td>Clínico, infantil</td>
+      </tr>
+      <tr>
+        <td><strong>Bender (BGT)</strong></td>
+        <td>Neuropsicológico / projetivo</td>
+        <td>Integração visomotora, maturidade neurológica, organicidade</td>
+        <td>Neuropsicológico, infantil</td>
+      </tr>
+      <tr>
+        <td><strong>Raven (MPR)</strong></td>
+        <td>Psicométrico</td>
+        <td>Inteligência fluida, raciocínio abstrato não verbal</td>
+        <td>Seleção, clínico, educacional</td>
+      </tr>
+      <tr>
+        <td><strong>WAIS / WISC / WPPSI</strong></td>
+        <td>Psicométrico — Wechsler</td>
+        <td>QI (verbal + performance + processamento), funções cognitivas</td>
+        <td>Clínico, neuropsicológico, educacional</td>
+      </tr>
+      <tr>
+        <td><strong>ISSL (Lipp)</strong></td>
+        <td>Escala</td>
+        <td>Inventário de Sintomas de Estresse — fase e sintomas dominantes</td>
+        <td>Clínico, organizacional</td>
+      </tr>
+      <tr>
+        <td><strong>BDI / BAI (Beck)</strong></td>
+        <td>Escala</td>
+        <td>Sintomas de depressão (BDI) e ansiedade (BAI)</td>
+        <td>Clínico, pesquisa</td>
+      </tr>
+    </table>
+
+    <div class="box accent" style="margin-top:1mm;">
+      <div class="box-title">Testes Projetivos — Posição Ética</div>
+      Testes projetivos são instrumentos psicológicos e de uso exclusivo do psicólogo. A interpretação requer formação específica e supervisão. Aplicação por outros profissionais (médicos, educadores) é vedada e constitui exercício ilegal da profissão.
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">3 / 10</div>
+  </div>
+</div>
+
+<!-- P4 — DOCUMENTOS PSICOLÓGICOS -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">PSI-AVALIA · Documentos Psicológicos — Res. CFP 006/2019</div>
+    </div>
+    <div class="header-badge">Aula 15</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">Documentos Escritos em Psicologia — Res. CFP 006/2019</div>
+
+    <table>
+      <tr><th>Documento</th><th>Definição</th><th>Estrutura Obrigatória</th><th>Destinatário</th></tr>
+      <tr>
+        <td><strong>Laudo Psicológico</strong></td>
+        <td>Produto de avaliação psicológica — descreve o processo e comunica resultados com fundamentação técnico-científica</td>
+        <td>Identificação; objetivo; procedimentos; resultados; análise; conclusão; assinatura + CRP</td>
+        <td>Solicitante (instituição, pessoa, juiz)</td>
+      </tr>
+      <tr>
+        <td><strong>Relatório Psicológico</strong></td>
+        <td>Descreve processo de acompanhamento ou intervenção psicológica ao longo do tempo</td>
+        <td>Identificação; período; objetivo; desenvolvimento; resultados parciais; encaminhamentos</td>
+        <td>Equipe multiprofissional, escola, serviço</td>
+      </tr>
+      <tr>
+        <td><strong>Parecer Psicológico</strong></td>
+        <td>Opinião técnica fundamentada sobre questão específica — pode ser elaborado sem avaliação direta do sujeito</td>
+        <td>Identificação; questão solicitada; análise técnica; posicionamento; fundamentação</td>
+        <td>Solicitante técnico ou judicial</td>
+      </tr>
+      <tr>
+        <td><strong>Atestado Psicológico</strong></td>
+        <td>Confirma fato observado diretamente pelo psicólogo em seu campo de atuação</td>
+        <td>Identificação; fato atestado; data; assinatura + CRP</td>
+        <td>Pessoa, instituição, serviço</td>
+      </tr>
+      <tr>
+        <td><strong>Declaração Psicológica</strong></td>
+        <td>Confirma participação em serviço, intervenção ou procedimento psicológico</td>
+        <td>Identificação; fato declarado; data; assinatura + CRP</td>
+        <td>Pessoa (para fins burocráticos)</td>
+      </tr>
+    </table>
+
+    <div class="section-title" style="margin-top:1.5mm;">Regras Éticas Transversais a Todos os Documentos</div>
+
+    <div class="grid2">
+      <div class="box">
+        <div class="box-title">O Que Todo Documento DEVE Conter</div>
+        · Linguagem acessível ao destinatário<br>
+        · Apenas informações <strong>relevantes ao objetivo</strong> solicitado<br>
+        · Identificação completa do psicólogo + nº CRP + assinatura<br>
+        · Data de elaboração (validade temporal)<br>
+        · Referência aos procedimentos utilizados<br>
+        · Conclusão fundamentada — NÃO apenas resultado de testes isolados
+      </div>
+      <div class="box alert">
+        <div class="box-title">O Que É VEDADO em Qualquer Documento</div>
+        · Incluir informações que <strong>excedam o objetivo</strong> da avaliação (vida sexual, histórico familiar irrelevante)<br>
+        · Emitir diagnóstico psiquiátrico (CID/DSM) como competência exclusiva<br>
+        · Assegurar prognóstico absoluto ou definitivo<br>
+        · Elaborar laudo baseado exclusivamente em relato de terceiros sem contato direto<br>
+        · Revelar informações sigilosas sem autorização ou sem amparo legal
+      </div>
+    </div>
+
+    <div class="box accent">
+      <div class="box-title">Devolução dos Resultados — Direito do Avaliado</div>
+      Todo avaliado tem direito à devolução dos resultados da avaliação, em linguagem compreensível. A devolução é momento terapêutico e ético — não é opcional. O <strong>protocolo bruto</strong> (folhas de resposta, desenhos) permanece com o psicólogo e não é entregue automaticamente; o avaliado acessa os <em>resultados e interpretações</em>, não necessariamente o protocolo bruto.
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">4 / 10</div>
+  </div>
+</div>
+
+<!-- P5 — AVALIAÇÃO EM SELEÇÃO DE PESSOAL E CONTEXTO FORENSE -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">PSI-AVALIA · Seleção de Pessoal, Contexto Forense e Avaliação de Capacidade</div>
+    </div>
+    <div class="header-badge">Aula 15</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">Avaliação Psicológica em Seleção de Pessoal</div>
+
+    <div class="box dark">
+      <div class="box-title">O Que o Psicólogo Pode e NÃO Pode Fazer</div>
+      <strong style="color:#C6D834;">PERMITIDO:</strong><br>
+      · Aplicar testes aprovados no SATEPSI diretamente relacionados ao perfil do cargo<br>
+      · Realizar entrevistas estruturadas e semiestruturadas<br>
+      · Incluir no laudo somente aspectos funcionais relevantes à atividade laboral<br>
+      · Comunicar ao candidato o resultado de forma acolhedora (devolução obrigatória)<br><br>
+      <strong style="color:#C6D834;">VEDADO (gera infração ética — Art. 2º do Código de Ética CFP):</strong><br>
+      · Incluir informações sobre orientação sexual, religião, filiação política, raça, condição de saúde não relacionada ao cargo<br>
+      · Usar instrumento de status desfavorável no SATEPSI<br>
+      · Emitir laudo baseado apenas em testes, sem entrevista<br>
+      · Reter resultado sem devolução ao candidato que solicitar<br>
+      · Usar laudo de seleção para outros fins além do cargo e processo avaliados
+    </div>
+
+    <div class="box alert">
+      <div class="box-title">Validade Temporal do Laudo de Seleção</div>
+      O laudo de avaliação psicológica em seleção refere-se ao <strong>momento da avaliação</strong> e ao <strong>cargo específico</strong> avaliado. NÃO pode ser usado para negar emprego em outros cargos, nem tem validade indefinida para processos seletivos futuros. Psicólogo que permitir esse uso incorre em infração ética.
+    </div>
+
+    <div class="section-title">Avaliação Psicológica Forense</div>
+
+    <div class="grid2">
+      <div class="box">
+        <div class="box-title">Características do Contexto Forense</div>
+        · Função: <strong>subsidiar decisão judicial</strong> — não é clínica<br>
+        · Psicólogo como <em>auxiliar da justiça</em> — imparcial<br>
+        · Confidencialidade cedida ao mandato judicial<br>
+        · Contextos: guarda de filhos, adoção, interdição civil, inimputabilidade penal, violência doméstica<br>
+        · Instrumentos: combinação de entrevistas + testes + análise documental — multimétodo obrigatório
+      </div>
+      <div class="box">
+        <div class="box-title">Avaliação de Capacidade Civil (Interdição)</div>
+        · Código Civil (2002) + Lei 13.146/2015 (LBI — Estatuto da Pessoa com Deficiência)<br>
+        · LBI: presunção de <strong>plena capacidade</strong> para pessoa com deficiência — interdição é exceção<br>
+        · <strong>Curatela:</strong> restrita a atos específicos; NÃO priva autonomia geral<br>
+        · Psicólogo avalia: tomada de decisão, comprometimento cognitivo, autonomia funcional<br>
+        · Laudo vai ao juiz; decisão judicial é do magistrado, não do psicólogo
+      </div>
+    </div>
+
+    <div class="box accent">
+      <div class="box-title">Avaliação de Inimputabilidade Penal (Art. 26 CP)</div>
+      · Perturbação de saúde mental ou desenvolvimento mental incompleto/retardado ao tempo do fato<br>
+      · Psicólogo avalia: capacidade de entendimento e autodeterminação no momento do ato<br>
+      · Perícia é do IMESC ou perito nomeado pelo juiz — psicólogo não decide; subsidia a decisão<br>
+      · Semi-imputabilidade (art. 26, parágrafo único): capacidade reduzida → causa de diminuição de pena
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">5 / 10</div>
+  </div>
+</div>
+
+<!-- P6 — QUESTÃO 01 -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">PSI-AVALIA · Questão 01 — Avaliação em Seleção de Pessoal</div>
+    </div>
+    <div class="header-badge">Aula 15</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">Questão 01</div>
+
+    <div class="q-stem">
+      <div class="q-stem-label">Enunciado</div>
+      Renata é psicóloga contratada por uma rede varejista para conduzir processo seletivo para o cargo de operador de caixa. Ela aplica um teste de atenção concentrada com status favorável no SATEPSI, realiza entrevista semiestruturada e elabora laudo contendo: objetivo do processo, metodologia utilizada, resultados do teste, impressões sobre concentração e organização verbal e conclusão sobre adequação ao perfil do cargo. Um candidato reprovado questiona o processo, alegando que desejava saber o motivo da reprovação. Com relação à conduta de Renata, é correto afirmar que:
+    </div>
+
+    <div class="q-option wrong">
+      <span class="q-letter">A</span>
+      A conduta de Renata é antiética, pois avaliação psicológica em seleção de pessoal constitui uso mercantilista da profissão, vedado pelo Código de Ética do CFP.
+    </div>
+    <div class="q-option correct">
+      <span class="q-letter">B</span>
+      A conduta de Renata foi tecnicamente adequada: a avaliação psicológica em seleção de pessoal é legítima, desde que os instrumentos sejam aprovados no SATEPSI, o laudo contenha apenas informações pertinentes ao cargo e o candidato tenha direito à devolução dos resultados quando solicitada.
+    </div>
+    <div class="q-option wrong">
+      <span class="q-letter">C</span>
+      Renata deveria ter incluído no laudo informações sobre o histórico familiar e condição de saúde mental do candidato para fundamentar com mais profundidade a decisão de reprovação.
+    </div>
+    <div class="q-option wrong">
+      <span class="q-letter">D</span>
+      O candidato tem direito imediato e irrestrito ao protocolo bruto do teste aplicado, devendo Renata entregar as folhas de resposta originais assim que solicitado.
+    </div>
+
+    <div class="box" style="margin-top:2mm;">
+      <div class="box-title">Comentário — Por que B é a resposta correta?</div>
+      · <strong>B correta:</strong> seleção de pessoal é campo legítimo de atuação do psicólogo. Os três requisitos de Renata foram cumpridos: instrumento com status favorável no SATEPSI + laudo restrito ao perfil do cargo + candidato tem direito à devolução.<br>
+      · <strong>A errada:</strong> o CFP não veda seleção de pessoal — é atividade regulamentada pela Res. CFP 015/1996. A vedação é ao uso discriminatório ou antiético da avaliação.<br>
+      · <strong>C errada:</strong> incluir histórico familiar ou condição de saúde mental não relacionada ao cargo viola a privacidade do candidato e extrapola o objetivo da avaliação — infração ética grave.<br>
+      · <strong>D errada:</strong> o candidato tem direito à devolução dos <em>resultados e interpretações</em>, não necessariamente ao protocolo bruto. Os protocolos ficam sob guarda do psicólogo.
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">6 / 10</div>
+  </div>
+</div>
+
+<!-- P7 — QUESTÃO 02 -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">PSI-AVALIA · Questão 02 — Documentos Psicológicos (Res. CFP 006/2019)</div>
+    </div>
+    <div class="header-badge">Aula 15</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">Questão 02</div>
+
+    <div class="q-stem">
+      <div class="q-stem-label">Enunciado</div>
+      A psicóloga Carla trabalha em uma clínica particular e recebe solicitação de um juiz de vara de família para elaborar documento psicológico que subsidie decisão sobre guarda de uma criança. Carla realiza entrevistas com os genitores, observações da criança, aplica teste projetivo aprovado no SATEPSI e analisa prontuários. Após a conclusão, uma das partes questiona se Carla pode mencionar no documento aspectos da vida religiosa dos genitores como critério desfavorável para a guarda. Com base na Resolução CFP 006/2019, que regulamenta os documentos escritos em psicologia, é correto afirmar que:
+    </div>
+
+    <div class="q-option wrong">
+      <span class="q-letter">A</span>
+      Carla pode incluir a vida religiosa dos genitores no laudo, pois o contexto forense permite o uso de todas as informações disponíveis, e o juiz decide o que é relevante ou não para a sentença.
+    </div>
+    <div class="q-option wrong">
+      <span class="q-letter">B</span>
+      O laudo psicológico forense não precisa indicar os procedimentos utilizados na avaliação, bastando apresentar a conclusão final com a recomendação de guarda para orientar o magistrado.
+    </div>
+    <div class="q-option correct">
+      <span class="q-letter">C</span>
+      É vedado a Carla incluir no documento informações sobre a vida religiosa dos genitores como critério de avaliação, pois a Resolução CFP 006/2019 proíbe a inserção de dados que excedam o objetivo da avaliação e que possam caracterizar discriminação por crença ou religião.
+    </div>
+    <div class="q-option wrong">
+      <span class="q-letter">D</span>
+      O parecer psicológico seria o documento mais adequado para o contexto forense de guarda, pois pode ser elaborado sem contato direto com as partes, a partir de documentos e prontuários apenas.
+    </div>
+
+    <div class="box" style="margin-top:2mm;">
+      <div class="box-title">Comentário — Por que C é a resposta correta?</div>
+      · <strong>C correta:</strong> a Res. CFP 006/2019 veda incluir em documentos psicológicos informações que extrapolem o objetivo da avaliação ou que possam gerar discriminação — religião, orientação sexual, filiação política são exemplos explícitos. O critério para guarda deve ser a capacidade parental, não a crença religiosa.<br>
+      · <strong>A errada:</strong> o fato de o contexto ser forense não libera o psicólogo das normas éticas e da resolução. O juiz decide juridicamente, mas o psicólogo responde eticamente pelo que incluiu no laudo.<br>
+      · <strong>B errada:</strong> o laudo psicológico deve obrigatoriamente conter: identificação, objetivo, procedimentos utilizados, resultados, análise fundamentada e conclusão. Omitir procedimentos viola a Res. 006/2019.<br>
+      · <strong>D errada:</strong> no contexto forense de guarda, o laudo é o documento adequado (não o parecer), pois há avaliação direta das partes. O parecer pode ser emitido sem contato direto, mas para questões técnicas específicas — não como substituto do laudo de avaliação.
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">7 / 10</div>
+  </div>
+</div>
+
+<!-- P8 — QUESTÃO 03 -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">PSI-AVALIA · Questão 03 — SATEPSI, Processo Avaliativo e Ética</div>
+    </div>
+    <div class="header-badge">Aula 15</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">Questão 03</div>
+
+    <div class="q-stem">
+      <div class="q-stem-label">Enunciado</div>
+      Sobre avaliação psicológica e uso de instrumentos, analise as afirmativas:
+    </div>
+
+    <div class="afirmativa errada">
+      <span class="af-num">I</span>
+      <span class="af-verdict">ERRADA</span>
+      <span>O psicólogo pode aplicar qualquer instrumento psicológico de sua preferência, mesmo que tenha status desfavorável no SATEPSI, desde que apresente justificativa teórica fundamentada no laudo e demonstre capacitação técnica para o uso do instrumento.</span>
+    </div>
+
+    <div class="afirmativa certa">
+      <span class="af-num">II</span>
+      <span class="af-verdict">CERTA</span>
+      <span>A avaliação psicológica é um processo multimétodo que vai além da simples aplicação de testes, envolvendo obrigatoriamente a entrevista psicológica como instrumento central, complementada por observação, análise documental e integração de informações de múltiplas fontes.</span>
+    </div>
+
+    <div class="afirmativa certa">
+      <span class="af-num">III</span>
+      <span class="af-verdict">CERTA</span>
+      <span>Em avaliação psicológica para seleção de pessoal, o psicólogo deve restringir a avaliação a aspectos diretamente relacionados ao perfil do cargo, sendo vedado incluir no laudo informações sobre orientação sexual, religião, filiação partidária ou condições de saúde não relacionadas às exigências funcionais da vaga.</span>
+    </div>
+
+    <div class="afirmativa errada">
+      <span class="af-num">IV</span>
+      <span class="af-verdict">ERRADA</span>
+      <span>O resultado de avaliação psicológica desfavorável obtido em processo seletivo para determinado cargo pode ser utilizado pelo empregador para negar ao candidato qualquer outro tipo de emprego na mesma empresa, por prazo indeterminado, dado o caráter científico do instrumento aplicado.</span>
+    </div>
+
+    <div style="margin-top:2mm;">
+      <div class="q-option wrong"><span class="q-letter">A</span>Apenas I e IV são corretas.</div>
+      <div class="q-option wrong"><span class="q-letter">B</span>Apenas I e II são corretas.</div>
+      <div class="q-option correct"><span class="q-letter">C</span>Apenas II e III são corretas.</div>
+      <div class="q-option wrong"><span class="q-letter">D</span>Apenas II e IV são corretas.</div>
+    </div>
+
+    <div class="box" style="margin-top:2mm;">
+      <div class="box-title">Comentário Rápido</div>
+      · <strong>I errada:</strong> instrumento com status <em>desfavorável</em> no SATEPSI é VEDADO, sem exceção — justificativa teórica não autoriza o uso. Apenas favorável e provisório são permitidos.<br>
+      · <strong>II certa:</strong> avaliação psicológica = processo multimétodo; entrevista é instrumento central e obrigatório; testes isolados não constituem avaliação psicológica completa.<br>
+      · <strong>III certa:</strong> laudo de seleção deve restringir-se ao perfil funcional do cargo; vedado incluir dados de vida privada — discriminação por religião, orientação sexual etc. é infração ética e legal.<br>
+      · <strong>IV errada:</strong> laudo de seleção tem validade específica para o cargo e processo avaliados; NÃO tem validade universal nem indefinida para outros cargos na mesma empresa.
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">8 / 10</div>
+  </div>
+</div>
+
+<!-- P9 — GABARITO COMENTADO -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">PSI-AVALIA · Gabarito Comentado</div>
+    </div>
+    <div class="header-badge">Aula 15</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">Gabarito Oficial</div>
+
+    <div class="gab-box">
+      <div class="gab-letter">B</div>
+      <div class="gab-info">
+        <strong>Q01 — Avaliação em Seleção de Pessoal</strong><br>
+        Conduta de Renata adequada: instrumento favorável no SATEPSI + laudo restrito ao perfil do cargo + direito do candidato à devolução. Seleção de pessoal é campo legítimo. Vedado incluir histórico familiar ou saúde mental não relacionada ao cargo. Protocolo bruto fica com o psicólogo.
+      </div>
+    </div>
+
+    <div class="gab-box">
+      <div class="gab-letter">C</div>
+      <div class="gab-info">
+        <strong>Q02 — Documentos Psicológicos (Res. CFP 006/2019)</strong><br>
+        Carla não pode incluir vida religiosa como critério — viola a Res. 006/2019 (dados que excedam o objetivo e possam caracterizar discriminação). Laudo forense deve conter procedimentos (B errada). Contexto forense não libera das normas éticas (A errada). Laudo, não parecer, é o documento adequado para avaliação com contato direto (D errada).
+      </div>
+    </div>
+
+    <div class="gab-box">
+      <div class="gab-letter">C</div>
+      <div class="gab-info">
+        <strong>Q03 — Apenas II e III corretas</strong><br>
+        II correta: avaliação psicológica é processo multimétodo — entrevista obrigatória. III correta: laudo de seleção restrito ao perfil funcional; vedado incluir dados de vida privada. I errada: status desfavorável no SATEPSI = vedado, sem exceção. IV errada: laudo de seleção não tem validade universal/indefinida para outros cargos.
+      </div>
+    </div>
+
+    <div class="section-title" style="margin-top:2mm;">Mapa de Questões ENARE Relacionadas — PSI-AVALIA</div>
+
+    <table>
+      <tr><th>Ano</th><th>Tópico</th><th>Conceito Testado</th><th>Gab</th></tr>
+      <tr><td>2024</td><td>SATEPSI</td><td>Status desfavorável = vedado; psicólogo não pode justificar uso</td><td>C</td></tr>
+      <tr><td>2024</td><td>Laudo de seleção</td><td>Vedação de informações pessoais irrelevantes ao cargo</td><td>B</td></tr>
+      <tr><td>2023</td><td>Documentos psicológicos</td><td>Diferença laudo vs. relatório vs. parecer</td><td>C</td></tr>
+      <tr><td>2023</td><td>Devolução de resultados</td><td>Protocolo bruto fica com psicólogo; candidato acessa resultados</td><td>B</td></tr>
+      <tr><td>2022</td><td>Avaliação forense</td><td>Psicólogo subsidia; juiz decide — não emite "sentença"</td><td>C</td></tr>
+    </table>
+
+    <div class="box accent" style="margin-top:2mm;">
+      <div class="box-title">Padrão FGV em PSI-AVALIA</div>
+      · <strong>SATEPSI desfavorável = vedado</strong> — justificativa teórica não basta; FGV testa isso frequentemente<br>
+      · <strong>Avaliação psicológica = processo</strong>, não apenas aplicação de testes — entrevista obrigatória<br>
+      · <strong>Laudo restrito ao objetivo</strong> — dado fora do objetivo = violação (vida religiosa, sexual, familiar irrelevante)<br>
+      · <strong>Protocolo bruto</strong> fica com o psicólogo — candidato/avaliado acessa resultados e interpretações<br>
+      · <strong>Validade temporal e específica</strong> do laudo — não vale para outros cargos nem para o futuro
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">9 / 10</div>
+  </div>
+</div>
+
+<!-- P10 — SÍNTESE -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">PSI-AVALIA · Síntese — Avaliação Psicológica</div>
+    </div>
+    <div class="header-badge">Aula 15</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">10 Pontos Essenciais para a Prova</div>
+
+    <div class="sintese-item">
+      <span class="sintese-num">1</span>
+      <span><strong>Avaliação psicológica é processo multimétodo:</strong> entrevista + observação + testes + documentos. Testes isolados NÃO constituem avaliação psicológica completa. Entrevista é sempre central e obrigatória.</span>
+    </div>
+    <div class="sintese-item">
+      <span class="sintese-num">2</span>
+      <span><strong>SATEPSI (Res. CFP 009/2018):</strong> favorável = pode usar; desfavorável = VEDADO (sem exceção); provisório = pode usar com restrições. Justificativa teórica não autoriza uso de instrumento desfavorável.</span>
+    </div>
+    <div class="sintese-item">
+      <span class="sintese-num">3</span>
+      <span><strong>5 documentos psicológicos (Res. CFP 006/2019):</strong> laudo (avaliação completa), relatório (acompanhamento), parecer (opinião técnica sem avaliação direta obrigatória), atestado (confirma fato), declaração (confirma participação).</span>
+    </div>
+    <div class="sintese-item">
+      <span class="sintese-num">4</span>
+      <span><strong>Laudo deve conter:</strong> identificação + objetivo + procedimentos + resultados + análise + conclusão + assinatura/CRP. <strong>Vedado:</strong> dados que excedam o objetivo; diagnóstico psiquiátrico; prognóstico absoluto; dados de vida privada irrelevantes.</span>
+    </div>
+    <div class="sintese-item">
+      <span class="sintese-num">5</span>
+      <span><strong>Devolução de resultados é obrigatória</strong> e direito do avaliado. Protocolo bruto (folhas de resposta) fica com o psicólogo — avaliado acessa resultados e interpretações, não os protocolos originais.</span>
+    </div>
+    <div class="sintese-item">
+      <span class="sintese-num">6</span>
+      <span><strong>Laudo de seleção:</strong> restrito ao perfil do cargo + instrumentos favoráveis no SATEPSI. Vedado incluir religião, orientação sexual, histórico familiar irrelevante. Validade específica para o cargo — não vale universalmente.</span>
+    </div>
+    <div class="sintese-item">
+      <span class="sintese-num">7</span>
+      <span><strong>Contexto forense:</strong> psicólogo subsidia a decisão judicial — NÃO decide. Laudo vai ao juiz; competência decisória é do magistrado. Avaliação de guarda, interdição, inimputabilidade = multimétodo obrigatório.</span>
+    </div>
+    <div class="sintese-item">
+      <span class="sintese-num">8</span>
+      <span><strong>LBI (Lei 13.146/2015):</strong> presunção de plena capacidade para pessoa com deficiência. Curatela é exceção e deve ser restrita a atos específicos — não priva autonomia geral. Psicólogo avalia tomada de decisão e autonomia funcional.</span>
+    </div>
+    <div class="sintese-item">
+      <span class="sintese-num">9</span>
+      <span><strong>Testes projetivos</strong> (Rorschach, TAT, HTP) são de uso exclusivo do psicólogo. Aplicação por outros profissionais = exercício ilegal da profissão. Precisam estar com status favorável/provisório no SATEPSI.</span>
+    </div>
+    <div class="sintese-item">
+      <span class="sintese-num">10</span>
+      <span><strong>Próxima aula — Aula 16:</strong> PSI-SAUDE continuação — Saúde Mental no SUS: RAPS (Rede de Atenção Psicossocial), CAPS tipos e funcionamento, Reforma Psiquiátrica (Lei 10.216/2001), internação involuntária vs. compulsória, leitos em hospital geral, residências terapêuticas.</span>
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">10 / 10</div>
+  </div>
+</div>
+
+</body>
+</html>

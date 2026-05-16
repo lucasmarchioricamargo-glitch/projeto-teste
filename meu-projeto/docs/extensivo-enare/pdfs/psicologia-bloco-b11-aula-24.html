@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Psicologia — Bloco B11 — Aula 24 | Extensivo ENARE 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap');
+
+  :root {
+    --creme: #F6F4ED;
+    --verde: #1F5C23;
+    --accent: #C6D834;
+    --escuro: #0C1A0D;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #d0d0d0; font-family: 'Bricolage Grotesque', sans-serif; }
+
+  .pagina {
+    width: 210mm;
+    min-height: 297mm;
+    background: var(--creme);
+    margin: 8mm auto;
+    position: relative;
+    overflow: hidden;
+    page-break-after: always;
+  }
+
+  .capa { background: var(--verde); display: flex; flex-direction: column; justify-content: space-between; padding: 14mm 14mm 10mm 14mm; }
+  .capa-topo { display: flex; justify-content: space-between; align-items: flex-start; }
+  .capa-logo-area { display: flex; flex-direction: column; gap: 2mm; }
+  .capa-marca { font-family: 'Playfair Display', serif; font-style: italic; font-size: 15pt; color: var(--creme); }
+  .capa-tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 6.5pt; color: var(--accent); letter-spacing: 0.18em; text-transform: uppercase; }
+  .capa-badge { background: var(--accent); color: var(--verde); font-family: 'Barlow Condensed', sans-serif; font-size: 7.5pt; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; padding: 2.5mm 5mm; border-radius: 1mm; }
+  .capa-meio { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 10mm 0 6mm 0; }
+  .capa-bloco-label { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7pt; color: var(--accent); letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 4mm; }
+  .capa-titulo { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 34pt; color: var(--creme); line-height: 0.92; text-transform: uppercase; margin-bottom: 6mm; }
+  .capa-titulo span { color: var(--accent); }
+  .capa-subtitulo { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; font-size: 10pt; color: var(--creme); opacity: 0.82; line-height: 1.45; max-width: 145mm; }
+  .capa-linha { width: 28mm; height: 0.7mm; background: var(--accent); margin: 5mm 0; }
+  .capa-modulo-tag { display: inline-flex; align-items: center; gap: 2.5mm; background: rgba(198,216,52,0.15); border: 0.5px solid var(--accent); border-radius: 1mm; padding: 2mm 4mm; width: fit-content; margin-top: 4mm; }
+  .capa-modulo-tag span { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 8pt; color: var(--accent); letter-spacing: 0.12em; text-transform: uppercase; }
+  .capa-rodape { display: flex; justify-content: space-between; align-items: flex-end; border-top: 0.5px solid rgba(246,244,237,0.2); padding-top: 5mm; }
+  .capa-rodape-info { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 6pt; color: rgba(246,244,237,0.5); letter-spacing: 0.08em; text-transform: uppercase; line-height: 1.7; }
+  .capa-aula-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 52pt; color: rgba(246,244,237,0.08); line-height: 1; }
+
+  .pg-interna { padding: 12mm 13mm 10mm 13mm; display: flex; flex-direction: column; gap: 4.5mm; }
+  .pg-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 0.6px solid var(--verde); padding-bottom: 2.5mm; margin-bottom: 1mm; }
+  .pg-header-left { display: flex; align-items: center; gap: 3mm; }
+  .pg-header-marca { font-family: 'Playfair Display', serif; font-style: italic; font-size: 8.5pt; color: var(--verde); }
+  .pg-header-sep { width: 0.5px; height: 3.5mm; background: var(--verde); opacity: 0.3; }
+  .pg-header-bloco { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 6pt; color: var(--verde); opacity: 0.65; letter-spacing: 0.12em; text-transform: uppercase; }
+  .pg-header-right { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 7.5pt; color: var(--accent); letter-spacing: 0.1em; background: var(--verde); padding: 1mm 3mm; border-radius: 0.5mm; }
+
+  .secao-titulo { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 16pt; color: var(--verde); text-transform: uppercase; line-height: 1.05; border-left: 3.5px solid var(--accent); padding-left: 3.5mm; margin-bottom: 1mm; }
+  .subsecao { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 10.5pt; color: var(--verde); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 3mm; margin-bottom: 1.5mm; display: flex; align-items: center; gap: 2mm; }
+  .subsecao::after { content: ''; flex: 1; height: 0.5px; background: var(--verde); opacity: 0.2; }
+
+  p { font-size: 7.8pt; line-height: 1.55; color: #1a2e1b; }
+  strong { font-weight: 600; color: var(--escuro); }
+  em { color: var(--verde); font-style: normal; font-weight: 600; }
+
+  .destaque-box { background: var(--verde); border-radius: 1.5mm; padding: 3.5mm 4.5mm; margin: 2mm 0; }
+  .destaque-box p { color: var(--creme); font-size: 7.5pt; }
+  .destaque-box strong { color: var(--accent); }
+
+  .alerta-box { background: rgba(198,216,52,0.12); border-left: 3px solid var(--accent); border-radius: 0 1.5mm 1.5mm 0; padding: 3mm 4mm; margin: 2mm 0; }
+  .alerta-box p { font-size: 7.5pt; }
+
+  .tabela { width: 100%; border-collapse: collapse; font-size: 7pt; margin: 2mm 0; }
+  .tabela th { background: var(--verde); color: var(--creme); font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 7.5pt; text-transform: uppercase; padding: 2mm 2.5mm; text-align: left; }
+  .tabela td { padding: 1.8mm 2.5mm; border-bottom: 0.5px solid rgba(31,92,35,0.12); color: #1a2e1b; vertical-align: top; line-height: 1.45; }
+  .tabela tr:nth-child(even) td { background: rgba(31,92,35,0.04); }
+  .tabela .cel-dest { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 7.5pt; color: var(--verde); text-transform: uppercase; white-space: nowrap; }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; margin: 2mm 0; }
+  .card { background: rgba(31,92,35,0.06); border-radius: 1.5mm; padding: 3mm 3.5mm; border-top: 2.5px solid var(--verde); }
+  .card-titulo { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 8pt; color: var(--verde); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1.5mm; }
+  .card p { font-size: 7pt; line-height: 1.5; }
+
+  .chip { display: inline-block; background: var(--verde); color: var(--creme); font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 6.5pt; letter-spacing: 0.08em; text-transform: uppercase; padding: 1mm 2.5mm; border-radius: 0.8mm; margin: 0.5mm 0.5mm 0 0; }
+  .chip-accent { background: var(--accent); color: var(--verde); }
+
+  ul.lista { list-style: none; padding: 0; margin: 1.5mm 0; }
+  ul.lista li { font-size: 7.5pt; line-height: 1.5; color: #1a2e1b; padding-left: 4mm; position: relative; margin-bottom: 1mm; }
+  ul.lista li::before { content: '▸'; position: absolute; left: 0; color: var(--accent); font-size: 7pt; top: 0.5mm; }
+
+  .questao-header { display: flex; align-items: center; gap: 3mm; margin-bottom: 2mm; }
+  .questao-num { background: var(--verde); color: var(--accent); font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 11pt; width: 9mm; height: 9mm; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .questao-meta { display: flex; flex-direction: column; gap: 0.8mm; }
+  .questao-banca { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 6pt; color: var(--verde); opacity: 0.7; letter-spacing: 0.12em; text-transform: uppercase; }
+  .questao-tema { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 8pt; color: var(--verde); text-transform: uppercase; letter-spacing: 0.06em; }
+  .questao-enunciado { background: rgba(31,92,35,0.05); border-left: 2.5px solid var(--verde); padding: 3mm 4mm; border-radius: 0 1mm 1mm 0; margin-bottom: 3mm; }
+  .questao-enunciado p { font-size: 7.8pt; line-height: 1.55; }
+  .alternativas { display: flex; flex-direction: column; gap: 1.8mm; }
+  .alt { display: flex; align-items: flex-start; gap: 2.5mm; padding: 2mm 3mm; border-radius: 1mm; border: 0.5px solid rgba(31,92,35,0.15); }
+  .alt-letra { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; color: var(--verde); min-width: 4mm; line-height: 1.3; }
+  .alt p { font-size: 7.5pt; line-height: 1.5; }
+  .alt-correta { background: rgba(31,92,35,0.08); border-color: var(--verde); }
+
+  .gabarito-pg { padding: 12mm 13mm 10mm 13mm; }
+  .gabarito-titulo { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 20pt; color: var(--verde); text-transform: uppercase; border-left: 3.5px solid var(--accent); padding-left: 3.5mm; margin-bottom: 5mm; }
+  .gabarito-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4mm; margin-bottom: 6mm; }
+  .gab-card { background: var(--verde); border-radius: 2mm; padding: 4mm; text-align: center; }
+  .gab-card-q { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 6.5pt; color: rgba(246,244,237,0.6); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1.5mm; }
+  .gab-card-letra { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 32pt; color: var(--accent); line-height: 1; margin-bottom: 1.5mm; }
+  .gab-card-tema { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 6.5pt; color: rgba(246,244,237,0.8); text-transform: uppercase; letter-spacing: 0.05em; }
+  .justificativa { margin-bottom: 4mm; padding: 3mm 4mm; background: rgba(31,92,35,0.05); border-radius: 1.5mm; border-left: 2.5px solid var(--accent); }
+  .justificativa-q { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 8.5pt; color: var(--verde); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1.5mm; }
+  .justificativa p { font-size: 7.5pt; line-height: 1.55; }
+
+  .sintese-pg { padding: 12mm 13mm 10mm 13mm; }
+  .sintese-titulo { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 20pt; color: var(--verde); text-transform: uppercase; border-left: 3.5px solid var(--accent); padding-left: 3.5mm; margin-bottom: 5mm; }
+  .mapa-item { display: flex; gap: 3mm; margin-bottom: 3mm; align-items: flex-start; }
+  .mapa-bullet { width: 5mm; height: 5mm; background: var(--accent); border-radius: 50%; flex-shrink: 0; margin-top: 0.5mm; }
+  .mapa-content { flex: 1; }
+  .mapa-termo { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; color: var(--verde); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.8mm; }
+  .mapa-content p { font-size: 7.3pt; line-height: 1.5; }
+  .proxima-aula { background: var(--verde); border-radius: 2mm; padding: 4mm 5mm; margin-top: 4mm; display: flex; align-items: center; gap: 4mm; }
+  .proxima-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 36pt; color: rgba(198,216,52,0.25); line-height: 1; flex-shrink: 0; }
+  .proxima-aula-label { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 6pt; color: var(--accent); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 1.5mm; }
+  .proxima-aula-titulo { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 11pt; color: var(--creme); text-transform: uppercase; }
+
+  .pg-num { position: absolute; bottom: 6mm; right: 13mm; font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 6pt; color: var(--verde); opacity: 0.4; letter-spacing: 0.1em; }
+
+  @media print { body { background: none; } .pagina { margin: 0; } }
+</style>
+</head>
+<body>
+
+<!-- ========== PÁGINA 1 — CAPA ========== -->
+<div class="pagina capa">
+  <div class="capa-topo">
+    <div class="capa-logo-area">
+      <svg width="38" height="44" viewBox="0 0 38 44" fill="none">
+        <polygon points="19,2 36,11.5 36,32.5 19,42 2,32.5 2,11.5" fill="#F6F4ED"/>
+        <circle cx="19" cy="22" r="8.5" fill="#1F5C23"/>
+      </svg>
+      <div class="capa-marca">Elite Treinamentos</div>
+      <div class="capa-tagline">Extensivo ENARE 2026</div>
+    </div>
+    <div class="capa-badge">Psicologia · Bloco B11</div>
+  </div>
+
+  <div class="capa-meio">
+    <div class="capa-bloco-label">Aula 24 · PSI-SAÚDE</div>
+    <div class="capa-titulo">Saúde da<br><span>Mulher</span> e<br>Diversidade Sexual</div>
+    <div class="capa-linha"></div>
+    <div class="capa-subtitulo">
+      Baby Blues · Depressão Pós-Parto · Psicose Puerperal ·
+      EPDS · Saúde Sexual e Reprodutiva · PNSSSGI ·
+      Diversidade Sexual no SUS · Res. CFP 01/1999 · Processo Transexualizador
+    </div>
+    <div class="capa-modulo-tag">
+      <svg width="8" height="8" viewBox="0 0 8 8"><circle cx="4" cy="4" r="4" fill="#C6D834"/></svg>
+      <span>PSI-SAÚDE — Alta frequência ENARE/FGV</span>
+    </div>
+  </div>
+
+  <div class="capa-rodape">
+    <div class="capa-rodape-info">
+      <div>Extensivo ENARE 2026 · Material de Estudo</div>
+      <div>Atualizado conforme PNAISM 2004 · Portaria 2.836/2011 · Portaria 2.803/2013 · Res. CFP 01/1999</div>
+    </div>
+    <div class="capa-aula-num">24</div>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 2 — SAÚDE MENTAL PERINATAL ========== -->
+<div class="pagina pg-interna">
+  <div class="pg-header">
+    <div class="pg-header-left">
+      <svg width="14" height="16" viewBox="0 0 38 44" fill="none">
+        <polygon points="19,2 36,11.5 36,32.5 19,42 2,32.5 2,11.5" fill="#1F5C23"/>
+        <circle cx="19" cy="22" r="8.5" fill="#F6F4ED"/>
+      </svg>
+      <span class="pg-header-marca">Elite Treinamentos</span>
+      <div class="pg-header-sep"></div>
+      <span class="pg-header-bloco">Psicologia · Bloco B11 · Aula 24</span>
+    </div>
+    <div class="pg-header-right">PSI-SAÚDE</div>
+  </div>
+
+  <div class="secao-titulo">Saúde Mental no Ciclo Gravídico-Puerperal</div>
+
+  <p>O período perinatal abrange gestação, parto e puerpério — uma janela de alta vulnerabilidade psicológica para a mulher, marcada por intensas transformações hormonais, relacionais e identitárias. O rastreio ativo de sofrimento mental é obrigação do cuidado integral.</p>
+
+  <div class="subsecao">Espectro dos Quadros Puerperais — Diferenciação</div>
+
+  <table class="tabela">
+    <tr>
+      <th>Quadro</th>
+      <th>Início / Duração</th>
+      <th>Características</th>
+      <th>Conduta</th>
+    </tr>
+    <tr>
+      <td class="cel-dest">Baby Blues</td>
+      <td>2–5 dias pós-parto; autolimitado (até ~2 semanas)</td>
+      <td>Labilidade emocional, choro fácil, irritabilidade, insônia, ansiedade leve. <strong>Normal e esperado</strong> — não é doença.</td>
+      <td>Suporte emocional, orientação familiar. <strong>NÃO requer farmacoterapia.</strong> Vigilância para progressão.</td>
+    </tr>
+    <tr>
+      <td class="cel-dest">Depressão Pós-Parto (DPP)</td>
+      <td>Geralmente 4–8 semanas pós-parto; pode surgir durante gestação (periparto)</td>
+      <td>Tristeza persistente, culpa, anedonia, insônia/hipersonia, pensamentos negativos sobre o bebê (ego-distônicos), prejuízo funcional. <strong>EPDS ≥ 10 = rastreio positivo.</strong></td>
+      <td>Psicoterapia (TCC ou IPT) + farmacoterapia se indicada; vincular mãe-bebê; rede de apoio. Não é autolimitada.</td>
+    </tr>
+    <tr>
+      <td class="cel-dest">Psicose Puerperal</td>
+      <td>Primeiras 1–2 semanas pós-parto; início abrupto</td>
+      <td>Alucinações, delírios (bebê demoníaco, negação do parto), desorientação, comportamento desorganizado, insônia grave. <strong>EMERGÊNCIA PSIQUIÁTRICA.</strong></td>
+      <td><strong>Hospitalização imediata.</strong> Risco real para mãe e bebê. Afastar a mãe do bebê até estabilização.</td>
+    </tr>
+    <tr>
+      <td class="cel-dest">Ansiedade Perinatal</td>
+      <td>Gestação e puerpério</td>
+      <td>Preocupações excessivas com saúde do bebê; TOC perinatal: pensamentos intrusivos sobre machucar o bebê (ego-distônicos — assustam a mãe, diferente dos delírios da psicose).</td>
+      <td>TCC com EPR (TOC); distinguir de psicose pelo caráter ego-distônico das obsessões.</td>
+    </tr>
+  </table>
+
+  <div class="alerta-box">
+    <p><strong>Distinção crítica ENARE — TOC perinatal vs. Psicose puerperal:</strong> na <em>psicose puerperal</em>, a mãe pode <em>agir</em> sobre os delírios (acredita que o bebê é demoníaco e precisa ser salvo); no <em>TOC perinatal</em>, os pensamentos de machucar o bebê são <em>ego-distônicos</em> — a mãe os reconhece como absurdos e tem medo de si mesma. Sinal de alerta ≠ emergência imediata, mas requer avaliação.</p>
+  </div>
+
+  <div class="subsecao">EPDS — Escala de Edimburgo</div>
+
+  <p>A <strong>Edinburgh Postnatal Depression Scale (EPDS)</strong> é o instrumento de rastreio padrão para depressão pós-parto. Possui 10 itens, pontuação 0–30. <strong>Ponto de corte ≥ 10</strong> = rastreio positivo para DPP. Deve ser aplicada na APS, na maternidade e nos retornos do puerpério. Não substitui diagnóstico clínico — é instrumento de rastreio.</p>
+
+  <div class="pg-num">2</div>
+</div>
+
+<!-- ========== PÁGINA 3 — ATUAÇÃO DO PSICÓLOGO E SAÚDE REPRODUTIVA ========== -->
+<div class="pagina pg-interna">
+  <div class="pg-header">
+    <div class="pg-header-left">
+      <svg width="14" height="16" viewBox="0 0 38 44" fill="none">
+        <polygon points="19,2 36,11.5 36,32.5 19,42 2,32.5 2,11.5" fill="#1F5C23"/>
+        <circle cx="19" cy="22" r="8.5" fill="#F6F4ED"/>
+      </svg>
+      <span class="pg-header-marca">Elite Treinamentos</span>
+      <div class="pg-header-sep"></div>
+      <span class="pg-header-bloco">Psicologia · Bloco B11 · Aula 24</span>
+    </div>
+    <div class="pg-header-right">PSI-SAÚDE</div>
+  </div>
+
+  <div class="secao-titulo">Psicólogo no Período Perinatal e Saúde Reprodutiva</div>
+
+  <div class="subsecao">Papel do Psicólogo no Ciclo Gravídico-Puerperal</div>
+
+  <ul class="lista">
+    <li><strong>Rastreio ativo</strong> — aplicação e interpretação da EPDS; identificação de fatores de risco (histórico de depressão, gestação não planejada, violência doméstica, ausência de suporte social).</li>
+    <li><strong>Psicoterapia perinatal</strong> — TCC (reestruturação cognitiva, ativação comportamental), IPT (Terapia Interpessoal) com forte evidência para DPP; psicoterapia focada no vínculo mãe-bebê.</li>
+    <li><strong>Fortalecimento do vínculo mãe-bebê</strong> — intervenção precoce para prevenir impacto sobre o desenvolvimento do bebê; observação da díade.</li>
+    <li><strong>Trabalho com o pai/parceiro</strong> — depressão paterna pós-parto existe (prevalência ~10%); impacto na dinâmica familiar.</li>
+    <li><strong>Grupo de apoio puerperal</strong> — recurso efetivo e custo-eficiente na APS; reduz isolamento.</li>
+    <li><strong>Articulação multiprofissional</strong> — com obstetras, pediatras, enfermeiros da UBS; indicação de psiquiatria quando necessário.</li>
+  </ul>
+
+  <div class="subsecao">Saúde Sexual e Reprodutiva — Marcos Legais</div>
+
+  <table class="tabela">
+    <tr>
+      <th>Instrumento</th>
+      <th>Pontos-Chave</th>
+    </tr>
+    <tr>
+      <td class="cel-dest">PNAISM (2004)</td>
+      <td>Política Nacional de Atenção Integral à Saúde da Mulher — integralidade do cuidado feminino em todas as fases da vida; inclui saúde reprodutiva, saúde mental perinatal, violência de gênero, saúde da mulher negra e indígena.</td>
+    </tr>
+    <tr>
+      <td class="cel-dest">Planejamento Familiar (Lei 9.263/1996)</td>
+      <td>Direito de todo cidadão; SUS oferece métodos contraceptivos gratuitamente; esterilização cirúrgica: ≥25 anos OU ≥2 filhos; se casado, consentimento do cônjuge; vedada durante parto/aborto imediato.</td>
+    </tr>
+    <tr>
+      <td class="cel-dest">Violência Obstétrica</td>
+      <td>Qualquer ato praticado pela equipe de saúde durante assistência obstétrica que cause dano ou sofrimento desnecessário: episiotomia de rotina, manobra de Kristeller sem indicação, cesariana sem indicação clínica, desrespeito à autonomia da parturiente. Não criminalizada em lei federal específica, mas reconhecida pelo MS.</td>
+    </tr>
+    <tr>
+      <td class="cel-dest">Direitos Reprodutivos</td>
+      <td>Direito à maternidade segura e escolhida; acesso ao aborto legal (estupro, risco de vida, anencefalia); contracepção gratuita; pré-natal humanizado; acompanhante no parto (Lei 11.108/2005).</td>
+    </tr>
+  </table>
+
+  <div class="destaque-box">
+    <p><strong>Papel do psicólogo na saúde reprodutiva:</strong> acolhimento das decisões reprodutivas sem julgamento moral; apoio no processo de aborto legal (antes, durante e após); suporte em situações de perda gestacional (aborto espontâneo, natimorto); psicoeducação sobre contracepção; articulação com rede de atenção à mulher.</p>
+  </div>
+
+  <div class="pg-num">3</div>
+</div>
+
+<!-- ========== PÁGINA 4 — DIVERSIDADE SEXUAL E IDENTIDADE DE GÊNERO NO SUS ========== -->
+<div class="pagina pg-interna">
+  <div class="pg-header">
+    <div class="pg-header-left">
+      <svg width="14" height="16" viewBox="0 0 38 44" fill="none">
+        <polygon points="19,2 36,11.5 36,32.5 19,42 2,32.5 2,11.5" fill="#1F5C23"/>
+        <circle cx="19" cy="22" r="8.5" fill="#F6F4ED"/>
+      </svg>
+      <span class="pg-header-marca">Elite Treinamentos</span>
+      <div class="pg-header-sep"></div>
+      <span class="pg-header-bloco">Psicologia · Bloco B11 · Aula 24</span>
+    </div>
+    <div class="pg-header-right">PSI-SAÚDE</div>
+  </div>
+
+  <div class="secao-titulo">Diversidade Sexual e Identidade de Gênero no SUS</div>
+
+  <div class="subsecao">Política Nacional de Saúde Integral LGBT — Portaria 2.836/2011</div>
+
+  <p>A <strong>PNSSSGI (Portaria MS 2.836/2011)</strong> institui a Política Nacional de Saúde Integral de Lésbicas, Gays, Bissexuais, Travestis e Transexuais no SUS. Reconhece que essa população enfrenta barreiras específicas de acesso ao cuidado — estigma, discriminação, despreparo dos profissionais — e determina que o SUS ofereça atenção integral, humanizada e sem discriminação.</p>
+
+  <div class="subsecao">Classificações e Vedações — Marcos Normativos</div>
+
+  <table class="tabela">
+    <tr>
+      <th>Marco</th>
+      <th>Conteúdo</th>
+    </tr>
+    <tr>
+      <td class="cel-dest">CID-11 (2022)</td>
+      <td>A homossexualidade <strong>não figura mais como patologia</strong> desde 1990 (CID-10). Na CID-11: "Incongruência de gênero" (código HA60) migrou de transtornos mentais para capítulo de <em>condições relacionadas à saúde sexual</em> — despatologização da transexualidade.</td>
+    </tr>
+    <tr>
+      <td class="cel-dest">DSM-5</td>
+      <td>"Disforia de gênero" substitui "transtorno de identidade de gênero" — foco no sofrimento, não na identidade em si. A orientação sexual não é considerada transtorno.</td>
+    </tr>
+    <tr>
+      <td class="cel-dest">Res. CFP 01/1999</td>
+      <td>Veda ao psicólogo: patologizar a homossexualidade; praticar ou colaborar em "cura gay" ou qualquer intervenção de reorientação sexual; emitir laudos que afirmem a homossexualidade como doença. <strong>Obriga</strong> atendimento ético e não discriminatório.</td>
+    </tr>
+    <tr>
+      <td class="cel-dest">Res. CFP 01/2018</td>
+      <td>Reforça a vedação às práticas de reorientação sexual e de identidade de gênero — "terapias de conversão" são <strong>vedadas</strong> mesmo quando solicitadas pelo próprio cliente.</td>
+    </tr>
+    <tr>
+      <td class="cel-dest">ADI 4.275 (STF, 2018)</td>
+      <td>Permite a retificação de registro civil de transexuais sem exigência de cirurgia, laudos médicos ou judicialização — apenas declaração administrativa em cartório.</td>
+    </tr>
+  </table>
+
+  <div class="subsecao">Processo Transexualizador no SUS — Portaria 2.803/2013</div>
+
+  <p>O <strong>Processo Transexualizador</strong> oferece assistência integral à saúde de travestis e transexuais no SUS. <strong>Não se limita às cirurgias</strong> — inclui:</p>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-titulo">Componentes do Processo</div>
+      <p>· Acolhimento e acompanhamento multiprofissional<br>· <strong>Acompanhamento psicológico</strong> (obrigatório)<br>· Acompanhamento social<br>· Hormonioterapia (endocrinologista)<br>· Cirurgias (mastectomia, vaginoplastia, faloplastia)<br>· Fonoaudiologia (adequação vocal)</p>
+    </div>
+    <div class="card">
+      <div class="card-titulo">Papel do Psicólogo</div>
+      <p>Cuidado afirmativo (não julgamental) · Avaliação psicológica integrativa · Suporte no processo de construção identitária · <strong>Não cabe ao psicólogo "autorizar" ou "negar"</strong> o processo — não é função de gatekeeper · Parceria na equipe multiprofissional</p>
+    </div>
+  </div>
+
+  <div class="subsecao">Estresse da Minoria — Meyer (2003)</div>
+
+  <p>O modelo de <strong>estresse da minoria</strong> (Ilan H. Meyer) explica o excesso de transtornos mentais na população LGBTQIA+ <em>não</em> pela orientação sexual em si, mas pelos estressores únicos decorrentes da discriminação sistêmica:</p>
+
+  <ul class="lista">
+    <li><strong>Eventos estressores externos:</strong> violência, discriminação, rejeição familiar, LGBTfobia institucional.</li>
+    <li><strong>Processos internalizados:</strong> homofobia internalizada, expectativa de rejeição, ocultação da identidade (armário).</li>
+    <li><strong>Consequência:</strong> aumento do risco de depressão, ansiedade, suicídio — que é produto do sofrimento social, não da identidade.</li>
+    <li><strong>Implicação clínica:</strong> cuidado afirmativo endereça o estresse social; nunca a orientação sexual ou identidade de gênero como "problema a resolver".</li>
+  </ul>
+
+  <div class="pg-num">4</div>
+</div>
+
+<!-- ========== PÁGINA 5 — SAÚDE MENTAL DA POPULAÇÃO LGBTQIA+ ========== -->
+<div class="pagina pg-interna">
+  <div class="pg-header">
+    <div class="pg-header-left">
+      <svg width="14" height="16" viewBox="0 0 38 44" fill="none">
+        <polygon points="19,2 36,11.5 36,32.5 19,42 2,32.5 2,11.5" fill="#1F5C23"/>
+        <circle cx="19" cy="22" r="8.5" fill="#F6F4ED"/>
+      </svg>
+      <span class="pg-header-marca">Elite Treinamentos</span>
+      <div class="pg-header-sep"></div>
+      <span class="pg-header-bloco">Psicologia · Bloco B11 · Aula 24</span>
+    </div>
+    <div class="pg-header-right">PSI-SAÚDE</div>
+  </div>
+
+  <div class="secao-titulo">Saúde Mental LGBTQIA+ e Cuidado Afirmativo</div>
+
+  <div class="subsecao">Vulnerabilidades em Saúde Mental</div>
+
+  <table class="tabela">
+    <tr>
+      <th>Grupo</th>
+      <th>Vulnerabilidade Específica</th>
+      <th>Dados Relevantes</th>
+    </tr>
+    <tr>
+      <td class="cel-dest">LGBTQIA+ em geral</td>
+      <td>Depressão, ansiedade, TEPT por violência LGBTfóbica, abuso de álcool/drogas como coping</td>
+      <td>2–3× maior risco de transtornos mentais vs. população geral (estresse da minoria — Meyer)</td>
+    </tr>
+    <tr>
+      <td class="cel-dest">Jovens LGBTQIA+</td>
+      <td>Risco aumentado de suicídio — especialmente pós-coming out com rejeição familiar</td>
+      <td>Rejeição familiar = principal fator de risco; aceitação familiar = principal fator protetor</td>
+    </tr>
+    <tr>
+      <td class="cel-dest">Travestis/Transexuais</td>
+      <td>Violência transfóbica, exclusão do mercado de trabalho, ausência de documentação, prostituição como vulnerabilidade</td>
+      <td>Brasil lidera mortes de trans no mundo; expectativa de vida de travestis ≈ 35 anos</td>
+    </tr>
+    <tr>
+      <td class="cel-dest">Lésbicas e Bissexuais</td>
+      <td>"Invisibilidade lésbica" no sistema de saúde; subestimação de ISTs; menor rastreio ginecológico</td>
+      <td>Profissionais frequentemente assumem heterossexualidade — barreira de acesso</td>
+    </tr>
+  </table>
+
+  <div class="subsecao">Cuidado Afirmativo — Princípios Práticos</div>
+
+  <ul class="lista">
+    <li><strong>Não patologizar</strong> a orientação sexual ou identidade de gênero — conforme CID-11, DSM-5, Res. CFP 01/1999.</li>
+    <li><strong>Linguagem inclusiva:</strong> usar os pronomes e nome social referidos pelo paciente; perguntar, não presumir.</li>
+    <li><strong>Explorar o sofrimento</strong> decorrente da discriminação, da rejeição familiar e da LGBTfobia — não a identidade em si.</li>
+    <li><strong>Fortalecer recursos:</strong> comunidade, rede de pares, movimento LGBTQIA+, políticas públicas.</li>
+    <li><strong>Nunca aceitar demanda de "cura"</strong> mesmo quando formulada pelo próprio cliente — a Res. CFP 01/1999 é clara: o pedido do cliente não legitima a prática vedada.</li>
+    <li><strong>Articular com rede:</strong> serviços trans-afirmativos, CREAS, casas de acolhimento para jovens LGBTQIA+ em situação de rua.</li>
+  </ul>
+
+  <div class="destaque-box">
+    <p><strong>Ponto crítico FGV — "Terapia de conversão a pedido do cliente":</strong> a questão mais comum neste tema tenta justificar a prática de reorientação sexual pelo argumento da autonomia do cliente. A Res. CFP 01/1999 (e 01/2018) é explícita: a vedação é <strong>absoluta</strong>, independentemente de quem solicita. Autonomia do cliente não autoriza práticas vedadas pelo Código de Ética.</p>
+  </div>
+
+  <div class="subsecao">Interseccionalidade na Saúde da Mulher</div>
+
+  <p>O cuidado em saúde da mulher deve considerar a intersecção de marcadores sociais: <strong>raça</strong> (mortalidade materna de mulheres negras é 2–3× maior que brancas no Brasil), <strong>classe social</strong>, <strong>território</strong>, <strong>orientação sexual</strong> e <strong>identidade de gênero</strong>. A PNAISM e a PNSSSGI reconhecem essas especificidades como eixos estruturantes das políticas de saúde.</p>
+
+  <div class="pg-num">5</div>
+</div>
+
+<!-- ========== PÁGINA 6 — QUESTÃO 01 ========== -->
+<div class="pagina pg-interna">
+  <div class="pg-header">
+    <div class="pg-header-left">
+      <svg width="14" height="16" viewBox="0 0 38 44" fill="none">
+        <polygon points="19,2 36,11.5 36,32.5 19,42 2,32.5 2,11.5" fill="#1F5C23"/>
+        <circle cx="19" cy="22" r="8.5" fill="#F6F4ED"/>
+      </svg>
+      <span class="pg-header-marca">Elite Treinamentos</span>
+      <div class="pg-header-sep"></div>
+      <span class="pg-header-bloco">Psicologia · Bloco B11 · Aula 24 — Questões</span>
+    </div>
+    <div class="pg-header-right">PSI-SAÚDE</div>
+  </div>
+
+  <div class="questao-header">
+    <div class="questao-num">01</div>
+    <div class="questao-meta">
+      <span class="questao-banca">ENARE / FGV · Estilo — Saúde Mental Perinatal</span>
+      <span class="questao-tema">DPP · Baby Blues · Psicose Puerperal · EPDS · Diagnóstico Diferencial</span>
+    </div>
+  </div>
+
+  <div class="questao-enunciado">
+    <p>Fernanda, 29 anos, primípara, comparece à UBS 6 semanas após o parto. Relata choro frequente, sentimento persistente de incapacidade para cuidar do bebê, insônia intensa, culpa intensa e pensamentos recorrentes de que poderia machucar o filho — pensamentos que a angustiam profundamente e que ela reconhece como absurdos e inaceitáveis. A enfermeira aplica a EPDS e o resultado é positivo (≥ 10). Com base no quadro clínico, qual o diagnóstico mais provável e a conduta indicada?</p>
+  </div>
+
+  <div class="alternativas">
+    <div class="alt">
+      <span class="alt-letra">A</span>
+      <p>Baby blues — quadro transitório esperado no puerpério, autolimitado, que se resolve espontaneamente em poucos dias com suporte familiar; não requer encaminhamento especializado nem farmacoterapia.</p>
+    </div>
+    <div class="alt alt-correta">
+      <span class="alt-letra">B</span>
+      <p>Depressão pós-parto — a duração (6 semanas), o prejuízo funcional, a culpa intensa, a insônia e os pensamentos intrusivos sobre machucar o filho com caráter ego-distônico (angustiam Fernanda e ela os reconhece como absurdos) configuram episódio depressivo maior periparto. O EPDS positivo reforça o rastreio. Requer psicoterapia (TCC ou IPT) e avaliação para farmacoterapia.</p>
+    </div>
+    <div class="alt">
+      <span class="alt-letra">C</span>
+      <p>Psicose puerperal — os pensamentos sobre machucar o filho indicam ideação psicótica com risco imediato ao bebê, exigindo internação psiquiátrica de emergência imediata e afastamento da criança.</p>
+    </div>
+    <div class="alt">
+      <span class="alt-letra">D</span>
+      <p>TOC perinatal exclusivo — os pensamentos intrusivos sobre machucar o filho configuram obsessões típicas do TOC perinatal sem elementos depressivos associados; a EPDS positiva reflete apenas ansiedade obsessiva, indicando apenas TCC com exposição e prevenção de resposta.</p>
+    </div>
+  </div>
+
+  <div style="margin-top:4mm;">
+    <span class="chip chip-accent">Gabarito: B</span>
+    <span class="chip">DPP — 6 semanas + EPDS+</span>
+    <span class="chip">Pensamentos ego-distônicos ≠ psicose</span>
+    <span class="chip">TCC / IPT perinatal</span>
+  </div>
+
+  <div class="pg-num">6</div>
+</div>
+
+<!-- ========== PÁGINA 7 — QUESTÃO 02 ========== -->
+<div class="pagina pg-interna">
+  <div class="pg-header">
+    <div class="pg-header-left">
+      <svg width="14" height="16" viewBox="0 0 38 44" fill="none">
+        <polygon points="19,2 36,11.5 36,32.5 19,42 2,32.5 2,11.5" fill="#1F5C23"/>
+        <circle cx="19" cy="22" r="8.5" fill="#F6F4ED"/>
+      </svg>
+      <span class="pg-header-marca">Elite Treinamentos</span>
+      <div class="pg-header-sep"></div>
+      <span class="pg-header-bloco">Psicologia · Bloco B11 · Aula 24 — Questões</span>
+    </div>
+    <div class="pg-header-right">PSI-SAÚDE</div>
+  </div>
+
+  <div class="questao-header">
+    <div class="questao-num">02</div>
+    <div class="questao-meta">
+      <span class="questao-banca">ENARE / FGV · Estilo — Diversidade Sexual</span>
+      <span class="questao-tema">Res. CFP 01/1999 · Terapia de Conversão · Cuidado Afirmativo</span>
+    </div>
+  </div>
+
+  <div class="questao-enunciado">
+    <p>Renato, 24 anos, gay, busca atendimento psicológico relatando sofrimento intenso provocado pela pressão familiar para que ele "mude" sua orientação sexual. A família insiste que o psicólogo deveria "tratar" a homossexualidade de Renato. Em determinado momento, o próprio Renato, influenciado pela família, pergunta ao psicólogo se seria possível conduzir algum trabalho nesse sentido. Qual a conduta ética e tecnicamente correta?</p>
+  </div>
+
+  <div class="alternativas">
+    <div class="alt">
+      <span class="alt-letra">A</span>
+      <p>O psicólogo pode conduzir um processo terapêutico orientado à redução de comportamentos homossexuais, desde que o pedido parta do próprio Renato, que seja devidamente documentado no prontuário e que não sejam utilizadas técnicas aversivas ou coercitivas.</p>
+    </div>
+    <div class="alt">
+      <span class="alt-letra">B</span>
+      <p>O psicólogo deve encaminhar Renato ao psiquiatra para avaliação de "transtorno de identidade sexual", pois o conflito e o sofrimento relatados indicam patologia que requer intervenção especializada de caráter médico.</p>
+    </div>
+    <div class="alt alt-correta">
+      <span class="alt-letra">C</span>
+      <p>O psicólogo deve acolher Renato, oferecer cuidado afirmativo focado no sofrimento decorrente da rejeição e da pressão familiar, e esclarecer que qualquer prática de reorientação sexual é expressamente vedada pela Resolução CFP 01/1999 — independentemente de quem a solicite —, pois a homossexualidade não é transtorno nem doença.</p>
+    </div>
+    <div class="alt">
+      <span class="alt-letra">D</span>
+      <p>O psicólogo pode encaminhar Renato a um grupo de apoio religioso que ofereça processo voluntário de mudança de orientação sexual, pois a autonomia do cliente inclui o direito de buscar transformações identitárias por meio de escolhas de natureza religiosa ou espiritual.</p>
+    </div>
+  </div>
+
+  <div style="margin-top:4mm;">
+    <span class="chip chip-accent">Gabarito: C</span>
+    <span class="chip">Res. CFP 01/1999 — Vedação absoluta</span>
+    <span class="chip">Autonomia não legitima prática vedada</span>
+    <span class="chip">Cuidado afirmativo</span>
+  </div>
+
+  <div class="pg-num">7</div>
+</div>
+
+<!-- ========== PÁGINA 8 — QUESTÃO 03 ========== -->
+<div class="pagina pg-interna">
+  <div class="pg-header">
+    <div class="pg-header-left">
+      <svg width="14" height="16" viewBox="0 0 38 44" fill="none">
+        <polygon points="19,2 36,11.5 36,32.5 19,42 2,32.5 2,11.5" fill="#1F5C23"/>
+        <circle cx="19" cy="22" r="8.5" fill="#F6F4ED"/>
+      </svg>
+      <span class="pg-header-marca">Elite Treinamentos</span>
+      <div class="pg-header-sep"></div>
+      <span class="pg-header-bloco">Psicologia · Bloco B11 · Aula 24 — Questões</span>
+    </div>
+    <div class="pg-header-right">PSI-SAÚDE</div>
+  </div>
+
+  <div class="questao-header">
+    <div class="questao-num">03</div>
+    <div class="questao-meta">
+      <span class="questao-banca">ENARE / FGV · Estilo — Saúde da Mulher e Diversidade</span>
+      <span class="questao-tema">Psicose Puerperal · PNSSSGI · Processo Transexualizador · Baby Blues</span>
+    </div>
+  </div>
+
+  <div class="questao-enunciado">
+    <p>Sobre saúde mental perinatal e saúde da população LGBTQIA+ no SUS, analise as afirmativas a seguir:</p>
+    <p style="margin-top:2mm;"><strong>I.</strong> O baby blues é um quadro que se inicia nos primeiros dias após o parto e pode durar até 2 meses com intensidade variável, necessitando de acompanhamento farmacológico preventivo para evitar sua progressão para depressão pós-parto.</p>
+    <p style="margin-top:2mm;"><strong>II.</strong> A psicose puerperal constitui emergência psiquiátrica com início geralmente abrupto nas primeiras 2 semanas pós-parto, manifestando-se por alucinações, delírios, comportamento desorganizado e risco para a mãe e para o bebê, exigindo hospitalização imediata.</p>
+    <p style="margin-top:2mm;"><strong>III.</strong> A Política Nacional de Saúde Integral de LGBT (Portaria MS 2.836/2011) orienta a atenção integral à saúde da população LGBTQIA+ no SUS, e a Resolução CFP 01/1999 veda expressamente ao psicólogo a patologização da homossexualidade e qualquer prática de reorientação sexual, independentemente de quem a solicite.</p>
+    <p style="margin-top:2mm;"><strong>IV.</strong> O Processo Transexualizador no SUS (Portaria 2.803/2013) está restrito às intervenções cirúrgicas de redesignação sexual, não contemplando acompanhamento psicológico, hormonioterapia nem outros componentes assistenciais, por serem considerados procedimentos de caráter estético e não médico.</p>
+  </div>
+
+  <p style="margin-top:1mm;">Estão corretas apenas:</p>
+
+  <div class="alternativas">
+    <div class="alt"><span class="alt-letra">A</span><p>I e II</p></div>
+    <div class="alt"><span class="alt-letra">B</span><p>I e IV</p></div>
+    <div class="alt alt-correta"><span class="alt-letra">C</span><p>II e III</p></div>
+    <div class="alt"><span class="alt-letra">D</span><p>III e IV</p></div>
+  </div>
+
+  <div style="margin-top:4mm;">
+    <span class="chip chip-accent">Gabarito: C</span>
+    <span class="chip">II e III corretas</span>
+    <span class="chip">Baby blues = autolimitado (I errada)</span>
+    <span class="chip">Processo transexualizador = integral (IV errada)</span>
+  </div>
+
+  <div class="pg-num">8</div>
+</div>
+
+<!-- ========== PÁGINA 9 — GABARITO COMENTADO ========== -->
+<div class="pagina gabarito-pg">
+  <div class="pg-header" style="display:flex;justify-content:space-between;align-items:center;border-bottom:0.6px solid var(--verde);padding-bottom:2.5mm;margin-bottom:4mm;">
+    <div style="display:flex;align-items:center;gap:3mm;">
+      <svg width="14" height="16" viewBox="0 0 38 44" fill="none">
+        <polygon points="19,2 36,11.5 36,32.5 19,42 2,32.5 2,11.5" fill="#1F5C23"/>
+        <circle cx="19" cy="22" r="8.5" fill="#F6F4ED"/>
+      </svg>
+      <span class="pg-header-marca">Elite Treinamentos</span>
+      <div class="pg-header-sep"></div>
+      <span class="pg-header-bloco">Psicologia · Bloco B11 · Aula 24</span>
+    </div>
+    <div class="pg-header-right">GABARITO</div>
+  </div>
+
+  <div class="gabarito-titulo">Gabarito Comentado</div>
+
+  <div class="gabarito-grid">
+    <div class="gab-card">
+      <div class="gab-card-q">Questão 01</div>
+      <div class="gab-card-letra">B</div>
+      <div class="gab-card-tema">DPP · EPDS · Periparto</div>
+    </div>
+    <div class="gab-card">
+      <div class="gab-card-q">Questão 02</div>
+      <div class="gab-card-letra">C</div>
+      <div class="gab-card-tema">Res. CFP 01/1999 · Afirmativo</div>
+    </div>
+    <div class="gab-card">
+      <div class="gab-card-q">Questão 03</div>
+      <div class="gab-card-letra">C</div>
+      <div class="gab-card-tema">II e III corretas</div>
+    </div>
+  </div>
+
+  <div class="justificativa">
+    <div class="justificativa-q">Q01 — Por que B?</div>
+    <p><strong>A errada</strong> — baby blues dura dias (3–5 dias, até 2 semanas no máximo) e é autolimitado. 6 semanas e prejuízo funcional persistente já ultrapassam o espectro do baby blues. <strong>C errada</strong> — psicose puerperal = delírios/alucinações/desorientação/comportamento desorganizado. Os pensamentos de Fernanda são <em>ego-distônicos</em> — ela os reconhece como absurdos e ficam angustiada com eles. Isso é típico de TOC perinatal dentro do quadro de DPP, <em>não</em> de psicose (onde a mãe acredita nos delírios e pode agir sobre eles). <strong>D errada</strong> — há elementos depressivos claros (choro, culpa, insônia, anedonia implícita) além dos pensamentos intrusivos. A coexistência de DPP + componente obsessivo é comum. O diagnóstico principal é DPP periparto.</p>
+  </div>
+
+  <div class="justificativa">
+    <div class="justificativa-q">Q02 — Por que C?</div>
+    <p>A <strong>Res. CFP 01/1999</strong> e a <strong>Res. CFP 01/2018</strong> vedam expressamente qualquer prática de reorientação ou conversão sexual — terapia de conversão, "cura gay", intervenção para mudança de orientação ou identidade de gênero. <strong>A vedação é absoluta</strong>, independentemente de quem solicita (cliente, família, instituição). <strong>A errada</strong> — o pedido do cliente não legitima a prática vedada; a Res. 01/1999 não admite essa exceção. <strong>B errada</strong> — homossexualidade <em>não é patologia</em> (CID-11, DSM-5, CFP); não há "transtorno de identidade sexual" a ser encaminhado ao psiquiatra. <strong>D errada</strong> — encaminhar para terapia de conversão religiosa também viola a Res. 01/1999 — o encaminhamento é parte da prática vedada.</p>
+  </div>
+
+  <div class="justificativa">
+    <div class="justificativa-q">Q03 — Por que C (II e III corretas)?</div>
+    <p><strong>I — ERRADA:</strong> baby blues é autolimitado (3–5 dias, máx. 2 semanas); <em>não</em> requer farmacoterapia preventiva — farmacoterapia pode mascarar evolução para DPP e tem riscos na amamentação. A vigilância ativa (não medicação) é a conduta correta. <strong>II — CORRETA:</strong> psicose puerperal = emergência psiquiátrica; início abrupto nas primeiras 1–2 semanas; alucinações + delírios + desorganização; risco para mãe e bebê; hospitalização imediata. <strong>III — CORRETA:</strong> Portaria 2.836/2011 (PNSSSGI) + Res. CFP 01/1999 — vetam patologização e práticas de reorientação sexual. <strong>IV — ERRADA:</strong> o Processo Transexualizador (Portaria 2.803/2013) é <em>integral</em> — inclui acompanhamento psicológico (obrigatório), social, hormonioterapia, fonoaudiologia e cirurgias; não se limita às cirurgias.</p>
+  </div>
+
+  <div class="pg-num">9</div>
+</div>
+
+<!-- ========== PÁGINA 10 — SÍNTESE ========== -->
+<div class="pagina sintese-pg">
+  <div class="pg-header" style="display:flex;justify-content:space-between;align-items:center;border-bottom:0.6px solid var(--verde);padding-bottom:2.5mm;margin-bottom:4mm;">
+    <div style="display:flex;align-items:center;gap:3mm;">
+      <svg width="14" height="16" viewBox="0 0 38 44" fill="none">
+        <polygon points="19,2 36,11.5 36,32.5 19,42 2,32.5 2,11.5" fill="#1F5C23"/>
+        <circle cx="19" cy="22" r="8.5" fill="#F6F4ED"/>
+      </svg>
+      <span class="pg-header-marca">Elite Treinamentos</span>
+      <div class="pg-header-sep"></div>
+      <span class="pg-header-bloco">Psicologia · Bloco B11 · Aula 24</span>
+    </div>
+    <div class="pg-header-right">SÍNTESE</div>
+  </div>
+
+  <div class="sintese-titulo">Mapa Mental — Saúde da Mulher e Diversidade</div>
+
+  <div class="mapa-item">
+    <div class="mapa-bullet"></div>
+    <div class="mapa-content">
+      <div class="mapa-termo">Espectro Puerperal — 3 Quadros Distintos</div>
+      <p><strong>Baby blues:</strong> 3–5 dias, autolimitado, sem farmacoterapia · <strong>DPP:</strong> ≥ 4 semanas, EPDS ≥10, ego-distônico, TCC/IPT + farmacoterapia · <strong>Psicose puerperal:</strong> 1–2 semanas, emergência, alucinações/delírios, hospitalização imediata</p>
+    </div>
+  </div>
+
+  <div class="mapa-item">
+    <div class="mapa-bullet"></div>
+    <div class="mapa-content">
+      <div class="mapa-termo">TOC Perinatal vs. Psicose Puerperal</div>
+      <p>TOC = pensamentos intrusivos ego-distônicos (mãe fica angustiada, reconhece como absurdos) · Psicose = delírios ego-sintônicos (mãe acredita e pode agir) · Distinção crucial para conduta: TOC → TCC; Psicose → emergência hospitalar</p>
+    </div>
+  </div>
+
+  <div class="mapa-item">
+    <div class="mapa-bullet"></div>
+    <div class="mapa-content">
+      <div class="mapa-termo">Saúde Reprodutiva — Marcos Legais</div>
+      <p>PNAISM (2004): integralidade do cuidado feminino · Planejamento familiar Lei 9.263/96: ≥25a ou ≥2 filhos para esterilização · Acompanhante no parto: Lei 11.108/2005 · Violência obstétrica: reconhecida pelo MS, sem lei federal específica</p>
+    </div>
+  </div>
+
+  <div class="mapa-item">
+    <div class="mapa-bullet"></div>
+    <div class="mapa-content">
+      <div class="mapa-termo">Diversidade Sexual — Vedações Absolutas</div>
+      <p>Res. CFP 01/1999 + 01/2018: veda patologização da homossexualidade e qualquer prática de reorientação sexual · CID-11: homossexualidade não é patologia; transexualidade = "incongruência de gênero" HA60 (capítulo de saúde sexual, não mental) · Autonomia do cliente NÃO legitima terapia de conversão</p>
+    </div>
+  </div>
+
+  <div class="mapa-item">
+    <div class="mapa-bullet"></div>
+    <div class="mapa-content">
+      <div class="mapa-termo">Processo Transexualizador — Portaria 2.803/2013</div>
+      <p>Integral: psicologia + assistência social + hormonioterapia + fonoaudiologia + cirurgias · Psicólogo = cuidado afirmativo, NÃO gatekeeper · ADI 4.275 (STF 2018): retificação de registro civil sem cirurgia nem laudo</p>
+    </div>
+  </div>
+
+  <div class="mapa-item">
+    <div class="mapa-bullet"></div>
+    <div class="mapa-content">
+      <div class="mapa-termo">Estresse da Minoria — Meyer (2003)</div>
+      <p>Excesso de TMC em LGBTQIA+ = produto do sofrimento social (discriminação, rejeição, LGBTfobia), NÃO da identidade · Cuidado afirmativo: tratar o estresse social · Rejeição familiar = principal fator de risco em jovens · Aceitação familiar = principal fator protetor</p>
+    </div>
+  </div>
+
+  <div class="proxima-aula">
+    <div class="proxima-num">25</div>
+    <div>
+      <div class="proxima-aula-label">Próxima Aula</div>
+      <div class="proxima-aula-titulo">PSI-SAÚDE: Psicologia e Envelhecimento</div>
+      <p style="color:rgba(246,244,237,0.65);font-size:7pt;margin-top:1.5mm;">Envelhecimento normal vs. patológico · Demências (Alzheimer, vascular) · Depressão no idoso · Avaliação neuropsicológica · Estatuto do Idoso · Cuidado ao cuidador</p>
+    </div>
+  </div>
+
+  <div class="pg-num">10</div>
+</div>
+
+</body>
+</html>

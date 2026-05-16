@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Psicologia B11 — Aula 09 | PSI-SAUDE: Saúde Coletiva Crítica</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #d0d0d0; font-family: 'Bricolage Grotesque', sans-serif; }
+  .page { width: 210mm; height: 297mm; background: #F6F4ED; margin: 8mm auto; position: relative; overflow: hidden; display: flex; flex-direction: column; }
+  @media print { body { background: none; margin: 0; } .page { margin: 0; page-break-after: always; box-shadow: none; } }
+  @page { size: A4; margin: 0; }
+
+  .page-header { background: #1F5C23; padding: 4mm 6mm; display: flex; align-items: center; gap: 4mm; flex-shrink: 0; }
+  .logo-svg { width: 10mm; height: 10mm; flex-shrink: 0; }
+  .header-text { flex: 1; }
+  .header-course { font-family: 'Playfair Display', serif; font-style: italic; color: #C6D834; font-size: 6.5pt; letter-spacing: 0.03em; }
+  .header-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: #F6F4ED; font-size: 11pt; line-height: 1; text-transform: uppercase; letter-spacing: 0.04em; }
+  .header-badge { background: #C6D834; color: #1F5C23; font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 7pt; padding: 1mm 3mm; border-radius: 2mm; text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap; }
+
+  .page-footer { background: #1F5C23; padding: 2mm 6mm; display: flex; justify-content: space-between; align-items: center; flex-shrink: 0; }
+  .footer-left { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: #C6D834; font-size: 6pt; letter-spacing: 0.05em; text-transform: uppercase; }
+  .footer-right { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: #F6F4ED; font-size: 8pt; letter-spacing: 0.06em; }
+
+  .page-body { flex: 1; padding: 5mm 7mm; display: flex; flex-direction: column; gap: 3mm; overflow: hidden; }
+
+  .section-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 13pt; color: #1F5C23; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 0.8mm solid #C6D834; padding-bottom: 1.5mm; margin-bottom: 1mm; }
+
+  .box { background: #fff; border-left: 1.2mm solid #1F5C23; border-radius: 1mm; padding: 3mm 4mm; font-size: 7.8pt; line-height: 1.45; color: #222; }
+  .box.accent { border-left-color: #C6D834; }
+  .box.alert  { border-left-color: #c0392b; background: #fff8f7; }
+  .box.dark   { background: #1F5C23; color: #F6F4ED; border-left-color: #C6D834; }
+  .box-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; color: #1F5C23; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 1.5mm; }
+  .box.dark .box-title  { color: #C6D834; }
+  .box.alert .box-title { color: #c0392b; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 7.5pt; }
+  th { background: #1F5C23; color: #F6F4ED; font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 8pt; text-transform: uppercase; padding: 1.5mm 2.5mm; text-align: left; letter-spacing: 0.03em; }
+  td { padding: 1.5mm 2.5mm; border-bottom: 0.3mm solid #e0ddd5; vertical-align: top; color: #222; line-height: 1.4; }
+  tr:nth-child(even) td { background: #f4f2eb; }
+  td strong { color: #1F5C23; }
+
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5mm; }
+  .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2mm; }
+
+  .autor-item { display: flex; gap: 3mm; align-items: flex-start; padding: 2.5mm 3mm; background: #fff; border-radius: 1mm; margin-bottom: 1.5mm; font-size: 7.8pt; line-height: 1.4; }
+  .autor-badge { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 7pt; color: #fff; background: #1F5C23; padding: 0.8mm 2mm; border-radius: 0.8mm; flex-shrink: 0; white-space: nowrap; min-width: 20mm; text-align: center; text-transform: uppercase; }
+  .autor-content strong { color: #1F5C23; font-family: 'Barlow Condensed', sans-serif; font-size: 8.5pt; text-transform: uppercase; display: block; margin-bottom: 0.3mm; }
+
+  .viol-item { display: flex; gap: 3mm; align-items: flex-start; padding: 2mm 3mm; background: #fff; border-radius: 1mm; margin-bottom: 1.5mm; font-size: 7.8pt; line-height: 1.4; border-left: 1mm solid #c0392b; }
+  .viol-badge { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 7pt; color: #fff; background: #c0392b; padding: 0.8mm 2mm; border-radius: 0.8mm; flex-shrink: 0; white-space: nowrap; min-width: 16mm; text-align: center; text-transform: uppercase; }
+  .viol-content strong { color: #c0392b; font-family: 'Barlow Condensed', sans-serif; font-size: 8.5pt; text-transform: uppercase; display: block; margin-bottom: 0.3mm; }
+
+  .q-stem { background: #fff; border: 0.5mm solid #ddd; border-radius: 1.5mm; padding: 3mm 4mm; font-size: 8pt; line-height: 1.5; color: #222; margin-bottom: 2mm; }
+  .q-stem-label { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; color: #1F5C23; text-transform: uppercase; margin-bottom: 1.5mm; }
+  .q-option { display: flex; gap: 2mm; padding: 1.5mm 2.5mm; border-radius: 1mm; margin-bottom: 1mm; border: 0.4mm solid #e0ddd5; background: #fff; font-size: 7.8pt; line-height: 1.4; align-items: flex-start; }
+  .q-option.correct { background: #f0f8f0; border-color: #1F5C23; }
+  .q-option.wrong   { background: #fff8f7; border-color: #e0a0a0; }
+  .q-letter { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; color: #1F5C23; min-width: 4mm; flex-shrink: 0; margin-top: -0.3mm; }
+  .q-option.correct .q-letter { color: #1F5C23; }
+  .q-option.wrong   .q-letter { color: #c0392b; }
+
+  .afirmativa { display: flex; gap: 2mm; padding: 2mm 3mm; border-radius: 1mm; margin-bottom: 1.5mm; font-size: 7.8pt; line-height: 1.45; align-items: flex-start; }
+  .afirmativa.certa  { background: #f0f8f0; border-left: 1mm solid #1F5C23; }
+  .afirmativa.errada { background: #fff8f7; border-left: 1mm solid #c0392b; }
+  .af-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; min-width: 5mm; flex-shrink: 0; }
+  .afirmativa.certa  .af-num { color: #1F5C23; }
+  .afirmativa.errada .af-num { color: #c0392b; }
+  .af-verdict { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 8pt; padding: 0.3mm 2mm; border-radius: 0.8mm; flex-shrink: 0; }
+  .afirmativa.certa  .af-verdict { background: #1F5C23; color: #F6F4ED; }
+  .afirmativa.errada .af-verdict { background: #c0392b; color: #fff; }
+
+  .gab-box { display: flex; gap: 3mm; align-items: center; background: #1F5C23; color: #F6F4ED; border-radius: 1.5mm; padding: 2.5mm 4mm; margin-bottom: 2mm; }
+  .gab-letter { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 20pt; color: #C6D834; line-height: 1; }
+  .gab-info { flex: 1; font-size: 7.8pt; line-height: 1.4; }
+  .gab-info strong { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; text-transform: uppercase; letter-spacing: 0.03em; }
+
+  .sintese-item { display: flex; gap: 2mm; padding: 2mm 3mm; border-radius: 1mm; margin-bottom: 1.5mm; background: #fff; border-left: 1mm solid #1F5C23; font-size: 7.8pt; line-height: 1.4; align-items: flex-start; }
+  .sintese-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: #1F5C23; font-size: 10pt; min-width: 5mm; flex-shrink: 0; margin-top: -0.5mm; }
+
+  .cover { background: #1F5C23; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; overflow: hidden; padding: 12mm; }
+  .cover::before { content: ''; position: absolute; top: -20mm; right: -20mm; width: 80mm; height: 80mm; background: rgba(198,216,52,0.12); border-radius: 50%; }
+  .cover::after  { content: ''; position: absolute; bottom: -15mm; left: -15mm; width: 60mm; height: 60mm; background: rgba(198,216,52,0.08); border-radius: 50%; }
+  .cover-inner { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 5mm; width: 100%; }
+  .cover-logo { width: 22mm; height: 22mm; }
+  .cover-brand { font-family: 'Playfair Display', serif; font-style: italic; color: #C6D834; font-size: 11pt; letter-spacing: 0.05em; }
+  .cover-tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(246,244,237,0.6); font-size: 7pt; text-transform: uppercase; letter-spacing: 0.12em; }
+  .cover-divider { width: 30mm; height: 0.3mm; background: rgba(198,216,52,0.4); }
+  .cover-bloco { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: #C6D834; font-size: 9pt; text-transform: uppercase; letter-spacing: 0.1em; background: rgba(198,216,52,0.12); padding: 1.5mm 4mm; border-radius: 1mm; }
+  .cover-aula-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: rgba(246,244,237,0.3); font-size: 52pt; line-height: 1; letter-spacing: -1mm; }
+  .cover-module { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: #C6D834; font-size: 10pt; text-transform: uppercase; letter-spacing: 0.08em; }
+  .cover-main-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: #F6F4ED; font-size: 20pt; text-transform: uppercase; letter-spacing: 0.03em; line-height: 1.1; }
+  .cover-sub { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; color: rgba(246,244,237,0.7); font-size: 8pt; line-height: 1.5; max-width: 140mm; }
+  .cover-footer-bar { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(198,216,52,0.15); border-top: 0.5mm solid rgba(198,216,52,0.3); padding: 3mm 8mm; display: flex; justify-content: space-between; align-items: center; }
+  .cover-footer-bar span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(246,244,237,0.5); font-size: 6pt; text-transform: uppercase; letter-spacing: 0.08em; }
+</style>
+</head>
+<body>
+
+<!-- P1 — CAPA -->
+<div class="page">
+  <div class="cover">
+    <div class="cover-inner">
+      <svg class="cover-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#F6F4ED" stroke="#C6D834" stroke-width="4"/>
+        <circle cx="50" cy="50" r="24" fill="#1F5C23"/>
+        <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#F6F4ED">E</text>
+      </svg>
+      <div class="cover-brand">Elite Treinamentos em Saúde</div>
+      <div class="cover-tagline">Extensivo ENARE 2026</div>
+      <div class="cover-divider"></div>
+      <div class="cover-bloco">Psicologia · Bloco B11</div>
+      <div class="cover-aula-num">09</div>
+      <div class="cover-module">PSI-SAUDE</div>
+      <div class="cover-main-title">Saúde Coletiva Crítica:<br>Medicalização e Populações</div>
+      <div class="cover-sub">Medicalização do sofrimento · Biopolítica (Foucault) · Canguilhem · Determinação Social da Saúde ·
+        Violência como problema de saúde pública · Saúde da mulher · Saúde perinatal · PNAISH · Casos ENARE 2024/2025</div>
+    </div>
+    <div class="cover-footer-bar">
+      <span>PDF de Apoio · Uso Exclusivo Extensivo ENARE 2026</span>
+      <span>Aula 09 · Bloco B11 · Psicologia</span>
+    </div>
+  </div>
+</div>
+
+<!-- P2 — MEDICALIZAÇÃO E BIOPOLÍTICA -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">PSI-SAUDE · Medicalização, Biopolítica e Determinação Social da Saúde</div>
+    </div>
+    <div class="header-badge">Aula 09</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">Medicalização do Sofrimento Social</div>
+
+    <div class="box alert">
+      <div class="box-title">Conceito Central — Q81/2024</div>
+      <strong>Medicalização</strong> é a transformação de sofrimentos, conflitos e experiências da vida cotidiana em <em>problemas biomédicos individuais</em>, desconsiderando os determinantes sociais subjacentes. Exemplos: tristeza por desemprego → depressão; agitação por situação escolar inadequada → TDAH; sofrimento por violência → transtorno de ansiedade.
+    </div>
+
+    <div class="section-title">Referenciais Teóricos — FGV Cobra Nomes</div>
+
+    <div class="autor-item">
+      <div class="autor-badge">FOUCAULT</div>
+      <div class="autor-content">
+        <strong>Biopoder e Biopolítica</strong>
+        O poder age de forma <em>produtiva</em> — não apenas proíbe, mas produz sujeitos, saberes e corpos normalizados. A medicina é um dispositivo de poder-saber que governa populações (biopolítica) e corpos individuais (anátomo-política). Não há apenas repressão: há produção de "normas" de saúde que regulam comportamentos.
+      </div>
+    </div>
+    <div class="autor-item">
+      <div class="autor-badge">CANGUILHEM</div>
+      <div class="autor-content">
+        <strong>Normal e Patológico</strong>
+        A distinção normal/patológico é <em>relativa e normativa</em> — não é um dado biológico neutro. O "doente" é quem não se adapta às normas sociais vigentes. A saúde é a capacidade de criar novas normas diante da adversidade. Medicalizar é impor normas externas ao indivíduo, desconsiderando sua singularidade.
+      </div>
+    </div>
+    <div class="autor-item">
+      <div class="autor-badge">ILLICH</div>
+      <div class="autor-content">
+        <strong>Iatrogenização — Nemesis Médica</strong>
+        A medicina industrial tornou-se ela mesma um risco à saúde: <em>iatrogenias clínicas</em> (efeitos adversos); <em>sociais</em> (dependência da expertise médica); <em>culturais</em> (medicalização da vida e da morte). A iatrogenia não se reduz a efeitos adversos de medicamentos — abrange a erosão da autonomia para lidar com o sofrimento.
+      </div>
+    </div>
+
+    <div class="section-title">Determinação Social da Saúde (DSS)</div>
+
+    <div class="box dark">
+      <div class="box-title">Modelo de Dahlgren-Whitehead — Q92/2025</div>
+      Saúde é produzida em <strong>camadas</strong>: (1) biologia/genética individual; (2) estilos de vida; (3) redes sociais e comunitárias; (4) condições de trabalho, moradia, saneamento, educação; (5) políticas macroeconômicas e culturais. Quanto mais distante do centro, <strong>maior o impacto</strong> e mais difícil intervir individualmente. A Psicologia crítica em saúde atua em todas as camadas — não apenas na (1).
+    </div>
+
+    <div class="box accent">
+      <div class="box-title">Psicologia Crítica em Saúde</div>
+      Subjetividade como <strong>produção histórica e social</strong>: o sofrimento psíquico não existe fora do contexto que o produz. Intervenções devem questionar os determinantes, não apenas adaptar o sujeito à norma. Referências: Foucault, Canguilhem, Paulo Freire (conscientização), Basaglia (Reforma Psiquiátrica).
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">2 / 10</div>
+  </div>
+</div>
+
+<!-- P3 — VIOLÊNCIA COMO PROBLEMA DE SAÚDE PÚBLICA -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">PSI-SAUDE · Violência como Determinante de Saúde — Tipos, Notificação e Fluxo</div>
+    </div>
+    <div class="header-badge">Aula 09</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">Tipos de Violência — OMS (Q78/2024)</div>
+
+    <div class="grid2">
+      <div class="box">
+        <div class="box-title">Violência Interpessoal</div>
+        · <strong>Intrafamiliar (VAID):</strong> entre membros da família ou conviventes — VD, abuso de crianças/idosos<br>
+        · <strong>Comunitária:</strong> entre pessoas sem vínculo familiar — violência urbana, sexual por desconhecidos, bullying
+      </div>
+      <div class="box">
+        <div class="box-title">Outras Categorias</div>
+        · <strong>Autoprovocada:</strong> suicídio, automutilação, tentativa de suicídio<br>
+        · <strong>Coletiva:</strong> guerras, genocídios, violência política e institucional<br>
+        · <strong>Estrutural:</strong> pobreza, racismo, LGBTfobia como violência sistêmica
+      </div>
+    </div>
+
+    <div class="section-title">Violência Doméstica e Intrafamiliar — Lei Maria da Penha (11.340/2006)</div>
+
+    <div class="viol-item">
+      <div class="viol-badge">5 FORMAS</div>
+      <div class="viol-content">
+        <strong>Tipos de VD (Art. 7º)</strong>
+        Física (lesões corporais) · Psicológica (humilhação, controle, isolamento, ameaça) · Sexual (sem consentimento) · Patrimonial (controle de bens, dinheiro, documentos) · Moral (calúnia, difamação, injúria)
+      </div>
+    </div>
+    <div class="viol-item">
+      <div class="viol-badge">CICLO</div>
+      <div class="viol-content">
+        <strong>Ciclo da Violência — Lenore Walker</strong>
+        (1) <em>Acúmulo de tensão:</em> irritabilidade crescente, pequenos incidentes; (2) <em>Explosão / Agressão aguda:</em> violência concreta; (3) <em>Lua-de-mel / Arrependimento:</em> pedido de perdão, promessas de mudança — fase que dificulta saída da relação
+      </div>
+    </div>
+
+    <div class="section-title">Notificação Compulsória e Fluxo de Atendimento</div>
+
+    <div class="box dark">
+      <div class="box-title">SINAN — Ficha de Violência Interpessoal/Autoprovocada — Q78/2024</div>
+      Notificação é <strong>compulsória</strong> para: crianças e adolescentes (ECA, art. 13); idosos (Estatuto do Idoso, art. 19); pessoas com deficiência. Para mulheres adultas com capacidade plena, a notificação deve <em>respeitar a autonomia</em> — exceto quando há risco de morte. Notifica-se <strong>independentemente de B.O.</strong> ou consentimento nos grupos acima.
+    </div>
+
+    <div class="box">
+      <div class="box-title">Fluxo do Psicólogo na APS/CREAS diante de Violência</div>
+      (1) <strong>Acolhimento</strong> — escuta qualificada, sem julgamento, sem pressionar relato<br>
+      (2) <strong>Notificação SINAN</strong> — obrigatória para grupos vulneráveis<br>
+      (3) <strong>Comunicação ao Conselho Tutelar</strong> — se envolver criança/adolescente<br>
+      (4) <strong>Articulação de rede</strong> — CREAS, Casa da Mulher, IML, DP, DEAM, CAPS (se TM)<br>
+      (5) <strong>Orientação sobre medidas protetivas</strong> — Art. 22 Lei Maria da Penha; abrigos
+    </div>
+
+    <div class="box accent">
+      <div class="box-title">Violência Contra Populações Específicas — Q83/2024</div>
+      · <strong>Criança/adolescente:</strong> ECA — abuso físico, sexual, negligência, abandono; notificação obrigatória ao CT<br>
+      · <strong>Idoso:</strong> Estatuto do Idoso (Lei 10.741/2003) — maus-tratos, abandono, violência financeira; alta subnotificação<br>
+      · <strong>LGBTQIA+:</strong> LGBTfobia como violência estrutural e determinante de saúde mental
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">3 / 10</div>
+  </div>
+</div>
+
+<!-- P4 — SAÚDE DA MULHER E SAÚDE PERINATAL -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">PSI-SAUDE · Saúde da Mulher — Processo Gravídico-Puerperal e Saúde Mental Perinatal</div>
+    </div>
+    <div class="header-badge">Aula 09</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">Saúde Mental Perinatal — Q86/2025</div>
+
+    <table>
+      <tr>
+        <th>Quadro</th>
+        <th>Prevalência</th>
+        <th>Início / Duração</th>
+        <th>Características Centrais</th>
+        <th>Conduta</th>
+      </tr>
+      <tr>
+        <td><strong>Baby Blues</strong></td>
+        <td>50–80%</td>
+        <td>1–5 dias pós-parto; até 2 semanas</td>
+        <td>Choro fácil, labilidade, cansaço — autolimitado</td>
+        <td>Psicoeducação, suporte familiar — NÃO é DPP</td>
+      </tr>
+      <tr>
+        <td><strong>DPP</strong></td>
+        <td>10–20%</td>
+        <td>Até 4 semanas; pode ser durante gestação</td>
+        <td>Tristeza persistente, anedonia, dificuldade de vínculo com bebê, pensamentos de dano, culpa intensa</td>
+        <td>EPDS ≥10 → avaliação; ≥13 → alto risco; psicoterapia + encaminhamento; não prescreve (psicólogo)</td>
+      </tr>
+      <tr>
+        <td><strong>Psicose Puerperal</strong></td>
+        <td>&lt;0,2%</td>
+        <td>Primeiras 2 semanas; início abrupto</td>
+        <td>Alucinações, delírios, desorientação, agitação extrema — <em>urgência psiquiátrica</em></td>
+        <td>Encaminhamento imediato ao CAPS 24h ou UPA</td>
+      </tr>
+    </table>
+
+    <div class="box alert">
+      <div class="box-title">EPDS — Edinburgh Postnatal Depression Scale</div>
+      10 itens, autoaplicável, validada para gestação e puerpério. <strong>Ponto de corte:</strong> ≥10 = provável DPP (requer avaliação clínica); ≥13 = alto risco; item 10 avalia pensamentos de dano (autorreferidos). <em>Instrumento de rastreamento — não diagnóstico.</em>
+    </div>
+
+    <div class="section-title">Violência Obstétrica e Atenção Humanizada ao Parto</div>
+
+    <div class="grid2">
+      <div class="box">
+        <div class="box-title">Tipos de Violência Obstétrica</div>
+        · <strong>Física:</strong> episiotomia de rotina, manobra de Kristeller, imobilização<br>
+        · <strong>Psicológica:</strong> humilhação, gritos, ameaças, infantilização<br>
+        · <strong>Sexual:</strong> toque vaginal sem consentimento ou explicação<br>
+        · <strong>Institucional:</strong> negar acompanhante, negar analgesia, separação mãe-bebê sem justificativa clínica
+      </div>
+      <div class="box">
+        <div class="box-title">Marcos Legais — Atenção Humanizada</div>
+        · <strong>Lei 11.634/2007:</strong> direito da gestante ao acompanhante durante o parto<br>
+        · <strong>Portaria 1.459/2011:</strong> Rede Cegonha — pré-natal, parto e puerpério humanizados<br>
+        · <strong>Res. CFP 021/2018:</strong> psicólogo na atenção perinatal — grupos de gestantes, visita domiciliar, apoio ao aleitamento, suporte ao luto perinatal
+      </div>
+    </div>
+
+    <div class="box dark">
+      <div class="box-title">Atuação do Psicólogo no Processo Gravídico-Puerperal</div>
+      · <strong>Pré-natal:</strong> grupos de gestantes, rastreamento de ansiedade/depressão, elaboração de medos sobre o parto<br>
+      · <strong>Parto:</strong> suporte emocional contínuo (doula psicológica), mediação com equipe<br>
+      · <strong>Puerpério:</strong> rastreamento EPDS, apoio ao vínculo mãe-bebê, suporte ao aleitamento, acolhimento do luto perinatal (aborto, óbito fetal, prematuridade extrema), prevenção de DPP<br>
+      · <strong>Foco sistêmico:</strong> incluir parceiro/família — o parceiro também pode desenvolver DPP (≈10%)
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">4 / 10</div>
+  </div>
+</div>
+
+<!-- P5 — SAÚDE DO HOMEM + TABELA ENARE -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">PSI-SAUDE · Saúde do Homem (PNAISH) + Mapeamento ENARE 2024/2025</div>
+    </div>
+    <div class="header-badge">Aula 09</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">Saúde do Homem — PNAISH (Q91/2025)</div>
+
+    <div class="box">
+      <div class="box-title">PNAISH — Política Nacional de Atenção Integral à Saúde do Homem (2008)</div>
+      Criada pelo MS para enfrentar a menor busca masculina por serviços de saúde. <strong>Premissa central:</strong> a socialização de gênero — "homem não fica doente", "homem não chora", virilidade e invulnerabilidade como normas — cria <em>vulnerabilidades específicas</em>: diagnósticos tardios, maior mortalidade por causas externas, menor adesão ao tratamento, barreiras para cuidado em saúde mental.
+    </div>
+
+    <div class="grid2">
+      <div class="box accent">
+        <div class="box-title">Vulnerabilidade Masculina</div>
+        · Menor busca pela APS (diagnósticos tardios de HAS, DM, câncer)<br>
+        · Maior mortalidade por causas externas (acidentes, violência, suicídio)<br>
+        · <strong>Depressão mascarada:</strong> irritabilidade, álcool, compulsão por trabalho — não o "choro" típico<br>
+        · Barreiras culturais: horários de trabalho, estigma de "fragilidade"
+      </div>
+      <div class="box accent">
+        <div class="box-title">Intervenção Psicológica com Homens</div>
+        · Grupos de homens em CAPS/UBS: desconstrução de papéis rígidos<br>
+        · Acolhimento sem reforçar estereótipos (ex.: "seja forte")<br>
+        · Abordar violência doméstica pelo lado do perpetrador — grupos reflexivos<br>
+        · Suicídio: homens têm mais letalidade (métodos mais violentos)
+      </div>
+    </div>
+
+    <div class="section-title">Mapeamento de Questões — ENARE 2024 e 2025</div>
+
+    <table>
+      <tr>
+        <th>Questão</th>
+        <th>Ano</th>
+        <th>Tema</th>
+        <th>Comando central</th>
+        <th>Gab.</th>
+      </tr>
+      <tr>
+        <td><strong>Q81</strong></td>
+        <td>2024</td>
+        <td>Medicalização</td>
+        <td>Psicólogo identifica sofrimento por desemprego tratado como "depressão" — conduta correta</td>
+        <td><strong>B</strong></td>
+      </tr>
+      <tr>
+        <td><strong>Q78</strong></td>
+        <td>2024</td>
+        <td>Violência Doméstica</td>
+        <td>Fluxo de notificação SINAN e articulação de rede em caso de VD</td>
+        <td><strong>C</strong></td>
+      </tr>
+      <tr>
+        <td><strong>Q83</strong></td>
+        <td>2024</td>
+        <td>Violência contra idoso</td>
+        <td>Notificação compulsória e Estatuto do Idoso — conduta do psicólogo na APS</td>
+        <td><strong>B</strong></td>
+      </tr>
+      <tr>
+        <td><strong>Q86</strong></td>
+        <td>2025</td>
+        <td>Saúde Perinatal</td>
+        <td>Puérpera com baby blues vs. DPP — EPDS e conduta na APS</td>
+        <td><strong>C</strong></td>
+      </tr>
+      <tr>
+        <td><strong>Q91</strong></td>
+        <td>2025</td>
+        <td>Saúde do Homem</td>
+        <td>PNAISH e vulnerabilidade masculina — por que homens buscam menos saúde</td>
+        <td><strong>B</strong></td>
+      </tr>
+      <tr>
+        <td><strong>Q92</strong></td>
+        <td>2025</td>
+        <td>DSS / Biopolítica</td>
+        <td>Modelo Dahlgren-Whitehead e Foucault — DSS como referencial crítico</td>
+        <td><strong>C</strong></td>
+      </tr>
+    </table>
+
+    <div class="box dark">
+      <div class="box-title">Padrão FGV — Saúde Coletiva Crítica</div>
+      FGV cobra <strong>nomes dos autores</strong> (Foucault, Canguilhem, Illich, Dahlgren-Whitehead) e exige que o candidato <em>aplique</em> o conceito a um caso clínico. A pegadinha recorrente: confundir baby blues com DPP (autolimitado ≠ requer intervenção) e confundir biopoder "apenas repressivo" (errado) com biopoder "produtivo" (correto segundo Foucault).
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">5 / 10</div>
+  </div>
+</div>
+
+<!-- P6 — QUESTÃO 01 -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">PSI-SAUDE · Questão 01 — Medicalização do Sofrimento Social</div>
+    </div>
+    <div class="header-badge">Aula 09</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">Questão 01 — Aplicação (inspirada Q81/ENARE 2024)</div>
+
+    <div class="q-stem">
+      <div class="q-stem-label">Enunciado</div>
+      Dona Fernanda, 42 anos, procura a UBS por queixa de "nervosismo", insônia e "tristeza no peito". Recentemente perdeu o emprego e está com dívidas. A médica da equipe, após consulta de 10 minutos, prescreve ansiolítico e marca retorno em 1 mês sem investigar o contexto social. A psicóloga da eSF, ao acolher Fernanda dias depois, identifica que o sofrimento está diretamente vinculado à situação de desemprego e instabilidade financeira, sem história prévia de transtorno mental. Do ponto de vista da Psicologia em Saúde Coletiva, a conduta da médica configura:
+    </div>
+
+    <div class="q-option wrong">
+      <div class="q-letter">A</div>
+      Adequação terapêutica, pois ansiolíticos são indicados para sintomas ansiosos independentemente da etiologia social ou psicológica subjacente.
+    </div>
+    <div class="q-option correct">
+      <div class="q-letter">B</div>
+      Medicalização do sofrimento social, transformando um determinante social de saúde em problema biomédico individual e desconsiderando o contexto estrutural que produz o sofrimento.
+    </div>
+    <div class="q-option wrong">
+      <div class="q-letter">C</div>
+      Erro ético grave, pois apenas o psicólogo possui competência legal para identificar sofrimento de origem psicossocial no âmbito da APS.
+    </div>
+    <div class="q-option wrong">
+      <div class="q-letter">D</div>
+      Iatrogenia clínica segundo Illich, conceito que se restringe a efeitos adversos diretos de procedimentos médicos e medicamentos prescritos.
+    </div>
+    <div class="q-option wrong">
+      <div class="q-letter">E</div>
+      Biopolítica foucaultiana, aplicável exclusivamente ao nível das políticas populacionais e da gestão estatal da saúde coletiva.
+    </div>
+
+    <div class="box dark" style="margin-top:2mm;">
+      <div class="box-title">Análise das Alternativas</div>
+      <strong style="color:#C6D834;">B — CORRETA:</strong> Medicalização = transformar sofrimento social em diagnóstico/tratamento médico individual, ignorando os determinantes sociais (desemprego, pobreza). A médica age como se o problema fosse biológico/psíquico de Fernanda, não estrutural. <em>A (errada):</em> ansiolítico sem investigar causa social é inadequado e reforça a medicalização. <em>C (errada):</em> o médico também pode e deve contextualizar — não é exclusividade do psicólogo. <em>D (errada):</em> iatrogenia em Illich vai além de efeitos adversos diretos; mas a cena descreve medicalização, não iatrogenia como categoria. <em>E (errada):</em> biopoder age também no nível individual (anátomo-política), não apenas em populações — e não é o conceito mais preciso para este caso.
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">6 / 10</div>
+  </div>
+</div>
+
+<!-- P7 — QUESTÃO 02 -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">PSI-SAUDE · Questão 02 — Saúde Mental Perinatal e DPP</div>
+    </div>
+    <div class="header-badge">Aula 09</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">Questão 02 — Aplicação (inspirada Q86/ENARE 2025)</div>
+
+    <div class="q-stem">
+      <div class="q-stem-label">Enunciado</div>
+      Maria, 28 anos, primípara, está na 4ª semana pós-parto. A ACS relata à psicóloga da eSF que Maria "chora o dia todo", tem dificuldade para dormir mesmo quando o bebê dorme, sente-se "uma mãe péssima" e relatou um pensamento de "pegar o bebê e fugir para longe, para sumir". O companheiro está presente e apoiador. Não há história psiquiátrica prévia. Diante desse quadro, a conduta MAIS adequada da psicóloga na APS é:
+    </div>
+
+    <div class="q-option wrong">
+      <div class="q-letter">A</div>
+      Encaminhar Maria imediatamente para internação psiquiátrica, pois qualquer pensamento envolvendo o bebê indica psicose puerperal com risco imediato.
+    </div>
+    <div class="q-option wrong">
+      <div class="q-letter">B</div>
+      Tranquilizar Maria informando que seus sintomas são "baby blues" normais das primeiras semanas e orientar retorno espontâneo caso piore.
+    </div>
+    <div class="q-option correct">
+      <div class="q-letter">C</div>
+      Aplicar a EPDS para rastreamento, acolher Maria sem julgamento, esclarecer que pensamentos intrusivos não a tornam uma mãe ruim, e articular com a equipe sobre a necessidade de acompanhamento psicológico contínuo ou encaminhamento ao CAPS.
+    </div>
+    <div class="q-option wrong">
+      <div class="q-letter">D</div>
+      Comunicar imediatamente o Conselho Tutelar pelo risco ao bebê, sem antes realizar uma avaliação clínica mais detalhada do caso.
+    </div>
+    <div class="q-option wrong">
+      <div class="q-letter">E</div>
+      Prescrever antidepressivo de baixo risco para o aleitamento, pois o quadro é claramente DPP e o tratamento medicamentoso deve ser iniciado pelo psicólogo imediatamente.
+    </div>
+
+    <div class="box dark" style="margin-top:2mm;">
+      <div class="box-title">Análise das Alternativas</div>
+      <strong style="color:#C6D834;">C — CORRETA:</strong> Sintomas na 4ª semana (além das 2 semanas do baby blues), dificuldade de vínculo e pensamentos intrusivos indicam possível DPP — a EPDS é o instrumento de rastreamento indicado (≥10 = avaliação necessária; ≥13 = alto risco). Pensamentos intrusivos de fuga são comuns na DPP e não equivalem a risco real de dano — mas requerem avaliação. <em>A (errada):</em> psicose puerperal = alucinações/delírios/desorientação aguda — não é o quadro. <em>B (errada):</em> baby blues dura até 2 semanas; 4ª semana com esses sintomas exige avaliação formal. <em>D (errada):</em> CT sem avaliação é precipitado e pode romper o vínculo terapêutico. <em>E (errada):</em> psicólogo não prescreve medicamentos.
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">7 / 10</div>
+  </div>
+</div>
+
+<!-- P8 — QUESTÃO 03 (AFIRMATIVAS) -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">PSI-SAUDE · Questão 03 — Saúde Coletiva Crítica: Afirmativas V/F</div>
+    </div>
+    <div class="header-badge">Aula 09</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">Questão 03 — Afirmativas (padrão FGV — Gabarito C)</div>
+
+    <div class="q-stem">
+      <div class="q-stem-label">Enunciado</div>
+      Sobre a atuação do psicólogo em Saúde Coletiva, com foco em referenciais críticos, violência e populações específicas, analise as afirmativas abaixo e assinale a alternativa correta.
+    </div>
+
+    <div class="afirmativa errada">
+      <div class="af-num">I</div>
+      <div style="flex:1;">Segundo Foucault, o biopoder atua exclusivamente por meio de interdições e proibições legais sobre os corpos, não havendo dimensão produtiva ou positiva no exercício do poder sobre a vida das populações.</div>
+      <div class="af-verdict">ERRADA</div>
+    </div>
+    <div class="afirmativa certa">
+      <div class="af-num">II</div>
+      <div style="flex:1;">A violência doméstica e intrafamiliar é de notificação compulsória no SINAN, devendo o profissional de saúde notificar independentemente do consentimento nos casos que envolvam crianças, adolescentes, idosos e pessoas com deficiência.</div>
+      <div class="af-verdict">CERTA</div>
+    </div>
+    <div class="afirmativa certa">
+      <div class="af-num">III</div>
+      <div style="flex:1;">A PNAISH reconhece que a socialização de gênero gera vulnerabilidades específicas nos homens, incluindo menor busca por serviços de saúde, diagnósticos tardios e maior mortalidade por causas externas e por suicídio.</div>
+      <div class="af-verdict">CERTA</div>
+    </div>
+    <div class="afirmativa errada">
+      <div class="af-num">IV</div>
+      <div style="flex:1;">Segundo Canguilhem, a distinção entre normal e patológico é um dado biológico objetivo e neutro, sendo a medicalização um fenômeno eminentemente clínico sem dimensão política, social ou normativa.</div>
+      <div class="af-verdict">ERRADA</div>
+    </div>
+
+    <div class="q-option wrong"><div class="q-letter">A</div>Apenas II está correta.</div>
+    <div class="q-option wrong"><div class="q-letter">B</div>Apenas I e IV estão corretas.</div>
+    <div class="q-option correct"><div class="q-letter">C</div>Apenas II e III estão corretas.</div>
+    <div class="q-option wrong"><div class="q-letter">D</div>Apenas I, II e III estão corretas.</div>
+    <div class="q-option wrong"><div class="q-letter">E</div>Todas as afirmativas estão corretas.</div>
+
+    <div class="box accent" style="margin-top:2mm;">
+      <div class="box-title">Por que I e IV são erradas</div>
+      <strong>I — ERRADA:</strong> O biopoder foucaultiano é <em>produtivo</em> — não apenas proíbe, mas produz sujeitos normalizados, saberes, corpos dóceis. Poder que só interditasse seria poder soberano (matar/deixar viver), não biopoder (fazer viver/deixar morrer). <strong>IV — ERRADA:</strong> Para Canguilhem, o "normal" é uma <em>construção normativa</em> — biológica E social. O organismo saudável é aquele que cria novas normas; a patologização tem dimensão política (quem define o normal define o poder).
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">8 / 10</div>
+  </div>
+</div>
+
+<!-- P9 — GABARITO -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">PSI-SAUDE · Gabarito Comentado — Aula 09</div>
+    </div>
+    <div class="header-badge">Aula 09</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">Gabarito</div>
+
+    <div class="gab-box">
+      <div class="gab-letter">B</div>
+      <div class="gab-info">
+        <strong>Q01 — Medicalização do Sofrimento Social</strong><br>
+        Dona Fernanda: sofrimento por desemprego tratado como problema biomédico individual = medicalização. A alternativa B nomeia corretamente o conceito (Foucault/Illich) e aponta a desconsideração dos determinantes sociais. Pegadinha: não confundir com iatrogenia (D) nem restringir biopoder a políticas populacionais (E).
+      </div>
+    </div>
+
+    <div class="gab-box">
+      <div class="gab-letter">C</div>
+      <div class="gab-info">
+        <strong>Q02 — DPP: EPDS + Acolhimento + Articulação de Rede</strong><br>
+        Maria (4ª semana, pensamentos intrusivos, dificuldade de vínculo) = sintomas além do baby blues (2 semanas). Conduta correta: EPDS para rastreamento + acolhimento qualificado + desmistificar culpa materna + articular com equipe/CAPS. Erro frequente: confundir pensamentos intrusivos com psicose puerperal (A) ou com baby blues (B).
+      </div>
+    </div>
+
+    <div class="gab-box">
+      <div class="gab-letter">C</div>
+      <div class="gab-info">
+        <strong>Q03 — II e III corretas · Biopoder, Notificação, PNAISH</strong><br>
+        II (CERTA): notificação compulsória independe de consentimento para grupos vulneráveis. III (CERTA): PNAISH — socialização de gênero = vulnerabilidades masculinas documentadas. I (ERRADA): biopoder de Foucault é produtivo, não apenas repressivo. IV (ERRADA): Canguilhem — normal/patológico é normativo e político, não neutro.
+      </div>
+    </div>
+
+    <div class="section-title" style="margin-top:2mm;">Resumo dos Conceitos Discriminantes</div>
+
+    <table>
+      <tr>
+        <th>Conceito</th>
+        <th>Autor</th>
+        <th>Ponto Discriminante FGV</th>
+      </tr>
+      <tr>
+        <td><strong>Medicalização</strong></td>
+        <td>Illich / Foucault</td>
+        <td>Sofrimento social → diagnóstico individual; desconsideração dos determinantes</td>
+      </tr>
+      <tr>
+        <td><strong>Biopoder</strong></td>
+        <td>Foucault</td>
+        <td>PRODUTIVO (não apenas repressivo); age no corpo (anátomo) e na população (bio)</td>
+      </tr>
+      <tr>
+        <td><strong>Normal/Patológico</strong></td>
+        <td>Canguilhem</td>
+        <td>Construção normativa e social; não dado biológico neutro</td>
+      </tr>
+      <tr>
+        <td><strong>Baby Blues vs DPP</strong></td>
+        <td>DSM-5 / EPDS</td>
+        <td>Blues = até 2 sem, autolimitado; DPP = além de 2 sem, requer intervenção; EPDS ≥10</td>
+      </tr>
+      <tr>
+        <td><strong>PNAISH</strong></td>
+        <td>MS 2008</td>
+        <td>Socialização de gênero → vulnerabilidades masculinas específicas</td>
+      </tr>
+      <tr>
+        <td><strong>Notificação SINAN</strong></td>
+        <td>MS / ECA / Estatuto</td>
+        <td>Obrigatória (criança, adolescente, idoso, PcD) sem consentimento da vítima</td>
+      </tr>
+    </table>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">9 / 10</div>
+  </div>
+</div>
+
+<!-- P10 — SÍNTESE FINAL -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">PSI-SAUDE · Síntese Final — Saúde Coletiva Crítica, Violência e Populações</div>
+    </div>
+    <div class="header-badge">Aula 09</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">10 Pontos Que Caem na Prova</div>
+
+    <div class="sintese-item">
+      <div class="sintese-num">1</div>
+      <div><strong>Medicalização</strong> = transformar sofrimento social em diagnóstico individual, desconsiderando os determinantes sociais de saúde. Autores: Illich (iatrogenização), Foucault (biopoder), Canguilhem (normal/patológico).</div>
+    </div>
+    <div class="sintese-item">
+      <div class="sintese-num">2</div>
+      <div><strong>Biopoder de Foucault é PRODUTIVO</strong> — não apenas repressivo. Produz sujeitos, saberes, corpos normalizados. Age no corpo individual (anátomo-política) e nas populações (biopolítica).</div>
+    </div>
+    <div class="sintese-item">
+      <div class="sintese-num">3</div>
+      <div><strong>Canguilhem</strong>: o normal/patológico é <em>normativo</em>, não neutro. Saúde = capacidade de criar novas normas. Medicalização impõe normas externas ao sujeito.</div>
+    </div>
+    <div class="sintese-item">
+      <div class="sintese-num">4</div>
+      <div><strong>DSS — Dahlgren-Whitehead</strong>: saúde é produzida em camadas — biológico → estilos de vida → redes → condições estruturais → políticas macro. Quanto mais distante do centro, maior o impacto.</div>
+    </div>
+    <div class="sintese-item">
+      <div class="sintese-num">5</div>
+      <div><strong>Violência doméstica</strong>: notificação SINAN é compulsória para crianças, adolescentes, idosos e PcD, <em>independentemente de consentimento</em> da vítima. Ciclo da violência: tensão → agressão → lua-de-mel.</div>
+    </div>
+    <div class="sintese-item">
+      <div class="sintese-num">6</div>
+      <div><strong>Fluxo na VD</strong>: acolher → notificar SINAN → comunicar CT (se criança/idoso) → articular CREAS/DEAM/abrigo → orientar medidas protetivas (Lei Maria da Penha, Art. 22).</div>
+    </div>
+    <div class="sintese-item">
+      <div class="sintese-num">7</div>
+      <div><strong>Baby blues ≠ DPP</strong>: blues = até 2 semanas, autolimitado (50–80%). DPP = além de 2 semanas, dificuldade de vínculo, pensamentos de dano (10–20%). EPDS ≥10 = avaliação; ≥13 = alto risco.</div>
+    </div>
+    <div class="sintese-item">
+      <div class="sintese-num">8</div>
+      <div><strong>Psicose puerperal</strong>: &lt;0,2%, início abrupto (até 2 semanas), alucinações e delírios — urgência psiquiátrica. Não confundir com DPP ou com pensamentos intrusivos.</div>
+    </div>
+    <div class="sintese-item">
+      <div class="sintese-num">9</div>
+      <div><strong>PNAISH (2008)</strong>: socialização de gênero → homens buscam menos saúde + maior mortalidade por causas externas + depressão mascarada (irritabilidade, álcool). Intervenção: grupos reflexivos, desconstrução de masculinidade rígida.</div>
+    </div>
+    <div class="sintese-item">
+      <div class="sintese-num">10</div>
+      <div><strong>Violência obstétrica</strong>: física (episiotomia desnecessária), psicológica (humilhação), sexual (toque sem consentimento), institucional (negar acompanhante). Lei 11.634/2007 garante acompanhante no parto.</div>
+    </div>
+
+    <div class="box dark" style="margin-top:1mm;">
+      <div class="box-title">Próxima Aula — B11 Aula 10</div>
+      Início do módulo <strong>PSI-TEORIA</strong>: Teorias Psicológicas — Behaviorismo (Skinner, Watson), Psicanálise (Freud, estruturas clínicas, mecanismos de defesa) e Humanismo (Rogers, Maslow). Alta frequência nas questões FGV de Psicologia no ENARE — base para compreender as questões de abordagem terapêutica.
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">10 / 10</div>
+  </div>
+</div>
+
+</body>
+</html>

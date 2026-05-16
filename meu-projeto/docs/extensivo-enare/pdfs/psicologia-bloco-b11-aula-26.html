@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Psicologia — Bloco B11 Aula 26 | Extensivo ENARE 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap');
+
+  :root {
+    --creme: #F6F4ED;
+    --verde: #1F5C23;
+    --amarelo: #C6D834;
+    --escuro: #0C2B0E;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #d0d0d0;
+    font-family: 'Bricolage Grotesque', sans-serif;
+  }
+
+  .page {
+    width: 210mm;
+    height: 297mm;
+    background: var(--creme);
+    margin: 0 auto 12px;
+    position: relative;
+    overflow: hidden;
+    page-break-after: always;
+  }
+
+  .header {
+    background: var(--verde);
+    padding: 10px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .header-logo { display: flex; align-items: center; gap: 8px; }
+  .header-logo svg { width: 32px; height: 32px; }
+  .header-brand { display: flex; flex-direction: column; line-height: 1; }
+  .header-brand .marca {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: #fff;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+  }
+  .header-brand .tagline {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    color: var(--amarelo);
+    font-size: 7px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+  .header-info { text-align: right; }
+  .header-info .disciplina {
+    font-family: 'Barlow Condensed', sans-serif;
+    color: var(--amarelo);
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .header-info .aula-ref {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    color: rgba(255,255,255,0.7);
+    font-size: 8px;
+    letter-spacing: 0.5px;
+  }
+
+  .footer {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: var(--verde);
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 18px;
+  }
+  .footer span {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    color: rgba(255,255,255,0.6);
+    font-size: 7px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+  }
+  .footer .pg { color: var(--amarelo); font-weight: 400; }
+
+  .body {
+    padding: 14px 18px 30px;
+    height: calc(297mm - 52px - 22px);
+    overflow: hidden;
+  }
+
+  /* CAPA */
+  .capa-page { background: var(--verde); }
+  .capa-header {
+    background: var(--creme);
+    padding: 10px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .capa-header .marca {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: var(--verde);
+    font-size: 14px;
+  }
+  .capa-header .tagline {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    color: var(--verde);
+    font-size: 7.5px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .capa-body {
+    padding: 28px 24px 0;
+    display: flex;
+    flex-direction: column;
+    height: calc(297mm - 52px - 22px);
+  }
+  .capa-eyebrow {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    color: var(--amarelo);
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .capa-titulo {
+    font-family: 'Barlow Condensed', sans-serif;
+    color: #fff;
+    font-size: 52px;
+    line-height: 0.95;
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
+    margin-bottom: 6px;
+  }
+  .capa-titulo span { color: var(--amarelo); }
+  .capa-subtitulo {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 300;
+    color: rgba(255,255,255,0.65);
+    font-size: 12px;
+    letter-spacing: 0.3px;
+    margin-bottom: 22px;
+    line-height: 1.5;
+  }
+  .capa-badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+  .capa-badge {
+    background: rgba(198,216,52,0.15);
+    border: 1px solid var(--amarelo);
+    color: var(--amarelo);
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    font-size: 7.5px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+  }
+  .capa-divider { width: 40px; height: 3px; background: var(--amarelo); margin-bottom: 20px; }
+  .capa-topicos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .capa-topico { display: flex; align-items: flex-start; gap: 7px; }
+  .capa-topico-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    color: var(--amarelo);
+    font-size: 18px;
+    line-height: 1;
+    min-width: 18px;
+  }
+  .capa-topico-txt {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 400;
+    color: rgba(255,255,255,0.8);
+    font-size: 9.5px;
+    line-height: 1.4;
+  }
+  .capa-footer-strip {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: rgba(0,0,0,0.25);
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 18px;
+  }
+  .capa-footer-strip span {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    color: rgba(255,255,255,0.45);
+    font-size: 7px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+  }
+
+  /* TIPOGRAFIA */
+  .secao-titulo {
+    font-family: 'Barlow Condensed', sans-serif;
+    color: var(--verde);
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid var(--amarelo);
+    padding-bottom: 3px;
+    margin-bottom: 9px;
+    line-height: 1;
+  }
+  .subsecao {
+    font-family: 'Barlow Condensed', sans-serif;
+    color: var(--verde);
+    font-size: 12.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 7px 0 3px;
+  }
+  p {
+    font-size: 9px;
+    line-height: 1.55;
+    color: #1a1a1a;
+    margin-bottom: 4px;
+    font-weight: 400;
+  }
+  .destaque {
+    background: var(--amarelo);
+    color: var(--escuro);
+    font-weight: 600;
+    padding: 1px 4px;
+    border-radius: 2px;
+    font-size: 8.5px;
+  }
+  .alerta {
+    background: rgba(198,216,52,0.18);
+    border-left: 3px solid var(--amarelo);
+    padding: 5px 8px;
+    margin: 5px 0;
+    border-radius: 0 3px 3px 0;
+  }
+  .alerta p { margin: 0; font-size: 8.5px; }
+  .alerta strong { color: var(--verde); }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 5px 0;
+    font-size: 8px;
+  }
+  th {
+    background: var(--verde);
+    color: #fff;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 4px 6px;
+    text-align: left;
+  }
+  td {
+    padding: 3px 6px;
+    border-bottom: 1px solid rgba(31,92,35,0.12);
+    vertical-align: top;
+    line-height: 1.4;
+    color: #1a1a1a;
+  }
+  tr:nth-child(even) td { background: rgba(31,92,35,0.04); }
+
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 5px 0; }
+  .card {
+    background: rgba(31,92,35,0.06);
+    border: 1px solid rgba(31,92,35,0.15);
+    border-radius: 4px;
+    padding: 7px 8px;
+  }
+  .card-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    color: var(--verde);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    margin-bottom: 3px;
+  }
+  .card p { font-size: 8px; line-height: 1.5; }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 4px; margin: 4px 0; }
+  .chip {
+    background: var(--verde);
+    color: #fff;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    font-size: 7px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    padding: 2px 6px;
+    border-radius: 20px;
+  }
+  .chip.yellow { background: var(--amarelo); color: var(--escuro); }
+
+  .questao-header {
+    background: var(--verde);
+    color: #fff;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 4px 10px;
+    border-radius: 3px 3px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .questao-header .fonte {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    font-size: 7.5px;
+    color: var(--amarelo);
+    letter-spacing: 0.5px;
+  }
+  .questao-body {
+    border: 1px solid rgba(31,92,35,0.2);
+    border-top: none;
+    border-radius: 0 0 3px 3px;
+    padding: 7px 10px;
+    margin-bottom: 7px;
+  }
+  .questao-enunciado {
+    font-size: 8.5px;
+    line-height: 1.55;
+    color: #111;
+    margin-bottom: 5px;
+    font-weight: 500;
+  }
+  .alternativas { list-style: none; }
+  .alternativas li {
+    font-size: 8px;
+    line-height: 1.5;
+    padding: 2px 0;
+    color: #222;
+    display: flex;
+    gap: 5px;
+  }
+  .alternativas li .letra {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    color: var(--verde);
+    font-size: 9px;
+    min-width: 10px;
+  }
+  .alternativas li.correta .letra { color: var(--amarelo); }
+  .alternativas li.correta {
+    background: rgba(198,216,52,0.15);
+    border-left: 2px solid var(--amarelo);
+    padding-left: 4px;
+  }
+
+  .gabarito-box {
+    background: var(--verde);
+    border-radius: 4px;
+    padding: 8px 12px;
+    margin: 6px 0;
+  }
+  .gabarito-box .gab-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    color: var(--amarelo);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
+  .gabarito-box p { color: rgba(255,255,255,0.9); font-size: 8px; line-height: 1.55; }
+  .gabarito-box strong { color: var(--amarelo); }
+
+  .sintese-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 7px;
+    margin-top: 6px;
+  }
+  .sintese-item {
+    background: rgba(31,92,35,0.07);
+    border-left: 3px solid var(--verde);
+    padding: 5px 7px;
+    border-radius: 0 3px 3px 0;
+  }
+  .sintese-item .si-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    color: var(--verde);
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+  .sintese-item p { font-size: 7.5px; line-height: 1.5; }
+
+  ul.lista { padding-left: 14px; margin: 3px 0; }
+  ul.lista li {
+    font-size: 8.5px;
+    line-height: 1.55;
+    color: #1a1a1a;
+    margin-bottom: 1px;
+  }
+
+  @media print {
+    body { background: none; }
+    .page { margin: 0; box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ========== PÁGINA 1 — CAPA ========== -->
+<div class="page capa-page">
+  <div class="capa-header">
+    <div style="display:flex;align-items:center;gap:8px;">
+      <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#1F5C23"/>
+      </svg>
+      <div>
+        <div class="marca">Elite Treinamentos</div>
+        <div class="tagline">Extensivo ENARE 2026</div>
+      </div>
+    </div>
+    <div style="text-align:right;">
+      <div style="font-family:'Barlow Condensed',sans-serif;color:var(--verde);font-size:11px;letter-spacing:1px;text-transform:uppercase;">Bloco B11 · Aula 26</div>
+      <div style="font-family:'Space Grotesk',sans-serif;font-weight:300;color:#888;font-size:7.5px;letter-spacing:0.5px;">Psicologia</div>
+    </div>
+  </div>
+
+  <div class="capa-body">
+    <div class="capa-eyebrow">Bloco B11 · PSI-SAUDE · Aula 26 de 30</div>
+    <div class="capa-titulo">Saúde<br>do <span>Traba-<br>lhador</span></div>
+    <div class="capa-subtitulo">Burnout, LER/DORT, entrevista motivacional,<br>CAPS AD e legislação de saúde ocupacional</div>
+
+    <div class="capa-badge-row">
+      <div class="capa-badge">PSI-SAUDE</div>
+      <div class="capa-badge">Burnout CID-11 QD85</div>
+      <div class="capa-badge">Maslach · EM · CAPS AD</div>
+      <div class="capa-badge">Portaria 1.339/1999</div>
+    </div>
+
+    <div class="capa-divider"></div>
+
+    <div class="capa-topicos">
+      <div class="capa-topico">
+        <div class="capa-topico-num">01</div>
+        <div class="capa-topico-txt">LER/DORT: fatores de risco e impacto psicossocial</div>
+      </div>
+      <div class="capa-topico">
+        <div class="capa-topico-num">02</div>
+        <div class="capa-topico-txt">Burnout: CID-11 QD85, MBI, 3 dimensões de Maslach</div>
+      </div>
+      <div class="capa-topico">
+        <div class="capa-topico-num">03</div>
+        <div class="capa-topico-txt">Burnout vs. depressão: diagnóstico diferencial</div>
+      </div>
+      <div class="capa-topico">
+        <div class="capa-topico-num">04</div>
+        <div class="capa-topico-txt">Modelo Transteórico: estágios de mudança (Prochaska)</div>
+      </div>
+      <div class="capa-topico">
+        <div class="capa-topico-num">05</div>
+        <div class="capa-topico-txt">Entrevista Motivacional: Miller e Rollnick</div>
+      </div>
+      <div class="capa-topico">
+        <div class="capa-topico-num">06</div>
+        <div class="capa-topico-txt">Portaria 1.339/1999, CEREST e RENAST</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="capa-footer-strip">
+    <span>Extensivo ENARE 2026</span>
+    <span>Elite Treinamentos em Saúde</span>
+    <span>Página 1 de 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 2 — LER/DORT + Saúde Mental e Trabalho ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Psicologia — PSI-SAUDE</div>
+      <div class="aula-ref">Bloco B11 · Aula 26 · Saúde do Trabalhador</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="secao-titulo">LER/DORT e Saúde Mental Relacionada ao Trabalho</div>
+
+    <div class="subsecao">LER/DORT — Conceito e Fatores de Risco</div>
+    <p><strong>LER</strong> (Lesões por Esforço Repetitivo) / <strong>DORT</strong> (Distúrbios Osteomusculares Relacionados ao Trabalho) são condições musculoesqueléticas com forte nexo ocupacional, frequentemente acompanhadas de sofrimento psicológico significativo.</p>
+
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Fatores de Risco Físicos</div>
+        <p>Movimentos repetitivos de alta frequência · Posturas inadequadas e estáticas · Força excessiva · Vibração de membros · Compressão mecânica · Ausência de pausas adequadas</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Fatores de Risco Psicossociais</div>
+        <p>Alta demanda + baixo controle (modelo Karasek) · Pressão por produtividade · Falta de suporte social chefia/pares · Insatisfação e instabilidade no emprego · Monotonia e falta de autonomia</p>
+      </div>
+    </div>
+
+    <div class="subsecao">Impacto Psicológico da LER/DORT</div>
+    <ul class="lista">
+      <li><strong>Dor crônica</strong> → ansiedade antecipatória, catastrofização, depressão secundária</li>
+      <li><strong>Afastamento laboral</strong> → perda de identidade ocupacional, isolamento social, conflito familiar</li>
+      <li><strong>Incerteza diagnóstica</strong> → histórico de descrédito ("dor invisível") agrava sofrimento</li>
+      <li><strong>Papel do psicólogo:</strong> avaliação psicossocial, manejo da dor crônica (TCC-Dor, ACT), reabilitação biopsicossocial, retorno gradual ao trabalho</li>
+    </ul>
+
+    <div class="subsecao">Notificação e Rede de Saúde do Trabalhador</div>
+    <ul class="lista">
+      <li><strong>SINAN:</strong> notificação compulsória de LER/DORT, transtornos mentais relacionados ao trabalho, acidentes de trabalho — independe de CAT</li>
+      <li><strong>CEREST</strong> (Centro de Referência em Saúde do Trabalhador): referência técnica, vigilância, suporte à APS, atendimento especializado</li>
+      <li><strong>RENAST</strong> (Rede Nacional de Atenção Integral à Saúde do Trabalhador): articulação de toda a rede do SUS para saúde do trabalhador — inclui APS, CEREST, hospitais</li>
+      <li><strong>CAT</strong> (Comunicação de Acidente de Trabalho): emitida pelo empregador; trabalhador também pode emitir se empresa não o fizer; prazo 1 dia útil</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>NR-17 Ergonomia:</strong> regulamenta condições ergonômicas do trabalho (mobiliário, equipamentos, ritmo de trabalho, pausas, levantamento de peso). A psicologia contribui para a análise dos fatores psicossociais e para a avaliação do impacto das condições de trabalho na saúde mental.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>PSI-SAUDE · Saúde do Trabalhador</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">2 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 3 — BURNOUT ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Psicologia — PSI-SAUDE</div>
+      <div class="aula-ref">Bloco B11 · Aula 26 · Saúde do Trabalhador</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="secao-titulo">Síndrome de Burnout</div>
+
+    <div class="alerta" style="margin-bottom:7px;">
+      <p><strong>CID-11 (2022) — QD85:</strong> Burnout é classificado como <span class="destaque">fenômeno ocupacional</span>, não como transtorno mental. Está no capítulo <em>"Problemas associados ao emprego ou desemprego"</em>. Isso é determinante para questões de concurso — alternativas que dizem "transtorno mental" ou "transtorno de burnout" estão ERRADAS.</p>
+    </div>
+
+    <div class="subsecao">Maslach Burnout Inventory (MBI) — 3 Dimensões</div>
+    <table>
+      <tr><th>Dimensão</th><th>Descrição</th><th>Manifestação</th></tr>
+      <tr>
+        <td><strong>1. Exaustão Emocional</strong></td>
+        <td>Esgotamento dos recursos emocionais — dimensão central/núcleo do burnout</td>
+        <td>Sentir-se "drenado", sem energia para o trabalho, cansaço que não melhora com descanso</td>
+      </tr>
+      <tr>
+        <td><strong>2. Despersonalização / Cinismo</strong></td>
+        <td>Distanciamento e atitude negativa, insensível ou cínica em relação ao trabalho e às pessoas atendidas</td>
+        <td>Tratar colegas/pacientes de forma impessoal, irritabilidade, sarcasmo, desumanização</td>
+      </tr>
+      <tr>
+        <td><strong>3. Redução da Realização Pessoal / Eficácia Profissional</strong></td>
+        <td>Sentimento de ineficácia e falta de realizações no trabalho</td>
+        <td>"Não estou contribuindo com nada", sensação de fracasso e incompetência profissional</td>
+      </tr>
+    </table>
+
+    <div class="subsecao">Burnout vs. Depressão — Diagnóstico Diferencial</div>
+    <table>
+      <tr><th>Aspecto</th><th>Burnout</th><th>Depressão Maior</th></tr>
+      <tr><td>Contexto</td><td><strong>Específico ao trabalho</strong> (contexto-dependente)</td><td>Pervasivo — afeta todos os domínios da vida</td></tr>
+      <tr><td>Afastamento</td><td>Melhora em férias/afastamento do trabalho</td><td>Persiste independentemente do contexto</td></tr>
+      <tr><td>Classificação</td><td>CID-11 QD85 — fenômeno ocupacional</td><td>CID-11 6A70–6A71 — transtorno mental</td></tr>
+      <tr><td>Culpa/inutilidade</td><td>Restrita ao papel profissional</td><td>Generalizada, pensamentos negativos globais</td></tr>
+      <tr><td>Anedonia</td><td>Apenas para atividades laborais</td><td>Abrangente — perda de prazer em tudo</td></tr>
+    </table>
+
+    <div class="alerta">
+      <p><strong>Atenção:</strong> burnout e depressão podem coexistir (comorbidade). O burnout não tratado pode evoluir para depressão. Para concursos: quando o caso descreve sofrimento EXCLUSIVO ao contexto laboral com melhora fora dele → burnout. Sofrimento pervasivo → investigar depressão.</p>
+    </div>
+
+    <div class="subsecao">Fatores Organizacionais de Risco (Maslach & Leiter)</div>
+    <div class="chips">
+      <span class="chip">Carga excessiva de trabalho</span>
+      <span class="chip">Falta de controle/autonomia</span>
+      <span class="chip">Recompensa insuficiente</span>
+      <span class="chip">Comunidade deteriorada</span>
+      <span class="chip yellow">Injustiça percebida</span>
+      <span class="chip yellow">Conflito de valores</span>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>PSI-SAUDE · Saúde do Trabalhador</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">3 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 4 — Modelo Transteórico + Entrevista Motivacional ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Psicologia — PSI-SAUDE</div>
+      <div class="aula-ref">Bloco B11 · Aula 26 · Saúde do Trabalhador</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="secao-titulo">Modelo Transteórico e Entrevista Motivacional</div>
+
+    <div class="subsecao">Modelo Transteórico — Prochaska e DiClemente (1982)</div>
+    <p>Descreve a <strong>prontidão para mudança comportamental</strong> em 5 estágios sequenciais (porém não lineares — recaídas são esperadas). Amplamente aplicado em dependência química e comportamentos de risco no contexto da saúde.</p>
+
+    <table>
+      <tr><th>Estágio</th><th>Característica</th><th>Intervenção Adequada</th></tr>
+      <tr>
+        <td><strong>Pré-contemplação</strong></td>
+        <td>Não reconhece o problema; sem intenção de mudar nos próximos 6 meses</td>
+        <td>Psicoeducação, aumento da percepção de risco, sem confrontação</td>
+      </tr>
+      <tr>
+        <td><strong>Contemplação</strong></td>
+        <td>Reconhece o problema; ambivalente — pesa prós e contras; intenção de mudar nos próximos 6 meses</td>
+        <td>Explorar ambivalência, balanço decisório, aumentar motivação intrínseca</td>
+      </tr>
+      <tr>
+        <td><strong>Preparação</strong></td>
+        <td>Planeja agir nos próximos 30 dias; faz pequenas mudanças</td>
+        <td>Ajudar a formular plano concreto, fortalecer comprometimento</td>
+      </tr>
+      <tr>
+        <td><strong>Ação</strong></td>
+        <td>Modificação ativa do comportamento há menos de 6 meses</td>
+        <td>Apoio prático, habilidades de enfrentamento, prevenção de recaída</td>
+      </tr>
+      <tr>
+        <td><strong>Manutenção</strong></td>
+        <td>Mudança sustentada por mais de 6 meses; prevenir recaída</td>
+        <td>Consolidar novos padrões, identificar gatilhos, plano para recaída</td>
+      </tr>
+    </table>
+
+    <div class="subsecao">Entrevista Motivacional — Miller e Rollnick (1991)</div>
+    <p>Abordagem <strong>colaborativa, centrada no cliente e orientada para objetivos</strong>, desenvolvida para fortalecer a motivação intrínseca e a prontidão para mudança. <span class="destaque">NÃO é diretiva, NÃO usa confrontação</span> — é baseada na escuta reflexiva e exploração da ambivalência.</p>
+
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">4 Processos (EM)</div>
+        <p><strong>Engajar:</strong> estabelecer aliança terapêutica</p>
+        <p><strong>Focar:</strong> identificar direção da mudança</p>
+        <p><strong>Evocar:</strong> eliciar motivação interna (discurso de mudança)</p>
+        <p><strong>Planejar:</strong> comprometer-se com plano concreto</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Habilidades Centrais (OARS)</div>
+        <p><strong>O</strong>pen questions (perguntas abertas)</p>
+        <p><strong>A</strong>ffirmations (afirmações)</p>
+        <p><strong>R</strong>eflective listening (escuta reflexiva)</p>
+        <p><strong>S</strong>ummarizing (resumos)</p>
+        <p style="margin-top:3px;color:var(--verde);font-size:7.5px;font-weight:600;">Espírito EM: parceria · aceitação · compaixão · evocação</p>
+      </div>
+    </div>
+
+    <div class="alerta">
+      <p><strong>Diferença EM vs. TCC vs. Confrontação:</strong> EM explora ambivalência SEM confrontar o paciente sobre suas contradições. Ao contrário de abordagens diretivas, o terapeuta na EM NUNCA diz ao cliente o que fazer — a motivação para mudança deve vir do próprio cliente (evocação). EM é especialmente indicada em pré-contemplação e contemplação.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>PSI-SAUDE · Saúde do Trabalhador</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">4 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 5 — Legislação + CAPS AD ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Psicologia — PSI-SAUDE</div>
+      <div class="aula-ref">Bloco B11 · Aula 26 · Saúde do Trabalhador</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="secao-titulo">Legislação, CAPS AD e Políticas</div>
+
+    <div class="subsecao">Portaria MS 1.339/1999 — Lista de Doenças Relacionadas ao Trabalho (LDRT)</div>
+    <p>Institui a Lista de Doenças Relacionadas ao Trabalho no Brasil. Inclui condições em que o trabalho pode ser <strong>causa necessária</strong> (acidentes), <strong>causa contributiva</strong> (agravamento), ou <strong>causa provocadora</strong> (condições exclusivamente ocupacionais).</p>
+
+    <div class="alerta" style="margin-bottom:5px;">
+      <p><strong>Grupo V da CID-10 na LDRT:</strong> Transtornos mentais e comportamentais relacionados ao trabalho — inclui episódios depressivos, transtornos de ansiedade, TEPT, reações ao estresse grave, alcoolismo crônico, síndrome de burnout quando com nexo ocupacional comprovado.</p>
+    </div>
+
+    <div class="subsecao">CAPS AD — Centro de Atenção Psicossocial Álcool e Drogas</div>
+    <table>
+      <tr><th>Tipo</th><th>Funcionamento</th><th>Público</th></tr>
+      <tr><td><strong>CAPS AD</strong></td><td>Segunda a sexta, horário comercial</td><td>Municípios 70–200 mil hab.</td></tr>
+      <tr><td><strong>CAPS AD III</strong></td><td>24h, leitos de acolhimento noturno (até 12)</td><td>Municípios &gt;200 mil hab. ou regiões</td></tr>
+    </table>
+
+    <p style="margin-top:4px;">O CAPS AD oferece: <strong>grupos terapêuticos, acompanhamento individual, oficinas, grupos de família, redução de danos</strong>. A abordagem motivacional (EM + Modelo Transteórico) é a base do trabalho com substâncias psicoativas.</p>
+
+    <div class="subsecao">Redução de Danos — Princípios</div>
+    <ul class="lista">
+      <li>Estratégia de saúde pública que aceita o uso de substâncias como realidade e foca em minimizar consequências negativas sem exigir abstinência como pré-condição</li>
+      <li>Inclui: troca de seringas, distribuição de preservativos, naloxone (overdose de opioides), cuidado sem julgamento</li>
+      <li>Compatível com EM — respeita autonomia do sujeito e o encontra no estágio em que se encontra</li>
+      <li>Preconizada pela PNAD (Política Nacional sobre Drogas) e pelo Ministério da Saúde</li>
+    </ul>
+
+    <div class="subsecao">Resumo Legislação de Saúde do Trabalhador</div>
+    <table>
+      <tr><th>Instrumento</th><th>Conteúdo Principal</th></tr>
+      <tr><td>Portaria 1.339/1999</td><td>Lista de Doenças Relacionadas ao Trabalho (LDRT) — Grupos I a XVII do CID</td></tr>
+      <tr><td>PNSST (Dec. 7.602/2011)</td><td>Política Nacional de Saúde e Segurança do Trabalhador — articulação MS + MT + MPS</td></tr>
+      <tr><td>Lei 8.213/1991</td><td>Benefícios INSS — auxílio-doença acidentário (B-91), aposentadoria por invalidez acidentária</td></tr>
+      <tr><td>NR-17 (Ergonomia)</td><td>Condições ergonômicas: mobiliário, pausas, levantamento de peso, trabalho repetitivo</td></tr>
+      <tr><td>NR-5 (CIPA)</td><td>Comissão Interna de Prevenção de Acidentes — representação bipartite trabalhadores/empregadores</td></tr>
+    </table>
+  </div>
+
+  <div class="footer">
+    <span>PSI-SAUDE · Saúde do Trabalhador</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">5 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 6 — QUESTÃO 01 ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Psicologia — PSI-SAUDE</div>
+      <div class="aula-ref">Bloco B11 · Aula 26 · Questões</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="secao-titulo">Questões de Fixação</div>
+
+    <div class="questao-header">
+      <span>Questão 01</span>
+      <span class="fonte">PSI-SAUDE · Burnout · CID-11 · Maslach · ENARE-estilo</span>
+    </div>
+    <div class="questao-body">
+      <div class="questao-enunciado">
+        Lucas, 38 anos, psicólogo organizacional em grande empresa, busca atendimento relatando que, nos últimos 6 meses, sente-se completamente sem energia ao final do expediente, passou a tratar colegas de forma impessoal e cínica ("não adianta me envolver com ninguém aqui") e experimenta a sensação persistente de que seu trabalho não produz resultados. Refere que nos finais de semana e férias esses sentimentos desaparecem quase por completo. Nega tristeza, anedonia ou ideação suicida. Nega uso de substâncias. De acordo com a Classificação Internacional de Doenças (CID-11), como esse quadro é corretamente classificado, e quais as dimensões avaliadas pelo instrumento padronizado para esse fenômeno?
+      </div>
+      <ul class="alternativas">
+        <li><span class="letra">A)</span> Transtorno depressivo recorrente (6A71) — avaliado pelo PHQ-9, com domínios humor deprimido, anedonia e ideação suicida.</li>
+        <li class="correta"><span class="letra">B)</span> Burnout (QD85) — fenômeno ocupacional (não transtorno mental) classificado no capítulo "Problemas associados ao emprego"; avaliado pelo Maslach Burnout Inventory (MBI) nas dimensões exaustão emocional, despersonalização/cinismo e redução da realização profissional.</li>
+        <li><span class="letra">C)</span> Transtorno de adaptação (6B43) — reação mal-adaptativa a estressor psicossocial identificável, com critério temporal de até 6 meses.</li>
+        <li><span class="letra">D)</span> Síndrome de fadiga crônica — condição médica geral sem correlato classificatório no capítulo de saúde mental da CID-11.</li>
+      </ul>
+    </div>
+
+    <div class="alerta">
+      <p><strong>Por que B?</strong> O quadro preenche os 3 critérios do burnout CID-11 QD85: (1) exaustão emocional relacionada ao trabalho, (2) cinismo/despersonalização (distanciamento cínico dos colegas), (3) redução da eficácia profissional. O dado decisivo: melhora nos fins de semana e férias — contexto-específico ao trabalho, o que distingue de depressão (A), cujo sofrimento seria pervasivo. Burnout é <em>fenômeno ocupacional</em> na CID-11, NÃO transtorno mental. Instrumento padronizado: Maslach Burnout Inventory (MBI).</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>PSI-SAUDE · Saúde do Trabalhador</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">6 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 7 — QUESTÃO 02 ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Psicologia — PSI-SAUDE</div>
+      <div class="aula-ref">Bloco B11 · Aula 26 · Questões</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="questao-header">
+      <span>Questão 02</span>
+      <span class="fonte">PSI-SAUDE · Portaria 1.339/1999 · CEREST · ENARE-estilo</span>
+    </div>
+    <div class="questao-body">
+      <div class="questao-enunciado">
+        A psicóloga de um CEREST recebe notificação de caso de LER/DORT em trabalhadora de linha de montagem têxtil. Durante a avaliação biopsicossocial, identifica que a trabalhadora também relata sintomas de ansiedade intensa e episódio depressivo que ela atribui às condições do trabalho. A psicóloga deseja compreender o amparo legal para a notificação de transtornos mentais relacionados ao trabalho no SUS. Qual instrumento legal fundamenta essa notificação compulsória e o que ele estabelece?
+      </div>
+      <ul class="alternativas">
+        <li><span class="letra">A)</span> Lei 9.656/1998 (Lei dos Planos de Saúde) — determina que operadoras de planos privados notifiquem doenças ocupacionais ao Ministério da Saúde.</li>
+        <li><span class="letra">B)</span> Resolução CFP 010/2005 — regula o sigilo profissional do psicólogo nas comunicações sobre saúde ocupacional com empregadores e órgãos públicos.</li>
+        <li class="correta"><span class="letra">C)</span> Portaria MS 1.339/1999 — institui a Lista de Doenças Relacionadas ao Trabalho (LDRT), incluindo no Grupo V os transtornos mentais e comportamentais com nexo ocupacional, cuja notificação deve ser realizada pelo SINAN, independentemente de CAT ou concordância do empregador.</li>
+        <li><span class="letra">D)</span> NR-17 (Ergonomia) — determina notificação compulsória ao Ministério do Trabalho de todos os afastamentos com causa psicológica identificada.</li>
+      </ul>
+    </div>
+
+    <div class="alerta">
+      <p><strong>Por que C?</strong> A Portaria 1.339/1999 é o instrumento específico que lista doenças ocupacionais no Brasil e fundamenta a notificação compulsória pelo SINAN. O Grupo V inclui transtornos mentais — ansiedade, depressão, TEPT, reações ao estresse — quando há nexo com o trabalho. A NR-17 (D) regula condições ergonômicas, não notificação epidemiológica. A Res. CFP 010/2005 (B) trata do sigilo, não da notificação obrigatória de doenças ocupacionais.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>PSI-SAUDE · Saúde do Trabalhador</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">7 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 8 — QUESTÃO 03 ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Psicologia — PSI-SAUDE</div>
+      <div class="aula-ref">Bloco B11 · Aula 26 · Questões</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="questao-header">
+      <span>Questão 03</span>
+      <span class="fonte">PSI-SAUDE · Modelo Transteórico · EM · Burnout · ENARE-estilo</span>
+    </div>
+    <div class="questao-body">
+      <div class="questao-enunciado">
+        Sobre saúde mental do trabalhador, modelos de intervenção e classificação de burnout, analise:
+        <br><br>
+        <strong>I.</strong> O Burnout, conforme CID-11, é classificado como transtorno mental e comportamental, equiparável clinicamente ao transtorno depressivo maior, devendo receber os mesmos protocolos diagnósticos e terapêuticos.
+        <br><br>
+        <strong>II.</strong> O Modelo Transteórico de Prochaska e DiClemente descreve estágios de prontidão para mudança comportamental — pré-contemplação, contemplação, preparação, ação e manutenção — sendo amplamente utilizado no trabalho com substâncias psicoativas em serviços como o CAPS AD para adequar as intervenções ao estágio motivacional do paciente.
+        <br><br>
+        <strong>III.</strong> A síndrome de Burnout distingue-se da depressão maior por ser contexto-específica ao trabalho: a exaustão e o cinismo tendem a melhorar nos períodos de afastamento laboral, enquanto na depressão o sofrimento é pervasivo e independe do contexto.
+        <br><br>
+        <strong>IV.</strong> A Entrevista Motivacional, desenvolvida por Miller e Rollnick, é uma abordagem diretiva que orienta o paciente por meio de confrontação das consequências negativas do uso de substâncias e prescrição de metas de mudança comportamental.
+      </div>
+      <ul class="alternativas">
+        <li><span class="letra">A)</span> Apenas I e IV estão corretas.</li>
+        <li><span class="letra">B)</span> Apenas II está correta.</li>
+        <li class="correta"><span class="letra">C)</span> Apenas II e III estão corretas.</li>
+        <li><span class="letra">D)</span> Todas as afirmativas estão corretas.</li>
+      </ul>
+    </div>
+
+    <div class="alerta">
+      <p><strong>Por que C?</strong> <strong>I — ERRADA:</strong> CID-11 QD85 classifica burnout como <em>fenômeno ocupacional</em>, não transtorno mental — está no capítulo de problemas relacionados ao emprego, não no capítulo de transtornos mentais. <strong>II — CORRETA:</strong> Modelo Transteórico (Prochaska e DiClemente) descrito corretamente e amplamente usado no CAPS AD. <strong>III — CORRETA:</strong> distinção burnout × depressão clássica e correta. <strong>IV — ERRADA:</strong> EM é <em>não diretiva, não confrontacional</em> — é colaborativa, centrada no cliente, explora ambivalência sem prescrever; confrontação é explicitamente contraindicada.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>PSI-SAUDE · Saúde do Trabalhador</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">8 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 9 — GABARITO COMENTADO ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Psicologia — PSI-SAUDE</div>
+      <div class="aula-ref">Bloco B11 · Aula 26 · Gabarito</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="secao-titulo">Gabarito Comentado</div>
+
+    <div style="display:flex;gap:10px;margin-bottom:10px;">
+      <div style="background:var(--verde);color:#fff;border-radius:4px;padding:8px 16px;text-align:center;">
+        <div style="font-family:'Space Grotesk',sans-serif;font-weight:300;font-size:7px;letter-spacing:1px;text-transform:uppercase;color:var(--amarelo);">Q01</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:28px;color:#fff;line-height:1;">B</div>
+      </div>
+      <div style="background:var(--verde);color:#fff;border-radius:4px;padding:8px 16px;text-align:center;">
+        <div style="font-family:'Space Grotesk',sans-serif;font-weight:300;font-size:7px;letter-spacing:1px;text-transform:uppercase;color:var(--amarelo);">Q02</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:28px;color:#fff;line-height:1;">C</div>
+      </div>
+      <div style="background:var(--verde);color:#fff;border-radius:4px;padding:8px 16px;text-align:center;">
+        <div style="font-family:'Space Grotesk',sans-serif;font-weight:300;font-size:7px;letter-spacing:1px;text-transform:uppercase;color:var(--amarelo);">Q03</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:28px;color:#fff;line-height:1;">C</div>
+      </div>
+    </div>
+
+    <div class="gabarito-box" style="margin-bottom:7px;">
+      <div class="gab-title">Q01 — Gabarito B</div>
+      <p>Burnout <strong>QD85 CID-11</strong> — fenômeno ocupacional (não transtorno mental). O quadro apresenta as 3 dimensões do MBI: (1) exaustão emocional, (2) cinismo/despersonalização ("não adianta me envolver"), (3) redução da realização profissional. O elemento diagnóstico diferencial decisivo: melhora nos fins de semana e férias = <strong>contexto-específico ao trabalho</strong>, excluindo depressão maior (pervasiva). A ausência de tristeza e anedonia também afasta depressão. O MBI (Maslach Burnout Inventory) é o instrumento padronizado.</p>
+    </div>
+
+    <div class="gabarito-box" style="margin-bottom:7px;">
+      <div class="gab-title">Q02 — Gabarito C</div>
+      <p><strong>Portaria MS 1.339/1999</strong> institui a LDRT e é o fundamento legal para notificação compulsória de transtornos mentais com nexo ao trabalho via SINAN. O Grupo V inclui transtornos mentais e comportamentais — episódios depressivos, transtornos ansiosos, TEPT, burnout com nexo. A notificação pelo SINAN <strong>independe de CAT</strong> e da concordância do empregador. NR-17 (D) regula ergonomia, não notificação epidemiológica.</p>
+    </div>
+
+    <div class="gabarito-box">
+      <div class="gab-title">Q03 — Gabarito C (II e III corretas)</div>
+      <p><strong>I — ERRADA:</strong> burnout CID-11 = fenômeno ocupacional (QD85), não transtorno mental — está fora do capítulo de transtornos mentais e comportamentais.<br>
+      <strong>II — CORRETA:</strong> Modelo Transteórico de Prochaska e DiClemente (5 estágios) é base do trabalho motivacional em CAPS AD e serviços de saúde com usuários de substâncias.<br>
+      <strong>III — CORRETA:</strong> diferença fundamental burnout × depressão: burnout é contexto-específico, melhora no afastamento; depressão é pervasiva.<br>
+      <strong>IV — ERRADA:</strong> Entrevista Motivacional é <em>colaborativa e não diretiva</em> — a confrontação é <em>explicitamente contraindicada</em> (Miller e Rollnick identificaram a confrontação como preditora de resistência, não de mudança).</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>PSI-SAUDE · Saúde do Trabalhador</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">9 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 10 — SÍNTESE ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Psicologia — PSI-SAUDE</div>
+      <div class="aula-ref">Bloco B11 · Aula 26 · Síntese</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="secao-titulo">Síntese da Aula 26</div>
+
+    <div class="sintese-grid">
+      <div class="sintese-item">
+        <div class="si-label">LER/DORT</div>
+        <p>Lesões osteomusculares com nexo ocupacional. Fatores de risco: movimentos repetitivos + psicossociais (alta demanda/baixo controle). Impacto psicológico: dor crônica, depressão, perda de identidade laboral. Notificação: SINAN. Rede: CEREST + RENAST.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Burnout — CID-11 QD85</div>
+        <p>Fenômeno OCUPACIONAL (não transtorno mental). Capítulo "Problemas associados ao emprego". MBI: (1) exaustão emocional — núcleo; (2) despersonalização/cinismo; (3) redução da realização profissional. Maslach &amp; Leiter: 6 fatores organizacionais.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Burnout vs. Depressão</div>
+        <p>Burnout = contexto-específico ao trabalho, melhora no afastamento. Depressão = pervasiva, independe do contexto. Podem coexistir. Para concurso: melhora em férias → burnout; sofrimento em todos os domínios → depressão.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Modelo Transteórico</div>
+        <p>Prochaska e DiClemente (1982). 5 estágios: pré-contemplação → contemplação → preparação → ação → manutenção. Recaída é esperada (não é fracasso). Base do trabalho em CAPS AD. Intervenção adequada para cada estágio.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Entrevista Motivacional</div>
+        <p>Miller e Rollnick (1991). Colaborativa, centrada no cliente, NÃO diretiva, NÃO confrontacional. Espírito EM: parceria + aceitação + compaixão + evocação. OARS: perguntas abertas, afirmações, escuta reflexiva, resumos. 4 processos: engajar→focar→evocar→planejar.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Portaria 1.339/1999</div>
+        <p>Lista de Doenças Relacionadas ao Trabalho (LDRT). Grupo V = transtornos mentais com nexo ocupacional. Notificação compulsória pelo SINAN, independe de CAT. CEREST = referência técnica. RENAST = articulação da rede SUS para saúde do trabalhador.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">CAPS AD</div>
+        <p>Atenção a álcool e drogas. CAPS AD (horário comercial) e CAPS AD III (24h, leitos acolhimento até 12). Abordagem: EM + Modelo Transteórico + redução de danos. Redução de danos: minimiza consequências, não exige abstinência prévia, respeita autonomia.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Próxima Aula</div>
+        <p><strong>Aula 27 — PSI-TEORIA:</strong> Avaliação Psicológica — testes psicológicos no SUS, SATEPSI, validade/fidedignidade, Res. CFP 009/2018, Res. CFP 006/2019 (documentos), laudo, relatório, parecer e atestado.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>PSI-SAUDE · Saúde do Trabalhador</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">10 / 10</span>
+  </div>
+</div>
+
+</body>
+</html>

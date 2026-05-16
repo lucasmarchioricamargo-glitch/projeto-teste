@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Psicologia B11 — Aula 14 | PSI-ORGAN: Psicologia Organizacional e do Trabalho</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #d0d0d0; font-family: 'Bricolage Grotesque', sans-serif; }
+  .page { width: 210mm; height: 297mm; background: #F6F4ED; margin: 8mm auto; position: relative; overflow: hidden; display: flex; flex-direction: column; }
+  @media print { body { background: none; margin: 0; } .page { margin: 0; page-break-after: always; box-shadow: none; } }
+  @page { size: A4; margin: 0; }
+
+  .page-header { background: #1F5C23; padding: 4mm 6mm; display: flex; align-items: center; gap: 4mm; flex-shrink: 0; }
+  .logo-svg { width: 10mm; height: 10mm; flex-shrink: 0; }
+  .header-text { flex: 1; }
+  .header-course { font-family: 'Playfair Display', serif; font-style: italic; color: #C6D834; font-size: 6.5pt; letter-spacing: 0.03em; }
+  .header-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: #F6F4ED; font-size: 11pt; line-height: 1; text-transform: uppercase; letter-spacing: 0.04em; }
+  .header-badge { background: #C6D834; color: #1F5C23; font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 7pt; padding: 1mm 3mm; border-radius: 2mm; text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap; }
+
+  .page-footer { background: #1F5C23; padding: 2mm 6mm; display: flex; justify-content: space-between; align-items: center; flex-shrink: 0; }
+  .footer-left { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: #C6D834; font-size: 6pt; letter-spacing: 0.05em; text-transform: uppercase; }
+  .footer-right { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: #F6F4ED; font-size: 8pt; letter-spacing: 0.06em; }
+
+  .page-body { flex: 1; padding: 5mm 7mm; display: flex; flex-direction: column; gap: 3mm; overflow: hidden; }
+
+  .section-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 13pt; color: #1F5C23; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 0.8mm solid #C6D834; padding-bottom: 1.5mm; margin-bottom: 1mm; }
+
+  .box { background: #fff; border-left: 1.2mm solid #1F5C23; border-radius: 1mm; padding: 3mm 4mm; font-size: 7.8pt; line-height: 1.45; color: #222; }
+  .box.accent { border-left-color: #C6D834; }
+  .box.alert  { border-left-color: #c0392b; background: #fff8f7; }
+  .box.dark   { background: #1F5C23; color: #F6F4ED; border-left-color: #C6D834; }
+  .box-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; color: #1F5C23; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 1.5mm; }
+  .box.dark .box-title  { color: #C6D834; }
+  .box.alert .box-title { color: #c0392b; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 7.5pt; }
+  th { background: #1F5C23; color: #F6F4ED; font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 8pt; text-transform: uppercase; padding: 1.5mm 2.5mm; text-align: left; letter-spacing: 0.03em; }
+  td { padding: 1.5mm 2.5mm; border-bottom: 0.3mm solid #e0ddd5; vertical-align: top; color: #222; line-height: 1.4; }
+  tr:nth-child(even) td { background: #f4f2eb; }
+  td strong { color: #1F5C23; }
+
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5mm; }
+  .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2mm; }
+
+  .fase-item { display: flex; gap: 3mm; align-items: flex-start; padding: 2mm 3mm; background: #fff; border-radius: 1mm; margin-bottom: 1.5mm; font-size: 7.8pt; line-height: 1.4; }
+  .fase-badge { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 7pt; color: #fff; background: #1F5C23; padding: 0.8mm 2mm; border-radius: 0.8mm; flex-shrink: 0; white-space: nowrap; min-width: 18mm; text-align: center; text-transform: uppercase; line-height: 1.3; }
+  .fase-content strong { color: #1F5C23; font-family: 'Barlow Condensed', sans-serif; font-size: 8.5pt; text-transform: uppercase; display: block; margin-bottom: 0.3mm; }
+
+  .nivel-item { display: flex; gap: 3mm; align-items: flex-start; padding: 2mm 3mm; border-radius: 1mm; margin-bottom: 1mm; font-size: 7.8pt; line-height: 1.4; }
+  .nivel-item.l1 { background: #f0f8f0; border-left: 1mm solid #1F5C23; }
+  .nivel-item.l2 { background: #fffde7; border-left: 1mm solid #C6D834; }
+  .nivel-item.l3 { background: #fff3e0; border-left: 1mm solid #e67e22; }
+  .nivel-item.l4 { background: #fff8f7; border-left: 1mm solid #c0392b; }
+  .nivel-badge { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 7pt; padding: 0.8mm 2mm; border-radius: 0.8mm; flex-shrink: 0; white-space: nowrap; min-width: 20mm; text-align: center; text-transform: uppercase; }
+  .nivel-item.l1 .nivel-badge { background: #1F5C23; color: #fff; }
+  .nivel-item.l2 .nivel-badge { background: #C6D834; color: #1F5C23; }
+  .nivel-item.l3 .nivel-badge { background: #e67e22; color: #fff; }
+  .nivel-item.l4 .nivel-badge { background: #c0392b; color: #fff; }
+  .nivel-content strong { color: #1F5C23; font-family: 'Barlow Condensed', sans-serif; font-size: 8pt; text-transform: uppercase; display: block; margin-bottom: 0.2mm; }
+  .nivel-item.l3 .nivel-content strong { color: #e67e22; }
+  .nivel-item.l4 .nivel-content strong { color: #c0392b; }
+
+  .q-stem { background: #fff; border: 0.5mm solid #ddd; border-radius: 1.5mm; padding: 3mm 4mm; font-size: 8pt; line-height: 1.5; color: #222; margin-bottom: 2mm; }
+  .q-stem-label { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; color: #1F5C23; text-transform: uppercase; margin-bottom: 1.5mm; }
+  .q-option { display: flex; gap: 2mm; padding: 1.5mm 2.5mm; border-radius: 1mm; margin-bottom: 1mm; border: 0.4mm solid #e0ddd5; background: #fff; font-size: 7.8pt; line-height: 1.4; align-items: flex-start; }
+  .q-option.correct { background: #f0f8f0; border-color: #1F5C23; }
+  .q-option.wrong   { background: #fff8f7; border-color: #e0a0a0; }
+  .q-letter { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; color: #1F5C23; min-width: 4mm; flex-shrink: 0; margin-top: -0.3mm; }
+  .q-option.correct .q-letter { color: #1F5C23; }
+  .q-option.wrong   .q-letter { color: #c0392b; }
+
+  .afirmativa { display: flex; gap: 2mm; padding: 2mm 3mm; border-radius: 1mm; margin-bottom: 1.5mm; font-size: 7.8pt; line-height: 1.45; align-items: flex-start; }
+  .afirmativa.certa  { background: #f0f8f0; border-left: 1mm solid #1F5C23; }
+  .afirmativa.errada { background: #fff8f7; border-left: 1mm solid #c0392b; }
+  .af-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; min-width: 5mm; flex-shrink: 0; }
+  .afirmativa.certa  .af-num { color: #1F5C23; }
+  .afirmativa.errada .af-num { color: #c0392b; }
+  .af-verdict { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 8pt; padding: 0.3mm 2mm; border-radius: 0.8mm; flex-shrink: 0; }
+  .afirmativa.certa  .af-verdict { background: #1F5C23; color: #F6F4ED; }
+  .afirmativa.errada .af-verdict { background: #c0392b; color: #fff; }
+
+  .gab-box { display: flex; gap: 3mm; align-items: center; background: #1F5C23; color: #F6F4ED; border-radius: 1.5mm; padding: 2.5mm 4mm; margin-bottom: 2mm; }
+  .gab-letter { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 20pt; color: #C6D834; line-height: 1; }
+  .gab-info { flex: 1; font-size: 7.8pt; line-height: 1.4; }
+  .gab-info strong { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; text-transform: uppercase; letter-spacing: 0.03em; }
+
+  .sintese-item { display: flex; gap: 2mm; padding: 2mm 3mm; border-radius: 1mm; margin-bottom: 1.5mm; background: #fff; border-left: 1mm solid #1F5C23; font-size: 7.8pt; line-height: 1.4; align-items: flex-start; }
+  .sintese-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: #1F5C23; font-size: 10pt; min-width: 5mm; flex-shrink: 0; margin-top: -0.5mm; }
+
+  .cover { background: #1F5C23; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; overflow: hidden; padding: 12mm; }
+  .cover::before { content: ''; position: absolute; top: -20mm; right: -20mm; width: 80mm; height: 80mm; background: rgba(198,216,52,0.12); border-radius: 50%; }
+  .cover::after  { content: ''; position: absolute; bottom: -15mm; left: -15mm; width: 60mm; height: 60mm; background: rgba(198,216,52,0.08); border-radius: 50%; }
+  .cover-inner { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 5mm; width: 100%; }
+  .cover-logo { width: 22mm; height: 22mm; }
+  .cover-brand { font-family: 'Playfair Display', serif; font-style: italic; color: #C6D834; font-size: 11pt; letter-spacing: 0.05em; }
+  .cover-tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(246,244,237,0.6); font-size: 7pt; text-transform: uppercase; letter-spacing: 0.12em; }
+  .cover-divider { width: 30mm; height: 0.3mm; background: rgba(198,216,52,0.4); }
+  .cover-bloco { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: #C6D834; font-size: 9pt; text-transform: uppercase; letter-spacing: 0.1em; background: rgba(198,216,52,0.12); padding: 1.5mm 4mm; border-radius: 1mm; }
+  .cover-aula-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: rgba(246,244,237,0.3); font-size: 52pt; line-height: 1; letter-spacing: -1mm; }
+  .cover-module { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: #C6D834; font-size: 10pt; text-transform: uppercase; letter-spacing: 0.08em; }
+  .cover-main-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: #F6F4ED; font-size: 20pt; text-transform: uppercase; letter-spacing: 0.03em; line-height: 1.1; }
+  .cover-sub { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; color: rgba(246,244,237,0.7); font-size: 8pt; line-height: 1.5; max-width: 140mm; }
+  .cover-footer-bar { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(198,216,52,0.15); border-top: 0.5mm solid rgba(198,216,52,0.3); padding: 3mm 8mm; display: flex; justify-content: space-between; align-items: center; }
+  .cover-footer-bar span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(246,244,237,0.5); font-size: 6pt; text-transform: uppercase; letter-spacing: 0.08em; }
+</style>
+</head>
+<body>
+
+<!-- P1 — CAPA -->
+<div class="page">
+  <div class="cover">
+    <div class="cover-inner">
+      <svg class="cover-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#F6F4ED" stroke="#C6D834" stroke-width="4"/>
+        <circle cx="50" cy="50" r="24" fill="#1F5C23"/>
+        <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#F6F4ED">E</text>
+      </svg>
+      <div class="cover-brand">Elite Treinamentos em Saúde</div>
+      <div class="cover-tagline">Extensivo ENARE 2026</div>
+      <div class="cover-divider"></div>
+      <div class="cover-bloco">Psicologia · Bloco B11</div>
+      <div class="cover-aula-num">14</div>
+      <div class="cover-module">PSI-ORGAN</div>
+      <div class="cover-main-title">Psicologia Organizacional<br>e do Trabalho</div>
+      <div class="cover-sub">Burnout (Maslach / CID-11) · Estresse ocupacional (Karasek) ·
+        Assédio moral no trabalho · DORT/LER e NR-17 ·
+        Qualidade de Vida no Trabalho (QVT) · Papel do psicólogo nas organizações ·
+        Saúde do trabalhador no SUS — RENAST/CEREST · Casos ENARE</div>
+    </div>
+    <div class="cover-footer-bar">
+      <span>PDF de Apoio · Uso Exclusivo Extensivo ENARE 2026</span>
+      <span>Aula 14 · Bloco B11 · Psicologia</span>
+    </div>
+  </div>
+</div>
+
+<!-- P2 — BURNOUT E ESTRESSE OCUPACIONAL -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">PSI-ORGAN · Burnout e Estresse Ocupacional</div>
+    </div>
+    <div class="header-badge">Aula 14</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">Síndrome de Burnout (Esgotamento Profissional)</div>
+
+    <div class="box dark">
+      <div class="box-title">3 Dimensões de Maslach — Núcleo do Conceito</div>
+      <strong style="color:#C6D834;">1. Exaustão emocional:</strong> sensação de estar emocionalmente esgotado, sem energia para o trabalho — dimensão mais proeminente<br>
+      <strong style="color:#C6D834;">2. Despersonalização (distanciamento mental):</strong> atitudes frias, cínicas ou distantes em relação às pessoas atendidas ou colegas<br>
+      <strong style="color:#C6D834;">3. Baixa realização profissional (ineficácia):</strong> sentimento de incompetência, ineficácia e falta de conquistas no trabalho<br><br>
+      <em>CID-11: burnout é fenômeno <u>ocupacional</u> (código QD85) — NÃO é classificado como doença mental, mas como fator que afeta o estado de saúde. Contexto exclusivamente laboral.</em>
+    </div>
+
+    <div class="grid2">
+      <div class="box alert">
+        <div class="box-title">Pegadinhas Frequentes (FGV)</div>
+        · Burnout NÃO é sinônimo de depressão — pode coexistir, mas são entidades distintas<br>
+        · CID-11 = fenômeno ocupacional; CID-10 = "estado de esgotamento vital" (Z73.0)<br>
+        · NÃO se aplica fora do contexto de trabalho (ex.: esgotamento de cuidadores informais = debate aberto)<br>
+        · Afastamento isolado NÃO resolve — intervenção multiprofissional e mudança organizacional são necessárias
+      </div>
+      <div class="box">
+        <div class="box-title">Fatores de Risco Organizacionais</div>
+        · Sobrecarga quantitativa (excesso de tarefas) e qualitativa (complexidade acima da capacidade)<br>
+        · Falta de autonomia e controle sobre o próprio trabalho<br>
+        · Ausência de reconhecimento e recompensa<br>
+        · Clima de injustiça e falta de suporte social de gestores<br>
+        · Conflito e ambiguidade de papéis<br>
+        · Profissões de cuidado: saúde, educação, segurança pública
+      </div>
+    </div>
+
+    <div class="section-title">Modelos de Estresse Ocupacional</div>
+
+    <table>
+      <tr><th>Modelo</th><th>Autor</th><th>Dimensões-Chave</th><th>Quadrante de Maior Risco</th></tr>
+      <tr>
+        <td><strong>Demanda-Controle (DC)</strong></td>
+        <td>Karasek (1979)</td>
+        <td>Demanda psicológica × Autonomia/Controle</td>
+        <td><strong>Alta demanda + Baixo controle</strong> = Alta tensão (high strain)</td>
+      </tr>
+      <tr>
+        <td><strong>Demanda-Controle-Suporte (DCS)</strong></td>
+        <td>Karasek & Theorell</td>
+        <td>DC + suporte social de colegas/chefia</td>
+        <td>Alta tensão + Baixo suporte = iso-strain (risco máximo)</td>
+      </tr>
+      <tr>
+        <td><strong>Esforço-Recompensa (ERI)</strong></td>
+        <td>Siegrist (1996)</td>
+        <td>Alto esforço × Baixa recompensa (salário, estima, segurança)</td>
+        <td>Desequilíbrio esforço &gt; recompensa — risco de adoecimento</td>
+      </tr>
+    </table>
+
+    <div class="box accent">
+      <div class="box-title">Quadrantes de Karasek — Decorar para FGV</div>
+      <strong>Alta tensão (high strain):</strong> alta demanda + baixo controle → maior risco cardiovascular e de burnout<br>
+      <strong>Trabalho ativo:</strong> alta demanda + alto controle → aprendizado, desafio positivo, crescimento<br>
+      <strong>Trabalho passivo:</strong> baixa demanda + baixo controle → deterioração de habilidades, apatia<br>
+      <strong>Baixa tensão:</strong> baixa demanda + alto controle → menor estresse, zona de conforto
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">2 / 10</div>
+  </div>
+</div>
+
+<!-- P3 — ASSÉDIO MORAL E DORT/LER -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">PSI-ORGAN · Assédio Moral no Trabalho e DORT/LER</div>
+    </div>
+    <div class="header-badge">Aula 14</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">Assédio Moral no Trabalho</div>
+
+    <div class="box">
+      <div class="box-title">Definição — Heinz Leymann (1984)</div>
+      Conduta abusiva, de natureza psicológica, que atenta contra a dignidade ou integridade de pessoa no exercício do trabalho. Características essenciais:<br><br>
+      · <strong>Reiteração:</strong> comportamento repetitivo e sistemático (NÃO uma única ocorrência isolada)<br>
+      · <strong>Intencionalidade:</strong> intenção de degradar, humilhar, constranger ou excluir o trabalhador<br>
+      · <strong>Desequilíbrio de poder:</strong> relação assimétrica — hierárquico (mais comum), horizontal ou ascendente<br>
+      · <strong>Efeito psicológico:</strong> dano à saúde, autoestima, identidade profissional
+    </div>
+
+    <div class="grid2">
+      <div class="box">
+        <div class="box-title">Tipos de Assédio Moral</div>
+        · <strong>Descendente (vertical):</strong> chefe → subordinado — mais frequente e estudado<br>
+        · <strong>Horizontal:</strong> entre colegas de mesmo nível hierárquico<br>
+        · <strong>Ascendente:</strong> subordinado(s) → superior — raro, ocorre em mudanças de gestão<br>
+        · <strong>Organizacional/institucional:</strong> empresa adota sistematicamente práticas humilhantes como método de gestão (metas abusivas, humilhações coletivas)
+      </div>
+      <div class="box alert">
+        <div class="box-title">Diferenciar: Assédio Moral vs. Sexual</div>
+        · <strong>Assédio moral:</strong> foco no trabalho — humilhação, exclusão, sobrecarga, menosprezo<br>
+        · <strong>Assédio sexual:</strong> foco no corpo/sexualidade — assédio por chantagem (condicionar vantagens) ou por intimidação (clima hostil)<br>
+        · <strong>Violência psicológica no trabalho:</strong> categoria mais ampla — inclui o moral<br>
+        · Lei 14.457/2022 (Emprega + Mulher): obriga canais de denúncia e CIPA para assédio sexual
+      </div>
+    </div>
+
+    <div class="section-title">DORT / LER — Doenças Osteomusculares Relacionadas ao Trabalho</div>
+
+    <div class="box dark">
+      <div class="box-title">NR-17 — Ergonomia (Portaria MTE nº 3.751/1990)</div>
+      Norma que estabelece parâmetros para adaptar as <strong>condições de trabalho</strong> às características <strong>psicofisiológicas</strong> dos trabalhadores, visando conforto, segurança e desempenho eficiente.<br><br>
+      <strong style="color:#C6D834;">5 Dimensões da NR-17:</strong><br>
+      · <strong style="color:#C6D834;">Levantamento e transporte manual de cargas:</strong> limites de peso, postura, frequência<br>
+      · <strong style="color:#C6D834;">Mobiliário dos postos de trabalho:</strong> cadeiras reguláveis, mesas, apoios<br>
+      · <strong style="color:#C6D834;">Equipamentos:</strong> telas, teclados, iluminação adequada, ruído<br>
+      · <strong style="color:#C6D834;">Condições ambientais:</strong> temperatura, umidade, ruído, iluminação<br>
+      · <strong style="color:#C6D834;">Organização do trabalho:</strong> ritmo, pausas, jornadas, conteúdo das tarefas — <em>dimensão psicossocial</em>
+    </div>
+
+    <div class="grid2">
+      <div class="box">
+        <div class="box-title">Exemplos de DORT</div>
+        · Tendinite, tenossinovite<br>
+        · Síndrome do manguito rotador<br>
+        · Síndrome do túnel do carpo (STM)<br>
+        · Epicondilite (cotovelo de tenista/golfista)<br>
+        · Lombalgia ocupacional<br>
+        · Síndrome cervicobraquial
+      </div>
+      <div class="box">
+        <div class="box-title">Atuação do Psicólogo em DORT</div>
+        · Análise psicoergonômica dos postos de trabalho<br>
+        · Avaliação do sofrimento e adoecimento psíquico associado<br>
+        · Suporte psicológico ao trabalhador afastado<br>
+        · Reabilitação e retorno ao trabalho<br>
+        · Intervenção nos fatores organizacionais (pressão, ritmo)<br>
+        · Educação em saúde — grupos de trabalho
+      </div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">3 / 10</div>
+  </div>
+</div>
+
+<!-- P4 — QVT E PAPEL DO PSICÓLOGO NAS ORGANIZAÇÕES -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">PSI-ORGAN · QVT e Papel do Psicólogo nas Organizações</div>
+    </div>
+    <div class="header-badge">Aula 14</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">Qualidade de Vida no Trabalho (QVT)</div>
+
+    <table>
+      <tr><th>Modelo</th><th>Autor</th><th>Dimensões Principais</th></tr>
+      <tr>
+        <td><strong>8 Critérios de QVT</strong></td>
+        <td>Walton (1973)</td>
+        <td>Compensação justa; condições seguras; uso e desenvolvimento de capacidades; oportunidade de crescimento; integração social; constitucionalismo; trabalho e vida total; relevância social</td>
+      </tr>
+      <tr>
+        <td><strong>Características do Trabalho</strong></td>
+        <td>Hackman & Oldham (1975)</td>
+        <td>Variedade de habilidades; identidade da tarefa; significado da tarefa; autonomia; feedback — geram estados psicológicos críticos e motivação interna</td>
+      </tr>
+      <tr>
+        <td><strong>QVT Biopsicossocial</strong></td>
+        <td>Limongi-França</td>
+        <td>Dimensão biológica (saúde física) + psicológica (emoções, autoestima) + social (vínculos, cidadania) + organizacional (estrutura, cultura)</td>
+      </tr>
+    </table>
+
+    <div class="section-title">Papel do Psicólogo nas Organizações</div>
+
+    <div class="grid2">
+      <div class="box">
+        <div class="box-title">Funções Tradicionais (Instrumental)</div>
+        · <strong>Recrutamento e Seleção:</strong> análise de cargos, entrevistas, testes psicológicos (via SATEPSI)<br>
+        · <strong>Treinamento e Desenvolvimento (T&amp;D):</strong> diagnóstico de necessidades, desenho de programas, avaliação de efetividade<br>
+        · <strong>Avaliação de Desempenho:</strong> definição de critérios, feedback, planos de desenvolvimento<br>
+        · <strong>Plano de Cargos e Salários:</strong> análise e descrição de funções
+      </div>
+      <div class="box accent">
+        <div class="box-title">Funções Ampliadas (Crítica) — Foco ENARE</div>
+        · <strong>Saúde do trabalhador:</strong> diagnóstico de sofrimento, programas de prevenção, reabilitação<br>
+        · <strong>Clima e cultura organizacional:</strong> pesquisas, intervenções em equipe, gestão de conflitos<br>
+        · <strong>Prevenção de assédio:</strong> canais de escuta, mediação, educação<br>
+        · <strong>Psicologia crítica no trabalho:</strong> questionar relações de poder e exploração — não apenas adaptar o trabalhador à organização
+      </div>
+    </div>
+
+    <div class="box alert">
+      <div class="box-title">Tensão Ética — Identidade do Psicólogo Organizacional</div>
+      O psicólogo é contratado pela organização, mas seu compromisso ético primário é com o <strong>bem-estar do trabalhador</strong> (Código de Ética CFP, princípio I). Quando o interesse organizacional colide com a saúde do trabalhador:<br>
+      · NÃO pode usar avaliação psicológica para discriminação<br>
+      · NÃO pode cobrir ou minimizar denúncias de assédio a pedido da chefia<br>
+      · PODE e DEVE denunciar condições insalubres ou práticas antiéticas aos órgãos competentes<br>
+      · DEVE manter sigilo das informações individuais obtidas em processos seletivos ou clínicos
+    </div>
+
+    <div class="box">
+      <div class="box-title">Gestão de Pessoas por Competências</div>
+      · <strong>Competência (CHA):</strong> Conhecimento + Habilidade + Atitude — conjunto mobilizado para gerar resultados<br>
+      · <strong>Mapeamento:</strong> definição de competências organizacionais e individuais esperadas para cada função<br>
+      · <strong>Avaliação 360°:</strong> feedback multidirecional — autoavaliação, pares, subordinados, superiores<br>
+      · Crítica: risco de tornar o trabalhador responsável por resultados determinados por fatores estruturais
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">4 / 10</div>
+  </div>
+</div>
+
+<!-- P5 — SAÚDE DO TRABALHADOR NO SUS -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">PSI-ORGAN · Saúde do Trabalhador no SUS — RENAST/CEREST</div>
+    </div>
+    <div class="header-badge">Aula 14</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">Rede Nacional de Atenção Integral à Saúde do Trabalhador — RENAST</div>
+
+    <div class="box dark">
+      <div class="box-title">Estrutura da RENAST (Portaria GM nº 1.679/2002 / atualizada)</div>
+      · <strong style="color:#C6D834;">CEREST (Centros de Referência em Saúde do Trabalhador):</strong> retaguarda técnica especializada — diagnóstico, tratamento, vigilância e educação em saúde do trabalhador<br>
+      · <strong style="color:#C6D834;">Atenção Básica:</strong> porta de entrada — notificação de agravos, assistência inicial, vinculação<br>
+      · <strong style="color:#C6D834;">Atenção Hospitalar e Urgência:</strong> manejo de acidentes graves e doenças ocupacionais agudas<br>
+      · <strong style="color:#C6D834;">VISAT (Vigilância em Saúde do Trabalhador):</strong> fiscalização de ambientes e processos de trabalho<br><br>
+      <em>CEREST = não presta assistência individual direta como regra; função é técnica, de suporte e vigilância.</em>
+    </div>
+
+    <div class="section-title">Acidente de Trabalho e Doença Ocupacional — Lei nº 8.213/1991</div>
+
+    <table>
+      <tr><th>Conceito</th><th>Definição Legal</th><th>Observação</th></tr>
+      <tr>
+        <td><strong>Acidente típico</strong></td>
+        <td>Ocorre pelo exercício do trabalho, causando lesão corporal ou perturbação funcional</td>
+        <td>Nexo causal com atividade laboral</td>
+      </tr>
+      <tr>
+        <td><strong>Acidente de trajeto (in itinere)</strong></td>
+        <td>No percurso residência–trabalho–residência, com ou sem transporte da empresa</td>
+        <td><strong>É acidente de trabalho</strong> — rota habitual</td>
+      </tr>
+      <tr>
+        <td><strong>Doença profissional</strong></td>
+        <td>Produzida ou desencadeada pelo exercício do trabalho peculiar a determinada atividade</td>
+        <td>Nexo presumido (ex.: silicose em mineiros)</td>
+      </tr>
+      <tr>
+        <td><strong>Doença do trabalho</strong></td>
+        <td>Adquirida ou desencadeada em função de condições especiais em que o trabalho é realizado</td>
+        <td>Nexo técnico epidemiológico (NTEP)</td>
+      </tr>
+    </table>
+
+    <div class="grid2">
+      <div class="box">
+        <div class="box-title">CAT — Comunicação de Acidente de Trabalho</div>
+        · Emitida pela empresa ao INSS no 1º dia útil após o acidente<br>
+        · Em caso de morte: imediatamente<br>
+        · Se empresa não emitir: trabalhador, dependente, sindicato, médico ou autoridade pública podem emitir<br>
+        · Doença ocupacional = acidente de trabalho para fins previdenciários → CAT obrigatória<br>
+        · Emissão da CAT NÃO garante automaticamente benefício — análise pelo INSS
+      </div>
+      <div class="box accent">
+        <div class="box-title">Notificação Compulsória — SINAN</div>
+        Agravos relacionados ao trabalho de notificação obrigatória no SINAN:<br>
+        · Acidente grave (amputação, queimadura extensa, morte)<br>
+        · DORT/LER grave<br>
+        · Intoxicação exógena por agrotóxico, substância química<br>
+        · Pneumoconioses (silicose, asbestose)<br>
+        · Perda auditiva induzida por ruído (PAIR)<br>
+        · Transtornos mentais relacionados ao trabalho (burnout grave, TEPT ocupacional)
+      </div>
+    </div>
+
+    <div class="box alert">
+      <div class="box-title">Benefícios Previdenciários Relacionados ao Trabalho</div>
+      · <strong>Auxílio-acidente (B94):</strong> sequela permanente que reduz capacidade — pago concomitante ao salário<br>
+      · <strong>Auxílio por incapacidade temporária (B91):</strong> afastamento a partir do 16º dia (até o 15º = empresa)<br>
+      · <strong>Aposentadoria por incapacidade permanente:</strong> incapacidade total e definitiva<br>
+      · <strong>Estabilidade pós-acidente:</strong> 12 meses após alta do auxílio-doença acidentário — vedada dispensa sem justa causa
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">5 / 10</div>
+  </div>
+</div>
+
+<!-- P6 — QUESTÃO 01 -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">PSI-ORGAN · Questão 01 — Burnout e Diagnóstico Diferencial</div>
+    </div>
+    <div class="header-badge">Aula 14</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">Questão 01</div>
+
+    <div class="q-stem">
+      <div class="q-stem-label">Enunciado</div>
+      José, 42 anos, analista financeiro com 15 anos na mesma empresa, procura o serviço de saúde do trabalhador relatando exaustão intensa, que persiste mesmo após fins de semana e férias curtas. Refere que se sente "distante" dos colegas, responde às demandas de forma mecânica e fria, e tem a sensação de que seu trabalho "não serve para nada", independentemente dos resultados que produz. Trabalha em média 11 horas por dia, não conseguiu tirar férias no último ano e nega episódios de tristeza persistente, anedonia ou alterações do sono que antecessem o quadro ocupacional. A psicóloga do CEREST, ao avaliar o caso de José, identifica corretamente que:
+    </div>
+
+    <div class="q-option wrong">
+      <span class="q-letter">A</span>
+      José apresenta um episódio depressivo maior mascarado de burnout, pois os critérios são idênticos e o tratamento deve ser imediatamente farmacológico.
+    </div>
+    <div class="q-option correct">
+      <span class="q-letter">B</span>
+      O quadro de José configura a Síndrome de Burnout conforme Maslach, apresentando as três dimensões: exaustão emocional, despersonalização (distanciamento afetivo dos colegas) e reduzida realização profissional, com nexo causal ocupacional identificado.
+    </div>
+    <div class="q-option wrong">
+      <span class="q-letter">C</span>
+      Trata-se de burnout apenas se houver ideação suicida presente, pois sem esse critério a CID-11 não permite o diagnóstico do fenômeno ocupacional.
+    </div>
+    <div class="q-option wrong">
+      <span class="q-letter">D</span>
+      O afastamento do trabalho por 30 dias é a única intervenção indicada; a psicóloga não deve propor mudanças organizacionais, pois estas extrapolam o escopo da saúde do trabalhador.
+    </div>
+
+    <div class="box" style="margin-top:2mm;">
+      <div class="box-title">Comentário — Por que B é a resposta correta?</div>
+      · <strong>B correta:</strong> José apresenta as exatas 3 dimensões de Maslach — exaustão emocional (esgotamento persistente), despersonalização (distância afetiva/fria com colegas) e reduzida realização profissional (sensação de inutilidade apesar dos resultados). Nexo ocupacional evidente: carga excessiva, sem recuperação.<br>
+      · <strong>A errada:</strong> burnout e depressão podem coexistir, mas têm critérios distintos — depressão exige tristeza/anedonia persistente não exclusivamente no trabalho. O caso nega critérios depressivos prévios ao contexto laboral.<br>
+      · <strong>C errada:</strong> a CID-11 (QD85) não inclui ideação suicida como critério — é fenômeno ocupacional com 3 dimensões de Maslach.<br>
+      · <strong>D errada:</strong> intervenção em burnout é multiprofissional e inclui obrigatoriamente mudanças organizacionais — afastamento isolado não resolve a causa raiz.
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">6 / 10</div>
+  </div>
+</div>
+
+<!-- P7 — QUESTÃO 02 -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">PSI-ORGAN · Questão 02 — NR-17 e Ergonomia</div>
+    </div>
+    <div class="header-badge">Aula 14</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">Questão 02</div>
+
+    <div class="q-stem">
+      <div class="q-stem-label">Enunciado</div>
+      Ana é psicóloga organizacional contratada por uma indústria têxtil que registra alta incidência de afastamentos por LER/DORT entre as costureiras. Ao realizar análise ergonômica dos postos de trabalho, ela identifica que as trabalhadoras permanecem em postura estática inadequada por até 8 horas consecutivas, sem pausas para recuperação física, com metas de produção que impedem qualquer interrupção. Ana elabora um relatório técnico propondo adaptações no mobiliário, introdução de pausas regulamentadas e revisão das metas de produção. Com base na legislação trabalhista brasileira, a proposta de Ana está fundamentada corretamente na:
+    </div>
+
+    <div class="q-option wrong">
+      <span class="q-letter">A</span>
+      NR-32 (Segurança e Saúde no Trabalho em Serviços de Saúde), por ser a norma regulamentadora que trata de saúde dos trabalhadores e prevenção de doenças ocupacionais em todos os setores.
+    </div>
+    <div class="q-option wrong">
+      <span class="q-letter">B</span>
+      Lei nº 8.080/1990 (Lei Orgânica da Saúde), cujo artigo 6º, parágrafo 3º, atribui exclusivamente ao SUS a responsabilidade de regulamentar pausas obrigatórias em ambientes industriais.
+    </div>
+    <div class="q-option correct">
+      <span class="q-letter">C</span>
+      NR-17 (Ergonomia), que estabelece parâmetros para a adaptação das condições de trabalho às características psicofisiológicas dos trabalhadores, abrangendo mobiliário, equipamentos, condições ambientais e organização do trabalho, incluindo pausas e ritmo de produção.
+    </div>
+    <div class="q-option wrong">
+      <span class="q-letter">D</span>
+      Lei nº 8.213/1991 (Planos de Benefícios da Previdência Social), cujas disposições sobre doença ocupacional vinculam diretamente o empregador a adaptar postos de trabalho conforme laudo pericial do INSS.
+    </div>
+
+    <div class="box" style="margin-top:2mm;">
+      <div class="box-title">Comentário — Por que C é a resposta correta?</div>
+      · <strong>C correta:</strong> NR-17 (Ergonomia) regula exatamente o que Ana propõe — adaptação das condições de trabalho às características psicofisiológicas dos trabalhadores, cobrindo: mobiliário (altura de bancadas, cadeiras), organização do trabalho (pausas, ritmo, metas), condições ambientais e equipamentos. É a base legal direta para prevenção de DORT.<br>
+      · <strong>A errada:</strong> NR-32 é específica para serviços de saúde (hospitais, laboratórios) — não se aplica à indústria têxtil.<br>
+      · <strong>B errada:</strong> A Lei 8.080/1990 não regulamenta pausas industriais — trata da organização do SUS. Pausas específicas em setores como teleatendimento têm regulação própria, mas a NR-17 é a norma geral de ergonomia.<br>
+      · <strong>D errada:</strong> Lei 8.213/1991 trata de benefícios previdenciários após o adoecimento — não é norma preventiva de adaptação de postos de trabalho.
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">7 / 10</div>
+  </div>
+</div>
+
+<!-- P8 — QUESTÃO 03 -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">PSI-ORGAN · Questão 03 — Karasek, CID-11 e Acidente de Trabalho</div>
+    </div>
+    <div class="header-badge">Aula 14</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">Questão 03</div>
+
+    <div class="q-stem">
+      <div class="q-stem-label">Enunciado</div>
+      Sobre psicologia organizacional e saúde do trabalhador, analise as afirmativas:
+    </div>
+
+    <div class="afirmativa errada">
+      <span class="af-num">I</span>
+      <span class="af-verdict">ERRADA</span>
+      <span>O assédio moral no trabalho caracteriza-se obrigatoriamente por agressão física ou ameaça verbal explícita, configurando-se juridicamente mesmo diante de uma única ocorrência isolada de conduta abusiva.</span>
+    </div>
+
+    <div class="afirmativa certa">
+      <span class="af-num">II</span>
+      <span class="af-verdict">CERTA</span>
+      <span>No modelo Demanda-Controle de Karasek, trabalhadores em situação de alta demanda associada a baixo controle sobre o próprio trabalho (quadrante de alta tensão) apresentam maior risco de adoecimento por estresse ocupacional, incluindo doenças cardiovasculares e burnout.</span>
+    </div>
+
+    <div class="afirmativa certa">
+      <span class="af-num">III</span>
+      <span class="af-verdict">CERTA</span>
+      <span>A CID-11 classifica o burnout como fenômeno ocupacional (código QD85), e não como doença mental, sendo caracterizado por exaustão, distanciamento mental do trabalho e sentimento de ineficácia profissional, com nexo causal exclusivamente ao contexto laboral.</span>
+    </div>
+
+    <div class="afirmativa errada">
+      <span class="af-num">IV</span>
+      <span class="af-verdict">ERRADA</span>
+      <span>Conforme a Lei nº 8.213/1991, o acidente de trabalho é definido exclusivamente como aquele que ocorre nas dependências físicas da empresa, não sendo reconhecidos como acidente de trabalho os eventos ocorridos durante o percurso entre a residência e o local de trabalho.</span>
+    </div>
+
+    <div style="margin-top:2mm;">
+      <div class="q-option wrong"><span class="q-letter">A</span>Apenas I e IV são corretas.</div>
+      <div class="q-option wrong"><span class="q-letter">B</span>Apenas I e II são corretas.</div>
+      <div class="q-option correct"><span class="q-letter">C</span>Apenas II e III são corretas.</div>
+      <div class="q-option wrong"><span class="q-letter">D</span>Apenas I, II e III são corretas.</div>
+    </div>
+
+    <div class="box" style="margin-top:2mm;">
+      <div class="box-title">Comentário Rápido</div>
+      · <strong>I errada:</strong> assédio moral exige <em>reiteração</em> e <em>sistematicidade</em> — uma ocorrência isolada NÃO configura assédio; e não requer agressão física.<br>
+      · <strong>II certa:</strong> alta demanda + baixo controle = alta tensão (Karasek) → maior risco de adoecimento.<br>
+      · <strong>III certa:</strong> CID-11 QD85 = fenômeno ocupacional (não doença mental) — 3 dimensões: exaustão, distanciamento, ineficácia.<br>
+      · <strong>IV errada:</strong> acidente de trajeto (in itinere) É acidente de trabalho conforme Art. 21, IV, "d" da Lei 8.213/1991.
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">8 / 10</div>
+  </div>
+</div>
+
+<!-- P9 — GABARITO COMENTADO -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">PSI-ORGAN · Gabarito Comentado</div>
+    </div>
+    <div class="header-badge">Aula 14</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">Gabarito Oficial</div>
+
+    <div class="gab-box">
+      <div class="gab-letter">B</div>
+      <div class="gab-info">
+        <strong>Q01 — Síndrome de Burnout (Maslach)</strong><br>
+        3 dimensões presentes em José: exaustão emocional + despersonalização + reduzida realização profissional. Nexo causal laboral identificado. Burnout NÃO é depressão, não exige ideação suicida, e requer intervenção multiprofissional com mudanças organizacionais.
+      </div>
+    </div>
+
+    <div class="gab-box">
+      <div class="gab-letter">C</div>
+      <div class="gab-info">
+        <strong>Q02 — NR-17 (Ergonomia)</strong><br>
+        Ana aplica corretamente a NR-17, que regula a adaptação das condições de trabalho às características psicofisiológicas dos trabalhadores: mobiliário, organização do trabalho (pausas, ritmo, metas), equipamentos e condições ambientais. NR-32 é para serviços de saúde; Lei 8.213 é previdenciária.
+      </div>
+    </div>
+
+    <div class="gab-box">
+      <div class="gab-letter">C</div>
+      <div class="gab-info">
+        <strong>Q03 — Apenas II e III corretas</strong><br>
+        II correta: Karasek — alta demanda + baixo controle = alta tensão = maior risco de adoecimento. III correta: CID-11 QD85 = fenômeno ocupacional (não doença mental), 3 dimensões. I errada: assédio moral exige reiteração, não ocorrência única. IV errada: acidente de trajeto (in itinere) É acidente de trabalho — Lei 8.213, Art. 21, IV, "d".
+      </div>
+    </div>
+
+    <div class="section-title" style="margin-top:2mm;">Quadro de Questões ENARE Relacionadas — PSI-ORGAN</div>
+
+    <table>
+      <tr><th>Ano</th><th>Tópico Principal</th><th>Conceito Testado</th><th>Gab</th></tr>
+      <tr><td>2024</td><td>Saúde do trabalhador</td><td>Nexo causal doença × trabalho</td><td>B</td></tr>
+      <tr><td>2024</td><td>Papel do psicólogo nas organizações</td><td>Tensão ética organização vs. trabalhador</td><td>C</td></tr>
+      <tr><td>2023</td><td>Estresse ocupacional</td><td>Modelo Demanda-Controle Karasek</td><td>C</td></tr>
+      <tr><td>2023</td><td>Acidente de trabalho</td><td>Acidente in itinere — Lei 8.213</td><td>B</td></tr>
+      <tr><td>2022</td><td>Burnout</td><td>3 dimensões de Maslach</td><td>A</td></tr>
+      <tr><td>2022</td><td>DORT/LER</td><td>NR-17 — organização do trabalho</td><td>C</td></tr>
+    </table>
+
+    <div class="box accent" style="margin-top:2mm;">
+      <div class="box-title">Padrão FGV em PSI-ORGAN</div>
+      · FGV cobra <strong>nexo causal</strong> acidente/doença × trabalho (acidente in itinere é armadilha recorrente)<br>
+      · <strong>Modelo Karasek</strong> aparece em 60% das provas com foco no quadrante de alta tensão<br>
+      · <strong>CID-11 burnout = fenômeno ocupacional</strong> (não doença mental) — contraste com CID-10<br>
+      · <strong>Assédio moral = reiteração</strong> — uma ocorrência isolada não configura<br>
+      · <strong>NR-17</strong> = ergonomia = inclui organização do trabalho (pausas, metas, ritmo)
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">9 / 10</div>
+  </div>
+</div>
+
+<!-- P10 — SÍNTESE -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">PSI-ORGAN · Síntese — Psicologia Organizacional e do Trabalho</div>
+    </div>
+    <div class="header-badge">Aula 14</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">10 Pontos Essenciais para a Prova</div>
+
+    <div class="sintese-item">
+      <span class="sintese-num">1</span>
+      <span><strong>Burnout — 3 dimensões de Maslach:</strong> exaustão emocional + despersonalização + reduzida realização profissional. CID-11 = fenômeno ocupacional (QD85), NÃO doença mental. Contexto exclusivamente laboral.</span>
+    </div>
+    <div class="sintese-item">
+      <span class="sintese-num">2</span>
+      <span><strong>Karasek — Demanda-Controle:</strong> alta demanda + baixo controle = alta tensão = maior risco. Trabalho ativo (alta demanda + alto controle) é positivo — aprendizagem. Iso-strain = alta tensão + baixo suporte social.</span>
+    </div>
+    <div class="sintese-item">
+      <span class="sintese-num">3</span>
+      <span><strong>Assédio moral = reiteração + intencionalidade:</strong> conduta sistemática e repetida. Uma ocorrência isolada NÃO configura assédio moral. Tipos: descendente, horizontal, ascendente, organizacional.</span>
+    </div>
+    <div class="sintese-item">
+      <span class="sintese-num">4</span>
+      <span><strong>NR-17 (Ergonomia):</strong> adaptar condições de trabalho às características psicofisiológicas. Inclui 5 dimensões: cargas manuais, mobiliário, equipamentos, condições ambientais, <em>organização do trabalho</em> (pausas, ritmo, metas).</span>
+    </div>
+    <div class="sintese-item">
+      <span class="sintese-num">5</span>
+      <span><strong>Acidente in itinere É acidente de trabalho</strong> (Lei 8.213/1991, Art. 21, IV, "d") — percurso residência-trabalho-residência, rota habitual. Armadilha frequente em provas: "exclusivamente nas dependências da empresa" = ERRADO.</span>
+    </div>
+    <div class="sintese-item">
+      <span class="sintese-num">6</span>
+      <span><strong>CAT:</strong> emitida no 1º dia útil após acidente (imediata em caso de óbito). Empresa é responsável, mas trabalhador, sindicato, médico ou autoridade podem emitir se empresa se recusar.</span>
+    </div>
+    <div class="sintese-item">
+      <span class="sintese-num">7</span>
+      <span><strong>CEREST:</strong> retaguarda técnica especializada — vigilância, diagnóstico coletivo, suporte à rede. NÃO é serviço de assistência individual; não substitui CAPS ou UBS para atendimento clínico direto.</span>
+    </div>
+    <div class="sintese-item">
+      <span class="sintese-num">8</span>
+      <span><strong>Tensão ética PSI-ORGAN:</strong> psicólogo é contratado pela empresa, mas compromisso é com o trabalhador. Não pode cobrir assédio nem usar avaliação psicológica para discriminação. Código de Ética CFP prevalece sobre contrato de trabalho.</span>
+    </div>
+    <div class="sintese-item">
+      <span class="sintese-num">9</span>
+      <span><strong>QVT — Walton (8 critérios):</strong> compensação justa, condições seguras, uso de capacidades, crescimento, integração social, constitucionalismo, trabalho e vida total, relevância social. Hackman &amp; Oldham: 5 características do trabalho → motivação interna.</span>
+    </div>
+    <div class="sintese-item">
+      <span class="sintese-num">10</span>
+      <span><strong>Próxima aula — Aula 15:</strong> PSI-ORGAN parte 2 / PSI-AVALIA — Avaliação Psicológica nas organizações e no contexto clínico: SATEPSI, laudos, testes permitidos, normas CFP para uso de instrumentos, avaliação em seleção de pessoal e sua regulamentação ética.</span>
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">10 / 10</div>
+  </div>
+</div>
+
+</body>
+</html>

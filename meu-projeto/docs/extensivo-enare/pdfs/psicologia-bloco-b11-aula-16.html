@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Psicologia B11 — Aula 16 | PSI-SAUDE: Saúde Mental no SUS e RAPS</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #d0d0d0; font-family: 'Bricolage Grotesque', sans-serif; }
+  .page { width: 210mm; height: 297mm; background: #F6F4ED; margin: 8mm auto; position: relative; overflow: hidden; display: flex; flex-direction: column; }
+  @media print { body { background: none; margin: 0; } .page { margin: 0; page-break-after: always; box-shadow: none; } }
+  @page { size: A4; margin: 0; }
+
+  .page-header { background: #1F5C23; padding: 4mm 6mm; display: flex; align-items: center; gap: 4mm; flex-shrink: 0; }
+  .logo-svg { width: 10mm; height: 10mm; flex-shrink: 0; }
+  .header-text { flex: 1; }
+  .header-course { font-family: 'Playfair Display', serif; font-style: italic; color: #C6D834; font-size: 6.5pt; letter-spacing: 0.03em; }
+  .header-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: #F6F4ED; font-size: 11pt; line-height: 1; text-transform: uppercase; letter-spacing: 0.04em; }
+  .header-badge { background: #C6D834; color: #1F5C23; font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 7pt; padding: 1mm 3mm; border-radius: 2mm; text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap; }
+
+  .page-footer { background: #1F5C23; padding: 2mm 6mm; display: flex; justify-content: space-between; align-items: center; flex-shrink: 0; }
+  .footer-left { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: #C6D834; font-size: 6pt; letter-spacing: 0.05em; text-transform: uppercase; }
+  .footer-right { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: #F6F4ED; font-size: 8pt; letter-spacing: 0.06em; }
+
+  .page-body { flex: 1; padding: 5mm 7mm; display: flex; flex-direction: column; gap: 3mm; overflow: hidden; }
+
+  .section-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 13pt; color: #1F5C23; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 0.8mm solid #C6D834; padding-bottom: 1.5mm; margin-bottom: 1mm; }
+
+  .box { background: #fff; border-left: 1.2mm solid #1F5C23; border-radius: 1mm; padding: 3mm 4mm; font-size: 7.8pt; line-height: 1.45; color: #222; }
+  .box.accent { border-left-color: #C6D834; }
+  .box.alert  { border-left-color: #c0392b; background: #fff8f7; }
+  .box.dark   { background: #1F5C23; color: #F6F4ED; border-left-color: #C6D834; }
+  .box-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; color: #1F5C23; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 1.5mm; }
+  .box.dark .box-title  { color: #C6D834; }
+  .box.alert .box-title { color: #c0392b; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 7.5pt; }
+  th { background: #1F5C23; color: #F6F4ED; font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 8pt; text-transform: uppercase; padding: 1.5mm 2.5mm; text-align: left; letter-spacing: 0.03em; }
+  td { padding: 1.5mm 2.5mm; border-bottom: 0.3mm solid #e0ddd5; vertical-align: top; color: #222; line-height: 1.4; }
+  tr:nth-child(even) td { background: #f4f2eb; }
+  td strong { color: #1F5C23; }
+
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5mm; }
+
+  .fase-item { display: flex; gap: 3mm; align-items: flex-start; padding: 2mm 3mm; background: #fff; border-radius: 1mm; margin-bottom: 1.5mm; font-size: 7.8pt; line-height: 1.4; }
+  .fase-badge { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 7pt; color: #fff; background: #1F5C23; padding: 0.8mm 2mm; border-radius: 0.8mm; flex-shrink: 0; white-space: nowrap; min-width: 20mm; text-align: center; text-transform: uppercase; line-height: 1.3; }
+  .fase-content strong { color: #1F5C23; font-family: 'Barlow Condensed', sans-serif; font-size: 8.5pt; text-transform: uppercase; display: block; margin-bottom: 0.3mm; }
+
+  .afirmativa { display: flex; gap: 2mm; padding: 2mm 3mm; border-radius: 1mm; margin-bottom: 1.5mm; font-size: 7.8pt; line-height: 1.45; align-items: flex-start; }
+  .afirmativa.certa  { background: #f0f8f0; border-left: 1mm solid #1F5C23; }
+  .afirmativa.errada { background: #fff8f7; border-left: 1mm solid #c0392b; }
+  .af-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; min-width: 5mm; flex-shrink: 0; }
+  .afirmativa.certa  .af-num { color: #1F5C23; }
+  .afirmativa.errada .af-num { color: #c0392b; }
+  .af-verdict { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 8pt; padding: 0.3mm 2mm; border-radius: 0.8mm; flex-shrink: 0; }
+  .afirmativa.certa  .af-verdict { background: #1F5C23; color: #F6F4ED; }
+  .afirmativa.errada .af-verdict { background: #c0392b; color: #fff; }
+
+  .q-stem { background: #fff; border: 0.5mm solid #ddd; border-radius: 1.5mm; padding: 3mm 4mm; font-size: 8pt; line-height: 1.5; color: #222; margin-bottom: 2mm; }
+  .q-stem-label { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; color: #1F5C23; text-transform: uppercase; margin-bottom: 1.5mm; }
+  .q-option { display: flex; gap: 2mm; padding: 1.5mm 2.5mm; border-radius: 1mm; margin-bottom: 1mm; border: 0.4mm solid #e0ddd5; background: #fff; font-size: 7.8pt; line-height: 1.4; align-items: flex-start; }
+  .q-option.correct { background: #f0f8f0; border-color: #1F5C23; }
+  .q-option.wrong   { background: #fff8f7; border-color: #e0a0a0; }
+  .q-letter { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; color: #1F5C23; min-width: 4mm; flex-shrink: 0; margin-top: -0.3mm; }
+  .q-option.correct .q-letter { color: #1F5C23; }
+  .q-option.wrong   .q-letter { color: #c0392b; }
+
+  .gab-box { display: flex; gap: 3mm; align-items: center; background: #1F5C23; color: #F6F4ED; border-radius: 1.5mm; padding: 2.5mm 4mm; margin-bottom: 2mm; }
+  .gab-letter { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 20pt; color: #C6D834; line-height: 1; }
+  .gab-info { flex: 1; font-size: 7.8pt; line-height: 1.4; }
+  .gab-info strong { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; text-transform: uppercase; letter-spacing: 0.03em; }
+
+  .sintese-item { display: flex; gap: 2mm; padding: 2mm 3mm; border-radius: 1mm; margin-bottom: 1.5mm; background: #fff; border-left: 1mm solid #1F5C23; font-size: 7.8pt; line-height: 1.4; align-items: flex-start; }
+  .sintese-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: #1F5C23; font-size: 10pt; min-width: 5mm; flex-shrink: 0; margin-top: -0.5mm; }
+
+  .cover { background: #1F5C23; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; overflow: hidden; padding: 12mm; }
+  .cover::before { content: ''; position: absolute; top: -20mm; right: -20mm; width: 80mm; height: 80mm; background: rgba(198,216,52,0.12); border-radius: 50%; }
+  .cover::after  { content: ''; position: absolute; bottom: -15mm; left: -15mm; width: 60mm; height: 60mm; background: rgba(198,216,52,0.08); border-radius: 50%; }
+  .cover-inner { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 5mm; width: 100%; }
+  .cover-logo { width: 22mm; height: 22mm; }
+  .cover-brand { font-family: 'Playfair Display', serif; font-style: italic; color: #C6D834; font-size: 11pt; letter-spacing: 0.05em; }
+  .cover-tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(246,244,237,0.6); font-size: 7pt; text-transform: uppercase; letter-spacing: 0.12em; }
+  .cover-divider { width: 30mm; height: 0.3mm; background: rgba(198,216,52,0.4); }
+  .cover-bloco { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: #C6D834; font-size: 9pt; text-transform: uppercase; letter-spacing: 0.1em; background: rgba(198,216,52,0.12); padding: 1.5mm 4mm; border-radius: 1mm; }
+  .cover-aula-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: rgba(246,244,237,0.3); font-size: 52pt; line-height: 1; letter-spacing: -1mm; }
+  .cover-module { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: #C6D834; font-size: 10pt; text-transform: uppercase; letter-spacing: 0.08em; }
+  .cover-main-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: #F6F4ED; font-size: 20pt; text-transform: uppercase; letter-spacing: 0.03em; line-height: 1.1; }
+  .cover-sub { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; color: rgba(246,244,237,0.7); font-size: 8pt; line-height: 1.5; max-width: 140mm; }
+  .cover-footer-bar { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(198,216,52,0.15); border-top: 0.5mm solid rgba(198,216,52,0.3); padding: 3mm 8mm; display: flex; justify-content: space-between; align-items: center; }
+  .cover-footer-bar span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(246,244,237,0.5); font-size: 6pt; text-transform: uppercase; letter-spacing: 0.08em; }
+</style>
+</head>
+<body>
+
+<!-- P1 — CAPA -->
+<div class="page">
+  <div class="cover">
+    <div class="cover-inner">
+      <svg class="cover-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#F6F4ED" stroke="#C6D834" stroke-width="4"/>
+        <circle cx="50" cy="50" r="24" fill="#1F5C23"/>
+        <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#F6F4ED">E</text>
+      </svg>
+      <div class="cover-brand">Elite Treinamentos em Saúde</div>
+      <div class="cover-tagline">Extensivo ENARE 2026</div>
+      <div class="cover-divider"></div>
+      <div class="cover-bloco">Psicologia · Bloco B11</div>
+      <div class="cover-aula-num">16</div>
+      <div class="cover-module">PSI-SAUDE</div>
+      <div class="cover-main-title">Saúde Mental no SUS<br>e RAPS</div>
+      <div class="cover-sub">Reforma Psiquiátrica · Lei 10.216/2001 — direitos e tipos de internação ·
+        RAPS (Portaria 3.088/2011): 7 componentes · CAPS — tipos, portes e funcionamento ·
+        SRT, Unidades de Acolhimento, Programa Volta para Casa ·
+        Leitos em hospital geral · Fluxo de crise no SUS · Casos ENARE</div>
+    </div>
+    <div class="cover-footer-bar">
+      <span>PDF de Apoio · Uso Exclusivo Extensivo ENARE 2026</span>
+      <span>Aula 16 · Bloco B11 · Psicologia</span>
+    </div>
+  </div>
+</div>
+
+<!-- P2 — REFORMA PSIQUIÁTRICA E LEI 10.216/2001 -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">PSI-SAUDE · Reforma Psiquiátrica e Lei 10.216/2001</div>
+    </div>
+    <div class="header-badge">Aula 16</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">Reforma Psiquiátrica — Contexto e Bases</div>
+
+    <div class="grid2">
+      <div class="box">
+        <div class="box-title">Referência Internacional — Basaglia</div>
+        · <strong>Franco Basaglia (Itália, 1960s):</strong> fechou o manicômio de Gorizia — modelo de desinstitucionalização<br>
+        · <strong>Psiquiatria Democrática Italiana:</strong> doença mental como produto de relações sociais; hospital psiquiátrico como instrumento de exclusão e cronificação<br>
+        · <strong>Lei 180/1978 (Lei Basaglia):</strong> fechamento dos manicômios na Itália — inspiração direta para o Brasil<br>
+        · <strong>Movimento Antimanicomial Brasileiro:</strong> surgiu nos anos 1980; Carta de Bauru (1987)
+      </div>
+      <div class="box accent">
+        <div class="box-title">Brasil — Trajetória Legislativa</div>
+        · <strong>1987:</strong> I Conferência Nacional de Saúde Mental + 1º CAPS Brasil (Santos/SP)<br>
+        · <strong>1989:</strong> PL Paulo Delgado — iniciou tramitação no Congresso<br>
+        · <strong>1992–2000:</strong> estados aprovam leis estaduais de reforma; hospitais reduzem leitos<br>
+        · <strong>2001:</strong> aprovação da <strong>Lei 10.216/2001</strong> (Lei da Reforma Psiquiátrica) — 12 anos de tramitação<br>
+        · <strong>2002:</strong> III CNSM — aprovação da política antimanicomial<br>
+        · <strong>2011:</strong> Portaria 3.088 institui a RAPS
+      </div>
+    </div>
+
+    <div class="section-title">Lei 10.216/2001 — Pontos-Chave para o ENARE</div>
+
+    <div class="box dark">
+      <div class="box-title">Direitos da Pessoa com Transtorno Mental — Art. 2º</div>
+      · Tratamento com humanidade e respeito, no interesse exclusivo de sua saúde<br>
+      · Proteção contra qualquer forma de abuso e exploração<br>
+      · Sigilo nas informações prestadas<br>
+      · Presença médica para esclarecer a necessidade ou não de sua hospitalização<br>
+      · Ter acesso ao melhor tratamento do sistema de saúde, com responsabilidade do Estado<br>
+      · Ser tratada, preferencialmente, em <strong style="color:#C6D834;">serviços comunitários de saúde mental</strong><br>
+      · Receber informação sobre sua doença e sobre os tratamentos disponíveis<br>
+      · Ser tratada em ambiente terapêutico pelos meios menos invasivos possíveis<br>
+      · <strong style="color:#C6D834;">Internação como último recurso</strong> (Art. 4º) — somente quando os recursos extra-hospitalares se mostrarem insuficientes
+    </div>
+
+    <div class="section-title">Tipos de Internação — Art. 6º ao 9º</div>
+
+    <div class="fase-item">
+      <span class="fase-badge">VOLUNTÁRIA</span>
+      <div class="fase-content">
+        <strong>Com consentimento do próprio paciente</strong>
+        Paciente solicita ou concorda com a internação. Deve ser comunicada ao MP? NÃO — não há exigência legal de comunicação ao MP para internação voluntária. Paciente pode solicitar alta a qualquer momento (comunicar ao médico; médico avalia).
+      </div>
+    </div>
+    <div class="fase-item">
+      <span class="fase-badge">INVOLUNTÁRIA</span>
+      <div class="fase-content">
+        <strong>Sem consentimento do paciente — a pedido de terceiro</strong>
+        Solicitada por familiar ou responsável, ou pelo médico. Deve ser comunicada ao <strong>Ministério Público Estadual</strong> em até <strong>72 horas</strong> pelo responsável técnico da unidade. Alta: médico ou familiar/responsável.
+      </div>
+    </div>
+    <div class="fase-item">
+      <span class="fase-badge">COMPULSÓRIA</span>
+      <div class="fase-content">
+        <strong>Determinada pela Justiça</strong>
+        Ordenada por decisão judicial. Comunicada ao MP pelo responsável técnico. Alta: mediante laudo médico ao juiz.
+      </div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">2 / 10</div>
+  </div>
+</div>
+
+<!-- P3 — RAPS — COMPONENTES -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">PSI-SAUDE · RAPS — Rede de Atenção Psicossocial (Portaria 3.088/2011)</div>
+    </div>
+    <div class="header-badge">Aula 16</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">RAPS — 7 Componentes (Portaria GM/MS 3.088/2011)</div>
+
+    <table>
+      <tr><th>#</th><th>Componente</th><th>Pontos de Atenção</th></tr>
+      <tr>
+        <td><strong>1</strong></td>
+        <td><strong>Atenção Básica em Saúde</strong></td>
+        <td>UBS, ESF, NASF-AB, Consultório na Rua, Centros de Convivência — <em>porta de entrada e coordenadora do cuidado</em></td>
+      </tr>
+      <tr>
+        <td><strong>2</strong></td>
+        <td><strong>Atenção Psicossocial Especializada</strong></td>
+        <td>CAPS I, CAPS II, CAPS III, CAPSad, CAPSad III, CAPSi, CAPSi III</td>
+      </tr>
+      <tr>
+        <td><strong>3</strong></td>
+        <td><strong>Atenção de Urgência e Emergência</strong></td>
+        <td>SAMU, UPA 24h, Sala de Estabilização, PS (portas de urgência nos hospitais)</td>
+      </tr>
+      <tr>
+        <td><strong>4</strong></td>
+        <td><strong>Atenção Residencial de Caráter Transitório</strong></td>
+        <td>Unidades de Acolhimento (adulto e infanto-juvenil), Comunidades Terapêuticas (álcool/drogas)</td>
+      </tr>
+      <tr>
+        <td><strong>5</strong></td>
+        <td><strong>Atenção Hospitalar</strong></td>
+        <td>Leitos de Saúde Mental em Hospital Geral, Serviço Hospitalar de Referência (SHR) para álcool/drogas</td>
+      </tr>
+      <tr>
+        <td><strong>6</strong></td>
+        <td><strong>Estratégias de Desinstitucionalização</strong></td>
+        <td>Serviços Residenciais Terapêuticos (SRT), Programa de Volta para Casa (PVC)</td>
+      </tr>
+      <tr>
+        <td><strong>7</strong></td>
+        <td><strong>Reabilitação Psicossocial</strong></td>
+        <td>Iniciativas de geração de trabalho e renda, empreendimentos solidários, cooperativas sociais</td>
+      </tr>
+    </table>
+
+    <div class="box alert" style="margin-top:2mm;">
+      <div class="box-title">Armadilha Frequente — "Atenção Básica não faz saúde mental"</div>
+      ERRADO. A Atenção Básica/APS é o <strong>componente 1 da RAPS</strong> — é porta de entrada, realiza acolhimento, acompanha casos leves e moderados, articula com o CAPS e com outros pontos. O NASF-AB apoia a equipe de saúde da família em saúde mental. CAPS é referência para casos <em>graves e persistentes</em> — não para todo e qualquer caso.
+    </div>
+
+    <div class="box dark" style="margin-top:2mm;">
+      <div class="box-title">Princípios da RAPS</div>
+      · <strong style="color:#C6D834;">Respeito aos direitos humanos</strong> e promoção da autonomia<br>
+      · <strong style="color:#C6D834;">Combate ao estigma</strong> associado a transtornos mentais e uso de álcool/drogas<br>
+      · <strong style="color:#C6D834;">Garantia do acesso universal</strong> e resolutivo a cuidados integrais<br>
+      · <strong style="color:#C6D834;">Diversificação das estratégias</strong> de cuidado em saúde mental<br>
+      · <strong style="color:#C6D834;">Desenvolvimento de atividades</strong> no território — não confinamento<br>
+      · <strong style="color:#C6D834;">Desenvolvimento da lógica do cuidado</strong> para pessoas com transtornos e necessidades decorrentes do uso de crack/álcool/drogas
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">3 / 10</div>
+  </div>
+</div>
+
+<!-- P4 — CAPS — TIPOS E FUNCIONAMENTO -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">PSI-SAUDE · CAPS — Tipos, Portes e Funcionamento</div>
+    </div>
+    <div class="header-badge">Aula 16</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">Tipos de CAPS — Tabela Completa</div>
+
+    <table>
+      <tr><th>Tipo</th><th>População-Alvo</th><th>Porte Municipal</th><th>Funcionamento</th></tr>
+      <tr>
+        <td><strong>CAPS I</strong></td>
+        <td>Transtornos mentais graves e persistentes; todas as faixas etárias</td>
+        <td>Municípios com 20.000–70.000 hab.</td>
+        <td>Dias úteis, das 8h às 18h (2 turnos)</td>
+      </tr>
+      <tr>
+        <td><strong>CAPS II</strong></td>
+        <td>Transtornos mentais graves e persistentes; adultos</td>
+        <td>Municípios com 70.000–200.000 hab.</td>
+        <td>Dias úteis + até sábado (3 turnos)</td>
+      </tr>
+      <tr>
+        <td><strong>CAPS III</strong></td>
+        <td>Transtornos mentais graves e persistentes; adultos</td>
+        <td>Municípios &gt; 200.000 hab.</td>
+        <td><strong>24h/dia, 7 dias/semana, feriados</strong> — leitos de observação/repouso</td>
+      </tr>
+      <tr>
+        <td><strong>CAPSad</strong></td>
+        <td>Álcool e outras drogas; adultos</td>
+        <td>Municípios com 70.000–200.000 hab.</td>
+        <td>Dias úteis + até sábado (3 turnos)</td>
+      </tr>
+      <tr>
+        <td><strong>CAPSad III</strong></td>
+        <td>Álcool e outras drogas; adultos</td>
+        <td>Municípios &gt; 200.000 hab. ou regiões com alta prevalência</td>
+        <td><strong>24h/dia, 7 dias/semana</strong> — leitos de repouso e desintoxicação</td>
+      </tr>
+      <tr>
+        <td><strong>CAPSi</strong></td>
+        <td>Crianças e adolescentes com transtornos mentais graves</td>
+        <td>Municípios &gt; 150.000 hab.</td>
+        <td>Dias úteis + até sábado (3 turnos)</td>
+      </tr>
+      <tr>
+        <td><strong>CAPSi III</strong></td>
+        <td>Crianças e adolescentes — casos graves, crise</td>
+        <td>Municípios &gt; 150.000 + alta demanda</td>
+        <td><strong>24h/dia, 7 dias/semana</strong> — leitos para crianças e adolescentes</td>
+      </tr>
+    </table>
+
+    <div class="section-title" style="margin-top:1.5mm;">Funcionamento Interno do CAPS</div>
+
+    <div class="grid2">
+      <div class="box">
+        <div class="box-title">Modalidades de Atendimento</div>
+        · <strong>Intensivo:</strong> atendimento diário — para crises ou casos de maior gravidade<br>
+        · <strong>Semi-intensivo:</strong> várias vezes por semana — manutenção e reabilitação<br>
+        · <strong>Não-intensivo:</strong> até 3 vezes por mês — estabilização, reinserção social
+      </div>
+      <div class="box accent">
+        <div class="box-title">PTS no CAPS — Projeto Terapêutico Singular</div>
+        · Construído <strong>com</strong> o usuário e sua família — não <strong>para</strong> ele<br>
+        · Equipe multiprofissional: psicólogo, psiquiatra, assistente social, enfermeiro, terapeuta ocupacional<br>
+        · Técnico de referência: profissional que acompanha o PTS — vínculo longitudinal<br>
+        · Revisado periodicamente conforme evolução do usuário
+      </div>
+    </div>
+
+    <div class="box alert">
+      <div class="box-title">CAPS III ≠ Internação Psiquiátrica — Diferença Fundamental</div>
+      Leitos do CAPS III são de <strong>observação/repouso</strong> — para manejo de crise sem necessidade de internação hospitalar. Permanência máxima: <strong>até 7 dias por episódio / 21 dias por mês</strong> (referência). Não é internação de longa permanência. Objetivo: estabilizar a crise e retornar ao território. Internação hospitalar ainda é indicada para casos que não respondem ao manejo no CAPS III.
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">4 / 10</div>
+  </div>
+</div>
+
+<!-- P5 — DISPOSITIVOS SUBSTITUTIVOS E FLUXO DE CRISE -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">PSI-SAUDE · Dispositivos Substitutivos, Desinstitucionalização e Fluxo de Crise</div>
+    </div>
+    <div class="header-badge">Aula 16</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">Estratégias de Desinstitucionalização — Componente 6 da RAPS</div>
+
+    <div class="grid2">
+      <div class="box dark">
+        <div class="box-title">SRT — Serviços Residenciais Terapêuticos</div>
+        · Moradias <strong style="color:#C6D834;">inseridas na comunidade</strong> para pessoas egressas de longas internações psiquiátricas (≥2 anos) ou que perderam vínculos familiares<br>
+        · Perfil: sem possibilidade de retorno à família de origem; necessidade de suporte para moradia<br>
+        · <strong style="color:#C6D834;">Tipo I:</strong> suporte diurno de profissionais; residentes com maior autonomia<br>
+        · <strong style="color:#C6D834;">Tipo II:</strong> suporte 24h; residentes com maior dependência e cuidados intensivos<br>
+        · Máximo: 8 moradores por SRT<br>
+        · Custeio: vinculado à redução de leitos hospitalares (lógica substitutiva)
+      </div>
+      <div class="box">
+        <div class="box-title">Programa Volta para Casa (PVC)</div>
+        · Instituído pela <strong>Lei 10.708/2003</strong><br>
+        · Auxílio-reabilitação psicossocial para egressos de longas internações (≥2 anos ininterruptos ou ≥2 anos somados) em hospital psiquiátrico ou HCTP<br>
+        · Valor: repassado ao beneficiário (não à família ou ao serviço)<br>
+        · Objetivo: desvincular o paciente da dependência institucional e facilitar reintegração social<br>
+        · <em>NÃO é destinado a pessoas que nunca foram internadas</em>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="box">
+        <div class="box-title">Unidades de Acolhimento (UA) — Componente 4</div>
+        · Oferecem suporte residencial transitório (até 6 meses) para pessoas com necessidades decorrentes do uso de crack/álcool/drogas com situação de vulnerabilidade social<br>
+        · <strong>UA Adulto:</strong> acima de 18 anos<br>
+        · <strong>UA Infanto-Juvenil:</strong> crianças e adolescentes<br>
+        · Acompanhadas pelo CAPS de referência — PTS integrado<br>
+        · Distinguem-se das comunidades terapêuticas: laicidade, sem internação compulsória, equipe de saúde
+      </div>
+      <div class="box accent">
+        <div class="box-title">Leitos em Hospital Geral — Componente 5</div>
+        · Integração da saúde mental à rede hospitalar geral — não mais manicômio isolado<br>
+        · Indicação: casos graves que não podem ser manejados no CAPS III; necessidade de cuidados médicos gerais simultâneos<br>
+        · <strong>Internação de curta duração</strong> (crise) — não longa permanência<br>
+        · Acesso: por demanda espontânea ou referenciada pelo CAPS, UPA, SAMU<br>
+        · Alta para serviço comunitário (CAPS) com PTS estabelecido
+      </div>
+    </div>
+
+    <div class="box alert" style="margin-top:1mm;">
+      <div class="box-title">Fluxo de Crise em Saúde Mental no SUS — Ordem de Acesso</div>
+      <strong>1. CAPS (diurno ou intensivo)</strong> → manejo ambulatorial da crise<br>
+      <strong>2. CAPS III / CAPSad III</strong> (24h) → leitos de observação/repouso para crises moderadas<br>
+      <strong>3. UPA / PS hospitalar</strong> → estabilização de urgência/emergência psiquiátrica<br>
+      <strong>4. Leitos em hospital geral / SHR</strong> → internação de curta duração quando esgotados os recursos anteriores<br>
+      <em>Internação em hospital psiquiátrico especializado = último recurso (Lei 10.216, Art. 4º)</em>
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">5 / 10</div>
+  </div>
+</div>
+
+<!-- P6 — QUESTÃO 01 -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">PSI-SAUDE · Questão 01 — Lei 10.216/2001 — Tipos de Internação</div>
+    </div>
+    <div class="header-badge">Aula 16</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">Questão 01</div>
+
+    <div class="q-stem">
+      <div class="q-stem-label">Enunciado</div>
+      Fernanda, 35 anos, com diagnóstico de transtorno bipolar, encontra-se em episódio maníaco grave: não dorme há quatro dias, gastou toda a poupança da família e apresentou agressividade verbal aos familiares. O marido a levou ao CAPS III, onde a equipe avaliou a gravidade do quadro e indicou internação. Fernanda, em estado de euforia intensa, recusou categoricamente qualquer internação. O marido, preocupado com a segurança da esposa, assinou o pedido de internação. Com base nos tipos de internação previstos na Lei 10.216/2001, a modalidade de internação realizada caracteriza-se como:
+    </div>
+
+    <div class="q-option wrong">
+      <span class="q-letter">A</span>
+      Internação compulsória, pois foi indicada pela equipe médica do CAPS III sem o consentimento da paciente, o que exige autorização judicial prévia antes do procedimento.
+    </div>
+    <div class="q-option correct">
+      <span class="q-letter">B</span>
+      Internação involuntária, solicitada por familiar (o marido), sem o consentimento da paciente, devendo ser comunicada ao Ministério Público Estadual no prazo máximo de 72 horas pelo responsável técnico da unidade que realizar a internação.
+    </div>
+    <div class="q-option wrong">
+      <span class="q-letter">C</span>
+      Internação voluntária, pois a autorização do cônjuge equivale juridicamente ao consentimento da própria paciente em situações de incapacidade temporária decorrente de transtorno mental.
+    </div>
+    <div class="q-option wrong">
+      <span class="q-letter">D</span>
+      Procedimento vedado pela Lei 10.216/2001, que proíbe qualquer modalidade de internação psiquiátrica sem o consentimento expresso e escrito da própria pessoa portadora de transtorno mental.
+    </div>
+
+    <div class="box" style="margin-top:2mm;">
+      <div class="box-title">Comentário — Por que B é a resposta correta?</div>
+      · <strong>B correta:</strong> internação involuntária = solicitada por familiar/responsável ou médico, sem consentimento do paciente (Art. 6º, II). Exige comunicação ao Ministério Público Estadual em até <strong>72 horas</strong> pelo responsável técnico da unidade (Art. 8º).<br>
+      · <strong>A errada:</strong> internação compulsória é determinada por <em>ordem judicial</em> — não pelo familiar nem pela equipe. A indicação médica + pedido do familiar = involuntária, não compulsória.<br>
+      · <strong>C errada:</strong> cônjuge NÃO consente em nome de adulto capaz — mesmo em crise maníaca, a internação sem consentimento é involuntária, não voluntária. Voluntária exige consentimento do próprio paciente.<br>
+      · <strong>D errada:</strong> a Lei 10.216/2001 prevê as três modalidades — voluntária, involuntária e compulsória — e não veda internação sem consentimento: a involuntária existe exatamente para esses casos, com salvaguardas (comunicação ao MP).
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">6 / 10</div>
+  </div>
+</div>
+
+<!-- P7 — QUESTÃO 02 -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">PSI-SAUDE · Questão 02 — CAPS III e Fluxo de Crise no SUS</div>
+    </div>
+    <div class="header-badge">Aula 16</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">Questão 02</div>
+
+    <div class="q-stem">
+      <div class="q-stem-label">Enunciado</div>
+      Marcos, 28 anos, usuário do CAPSad há seis meses por dependência de crack, chega ao serviço em estado de agitação intensa, com alucinações e comportamento desorganizado. A equipe avalia que a crise requer contenção noturna e observação intensiva nas próximas 24 horas, mas não há necessidade de internação hospitalar de maior duração. Sobre o encaminhamento adequado e o funcionamento dos serviços da RAPS para este caso, é correto afirmar que:
+    </div>
+
+    <div class="q-option wrong">
+      <span class="q-letter">A</span>
+      Marcos deve ser imediatamente encaminhado para internação em hospital psiquiátrico especializado, pois toda crise com alucinações e agitação configura emergência psiquiátrica que não pode ser manejada em serviços abertos.
+    </div>
+    <div class="q-option wrong">
+      <span class="q-letter">B</span>
+      O CAPSad em que Marcos é usuário pode oferecer leitos de observação noturna apenas de segunda a sexta-feira, sendo obrigatório o encaminhamento para o pronto-socorro hospitalar aos finais de semana e feriados.
+    </div>
+    <div class="q-option correct">
+      <span class="q-letter">C</span>
+      Marcos pode ser acolhido nos leitos de observação e repouso do CAPSad III, que funciona 24 horas por dia, 7 dias por semana, incluindo feriados, sendo este o serviço da RAPS indicado para manejo de crises que não exijam internação hospitalar de longa duração.
+    </div>
+    <div class="q-option wrong">
+      <span class="q-letter">D</span>
+      O correto é encaminhar Marcos diretamente a uma Unidade de Acolhimento (UA), dispositivo da RAPS que oferece leitos 24h para manejo de crises agudas por uso de substâncias.
+    </div>
+
+    <div class="box" style="margin-top:2mm;">
+      <div class="box-title">Comentário — Por que C é a resposta correta?</div>
+      · <strong>C correta:</strong> CAPSad III funciona <strong>24h/7 dias/feriados</strong> e conta com leitos de observação/repouso para manejo de crises por uso de álcool e drogas sem necessidade de internação hospitalar. É o recurso adequado antes de acionar o hospital.<br>
+      · <strong>A errada:</strong> internação hospitalar é <em>último recurso</em> (Lei 10.216, Art. 4º). Alucinação e agitação em contexto de crise por substâncias pode ser manejada no CAPSad III com acolhimento noturno.<br>
+      · <strong>B errada:</strong> a restrição de horário é para CAPSad (sem o III) — que funciona em dias úteis ± sábado. O <strong>CAPSad III</strong> é 24h/7 dias, especificamente para cobrir crises noturnas e de finais de semana.<br>
+      · <strong>D errada:</strong> Unidades de Acolhimento são residências transitórias (até 6 meses) para pessoas em vulnerabilidade social — não são serviços de urgência para crise aguda. NÃO têm leitos de manejo de crise.
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">7 / 10</div>
+  </div>
+</div>
+
+<!-- P8 — QUESTÃO 03 -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">PSI-SAUDE · Questão 03 — RAPS, Reforma Psiquiátrica e Dispositivos Substitutivos</div>
+    </div>
+    <div class="header-badge">Aula 16</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">Questão 03</div>
+
+    <div class="q-stem">
+      <div class="q-stem-label">Enunciado</div>
+      Sobre a Reforma Psiquiátrica Brasileira e a Rede de Atenção Psicossocial (RAPS), analise as afirmativas:
+    </div>
+
+    <div class="afirmativa errada">
+      <span class="af-num">I</span>
+      <span class="af-verdict">ERRADA</span>
+      <span>A Lei 10.216/2001 determina que transtornos mentais graves que requeiram cuidado intensivo devem ser tratados obrigatoriamente por meio de internação em hospital psiquiátrico especializado, sendo vedado o tratamento em serviços comunitários abertos para casos de maior complexidade clínica.</span>
+    </div>
+
+    <div class="afirmativa certa">
+      <span class="af-num">II</span>
+      <span class="af-verdict">CERTA</span>
+      <span>A Lei 10.216/2001 (Art. 4º) estabelece que a internação psiquiátrica, em qualquer de suas modalidades — voluntária, involuntária ou compulsória —, somente deve ser indicada quando os recursos extra-hospitalares disponíveis se mostrarem insuficientes para o cuidado da pessoa com transtorno mental.</span>
+    </div>
+
+    <div class="afirmativa certa">
+      <span class="af-num">III</span>
+      <span class="af-verdict">CERTA</span>
+      <span>As Residências Terapêuticas (SRT), componente da estratégia de desinstitucionalização da RAPS, são dispositivos de moradia comunitária destinados a pessoas egressas de longas internações psiquiátricas que perderam vínculos familiares ou sociais, com o objetivo de promover autonomia e reintegração social.</span>
+    </div>
+
+    <div class="afirmativa errada">
+      <span class="af-num">IV</span>
+      <span class="af-verdict">ERRADA</span>
+      <span>A Atenção Básica está excluída da RAPS, pois a saúde mental é responsabilidade exclusiva dos serviços especializados de média e alta complexidade, como os CAPS e os hospitais psiquiátricos, cabendo às UBS apenas realizar encaminhamentos para esses serviços.</span>
+    </div>
+
+    <div style="margin-top:2mm;">
+      <div class="q-option wrong"><span class="q-letter">A</span>Apenas I e IV são corretas.</div>
+      <div class="q-option wrong"><span class="q-letter">B</span>Apenas I e II são corretas.</div>
+      <div class="q-option correct"><span class="q-letter">C</span>Apenas II e III são corretas.</div>
+      <div class="q-option wrong"><span class="q-letter">D</span>Apenas II e IV são corretas.</div>
+    </div>
+
+    <div class="box" style="margin-top:2mm;">
+      <div class="box-title">Comentário Rápido</div>
+      · <strong>I errada:</strong> Lei 10.216 prioriza tratamento em serviços comunitários (Art. 2º); internação hospitalar é <em>último recurso</em> (Art. 4º). Casos graves são tratados no CAPS, inclusive com acolhimento noturno no CAPS III.<br>
+      · <strong>II certa:</strong> Art. 4º literal — internação somente quando recursos extra-hospitalares forem insuficientes; princípio central da Reforma Psiquiátrica.<br>
+      · <strong>III certa:</strong> SRT = dispositivo substitutivo para egressos de longas internações — moradia comunitária, não mais manicômio. Componente 6 da RAPS (desinstitucionalização).<br>
+      · <strong>IV errada:</strong> Atenção Básica é o <strong>componente 1 da RAPS</strong> (Portaria 3.088/2011); UBS e ESF são porta de entrada, acompanham casos leves/moderados e articulam com o CAPS.
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">8 / 10</div>
+  </div>
+</div>
+
+<!-- P9 — GABARITO COMENTADO -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">PSI-SAUDE · Gabarito Comentado</div>
+    </div>
+    <div class="header-badge">Aula 16</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">Gabarito Oficial</div>
+
+    <div class="gab-box">
+      <div class="gab-letter">B</div>
+      <div class="gab-info">
+        <strong>Q01 — Tipos de Internação (Lei 10.216/2001)</strong><br>
+        Internação involuntária: solicitada por familiar sem consentimento do paciente. Comunicação ao MP estadual em 72h. Compulsória = ordem judicial (diferente). Voluntária = consentimento do próprio paciente. Lei 10.216 não veda internação sem consentimento — prevê salvaguardas (comunicação ao MP).
+      </div>
+    </div>
+
+    <div class="gab-box">
+      <div class="gab-letter">C</div>
+      <div class="gab-info">
+        <strong>Q02 — CAPS III / CAPSad III e Crise</strong><br>
+        CAPSad III funciona 24h/7 dias/feriados com leitos de observação — recurso adequado para crise por drogas antes de acionar o hospital. Internação hospitalar = último recurso. CAPSad (sem III) tem horário limitado. UA não é serviço de crise aguda.
+      </div>
+    </div>
+
+    <div class="gab-box">
+      <div class="gab-letter">C</div>
+      <div class="gab-info">
+        <strong>Q03 — Apenas II e III corretas</strong><br>
+        II correta: Art. 4º da Lei 10.216 — internação só quando recursos extra-hospitalares insuficientes. III correta: SRT = moradia comunitária para egressos de longa internação — componente 6 da RAPS. I errada: Lei 10.216 prioriza tratamento comunitário; internação é último recurso. IV errada: Atenção Básica É o componente 1 da RAPS.
+      </div>
+    </div>
+
+    <div class="section-title" style="margin-top:2mm;">Mapa de Questões ENARE Relacionadas — PSI-SAUDE/RAPS</div>
+
+    <table>
+      <tr><th>Ano</th><th>Tópico</th><th>Conceito Testado</th><th>Gab</th></tr>
+      <tr><td>2024</td><td>Lei 10.216/2001</td><td>Internação involuntária vs. compulsória — comunicação ao MP 72h</td><td>B</td></tr>
+      <tr><td>2024</td><td>CAPS III</td><td>24h/7 dias — leitos de observação para crise</td><td>C</td></tr>
+      <tr><td>2023</td><td>RAPS</td><td>Atenção Básica como componente 1 — não excluída</td><td>C</td></tr>
+      <tr><td>2023</td><td>SRT</td><td>Dispositivo substitutivo — egressos de longa internação</td><td>B</td></tr>
+      <tr><td>2022</td><td>Reforma Psiquiátrica</td><td>Internação como último recurso — Art. 4º Lei 10.216</td><td>C</td></tr>
+      <tr><td>2022</td><td>Programa Volta para Casa</td><td>Auxílio para egressos de longas internações (≥2 anos)</td><td>B</td></tr>
+    </table>
+
+    <div class="box accent" style="margin-top:2mm;">
+      <div class="box-title">Padrão FGV em PSI-SAUDE/RAPS</div>
+      · <strong>Involuntária vs. compulsória:</strong> familiar pede = involuntária; juiz ordena = compulsória — cobrado todo ano<br>
+      · <strong>CAPS III = 24h/7 dias</strong> com leitos de observação — não é internação hospitalar<br>
+      · <strong>Atenção Básica É componente da RAPS</strong> — questão-armadilha frequente<br>
+      · <strong>SRT e PVC:</strong> para egressos de longas internações — não para quem nunca foi internado<br>
+      · <strong>Internação = último recurso</strong> (Art. 4º) — fluxo: CAPS → CAPS III → UPA/PS → leito hospitalar
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">9 / 10</div>
+  </div>
+</div>
+
+<!-- P10 — SÍNTESE -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">PSI-SAUDE · Síntese — Saúde Mental no SUS e RAPS</div>
+    </div>
+    <div class="header-badge">Aula 16</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">10 Pontos Essenciais para a Prova</div>
+
+    <div class="sintese-item">
+      <span class="sintese-num">1</span>
+      <span><strong>Lei 10.216/2001 — princípio central:</strong> internação é último recurso (Art. 4º) — somente quando recursos extra-hospitalares se mostrarem insuficientes. Tratamento preferencial em serviços comunitários.</span>
+    </div>
+    <div class="sintese-item">
+      <span class="sintese-num">2</span>
+      <span><strong>3 tipos de internação:</strong> voluntária (consentimento do paciente); involuntária (familiar/médico sem consentimento → comunicar MP em 72h); compulsória (ordem judicial → comunicar MP). Compulsória ≠ involuntária.</span>
+    </div>
+    <div class="sintese-item">
+      <span class="sintese-num">3</span>
+      <span><strong>RAPS — 7 componentes (Portaria 3.088/2011):</strong> (1) Atenção Básica; (2) Atenção Especializada — CAPS; (3) Urgência e Emergência; (4) Residencial Transitório — UA; (5) Hospitalar; (6) Desinstitucionalização — SRT/PVC; (7) Reabilitação Psicossocial.</span>
+    </div>
+    <div class="sintese-item">
+      <span class="sintese-num">4</span>
+      <span><strong>Atenção Básica É componente 1 da RAPS</strong> — não está excluída. UBS/ESF acompanham casos leves/moderados, acolhem, encaminham ao CAPS e recebem apoio do NASF-AB. Armadilha clássica de prova.</span>
+    </div>
+    <div class="sintese-item">
+      <span class="sintese-num">5</span>
+      <span><strong>CAPS III e CAPSad III = 24h/7 dias/feriados</strong> com leitos de observação/repouso. Permitem manejo de crise sem internação hospitalar. Permanência máxima: até 7 dias/episódio — não é internação de longa permanência.</span>
+    </div>
+    <div class="sintese-item">
+      <span class="sintese-num">6</span>
+      <span><strong>SRT (Residências Terapêuticas):</strong> moradia comunitária para egressos de longas internações (≥2 anos) que perderam vínculos. Máx. 8 moradores. Tipo I (suporte diurno) e Tipo II (suporte 24h). Custeio vinculado à redução de leitos.</span>
+    </div>
+    <div class="sintese-item">
+      <span class="sintese-num">7</span>
+      <span><strong>Programa Volta para Casa (Lei 10.708/2003):</strong> auxílio-reabilitação psicossocial para egressos de internação de longa permanência (≥2 anos). Pago diretamente ao beneficiário. NÃO é para quem nunca foi internado.</span>
+    </div>
+    <div class="sintese-item">
+      <span class="sintese-num">8</span>
+      <span><strong>UA (Unidades de Acolhimento):</strong> moradia transitória (até 6 meses) para pessoas com vulnerabilidade social por uso de álcool/drogas. Adulto e infanto-juvenil. NÃO é serviço de urgência/crise aguda — diferente do CAPSad III.</span>
+    </div>
+    <div class="sintese-item">
+      <span class="sintese-num">9</span>
+      <span><strong>Fluxo de crise:</strong> CAPS intensivo → CAPS III/CAPSad III (24h) → UPA/PS → leito em hospital geral → internação psiquiátrica (último recurso). Psicólogo orienta para o recurso menos invasivo possível primeiro.</span>
+    </div>
+    <div class="sintese-item">
+      <span class="sintese-num">10</span>
+      <span><strong>Próxima aula — Aula 17:</strong> PSI-SAUDE continuação — Álcool e outras drogas: políticas públicas (PNAD, Política Nacional de Saúde Mental AD), CAPSad, redução de danos, CAPS-AD vs. comunidades terapêuticas, crack/cocaína, padrões de uso (uso, abuso, dependência — CID-11), motivação e entrevista motivacional.</span>
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">10 / 10</div>
+  </div>
+</div>
+
+</body>
+</html>

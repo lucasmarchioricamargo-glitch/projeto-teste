@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Psicologia B11 — Aula 17 | PSI-SAUDE: Álcool e Outras Drogas</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #d0d0d0; font-family: 'Bricolage Grotesque', sans-serif; }
+  .page { width: 210mm; height: 297mm; background: #F6F4ED; margin: 8mm auto; position: relative; overflow: hidden; display: flex; flex-direction: column; }
+  @media print { body { background: none; margin: 0; } .page { margin: 0; page-break-after: always; box-shadow: none; } }
+  @page { size: A4; margin: 0; }
+
+  .page-header { background: #1F5C23; padding: 4mm 6mm; display: flex; align-items: center; gap: 4mm; flex-shrink: 0; }
+  .logo-svg { width: 10mm; height: 10mm; flex-shrink: 0; }
+  .header-text { flex: 1; }
+  .header-course { font-family: 'Playfair Display', serif; font-style: italic; color: #C6D834; font-size: 6.5pt; letter-spacing: 0.03em; }
+  .header-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: #F6F4ED; font-size: 11pt; line-height: 1; text-transform: uppercase; letter-spacing: 0.04em; }
+  .header-badge { background: #C6D834; color: #1F5C23; font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 7pt; padding: 1mm 3mm; border-radius: 2mm; text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap; }
+
+  .page-footer { background: #1F5C23; padding: 2mm 6mm; display: flex; justify-content: space-between; align-items: center; flex-shrink: 0; }
+  .footer-left { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: #C6D834; font-size: 6pt; letter-spacing: 0.05em; text-transform: uppercase; }
+  .footer-right { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: #F6F4ED; font-size: 8pt; letter-spacing: 0.06em; }
+
+  .page-body { flex: 1; padding: 5mm 7mm; display: flex; flex-direction: column; gap: 3mm; overflow: hidden; }
+
+  .section-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 13pt; color: #1F5C23; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 0.8mm solid #C6D834; padding-bottom: 1.5mm; margin-bottom: 1mm; }
+
+  .box { background: #fff; border-left: 1.2mm solid #1F5C23; border-radius: 1mm; padding: 3mm 4mm; font-size: 7.8pt; line-height: 1.45; color: #222; }
+  .box.accent { border-left-color: #C6D834; }
+  .box.alert  { border-left-color: #c0392b; background: #fff8f7; }
+  .box.dark   { background: #1F5C23; color: #F6F4ED; border-left-color: #C6D834; }
+  .box-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; color: #1F5C23; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 1.5mm; }
+  .box.dark .box-title  { color: #C6D834; }
+  .box.alert .box-title { color: #c0392b; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 7.5pt; }
+  th { background: #1F5C23; color: #F6F4ED; font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 8pt; text-transform: uppercase; padding: 1.5mm 2.5mm; text-align: left; letter-spacing: 0.03em; }
+  td { padding: 1.5mm 2.5mm; border-bottom: 0.3mm solid #e0ddd5; vertical-align: top; color: #222; line-height: 1.4; }
+  tr:nth-child(even) td { background: #f4f2eb; }
+  td strong { color: #1F5C23; }
+
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5mm; }
+
+  .fase-item { display: flex; gap: 3mm; align-items: flex-start; padding: 2mm 3mm; background: #fff; border-radius: 1mm; margin-bottom: 1.5mm; font-size: 7.8pt; line-height: 1.4; }
+  .fase-badge { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 7pt; color: #fff; background: #1F5C23; padding: 0.8mm 2mm; border-radius: 0.8mm; flex-shrink: 0; white-space: nowrap; min-width: 22mm; text-align: center; text-transform: uppercase; line-height: 1.3; }
+  .fase-badge.y { background: #C6D834; color: #1F5C23; }
+  .fase-badge.o { background: #e67e22; }
+  .fase-badge.r { background: #c0392b; }
+  .fase-content strong { color: #1F5C23; font-family: 'Barlow Condensed', sans-serif; font-size: 8.5pt; text-transform: uppercase; display: block; margin-bottom: 0.3mm; }
+
+  .afirmativa { display: flex; gap: 2mm; padding: 2mm 3mm; border-radius: 1mm; margin-bottom: 1.5mm; font-size: 7.8pt; line-height: 1.45; align-items: flex-start; }
+  .afirmativa.certa  { background: #f0f8f0; border-left: 1mm solid #1F5C23; }
+  .afirmativa.errada { background: #fff8f7; border-left: 1mm solid #c0392b; }
+  .af-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; min-width: 5mm; flex-shrink: 0; }
+  .afirmativa.certa  .af-num { color: #1F5C23; }
+  .afirmativa.errada .af-num { color: #c0392b; }
+  .af-verdict { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 8pt; padding: 0.3mm 2mm; border-radius: 0.8mm; flex-shrink: 0; }
+  .afirmativa.certa  .af-verdict { background: #1F5C23; color: #F6F4ED; }
+  .afirmativa.errada .af-verdict { background: #c0392b; color: #fff; }
+
+  .q-stem { background: #fff; border: 0.5mm solid #ddd; border-radius: 1.5mm; padding: 3mm 4mm; font-size: 8pt; line-height: 1.5; color: #222; margin-bottom: 2mm; }
+  .q-stem-label { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; color: #1F5C23; text-transform: uppercase; margin-bottom: 1.5mm; }
+  .q-option { display: flex; gap: 2mm; padding: 1.5mm 2.5mm; border-radius: 1mm; margin-bottom: 1mm; border: 0.4mm solid #e0ddd5; background: #fff; font-size: 7.8pt; line-height: 1.4; align-items: flex-start; }
+  .q-option.correct { background: #f0f8f0; border-color: #1F5C23; }
+  .q-option.wrong   { background: #fff8f7; border-color: #e0a0a0; }
+  .q-letter { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; color: #1F5C23; min-width: 4mm; flex-shrink: 0; margin-top: -0.3mm; }
+  .q-option.correct .q-letter { color: #1F5C23; }
+  .q-option.wrong   .q-letter { color: #c0392b; }
+
+  .gab-box { display: flex; gap: 3mm; align-items: center; background: #1F5C23; color: #F6F4ED; border-radius: 1.5mm; padding: 2.5mm 4mm; margin-bottom: 2mm; }
+  .gab-letter { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 20pt; color: #C6D834; line-height: 1; }
+  .gab-info { flex: 1; font-size: 7.8pt; line-height: 1.4; }
+  .gab-info strong { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; text-transform: uppercase; letter-spacing: 0.03em; }
+
+  .sintese-item { display: flex; gap: 2mm; padding: 2mm 3mm; border-radius: 1mm; margin-bottom: 1.5mm; background: #fff; border-left: 1mm solid #1F5C23; font-size: 7.8pt; line-height: 1.4; align-items: flex-start; }
+  .sintese-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: #1F5C23; font-size: 10pt; min-width: 5mm; flex-shrink: 0; margin-top: -0.5mm; }
+
+  .cover { background: #1F5C23; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; overflow: hidden; padding: 12mm; }
+  .cover::before { content: ''; position: absolute; top: -20mm; right: -20mm; width: 80mm; height: 80mm; background: rgba(198,216,52,0.12); border-radius: 50%; }
+  .cover::after  { content: ''; position: absolute; bottom: -15mm; left: -15mm; width: 60mm; height: 60mm; background: rgba(198,216,52,0.08); border-radius: 50%; }
+  .cover-inner { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 5mm; width: 100%; }
+  .cover-logo { width: 22mm; height: 22mm; }
+  .cover-brand { font-family: 'Playfair Display', serif; font-style: italic; color: #C6D834; font-size: 11pt; letter-spacing: 0.05em; }
+  .cover-tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(246,244,237,0.6); font-size: 7pt; text-transform: uppercase; letter-spacing: 0.12em; }
+  .cover-divider { width: 30mm; height: 0.3mm; background: rgba(198,216,52,0.4); }
+  .cover-bloco { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: #C6D834; font-size: 9pt; text-transform: uppercase; letter-spacing: 0.1em; background: rgba(198,216,52,0.12); padding: 1.5mm 4mm; border-radius: 1mm; }
+  .cover-aula-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: rgba(246,244,237,0.3); font-size: 52pt; line-height: 1; letter-spacing: -1mm; }
+  .cover-module { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: #C6D834; font-size: 10pt; text-transform: uppercase; letter-spacing: 0.08em; }
+  .cover-main-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: #F6F4ED; font-size: 20pt; text-transform: uppercase; letter-spacing: 0.03em; line-height: 1.1; }
+  .cover-sub { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; color: rgba(246,244,237,0.7); font-size: 8pt; line-height: 1.5; max-width: 140mm; }
+  .cover-footer-bar { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(198,216,52,0.15); border-top: 0.5mm solid rgba(198,216,52,0.3); padding: 3mm 8mm; display: flex; justify-content: space-between; align-items: center; }
+  .cover-footer-bar span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(246,244,237,0.5); font-size: 6pt; text-transform: uppercase; letter-spacing: 0.08em; }
+</style>
+</head>
+<body>
+
+<!-- P1 — CAPA -->
+<div class="page">
+  <div class="cover">
+    <div class="cover-inner">
+      <svg class="cover-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#F6F4ED" stroke="#C6D834" stroke-width="4"/>
+        <circle cx="50" cy="50" r="24" fill="#1F5C23"/>
+        <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#F6F4ED">E</text>
+      </svg>
+      <div class="cover-brand">Elite Treinamentos em Saúde</div>
+      <div class="cover-tagline">Extensivo ENARE 2026</div>
+      <div class="cover-divider"></div>
+      <div class="cover-bloco">Psicologia · Bloco B11</div>
+      <div class="cover-aula-num">17</div>
+      <div class="cover-module">PSI-SAUDE</div>
+      <div class="cover-main-title">Álcool e Outras Drogas</div>
+      <div class="cover-sub">Padrões de uso: CID-11 (uso nocivo, dependência) vs. DSM-5 ·
+        Modelos explicativos e Redução de Danos · Lei 11.343/2006 (SISNAD) ·
+        CAPSad vs. comunidades terapêuticas · Entrevista Motivacional (Miller &amp; Rollnick) ·
+        5 estágios de mudança (Prochaska &amp; DiClemente) · Casos ENARE</div>
+    </div>
+    <div class="cover-footer-bar">
+      <span>PDF de Apoio · Uso Exclusivo Extensivo ENARE 2026</span>
+      <span>Aula 17 · Bloco B11 · Psicologia</span>
+    </div>
+  </div>
+</div>
+
+<!-- P2 — PADRÕES DE USO E MODELOS EXPLICATIVOS -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">PSI-SAUDE · Padrões de Uso de Substâncias e Modelos Explicativos</div>
+    </div>
+    <div class="header-badge">Aula 17</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">Padrões de Uso — CID-11 vs. DSM-5</div>
+
+    <table>
+      <tr><th>Categoria</th><th>CID-11</th><th>DSM-5</th><th>Características Centrais</th></tr>
+      <tr>
+        <td><strong>Uso sem problema</strong></td>
+        <td>Uso experimental / ocasional</td>
+        <td>Uso sem critérios para TUS</td>
+        <td>Sem dano, sem dependência</td>
+      </tr>
+      <tr>
+        <td><strong>Uso nocivo / problema</strong></td>
+        <td><strong>Uso nocivo</strong> — padrão que causa dano à saúde física ou mental do usuário ou de terceiros, sem dependência</td>
+        <td><strong>TUS leve</strong> (2–3 critérios)</td>
+        <td>Dano presente; sem síndrome de dependência completa</td>
+      </tr>
+      <tr>
+        <td><strong>Dependência</strong></td>
+        <td><strong>Dependência</strong> — forte compulsão, perda de controle, tolerância, abstinência, estreitamento do repertório</td>
+        <td><strong>TUS moderado</strong> (4–5) ou <strong>grave</strong> (≥6 critérios)</td>
+        <td>Síndrome de dependência estabelecida</td>
+      </tr>
+    </table>
+
+    <div class="box dark" style="margin-top:2mm;">
+      <div class="box-title">Síndrome de Dependência — 6 Critérios Clássicos (Edwards &amp; Gross / CID)</div>
+      <strong style="color:#C6D834;">1. Compulsão (fissura/craving):</strong> desejo forte e incontrolável de usar<br>
+      <strong style="color:#C6D834;">2. Dificuldade de controlar:</strong> início, término ou quantidade de uso<br>
+      <strong style="color:#C6D834;">3. Síndrome de abstinência:</strong> sintomas físicos/psíquicos ao cessar ou reduzir<br>
+      <strong style="color:#C6D834;">4. Tolerância:</strong> necessidade de doses crescentes para o mesmo efeito<br>
+      <strong style="color:#C6D834;">5. Estreitamento do repertório:</strong> a substância passa a dominar a vida; abandono de atividades prazerosas<br>
+      <strong style="color:#C6D834;">6. Persistência apesar dos danos:</strong> continua usando mesmo ciente dos prejuízos
+    </div>
+
+    <div class="section-title">Modelos Explicativos da Dependência</div>
+
+    <div class="grid2">
+      <div class="box">
+        <div class="box-title">Modelos e suas Implicações para o Cuidado</div>
+        · <strong>Moral:</strong> dependência = fraqueza de caráter ou pecado → intervenção punitiva; estigma; tratamento coercitivo<br>
+        · <strong>Médico/doença:</strong> dependência = doença crônica cerebral → tratamento médico; abstinência como meta única; AA/NA<br>
+        · <strong>Biopsicossocial:</strong> múltiplos fatores — biológicos (genética, neurobiologia), psicológicos (personalidade, trauma) e sociais (contexto, vulnerabilidade) → intervenção multidimensional<br>
+        · <strong>Psicossocial/aprendizagem:</strong> comportamento aprendido → desaprendizagem; TCC + Entrevista Motivacional
+      </div>
+      <div class="box accent">
+        <div class="box-title">Álcool — Dados para Prova</div>
+        · <strong>AUDIT (Alcohol Use Disorders Identification Test):</strong> triagem de uso de risco — 10 itens; OMS; ≥8 = uso de risco/nocivo; ≥20 = dependência provável<br>
+        · <strong>Binge drinking:</strong> ≥5 doses (homem) ou ≥4 doses (mulher) em uma mesma ocasião<br>
+        · <strong>Síndrome de Wernicke-Korsakoff:</strong> deficiência de tiamina (B1) por alcoolismo crônico; Wernicke = ataxia + oftalmoplegia + confusão; Korsakoff = amnésia + confabulação<br>
+        · <strong>Abstinência alcoólica grave:</strong> delirium tremens (alucinações, convulsões, confusão) — risco de morte; tratamento com benzodiazepínico + tiamina
+      </div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">2 / 10</div>
+  </div>
+</div>
+
+<!-- P3 — POLÍTICAS PÚBLICAS E LEI 11.343/2006 -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">PSI-SAUDE · Políticas Públicas de AD e Lei 11.343/2006</div>
+    </div>
+    <div class="header-badge">Aula 17</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">Política Nacional sobre Drogas — SISNAD</div>
+
+    <div class="box dark">
+      <div class="box-title">Lei 11.343/2006 — Sistema Nacional de Políticas Públicas sobre Drogas</div>
+      · <strong style="color:#C6D834;">SENAD:</strong> Secretaria Nacional de Políticas sobre Drogas — órgão executor da política federal<br>
+      · <strong style="color:#C6D834;">CONAD:</strong> Conselho Nacional de Políticas sobre Drogas — instância de controle social<br>
+      · <strong style="color:#C6D834;">SISNAD:</strong> sistema integrado de ações para prevenção, tratamento, reinserção social e repressão<br><br>
+      <strong style="color:#C6D834;">Porte para uso pessoal (Art. 28) vs. Tráfico (Art. 33):</strong><br>
+      · Art. 28: porte para uso pessoal — NÃO é crime, mas é infração; penas: advertência, medida educativa, prestação de serviços à comunidade. <em>NÃO há pena privativa de liberdade</em><br>
+      · Diferença uso/tráfico: não há quantidade definida em lei — juiz analisa conjunto de circunstâncias (local, antecedentes, circunstâncias sociais). <strong>Critério qualitativo, não quantitativo</strong><br>
+      · Art. 33: tráfico — crime inafiançável; pena de reclusão 5–15 anos
+    </div>
+
+    <div class="box alert">
+      <div class="box-title">Pegadinha Frequente — Porte para Uso vs. Tráfico</div>
+      A lei NÃO define quantidade mínima de droga para distinguir uso de tráfico. Não existe "X gramas = uso pessoal". A distinção é feita pelo juiz com base em: local, circunstâncias, quantidade, comportamento, antecedentes do portador e condições sociais. Psicólogo pode ser chamado a elaborar laudo contextual para subsidiar essa distinção.
+    </div>
+
+    <div class="section-title">Política de Saúde Mental para AD — PNAD / Portaria 3.088</div>
+
+    <table>
+      <tr><th>Instrumento</th><th>Ano</th><th>Principais Diretrizes</th></tr>
+      <tr>
+        <td><strong>PNAD (Política Nac. sobre Álcool e Drogas)</strong></td>
+        <td>2005 (Decreto 5.912/2006)</td>
+        <td>Prevenção, tratamento, reinserção; abordagem biopsicossocial; respeito à autonomia</td>
+      </tr>
+      <tr>
+        <td><strong>Portaria 1.028/2005</strong></td>
+        <td>2005</td>
+        <td>Regulamenta ações para redução de danos sociais e à saúde, incluindo distribuição de insumos</td>
+      </tr>
+      <tr>
+        <td><strong>Portaria 3.088/2011 (RAPS)</strong></td>
+        <td>2011</td>
+        <td>Inclui CAPSad e CAPSad III como componente 2 da RAPS; UA como componente 4</td>
+      </tr>
+      <tr>
+        <td><strong>Nota Técnica 11/2019 (CGMAD)</strong></td>
+        <td>2019</td>
+        <td>Amplia acesso a comunidades terapêuticas no SUS — mudança de direção política</td>
+      </tr>
+    </table>
+
+    <div class="grid2" style="margin-top:2mm;">
+      <div class="box">
+        <div class="box-title">CAPSad — Princípios</div>
+        · Serviço público, laico e voluntário<br>
+        · Equipe multiprofissional: psicólogo, assistente social, médico, enfermeiro, TO<br>
+        · Não exige abstinência como condição de acesso<br>
+        · Abordagem: redução de danos + entrevista motivacional<br>
+        · Família como parceira, não como substituta do tratamento
+      </div>
+      <div class="box accent">
+        <div class="box-title">Comunidades Terapêuticas — Diferenças</div>
+        · Modelo residencial (moradia no serviço)<br>
+        · Frequentemente com base religiosa<br>
+        · Abstinência como pré-requisito e meta única<br>
+        · Financiamento público via SENAD (controverso)<br>
+        · Não substituem CAPSad — são complementares (Nota Técnica 11/2019)<br>
+        · Crítica: internação involuntária, direitos humanos
+      </div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">3 / 10</div>
+  </div>
+</div>
+
+<!-- P4 — REDUÇÃO DE DANOS -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">PSI-SAUDE · Redução de Danos — Princípios, Estratégias e Papel do Psicólogo</div>
+    </div>
+    <div class="header-badge">Aula 17</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">Redução de Danos (RD) — Fundamentos</div>
+
+    <div class="box dark">
+      <div class="box-title">Definição e Princípios Centrais</div>
+      Conjunto de estratégias de saúde pública que visam <strong style="color:#C6D834;">minimizar consequências adversas</strong> do uso de drogas — físicas, psíquicas e sociais — <strong style="color:#C6D834;">sem exigir a abstinência como pré-requisito</strong> de cuidado.<br><br>
+      · <strong style="color:#C6D834;">Pragmatismo:</strong> parte da realidade do usuário; nem toda pessoa quer ou pode parar de usar<br>
+      · <strong style="color:#C6D834;">Humanismo:</strong> respeito à dignidade e à autonomia do usuário<br>
+      · <strong style="color:#C6D834;">Foco nos danos, não no uso:</strong> reduzir HIV, hepatites, overdose, violência — mesmo sem cessar o uso<br>
+      · <strong style="color:#C6D834;">Manutenção do vínculo:</strong> aproximar o usuário do serviço de saúde sem julgamento<br>
+      · <strong style="color:#C6D834;">Base científica:</strong> política oficial do SUS desde a Portaria 1.028/2005; aprovada pela OMS
+    </div>
+
+    <div class="section-title">Estratégias de Redução de Danos</div>
+
+    <table>
+      <tr><th>Estratégia</th><th>Substância</th><th>Objetivo</th></tr>
+      <tr>
+        <td><strong>Troca de seringas (PTS)</strong></td>
+        <td>Drogas injetáveis</td>
+        <td>Reduzir transmissão de HIV, hepatites B e C, endocardite</td>
+      </tr>
+      <tr>
+        <td><strong>Naloxona (Narcan)</strong></td>
+        <td>Opioides (heroína, morfina, tramadol)</td>
+        <td>Reverter overdose por opioide — antagonista opiáceo; emergência</td>
+      </tr>
+      <tr>
+        <td><strong>Terapia de substituição (metadona/buprenorfina)</strong></td>
+        <td>Opioides</td>
+        <td>Reduzir abstinência e craving; manter funcionamento social</td>
+      </tr>
+      <tr>
+        <td><strong>Cachimbos e papel de enrolar</strong></td>
+        <td>Crack, maconha</td>
+        <td>Evitar compartilhamento — reduzir transmissão de infecções bucais e respiratórias</td>
+      </tr>
+      <tr>
+        <td><strong>Redutores de danos (agentes comunitários)</strong></td>
+        <td>Todas</td>
+        <td>Atuam nos próprios contextos de uso — vinculação ao serviço, orientação in loco</td>
+      </tr>
+      <tr>
+        <td><strong>Abordagem motivacional sem pressão</strong></td>
+        <td>Todas</td>
+        <td>Fortalecer ambivalência, abrir porta para tratamento sem coerção</td>
+      </tr>
+    </table>
+
+    <div class="grid2" style="margin-top:2mm;">
+      <div class="box">
+        <div class="box-title">Papel do Psicólogo em RD</div>
+        · Acolhimento sem julgamento — escuta ativa<br>
+        · Entrevista motivacional para usuários ambivalentes<br>
+        · Orientação sobre uso mais seguro — psicoeducação<br>
+        · Construção de PTS com foco nos danos prioritários<br>
+        · Articulação com CAPS, ESF e rede de proteção social<br>
+        · Suporte a familiares — sem co-dependência
+      </div>
+      <div class="box alert">
+        <div class="box-title">Redução de Danos NÃO significa:</div>
+        · Incentivar ou aprovar o uso de drogas<br>
+        · Abandonar a meta de abstinência como possibilidade futura<br>
+        · Ser omisso diante de risco de vida (overdose, violência)<br>
+        · Substituir tratamento clínico por distribuição de insumos<br>
+        · Ignorar o sofrimento da família do usuário<br>
+        <em>É política de saúde baseada em evidências — não permissividade moral.</em>
+      </div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">4 / 10</div>
+  </div>
+</div>
+
+<!-- P5 — ENTREVISTA MOTIVACIONAL E ESTÁGIOS DE MUDANÇA -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">PSI-SAUDE · Entrevista Motivacional e Estágios de Mudança</div>
+    </div>
+    <div class="header-badge">Aula 17</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">Entrevista Motivacional — Miller &amp; Rollnick (1991)</div>
+
+    <div class="box dark">
+      <div class="box-title">Espírito da EM — 4 Elementos (PACE)</div>
+      <strong style="color:#C6D834;">P — Parceria (Partnership):</strong> colaboração entre terapeuta e cliente — não hierarquia de especialista<br>
+      <strong style="color:#C6D834;">A — Aceitação (Acceptance):</strong> respeito à autonomia, valor absoluto da pessoa, escuta empática, afirmação de pontos fortes<br>
+      <strong style="color:#C6D834;">C — Compaixão (Compassion):</strong> priorizar o bem-estar do cliente, não os objetivos do terapeuta<br>
+      <strong style="color:#C6D834;">E — Evocação (Evocation):</strong> evocar da <u>própria pessoa</u> seus valores, motivos e recursos internos para mudança — NÃO impor argumentos externos<br><br>
+      <em>EM é colaborativa, não diretiva-prescritiva. Confrontação direta é contraindicada — aumenta resistência ("reflexo de endireitamento" do terapeuta).</em>
+    </div>
+
+    <div class="section-title">5 Estágios de Mudança — Prochaska &amp; DiClemente (1983)</div>
+
+    <div class="fase-item">
+      <span class="fase-badge r">Pré-Contemplação</span>
+      <div class="fase-content">
+        <strong>Não reconhece o problema</strong>
+        "Não tenho problema nenhum." Não pensa em mudar nos próximos 30 dias. Resistência, defensividade. Intervenção: levantar dúvida sem confrontar — reflexos simples, psicoeducação leve.
+      </div>
+    </div>
+    <div class="fase-item">
+      <span class="fase-badge o">Contemplação</span>
+      <div class="fase-content">
+        <strong>Ambivalência — reconhece mas não decide</strong>
+        "Talvez eu deva mudar…" Vê prós e contras do uso; pensa em mudar nos próximos 6 meses. <em>Estágio-alvo da EM:</em> explorar a ambivalência, desenvolver discrepância, fortalecer motivação intrínseca.
+      </div>
+    </div>
+    <div class="fase-item">
+      <span class="fase-badge y">Preparação</span>
+      <div class="fase-content">
+        <strong>Intenção + Plano nos próximos 30 dias</strong>
+        Já decidiu mudar e está planejando ação. EM + planejamento concreto de estratégias — reduzir barreiras, fortalecer autoeficácia.
+      </div>
+    </div>
+    <div class="fase-item">
+      <span class="fase-badge" style="background:#1F5C23;">Ação</span>
+      <div class="fase-content">
+        <strong>Mudança ativa em andamento (0–6 meses)</strong>
+        Está mudando o comportamento. Suporte, habilidades de enfrentamento, prevenção de recaída.
+      </div>
+    </div>
+    <div class="fase-item">
+      <span class="fase-badge" style="background:#0C4A4C;">Manutenção</span>
+      <div class="fase-content">
+        <strong>Mudança sustentada (&gt;6 meses)</strong>
+        Consolidar ganhos, identificar gatilhos, planejar resposta à fissura. <em>Recaída</em> pode ocorrer em qualquer estágio — não é fracasso, mas fase esperada que oferece aprendizagem para a manutenção futura.
+      </div>
+    </div>
+
+    <div class="box accent" style="margin-top:1mm;">
+      <div class="box-title">4 Processos da EM (versão atualizada — Miller &amp; Rollnick, 3ª ed.)</div>
+      · <strong>Engajar:</strong> construir relação terapêutica — confiança, escuta, vínculo<br>
+      · <strong>Focar:</strong> definir direção da conversa — qual mudança é prioritária<br>
+      · <strong>Evocar:</strong> eliciar o "discurso de mudança" (change talk) do próprio cliente — razões, desejo, capacidade<br>
+      · <strong>Planejar:</strong> desenvolver um plano concreto quando a prontidão está presente
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">5 / 10</div>
+  </div>
+</div>
+
+<!-- P6 — QUESTÃO 01 -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">PSI-SAUDE · Questão 01 — Padrões de Uso (CID-11)</div>
+    </div>
+    <div class="header-badge">Aula 17</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">Questão 01</div>
+
+    <div class="q-stem">
+      <div class="q-stem-label">Enunciado</div>
+      Pedro, psicólogo de um CAPSad, atende Rodrigo, 25 anos, que relata beber cerveja "todo fim de semana até ficar bêbado" há dois anos. Rodrigo relata que nas segundas-feiras não consegue cumprir compromissos de trabalho por causa da ressaca, e há seis meses sofreu um acidente de moto quando retornava de um bar. Nega tremores, suores ou ansiedade quando não bebe durante a semana e afirma: "todo mundo faz isso, não tenho nenhum problema." De acordo com a classificação da CID-11, o padrão de uso de álcool de Rodrigo caracteriza-se como:
+    </div>
+
+    <div class="q-option wrong">
+      <span class="q-letter">A</span>
+      Uso experimental de baixo risco, pois o consumo ocorre apenas nos fins de semana e Rodrigo não apresenta síndrome de abstinência física durante a semana, o que exclui qualquer categorização diagnóstica pela CID-11.
+    </div>
+    <div class="q-option correct">
+      <span class="q-letter">B</span>
+      Uso nocivo de álcool, pois há evidência de dano à saúde física (acidente de moto sob efeito de álcool) e social (comprometimento do desempenho laboral na segunda-feira), mesmo sem síndrome de dependência estabelecida.
+    </div>
+    <div class="q-option wrong">
+      <span class="q-letter">C</span>
+      Dependência de álcool, pois a tolerância progressiva — manifestada pela necessidade de beber até ficar bêbado — é critério suficiente e independente para o diagnóstico de dependência de álcool pela CID-11.
+    </div>
+    <div class="q-option wrong">
+      <span class="q-letter">D</span>
+      Uso social sem categorização diagnóstica, pois a CID-11 somente classifica o uso de álcool quando há sintomas físicos de abstinência ou quando o consumo ocorre diariamente.
+    </div>
+
+    <div class="box" style="margin-top:2mm;">
+      <div class="box-title">Comentário — Por que B é a resposta correta?</div>
+      · <strong>B correta:</strong> <em>uso nocivo</em> (CID-11) = padrão de uso que causa dano à saúde física (acidente) e social (absenteísmo laboral), sem preencher os 6 critérios da síndrome de dependência. Ausência de abstinência física na semana afasta dependência estabelecida, mas não afasta o uso nocivo.<br>
+      · <strong>A errada:</strong> ausência de abstinência NÃO exclui categorização diagnóstica pela CID-11. Os danos físicos e sociais já são suficientes para uso nocivo.<br>
+      · <strong>C errada:</strong> tolerância isolada não é critério suficiente para dependência na CID-11. Dependência exige conjunto de critérios (compulsão, perda de controle, abstinência/tolerância, estreitamento do repertório, persistência apesar de danos).<br>
+      · <strong>D errada:</strong> CID-11 classifica uso nocivo mesmo sem sintomas de abstinência e mesmo que o uso não seja diário — o critério é o <em>dano demonstrável</em>, não a frequência ou a presença de síndrome física.
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">6 / 10</div>
+  </div>
+</div>
+
+<!-- P7 — QUESTÃO 02 -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">PSI-SAUDE · Questão 02 — Redução de Danos</div>
+    </div>
+    <div class="header-badge">Aula 17</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">Questão 02</div>
+
+    <div class="q-stem">
+      <div class="q-stem-label">Enunciado</div>
+      Um psicólogo que atua no CAPSad propõe à equipe a implementação de um programa de troca de seringas para usuários de drogas injetáveis atendidos pelo serviço. Um membro do conselho comunitário questiona a proposta, afirmando que "distribuir seringas incentiva o uso de drogas e vai contra os princípios da saúde pública". Com base nos princípios da Redução de Danos e na política oficial do SUS, a resposta tecnicamente mais adequada do psicólogo é:
+    </div>
+
+    <div class="q-option wrong">
+      <span class="q-letter">A</span>
+      O conselheiro tem razão: a estratégia de troca de seringas não possui embasamento científico consistente e vai de encontro ao princípio de que a saúde pública deve sempre priorizar a abstinência como único objetivo terapêutico legítimo para usuários de drogas.
+    </div>
+    <div class="q-option wrong">
+      <span class="q-letter">B</span>
+      A troca de seringas é válida apenas como medida de último recurso, devendo ser ofertada somente a usuários que já recusaram reiteradamente o tratamento para dependência e que comprovadamente não têm condições de cessar o uso.
+    </div>
+    <div class="q-option correct">
+      <span class="q-letter">C</span>
+      A redução de danos, incluindo a troca de seringas, é uma estratégia de saúde pública baseada em evidências científicas — reconhecida pela OMS e regulamentada no SUS pela Portaria 1.028/2005 — que visa reduzir riscos imediatos como a transmissão de HIV e hepatites, mantendo o vínculo do usuário com o serviço sem exigir abstinência como pré-requisito de cuidado.
+    </div>
+    <div class="q-option wrong">
+      <span class="q-letter">D</span>
+      A distribuição de seringas por serviços de saúde é vedada pela Lei 11.343/2006, que equipara tal prática ao incentivo ao uso de drogas e ao crime de facilitação do tráfico, inviabilizando sua implementação em serviços públicos do SUS.
+    </div>
+
+    <div class="box" style="margin-top:2mm;">
+      <div class="box-title">Comentário — Por que C é a resposta correta?</div>
+      · <strong>C correta:</strong> troca de seringas é política oficial do SUS (Portaria 1.028/2005), respaldada pela OMS. Evidências robustas: reduz transmissão de HIV/hepatites B e C em até 50–80% sem aumentar o uso de drogas. Princípio: pragmatismo — reduzir danos reais no presente, mantendo o vínculo para tratamento futuro.<br>
+      · <strong>A errada:</strong> afirmar que RD "não tem base científica" é factualmente errado. Abstinência é um objetivo legítimo, mas não o único; impô-la como pré-requisito exclui e afasta usuários do cuidado.<br>
+      · <strong>B errada:</strong> RD não é "último recurso" — é abordagem primária e complementar. Não exige "recusa reiterada" como critério de elegibilidade.<br>
+      · <strong>D errada:</strong> a Lei 11.343/2006 não veda a distribuição de insumos de RD por serviços de saúde. A Portaria 1.028/2005 regulamenta explicitamente essa prática como política pública.
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">7 / 10</div>
+  </div>
+</div>
+
+<!-- P8 — QUESTÃO 03 -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">PSI-SAUDE · Questão 03 — Entrevista Motivacional e Estágios de Mudança</div>
+    </div>
+    <div class="header-badge">Aula 17</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">Questão 03</div>
+
+    <div class="q-stem">
+      <div class="q-stem-label">Enunciado</div>
+      Sobre a Entrevista Motivacional (Miller &amp; Rollnick) e o modelo transteórico de estágios de mudança (Prochaska &amp; DiClemente), analise as afirmativas:
+    </div>
+
+    <div class="afirmativa errada">
+      <span class="af-num">I</span>
+      <span class="af-verdict">ERRADA</span>
+      <span>Na Entrevista Motivacional, o terapeuta deve adotar postura diretiva e prescritiva, informando ao cliente quais comportamentos deve mudar e por que razão, pois estudos mostram que a confrontação direta e os argumentos racionais do especialista são as técnicas mais eficazes para produzir mudança de comportamento em usuários de substâncias.</span>
+    </div>
+
+    <div class="afirmativa certa">
+      <span class="af-num">II</span>
+      <span class="af-verdict">CERTA</span>
+      <span>No modelo transteórico de Prochaska &amp; DiClemente, a recaída não é considerada um fracasso do tratamento ou sinal de incapacidade do usuário, mas sim uma fase esperada e comum no processo de mudança, que pode oferecer aprendizagens importantes sobre gatilhos e estratégias de enfrentamento para sustentar a mudança no futuro.</span>
+    </div>
+
+    <div class="afirmativa certa">
+      <span class="af-num">III</span>
+      <span class="af-verdict">CERTA</span>
+      <span>O estágio de contemplação caracteriza-se pela ambivalência: o usuário reconhece que existe um problema e pensa em mudar, mas ainda não tomou a decisão de agir. A Entrevista Motivacional é especialmente indicada para trabalhar este estágio, explorando e resolvendo a ambivalência sem confrontação.</span>
+    </div>
+
+    <div class="afirmativa errada">
+      <span class="af-num">IV</span>
+      <span class="af-verdict">ERRADA</span>
+      <span>O elemento "evocação" do espírito da Entrevista Motivacional significa que o terapeuta deve apresentar ao cliente argumentos externos convincentes e dados científicos sobre os malefícios da substância para evocar nele a motivação necessária à mudança de comportamento.</span>
+    </div>
+
+    <div style="margin-top:2mm;">
+      <div class="q-option wrong"><span class="q-letter">A</span>Apenas I e IV são corretas.</div>
+      <div class="q-option wrong"><span class="q-letter">B</span>Apenas I e II são corretas.</div>
+      <div class="q-option correct"><span class="q-letter">C</span>Apenas II e III são corretas.</div>
+      <div class="q-option wrong"><span class="q-letter">D</span>Apenas II, III e IV são corretas.</div>
+    </div>
+
+    <div class="box" style="margin-top:2mm;">
+      <div class="box-title">Comentário Rápido</div>
+      · <strong>I errada:</strong> EM é colaborativa, não diretiva-prescritiva. Confrontação direta aumenta resistência ("reflexo de endireitamento" do terapeuta). EM usa perguntas abertas, reflexões e afirmações.<br>
+      · <strong>II certa:</strong> recaída é fase esperada no modelo transteórico — o ciclo pode ser percorrido várias vezes antes da manutenção estável. Não é fracasso.<br>
+      · <strong>III certa:</strong> contemplação = ambivalência (vê o problema, mas não decidiu); EM trabalha exatamente essa ambivalência para desenvolver motivação intrínseca.<br>
+      · <strong>IV errada:</strong> "evocação" = evocar da <em>própria pessoa</em> seus motivos, valores e capacidades internas. O terapeuta NÃO apresenta argumentos externos — esse seria o "reflexo de endireitamento" que a EM condena.
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">8 / 10</div>
+  </div>
+</div>
+
+<!-- P9 — GABARITO COMENTADO -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">PSI-SAUDE · Gabarito Comentado</div>
+    </div>
+    <div class="header-badge">Aula 17</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">Gabarito Oficial</div>
+
+    <div class="gab-box">
+      <div class="gab-letter">B</div>
+      <div class="gab-info">
+        <strong>Q01 — Uso Nocivo de Álcool (CID-11)</strong><br>
+        Rodrigo: uso nocivo = dano à saúde física (acidente) + dano social (absenteísmo), sem dependência estabelecida. Ausência de síndrome de abstinência afasta dependência, mas não afasta uso nocivo. Tolerância isolada não é suficiente para dependência. CID-11 não exige uso diário para categorização.
+      </div>
+    </div>
+
+    <div class="gab-box">
+      <div class="gab-letter">C</div>
+      <div class="gab-info">
+        <strong>Q02 — Redução de Danos / Troca de Seringas</strong><br>
+        RD = política baseada em evidências (OMS + Portaria 1.028/2005); reduz HIV/hepatites sem aumentar uso; não exige abstinência como pré-requisito. Não é vedada pela Lei 11.343/2006. Não é "último recurso". Abstinência permanece como objetivo possível, não como condição de acesso.
+      </div>
+    </div>
+
+    <div class="gab-box">
+      <div class="gab-letter">C</div>
+      <div class="gab-info">
+        <strong>Q03 — Apenas II e III corretas</strong><br>
+        II correta: recaída = fase esperada, não fracasso — aprendizagem para manutenção futura. III correta: contemplação = ambivalência; EM indicada para esse estágio. I errada: EM é colaborativa, não confrontativa. IV errada: evocação = eliciar motivação interna do cliente, não apresentar argumentos externos do terapeuta.
+      </div>
+    </div>
+
+    <div class="section-title" style="margin-top:2mm;">Mapa de Questões ENARE Relacionadas — PSI-SAUDE/AD</div>
+
+    <table>
+      <tr><th>Ano</th><th>Tópico</th><th>Conceito Testado</th><th>Gab</th></tr>
+      <tr><td>2024</td><td>Padrões de uso (CID-11)</td><td>Uso nocivo = dano sem dependência; tolerância isolada ≠ dependência</td><td>B</td></tr>
+      <tr><td>2024</td><td>Entrevista Motivacional</td><td>Evocação = motivação interna; não confrontação</td><td>C</td></tr>
+      <tr><td>2023</td><td>Redução de Danos</td><td>RD = política do SUS; não incentiva uso; mantém vínculo</td><td>C</td></tr>
+      <tr><td>2023</td><td>Estágios de mudança</td><td>Recaída = fase esperada; contemplação = ambivalência</td><td>B</td></tr>
+      <tr><td>2022</td><td>Lei 11.343/2006</td><td>Porte para uso = sem pena privativa; distinção uso/tráfico = qualitativa</td><td>C</td></tr>
+    </table>
+
+    <div class="box accent" style="margin-top:2mm;">
+      <div class="box-title">Padrão FGV em PSI-SAUDE/AD</div>
+      · <strong>Uso nocivo ≠ dependência:</strong> ausência de abstinência física não exclui uso nocivo se há dano físico ou social<br>
+      · <strong>Evocação na EM</strong> = motivação vem do próprio cliente — armadilha com "argumentos externos do terapeuta"<br>
+      · <strong>Recaída no modelo transteórico</strong> = fase esperada, não fracasso — cobrado anualmente<br>
+      · <strong>Lei 11.343:</strong> porte para uso ≠ crime; distinção uso/tráfico = critério qualitativo (não quantidade mínima)<br>
+      · <strong>RD não é permissividade</strong> — tem base científica sólida e é política oficial do SUS desde 2005
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">9 / 10</div>
+  </div>
+</div>
+
+<!-- P10 — SÍNTESE -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">PSI-SAUDE · Síntese — Álcool e Outras Drogas</div>
+    </div>
+    <div class="header-badge">Aula 17</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">10 Pontos Essenciais para a Prova</div>
+
+    <div class="sintese-item">
+      <span class="sintese-num">1</span>
+      <span><strong>CID-11 — padrões:</strong> uso nocivo = dano físico ou social sem dependência estabelecida. Dependência = 6 critérios clássicos (compulsão, perda de controle, abstinência, tolerância, estreitamento, persistência apesar dos danos). Ausência de abstinência física NÃO exclui uso nocivo.</span>
+    </div>
+    <div class="sintese-item">
+      <span class="sintese-num">2</span>
+      <span><strong>Lei 11.343/2006:</strong> porte para uso pessoal (Art. 28) = infração, NÃO crime; sem pena privativa de liberdade (advertência, prestação de serviços). Distinção uso/tráfico = critério qualitativo pelo juiz — não há quantidade mínima definida em lei.</span>
+    </div>
+    <div class="sintese-item">
+      <span class="sintese-num">3</span>
+      <span><strong>Redução de Danos:</strong> política do SUS (Portaria 1.028/2005), respaldada pela OMS. Princípios: pragmatismo, autonomia, foco nos danos, manutenção do vínculo. Não exige abstinência como pré-requisito. Não incentiva o uso.</span>
+    </div>
+    <div class="sintese-item">
+      <span class="sintese-num">4</span>
+      <span><strong>CAPSad vs. Comunidades Terapêuticas:</strong> CAPSad = serviço público, laico, multiprofissional, sem exigência de abstinência, RD como abordagem. CT = residencial, frequentemente religiosa, abstinência como meta única. CT não substitui CAPSad — são complementares.</span>
+    </div>
+    <div class="sintese-item">
+      <span class="sintese-num">5</span>
+      <span><strong>Entrevista Motivacional (Miller &amp; Rollnick):</strong> colaborativa, não diretiva. Espírito PACE: Parceria, Aceitação, Compaixão, Evocação. Evocação = eliciar motivação <em>interna</em> do cliente — NÃO impor argumentos externos. Confrontação direta = contraindicada.</span>
+    </div>
+    <div class="sintese-item">
+      <span class="sintese-num">6</span>
+      <span><strong>5 Estágios de Mudança (Prochaska &amp; DiClemente):</strong> pré-contemplação → contemplação (ambivalência, alvo da EM) → preparação → ação → manutenção. Recaída = fase esperada, não fracasso — oferece aprendizagem.</span>
+    </div>
+    <div class="sintese-item">
+      <span class="sintese-num">7</span>
+      <span><strong>Contemplação = estágio-alvo da EM:</strong> usuário reconhece problema + ainda não decide agir. EM trabalha a ambivalência, desenvolve discrepância e fortalece motivação intrínseca sem confrontar.</span>
+    </div>
+    <div class="sintese-item">
+      <span class="sintese-num">8</span>
+      <span><strong>Wernicke-Korsakoff:</strong> deficiência de tiamina (B1) em alcoolismo crônico. Wernicke = ataxia + oftalmoplegia + confusão mental (reversível com tiamina). Korsakoff = amnésia anterógrada + confabulação (sequela crônica). Tratar com tiamina IV antes de glicose.</span>
+    </div>
+    <div class="sintese-item">
+      <span class="sintese-num">9</span>
+      <span><strong>AUDIT:</strong> triagem de uso de risco de álcool — 10 itens, OMS. Pontuação ≥8 = uso de risco ou nocivo. Binge drinking = ≥5 doses/homem ou ≥4 doses/mulher em uma mesma ocasião.</span>
+    </div>
+    <div class="sintese-item">
+      <span class="sintese-num">10</span>
+      <span><strong>Próxima aula — Aula 18:</strong> PSI-SAUDE: Saúde Mental Infanto-Juvenil — TEA (Transtorno do Espectro do Autismo): critérios DSM-5, níveis de suporte, intervenções baseadas em evidências (ABA, ESDM); TDAH: diagnóstico, comorbidades, manejo; Psicose na infância; CAPSi; ECA e proteção integral.</span>
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">10 / 10</div>
+  </div>
+</div>
+
+</body>
+</html>

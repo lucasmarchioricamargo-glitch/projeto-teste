@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Psicologia — Bloco B11 Aula 27 | Extensivo ENARE 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap');
+
+  :root {
+    --creme: #F6F4ED;
+    --verde: #1F5C23;
+    --amarelo: #C6D834;
+    --escuro: #0C2B0E;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #d0d0d0;
+    font-family: 'Bricolage Grotesque', sans-serif;
+  }
+
+  .page {
+    width: 210mm;
+    height: 297mm;
+    background: var(--creme);
+    margin: 0 auto 12px;
+    position: relative;
+    overflow: hidden;
+    page-break-after: always;
+  }
+
+  .header {
+    background: var(--verde);
+    padding: 10px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .header-logo { display: flex; align-items: center; gap: 8px; }
+  .header-logo svg { width: 32px; height: 32px; }
+  .header-brand { display: flex; flex-direction: column; line-height: 1; }
+  .header-brand .marca {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: #fff;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+  }
+  .header-brand .tagline {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    color: var(--amarelo);
+    font-size: 7px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+  .header-info { text-align: right; }
+  .header-info .disciplina {
+    font-family: 'Barlow Condensed', sans-serif;
+    color: var(--amarelo);
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .header-info .aula-ref {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    color: rgba(255,255,255,0.7);
+    font-size: 8px;
+    letter-spacing: 0.5px;
+  }
+
+  .footer {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: var(--verde);
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 18px;
+  }
+  .footer span {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    color: rgba(255,255,255,0.6);
+    font-size: 7px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+  }
+  .footer .pg { color: var(--amarelo); font-weight: 400; }
+
+  .body {
+    padding: 14px 18px 30px;
+    height: calc(297mm - 52px - 22px);
+    overflow: hidden;
+  }
+
+  /* CAPA */
+  .capa-page { background: var(--verde); }
+  .capa-header {
+    background: var(--creme);
+    padding: 10px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .capa-header .marca {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: var(--verde);
+    font-size: 14px;
+  }
+  .capa-header .tagline {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    color: var(--verde);
+    font-size: 7.5px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .capa-body {
+    padding: 28px 24px 0;
+    display: flex;
+    flex-direction: column;
+    height: calc(297mm - 52px - 22px);
+  }
+  .capa-eyebrow {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    color: var(--amarelo);
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .capa-titulo {
+    font-family: 'Barlow Condensed', sans-serif;
+    color: #fff;
+    font-size: 52px;
+    line-height: 0.95;
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
+    margin-bottom: 6px;
+  }
+  .capa-titulo span { color: var(--amarelo); }
+  .capa-subtitulo {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 300;
+    color: rgba(255,255,255,0.65);
+    font-size: 12px;
+    letter-spacing: 0.3px;
+    margin-bottom: 22px;
+    line-height: 1.5;
+  }
+  .capa-badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+  .capa-badge {
+    background: rgba(198,216,52,0.15);
+    border: 1px solid var(--amarelo);
+    color: var(--amarelo);
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    font-size: 7.5px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+  }
+  .capa-divider { width: 40px; height: 3px; background: var(--amarelo); margin-bottom: 20px; }
+  .capa-topicos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .capa-topico { display: flex; align-items: flex-start; gap: 7px; }
+  .capa-topico-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    color: var(--amarelo);
+    font-size: 18px;
+    line-height: 1;
+    min-width: 18px;
+  }
+  .capa-topico-txt {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 400;
+    color: rgba(255,255,255,0.8);
+    font-size: 9.5px;
+    line-height: 1.4;
+  }
+  .capa-footer-strip {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: rgba(0,0,0,0.25);
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 18px;
+  }
+  .capa-footer-strip span {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    color: rgba(255,255,255,0.45);
+    font-size: 7px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+  }
+
+  /* TIPOGRAFIA */
+  .secao-titulo {
+    font-family: 'Barlow Condensed', sans-serif;
+    color: var(--verde);
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid var(--amarelo);
+    padding-bottom: 3px;
+    margin-bottom: 9px;
+    line-height: 1;
+  }
+  .subsecao {
+    font-family: 'Barlow Condensed', sans-serif;
+    color: var(--verde);
+    font-size: 12.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 7px 0 3px;
+  }
+  p {
+    font-size: 9px;
+    line-height: 1.55;
+    color: #1a1a1a;
+    margin-bottom: 4px;
+    font-weight: 400;
+  }
+  .destaque {
+    background: var(--amarelo);
+    color: var(--escuro);
+    font-weight: 600;
+    padding: 1px 4px;
+    border-radius: 2px;
+    font-size: 8.5px;
+  }
+  .alerta {
+    background: rgba(198,216,52,0.18);
+    border-left: 3px solid var(--amarelo);
+    padding: 5px 8px;
+    margin: 5px 0;
+    border-radius: 0 3px 3px 0;
+  }
+  .alerta p { margin: 0; font-size: 8.5px; }
+  .alerta strong { color: var(--verde); }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 5px 0;
+    font-size: 8px;
+  }
+  th {
+    background: var(--verde);
+    color: #fff;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 4px 6px;
+    text-align: left;
+  }
+  td {
+    padding: 3px 6px;
+    border-bottom: 1px solid rgba(31,92,35,0.12);
+    vertical-align: top;
+    line-height: 1.4;
+    color: #1a1a1a;
+  }
+  tr:nth-child(even) td { background: rgba(31,92,35,0.04); }
+
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 5px 0; }
+  .card {
+    background: rgba(31,92,35,0.06);
+    border: 1px solid rgba(31,92,35,0.15);
+    border-radius: 4px;
+    padding: 7px 8px;
+  }
+  .card-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    color: var(--verde);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    margin-bottom: 3px;
+  }
+  .card p { font-size: 8px; line-height: 1.5; }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 4px; margin: 4px 0; }
+  .chip {
+    background: var(--verde);
+    color: #fff;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    font-size: 7px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    padding: 2px 6px;
+    border-radius: 20px;
+  }
+  .chip.yellow { background: var(--amarelo); color: var(--escuro); }
+
+  .questao-header {
+    background: var(--verde);
+    color: #fff;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 4px 10px;
+    border-radius: 3px 3px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .questao-header .fonte {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    font-size: 7.5px;
+    color: var(--amarelo);
+    letter-spacing: 0.5px;
+  }
+  .questao-body {
+    border: 1px solid rgba(31,92,35,0.2);
+    border-top: none;
+    border-radius: 0 0 3px 3px;
+    padding: 7px 10px;
+    margin-bottom: 7px;
+  }
+  .questao-enunciado {
+    font-size: 8.5px;
+    line-height: 1.55;
+    color: #111;
+    margin-bottom: 5px;
+    font-weight: 500;
+  }
+  .alternativas { list-style: none; }
+  .alternativas li {
+    font-size: 8px;
+    line-height: 1.5;
+    padding: 2px 0;
+    color: #222;
+    display: flex;
+    gap: 5px;
+  }
+  .alternativas li .letra {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    color: var(--verde);
+    font-size: 9px;
+    min-width: 10px;
+  }
+  .alternativas li.correta .letra { color: var(--amarelo); }
+  .alternativas li.correta {
+    background: rgba(198,216,52,0.15);
+    border-left: 2px solid var(--amarelo);
+    padding-left: 4px;
+  }
+
+  .gabarito-box {
+    background: var(--verde);
+    border-radius: 4px;
+    padding: 8px 12px;
+    margin: 6px 0;
+  }
+  .gabarito-box .gab-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    color: var(--amarelo);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
+  .gabarito-box p { color: rgba(255,255,255,0.9); font-size: 8px; line-height: 1.55; }
+  .gabarito-box strong { color: var(--amarelo); }
+
+  .sintese-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 7px;
+    margin-top: 6px;
+  }
+  .sintese-item {
+    background: rgba(31,92,35,0.07);
+    border-left: 3px solid var(--verde);
+    padding: 5px 7px;
+    border-radius: 0 3px 3px 0;
+  }
+  .sintese-item .si-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    color: var(--verde);
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+  .sintese-item p { font-size: 7.5px; line-height: 1.5; }
+
+  ul.lista { padding-left: 14px; margin: 3px 0; }
+  ul.lista li {
+    font-size: 8.5px;
+    line-height: 1.55;
+    color: #1a1a1a;
+    margin-bottom: 1px;
+  }
+
+  @media print {
+    body { background: none; }
+    .page { margin: 0; box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ========== PÁGINA 1 — CAPA ========== -->
+<div class="page capa-page">
+  <div class="capa-header">
+    <div style="display:flex;align-items:center;gap:8px;">
+      <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#1F5C23"/>
+      </svg>
+      <div>
+        <div class="marca">Elite Treinamentos</div>
+        <div class="tagline">Extensivo ENARE 2026</div>
+      </div>
+    </div>
+    <div style="text-align:right;">
+      <div style="font-family:'Barlow Condensed',sans-serif;color:var(--verde);font-size:11px;letter-spacing:1px;text-transform:uppercase;">Bloco B11 · Aula 27</div>
+      <div style="font-family:'Space Grotesk',sans-serif;font-weight:300;color:#888;font-size:7.5px;letter-spacing:0.5px;">Psicologia</div>
+    </div>
+  </div>
+
+  <div class="capa-body">
+    <div class="capa-eyebrow">Bloco B11 · PSI-TEORIA · Aula 27 de 30</div>
+    <div class="capa-titulo">Avaliação<br><span>Psico-<br>lógica</span></div>
+    <div class="capa-subtitulo">Fundamentos psicométricos: validade, fidedignidade,<br>normatização, SATEPSI e documentos Res. CFP 006/2019</div>
+
+    <div class="capa-badge-row">
+      <div class="capa-badge">PSI-TEORIA</div>
+      <div class="capa-badge">Res. CFP 009/2018</div>
+      <div class="capa-badge">Res. CFP 006/2019</div>
+      <div class="capa-badge">SATEPSI · Psicometria</div>
+    </div>
+
+    <div class="capa-divider"></div>
+
+    <div class="capa-topicos">
+      <div class="capa-topico">
+        <div class="capa-topico-num">01</div>
+        <div class="capa-topico-txt">Validade: conteúdo, critério e construto</div>
+      </div>
+      <div class="capa-topico">
+        <div class="capa-topico-num">02</div>
+        <div class="capa-topico-txt">Fidedignidade: consistência interna, estabilidade, formas paralelas</div>
+      </div>
+      <div class="capa-topico">
+        <div class="capa-topico-num">03</div>
+        <div class="capa-topico-txt">Normatização, padronização e escores padronizados</div>
+      </div>
+      <div class="capa-topico">
+        <div class="capa-topico-num">04</div>
+        <div class="capa-topico-txt">Classificação dos instrumentos psicológicos</div>
+      </div>
+      <div class="capa-topico">
+        <div class="capa-topico-num">05</div>
+        <div class="capa-topico-txt">SATEPSI e Res. CFP 009/2018 — aprofundamento</div>
+      </div>
+      <div class="capa-topico">
+        <div class="capa-topico-num">06</div>
+        <div class="capa-topico-txt">Documentos psicológicos: laudo, relatório, parecer, atestado</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="capa-footer-strip">
+    <span>Extensivo ENARE 2026</span>
+    <span>Elite Treinamentos em Saúde</span>
+    <span>Página 1 de 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 2 — VALIDADE ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Psicologia — PSI-TEORIA</div>
+      <div class="aula-ref">Bloco B11 · Aula 27 · Avaliação Psicológica</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="secao-titulo">Validade dos Instrumentos Psicológicos</div>
+
+    <p><strong>Validade</strong> é a propriedade psicométrica que indica se um instrumento mede aquilo que se propõe a medir. É considerada a propriedade mais fundamental — um teste pode ser fiel (preciso) sem ser válido, mas não pode ser válido sem alguma grau de fidedignidade.</p>
+
+    <div class="alerta">
+      <p><strong>Atenção ENARE:</strong> Validade NÃO é uma propriedade absoluta do instrumento — é relativa ao <em>constructo, à população e ao contexto de uso</em>. Um teste válido para seleção profissional pode não ser válido para diagnóstico clínico.</p>
+    </div>
+
+    <div class="subsecao">Tipos de Validade</div>
+    <table>
+      <tr>
+        <th>Tipo</th>
+        <th>O que avalia</th>
+        <th>Método</th>
+        <th>Exemplo</th>
+      </tr>
+      <tr>
+        <td><strong>Validade de conteúdo</strong></td>
+        <td>Se os itens representam adequadamente o domínio do construto</td>
+        <td>Julgamento de especialistas; análise de juízes</td>
+        <td>Escala de ansiedade cobre todos os sintomas do DSM</td>
+      </tr>
+      <tr>
+        <td><strong>Validade de critério — preditiva</strong></td>
+        <td>Se o teste prediz desempenho futuro em critério externo</td>
+        <td>Correlação teste → desempenho posterior</td>
+        <td>Teste de seleção correlaciona com desempenho no cargo 6 meses depois</td>
+      </tr>
+      <tr>
+        <td><strong>Validade de critério — concorrente</strong></td>
+        <td>Se o teste correlaciona com critério externo medido simultaneamente</td>
+        <td>Correlação com outro instrumento consagrado</td>
+        <td>Novo teste de inteligência correlaciona com WAIS aplicado no mesmo momento</td>
+      </tr>
+      <tr>
+        <td><strong>Validade de construto — convergente</strong></td>
+        <td>Se o teste correlaciona positivamente com medidas do mesmo construto</td>
+        <td>Análise fatorial; correlação convergente</td>
+        <td>Escala de depressão correlaciona com BDI</td>
+      </tr>
+      <tr>
+        <td><strong>Validade de construto — discriminante</strong></td>
+        <td>Se o teste NÃO correlaciona com medidas de construtos distintos</td>
+        <td>Correlação baixa com escalas de construtos diferentes</td>
+        <td>Escala de depressão não correlaciona com teste de inteligência</td>
+      </tr>
+    </table>
+
+    <div class="subsecao">Análise Fatorial na Validade de Construto</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Análise Fatorial Exploratória (AFE)</div>
+        <p>Usada no desenvolvimento do instrumento. Identifica a estrutura fatorial sem hipótese prévia. Agrupa itens em fatores por correlação. Indica quantas dimensões o instrumento mede.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Análise Fatorial Confirmatória (AFC)</div>
+        <p>Testa se a estrutura fatorial proposta a priori se confirma nos dados. Indicadores: CFI ≥ 0,90 · TLI ≥ 0,90 · RMSEA ≤ 0,08. Usada em revisões e estudos de validação.</p>
+      </div>
+    </div>
+
+    <div class="alerta" style="margin-top:6px;">
+      <p><strong>Pegadinha clássica FGV:</strong> Validade e fidedignidade são conceitos independentes. Um instrumento altamente fidedigno (resultados consistentes) pode ser sistematicamente inválido — medir com precisão a coisa errada. Ex.: termômetro descalibrado: fiel (sempre indica 2°C a mais) mas inválido para medir temperatura real.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>PSI-TEORIA · Avaliação Psicológica</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">2 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 3 — FIDEDIGNIDADE E NORMATIZAÇÃO ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Psicologia — PSI-TEORIA</div>
+      <div class="aula-ref">Bloco B11 · Aula 27 · Avaliação Psicológica</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="secao-titulo">Fidedignidade / Precisão e Normatização</div>
+
+    <p><strong>Fidedignidade</strong> (ou <strong>precisão</strong>) é a consistência das medidas produzidas pelo instrumento — a capacidade de gerar resultados estáveis em condições equivalentes. A Res. CFP 009/2018 usa o termo <em>precisão</em> como sinônimo técnico.</p>
+
+    <div class="subsecao">Tipos de Fidedignidade</div>
+    <table>
+      <tr>
+        <th>Tipo</th>
+        <th>Método</th>
+        <th>Coeficiente</th>
+        <th>Detalhe</th>
+      </tr>
+      <tr>
+        <td><strong>Estabilidade temporal (teste-reteste)</strong></td>
+        <td>Aplicar o mesmo instrumento ao mesmo grupo em dois momentos</td>
+        <td>Correlação de Pearson (r)</td>
+        <td>Intervalo adequado: 2 a 4 semanas. Muito curto = memória; muito longo = mudança real.</td>
+      </tr>
+      <tr>
+        <td><strong>Equivalência de formas (formas paralelas)</strong></td>
+        <td>Dois conjuntos de itens equivalentes aplicados ao mesmo grupo</td>
+        <td>Correlação entre escores das formas</td>
+        <td>Controla efeito de memória; requer construção de duas versões equivalentes.</td>
+      </tr>
+      <tr>
+        <td><strong>Consistência interna</strong></td>
+        <td>Homogeneidade dos itens numa única aplicação</td>
+        <td>Alfa de Cronbach (α ≥ 0,70 aceitável)</td>
+        <td>Método de metades (split-half) + Spearman-Brown. Mede se todos itens medem o mesmo construto.</td>
+      </tr>
+    </table>
+
+    <div class="subsecao">Normatização e Padronização</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Normatização</div>
+        <p><strong>Processo de estabelecimento de normas</strong> (parâmetros de referência) a partir de uma amostra representativa da população-alvo. Transforma escore bruto em escore padronizado interpretável comparativamente ao grupo normativo.</p>
+        <p style="margin-top:4px;"><strong>Tipos de escores padronizados:</strong><br>
+        · <em>Escore Z:</em> média 0, DP 1<br>
+        · <em>Escore T:</em> média 50, DP 10<br>
+        · <em>Percentil:</em> posição relativa na distribuição<br>
+        · <em>QI desvio:</em> média 100, DP 15</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Padronização</div>
+        <p><strong>Uniformização do processo de aplicação:</strong> instruções padronizadas, condições de aplicação (iluminação, tempo, material), treinamento do aplicador, sequência de itens definida.</p>
+        <p style="margin-top:4px;"><strong>Diferença-chave:</strong> normatização = dados estatísticos de referência; padronização = protocolo de aplicação uniforme. Ambos são requisitos para que um instrumento seja aprovado no SATEPSI.</p>
+      </div>
+    </div>
+
+    <div class="alerta" style="margin-top:5px;">
+      <p><strong>Erro Padrão da Medida (EPM):</strong> indica a margem de erro inerente ao escore observado. Todo resultado de teste deve ser interpretado como intervalo de confiança (escore observado ± EPM), não como valor exato. A Res. CFP 009/2018 exige que o laudo mencione as limitações dos instrumentos.</p>
+    </div>
+
+    <div class="subsecao" style="margin-top:5px;">Amostra Normativa — Requisitos SATEPSI</div>
+    <ul class="lista">
+      <li>Representatividade regional e sociodemográfica da população brasileira</li>
+      <li>Tamanho amostral adequado ao método de normatização (mínimos variam conforme TRI ou TCT)</li>
+      <li>Especificação dos subgrupos normativos (sexo, faixa etária, escolaridade) quando relevante</li>
+      <li>Ausência de viés sistemático de seleção amostral (viés de SATEPSI pode reprovar instrumento)</li>
+    </ul>
+  </div>
+
+  <div class="footer">
+    <span>PSI-TEORIA · Avaliação Psicológica</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">3 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 4 — CLASSIFICAÇÃO DOS INSTRUMENTOS + SATEPSI ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Psicologia — PSI-TEORIA</div>
+      <div class="aula-ref">Bloco B11 · Aula 27 · Avaliação Psicológica</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="secao-titulo">Classificação dos Instrumentos Psicológicos e SATEPSI</div>
+
+    <div class="subsecao">Categorias por Função</div>
+    <table>
+      <tr>
+        <th>Categoria</th>
+        <th>Exemplos com status SATEPSI</th>
+        <th>Observações</th>
+      </tr>
+      <tr>
+        <td><strong>Inteligência / Habilidades cognitivas</strong></td>
+        <td>WAIS-III · WISC-V · WPPSI-IV · Matrizes Progressivas de Raven</td>
+        <td>QI desvio (média 100, DP 15). WAIS = adultos; WISC = 6–16 anos; WPPSI = 2–7 anos.</td>
+      </tr>
+      <tr>
+        <td><strong>Atenção e concentração</strong></td>
+        <td>Atenção Concentrada (AC) · TACOM · TCC · BPA</td>
+        <td>Alta relevância em contexto neuropsicológico e seleção profissional.</td>
+      </tr>
+      <tr>
+        <td><strong>Personalidade — objetivos</strong></td>
+        <td>BFP (Big Five) · NEOPI-R · IFP · 16PF</td>
+        <td>Autorrelato; escalas Likert; análise quantitativa.</td>
+      </tr>
+      <tr>
+        <td><strong>Personalidade — projetivos</strong></td>
+        <td>Rorschach (SIS) · TAT · HTP · Zulliger · Bender</td>
+        <td>Estímulos ambíguos; interpretação qualitativa + quantitativa. Exige formação específica.</td>
+      </tr>
+      <tr>
+        <td><strong>Vocacional / Interesses</strong></td>
+        <td>BIP · SDS (Holland) · LIP</td>
+        <td>Orientação profissional e de carreira.</td>
+      </tr>
+      <tr>
+        <td><strong>Neuropsicológicos</strong></td>
+        <td>NEUPSILIN · RAVLT · WCST · Stroop</td>
+        <td>Avaliação de funções executivas, memória, linguagem, atenção.</td>
+      </tr>
+    </table>
+
+    <div class="subsecao">SATEPSI — Res. CFP 009/2018 (Aprofundamento)</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Status dos Instrumentos</div>
+        <p><strong>FAVORÁVEL:</strong> aprovado — pode ser usado em avaliação psicológica.<br>
+        <strong>DESFAVORÁVEL:</strong> reprovado — uso <em>vedado</em>, constitui infração ética.<br>
+        <strong>PROVISÓRIO:</strong> em processo de normatização/validação — uso permitido com restrições, prazo definido pelo CFP.<br>
+        <strong>Sem registro:</strong> uso vedado.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Critérios de Avaliação CFP 009/2018</div>
+        <p>O CFP avalia: · Evidências de validade (≥ 2 tipos) · Precisão (≥ 1 tipo, α ≥ 0,70) · Normatização (amostra representativa brasileira) · Manual técnico atualizado · Qualidade dos itens · Viés potencial</p>
+        <p style="margin-top:3px;">A avaliação é feita pela SATEPSI-Comissão Consultiva. Decisão publicada em resolução específica.</p>
+      </div>
+    </div>
+
+    <div class="alerta" style="margin-top:5px;">
+      <p><strong>Pegadinhas FGV — SATEPSI:</strong><br>
+      · Psicólogo NÃO pode usar instrumento <strong>desfavorável</strong> mesmo com justificativa teórica — uso vedado sem exceção.<br>
+      · SATEPSI avalia qualidade técnico-científica do instrumento, NÃO a competência do psicólogo para aplicá-lo.<br>
+      · SATEPSI é público e online — qualquer pessoa pode <em>consultar</em>; apenas psicólogos podem <em>usar</em> os instrumentos.<br>
+      · Instrumento favorável no exterior pode ser desfavorável no SATEPSI por falta de normas brasileiras.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>PSI-TEORIA · Avaliação Psicológica</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">4 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 5 — DOCUMENTOS PSICOLÓGICOS ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Psicologia — PSI-TEORIA</div>
+      <div class="aula-ref">Bloco B11 · Aula 27 · Avaliação Psicológica</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="secao-titulo">Documentos Psicológicos — Res. CFP 006/2019</div>
+
+    <p>A Resolução CFP 006/2019 regulamenta os documentos escritos produzidos pelo psicólogo. Define cinco tipos distintos, cada um com finalidade, destinatário e requisitos específicos. A confusão entre eles é um erro comum em concursos.</p>
+
+    <table>
+      <tr>
+        <th>Documento</th>
+        <th>Finalidade</th>
+        <th>Destinatário típico</th>
+        <th>Caractterística-chave</th>
+      </tr>
+      <tr>
+        <td><strong>Laudo Psicológico</strong></td>
+        <td>Resultado de avaliação psicológica; responde a demanda específica (judicial, previdenciária, seleção)</td>
+        <td>Justiça, INSS, empresa, instituição solicitante</td>
+        <td>Documento pericial. Tem validade para o objetivo e momento específicos. NÃO é transferível para outros fins.</td>
+      </tr>
+      <tr>
+        <td><strong>Relatório Psicológico</strong></td>
+        <td>Descreve processo de acompanhamento / intervenção psicológica; visa continuidade do cuidado</td>
+        <td>Profissionais da equipe multiprofissional, serviços de saúde, escola</td>
+        <td>Processual e evolutivo. Não é pericial. Foca na evolução do sujeito no processo terapêutico ou educativo.</td>
+      </tr>
+      <tr>
+        <td><strong>Parecer Psicológico</strong></td>
+        <td>Opinião técnica fundamentada sobre caso ou situação, em resposta a quesito ou consulta</td>
+        <td>Outra profissional psicólogo, juiz, conselho, comitê</td>
+        <td>Opinativo e sintético. Produzido geralmente por revisão de documentos e/ou entrevista — não exige processo avaliativo completo.</td>
+      </tr>
+      <tr>
+        <td><strong>Declaração</strong></td>
+        <td>Afirmar fato ou situação objetiva conhecida pelo psicólogo na relação profissional</td>
+        <td>O próprio avaliado / serviço / instituição</td>
+        <td>Afirmação de fato objetivo. Ex.: "declaro que João frequenta atendimento psicológico neste serviço".</td>
+      </tr>
+      <tr>
+        <td><strong>Atestado Psicológico</strong></td>
+        <td>Atestar condição psicológica do avaliado no momento da avaliação</td>
+        <td>O próprio avaliado / empregador / escola</td>
+        <td>Afirmação de estado ou condição atual. Pode conter CID quando solicitado. Guarda: 5 anos (maior prazo entre documentos).</td>
+      </tr>
+    </table>
+
+    <div class="subsecao">Princípios Éticos Transversais (Res. CFP 006/2019)</div>
+    <ul class="lista">
+      <li><strong>Finalidade específica:</strong> documento elaborado para um objetivo — NÃO vale para outros fins sem nova avaliação</li>
+      <li><strong>Validade temporal:</strong> reflete o momento da avaliação — não é vitalício nem retroativo</li>
+      <li><strong>Não discriminação:</strong> vedado mencionar características pessoais (raça, religião, orientação sexual) sem nexo direto com o objetivo avaliativo</li>
+      <li><strong>Guarda de documentos:</strong> psicólogo guarda cópias por prazo mínimo de 5 anos (documentos de menores: 5 anos após maioridade); materiais de teste: enquanto durar a relação profissional + 5 anos</li>
+      <li><strong>Sigilo:</strong> compartilhamento apenas com consentimento do avaliado ou obrigação legal; em equipe multiprofissional, compartilha o necessário para o cuidado</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Diferença crucial Laudo × Relatório × Parecer:</strong> Laudo = pericial (avaliação completa para decisão externa) · Relatório = processual (descreve evolução no serviço) · Parecer = opinativo (responde quesito sem necessariamente fazer nova avaliação completa).</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>PSI-TEORIA · Avaliação Psicológica</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">5 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 6 — QUESTÃO 01 ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Psicologia — PSI-TEORIA</div>
+      <div class="aula-ref">Bloco B11 · Aula 27 · Questões ENARE</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="secao-titulo">Questões — Estilo ENARE/FGV</div>
+
+    <div class="questao-header">
+      <span>Questão 01</span>
+      <span class="fonte">Psicometria · Fidedignidade</span>
+    </div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Uma psicóloga desenvolve um novo instrumento de avaliação de ansiedade e, para verificar sua qualidade psicométrica, aplica o mesmo instrumento ao mesmo grupo de 120 participantes em dois momentos distintos, com intervalo de 21 dias. Obtém coeficiente de correlação r = 0,88 entre as duas aplicações. Em seguida, realiza análise de juízes especializados em ansiedade para verificar se todos os domínios sintomáticos do transtorno estão representados nos itens. Sobre as propriedades psicométricas avaliadas nesses dois procedimentos, respectivamente, é correto afirmar que:</p>
+      <ul class="alternativas">
+        <li>
+          <span class="letra">A</span>
+          <span>Validade de construto e fidedignidade por consistência interna.</span>
+        </li>
+        <li>
+          <span class="letra">B</span>
+          <span>Fidedignidade por equivalência de formas e validade de critério concorrente.</span>
+        </li>
+        <li class="correta">
+          <span class="letra">C</span>
+          <span>Fidedignidade por estabilidade temporal (teste-reteste) e validade de conteúdo.</span>
+        </li>
+        <li>
+          <span class="letra">D</span>
+          <span>Validade de critério preditiva e fidedignidade por estabilidade temporal.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — C</div>
+      <p><strong>Teste-reteste:</strong> aplicação do mesmo instrumento ao mesmo grupo em dois momentos distintos para verificar estabilidade dos resultados ao longo do tempo — avalia <strong>fidedignidade por estabilidade temporal</strong>. O coeficiente r = 0,88 representa alta correlação entre os dois momentos.</p>
+      <p><strong>Análise de juízes:</strong> especialistas avaliam se os itens cobrem adequadamente todos os domínios do construto — avalia <strong>validade de conteúdo</strong>. Não envolve critério externo nem análise fatorial.</p>
+      <p><strong>Por que as outras erram:</strong> A = fatorial seria construto, não conteúdo; consistência interna exige alfa, não análise de juízes · B = formas paralelas usa dois conjuntos de itens; critério concorrente correlaciona com outro instrumento externo · D = critério preditivo requer medida futura de desempenho.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>PSI-TEORIA · Avaliação Psicológica</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">6 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 7 — QUESTÃO 02 ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Psicologia — PSI-TEORIA</div>
+      <div class="aula-ref">Bloco B11 · Aula 27 · Questões ENARE</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="questao-header">
+      <span>Questão 02</span>
+      <span class="fonte">Documentos Psicológicos · Res. CFP 006/2019</span>
+    </div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Uma psicóloga que atua em CAPS II é solicitada pela Defensoria Pública a produzir um documento que subsidie decisão judicial em processo de interdição civil de um usuário do serviço. Para isso, ela realiza entrevistas com o usuário e familiares, aplica testes psicológicos aprovados no SATEPSI, analisa o prontuário do serviço e responde formalmente a quesitos elaborados pelo juiz. De acordo com a Resolução CFP 006/2019, que regulamenta os documentos escritos produzidos pelo psicólogo, o documento produzido é classificado como:</p>
+      <ul class="alternativas">
+        <li>
+          <span class="letra">A</span>
+          <span>Relatório psicológico, por descrever o processo de acompanhamento do usuário no CAPS.</span>
+        </li>
+        <li>
+          <span class="letra">B</span>
+          <span>Declaração psicológica, por afirmar fato objetivo conhecido na relação profissional.</span>
+        </li>
+        <li>
+          <span class="letra">C</span>
+          <span>Parecer psicológico, por emitir opinião técnica em resposta a quesito específico.</span>
+        </li>
+        <li class="correta">
+          <span class="letra">D</span>
+          <span>Laudo psicológico, por resultar de avaliação psicológica completa para fins de decisão judicial.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — D</div>
+      <p><strong>Laudo psicológico</strong> é o documento resultante de processo de avaliação psicológica completo (entrevistas + testes + análise documental), elaborado para subsidiar decisão externa específica — neste caso, judicial (interdição civil). Responde formalmente a quesitos da autoridade competente. Tem validade restrita ao objetivo e ao momento da avaliação.</p>
+      <p><strong>Por que as outras erram:</strong> A = Relatório descreve processo terapêutico/evolutivo, não tem caráter pericial nem responde a quesitos · B = Declaração afirma fato objetivo simples ("João frequenta o serviço") sem processo avaliativo · C = Parecer responde quesito específico geralmente sem nova avaliação completa, a partir de revisão de documentos; o caso descrito inclui avaliação completa com testes, configurando laudo.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>PSI-TEORIA · Avaliação Psicológica</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">7 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 8 — QUESTÃO 03 ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Psicologia — PSI-TEORIA</div>
+      <div class="aula-ref">Bloco B11 · Aula 27 · Questões ENARE</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="questao-header">
+      <span>Questão 03</span>
+      <span class="fonte">SATEPSI · Res. CFP 009/2018 · Ética</span>
+    </div>
+    <div class="questao-body">
+      <p class="questao-enunciado">O SATEPSI (Sistema de Avaliação de Testes Psicológicos), regulamentado pela Resolução CFP 009/2018, é o sistema oficial de avaliação da qualidade psicométrica dos instrumentos utilizados em avaliação psicológica no Brasil. Com base nessa resolução, analise as afirmativas abaixo e assinale a alternativa CORRETA:</p>
+      <ul class="alternativas">
+        <li>
+          <span class="letra">A</span>
+          <span>Instrumentos com status desfavorável podem ser utilizados pelo psicólogo desde que haja justificativa técnico-científica registrada no laudo e anuência do CFP regional.</span>
+        </li>
+        <li>
+          <span class="letra">B</span>
+          <span>O SATEPSI avalia a competência técnica do psicólogo para aplicar e interpretar corretamente cada instrumento psicológico.</span>
+        </li>
+        <li class="correta">
+          <span class="letra">C</span>
+          <span>O uso de instrumento com status desfavorável no SATEPSI constitui infração ética, sendo vedado sem exceção, independentemente da justificativa apresentada pelo psicólogo.</span>
+        </li>
+        <li>
+          <span class="letra">D</span>
+          <span>Instrumentos aprovados em sistemas internacionais equivalentes ao SATEPSI podem ser utilizados no Brasil mesmo sem registro no sistema, desde que tenham normas para população estrangeira.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — C</div>
+      <p><strong>Status desfavorável = uso vedado, sem exceção.</strong> A Res. CFP 009/2018 é explícita: nenhuma justificativa técnica, teórica ou clínica autoriza o uso de instrumento desfavorável. O psicólogo que utiliza instrumento desfavorável comete infração ética sujeita às sanções do Código de Ética Profissional do Psicólogo.</p>
+      <p><strong>Por que as outras erram:</strong> A = a resolução não prevê exceção por justificativa no laudo — vedado sem exceção · B = SATEPSI avalia a qualidade psicométrica do <em>instrumento</em>, não a competência do profissional · D = aprovação internacional não substitui o registro no SATEPSI; normas brasileiras são obrigatórias para instrumentos usados no Brasil.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>PSI-TEORIA · Avaliação Psicológica</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">8 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 9 — GABARITO COMENTADO INTEGRADO ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Psicologia — PSI-TEORIA</div>
+      <div class="aula-ref">Bloco B11 · Aula 27 · Gabarito Integrado</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="secao-titulo">Gabarito Comentado — Análise Integrada</div>
+
+    <table>
+      <tr>
+        <th>Questão</th>
+        <th>Gabarito</th>
+        <th>Tema Central</th>
+        <th>Conceito-Chave Cobrado</th>
+      </tr>
+      <tr>
+        <td><strong>01</strong></td>
+        <td><span class="destaque">C</span></td>
+        <td>Psicometria — Fidedignidade e Validade</td>
+        <td>Teste-reteste → estabilidade temporal; análise de juízes → validade de conteúdo</td>
+      </tr>
+      <tr>
+        <td><strong>02</strong></td>
+        <td><span class="destaque">D</span></td>
+        <td>Documentos Psicológicos — Res. CFP 006/2019</td>
+        <td>Laudo = avaliação completa + caráter pericial + responde quesitos judiciais</td>
+      </tr>
+      <tr>
+        <td><strong>03</strong></td>
+        <td><span class="destaque">C</span></td>
+        <td>SATEPSI — Res. CFP 009/2018</td>
+        <td>Status desfavorável = uso vedado sem exceção; infração ética</td>
+      </tr>
+    </table>
+
+    <div class="subsecao" style="margin-top:8px;">Erros-Armadilha Mais Cobrados pelo ENARE/FGV</div>
+
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Armadilha 1 — Validade × Fidedignidade</div>
+        <p>FGV inverte os conceitos: teste pode ser fiel sem ser válido. Fidedignidade = consistência dos resultados. Validade = mede o que propõe. Alta precisão + baixa validade = mede errado com consistência.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Armadilha 2 — Laudo × Relatório × Parecer</div>
+        <p>FGV descreve o conteúdo do documento e pede classificação. Memorize: Laudo = pericial completo (judicial, INSS) · Relatório = processual (evolução no serviço) · Parecer = opinativo sintético (quesito).</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Armadilha 3 — SATEPSI e Exceções</div>
+        <p>Não existe exceção para uso de instrumento desfavorável. FGV cria alternativas com "se justificado" ou "com autorização do CFP" — todas erradas. A regra é absoluta.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Armadilha 4 — Normatização × Padronização</div>
+        <p>Normatização = dados estatísticos de referência (normas populacionais). Padronização = uniformização da aplicação (protocolo). São complementares mas distintos. FGV usa os termos como se fossem sinônimos — não são.</p>
+      </div>
+    </div>
+
+    <div class="alerta" style="margin-top:6px;">
+      <p><strong>Regra de ouro para documentos (Res. CFP 006/2019):</strong> <em>Para qual decisão foi elaborado?</em> Decisão externa (judicial, previdenciária, seleção) = Laudo · Comunicação entre profissionais sobre evolução = Relatório · Resposta a quesito sem avaliação completa = Parecer · Afirmação de fato simples = Declaração · Afirmação de estado atual do avaliado = Atestado.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>PSI-TEORIA · Avaliação Psicológica</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">9 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 10 — SÍNTESE ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Psicologia — PSI-TEORIA</div>
+      <div class="aula-ref">Bloco B11 · Aula 27 · Síntese</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="secao-titulo">Síntese — Avaliação Psicológica: Fundamentos Teóricos</div>
+
+    <div class="sintese-grid">
+      <div class="sintese-item">
+        <div class="si-label">Validade</div>
+        <p>Propriedade mais fundamental. Tipos: <strong>conteúdo</strong> (juízes/especialistas) · <strong>critério</strong> preditiva (desempenho futuro) e concorrente (instrumento externo simultâneo) · <strong>construto</strong> convergente e discriminante (análise fatorial). Sempre relativa ao construto, população e contexto.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Fidedignidade / Precisão</div>
+        <p>Consistência das medidas. Tipos: <strong>estabilidade temporal</strong> (teste-reteste, r elevado) · <strong>equivalência de formas</strong> (formas paralelas) · <strong>consistência interna</strong> (alfa de Cronbach ≥ 0,70, split-half). Instrumento pode ser fiel sem ser válido.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Normatização × Padronização</div>
+        <p>Normatização = normas populacionais brasileiras (escore Z, T, percentil, QI desvio). Padronização = protocolo uniforme de aplicação. Ambos são requisitos SATEPSI. Amostra normativa deve ser representativa e com estratificação adequada.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">SATEPSI — Res. CFP 009/2018</div>
+        <p>Favorável: pode usar · Desfavorável: <strong>vedado sem exceção</strong> (infração ética) · Provisório: uso permitido com restrições. Avalia qualidade do instrumento, não competência do psicólogo. Público e online. Normas brasileiras são obrigatórias.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Laudo Psicológico</div>
+        <p>Avaliação completa (entrevistas + testes + análise documental). Caráter pericial. Finalidade e momento específicos — NÃO transferível. Responde a quesitos de autoridade (judicial, previdenciária, seleção). Guarda mínima: 5 anos.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Relatório · Parecer · Declaração · Atestado</div>
+        <p>Relatório = processual/evolutivo (equipe/serviço) · Parecer = opinativo sintético (responde quesito sem avaliação completa) · Declaração = afirma fato objetivo simples · Atestado = afirma estado/condição atual do avaliado. Regra: para que decisão foi elaborado?</p>
+      </div>
+    </div>
+
+    <div class="alerta" style="margin-top:8px;">
+      <div style="font-family:'Barlow Condensed',sans-serif;color:var(--verde);font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:3px;">Próxima Aula</div>
+      <p><strong>Aula 28 — PSI-TEORIA:</strong> Psicologia do Desenvolvimento — Piaget (estágios cognitivos: sensório-motor, pré-operatório, operatório concreto, formal), Vygotsky (ZDP, mediação simbólica, aprendizagem social), Erikson (8 estágios psicossociais) e Winnicott (desenvolvimento emocional primitivo, objeto transicional, espaço potencial) com aplicações na saúde e na avaliação.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>PSI-TEORIA · Avaliação Psicológica</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">10 / 10</span>
+  </div>
+</div>
+
+</body>
+</html>

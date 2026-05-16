@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Psicologia B11 — Aula 02 | PSI-SAUDE: RAPS — Rede de Atenção Psicossocial</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #d0d0d0; font-family: 'Bricolage Grotesque', sans-serif; }
+  .page { width: 210mm; height: 297mm; background: #F6F4ED; margin: 8mm auto; position: relative; overflow: hidden; display: flex; flex-direction: column; }
+  @media print { body { background: none; margin: 0; } .page { margin: 0; page-break-after: always; box-shadow: none; } }
+  @page { size: A4; margin: 0; }
+
+  .page-header { background: #1F5C23; padding: 4mm 6mm; display: flex; align-items: center; gap: 4mm; flex-shrink: 0; }
+  .logo-svg { width: 10mm; height: 10mm; flex-shrink: 0; }
+  .header-text { flex: 1; }
+  .header-course { font-family: 'Playfair Display', serif; font-style: italic; color: #C6D834; font-size: 6.5pt; letter-spacing: 0.03em; }
+  .header-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: #F6F4ED; font-size: 11pt; line-height: 1; text-transform: uppercase; letter-spacing: 0.04em; }
+  .header-badge { background: #C6D834; color: #1F5C23; font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 7pt; padding: 1mm 3mm; border-radius: 2mm; text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap; }
+
+  .page-footer { background: #1F5C23; padding: 2mm 6mm; display: flex; justify-content: space-between; align-items: center; flex-shrink: 0; }
+  .footer-left { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: #C6D834; font-size: 6pt; letter-spacing: 0.05em; text-transform: uppercase; }
+  .footer-right { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: #F6F4ED; font-size: 8pt; letter-spacing: 0.06em; }
+
+  .page-body { flex: 1; padding: 5mm 7mm; display: flex; flex-direction: column; gap: 3mm; overflow: hidden; }
+
+  .section-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 13pt; color: #1F5C23; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 0.8mm solid #C6D834; padding-bottom: 1.5mm; margin-bottom: 1mm; }
+
+  .box { background: #fff; border-left: 1.2mm solid #1F5C23; border-radius: 1mm; padding: 3mm 4mm; font-size: 7.8pt; line-height: 1.45; color: #222; }
+  .box.accent { border-left-color: #C6D834; }
+  .box.alert  { border-left-color: #c0392b; background: #fff8f7; }
+  .box.dark   { background: #1F5C23; color: #F6F4ED; border-left-color: #C6D834; }
+  .box-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; color: #1F5C23; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 1.5mm; }
+  .box.dark .box-title { color: #C6D834; }
+  .box.alert .box-title { color: #c0392b; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 7.5pt; }
+  th { background: #1F5C23; color: #F6F4ED; font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 8pt; text-transform: uppercase; padding: 1.5mm 2.5mm; text-align: left; letter-spacing: 0.03em; }
+  td { padding: 1.5mm 2.5mm; border-bottom: 0.3mm solid #e0ddd5; vertical-align: top; color: #222; line-height: 1.4; }
+  tr:nth-child(even) td { background: #f4f2eb; }
+  td strong { color: #1F5C23; }
+
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5mm; }
+  .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2mm; }
+
+  /* componente RAPS */
+  .comp-item { display: flex; gap: 2.5mm; padding: 2mm 3mm; background: #fff; border-radius: 1mm; border-left: 1mm solid #1F5C23; margin-bottom: 1.5mm; font-size: 7.5pt; line-height: 1.4; align-items: flex-start; }
+  .comp-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: #F6F4ED; background: #1F5C23; font-size: 8pt; min-width: 5mm; height: 5mm; border-radius: 1mm; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .comp-num.alt { background: #C6D834; color: #1F5C23; }
+
+  /* CAPS card */
+  .caps-card { background: #fff; border-top: 1mm solid #1F5C23; border-radius: 1.5mm; padding: 2.5mm 3mm; font-size: 7.3pt; line-height: 1.4; }
+  .caps-card .caps-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: #1F5C23; font-size: 8.5pt; text-transform: uppercase; margin-bottom: 1mm; }
+  .caps-card.ad { border-top-color: #e67e22; }
+  .caps-card.ad .caps-title { color: #e67e22; }
+  .caps-card.inf { border-top-color: #2980b9; }
+  .caps-card.inf .caps-title { color: #2980b9; }
+
+  /* questão */
+  .q-stem { background: #fff; border: 0.5mm solid #ddd; border-radius: 1.5mm; padding: 3mm 4mm; font-size: 8pt; line-height: 1.5; color: #222; margin-bottom: 2mm; }
+  .q-stem-label { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; color: #1F5C23; text-transform: uppercase; margin-bottom: 1.5mm; }
+  .q-option { display: flex; gap: 2mm; padding: 1.5mm 2.5mm; border-radius: 1mm; margin-bottom: 1mm; border: 0.4mm solid #e0ddd5; background: #fff; font-size: 7.8pt; line-height: 1.4; align-items: flex-start; }
+  .q-option.correct { background: #f0f8f0; border-color: #1F5C23; }
+  .q-option.wrong   { background: #fff8f7; border-color: #e0a0a0; }
+  .q-letter { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; color: #1F5C23; min-width: 4mm; flex-shrink: 0; margin-top: -0.3mm; }
+  .q-option.correct .q-letter { color: #1F5C23; }
+  .q-option.wrong   .q-letter { color: #c0392b; }
+
+  /* afirmativas */
+  .afirmativa { display: flex; gap: 2mm; padding: 2mm 3mm; border-radius: 1mm; margin-bottom: 1.5mm; font-size: 7.8pt; line-height: 1.45; align-items: flex-start; }
+  .afirmativa.certa  { background: #f0f8f0; border-left: 1mm solid #1F5C23; }
+  .afirmativa.errada { background: #fff8f7; border-left: 1mm solid #c0392b; }
+  .af-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; min-width: 5mm; flex-shrink: 0; }
+  .afirmativa.certa  .af-num { color: #1F5C23; }
+  .afirmativa.errada .af-num { color: #c0392b; }
+  .af-verdict { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 8pt; padding: 0.3mm 2mm; border-radius: 0.8mm; flex-shrink: 0; }
+  .afirmativa.certa  .af-verdict { background: #1F5C23; color: #F6F4ED; }
+  .afirmativa.errada .af-verdict { background: #c0392b; color: #fff; }
+
+  /* gabarito */
+  .gab-box { display: flex; gap: 3mm; align-items: center; background: #1F5C23; color: #F6F4ED; border-radius: 1.5mm; padding: 2.5mm 4mm; margin-bottom: 2mm; }
+  .gab-letter { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 20pt; color: #C6D834; line-height: 1; }
+  .gab-info { flex: 1; font-size: 7.8pt; line-height: 1.4; }
+  .gab-info strong { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 9pt; text-transform: uppercase; letter-spacing: 0.03em; }
+
+  /* síntese */
+  .sintese-item { display: flex; gap: 2mm; padding: 2mm 3mm; border-radius: 1mm; margin-bottom: 1.5mm; background: #fff; border-left: 1mm solid #1F5C23; font-size: 7.8pt; line-height: 1.4; align-items: flex-start; }
+  .sintese-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: #1F5C23; font-size: 10pt; min-width: 5mm; flex-shrink: 0; margin-top: -0.5mm; }
+
+  /* capa */
+  .cover { background: #1F5C23; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; overflow: hidden; padding: 12mm; }
+  .cover::before { content: ''; position: absolute; top: -20mm; right: -20mm; width: 80mm; height: 80mm; background: rgba(198,216,52,0.12); border-radius: 50%; }
+  .cover::after  { content: ''; position: absolute; bottom: -15mm; left: -15mm; width: 60mm; height: 60mm; background: rgba(198,216,52,0.08); border-radius: 50%; }
+  .cover-inner { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 5mm; width: 100%; }
+  .cover-logo { width: 22mm; height: 22mm; }
+  .cover-brand { font-family: 'Playfair Display', serif; font-style: italic; color: #C6D834; font-size: 11pt; letter-spacing: 0.05em; }
+  .cover-tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(246,244,237,0.6); font-size: 7pt; text-transform: uppercase; letter-spacing: 0.12em; }
+  .cover-divider { width: 30mm; height: 0.3mm; background: rgba(198,216,52,0.4); }
+  .cover-bloco { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: #C6D834; font-size: 9pt; text-transform: uppercase; letter-spacing: 0.1em; background: rgba(198,216,52,0.12); padding: 1.5mm 4mm; border-radius: 1mm; }
+  .cover-aula-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: rgba(246,244,237,0.3); font-size: 52pt; line-height: 1; letter-spacing: -1mm; }
+  .cover-module { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: #C6D834; font-size: 10pt; text-transform: uppercase; letter-spacing: 0.08em; }
+  .cover-main-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: #F6F4ED; font-size: 22pt; text-transform: uppercase; letter-spacing: 0.03em; line-height: 1.1; }
+  .cover-sub { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; color: rgba(246,244,237,0.7); font-size: 8pt; line-height: 1.5; max-width: 140mm; }
+  .cover-footer-bar { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(198,216,52,0.15); border-top: 0.5mm solid rgba(198,216,52,0.3); padding: 3mm 8mm; display: flex; justify-content: space-between; align-items: center; }
+  .cover-footer-bar span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(246,244,237,0.5); font-size: 6pt; text-transform: uppercase; letter-spacing: 0.08em; }
+</style>
+</head>
+<body>
+
+<!-- P1 — CAPA -->
+<div class="page">
+  <div class="cover">
+    <div class="cover-inner">
+      <svg class="cover-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#F6F4ED" stroke="#C6D834" stroke-width="4"/>
+        <circle cx="50" cy="50" r="24" fill="#1F5C23"/>
+        <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#F6F4ED">E</text>
+      </svg>
+      <div class="cover-brand">Elite Treinamentos em Saúde</div>
+      <div class="cover-tagline">Extensivo ENARE 2026</div>
+      <div class="cover-divider"></div>
+      <div class="cover-bloco">Psicologia · Bloco B11</div>
+      <div class="cover-aula-num">02</div>
+      <div class="cover-module">PSI-SAUDE</div>
+      <div class="cover-main-title">RAPS — Rede de<br>Atenção Psicossocial</div>
+      <div class="cover-sub">Portaria 3.088/2011 · 7 Componentes · CAPS (tipos e critérios) ·
+        SRT · Programa de Volta para Casa · Consultório na Rua · CECCO</div>
+    </div>
+    <div class="cover-footer-bar">
+      <span>PDF de Apoio · Uso Exclusivo Extensivo ENARE 2026</span>
+      <span>Aula 02 · Bloco B11 · Psicologia</span>
+    </div>
+  </div>
+</div>
+
+<!-- P2 — RAPS: CONCEITO E 7 COMPONENTES -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">PSI-SAUDE · RAPS — Portaria 3.088/2011: Conceito e 7 Componentes</div>
+    </div>
+    <div class="header-badge">Aula 02</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">RAPS — Rede de Atenção Psicossocial</div>
+    <div class="box">
+      <div class="box-title">O que é e para quem se destina</div>
+      Instituída pela <strong>Portaria 3.088/2011</strong>, a RAPS organiza os pontos de atenção à saúde mental no SUS. Destina-se a <strong>dois grupos</strong>: (1) pessoas em sofrimento ou com transtorno mental; (2) pessoas com necessidades decorrentes do uso de crack, álcool e outras drogas. Integra-se às demais redes do SUS: APS, urgência/emergência, atenção hospitalar e atenção psicossocial.
+    </div>
+
+    <div class="section-title">Os 7 Componentes da RAPS</div>
+
+    <div class="comp-item">
+      <span class="comp-num">1</span>
+      <div><strong>Atenção Básica em Saúde:</strong> UBS, NASF-AB/eMulti, Consultório na Rua (CnR), Apoio aos Serviços do Componente Atenção Residencial de Caráter Transitório. Porta de entrada prioritária para saúde mental leve a moderada.</div>
+    </div>
+    <div class="comp-item">
+      <span class="comp-num">2</span>
+      <div><strong>Atenção Psicossocial Especializada:</strong> CAPS (tipos I, II, III, i, ad, ad III) — serviço central da RAPS para casos graves. Atendimento territorial, intensivo, semi-intensivo e não intensivo.</div>
+    </div>
+    <div class="comp-item">
+      <span class="comp-num alt">3</span>
+      <div><strong>Atenção de Urgência e Emergência:</strong> SAMU (192), UPA 24h, portas de urgência de hospitais gerais. Crise em saúde mental é atendida nesse componente — <span style="color:#c0392b">não é exclusividade do CAPS III</span>.</div>
+    </div>
+    <div class="comp-item">
+      <span class="comp-num">4</span>
+      <div><strong>Atenção Residencial de Caráter Transitório:</strong> Unidade de Recolhimento (UR) e Comunidades Terapêuticas (CT) — para álcool e drogas, caráter transitório, voluntário.</div>
+    </div>
+    <div class="comp-item">
+      <span class="comp-num">5</span>
+      <div><strong>Atenção Hospitalar:</strong> Leitos de saúde mental em <strong>hospitais gerais</strong> (≤10% dos leitos) e Hospital-Dia. Internação breve quando necessária. Hospital psiquiátrico isolado NÃO é componente da RAPS.</div>
+    </div>
+    <div class="comp-item">
+      <span class="comp-num alt">6</span>
+      <div><strong>Estratégias de Desinstitucionalização:</strong> Serviços Residenciais Terapêuticos (SRT) e Programa de Volta para Casa (PVC). Para egressos de longas internações.</div>
+    </div>
+    <div class="comp-item">
+      <span class="comp-num">7</span>
+      <div><strong>Reabilitação Psicossocial:</strong> Centros de Convivência e Cooperativa (CECCO) e iniciativas de geração de renda e trabalho protegido (cooperativas sociais, empreendimentos solidários).</div>
+    </div>
+
+    <div class="box alert" style="margin-top:1mm">
+      <strong>Armadilha FGV (Q42/2024 e Q22/2025):</strong> crise em saúde mental e leito de internação são atribuições do <strong>Componente 3 (urgência)</strong> e do <strong>Componente 5 (hospitalar)</strong>, respectivamente — <strong>não são exclusividade do CAPS III</strong>. O leito SM é em <em>hospital geral</em>, não em hospital psiquiátrico isolado.
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">2 / 10</div>
+  </div>
+</div>
+
+<!-- P3 — CAPS: TIPOS E CRITÉRIOS -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">PSI-SAUDE · CAPS — Tipos, Critérios Populacionais e Funcionamento</div>
+    </div>
+    <div class="header-badge">Aula 02</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">Centro de Atenção Psicossocial — Tipos (Portaria 336/2002 + 3.088/2011)</div>
+
+    <table>
+      <tr><th>Tipo</th><th>Pop. Município</th><th>Público</th><th>Funcionamento</th><th>Leitos</th></tr>
+      <tr><td><strong>CAPS I</strong></td><td>20.000 – 70.000 hab.</td><td>TM graves e persistentes</td><td>5 dias/sem · horário comercial</td><td>Não</td></tr>
+      <tr><td><strong>CAPS II</strong></td><td>&gt;70.000 hab.</td><td>TM graves e persistentes</td><td>5 dias/sem · horário comercial</td><td>Não</td></tr>
+      <tr><td><strong>CAPS III</strong></td><td>&gt;200.000 hab.</td><td>TM graves e persistentes</td><td><strong>24h / 7 dias</strong></td><td>Até 5 leitos observação</td></tr>
+      <tr><td><strong>CAPSi</strong></td><td>&gt;150.000 hab.</td><td>Crianças e adolescentes</td><td>5 dias/sem · horário comercial</td><td>Não</td></tr>
+      <tr><td><strong>CAPSad</strong></td><td>&gt;70.000 hab.</td><td>Álcool e outras drogas</td><td>5 dias/sem · horário comercial</td><td>Não</td></tr>
+      <tr><td><strong>CAPSad III</strong></td><td>&gt;200.000 hab.</td><td>Álcool e outras drogas</td><td><strong>24h / 7 dias</strong></td><td>Até 8 leitos retaguarda</td></tr>
+    </table>
+
+    <div class="section-title" style="margin-top:2mm">Modalidades de Atendimento no CAPS</div>
+    <div class="grid3">
+      <div class="box">
+        <div class="box-title">Intensivo</div>
+        Diário. Para usuários em crise ou situação de maior vulnerabilidade. Alternativa à internação.
+      </div>
+      <div class="box">
+        <div class="box-title">Semi-intensivo</div>
+        Até 12 dias/mês. Para usuários em processo de reabilitação com alguma estabilidade.
+      </div>
+      <div class="box">
+        <div class="box-title">Não Intensivo</div>
+        Até 3 dias/mês. Para usuários estabilizados, com maior autonomia e suporte familiar.
+      </div>
+    </div>
+
+    <div class="box accent">
+      <div class="box-title">PTS — Projeto Terapêutico Singular</div>
+      Instrumento central do CAPS: construído <strong>coletivamente</strong> pela equipe multiprofissional junto ao usuário e à família. Define objetivos, ações e responsabilidades individualizadas. <strong>NÃO</strong> é elaborado unilateralmente pelo psicólogo ou pelo médico. Inclui: definição de casos, discussão de caso, redefinição de metas e avaliação de resultados.
+    </div>
+
+    <div class="box alert">
+      <div class="box-title">Números críticos para a prova</div>
+      CAPS I = <strong>20–70 mil</strong> (não &gt;70 mil) · CAPS III = <strong>&gt;200 mil</strong> · CAPSi = <strong>&gt;150 mil</strong> · Leitos CAPS III = <strong>até 5</strong> (observação) · Leitos CAPSad III = <strong>até 8</strong> (retaguarda) · Funcionamento 24h = <strong>apenas CAPS III e CAPSad III</strong>.
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">3 / 10</div>
+  </div>
+</div>
+
+<!-- P4 — DESINSTITUCIONALIZAÇÃO: SRT, PVC E OUTROS SERVIÇOS -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">PSI-SAUDE · Desinstitucionalização — SRT, PVC, CECCO e Consultório na Rua</div>
+    </div>
+    <div class="header-badge">Aula 02</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">Componente 6 — Estratégias de Desinstitucionalização</div>
+
+    <div class="grid2">
+      <div class="box">
+        <div class="box-title">SRT — Serviço Residencial Terapêutico</div>
+        <strong>O que é:</strong> moradia inserida na comunidade para pessoas com transtornos mentais com longo histórico de internação psiquiátrica e sem possibilidade de suporte familiar.<br><br>
+        <strong>Capacidade:</strong> máximo <strong>8 moradores</strong> por unidade.<br>
+        <strong>Lógica:</strong> não é serviço de saúde — é <em>moradia</em>. O cuidado clínico é feito pelos serviços da rede (CAPS, UBS). Foco na convivência e autonomia.<br><br>
+        <strong>Tipos:</strong> SRT I (moradores com maior autonomia) e SRT II (moradores com maior dependência — cuidador 24h).
+      </div>
+      <div class="box">
+        <div class="box-title">PVC — Programa de Volta para Casa</div>
+        <strong>Lei 10.708/2003.</strong> Benefício financeiro mensal para egressos de longas internações psiquiátrica (≥2 anos de internação ininterrupta).<br><br>
+        <strong>Objetivo:</strong> contribuir para a (re)inserção social e estimular o processo de desinstitucionalização.<br><br>
+        <strong>Gestão:</strong> MS; benefício individual; adesão voluntária do município.<br><br>
+        <strong>Armadilha:</strong> o PVC não é o mesmo que a Bolsa Família — é específico para egressos de internação psiquiátrica de longa permanência.
+      </div>
+    </div>
+
+    <div class="section-title">Componente 7 — Reabilitação Psicossocial e Outros Serviços</div>
+
+    <div class="grid2">
+      <div class="box">
+        <div class="box-title">CECCO — Centro de Convivência e Cooperativa</div>
+        Serviço de reabilitação psicossocial <strong>inserido na cidade</strong> (não dentro do CAPS). Fomenta o convívio social, a cultura, o lazer e o trabalho protegido.<br><br>
+        Questão emblemática (Q96/2024): <em>"Centros de Convivência articulam-se com a cidade"</em> — CORRETO. A lógica é de inclusão social ativa, não de internação ou atendimento clínico.
+      </div>
+      <div class="box">
+        <div class="box-title">Consultório na Rua (CnR)</div>
+        Equipe multiprofissional que atua <strong>nos territórios</strong> onde a população em situação de rua vive e circula. Combina saúde mental, atenção básica e ação social.<br><br>
+        <strong>NÃO é exclusivo para drogas</strong> — atende todas as necessidades de saúde da população em situação de rua, incluindo TM.<br><br>
+        Questão ENARE 2024 (Q50): Consultório na Rua inclui redução de danos e acesso a direitos.
+      </div>
+    </div>
+
+    <div class="box dark">
+      <div class="box-title">Âncoras dos Serviços de Desinstitucionalização</div>
+      (1) SRT = moradia, máx. <strong>8 moradores</strong>, não é serviço de saúde; (2) PVC = benefício financeiro para ≥2 anos de internação (Lei 10.708/2003); (3) CECCO = convivência na cidade, não atendimento clínico; (4) CnR = não é só álcool/drogas — atende toda a população em situação de rua; (5) Hospital psiquiátrico isolado <strong>NÃO é componente da RAPS</strong>.
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">4 / 10</div>
+  </div>
+</div>
+
+<!-- P5 — RAPS E APS: MATRICIAMENTO E EMULTI -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">PSI-SAUDE · RAPS e APS — Matriciamento, eMulti e Casos ENARE</div>
+    </div>
+    <div class="header-badge">Aula 02</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">Apoio Matricial em Saúde Mental</div>
+
+    <div class="grid2">
+      <div class="box">
+        <div class="box-title">O que é Matriciamento</div>
+        Modalidade de suporte técnico especializado às equipes de referência (eSF/eAP). O especialista em SM (psicólogo, psiquiatra) apoia sem substituir a equipe de APS.<br><br>
+        <strong>Dois eixos:</strong><br>
+        (1) <em>Clínico-assistencial:</em> atendimento conjunto, discussão de casos, consulta conjunta;<br>
+        (2) <em>Técnico-pedagógico:</em> formação, educação permanente, supervisão.<br><br>
+        <strong>Instrumento ENARE (Q79/2024):</strong> o matriciamento usa atendimento conjunto, visita domiciliar e discussão de caso — <strong>não</strong> é encaminhamento e transferência de responsabilidade.
+      </div>
+      <div class="box">
+        <div class="box-title">eMulti — Equipe Multiprofissional</div>
+        Substituiu o NASF-AB (Nota Técnica, 2022). Composta por profissionais de diferentes categorias (psicólogo, assistente social, fisioterapeuta, nutricionista etc.).<br><br>
+        <strong>Lógica:</strong> apoio às equipes da APS no território; foco na integração do cuidado; não atende de forma isolada — atua <em>com</em> as equipes de referência.<br><br>
+        <strong>ENARE 2025 (Q74):</strong> eMulti integra práticas na APS = CORRETO.<br>
+        <strong>ENARE 2025 (Q63):</strong> psicóloga da Alta Complexidade (SUAS) usa PIA, trabalha com eMulti.
+      </div>
+    </div>
+
+    <div class="section-title">Casos ENARE Mais Cobrados — RAPS na Prática</div>
+
+    <table>
+      <tr><th>Caso (questão)</th><th>Situação</th><th>Conduta correta</th></tr>
+      <tr><td><strong>Q22/2025</strong></td><td>Lucas, esquizofrenia — leito SM em hospital geral</td><td>Leito SM em hospital geral (Componente 5 RAPS), não hospital psiquiátrico</td></tr>
+      <tr><td><strong>Q41/2025</strong></td><td>Thiago (rua, crack) — Consultório na Rua</td><td>CnR como porta de acesso — vínculo antes do encaminhamento</td></tr>
+      <tr><td><strong>Q46/2025</strong></td><td>Nicole, 15a (cortes) — CAPSi</td><td>Matriciamento com CAPSi; não encaminhamento direto sem vínculo</td></tr>
+      <tr><td><strong>Q61/2024</strong></td><td>Catarina/CAPS — PTS e acolhimento em crise</td><td>Acolhimento + PTS coletivo com equipe — não conduta unilateral</td></tr>
+      <tr><td><strong>Q80/2024</strong></td><td>Carla/UBS — apoio matricial</td><td>Atendimento conjunto + discussão de caso = matriciamento correto</td></tr>
+    </table>
+
+    <div class="box accent">
+      <strong>Regra geral RAPS na prova:</strong> a resposta correta tende a envolver (a) vínculo antes do encaminhamento; (b) trabalho em equipe/coletivo em vez de conduta unilateral; (c) território como espaço de cuidado; (d) integração entre componentes, não isolamento do CAPS.
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">5 / 10</div>
+  </div>
+</div>
+
+<!-- P6 — Q01 APLICAÇÃO (GAB B) -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">PSI-SAUDE · Q01 — Aplicação · CAPS: Tipo e Critério Populacional</div>
+    </div>
+    <div class="header-badge">Aula 02</div>
+  </div>
+  <div class="page-body">
+    <div class="q-stem">
+      <div class="q-stem-label">Questão 01 · Aplicação</div>
+      Lucas, 28 anos, com diagnóstico de esquizofrenia estabelecido há 4 anos, mora em município de 150.000 habitantes. Após alta de internação de 3 semanas em leito de saúde mental de hospital geral, foi encaminhado para acompanhamento longitudinal na rede de saúde mental. Qual o serviço da RAPS mais indicado para seu seguimento e qual a sua característica <strong>CORRETA</strong>?
+    </div>
+
+    <div class="q-option wrong">
+      <span class="q-letter">A</span>
+      <span>CAPS I, que atende municípios acima de 70.000 habitantes, funciona 24 horas por dia, 7 dias por semana, e dispõe de até 5 leitos de observação para manejo de crises no próprio serviço.</span>
+    </div>
+    <div class="q-option correct">
+      <span class="q-letter">B</span>
+      <span>CAPS II, indicado para municípios acima de 70.000 habitantes, com funcionamento 5 dias por semana em horário comercial, é o serviço de referência para acompanhamento de pessoas com transtornos mentais graves e persistentes.</span>
+    </div>
+    <div class="q-option wrong">
+      <span class="q-letter">C</span>
+      <span>CAPSad, pois é o serviço especializado para transtornos mentais graves em municípios acima de 70.000 habitantes, com funcionamento de 24 horas para garantir atendimento intensivo e contínuo aos casos de maior complexidade.</span>
+    </div>
+    <div class="q-option wrong">
+      <span class="q-letter">D</span>
+      <span>CAPS III, pois qualquer pessoa com diagnóstico de esquizofrenia deve ser encaminhada obrigatoriamente ao CAPS de maior complexidade, independentemente do porte do município, para garantir acesso a leitos de observação.</span>
+    </div>
+
+    <div class="box" style="margin-top:2mm">
+      <div class="box-title">Análise das Alternativas</div>
+      <table>
+        <tr><th>Alt.</th><th>Erro / Acerto</th></tr>
+        <tr><td><strong>A</strong></td><td>CAPS I = municípios 20.000–70.000 hab. (não acima de 70.000); não funciona 24h — apenas CAPS III e CAPSad III funcionam 24h</td></tr>
+        <tr><td><strong style="color:#1F5C23">B ✓</strong></td><td>CORRETA: 150.000 hab. → CAPS II (>70.000); funciona 5 dias/sem; referência para TM graves</td></tr>
+        <tr><td><strong>C</strong></td><td>CAPSad = álcool e outras drogas — não é o serviço para esquizofrenia. Lucas não tem diagnóstico de uso de substâncias</td></tr>
+        <tr><td><strong>D</strong></td><td>CAPS III exige município >200.000 hab.; encaminhamento depende da necessidade e do porte do município — não é obrigatório para toda esquizofrenia</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">6 / 10</div>
+  </div>
+</div>
+
+<!-- P7 — Q02 APLICAÇÃO (GAB C) -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">PSI-SAUDE · Q02 — Aplicação · Desinstitucionalização — SRT e Moradia</div>
+    </div>
+    <div class="header-badge">Aula 02</div>
+  </div>
+  <div class="page-body">
+    <div class="q-stem">
+      <div class="q-stem-label">Questão 02 · Aplicação</div>
+      Maria, 45 anos, com diagnóstico de transtorno bipolar grave, recebeu alta após 6 anos de internação psiquiátrica ininterrupta. Não possui família disponível para acolhê-la e não tem condições de morar sozinha com plena autonomia. Considerando as estratégias de desinstitucionalização da RAPS (Portaria 3.088/2011), qual a alternativa mais <strong>ADEQUADA</strong> para garantir sua moradia e inserção comunitária?
+    </div>
+
+    <div class="q-option wrong">
+      <span class="q-letter">A</span>
+      <span>Internação em comunidade terapêutica, que compõe o Componente de Atenção Residencial de Caráter Transitório da RAPS e funciona como moradia permanente para pessoas com transtornos mentais graves sem suporte familiar, com capacidade de até 30 moradores por unidade.</span>
+    </div>
+    <div class="q-option wrong">
+      <span class="q-letter">B</span>
+      <span>Retorno ao hospital psiquiátrico de longa permanência, que é mantido pela Portaria 3.088/2011 como alternativa residencial para pacientes com baixa autonomia e sem suporte familiar, configurando opção legítima dentro da rede de atenção psicossocial.</span>
+    </div>
+    <div class="q-option correct">
+      <span class="q-letter">C</span>
+      <span>Serviço Residencial Terapêutico (SRT), moradia inserida na comunidade para pessoas com longo histórico de internação psiquiátrica sem possibilidade de suporte familiar, com capacidade máxima de 8 moradores por unidade.</span>
+    </div>
+    <div class="q-option wrong">
+      <span class="q-letter">D</span>
+      <span>Centro de Convivência e Cooperativa (CECCO), que oferece moradia protegida com acompanhamento terapêutico intensivo e inserção laboral para egressos de internações psiquiátricas de longa duração sem suporte familiar.</span>
+    </div>
+
+    <div class="box" style="margin-top:2mm">
+      <div class="box-title">Análise das Alternativas</div>
+      <table>
+        <tr><th>Alt.</th><th>Erro / Acerto</th></tr>
+        <tr><td><strong>A</strong></td><td>CT = álcool/drogas, caráter TRANSITÓRIO e voluntário; não é para TM graves; capacidade de até 30 não é a do SRT</td></tr>
+        <tr><td><strong>B</strong></td><td>Hospital psiquiátrico isolado NÃO é componente da RAPS; a Portaria 3.088/2011 não o prevê como opção residencial</td></tr>
+        <tr><td><strong style="color:#1F5C23">C ✓</strong></td><td>CORRETA: SRT = moradia comunitária para egressos de longas internações sem suporte familiar; máximo 8 moradores</td></tr>
+        <tr><td><strong>D</strong></td><td>CECCO = convivência, cultura e trabalho protegido — NÃO oferece moradia; é serviço de reabilitação, não residência</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">7 / 10</div>
+  </div>
+</div>
+
+<!-- P8 — Q03 ANÁLISE ÂNCORA (GAB C) -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">PSI-SAUDE · Q03 — Análise Âncora · RAPS: Componentes e Serviços</div>
+    </div>
+    <div class="header-badge">Aula 02</div>
+  </div>
+  <div class="page-body">
+    <div class="q-stem">
+      <div class="q-stem-label">Questão 03 · Análise Âncora (Afirmativas)</div>
+      Sobre a Rede de Atenção Psicossocial (RAPS), instituída pela Portaria 3.088/2011, analise as afirmativas e marque a alternativa correta:
+    </div>
+
+    <div class="afirmativa errada">
+      <span class="af-num">I.</span>
+      <div>
+        <span class="af-verdict">ERRADA</span><br>
+        O CAPS III, por funcionar 24 horas por dia, 7 dias por semana, é o único ponto de atenção da RAPS responsável pelo cuidado em situações de crise em saúde mental, devendo todas as urgências psiquiátricas ser obrigatoriamente encaminhadas a esse serviço, independentemente do município.
+      </div>
+    </div>
+
+    <div class="afirmativa certa">
+      <span class="af-num">II.</span>
+      <div>
+        <span class="af-verdict">CORRETA</span><br>
+        A Portaria 3.088/2011 institui a RAPS para pessoas em sofrimento ou com transtorno mental e para pessoas com necessidades decorrentes do uso de crack, álcool e outras drogas, organizando os pontos de atenção em sete componentes que incluem desde a atenção básica até as estratégias de desinstitucionalização e a reabilitação psicossocial.
+      </div>
+    </div>
+
+    <div class="afirmativa certa">
+      <span class="af-num">III.</span>
+      <div>
+        <span class="af-verdict">CORRETA</span><br>
+        O Serviço Residencial Terapêutico (SRT) é uma moradia inserida na comunidade, destinada a pessoas com transtornos mentais que apresentam longo histórico de internação psiquiátrica e não dispõem de suporte familiar, com capacidade máxima de 8 moradores por unidade.
+      </div>
+    </div>
+
+    <div class="afirmativa errada">
+      <span class="af-num">IV.</span>
+      <div>
+        <span class="af-verdict">ERRADA</span><br>
+        A Atenção de Urgência e Emergência não compõe a RAPS, uma vez que o cuidado em crise de saúde mental é atribuição exclusiva dos CAPS tipo III, únicos serviços com funcionamento ininterrupto e leitos de observação para manejo das situações agudas.
+      </div>
+    </div>
+
+    <div class="grid3" style="margin-top:2mm">
+      <div class="q-option wrong"><span class="q-letter">A</span><span>Apenas I e III são corretas</span></div>
+      <div class="q-option wrong"><span class="q-letter">B</span><span>Apenas II e IV são corretas</span></div>
+      <div class="q-option correct"><span class="q-letter">C</span><span>Apenas II e III são corretas</span></div>
+      <div class="q-option wrong"><span class="q-letter">D</span><span>Apenas I, II e IV são corretas</span></div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">8 / 10</div>
+  </div>
+</div>
+
+<!-- P9 — GABARITO COMENTADO -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">PSI-SAUDE · Gabarito Comentado</div>
+    </div>
+    <div class="header-badge">Aula 02</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">Gabarito Oficial</div>
+
+    <div class="gab-box">
+      <div class="gab-letter">B</div>
+      <div class="gab-info">
+        <strong>Q01 — Aplicação · CAPS: Tipo e Critério Populacional</strong><br>
+        Município 150.000 hab. → CAPS II (>70.000). Funciona 5 dias/semana. Referência para TM graves. CAPS I = 20–70k; CAPS III = >200k (24h). CAPSad = álcool/drogas. Encaminhamento ao CAPS depende do porte do município e da necessidade clínica — não é obrigatório ir ao CAPS III.
+      </div>
+    </div>
+
+    <div class="gab-box">
+      <div class="gab-letter">C</div>
+      <div class="gab-info">
+        <strong>Q02 — Aplicação · Desinstitucionalização — SRT</strong><br>
+        Longo histórico de internação + sem suporte familiar → SRT (moradia comunitária, máx. 8 moradores). CT = álcool/drogas, transitória. Hospital psiquiátrico isolado = fora da RAPS. CECCO = convivência, não moradia.
+      </div>
+    </div>
+
+    <div class="gab-box">
+      <div class="gab-letter">C</div>
+      <div class="gab-info">
+        <strong>Q03 — Análise Âncora · II e III corretas</strong><br>
+        I errada (crise em SM = Componente 3 RAPS: SAMU, UPA, hospitais gerais — não exclusividade do CAPS III). II correta (7 componentes, dois públicos). III correta (SRT: moradia, máx. 8, sem suporte familiar). IV errada (urgência e emergência É o 3° componente da RAPS).
+      </div>
+    </div>
+
+    <div class="section-title" style="margin-top:1mm">Números que a FGV Cobra</div>
+    <div class="box">
+      <table>
+        <tr><th>Serviço</th><th>Critério pop.</th><th>Funcionamento</th><th>Leitos</th></tr>
+        <tr><td>CAPS I</td><td>20.000–70.000</td><td>5 dias/sem</td><td>—</td></tr>
+        <tr><td>CAPS II</td><td>&gt;70.000</td><td>5 dias/sem</td><td>—</td></tr>
+        <tr><td>CAPS III</td><td>&gt;200.000</td><td>24h / 7 dias</td><td><strong>até 5</strong> obs.</td></tr>
+        <tr><td>CAPSi</td><td>&gt;150.000</td><td>5 dias/sem</td><td>—</td></tr>
+        <tr><td>CAPSad</td><td>&gt;70.000</td><td>5 dias/sem</td><td>—</td></tr>
+        <tr><td>CAPSad III</td><td>&gt;200.000</td><td>24h / 7 dias</td><td><strong>até 8</strong> retaguarda</td></tr>
+        <tr><td>SRT</td><td>—</td><td>Moradia</td><td><strong>máx. 8</strong> moradores</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">9 / 10</div>
+  </div>
+</div>
+
+<!-- P10 — SÍNTESE FINAL -->
+<div class="page">
+  <div class="page-header">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,4 93,27 93,73 50,96 7,73 7,27" fill="#1F5C23" stroke="#C6D834" stroke-width="5"/>
+      <circle cx="50" cy="50" r="24" fill="#F6F4ED"/>
+      <text x="50" y="56" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="22" fill="#1F5C23">E</text>
+    </svg>
+    <div class="header-text">
+      <div class="header-course">Elite Treinamentos em Saúde · Extensivo ENARE 2026 · Psicologia B11</div>
+      <div class="header-title">PSI-SAUDE · Síntese Final — Aula 02</div>
+    </div>
+    <div class="header-badge">Aula 02</div>
+  </div>
+  <div class="page-body">
+    <div class="section-title">10 Âncoras da Aula 02</div>
+
+    <div class="sintese-item">
+      <span class="sintese-num">1</span>
+      <span><strong>RAPS (Port. 3.088/2011):</strong> 7 componentes, 2 públicos (TM + álcool/drogas). Hospital psiquiátrico isolado NÃO é componente.</span>
+    </div>
+    <div class="sintese-item">
+      <span class="sintese-num">2</span>
+      <span><strong>CAPS I:</strong> 20–70k hab. · <strong>CAPS II:</strong> >70k · <strong>CAPS III:</strong> >200k, 24h, até 5 leitos · <strong>CAPSi:</strong> >150k · <strong>CAPSad:</strong> >70k · <strong>CAPSad III:</strong> >200k, 24h, até 8 leitos.</span>
+    </div>
+    <div class="sintese-item">
+      <span class="sintese-num">3</span>
+      <span>Funcionamento 24h = <strong>apenas CAPS III e CAPSad III</strong>. Os demais funcionam 5 dias/semana em horário comercial.</span>
+    </div>
+    <div class="sintese-item">
+      <span class="sintese-num">4</span>
+      <span><strong>Crise em SM:</strong> Componente 3 (urgência) — SAMU, UPA, hospitais gerais. NÃO é exclusividade do CAPS III.</span>
+    </div>
+    <div class="sintese-item">
+      <span class="sintese-num">5</span>
+      <span><strong>SRT:</strong> moradia comunitária, máximo <strong>8 moradores</strong>, para egressos de longas internações sem suporte familiar. NÃO é serviço de saúde — o cuidado clínico vem da rede.</span>
+    </div>
+    <div class="sintese-item">
+      <span class="sintese-num">6</span>
+      <span><strong>PVC (Lei 10.708/2003):</strong> benefício financeiro para egressos com ≥2 anos de internação ininterrupta. Fomenta inserção social.</span>
+    </div>
+    <div class="sintese-item">
+      <span class="sintese-num">7</span>
+      <span><strong>CECCO:</strong> convivência, cultura e trabalho protegido <em>na cidade</em>. NÃO oferece moradia. Reabilitação psicossocial pelo território.</span>
+    </div>
+    <div class="sintese-item">
+      <span class="sintese-num">8</span>
+      <span><strong>Consultório na Rua:</strong> não é só álcool/drogas — atende todas as necessidades de saúde da população em situação de rua, incluindo TM.</span>
+    </div>
+    <div class="sintese-item">
+      <span class="sintese-num">9</span>
+      <span><strong>Matriciamento:</strong> apoio técnico especializado à APS sem substituí-la. Eixos: clínico-assistencial + técnico-pedagógico. Instrumento: atendimento conjunto, visita domiciliar, discussão de caso.</span>
+    </div>
+    <div class="sintese-item">
+      <span class="sintese-num">10</span>
+      <span><strong>PTS:</strong> construído coletivamente pela equipe + usuário + família. Não é conduta unilateral do psicólogo ou do médico.</span>
+    </div>
+
+    <div class="box dark" style="margin-top:1mm">
+      <div class="box-title">Próxima Aula</div>
+      <div style="font-size:7.8pt;line-height:1.5">
+        <strong>Aula 03 — CAPS:</strong> funcionamento aprofundado, acolhimento em crise, Projeto Terapêutico Singular na prática clínica, manejo do sofrimento grave no CAPS e casos FGV mais cobrados (alucinação, delírio, crise, contrafissura/Lancetti).
+      </div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="footer-left">Elite Treinamentos em Saúde · Extensivo ENARE 2026</div>
+    <div class="footer-right">10 / 10</div>
+  </div>
+</div>
+
+</body>
+</html>
