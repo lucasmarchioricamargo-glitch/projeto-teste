@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Farmácia — Bloco B5 Aula 18 | Extensivo ENARE 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap');
+  :root { --creme: #F6F4ED; --verde: #1F5C23; --amarelo: #C6D834; --escuro: #0C2B0E; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #d0d0d0; font-family: 'Bricolage Grotesque', sans-serif; }
+  .page { width: 210mm; height: 297mm; background: var(--creme); margin: 0 auto 12px; position: relative; overflow: hidden; page-break-after: always; }
+  .header { background: var(--verde); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .header-logo { display: flex; align-items: center; gap: 8px; }
+  .header-logo svg { width: 32px; height: 32px; }
+  .header-brand { display: flex; flex-direction: column; line-height: 1; }
+  .header-brand .marca { font-family: 'Playfair Display', serif; font-style: italic; color: #fff; font-size: 13px; letter-spacing: 0.5px; }
+  .header-brand .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 7px; letter-spacing: 1.5px; text-transform: uppercase; }
+  .header-info { text-align: right; }
+  .header-info .disciplina { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
+  .header-info .aula-ref { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.7); font-size: 8px; letter-spacing: 0.5px; }
+  .footer { position: absolute; bottom: 0; left: 0; right: 0; background: var(--verde); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .footer span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.6); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .footer .pg { color: var(--amarelo); font-weight: 400; }
+  .body { padding: 14px 18px 30px; height: calc(297mm - 52px - 22px); overflow: hidden; }
+  .capa-page { background: var(--verde); }
+  .capa-header { background: var(--creme); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .capa-header .marca { font-family: 'Playfair Display', serif; font-style: italic; color: var(--verde); font-size: 14px; }
+  .capa-header .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--verde); font-size: 7.5px; letter-spacing: 2px; text-transform: uppercase; }
+  .capa-body { padding: 28px 24px 0; display: flex; flex-direction: column; height: calc(297mm - 52px - 22px); }
+  .capa-eyebrow { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; }
+  .capa-titulo { font-family: 'Barlow Condensed', sans-serif; color: #fff; font-size: 50px; line-height: 0.95; text-transform: uppercase; letter-spacing: -0.5px; margin-bottom: 6px; }
+  .capa-titulo span { color: var(--amarelo); }
+  .capa-subtitulo { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; color: rgba(255,255,255,0.65); font-size: 12px; letter-spacing: 0.3px; margin-bottom: 22px; line-height: 1.5; }
+  .capa-badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+  .capa-badge { background: rgba(198,216,52,0.15); border: 1px solid var(--amarelo); color: var(--amarelo); font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 8px; border-radius: 2px; }
+  .capa-divider { width: 40px; height: 3px; background: var(--amarelo); margin-bottom: 20px; }
+  .capa-topicos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .capa-topico { display: flex; align-items: flex-start; gap: 7px; }
+  .capa-topico-num { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 18px; line-height: 1; min-width: 18px; }
+  .capa-topico-txt { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 400; color: rgba(255,255,255,0.8); font-size: 9.5px; line-height: 1.4; }
+  .capa-footer-strip { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.25); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .capa-footer-strip span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.45); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .secao-titulo { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 18px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid var(--amarelo); padding-bottom: 3px; margin-bottom: 9px; line-height: 1; }
+  .subsecao { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.5px; margin: 7px 0 3px; }
+  p { font-size: 9px; line-height: 1.55; color: #1a1a1a; margin-bottom: 4px; font-weight: 400; }
+  .destaque { background: var(--amarelo); color: var(--escuro); font-weight: 600; padding: 1px 4px; border-radius: 2px; font-size: 8.5px; }
+  .alerta { background: rgba(198,216,52,0.18); border-left: 3px solid var(--amarelo); padding: 5px 8px; margin: 5px 0; border-radius: 0 3px 3px 0; }
+  .alerta p { margin: 0; font-size: 8.5px; }
+  .alerta strong { color: var(--verde); }
+  table { width: 100%; border-collapse: collapse; margin: 5px 0; font-size: 8px; }
+  th { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; padding: 4px 6px; text-align: left; }
+  td { padding: 3px 6px; border-bottom: 1px solid rgba(31,92,35,0.12); vertical-align: top; line-height: 1.4; color: #1a1a1a; }
+  tr:nth-child(even) td { background: rgba(31,92,35,0.04); }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 5px 0; }
+  .card { background: rgba(31,92,35,0.06); border: 1px solid rgba(31,92,35,0.15); border-radius: 4px; padding: 7px 8px; }
+  .card-title { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 11px; text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 3px; }
+  .card p { font-size: 8px; line-height: 1.5; }
+  .questao-header { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; padding: 4px 10px; border-radius: 3px 3px 0 0; display: flex; justify-content: space-between; align-items: center; }
+  .questao-header .fonte { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; color: var(--amarelo); letter-spacing: 0.5px; }
+  .questao-body { border: 1px solid rgba(31,92,35,0.2); border-top: none; border-radius: 0 0 3px 3px; padding: 7px 10px; margin-bottom: 7px; }
+  .questao-enunciado { font-size: 8.5px; line-height: 1.55; color: #111; margin-bottom: 5px; font-weight: 500; }
+  .alternativas { list-style: none; }
+  .alternativas li { font-size: 8px; line-height: 1.5; padding: 2px 0; color: #222; display: flex; gap: 5px; }
+  .alternativas li .letra { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: var(--verde); font-size: 9px; min-width: 10px; }
+  .alternativas li.correta .letra { color: var(--amarelo); }
+  .alternativas li.correta { background: rgba(198,216,52,0.15); border-left: 2px solid var(--amarelo); padding-left: 4px; }
+  .gabarito-box { background: var(--verde); border-radius: 4px; padding: 8px 12px; margin: 6px 0; }
+  .gabarito-box .gab-title { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+  .gabarito-box p { color: rgba(255,255,255,0.9); font-size: 8px; line-height: 1.55; }
+  .gabarito-box strong { color: var(--amarelo); }
+  .sintese-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-top: 6px; }
+  .sintese-item { background: rgba(31,92,35,0.07); border-left: 3px solid var(--verde); padding: 5px 7px; border-radius: 0 3px 3px 0; }
+  .sintese-item .si-label { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px; }
+  .sintese-item p { font-size: 7.5px; line-height: 1.5; }
+  ul.lista { padding-left: 14px; margin: 3px 0; }
+  ul.lista li { font-size: 8.5px; line-height: 1.55; color: #1a1a1a; margin-bottom: 1px; }
+  @media print { body { background: none; } .page { margin: 0; box-shadow: none; } }
+</style>
+</head>
+<body>
+
+<div class="page capa-page">
+  <div class="capa-header">
+    <div style="display:flex;align-items:center;gap:8px;"><svg width="34" height="34" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#1F5C23"/></svg><div><div class="marca">Elite Treinamentos</div><div class="tagline">Extensivo ENARE 2026</div></div></div>
+    <div style="text-align:right;"><div style="font-family:'Barlow Condensed',sans-serif;color:var(--verde);font-size:11px;letter-spacing:1px;text-transform:uppercase;">Bloco B5 · Aula 18</div><div style="font-family:'Space Grotesk',sans-serif;font-weight:300;color:#888;font-size:7.5px;letter-spacing:0.5px;">Farmácia</div></div>
+  </div>
+  <div class="capa-body">
+    <div class="capa-eyebrow">Bloco B5 · FARM-POLIT · Aula 18 de 22</div>
+    <div class="capa-titulo">PNAF <span>·<br>Políticas<br>Farmacêu-<br>ticas</span></div>
+    <div class="capa-subtitulo">PNAF, RENAME, CEAF, Farmácia Popular, Lei 13.021/2014<br>e o ciclo da assistência farmacêutica no SUS</div>
+    <div class="capa-badge-row">
+      <div class="capa-badge">FARM-POLIT ★★★</div>
+      <div class="capa-badge">Res. CNS 338/2004</div>
+      <div class="capa-badge">RENAME · CEAF</div>
+      <div class="capa-badge">Lei 13.021/2014</div>
+    </div>
+    <div class="capa-divider"></div>
+    <div class="capa-topicos">
+      <div class="capa-topico"><div class="capa-topico-num">01</div><div class="capa-topico-txt">PNM (1998) e PNAF (2004): duas políticas</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">02</div><div class="capa-topico-txt">Ciclo da Assistência Farmacêutica (6 etapas)</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">03</div><div class="capa-topico-txt">Componentes: Básico, Estratégico, Especializado</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">04</div><div class="capa-topico-txt">CEAF: Grupos 1A, 1B, 2 e 3</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">05</div><div class="capa-topico-txt">RENAME, REMUME, Farmácia Popular</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">06</div><div class="capa-topico-txt">Lei 13.021/2014 e legislação correlata</div></div>
+    </div>
+  </div>
+  <div class="capa-footer-strip"><span>Extensivo ENARE 2026</span><span>Elite Treinamentos em Saúde</span><span>Página 1 de 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-POLIT</div><div class="aula-ref">Bloco B5 · Aula 18 · PNM e PNAF</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Duas Políticas Estruturantes — PNM e PNAF</div>
+    <p>O SUS opera com duas políticas centrais para medicamentos: a <strong>PNM</strong> (1998) e a <strong>PNAF</strong> (2004), que se complementam. Cobradas em ENARE 2024 (Q44, Q46, Q60, Q62) e 2025 (Q70, Q78, Q81, Q82) com regularidade. Foram diretamente referenciadas com peso ★★★ no estudo de banca FGV.</p>
+
+    <div class="subsecao">PNM — Política Nacional de Medicamentos (Portaria GM/MS 3.916/1998)</div>
+    <p>Primeira política estruturada do setor. Define princípios e diretrizes do uso racional de medicamentos no Brasil. Diretrizes principais:</p>
+    <ul class="lista">
+      <li>Adoção da Relação Nacional de Medicamentos Essenciais (RENAME) baseada na lista da OMS</li>
+      <li>Regulamentação sanitária de medicamentos (registro, vigilância)</li>
+      <li>Reorientação da Assistência Farmacêutica</li>
+      <li>Promoção do uso racional de medicamentos</li>
+      <li>Desenvolvimento científico e tecnológico (incentivo a produção nacional)</li>
+      <li>Promoção da produção de medicamentos (Laboratórios Públicos / Farmanguinhos, FURP, etc.)</li>
+      <li>Garantia da segurança, eficácia e qualidade</li>
+      <li>Desenvolvimento e capacitação de recursos humanos</li>
+    </ul>
+
+    <div class="subsecao">PNAF — Política Nacional de Assistência Farmacêutica (Res. CNS 338/2004)</div>
+    <p>Conjunto de princípios e diretrizes da Assistência Farmacêutica como <em>política transversal</em> do SUS. Não substitui a PNM — opera em complementaridade. Princípios:</p>
+    <ul class="lista">
+      <li>AF como parte integrante do SUS — não atividade meramente logística</li>
+      <li>Garantia do acesso e equidade no uso</li>
+      <li>Uso racional do medicamento</li>
+      <li>Manutenção e ampliação dos serviços de AF na rede</li>
+      <li>Descentralização e integração das ações</li>
+      <li>Qualificação dos recursos humanos</li>
+      <li>Participação e controle social</li>
+      <li>Acompanhamento e avaliação contínua</li>
+    </ul>
+
+    <div class="subsecao">Eixos Estratégicos da PNAF</div>
+    <table>
+      <tr><th>Eixo</th><th>Descrição</th></tr>
+      <tr><td>1</td><td>Garantia de acesso a medicamentos seguros, eficazes e qualidade, no contexto integral de cuidado</td></tr>
+      <tr><td>2</td><td>Promoção do uso racional de medicamentos</td></tr>
+      <tr><td>3</td><td>Modernização da AF no SUS — informatização, controle, ciclo logístico</td></tr>
+      <tr><td>4</td><td>Recursos humanos (formação, residência multiprofissional)</td></tr>
+      <tr><td>5</td><td>Pesquisa, desenvolvimento e produção</td></tr>
+      <tr><td>6</td><td>Inserção da AF como ciência social e clínica</td></tr>
+    </table>
+
+    <div class="alerta">
+      <p><strong>Cuidado terminológico:</strong> PNM ≠ PNAF. PNM é a Portaria 3.916/1998 (referência regulatória). PNAF é Res. CNS 338/2004 (política transversal de AF como parte do SUS). Ambas funcionam juntas; ENARE pode pedir referência específica.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-POLIT · PNAF</span><span>Extensivo ENARE 2026</span><span class="pg">2 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-POLIT</div><div class="aula-ref">Bloco B5 · Aula 18 · Ciclo da AF</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Ciclo da Assistência Farmacêutica — 6 Etapas</div>
+    <p>O <strong>ciclo da AF</strong> é uma sequência de atividades organizadas (cadeia produtiva do medicamento no sistema), interconectada, em que cada etapa depende da anterior. Modelo brasileiro padrão.</p>
+
+    <table>
+      <tr><th>Etapa</th><th>O que envolve</th><th>Responsabilidade principal</th></tr>
+      <tr><td><strong>1. Seleção</strong></td><td>Definir lista de medicamentos a ser utilizada (REMUME municipal, formulário institucional); critérios: eficácia, segurança, custo, disponibilidade, contexto epidemiológico</td><td>CFT (Comissão de Farmácia e Terapêutica)</td></tr>
+      <tr><td><strong>2. Programação</strong></td><td>Quantificar necessidade futura; consumo histórico, demanda epidemiológica, séries temporais</td><td>Setor de AF municipal/estadual; método de consumo, MAM, ABC</td></tr>
+      <tr><td><strong>3. Aquisição</strong></td><td>Compra via licitação (Lei 14.133/2021 substituiu 8.666/1993); modalidades: pregão, concorrência, dispensa, inexigibilidade</td><td>Setor de compras com participação do farmacêutico</td></tr>
+      <tr><td><strong>4. Armazenamento</strong></td><td>Recebimento, conferência, estocagem em condições adequadas (T, UR, segurança); controle de validade (PVPS / FEFO); área limpa quando aplicável</td><td>Farmacêutico responsável; almoxarifado da CAF (Central de Abastecimento Farmacêutico)</td></tr>
+      <tr><td><strong>5. Distribuição</strong></td><td>Movimentação para unidades dispensadoras (USFs, hospitais, ambulatórios); transporte adequado para termolábeis</td><td>CAF + farmacêuticos locais</td></tr>
+      <tr><td><strong>6. Dispensação</strong></td><td>Entrega ao usuário com orientação técnica (Lei 13.021/2014; Res. CFF 585/2013); etapa <em>final e clínica</em> do ciclo</td><td>Farmacêutico privativamente</td></tr>
+    </table>
+
+    <div class="subsecao">Atividades-fim que cruzam o Ciclo</div>
+    <ul class="lista">
+      <li><strong>Uso Racional</strong>: serviços clínicos (AF, prescrição farmacêutica, conciliação) e atividades educativas</li>
+      <li><strong>Farmacovigilância</strong>: notificação ativa em todas as etapas</li>
+      <li><strong>Gestão financeira</strong>: PAB Variável + recursos estaduais/federais; CEAF (financiamento federal de medicamentos especializados)</li>
+      <li><strong>Capacitação</strong>: educação permanente da equipe</li>
+    </ul>
+
+    <div class="subsecao">Métodos de Programação</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Por Consumo Histórico (CHM)</div>
+        <p>Baseado em consumo médio dos meses anteriores; ajustado por sazonalidade, perdas, estoque mínimo. Método mais simples; bom para itens estáveis.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Por Demanda Epidemiológica</div>
+        <p>Baseado em prevalência da condição na população + protocolo terapêutico. Útil para programas (DM, HAS, TB, HIV). Modela necessidades reais quando consumo histórico é insuficiente.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Curva ABC</div>
+        <p>Classificação por valor financeiro: A (20% dos itens; 80% do valor); B (30% / 15%); C (50% / 5%). Gestão prioritária em A; controle relaxado em C.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Média Aritmética Móvel (MAM)</div>
+        <p>Média móvel dos últimos N meses (geralmente 3, 6, 12). Reduz efeito de variações pontuais. Cobrado em ENARE 2025 (Q69).</p>
+      </div>
+    </div>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> decorar as 6 etapas em ordem. Saber que dispensação é privativa do farmacêutico (Lei 13.021/2014). Diferenciar curva ABC (valor financeiro) de PVPS (controle de validade) e PEPS (recebimento). MAM = método de programação por médias móveis. Selecção é da CFT.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-POLIT · PNAF</span><span>Extensivo ENARE 2026</span><span class="pg">3 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-POLIT</div><div class="aula-ref">Bloco B5 · Aula 18 · Componentes CAF</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Componentes da Assistência Farmacêutica</div>
+    <p>A AF no SUS é financiada e estruturada em <strong>três componentes</strong> com pactuação tripartite (federal + estadual + municipal):</p>
+
+    <table>
+      <tr><th>Componente</th><th>Escopo</th><th>Financiamento</th></tr>
+      <tr><td><strong>Básico — CBAF</strong></td><td>Medicamentos da atenção primária para HAS, DM, doenças prevalentes; insulinas; contraceptivos; saúde da mulher e criança; itens da farmácia básica municipal</td><td>Pactuação tripartite (PAB Variável de AF). Portaria GM/MS 1.555/2013</td></tr>
+      <tr><td><strong>Estratégico — CESAF</strong></td><td>Programas estratégicos do MS: HIV/aids (ARVs), TB (PNCT), hanseníase, hemoderivados (hemofilia), DST, tabagismo, calamidades</td><td>100% federal (centralizado pelo MS)</td></tr>
+      <tr><td><strong>Especializado — CEAF</strong></td><td>Medicamentos para condições clínicas mais complexas; alto custo; protocolos clínicos específicos (PCDT)</td><td>Tripartite com regras de cada Grupo (ver tabela CEAF)</td></tr>
+    </table>
+
+    <div class="subsecao">Componente Especializado — Detalhamento por Grupo</div>
+    <p>O CEAF é regulamentado pela <strong>Portaria GM/MS 1.554/2013</strong> e organiza medicamentos em 4 grupos com responsabilidades distintas:</p>
+    <table>
+      <tr><th>Grupo</th><th>Característica</th><th>Financiamento + dispensação</th><th>Exemplos</th></tr>
+      <tr><td><strong>1A</strong></td><td>Maior complexidade; alto impacto financeiro; aquisição centralizada</td><td>Federal compra + estado dispensa</td><td>Imunobiológicos para esclerose múltipla (interferons, fingolimode); imunossupressores em transplante (tacrolimo, ciclosporina); enzimas para erros inatos</td></tr>
+      <tr><td><strong>1B</strong></td><td>Mesma complexidade do 1A; aquisição estadual</td><td>Estado compra (com repasse federal) + estado dispensa</td><td>Eritropoetina para DRC; alfa-epoetina; análogos GLP-1 em alguns estados</td></tr>
+      <tr><td><strong>2</strong></td><td>Custo intermediário; agudos e crônicos diversos</td><td>Estado compra + estado dispensa (autonomia local maior)</td><td>Antipsicóticos (risperidona, clozapina); psicotrópicos especializados</td></tr>
+      <tr><td><strong>3</strong></td><td>Itens da farmácia básica que migram para o especializado quando indicação específica</td><td>Município (CBAF)</td><td>Insulina análoga (NPH e regular ficam no CBAF; análogas como glargina em alguns estados são CEAF)</td></tr>
+    </table>
+
+    <div class="subsecao">Fluxo do CEAF — Acesso pelo Usuário</div>
+    <ol>
+      <li>Diagnóstico médico documentado conforme PCDT (Protocolo Clínico e Diretriz Terapêutica)</li>
+      <li>Encaminhamento à farmácia do CEAF estadual com documentação completa</li>
+      <li>Avaliação técnica pelo farmacêutico do CEAF (conferência de critérios)</li>
+      <li>Liberação após aprovação; emissão de Laudo para Solicitação, Avaliação e Autorização de Medicamentos (LME)</li>
+      <li>Dispensação mensal/bimestral com renovação periódica</li>
+      <li>Monitorização clínica e farmacêutica</li>
+    </ol>
+
+    <div class="subsecao">PCDTs e CONITEC</div>
+    <p>Os <strong>Protocolos Clínicos e Diretrizes Terapêuticas (PCDTs)</strong> definem critérios de inclusão, exclusão, monitorização e tratamento para cada condição com financiamento especializado. Elaborados pelo Ministério da Saúde com apoio da <strong>CONITEC</strong> (Comissão Nacional de Incorporação de Tecnologias no SUS — Lei 12.401/2011). CONITEC avalia novas tecnologias com base em evidência e impacto financeiro.</p>
+
+    <div class="alerta">
+      <p><strong>Atribuição do farmacêutico no CEAF:</strong> avaliação da documentação; orientação ao paciente; monitorização clínica; acompanhamento da resposta; conferência de critérios de manutenção; comunicação com prescritor; participação em PCDT institucional. É um dos cenários mais clínicos da AF pública.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-POLIT · PNAF</span><span>Extensivo ENARE 2026</span><span class="pg">4 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-POLIT</div><div class="aula-ref">Bloco B5 · Aula 18 · RENAME e Farmácia Popular</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">RENAME, REMUME e Farmácia Popular</div>
+
+    <div class="subsecao">RENAME — Relação Nacional de Medicamentos Essenciais</div>
+    <p>A <strong>RENAME</strong> é a lista oficial de medicamentos essenciais do SUS. Inspirada na <em>WHO Model List of Essential Medicines</em>. Atualizada periodicamente (a cada 2 anos em ciclo regular). Versão 2024 contém ~900 medicamentos. Critérios de inclusão (CONITEC):</p>
+    <ul class="lista">
+      <li>Eficácia comprovada</li>
+      <li>Segurança</li>
+      <li>Custo-efetividade</li>
+      <li>Disponibilidade na cadeia produtiva</li>
+      <li>Adequação à realidade epidemiológica brasileira</li>
+      <li>Inclusão em programas SUS</li>
+    </ul>
+
+    <div class="subsecao">REMUME e RESME</div>
+    <p>A <strong>REMUME (Relação Municipal de Medicamentos Essenciais)</strong> é a lista municipal, baseada em RENAME + necessidades locais. A <strong>RESME (Relação Estadual)</strong> é a versão estadual. Cada município pode customizar dentro dos limites de pactuação tripartite. O farmacêutico participa da elaboração via Comissão de Farmácia e Terapêutica local.</p>
+
+    <div class="subsecao">RENAFITO — Fitoterápicos no SUS</div>
+    <p>A <strong>Relação Nacional de Plantas Medicinais e Fitoterápicos (RENAFITO)</strong> integra medicamentos fitoterápicos ao SUS, conforme a Política Nacional de Práticas Integrativas e Complementares (PNPIC — Portaria 971/2006). Lista atual inclui: Mikania glomerata, Maytenus ilicifolia, Phyllanthus niruri, Schinus terebinthifolius, Uncaria tomentosa, Aloe vera, Calendula, Mentha, entre outros. Sempre com indicação aprovada.</p>
+
+    <div class="subsecao">Programa Farmácia Popular do Brasil</div>
+    <p>Criado em 2004 (Decreto 5.090/2004; Lei 10.858/2004), tem dois braços:</p>
+    <table>
+      <tr><th>Modalidade</th><th>Característica</th></tr>
+      <tr><td><strong>Aqui Tem Farmácia Popular (ATFP)</strong></td><td>Parceria com farmácias privadas; usuário paga apenas copagamento ou nada. Inclui medicamentos para HAS, DM, asma, anticoncepcional, fralda geriátrica. Modalidade atual majoritária</td></tr>
+      <tr><td>Farmácia Própria do Estado (descontinuada)</td><td>Unidades do governo dispensando direto; modalidade original; descontinuada por inviabilidade logística</td></tr>
+    </table>
+
+    <p><strong>ATFP — Inclusões principais:</strong></p>
+    <ul class="lista">
+      <li>Hipertensão arterial: anti-hipertensivos comuns (losartana, enalapril, hidroclorotiazida, atenolol, captopril)</li>
+      <li>Diabetes: metformina, glibenclamida, glicazida; insulinas NPH e regular (gratuitas)</li>
+      <li>Asma: budesonida, formoterol, salbutamol</li>
+      <li>Anticoncepcional</li>
+      <li>Fraldas geriátricas (idosos cadastrados)</li>
+      <li>Osteoporose: alendronato; raloxifeno</li>
+      <li>Glaucoma: timolol, dorzolamida</li>
+      <li>Dislipidemia: sinvastatina</li>
+      <li>Parkinson</li>
+      <li>Rinite alérgica</li>
+    </ul>
+
+    <p>A maioria com gratuidade total para usuários cadastrados; alguns com copagamento (90% subsidiado).</p>
+
+    <div class="subsecao">Legislações Farmacêuticas Correlatas</div>
+    <table>
+      <tr><th>Lei / Resolução</th><th>Conteúdo</th></tr>
+      <tr><td>Lei 5.991/1973</td><td>Lei da Dispensação — regula o comércio de drogas, medicamentos e correlatos; define farmácia e drogaria</td></tr>
+      <tr><td>Lei 9.787/1999</td><td>Lei dos Genéricos — institui o medicamento genérico no Brasil</td></tr>
+      <tr><td>Lei 13.021/2014</td><td>Lei das Farmácias — define farmácia como estabelecimento de saúde, não comércio puro; cuidado farmacêutico</td></tr>
+      <tr><td>Portaria GM/MS 3.916/1998</td><td>PNM — Política Nacional de Medicamentos</td></tr>
+      <tr><td>Res. CNS 338/2004</td><td>PNAF</td></tr>
+      <tr><td>Portaria 1.554/2013</td><td>Componente Especializado da AF (CEAF) — grupos e regras</td></tr>
+      <tr><td>Portaria 1.555/2013</td><td>Componente Básico da AF (CBAF) — financiamento</td></tr>
+      <tr><td>Decreto 7.508/2011</td><td>Regulamenta a Lei 8.080/1990; cria RENASES, RENAME, mapa da saúde</td></tr>
+      <tr><td>Lei 14.133/2021</td><td>Nova Lei de Licitações (substituiu Lei 8.666/1993)</td></tr>
+    </table>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> diferenciar RENAME (nacional) de RENASES (Relação Nacional de Ações e Serviços de Saúde, Decreto 7.508/2011). Saber que ATFP é a modalidade vigente do Farmácia Popular. Decreto 7.508/2011 cria a RENAME e o COAP (Contrato Organizativo de Ação Pública).</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-POLIT · PNAF</span><span>Extensivo ENARE 2026</span><span class="pg">5 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-POLIT</div><div class="aula-ref">Bloco B5 · Aula 18 · Lei 13.021/2014</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Lei 13.021/2014 — Lei das Farmácias</div>
+
+    <p>A <strong>Lei 13.021, de 8 de agosto de 2014</strong>, "dispõe sobre o exercício e a fiscalização das atividades farmacêuticas". Significou um marco na transformação da farmácia <em>de estabelecimento comercial em estabelecimento de saúde</em>. Cobrada com frequência em ENARE (atual ou complementar à Res. 585/586/2013).</p>
+
+    <div class="subsecao">Princípios da Lei</div>
+    <ul class="lista">
+      <li>A farmácia é <strong>estabelecimento de saúde</strong> (não exclusivamente comercial)</li>
+      <li>O farmacêutico é o <strong>profissional responsável técnico</strong> em tempo integral durante o funcionamento</li>
+      <li>A prestação de <strong>serviços farmacêuticos</strong> é elemento estrutural do estabelecimento — não atividade acessória</li>
+      <li>O <strong>cuidado farmacêutico</strong> ao paciente é função primária</li>
+      <li>Garantia do <strong>uso racional</strong> de medicamentos</li>
+    </ul>
+
+    <div class="subsecao">Principais Disposições</div>
+    <table>
+      <tr><th>Artigo</th><th>Conteúdo</th></tr>
+      <tr><td>1º</td><td>Define farmácia como estabelecimento de saúde</td></tr>
+      <tr><td>5º</td><td>Atividades exclusivas do farmacêutico: dispensação, manipulação, controle de qualidade, análises clínicas farmacêuticas, atenção farmacêutica</td></tr>
+      <tr><td>6º</td><td>Estabelecimento farmacêutico deve garantir condições estruturais (área para serviços; armazenamento; orientação) e regulatórias</td></tr>
+      <tr><td>10</td><td>Presença obrigatória do farmacêutico em horário integral de funcionamento</td></tr>
+      <tr><td>13</td><td>Fiscalização das atividades por CRF e ANVISA</td></tr>
+    </table>
+
+    <div class="subsecao">Diferenciação — Farmácia vs Drogaria</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Farmácia</div>
+        <p>Pode manipular preparações magistrais e oficinais; pode dispensar; pode realizar serviços farmacêuticos. Definição mais ampla. Lei 5.991/1973 + Lei 13.021/2014. RDC 67/2007 (BPM).</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Drogaria</div>
+        <p>Apenas dispensação de medicamentos industrializados, em embalagem original; sem manipulação. Hoje, na prática, a maioria dos estabelecimentos comerciais comuns são <em>drogarias</em>, mesmo chamadas popularmente de "farmácia".</p>
+      </div>
+    </div>
+
+    <div class="subsecao">Implicações Práticas da Lei</div>
+    <ul class="lista">
+      <li><strong>Farmacêutico em tempo integral</strong>: regulamentação obrigatória (até 2014, eram permitidas farmácias com farmacêutico parcial)</li>
+      <li><strong>Área para serviços farmacêuticos</strong>: o estabelecimento deve oferecer espaço com privacidade para consulta, aferição, orientação</li>
+      <li><strong>Foco no cuidado</strong>: prática deve estar voltada ao paciente, não exclusivamente à venda</li>
+      <li><strong>Sanções para o desrespeito</strong>: multas, interdição, fiscalização pelo CRF</li>
+      <li><strong>Reforço da prescrição farmacêutica</strong> (Res. 585/586/2013): a Lei 13.021/2014 fundamenta legalmente a prática clínica</li>
+    </ul>
+
+    <div class="subsecao">Lei dos Genéricos — Lei 9.787/1999</div>
+    <p>Marco histórico da política farmacêutica. Cria o medicamento <strong>genérico</strong> no Brasil:</p>
+    <ul class="lista">
+      <li>Bioequivalente ao medicamento de referência (AUC e Cmax IC 90% 80-125%)</li>
+      <li>Intercambiável com o referência por farmacêutico em dispensação</li>
+      <li>Identificado pela DCB/DCI (nome genérico) na tarja amarela</li>
+      <li>Preço regulado pela CMED — geralmente 35–60% menor que o referência</li>
+      <li>Promoveu acesso e redução do gasto público com medicamentos</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> Lei 13.021/2014 = farmácia como saúde + farmacêutico integral. Lei 5.991/1973 = dispensação. Lei 9.787/1999 = genéricos + bioequivalência. Distinguir os marcos legais é essencial. Lei 13.021 também referenciada em discussões de prescrição farmacêutica (Res. 586/2013) e cuidado farmacêutico.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-POLIT · PNAF</span><span>Extensivo ENARE 2026</span><span class="pg">6 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-POLIT</div><div class="aula-ref">Bloco B5 · Aula 18 · Questões ENARE</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 01</span><span class="fonte">PNAF · Res. CNS 338/2004 · NC: Compreensão</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Sobre a Política Nacional de Assistência Farmacêutica (PNAF), regulamentada pela Res. CNS 338/2004, é CORRETO afirmar:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Substituiu integralmente a Política Nacional de Medicamentos (Portaria 3.916/1998).</span></li>
+        <li class="correta"><span class="letra">B</span><span>Estabelece a Assistência Farmacêutica como política transversal do SUS, em complementaridade à PNM; tem como princípios o acesso e equidade, uso racional, descentralização e participação social.</span></li>
+        <li><span class="letra">C</span><span>Aplica-se exclusivamente à esfera federal, sem atribuições para estados e municípios.</span></li>
+        <li><span class="letra">D</span><span>Define a Assistência Farmacêutica como atividade meramente logística, focada em compra e distribuição.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> a PNAF (Res. CNS 338/2004) reorganiza a AF como <em>política transversal</em> do SUS, em complementaridade — não substituição — à PNM (Portaria 3.916/1998). Princípios centrais: acesso e equidade no uso, uso racional, manutenção e ampliação de serviços, descentralização (tripartite), qualificação de recursos humanos, participação e controle social, acompanhamento e avaliação contínua. Ressignifica a AF como atividade clínica integrada ao cuidado, não meramente logística.</p>
+      <p><strong>Por que as outras erram:</strong> A — PNAF complementa, não substitui · C — é tripartite (federal + estadual + municipal) · D — explicitamente refuta a visão logística pura.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-POLIT · PNAF</span><span>Extensivo ENARE 2026</span><span class="pg">7 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-POLIT</div><div class="aula-ref">Bloco B5 · Aula 18 · Questões ENARE</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 02</span><span class="fonte">CEAF · Grupos · NC: Aplicação</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Paciente com esclerose múltipla forma surto-remissão é acompanhada em ambulatório de neurologia. O neurologista prescreve interferon-β-1a SC 3×/semana. Conforme a Portaria GM/MS 1.554/2013, o financiamento e a dispensação do interferon enquadram-se no Componente Especializado da Assistência Farmacêutica (CEAF) — Grupo:</p>
+      <ul class="alternativas">
+        <li class="correta"><span class="letra">A</span><span>Grupo 1A — aquisição centralizada federal; dispensação pela farmácia do CEAF estadual.</span></li>
+        <li><span class="letra">B</span><span>Grupo 1B — aquisição estadual com repasse federal.</span></li>
+        <li><span class="letra">C</span><span>Grupo 2 — custo intermediário; estado compra e dispensa.</span></li>
+        <li><span class="letra">D</span><span>Componente Básico (CBAF) com financiamento tripartite.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — A</div>
+      <p><strong>Por que A está correta:</strong> os imunomoduladores para esclerose múltipla (interferon-β, glatirâmer, fingolimode, dimetilfumarato, natalizumabe, ocrelizumabe) estão no <strong>Grupo 1A</strong> do CEAF — aquisição centralizada pelo Ministério da Saúde (alto custo, alta complexidade) e dispensação pela farmácia do CEAF estadual, com base em PCDT específico e LME (Laudo para Solicitação de Medicamentos).</p>
+      <p><strong>Por que as outras erram:</strong> B — Grupo 1B inclui itens como eritropoetina, alfa-epoetina · C — Grupo 2 inclui antipsicóticos como risperidona, clozapina · D — esclerose múltipla não tem tratamento no CBAF.</p>
+      <p><strong>Conceito-chave:</strong> Grupo 1A = federal compra + estado dispensa; Grupo 1B = estado compra (com repasse) + estado dispensa; Grupo 2 = estado integral; Grupo 3 = transição com CBAF. PCDT define indicação e critérios.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-POLIT · PNAF</span><span>Extensivo ENARE 2026</span><span class="pg">8 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-POLIT</div><div class="aula-ref">Bloco B5 · Aula 18 · Gabarito Integrado</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 03</span><span class="fonte">Ciclo da AF · NC: Compreensão</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Sobre o Ciclo da Assistência Farmacêutica, é CORRETO afirmar que:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>A primeira etapa é a aquisição via licitação.</span></li>
+        <li class="correta"><span class="letra">B</span><span>A ordem é: seleção (CFT) → programação → aquisição → armazenamento → distribuição → dispensação (farmacêutico); todas perpassadas por uso racional e farmacovigilância.</span></li>
+        <li><span class="letra">C</span><span>A seleção pode ser feita por qualquer profissional do serviço.</span></li>
+        <li><span class="letra">D</span><span>A dispensação é etapa logística, sem caráter clínico.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> o ciclo padrão da AF tem 6 etapas em ordem: <strong>Seleção</strong> (CFT) → <strong>Programação</strong> (consumo + epidemiologia + curva ABC) → <strong>Aquisição</strong> (Lei 14.133/2021) → <strong>Armazenamento</strong> (PVPS/FEFO; CAF) → <strong>Distribuição</strong> (transporte adequado) → <strong>Dispensação</strong> (privativa do farmacêutico — Lei 13.021/2014, Res. 585/2013). Atravessadas por uso racional (serviços clínicos) e farmacovigilância em todas as etapas.</p>
+      <p><strong>Por que as outras erram:</strong> A — aquisição é etapa 3, não 1 · C — seleção é função da CFT (Comissão de Farmácia e Terapêutica), com participação obrigatória de farmacêutico · D — dispensação é a etapa CLÍNICA finalizadora, não meramente logística.</p>
+    </div>
+
+    <div class="subsecao" style="margin-top:6px;">Gabarito Comentado — Análise Integrada</div>
+    <table>
+      <tr><th>Questão</th><th>Gabarito</th><th>Tema</th><th>Conceito-Chave</th></tr>
+      <tr><td><strong>01</strong></td><td><span class="destaque">B</span></td><td>PNAF — Res. CNS 338/2004</td><td>Política transversal SUS; complementar à PNM; tripartite</td></tr>
+      <tr><td><strong>02</strong></td><td><span class="destaque">A</span></td><td>CEAF — Grupos</td><td>Grupo 1A = federal compra (interferon, EM); 1B = estadual; 2 = estadual; 3 = transição CBAF</td></tr>
+      <tr><td><strong>03</strong></td><td><span class="destaque">B</span></td><td>Ciclo da AF</td><td>6 etapas (seleção → programação → aquisição → armazenamento → distribuição → dispensação)</td></tr>
+    </table>
+  </div>
+  <div class="footer"><span>FARM-POLIT · PNAF</span><span>Extensivo ENARE 2026</span><span class="pg">9 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-POLIT</div><div class="aula-ref">Bloco B5 · Aula 18 · Síntese</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Síntese — PNAF e Políticas Farmacêuticas</div>
+    <div class="sintese-grid">
+      <div class="sintese-item">
+        <div class="si-label">Duas Políticas</div>
+        <p>PNM (Portaria 3.916/1998) + PNAF (Res. CNS 338/2004). Complementares, não substitutas. PNM = regulamentação, RENAME, P&amp;D. PNAF = política transversal de AF no SUS; acesso, uso racional, descentralização, controle social.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Ciclo da AF (6 etapas)</div>
+        <p>Seleção (CFT) → Programação (consumo, epidemiologia, curva ABC, MAM) → Aquisição (Lei 14.133/2021) → Armazenamento (CAF, PVPS) → Distribuição → Dispensação (privativa do farmacêutico).</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Componentes</div>
+        <p>Básico (CBAF — Portaria 1.555/2013, tripartite, APS, HAS/DM). Estratégico (CESAF — 100% federal, HIV/TB/PNCT). Especializado (CEAF — Portaria 1.554/2013, Grupos 1A/1B/2/3, PCDT, LME, CONITEC).</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">CEAF — Grupos</div>
+        <p>1A: federal compra + estado dispensa (esclerose múltipla, transplante). 1B: estado compra (eritropoetina). 2: estado integral (antipsicóticos especializados). 3: transição CBAF. PCDT + LME + CONITEC.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Marcos Legais</div>
+        <p>Lei 5.991/1973 (dispensação). Lei 9.787/1999 (genéricos + bioequivalência). Lei 13.021/2014 (farmácia = saúde + farmacêutico integral). Decreto 7.508/2011 (RENAME, RENASES, COAP). Portaria 971/2006 (PNPIC + RENAFITO).</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Próxima Aula</div>
+        <p><strong>Aula 19 — Logística e Distribuição Hospitalar.</strong> Sistemas de distribuição (dose unitária, individualizada, coletiva, mista), automação, Média Aritmética Móvel, curva ABC, licitações.</p>
+      </div>
+    </div>
+    <div class="alerta" style="margin-top:5px;">
+      <p><strong>Regra de ouro — PNAF no ENARE:</strong> distinguir PNM/PNAF; saber as 6 etapas do ciclo; CEAF Grupos 1A/1B/2/3 com exemplos (1A = esclerose múltipla); Lei 13.021/2014 = farmácia como saúde; Lei 9.787/1999 = genéricos; Lei 5.991/1973 = dispensação; Decreto 7.508/2011 = RENAME e RENASES.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-POLIT · PNAF</span><span>Extensivo ENARE 2026</span><span class="pg">10 / 10</span></div>
+</div>
+
+</body>
+</html>
