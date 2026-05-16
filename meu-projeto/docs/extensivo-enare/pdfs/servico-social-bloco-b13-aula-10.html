@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Serviço Social — Bloco B13 Aula 10 | Extensivo ENARE 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap');
+  :root { --creme: #F6F4ED; --verde: #1F5C23; --amarelo: #C6D834; --escuro: #0C2B0E; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #d0d0d0; font-family: 'Bricolage Grotesque', sans-serif; }
+  .page { width: 210mm; height: 297mm; background: var(--creme); margin: 0 auto 12px; position: relative; overflow: hidden; page-break-after: always; }
+  .header { background: var(--verde); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .header-logo { display: flex; align-items: center; gap: 8px; }
+  .header-logo svg { width: 32px; height: 32px; }
+  .header-brand { display: flex; flex-direction: column; line-height: 1; }
+  .header-brand .marca { font-family: 'Playfair Display', serif; font-style: italic; color: #fff; font-size: 13px; letter-spacing: 0.5px; }
+  .header-brand .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 7px; letter-spacing: 1.5px; text-transform: uppercase; }
+  .header-info { text-align: right; }
+  .header-info .disciplina { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
+  .header-info .aula-ref { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.7); font-size: 8px; letter-spacing: 0.5px; }
+  .footer { position: absolute; bottom: 0; left: 0; right: 0; background: var(--verde); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .footer span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.6); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .footer .pg { color: var(--amarelo); font-weight: 400; }
+  .body { padding: 14px 18px 30px; height: calc(297mm - 52px - 22px); overflow: hidden; }
+  .capa-page { background: var(--verde); }
+  .capa-header { background: var(--creme); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .capa-header .marca { font-family: 'Playfair Display', serif; font-style: italic; color: var(--verde); font-size: 14px; }
+  .capa-header .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--verde); font-size: 7.5px; letter-spacing: 2px; text-transform: uppercase; }
+  .capa-body { padding: 28px 24px 0; display: flex; flex-direction: column; height: calc(297mm - 52px - 22px); }
+  .capa-eyebrow { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; }
+  .capa-titulo { font-family: 'Barlow Condensed', sans-serif; color: #fff; font-size: 50px; line-height: 0.95; text-transform: uppercase; letter-spacing: -0.5px; margin-bottom: 6px; }
+  .capa-titulo span { color: var(--amarelo); }
+  .capa-subtitulo { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; color: rgba(255,255,255,0.65); font-size: 12px; letter-spacing: 0.3px; margin-bottom: 22px; line-height: 1.5; }
+  .capa-badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+  .capa-badge { background: rgba(198,216,52,0.15); border: 1px solid var(--amarelo); color: var(--amarelo); font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 8px; border-radius: 2px; }
+  .capa-divider { width: 40px; height: 3px; background: var(--amarelo); margin-bottom: 20px; }
+  .capa-topicos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .capa-topico { display: flex; align-items: flex-start; gap: 7px; }
+  .capa-topico-num { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 18px; line-height: 1; min-width: 18px; }
+  .capa-topico-txt { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 400; color: rgba(255,255,255,0.8); font-size: 9.5px; line-height: 1.4; }
+  .capa-footer-strip { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.25); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .capa-footer-strip span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.45); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .secao-titulo { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 18px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid var(--amarelo); padding-bottom: 3px; margin-bottom: 9px; line-height: 1; }
+  .subsecao { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.5px; margin: 7px 0 3px; }
+  p { font-size: 9px; line-height: 1.55; color: #1a1a1a; margin-bottom: 4px; font-weight: 400; }
+  .destaque { background: var(--amarelo); color: var(--escuro); font-weight: 600; padding: 1px 4px; border-radius: 2px; font-size: 8.5px; }
+  .alerta { background: rgba(198,216,52,0.18); border-left: 3px solid var(--amarelo); padding: 5px 8px; margin: 5px 0; border-radius: 0 3px 3px 0; }
+  .alerta p { margin: 0; font-size: 8.5px; }
+  .alerta strong { color: var(--verde); }
+  table { width: 100%; border-collapse: collapse; margin: 5px 0; font-size: 8px; }
+  th { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; padding: 4px 6px; text-align: left; }
+  td { padding: 3px 6px; border-bottom: 1px solid rgba(31,92,35,0.12); vertical-align: top; line-height: 1.4; color: #1a1a1a; }
+  tr:nth-child(even) td { background: rgba(31,92,35,0.04); }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 5px 0; }
+  .card { background: rgba(31,92,35,0.06); border: 1px solid rgba(31,92,35,0.15); border-radius: 4px; padding: 7px 8px; }
+  .card-title { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 11px; text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 3px; }
+  .card p { font-size: 8px; line-height: 1.5; }
+  .questao-header { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; padding: 4px 10px; border-radius: 3px 3px 0 0; display: flex; justify-content: space-between; align-items: center; }
+  .questao-header .fonte { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; color: var(--amarelo); letter-spacing: 0.5px; }
+  .questao-body { border: 1px solid rgba(31,92,35,0.2); border-top: none; border-radius: 0 0 3px 3px; padding: 7px 10px; margin-bottom: 7px; }
+  .questao-enunciado { font-size: 8.5px; line-height: 1.55; color: #111; margin-bottom: 5px; font-weight: 500; }
+  .alternativas { list-style: none; }
+  .alternativas li { font-size: 8px; line-height: 1.5; padding: 2px 0; color: #222; display: flex; gap: 5px; }
+  .alternativas li .letra { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: var(--verde); font-size: 9px; min-width: 10px; }
+  .alternativas li.correta .letra { color: var(--amarelo); }
+  .alternativas li.correta { background: rgba(198,216,52,0.15); border-left: 2px solid var(--amarelo); padding-left: 4px; }
+  .gabarito-box { background: var(--verde); border-radius: 4px; padding: 8px 12px; margin: 6px 0; }
+  .gabarito-box .gab-title { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+  .gabarito-box p { color: rgba(255,255,255,0.9); font-size: 8px; line-height: 1.55; }
+  .gabarito-box strong { color: var(--amarelo); }
+  .sintese-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-top: 6px; }
+  .sintese-item { background: rgba(31,92,35,0.07); border-left: 3px solid var(--verde); padding: 5px 7px; border-radius: 0 3px 3px 0; }
+  .sintese-item .si-label { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px; }
+  .sintese-item p { font-size: 7.5px; line-height: 1.5; }
+  ul.lista { padding-left: 14px; margin: 3px 0; }
+  ul.lista li { font-size: 8.5px; line-height: 1.55; color: #1a1a1a; margin-bottom: 1px; }
+  @media print { body { background: none; } .page { margin: 0; box-shadow: none; } }
+</style>
+</head>
+<body>
+
+<div class="page capa-page">
+  <div class="capa-header">
+    <div style="display:flex;align-items:center;gap:8px;"><svg width="34" height="34" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#1F5C23"/></svg><div><div class="marca">Elite Treinamentos</div><div class="tagline">Extensivo ENARE 2026</div></div></div>
+    <div style="text-align:right;"><div style="font-family:'Barlow Condensed',sans-serif;color:var(--verde);font-size:11px;letter-spacing:1px;text-transform:uppercase;">Bloco B13 · Aula 10</div><div style="font-family:'Space Grotesk',sans-serif;font-weight:300;color:#888;font-size:7.5px;letter-spacing:0.5px;">Serviço Social</div></div>
+  </div>
+  <div class="capa-body">
+    <div class="capa-eyebrow">Bloco B13 · SS-POLITICA · Aula 10 de 21</div>
+    <div class="capa-titulo">DUDH <span>&amp;<br>Direitos<br>Humanos</span></div>
+    <div class="capa-subtitulo">Cluster novo da ENARE 2025 — 4 questões de DUDH<br>+ PIDESC, Viena, Convenções OIT, Estatuto PCD</div>
+    <div class="capa-badge-row">
+      <div class="capa-badge">SS-POLITICA ★★★</div>
+      <div class="capa-badge">Cluster Novo 2025 — 4q</div>
+      <div class="capa-badge">DUDH 1948</div>
+      <div class="capa-badge">PIDESC · Viena · OIT</div>
+    </div>
+    <div class="capa-divider"></div>
+    <div class="capa-topicos">
+      <div class="capa-topico"><div class="capa-topico-num">01</div><div class="capa-topico-txt">DUDH 1948 — gênese e arcabouço</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">02</div><div class="capa-topico-txt">Artigos-chave (preâmbulo, locomoção, família)</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">03</div><div class="capa-topico-txt">PIDCP e PIDESC (1966)</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">04</div><div class="capa-topico-txt">Declaração de Viena 1993</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">05</div><div class="capa-topico-txt">Pacto de San José (1969) e Convenção PCD</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">06</div><div class="capa-topico-txt">DH no SS e perspectiva crítica</div></div>
+    </div>
+  </div>
+  <div class="capa-footer-strip"><span>Extensivo ENARE 2026</span><span>Elite Treinamentos em Saúde</span><span>Página 1 de 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-POLITICA</div><div class="aula-ref">Bloco B13 · Aula 10 · DUDH</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Declaração Universal dos Direitos Humanos (DUDH) — 1948</div>
+
+    <p>A <strong>Declaração Universal dos Direitos Humanos (DUDH)</strong>, adotada pela Assembleia Geral da ONU em <strong>10 de dezembro de 1948</strong> (Resolução 217 A III), é o documento fundador do sistema internacional moderno de direitos humanos. Cobrada em 4 questões da ENARE 2025 (Q61, Q64, Q69, Q78) — cluster novo de alto peso. Texto curto (preâmbulo + 30 artigos) mas com fortuna teórica imensa.</p>
+
+    <div class="subsecao">Contexto Histórico</div>
+    <ul class="lista">
+      <li>Pós-2ª Guerra Mundial; Holocausto; consciência mundial sobre violações em massa</li>
+      <li>Fundação da ONU em 1945 (Carta de São Francisco)</li>
+      <li>Comissão de Direitos Humanos da ONU presidida por Eleanor Roosevelt</li>
+      <li>Redação por comissão internacional: John Humphrey (Canadá), René Cassin (França), Charles Malik (Líbano), Peng-chun Chang (China), entre outros</li>
+      <li>Aprovação por 48 votos favoráveis, 0 contrários, 8 abstenções (URSS e satélites + África do Sul + Arábia Saudita)</li>
+      <li>Marco do "universalismo dos direitos humanos"</li>
+    </ul>
+
+    <div class="subsecao">Estrutura da DUDH</div>
+    <table>
+      <tr><th>Parte</th><th>Conteúdo</th></tr>
+      <tr><td>Preâmbulo</td><td>Considerações que justificam a Declaração; "reconhecimento da dignidade inerente a todos os membros da família humana"; antecedentes do "desprezo pelos direitos humanos" como geradores de "atos de barbárie"</td></tr>
+      <tr><td>Arts. 1-2</td><td>Princípios fundamentais: liberdade, igualdade, dignidade, fraternidade; não discriminação</td></tr>
+      <tr><td>Arts. 3-11</td><td>Direitos civis: vida, liberdade, segurança; vedação de escravidão e tortura; reconhecimento jurídico; presunção de inocência</td></tr>
+      <tr><td>Arts. 12-17</td><td>Direitos individuais nas relações: privacidade, locomoção, asilo, nacionalidade, casamento, propriedade</td></tr>
+      <tr><td>Arts. 18-21</td><td>Direitos políticos: liberdade de pensamento/religião, expressão, reunião, participação política</td></tr>
+      <tr><td>Arts. 22-27</td><td>Direitos econômicos, sociais e culturais (DESC): seguridade social, trabalho, lazer, padrão de vida adequado, educação, cultura</td></tr>
+      <tr><td>Arts. 28-30</td><td>Disposições finais: ordem internacional; deveres; vedação de abuso de direitos</td></tr>
+    </table>
+
+    <div class="subsecao">Características da DUDH</div>
+    <ul class="lista">
+      <li><strong>Universal</strong>: aplica-se a todos os seres humanos sem distinção</li>
+      <li><strong>Indivisível</strong>: todos os direitos são igualmente importantes; não há hierarquia</li>
+      <li><strong>Interdependente</strong>: o exercício de um direito depende dos outros</li>
+      <li><strong>Inalienável</strong>: ninguém pode renunciar ou ser privado</li>
+      <li><strong>Imprescritível</strong>: não se perde pelo tempo</li>
+      <li><strong>Histórica</strong>: ampliada e densificada ao longo do tempo</li>
+      <li><strong>Soft law</strong>: declaração inicial não era vinculante (tornou-se direito costumeiro internacional pela prática dos Estados)</li>
+    </ul>
+
+    <div class="subsecao">Gerações de Direitos Humanos (Karel Vasak, 1979)</div>
+    <table>
+      <tr><th>Geração</th><th>Direitos</th><th>Marco</th></tr>
+      <tr><td>1ª — Liberdade</td><td>Civis e políticos</td><td>Revolução Francesa 1789; DUDH; PIDCP 1966</td></tr>
+      <tr><td>2ª — Igualdade</td><td>Econômicos, sociais e culturais (DESC)</td><td>Constituições socialistas e do Welfare; DUDH; PIDESC 1966</td></tr>
+      <tr><td>3ª — Fraternidade</td><td>Coletivos/difusos: meio ambiente, paz, desenvolvimento, autodeterminação</td><td>Pós-anos 1970; Estocolmo 1972; Rio 1992</td></tr>
+      <tr><td>4ª (em debate)</td><td>Bioética, direitos digitais, genéticos</td><td>Final do séc. XX em diante</td></tr>
+      <tr><td>5ª (em debate)</td><td>Direitos da Natureza, IA, biotecnologia avançada</td><td>Século XXI</td></tr>
+    </table>
+
+    <div class="alerta">
+      <p><strong>Crítica importante:</strong> a metáfora das "gerações" pode sugerir hierarquia ou substituição. Hoje se prefere "dimensões" — todas as dimensões coexistem e se reforçam (indivisibilidade). A categoria SS reforça a interdependência entre direitos civis-políticos e econômicos-sociais — ambas as dimensões são essenciais.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-POLITICA · DUDH</span><span>Extensivo ENARE 2026</span><span class="pg">2 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-POLITICA</div><div class="aula-ref">Bloco B13 · Aula 10 · Artigos DUDH</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Artigos-Chave da DUDH</div>
+
+    <p>A FGV cobrou em 2025 (Q61, Q64, Q69, Q78) <em>interpretação literal de artigos</em>. Saber o conteúdo dos artigos centrais é exigência. Selecionamos os mais cobrados:</p>
+
+    <div class="subsecao">Preâmbulo — Considerações Fundamentais</div>
+    <p>"<em>Considerando que o reconhecimento da dignidade inerente a todos os membros da família humana e de seus direitos iguais e inalienáveis é o fundamento da liberdade, da justiça e da paz no mundo... que o desprezo e o desrespeito pelos direitos humanos resultaram em atos bárbaros que ultrajaram a consciência da humanidade...</em>"</p>
+
+    <p>Vocabulário-chave do preâmbulo:</p>
+    <ul class="lista">
+      <li>Dignidade inerente</li>
+      <li>Direitos iguais e inalienáveis</li>
+      <li>Liberdade, justiça e paz</li>
+      <li>Família humana</li>
+      <li>Atos bárbaros (referência ao Holocausto sem nomeá-lo)</li>
+    </ul>
+
+    <div class="subsecao">Art. 1 — Princípios</div>
+    <p>"Todos os seres humanos nascem livres e iguais em dignidade e em direitos. Dotados de razão e de consciência, devem agir uns para com os outros em espírito de fraternidade."</p>
+    <ul class="lista">
+      <li>Tríade revolucionária: <em>liberdade, igualdade, fraternidade</em></li>
+      <li>Nascimento já produz dignidade — não é conquista posterior</li>
+      <li>"Espírito de fraternidade" — solidariedade entre humanos</li>
+    </ul>
+
+    <div class="subsecao">Art. 13 — Direito de Locomoção (cobrado em Q61/2025)</div>
+    <p>"1. Toda pessoa tem o direito de circular livremente e de escolher sua residência dentro das fronteiras de cada Estado.<br>
+    2. Toda pessoa tem o direito de deixar qualquer país, inclusive o próprio, e a este regressar."</p>
+
+    <p><strong>Pegadinha FGV:</strong> a DUDH garante o direito de <em>sair</em> de qualquer país, inclusive o próprio, e regressar. Não garante o direito de <em>entrar</em> em outro país (regulado por lei nacional/refúgio). Pessoa pode sair, mas não tem direito automático de entrada em outro Estado, exceto se for refugiada.</p>
+
+    <div class="subsecao">Art. 16 — Família (cobrado em Q78/2025)</div>
+    <p>"1. Os homens e mulheres de maior idade, sem qualquer restrição de raça, nacionalidade ou religião, têm o direito de contrair matrimônio e de fundar uma família. Gozam de iguais direitos em relação ao casamento, sua duração e sua dissolução.<br>
+    2. O matrimônio só pode ser contraído pelo livre e pleno consentimento dos pretendentes.<br>
+    3. <strong>A família é o núcleo natural e fundamental da sociedade</strong> e tem direito à proteção da sociedade e do Estado."</p>
+
+    <p><strong>Cobranças frequentes:</strong></p>
+    <ul class="lista">
+      <li>Família como "núcleo natural e fundamental da sociedade" (frase literal)</li>
+      <li>Casamento exige consentimento livre — vedação ao casamento forçado e infantil</li>
+      <li>Igualdade entre os cônjuges (homens e mulheres)</li>
+      <li>"Sem restrição de raça, nacionalidade ou religião" — vedação a barreiras discriminatórias</li>
+    </ul>
+
+    <div class="subsecao">Art. 22 — Seguridade Social</div>
+    <p>"Toda pessoa, como membro da sociedade, tem direito à segurança social e à realização, pelo esforço nacional, pela cooperação internacional e de acordo com a organização e os recursos de cada Estado, dos direitos econômicos, sociais e culturais indispensáveis à sua dignidade e ao livre desenvolvimento de sua personalidade."</p>
+
+    <div class="subsecao">Art. 23 — Trabalho</div>
+    <p>"1. Toda pessoa tem direito ao trabalho, à livre escolha de emprego, a condições justas e favoráveis de trabalho e à proteção contra o desemprego.<br>
+    2. Toda pessoa, sem qualquer distinção, tem direito a igual remuneração por igual trabalho.<br>
+    3. Toda pessoa que trabalha tem direito a uma remuneração justa e satisfatória, que lhe assegure, assim como à sua família, uma existência compatível com a dignidade humana...<br>
+    4. Toda pessoa tem direito a organizar sindicatos e a neles ingressar para proteção de seus interesses."</p>
+
+    <div class="subsecao">Art. 25 — Padrão de Vida e Saúde</div>
+    <p>"1. Toda pessoa tem direito a um padrão de vida capaz de assegurar a si e a sua família saúde e bem-estar, inclusive alimentação, vestuário, habitação, cuidados médicos e os serviços sociais indispensáveis, e direito à segurança em caso de desemprego, doença, invalidez, viuvez, velhice ou outros casos de perda dos meios de subsistência em circunstâncias fora de seu controle.<br>
+    2. A maternidade e a infância têm direito a cuidados e assistência especiais. Todas as crianças, nascidas dentro ou fora do matrimônio, gozarão da mesma proteção social."</p>
+
+    <div class="subsecao">Art. 26 — Educação</div>
+    <p>"1. Toda pessoa tem direito à instrução. A instrução será gratuita, pelo menos nos graus elementares e fundamentais. A instrução elementar será obrigatória..."</p>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> a FGV cobra DUDH com perguntas sobre artigos específicos. Saber: Art. 1 (liberdade, igualdade, fraternidade); Art. 13 (locomoção — sair e regressar); Art. 16 (família como núcleo natural); Art. 22 (seguridade); Art. 23 (trabalho); Art. 25 (padrão de vida); Art. 26 (educação). Cobrados explicitamente em ENARE 2025.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-POLITICA · DUDH</span><span>Extensivo ENARE 2026</span><span class="pg">3 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-POLITICA</div><div class="aula-ref">Bloco B13 · Aula 10 · Pactos 1966</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">PIDCP e PIDESC — Pactos Internacionais de 1966</div>
+
+    <p>Em 1966 a ONU adotou <strong>dois pactos</strong> que tornaram vinculantes os direitos da DUDH:</p>
+    <ul class="lista">
+      <li><strong>PIDCP</strong> — Pacto Internacional dos Direitos Civis e Políticos</li>
+      <li><strong>PIDESC</strong> — Pacto Internacional dos Direitos Econômicos, Sociais e Culturais</li>
+    </ul>
+    <p>Ambos entraram em vigor em 1976. O Brasil aderiu em 1992. São o "núcleo duro" do sistema universal de DH.</p>
+
+    <div class="subsecao">Por Que Dois Pactos?</div>
+    <p>Originalmente pretendia-se um único pacto, mas a Guerra Fria dividiu posições:</p>
+    <ul class="lista">
+      <li><strong>Bloco Ocidental capitalista</strong>: prioriza direitos civis e políticos (1ª geração); via PIDCP</li>
+      <li><strong>Bloco Oriental socialista + Terceiro Mundo</strong>: prioriza direitos econômicos, sociais e culturais (2ª geração); via PIDESC</li>
+      <li><strong>Compromisso</strong>: dois pactos separados, ambos vinculantes</li>
+    </ul>
+
+    <p>Apesar da separação, o discurso oficial da ONU sempre enfatizou a <strong>indivisibilidade e interdependência</strong> dos direitos — reafirmada na Declaração de Viena 1993.</p>
+
+    <div class="subsecao">PIDCP — Direitos Civis e Políticos</div>
+    <table>
+      <tr><th>Direito</th><th>Conteúdo</th></tr>
+      <tr><td>Vida</td><td>Direito inerente; vedação da privação arbitrária; restrições à pena de morte</td></tr>
+      <tr><td>Integridade física</td><td>Vedação de tortura e tratamentos cruéis, desumanos ou degradantes</td></tr>
+      <tr><td>Liberdade pessoal</td><td>Vedação de escravidão; servidão; prisão arbitrária</td></tr>
+      <tr><td>Liberdade de circulação</td><td>Locomoção; escolha de residência; saída e retorno</td></tr>
+      <tr><td>Devido processo</td><td>Justiça imparcial; presunção de inocência; defesa</td></tr>
+      <tr><td>Privacidade</td><td>Vida privada; família; domicílio; correspondência</td></tr>
+      <tr><td>Liberdade de expressão</td><td>Pensamento, religião, opinião, expressão</td></tr>
+      <tr><td>Liberdade de reunião e associação</td><td>Inclui sindical</td></tr>
+      <tr><td>Direitos políticos</td><td>Votar e ser votado; acesso a função pública</td></tr>
+      <tr><td>Igualdade perante a lei</td><td>Não discriminação</td></tr>
+      <tr><td>Direitos das minorias</td><td>Étnicas, religiosas, linguísticas</td></tr>
+    </table>
+
+    <div class="subsecao">PIDESC — Direitos Econômicos, Sociais e Culturais</div>
+    <table>
+      <tr><th>Direito</th><th>Conteúdo</th></tr>
+      <tr><td>Trabalho</td><td>Direito de trabalhar; livre escolha; condições justas; segurança</td></tr>
+      <tr><td>Salário justo e igual</td><td>Por trabalho igual; sem discriminação</td></tr>
+      <tr><td>Sindicalização e greve</td><td>Direito sindical pleno</td></tr>
+      <tr><td>Seguridade social</td><td>Inclusive seguros sociais</td></tr>
+      <tr><td>Proteção da família</td><td>Inclusive maternidade e infância</td></tr>
+      <tr><td>Padrão de vida adequado</td><td>Alimentação, vestuário, habitação; melhoria contínua</td></tr>
+      <tr><td>Saúde física e mental</td><td>"Nível mais alto possível"; redução da mortalidade infantil; melhoria do meio ambiente; prevenção de epidemias; serviços médicos</td></tr>
+      <tr><td>Educação</td><td>Pleno desenvolvimento da personalidade humana; gratuidade do ensino primário; universalização progressiva</td></tr>
+      <tr><td>Vida cultural</td><td>Participação; benefícios do progresso científico</td></tr>
+    </table>
+
+    <div class="subsecao">Características Distintivas dos Pactos</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">PIDCP — Direitos Negativos</div>
+        <p>"Não fazer" estatal — Estado deve abster-se de violar. Implementação <em>imediata</em>. Não depende de recursos financeiros. Comitê de Direitos Humanos da ONU monitora.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">PIDESC — Direitos Positivos</div>
+        <p>"Fazer" estatal — Estado deve atuar ativamente para garantir. Implementação <em>progressiva</em> conforme recursos disponíveis. Princípio do "máximo dos recursos disponíveis". Comitê DESC monitora.</p>
+      </div>
+    </div>
+
+    <div class="subsecao">Crítica à Distinção Negativos/Positivos</div>
+    <p>Hoje considera-se essa distinção <em>insuficiente</em>: todos os direitos exigem ações estatais (positivas) — direito à vida exige polícia, judiciário, hospitais; direito de expressão exige educação, infraestrutura de comunicação. A categoria SS reforça a <strong>indivisibilidade</strong>.</p>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> PIDCP e PIDESC vinculantes desde 1976; Brasil aderiu 1992. PIDESC é a "fonte" da Seguridade Social brasileira (CF/1988). Saber distinguir os dois pactos. Vigília para questão sobre PIDESC em ENARE 2026 (mencionado no estudo de banca).</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-POLITICA · DUDH</span><span>Extensivo ENARE 2026</span><span class="pg">4 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-POLITICA</div><div class="aula-ref">Bloco B13 · Aula 10 · Viena</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Declaração de Viena (1993)</div>
+
+    <p>A <strong>Declaração e Programa de Ação de Viena</strong>, adotada na II Conferência Mundial de Direitos Humanos (Viena, 14-25 de junho de 1993), é o segundo grande marco internacional dos DH pós-DUDH. Pôs fim ao debate sobre relativismo cultural e reafirmou universalidade. Cobrada em ENARE 2024 (Q98).</p>
+
+    <div class="subsecao">Contexto Histórico</div>
+    <ul class="lista">
+      <li>Pós-Guerra Fria — necessidade de reconfiguração</li>
+      <li>Genocídios na ex-Iugoslávia e Ruanda — emergência de proteger DH em conflitos</li>
+      <li>Debates sobre "valores asiáticos" e "diversidade cultural" — relativismo</li>
+      <li>Brasil ativo na conferência; documento influencia CF/1988 e desenvolvimentos posteriores</li>
+      <li>171 Estados participantes; participação massiva da sociedade civil</li>
+    </ul>
+
+    <div class="subsecao">Princípios da Declaração</div>
+    <ul class="lista">
+      <li><strong>Universalidade</strong>: "todos os direitos humanos são universais, indivisíveis, interdependentes e inter-relacionados" — frase clássica</li>
+      <li><strong>Indivisibilidade</strong>: civis-políticos e econômicos-sociais-culturais têm igual importância</li>
+      <li><strong>Interdependência</strong>: o exercício de um direito depende do outro</li>
+      <li><strong>Não-relativismo</strong>: "a comunidade internacional deve tratar os direitos humanos globalmente de forma justa e equitativa, em pé de igualdade e com a mesma ênfase"</li>
+      <li>Reconhece particularidades nacionais, regionais e diferenças históricas e culturais — mas SEM relativizar a obrigação dos Estados</li>
+      <li>Foco em vulnerabilidades: mulheres, crianças, minorias, refugiados, indígenas, PCDs</li>
+    </ul>
+
+    <div class="subsecao">Pontos Centrais da Declaração</div>
+    <table>
+      <tr><th>Tópico</th><th>Conteúdo</th></tr>
+      <tr><td>Universalidade vs Relativismo</td><td>Reafirma universalidade sem negar particularidades — particularidades não podem ser usadas para violar DH universais</td></tr>
+      <tr><td>Indivisibilidade dos direitos</td><td>Civis-políticos = econômicos-sociais-culturais. Princípio histórico-fundador</td></tr>
+      <tr><td>Direitos das mulheres</td><td>São direitos humanos. Combate à violência contra a mulher. Recomenda Convenção sobre Violência Contra a Mulher</td></tr>
+      <tr><td>Direitos das crianças</td><td>Reforça a Convenção sobre os Direitos da Criança (1989)</td></tr>
+      <tr><td>Direito ao desenvolvimento</td><td>Reafirma como direito humano inalienável (Declaração 1986)</td></tr>
+      <tr><td>Democracia e DH</td><td>Reciprocamente reforçados; democracia é base para DH</td></tr>
+      <tr><td>Alto Comissariado da ONU para DH</td><td>Recomenda criação (efetivada em dezembro 1993)</td></tr>
+      <tr><td>Mecanismos nacionais e regionais</td><td>Comissões nacionais de DH; cortes regionais</td></tr>
+      <tr><td>Educação em DH</td><td>Programa Mundial de Educação em DH</td></tr>
+      <tr><td>Tribunais ad hoc</td><td>Apoio ao Tribunal Penal Internacional (criado em 1998 — Estatuto de Roma)</td></tr>
+    </table>
+
+    <div class="subsecao">Outras Declarações Importantes</div>
+    <table>
+      <tr><th>Documento</th><th>Ano</th><th>Conteúdo</th></tr>
+      <tr><td>Declaração sobre Direito ao Desenvolvimento</td><td>1986</td><td>Direito humano inalienável</td></tr>
+      <tr><td>Cúpula Mundial para o Desenvolvimento Social (Copenhague)</td><td>1995</td><td>Pacto sobre desenvolvimento social, emprego, integração</td></tr>
+      <tr><td>Declaração de Pequim sobre Mulheres</td><td>1995</td><td>"Direitos das mulheres são direitos humanos"</td></tr>
+      <tr><td>Declaração de Durban contra Racismo</td><td>2001</td><td>Crítica ao racismo, discriminação racial, xenofobia</td></tr>
+      <tr><td>Carta dos Direitos Fundamentais da União Europeia</td><td>2000</td><td>Sistema regional europeu</td></tr>
+      <tr><td>Carta Africana dos Direitos Humanos</td><td>1981</td><td>Sistema regional africano (Carta de Banjul)</td></tr>
+      <tr><td>Carta de Maceió (Brasil — SS)</td><td>2000</td><td>CFESS reafirma compromisso da categoria com DH</td></tr>
+      <tr><td>Carta de Maceió por uma Política Nacional de DH</td><td>diversos</td><td>Cobrado em ENARE 2024</td></tr>
+    </table>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> Viena 1993 reafirma universalidade + indivisibilidade. "Direitos das mulheres são direitos humanos" (também em Pequim 1995). Recomenda Alto Comissariado da ONU para DH. Combate ao relativismo cultural. Cobrado em ENARE 2024 (Q98 — Declaração de Viena).</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-POLITICA · DUDH</span><span>Extensivo ENARE 2026</span><span class="pg">5 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-POLITICA</div><div class="aula-ref">Bloco B13 · Aula 10 · Sistemas Regionais</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Sistemas Regionais e Outras Convenções</div>
+
+    <div class="subsecao">Sistema Interamericano de DH</div>
+    <p>O Brasil está vinculado ao <strong>Sistema Interamericano</strong>, com duas instâncias:</p>
+    <ul class="lista">
+      <li><strong>Comissão Interamericana de Direitos Humanos (CIDH)</strong>: criada em 1959; órgão consultivo da OEA; recebe denúncias individuais; faz recomendações</li>
+      <li><strong>Corte Interamericana de Direitos Humanos</strong>: criada em 1979; instância judicial; emite sentenças vinculantes para os Estados</li>
+    </ul>
+
+    <div class="subsecao">Pacto de San José da Costa Rica (1969)</div>
+    <p>Conhecida como <strong>Convenção Americana de Direitos Humanos (CADH)</strong>. Adotada em 1969; entrou em vigor 1978. Brasil aderiu em 1992. Documento vinculante regional.</p>
+    <ul class="lista">
+      <li>22 países da OEA são parte</li>
+      <li>Reconhece direitos civis, políticos, econômicos, sociais e culturais</li>
+      <li>Princípios: vida, liberdade, integridade, igualdade, devido processo</li>
+      <li>Vedação à pena de morte (Art. 4); proibição de tortura (Art. 5)</li>
+      <li>Direitos das crianças (Art. 19); proteção da família (Art. 17)</li>
+      <li>Liberdade de expressão (Art. 13); pensamento; reunião; associação; circulação</li>
+      <li>Reconhece direitos econômicos, sociais e culturais (Art. 26) — princípio do desenvolvimento progressivo</li>
+      <li>Brasil pode ser processado na Corte Interamericana por violações</li>
+    </ul>
+
+    <div class="subsecao">Casos Brasileiros na Corte Interamericana</div>
+    <ul class="lista">
+      <li><strong>Damião Ximenes Lopes (2006)</strong>: primeiro caso brasileiro com condenação; morte em manicômio (Sobral-CE); marco para Reforma Psiquiátrica</li>
+      <li><strong>Gomes Lund e outros — Guerrilha do Araguaia (2010)</strong>: condenação por desaparecimentos forçados durante ditadura militar</li>
+      <li><strong>Trabalhadores da Fazenda Brasil Verde (2016)</strong>: trabalho escravo contemporâneo</li>
+      <li><strong>Favela Nova Brasília (2017)</strong>: chacinas policiais</li>
+      <li><strong>Povo Indígena Xucuru (2018)</strong>: morosidade na demarcação territorial</li>
+    </ul>
+
+    <div class="subsecao">Convenção sobre Direitos das Pessoas com Deficiência (2006)</div>
+    <p>Adotada pela ONU em 2006; entrou em vigor 2008. Brasil aderiu com <em>status de Emenda Constitucional</em> (Decreto Legislativo 186/2008) — primeira convenção internacional com tal nível. Marco da mudança de paradigma:</p>
+    <ul class="lista">
+      <li><strong>Modelo médico → Modelo social</strong> da deficiência</li>
+      <li>Deficiência = impedimento + barreira (não é "limitação individual"; é interação com o ambiente)</li>
+      <li>Princípios: dignidade, autonomia individual, não discriminação, participação plena, respeito à diferença, igualdade de oportunidades, acessibilidade</li>
+      <li>Acessibilidade ampla: física, comunicacional, atitudinal, programática</li>
+      <li>Inclusão escolar</li>
+      <li>Acesso ao trabalho</li>
+      <li>Inclusão na vida cultural, política, social</li>
+    </ul>
+
+    <p>Internalizada no Brasil pela <strong>Lei 13.146/2015 — Estatuto da Pessoa com Deficiência</strong>:</p>
+    <ul class="lista">
+      <li>Adoção do conceito da Convenção (modelo social)</li>
+      <li>Avaliação biopsicossocial da deficiência</li>
+      <li>Acessibilidade plena como direito</li>
+      <li>Cota em concursos (5%); reserva em ensino superior (Lei 13.409/2016)</li>
+      <li>Bens e serviços acessíveis</li>
+      <li>Cobrado em ENARE 2025 (Q71 — barreira atitudinal)</li>
+    </ul>
+
+    <div class="subsecao">Convenção 169 da OIT — Povos Indígenas e Tribais</div>
+    <p>Adotada em 1989 pela Organização Internacional do Trabalho. Brasil aderiu por Decreto 5.051/2004. Marco para povos indígenas, quilombolas, ribeirinhos:</p>
+    <ul class="lista">
+      <li><strong>Consulta livre, prévia e informada</strong>: qualquer empreendimento ou medida que afete povos tradicionais exige consulta prévia</li>
+      <li>Direito ao território tradicional</li>
+      <li>Direito à autonomia cultural</li>
+      <li>Direito à participação política específica</li>
+      <li>Direito ao consentimento</li>
+      <li>Crítica do SS: Brasil frequentemente descumpre Convenção 169 (Belo Monte, Vale do Javari, etc.)</li>
+    </ul>
+
+    <div class="subsecao">Outras Convenções Relevantes</div>
+    <ul class="lista">
+      <li><strong>CEDAW (1979)</strong>: Convenção sobre eliminação de todas as formas de discriminação contra a mulher</li>
+      <li><strong>CRC/UNCRC (1989)</strong>: Convenção sobre os Direitos da Criança — base do ECA (1990)</li>
+      <li><strong>Convenção contra Tortura (1984)</strong>: Brasil aderiu; foi base para Lei 9.455/1997</li>
+      <li><strong>Convenção sobre Refugiados (1951)</strong>: base do Estatuto do Refugiado brasileiro (Lei 9.474/1997)</li>
+      <li><strong>Convenção contra Racismo (CERD, 1965)</strong>: Brasil aderiu</li>
+      <li><strong>Convenção de Belém do Pará (1994)</strong>: violência contra a mulher (regional)</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> Pacto San José = sistema interamericano. Convenção PCD (2006) com status de EC = mudança paradigmática + Lei 13.146/2015. Convenção 169 da OIT = consulta livre, prévia e informada. CEDAW e CRC complementam.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-POLITICA · DUDH</span><span>Extensivo ENARE 2026</span><span class="pg">6 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-POLITICA</div><div class="aula-ref">Bloco B13 · Aula 10 · DH no SS</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Direitos Humanos no Serviço Social Brasileiro</div>
+
+    <p>A perspectiva crítica do SS articula DH com a leitura marxista da questão social. Trata DH como <em>conquista histórica das lutas dos trabalhadores e oprimidos</em>, não como dádiva liberal.</p>
+
+    <div class="subsecao">DH no Código de Ética do AS (1993)</div>
+    <p>O Código de Ética do Assistente Social (Res. CFESS 273/1993) inscreve a <strong>defesa intransigente dos direitos humanos</strong> como princípio fundamental (II):</p>
+    <ul class="lista">
+      <li>"<em>Defesa intransigente dos direitos humanos e recusa do arbítrio e do autoritarismo</em>"</li>
+      <li>"Intransigente" = não negociável</li>
+      <li>Articulada com defesa da liberdade, equidade, justiça social, democracia, pluralismo</li>
+      <li>Diferenciada do "humanismo abstrato" liberal e do moralismo conservador</li>
+      <li>DH como histórico, conflituoso, em disputa</li>
+    </ul>
+
+    <div class="subsecao">Atuação do AS na Defesa de DH</div>
+    <table>
+      <tr><th>Campo</th><th>Atuação</th></tr>
+      <tr><td>Sistema de Garantia de Direitos (SGD)</td><td>Articulação com Conselho Tutelar, MP, Defensoria, Justiça</td></tr>
+      <tr><td>Comissões de Direitos Humanos</td><td>Estaduais, municipais; CRESS tem comissão</td></tr>
+      <tr><td>Sistema prisional</td><td>Garantia de direitos básicos a pessoas privadas de liberdade</td></tr>
+      <tr><td>Atendimento a vítimas</td><td>Violência doméstica, tortura, discriminação</td></tr>
+      <tr><td>Direitos das mulheres</td><td>Maria da Penha, feminicídio, violência obstétrica</td></tr>
+      <tr><td>Direitos da criança e adolescente</td><td>ECA, CRECI, Conselho Tutelar</td></tr>
+      <tr><td>Direitos do idoso</td><td>Estatuto do Idoso (Lei 10.741/2003)</td></tr>
+      <tr><td>Direitos das PCDs</td><td>Lei 13.146/2015</td></tr>
+      <tr><td>Direitos da PSR</td><td>Plano Ruas Visíveis 2023-2026</td></tr>
+      <tr><td>Direitos LGBTI+</td><td>Combate à LGBTfobia; nome social; saúde integral</td></tr>
+      <tr><td>Direitos dos povos indígenas e quilombolas</td><td>Articulação com Funai, Palmares; Convenção 169 OIT</td></tr>
+      <tr><td>Direitos dos migrantes e refugiados</td><td>Lei 13.445/2017 (Lei de Migração)</td></tr>
+    </table>
+
+    <div class="subsecao">Perspectiva Crítica do SS aos DH</div>
+    <p>Embora defenda os DH, o SS brasileiro mantém posição crítica:</p>
+    <ul class="lista">
+      <li><strong>DH não são "presente" liberal</strong>: são conquista de lutas históricas (trabalhadores, mulheres, negros, indígenas, LGBTI+)</li>
+      <li><strong>DH estão em disputa</strong>: o capitalismo restringe os DESC enquanto amplia retoricamente os civis-políticos</li>
+      <li><strong>Universalismo crítico</strong>: combinar universalidade abstrata com particularidades concretas (Boaventura de Sousa Santos — "Hermenêutica diatópica")</li>
+      <li><strong>DH não devem despolitizar</strong>: discurso humanitário pode encobrir lutas concretas</li>
+      <li><strong>Articulação com luta de classes</strong>: DH e luta anti-capitalista não se opõem</li>
+      <li><strong>Crítica à "indústria dos DH"</strong>: profissionalização excessiva pode despolitizar</li>
+    </ul>
+
+    <div class="subsecao">Ações Concretas no Cotidiano</div>
+    <p>O AS pode defender DH no cotidiano por:</p>
+    <ul class="lista">
+      <li>Respeitar a autonomia do usuário (Código de Ética I)</li>
+      <li>Combater a comprovação vexatória (LOAS III)</li>
+      <li>Garantir sigilo profissional</li>
+      <li>Atender com escuta qualificada, sem julgamento moral</li>
+      <li>Denunciar violações (à Defensoria, MP, ouvidoria)</li>
+      <li>Articular rede de proteção</li>
+      <li>Participar de movimentos sociais</li>
+      <li>Documentar casos paradigmáticos para gerar mudança institucional</li>
+      <li>Educação em direitos com os usuários</li>
+      <li>Posicionar-se publicamente em defesa de DH</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Mensagem do SS:</strong> DH não são neutros nem técnicos — são <em>políticos</em>. O AS comprometido com PEP é, por definição, defensor intransigente dos DH. Em situações de violação institucional, o AS é "agente de defesa" — não cúmplice de violações por silêncio.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-POLITICA · DUDH</span><span>Extensivo ENARE 2026</span><span class="pg">7 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-POLITICA</div><div class="aula-ref">Bloco B13 · Aula 10 · Questões ENARE</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 01</span><span class="fonte">DUDH Art. 13 · NC: Análise</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Sobre o direito de locomoção previsto na DUDH (Art. 13), é CORRETO afirmar:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Toda pessoa tem direito INCONDICIONAL de entrar em qualquer país, sem restrição.</span></li>
+        <li class="correta"><span class="letra">B</span><span>Toda pessoa tem direito de circular livremente DENTRO das fronteiras de cada Estado, de escolher residência, de DEIXAR qualquer país (inclusive o próprio) e REGRESSAR. A DUDH NÃO garante automaticamente o direito de entrar em outro Estado (regulado por legislação nacional/refúgio).</span></li>
+        <li><span class="letra">C</span><span>O direito de locomoção está sujeito a critério econômico — só circula quem paga.</span></li>
+        <li><span class="letra">D</span><span>O Art. 13 garante apenas o direito de imigração, não de emigração.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> Art. 13 da DUDH: (1) circular livremente DENTRO das fronteiras + escolher residência; (2) DEIXAR qualquer país, inclusive o próprio, e REGRESSAR. A DUDH não obriga Estados a aceitarem qualquer estrangeiro (a entrada é regulada por lei nacional e Convenção sobre Refugiados de 1951). Cobrado em ENARE 2025 (Q61).</p>
+      <p><strong>Por que as outras erram:</strong> A — não é incondicional · C — critério econômico não é base na DUDH · D — emigração também é garantida.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-POLITICA · DUDH</span><span>Extensivo ENARE 2026</span><span class="pg">8 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-POLITICA</div><div class="aula-ref">Bloco B13 · Aula 10 · Questões ENARE</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 02</span><span class="fonte">DUDH Art. 16 · NC: Compreensão</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Sobre o tratamento da família pela DUDH (Art. 16), assinale a afirmação CORRETA:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>A família é descrita como instituição secundária à comunidade política.</span></li>
+        <li class="correta"><span class="letra">B</span><span>A família é descrita como "núcleo NATURAL e FUNDAMENTAL da sociedade", com direito à proteção da sociedade e do Estado. O casamento exige consentimento livre e pleno dos pretendentes (vedação ao casamento forçado e infantil). Garante igualdade entre cônjuges sem restrição de raça, nacionalidade ou religião.</span></li>
+        <li><span class="letra">C</span><span>A família é definida exclusivamente como modelo nuclear heteronormativo.</span></li>
+        <li><span class="letra">D</span><span>A DUDH NÃO trata da família, deixando o tema às legislações nacionais.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> Art. 16, parágrafo 3: "A família é o núcleo natural e fundamental da sociedade e tem direito à proteção da sociedade e do Estado." Os parágrafos 1 e 2 estabelecem igualdade entre cônjuges e consentimento livre. Cobrado em ENARE 2025 (Q78).</p>
+      <p><strong>Por que as outras erram:</strong> A — frase contrária à literalidade · C — a DUDH não especifica modelo familiar; abre interpretação ampla · D — a DUDH trata sim da família.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-POLITICA · DUDH</span><span>Extensivo ENARE 2026</span><span class="pg">9 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-POLITICA</div><div class="aula-ref">Bloco B13 · Aula 10 · Gabarito e Síntese</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 03</span><span class="fonte">Viena 1993 · NC: Compreensão</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">A Declaração de Viena (1993) é considerada marco da articulação contemporânea dos Direitos Humanos por:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Substituir integralmente a DUDH de 1948.</span></li>
+        <li class="correta"><span class="letra">B</span><span>Reafirmar a universalidade, indivisibilidade, interdependência e inter-relação dos direitos humanos; combater o relativismo cultural sem desconhecer particularidades; declarar que "direitos das mulheres são direitos humanos"; recomendar a criação do Alto Comissariado da ONU para DH; reforçar o direito ao desenvolvimento.</span></li>
+        <li><span class="letra">C</span><span>Estabelecer a primazia dos direitos civis e políticos sobre os econômicos, sociais e culturais.</span></li>
+        <li><span class="letra">D</span><span>Eliminar o sistema regional interamericano de proteção.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> Viena (1993) reafirmou universalidade + indivisibilidade + interdependência + inter-relação. Combateu o relativismo cultural ("valores asiáticos"). "Direitos das mulheres são DH" — frase consolidada em Pequim (1995) mas com origem em Viena. Recomendou Alto Comissariado da ONU (criado em dezembro 1993). Reforçou direito ao desenvolvimento (Declaração 1986).</p>
+      <p><strong>Por que as outras erram:</strong> A — complementa, não substitui DUDH · C — reafirma indivisibilidade (sem primazia) · D — reforça sistemas regionais, não os elimina.</p>
+    </div>
+
+    <div class="subsecao">Síntese — DUDH e Direitos Humanos</div>
+    <div class="sintese-grid">
+      <div class="sintese-item"><div class="si-label">DUDH 1948</div><p>Marco fundador. Preâmbulo + 30 artigos. Universal, indivisível, interdependente, inalienável, imprescritível. Eleanor Roosevelt. 48 favoráveis, 8 abstenções. Soft law que se tornou direito costumeiro.</p></div>
+      <div class="sintese-item"><div class="si-label">Pactos 1966</div><p>PIDCP (civis/políticos) + PIDESC (econômicos/sociais/culturais). Vinculantes desde 1976. Brasil aderiu 1992. PIDESC = fonte da Seguridade brasileira.</p></div>
+      <div class="sintese-item"><div class="si-label">Gerações de DH (Vasak)</div><p>1ª = liberdade (civis/políticos). 2ª = igualdade (DESC). 3ª = fraternidade (coletivos/difusos). Hoje "dimensões" — indivisibilidade.</p></div>
+      <div class="sintese-item"><div class="si-label">Viena 1993</div><p>Universalidade + indivisibilidade. "Direitos das mulheres são DH". Alto Comissariado ONU. Combate ao relativismo. Educação em DH.</p></div>
+      <div class="sintese-item"><div class="si-label">Sistemas e Convenções</div><p>Sistema Interamericano (Pacto San José 1969, CIDH, Corte). Convenção PCD 2006 (status de EC, Lei 13.146/2015). Convenção 169 OIT (consulta prévia). CEDAW, CRC, Belém do Pará.</p></div>
+      <div class="sintese-item"><div class="si-label">Próxima Aula</div><p><strong>Aula 11 — Saúde Coletiva: Fundamentos.</strong> Conceito ampliado de saúde (Lei 8.080), determinantes sociais (Dahlgren-Whitehead), OPAS/OMS.</p></div>
+    </div>
+
+    <div class="alerta" style="margin-top:5px;">
+      <p><strong>Regra de ouro — DH no ENARE:</strong> DUDH 1948 = 30 artigos; saber Art. 1 (princípios), Art. 13 (locomoção), Art. 16 (família), Arts. 22-27 (DESC). Pactos 1966 (PIDCP e PIDESC). Viena 1993 = universalidade + indivisibilidade. Sistema Interamericano. Convenção PCD com status de EC. Código de Ética AS = "defesa intransigente dos DH" (princípio II).</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-POLITICA · DUDH</span><span>Extensivo ENARE 2026</span><span class="pg">10 / 10</span></div>
+</div>
+
+</body>
+</html>
