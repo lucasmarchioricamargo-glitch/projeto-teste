@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Serviço Social — Bloco B13 Aula 15 | Extensivo ENARE 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap');
+  :root { --creme: #F6F4ED; --verde: #1F5C23; --amarelo: #C6D834; --escuro: #0C2B0E; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #d0d0d0; font-family: 'Bricolage Grotesque', sans-serif; }
+  .page { width: 210mm; height: 297mm; background: var(--creme); margin: 0 auto 12px; position: relative; overflow: hidden; page-break-after: always; }
+  .header { background: var(--verde); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .header-logo { display: flex; align-items: center; gap: 8px; }
+  .header-logo svg { width: 32px; height: 32px; }
+  .header-brand { display: flex; flex-direction: column; line-height: 1; }
+  .header-brand .marca { font-family: 'Playfair Display', serif; font-style: italic; color: #fff; font-size: 13px; letter-spacing: 0.5px; }
+  .header-brand .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 7px; letter-spacing: 1.5px; text-transform: uppercase; }
+  .header-info { text-align: right; }
+  .header-info .disciplina { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
+  .header-info .aula-ref { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.7); font-size: 8px; letter-spacing: 0.5px; }
+  .footer { position: absolute; bottom: 0; left: 0; right: 0; background: var(--verde); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .footer span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.6); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .footer .pg { color: var(--amarelo); font-weight: 400; }
+  .body { padding: 14px 18px 30px; height: calc(297mm - 52px - 22px); overflow: hidden; }
+  .capa-page { background: var(--verde); }
+  .capa-header { background: var(--creme); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .capa-header .marca { font-family: 'Playfair Display', serif; font-style: italic; color: var(--verde); font-size: 14px; }
+  .capa-header .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--verde); font-size: 7.5px; letter-spacing: 2px; text-transform: uppercase; }
+  .capa-body { padding: 28px 24px 0; display: flex; flex-direction: column; height: calc(297mm - 52px - 22px); }
+  .capa-eyebrow { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; }
+  .capa-titulo { font-family: 'Barlow Condensed', sans-serif; color: #fff; font-size: 50px; line-height: 0.95; text-transform: uppercase; letter-spacing: -0.5px; margin-bottom: 6px; }
+  .capa-titulo span { color: var(--amarelo); }
+  .capa-subtitulo { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; color: rgba(255,255,255,0.65); font-size: 12px; letter-spacing: 0.3px; margin-bottom: 22px; line-height: 1.5; }
+  .capa-badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+  .capa-badge { background: rgba(198,216,52,0.15); border: 1px solid var(--amarelo); color: var(--amarelo); font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 8px; border-radius: 2px; }
+  .capa-divider { width: 40px; height: 3px; background: var(--amarelo); margin-bottom: 20px; }
+  .capa-topicos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .capa-topico { display: flex; align-items: flex-start; gap: 7px; }
+  .capa-topico-num { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 18px; line-height: 1; min-width: 18px; }
+  .capa-topico-txt { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 400; color: rgba(255,255,255,0.8); font-size: 9.5px; line-height: 1.4; }
+  .capa-footer-strip { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.25); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .capa-footer-strip span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.45); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .secao-titulo { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 18px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid var(--amarelo); padding-bottom: 3px; margin-bottom: 9px; line-height: 1; }
+  .subsecao { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.5px; margin: 7px 0 3px; }
+  p { font-size: 9px; line-height: 1.55; color: #1a1a1a; margin-bottom: 4px; font-weight: 400; }
+  .destaque { background: var(--amarelo); color: var(--escuro); font-weight: 600; padding: 1px 4px; border-radius: 2px; font-size: 8.5px; }
+  .alerta { background: rgba(198,216,52,0.18); border-left: 3px solid var(--amarelo); padding: 5px 8px; margin: 5px 0; border-radius: 0 3px 3px 0; }
+  .alerta p { margin: 0; font-size: 8.5px; }
+  .alerta strong { color: var(--verde); }
+  table { width: 100%; border-collapse: collapse; margin: 5px 0; font-size: 8px; }
+  th { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; padding: 4px 6px; text-align: left; }
+  td { padding: 3px 6px; border-bottom: 1px solid rgba(31,92,35,0.12); vertical-align: top; line-height: 1.4; color: #1a1a1a; }
+  tr:nth-child(even) td { background: rgba(31,92,35,0.04); }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 5px 0; }
+  .card { background: rgba(31,92,35,0.06); border: 1px solid rgba(31,92,35,0.15); border-radius: 4px; padding: 7px 8px; }
+  .card-title { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 11px; text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 3px; }
+  .card p { font-size: 8px; line-height: 1.5; }
+  .questao-header { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; padding: 4px 10px; border-radius: 3px 3px 0 0; display: flex; justify-content: space-between; align-items: center; }
+  .questao-header .fonte { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; color: var(--amarelo); letter-spacing: 0.5px; }
+  .questao-body { border: 1px solid rgba(31,92,35,0.2); border-top: none; border-radius: 0 0 3px 3px; padding: 7px 10px; margin-bottom: 7px; }
+  .questao-enunciado { font-size: 8.5px; line-height: 1.55; color: #111; margin-bottom: 5px; font-weight: 500; }
+  .alternativas { list-style: none; }
+  .alternativas li { font-size: 8px; line-height: 1.5; padding: 2px 0; color: #222; display: flex; gap: 5px; }
+  .alternativas li .letra { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: var(--verde); font-size: 9px; min-width: 10px; }
+  .alternativas li.correta .letra { color: var(--amarelo); }
+  .alternativas li.correta { background: rgba(198,216,52,0.15); border-left: 2px solid var(--amarelo); padding-left: 4px; }
+  .gabarito-box { background: var(--verde); border-radius: 4px; padding: 8px 12px; margin: 6px 0; }
+  .gabarito-box .gab-title { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+  .gabarito-box p { color: rgba(255,255,255,0.9); font-size: 8px; line-height: 1.55; }
+  .gabarito-box strong { color: var(--amarelo); }
+  .sintese-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-top: 6px; }
+  .sintese-item { background: rgba(31,92,35,0.07); border-left: 3px solid var(--verde); padding: 5px 7px; border-radius: 0 3px 3px 0; }
+  .sintese-item .si-label { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px; }
+  .sintese-item p { font-size: 7.5px; line-height: 1.5; }
+  ul.lista { padding-left: 14px; margin: 3px 0; }
+  ul.lista li { font-size: 8.5px; line-height: 1.55; color: #1a1a1a; margin-bottom: 1px; }
+  @media print { body { background: none; } .page { margin: 0; box-shadow: none; } }
+</style>
+</head>
+<body>
+
+<div class="page capa-page">
+  <div class="capa-header">
+    <div style="display:flex;align-items:center;gap:8px;"><svg width="34" height="34" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#1F5C23"/></svg><div><div class="marca">Elite Treinamentos</div><div class="tagline">Extensivo ENARE 2026</div></div></div>
+    <div style="text-align:right;"><div style="font-family:'Barlow Condensed',sans-serif;color:var(--verde);font-size:11px;letter-spacing:1px;text-transform:uppercase;">Bloco B13 · Aula 15</div><div style="font-family:'Space Grotesk',sans-serif;font-weight:300;color:#888;font-size:7.5px;letter-spacing:0.5px;">Serviço Social</div></div>
+  </div>
+  <div class="capa-body">
+    <div class="capa-eyebrow">Bloco B13 · SS-ETICA · Aula 15 de 21</div>
+    <div class="capa-titulo">Formação <span>Profissional<br>do Assistente<br>Social</span></div>
+    <div class="capa-subtitulo">DCN/ABEPSS 1996, três núcleos de fundamentação,<br>supervisão de estágio e crítica à EaD</div>
+    <div class="capa-badge-row">
+      <div class="capa-badge">SS-ETICA ★★★</div>
+      <div class="capa-badge">DCN ABEPSS 1996</div>
+      <div class="capa-badge">3 Núcleos</div>
+      <div class="capa-badge">ENESSO · CFESS · ABEPSS</div>
+    </div>
+    <div class="capa-divider"></div>
+    <div class="capa-topicos">
+      <div class="capa-topico"><div class="capa-topico-num">01</div><div class="capa-topico-txt">Histórico da formação (LDB 1996, MEC)</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">02</div><div class="capa-topico-txt">DCN/ABEPSS 1996 — três núcleos</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">03</div><div class="capa-topico-txt">Supervisão de estágio (Lei 11.788/2008)</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">04</div><div class="capa-topico-txt">Crítica à EaD; defesa da formação presencial</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">05</div><div class="capa-topico-txt">Entidades: ABEPSS, ENESSO, CFESS, CRESS</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">06</div><div class="capa-topico-txt">Pós-graduação, residência e CAPES</div></div>
+    </div>
+  </div>
+  <div class="capa-footer-strip"><span>Extensivo ENARE 2026</span><span>Elite Treinamentos em Saúde</span><span>Página 1 de 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-ETICA</div><div class="aula-ref">Bloco B13 · Aula 15 · Histórico</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Histórico da Formação em Serviço Social</div>
+
+    <p>A formação profissional do AS no Brasil tem 90+ anos e passou por <strong>transformações curriculares</strong> que acompanham a maturação da profissão. Hoje, o currículo de graduação é regido pelas <strong>Diretrizes Curriculares Nacionais (DCN) da ABEPSS de 1996</strong>, homologadas pelo MEC em 2001 (Parecer CNE/CES 492/2001 e Resolução CNE/CES 15/2002).</p>
+
+    <div class="subsecao">Marcos Históricos da Formação</div>
+    <table>
+      <tr><th>Ano</th><th>Marco</th></tr>
+      <tr><td>1932</td><td>Curso Intensivo de Formação Social do Cônego Leme (SP) — origem da formação católica</td></tr>
+      <tr><td>1936</td><td>Fundação da primeira Escola de Serviço Social — São Paulo (CESS, depois PUC-SP)</td></tr>
+      <tr><td>1937</td><td>Escola de Serviço Social do Rio de Janeiro</td></tr>
+      <tr><td>1953</td><td>Lei 1.889/1953 — primeiro reconhecimento legal da profissão</td></tr>
+      <tr><td>1957</td><td>Lei 3.252/1957 — regulamentação anterior; revogada em 1993</td></tr>
+      <tr><td>1962</td><td>Currículo Mínimo do CFE/MEC — modelo funcionalista (caso/grupo/comunidade)</td></tr>
+      <tr><td>1970</td><td>Reforma universitária — Lei 5.540/1968; nova LDB</td></tr>
+      <tr><td>1975</td><td>Currículo Mínimo revisado — ainda funcionalista</td></tr>
+      <tr><td>1979</td><td>III CBAS — "Congresso da Virada"; pressão por reforma curricular</td></tr>
+      <tr><td>1982</td><td>Currículo Mínimo de 1982 — abre espaço para a tradição marxista, mas mantém estrutura tripartite</td></tr>
+      <tr><td>1993</td><td>Lei 8.662/1993 + Código de Ética/1993 — bases legais e éticas</td></tr>
+      <tr><td>1996</td><td>LDB (Lei 9.394/1996); ABEPSS aprova as Diretrizes Curriculares para o Serviço Social</td></tr>
+      <tr><td>2001/2002</td><td>MEC homologa as DCNs (Parecer CNE/CES 492/2001 e Resolução CNE/CES 15/2002) — com alterações que ABEPSS critica</td></tr>
+      <tr><td>2003 em diante</td><td>Expansão da EaD (Decreto 5.622/2005); ABEPSS/CFESS/ENESSO publicam manifesto contra EaD em SS</td></tr>
+      <tr><td>2009</td><td>Política Nacional de Estágio (PNE/ABEPSS, 2010)</td></tr>
+      <tr><td>2015 em diante</td><td>Crescimento das pós-graduações; PNPG/CAPES; expansão das residências multiprofissionais</td></tr>
+    </table>
+
+    <div class="subsecao">LDB (Lei 9.394/1996) — Lei de Diretrizes e Bases da Educação Nacional</div>
+    <p>É a "lei orgânica" da educação brasileira. Para a formação em SS, importam:</p>
+    <ul class="lista">
+      <li>Substituição dos "currículos mínimos" por "diretrizes curriculares"</li>
+      <li>Maior autonomia universitária para organização curricular</li>
+      <li>Definição da educação superior em "graduação, pós-graduação lato e stricto sensu, sequenciais, extensão"</li>
+      <li>Abertura à educação a distância (art. 80) — base posterior do Decreto 5.622/2005</li>
+      <li>Definição de carga horária e atividades complementares</li>
+    </ul>
+
+    <div class="subsecao">Diretrizes Curriculares da ABEPSS (1996)</div>
+    <p>Formuladas pela ABEPSS após anos de debate da categoria (1993-1996); aprovadas em assembleia geral.</p>
+
+    <p><strong>Princípios das DCNs (ABEPSS):</strong></p>
+    <ul class="lista">
+      <li>Rigoroso trato teórico, histórico e metodológico da realidade social</li>
+      <li>Compreensão crítica das transformações societárias do mundo contemporâneo</li>
+      <li>Adoção de uma teoria social crítica que possibilite a apreensão da totalidade social</li>
+      <li>Superação da fragmentação de conteúdos na organização curricular</li>
+      <li>Estabelecimento das DIMENSÕES INVESTIGATIVA E INTERVENTIVA como princípios formativos</li>
+      <li>Padrões de desempenho profissional capazes de responder às demandas do trabalho</li>
+      <li>Pluralidade democrática (no marco da defesa do PEP)</li>
+      <li>Indissociabilidade ensino-pesquisa-extensão</li>
+      <li>Estágio supervisionado como componente curricular obrigatório, indissociável da supervisão acadêmica e de campo</li>
+    </ul>
+
+    <div class="subsecao">Versão da ABEPSS × Homologação pelo MEC (2001)</div>
+    <p>O MEC reduziu trechos importantes das DCNs propostas pela ABEPSS:</p>
+    <ul class="lista">
+      <li>Perfil profissional menos politizado na versão MEC</li>
+      <li>Carga horária reduzida (a ABEPSS propunha 3.000h; o MEC fixou 2.700h, ampliada para 3.000h em algumas universidades)</li>
+      <li>Ênfase em "competências e habilidades" no estilo PCN/PNE</li>
+      <li>Atenuação do "rigoroso trato teórico" da realidade social</li>
+      <li>Apesar disso, a ABEPSS e CFESS mantêm as DCN/ABEPSS como referência da formação ético-política</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> formação atual = LDB/1996 + DCN/ABEPSS 1996 (homologadas em 2001/2002 com restrições). Carga horária mínima ABEPSS: 3.000h. Estágio supervisionado obrigatório. Indissociabilidade ensino-pesquisa-extensão. Princípios: tratamento teórico rigoroso, pluralismo democrático, dimensões investigativa e interventiva.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-ETICA · Formação</span><span>Extensivo ENARE 2026</span><span class="pg">2 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-ETICA</div><div class="aula-ref">Bloco B13 · Aula 15 · Três Núcleos</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Os Três Núcleos de Fundamentação</div>
+
+    <p>A grande inovação curricular das DCN/ABEPSS é a substituição da estrutura tripartite tradicional (caso-grupo-comunidade) por <strong>três núcleos de fundamentação</strong>. Conceito-chave a saber para a prova. Os três núcleos articulam-se entre si, não são sequenciais nem hierárquicos.</p>
+
+    <div class="subsecao">Núcleo 1: Fundamentos Teórico-Metodológicos da Vida Social</div>
+    <p>É o núcleo da <strong>compreensão crítica da realidade social</strong>. Estuda a sociabilidade burguesa, a vida social no capitalismo.</p>
+    <ul class="lista">
+      <li>Filosofia, Sociologia, Antropologia, Ciência Política, Economia Política, Psicologia</li>
+      <li>Trabalho, alienação, classes sociais, ideologia, hegemonia, Estado</li>
+      <li>Teoria do conhecimento; método; epistemologia crítica</li>
+      <li>Marx (materialismo histórico-dialético) como referencial central</li>
+      <li>Tradição marxista brasileira: Florestan Fernandes, Caio Prado Jr., Octávio Ianni</li>
+      <li>Outras teorias sociais (Durkheim, Weber, Bourdieu) também estudadas — pluralismo</li>
+      <li>Compreensão da formação social brasileira (Aula 05)</li>
+    </ul>
+
+    <div class="subsecao">Núcleo 2: Fundamentos da Formação Sócio-Histórica da Sociedade Brasileira</div>
+    <p>É o núcleo das <strong>particularidades brasileiras</strong> — historicidade da sociedade brasileira e da intervenção estatal.</p>
+    <ul class="lista">
+      <li>Formação econômica, social e política do Brasil</li>
+      <li>Estado, sociedade civil, intervenção estatal</li>
+      <li>Questão social como objeto histórico-determinado</li>
+      <li>Políticas sociais brasileiras (Seguridade, Saúde, Assistência, Trabalho, Educação, etc.)</li>
+      <li>Movimentos sociais e organização da sociedade civil</li>
+      <li>Raça, gênero, geração, território na formação brasileira</li>
+      <li>Tradições intelectuais brasileiras (Freyre, Sérgio Buarque, Florestan, Darcy — Aula 05)</li>
+      <li>Direito constitucional, garantia de direitos, legislação social</li>
+    </ul>
+
+    <div class="subsecao">Núcleo 3: Fundamentos do Trabalho Profissional</div>
+    <p>É o núcleo do <strong>fazer profissional</strong> — instrumentalidade, processos de trabalho, exercício profissional.</p>
+    <ul class="lista">
+      <li>Trabalho profissional como trabalho assalariado em condições de produção/reprodução do capital</li>
+      <li>Instrumentos e técnicas — instrumentalidade (Iamamoto, Guerra)</li>
+      <li>Espaços sócio-ocupacionais e processos de trabalho</li>
+      <li>Ética profissional (CE/1993) e PEP</li>
+      <li>Estágio supervisionado obrigatório</li>
+      <li>Pesquisa em SS</li>
+      <li>Planejamento, gestão, monitoramento e avaliação</li>
+      <li>Áreas de atuação: saúde, assistência, previdência, educação, sociojurídica, habitação, trabalho, etc.</li>
+      <li>Tecnologias da informação aplicadas ao SS</li>
+    </ul>
+
+    <div class="subsecao">Articulação entre os Núcleos</div>
+    <p>Os três núcleos não são "blocos sequenciais" ou "fases". Articulam-se:</p>
+    <table>
+      <tr><th>Articulação</th><th>Exemplo</th></tr>
+      <tr><td>Núcleo 1 → 2</td><td>Compreensão da sociabilidade burguesa (N1) aplicada à formação social brasileira (N2)</td></tr>
+      <tr><td>Núcleo 2 → 3</td><td>Conhecimento das políticas sociais brasileiras (N2) embasando intervenção profissional (N3)</td></tr>
+      <tr><td>Núcleo 3 → 1</td><td>Reflexão sobre prática (N3) retorna aos fundamentos teórico-metodológicos (N1)</td></tr>
+      <tr><td>Todos juntos</td><td>Pesquisa-intervenção que articula teoria social crítica + realidade brasileira + competência técnica</td></tr>
+    </table>
+
+    <div class="subsecao">Componentes Curriculares Obrigatórios</div>
+    <ul class="lista">
+      <li>Disciplinas teóricas dos três núcleos</li>
+      <li>Estágio supervisionado obrigatório (Política Nacional de Estágio — ABEPSS 2010)</li>
+      <li>Trabalho de Conclusão de Curso (TCC) — monografia ou outro produto científico</li>
+      <li>Atividades complementares (extensão, eventos, monitoria, IC)</li>
+      <li>Indissociabilidade ensino-pesquisa-extensão</li>
+    </ul>
+
+    <div class="subsecao">Dimensões da Formação</div>
+    <table>
+      <tr><th>Dimensão</th><th>Conteúdo</th></tr>
+      <tr><td><strong>Teórico-Metodológica</strong></td><td>Domínio de teorias sociais críticas; método de análise da realidade</td></tr>
+      <tr><td><strong>Ético-Política</strong></td><td>Direção social do exercício profissional; compromisso com o PEP</td></tr>
+      <tr><td><strong>Técnico-Operativa</strong></td><td>Instrumentos, técnicas, processos de trabalho; "como fazer"</td></tr>
+      <tr><td><strong>Investigativa</strong></td><td>Pesquisa social, sistematização da prática, produção de conhecimento</td></tr>
+      <tr><td><strong>Interventiva</strong></td><td>Capacidade de intervenção qualificada na realidade</td></tr>
+      <tr><td><strong>Pedagógica</strong></td><td>Atribuição educativa do AS (Abreu); processos pedagógicos no cotidiano</td></tr>
+    </table>
+
+    <p>A formação articula essas dimensões — não há técnica sem teoria, nem teoria sem prática. A famosa "<em>unidade teoria-prática</em>" é princípio da formação.</p>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> 3 núcleos = (1) Teórico-metodológicos da vida social; (2) Formação sócio-histórica brasileira; (3) Trabalho profissional. NÃO são fases — articulam-se. Dimensões: teórico-metodológica, ético-política, técnico-operativa, investigativa, interventiva, pedagógica. Unidade teoria-prática.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-ETICA · Formação</span><span>Extensivo ENARE 2026</span><span class="pg">3 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-ETICA</div><div class="aula-ref">Bloco B13 · Aula 15 · Estágio</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Estágio Supervisionado</div>
+
+    <p>O <strong>estágio supervisionado</strong> é componente curricular obrigatório e indissociável da formação. Articula teoria-prática; insere o estudante no campo de trabalho real; envolve supervisão acadêmica (universidade) e supervisão de campo (AS na instituição concedente). Cobrança frequente — articula Lei 11.788/2008 (Lei do Estágio) e Política Nacional de Estágio da ABEPSS (PNE, 2010).</p>
+
+    <div class="subsecao">Lei 11.788/2008 — Lei do Estágio</div>
+    <p>Define estágio como "ato educativo escolar supervisionado, desenvolvido no ambiente de trabalho, que visa à preparação para o trabalho produtivo de educandos" (art. 1º). Pontos principais:</p>
+    <ul class="lista">
+      <li>Estágio NÃO gera vínculo empregatício (art. 3º)</li>
+      <li>Termo de Compromisso entre concedente, estagiário e instituição de ensino (art. 7º)</li>
+      <li>Plano de estágio com plano de atividades</li>
+      <li>Carga horária: estágio obrigatório (a ser definida pela IES — ABEPSS recomenda 405h); estágio não-obrigatório (até 30h semanais)</li>
+      <li>Bolsa-estágio e auxílio-transporte obrigatórios apenas no estágio não-obrigatório</li>
+      <li>Recesso de 30 dias para estágio &gt;1 ano</li>
+      <li>Seguro contra acidentes pessoais (obrigatório)</li>
+      <li>Estágio &lt;6 meses não-obrigatório não exige seguro</li>
+    </ul>
+
+    <div class="subsecao">Política Nacional de Estágio (PNE) — ABEPSS 2010</div>
+    <p>Documento orientador da ABEPSS para o estágio em SS. Articula com Resolução CFESS 533/2008.</p>
+
+    <p><strong>Princípios da PNE:</strong></p>
+    <ul class="lista">
+      <li>Estágio é momento privilegiado de articulação teoria-prática</li>
+      <li>Indissociabilidade entre supervisão acadêmica (docente) e supervisão de campo (AS na instituição)</li>
+      <li>Carga horária recomendada: 15% da carga total do curso (≥ 450 horas)</li>
+      <li>Vinculação ao núcleo 3 (Trabalho Profissional)</li>
+      <li>Articulação ensino-pesquisa-extensão</li>
+      <li>Atividade obrigatória; estágio remunerado não-obrigatório é complementar</li>
+      <li>Crítica a estágios em modalidade EaD ("estágio à distância")</li>
+    </ul>
+
+    <div class="subsecao">Resolução CFESS 533/2008 — Supervisão Direta</div>
+    <p>Trata da supervisão de estagiários em Serviço Social. Estabelece:</p>
+    <ul class="lista">
+      <li><strong>Supervisão direta</strong>: presencial, sistemática, pelo AS supervisor de campo</li>
+      <li><strong>Vínculo entre AS supervisor e estagiário</strong>: relação pedagógica, com elaboração conjunta de plano de estágio</li>
+      <li>Vedação ao "estágio sem supervisão direta de AS na unidade concedente"</li>
+      <li>Co-supervisão acadêmica obrigatória (docente AS da instituição de ensino)</li>
+      <li>Número máximo de estagiários por supervisor (orientação ABEPSS: 1 supervisor para até 5 estagiários)</li>
+      <li>Vedação ao estágio em instituição que não tenha AS em seu quadro</li>
+      <li>Visitas periódicas do supervisor acadêmico ao campo</li>
+    </ul>
+
+    <div class="subsecao">Etapas do Estágio</div>
+    <table>
+      <tr><th>Etapa</th><th>Atividades</th></tr>
+      <tr><td>Aproximação</td><td>Conhecimento da instituição, do campo, da equipe; revisão de documentação institucional</td></tr>
+      <tr><td>Observação participante</td><td>Acompanhamento do trabalho do supervisor de campo; participação em reuniões e atividades</td></tr>
+      <tr><td>Diagnóstico</td><td>Caracterização da população usuária; identificação de demandas; mapeamento de recursos</td></tr>
+      <tr><td>Planejamento</td><td>Elaboração de plano de estágio articulado com supervisores</td></tr>
+      <tr><td>Intervenção supervisionada</td><td>Realização de atividades sob supervisão direta; acompanhamento</td></tr>
+      <tr><td>Avaliação</td><td>Sistemática, processual; envolve estagiário, supervisores de campo e acadêmico</td></tr>
+      <tr><td>Sistematização</td><td>Produção de relatórios, registros, artigos; TCC pode articular com o estágio</td></tr>
+    </table>
+
+    <div class="subsecao">Vedações no Estágio</div>
+    <ul class="lista">
+      <li>Estagiário NÃO pode realizar atribuições privativas do AS (Lei 8.662 art. 5º) sozinho; apenas sob supervisão direta</li>
+      <li>Vedado a estagiário emitir laudo, perícia ou parecer social autônomo</li>
+      <li>Vedada a substituição de AS por estagiário em férias, licenças ou cargos vagos</li>
+      <li>Vedado estágio em modalidade EaD (sem supervisão direta presencial)</li>
+      <li>Vedada relação de estágio sem AS supervisor de campo qualificado</li>
+    </ul>
+
+    <div class="subsecao">Modalidades de Estágio</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Estágio Obrigatório</div>
+        <p>Componente curricular previsto no PPC. Requisito para obtenção do diploma. Não obriga bolsa. Carga prevista no plano de estágio. ABEPSS recomenda &gt;= 405-450h.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Estágio Não-Obrigatório</div>
+        <p>Atividade opcional, complementar ao curso. Obrigatórios: bolsa, auxílio-transporte, seguro, recesso. Carga máxima 30h/semana. Frequentemente confundido com emprego — vedado o uso para substituir trabalhador.</p>
+      </div>
+    </div>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> Lei 11.788/2008 + PNE/ABEPSS 2010 + Res. CFESS 533/2008. Supervisão direta obrigatória; co-supervisão acadêmica. Vedado estagiário realizar atribuições privativas sem supervisão. Carga ABEPSS: 15% do curso. Crítica ao estágio em EaD. Estagiário NÃO substitui AS.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-ETICA · Formação</span><span>Extensivo ENARE 2026</span><span class="pg">4 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-ETICA</div><div class="aula-ref">Bloco B13 · Aula 15 · EaD</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">EaD em Serviço Social — Crítica</div>
+
+    <p>A expansão da <strong>Educação a Distância (EaD)</strong> em Serviço Social é uma das mais agudas controvérsias da formação profissional contemporânea. ABEPSS, CFESS e ENESSO mantêm posição crítica desde 2003. Articula com expansão neoliberal do ensino superior privado. Tema com cobrança recente em provas.</p>
+
+    <div class="subsecao">Histórico da EaD em SS</div>
+    <table>
+      <tr><th>Ano</th><th>Marco</th></tr>
+      <tr><td>1996</td><td>LDB (art. 80) abre a possibilidade legal da EaD</td></tr>
+      <tr><td>2005</td><td>Decreto 5.622/2005 — regulamenta a EaD no Brasil</td></tr>
+      <tr><td>2006-2008</td><td>Início da oferta de SS em EaD por instituições privadas; primeira foi UFSC com a UNB (consórcio público); depois Unopar, Anhanguera, Estácio</td></tr>
+      <tr><td>2007</td><td>Manifesto do conjunto CFESS-CRESS-ABEPSS-ENESSO contra EaD em SS</td></tr>
+      <tr><td>2010 em diante</td><td>Crescimento exponencial: hoje a maioria das matrículas em SS no Brasil é EaD</td></tr>
+      <tr><td>2017</td><td>Resolução CES/CNE 1/2016: permite até 20% da carga em EaD nos cursos presenciais</td></tr>
+      <tr><td>2018</td><td>Portaria MEC 2.117/2019 — até 40% em EaD nos cursos presenciais (governo Bolsonaro)</td></tr>
+      <tr><td>2023</td><td>Discussão de reforma da EaD em curso (Lula 3); CNE em debate</td></tr>
+    </table>
+
+    <div class="subsecao">Dados da EaD em SS</div>
+    <ul class="lista">
+      <li>Cerca de 80% das matrículas em SS no Brasil são em EaD (dados CFESS, INEP 2023)</li>
+      <li>Concentração em grandes grupos privados: Cogna (Kroton), Yduqs, Anima, Ser Educacional</li>
+      <li>Crescimento da fragmentação dos profissionais formados</li>
+      <li>Polos de apoio presencial frequentemente com infraestrutura precária</li>
+      <li>Tutores não-AS supervisionando atividades — violando Res. CFESS 533/2008</li>
+      <li>Avaliação CAPES e ENADE com resultados frequentemente inferiores ao ensino presencial</li>
+    </ul>
+
+    <div class="subsecao">Argumentos da Crítica (ABEPSS/CFESS/ENESSO)</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Pedagógicos</div>
+        <p>SS exige formação relacional, pesquisa, intervenção em contextos sociais reais — não se reduz a "conteúdo programado". Diálogo professor-estudante essencial. Estágio supervisionado presencial é indissociável.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Políticos</div>
+        <p>EaD é instrumento da contrarreforma neoliberal do Estado e da educação. Mercantilização. Privatização. Empresas educacionais cotadas em Bolsa. Lucro como motor.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Técnicos</div>
+        <p>Impossibilidade de garantir supervisão direta de estágio. Polos sem infraestrutura. Tutores frequentemente não-AS. Diretrizes ABEPSS comprometidas (3 núcleos exigem trabalho coletivo).</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Éticos</div>
+        <p>Compromete a qualidade do trabalho profissional — afeta diretamente os usuários. Reforça a precarização profissional. Reproduz exclusão de quem só pode estudar EaD.</p>
+      </div>
+    </div>
+
+    <div class="subsecao">Manifesto CFESS-ABEPSS-ENESSO (2007 e atualizações)</div>
+    <p>Linhas centrais do documento:</p>
+    <ul class="lista">
+      <li>"Sobre a incompatibilidade entre graduação à distância e Serviço Social"</li>
+      <li>Defesa da formação presencial como condição da qualidade</li>
+      <li>Vinculação com o PEP — formação à distância compromete a direção ético-política</li>
+      <li>Articulação com luta por educação pública, gratuita e de qualidade</li>
+      <li>Solidariedade com estudantes de EaD (vítimas do processo)</li>
+      <li>Necessidade de regulamentação rigorosa pela CNE</li>
+      <li>Atualizações em 2014, 2017, 2019, 2022</li>
+    </ul>
+
+    <div class="subsecao">Posicionamento dos Conselhos</div>
+    <ul class="lista">
+      <li>CFESS Manifesta sobre EaD (várias edições)</li>
+      <li>Cartilha "Sobre a Incompatibilidade entre Graduação à Distância e Serviço Social" (ABEPSS/CFESS/ENESSO)</li>
+      <li>CRESS regional fiscaliza polos de EaD; identifica irregularidades; aciona MEC e MPF</li>
+      <li>Caderno "Educação Não é Mercadoria" (CFESS, 2018)</li>
+      <li>Participação em mobilizações nacionais por educação pública</li>
+    </ul>
+
+    <div class="subsecao">Híbridos — Cursos Presenciais com Componente Online</div>
+    <p>A Portaria MEC 2.117/2019 permite até 40% da carga em EaD nos cursos presenciais. A ABEPSS posiciona-se também contra esse modelo, considerando que:</p>
+    <ul class="lista">
+      <li>Compromete a presencialidade exigida pelas DCN</li>
+      <li>Estágio supervisionado e TCC exigem presencialidade</li>
+      <li>Aulas online são distintas de aulas presenciais — não substituem</li>
+      <li>Modelo híbrido tende a se tornar predominantemente EaD por pressões institucionais</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> CFESS-ABEPSS-ENESSO posicionam-se desde 2007 contra EaD em SS — Manifesto histórico. Razões: pedagógicas, políticas, técnicas, éticas. ~80% das matrículas atualmente em EaD (privatização). Articula com Decreto 5.622/2005 + Portaria MEC 2.117/2019. Comprometido com o PEP = comprometido com a formação presencial qualificada.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-ETICA · Formação</span><span>Extensivo ENARE 2026</span><span class="pg">5 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-ETICA</div><div class="aula-ref">Bloco B13 · Aula 15 · Entidades</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Entidades da Categoria — ABEPSS, ENESSO, CFESS, CRESS</div>
+
+    <p>A profissão organiza-se em <strong>quatro entidades nacionais</strong> que cobrem dimensões distintas: acadêmica (ABEPSS), estudantil (ENESSO), regulamentar federal (CFESS) e regulamentar regional (CRESS). São conhecidas como o <em>conjunto CFESS-CRESS-ABEPSS-ENESSO</em> — referência política e teórica da categoria.</p>
+
+    <div class="subsecao">ABEPSS — Associação Brasileira de Ensino e Pesquisa em Serviço Social</div>
+    <ul class="lista">
+      <li><strong>Origem</strong>: fundada em 1946 como ABESS (Associação Brasileira de Escolas de Serviço Social); refundada como ABEPSS em 1998</li>
+      <li><strong>Função</strong>: articulação das unidades de ensino e pós-graduação em SS no Brasil</li>
+      <li>Inclui as escolas/cursos de graduação públicas e privadas associadas</li>
+      <li>Inclui os programas de pós-graduação (mestrado e doutorado) em SS</li>
+      <li>Elabora as Diretrizes Curriculares (1996)</li>
+      <li>Publica a revista "Temporalis"</li>
+      <li>Realiza ENPESS (Encontro Nacional de Pesquisadores em Serviço Social) bienal</li>
+      <li>Organização por regiões (Nordeste, Sul, Sudeste, etc.)</li>
+      <li>Política Nacional de Estágio (PNE, 2010) é da ABEPSS</li>
+      <li>Defende formação presencial, crítica à EaD</li>
+    </ul>
+
+    <div class="subsecao">ENESSO — Executiva Nacional de Estudantes de Serviço Social</div>
+    <ul class="lista">
+      <li><strong>Origem</strong>: organização estudantil; data de fundação varia (consolidação anos 1980)</li>
+      <li><strong>Função</strong>: representação dos estudantes de SS; articulação com movimento estudantil amplo (UNE, UEEs)</li>
+      <li>Realiza ENESS — Encontro Nacional de Estudantes de Serviço Social</li>
+      <li>CONESS — Conselho Nacional de Entidades Estudantis de SS</li>
+      <li>Posicionamento crítico — articulado com CFESS-ABEPSS</li>
+      <li>Defesa da educação pública, gratuita e de qualidade</li>
+      <li>Luta contra EaD, sucateamento das universidades, REUNI tardio</li>
+      <li>Pauta antirracista, antissexista, antifascista</li>
+    </ul>
+
+    <div class="subsecao">CFESS — Conselho Federal de Serviço Social</div>
+    <p>Já abordado na Aula 14. Síntese:</p>
+    <ul class="lista">
+      <li>Autarquia federal — Lei 8.662/1993</li>
+      <li>Sede em Brasília</li>
+      <li>Função: orientar, disciplinar, normatizar e defender o exercício profissional</li>
+      <li>Publica resoluções (CE/1993, Parâmetros para a Saúde, Manual de Laudo etc.)</li>
+      <li>Instância recursal em processos disciplinares</li>
+      <li>Publica "Inscrita" (revista) e "CFESS Manifesta" (notas políticas)</li>
+      <li>Realiza CBAS — Congresso Brasileiro de Assistentes Sociais</li>
+      <li>Mandato de 3 anos por eleição direta</li>
+    </ul>
+
+    <div class="subsecao">CRESS — Conselhos Regionais de Serviço Social</div>
+    <ul class="lista">
+      <li>Um por unidade federativa = 27 CRESS</li>
+      <li>Autarquia federal (regional) — Lei 8.662/1993</li>
+      <li>Função: fiscalização cotidiana; registro de AS; emissão de carteira profissional; instauração de processos disciplinares</li>
+      <li>Comissões temáticas (Saúde, Assistência, Ética, Sociojurídica, Comunicação)</li>
+      <li>Eventos regionais; cursos de formação continuada</li>
+      <li>Articulação com órgãos públicos e movimentos sociais regionais</li>
+      <li>Eleições paralelas às do CFESS</li>
+    </ul>
+
+    <div class="subsecao">Pós-Graduação em SS</div>
+    <table>
+      <tr><th>Modalidade</th><th>Características</th></tr>
+      <tr><td>Lato sensu</td><td>Especialização (mínimo 360h); pode ser presencial ou EaD. Tema de muita oferta privada.</td></tr>
+      <tr><td>Stricto sensu — Mestrado</td><td>2 anos; 24 créditos + dissertação. Avaliação CAPES.</td></tr>
+      <tr><td>Stricto sensu — Doutorado</td><td>4 anos; 48 créditos + tese. Avaliação CAPES.</td></tr>
+      <tr><td>Pós-doutorado</td><td>Sem titulação; pesquisa supervisionada após doutorado.</td></tr>
+      <tr><td>Residências Multiprofissionais</td><td>Lei 11.129/2005; programas em saúde, com 60h semanais; 2 anos; bolsa-residência; AS é categoria contemplada</td></tr>
+    </table>
+
+    <div class="subsecao">Programas de Pós-Graduação Stricto Sensu — PPGs</div>
+    <p>Crescimento expressivo desde os anos 1970:</p>
+    <ul class="lista">
+      <li>Primeiro mestrado: PUC-SP (1972) e UFRJ (1976)</li>
+      <li>Doutorado em SS: PUC-SP (1981)</li>
+      <li>Atualmente: 30+ PPGs em SS no Brasil (mestrado e/ou doutorado)</li>
+      <li>Avaliação CAPES quadrienal (conceitos 3 a 7)</li>
+      <li>Principais: PUC-SP, UFRJ, UnB, UFRGS, UERJ, UFPE, UFAL, UFMA, etc.</li>
+      <li>Áreas de concentração: políticas sociais, trabalho profissional, fundamentos teóricos, questão social, etc.</li>
+    </ul>
+
+    <div class="subsecao">Residências Multiprofissionais e o AS</div>
+    <ul class="lista">
+      <li>Lei 11.129/2005 instituiu as Residências Multiprofissionais em Saúde</li>
+      <li>Comissão Nacional de Residência Multiprofissional em Saúde (CNRMS)</li>
+      <li>Bolsa-residência (40h ou 60h semanais)</li>
+      <li>2 anos de duração</li>
+      <li>AS é categoria contemplada — atua em equipes interprofissionais em hospitais, UBS, CAPS, oncologia, etc.</li>
+      <li>Resolução CFESS 637/2013 — diretrizes para a residência em saúde</li>
+      <li>Tutoria, preceptoria, supervisão acadêmica do residente</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> 4 entidades — ABEPSS (acadêmica), ENESSO (estudantes), CFESS (federal regulamentar), CRESS (regional regulamentar). ABEPSS = DCN/1996, PNE/2010, Temporalis, ENPESS. CFESS = Resoluções, CBAS. Residências multi = Lei 11.129/2005 + Res. CFESS 637/2013.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-ETICA · Formação</span><span>Extensivo ENARE 2026</span><span class="pg">6 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-ETICA</div><div class="aula-ref">Bloco B13 · Aula 15 · Educação Permanente</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Educação Permanente e Formação Continuada</div>
+
+    <p>Após a graduação, o AS deve manter <strong>aprimoramento intelectual contínuo</strong> (princípio X do CE/1993). A categoria valoriza fortemente a formação continuada como condição da competência profissional. Articula com a Educação Permanente em Saúde (PNEPS — Aula 12).</p>
+
+    <div class="subsecao">Modalidades de Formação Continuada</div>
+    <table>
+      <tr><th>Modalidade</th><th>Características</th></tr>
+      <tr><td>Pós-graduação lato sensu</td><td>Especialização presencial ou EaD; 360h mínimas</td></tr>
+      <tr><td>Pós-graduação stricto sensu</td><td>Mestrado e doutorado; CAPES</td></tr>
+      <tr><td>Residências</td><td>Multiprofissionais em saúde; uniprofissionais (raras em SS)</td></tr>
+      <tr><td>Cursos de extensão</td><td>Universidades; instituições; entidades</td></tr>
+      <tr><td>Eventos profissionais</td><td>CBAS, ENPESS, encontros estaduais e regionais</td></tr>
+      <tr><td>Educação Permanente em Saúde</td><td>Política Nacional (Portaria GM/MS 198/2004); aprendizagem no trabalho</td></tr>
+      <tr><td>Fóruns, seminários, oficinas</td><td>Pelo CRESS, ABEPSS, sindicatos, entidades</td></tr>
+      <tr><td>Grupos de estudo</td><td>Coletivos profissionais</td></tr>
+      <tr><td>Publicações e leituras</td><td>Revistas: Serviço Social e Sociedade (Cortez), Katálysis (UFSC), Temporalis (ABEPSS), Em Pauta (UERJ), Argumentum (UFES), etc.</td></tr>
+    </table>
+
+    <div class="subsecao">Educação Permanente em Saúde (PNEPS)</div>
+    <p>Portaria GM/MS 198/2004 (atualizada por Portaria de Consolidação 2/2017):</p>
+    <ul class="lista">
+      <li>Aprendizagem no trabalho — aprende-se enquanto se trabalha</li>
+      <li>Problematização da prática como ponto de partida</li>
+      <li>"Roda" como metodologia (Paulo Freire)</li>
+      <li>Articulação ensino-serviço-comunidade</li>
+      <li>CIES — Comissões de Integração Ensino-Serviço</li>
+      <li>Crítica ao modelo "educação continuada" (cursos pontuais e externos)</li>
+      <li>Articula-se com a PNH (Aula 12)</li>
+    </ul>
+
+    <div class="subsecao">Pesquisa em Serviço Social</div>
+    <ul class="lista">
+      <li>Núcleos de pesquisa nas universidades; PPGs</li>
+      <li>Linhas de pesquisa: políticas sociais, fundamentos, trabalho profissional, questão social, ética</li>
+      <li>CNPq, CAPES, FAPs estaduais</li>
+      <li>Bolsas: Iniciação Científica (PIBIC), mestrado, doutorado, pós-doutorado</li>
+      <li>Atribuição privativa do AS (Lei 8.662 art. 5º, I) — coordenação de pesquisas em SS</li>
+      <li>Pesquisa-ação, pesquisa militante, etnografia, pesquisa qualitativa, pesquisa documental</li>
+    </ul>
+
+    <div class="subsecao">Princípios para a Educação Permanente</div>
+    <p>Articulação com Princípio X do CE/1993 — "compromisso com a qualidade dos serviços prestados à população e com o aprimoramento intelectual, na perspectiva da competência profissional":</p>
+    <ul class="lista">
+      <li>Não há competência sem atualização teórica</li>
+      <li>Atualização teórica deve articular-se com prática reflexiva</li>
+      <li>Educação coletiva é mais eficaz que individual</li>
+      <li>Diálogo entre saberes acadêmicos e saberes da prática</li>
+      <li>Direito ao tempo de estudo e formação no trabalho</li>
+      <li>Acesso a publicações, eventos, formação continuada como condição de trabalho</li>
+    </ul>
+
+    <div class="subsecao">Crítica ao Modelo "Capacitação"</div>
+    <p>A categoria critica a redução da formação continuada a "capacitações" pontuais e instrumentais oferecidas por instituições empregadoras:</p>
+    <ul class="lista">
+      <li>"Capacitação" tende ao adestramento; foco em ferramentas, não em fundamentos</li>
+      <li>Reproduz precarização — quanto mais cursos certificados, melhor "remunerado", sem questionamento da formação</li>
+      <li>Educação Permanente é alternativa: parte da reflexão sobre a prática real</li>
+      <li>Articulação com ABEPSS, CFESS, universidades — não apenas com instituição empregadora</li>
+      <li>Defesa do tempo institucional de estudo e formação</li>
+    </ul>
+
+    <div class="subsecao">Atribuição Pedagógica do AS</div>
+    <p>Marina Lopes Abreu (em "Serviço Social e a Organização da Cultura") aprofunda a <strong>dimensão pedagógica</strong> do trabalho do AS:</p>
+    <ul class="lista">
+      <li>Todo trabalho profissional é também pedagógico — produz processos de socialização, formação de consciência</li>
+      <li>Função pedagógica do AS junto a usuários: ampliação da consciência crítica, organização, articulação com movimentos</li>
+      <li>Função pedagógica junto a equipes profissionais: matriciamento, formação interprofissional</li>
+      <li>Função pedagógica junto a movimentos sociais: assessoria, formação política</li>
+      <li>Articula-se com Paulo Freire (educação popular, conscientização)</li>
+      <li>Crítica à pedagogia bancária; valorização da pedagogia libertadora</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> educação permanente ≠ educação continuada/capacitação. Princípio X do CE = compromisso com qualidade + aprimoramento. Pós-graduação (lato/stricto), residência multiprofissional, eventos (CBAS/ENPESS), CIES, cursos do CRESS. Dimensão pedagógica = Marina Abreu; articulação com Paulo Freire.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-ETICA · Formação</span><span>Extensivo ENARE 2026</span><span class="pg">7 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-ETICA</div><div class="aula-ref">Bloco B13 · Aula 15 · Questões ENARE</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 01</span><span class="fonte">DCN/ABEPSS · NC: Compreensão</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">As Diretrizes Curriculares Nacionais (DCN) da ABEPSS para o Curso de Serviço Social (1996), homologadas pelo MEC em 2001/2002, organizam a formação a partir de três núcleos de fundamentação. Assinale a alternativa que descreve CORRETAMENTE esses núcleos:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Caso, grupo e comunidade — sequência tradicional do currículo funcionalista.</span></li>
+        <li><span class="letra">B</span><span>Bacharelado, licenciatura e tecnólogo — modalidades de formação ofertadas no Brasil.</span></li>
+        <li class="correta"><span class="letra">C</span><span>(1) Fundamentos teórico-metodológicos da vida social — sociabilidade burguesa, teoria social crítica, formação social; (2) Fundamentos da formação sócio-histórica da sociedade brasileira — Estado, sociedade civil, políticas sociais brasileiras; (3) Fundamentos do trabalho profissional — instrumentalidade, processos de trabalho, ética, estágio supervisionado, instrumentos e técnicas. Os núcleos articulam-se entre si e NÃO são fases sequenciais.</span></li>
+        <li><span class="letra">D</span><span>Investigação, intervenção e assessoria — atividades exclusivas do mestrado e doutorado em SS.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — C</div>
+      <p><strong>Por que C está correta:</strong> exatamente os três núcleos das DCN/ABEPSS 1996. Substituíram a estrutura caso-grupo-comunidade (currículo de 1962/1975) e a estrutura tripartite do currículo de 1982. Articulação dialética entre os núcleos. Indissociabilidade ensino-pesquisa-extensão.</p>
+      <p><strong>Por que as outras erram:</strong> A — caso/grupo/comunidade foi superado · B — bacharelado é a única modalidade em SS · D — investigação e intervenção são dimensões, não núcleos.</p>
+    </div>
+
+    <div class="questao-header"><span>Questão 02</span><span class="fonte">Estágio · NC: Aplicação</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Sobre o estágio supervisionado obrigatório em Serviço Social, é CORRETO afirmar:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Não exige supervisão direta de AS; pode ser realizado em modalidade EaD com tutor não-AS.</span></li>
+        <li><span class="letra">B</span><span>É equivalente ao estágio remunerado não-obrigatório; pode substituir trabalhador formalmente contratado.</span></li>
+        <li class="correta"><span class="letra">C</span><span>Componente curricular obrigatório, articulado às DCN/ABEPSS 1996 (núcleo 3 — Trabalho Profissional) e regulado pela Lei 11.788/2008, pela Política Nacional de Estágio (ABEPSS 2010) e pela Resolução CFESS 533/2008; exige supervisão direta presencial por AS qualificado, co-supervisão acadêmica, plano de estágio e avaliação processual; é indissociável da unidade teoria-prática.</span></li>
+        <li><span class="letra">D</span><span>Pode ser realizado por estagiários sem matrícula no curso de graduação em Serviço Social.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — C</div>
+      <p><strong>Por que C está correta:</strong> síntese da regulação do estágio. Lei 11.788/2008 (geral) + PNE/ABEPSS 2010 (específico em SS) + Resolução CFESS 533/2008 (supervisão direta). Carga ABEPSS: 15% do curso (≥ 405-450h). Vedado estágio sem AS supervisor.</p>
+      <p><strong>Por que as outras erram:</strong> A — supervisão direta de AS é OBRIGATÓRIA · B — estágio NÃO substitui trabalhador · D — apenas estudantes matriculados no curso de SS podem estagiar em SS.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-ETICA · Formação</span><span>Extensivo ENARE 2026</span><span class="pg">8 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-ETICA</div><div class="aula-ref">Bloco B13 · Aula 15 · Questões ENARE</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 03</span><span class="fonte">EaD em SS · NC: Análise</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Sobre o posicionamento das entidades da categoria (CFESS-CRESS-ABEPSS-ENESSO) acerca da Educação a Distância (EaD) em Serviço Social, é CORRETO afirmar:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>O conjunto da categoria defende a expansão irrestrita da EaD em SS como forma de democratizar o acesso à formação superior.</span></li>
+        <li class="correta"><span class="letra">B</span><span>O conjunto CFESS-CRESS-ABEPSS-ENESSO mantém posicionamento histórico-crítico em relação à graduação a distância em SS desde 2007 (Manifesto "Sobre a Incompatibilidade entre Graduação à Distância e Serviço Social"), com argumentos pedagógicos (impossibilidade de garantir supervisão direta de estágio, relação professor-estudante), políticos (mercantilização da educação, contrarreforma neoliberal), técnicos (inadequação dos polos de apoio, tutores não-AS) e éticos (comprometimento do PEP).</span></li>
+        <li><span class="letra">C</span><span>O CFESS aprovou resolução determinando que a EaD é modalidade preferencial de formação em SS no Brasil.</span></li>
+        <li><span class="letra">D</span><span>A LDB de 1996 expressamente proibiu a oferta de cursos de SS em EaD em todo o território nacional.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> Manifesto histórico CFESS-CRESS-ABEPSS-ENESSO (2007, com atualizações em 2014, 2017, 2019, 2022). Argumentos pedagógicos, políticos, técnicos e éticos. Hoje ~80% das matrículas em SS no Brasil são EaD (privatização) — o que a categoria condena.</p>
+      <p><strong>Por que as outras erram:</strong> A — categoria critica EaD · C — não há tal resolução · D — LDB (art. 80) abriu a EaD; Decreto 5.622/2005 regulamentou.</p>
+    </div>
+
+    <div class="questao-header"><span>Questão 04</span><span class="fonte">Entidades · NC: Aplicação</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">As quatro entidades nacionais da categoria que compõem o conjunto CFESS-CRESS-ABEPSS-ENESSO têm funções distintas e complementares. Assinale a CORRETA:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>ABEPSS, ENESSO, CFESS e CRESS são, todas, autarquias federais de regulamentação profissional.</span></li>
+        <li class="correta"><span class="letra">B</span><span>CFESS e CRESS são autarquias federais (regulamentares; sistema CFESS/CRESS) com função normativa, disciplinar e de fiscalização (Lei 8.662/1993); ABEPSS é entidade acadêmica das unidades de ensino e PPGs, responsável pelas Diretrizes Curriculares (1996) e pela Política Nacional de Estágio (2010); ENESSO é a Executiva Nacional de Estudantes de Serviço Social.</span></li>
+        <li><span class="letra">C</span><span>Apenas o CFESS é entidade da categoria; as demais são organizações estudantis sem reconhecimento legal.</span></li>
+        <li><span class="letra">D</span><span>A ABEPSS é responsável pela emissão da carteira profissional do AS.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> síntese das 4 entidades. CFESS/CRESS = autarquias regulamentares (Lei 8.662); ABEPSS = acadêmica (DCN/1996, PNE/2010); ENESSO = estudantes. Articulam-se no "conjunto" — atuação política conjunta.</p>
+      <p><strong>Por que as outras erram:</strong> A — só CFESS/CRESS são autarquias · C — todas são entidades reconhecidas · D — carteira é emitida pelo CRESS, não pela ABEPSS.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-ETICA · Formação</span><span>Extensivo ENARE 2026</span><span class="pg">9 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-ETICA</div><div class="aula-ref">Bloco B13 · Aula 15 · Síntese</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Síntese — Formação Profissional do AS</div>
+
+    <p>Encerra o módulo SS-ETICA (Aulas 14-15). Articula PEP (Aula 01), Lei 8.662 e CE/1993 (Aula 14) com a base da formação. Conecta-se à Aula 16 (Trabalho Profissional) — formação é a base do exercício.</p>
+
+    <div class="sintese-grid">
+      <div class="sintese-item"><div class="si-label">Marco Legal</div><p>LDB 1996 + DCN/ABEPSS 1996 + homologação MEC 2001/2002 + Lei 11.788/2008 (estágio) + Res. CFESS 533/2008 (supervisão) + Lei 11.129/2005 (residências).</p></div>
+      <div class="sintese-item"><div class="si-label">3 Núcleos (DCN)</div><p>(1) Teórico-metodológicos da vida social; (2) Formação sócio-histórica brasileira; (3) Trabalho profissional. NÃO são fases — articulam-se. Substituem caso-grupo-comunidade do currículo funcionalista.</p></div>
+      <div class="sintese-item"><div class="si-label">Estágio</div><p>Componente curricular obrigatório. Carga ABEPSS: 15% do curso (≥ 405-450h). Supervisão direta de AS qualificado + co-supervisão acadêmica. Vedado estágio sem AS supervisor.</p></div>
+      <div class="sintese-item"><div class="si-label">Crítica à EaD</div><p>Manifesto CFESS-CRESS-ABEPSS-ENESSO desde 2007. Argumentos: pedagógicos, políticos, técnicos, éticos. ~80% das matrículas atuais em EaD (privatização). Defesa da formação presencial qualificada.</p></div>
+      <div class="sintese-item"><div class="si-label">Entidades</div><p>ABEPSS (acadêmica, DCN/1996, PNE/2010, Temporalis, ENPESS) · ENESSO (estudantes) · CFESS (federal regulamentar, Resoluções, CBAS) · CRESS (regional, fiscalização cotidiana).</p></div>
+      <div class="sintese-item"><div class="si-label">Próxima Aula</div><p><strong>Aula 16 — SS-TRABALHO: Trabalho Profissional.</strong> Instrumentalidade (Iamamoto, Guerra), instrumentos e técnicas, parecer/estudo/laudo social, indicadores, TICs no SS.</p></div>
+    </div>
+
+    <div class="alerta" style="margin-top:5px;">
+      <p><strong>Regra de ouro — Formação no ENARE:</strong> LDB 1996 + DCN/ABEPSS 1996 (homologação MEC 2001/2002) + 3 núcleos (teórico/sócio-histórico/trabalho profissional) + Lei 11.788/2008 + PNE/ABEPSS 2010 + Res. CFESS 533/2008 + crítica à EaD (Manifesto 2007). Dimensões da formação: teórico-metodológica, ético-política, técnico-operativa, investigativa, interventiva, pedagógica (Abreu).</p>
+    </div>
+
+    <div class="alerta" style="margin-top:5px;background:rgba(31,92,35,0.1);border-left-color:var(--verde);">
+      <p><strong>Conexão articuladora:</strong> a formação não é apenas técnica — é ético-política. O AS formado segundo as DCN/ABEPSS é portador do PEP. As resistências à EaD, à precarização do estágio e à mercantilização da educação são parte da defesa do projeto profissional. Sem formação qualificada, o PEP é apenas retórica.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-ETICA · Formação</span><span>Extensivo ENARE 2026</span><span class="pg">10 / 10</span></div>
+</div>
+
+</body>
+</html>
