@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Serviço Social — Bloco B13 Aula 19 | Extensivo ENARE 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap');
+  :root { --creme: #F6F4ED; --verde: #1F5C23; --amarelo: #C6D834; --escuro: #0C2B0E; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #d0d0d0; font-family: 'Bricolage Grotesque', sans-serif; }
+  .page { width: 210mm; height: 297mm; background: var(--creme); margin: 0 auto 12px; position: relative; overflow: hidden; page-break-after: always; }
+  .header { background: var(--verde); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .header-logo { display: flex; align-items: center; gap: 8px; }
+  .header-logo svg { width: 32px; height: 32px; }
+  .header-brand { display: flex; flex-direction: column; line-height: 1; }
+  .header-brand .marca { font-family: 'Playfair Display', serif; font-style: italic; color: #fff; font-size: 13px; letter-spacing: 0.5px; }
+  .header-brand .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 7px; letter-spacing: 1.5px; text-transform: uppercase; }
+  .header-info { text-align: right; }
+  .header-info .disciplina { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
+  .header-info .aula-ref { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.7); font-size: 8px; letter-spacing: 0.5px; }
+  .footer { position: absolute; bottom: 0; left: 0; right: 0; background: var(--verde); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .footer span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.6); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .footer .pg { color: var(--amarelo); font-weight: 400; }
+  .body { padding: 14px 18px 30px; height: calc(297mm - 52px - 22px); overflow: hidden; }
+  .capa-page { background: var(--verde); }
+  .capa-header { background: var(--creme); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .capa-header .marca { font-family: 'Playfair Display', serif; font-style: italic; color: var(--verde); font-size: 14px; }
+  .capa-header .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--verde); font-size: 7.5px; letter-spacing: 2px; text-transform: uppercase; }
+  .capa-body { padding: 28px 24px 0; display: flex; flex-direction: column; height: calc(297mm - 52px - 22px); }
+  .capa-eyebrow { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; }
+  .capa-titulo { font-family: 'Barlow Condensed', sans-serif; color: #fff; font-size: 50px; line-height: 0.95; text-transform: uppercase; letter-spacing: -0.5px; margin-bottom: 6px; }
+  .capa-titulo span { color: var(--amarelo); }
+  .capa-subtitulo { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; color: rgba(255,255,255,0.65); font-size: 12px; letter-spacing: 0.3px; margin-bottom: 22px; line-height: 1.5; }
+  .capa-badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+  .capa-badge { background: rgba(198,216,52,0.15); border: 1px solid var(--amarelo); color: var(--amarelo); font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 8px; border-radius: 2px; }
+  .capa-divider { width: 40px; height: 3px; background: var(--amarelo); margin-bottom: 20px; }
+  .capa-topicos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .capa-topico { display: flex; align-items: flex-start; gap: 7px; }
+  .capa-topico-num { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 18px; line-height: 1; min-width: 18px; }
+  .capa-topico-txt { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 400; color: rgba(255,255,255,0.8); font-size: 9.5px; line-height: 1.4; }
+  .capa-footer-strip { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.25); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .capa-footer-strip span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.45); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .secao-titulo { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 18px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid var(--amarelo); padding-bottom: 3px; margin-bottom: 9px; line-height: 1; }
+  .subsecao { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.5px; margin: 7px 0 3px; }
+  p { font-size: 9px; line-height: 1.55; color: #1a1a1a; margin-bottom: 4px; font-weight: 400; }
+  .destaque { background: var(--amarelo); color: var(--escuro); font-weight: 600; padding: 1px 4px; border-radius: 2px; font-size: 8.5px; }
+  .alerta { background: rgba(198,216,52,0.18); border-left: 3px solid var(--amarelo); padding: 5px 8px; margin: 5px 0; border-radius: 0 3px 3px 0; }
+  .alerta p { margin: 0; font-size: 8.5px; }
+  .alerta strong { color: var(--verde); }
+  table { width: 100%; border-collapse: collapse; margin: 5px 0; font-size: 8px; }
+  th { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; padding: 4px 6px; text-align: left; }
+  td { padding: 3px 6px; border-bottom: 1px solid rgba(31,92,35,0.12); vertical-align: top; line-height: 1.4; color: #1a1a1a; }
+  tr:nth-child(even) td { background: rgba(31,92,35,0.04); }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 5px 0; }
+  .card { background: rgba(31,92,35,0.06); border: 1px solid rgba(31,92,35,0.15); border-radius: 4px; padding: 7px 8px; }
+  .card-title { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 11px; text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 3px; }
+  .card p { font-size: 8px; line-height: 1.5; }
+  .questao-header { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; padding: 4px 10px; border-radius: 3px 3px 0 0; display: flex; justify-content: space-between; align-items: center; }
+  .questao-header .fonte { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; color: var(--amarelo); letter-spacing: 0.5px; }
+  .questao-body { border: 1px solid rgba(31,92,35,0.2); border-top: none; border-radius: 0 0 3px 3px; padding: 7px 10px; margin-bottom: 7px; }
+  .questao-enunciado { font-size: 8.5px; line-height: 1.55; color: #111; margin-bottom: 5px; font-weight: 500; }
+  .alternativas { list-style: none; }
+  .alternativas li { font-size: 8px; line-height: 1.5; padding: 2px 0; color: #222; display: flex; gap: 5px; }
+  .alternativas li .letra { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: var(--verde); font-size: 9px; min-width: 10px; }
+  .alternativas li.correta .letra { color: var(--amarelo); }
+  .alternativas li.correta { background: rgba(198,216,52,0.15); border-left: 2px solid var(--amarelo); padding-left: 4px; }
+  .gabarito-box { background: var(--verde); border-radius: 4px; padding: 8px 12px; margin: 6px 0; }
+  .gabarito-box .gab-title { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+  .gabarito-box p { color: rgba(255,255,255,0.9); font-size: 8px; line-height: 1.55; }
+  .gabarito-box strong { color: var(--amarelo); }
+  .sintese-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-top: 6px; }
+  .sintese-item { background: rgba(31,92,35,0.07); border-left: 3px solid var(--verde); padding: 5px 7px; border-radius: 0 3px 3px 0; }
+  .sintese-item .si-label { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px; }
+  .sintese-item p { font-size: 7.5px; line-height: 1.5; }
+  ul.lista { padding-left: 14px; margin: 3px 0; }
+  ul.lista li { font-size: 8.5px; line-height: 1.55; color: #1a1a1a; margin-bottom: 1px; }
+  @media print { body { background: none; } .page { margin: 0; box-shadow: none; } }
+</style>
+</head>
+<body>
+
+<div class="page capa-page">
+  <div class="capa-header">
+    <div style="display:flex;align-items:center;gap:8px;"><svg width="34" height="34" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#1F5C23"/></svg><div><div class="marca">Elite Treinamentos</div><div class="tagline">Extensivo ENARE 2026</div></div></div>
+    <div style="text-align:right;"><div style="font-family:'Barlow Condensed',sans-serif;color:var(--verde);font-size:11px;letter-spacing:1px;text-transform:uppercase;">Bloco B13 · Aula 19</div><div style="font-family:'Space Grotesk',sans-serif;font-weight:300;color:#888;font-size:7.5px;letter-spacing:0.5px;">Serviço Social</div></div>
+  </div>
+  <div class="capa-body">
+    <div class="capa-eyebrow">Bloco B13 · SS-SAUDE · Aula 19 de 21</div>
+    <div class="capa-titulo">Biossegurança <span>&amp; NR-32<br>Saúde do<br>Trabalhador</span></div>
+    <div class="capa-subtitulo">NRs, riscos ocupacionais, EPI/EPC, CAT,<br>CIPA, PCMSO, vacinação ocupacional e CEREST</div>
+    <div class="capa-badge-row">
+      <div class="capa-badge">SS-SAUDE ★★★</div>
+      <div class="capa-badge">NR-32 · NR-9 · NR-5</div>
+      <div class="capa-badge">PNSTT · CEREST</div>
+      <div class="capa-badge">CAT · PCMSO</div>
+    </div>
+    <div class="capa-divider"></div>
+    <div class="capa-topicos">
+      <div class="capa-topico"><div class="capa-topico-num">01</div><div class="capa-topico-txt">Biossegurança — conceitos e princípios</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">02</div><div class="capa-topico-txt">Riscos ocupacionais em saúde</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">03</div><div class="capa-topico-txt">NR-32 (2005) — proteção em saúde</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">04</div><div class="capa-topico-txt">EPI, EPC e medidas administrativas</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">05</div><div class="capa-topico-txt">Acidente de trabalho, CAT, PCMSO</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">06</div><div class="capa-topico-txt">Política Nacional Saúde do Trabalhador (PNSTT)</div></div>
+    </div>
+  </div>
+  <div class="capa-footer-strip"><span>Extensivo ENARE 2026</span><span>Elite Treinamentos em Saúde</span><span>Página 1 de 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-SAUDE</div><div class="aula-ref">Bloco B13 · Aula 19 · Biossegurança</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Biossegurança — Conceitos Fundamentais</div>
+
+    <p>A <strong>biossegurança</strong> é o conjunto de medidas, ações e procedimentos destinados a prevenir, reduzir, controlar ou eliminar <em>riscos inerentes</em> a atividades que possam afetar a saúde humana, animal ou o meio ambiente. No contexto de saúde, articula-se com segurança do paciente e do trabalhador. Cobrança crescente em provas para concursos em saúde.</p>
+
+    <div class="subsecao">Marco Legal</div>
+    <table>
+      <tr><th>Marco</th><th>Conteúdo</th></tr>
+      <tr><td>Lei 8.974/1995</td><td>Primeira Lei de Biossegurança (parcialmente revogada)</td></tr>
+      <tr><td>Lei 11.105/2005</td><td>Nova Lei de Biossegurança — vigente. Regula OGMs, células-tronco, biotecnologia</td></tr>
+      <tr><td>CTNBio</td><td>Comissão Técnica Nacional de Biossegurança — colegiado de avaliação</td></tr>
+      <tr><td>RDC ANVISA 222/2018</td><td>Resíduos de Serviços de Saúde (RSS) — manejo seguro</td></tr>
+      <tr><td>NR-32 (2005)</td><td>Norma Regulamentadora Saúde e Segurança em Serviços de Saúde — mais importante para o SS</td></tr>
+      <tr><td>NR-1 (atualizada 2022)</td><td>Disposições Gerais e Gerenciamento de Riscos Ocupacionais (PGR)</td></tr>
+      <tr><td>RDC ANVISA 36/2013</td><td>Segurança do paciente em serviços de saúde</td></tr>
+      <tr><td>RDC ANVISA 63/2011</td><td>Boas Práticas em Serviços de Saúde</td></tr>
+    </table>
+
+    <div class="subsecao">Tipos de Riscos Ocupacionais (NR-9)</div>
+    <table>
+      <tr><th>Tipo</th><th>Exemplos em saúde</th></tr>
+      <tr><td><strong>Físicos</strong></td><td>Radiação (raios-X), ruído, calor/frio, vibrações, pressões anormais</td></tr>
+      <tr><td><strong>Químicos</strong></td><td>Medicamentos quimioterápicos (oncologia), gases anestésicos, formol, glutaraldeído, óxido de etileno, desinfetantes</td></tr>
+      <tr><td><strong>Biológicos</strong></td><td>Vírus (HBV, HCV, HIV, COVID-19), bactérias (TB, MRSA), fungos, prions; mais frequentes em saúde</td></tr>
+      <tr><td><strong>Ergonômicos</strong></td><td>Postura inadequada, levantamento de peso, jornada extensa, ritmo intenso, monotonia</td></tr>
+      <tr><td><strong>Acidentes (mecânicos)</strong></td><td>Perfurocortantes (agulhas, lâminas), quedas, choques elétricos</td></tr>
+    </table>
+
+    <div class="subsecao">Princípios da Biossegurança</div>
+    <ul class="lista">
+      <li><strong>Precaução</strong>: agir mesmo na ausência de certeza científica plena</li>
+      <li><strong>Prevenção</strong>: evitar exposição antes do dano</li>
+      <li><strong>Hierarquia das medidas de controle</strong>: eliminação → substituição → controles de engenharia (EPC) → controles administrativos → EPI (último recurso)</li>
+      <li><strong>Universalidade das precauções</strong>: tratar todos os pacientes como potencialmente infectantes (precauções universais para sangue e fluidos)</li>
+      <li><strong>Educação permanente</strong>: capacitação contínua</li>
+      <li><strong>Vigilância</strong>: monitoramento contínuo</li>
+    </ul>
+
+    <div class="subsecao">Precauções Padrão (CDC, MS)</div>
+    <ul class="lista">
+      <li>Higiene das mãos — antes/após contato com paciente; 5 momentos da OMS</li>
+      <li>Uso de luvas em contato com sangue, fluidos, secreções, mucosas</li>
+      <li>Uso de avental/máscara/óculos quando há risco de respingo</li>
+      <li>Manejo seguro de perfurocortantes — vedado reencapar agulhas</li>
+      <li>Limpeza e desinfecção de superfícies</li>
+      <li>Manejo seguro de resíduos (descarte adequado)</li>
+      <li>Acomodação adequada de pacientes (isolamento por contato/respiratório quando necessário)</li>
+    </ul>
+
+    <div class="subsecao">Tipos de Isolamento</div>
+    <table>
+      <tr><th>Isolamento</th><th>Indicações</th></tr>
+      <tr><td>Padrão (universal)</td><td>Todos os pacientes; precauções básicas com fluidos corporais</td></tr>
+      <tr><td>De contato</td><td>Diarreia (C. difficile), MRSA, escabiose, herpes-zóster</td></tr>
+      <tr><td>Por gotículas</td><td>Gripe, COVID-19, meningite, coqueluche</td></tr>
+      <tr><td>Por aerossóis</td><td>Tuberculose, sarampo, varicela; máscara N95 obrigatória</td></tr>
+      <tr><td>Reverso (protetor)</td><td>Pacientes imunossuprimidos (proteção contra micro-organismos)</td></tr>
+    </table>
+
+    <div class="subsecao">Resíduos de Serviços de Saúde (RSS) — RDC 222/2018</div>
+    <p>Classificação por grupos:</p>
+    <ul class="lista">
+      <li><strong>Grupo A</strong>: biológicos potencialmente infectantes (sangue, tecidos, secreções, culturas) — saco branco com identificação</li>
+      <li><strong>Grupo B</strong>: químicos perigosos (medicamentos vencidos, quimioterápicos, mercúrio, reveladores)</li>
+      <li><strong>Grupo C</strong>: radioativos</li>
+      <li><strong>Grupo D</strong>: comuns — equivalentes a resíduos domésticos (papel, plástico, etc.)</li>
+      <li><strong>Grupo E</strong>: perfurocortantes (agulhas, ampolas, lâminas) — caixa rígida com símbolo de perigo</li>
+    </ul>
+
+    <p>Cada grupo tem cor de saco específica, manejo e destinação distintos. PGRSS (Plano de Gerenciamento de Resíduos de Serviços de Saúde) é obrigatório para todo estabelecimento de saúde.</p>
+
+    <div class="subsecao">Segurança do Paciente — Cultura</div>
+    <ul class="lista">
+      <li>RDC 36/2013 — Núcleos de Segurança do Paciente (NSP) em hospitais</li>
+      <li>"6 Metas Internacionais de Segurança do Paciente" (OMS)</li>
+      <li>Identificação correta do paciente</li>
+      <li>Comunicação efetiva</li>
+      <li>Segurança em medicamentos de alta vigilância</li>
+      <li>Cirurgia segura (checklist OMS)</li>
+      <li>Higiene das mãos</li>
+      <li>Redução de quedas e lesões</li>
+      <li>Cultura da notificação (não-punitiva) de eventos adversos</li>
+      <li>Cultura justa, sem busca de culpados</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> biossegurança = prevenção de riscos. 5 tipos de riscos (físicos, químicos, biológicos, ergonômicos, acidentes). NR-32 = saúde/segurança em serviços de saúde (2005). Hierarquia: eliminação → engenharia → administrativo → EPI. Precauções padrão (sangue/fluidos). RDC 222/2018 (RSS — 5 grupos A/B/C/D/E). Segurança do paciente — RDC 36/2013.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-SAUDE · Biossegurança</span><span>Extensivo ENARE 2026</span><span class="pg">2 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-SAUDE</div><div class="aula-ref">Bloco B13 · Aula 19 · NR-32</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">NR-32 — Saúde e Segurança em Serviços de Saúde</div>
+
+    <p>A <strong>NR-32</strong>, estabelecida pela Portaria MTb 485/2005 (atualizada pela Portaria 1.748/2011 e posteriores), é a Norma Regulamentadora específica para serviços de saúde. Aplica-se a hospitais, UBS, laboratórios, consultórios — qualquer ambiente em que se prestem serviços de assistência à saúde. Cobrança certa em ENARE.</p>
+
+    <div class="subsecao">Aplicabilidade</div>
+    <ul class="lista">
+      <li>Todos os trabalhadores em serviços de saúde (públicos e privados)</li>
+      <li>Estagiários, residentes, voluntários, terceirizados</li>
+      <li>NÃO aplicável apenas a profissionais de saúde — TODOS os trabalhadores expostos a riscos do ambiente de saúde</li>
+      <li>Implementação por meio do PGRSS, PCMSO, PGR (NR-1)</li>
+    </ul>
+
+    <div class="subsecao">Estrutura da NR-32 — Tópicos Principais</div>
+    <table>
+      <tr><th>Tópico</th><th>Conteúdo</th></tr>
+      <tr><td>32.2 — Risco Biológico</td><td>Definição, classificação, hierarquia das medidas, PPRA, vacinação</td></tr>
+      <tr><td>32.3 — Risco Químico</td><td>Quimioterápicos, gases anestésicos, mercúrio, formol, glutaraldeído</td></tr>
+      <tr><td>32.4 — Radiações</td><td>Ionizantes (raios-X, medicina nuclear) e não-ionizantes (laser, UV)</td></tr>
+      <tr><td>32.5 — Resíduos</td><td>Manejo seguro de RSS conforme RDC 222/2018</td></tr>
+      <tr><td>32.6 — Lavanderias e CME</td><td>Riscos específicos de lavanderias e centrais de esterilização</td></tr>
+      <tr><td>32.7 — Limpeza e Conservação</td><td>Trabalhadores de limpeza expostos a riscos</td></tr>
+      <tr><td>32.8 — Manutenção</td><td>Equipamentos médicos e infraestrutura</td></tr>
+      <tr><td>32.9 — Acidentes com Perfurocortantes</td><td>Notificação, atendimento, conduta pós-exposição</td></tr>
+      <tr><td>32.10 — Capacitação</td><td>Treinamento obrigatório</td></tr>
+      <tr><td>32.11 — Comissões</td><td>CIPA específica para saúde</td></tr>
+    </table>
+
+    <div class="subsecao">Classificação de Risco Biológico (NR-32)</div>
+    <table>
+      <tr><th>Classe</th><th>Risco Individual</th><th>Risco Coletivo</th><th>Exemplos</th></tr>
+      <tr><td>1</td><td>Baixo</td><td>Baixo</td><td>E. coli não-patogênica, Lactobacillus</td></tr>
+      <tr><td>2</td><td>Moderado</td><td>Limitado</td><td>HBV, HCV, HIV, Salmonella, Streptococcus, sarampo</td></tr>
+      <tr><td>3</td><td>Alto</td><td>Moderado</td><td>Tuberculose, varicela, febre amarela, hantavírus</td></tr>
+      <tr><td>4</td><td>Alto</td><td>Alto</td><td>Ebola, varíola, Marburg, Lassa, vírus Nipah</td></tr>
+    </table>
+
+    <div class="subsecao">Vacinação Obrigatória (NR-32)</div>
+    <ul class="lista">
+      <li>Empregador é responsável por <strong>fornecer gratuitamente</strong> as vacinas</li>
+      <li>Vacinas obrigatórias para trabalhadores de saúde:
+        <ul>
+          <li><strong>Hepatite B</strong> (3 doses)</li>
+          <li><strong>Tétano e Difteria (dT)</strong> a cada 10 anos</li>
+          <li><strong>Sarampo, Caxumba, Rubéola (Tríplice Viral)</strong></li>
+          <li><strong>Influenza</strong> (anual)</li>
+          <li><strong>COVID-19</strong> (após pandemia)</li>
+          <li><strong>Febre amarela</strong> (em áreas endêmicas)</li>
+        </ul>
+      </li>
+      <li>Trabalhador pode recusar — mas deve registrar formalmente</li>
+      <li>Registro vacinal em prontuário</li>
+    </ul>
+
+    <div class="subsecao">Medidas para Perfurocortantes</div>
+    <ul class="lista">
+      <li>VEDADO reencapar agulhas após uso (causa principal de acidentes)</li>
+      <li>VEDADO retirar agulha manualmente</li>
+      <li>VEDADO entortar, quebrar ou separar agulha</li>
+      <li>Descarte imediato em caixa rígida (DESCARPACK, ABNT NBR 13853)</li>
+      <li>Caixa não pode ultrapassar 2/3 da capacidade</li>
+      <li>Caixa identificada com símbolo de perigo biológico</li>
+      <li>Uso de dispositivos com mecanismo de segurança (agulhas retráteis)</li>
+    </ul>
+
+    <div class="subsecao">Conduta Pós-Exposição a Material Biológico</div>
+    <p>Acidente com perfurocortante exige protocolo imediato:</p>
+    <ul class="lista">
+      <li>Lavar imediatamente o local com água e sabão (não-expressar nem deixar sangrar)</li>
+      <li>Mucosas: lavar abundantemente com água corrente ou soro fisiológico</li>
+      <li>Comunicação imediata à chefia</li>
+      <li>Atendimento médico de emergência (até 2h ideal; até 72h limite)</li>
+      <li>Coleta de sangue do trabalhador (sorologia HIV, HBV, HCV)</li>
+      <li>Coleta de sangue do paciente-fonte (com consentimento)</li>
+      <li>Profilaxia pós-exposição (PEP) para HIV quando indicada — esquema de 28 dias</li>
+      <li>Profilaxia para HBV se trabalhador não-imune</li>
+      <li>Notificação ao SINAN (Acidente com Exposição a Material Biológico)</li>
+      <li>Emissão de CAT (Comunicação de Acidente de Trabalho)</li>
+      <li>Seguimento sorológico (3, 6, 12 meses)</li>
+    </ul>
+
+    <div class="subsecao">Capacitação Obrigatória (NR-32)</div>
+    <ul class="lista">
+      <li>Treinamento inicial antes do início das atividades</li>
+      <li>Treinamento periódico (mínimo anual)</li>
+      <li>Após qualquer mudança nas condições de exposição</li>
+      <li>Conteúdo: riscos, EPI/EPC, conduta em acidentes, notificação, biossegurança</li>
+      <li>Registro de presença obrigatório</li>
+      <li>Multa para empregador que não capacita</li>
+    </ul>
+
+    <div class="subsecao">PCMSO — Programa de Controle Médico de Saúde Ocupacional (NR-7)</div>
+    <ul class="lista">
+      <li>Obrigatório para todos os empregadores</li>
+      <li>Coordenação por médico do trabalho</li>
+      <li>Exames médicos obrigatórios:
+        <ul>
+          <li>Admissional (antes da contratação)</li>
+          <li>Periódico (anual ou conforme risco)</li>
+          <li>De retorno ao trabalho (após afastamento &gt;30 dias)</li>
+          <li>Mudança de função</li>
+          <li>Demissional</li>
+        </ul>
+      </li>
+      <li>Em saúde: foco em riscos biológicos, ergonômicos, químicos</li>
+      <li>Registro em ASO (Atestado de Saúde Ocupacional)</li>
+    </ul>
+
+    <div class="subsecao">PGR — Programa de Gerenciamento de Riscos (NR-1, 2022)</div>
+    <ul class="lista">
+      <li>Substituiu o PPRA (Programa de Prevenção de Riscos Ambientais)</li>
+      <li>Em vigor desde janeiro/2022</li>
+      <li>Identifica, avalia e controla riscos ocupacionais</li>
+      <li>Plano de ação com prioridades</li>
+      <li>Inventário de riscos</li>
+      <li>Em saúde: articula-se com NR-32</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> NR-32 (2005) é a NR específica para saúde. Riscos biológicos classificados de 1 a 4. Vacinas obrigatórias (hepatite B, dT, tríplice viral, influenza, COVID-19) — empregador fornece. Vedado reencapar agulhas. PEP HIV até 72h. CAT + SINAN. PCMSO (NR-7). PGR (NR-1 atualizada 2022) substituiu PPRA.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-SAUDE · NR-32</span><span>Extensivo ENARE 2026</span><span class="pg">3 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-SAUDE</div><div class="aula-ref">Bloco B13 · Aula 19 · EPI · EPC · CIPA</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">EPI, EPC e CIPA</div>
+
+    <div class="subsecao">Hierarquia das Medidas de Controle</div>
+    <p>Princípio fundamental da segurança do trabalho:</p>
+    <table>
+      <tr><th>Hierarquia</th><th>Medida</th></tr>
+      <tr><td>1ª (mais eficaz)</td><td><strong>Eliminação</strong> — remover totalmente o risco</td></tr>
+      <tr><td>2ª</td><td><strong>Substituição</strong> — trocar por algo menos perigoso</td></tr>
+      <tr><td>3ª</td><td><strong>Controles de engenharia (EPC)</strong> — isolamento, ventilação, dispositivos de segurança</td></tr>
+      <tr><td>4ª</td><td><strong>Controles administrativos</strong> — protocolos, rotinas, treinamento</td></tr>
+      <tr><td>5ª (último recurso)</td><td><strong>EPI</strong> — equipamento de proteção individual</td></tr>
+    </table>
+
+    <p><strong>Princípio:</strong> o EPI é o último recurso, não a primeira solução. Apostar só em EPI é "transferir ao trabalhador a responsabilidade pela própria proteção".</p>
+
+    <div class="subsecao">EPI — Equipamento de Proteção Individual</div>
+    <ul class="lista">
+      <li>Definição (NR-6): "todo dispositivo ou produto, de uso individual utilizado pelo trabalhador, destinado à proteção de riscos suscetíveis de ameaçar a segurança e a saúde no trabalho"</li>
+      <li>Fornecimento gratuito pelo empregador (NR-6 e CLT art. 158)</li>
+      <li>Treinamento obrigatório de uso</li>
+      <li>EPI deve ter Certificado de Aprovação (CA) do MTb</li>
+      <li>Substituição imediata quando danificado</li>
+      <li>Trabalhador é obrigado a usar (recusa é descumprimento da legislação trabalhista)</li>
+    </ul>
+
+    <p><strong>EPIs principais em saúde:</strong></p>
+    <table>
+      <tr><th>EPI</th><th>Risco</th></tr>
+      <tr><td>Luvas de procedimento</td><td>Biológico — contato com fluidos</td></tr>
+      <tr><td>Luvas de borracha (longa)</td><td>Limpeza, descontaminação</td></tr>
+      <tr><td>Máscara cirúrgica</td><td>Gotículas</td></tr>
+      <tr><td>Máscara N95 / PFF2</td><td>Aerossóis — TB, sarampo, varicela, COVID-19</td></tr>
+      <tr><td>Óculos / face shield</td><td>Respingo de fluidos em olhos</td></tr>
+      <tr><td>Avental impermeável</td><td>Procedimentos com risco de respingo</td></tr>
+      <tr><td>Avental de chumbo</td><td>Radiografia, fluoroscopia</td></tr>
+      <tr><td>Gorro</td><td>Cabelo em áreas estéreis</td></tr>
+      <tr><td>Sapato fechado / pró-pé</td><td>Proteção dos pés; queda de objetos</td></tr>
+      <tr><td>Protetor auricular</td><td>Ruído &gt;85 dB</td></tr>
+    </table>
+
+    <div class="subsecao">EPC — Equipamento de Proteção Coletiva</div>
+    <ul class="lista">
+      <li>Definição: proteção coletiva, instalado no ambiente, protege grupo de trabalhadores</li>
+      <li>Tem prioridade sobre o EPI (hierarquia)</li>
+      <li>Exemplos em saúde:
+        <ul>
+          <li>Ventilação adequada (exaustão, ar condicionado)</li>
+          <li>Capela química/cabine de segurança biológica</li>
+          <li>Sistema de iluminação adequada</li>
+          <li>Isolamento de áreas com radiação (chumbo)</li>
+          <li>Caixas rígidas para descarte</li>
+          <li>Dispensers de álcool 70% nas portas</li>
+          <li>Sinalização de áreas</li>
+          <li>Sistema de tratamento de ar (alta-eficiência)</li>
+        </ul>
+      </li>
+    </ul>
+
+    <div class="subsecao">CIPA — Comissão Interna de Prevenção de Acidentes (NR-5)</div>
+    <p>Obrigatória em empresas com mais de 20 funcionários. Composição paritária empregador-empregado. Em saúde, atualizada para incluir prevenção do assédio (Lei 14.457/2022 — Programa Emprega + Mulher; alteração da NR-5).</p>
+
+    <ul class="lista">
+      <li>Mandato: 1 ano (com prorrogação por mais 1)</li>
+      <li>Reuniões mensais ordinárias</li>
+      <li>Mapeamento de riscos</li>
+      <li>Cooperação com SESMT (Serviços Especializados em Engenharia de Segurança e Medicina do Trabalho)</li>
+      <li>Investigação de acidentes</li>
+      <li>SIPAT — Semana Interna de Prevenção de Acidentes do Trabalho</li>
+      <li>Estabilidade do cipeiro: 1 ano após o mandato (CF Art. 10, II, "a" do ADCT)</li>
+      <li>Atualização 2022: incluiu prevenção de assédio sexual e moral</li>
+    </ul>
+
+    <div class="subsecao">CIPA em Serviços de Saúde</div>
+    <ul class="lista">
+      <li>Em hospitais, atua articulada com NSP (Núcleo de Segurança do Paciente) e SESMT</li>
+      <li>Foco em riscos específicos de saúde (biológicos, perfurocortantes, ergonômicos)</li>
+      <li>Atuação em casos de violência contra trabalhador (paciente agressivo, familiar)</li>
+      <li>Investigação de acidentes — incluindo perfurocortantes</li>
+      <li>Educação permanente em biossegurança</li>
+    </ul>
+
+    <div class="subsecao">eSocial — Sistema de Escrituração Digital</div>
+    <ul class="lista">
+      <li>Sistema digital obrigatório desde 2018</li>
+      <li>Integra obrigações trabalhistas, previdenciárias, fiscais</li>
+      <li>Em saúde: registro de CAT, acidentes, exposições</li>
+      <li>Vinculação com PCMSO, PGR, SESMT</li>
+    </ul>
+
+    <div class="subsecao">Trabalho do AS na Segurança do Trabalho</div>
+    <ul class="lista">
+      <li>Composição da CIPA (representação de trabalhadores)</li>
+      <li>Articulação com SESMT</li>
+      <li>Encaminhamento de trabalhadores acidentados</li>
+      <li>Acompanhamento de processos de afastamento (INSS)</li>
+      <li>Mediação entre trabalhador, empregador, instituição</li>
+      <li>Atendimento social a trabalhadores adoecidos ou acidentados</li>
+      <li>Articulação com CEREST e Sindicato</li>
+      <li>Educação em saúde do trabalhador</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> hierarquia de controles — eliminação &gt; substituição &gt; EPC &gt; administrativo &gt; EPI. EPI = último recurso, fornecimento gratuito pelo empregador, CA obrigatório. EPC = coletivo, prioridade. CIPA (NR-5) obrigatória &gt;20 trabalhadores, paritária, mandato 1 ano, estabilidade do cipeiro. Atualização CIPA 2022 (Lei 14.457) — combate ao assédio.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-SAUDE · EPI · CIPA</span><span>Extensivo ENARE 2026</span><span class="pg">4 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-SAUDE</div><div class="aula-ref">Bloco B13 · Aula 19 · Acidente de Trabalho</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Acidente de Trabalho e CAT</div>
+
+    <p>O <strong>acidente de trabalho</strong> é definido na Lei 8.213/1991 (Previdência Social). Conhecimento essencial — AS frequentemente articula com a Previdência, perícia médica, INSS. Cobrança comum em concursos.</p>
+
+    <div class="subsecao">Definição (Lei 8.213/1991 art. 19)</div>
+    <p>"<em>Acidente do trabalho é o que ocorre pelo exercício do trabalho a serviço da empresa ou pelo exercício do trabalho dos segurados especiais (rurais), provocando lesão corporal ou perturbação funcional que cause a morte, a perda ou redução, permanente ou temporária, da capacidade para o trabalho.</em>"</p>
+
+    <div class="subsecao">Tipos de Acidente de Trabalho</div>
+    <table>
+      <tr><th>Tipo</th><th>Definição</th></tr>
+      <tr><td><strong>Típico</strong></td><td>Ocorre no exercício do trabalho, a serviço da empresa; dentro do local de trabalho</td></tr>
+      <tr><td><strong>De trajeto</strong></td><td>Ocorre no percurso da residência ao trabalho ou vice-versa (Lei 8.213/1991 art. 21, IV)</td></tr>
+      <tr><td><strong>Doença profissional</strong></td><td>Doença característica de determinada atividade (silicose em mineração, hepatite B em saúde)</td></tr>
+      <tr><td><strong>Doença do trabalho</strong></td><td>Doença adquirida ou desencadeada pelas condições do trabalho (LER/DORT, perda auditiva por ruído)</td></tr>
+    </table>
+
+    <p><strong>Atenção:</strong> a Reforma Trabalhista (Lei 13.467/2017) excluiu o acidente de trajeto da contagem de estabilidade, mas o STF reverteu parte das modificações. A categoria SS critica o esvaziamento.</p>
+
+    <div class="subsecao">CAT — Comunicação de Acidente de Trabalho</div>
+    <ul class="lista">
+      <li>Documento obrigatório (Lei 8.213/1991 art. 22)</li>
+      <li>Emitida pelo empregador em até 1º dia útil após o acidente</li>
+      <li>Em caso de morte, comunicação imediata</li>
+      <li>Não-emissão da CAT é infração; multa</li>
+      <li>Trabalhador, médico, sindicato e autoridade pública também podem emitir</li>
+      <li>Cadastro no INSS (via eSocial ou diretamente)</li>
+      <li>Garante direitos previdenciários (auxílio-doença acidentário B-91)</li>
+      <li>Garante estabilidade no emprego por 12 meses após retorno</li>
+      <li>Em saúde: todo acidente com material biológico = CAT obrigatória</li>
+    </ul>
+
+    <div class="subsecao">Benefícios Previdenciários Decorrentes</div>
+    <table>
+      <tr><th>Benefício</th><th>Descrição</th></tr>
+      <tr><td>Auxílio-doença acidentário (B-91)</td><td>Pagamento durante afastamento &gt;15 dias; correspondente a 91% do salário-de-contribuição</td></tr>
+      <tr><td>Auxílio-acidente (B-94)</td><td>Indenização permanente após consolidação (sequela que reduz capacidade); 50% do salário</td></tr>
+      <tr><td>Aposentadoria por invalidez (B-92)</td><td>Incapacidade permanente total</td></tr>
+      <tr><td>Pensão por morte (B-93)</td><td>Em caso de óbito</td></tr>
+    </table>
+
+    <div class="subsecao">Estabilidade do Acidentado</div>
+    <ul class="lista">
+      <li>Estabilidade de 12 meses após retorno ao trabalho (Lei 8.213 art. 118)</li>
+      <li>Requisito: afastamento de mais de 15 dias por acidente (B-91)</li>
+      <li>Período em que o trabalhador não pode ser demitido sem justa causa</li>
+      <li>Garantia constitucional (Art. 7º, CF/1988 + Súmula 378 do TST)</li>
+    </ul>
+
+    <div class="subsecao">Notificação Compulsória de Acidentes em Saúde</div>
+    <ul class="lista">
+      <li>Acidentes com material biológico — SINAN (Sistema de Informação de Agravos de Notificação)</li>
+      <li>Doenças relacionadas ao trabalho — SINAN também</li>
+      <li>Acidente fatal — comunicação imediata à Superintendência Regional do Trabalho</li>
+      <li>Vínculo com Portaria GM/MS 1.823/2012 (Política Nacional de Saúde do Trabalhador)</li>
+    </ul>
+
+    <div class="subsecao">Doenças Ocupacionais Frequentes em Saúde</div>
+    <table>
+      <tr><th>Doença</th><th>Causa Ocupacional</th></tr>
+      <tr><td>Hepatite B/C</td><td>Acidente com material biológico; HBV cobertura vacinal &lt;100%</td></tr>
+      <tr><td>HIV</td><td>Acidente com perfurocortante; PEP profilática</td></tr>
+      <tr><td>Tuberculose</td><td>Convívio com pacientes; sub-notificação</td></tr>
+      <tr><td>COVID-19</td><td>Exposição em pandemia (2020-2023); reconhecida ocupacional</td></tr>
+      <tr><td>LER/DORT</td><td>Postura, repetitividade; atinge enfermagem, técnicos de imagem, AS</td></tr>
+      <tr><td>Depressão e ansiedade</td><td>Sobrecarga, exposição a sofrimento, plantões</td></tr>
+      <tr><td>Burnout</td><td>Síndrome de Esgotamento Profissional (CID-11 desde 2022)</td></tr>
+      <tr><td>Lombalgia ocupacional</td><td>Levantamento de pacientes; má postura</td></tr>
+      <tr><td>Perda auditiva</td><td>Ruído em CME, lavanderia, UTI</td></tr>
+      <tr><td>Dermatites</td><td>Contato com luvas, álcool, desinfetantes</td></tr>
+    </table>
+
+    <div class="subsecao">Síndrome de Burnout</div>
+    <ul class="lista">
+      <li>Incluída na CID-11 (2022) como "Síndrome do Esgotamento Profissional" — QD85</li>
+      <li>Tripla dimensão (Maslach): exaustão emocional + despersonalização + redução da realização profissional</li>
+      <li>Causas: sobrecarga, falta de autonomia, valores conflituosos, falta de reconhecimento, comunidade pobre, recompensa insuficiente, injustiça percebida</li>
+      <li>Em saúde: AS, médicos, enfermeiros, residentes — taxas elevadas pós-COVID</li>
+      <li>Prevenção: cuidado institucional, pausas, supervisão clínica, educação permanente, redução de jornadas excessivas</li>
+      <li>Tratamento: psicoterapia, mudança de função, afastamento</li>
+    </ul>
+
+    <div class="subsecao">Violência Contra o Trabalhador de Saúde</div>
+    <ul class="lista">
+      <li>Crescente; agressões verbais e físicas por pacientes/famílias</li>
+      <li>Em UPA/PS: tempos de espera, frustrações</li>
+      <li>Em saúde mental: pacientes em crise</li>
+      <li>Em territórios violentos: AS na rua expostos a milícias, tráfico</li>
+      <li>Notificação como acidente de trabalho (CAT)</li>
+      <li>Lei 14.535/2023 — atendimento de mulheres em violência sem testemunhas</li>
+      <li>Posicionamento do CFESS pela proteção dos trabalhadores</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> acidente de trabalho (Lei 8.213/1991) — típico, trajeto, doença profissional, doença do trabalho. CAT obrigatória em 1º dia útil (notmesmo SINAN se biológico). Estabilidade 12 meses pós B-91. Auxílio-doença acidentário (B-91 = 91% do salário). Burnout no CID-11. Pandemia COVID-19 reconhecida como ocupacional. SINAN para notificação.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-SAUDE · CAT · Doenças</span><span>Extensivo ENARE 2026</span><span class="pg">5 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-SAUDE</div><div class="aula-ref">Bloco B13 · Aula 19 · PNSTT</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Política Nacional de Saúde do Trabalhador (PNSTT)</div>
+
+    <p>A <strong>Política Nacional de Saúde do Trabalhador e da Trabalhadora (PNSTT)</strong>, instituída pela <strong>Portaria GM/MS nº 1.823/2012</strong>, é a política específica do SUS para a saúde dos trabalhadores. Articula com CF/1988 (art. 7º, XXII; art. 200, II), Lei 8.080/1990, Reforma Sanitária. Cobrança em provas de SS-SAUDE.</p>
+
+    <div class="subsecao">Princípios e Diretrizes</div>
+    <ul class="lista">
+      <li>Universalidade do acesso (todo trabalhador, formal ou informal)</li>
+      <li>Integralidade do cuidado</li>
+      <li>Atenção primária como porta de entrada</li>
+      <li>Vigilância da saúde do trabalhador</li>
+      <li>Participação social — comissões intersetoriais</li>
+      <li>Articulação intersetorial (saúde, trabalho, previdência, meio ambiente)</li>
+      <li>Compromisso com a determinação social</li>
+      <li>Redução das desigualdades em saúde do trabalhador</li>
+    </ul>
+
+    <div class="subsecao">CEREST — Centros de Referência em Saúde do Trabalhador</div>
+    <ul class="lista">
+      <li>Estabelecimentos do SUS específicos para Saúde do Trabalhador</li>
+      <li>~210 CERESTs no Brasil (federais, estaduais, municipais)</li>
+      <li>Funções:
+        <ul>
+          <li>Atendimento aos trabalhadores adoecidos/acidentados</li>
+          <li>Vigilância em saúde do trabalhador</li>
+          <li>Articulação com CIPA, sindicatos, MP do Trabalho</li>
+          <li>Educação permanente</li>
+          <li>Pesquisa em saúde do trabalhador</li>
+          <li>Apoio matricial à rede SUS</li>
+        </ul>
+      </li>
+      <li>Atendimento gratuito, universal (SUS)</li>
+      <li>Equipe multiprofissional inclui AS</li>
+    </ul>
+
+    <div class="subsecao">RENAST — Rede Nacional de Atenção Integral à Saúde do Trabalhador</div>
+    <ul class="lista">
+      <li>Articula CERESTs, APS, RAS e Vigilância</li>
+      <li>Portaria GM/MS 1.679/2002 e atualizações</li>
+      <li>Articulação intersetorial: SUS + MTb + INSS + MPT</li>
+      <li>Núcleo de Apoio à Saúde do Trabalhador (NAST) em alguns estados</li>
+    </ul>
+
+    <div class="subsecao">Sistemas de Informação</div>
+    <ul class="lista">
+      <li><strong>SINAN-NET</strong> — notificação de agravos relacionados ao trabalho (acidentes, intoxicações, LER, transtornos mentais)</li>
+      <li><strong>SIM</strong> — óbitos relacionados ao trabalho</li>
+      <li><strong>SIH-SUS</strong> — internações relacionadas ao trabalho</li>
+      <li><strong>SIA-SUS</strong> — atendimentos ambulatoriais</li>
+      <li><strong>eSocial</strong> (em saúde) — CAT, ASO, treinamentos</li>
+      <li><strong>SI-PNI</strong> — vacinação ocupacional</li>
+    </ul>
+
+    <div class="subsecao">Agravos Notificáveis Relacionados ao Trabalho</div>
+    <p>Lista da Portaria de Consolidação MS 5/2017:</p>
+    <ul class="lista">
+      <li>Acidente de Trabalho Grave (e Fatal)</li>
+      <li>Acidente de Trabalho com Exposição a Material Biológico</li>
+      <li>Câncer relacionado ao trabalho</li>
+      <li>Dermatoses Ocupacionais</li>
+      <li>LER/DORT</li>
+      <li>Perda Auditiva Induzida por Ruído (PAIR)</li>
+      <li>Pneumoconioses</li>
+      <li>Transtornos Mentais Relacionados ao Trabalho</li>
+      <li>Intoxicação por Agrotóxicos</li>
+      <li>Outras intoxicações exógenas</li>
+    </ul>
+
+    <div class="subsecao">CIST — Comissão Intersetorial de Saúde do Trabalhador</div>
+    <ul class="lista">
+      <li>Subordinada ao Conselho de Saúde</li>
+      <li>Composição: trabalhadores, empregadores, gestores, instituições</li>
+      <li>Funções: participação social na PNSTT; controle; sugestões</li>
+      <li>Existe em nível nacional, estadual e municipal</li>
+    </ul>
+
+    <div class="subsecao">Vigilância em Saúde do Trabalhador (VISAT)</div>
+    <ul class="lista">
+      <li>Função do CEREST e da APS</li>
+      <li>Identifica riscos em ambientes de trabalho</li>
+      <li>Investiga acidentes e doenças ocupacionais</li>
+      <li>Pode interditar locais de trabalho (em parceria com MTb)</li>
+      <li>Elabora análise da situação de saúde do trabalhador no território</li>
+      <li>Mapeamento de territórios produtivos (agricultura, indústria, serviços)</li>
+    </ul>
+
+    <div class="subsecao">Saúde Mental do Trabalhador</div>
+    <ul class="lista">
+      <li>Reconhecida no SUS via PNSTT</li>
+      <li>Atendimento em CAPS, ambulatórios, ESF</li>
+      <li>Diagnósticos frequentes: depressão, ansiedade, burnout, estresse pós-traumático</li>
+      <li>Articulação com CEREST</li>
+      <li>Notificação compulsória de Transtornos Mentais Relacionados ao Trabalho (SINAN)</li>
+      <li>Crítica: medicalização; falta de articulação com causas</li>
+      <li>Defesa do SS: trabalho como determinante; transformação das condições</li>
+    </ul>
+
+    <div class="subsecao">Trabalho do AS na Saúde do Trabalhador</div>
+    <ul class="lista">
+      <li>Atendimento direto em CEREST e CAPS</li>
+      <li>Acompanhamento de trabalhadores acidentados/adoecidos</li>
+      <li>Orientação sobre direitos (CAT, INSS, estabilidade)</li>
+      <li>Articulação com sindicatos, CIPAs</li>
+      <li>Educação em saúde no território</li>
+      <li>Investigação social em acidentes graves/fatais</li>
+      <li>Pesquisa em determinação social</li>
+      <li>Participação em CIST</li>
+      <li>Apoio matricial à ESF</li>
+      <li>Articulação com MPT (Ministério Público do Trabalho)</li>
+    </ul>
+
+    <div class="subsecao">Relação do AS com o INSS</div>
+    <ul class="lista">
+      <li>AS no INSS: histórico, com a Lei 8.213/1991</li>
+      <li>Atuação na Reabilitação Profissional</li>
+      <li>Avaliação social do BPC (Aula 16)</li>
+      <li>Periciamento social (mas não substituiu a perícia médica)</li>
+      <li>Lei 10.876/2004 — concurso para AS no INSS</li>
+      <li>Perícia social com critério biopsicossocial (PCD)</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> PNSTT (Portaria 1.823/2012). CERESTs como referência (~210 no Brasil). RENAST integra. Agravos notificáveis (SINAN-NET) — acidente, biológico, LER/DORT, PAIR, intoxicações, transtornos mentais. CIST = participação social. VISAT = vigilância. Saúde mental do trabalhador (burnout CID-11 desde 2022). AS no INSS (Lei 10.876/2004).</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-SAUDE · PNSTT</span><span>Extensivo ENARE 2026</span><span class="pg">6 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-SAUDE</div><div class="aula-ref">Bloco B13 · Aula 19 · LGPD · Pandemia</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">LGPD e Saúde — Lei 13.709/2018</div>
+
+    <p>A <strong>Lei Geral de Proteção de Dados (LGPD)</strong> entrou em vigor em 2020 (aplicação total em 2021). Articula-se com sigilo profissional (Aula 14) e biossegurança da informação. Cobrança crescente.</p>
+
+    <div class="subsecao">Princípios da LGPD</div>
+    <ul class="lista">
+      <li>Finalidade — uso para fins específicos e legítimos</li>
+      <li>Adequação — compatibilidade com finalidades</li>
+      <li>Necessidade — uso mínimo necessário</li>
+      <li>Livre acesso — titular pode consultar seus dados</li>
+      <li>Qualidade dos dados — exatidão, clareza, atualização</li>
+      <li>Transparência — informações claras sobre uso</li>
+      <li>Segurança — proteção técnica e administrativa</li>
+      <li>Prevenção</li>
+      <li>Não-discriminação</li>
+      <li>Responsabilização</li>
+    </ul>
+
+    <div class="subsecao">Dados Pessoais Sensíveis em Saúde</div>
+    <p>A LGPD reconhece como <strong>dados sensíveis</strong> (proteção reforçada):</p>
+    <ul class="lista">
+      <li>Origem racial ou étnica</li>
+      <li>Convicção religiosa</li>
+      <li>Opinião política</li>
+      <li>Filiação a sindicato ou organização</li>
+      <li>Dados referentes a saúde ou à vida sexual</li>
+      <li>Dados genéticos ou biométricos</li>
+    </ul>
+
+    <p>Em saúde, todos os dados são frequentemente sensíveis. Manejo requer especial cuidado.</p>
+
+    <div class="subsecao">Aplicação no SUS</div>
+    <ul class="lista">
+      <li>Prontuário eletrônico — controle de acesso</li>
+      <li>Sistemas (e-SUS, SISVAN, SINAN) — segurança</li>
+      <li>Compartilhamento entre instituições — finalidade específica</li>
+      <li>Termo de Consentimento Informado para pesquisa</li>
+      <li>Direito do paciente de acesso ao próprio prontuário</li>
+      <li>Resolução CFM 1.821/2007 — sobre prontuário eletrônico</li>
+      <li>Articulação com sigilo profissional do AS</li>
+    </ul>
+
+    <div class="subsecao">ANPD — Autoridade Nacional de Proteção de Dados</div>
+    <ul class="lista">
+      <li>Autarquia federal (Lei 14.460/2022)</li>
+      <li>Fiscalização e aplicação de sanções por descumprimento</li>
+      <li>Multas: 2% do faturamento (limite R$ 50 milhões por infração)</li>
+      <li>Determinações administrativas</li>
+    </ul>
+
+    <div class="secao-titulo">COVID-19 e Saúde do Trabalhador</div>
+
+    <p>A pandemia de COVID-19 (2020-2023) representou crise sanitária e laboral global. Trabalhadores de saúde foram especialmente atingidos. Tema com cobrança crescente em provas pós-pandemia.</p>
+
+    <div class="subsecao">COVID-19 como Doença Ocupacional</div>
+    <ul class="lista">
+      <li>STF (ADI 6.342, 2020) — reconheceu COVID-19 como doença ocupacional para trabalhadores expostos</li>
+      <li>Lei 14.151/2021 — afastamento de trabalhadoras gestantes (Reformada em 2022)</li>
+      <li>CAT obrigatória em casos de contágio ocupacional</li>
+      <li>Hospital, UBS, SAMU: nexo causal presumido</li>
+      <li>Direito à estabilidade após retorno</li>
+    </ul>
+
+    <div class="subsecao">Impactos sobre Trabalhadores de Saúde</div>
+    <ul class="lista">
+      <li>~50% dos trabalhadores de saúde foram infectados ao longo da pandemia</li>
+      <li>+15 mil profissionais morreram (estimativas; subnotificação)</li>
+      <li>Trabalho com EPI inadequado (escassez em 2020)</li>
+      <li>Exposição a jornadas extremas</li>
+      <li>Síndrome de Burnout em ascensão</li>
+      <li>Transtornos pós-traumáticos</li>
+      <li>Long COVID em parcela dos infectados</li>
+      <li>Pacto pela paz no SUS (Lula 3) tentou reconhecer e reparar</li>
+    </ul>
+
+    <div class="subsecao">Lições da Pandemia para Biossegurança</div>
+    <ul class="lista">
+      <li>Importância dos estoques estratégicos de EPI</li>
+      <li>Necessidade de protocolos atualizados</li>
+      <li>Vigilância em saúde como sistema fundamental</li>
+      <li>Centralidade do SUS — sistema universal salva vidas</li>
+      <li>Importância da articulação com a OMS (Atualização do RSI)</li>
+      <li>Comunicação científica — combate ao negacionismo</li>
+      <li>Necessidade de vacinação universal e equidade global</li>
+    </ul>
+
+    <div class="subsecao">Vacinação Ocupacional Atualizada (Pós-COVID)</div>
+    <ul class="lista">
+      <li>COVID-19 — incluída no calendário ocupacional para trabalhadores de saúde</li>
+      <li>Influenza — anual, reforçada</li>
+      <li>Sarampo — retomada da campanha (surto 2018-2019)</li>
+      <li>Hepatite B — mantida</li>
+      <li>Tríplice viral — mantida</li>
+      <li>Tétano-difteria — mantida</li>
+    </ul>
+
+    <div class="subsecao">Outras Doenças Emergentes</div>
+    <ul class="lista">
+      <li>Mpox (anteriormente "monkeypox") — surto 2022-2023</li>
+      <li>Dengue e Chikungunya — emergência 2023-2024</li>
+      <li>H5N1 (gripe aviária) — vigilância internacional</li>
+      <li>Antraz e outros agentes em vigilância</li>
+      <li>Necessidade de RSI (Regulamento Sanitário Internacional) atualizado</li>
+    </ul>
+
+    <div class="subsecao">Direitos Trabalhistas em Crises Sanitárias</div>
+    <ul class="lista">
+      <li>Adicional de insalubridade (NR-15)</li>
+      <li>Aposentadoria especial (atividades insalubres) — modificada pela Reforma da Previdência</li>
+      <li>Direito a EPI adequado</li>
+      <li>Vacinação obrigatória — empregador fornece</li>
+      <li>Estabilidade pré e pós-acidente</li>
+      <li>Auxílio-doença acidentário (B-91) prioritário</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> LGPD (Lei 13.709/2018) — dados sensíveis em saúde; ANPD fiscaliza. COVID-19 reconhecida como ocupacional (STF ADI 6.342/2020) — CAT obrigatória. ~15 mil profissionais de saúde morreram. Vacinação ocupacional inclui COVID-19. Lições: estoques estratégicos, vigilância, equidade, SUS universal salva vidas.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-SAUDE · LGPD · COVID</span><span>Extensivo ENARE 2026</span><span class="pg">7 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-SAUDE</div><div class="aula-ref">Bloco B13 · Aula 19 · Questões ENARE</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 01</span><span class="fonte">NR-32 · NC: Aplicação</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">A NR-32 (Saúde e Segurança em Serviços de Saúde, 2005) estabelece medidas obrigatórias para a proteção dos trabalhadores. Sobre seus dispositivos, é CORRETO afirmar:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>A NR-32 aplica-se apenas a profissionais médicos, não abrangendo demais categorias.</span></li>
+        <li><span class="letra">B</span><span>O trabalhador é responsável pela aquisição dos próprios EPIs e vacinas, não cabendo ao empregador qualquer ônus.</span></li>
+        <li class="correta"><span class="letra">C</span><span>Aplica-se a todos os trabalhadores em serviços de saúde (públicos e privados, incluindo estagiários, residentes, voluntários e terceirizados); o empregador deve fornecer GRATUITAMENTE EPIs e VACINAS (Hepatite B, dT, tríplice viral, influenza, COVID-19); veda o reencape de agulhas; obriga capacitação periódica; estabelece a classificação de risco biológico em 4 classes; articula-se com PCMSO (NR-7), PGR (NR-1 atualizada 2022) e CIPA (NR-5).</span></li>
+        <li><span class="letra">D</span><span>Permite o reencape de agulhas após uso quando feito com atenção pelo profissional.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — C</div>
+      <p><strong>Por que C está correta:</strong> síntese da NR-32. Aplicação ampla; vacinas e EPIs gratuitos pelo empregador; vedação ao reencape (principal causa de acidentes); capacitação obrigatória; classificação de risco (1 a 4); articulação com outras NRs.</p>
+      <p><strong>Por que as outras erram:</strong> A — aplica-se a todos os trabalhadores · B — fornecimento gratuito é obrigatório (CLT art. 158) · D — reencape vedado.</p>
+    </div>
+
+    <div class="questao-header"><span>Questão 02</span><span class="fonte">Acidente de Trabalho · NC: Aplicação</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Uma técnica de enfermagem sofre acidente com perfurocortante durante coleta de sangue em paciente HIV+. A conduta CORRETA do AS na UBS, articulando NR-32, Lei 8.213/1991 e biossegurança, é:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Orientar a trabalhadora a "não se preocupar" e seguir trabalhando, pois o risco é mínimo.</span></li>
+        <li><span class="letra">B</span><span>Comunicar à família da trabalhadora sem o consentimento dela.</span></li>
+        <li class="correta"><span class="letra">C</span><span>Orientar lavagem imediata do local com água e sabão; encaminhamento para atendimento médico de emergência (ideal &lt;2h, limite 72h) para avaliação de PEP (Profilaxia Pós-Exposição); coleta de sorologia HIV/HBV/HCV; obtenção de consentimento para sorologia do paciente-fonte; emissão obrigatória de CAT (Lei 8.213/1991 art. 22); notificação ao SINAN como acidente com material biológico; informação sobre estabilidade de 12 meses pós-B91 (Lei 8.213 art. 118); seguimento sorológico (3, 6, 12 meses).</span></li>
+        <li><span class="letra">D</span><span>Considerar o caso encerrado após preencher apenas o prontuário, sem CAT.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — C</div>
+      <p><strong>Por que C está correta:</strong> protocolo articulado. Lavagem + atendimento de emergência + PEP HIV em até 72h. CAT obrigatória (Lei 8.213). SINAN para biológico. Estabilidade 12 meses (art. 118). Seguimento sorológico. Articulação CEREST/medicina do trabalho.</p>
+      <p><strong>Por que as outras erram:</strong> A — minimização viola NR-32 · B — viola sigilo · D — omissão configura infração + perda de direitos.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-SAUDE · Biossegurança</span><span>Extensivo ENARE 2026</span><span class="pg">8 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-SAUDE</div><div class="aula-ref">Bloco B13 · Aula 19 · Questões ENARE</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 03</span><span class="fonte">PNSTT · NC: Compreensão</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Sobre a Política Nacional de Saúde do Trabalhador e da Trabalhadora (PNSTT — Portaria 1.823/2012) e a Rede Nacional de Atenção Integral à Saúde do Trabalhador (RENAST), é CORRETO afirmar:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>A PNSTT atende apenas trabalhadores formalmente registrados em carteira de trabalho.</span></li>
+        <li class="correta"><span class="letra">B</span><span>Estabelece atenção universal e integral aos trabalhadores formais e informais; tem como dispositivos os Centros de Referência em Saúde do Trabalhador (CEREST) — federais, estaduais e municipais (~210 no Brasil) — e a RENAST, que articula CERESTs, APS, RAS e Vigilância; utiliza o SINAN-NET para notificação de agravos relacionados ao trabalho; conta com a CIST (Comissão Intersetorial de Saúde do Trabalhador) para participação social; articula-se com MTb, INSS, MPT e Conselhos de Saúde.</span></li>
+        <li><span class="letra">C</span><span>É política exclusivamente do Ministério do Trabalho, sem articulação com o SUS.</span></li>
+        <li><span class="letra">D</span><span>Trata apenas de acidentes de trabalho, sem cobrir doenças ocupacionais ou determinantes sociais.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> síntese da PNSTT. Universalidade (formais e informais); CEREST + RENAST; SINAN-NET; CIST; articulação intersetorial. Política do SUS, não do MTb.</p>
+      <p><strong>Por que as outras erram:</strong> A — universal (formais e informais) · C — é do SUS (com articulação interset.) · D — abrange acidentes E doenças, com determinação social.</p>
+    </div>
+
+    <div class="questao-header"><span>Questão 04</span><span class="fonte">CIPA · NC: Análise</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">A CIPA (Comissão Interna de Prevenção de Acidentes — NR-5) é instância importante de participação dos trabalhadores na segurança e saúde do trabalho. Sobre suas características, é CORRETO afirmar:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>É obrigatória apenas em empresas com mais de 500 funcionários e tem composição apenas patronal.</span></li>
+        <li><span class="letra">B</span><span>Os cipeiros eleitos NÃO têm qualquer estabilidade no emprego.</span></li>
+        <li class="correta"><span class="letra">C</span><span>É obrigatória em empresas com mais de 20 funcionários; tem composição paritária (representação patronal e representação dos empregados, eleita por voto direto); mandato de 1 ano (com prorrogação por mais 1); o cipeiro eleito tem estabilidade de 1 ano após o mandato (CF art. 10, II "a" do ADCT); reúne-se mensalmente; investiga acidentes; promove SIPAT; integra-se com SESMT; em saúde, atua articulada com o NSP e CEREST; atualização da NR-5 em 2022 (Lei 14.457) incluiu medidas de prevenção do assédio sexual e moral.</span></li>
+        <li><span class="letra">D</span><span>É instância judicial vinculada ao Ministério do Trabalho, com poder de aplicar multas a trabalhadores.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — C</div>
+      <p><strong>Por que C está correta:</strong> síntese da CIPA. Paritária; &gt;20 funcionários; mandato 1 ano + 1; estabilidade pós-mandato. Atualização 2022 (Lei 14.457) — assédio. Cipeiro eleito tem estabilidade.</p>
+      <p><strong>Por que as outras erram:</strong> A — &gt;20 funcionários, paritária · B — TEM estabilidade · D — não é instância judicial.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-SAUDE · Biossegurança</span><span>Extensivo ENARE 2026</span><span class="pg">9 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-SAUDE</div><div class="aula-ref">Bloco B13 · Aula 19 · Síntese</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Síntese — Biossegurança e NR-32</div>
+
+    <p>Última aula do conteúdo programático. Articula-se com Aulas 11-13 (Saúde Coletiva e SS) e Aula 16 (Trabalho Profissional). Próxima é Análise de Texto (Aula 20) e Simulado Integrativo (Aula 21).</p>
+
+    <div class="sintese-grid">
+      <div class="sintese-item"><div class="si-label">Biossegurança</div><p>5 tipos de riscos (físicos, químicos, biológicos, ergonômicos, acidentes). Hierarquia: eliminação &gt; substituição &gt; EPC &gt; admin &gt; EPI. Precauções padrão. RDC 222/2018 (RSS — 5 grupos). NR-1 (2022) com PGR.</p></div>
+      <div class="sintese-item"><div class="si-label">NR-32 (2005)</div><p>Específica para saúde. Aplica-se a TODOS os trabalhadores em saúde. Vacinas + EPI gratuitos. Vedado reencape de agulhas. 4 classes de risco biológico. Capacitação obrigatória.</p></div>
+      <div class="sintese-item"><div class="si-label">EPI/EPC/CIPA</div><p>EPI = último recurso, CA obrigatório. EPC tem prioridade. CIPA (NR-5) &gt; 20 trabalhadores, paritária, mandato 1 ano + 1, estabilidade. Atualização 2022 (Lei 14.457) — assédio.</p></div>
+      <div class="sintese-item"><div class="si-label">Acidente · CAT · PCMSO</div><p>Lei 8.213/1991 — 4 tipos. CAT obrigatória em 1º dia útil. Estabilidade 12 meses pós-B91. Burnout no CID-11 (2022). PCMSO (NR-7). PGR (NR-1 atualizada 2022).</p></div>
+      <div class="sintese-item"><div class="si-label">PNSTT · CEREST</div><p>Portaria 1.823/2012. CERESTs (~210). RENAST integra. SINAN-NET notifica agravos. CIST = participação social. COVID-19 como ocupacional (STF 2020). AS no INSS.</p></div>
+      <div class="sintese-item"><div class="si-label">Próxima Aula</div><p><strong>Aula 20 — Análise de Texto.</strong> NC An triplicou (+12,4 pp em 2025). Treino específico para questões de análise textual da FGV. Síntese das aulas 1-19.</p></div>
+    </div>
+
+    <div class="alerta" style="margin-top:5px;">
+      <p><strong>Regra de ouro — Biossegurança no ENARE:</strong> NR-32 (2005) é a NR de saúde — riscos biológicos em 4 classes; vacinas + EPI gratuitos; vedação ao reencape. PCMSO (NR-7); CIPA (NR-5) com atualização 2022; PGR (NR-1 atualizada 2022) substituiu PPRA. Lei 8.213/1991 — acidente, CAT, estabilidade. PNSTT (1.823/2012) + CEREST + RENAST + SINAN-NET. COVID-19 reconhecida como ocupacional (STF 2020).</p>
+    </div>
+
+    <div class="alerta" style="margin-top:5px;background:rgba(31,92,35,0.1);border-left-color:var(--verde);">
+      <p><strong>Conexão crítica:</strong> a saúde do trabalhador é dimensão central do trabalho do AS em saúde. Articula direitos trabalhistas, previdenciários e sanitários. AS é frequentemente o profissional que articula essas dimensões dispersas — orientando sobre CAT, INSS, estabilidade, RAS, CEREST. Defesa do trabalho digno e da redução das desigualdades em saúde é exigência do PEP (Aula 14).</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-SAUDE · Biossegurança</span><span>Extensivo ENARE 2026</span><span class="pg">10 / 10</span></div>
+</div>
+
+</body>
+</html>
