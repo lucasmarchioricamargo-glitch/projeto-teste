@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Serviço Social — Bloco B13 Aula 11 | Extensivo ENARE 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap');
+  :root { --creme: #F6F4ED; --verde: #1F5C23; --amarelo: #C6D834; --escuro: #0C2B0E; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #d0d0d0; font-family: 'Bricolage Grotesque', sans-serif; }
+  .page { width: 210mm; height: 297mm; background: var(--creme); margin: 0 auto 12px; position: relative; overflow: hidden; page-break-after: always; }
+  .header { background: var(--verde); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .header-logo { display: flex; align-items: center; gap: 8px; }
+  .header-logo svg { width: 32px; height: 32px; }
+  .header-brand { display: flex; flex-direction: column; line-height: 1; }
+  .header-brand .marca { font-family: 'Playfair Display', serif; font-style: italic; color: #fff; font-size: 13px; letter-spacing: 0.5px; }
+  .header-brand .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 7px; letter-spacing: 1.5px; text-transform: uppercase; }
+  .header-info { text-align: right; }
+  .header-info .disciplina { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
+  .header-info .aula-ref { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.7); font-size: 8px; letter-spacing: 0.5px; }
+  .footer { position: absolute; bottom: 0; left: 0; right: 0; background: var(--verde); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .footer span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.6); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .footer .pg { color: var(--amarelo); font-weight: 400; }
+  .body { padding: 14px 18px 30px; height: calc(297mm - 52px - 22px); overflow: hidden; }
+  .capa-page { background: var(--verde); }
+  .capa-header { background: var(--creme); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .capa-header .marca { font-family: 'Playfair Display', serif; font-style: italic; color: var(--verde); font-size: 14px; }
+  .capa-header .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--verde); font-size: 7.5px; letter-spacing: 2px; text-transform: uppercase; }
+  .capa-body { padding: 28px 24px 0; display: flex; flex-direction: column; height: calc(297mm - 52px - 22px); }
+  .capa-eyebrow { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; }
+  .capa-titulo { font-family: 'Barlow Condensed', sans-serif; color: #fff; font-size: 50px; line-height: 0.95; text-transform: uppercase; letter-spacing: -0.5px; margin-bottom: 6px; }
+  .capa-titulo span { color: var(--amarelo); }
+  .capa-subtitulo { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; color: rgba(255,255,255,0.65); font-size: 12px; letter-spacing: 0.3px; margin-bottom: 22px; line-height: 1.5; }
+  .capa-badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+  .capa-badge { background: rgba(198,216,52,0.15); border: 1px solid var(--amarelo); color: var(--amarelo); font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 8px; border-radius: 2px; }
+  .capa-divider { width: 40px; height: 3px; background: var(--amarelo); margin-bottom: 20px; }
+  .capa-topicos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .capa-topico { display: flex; align-items: flex-start; gap: 7px; }
+  .capa-topico-num { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 18px; line-height: 1; min-width: 18px; }
+  .capa-topico-txt { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 400; color: rgba(255,255,255,0.8); font-size: 9.5px; line-height: 1.4; }
+  .capa-footer-strip { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.25); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .capa-footer-strip span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.45); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .secao-titulo { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 18px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid var(--amarelo); padding-bottom: 3px; margin-bottom: 9px; line-height: 1; }
+  .subsecao { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.5px; margin: 7px 0 3px; }
+  p { font-size: 9px; line-height: 1.55; color: #1a1a1a; margin-bottom: 4px; font-weight: 400; }
+  .destaque { background: var(--amarelo); color: var(--escuro); font-weight: 600; padding: 1px 4px; border-radius: 2px; font-size: 8.5px; }
+  .alerta { background: rgba(198,216,52,0.18); border-left: 3px solid var(--amarelo); padding: 5px 8px; margin: 5px 0; border-radius: 0 3px 3px 0; }
+  .alerta p { margin: 0; font-size: 8.5px; }
+  .alerta strong { color: var(--verde); }
+  table { width: 100%; border-collapse: collapse; margin: 5px 0; font-size: 8px; }
+  th { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; padding: 4px 6px; text-align: left; }
+  td { padding: 3px 6px; border-bottom: 1px solid rgba(31,92,35,0.12); vertical-align: top; line-height: 1.4; color: #1a1a1a; }
+  tr:nth-child(even) td { background: rgba(31,92,35,0.04); }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 5px 0; }
+  .card { background: rgba(31,92,35,0.06); border: 1px solid rgba(31,92,35,0.15); border-radius: 4px; padding: 7px 8px; }
+  .card-title { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 11px; text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 3px; }
+  .card p { font-size: 8px; line-height: 1.5; }
+  .questao-header { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; padding: 4px 10px; border-radius: 3px 3px 0 0; display: flex; justify-content: space-between; align-items: center; }
+  .questao-header .fonte { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; color: var(--amarelo); letter-spacing: 0.5px; }
+  .questao-body { border: 1px solid rgba(31,92,35,0.2); border-top: none; border-radius: 0 0 3px 3px; padding: 7px 10px; margin-bottom: 7px; }
+  .questao-enunciado { font-size: 8.5px; line-height: 1.55; color: #111; margin-bottom: 5px; font-weight: 500; }
+  .alternativas { list-style: none; }
+  .alternativas li { font-size: 8px; line-height: 1.5; padding: 2px 0; color: #222; display: flex; gap: 5px; }
+  .alternativas li .letra { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: var(--verde); font-size: 9px; min-width: 10px; }
+  .alternativas li.correta .letra { color: var(--amarelo); }
+  .alternativas li.correta { background: rgba(198,216,52,0.15); border-left: 2px solid var(--amarelo); padding-left: 4px; }
+  .gabarito-box { background: var(--verde); border-radius: 4px; padding: 8px 12px; margin: 6px 0; }
+  .gabarito-box .gab-title { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+  .gabarito-box p { color: rgba(255,255,255,0.9); font-size: 8px; line-height: 1.55; }
+  .gabarito-box strong { color: var(--amarelo); }
+  .sintese-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-top: 6px; }
+  .sintese-item { background: rgba(31,92,35,0.07); border-left: 3px solid var(--verde); padding: 5px 7px; border-radius: 0 3px 3px 0; }
+  .sintese-item .si-label { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px; }
+  .sintese-item p { font-size: 7.5px; line-height: 1.5; }
+  ul.lista { padding-left: 14px; margin: 3px 0; }
+  ul.lista li { font-size: 8.5px; line-height: 1.55; color: #1a1a1a; margin-bottom: 1px; }
+  @media print { body { background: none; } .page { margin: 0; box-shadow: none; } }
+</style>
+</head>
+<body>
+
+<div class="page capa-page">
+  <div class="capa-header">
+    <div style="display:flex;align-items:center;gap:8px;"><svg width="34" height="34" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#1F5C23"/></svg><div><div class="marca">Elite Treinamentos</div><div class="tagline">Extensivo ENARE 2026</div></div></div>
+    <div style="text-align:right;"><div style="font-family:'Barlow Condensed',sans-serif;color:var(--verde);font-size:11px;letter-spacing:1px;text-transform:uppercase;">Bloco B13 · Aula 11</div><div style="font-family:'Space Grotesk',sans-serif;font-weight:300;color:#888;font-size:7.5px;letter-spacing:0.5px;">Serviço Social</div></div>
+  </div>
+  <div class="capa-body">
+    <div class="capa-eyebrow">Bloco B13 · SS-SAUDE · Aula 11 de 21</div>
+    <div class="capa-titulo">Saúde <span>Coletiva<br>Fundamentos</span></div>
+    <div class="capa-subtitulo">Conceito ampliado de saúde, Lei 8.080/1990,<br>determinantes sociais (Dahlgren-Whitehead) e o campo da Saúde Coletiva</div>
+    <div class="capa-badge-row">
+      <div class="capa-badge">SS-SAUDE ★★★★★</div>
+      <div class="capa-badge">15-25q na prova</div>
+      <div class="capa-badge">Lei 8.080/1990</div>
+      <div class="capa-badge">DSS · OMS · OPAS</div>
+    </div>
+    <div class="capa-divider"></div>
+    <div class="capa-topicos">
+      <div class="capa-topico"><div class="capa-topico-num">01</div><div class="capa-topico-txt">Conceito ampliado de saúde (8ª CNS, OMS, Lei 8.080)</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">02</div><div class="capa-topico-txt">Lei 8.080/1990 — princípios, diretrizes e competências</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">03</div><div class="capa-topico-txt">Determinantes Sociais (Dahlgren-Whitehead, CDSS/OMS)</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">04</div><div class="capa-topico-txt">Reforma Sanitária Brasileira (CEBES, ABRASCO)</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">05</div><div class="capa-topico-txt">Campo da Saúde Coletiva (clínica × coletiva)</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">06</div><div class="capa-topico-txt">Epidemiologia social e vigilância em saúde</div></div>
+    </div>
+  </div>
+  <div class="capa-footer-strip"><span>Extensivo ENARE 2026</span><span>Elite Treinamentos em Saúde</span><span>Página 1 de 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-SAUDE</div><div class="aula-ref">Bloco B13 · Aula 11 · Conceito Ampliado</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Conceito Ampliado de Saúde</div>
+
+    <p>A <strong>Saúde Coletiva</strong> é um campo de saber e prática brasileiro, constituído a partir dos anos 1970, que articula <strong>epidemiologia, planejamento/gestão e ciências sociais em saúde</strong>. É o campo onde o Serviço Social atua majoritariamente — entender seus fundamentos é exigência absoluta para a ENARE (15-25 questões nas provas SS recentes). Aula central do bloco B13.</p>
+
+    <div class="subsecao">Conceito de Saúde — Evolução Histórica</div>
+    <table>
+      <tr><th>Período</th><th>Concepção</th><th>Características</th></tr>
+      <tr><td>Pré-modernidade</td><td>Mágico-religiosa</td><td>Saúde/doença como castigo divino ou desequilíbrio mítico</td></tr>
+      <tr><td>Séc. XIX (biomédico)</td><td>Unicausal</td><td>Saúde = ausência de doença; foco no agente etiológico (Pasteur, Koch)</td></tr>
+      <tr><td>Início séc. XX</td><td>Multicausal/História Natural</td><td>Tríade ecológica (agente-hospedeiro-meio); Leavell e Clark (1965)</td></tr>
+      <tr><td>OMS 1946/1948</td><td>Conceito positivo</td><td>"Estado de completo bem-estar físico, mental e social, e não apenas a ausência de doença ou enfermidade"</td></tr>
+      <tr><td>Alma-Ata 1978</td><td>Saúde como direito</td><td>Conferência Internacional de APS; "Saúde para Todos no ano 2000"</td></tr>
+      <tr><td>8ª CNS / CF/1988</td><td>Conceito ampliado</td><td>Saúde como resultante de condições de vida e trabalho — base do SUS</td></tr>
+      <tr><td>Ottawa 1986</td><td>Promoção da saúde</td><td>Empoderamento, intersetorialidade, ambientes favoráveis</td></tr>
+      <tr><td>CDSS/OMS 2008</td><td>Determinantes Sociais</td><td>Comissão sobre Determinantes Sociais da Saúde — relatório global</td></tr>
+    </table>
+
+    <div class="subsecao">Conceito da 8ª Conferência Nacional de Saúde (1986)</div>
+    <p>A 8ª CNS realizou-se em <strong>março de 1986</strong>, em Brasília, presidida por <strong>Sergio Arouca</strong>. Foi o marco histórico que consolidou o conceito ampliado de saúde e propôs o SUS. Relatório final adotou:</p>
+
+    <div class="alerta">
+      <p><strong>Conceito ampliado (8ª CNS — 1986):</strong> "<em>Em seu sentido mais abrangente, a saúde é resultante das condições de alimentação, habitação, educação, renda, meio ambiente, trabalho, transporte, emprego, lazer, liberdade, acesso e posse da terra e acesso a serviços de saúde. É, assim, antes de tudo, o resultado das formas de organização social da produção, as quais podem gerar grandes desigualdades nos níveis de vida</em>." — frase clássica cobrada em prova.</p>
+    </div>
+
+    <ul class="lista">
+      <li>Saúde como <strong>direito de cidadania e dever do Estado</strong></li>
+      <li>Saúde como <strong>resultado de condições sociais</strong>, não apenas biológicas</li>
+      <li>Necessidade de <strong>reforma sanitária</strong> e criação de um Sistema Único de Saúde</li>
+      <li>Universalização, integralidade, descentralização, participação popular</li>
+      <li>Base teórica para o art. 196 da CF/1988</li>
+    </ul>
+
+    <div class="subsecao">Conceito de Saúde — Lei 8.080/1990 (art. 3º)</div>
+    <p>A Lei 8.080/1990 (Lei Orgânica da Saúde) <strong>positivou o conceito ampliado</strong> no art. 3º:</p>
+
+    <div class="alerta">
+      <p><strong>Art. 3º (Lei 8.080/1990 — redação Lei 12.864/2013):</strong> "<em>Os níveis de saúde expressam a organização social e econômica do País, tendo a saúde como determinantes e condicionantes, entre outros, a <strong>alimentação, a moradia, o saneamento básico, o meio ambiente, o trabalho, a renda, a educação, a atividade física, o transporte, o lazer e o acesso aos bens e serviços essenciais</strong></em>." Parágrafo único: "<em>Dizem respeito também à saúde as ações que, por força do disposto no artigo anterior, se destinam a garantir às pessoas e à coletividade condições de bem-estar físico, mental e social</em>".</p>
+    </div>
+
+    <p><strong>Pegadinha FGV:</strong> a Lei 8.080 NÃO usa o termo "determinantes sociais" stricto sensu — usa <em>"determinantes e condicionantes"</em>. A redação original mencionava 8 fatores; a Lei 12.864/2013 acrescentou "atividade física". A lista é exemplificativa ("entre outros"), não taxativa.</p>
+
+    <div class="subsecao">Conceito Positivo × Conceito Crítico</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Conceito Positivo (OMS 1948)</div>
+        <p>"Estado de completo bem-estar físico, mental e social." Crítica: utópico, inatingível, descontextualizado, abstrato; transforma saúde em mercadoria do "bem-estar"; psicologiza/biologiza fenômenos sociais.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Conceito Crítico (Saúde Coletiva)</div>
+        <p>Saúde resultante das condições materiais de existência. Saúde é produzida socialmente. Ligada à divisão de classes, gênero, raça, território. Politiza o adoecimento. Articula determinação social com práxis transformadora.</p>
+      </div>
+    </div>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> conceito ampliado de saúde nasce na 8ª CNS (1986) com Arouca → CF/1988 art. 196 → Lei 8.080/1990 art. 3º. NÃO é "ausência de doença"; É resultado social. Conhecer a lista de "determinantes e condicionantes": alimentação, moradia, saneamento, meio ambiente, trabalho, renda, educação, atividade física, transporte, lazer e acesso a bens e serviços.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-SAUDE · Fundamentos</span><span>Extensivo ENARE 2026</span><span class="pg">2 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-SAUDE</div><div class="aula-ref">Bloco B13 · Aula 11 · Lei 8.080/1990</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Lei 8.080/1990 — Lei Orgânica da Saúde</div>
+
+    <p>A <strong>Lei nº 8.080 de 19 de setembro de 1990</strong> regulamenta os arts. 196 a 200 da CF/1988 e institui o SUS. Junto com a Lei 8.142/1990 (participação social e financiamento), forma o arcabouço infraconstitucional do SUS. Cobrada em todas as edições da ENARE — exige conhecimento dos princípios e diretrizes literais.</p>
+
+    <div class="subsecao">Estrutura da Lei 8.080</div>
+    <table>
+      <tr><th>Título</th><th>Conteúdo</th></tr>
+      <tr><td>Disposições Gerais</td><td>Arts. 1º-3º — conceito de saúde, objeto da lei</td></tr>
+      <tr><td>Do SUS</td><td>Arts. 4º-6º — definição, abrangência, campo de atuação</td></tr>
+      <tr><td>Princípios e Diretrizes</td><td>Art. 7º (XIV incisos)</td></tr>
+      <tr><td>Organização, Direção e Gestão</td><td>Arts. 8º-19 — competências dos entes federativos</td></tr>
+      <tr><td>Serviços Privados de Saúde</td><td>Arts. 20-26 — papel complementar; vedação a recursos públicos para fins lucrativos</td></tr>
+      <tr><td>Recursos Humanos</td><td>Arts. 27-30</td></tr>
+      <tr><td>Financiamento</td><td>Arts. 31-38</td></tr>
+      <tr><td>Disposições Finais</td><td>Arts. 39-55</td></tr>
+    </table>
+
+    <div class="subsecao">Princípios Doutrinários do SUS (Art. 7º)</div>
+    <table>
+      <tr><th>Princípio</th><th>Significado</th></tr>
+      <tr><td><strong>Universalidade</strong> (I)</td><td>Acesso aos serviços de saúde em todos os níveis de assistência — todos têm direito, sem discriminação</td></tr>
+      <tr><td><strong>Integralidade</strong> (II)</td><td>Conjunto articulado e contínuo das ações e serviços preventivos e curativos, individuais e coletivos, exigidos para cada caso em todos os níveis de complexidade</td></tr>
+      <tr><td><strong>Equidade</strong> (IV)</td><td>"Igualdade da assistência à saúde, sem preconceitos ou privilégios de qualquer espécie" — tratar desiguais de forma desigual conforme necessidades</td></tr>
+    </table>
+
+    <p><strong>Atenção:</strong> a Lei 8.080 fala em <em>"igualdade"</em> no inciso IV, mas a doutrina e a CF/1988 utilizam <strong>equidade</strong> — tratar desiguais de modo desigual conforme necessidades de saúde. FGV pode cobrar literalidade ("igualdade" no texto) ou doutrina ("equidade"). Atenção ao comando da questão.</p>
+
+    <div class="subsecao">Princípios Organizativos (Art. 7º)</div>
+    <table>
+      <tr><th>Princípio</th><th>Significado</th></tr>
+      <tr><td><strong>Descentralização</strong> (IX)</td><td>Com direção única em cada esfera de governo (municipalização); ênfase no município como gestor principal</td></tr>
+      <tr><td><strong>Regionalização e Hierarquização</strong> (em rede)</td><td>Organização em níveis de complexidade crescente (primária, secundária, terciária) por regiões de saúde</td></tr>
+      <tr><td><strong>Participação Comunitária</strong> (VIII)</td><td>Detalhada na Lei 8.142/1990 — Conselhos e Conferências de Saúde</td></tr>
+      <tr><td><strong>Resolutividade</strong> (XII)</td><td>Capacidade de resolver problemas em seu próprio nível</td></tr>
+    </table>
+
+    <div class="subsecao">Outros Princípios (Art. 7º)</div>
+    <ul class="lista">
+      <li>III — Preservação da autonomia das pessoas na defesa de sua integridade física e moral</li>
+      <li>V — Direito à informação às pessoas assistidas sobre sua saúde</li>
+      <li>VI — Divulgação de informações quanto ao potencial dos serviços e sua utilização pelo usuário</li>
+      <li>VII — Utilização da epidemiologia para estabelecimento de prioridades, alocação de recursos e orientação programática</li>
+      <li>X — Integração, em nível executivo, das ações de saúde, meio ambiente e saneamento básico</li>
+      <li>XI — Conjugação dos recursos financeiros, tecnológicos, materiais e humanos da União, Estados, DF e Municípios</li>
+      <li>XIII — Organização dos serviços públicos para evitar duplicidade de meios para fins idênticos</li>
+      <li>XIV — Organização da atenção à saúde em redes regionalizadas (Lei 12.466/2011)</li>
+    </ul>
+
+    <div class="subsecao">Competências dos Entes (Art. 16-19)</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">União (Art. 16)</div>
+        <p>Coordenação nacional; políticas e normas; gestão de sangue/hemoderivados; vigilância epidemiológica nacional; cooperação técnica e financeira com estados/municípios; SUS DF.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Estados (Art. 17)</div>
+        <p>Coordenação estadual; cooperação técnica; gestão de hemocentros; gestão de hospitais regionais; coordenação dos sistemas estaduais; descentralizar para os municípios.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Municípios (Art. 18)</div>
+        <p>Planejamento, organização, controle e avaliação dos serviços; execução direta dos serviços; gestão dos prestadores; alimentação dos sistemas de informação; gestão da APS.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">DF (Art. 19)</div>
+        <p>Cumula competências de Estado e Município.</p>
+      </div>
+    </div>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> art. 7º traz princípios doutrinários (universalidade, integralidade, equidade) e organizativos (descentralização, hierarquização, participação). XIV incisos cobrados literalmente. Atenção à diferença entre "igualdade" (texto da lei, inciso IV) e "equidade" (doutrina/CF). Município é gestor principal da APS.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-SAUDE · Fundamentos</span><span>Extensivo ENARE 2026</span><span class="pg">3 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-SAUDE</div><div class="aula-ref">Bloco B13 · Aula 11 · Determinantes Sociais</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Determinantes Sociais da Saúde (DSS)</div>
+
+    <p>Os <strong>Determinantes Sociais da Saúde (DSS)</strong> são as condições sociais em que as pessoas vivem e trabalham e que afetam suas condições de saúde. Conceito central da Saúde Coletiva contemporânea — articulação entre saúde, classe social, território, gênero, raça. Cobrado em alta frequência na ENARE.</p>
+
+    <div class="subsecao">Definição da CDSS/OMS (2008)</div>
+    <p>A <strong>Comissão sobre Determinantes Sociais da Saúde da OMS (CDSS)</strong>, criada em 2005 e presidida por Michael Marmot, publicou em 2008 o relatório <em>"Closing the Gap in a Generation"</em>:</p>
+
+    <div class="alerta">
+      <p><strong>Definição CDSS/OMS:</strong> "<em>Os determinantes sociais da saúde são as condições em que as pessoas nascem, crescem, vivem, trabalham e envelhecem, incluindo o sistema de saúde. Essas circunstâncias são moldadas pela distribuição de dinheiro, poder e recursos em níveis globais, nacionais e locais.</em>"</p>
+    </div>
+
+    <ul class="lista">
+      <li>Comissão Brasileira (CNDSS — 2006-2008) presidida por <strong>Paulo Buss</strong> — relatório nacional</li>
+      <li>Iniquidades em saúde = desigualdades injustas e evitáveis (diferente de "desigualdades naturais")</li>
+      <li>Eixo: pobreza, escolaridade, renda, território, raça, gênero impactam morbi-mortalidade</li>
+      <li>Brasil é citado como caso paradigmático de iniquidades em saúde</li>
+    </ul>
+
+    <div class="subsecao">Modelo de Dahlgren e Whitehead (1991)</div>
+    <p>O modelo gráfico mais utilizado para representar DSS. Apresenta o indivíduo no centro com características biológicas; em torno, camadas sucessivas de determinantes:</p>
+
+    <table>
+      <tr><th>Camada</th><th>Conteúdo</th></tr>
+      <tr><td>Núcleo (centro)</td><td>Indivíduo — idade, sexo, fatores genéticos/hereditários (NÃO modificáveis)</td></tr>
+      <tr><td>1ª camada — Comportamentos</td><td>Estilos de vida individuais: tabagismo, dieta, atividade física, uso de álcool (modificáveis)</td></tr>
+      <tr><td>2ª camada — Redes sociais</td><td>Redes sociais e comunitárias; suporte familiar/comunitário</td></tr>
+      <tr><td>3ª camada — Condições de vida e trabalho</td><td>Educação, ambiente de trabalho, condições habitacionais, saneamento, serviços de saúde, agricultura/alimentos, desemprego</td></tr>
+      <tr><td>4ª camada — Macrodeterminantes</td><td>Condições socioeconômicas, culturais e ambientais gerais (estrutura social, política, econômica, cultural)</td></tr>
+    </table>
+
+    <p><strong>Importante:</strong> o modelo é em arco-íris (concêntrico). Quanto mais externo, mais distal e estrutural. Camadas <strong>distais</strong> determinam as <strong>proximais</strong>. Pode-se ler "de fora para dentro": é a estrutura social que determina condições de vida e estas determinam comportamentos.</p>
+
+    <div class="subsecao">Modelo da CDSS/OMS (Solar e Irwin 2010)</div>
+    <ul class="lista">
+      <li><strong>Determinantes Estruturais</strong>: contexto socioeconômico e político (governança, políticas, mercado, valores culturais); estratificação social (renda, classe, gênero, raça, etnia, educação, ocupação)</li>
+      <li><strong>Determinantes Intermediários</strong>: condições materiais de vida (moradia, alimentação, transporte); comportamentos e fatores biológicos; fatores psicossociais; sistema de saúde</li>
+      <li>Equidade em saúde como resultado da intersecção entre os dois níveis</li>
+    </ul>
+
+    <div class="subsecao">Iniquidades em Saúde — Conceitos-Chave</div>
+    <table>
+      <tr><th>Conceito</th><th>Definição</th></tr>
+      <tr><td>Desigualdade</td><td>Diferença numérica entre grupos (descritivo)</td></tr>
+      <tr><td>Iniquidade</td><td>Desigualdade <strong>injusta e evitável</strong> (valorativo/normativo)</td></tr>
+      <tr><td>Gradiente social</td><td>Relação dose-resposta entre posição social e saúde (Whitehall Study de Marmot)</td></tr>
+      <tr><td>Vulnerabilidade</td><td>Probabilidade de adoecimento por exposição a riscos (Ayres) — três planos: individual, social, programático</td></tr>
+      <tr><td>Risco</td><td>Probabilidade de evento adverso em um grupo (conceito epidemiológico)</td></tr>
+      <tr><td>Determinação social</td><td>Marxista: produção social do adoecimento; Breilh, Laurell</td></tr>
+    </table>
+
+    <div class="subsecao">Determinação Social × Determinantes Sociais</div>
+    <p>Há um debate teórico no campo:</p>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Determinantes Sociais (CDSS/OMS)</div>
+        <p>Modelo descritivo de fatores que influenciam a saúde. Lógica multicausal. Não explica origem das desigualdades. Crítica: pode despolitizar; lista fatores sem teoria das relações sociais.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Determinação Social (Marxista)</div>
+        <p>Laurell, Breilh, Almeida Filho. Saúde resultante da divisão social do trabalho e classes sociais. Doença como manifestação concreta de contradições sociais. Articula com a tradição crítica latino-americana.</p>
+      </div>
+    </div>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> Dahlgren-Whitehead (1991) = modelo arco-íris com 4 camadas + núcleo individual. CDSS/OMS 2008 = "dinheiro, poder e recursos". Iniquidade ≠ desigualdade (injusta + evitável). Brasil tem alta iniquidade em saúde. Reconhecer terminologia da Comissão Nacional (CNDSS — Paulo Buss).</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-SAUDE · Fundamentos</span><span>Extensivo ENARE 2026</span><span class="pg">4 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-SAUDE</div><div class="aula-ref">Bloco B13 · Aula 11 · Reforma Sanitária</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Reforma Sanitária Brasileira</div>
+
+    <p>A <strong>Reforma Sanitária Brasileira (RSB)</strong> é um movimento político-acadêmico iniciado nos anos 1970 que culminou na criação do SUS. Não é apenas reforma de setor — é "<em>projeto civilizatório</em>" (Arouca), proposta de transformação ampla da sociedade pela mediação da saúde. Cobrada com frequência na ENARE.</p>
+
+    <div class="subsecao">Contexto Histórico</div>
+    <ul class="lista">
+      <li>Crise do modelo médico-previdenciário (INAMPS) — assistência fragmentada, curativa, restrita aos contribuintes</li>
+      <li>Crise da Ditadura Militar; "abertura democrática" (1979-1985)</li>
+      <li>Influências: Medicina Social Latino-Americana (Mario Testa, Cristina Laurell, Jaime Breilh); Medicina Comunitária; Alma-Ata 1978</li>
+      <li>Departamentos de Medicina Preventiva nas universidades (USP, UFBA, UERJ) como espaços de produção crítica</li>
+      <li>Vinculação com movimentos sociais e operários</li>
+    </ul>
+
+    <div class="subsecao">Atores Centrais</div>
+    <table>
+      <tr><th>Ator</th><th>Papel</th></tr>
+      <tr><td><strong>CEBES</strong> (1976)</td><td>Centro Brasileiro de Estudos de Saúde — fundado por Sergio Arouca, Hesio Cordeiro, David Capistrano; revista "Saúde em Debate"; articulação política do movimento</td></tr>
+      <tr><td><strong>ABRASCO</strong> (1979)</td><td>Associação Brasileira de Saúde Coletiva — pós-graduações; produção acadêmica; instâncias do campo da Saúde Coletiva</td></tr>
+      <tr><td><strong>Sergio Arouca</strong></td><td>Liderança intelectual e política da RSB; presidente da 8ª CNS; deputado constituinte; "papa da Reforma Sanitária"</td></tr>
+      <tr><td><strong>Hesio Cordeiro</strong></td><td>Presidente do INAMPS; articulador das AIS (1983) e SUDS (1987)</td></tr>
+      <tr><td><strong>David Capistrano</strong></td><td>Médico sanitarista; experiência exitosa em Bauru e Santos; gestão pública</td></tr>
+      <tr><td>Movimentos populares de saúde</td><td>Igreja Católica progressista; Movimento Sanitário Popular; Pastoral da Saúde</td></tr>
+    </table>
+
+    <div class="subsecao">Marcos da Reforma Sanitária</div>
+    <table>
+      <tr><th>Ano</th><th>Marco</th></tr>
+      <tr><td>1976</td><td>Fundação do CEBES</td></tr>
+      <tr><td>1976-1979</td><td>Programa de Interiorização das Ações de Saúde e Saneamento (PIASS) no Nordeste</td></tr>
+      <tr><td>1978</td><td>Conferência de Alma-Ata — APS como estratégia</td></tr>
+      <tr><td>1979</td><td>I Simpósio de Política Nacional de Saúde do Congresso; fundação da ABRASCO</td></tr>
+      <tr><td>1980</td><td>PREV-SAÚDE (rejeitado)</td></tr>
+      <tr><td>1983</td><td>Ações Integradas de Saúde (AIS) — convênios MS/INAMPS/Estados</td></tr>
+      <tr><td>1986</td><td><strong>8ª Conferência Nacional de Saúde</strong> — marco decisivo</td></tr>
+      <tr><td>1987</td><td>SUDS — Sistema Unificado e Descentralizado de Saúde</td></tr>
+      <tr><td>1988</td><td>Constituição Federal — Seguridade Social; arts. 196-200; SUS</td></tr>
+      <tr><td>1990</td><td>Lei 8.080/1990 e Lei 8.142/1990 — regulamentam o SUS</td></tr>
+      <tr><td>1992 em diante</td><td>NOBs, NOAS, Pactos pela Saúde, Pacto de Gestão; Atenção Básica como porta de entrada</td></tr>
+      <tr><td>2011</td><td>Decreto 7.508/2011 — regulamenta a Lei 8.080 (regiões de saúde, COAP)</td></tr>
+      <tr><td>2016</td><td>EC 95 — congela gastos com saúde por 20 anos (contrarreforma)</td></tr>
+    </table>
+
+    <div class="subsecao">Princípios da Reforma Sanitária</div>
+    <ul class="lista">
+      <li>Saúde como direito universal de cidadania</li>
+      <li>Estatização progressiva do setor saúde (ainda não realizada)</li>
+      <li>Unificação das ações curativas e preventivas</li>
+      <li>Descentralização político-administrativa</li>
+      <li>Democratização da saúde — participação social</li>
+      <li>Reorganização do modelo assistencial baseado na APS</li>
+      <li>Vinculação saúde-condições de vida (conceito ampliado)</li>
+      <li>Articulação com transformação social ampla</li>
+    </ul>
+
+    <div class="subsecao">Reforma Sanitária Realizada × Não-Realizada</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Realizada</div>
+        <p>CF/1988 art. 196 (saúde como direito); SUS criado; Conselhos e Conferências; descentralização; APS organizada em territórios; Estratégia Saúde da Família; CAPS e Reforma Psiquiátrica; participação social institucionalizada.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Não-realizada / em retrocesso</div>
+        <p>Estatização não avançou (privatização cresceu); subfinanciamento crônico; EC 95/2016; complexo médico-industrial-financeiro fortalecido; precarização do trabalho em saúde; OSS, OS; planos privados em expansão (28% da população).</p>
+      </div>
+    </div>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> RSB iniciada nos anos 1970, culminada na 8ª CNS (1986), positivada em CF/1988 e Leis 8.080/8.142 (1990). Atores: CEBES, ABRASCO, Arouca. Princípios: saúde como direito, universalização, descentralização, participação. Conjuntura atual: contrarreforma com EC 95/2016 (mencionado em estudo de banca FGV).</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-SAUDE · Fundamentos</span><span>Extensivo ENARE 2026</span><span class="pg">5 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-SAUDE</div><div class="aula-ref">Bloco B13 · Aula 11 · Campo da Saúde Coletiva</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Campo da Saúde Coletiva</div>
+
+    <p>A <strong>Saúde Coletiva</strong> é constituída como campo de saber e prática a partir dos anos 1970 no Brasil. Articula três áreas: <em>epidemiologia, planejamento/gestão e ciências sociais em saúde</em>. Distingue-se da Saúde Pública tradicional pela ênfase na <strong>determinação social</strong> e na crítica ao modelo biomédico/sanitarista.</p>
+
+    <div class="subsecao">Origens e Características</div>
+    <ul class="lista">
+      <li>Criação dos Departamentos de Medicina Preventiva e Social nas universidades (anos 1960-70)</li>
+      <li>Influência da Medicina Social Latino-Americana (CEBES, ALAMES)</li>
+      <li>Articulação com a Sociologia, Antropologia, Filosofia da Saúde</li>
+      <li>Crítica ao modelo flexneriano (hospitalocêntrico, curativista, biologicista, especialista)</li>
+      <li>Marco institucional: <strong>ABRASCO (1979)</strong> — congrega pós-graduações em Saúde Coletiva</li>
+      <li>Revistas: Cadernos de Saúde Pública (Ensp/Fiocruz), Ciência e Saúde Coletiva (ABRASCO), Saúde em Debate (CEBES), Saúde e Sociedade (FSP/USP)</li>
+    </ul>
+
+    <div class="subsecao">Saúde Pública × Saúde Coletiva</div>
+    <table>
+      <tr><th>Dimensão</th><th>Saúde Pública</th><th>Saúde Coletiva</th></tr>
+      <tr><td>Origem</td><td>Tradição liberal/sanitarista (séc. XIX-XX); ação estatal</td><td>Brasil/AL, anos 1970; crítica ao modelo dominante</td></tr>
+      <tr><td>Sujeito</td><td>População como agregado biológico</td><td>Coletivo como sujeito histórico-social</td></tr>
+      <tr><td>Objeto</td><td>Doenças, ambiente, riscos</td><td>Processo saúde-doença-cuidado como produção social</td></tr>
+      <tr><td>Concepção</td><td>Positivista; multicausal; biomédica</td><td>Crítica; determinação social; interdisciplinar</td></tr>
+      <tr><td>Ação</td><td>Programas verticais; campanhas; vigilância</td><td>Práticas integrais; promoção; participação; intersetorialidade</td></tr>
+    </table>
+
+    <div class="subsecao">Tripé da Saúde Coletiva</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Epidemiologia</div>
+        <p>Estudo da distribuição e dos determinantes de eventos de saúde em populações. Vertentes: clássica (Anglo-saxônica), social, crítica (Breilh). Cobra-se: indicadores (incidência, prevalência, mortalidade), estudos (coorte, caso-controle, transversal), vigilância.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Planejamento e Gestão</div>
+        <p>Mario Testa; Carlos Matus (PES). Planejamento estratégico-situacional como alternativa ao normativo (CENDES/OPAS). Foco em problema-solução em territórios. Gestão participativa do SUS.</p>
+      </div>
+      <div class="card" style="grid-column:1/-1;">
+        <div class="card-title">Ciências Sociais e Humanas em Saúde</div>
+        <p>Sociologia, antropologia, filosofia, história da saúde. Estudos sobre representação social do adoecimento, narrativas de pacientes, biomedicina como fenômeno cultural, racismo institucional em saúde, gênero e saúde, vulnerabilidades.</p>
+      </div>
+    </div>
+
+    <div class="subsecao">Promoção da Saúde (Ottawa 1986)</div>
+    <p>A <strong>Carta de Ottawa</strong> (1ª Conferência Internacional sobre Promoção da Saúde, 1986) define promoção da saúde como "<em>processo de capacitação da comunidade para atuar na melhoria de sua qualidade de vida e saúde, incluindo uma maior participação no controle deste processo</em>".</p>
+
+    <p><strong>Cinco estratégias da Promoção (Ottawa):</strong></p>
+    <ul class="lista">
+      <li>Construir políticas públicas saudáveis</li>
+      <li>Criar ambientes favoráveis à saúde</li>
+      <li>Reforçar a ação comunitária</li>
+      <li>Desenvolver habilidades pessoais</li>
+      <li>Reorientar os serviços de saúde</li>
+    </ul>
+
+    <p>Distinção <strong>Prevenção × Promoção</strong>:</p>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Prevenção</div>
+        <p>Foco na doença/risco específico; baseada em evidência epidemiológica; ação direta sobre fatores de risco; níveis primário, secundário, terciário (Leavell-Clark); biomedicina-orientada.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Promoção da Saúde</div>
+        <p>Foco no bem-estar coletivo; ação sobre determinantes sociais; intersetorialidade; empoderamento; políticas públicas amplas; participação popular; sociopolítica-orientada.</p>
+      </div>
+    </div>
+
+    <div class="subsecao">Política Nacional de Promoção da Saúde (PNPS)</div>
+    <ul class="lista">
+      <li>Instituída pela Portaria GM/MS nº 687/2006</li>
+      <li>Revisada em 2014 (Portaria nº 2.446/2014)</li>
+      <li>Princípios: equidade, participação, integralidade, intersetorialidade, desenvolvimento sustentável, territorialização</li>
+      <li>Temas: alimentação saudável, atividade física, prevenção de violência e álcool/drogas, promoção da paz, mobilidade segura, desenvolvimento sustentável</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> Saúde Coletiva = campo brasileiro/latino-americano, anos 1970+, tripé epidemiologia/planejamento/ciências sociais. ABRASCO (1979) institucionaliza. Promoção da Saúde = Ottawa 1986 (5 estratégias); PNPS 2006/2014. Diferenciar prevenção (foco em doença) de promoção (foco em determinantes).</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-SAUDE · Fundamentos</span><span>Extensivo ENARE 2026</span><span class="pg">6 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-SAUDE</div><div class="aula-ref">Bloco B13 · Aula 11 · Epidemiologia e Vigilância</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Epidemiologia Social e Vigilância em Saúde</div>
+
+    <p>A <strong>epidemiologia</strong> é instrumento central do SUS (Lei 8.080 art. 7º, VII — "utilização da epidemiologia para estabelecimento de prioridades"). O AS deve dominar conceitos básicos para ler indicadores territoriais, interpretar relatórios de vigilância e contribuir para diagnósticos comunitários.</p>
+
+    <div class="subsecao">Indicadores Epidemiológicos Essenciais</div>
+    <table>
+      <tr><th>Indicador</th><th>Definição</th><th>Uso</th></tr>
+      <tr><td>Incidência</td><td>Casos novos / população exposta no período</td><td>Mede risco de adoecer</td></tr>
+      <tr><td>Prevalência</td><td>Casos existentes / população em determinado momento</td><td>Carga da doença (estoque)</td></tr>
+      <tr><td>Mortalidade geral</td><td>Óbitos / população × 1.000</td><td>Saúde geral da população</td></tr>
+      <tr><td>Mortalidade infantil</td><td>Óbitos &lt; 1 ano / nascidos vivos × 1.000</td><td>Sensível a desigualdades; indicador-síntese da saúde</td></tr>
+      <tr><td>Mortalidade materna</td><td>Óbitos maternos / nascidos vivos × 100.000</td><td>Qualidade da assistência obstétrica</td></tr>
+      <tr><td>Letalidade</td><td>Óbitos por doença / casos da doença</td><td>Gravidade da doença</td></tr>
+      <tr><td>Esperança de vida</td><td>Anos médios de vida</td><td>Síntese demográfica</td></tr>
+      <tr><td>Anos de vida perdidos</td><td>AVPP, DALY, QALY</td><td>Carga global de doença</td></tr>
+    </table>
+
+    <div class="subsecao">Vigilância em Saúde</div>
+    <p>Política regulamentada por Portaria GM/MS nº 1.378/2013 e Portaria de Consolidação nº 5/2017. Articula <strong>4 vigilâncias</strong>:</p>
+    <table>
+      <tr><th>Vigilância</th><th>Foco</th></tr>
+      <tr><td>Epidemiológica</td><td>Coleta de dados, análise, monitoramento de doenças e agravos; SINAN, SIM, SINASC, SIH-SUS, SI-PNI</td></tr>
+      <tr><td>Sanitária</td><td>Riscos relacionados a produtos, serviços e ambientes; ANVISA</td></tr>
+      <tr><td>Ambiental</td><td>Fatores ambientais (água, ar, solo); CGVAM</td></tr>
+      <tr><td>Saúde do trabalhador</td><td>Acidentes, doenças ocupacionais; CEREST; NR-32</td></tr>
+    </table>
+
+    <div class="subsecao">Sistemas de Informação em Saúde (SUS)</div>
+    <ul class="lista">
+      <li><strong>SIM</strong> — Sistema de Informações sobre Mortalidade (Declaração de Óbito)</li>
+      <li><strong>SINASC</strong> — Sistema de Informações de Nascidos Vivos</li>
+      <li><strong>SINAN</strong> — Sistema de Informação de Agravos de Notificação</li>
+      <li><strong>SI-PNI</strong> — Sistema de Informações do Programa Nacional de Imunizações</li>
+      <li><strong>SIH-SUS</strong> — Sistema de Informações Hospitalares do SUS (AIH)</li>
+      <li><strong>SIA-SUS</strong> — Sistema de Informações Ambulatoriais do SUS (APAC, BPA)</li>
+      <li><strong>e-SUS APS</strong> — Sistema da Atenção Primária à Saúde</li>
+      <li><strong>SISVAN</strong> — Sistema de Vigilância Alimentar e Nutricional</li>
+      <li><strong>SISCAN</strong> — Sistema de Informação do Câncer</li>
+      <li><strong>DATASUS</strong> — Departamento de Informática do SUS — gestor</li>
+    </ul>
+
+    <div class="subsecao">Transição Epidemiológica e Demográfica</div>
+    <p>O Brasil vive <strong>tripla carga de doença</strong>:</p>
+    <ul class="lista">
+      <li><strong>Doenças crônicas não transmissíveis (DCNT)</strong>: hipertensão, diabetes, câncer, doenças cardiovasculares, respiratórias crônicas, mental — principal causa de morbi-mortalidade</li>
+      <li><strong>Doenças infecciosas/parasitárias</strong>: dengue, malária, tuberculose, HIV, hanseníase, leishmaniose — persistentes em territórios vulneráveis</li>
+      <li><strong>Causas externas</strong>: violência (homicídios, acidentes de trânsito) — alta carga em jovens e em populações racializadas/periféricas</li>
+    </ul>
+
+    <p><strong>Transição demográfica</strong>: envelhecimento populacional; queda da fecundidade; aumento da esperança de vida. Reflete-se na transição epidemiológica e exige reorganização dos serviços.</p>
+
+    <div class="subsecao">Determinantes Sociais Aplicados — Exemplos Brasileiros</div>
+    <table>
+      <tr><th>Indicador</th><th>Iniquidade</th></tr>
+      <tr><td>Mortalidade infantil</td><td>Negros: 1,5× maior que brancos; Norte/Nordeste &gt; Sul/Sudeste</td></tr>
+      <tr><td>Mortalidade materna</td><td>Negras: 2× a 3× maior que brancas</td></tr>
+      <tr><td>Esperança de vida</td><td>Diferença de até 7 anos entre estados</td></tr>
+      <tr><td>Tuberculose</td><td>Encarcerados: 25× maior; pessoas em situação de rua: 50× maior</td></tr>
+      <tr><td>HIV</td><td>Maior concentração em populações vulneráveis (HSH, trans, PSR)</td></tr>
+      <tr><td>Violência letal</td><td>Jovens negros do sexo masculino: vítimas concentradas</td></tr>
+      <tr><td>Cobertura de saúde</td><td>SUS atende 75% da população; 28% têm planos privados; sobreposição</td></tr>
+    </table>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> incidência ≠ prevalência (novos × existentes). Mortalidade infantil = óbitos &lt; 1 ano / NV × 1.000. 4 vigilâncias (epi, sanitária, ambiental, trabalhador). Sistemas: SIM, SINASC, SINAN, SI-PNI. Tripla carga: DCNT + infecciosas + causas externas. Iniquidades raciais e territoriais são marcantes.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-SAUDE · Fundamentos</span><span>Extensivo ENARE 2026</span><span class="pg">7 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-SAUDE</div><div class="aula-ref">Bloco B13 · Aula 11 · Questões ENARE</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 01</span><span class="fonte">Lei 8.080/1990 Art. 3º · NC: Compreensão</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Sobre o conceito de saúde adotado pela Lei 8.080/1990 (art. 3º), é CORRETO afirmar:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Define saúde como "estado de completo bem-estar físico, mental e social" — copiando integralmente a OMS de 1948.</span></li>
+        <li class="correta"><span class="letra">B</span><span>Reconhece que os níveis de saúde expressam a organização social e econômica do país, listando como "determinantes e condicionantes" — entre outros — alimentação, moradia, saneamento, meio ambiente, trabalho, renda, educação, atividade física, transporte, lazer e acesso a bens e serviços essenciais.</span></li>
+        <li><span class="letra">C</span><span>Define saúde como "ausência de doenças e enfermidades", em consonância com o modelo biomédico.</span></li>
+        <li><span class="letra">D</span><span>Restringe o conceito de saúde aos atendimentos médicos prestados pelo SUS.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> art. 3º da Lei 8.080 — "os níveis de saúde expressam a organização social e econômica do País" e elenca 11 fatores (após Lei 12.864/2013, que incluiu "atividade física") como "determinantes e condicionantes". Lista exemplificativa ("entre outros"). É o <em>conceito ampliado de saúde</em> herdado da 8ª CNS/1986 e do art. 196 da CF/1988.</p>
+      <p><strong>Por que as outras erram:</strong> A — Lei 8.080 não copia OMS literalmente · C — modelo biomédico negado · D — saúde não se restringe a SUS.</p>
+    </div>
+
+    <div class="questao-header"><span>Questão 02</span><span class="fonte">Princípios SUS · NC: Análise</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Sobre os princípios e diretrizes do SUS (Lei 8.080/1990, art. 7º), assinale a CORRETA:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>O princípio da universalidade significa que o SUS atende apenas pessoas em vulnerabilidade socioeconômica.</span></li>
+        <li><span class="letra">B</span><span>A integralidade refere-se exclusivamente à abrangência geográfica dos serviços.</span></li>
+        <li class="correta"><span class="letra">C</span><span>A universalidade garante acesso aos serviços de saúde em todos os níveis de assistência; a integralidade refere-se ao conjunto articulado de ações preventivas e curativas, individuais e coletivas, em todos os níveis de complexidade; a participação comunitária está prevista no inciso VIII e foi detalhada pela Lei 8.142/1990.</span></li>
+        <li><span class="letra">D</span><span>A descentralização do SUS é vertical e mantém a gestão concentrada na União.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — C</div>
+      <p><strong>Por que C está correta:</strong> universalidade (I) = acesso em todos os níveis; integralidade (II) = articulação preventivo/curativo, individual/coletivo, em todos os níveis; participação (VIII) = Lei 8.142 (Conselhos/Conferências). Princípios doutrinários articulados com organizativos.</p>
+      <p><strong>Por que as outras erram:</strong> A — universalidade é para TODOS (não focal) · B — integralidade não é abrangência geográfica · D — descentralização é municipalista, com direção única em cada esfera.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-SAUDE · Fundamentos</span><span>Extensivo ENARE 2026</span><span class="pg">8 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-SAUDE</div><div class="aula-ref">Bloco B13 · Aula 11 · Questões ENARE</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 03</span><span class="fonte">DSS · NC: Aplicação</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">O modelo de determinantes sociais da saúde proposto por Dahlgren e Whitehead (1991) e adotado pela Comissão Nacional sobre Determinantes Sociais (CNDSS) organiza os determinantes em camadas. Assinale a alternativa que descreve CORRETAMENTE essa organização:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>O modelo é linear, com causas únicas e diretas determinando o estado de saúde.</span></li>
+        <li class="correta"><span class="letra">B</span><span>Apresenta o indivíduo no centro (idade, sexo, fatores genéticos) circundado por camadas concêntricas: estilos de vida individuais; redes sociais e comunitárias; condições de vida e trabalho (educação, ambiente de trabalho, habitação, saneamento, serviços de saúde); e condições socioeconômicas, culturais e ambientais gerais (camada distal/macro).</span></li>
+        <li><span class="letra">C</span><span>Considera que comportamentos individuais (tabagismo, dieta) são determinantes proximais que devem ser priorizados na intervenção, em detrimento das condições estruturais.</span></li>
+        <li><span class="letra">D</span><span>Substitui o conceito de "determinação social" da escola latino-americana por uma abordagem exclusivamente biomédica.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> modelo arco-íris de Dahlgren-Whitehead (1991): núcleo (indivíduo, biológicos) → estilos de vida → redes sociais/comunitárias → condições de vida e trabalho → macrodeterminantes (socioeconômicos, culturais, ambientais). Adotado pela CNDSS (Buss, 2008) e pela CDSS/OMS (Marmot, 2008). Camadas distais determinam as proximais.</p>
+      <p><strong>Por que as outras erram:</strong> A — não é linear, é em camadas · C — priorizar comportamentos individuais é "victim-blaming" — modelo critica essa abordagem · D — modelo dialoga com tradição latino-americana, não a substitui.</p>
+    </div>
+
+    <div class="questao-header"><span>Questão 04</span><span class="fonte">Reforma Sanitária · NC: Compreensão</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Sobre a Reforma Sanitária Brasileira e seus marcos institucionais, é CORRETO afirmar:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>A RSB foi um movimento exclusivamente acadêmico, sem articulação com movimentos populares de saúde.</span></li>
+        <li class="correta"><span class="letra">B</span><span>Articulou intelectuais (CEBES 1976, ABRASCO 1979), profissionais de saúde, movimentos populares e setores progressistas; teve a 8ª CNS (1986, presidida por Sergio Arouca) como marco político e seus princípios — universalidade, integralidade, descentralização e participação — foram inscritos na CF/1988 (arts. 196-200) e regulamentados pelas Leis 8.080 e 8.142 de 1990.</span></li>
+        <li><span class="letra">C</span><span>Foi um movimento estritamente conservador, contrário à democratização do setor.</span></li>
+        <li><span class="letra">D</span><span>Seu eixo principal era a privatização da saúde, em consonância com o modelo previdenciário do INAMPS.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> RSB articulou múltiplos atores (CEBES, ABRASCO, movimentos, sindicatos, Igreja progressista). 8ª CNS (Arouca, 1986) consolidou conceito ampliado de saúde e propôs SUS. CF/1988 (arts. 196-200) + Leis 8.080/8.142 (1990) operacionalizaram. Princípios: universalidade, integralidade, equidade, descentralização, participação.</p>
+      <p><strong>Por que as outras erram:</strong> A — articulou movimentos populares · C — RSB é projeto democrático-popular · D — opôs-se ao modelo INAMPS (médico-previdenciário/privatista).</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-SAUDE · Fundamentos</span><span>Extensivo ENARE 2026</span><span class="pg">9 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-SAUDE</div><div class="aula-ref">Bloco B13 · Aula 11 · Síntese</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Síntese — Saúde Coletiva: Fundamentos</div>
+
+    <p>Aula central do bloco B13. A Saúde é o campo de inserção majoritária do AS no SUS — entender seus fundamentos teóricos, legais e políticos é exigência absoluta. As próximas duas aulas (12 e 13) aprofundam SUS na prática profissional e Reforma Psiquiátrica.</p>
+
+    <div class="sintese-grid">
+      <div class="sintese-item"><div class="si-label">Conceito Ampliado</div><p>8ª CNS (1986, Arouca) → CF/1988 art. 196 → Lei 8.080 art. 3º. Saúde é resultado das condições sociais. Não é "ausência de doença". 11 determinantes/condicionantes (Lei 12.864/2013 incluiu atividade física).</p></div>
+      <div class="sintese-item"><div class="si-label">Lei 8.080/1990</div><p>Lei Orgânica da Saúde. Art. 7º: universalidade, integralidade, equidade (igualdade no texto), descentralização, hierarquização, participação. Município = gestor APS. Lei 8.142 complementa (Conselhos/Conferências, financiamento).</p></div>
+      <div class="sintese-item"><div class="si-label">Determinantes Sociais</div><p>Dahlgren-Whitehead (1991): arco-íris com núcleo individual + 4 camadas (estilos, redes, condições de vida/trabalho, macrodeterminantes). CDSS/OMS 2008: "dinheiro, poder e recursos". CNDSS/Buss 2008 no Brasil.</p></div>
+      <div class="sintese-item"><div class="si-label">Reforma Sanitária</div><p>CEBES (1976) + ABRASCO (1979) + Arouca. 8ª CNS (1986) → CF/1988 → Leis 1990. RSB realizada (universalização, descentralização) e não-realizada (estatização, contrarreforma EC 95/2016).</p></div>
+      <div class="sintese-item"><div class="si-label">Campo da Saúde Coletiva</div><p>Tripé: epidemiologia + planejamento/gestão + ciências sociais. Crítica à Saúde Pública tradicional. Ottawa 1986 (5 estratégias de promoção). PNPS 2006/2014. Iniquidades em saúde (negros, periferias).</p></div>
+      <div class="sintese-item"><div class="si-label">Próxima Aula</div><p><strong>Aula 12 — SUS na Prática e o SS na Saúde.</strong> Modelos assistenciais (APS, RAS, ESF), Política Nacional de Humanização (PNH), Parâmetros CFESS para o SS na Saúde (2010).</p></div>
+    </div>
+
+    <div class="alerta" style="margin-top:5px;">
+      <p><strong>Regra de ouro — Saúde Coletiva no ENARE:</strong> conceito ampliado é da 8ª CNS/Arouca; Lei 8.080 art. 3º lista determinantes/condicionantes; art. 7º traz 14 princípios; Dahlgren-Whitehead em camadas concêntricas; CDSS/OMS 2008 (Marmot) e CNDSS/Brasil (Buss). RSB articulou intelectuais + movimentos. EC 95/2016 = contrarreforma do SUS. Iniquidades raciais e territoriais são marcantes no Brasil.</p>
+    </div>
+
+    <div class="alerta" style="margin-top:5px;background:rgba(31,92,35,0.1);border-left-color:var(--verde);">
+      <p><strong>Conexão SS-SAUDE:</strong> o AS no SUS atua na perspectiva da <em>determinação social</em> da saúde — não apenas atendendo demandas individuais, mas leyendo condições de vida, articulando redes intersetoriais, fortalecendo o controle social e defendendo o SUS como projeto democrático. Esse posicionamento articula-se com a "defesa intransigente dos direitos humanos" do Código de Ética (Aula 14) e com o PEP (Aula 01).</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-SAUDE · Fundamentos</span><span>Extensivo ENARE 2026</span><span class="pg">10 / 10</span></div>
+</div>
+
+</body>
+</html>
