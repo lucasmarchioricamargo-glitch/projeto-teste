@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Serviço Social — Bloco B13 Aula 17 | Extensivo ENARE 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap');
+  :root { --creme: #F6F4ED; --verde: #1F5C23; --amarelo: #C6D834; --escuro: #0C2B0E; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #d0d0d0; font-family: 'Bricolage Grotesque', sans-serif; }
+  .page { width: 210mm; height: 297mm; background: var(--creme); margin: 0 auto 12px; position: relative; overflow: hidden; page-break-after: always; }
+  .header { background: var(--verde); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .header-logo { display: flex; align-items: center; gap: 8px; }
+  .header-logo svg { width: 32px; height: 32px; }
+  .header-brand { display: flex; flex-direction: column; line-height: 1; }
+  .header-brand .marca { font-family: 'Playfair Display', serif; font-style: italic; color: #fff; font-size: 13px; letter-spacing: 0.5px; }
+  .header-brand .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 7px; letter-spacing: 1.5px; text-transform: uppercase; }
+  .header-info { text-align: right; }
+  .header-info .disciplina { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
+  .header-info .aula-ref { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.7); font-size: 8px; letter-spacing: 0.5px; }
+  .footer { position: absolute; bottom: 0; left: 0; right: 0; background: var(--verde); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .footer span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.6); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .footer .pg { color: var(--amarelo); font-weight: 400; }
+  .body { padding: 14px 18px 30px; height: calc(297mm - 52px - 22px); overflow: hidden; }
+  .capa-page { background: var(--verde); }
+  .capa-header { background: var(--creme); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .capa-header .marca { font-family: 'Playfair Display', serif; font-style: italic; color: var(--verde); font-size: 14px; }
+  .capa-header .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--verde); font-size: 7.5px; letter-spacing: 2px; text-transform: uppercase; }
+  .capa-body { padding: 28px 24px 0; display: flex; flex-direction: column; height: calc(297mm - 52px - 22px); }
+  .capa-eyebrow { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; }
+  .capa-titulo { font-family: 'Barlow Condensed', sans-serif; color: #fff; font-size: 50px; line-height: 0.95; text-transform: uppercase; letter-spacing: -0.5px; margin-bottom: 6px; }
+  .capa-titulo span { color: var(--amarelo); }
+  .capa-subtitulo { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; color: rgba(255,255,255,0.65); font-size: 12px; letter-spacing: 0.3px; margin-bottom: 22px; line-height: 1.5; }
+  .capa-badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+  .capa-badge { background: rgba(198,216,52,0.15); border: 1px solid var(--amarelo); color: var(--amarelo); font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 8px; border-radius: 2px; }
+  .capa-divider { width: 40px; height: 3px; background: var(--amarelo); margin-bottom: 20px; }
+  .capa-topicos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .capa-topico { display: flex; align-items: flex-start; gap: 7px; }
+  .capa-topico-num { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 18px; line-height: 1; min-width: 18px; }
+  .capa-topico-txt { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 400; color: rgba(255,255,255,0.8); font-size: 9.5px; line-height: 1.4; }
+  .capa-footer-strip { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.25); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .capa-footer-strip span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.45); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .secao-titulo { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 18px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid var(--amarelo); padding-bottom: 3px; margin-bottom: 9px; line-height: 1; }
+  .subsecao { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.5px; margin: 7px 0 3px; }
+  p { font-size: 9px; line-height: 1.55; color: #1a1a1a; margin-bottom: 4px; font-weight: 400; }
+  .destaque { background: var(--amarelo); color: var(--escuro); font-weight: 600; padding: 1px 4px; border-radius: 2px; font-size: 8.5px; }
+  .alerta { background: rgba(198,216,52,0.18); border-left: 3px solid var(--amarelo); padding: 5px 8px; margin: 5px 0; border-radius: 0 3px 3px 0; }
+  .alerta p { margin: 0; font-size: 8.5px; }
+  .alerta strong { color: var(--verde); }
+  table { width: 100%; border-collapse: collapse; margin: 5px 0; font-size: 8px; }
+  th { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; padding: 4px 6px; text-align: left; }
+  td { padding: 3px 6px; border-bottom: 1px solid rgba(31,92,35,0.12); vertical-align: top; line-height: 1.4; color: #1a1a1a; }
+  tr:nth-child(even) td { background: rgba(31,92,35,0.04); }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 5px 0; }
+  .card { background: rgba(31,92,35,0.06); border: 1px solid rgba(31,92,35,0.15); border-radius: 4px; padding: 7px 8px; }
+  .card-title { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 11px; text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 3px; }
+  .card p { font-size: 8px; line-height: 1.5; }
+  .questao-header { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; padding: 4px 10px; border-radius: 3px 3px 0 0; display: flex; justify-content: space-between; align-items: center; }
+  .questao-header .fonte { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; color: var(--amarelo); letter-spacing: 0.5px; }
+  .questao-body { border: 1px solid rgba(31,92,35,0.2); border-top: none; border-radius: 0 0 3px 3px; padding: 7px 10px; margin-bottom: 7px; }
+  .questao-enunciado { font-size: 8.5px; line-height: 1.55; color: #111; margin-bottom: 5px; font-weight: 500; }
+  .alternativas { list-style: none; }
+  .alternativas li { font-size: 8px; line-height: 1.5; padding: 2px 0; color: #222; display: flex; gap: 5px; }
+  .alternativas li .letra { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: var(--verde); font-size: 9px; min-width: 10px; }
+  .alternativas li.correta .letra { color: var(--amarelo); }
+  .alternativas li.correta { background: rgba(198,216,52,0.15); border-left: 2px solid var(--amarelo); padding-left: 4px; }
+  .gabarito-box { background: var(--verde); border-radius: 4px; padding: 8px 12px; margin: 6px 0; }
+  .gabarito-box .gab-title { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+  .gabarito-box p { color: rgba(255,255,255,0.9); font-size: 8px; line-height: 1.55; }
+  .gabarito-box strong { color: var(--amarelo); }
+  .sintese-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-top: 6px; }
+  .sintese-item { background: rgba(31,92,35,0.07); border-left: 3px solid var(--verde); padding: 5px 7px; border-radius: 0 3px 3px 0; }
+  .sintese-item .si-label { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px; }
+  .sintese-item p { font-size: 7.5px; line-height: 1.5; }
+  ul.lista { padding-left: 14px; margin: 3px 0; }
+  ul.lista li { font-size: 8.5px; line-height: 1.55; color: #1a1a1a; margin-bottom: 1px; }
+  @media print { body { background: none; } .page { margin: 0; box-shadow: none; } }
+</style>
+</head>
+<body>
+
+<div class="page capa-page">
+  <div class="capa-header">
+    <div style="display:flex;align-items:center;gap:8px;"><svg width="34" height="34" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#1F5C23"/></svg><div><div class="marca">Elite Treinamentos</div><div class="tagline">Extensivo ENARE 2026</div></div></div>
+    <div style="text-align:right;"><div style="font-family:'Barlow Condensed',sans-serif;color:var(--verde);font-size:11px;letter-spacing:1px;text-transform:uppercase;">Bloco B13 · Aula 17</div><div style="font-family:'Space Grotesk',sans-serif;font-weight:300;color:#888;font-size:7.5px;letter-spacing:0.5px;">Serviço Social</div></div>
+  </div>
+  <div class="capa-body">
+    <div class="capa-eyebrow">Bloco B13 · SS-QUESTSOC · Aula 17 de 21</div>
+    <div class="capa-titulo">Questão <span>Social<br>Contemporânea</span></div>
+    <div class="capa-subtitulo">Plataformização do trabalho, racismo estrutural (Almeida),<br>patriarcado (Saffioti) e novas expressões</div>
+    <div class="capa-badge-row">
+      <div class="capa-badge">SS-QUESTSOC ★★★★</div>
+      <div class="capa-badge">Almeida · Saffioti · Antunes</div>
+      <div class="capa-badge">Plataformização</div>
+      <div class="capa-badge">Tendência FGV 2025</div>
+    </div>
+    <div class="capa-divider"></div>
+    <div class="capa-topicos">
+      <div class="capa-topico"><div class="capa-topico-num">01</div><div class="capa-topico-txt">Conceito de questão social (Netto, Iamamoto)</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">02</div><div class="capa-topico-txt">Plataformização e uberização (Antunes)</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">03</div><div class="capa-topico-txt">Racismo estrutural (Silvio Almeida)</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">04</div><div class="capa-topico-txt">Patriarcado e relações de gênero (Saffioti)</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">05</div><div class="capa-topico-txt">Genocídio negro e encarceramento</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">06</div><div class="capa-topico-txt">Crise ambiental e justiça climática</div></div>
+    </div>
+  </div>
+  <div class="capa-footer-strip"><span>Extensivo ENARE 2026</span><span>Elite Treinamentos em Saúde</span><span>Página 1 de 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-QUESTSOC</div><div class="aula-ref">Bloco B13 · Aula 17 · Conceito</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Conceito de Questão Social</div>
+
+    <p>A <strong>questão social</strong> é o <em>objeto histórico-determinado</em> do Serviço Social. Não é problema social isolado nem disfunção pontual — é categoria-síntese que expressa as contradições fundamentais do capitalismo. Compreender a questão social, suas raízes e suas expressões contemporâneas é exigência absoluta na ENARE.</p>
+
+    <div class="subsecao">Origem Histórica do Conceito</div>
+    <ul class="lista">
+      <li>Termo cunhado na Europa do séc. XIX</li>
+      <li>1830-1840: emerge na França e Inglaterra durante a Revolução Industrial</li>
+      <li>Designava o <em>conflito entre capital e trabalho</em> e suas múltiplas manifestações: pobreza urbana, condições de trabalho, criminalidade, doenças, etc.</li>
+      <li>Foi inicialmente respondida com filantropia, caridade e repressão estatal</li>
+      <li>Posteriormente, com políticas sociais (Welfare State a partir do início do séc. XX)</li>
+      <li>No Brasil, questão social emerge oficialmente nos anos 1930 (governo Vargas; Era da Industrialização)</li>
+    </ul>
+
+    <div class="subsecao">A Definição de Netto</div>
+    <p><strong>José Paulo Netto</strong>, em "<em>Capitalismo Monopolista e Serviço Social</em>" (1992), oferece a formulação clássica:</p>
+
+    <div class="alerta">
+      <p><strong>Definição (Netto):</strong> "<em>O termo questão social designa o conjunto das expressões das desigualdades da sociedade capitalista madura, que têm uma raiz comum: a produção social é cada vez mais coletiva, o trabalho torna-se mais amplamente social, enquanto a apropriação dos seus frutos mantém-se privada, monopolizada por uma parte da sociedade.</em>"</p>
+    </div>
+
+    <ul class="lista">
+      <li>Questão social = expressões das desigualdades</li>
+      <li>Capitalismo maduro = capitalismo monopolista (séc. XX)</li>
+      <li>Raiz comum = contradição entre socialização da produção × apropriação privada</li>
+      <li>NÃO é "disfunção" do capitalismo — é sua determinação</li>
+      <li>NÃO é fenômeno natural ou moral — é histórico-social</li>
+    </ul>
+
+    <div class="subsecao">A Posição de Iamamoto</div>
+    <p><strong>Marilda Iamamoto</strong> em "<em>Trabalho e Indivíduo Social</em>" (2001) e outras obras:</p>
+    <ul class="lista">
+      <li>Questão social como <em>objeto do trabalho profissional</em> do AS</li>
+      <li>Articulação entre expressões singulares (caso) e contradições universais (capital × trabalho)</li>
+      <li>"Múltiplas faces da pobreza, da exclusão e da subalternidade política e cultural"</li>
+      <li>Combate à <em>moralização</em> da questão social (vê-la como "vícios individuais")</li>
+      <li>Combate à <em>psicologização</em> (vê-la como problema individual a ser tratado clinicamente)</li>
+      <li>Combate à <em>criminalização</em> (vê-la como problema de polícia)</li>
+    </ul>
+
+    <div class="subsecao">"Velha" × "Nova" Questão Social — Crítica</div>
+    <p>Alguns autores europeus (Castel, Rosanvallon) falam em "nova questão social" — para distinguir do conflito capital-trabalho clássico:</p>
+
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Tese da "Nova" Questão Social</div>
+        <p>Castel ("A Metamorfose da Questão Social", 1998), Rosanvallon. Afirma que a globalização e o pós-fordismo trouxeram NOVAS expressões: desemprego estrutural, vulnerabilidade, "questão da inserção". A "antiga" foi resolvida pelo Welfare.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Crítica Brasileira (Netto, Iamamoto)</div>
+        <p>NÃO há "nova" questão social no sentido teórico. A questão social tem sua raiz na contradição capital-trabalho. O que há são NOVAS EXPRESSÕES dessa mesma questão, num momento histórico distinto. Falar em "nova" pode despolitizar (sugere que a contradição fundamental foi superada).</p>
+      </div>
+    </div>
+
+    <div class="subsecao">Expressões Históricas e Contemporâneas</div>
+    <p>A questão social manifesta-se em expressões histórico-sociais determinadas:</p>
+    <table>
+      <tr><th>Período</th><th>Expressões dominantes</th></tr>
+      <tr><td>Capitalismo concorrencial (séc. XIX)</td><td>Pauperismo absoluto, condições de trabalho insalubres, jornadas exaustivas, mortalidade alta, criminalidade urbana</td></tr>
+      <tr><td>Capitalismo monopolista (séc. XX)</td><td>Desemprego periódico, exército industrial de reserva, conflitos sindicais, "questão urbana", segregação habitacional, racismo</td></tr>
+      <tr><td>Capitalismo flexível/neoliberal (1980+)</td><td>Precarização do trabalho, terceirização, desemprego estrutural, financeirização, criminalização da pobreza</td></tr>
+      <tr><td>Capitalismo plataformizado (séc. XXI)</td><td>Uberização, gig economy, individualização do risco, automação, datificação, vigilância digital</td></tr>
+    </table>
+
+    <div class="subsecao">Questão Social no Brasil</div>
+    <ul class="lista">
+      <li>Particularidades da formação social brasileira (Aula 05)</li>
+      <li>Brasil = capitalismo periférico, dependente, com herança colonial-escravista</li>
+      <li>Questão social entrelaçada com racismo estrutural e patriarcado</li>
+      <li>Questão social como "caso de polícia" — denunciada por José Maria Lourenço/Florestan Fernandes</li>
+      <li>1930-1988: tratamento via populismo e repressão</li>
+      <li>1988+: tentativa de tratamento via Seguridade Social (Aula 09)</li>
+      <li>Hoje: contrarreforma neoliberal corroi as conquistas</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> questão social = expressões das desigualdades do capitalismo (Netto). NÃO é "disfunção" nem "patologia social". Tem RAIZ comum (contradição capital-trabalho). NÃO confundir com "problemas sociais" pontuais. Crítica à tese da "nova questão social" — há novas EXPRESSÕES, não nova questão.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-QUESTSOC · Conceito</span><span>Extensivo ENARE 2026</span><span class="pg">2 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-QUESTSOC</div><div class="aula-ref">Bloco B13 · Aula 17 · Plataformização</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Plataformização e Uberização do Trabalho</div>
+
+    <p>A <strong>plataformização</strong> é a expressão mais aguda da reestruturação produtiva do séc. XXI. Trabalho intermediado por aplicativos (Uber, iFood, 99, Rappi, Amazon Mechanical Turk) que <em>se apresentam como tecnologia, mas funcionam como empregadores</em>. Tema com cobrança crescente — entrou no estudo de banca FGV 2025.</p>
+
+    <div class="subsecao">Origens</div>
+    <ul class="lista">
+      <li>Anos 2000-2010: crescimento da economia de plataformas (Uber 2009, Airbnb 2008)</li>
+      <li>Crise financeira de 2008 — desemprego em massa, terreno fértil para "auto-empreendedorismo"</li>
+      <li>"Gig economy" — economia de bicos/tarefas curtas</li>
+      <li>Brasil: Uber chega em 2014; iFood em 2011 (consolidado); Amazon Mechanical Turk</li>
+      <li>Pandemia de 2020 acelera a tendência</li>
+    </ul>
+
+    <div class="subsecao">Ricardo Antunes — "Privilégio da Servidão"</div>
+    <p><strong>Ricardo Antunes</strong>, sociólogo do trabalho da Unicamp, em "<em>O Privilégio da Servidão: o novo proletariado dos serviços na era digital</em>" (2018), oferece o quadro teórico:</p>
+
+    <ul class="lista">
+      <li>"Classe-que-vive-do-trabalho" — ampliação do conceito de proletariado para incluir trabalhadores de serviços, intermitentes, plataformizados</li>
+      <li>"Nova morfologia do trabalho" — fragmentação, heterogeneização, intensificação</li>
+      <li>"Privilégio da servidão" — paradoxo: o trabalhador agradece por servir (gratidão pela exploração)</li>
+      <li>"Escravidão digital" — analogia controversa, mas eloquente</li>
+      <li>Pejotização, terceirização, intermitência como expressões da mesma lógica</li>
+    </ul>
+
+    <div class="subsecao">Características da Plataformização</div>
+    <table>
+      <tr><th>Característica</th><th>Descrição</th></tr>
+      <tr><td>Mediação por aplicativo</td><td>Plataforma intermedeia oferta/demanda; trabalhador-cliente nunca se encontram diretamente</td></tr>
+      <tr><td>Algoritmo como "patrão"</td><td>Sistema computacional define preços, distribui demandas, avalia performance, pune sem aviso</td></tr>
+      <tr><td>"Autonomia" formal</td><td>Trabalhador é "MEI" ou "parceiro" — formalmente autônomo, materialmente subordinado</td></tr>
+      <tr><td>Pagamento por tarefa</td><td>Não há salário fixo; pagamento por corrida/entrega; sem garantias mínimas</td></tr>
+      <tr><td>Sem direitos trabalhistas</td><td>Sem FGTS, INSS, férias, 13º; trabalhador arca com custos (combustível, manutenção, equipamento)</td></tr>
+      <tr><td>Avaliação 5 estrelas</td><td>Mecanismo de controle por usuários; nota baixa = desligamento</td></tr>
+      <tr><td>Datificação</td><td>Vigilância contínua via GPS, tempo de resposta, recusas</td></tr>
+      <tr><td>Individualização do risco</td><td>Acidente, doença, prejuízo = problema do trabalhador</td></tr>
+      <tr><td>Auto-exploração</td><td>Trabalha 12-16h/dia "por escolha"; jornada sem limites</td></tr>
+      <tr><td>Crowdwork</td><td>Microtarefas online (Amazon Mechanical Turk) — pagamento de centavos</td></tr>
+    </table>
+
+    <div class="subsecao">Caracterização da Categoria Trabalhadora</div>
+    <ul class="lista">
+      <li>Pesquisa CUT/INFOPROAD (2022): 4 milhões de brasileiros trabalham em plataformas</li>
+      <li>Maioria negra (Pretos e Pardos)</li>
+      <li>Jovens (18-30 anos predominante)</li>
+      <li>Maioria homens (motoristas, entregadores) — segregação de gênero</li>
+      <li>Mulheres concentradas em outras frentes (limpeza por aplicativo, cuidados)</li>
+      <li>Trabalhadores migrantes (venezuelanos, haitianos) em alta proporção</li>
+      <li>Ganho médio inferior ao salário mínimo, após descontados custos</li>
+      <li>Jornada média de 12+ horas diárias</li>
+      <li>Acidentes de trabalho frequentes (entregadores morrem em acidentes de trânsito)</li>
+    </ul>
+
+    <div class="subsecao">Regulação no Brasil — Em Construção</div>
+    <ul class="lista">
+      <li>Pandemia 2020: greve dos entregadores em julho ("Breque dos Apps")</li>
+      <li>Tentativas de regulação: PL 1.085/2023 (motoristas de aplicativo)</li>
+      <li>STF (2023-2024) — algumas decisões reconhecem vínculo empregatício caso-a-caso</li>
+      <li>UE (2024) — Diretiva sobre Trabalho em Plataforma</li>
+      <li>OIT discute Convenção sobre Trabalho Digno em Plataformas</li>
+      <li>Posição do conjunto CFESS/CRESS — defesa de regulamentação trabalhista plena</li>
+    </ul>
+
+    <div class="subsecao">Trabalho Imaterial e Cognitivo</div>
+    <ul class="lista">
+      <li>"Capitalismo cognitivo" (Negri, Hardt) — trabalho imaterial torna-se hegemônico</li>
+      <li>Trabalho em <em>conteúdo</em> (criadores, influenciadores)</li>
+      <li>Trabalho em <em>cuidados</em> (cuidadoras, babás, profissionais de saúde)</li>
+      <li>Trabalho em <em>dados</em> (rotuladores de dados para IA, moderadores de conteúdo)</li>
+      <li>Crítica do feminismo materialista: trabalho reprodutivo invisibilizado</li>
+    </ul>
+
+    <div class="subsecao">Datificação e Vigilância</div>
+    <ul class="lista">
+      <li>"Capitalismo de vigilância" (Shoshana Zuboff, 2019)</li>
+      <li>Dados pessoais como nova mercadoria</li>
+      <li>Algoritmos que predizem comportamentos e moldam consumo/voto</li>
+      <li>LGPD (Lei 13.709/2018) — tentativa de regular proteção de dados</li>
+      <li>Riscos: discriminação algorítmica, racismo digital, deletérios à democracia</li>
+    </ul>
+
+    <div class="subsecao">SS e Plataformização</div>
+    <ul class="lista">
+      <li>AS atende trabalhadores plataformizados em CRAS, UBS, hospitais</li>
+      <li>Demandas típicas: acidentes de trabalho não-cobertos, ausência de saúde-doença</li>
+      <li>Articulação com sindicatos, movimentos de trabalhadores de aplicativos</li>
+      <li>CFESS Manifesta sobre uberização e regulação trabalhista</li>
+      <li>Defesa de direitos sociais para esta nova categoria</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> plataformização = Ricardo Antunes ("Privilégio da Servidão"). Características: algoritmo como patrão, individualização do risco, "autonomia" formal, sem direitos. ~4 milhões no Brasil. Tendência crescente da FGV (estudo de banca 2025). CFESS defende regulação trabalhista plena.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-QUESTSOC · Plataformização</span><span>Extensivo ENARE 2026</span><span class="pg">3 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-QUESTSOC</div><div class="aula-ref">Bloco B13 · Aula 17 · Racismo Estrutural</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Racismo Estrutural — Silvio Almeida</div>
+
+    <p>O conceito de <strong>racismo estrutural</strong> tornou-se central no debate brasileiro contemporâneo. <strong>Silvio Almeida</strong>, jurista e filósofo, em "<em>Racismo Estrutural</em>" (2018), sistematizou a articulação entre racismo, economia política e Estado. Tema com cobrança crescente — FGV incluiu nas tendências 2025.</p>
+
+    <div class="subsecao">Três Concepções de Racismo (Almeida)</div>
+    <table>
+      <tr><th>Concepção</th><th>Características</th><th>Crítica</th></tr>
+      <tr><td><strong>Individualista</strong></td><td>Racismo = comportamento pessoal de quem é "racista". Tratamento: educação moral, punição individual.</td><td>Limita-se a casos isolados; não vê o sistema; permite ao indivíduo se declarar "não-racista" enquanto reproduz o sistema.</td></tr>
+      <tr><td><strong>Institucional</strong></td><td>Instituições agem de modo racista (Carmichael e Hamilton, 1967). Polícia, judiciário, mercado de trabalho reproduzem desigualdades raciais. Resposta: políticas afirmativas, treinamentos.</td><td>Avança em relação à individual, mas trata instituições como abstratas. Não articula com economia política.</td></tr>
+      <tr><td><strong>Estrutural</strong></td><td>Racismo é elemento ESTRUTURADOR das sociedades modernas. Não é "exceção" nem "disfunção" — é normal. Articulado com modo de produção capitalista. Reproduz-se mesmo sem racistas individuais.</td><td>Concepção mais radical. Tem capacidade explicativa maior.</td></tr>
+    </table>
+
+    <div class="subsecao">Tese Central de Almeida</div>
+    <p>"<em>O racismo é uma forma de racionalidade que prescreve os modos de pensar e agir das pessoas, dos grupos sociais e das instituições. (...) Falar de racismo estrutural é dizer que ele é elemento normalizado da sociedade — não disfunção, mas normalidade.</em>"</p>
+
+    <ul class="lista">
+      <li>Racismo é racionalidade política, ideológica e jurídica</li>
+      <li>Articula-se com capitalismo (modo de produção)</li>
+      <li>Define quem é "humano" pleno e quem é "subhumano"</li>
+      <li>Estrutura mercado de trabalho, justiça, educação, saúde</li>
+      <li>É reproduzido por instituições mesmo quando dirigidas por negros</li>
+      <li>Combate: ação política coletiva, não apenas mudança individual</li>
+    </ul>
+
+    <div class="subsecao">Outros Autores do Pensamento Negro Brasileiro</div>
+    <table>
+      <tr><th>Autor/a</th><th>Contribuição</th></tr>
+      <tr><td><strong>Lélia Gonzalez</strong></td><td>"Por um feminismo afro-latino-americano". Articula raça, gênero e classe. Conceito de "amefricanidade". Crítica à democracia racial.</td></tr>
+      <tr><td><strong>Sueli Carneiro</strong></td><td>"Racismo, Sexismo e Desigualdade no Brasil". Eixo do feminismo negro. Cofundadora do Geledés.</td></tr>
+      <tr><td><strong>Abdias Nascimento</strong></td><td>"O Genocídio do Negro Brasileiro" (1978). Conceito de "quilombismo". Articula educação, política, cultura.</td></tr>
+      <tr><td><strong>Beatriz Nascimento</strong></td><td>Historiadora; quilombos como espaços de resistência; "buraco negro" como conceito.</td></tr>
+      <tr><td><strong>Carlos Hasenbalg</strong></td><td>"Discriminação e Desigualdades Raciais no Brasil" (1979). Sociologia das relações raciais. Quebra do mito da democracia racial.</td></tr>
+      <tr><td><strong>Frantz Fanon</strong></td><td>Aula 13. Articulação raça + saúde mental + colonialidade. "Pele Negra, Máscaras Brancas".</td></tr>
+      <tr><td><strong>Nilma Lino Gomes</strong></td><td>Educação e relações étnico-raciais. Ex-Ministra da Igualdade Racial.</td></tr>
+      <tr><td><strong>Djamila Ribeiro</strong></td><td>"O que é lugar de fala?" (2017). Filosofia e ativismo feminista negro.</td></tr>
+    </table>
+
+    <div class="subsecao">Mito da Democracia Racial</div>
+    <p>Tese de Gilberto Freyre (1933, "Casa-Grande e Senzala") de que o Brasil teria escapado do racismo por sua "mestiçagem" e "luso-tropicalidade". Criticada por:</p>
+    <ul class="lista">
+      <li>Florestan Fernandes ("A Integração do Negro na Sociedade de Classes", 1965)</li>
+      <li>Carlos Hasenbalg (1979)</li>
+      <li>Movimento Negro contemporâneo</li>
+      <li>Dados empíricos: desigualdade racial em todos os indicadores</li>
+      <li>O mito serve à manutenção do racismo, não à sua superação</li>
+    </ul>
+
+    <div class="subsecao">Dados do Racismo Estrutural no Brasil</div>
+    <ul class="lista">
+      <li>Renda: pessoas brancas têm renda média 70% maior que negras (IBGE 2022)</li>
+      <li>Escolaridade: 50% dos brancos têm ensino superior; apenas 25% dos negros</li>
+      <li>Mortalidade: jovem negro tem 2,5× mais chance de morrer assassinado</li>
+      <li>Encarceramento: 67% da população prisional é negra (DEPEN 2023)</li>
+      <li>Saúde: mulher negra morre 2× a 3× mais em complicações obstétricas</li>
+      <li>Mercado de trabalho: pessoas negras predominantes em ocupações de menor remuneração</li>
+      <li>Representação política: ~25% de negros no Congresso (sub-representação)</li>
+    </ul>
+
+    <div class="subsecao">Políticas Afirmativas</div>
+    <table>
+      <tr><th>Política</th><th>Marco</th></tr>
+      <tr><td>Cotas raciais em universidades</td><td>Lei 12.711/2012 (50% para escola pública, com sub-cotas para PPI)</td></tr>
+      <tr><td>Cotas em concursos federais</td><td>Lei 12.990/2014 (20% para negros em concursos federais)</td></tr>
+      <tr><td>Estatuto da Igualdade Racial</td><td>Lei 12.288/2010</td></tr>
+      <tr><td>SEPPIR / Ministério da Igualdade Racial</td><td>Criado em 2003; recriado em 2023 (Lula 3)</td></tr>
+      <tr><td>Política Nacional de Saúde Integral da População Negra (PNSIPN)</td><td>Portaria 992/2009</td></tr>
+      <tr><td>Estatuto da Juventude</td><td>Lei 12.852/2013</td></tr>
+      <tr><td>Conselhos de promoção da igualdade racial</td><td>Nacional, estaduais, municipais</td></tr>
+    </table>
+
+    <div class="subsecao">CFESS Antirracista</div>
+    <ul class="lista">
+      <li>Campanha "Assistentes Sociais no Combate ao Racismo" (CFESS, várias edições)</li>
+      <li>Posicionamento por cotas, reparações, políticas universais articuladas</li>
+      <li>Crítica ao genocídio negro</li>
+      <li>Apoio às pautas do Movimento Negro</li>
+      <li>Articulação com a Reforma Psiquiátrica antirracista (Aula 13)</li>
+      <li>Princípio VI do CE/1993 (eliminação de preconceitos) e VIII (sem dominação de etnia)</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> Silvio Almeida = racismo estrutural (não individual, não institucional apenas). 3 concepções (individualista, institucional, estrutural). Mito da democracia racial criticado por Florestan, Hasenbalg, Movimento Negro. Políticas afirmativas: Lei 12.711/2012 (universidades), 12.990/2014 (concursos), 12.288/2010 (Estatuto). PNSIPN 2009.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-QUESTSOC · Racismo</span><span>Extensivo ENARE 2026</span><span class="pg">4 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-QUESTSOC</div><div class="aula-ref">Bloco B13 · Aula 17 · Patriarcado</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Patriarcado e Relações de Gênero — Saffioti</div>
+
+    <p><strong>Heleieth Saffioti</strong> (1934-2010) é a referência fundamental do feminismo materialista no Brasil. Em "<em>A Mulher na Sociedade de Classes</em>" (1969) e "<em>O Poder do Macho</em>" (1987), articula <em>patriarcado, capitalismo e racismo</em> como sistema de dominação interligado. Cobrança certa em SS contemporâneo.</p>
+
+    <div class="subsecao">A Tese de Saffioti</div>
+    <p>"<em>Patriarcado-capitalismo-racismo: o nó.</em>" Para Saffioti, esses três sistemas não funcionam separadamente, mas como um único <em>nó górdio</em> de dominação:</p>
+
+    <ul class="lista">
+      <li>Patriarcado: dominação masculina; subordinação das mulheres; controle dos corpos, da reprodução, do trabalho</li>
+      <li>Capitalismo: dominação de classe; exploração da força de trabalho</li>
+      <li>Racismo: dominação racial; expropriação de povos racializados</li>
+      <li>Esses sistemas se reforçam mutuamente, não se separam</li>
+      <li>Não há "luta de classes" sem "luta de gênero" sem "luta antirracista"</li>
+      <li>Crítica ao marxismo ortodoxo que reduzia o patriarcado a expressão do capitalismo</li>
+    </ul>
+
+    <div class="subsecao">Conceito de Patriarcado</div>
+    <ul class="lista">
+      <li>Sistema histórico-social de dominação masculina</li>
+      <li>Existe antes do capitalismo (Engels, "Origem da Família, da Propriedade Privada e do Estado", 1884)</li>
+      <li>Foi articulado e modificado pelo capitalismo (não suprimido)</li>
+      <li>Mecanismos: divisão sexual do trabalho; controle da sexualidade e reprodução; violência; ideologia</li>
+      <li>Materializa-se em: família patriarcal, mercado de trabalho desigual, violência de gênero, política excludente</li>
+    </ul>
+
+    <div class="subsecao">Divisão Sexual do Trabalho</div>
+    <p>Conceito-chave do feminismo materialista (Christine Delphy, Daniele Kergoat, Saffioti):</p>
+    <ul class="lista">
+      <li>Trabalho produtivo (assalariado, valor de troca) → designado preferencialmente ao homem</li>
+      <li>Trabalho reprodutivo (cuidados, casa, valor de uso) → designado preferencialmente à mulher</li>
+      <li>Trabalho reprodutivo é invisibilizado e não-remunerado</li>
+      <li>Mulheres acumulam jornada dupla/tripla (trabalho assalariado + casa + cuidados)</li>
+      <li>"Trabalho do cuidado" (cuidadoras, enfermeiras, empregadas domésticas) — feminizado e mal-pago</li>
+      <li>Crítica: capitalismo se beneficia da apropriação gratuita do trabalho reprodutivo</li>
+    </ul>
+
+    <div class="subsecao">Outras Pensadoras do Feminismo Brasileiro</div>
+    <table>
+      <tr><th>Autora</th><th>Contribuição</th></tr>
+      <tr><td>Heleieth Saffioti</td><td>Patriarcado-capitalismo-racismo; feminismo materialista</td></tr>
+      <tr><td>Lélia Gonzalez</td><td>Feminismo afro-latino-americano; amefricanidade</td></tr>
+      <tr><td>Sueli Carneiro</td><td>"Enegrecer o feminismo"; feminismo negro</td></tr>
+      <tr><td>Marielle Franco</td><td>Mulheres negras, periferia, política — assassinada em 2018</td></tr>
+      <tr><td>Mary Garcia Castro</td><td>Sociologia das relações de gênero e trabalho</td></tr>
+      <tr><td>Cristina Bruschini</td><td>Estudos sobre gênero e trabalho</td></tr>
+      <tr><td>Cynthia Sarti</td><td>Antropologia da família popular</td></tr>
+      <tr><td>Berenice Bento</td><td>Transgêneros, "performatividade", crítica decolonial</td></tr>
+    </table>
+
+    <div class="subsecao">Violência Contra a Mulher</div>
+    <p>Brasil: 1.398 feminicídios em 2024 (Fórum Brasileiro de Segurança Pública). 60% mulheres negras. Política:</p>
+    <ul class="lista">
+      <li><strong>Lei Maria da Penha</strong> (Lei 11.340/2006) — proteção integral; medidas protetivas; rede de atendimento</li>
+      <li><strong>Lei do Feminicídio</strong> (Lei 13.104/2015) — qualificadora de homicídio; tipo penal autônomo</li>
+      <li>5 tipos de violência: física, psicológica, sexual, patrimonial, moral</li>
+      <li>Casa da Mulher Brasileira (rede)</li>
+      <li>Delegacias Especializadas (DEAMs)</li>
+      <li>Juizados de Violência Doméstica</li>
+      <li>Lei 14.541/2023 — atendimento psicológico e social às vítimas de violência sexual</li>
+      <li>Brasil tem 5º maior índice de feminicídios do mundo (OMS)</li>
+    </ul>
+
+    <div class="subsecao">Saúde da Mulher</div>
+    <ul class="lista">
+      <li>PNAISM — Política Nacional de Atenção Integral à Saúde da Mulher (2004)</li>
+      <li>Direitos sexuais e reprodutivos</li>
+      <li>Aborto legal: estupro, risco de vida, anencefalia (STF 2012)</li>
+      <li>Discussão sobre descriminalização: STF (ADI 5581), ADPF 442</li>
+      <li>Cuidado pré-natal, parto humanizado, puerpério</li>
+      <li>Direito ao acompanhante no parto (Lei 11.108/2005)</li>
+      <li>Câncer cervical e mama — programas de rastreamento</li>
+      <li>Saúde reprodutiva: planejamento familiar, contraceptivos, ligadura tubária</li>
+    </ul>
+
+    <div class="subsecao">Saúde de Mulheres Lésbicas, Bissexuais e Trans</div>
+    <ul class="lista">
+      <li>Política Nacional de Saúde Integral LGBTI+ (Portaria 2.836/2011)</li>
+      <li>Atendimento sem discriminação</li>
+      <li>Uso do nome social (Decreto 8.727/2016)</li>
+      <li>Hormonioterapia para pessoas trans</li>
+      <li>Atenção a violência homofóbica/transfóbica</li>
+      <li>Direito ao acompanhante de mesmo sexo</li>
+      <li>Histórico de patologização (CID-10 considerava transsexualidade como doença; CID-11 retirou)</li>
+    </ul>
+
+    <div class="subsecao">Interseccionalidade</div>
+    <p>Conceito formulado por <strong>Kimberlé Crenshaw</strong> (1989); articulado por Carla Akotirene, Patricia Hill Collins:</p>
+    <ul class="lista">
+      <li>Categorias de opressão (raça, gênero, classe, sexualidade) não funcionam isoladamente</li>
+      <li>Mulher negra ≠ mulher + negra: experiência <em>específica</em> da interseção</li>
+      <li>Análise social e política precisa articular múltiplos eixos</li>
+      <li>Saffioti chegou antes (anos 1970-80) com o "nó patriarcado-capitalismo-racismo"</li>
+      <li>Princípio para o SS: pensar usuários em sua complexa identidade</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> Saffioti = patriarcado-capitalismo-racismo (nó). Divisão sexual do trabalho. Lei Maria da Penha (11.340/2006) + Lei do Feminicídio (13.104/2015). 5 tipos de violência. PNAISM. Interseccionalidade (Crenshaw). Autoras brasileiras: Saffioti, Gonzalez, Carneiro, Marielle Franco.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-QUESTSOC · Patriarcado</span><span>Extensivo ENARE 2026</span><span class="pg">5 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-QUESTSOC</div><div class="aula-ref">Bloco B13 · Aula 17 · Outras Expressões</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Outras Expressões Contemporâneas da Questão Social</div>
+
+    <div class="subsecao">Encarceramento em Massa e Genocídio Negro</div>
+    <ul class="lista">
+      <li>Brasil tem 3ª maior população prisional do mundo (~840 mil, DEPEN 2023)</li>
+      <li>67% são pessoas negras</li>
+      <li>Maioria por tráfico (Lei 11.343/2006) — Aula 13</li>
+      <li>Sistema "Necropolítica" (Achille Mbembe) — Estado decide quem vive e quem morre</li>
+      <li>"Genocídio negro" — termo usado pelo Movimento Negro (Abdias Nascimento, 1978)</li>
+      <li>30 mil mortos por intervenção policial no Brasil/ano; maioria jovens negros</li>
+      <li>Caso Marielle Franco (2018); Caso João Pedro (2020); Caso Genivaldo (2022)</li>
+      <li>Sistema socioeducativo (SINASE): adolescentes em conflito com a lei; majoritariamente negros</li>
+      <li>Caso Pavilhão Carandiru (1992) — 111 mortos; impunidade</li>
+      <li>Caso Carandiru Massacre (2018) — STJ absolve PMs</li>
+    </ul>
+
+    <div class="subsecao">População em Situação de Rua (PSR)</div>
+    <ul class="lista">
+      <li>Aula 07 (SUAS Financiamento) — abordagem aprofundada</li>
+      <li>~250 mil pessoas em situação de rua no Brasil (CadÚnico 2023)</li>
+      <li>Maioria homens, negros, com transtornos mentais e/ou uso de drogas</li>
+      <li>Plano Ruas Visíveis (Decreto 11.472/2023) — saúde, assistência, habitação, renda</li>
+      <li>Consultório na Rua (RAPS/PNAB)</li>
+      <li>Centros POP (CREAS para PSR)</li>
+      <li>Decisão STF (ADO 56, 2023) — Estado deve adotar plano de proteção integral à PSR</li>
+    </ul>
+
+    <div class="subsecao">Refugiados e Migrantes</div>
+    <ul class="lista">
+      <li>Lei de Migração (Lei 13.445/2017) — substitui o Estatuto do Estrangeiro (Ditadura)</li>
+      <li>Lei 9.474/1997 — Estatuto do Refugiado</li>
+      <li>CONARE — Comitê Nacional para os Refugiados</li>
+      <li>Brasil acolhe: venezuelanos (Operação Acolhida, 2018+), haitianos, sírios, africanos</li>
+      <li>Reconhecimento de refugiados ambientais (em discussão)</li>
+      <li>Demandas: documentação, acesso a SUS, SUAS, educação, trabalho digno</li>
+      <li>Discriminação étnico-racial frequente</li>
+      <li>SS articula com Cáritas, ACNUR, IMDH, MP, Defensoria</li>
+    </ul>
+
+    <div class="subsecao">Crise Ambiental e Justiça Climática</div>
+    <ul class="lista">
+      <li>Aquecimento global; aumento de eventos extremos (enchentes, secas, ondas de calor)</li>
+      <li>Brasil: 4ª maior emissora de carbono per capita (devido a desmatamento)</li>
+      <li>Tragédias: Brumadinho 2019 (270 mortos), Mariana 2015, RS 2024 (enchentes)</li>
+      <li>Atingidos majoritariamente pobres, negros, ribeirinhos, indígenas</li>
+      <li>"Justiça climática" — quem sofre mais é quem menos emitiu</li>
+      <li>Política Nacional sobre Mudança do Clima (Lei 12.187/2009)</li>
+      <li>Acordo de Paris (2015) — Brasil signatário; ODS</li>
+      <li>SS atua com populações atingidas, deslocamentos, reassentamentos</li>
+    </ul>
+
+    <div class="subsecao">Crise Hídrica e Saneamento</div>
+    <ul class="lista">
+      <li>~35 milhões de brasileiros sem acesso à água tratada</li>
+      <li>~100 milhões sem esgoto adequado</li>
+      <li>Marco do Saneamento (Lei 14.026/2020) — controverso; abre privatização</li>
+      <li>SUS depende de saneamento básico (Aula 11 — Lei 8.080 art. 3º)</li>
+      <li>Desigualdades regionais e raciais no acesso</li>
+    </ul>
+
+    <div class="subsecao">Crise Alimentar e Insegurança Alimentar</div>
+    <ul class="lista">
+      <li>Brasil voltou ao Mapa da Fome em 2022 (FAO/ONU)</li>
+      <li>33 milhões em situação de fome (2022); ~70 milhões em insegurança alimentar</li>
+      <li>Mulheres-chefes de família com filhos: mais atingidas</li>
+      <li>Negros, indígenas, PSR: vulnerabilidade extrema</li>
+      <li>PNAN (Política Nacional de Alimentação e Nutrição); PNSAN (Lei 11.346/2006); SISAN</li>
+      <li>Bolsa Família/Auxílio Brasil/Bolsa Família — relação com segurança alimentar</li>
+      <li>Restaurantes Populares; Cozinhas Solidárias</li>
+      <li>EC 64/2010 — direito à alimentação como direito social</li>
+    </ul>
+
+    <div class="subsecao">Trabalho Análogo à Escravidão</div>
+    <ul class="lista">
+      <li>Lei 7.998/1990 e Lei 10.608/2002 — combate ao trabalho escravo</li>
+      <li>"Lista Suja" do MTb — empregadores que utilizaram trabalho escravo</li>
+      <li>Concentração: pecuária, carvão, agricultura, construção civil</li>
+      <li>Caso Fazenda Brasil Verde (Aula 10) — condenação na Corte Interamericana</li>
+      <li>Resgates aumentaram nos últimos anos</li>
+    </ul>
+
+    <div class="subsecao">População PCD e Direitos Inclusivos</div>
+    <ul class="lista">
+      <li>Convenção PCD da ONU (2006) com status de EC no Brasil — Aula 10</li>
+      <li>Lei 13.146/2015 — Estatuto da PCD (LBI)</li>
+      <li>Mudança de modelo médico → social</li>
+      <li>Acessibilidade plena</li>
+      <li>BPC PCD (LOAS) — avaliação biopsicossocial</li>
+      <li>Inclusão escolar (não educação especial separada)</li>
+      <li>Inclusão no mercado de trabalho (Lei 8.213/1991 — cotas)</li>
+      <li>Atenção crescente do AS</li>
+    </ul>
+
+    <div class="subsecao">População LGBTI+</div>
+    <ul class="lista">
+      <li>Brasil mata mais pessoas trans no mundo</li>
+      <li>Reconhecimento jurídico: casamento (STF 2011), nome social (Decreto 8.727/2016), criminalização da LGBTfobia (STF 2019 — ADO 26)</li>
+      <li>Direitos previdenciários e fiscais reconhecidos</li>
+      <li>Política Nacional de Saúde Integral LGBTI+</li>
+      <li>Conselhos LGBTI nacionais/estaduais/municipais</li>
+      <li>Crítica do SS à conversão "religiosa" / terapia de reorientação sexual (vedada pelo CFP)</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> múltiplas expressões da questão social contemporânea. Encarceramento (67% negros); PSR (250 mil); refugiados (Op. Acolhida); crise climática (Brumadinho, RS 2024); fome (Brasil voltou ao Mapa da Fome 2022); trabalho escravo (Lista Suja); PCD (LBI Lei 13.146/2015); LGBTI+ (criminalização LGBTfobia, STF 2019).</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-QUESTSOC · Expressões</span><span>Extensivo ENARE 2026</span><span class="pg">6 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-QUESTSOC</div><div class="aula-ref">Bloco B13 · Aula 17 · Pensamento Crítico</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Outros Pensadores Críticos Contemporâneos</div>
+
+    <div class="subsecao">Reestruturação do Trabalho — Vários Autores</div>
+    <table>
+      <tr><th>Autor</th><th>Tese</th></tr>
+      <tr><td><strong>Guy Standing</strong></td><td>"O Precariado" (2011). Nova classe social: precariado — trabalhadores sem segurança, sem identidade ocupacional estável. Risco: politização à direita (Trump, Bolsonaro) ou à esquerda.</td></tr>
+      <tr><td><strong>Ricardo Antunes</strong></td><td>"Adeus ao Trabalho?" (1995); "Os Sentidos do Trabalho" (1999); "O Privilégio da Servidão" (2018). "Classe-que-vive-do-trabalho". Crítica à tese do "fim do trabalho".</td></tr>
+      <tr><td><strong>Zygmunt Bauman</strong></td><td>"Modernidade Líquida" (2000); "Vidas Desperdiçadas" (2004). Conceito de "vidas descartáveis" — humanos como resíduo do capitalismo.</td></tr>
+      <tr><td><strong>David Harvey</strong></td><td>"Condição Pós-moderna" (1989); "O Novo Imperialismo" (2003). Geógrafo marxista. "Acumulação por espoliação" — privatização, financeirização.</td></tr>
+      <tr><td><strong>Naomi Klein</strong></td><td>"A Doutrina do Choque" (2007). "Capitalismo de desastre" — crises usadas para impor políticas neoliberais.</td></tr>
+      <tr><td><strong>István Mészáros</strong></td><td>"Para Além do Capital" (1995). Crise estrutural do capital. Influencia o SS brasileiro.</td></tr>
+      <tr><td><strong>Achille Mbembe</strong></td><td>"Necropolítica" (2003). Poder soberano define quem deve viver e quem deve morrer. Aplicada a populações racializadas, prisões, fronteiras.</td></tr>
+      <tr><td><strong>Wendy Brown</strong></td><td>"Nas Ruínas do Neoliberalismo" (2019). Neoliberalismo erode democracia; ascensão do autoritarismo.</td></tr>
+    </table>
+
+    <div class="subsecao">Decolonialidade — Pensadores Latino-Americanos</div>
+    <table>
+      <tr><th>Autor</th><th>Tese</th></tr>
+      <tr><td><strong>Aníbal Quijano</strong></td><td>"Colonialidade do Poder" (2000). Modernidade indissociável da colonialidade. Raça como invenção colonial.</td></tr>
+      <tr><td><strong>Walter Mignolo</strong></td><td>"A Idea da América Latina" (2007). Desobediência epistêmica. Pensamento fronteiriço.</td></tr>
+      <tr><td><strong>Catherine Walsh</strong></td><td>Pedagogia decolonial. Articula educação e descolonização.</td></tr>
+      <tr><td><strong>María Lugones</strong></td><td>"Colonialidade do gênero" (2008). Aplicação do conceito de Quijano ao gênero.</td></tr>
+      <tr><td><strong>Boaventura de Sousa Santos</strong></td><td>"Pela Mão de Alice" (1995); "Epistemologias do Sul" (2010). Crítica ao colonialismo epistemológico. Hermenêutica diatópica.</td></tr>
+      <tr><td><strong>Eduardo Viveiros de Castro</strong></td><td>Antropologia perspectivista; pensamento indígena</td></tr>
+      <tr><td><strong>Ailton Krenak</strong></td><td>"Ideias para Adiar o Fim do Mundo" (2019). Pensamento indígena brasileiro contemporâneo.</td></tr>
+    </table>
+
+    <div class="subsecao">Crise Estrutural do Capital — Mészáros</div>
+    <p>István Mészáros (1930-2017) é figura central na esquerda contemporânea, com forte recepção no SS brasileiro:</p>
+    <ul class="lista">
+      <li>Sistema do capital em crise estrutural desde os anos 1970</li>
+      <li>Crise não é "ciclo" passageiro — é colapso do modo de produção</li>
+      <li>Estratégias de adaptação: financeirização, militarização, destruição ambiental</li>
+      <li>Sustentabilidade do sistema = insustentabilidade da vida</li>
+      <li>Necessidade de "ofensiva socialista"</li>
+      <li>Articula com Marx ortodoxo e Lukács</li>
+      <li>Sua obra "Para Além do Capital" influencia gerações de AS brasileiros</li>
+    </ul>
+
+    <div class="subsecao">Contrarreforma do Estado — Behring</div>
+    <p><strong>Elaine Rossetti Behring</strong>, em "<em>Brasil em Contra-Reforma</em>" (2003):</p>
+    <ul class="lista">
+      <li>Reforma do Estado dos anos 1990 (Plano Bresser-Pereira) é "contrarreforma"</li>
+      <li>Privatizações, desestatização, terceirização</li>
+      <li>Ataque aos direitos sociais conquistados em 1988</li>
+      <li>OS, OSCIP, OSS — entidades privadas com lógica empresarial</li>
+      <li>"Terceira via" (Anthony Giddens) — adesão do PT à agenda neoliberal moderada</li>
+      <li>EC 95/2016 — pico da contrarreforma</li>
+    </ul>
+
+    <div class="subsecao">Financeirização</div>
+    <ul class="lista">
+      <li>"Mundialização do capital" (François Chesnais)</li>
+      <li>Dominância do capital financeiro sobre o produtivo</li>
+      <li>Crise 2008: bolha imobiliária, derivativos, especulação</li>
+      <li>"Capitalismo de plataforma" — também é financeirizado</li>
+      <li>Brasil: financeirização das políticas sociais (FUNDEB, FUNDEC, financiamentos)</li>
+      <li>Endividamento das famílias trabalhadoras como nova questão social</li>
+    </ul>
+
+    <div class="subsecao">Crise Sanitária — COVID-19 (2020-2023)</div>
+    <ul class="lista">
+      <li>~700 mil mortes no Brasil (DATASUS)</li>
+      <li>Pessoas negras: maior mortalidade; "raça-classe" como determinantes</li>
+      <li>Negacionismo governamental e atraso na vacinação (Bolsonaro)</li>
+      <li>Auxílio Emergencial — 67 milhões beneficiados; questão social ampliada</li>
+      <li>"Pandemia da desigualdade" — pesquisas de PSR, fome, desemprego</li>
+      <li>Educação a distância improvisada — aprofundou desigualdades educacionais</li>
+      <li>Saúde mental — surto de ansiedade, depressão, luto</li>
+      <li>AS atuou na linha de frente — exposição ao vírus, sobrecarga</li>
+    </ul>
+
+    <div class="subsecao">Pós-2022 — Reconstrução em Curso</div>
+    <ul class="lista">
+      <li>Governo Lula 3 (a partir de janeiro 2023)</li>
+      <li>Bolsa Família retomado (~21 milhões de famílias)</li>
+      <li>Plano Brasil Sem Fome 2030</li>
+      <li>Ruas Visíveis (PSR)</li>
+      <li>Reaplicação de políticas afirmativas</li>
+      <li>Reativação dos Conselhos e Conferências</li>
+      <li>Retorno ao Mercosul, BRICS, ONU</li>
+      <li>Crítica do CFESS: ritmo lento; pacto sem-rumo com agro/indústria; sub-financiamento permanece</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> autores contemporâneos influentes — Antunes (plataformização), Almeida (racismo), Saffioti (patriarcado), Bauman (vidas descartáveis), Harvey (acumulação por espoliação), Mbembe (necropolítica), Standing (precariado), Quijano (colonialidade), Mészáros (crise estrutural), Behring (contrarreforma). Pensamento crítico decolonial em ascensão. COVID-19 como crise múltipla.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-QUESTSOC · Pensamento</span><span>Extensivo ENARE 2026</span><span class="pg">7 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-QUESTSOC</div><div class="aula-ref">Bloco B13 · Aula 17 · Questões ENARE</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 01</span><span class="fonte">Questão Social · NC: Compreensão</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Segundo José Paulo Netto, o conceito de "questão social" designa o conjunto das expressões das desigualdades da sociedade capitalista madura, que têm uma raiz comum. Essa raiz comum é:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>A degeneração moral dos indivíduos atingidos pela pobreza, exigindo intervenção pastoral e moralizante.</span></li>
+        <li class="correta"><span class="letra">B</span><span>A contradição entre a produção social, cada vez mais coletiva, e a apropriação privada dos seus frutos, monopolizada por uma parte da sociedade — contradição constitutiva do capitalismo monopolista (séc. XX em diante); a questão social não é disfunção, é determinação estrutural do modo de produção.</span></li>
+        <li><span class="letra">C</span><span>O fracasso individual dos pobres em se inserir no mercado de trabalho meritocrático.</span></li>
+        <li><span class="letra">D</span><span>A insuficiência das políticas sociais focalizadas para atender demandas individuais não-econômicas.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> definição clássica de Netto. Contradição entre socialização da produção (forças produtivas) e apropriação privada (relações de propriedade). Capitalismo monopolista = capitalismo do séc. XX em diante. Questão social = estrutural, não pontual.</p>
+      <p><strong>Por que as outras erram:</strong> A — moralização da pobreza é exatamente o que se critica · C — meritocracia é mito · D — focalização não é a raiz.</p>
+    </div>
+
+    <div class="questao-header"><span>Questão 02</span><span class="fonte">Racismo · NC: Análise</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Silvio Almeida, em "Racismo Estrutural" (2018), diferencia três concepções de racismo. Sobre essa diferenciação, é CORRETO afirmar:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>As três concepções (individualista, institucional, estrutural) são sinônimas e podem ser usadas intercambiavelmente.</span></li>
+        <li class="correta"><span class="letra">B</span><span>A concepção individualista reduz o racismo a comportamento de pessoas isoladas; a concepção institucional reconhece que as instituições agem racistamente, mas as trata como abstrações; a concepção estrutural compreende o racismo como elemento estruturador das sociedades modernas, articulado ao modo de produção capitalista — reproduz-se independentemente da intenção dos indivíduos e do perfil dos gestores institucionais.</span></li>
+        <li><span class="letra">C</span><span>Apenas a concepção individualista é cientificamente válida; as demais são abordagens ideológicas.</span></li>
+        <li><span class="letra">D</span><span>O racismo brasileiro é mito; o Brasil é, conforme Gilberto Freyre, uma "democracia racial" inquestionável.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> síntese das três concepções de Almeida. Estrutural = mais radical, articula com capitalismo, reproduz-se sem racistas individuais. Combate exige ação política coletiva, não apenas mudança individual.</p>
+      <p><strong>Por que as outras erram:</strong> A — não são sinônimas (são níveis distintos) · C — concepção estrutural é a mais sofisticada · D — mito da democracia racial criticado por Florestan, Hasenbalg, Movimento Negro.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-QUESTSOC · Questão Social</span><span>Extensivo ENARE 2026</span><span class="pg">8 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-QUESTSOC</div><div class="aula-ref">Bloco B13 · Aula 17 · Questões ENARE</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 03</span><span class="fonte">Patriarcado · NC: Análise</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Heleieth Saffioti, em "O Poder do Macho" (1987), articula patriarcado, capitalismo e racismo como um único sistema de dominação. A tese saffiotiana caracteriza-se por:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Reduzir o patriarcado a expressão direta do capitalismo, sem autonomia analítica.</span></li>
+        <li class="correta"><span class="letra">B</span><span>Articular "patriarcado-capitalismo-racismo" como um "nó" indissociável — sistemas que se reforçam mutuamente; reconhecer que o patriarcado é anterior ao capitalismo (Engels, 1884) e foi modificado/articulado por ele; identificar a divisão sexual do trabalho como mecanismo central (trabalho produtivo masculino assalariado × trabalho reprodutivo feminino invisibilizado); convergir com a interseccionalidade (Crenshaw, 1989) anos antes.</span></li>
+        <li><span class="letra">C</span><span>Afirmar que a luta de gênero é uma distração da luta de classes, devendo ser subordinada.</span></li>
+        <li><span class="letra">D</span><span>Restringir o feminismo a pautas individuais sem articulação com transformações sociais amplas.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> síntese da tese saffiotiana. "Nó" indissociável dos três sistemas. Crítica ao marxismo ortodoxo que reduzia o patriarcado a "secundário". Divisão sexual do trabalho como mecanismo. Convergência com interseccionalidade (que Saffioti antecipou nos anos 70-80).</p>
+      <p><strong>Por que as outras erram:</strong> A — patriarcado NÃO se reduz ao capitalismo · C — gênero e classe são inseparáveis · D — feminismo é projeto coletivo e estrutural.</p>
+    </div>
+
+    <div class="questao-header"><span>Questão 04</span><span class="fonte">Plataformização · NC: Aplicação</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Ricardo Antunes, em "O Privilégio da Servidão" (2018), analisa o trabalho contemporâneo na "era digital". Sua caracterização do trabalho em plataformas (uberização, gig economy) destaca:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Que a plataformização representa libertação do trabalhador das relações de assalariamento, com autonomia plena.</span></li>
+        <li class="correta"><span class="letra">B</span><span>Que o trabalho em plataformas digitais é exemplo da "nova morfologia do trabalho" — mediado por aplicativo, com o algoritmo como "patrão" invisível, formal autonomia jurídica mas material subordinação técnica, ausência de direitos trabalhistas, individualização do risco, datificação contínua e autoexploração; integra a "classe-que-vive-do-trabalho" em sua expressão contemporânea — não é "fim do trabalho", é reconfiguração precarizada.</span></li>
+        <li><span class="letra">C</span><span>Que a plataformização atinge apenas trabalhadores qualificados de TI, sem relação com a maioria dos trabalhadores.</span></li>
+        <li><span class="letra">D</span><span>Que a regulamentação trabalhista é desnecessária, dado que os "parceiros" são autônomos por escolha.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> caracterização de Antunes. "Privilégio da servidão" = paradoxo da gratidão pela exploração. "Classe-que-vive-do-trabalho" ampliada. ~4 milhões no Brasil. Tema emergente da FGV (estudo de banca 2025). CFESS defende regulamentação trabalhista.</p>
+      <p><strong>Por que as outras erram:</strong> A — não é libertação · C — atinge motoristas, entregadores, faxineiros — maioria · D — autonomia é formal, subordinação é material.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-QUESTSOC · Questão Social</span><span>Extensivo ENARE 2026</span><span class="pg">9 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-QUESTSOC</div><div class="aula-ref">Bloco B13 · Aula 17 · Síntese</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Síntese — Questão Social Contemporânea</div>
+
+    <p>Articula com Aula 03 (capitalismo contemporâneo, EC 95), Aula 04 (teoria social — Marx), Aula 05 (formação social brasileira) e Aulas 14-16 (PEP, formação, trabalho profissional). Conecta-se à Aula 18 (Família, Gênero, Populações).</p>
+
+    <div class="sintese-grid">
+      <div class="sintese-item"><div class="si-label">Conceito (Netto)</div><p>Questão social = expressões das desigualdades do capitalismo monopolista. Raiz: contradição socialização da produção × apropriação privada. NÃO é "nova" — há novas EXPRESSÕES da mesma questão.</p></div>
+      <div class="sintese-item"><div class="si-label">Plataformização (Antunes)</div><p>"O Privilégio da Servidão" (2018). Trabalho mediado por aplicativo; algoritmo como patrão; "autonomia" formal × subordinação material; sem direitos. ~4 milhões no Brasil. Tema emergente FGV.</p></div>
+      <div class="sintese-item"><div class="si-label">Racismo Estrutural (Almeida)</div><p>3 concepções: individualista, institucional, estrutural. Racismo articulado com capitalismo. Reproduz-se sem racistas individuais. Combate: ação política coletiva. Políticas afirmativas (Lei 12.711/2012, 12.990/2014).</p></div>
+      <div class="sintese-item"><div class="si-label">Patriarcado (Saffioti)</div><p>"Nó" patriarcado-capitalismo-racismo. Divisão sexual do trabalho. Lei Maria da Penha (11.340/2006), Lei do Feminicídio (13.104/2015). Interseccionalidade (Crenshaw). Autoras: Saffioti, Gonzalez, Carneiro, Marielle.</p></div>
+      <div class="sintese-item"><div class="si-label">Outras Expressões</div><p>Encarceramento (67% negros); PSR (250 mil); refugiados; crise climática (RS 2024); fome (Mapa da Fome 2022); trabalho escravo; LGBTfobia (STF 2019); LBI (13.146/2015). COVID-19 como crise múltipla.</p></div>
+      <div class="sintese-item"><div class="si-label">Próxima Aula</div><p><strong>Aula 18 — SS-FAMILIA: Família, Gênero e Populações.</strong> Conceitos de família; políticas familiares; LGBTI+; PCD; idoso; migrantes; pluralidade de arranjos familiares.</p></div>
+    </div>
+
+    <div class="alerta" style="margin-top:5px;">
+      <p><strong>Regra de ouro — Questão Social no ENARE:</strong> Netto (capitalismo monopolista) + Iamamoto (objeto do SS) + Antunes (classe-que-vive-do-trabalho, plataformização) + Almeida (racismo estrutural) + Saffioti (patriarcado-capitalismo-racismo) + Mbembe (necropolítica) + Bauman (vidas descartáveis). Brasil: questão social entrelaçada com racismo, patriarcado e formação colonial-escravista.</p>
+    </div>
+
+    <div class="alerta" style="margin-top:5px;background:rgba(31,92,35,0.1);border-left-color:var(--verde);">
+      <p><strong>Conexão crítica:</strong> a questão social é o objeto do trabalho profissional do AS (Iamamoto), o "porquê" da existência da profissão. Compreender suas determinações e expressões contemporâneas é compreender as demandas concretas que chegam aos serviços. Sem essa compreensão, o trabalho profissional cai no tecnicismo, no moralismo, na psicologização — todos contrários ao PEP.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-QUESTSOC · Questão Social</span><span>Extensivo ENARE 2026</span><span class="pg">10 / 10</span></div>
+</div>
+
+</body>
+</html>
