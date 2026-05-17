@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Serviço Social — Bloco B13 Aula 12 | Extensivo ENARE 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap');
+  :root { --creme: #F6F4ED; --verde: #1F5C23; --amarelo: #C6D834; --escuro: #0C2B0E; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #d0d0d0; font-family: 'Bricolage Grotesque', sans-serif; }
+  .page { width: 210mm; height: 297mm; background: var(--creme); margin: 0 auto 12px; position: relative; overflow: hidden; page-break-after: always; }
+  .header { background: var(--verde); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .header-logo { display: flex; align-items: center; gap: 8px; }
+  .header-logo svg { width: 32px; height: 32px; }
+  .header-brand { display: flex; flex-direction: column; line-height: 1; }
+  .header-brand .marca { font-family: 'Playfair Display', serif; font-style: italic; color: #fff; font-size: 13px; letter-spacing: 0.5px; }
+  .header-brand .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 7px; letter-spacing: 1.5px; text-transform: uppercase; }
+  .header-info { text-align: right; }
+  .header-info .disciplina { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
+  .header-info .aula-ref { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.7); font-size: 8px; letter-spacing: 0.5px; }
+  .footer { position: absolute; bottom: 0; left: 0; right: 0; background: var(--verde); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .footer span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.6); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .footer .pg { color: var(--amarelo); font-weight: 400; }
+  .body { padding: 14px 18px 30px; height: calc(297mm - 52px - 22px); overflow: hidden; }
+  .capa-page { background: var(--verde); }
+  .capa-header { background: var(--creme); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .capa-header .marca { font-family: 'Playfair Display', serif; font-style: italic; color: var(--verde); font-size: 14px; }
+  .capa-header .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--verde); font-size: 7.5px; letter-spacing: 2px; text-transform: uppercase; }
+  .capa-body { padding: 28px 24px 0; display: flex; flex-direction: column; height: calc(297mm - 52px - 22px); }
+  .capa-eyebrow { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; }
+  .capa-titulo { font-family: 'Barlow Condensed', sans-serif; color: #fff; font-size: 50px; line-height: 0.95; text-transform: uppercase; letter-spacing: -0.5px; margin-bottom: 6px; }
+  .capa-titulo span { color: var(--amarelo); }
+  .capa-subtitulo { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; color: rgba(255,255,255,0.65); font-size: 12px; letter-spacing: 0.3px; margin-bottom: 22px; line-height: 1.5; }
+  .capa-badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+  .capa-badge { background: rgba(198,216,52,0.15); border: 1px solid var(--amarelo); color: var(--amarelo); font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 8px; border-radius: 2px; }
+  .capa-divider { width: 40px; height: 3px; background: var(--amarelo); margin-bottom: 20px; }
+  .capa-topicos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .capa-topico { display: flex; align-items: flex-start; gap: 7px; }
+  .capa-topico-num { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 18px; line-height: 1; min-width: 18px; }
+  .capa-topico-txt { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 400; color: rgba(255,255,255,0.8); font-size: 9.5px; line-height: 1.4; }
+  .capa-footer-strip { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.25); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .capa-footer-strip span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.45); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .secao-titulo { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 18px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid var(--amarelo); padding-bottom: 3px; margin-bottom: 9px; line-height: 1; }
+  .subsecao { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.5px; margin: 7px 0 3px; }
+  p { font-size: 9px; line-height: 1.55; color: #1a1a1a; margin-bottom: 4px; font-weight: 400; }
+  .destaque { background: var(--amarelo); color: var(--escuro); font-weight: 600; padding: 1px 4px; border-radius: 2px; font-size: 8.5px; }
+  .alerta { background: rgba(198,216,52,0.18); border-left: 3px solid var(--amarelo); padding: 5px 8px; margin: 5px 0; border-radius: 0 3px 3px 0; }
+  .alerta p { margin: 0; font-size: 8.5px; }
+  .alerta strong { color: var(--verde); }
+  table { width: 100%; border-collapse: collapse; margin: 5px 0; font-size: 8px; }
+  th { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; padding: 4px 6px; text-align: left; }
+  td { padding: 3px 6px; border-bottom: 1px solid rgba(31,92,35,0.12); vertical-align: top; line-height: 1.4; color: #1a1a1a; }
+  tr:nth-child(even) td { background: rgba(31,92,35,0.04); }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 5px 0; }
+  .card { background: rgba(31,92,35,0.06); border: 1px solid rgba(31,92,35,0.15); border-radius: 4px; padding: 7px 8px; }
+  .card-title { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 11px; text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 3px; }
+  .card p { font-size: 8px; line-height: 1.5; }
+  .questao-header { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; padding: 4px 10px; border-radius: 3px 3px 0 0; display: flex; justify-content: space-between; align-items: center; }
+  .questao-header .fonte { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; color: var(--amarelo); letter-spacing: 0.5px; }
+  .questao-body { border: 1px solid rgba(31,92,35,0.2); border-top: none; border-radius: 0 0 3px 3px; padding: 7px 10px; margin-bottom: 7px; }
+  .questao-enunciado { font-size: 8.5px; line-height: 1.55; color: #111; margin-bottom: 5px; font-weight: 500; }
+  .alternativas { list-style: none; }
+  .alternativas li { font-size: 8px; line-height: 1.5; padding: 2px 0; color: #222; display: flex; gap: 5px; }
+  .alternativas li .letra { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: var(--verde); font-size: 9px; min-width: 10px; }
+  .alternativas li.correta .letra { color: var(--amarelo); }
+  .alternativas li.correta { background: rgba(198,216,52,0.15); border-left: 2px solid var(--amarelo); padding-left: 4px; }
+  .gabarito-box { background: var(--verde); border-radius: 4px; padding: 8px 12px; margin: 6px 0; }
+  .gabarito-box .gab-title { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+  .gabarito-box p { color: rgba(255,255,255,0.9); font-size: 8px; line-height: 1.55; }
+  .gabarito-box strong { color: var(--amarelo); }
+  .sintese-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-top: 6px; }
+  .sintese-item { background: rgba(31,92,35,0.07); border-left: 3px solid var(--verde); padding: 5px 7px; border-radius: 0 3px 3px 0; }
+  .sintese-item .si-label { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px; }
+  .sintese-item p { font-size: 7.5px; line-height: 1.5; }
+  ul.lista { padding-left: 14px; margin: 3px 0; }
+  ul.lista li { font-size: 8.5px; line-height: 1.55; color: #1a1a1a; margin-bottom: 1px; }
+  @media print { body { background: none; } .page { margin: 0; box-shadow: none; } }
+</style>
+</head>
+<body>
+
+<div class="page capa-page">
+  <div class="capa-header">
+    <div style="display:flex;align-items:center;gap:8px;"><svg width="34" height="34" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#1F5C23"/></svg><div><div class="marca">Elite Treinamentos</div><div class="tagline">Extensivo ENARE 2026</div></div></div>
+    <div style="text-align:right;"><div style="font-family:'Barlow Condensed',sans-serif;color:var(--verde);font-size:11px;letter-spacing:1px;text-transform:uppercase;">Bloco B13 · Aula 12</div><div style="font-family:'Space Grotesk',sans-serif;font-weight:300;color:#888;font-size:7.5px;letter-spacing:0.5px;">Serviço Social</div></div>
+  </div>
+  <div class="capa-body">
+    <div class="capa-eyebrow">Bloco B13 · SS-SAUDE · Aula 12 de 21</div>
+    <div class="capa-titulo">SUS <span>na Prática<br>&amp; o SS<br>na Saúde</span></div>
+    <div class="capa-subtitulo">APS, Redes de Atenção, ESF/eMulti, PNH<br>e Parâmetros CFESS (2010) para a atuação do AS</div>
+    <div class="capa-badge-row">
+      <div class="capa-badge">SS-SAUDE ★★★★★</div>
+      <div class="capa-badge">Parâmetros CFESS 2010</div>
+      <div class="capa-badge">APS · RAS · ESF</div>
+      <div class="capa-badge">PNH · PNAB</div>
+    </div>
+    <div class="capa-divider"></div>
+    <div class="capa-topicos">
+      <div class="capa-topico"><div class="capa-topico-num">01</div><div class="capa-topico-txt">Modelos assistenciais (flexneriano × vigilância)</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">02</div><div class="capa-topico-txt">APS, PNAB e Estratégia Saúde da Família</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">03</div><div class="capa-topico-txt">Redes de Atenção à Saúde (RAS)</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">04</div><div class="capa-topico-txt">Política Nacional de Humanização (PNH)</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">05</div><div class="capa-topico-txt">Parâmetros CFESS para o SS na Saúde (2010)</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">06</div><div class="capa-topico-txt">Equipe multiprofissional × interprofissional</div></div>
+    </div>
+  </div>
+  <div class="capa-footer-strip"><span>Extensivo ENARE 2026</span><span>Elite Treinamentos em Saúde</span><span>Página 1 de 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-SAUDE</div><div class="aula-ref">Bloco B13 · Aula 12 · Modelos Assistenciais</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Modelos Assistenciais em Saúde</div>
+
+    <p>Os <strong>modelos assistenciais</strong> são "combinações tecnológicas estruturadas para a resolução de problemas e atendimento das necessidades de saúde, individuais e coletivas" (Paim). Não existe um único modelo no SUS — coexistem o modelo médico-hegemônico (curativo, hospitalocêntrico) e modelos alternativos (vigilância, APS, integralidade). A FGV cobra a tensão entre eles e a defesa do modelo de vigilância da saúde como projeto contra-hegemônico.</p>
+
+    <div class="subsecao">Modelos Históricos no Brasil</div>
+    <table>
+      <tr><th>Período</th><th>Modelo</th><th>Características</th></tr>
+      <tr><td>1900-1920</td><td>Sanitarismo Campanhista</td><td>Oswaldo Cruz, Carlos Chagas; campanhas verticais; ações pontuais sobre doenças (febre amarela, varíola); militarização</td></tr>
+      <tr><td>1923-1966</td><td>Médico-Previdenciário (CAPs/IAPs)</td><td>Lei Elói Chaves 1923; assistência médica para trabalhadores formais; lógica contributiva; sem universalidade</td></tr>
+      <tr><td>1966-1988</td><td>INAMPS (1966-1990)</td><td>Unificação dos IAPs; assistência médica hospitalar para contribuintes; ampliação da rede privada conveniada; modelo "flexneriano"</td></tr>
+      <tr><td>1988-presente</td><td>SUS — modelos em disputa</td><td>Conceito ampliado; tensão entre vigilância da saúde e modelo médico-hospitalar; APS/ESF como reorganizador</td></tr>
+    </table>
+
+    <div class="subsecao">Modelo Flexneriano (Médico-Hegemônico)</div>
+    <p>Inspirado no <strong>Relatório Flexner (1910)</strong> sobre formação médica nos EUA. Define o modelo dominante no séc. XX:</p>
+    <ul class="lista">
+      <li>Hospitalocêntrico — hospital como locus principal</li>
+      <li>Curativista — foco na doença, não na saúde</li>
+      <li>Biologicista — separação corpo/mente, ignora determinantes sociais</li>
+      <li>Especialização excessiva — fragmentação do cuidado</li>
+      <li>Mecanicista — corpo como máquina</li>
+      <li>Tecnológico-dependente — equipamentos e exames</li>
+      <li>Individualizante — atende sujeitos isolados, não coletivos</li>
+      <li>Articulado ao complexo médico-industrial-financeiro</li>
+    </ul>
+
+    <div class="subsecao">Modelo de Vigilância da Saúde</div>
+    <p>Proposto pelo movimento da Saúde Coletiva (Paim, Mendes, Teixeira). Alternativa ao modelo flexneriano:</p>
+
+    <table>
+      <tr><th>Dimensão</th><th>Vigilância da Saúde</th></tr>
+      <tr><td>Sujeito da ação</td><td>Coletivo, territorial; população definida</td></tr>
+      <tr><td>Objeto</td><td>Determinantes, riscos, danos (não apenas doença)</td></tr>
+      <tr><td>Meio</td><td>Tecnologias leves, leve-duras e duras; combinação articulada</td></tr>
+      <tr><td>Formas de organização</td><td>Territorialização; intersetorialidade; integralidade; participação</td></tr>
+      <tr><td>Articulações</td><td>Vigilância epidemiológica + sanitária + ambiental + saúde do trabalhador</td></tr>
+      <tr><td>Eixos operativos</td><td>Identificação de problemas; ações estratégicas; intersetorialidade</td></tr>
+    </table>
+
+    <div class="subsecao">Modelo de Atenção em Defesa da Vida</div>
+    <p>Desenvolvido por <strong>Emerson Merhy, Túlio Franco, Gastão Wagner Campos</strong> (escola de Campinas). Articula a Saúde Coletiva com a Reforma Sanitária e a Política de Humanização:</p>
+    <ul class="lista">
+      <li><strong>Acolhimento</strong> como dispositivo de entrada</li>
+      <li><strong>Clínica ampliada</strong> — sujeito como totalidade biopsicossocial</li>
+      <li><strong>Trabalho em equipe</strong> — equipe de referência (Apoio Matricial)</li>
+      <li><strong>Vínculo e responsabilização</strong> com territórios</li>
+      <li><strong>Cogestão</strong> e protagonismo dos usuários e trabalhadores</li>
+      <li>Tipologias de tecnologia: leve (relações), leve-dura (saberes estruturados), dura (equipamentos)</li>
+    </ul>
+
+    <div class="subsecao">Outras Tipologias</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Modelo Programático</div>
+        <p>SILOS (anos 1980-90); programas por ciclos de vida ou por agravo (saúde da mulher, criança, hipertenso). Crítica: fragmenta o cuidado.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Modelo de Promoção (Lalonde)</div>
+        <p>Relatório Lalonde (1974) — campo da saúde: biologia humana, ambiente, estilo de vida, organização da atenção. Base da promoção da saúde (Ottawa 1986).</p>
+      </div>
+    </div>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> modelos coexistem no SUS. Vigilância da Saúde = projeto contra-hegemônico ao flexneriano. Tecnologias leves (relacionais) são fundamentais. APS é o operador prático da reorganização do modelo. PNH/Defesa da Vida articula clínica ampliada + acolhimento + cogestão.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-SAUDE · SUS na prática</span><span>Extensivo ENARE 2026</span><span class="pg">2 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-SAUDE</div><div class="aula-ref">Bloco B13 · Aula 12 · APS e ESF</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Atenção Primária e Estratégia Saúde da Família</div>
+
+    <p>A <strong>Atenção Primária à Saúde (APS)</strong> é a porta de entrada preferencial do SUS e o eixo reorganizador do modelo. Regulamentada pela <strong>Política Nacional de Atenção Básica (PNAB)</strong> — Portaria GM/MS nº 2.436/2017 (atualizada por Portaria de Consolidação nº 2/2017). Cobrada com altíssima frequência.</p>
+
+    <div class="subsecao">Atributos da APS (Starfield, 2002)</div>
+    <table>
+      <tr><th>Atributo</th><th>Definição</th></tr>
+      <tr><td><strong>Acesso de primeiro contato</strong></td><td>Porta de entrada do sistema; serviço utilizado a cada novo problema</td></tr>
+      <tr><td><strong>Longitudinalidade</strong></td><td>Vínculo continuado entre equipe e pessoa/família ao longo do tempo</td></tr>
+      <tr><td><strong>Integralidade</strong></td><td>Conjunto de serviços oferecidos; respostas a necessidades comuns</td></tr>
+      <tr><td><strong>Coordenação do cuidado</strong></td><td>Articulação dos diferentes serviços e ações de saúde</td></tr>
+      <tr><td>Atributos derivados: orientação familiar, comunitária e competência cultural</td><td>Considera contexto familiar, territorial e cultural</td></tr>
+    </table>
+
+    <div class="subsecao">PNAB 2017 — Pontos-Chave</div>
+    <ul class="lista">
+      <li>Atenção Básica = APS no Brasil (Ministério usa "AB" historicamente; PNAB 2017 oficializa a equivalência)</li>
+      <li>Princípios: universalidade, equidade, integralidade</li>
+      <li>Diretrizes: regionalização, hierarquização, territorialização, participação, longitudinalidade</li>
+      <li>Equipes da Atenção Básica (eAB): equipes não-ESF, mais flexíveis (carga horária)</li>
+      <li>Equipes de Saúde da Família (eSF): modelo prioritário</li>
+      <li>Cobertura mínima da UBS: ~3.500 pessoas (com até 4.500 em áreas de maior densidade)</li>
+      <li>Lista de procedimentos e ações da APS expandida</li>
+      <li>Cobrança: PNAB 2017 sofreu críticas por flexibilizar a ESF e ampliar a categoria eAB</li>
+    </ul>
+
+    <div class="subsecao">Estratégia Saúde da Família (ESF)</div>
+    <p>Criada em 1994 como <strong>Programa Saúde da Família (PSF)</strong>; converte-se em <em>Estratégia</em> em 2006. Modelo prioritário de organização da APS:</p>
+
+    <table>
+      <tr><th>Componente</th><th>Características</th></tr>
+      <tr><td>Equipe mínima eSF</td><td>1 médico, 1 enfermeiro, 1 técnico/auxiliar de enfermagem, ACS (Agentes Comunitários — número variável)</td></tr>
+      <tr><td>Equipe ampliada</td><td>+ saúde bucal (eSB — odontólogo, ASB/TSB)</td></tr>
+      <tr><td>População adscrita</td><td>~2.000 a 3.500 pessoas por equipe</td></tr>
+      <tr><td>Carga horária</td><td>40h semanais (médico podia ser 20h ou 30h pela PNAB 2017)</td></tr>
+      <tr><td>Territorialização</td><td>Equipe responsável por território definido; cadastramento das famílias</td></tr>
+      <tr><td>ACS</td><td>1 por microárea (~150 famílias / 750 pessoas); morador da comunidade</td></tr>
+      <tr><td>Visita domiciliar</td><td>Acompanhamento continuado das famílias</td></tr>
+      <tr><td>Educação em saúde</td><td>Promoção da saúde na comunidade</td></tr>
+    </table>
+
+    <div class="subsecao">Apoio Matricial e Equipes Multidisciplinares</div>
+    <p>O <strong>Apoio Matricial</strong> (Gastão Wagner Campos) é arranjo organizacional que retaguarda especializada para equipes de referência:</p>
+    <ul class="lista">
+      <li><strong>NASF (Núcleos de Apoio à Saúde da Família, 2008-2019)</strong>: criados pela Portaria 154/2008; composto por equipes multiprofissionais (psicólogo, AS, nutricionista, fisioterapeuta, educador físico etc.) que apoiavam várias eSF; descredenciados em 2019/2020</li>
+      <li><strong>eMulti (Equipes Multiprofissionais, 2023)</strong>: criadas pela Portaria GM/MS nº 635/2023 — substituem o NASF; equipes multiprofissionais ampliadas vinculadas a até 12 eSF (modalidade ampliada) ou 6 (complementar) ou 3 (estratégica)</li>
+      <li>Categorias incluem: Serviço Social, Psicologia, Nutrição, Fisioterapia, Terapia Ocupacional, Fonoaudiologia, Educação Física, Farmácia, Veterinária, Saúde Coletiva, Médico em saúde mental, Enfermeiro em saúde mental, Sanitarista</li>
+      <li>AS na eMulti: matriciamento, articulação intersetorial, fortalecimento da participação social</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Atualização importante:</strong> NASF foi descredenciado em 2019/2020. <strong>eMulti</strong> (Portaria 635/2023) é o atual modelo de equipes multiprofissionais na APS. Possível cobrança em ENARE 2026.</p>
+    </div>
+
+    <div class="subsecao">Programa Mais Médicos / Programa Médicos pelo Brasil</div>
+    <ul class="lista">
+      <li><strong>Mais Médicos</strong> (Lei 12.871/2013): criado em 2013; provimento emergencial; reorganização da formação médica</li>
+      <li>Médicos brasileiros, intercambistas e cubanos (parceria OPAS/Cuba até 2018)</li>
+      <li><strong>Médicos pelo Brasil</strong> (Lei 13.958/2019): substitui Mais Médicos no governo Bolsonaro</li>
+      <li>2023: Mais Médicos relançado pelo governo Lula 3</li>
+      <li>Crítica: necessidade de política mais estrutural de provimento e formação</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> APS = porta de entrada; 4 atributos essenciais Starfield. ESF prioritária (1994/2006). eAB alternativa flexibilizada (PNAB 2017). ACS: 1 por microárea, morador. Apoio Matricial = Gastão Wagner. NASF descredenciado; eMulti vigente (2023).</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-SAUDE · SUS na prática</span><span>Extensivo ENARE 2026</span><span class="pg">3 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-SAUDE</div><div class="aula-ref">Bloco B13 · Aula 12 · Redes de Atenção</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Redes de Atenção à Saúde (RAS)</div>
+
+    <p>As <strong>Redes de Atenção à Saúde (RAS)</strong> são "arranjos organizativos de ações e serviços de saúde, de diferentes densidades tecnológicas que, integradas por meio de sistemas técnico, logístico e de gestão, buscam garantir a integralidade do cuidado" (Portaria GM/MS nº 4.279/2010; Decreto 7.508/2011).</p>
+
+    <div class="subsecao">Componentes das RAS (Eugênio Vilaça Mendes)</div>
+    <table>
+      <tr><th>Componente</th><th>Função</th></tr>
+      <tr><td><strong>Centro de Comunicação</strong></td><td>Atenção Primária — coordena o cuidado, responsabiliza-se pela população</td></tr>
+      <tr><td><strong>Pontos de Atenção Secundária e Terciária</strong></td><td>Hospitais, ambulatórios especializados, urgências, etc.</td></tr>
+      <tr><td><strong>Sistemas de Apoio</strong></td><td>Apoio diagnóstico e terapêutico, assistência farmacêutica, sistemas de informação</td></tr>
+      <tr><td><strong>Sistemas Logísticos</strong></td><td>Cartão SUS, prontuário eletrônico, regulação, transporte sanitário</td></tr>
+      <tr><td><strong>Sistema de Governança</strong></td><td>COAP, CIB, CIR, gestão regional cooperativa</td></tr>
+    </table>
+
+    <div class="subsecao">Redes Temáticas Prioritárias</div>
+    <table>
+      <tr><th>Rede</th><th>Foco</th><th>Marco</th></tr>
+      <tr><td>Rede Cegonha</td><td>Saúde materna e infantil</td><td>Portaria 1.459/2011</td></tr>
+      <tr><td>RUE — Rede de Urgência e Emergência</td><td>SAMU 192, UPA, prontos-socorros</td><td>Portaria 1.600/2011</td></tr>
+      <tr><td>RAPS — Rede de Atenção Psicossocial</td><td>Saúde mental, álcool e drogas</td><td>Portaria 3.088/2011</td></tr>
+      <tr><td>Rede Cuidado à Pessoa com Deficiência</td><td>PCDs — Viver sem Limite</td><td>Portaria 793/2012</td></tr>
+      <tr><td>Rede de Cuidados Crônicos</td><td>DCNT</td><td>Portaria 252/2013</td></tr>
+    </table>
+
+    <div class="subsecao">Decreto 7.508/2011 e Regiões de Saúde</div>
+    <p>Regulamenta a Lei 8.080 vinte e um anos depois. Pontos-chave:</p>
+    <ul class="lista">
+      <li><strong>Regiões de Saúde</strong>: espaço geográfico contínuo, constituído por agrupamentos de municípios; deve oferecer (no mínimo) APS + urgência/emergência + atenção psicossocial + ambulatorial especializada + hospitalar + vigilância</li>
+      <li><strong>COAP — Contrato Organizativo da Ação Pública</strong>: acordo de colaboração entre os entes (poucos foram efetivados na prática)</li>
+      <li><strong>RENASES</strong>: Relação Nacional de Ações e Serviços de Saúde</li>
+      <li><strong>RENAME</strong>: Relação Nacional de Medicamentos Essenciais</li>
+      <li><strong>CIR — Comissão Intergestores Regional</strong>; CIB — Bipartite (estadual); CIT — Tripartite (federal)</li>
+      <li><strong>Mapa da Saúde</strong>: instrumento de planejamento regional</li>
+    </ul>
+
+    <div class="subsecao">Pacto pela Saúde (2006) → Pacto da Gestão</div>
+    <p>O <strong>Pacto pela Saúde</strong> (Portaria 399/2006) reorganizou as relações federativas após anos de NOBs e NOAS. Componentes:</p>
+    <ul class="lista">
+      <li><strong>Pacto pela Vida</strong>: prioridades pactuadas (saúde do idoso, câncer, mortalidade infantil/materna, dengue, hanseníase, tuberculose, malária, hipertensão, diabetes, promoção e atenção básica)</li>
+      <li><strong>Pacto em Defesa do SUS</strong>: mobilização social pelo SUS; financiamento federal</li>
+      <li><strong>Pacto de Gestão</strong>: descentralização; regionalização; planejamento; PPI; regulação; participação; gestão do trabalho</li>
+    </ul>
+
+    <div class="subsecao">Financiamento do SUS</div>
+    <p>Princípios (Lei 8.142, art. 4º): cofinanciamento tripartite; fundos de saúde; aplicação regular; Plano Municipal/Estadual de Saúde:</p>
+    <ul class="lista">
+      <li>União: pelo menos 15% da Receita Corrente Líquida (LC 141/2012)</li>
+      <li>Estados: 12% das receitas próprias (mesmo dispositivo)</li>
+      <li>Municípios: 15% das receitas próprias</li>
+      <li><strong>EC 95/2016</strong>: congela o piso federal por 20 anos (até 2036) — apenas correção pela inflação anual; perde-se a vinculação à RCL; contrarreforma do financiamento</li>
+      <li>Aplicação por Blocos de Financiamento (Portaria 3.992/2017) — 2 blocos (custeio e investimento), reduzindo de 6 para 2</li>
+      <li>Fundo Nacional, Estadual, Municipal de Saúde</li>
+      <li>Plano de Saúde (4 anos) → Programação Anual (PAS) → Relatório Anual de Gestão (RAG)</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> RAS = arranjos integrados; APS como centro de comunicação. Decreto 7.508/2011 introduziu Regiões de Saúde, COAP, RENASES, RENAME. Redes temáticas (Cegonha, RUE, RAPS, etc.). EC 95/2016 = ponto-chave da crise atual. Cofinanciamento tripartite: 15% União/RCL, 12% Estados, 15% Municípios.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-SAUDE · SUS na prática</span><span>Extensivo ENARE 2026</span><span class="pg">4 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-SAUDE</div><div class="aula-ref">Bloco B13 · Aula 12 · PNH</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Política Nacional de Humanização (PNH — HumanizaSUS)</div>
+
+    <p>A <strong>Política Nacional de Humanização (PNH)</strong>, conhecida como <em>HumanizaSUS</em>, foi instituída em 2003 pelo Ministério da Saúde. Não é programa, é <strong>política transversal</strong> ao SUS. Articula a Reforma Sanitária com a Reforma Psiquiátrica e a Educação Permanente. Cobrada em provas de SS-SAUDE.</p>
+
+    <div class="subsecao">Princípios da PNH</div>
+    <ul class="lista">
+      <li><strong>Transversalidade</strong>: atravessa toda a rede SUS; não é especialidade</li>
+      <li><strong>Indissociabilidade</strong> entre atenção e gestão</li>
+      <li><strong>Protagonismo</strong>, corresponsabilidade e autonomia dos sujeitos e dos coletivos</li>
+      <li>Inseparabilidade entre clínica e política — humanizar é também politizar</li>
+    </ul>
+
+    <div class="subsecao">Dispositivos da PNH</div>
+    <table>
+      <tr><th>Dispositivo</th><th>Função</th></tr>
+      <tr><td><strong>Acolhimento</strong></td><td>Postura ética de escuta qualificada; recepção de todas as demandas (não só agendamento); avaliação de risco</td></tr>
+      <tr><td><strong>Clínica Ampliada</strong></td><td>Compreensão do sujeito como totalidade biopsicossocial; trabalho interdisciplinar; abordagem singular</td></tr>
+      <tr><td><strong>Equipes de Referência e Apoio Matricial</strong></td><td>Equipe de referência responsável; matricial dá suporte especializado</td></tr>
+      <tr><td><strong>Gestão Participativa e Cogestão</strong></td><td>Colegiados, conselhos gestores, espaços coletivos de decisão</td></tr>
+      <tr><td><strong>Acolhimento com Classificação de Risco</strong></td><td>Em urgências — protocolo Manchester; priorização clínica</td></tr>
+      <tr><td><strong>Programa de Formação em Saúde do Trabalhador</strong></td><td>PFST — cuidado aos trabalhadores</td></tr>
+      <tr><td><strong>Projeto Terapêutico Singular (PTS)</strong></td><td>Plano construído coletivamente para cada usuário/família; eixo do trabalho em saúde mental</td></tr>
+      <tr><td><strong>Visita Aberta e Direito a Acompanhante</strong></td><td>Em hospitais — Lei 11.108/2005 (parto)</td></tr>
+      <tr><td><strong>Direito à Informação</strong></td><td>Comunicação clara, consentimento livre e esclarecido</td></tr>
+    </table>
+
+    <div class="subsecao">Acolhimento — Dispositivo Central</div>
+    <p>O acolhimento NÃO é triagem nem recepção administrativa — é <em>postura ética</em> da equipe de saúde:</p>
+    <ul class="lista">
+      <li>Escuta qualificada (não julgamento moral)</li>
+      <li>Resposta a todas as demandas (com encaminhamento adequado quando necessário)</li>
+      <li>Avaliação de vulnerabilidade e risco</li>
+      <li>Vínculo com responsabilização</li>
+      <li>Inclui demandas espontâneas (não apenas agendadas)</li>
+      <li>Operacionalizado por toda a equipe (não delegado à recepção)</li>
+    </ul>
+
+    <div class="subsecao">Projeto Terapêutico Singular (PTS)</div>
+    <p>Conjunto de propostas terapêuticas articuladas para um sujeito ou família, resultado da discussão coletiva de uma equipe interdisciplinar:</p>
+    <ul class="lista">
+      <li>Diagnóstico avaliativo (orgânico, psicossocial, vulnerabilidades)</li>
+      <li>Definição de metas terapêuticas</li>
+      <li>Divisão de responsabilidades entre membros da equipe</li>
+      <li>Reavaliação periódica</li>
+      <li>Sujeito participa da construção (cogestão)</li>
+      <li>O AS contribui especificamente com leitura sociofamiliar, articulação intersetorial, mobilização de direitos sociais</li>
+    </ul>
+
+    <div class="subsecao">Clínica Ampliada</div>
+    <p>Conceito de Gastão Wagner Campos. Crítica à clínica tradicional (mononuclear, biomédica):</p>
+    <table>
+      <tr><th>Clínica Tradicional</th><th>Clínica Ampliada</th></tr>
+      <tr><td>Centrada na doença</td><td>Centrada no sujeito biopsicossocial</td></tr>
+      <tr><td>Especialização excessiva</td><td>Interdisciplinaridade</td></tr>
+      <tr><td>Sujeito objeto</td><td>Sujeito protagonista</td></tr>
+      <tr><td>Decisão unilateral</td><td>Decisão compartilhada</td></tr>
+      <tr><td>Foco curativo</td><td>Foco no cuidado integral</td></tr>
+    </table>
+
+    <div class="subsecao">Política Nacional de Educação Permanente em Saúde</div>
+    <p>Portaria GM/MS nº 198/2004 e atualizações. Articulada com a PNH:</p>
+    <ul class="lista">
+      <li>Aprendizagem no trabalho — aprende-se enquanto se trabalha</li>
+      <li>Problematização e roda como metodologia</li>
+      <li>Comissões de Integração Ensino-Serviço (CIES)</li>
+      <li>Mesa redonda, oficinas, pequenos grupos de reflexão sobre a prática</li>
+      <li>Crítica ao modelo "educação continuada" (cursos pontuais, externos)</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> PNH/HumanizaSUS é política transversal de 2003. Princípios: transversalidade, indissociabilidade atenção-gestão, protagonismo. Dispositivos centrais: acolhimento, clínica ampliada, PTS, equipes de referência, cogestão. Não confundir acolhimento com triagem/recepção. Educação permanente ≠ educação continuada.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-SAUDE · SUS na prática</span><span>Extensivo ENARE 2026</span><span class="pg">5 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-SAUDE</div><div class="aula-ref">Bloco B13 · Aula 12 · Parâmetros CFESS 2010</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Parâmetros CFESS para a Atuação do AS na Saúde (2010)</div>
+
+    <p>Os <strong>Parâmetros para Atuação de Assistentes Sociais na Política de Saúde</strong>, publicados pelo CFESS em 2010 (revisão 2014), são o documento de referência para a prática profissional. Resultado de seminários nacionais articulados pela categoria. Cobrança quase certa na ENARE — leitura obrigatória.</p>
+
+    <div class="subsecao">Premissas dos Parâmetros</div>
+    <ul class="lista">
+      <li>Compromisso com o <strong>Projeto Ético-Político</strong> da profissão (Aula 01)</li>
+      <li>Defesa do <strong>SUS público, universal, gratuito, estatal e de qualidade</strong></li>
+      <li>Crítica à mercantilização da saúde e à contrarreforma do Estado</li>
+      <li>Articulação com o Projeto da Reforma Sanitária</li>
+      <li>Defesa da democracia, participação social e controle social</li>
+      <li>Compreensão da saúde como <strong>conceito ampliado</strong> (8ª CNS, CF/1988, Lei 8.080)</li>
+    </ul>
+
+    <div class="subsecao">Os Quatro Eixos de Atuação</div>
+    <table>
+      <tr><th>Eixo</th><th>Conteúdo</th></tr>
+      <tr><td><strong>1. Atendimento direto aos usuários</strong></td><td>Acolhimento, mobilização, intervenção em situações sociofamiliares; orientação sobre direitos; encaminhamentos; visitas domiciliares; atuação em grupos socioeducativos</td></tr>
+      <tr><td><strong>2. Mobilização, participação e controle social</strong></td><td>Conselhos, conferências, fóruns; fortalecimento da participação dos usuários; articulação com movimentos sociais</td></tr>
+      <tr><td><strong>3. Investigação, planejamento e gestão</strong></td><td>Pesquisa social; planejamento estratégico; gestão participativa; participação em comitês e comissões</td></tr>
+      <tr><td><strong>4. Assessoria, qualificação e formação profissional</strong></td><td>Educação permanente; supervisão; assessoria a equipes e gestores; produção de conhecimento</td></tr>
+    </table>
+
+    <div class="subsecao">Eixo 1 — Atendimento Direto: Aprofundamento</div>
+    <p>É o eixo mais visível e demandado, mas o documento critica a redução do trabalho profissional ao plantão social/triagem. Ações típicas:</p>
+    <ul class="lista">
+      <li><strong>Acolhimento</strong> — postura ética; escuta qualificada; identificação de demandas; vínculo</li>
+      <li><strong>Visita domiciliar</strong> — não como vigilância, mas como articulação com território e família</li>
+      <li><strong>Acompanhamento social</strong> — continuado, longitudinal, com PTS quando indicado</li>
+      <li><strong>Articulação sociofamiliar</strong> — apoio à família no enfrentamento de adoecimento</li>
+      <li><strong>Orientação sobre direitos sociais e benefícios</strong> — BPC, auxílios, INSS, isenções</li>
+      <li><strong>Articulação com a rede intersetorial</strong> — CRAS, CREAS, Conselho Tutelar, Defensoria, MP</li>
+      <li><strong>Grupos socioeducativos</strong> — temáticos (gestantes, hipertensos, DSTs, idosos etc.)</li>
+      <li><strong>Atuação em alta hospitalar planejada</strong> — preparação, articulação, continuidade do cuidado</li>
+      <li><strong>Apoio em situações de vulnerabilidade</strong> — violência, abandono, falta de domicílio, migração</li>
+    </ul>
+
+    <div class="subsecao">Demandas Equivocadas — O Que NÃO é Atribuição do AS</div>
+    <p>Os Parâmetros listam <em>demandas erroneamente atribuídas ao AS</em> que devem ser confrontadas:</p>
+    <ul class="lista">
+      <li>Marcação de exames e consultas (função administrativa)</li>
+      <li>Distribuição de senhas e gestão de filas</li>
+      <li>Convocação de pacientes faltosos</li>
+      <li>Esclarecimento de procedimentos clínicos (função médica/enfermagem)</li>
+      <li>Conseguir leitos (regulação)</li>
+      <li>"Resolver" todas as demandas sociais isoladamente — sem articulação em rede</li>
+      <li>Atender por avaliação moral (decidir "quem merece")</li>
+      <li>Função de policiamento moral ("juíza de costumes")</li>
+    </ul>
+
+    <p><strong>Posicionamento profissional:</strong> esclarecer a atribuição privativa (Lei 8.662/1993, art. 5º), recusar tarefas alheias, propor reorganização do trabalho, articular-se com a gestão e a equipe para reorientação de demandas.</p>
+
+    <div class="subsecao">Espaços de Atuação do AS na Saúde</div>
+    <table>
+      <tr><th>Nível</th><th>Espaços</th></tr>
+      <tr><td>Atenção Primária</td><td>UBS, ESF, eMulti, NASF (extinto), Consultório na Rua</td></tr>
+      <tr><td>Atenção Secundária</td><td>Ambulatórios especializados, policlínicas, oncologia, hemoterapia</td></tr>
+      <tr><td>Atenção Terciária</td><td>Hospitais gerais, especializados, universitários, ICUs</td></tr>
+      <tr><td>Urgência/Emergência</td><td>SAMU 192, UPA, pronto-socorros</td></tr>
+      <tr><td>Saúde Mental</td><td>CAPS (I, II, III, AD, IJ); residências terapêuticas; SAMS — Aula 13</td></tr>
+      <tr><td>Vigilância em Saúde</td><td>Comitês de mortalidade; comissões de vigilância; CEREST</td></tr>
+      <tr><td>Gestão</td><td>Secretarias, gerências, coordenações; Conselhos de Saúde</td></tr>
+      <tr><td>Ensino e Pesquisa</td><td>Universidades, residências multiprofissionais, NEPS</td></tr>
+    </table>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> Parâmetros CFESS 2010 são leitura essencial. 4 eixos: atendimento direto; mobilização/controle social; investigação/planejamento/gestão; assessoria/qualificação. Demandas equivocadas (filas, senhas, marcações) devem ser recusadas. AS deve trabalhar articulado com PEP, defesa do SUS público e ampliação da participação social.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-SAUDE · SUS na prática</span><span>Extensivo ENARE 2026</span><span class="pg">6 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-SAUDE</div><div class="aula-ref">Bloco B13 · Aula 12 · Trabalho Interprofissional</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Trabalho Interprofissional e Intersetorialidade</div>
+
+    <p>O trabalho em saúde é necessariamente <strong>coletivo</strong> e demanda articulação entre profissões e setores. A distinção entre <em>multi, inter e transdisciplinar</em> e a noção de <em>intersetorialidade</em> são exigências teóricas para a ENARE.</p>
+
+    <div class="subsecao">Tipologias de Articulação Profissional</div>
+    <table>
+      <tr><th>Tipo</th><th>Características</th></tr>
+      <tr><td><strong>Multiprofissional/Multidisciplinar</strong></td><td>Soma de profissionais; cada um atua em sua área; pouca interação; cada um produz seu parecer</td></tr>
+      <tr><td><strong>Interprofissional/Interdisciplinar</strong></td><td>Comunicação e cooperação entre profissões; construção compartilhada; algumas fronteiras se cruzam; PTS é exemplo</td></tr>
+      <tr><td><strong>Transprofissional/Transdisciplinar</strong></td><td>Aprofundamento da inter: borrarem-se as fronteiras profissionais; sujeito-equipe; complexo, raro</td></tr>
+    </table>
+
+    <p>O ideal proposto pela <strong>PNH e pela OMS</strong> é a interprofissionalidade — sem dissolver as identidades, mas articulando-as. O AS contribui especificamente com a leitura sociofamiliar, articulação com direitos sociais, articulação intersetorial.</p>
+
+    <div class="subsecao">Educação Interprofissional em Saúde (EIP)</div>
+    <ul class="lista">
+      <li>Conceito da OMS (2010): profissionais aprendem com, sobre e entre si para colaboração efetiva</li>
+      <li>Resultado: melhores serviços e desfechos em saúde</li>
+      <li>Implantação no Brasil: residências multiprofissionais (Lei 11.129/2005); Pró-Residência; PET-Saúde</li>
+      <li>Crítica: ainda há fragmentação na formação dos profissionais</li>
+    </ul>
+
+    <div class="subsecao">Intersetorialidade</div>
+    <p>É a articulação entre <strong>setores governamentais</strong> distintos (saúde, assistência, educação, trabalho, justiça etc.) para enfrentar problemas que ultrapassam a competência de um setor isolado. Princípio do conceito ampliado de saúde:</p>
+    <ul class="lista">
+      <li>Determinantes sociais exigem ações multissetoriais</li>
+      <li>Ex.: violência doméstica → saúde + Conselho Tutelar + MP + Defensoria + CRAS/CREAS + escolas</li>
+      <li>Ex.: insegurança alimentar → saúde + assistência + educação + agricultura</li>
+      <li>Ex.: pessoas em situação de rua (PSR) → saúde + assistência + segurança + habitação</li>
+      <li>Mecanismos: comitês interinstitucionais, fluxos pactuados, redes</li>
+      <li>O AS é, historicamente, profissional-chave para articulação intersetorial</li>
+    </ul>
+
+    <div class="subsecao">Atribuições Privativas do AS (Lei 8.662/1993, art. 5º)</div>
+    <p>Mesmo no trabalho coletivo, há atribuições <strong>privativas</strong> do AS (não compartilhadas):</p>
+    <ul class="lista">
+      <li>I — Coordenar, elaborar, executar, supervisionar e avaliar estudos, pesquisas, planos, programas e projetos na área de Serviço Social</li>
+      <li>II — Planejar, organizar e administrar programas e projetos em Unidade de Serviço Social</li>
+      <li>III — Assessoria e consultoria em Serviço Social</li>
+      <li>IV — Realizar vistorias, perícias técnicas, laudos periciais, informações e pareceres sobre matéria de Serviço Social</li>
+      <li>V — Assumir, no magistério de Serviço Social, tanto a nível de graduação como pós-graduação, disciplinas e funções que exijam conhecimentos próprios e adquiridos em curso de formação regular</li>
+      <li>VI — Treinamento, avaliação e supervisão direta de estagiários de Serviço Social</li>
+      <li>VII — Dirigir e coordenar Unidades de Ensino e Cursos de Serviço Social</li>
+      <li>VIII — Dirigir e coordenar associações, núcleos, centros de estudo e de pesquisa em Serviço Social</li>
+      <li>IX — Elaborar provas, presidir e compor bancas de exames e comissões julgadoras de concursos</li>
+      <li>X — Coordenar seminários, encontros, congressos e eventos assemelhados sobre assuntos de Serviço Social</li>
+      <li>XI — Fiscalizar o exercício profissional através dos CRESS</li>
+      <li>XII — Dirigir serviços técnicos de Serviço Social em entidades públicas ou privadas</li>
+      <li>XIII — Ocupar cargos e funções de direção e fiscalização da gestão financeira em órgãos e entidades representativas da categoria profissional</li>
+    </ul>
+
+    <div class="subsecao">Sigilo Profissional</div>
+    <p>Princípio basilar do Código de Ética (Aula 14):</p>
+    <ul class="lista">
+      <li>Resguardar informações fornecidas pelos usuários</li>
+      <li>Em equipe multi/interprofissional: <strong>sigilo é compartilhado</strong> apenas no que for estritamente necessário para o cuidado</li>
+      <li>Prontuário compartilhado: cuidado com informações sensíveis</li>
+      <li>Exceções: previstas em lei (denúncia obrigatória de violação de DH a crianças/adolescentes ao Conselho Tutelar; idosos ao MP/Conselho do Idoso)</li>
+      <li>LGPD (Lei 13.709/2018) reforça a proteção de dados sensíveis em saúde</li>
+    </ul>
+
+    <div class="subsecao">Saúde Suplementar e Mercantilização</div>
+    <ul class="lista">
+      <li>Saúde suplementar = planos privados de saúde; regulada pela ANS (Lei 9.961/2000)</li>
+      <li>28% da população tem plano privado (PNS 2019)</li>
+      <li>Aumenta a dualidade: SUS para a maioria; planos para a minoria com renda</li>
+      <li>OS, OSS, EBSERH, fundações = formas de privatização da gestão pública</li>
+      <li>Crítica do SS: defesa do SUS estatal, universal, gratuito, de qualidade — não privatizado</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> diferencie multi (soma), inter (cooperação), transdisciplinar (fronteiras borradas). Intersetorialidade = articulação entre setores governamentais. Atribuições privativas do AS são Lei 8.662 art. 5º. Sigilo compartilhado na equipe é regra. SS defende SUS público vs privatização.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-SAUDE · SUS na prática</span><span>Extensivo ENARE 2026</span><span class="pg">7 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-SAUDE</div><div class="aula-ref">Bloco B13 · Aula 12 · Questões ENARE</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 01</span><span class="fonte">PNAB/ESF · NC: Aplicação</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Sobre a Estratégia Saúde da Família (ESF) e a Política Nacional de Atenção Básica (PNAB 2017), assinale a afirmação CORRETA:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>A ESF é uma campanha temporária do MS, sem incorporação à PNAB.</span></li>
+        <li><span class="letra">B</span><span>A equipe de Saúde da Família é composta exclusivamente por médico e enfermeiro, sem outras categorias.</span></li>
+        <li class="correta"><span class="letra">C</span><span>A ESF é o modelo prioritário da APS desde 2006, com equipe mínima composta por médico, enfermeiro, técnico/auxiliar de enfermagem e ACS (1 por microárea), responsável por população adscrita de 2.000 a 3.500 pessoas. A PNAB 2017 introduziu também a categoria de equipes de Atenção Básica (eAB), mais flexível em carga horária, gerando críticas por flexibilizar o modelo ESF.</span></li>
+        <li><span class="letra">D</span><span>Os ACS (Agentes Comunitários de Saúde) devem residir fora do território de atuação para manter neutralidade.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — C</div>
+      <p><strong>Por que C está correta:</strong> ESF prioritária (Portaria 648/2006; PNAB 2011/2017); composição mínima inclui médico, enfermeiro, técnico/aux. enfermagem, ACS; pode ampliar com saúde bucal. PNAB 2017 (Portaria 2.436) introduziu eAB com carga horária flexível — alvo de críticas.</p>
+      <p><strong>Por que as outras erram:</strong> A — ESF é política permanente · B — equipe é multiprofissional · D — ACS deve residir no território (vínculo comunitário).</p>
+    </div>
+
+    <div class="questao-header"><span>Questão 02</span><span class="fonte">PNH · NC: Compreensão</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Sobre a Política Nacional de Humanização (HumanizaSUS, 2003), assinale a CORRETA:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>É um programa específico de saúde mental, restrito aos CAPS.</span></li>
+        <li class="correta"><span class="letra">B</span><span>É política transversal ao SUS que articula transversalidade, indissociabilidade entre atenção e gestão, e protagonismo dos sujeitos; tem como dispositivos centrais o acolhimento (postura ética de escuta e responsabilização), a clínica ampliada (sujeito biopsicossocial), o Projeto Terapêutico Singular (PTS), as equipes de referência e apoio matricial, e a cogestão.</span></li>
+        <li><span class="letra">C</span><span>Substitui a Política Nacional de Atenção Básica e centraliza as ações na atenção terciária.</span></li>
+        <li><span class="letra">D</span><span>É equivalente à recepção administrativa em UBS e à classificação de risco em urgências.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> PNH/HumanizaSUS (2003) é política transversal. Princípios: transversalidade, indissociabilidade atenção-gestão, protagonismo. Dispositivos: acolhimento, clínica ampliada (Gastão Wagner), PTS, equipes de referência, apoio matricial, cogestão.</p>
+      <p><strong>Por que as outras erram:</strong> A — não é restrita à saúde mental · C — não substitui PNAB; é transversal a todos níveis · D — acolhimento ≠ recepção administrativa (é postura ética).</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-SAUDE · SUS na prática</span><span>Extensivo ENARE 2026</span><span class="pg">8 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-SAUDE</div><div class="aula-ref">Bloco B13 · Aula 12 · Questões ENARE</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 03</span><span class="fonte">Parâmetros CFESS 2010 · NC: Análise</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Os Parâmetros para a Atuação de Assistentes Sociais na Política de Saúde (CFESS 2010) organizam o trabalho profissional em quatro eixos. Assinale a alternativa que descreve CORRETAMENTE esses eixos:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Marcação de exames; distribuição de senhas; convocação de faltosos; gestão de filas.</span></li>
+        <li class="correta"><span class="letra">B</span><span>(1) Atendimento direto aos usuários — acolhimento, visitas, grupos socioeducativos, articulação sociofamiliar; (2) Mobilização, participação e controle social — conselhos, conferências, movimentos sociais; (3) Investigação, planejamento e gestão — pesquisa, planejamento estratégico, gestão participativa; (4) Assessoria, qualificação e formação profissional — educação permanente, supervisão, produção de conhecimento.</span></li>
+        <li><span class="letra">C</span><span>Triagem socioeconômica para definir quem terá direito ao SUS, evitando seu uso por quem tem condição econômica.</span></li>
+        <li><span class="letra">D</span><span>Esclarecimento de procedimentos clínicos e elaboração de prescrições medicamentosas em apoio à equipe médica.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> os 4 eixos dos Parâmetros CFESS 2010 são exatamente esses. O atendimento direto é o mais visível, mas precisa articular-se com mobilização/controle social, investigação/planejamento e assessoria/qualificação. O documento expressamente combate a redução do trabalho profissional à dimensão executiva-burocrática.</p>
+      <p><strong>Por que as outras erram:</strong> A — são "demandas equivocadas" denunciadas pelos Parâmetros · C — SUS é universal (princípio doutrinário); AS não faz "triagem econômica" · D — prescrição é função médica/profissional habilitada; esclarecer procedimentos clínicos é função da equipe responsável.</p>
+    </div>
+
+    <div class="questao-header"><span>Questão 04</span><span class="fonte">Intersetorialidade · NC: Aplicação</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">No atendimento a uma adolescente de 14 anos em situação de violência doméstica em uma UBS, a atuação do AS DEVE incluir:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Limitar-se a anotar o caso no prontuário e aguardar nova consulta clínica.</span></li>
+        <li><span class="letra">B</span><span>Tomar a decisão sozinho de afastar a adolescente da família sem articulação intersetorial.</span></li>
+        <li class="correta"><span class="letra">C</span><span>Realizar acolhimento com escuta qualificada e sem julgamento moral; avaliar vulnerabilidades e riscos; <strong>notificar compulsoriamente</strong> a suspeita ou confirmação de violência (Lei 13.431/2017; Portaria MS 1.968/2001 — notificação ao Conselho Tutelar); construir Projeto Terapêutico Singular com a equipe; articular a rede intersetorial (CRAS/CREAS, Conselho Tutelar, MP, Defensoria, Delegacia da Mulher/Criança); resguardar sigilo profissional no que não for legalmente exigido divulgar.</span></li>
+        <li><span class="letra">D</span><span>Encaminhar diretamente à internação psiquiátrica como medida de proteção.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — C</div>
+      <p><strong>Por que C está correta:</strong> exemplo paradigmático de articulação Parâmetros CFESS 2010 + intersetorialidade + PNH + ECA. Violência contra criança/adolescente exige notificação compulsória (ECA art. 13; Lei 13.431/2017 — Sistema de Garantia de Direitos da Criança e do Adolescente Vítima ou Testemunha de Violência; Portaria MS 1.968/2001).</p>
+      <p><strong>Por que as outras erram:</strong> A — omissão configura responsabilização legal (ECA art. 245) · B — afastamento é medida judicial (não unilateral) · D — internação não é resposta para violência intrafamiliar.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-SAUDE · SUS na prática</span><span>Extensivo ENARE 2026</span><span class="pg">9 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-SAUDE</div><div class="aula-ref">Bloco B13 · Aula 12 · Síntese</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Síntese — SUS na Prática e o SS na Saúde</div>
+
+    <p>Aula central de SS-SAUDE — trata-se do "como" se materializa o SUS e o lugar do AS nele. Articula determinantes sociais (Aula 11) com prática profissional (Parâmetros CFESS 2010) e prepara Reforma Psiquiátrica (Aula 13).</p>
+
+    <div class="sintese-grid">
+      <div class="sintese-item"><div class="si-label">Modelos Assistenciais</div><p>Flexneriano (hospitalocêntrico, biomédico) × Vigilância da Saúde (territorial, intersetorial) × Defesa da Vida (Gastão Wagner: acolhimento, clínica ampliada, cogestão).</p></div>
+      <div class="sintese-item"><div class="si-label">APS / ESF</div><p>Atributos Starfield: primeiro contato, longitudinalidade, integralidade, coordenação. PNAB 2017. ESF prioritária. ACS por microárea. NASF→eMulti (Portaria 635/2023). Apoio matricial (Gastão Wagner).</p></div>
+      <div class="sintese-item"><div class="si-label">RAS</div><p>Decreto 7.508/2011. Regiões de Saúde + COAP. Redes temáticas (Cegonha, RUE, RAPS, PCD, Crônicos). RENASES, RENAME. CIB, CIR, CIT. Mapa da Saúde.</p></div>
+      <div class="sintese-item"><div class="si-label">PNH / HumanizaSUS</div><p>2003. Princípios: transversalidade, indissociabilidade atenção-gestão, protagonismo. Dispositivos: acolhimento, clínica ampliada, PTS, equipes de referência, cogestão. Não é programa, é política transversal.</p></div>
+      <div class="sintese-item"><div class="si-label">Parâmetros CFESS 2010</div><p>4 eixos: atendimento direto; mobilização/controle social; investigação/planejamento/gestão; assessoria/qualificação. Demandas equivocadas (senhas, filas, marcações) devem ser recusadas. Defesa do SUS público.</p></div>
+      <div class="sintese-item"><div class="si-label">Próxima Aula</div><p><strong>Aula 13 — Saúde Mental e Reforma Psiquiátrica.</strong> Fanon (colonialidade e loucura), Basaglia (desinstitucionalização), Lei 10.216/2001, RAPS, CAPS, Reforma Psiquiátrica brasileira.</p></div>
+    </div>
+
+    <div class="alerta" style="margin-top:5px;">
+      <p><strong>Regra de ouro — SUS na prática:</strong> APS (PNAB 2017, ESF, eMulti) + RAS (Decreto 7.508/2011, redes temáticas) + PNH (acolhimento, PTS, clínica ampliada) + Parâmetros CFESS 2010 (4 eixos) + Lei 8.662 (atribuições privativas, art. 5º) + Defesa do SUS público.</p>
+    </div>
+
+    <div class="alerta" style="margin-top:5px;background:rgba(31,92,35,0.1);border-left-color:var(--verde);">
+      <p><strong>Conexão crítica:</strong> a EC 95/2016 (Aula 03 e 09) é o eixo da contrarreforma do SUS — congela investimentos federais por 20 anos. Articulada com privatização (OSS, EBSERH), expansão dos planos privados e flexibilização da PNAB 2017. O AS comprometido com o PEP atua na <em>contrarreforma da contrarreforma</em> — defesa do SUS público, universal, estatal e de qualidade.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-SAUDE · SUS na prática</span><span>Extensivo ENARE 2026</span><span class="pg">10 / 10</span></div>
+</div>
+
+</body>
+</html>
