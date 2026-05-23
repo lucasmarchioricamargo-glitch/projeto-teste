@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Farmácia — Bloco B5 Aula 11 | Extensivo ENARE 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap');
+  :root { --creme: #F6F4ED; --verde: #1F5C23; --amarelo: #C6D834; --escuro: #0C2B0E; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #d0d0d0; font-family: 'Bricolage Grotesque', sans-serif; }
+  .page { width: 210mm; height: 297mm; background: var(--creme); margin: 0 auto 12px; position: relative; overflow: hidden; page-break-after: always; }
+  .header { background: var(--verde); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .header-logo { display: flex; align-items: center; gap: 8px; }
+  .header-logo svg { width: 32px; height: 32px; }
+  .header-brand { display: flex; flex-direction: column; line-height: 1; }
+  .header-brand .marca { font-family: 'Playfair Display', serif; font-style: italic; color: #fff; font-size: 13px; letter-spacing: 0.5px; }
+  .header-brand .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 7px; letter-spacing: 1.5px; text-transform: uppercase; }
+  .header-info { text-align: right; }
+  .header-info .disciplina { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
+  .header-info .aula-ref { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.7); font-size: 8px; letter-spacing: 0.5px; }
+  .footer { position: absolute; bottom: 0; left: 0; right: 0; background: var(--verde); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .footer span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.6); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .footer .pg { color: var(--amarelo); font-weight: 400; }
+  .body { padding: 14px 18px 30px; height: calc(297mm - 52px - 22px); overflow: hidden; }
+  .capa-page { background: var(--verde); }
+  .capa-header { background: var(--creme); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .capa-header .marca { font-family: 'Playfair Display', serif; font-style: italic; color: var(--verde); font-size: 14px; }
+  .capa-header .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--verde); font-size: 7.5px; letter-spacing: 2px; text-transform: uppercase; }
+  .capa-body { padding: 28px 24px 0; display: flex; flex-direction: column; height: calc(297mm - 52px - 22px); }
+  .capa-eyebrow { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; }
+  .capa-titulo { font-family: 'Barlow Condensed', sans-serif; color: #fff; font-size: 50px; line-height: 0.95; text-transform: uppercase; letter-spacing: -0.5px; margin-bottom: 6px; }
+  .capa-titulo span { color: var(--amarelo); }
+  .capa-subtitulo { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; color: rgba(255,255,255,0.65); font-size: 12px; letter-spacing: 0.3px; margin-bottom: 22px; line-height: 1.5; }
+  .capa-badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+  .capa-badge { background: rgba(198,216,52,0.15); border: 1px solid var(--amarelo); color: var(--amarelo); font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 8px; border-radius: 2px; }
+  .capa-divider { width: 40px; height: 3px; background: var(--amarelo); margin-bottom: 20px; }
+  .capa-topicos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .capa-topico { display: flex; align-items: flex-start; gap: 7px; }
+  .capa-topico-num { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 18px; line-height: 1; min-width: 18px; }
+  .capa-topico-txt { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 400; color: rgba(255,255,255,0.8); font-size: 9.5px; line-height: 1.4; }
+  .capa-footer-strip { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.25); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .capa-footer-strip span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.45); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .secao-titulo { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 18px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid var(--amarelo); padding-bottom: 3px; margin-bottom: 9px; line-height: 1; }
+  .subsecao { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.5px; margin: 7px 0 3px; }
+  p { font-size: 9px; line-height: 1.55; color: #1a1a1a; margin-bottom: 4px; font-weight: 400; }
+  .destaque { background: var(--amarelo); color: var(--escuro); font-weight: 600; padding: 1px 4px; border-radius: 2px; font-size: 8.5px; }
+  .alerta { background: rgba(198,216,52,0.18); border-left: 3px solid var(--amarelo); padding: 5px 8px; margin: 5px 0; border-radius: 0 3px 3px 0; }
+  .alerta p { margin: 0; font-size: 8.5px; }
+  .alerta strong { color: var(--verde); }
+  table { width: 100%; border-collapse: collapse; margin: 5px 0; font-size: 8px; }
+  th { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; padding: 4px 6px; text-align: left; }
+  td { padding: 3px 6px; border-bottom: 1px solid rgba(31,92,35,0.12); vertical-align: top; line-height: 1.4; color: #1a1a1a; }
+  tr:nth-child(even) td { background: rgba(31,92,35,0.04); }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 5px 0; }
+  .card { background: rgba(31,92,35,0.06); border: 1px solid rgba(31,92,35,0.15); border-radius: 4px; padding: 7px 8px; }
+  .card-title { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 11px; text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 3px; }
+  .card p { font-size: 8px; line-height: 1.5; }
+  .questao-header { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; padding: 4px 10px; border-radius: 3px 3px 0 0; display: flex; justify-content: space-between; align-items: center; }
+  .questao-header .fonte { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; color: var(--amarelo); letter-spacing: 0.5px; }
+  .questao-body { border: 1px solid rgba(31,92,35,0.2); border-top: none; border-radius: 0 0 3px 3px; padding: 7px 10px; margin-bottom: 7px; }
+  .questao-enunciado { font-size: 8.5px; line-height: 1.55; color: #111; margin-bottom: 5px; font-weight: 500; }
+  .alternativas { list-style: none; }
+  .alternativas li { font-size: 8px; line-height: 1.5; padding: 2px 0; color: #222; display: flex; gap: 5px; }
+  .alternativas li .letra { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: var(--verde); font-size: 9px; min-width: 10px; }
+  .alternativas li.correta .letra { color: var(--amarelo); }
+  .alternativas li.correta { background: rgba(198,216,52,0.15); border-left: 2px solid var(--amarelo); padding-left: 4px; }
+  .gabarito-box { background: var(--verde); border-radius: 4px; padding: 8px 12px; margin: 6px 0; }
+  .gabarito-box .gab-title { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+  .gabarito-box p { color: rgba(255,255,255,0.9); font-size: 8px; line-height: 1.55; }
+  .gabarito-box strong { color: var(--amarelo); }
+  .sintese-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-top: 6px; }
+  .sintese-item { background: rgba(31,92,35,0.07); border-left: 3px solid var(--verde); padding: 5px 7px; border-radius: 0 3px 3px 0; }
+  .sintese-item .si-label { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px; }
+  .sintese-item p { font-size: 7.5px; line-height: 1.5; }
+  ul.lista { padding-left: 14px; margin: 3px 0; }
+  ul.lista li { font-size: 8.5px; line-height: 1.55; color: #1a1a1a; margin-bottom: 1px; }
+  @media print { body { background: none; } .page { margin: 0; box-shadow: none; } }
+</style>
+</head>
+<body>
+
+<div class="page capa-page">
+  <div class="capa-header">
+    <div style="display:flex;align-items:center;gap:8px;"><svg width="34" height="34" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#1F5C23"/></svg><div><div class="marca">Elite Treinamentos</div><div class="tagline">Extensivo ENARE 2026</div></div></div>
+    <div style="text-align:right;"><div style="font-family:'Barlow Condensed',sans-serif;color:var(--verde);font-size:11px;letter-spacing:1px;text-transform:uppercase;">Bloco B5 · Aula 11</div><div style="font-family:'Space Grotesk',sans-serif;font-weight:300;color:#888;font-size:7.5px;letter-spacing:0.5px;">Farmácia</div></div>
+  </div>
+  <div class="capa-body">
+    <div class="capa-eyebrow">Bloco B5 · FARM-FARMACOEPID · Aula 11 de 22</div>
+    <div class="capa-titulo">MBE <span>·<br>Métodos<br>Epidemio-<br>lógicos</span></div>
+    <div class="capa-subtitulo">Farmacoepidemiologia II: PICO, coorte para RAMs, revisão<br>sistemática, meta-análise e a hierarquia GRADE</div>
+    <div class="capa-badge-row">
+      <div class="capa-badge">FARM-FARMACOEPID ★★★</div>
+      <div class="capa-badge">PICO · GRADE</div>
+      <div class="capa-badge">Coorte · Caso-controle</div>
+      <div class="capa-badge">Meta-análise</div>
+    </div>
+    <div class="capa-divider"></div>
+    <div class="capa-topicos">
+      <div class="capa-topico"><div class="capa-topico-num">01</div><div class="capa-topico-txt">PICO e estruturação da pergunta clínica</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">02</div><div class="capa-topico-txt">ECR, coorte, caso-controle, transversal</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">03</div><div class="capa-topico-txt">Revisão sistemática e meta-análise</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">04</div><div class="capa-topico-txt">Hierarquia GRADE: força e qualidade</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">05</div><div class="capa-topico-txt">Coorte retrospectiva para RAMs hospitalares</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">06</div><div class="capa-topico-txt">Medidas: RR, OR, NNT, NNH</div></div>
+    </div>
+  </div>
+  <div class="capa-footer-strip"><span>Extensivo ENARE 2026</span><span>Elite Treinamentos em Saúde</span><span>Página 1 de 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-FARMACOEPID</div><div class="aula-ref">Bloco B5 · Aula 11 · PICO</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">PICO e a Pergunta Clínica Estruturada</div>
+    <p>O <strong>PICO</strong> é a estrutura padrão para reformular dúvidas clínicas em perguntas pesquisáveis. Cobrado em ENARE 2025 (Q95). É a base para qualquer revisão sistemática, busca em base de dados ou consulta ao CIM.</p>
+
+    <table>
+      <tr><th>Componente</th><th>Significado</th><th>Exemplo</th></tr>
+      <tr><td><strong>P</strong>aciente / problema</td><td>População definida operacionalmente</td><td>Pacientes com IC + FE reduzida</td></tr>
+      <tr><td><strong>I</strong>ntervenção</td><td>Tratamento, exame ou exposição em estudo</td><td>Sacubitril-valsartana</td></tr>
+      <tr><td><strong>C</strong>omparação</td><td>Alternativa (placebo, outro tratamento, ou ausência)</td><td>Enalapril (PARADIGM-HF)</td></tr>
+      <tr><td><strong>O</strong>utcome (desfecho)</td><td>Resultado clínico mensurável de interesse</td><td>Mortalidade cardiovascular em 24 meses</td></tr>
+    </table>
+
+    <div class="subsecao">Extensões do PICO</div>
+    <p><strong>PICOS</strong> adiciona <em>Setting/Study design</em>; <strong>PICOT</strong> adiciona <em>Time</em>; <strong>PECO</strong> usa <em>Exposição</em> em vez de Intervenção (estudos observacionais).</p>
+
+    <div class="subsecao">Exemplos de Aplicação</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Eficácia</div>
+        <p><strong>P:</strong> adultos com DM2 e DRC G3<br>
+        <strong>I:</strong> empagliflozina<br>
+        <strong>C:</strong> placebo (em adição ao tratamento padrão)<br>
+        <strong>O:</strong> redução da progressão de DRC<br>
+        Estudo correspondente: EMPA-KIDNEY (NEJM 2023).</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Segurança / RAM</div>
+        <p><strong>P:</strong> pacientes idosos &gt; 65 anos<br>
+        <strong>E:</strong> uso de IBPs por &gt; 12 meses<br>
+        <strong>C:</strong> não-uso de IBPs<br>
+        <strong>O:</strong> incidência de fratura de quadril<br>
+        Desenho ideal: coorte retrospectiva ou caso-controle aninhado.</p>
+      </div>
+    </div>
+
+    <div class="subsecao">Estratégia de Busca após o PICO</div>
+    <p>A partir do PICO, identificar <em>palavras-chave</em> e termos <em>MeSH (Medical Subject Headings)</em> para PubMed; <em>EMTREE</em> para Embase; <em>DeCS</em> para LILACS. Usar operadores booleanos (AND, OR, NOT) e filtros (tipo de estudo, idioma, período).</p>
+
+    <div class="subsecao">5 Passos da Medicina Baseada em Evidências (Sackett)</div>
+    <ol>
+      <li><strong>Pergunta clínica</strong> estruturada em PICO</li>
+      <li><strong>Busca</strong> de evidência (estratégia em bases)</li>
+      <li><strong>Análise crítica</strong> (validade interna, relevância, magnitude do efeito)</li>
+      <li><strong>Aplicação</strong> ao paciente individual ou à população</li>
+      <li><strong>Avaliação</strong> da prática (audit, feedback)</li>
+    </ol>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> a FGV pode pedir tanto a identificação dos componentes (P, I, C, O) em um cenário quanto a aplicação prática para reformular dúvida clínica. Saber que PICO &gt; pergunta vaga é o primeiro passo da MBE.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-FARMACOEPID · MBE</span><span>Extensivo ENARE 2026</span><span class="pg">2 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-FARMACOEPID</div><div class="aula-ref">Bloco B5 · Aula 11 · Desenhos de Estudo</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Desenhos Epidemiológicos — Detalhamento</div>
+
+    <div class="subsecao">Estudos Experimentais (Intervenção)</div>
+    <table>
+      <tr><th>Desenho</th><th>Características</th><th>Indicação</th></tr>
+      <tr><td><strong>ECR — Ensaio Clínico Randomizado</strong></td><td>Alocação aleatória, com ou sem cegamento, paralelo ou cruzado</td><td>Padrão-ouro para eficácia e segurança em uso aprovado</td></tr>
+      <tr><td>ECR pragmático</td><td>Critérios amplos, refletindo prática real</td><td>Efetividade em "mundo real"</td></tr>
+      <tr><td>Cluster-randomizado</td><td>Unidades inteiras randomizadas (USF, escolas)</td><td>Intervenções comportamentais ou de sistema</td></tr>
+      <tr><td>N-of-1</td><td>Cruzado em paciente único; múltiplas randomizações</td><td>Eficácia em condições crônicas individualizadas</td></tr>
+    </table>
+
+    <div class="subsecao">Estudos Observacionais Analíticos</div>
+    <table>
+      <tr><th>Desenho</th><th>Característica</th><th>Quando usar</th></tr>
+      <tr><td><strong>Coorte prospectiva</strong></td><td>Acompanha expostos vs não-expostos ao longo do tempo</td><td>RAMs com tempo de latência longo; ideal para efeito raro de exposição comum</td></tr>
+      <tr><td><strong>Coorte retrospectiva</strong></td><td>Usa dados já coletados (prontuário, base administrativa)</td><td>Avaliação rápida e barata; viés de seleção e de informação</td></tr>
+      <tr><td><strong>Caso-controle</strong></td><td>Identifica casos (com evento) e controles (sem); pergunta exposição</td><td>Eficiente para eventos raros (RAMs raras); RC = OR</td></tr>
+      <tr><td><strong>Aninhado</strong></td><td>Caso-controle dentro de uma coorte</td><td>Reduz custo e viés de seleção</td></tr>
+    </table>
+
+    <div class="subsecao">Estudos Descritivos</div>
+    <ul class="lista">
+      <li><strong>Transversal (cross-sectional)</strong>: prevalência em momento; útil para mapear uso de fármacos</li>
+      <li><strong>Relato e série de casos</strong>: nível mais baixo, mas pode gerar hipótese (ex.: rash por novo fármaco)</li>
+      <li><strong>Ecológico</strong>: comparação populacional, não individual; risco de falácia ecológica</li>
+    </ul>
+
+    <div class="subsecao">Medidas de Associação e Impacto</div>
+    <table>
+      <tr><th>Medida</th><th>Fórmula / Definição</th><th>Usada em</th></tr>
+      <tr><td><strong>Risco Relativo (RR)</strong></td><td>Incidência expostos ÷ incidência não-expostos</td><td>Coortes e ECR</td></tr>
+      <tr><td><strong>Odds Ratio (OR)</strong></td><td>Razão de chances (a×d)/(b×c)</td><td>Caso-controle e transversal; aproxima RR em eventos raros</td></tr>
+      <tr><td><strong>Diferença de Risco (RD)</strong></td><td>Incidência expostos − incidência não-expostos</td><td>Coortes e ECR; absoluta</td></tr>
+      <tr><td><strong>NNT — Number Needed to Treat</strong></td><td>1 ÷ ARR (redução absoluta do risco)</td><td>Comunicação clínica: "tratar X pacientes para evitar 1 evento"</td></tr>
+      <tr><td><strong>NNH — Number Needed to Harm</strong></td><td>1 ÷ ARI (aumento absoluto do risco)</td><td>Idem para dano</td></tr>
+      <tr><td>Hazard Ratio (HR)</td><td>Razão de hazards (Cox)</td><td>Coortes com análise de sobrevida</td></tr>
+    </table>
+
+    <div class="subsecao">Exemplo: Estatina + Mortalidade CV</div>
+    <p>Em ECR de prevenção secundária, mortalidade CV em 5 anos: estatina 8%, placebo 12%. <strong>ARR</strong> = 12% − 8% = 4%. <strong>NNT</strong> = 1/0,04 = <strong>25</strong> — tratar 25 pacientes por 5 anos para evitar 1 morte CV. <strong>RR</strong> = 8%/12% = 0,67 (RRR = 33%).</p>
+
+    <div class="alerta">
+      <p><strong>Interpretação clínica:</strong> RR/RRR mostra <em>magnitude relativa</em>, podendo soar grande mesmo em eventos raros. NNT/ARR mostra <em>magnitude absoluta</em>, mais útil para decisão clínica. Sempre considerar os dois ao avaliar um estudo.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-FARMACOEPID · MBE</span><span>Extensivo ENARE 2026</span><span class="pg">3 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-FARMACOEPID</div><div class="aula-ref">Bloco B5 · Aula 11 · Revisão Sistemática e Meta-análise</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Revisão Sistemática e Meta-análise</div>
+
+    <p>A <strong>revisão sistemática (RS)</strong> é a síntese metodologicamente estruturada das evidências sobre uma pergunta clínica delimitada. A <strong>meta-análise</strong> agrega quantitativamente os resultados de múltiplos estudos em uma estimativa combinada. Estudos cobrados em ENARE 2025 (Q88, Q95 — PICO + revisão sistemática).</p>
+
+    <div class="subsecao">Etapas (Cochrane Handbook / PRISMA)</div>
+    <ol>
+      <li>Pergunta clínica estruturada em PICO + protocolo registrado (PROSPERO)</li>
+      <li>Estratégia de busca abrangente: PubMed, Embase, Cochrane, LILACS + literatura cinzenta</li>
+      <li>Critérios de seleção pré-definidos (inclusão/exclusão)</li>
+      <li>Extração padronizada de dados por dois revisores independentes</li>
+      <li>Avaliação de qualidade dos estudos incluídos (Cochrane RoB 2.0; ROBINS-I para observacionais; AMSTAR-2 para RSs)</li>
+      <li>Síntese narrativa ± meta-análise (modelo fixo ou aleatório)</li>
+      <li>Avaliação de viés de publicação (funnel plot, Egger's test)</li>
+      <li>Conclusão baseada na qualidade da evidência (GRADE)</li>
+    </ol>
+
+    <div class="subsecao">Heterogeneidade</div>
+    <p>Em meta-análise, <strong>I² &lt; 25%</strong> indica heterogeneidade baixa; <strong>25–50%</strong> moderada; <strong>&gt; 75%</strong> alta. Heterogeneidade alta indica que os estudos divergem entre si (populações, doses, comparadores) — pode invalidar a meta-análise ou exigir análise de subgrupos.</p>
+
+    <div class="subsecao">Modelo de Efeitos</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Modelo Fixo</div>
+        <p>Assume que todos os estudos estimam o mesmo efeito verdadeiro. Estima a média ponderada (peso = 1/variância). Preferido quando I² baixo.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Modelo Aleatório</div>
+        <p>Assume que cada estudo estima um efeito ligeiramente diferente. Inclui a variância entre estudos (τ²). Preferido quando há heterogeneidade. Conservador (IC mais largo).</p>
+      </div>
+    </div>
+
+    <div class="subsecao">Hierarquia GRADE (Qualidade da Evidência)</div>
+    <p>O <strong>GRADE (Grading of Recommendations Assessment, Development and Evaluation)</strong> classifica a qualidade da evidência em 4 níveis e a força da recomendação em 2 níveis.</p>
+    <table>
+      <tr><th>Qualidade</th><th>Significado</th></tr>
+      <tr><td><strong>Alta (⊕⊕⊕⊕)</strong></td><td>Confiança alta de que o efeito estimado se aproxima do verdadeiro</td></tr>
+      <tr><td><strong>Moderada (⊕⊕⊕○)</strong></td><td>Confiança moderada; pesquisas adicionais podem alterar a estimativa</td></tr>
+      <tr><td><strong>Baixa (⊕⊕○○)</strong></td><td>Confiança limitada; pesquisas adicionais provavelmente alterarão a estimativa</td></tr>
+      <tr><td><strong>Muito Baixa (⊕○○○)</strong></td><td>Confiança muito baixa; qualquer estimativa é muito incerta</td></tr>
+    </table>
+
+    <p><strong>Fatores que reduzem a qualidade:</strong> risco de viés, inconsistência, indiretividade, imprecisão, viés de publicação. <strong>Fatores que aumentam (em observacionais):</strong> magnitude grande do efeito, gradiente dose-resposta, confundimento residual contra a hipótese.</p>
+
+    <div class="subsecao">Força da Recomendação</div>
+    <ul class="lista">
+      <li><strong>Forte:</strong> a maioria dos pacientes informados optaria pela intervenção; clínico deve seguir</li>
+      <li><strong>Fraca / condicional:</strong> diferentes escolhas conforme valores e preferências do paciente; decisão individualizada</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Aplicação prática:</strong> diretrizes baseadas em GRADE (NICE, AHA, AAFP, SBC, SBD) são preferidas para tomada de decisão. ENARE pode pedir interpretação de tabelas GRADE — alta qualidade + recomendação forte é o padrão-ouro.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-FARMACOEPID · MBE</span><span>Extensivo ENARE 2026</span><span class="pg">4 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-FARMACOEPID</div><div class="aula-ref">Bloco B5 · Aula 11 · Coorte para RAMs</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Coorte Retrospectiva para RAMs Hospitalares</div>
+
+    <p>A FGV cobrou em ENARE 2025 (Q98) um estudo de coorte retrospectiva para identificar padrões de prescrição associados a IRAS/RAMs. Esse é um desenho comum em farmácia clínica residente.</p>
+
+    <div class="subsecao">Modelo de Estudo Realizável em Residência</div>
+    <ul class="lista">
+      <li><strong>Pergunta clínica:</strong> "Em pacientes internados em UTI, o uso de cefalosporina de 3ª geração nas primeiras 48h está associado a maior incidência de IRAS por enterobactéria produtora de ESBL nos primeiros 30 dias?"</li>
+      <li><strong>PICO/PECO:</strong> P = pacientes UTI; E = ceftriaxona/cefotaxima primeiras 48h; C = não-exposição; O = IRAS-ESBL em 30 dias</li>
+      <li><strong>Desenho:</strong> coorte retrospectiva de prontuário eletrônico, 12 meses</li>
+      <li><strong>Fontes:</strong> SAME, sistema de microbiologia, SNCM-ANVISA</li>
+      <li><strong>Análise:</strong> Risco Relativo + ajuste por confundidores (idade, comorbidade, gravidade SOFA) — Cox ou regressão logística</li>
+      <li><strong>Resultado esperado:</strong> RR ajustado, com IC 95%, suficiente para gerar intervenção (PGA — restrição de uso empírico)</li>
+    </ul>
+
+    <div class="subsecao">Vieses a Considerar</div>
+    <table>
+      <tr><th>Viés</th><th>Mitigação</th></tr>
+      <tr><td><strong>Seleção</strong></td><td>Critérios de inclusão claros; usar todos os pacientes elegíveis no período</td></tr>
+      <tr><td><strong>Informação / classificação</strong></td><td>Definição padronizada de IRAS (CDC NHSN); validar dados em amostra</td></tr>
+      <tr><td><strong>Confundimento por indicação</strong></td><td>Quem recebeu cefalosporina pode ter sido mais grave (confunde com o desfecho); ajustar por SOFA, APACHE II</td></tr>
+      <tr><td><strong>Tempo imortal</strong></td><td>Não contar tempo "imune" antes da exposição como tempo-pessoa exposto</td></tr>
+      <tr><td><strong>Perda de seguimento</strong></td><td>Em retrospectiva, registros perdidos viesam; reportar % de perdas</td></tr>
+      <tr><td><strong>Causalidade reversa</strong></td><td>Cuidado em interpretar associação temporal — uso pode ser consequência da gravidade</td></tr>
+    </table>
+
+    <div class="subsecao">Estimativa de Prevalência de RAMs</div>
+    <p>Cobrado em ENARE 2025 (Q88). Calcula-se a <em>incidência cumulativa</em> = (novos casos em período) ÷ (população em risco). Para RAMs hospitalares, a métrica clássica é <em>RAMs por 1.000 admissões</em> ou <em>RAMs por 100 pacientes-dia</em>. Em estudos populacionais (farmácia comunitária), <em>RAMs por 1.000 prescrições</em>.</p>
+
+    <div class="subsecao">Causalidade de RAM — Naranjo</div>
+    <p>Para imputar causalidade entre fármaco e RAM, o <strong>algoritmo de Naranjo</strong> aplica 10 perguntas pontuadas. Soma final:</p>
+    <table>
+      <tr><th>Pontuação</th><th>Probabilidade</th></tr>
+      <tr><td>≥ 9</td><td>Definida</td></tr>
+      <tr><td>5–8</td><td>Provável</td></tr>
+      <tr><td>1–4</td><td>Possível</td></tr>
+      <tr><td>≤ 0</td><td>Duvidosa</td></tr>
+    </table>
+
+    <p>Outros algoritmos: <em>WHO-UMC</em> (causal/provável/possível/improvável/condicional/não classificável), <em>Karch-Lasagna</em>. Em Brasil, a ANVISA aceita Naranjo e WHO-UMC.</p>
+
+    <div class="alerta">
+      <p><strong>Padrão de relato:</strong> estudos farmacoepidemiológicos seguem diretrizes: <em>STROBE</em> para observacionais, <em>CONSORT</em> para ECR, <em>PRISMA</em> para revisões sistemáticas, <em>SQUIRE</em> para melhoria de qualidade. Em residência, considerar diretriz STROBE ao reportar coorte/caso-controle.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-FARMACOEPID · MBE</span><span>Extensivo ENARE 2026</span><span class="pg">5 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-FARMACOEPID</div><div class="aula-ref">Bloco B5 · Aula 11 · Análise Crítica</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Análise Crítica e Tomada de Decisão</div>
+
+    <p>Aplicar a evidência a um paciente individual requer 3 passos críticos: (1) o estudo é <em>válido</em> (validade interna)? (2) os resultados são <em>importantes</em> (magnitude, precisão)? (3) os resultados são <em>aplicáveis</em> ao meu paciente (validade externa)?</p>
+
+    <div class="subsecao">Validade Interna (Risco de Viés)</div>
+    <ul class="lista">
+      <li>Randomização adequada? Cegamento? (ECR)</li>
+      <li>Grupos comparáveis na linha de base?</li>
+      <li>Perda de seguimento &lt; 20%?</li>
+      <li>Análise por intenção-de-tratar (ITT)?</li>
+      <li>Conflito de interesse declarado?</li>
+    </ul>
+
+    <div class="subsecao">Importância dos Resultados</div>
+    <ul class="lista">
+      <li>Magnitude do efeito (RR, OR, RRR, ARR)</li>
+      <li>Precisão (IC 95%)</li>
+      <li>NNT/NNH</li>
+      <li>Significância clínica × significância estatística</li>
+    </ul>
+
+    <div class="subsecao">Aplicabilidade (Validade Externa)</div>
+    <ul class="lista">
+      <li>Meu paciente é semelhante aos do estudo (idade, comorbidades, etnia)?</li>
+      <li>O comparador do estudo é aplicável ao meu cenário?</li>
+      <li>Os desfechos são relevantes (mortalidade, qualidade de vida vs marcadores intermediários)?</li>
+      <li>O efeito está disponível no meu sistema (RENAME, REMUME, formulário hospitalar)?</li>
+    </ul>
+
+    <div class="subsecao">Estatística Aplicada — Significância × Importância</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Valor de p</div>
+        <p>Probabilidade de obter o resultado se a hipótese nula fosse verdadeira. <strong>p &lt; 0,05</strong> é convenção; <em>não</em> significa "verdadeiro" nem "clinicamente importante". Pode ser significativo sem ser relevante.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Intervalo de Confiança 95%</div>
+        <p>Faixa de valores que provavelmente contém o efeito verdadeiro. Mais informativo que p — mostra <em>precisão</em>. Se RR IC 95% contém 1, não há diferença significativa. IC estreito = boa precisão; IC largo = imprecisão.</p>
+      </div>
+    </div>
+
+    <div class="subsecao">Erros Tipo I e II</div>
+    <table>
+      <tr><th>Tipo</th><th>Significado</th><th>Como controlar</th></tr>
+      <tr><td>Tipo I (α)</td><td>Rejeitar H₀ verdadeira (falso positivo)</td><td>Reduzir α (0,05 → 0,01); evitar testes múltiplos sem ajuste</td></tr>
+      <tr><td>Tipo II (β)</td><td>Não rejeitar H₀ falsa (falso negativo)</td><td>Aumentar amostra; poder = 1 − β (≥ 80% padrão)</td></tr>
+    </table>
+
+    <div class="subsecao">Aplicação ao Cuidado Farmacêutico</div>
+    <p>O farmacêutico clínico deve <em>encontrar a evidência</em>, <em>avaliar criticamente</em>, <em>contextualizar ao paciente</em> e <em>comunicar</em> o resultado da análise à equipe e ao paciente. Modelos como o <em>BWC (Best Way of Communication)</em> e <em>Teach-Back</em> ajudam a verificar a compreensão.</p>
+
+    <div class="alerta">
+      <p><strong>Cuidado com:</strong> resultados de "subgrupo" não pré-especificados (data dredging); desfechos compostos que escondem heterogeneidade; estudos patrocinados pela indústria sem auditoria de dados; "evidência" baseada em estudo único de pequeno porte.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-FARMACOEPID · MBE</span><span>Extensivo ENARE 2026</span><span class="pg">6 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-FARMACOEPID</div><div class="aula-ref">Bloco B5 · Aula 11 · Questões ENARE</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 01</span><span class="fonte">PICO · NC: Aplicação</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Farmacêutico residente deseja avaliar se o uso de IBP em idosos por mais de 12 meses está associado a maior risco de fratura de quadril. Para estruturar a pergunta clínica em PICO/PECO, a alternativa CORRETA é:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>P = adultos jovens; I = IBP; C = AINE; O = osteoporose.</span></li>
+        <li class="correta"><span class="letra">B</span><span>P = idosos &gt; 65 anos; E = uso de IBP por &gt; 12 meses; C = não-uso de IBP; O = incidência de fratura de quadril.</span></li>
+        <li><span class="letra">C</span><span>P = pacientes com DRC; I = pantoprazol; C = omeprazol; O = mortalidade.</span></li>
+        <li><span class="letra">D</span><span>P = profissionais de saúde; I = pesquisa em base de dados; C = pesquisa em livros; O = nível de evidência.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> a pergunta é sobre <em>exposição</em> (não intervenção planejada) → PECO. Componentes corretos: P = idosos &gt; 65; E = uso prolongado de IBP; C = não-uso; O = fratura de quadril. Desenho ideal: coorte retrospectiva ou caso-controle. Dados epidemiológicos: meta-análises mostram aumento modesto mas consistente de fraturas em uso prolongado de IBP (HR ~1,3 — Janghorbani 2010, Lewis 2017).</p>
+      <p><strong>Por que as outras erram:</strong> A e C — populações ou intervenções inadequadas à pergunta · D — pergunta meta-metodológica, não clínica.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-FARMACOEPID · MBE</span><span>Extensivo ENARE 2026</span><span class="pg">7 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-FARMACOEPID</div><div class="aula-ref">Bloco B5 · Aula 11 · Questões ENARE</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 02</span><span class="fonte">NNT · NC: Aplicação</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Um ECR de 5 anos comparando estatina X com placebo em prevenção secundária apresentou mortalidade cardiovascular de 6% no grupo estatina e 10% no placebo. Qual é o NNT (Number Needed to Treat) para evitar uma morte CV em 5 anos?</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>15.</span></li>
+        <li><span class="letra">B</span><span>20.</span></li>
+        <li class="correta"><span class="letra">C</span><span>25.</span></li>
+        <li><span class="letra">D</span><span>40.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — C</div>
+      <p><strong>Cálculo:</strong></p>
+      <p>• Redução absoluta do risco (ARR) = 10% − 6% = 4% = 0,04.<br>
+      • NNT = 1 ÷ ARR = 1 ÷ 0,04 = <strong>25</strong>.</p>
+      <p>Interpretação: <em>tratar 25 pacientes durante 5 anos com a estatina X para evitar uma morte cardiovascular</em>. Esse é um NNT clinicamente atraente para prevenção secundária. Em geral, NNT &lt; 30 em desfecho duro (mortalidade) é considerado favorável.</p>
+      <p><strong>Por que as outras erram:</strong> A (15) — ARR de ~6,7% (errado); B (20) — ARR de 5% (errado); D (40) — ARR de 2,5% (errado).</p>
+      <p><strong>Conceito-chave:</strong> NNT é a tradução clínica do efeito; complemento essencial ao RRR. RRR = (10% − 6%) / 10% = 40% pode soar como redução grande, mas NNT 25 é o que faz sentido prático.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-FARMACOEPID · MBE</span><span>Extensivo ENARE 2026</span><span class="pg">8 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-FARMACOEPID</div><div class="aula-ref">Bloco B5 · Aula 11 · Gabarito Integrado</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 03</span><span class="fonte">Coorte Retrospectiva · NC: Análise</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Em estudo de coorte retrospectiva conduzido na UTI para avaliar associação entre uso empírico de cefalosporina de 3ª geração e ocorrência de IRAS por enterobactéria produtora de ESBL, o principal viés que o farmacêutico deve mitigar com ajuste estatístico é:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Viés de aferição apenas.</span></li>
+        <li><span class="letra">B</span><span>Viés de publicação.</span></li>
+        <li class="correta"><span class="letra">C</span><span>Confundimento por indicação — pacientes mais graves (SOFA alto, sepse) tendem a receber cefalosporina de amplo espectro, o que pode falsamente associar a exposição ao desfecho de IRAS-ESBL; necessário ajustar por gravidade (SOFA, APACHE II), comorbidades, tempo de internação e uso prévio de antimicrobiano.</span></li>
+        <li><span class="letra">D</span><span>Erro tipo I é o único risco.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — C</div>
+      <p><strong>Por que C está correta:</strong> o <em>confundimento por indicação</em> é viés clássico em farmacoepidemiologia observacional. Pacientes mais graves recebem terapias mais agressivas — confunde-se a "exposição" com a gravidade, que por sua vez causa o desfecho. <em>Ajuste estatístico</em> por escores de gravidade (SOFA, APACHE II), comorbidades (Charlson), uso prévio de antimicrobiano, tempo de internação prévia é essencial. Regressão logística ou modelo de Cox são os métodos típicos. Em casos de confundimento intenso, considerar análise por <em>escore de propensão (propensity score)</em>.</p>
+      <p><strong>Por que as outras erram:</strong> A — viés de aferição é importante mas mitigado por definições padronizadas (CDC NHSN), não por ajuste estatístico · B — viés de publicação afeta meta-análises, não estudos primários · D — erro tipo I é probabilidade estatística, não viés.</p>
+    </div>
+
+    <div class="subsecao" style="margin-top:6px;">Gabarito Comentado — Análise Integrada</div>
+    <table>
+      <tr><th>Questão</th><th>Gabarito</th><th>Tema</th><th>Conceito-Chave</th></tr>
+      <tr><td><strong>01</strong></td><td><span class="destaque">B</span></td><td>PICO/PECO em RAM crônica</td><td>Exposição (não intervenção) → PECO; P, E, C, O claros</td></tr>
+      <tr><td><strong>02</strong></td><td><span class="destaque">C</span></td><td>NNT = 1/ARR</td><td>1 ÷ (0,10 − 0,06) = 25</td></tr>
+      <tr><td><strong>03</strong></td><td><span class="destaque">C</span></td><td>Confundimento por indicação</td><td>Ajustar por SOFA/Charlson/tempo internação para estimar efeito não confundido</td></tr>
+    </table>
+  </div>
+  <div class="footer"><span>FARM-FARMACOEPID · MBE</span><span>Extensivo ENARE 2026</span><span class="pg">9 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-FARMACOEPID</div><div class="aula-ref">Bloco B5 · Aula 11 · Síntese</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Síntese — MBE</div>
+    <div class="sintese-grid">
+      <div class="sintese-item">
+        <div class="si-label">PICO + 5 Passos MBE</div>
+        <p>P/I/C/O (ou PECO em exposição). Sackett: pergunta → busca → análise crítica → aplicação → avaliação. PICOS adiciona Setting; PICOT adiciona Time.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Desenhos</div>
+        <p>ECR (padrão eficácia); coorte (RAM rara com latência); caso-controle (evento raro); transversal (prevalência); ecológico (populacional). RR/OR/NNT/NNH como medidas-chave.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Revisão Sistemática</div>
+        <p>PRISMA + Cochrane Handbook. Etapas: PICO → busca → seleção → extração → qualidade (RoB 2.0, ROBINS-I) → síntese ± meta-análise → viés de publicação → GRADE. I² &lt; 25% = baixa heterogeneidade.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">GRADE</div>
+        <p>Qualidade: Alta/Moderada/Baixa/Muito Baixa. Fatores que reduzem: viés, inconsistência, indiretividade, imprecisão, viés de publicação. Recomendação: forte vs fraca.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Causalidade RAM</div>
+        <p>Naranjo (≥ 9 definida; 5–8 provável; 1–4 possível; ≤ 0 duvidosa). WHO-UMC e Karch-Lasagna são alternativas. STROBE/CONSORT/PRISMA = diretrizes de relato.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Próxima Aula</div>
+        <p><strong>Aula 12 — Farmacotécnica I: ITE.</strong> Índice Terapêutico Estreito; RDC 742/2022; RDC 67/2007 BPM; lista de fármacos de baixo ITE (clonazepam, varfarina, lítio, digoxina); requisitos de manipulação.</p>
+      </div>
+    </div>
+    <div class="alerta" style="margin-top:5px;">
+      <p><strong>Regra de ouro — MBE no ENARE:</strong> PICO/PECO estrutura a pergunta; desenho de estudo depende da pergunta; meta-análise sintetiza; GRADE classifica; Naranjo imputa RAM; NNT/NNH traduzem efeito em prática. Confundimento por indicação é viés-padrão de farmacoepidemiologia.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-FARMACOEPID · MBE</span><span>Extensivo ENARE 2026</span><span class="pg">10 / 10</span></div>
+</div>
+
+</body>
+</html>

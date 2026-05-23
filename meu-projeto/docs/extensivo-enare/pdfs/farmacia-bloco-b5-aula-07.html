@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Farmácia — Bloco B5 Aula 07 | Extensivo ENARE 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap');
+  :root { --creme: #F6F4ED; --verde: #1F5C23; --amarelo: #C6D834; --escuro: #0C2B0E; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #d0d0d0; font-family: 'Bricolage Grotesque', sans-serif; }
+  .page { width: 210mm; height: 297mm; background: var(--creme); margin: 0 auto 12px; position: relative; overflow: hidden; page-break-after: always; }
+  .header { background: var(--verde); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .header-logo { display: flex; align-items: center; gap: 8px; }
+  .header-logo svg { width: 32px; height: 32px; }
+  .header-brand { display: flex; flex-direction: column; line-height: 1; }
+  .header-brand .marca { font-family: 'Playfair Display', serif; font-style: italic; color: #fff; font-size: 13px; letter-spacing: 0.5px; }
+  .header-brand .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 7px; letter-spacing: 1.5px; text-transform: uppercase; }
+  .header-info { text-align: right; }
+  .header-info .disciplina { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
+  .header-info .aula-ref { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.7); font-size: 8px; letter-spacing: 0.5px; }
+  .footer { position: absolute; bottom: 0; left: 0; right: 0; background: var(--verde); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .footer span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.6); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .footer .pg { color: var(--amarelo); font-weight: 400; }
+  .body { padding: 14px 18px 30px; height: calc(297mm - 52px - 22px); overflow: hidden; }
+  .capa-page { background: var(--verde); }
+  .capa-header { background: var(--creme); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .capa-header .marca { font-family: 'Playfair Display', serif; font-style: italic; color: var(--verde); font-size: 14px; }
+  .capa-header .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--verde); font-size: 7.5px; letter-spacing: 2px; text-transform: uppercase; }
+  .capa-body { padding: 28px 24px 0; display: flex; flex-direction: column; height: calc(297mm - 52px - 22px); }
+  .capa-eyebrow { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; }
+  .capa-titulo { font-family: 'Barlow Condensed', sans-serif; color: #fff; font-size: 50px; line-height: 0.95; text-transform: uppercase; letter-spacing: -0.5px; margin-bottom: 6px; }
+  .capa-titulo span { color: var(--amarelo); }
+  .capa-subtitulo { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; color: rgba(255,255,255,0.65); font-size: 12px; letter-spacing: 0.3px; margin-bottom: 22px; line-height: 1.5; }
+  .capa-badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+  .capa-badge { background: rgba(198,216,52,0.15); border: 1px solid var(--amarelo); color: var(--amarelo); font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 8px; border-radius: 2px; }
+  .capa-divider { width: 40px; height: 3px; background: var(--amarelo); margin-bottom: 20px; }
+  .capa-topicos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .capa-topico { display: flex; align-items: flex-start; gap: 7px; }
+  .capa-topico-num { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 18px; line-height: 1; min-width: 18px; }
+  .capa-topico-txt { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 400; color: rgba(255,255,255,0.8); font-size: 9.5px; line-height: 1.4; }
+  .capa-footer-strip { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.25); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .capa-footer-strip span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.45); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .secao-titulo { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 18px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid var(--amarelo); padding-bottom: 3px; margin-bottom: 9px; line-height: 1; }
+  .subsecao { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.5px; margin: 7px 0 3px; }
+  p { font-size: 9px; line-height: 1.55; color: #1a1a1a; margin-bottom: 4px; font-weight: 400; }
+  .destaque { background: var(--amarelo); color: var(--escuro); font-weight: 600; padding: 1px 4px; border-radius: 2px; font-size: 8.5px; }
+  .alerta { background: rgba(198,216,52,0.18); border-left: 3px solid var(--amarelo); padding: 5px 8px; margin: 5px 0; border-radius: 0 3px 3px 0; }
+  .alerta p { margin: 0; font-size: 8.5px; }
+  .alerta strong { color: var(--verde); }
+  table { width: 100%; border-collapse: collapse; margin: 5px 0; font-size: 8px; }
+  th { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; padding: 4px 6px; text-align: left; }
+  td { padding: 3px 6px; border-bottom: 1px solid rgba(31,92,35,0.12); vertical-align: top; line-height: 1.4; color: #1a1a1a; }
+  tr:nth-child(even) td { background: rgba(31,92,35,0.04); }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 5px 0; }
+  .card { background: rgba(31,92,35,0.06); border: 1px solid rgba(31,92,35,0.15); border-radius: 4px; padding: 7px 8px; }
+  .card-title { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 11px; text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 3px; }
+  .card p { font-size: 8px; line-height: 1.5; }
+  .questao-header { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; padding: 4px 10px; border-radius: 3px 3px 0 0; display: flex; justify-content: space-between; align-items: center; }
+  .questao-header .fonte { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; color: var(--amarelo); letter-spacing: 0.5px; }
+  .questao-body { border: 1px solid rgba(31,92,35,0.2); border-top: none; border-radius: 0 0 3px 3px; padding: 7px 10px; margin-bottom: 7px; }
+  .questao-enunciado { font-size: 8.5px; line-height: 1.55; color: #111; margin-bottom: 5px; font-weight: 500; }
+  .alternativas { list-style: none; }
+  .alternativas li { font-size: 8px; line-height: 1.5; padding: 2px 0; color: #222; display: flex; gap: 5px; }
+  .alternativas li .letra { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: var(--verde); font-size: 9px; min-width: 10px; }
+  .alternativas li.correta .letra { color: var(--amarelo); }
+  .alternativas li.correta { background: rgba(198,216,52,0.15); border-left: 2px solid var(--amarelo); padding-left: 4px; }
+  .gabarito-box { background: var(--verde); border-radius: 4px; padding: 8px 12px; margin: 6px 0; }
+  .gabarito-box .gab-title { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+  .gabarito-box p { color: rgba(255,255,255,0.9); font-size: 8px; line-height: 1.55; }
+  .gabarito-box strong { color: var(--amarelo); }
+  .sintese-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-top: 6px; }
+  .sintese-item { background: rgba(31,92,35,0.07); border-left: 3px solid var(--verde); padding: 5px 7px; border-radius: 0 3px 3px 0; }
+  .sintese-item .si-label { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px; }
+  .sintese-item p { font-size: 7.5px; line-height: 1.5; }
+  ul.lista { padding-left: 14px; margin: 3px 0; }
+  ul.lista li { font-size: 8.5px; line-height: 1.55; color: #1a1a1a; margin-bottom: 1px; }
+  @media print { body { background: none; } .page { margin: 0; box-shadow: none; } }
+</style>
+</head>
+<body>
+
+<!-- ========== PÁGINA 1 — CAPA ========== -->
+<div class="page capa-page">
+  <div class="capa-header">
+    <div style="display:flex;align-items:center;gap:8px;">
+      <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#1F5C23"/>
+      </svg>
+      <div><div class="marca">Elite Treinamentos</div><div class="tagline">Extensivo ENARE 2026</div></div>
+    </div>
+    <div style="text-align:right;">
+      <div style="font-family:'Barlow Condensed',sans-serif;color:var(--verde);font-size:11px;letter-spacing:1px;text-transform:uppercase;">Bloco B5 · Aula 07</div>
+      <div style="font-family:'Space Grotesk',sans-serif;font-weight:300;color:#888;font-size:7.5px;letter-spacing:0.5px;">Farmácia</div>
+    </div>
+  </div>
+  <div class="capa-body">
+    <div class="capa-eyebrow">Bloco B5 · FARM-CLIN · Aula 07 de 22</div>
+    <div class="capa-titulo">Prescri-<br>ção <span>Farma-<br>cêu-<br>tica</span></div>
+    <div class="capa-subtitulo">Res. CFF 585/2013 e 586/2013: atribuições privativas,<br>modalidades, vedações e prática clínica autônoma</div>
+    <div class="capa-badge-row">
+      <div class="capa-badge">FARM-CLIN ★★★★</div>
+      <div class="capa-badge">CFF 585/2013</div>
+      <div class="capa-badge">CFF 586/2013</div>
+      <div class="capa-badge">Cluster Novo 2025</div>
+    </div>
+    <div class="capa-divider"></div>
+    <div class="capa-topicos">
+      <div class="capa-topico"><div class="capa-topico-num">01</div><div class="capa-topico-txt">Histórico: do dispensador ao prescritor clínico</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">02</div><div class="capa-topico-txt">Res. 585/2013: atribuições privativas e cuidado farmacêutico</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">03</div><div class="capa-topico-txt">Res. 586/2013: prescrição autônoma e colaborativa</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">04</div><div class="capa-topico-txt">Componentes obrigatórios da prescrição farmacêutica</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">05</div><div class="capa-topico-txt">Limites: vedação a substâncias controladas</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">06</div><div class="capa-topico-txt">Prescrição de fitoterápicos, MIPs e dispositivos</div></div>
+    </div>
+  </div>
+  <div class="capa-footer-strip">
+    <span>Extensivo ENARE 2026</span><span>Elite Treinamentos em Saúde</span><span>Página 1 de 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 2 — HISTÓRICO E FUNDAMENTOS ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div>
+    <div class="header-info"><div class="disciplina">Farmácia — FARM-CLIN</div><div class="aula-ref">Bloco B5 · Aula 07 · Histórico e Fundamentos</div></div>
+  </div>
+  <div class="body">
+    <div class="secao-titulo">Da Dispensação à Prescrição — A Reconstrução da Profissão</div>
+
+    <p>A prescrição farmacêutica é uma <strong>conquista profissional consolidada</strong> pelo CFF em 2013, com as Resoluções <strong>585/2013</strong> (atribuições clínicas) e <strong>586/2013</strong> (prescrição farmacêutica). A ENARE 2025 dedicou 7 questões ao tema (Q24–Q30) — sinal de consolidação como bloco temático. Para o farmacêutico residente em saúde multiprofissional, dominar esses dispositivos é matéria de identidade profissional, não opcional.</p>
+
+    <div class="subsecao">Marcos Históricos</div>
+    <table>
+      <tr><th>Ano</th><th>Marco</th><th>Significado</th></tr>
+      <tr><td>1960</td><td>OMS — Farmácia Clínica nasce nos EUA</td><td>Distinção entre quem produz/distribui e quem cuida do uso</td></tr>
+      <tr><td>1990</td><td>Hepler &amp; Strand — Atenção Farmacêutica</td><td>Foco no paciente; identificação e resolução de PRMs</td></tr>
+      <tr><td>2002</td><td>Consenso brasileiro de AF (OPAS)</td><td>Modelo conceitual brasileiro adaptado</td></tr>
+      <!-- ⚠️ REVISAR (CodeRabbit PR#8): inconsistência de timeline — esta linha (2009) diz "sancionada", mas a linha de 2014 também diz "sancionada"; a Lei 13.021 é de 2014. Validar o que ocorreu em 2009 (tramitação do PL?) com professor de farmácia. -->
+      <tr><td>2009</td><td>Lei 13.021/2014 (Lei das Farmácias) — sancionada após PL longo</td><td>Reconhece a farmácia como estabelecimento de saúde, não comércio puro</td></tr>
+      <tr><td>2013</td><td><strong>Res. CFF 585 + 586</strong></td><td>Codifica atribuições clínicas e prescrição farmacêutica</td></tr>
+      <tr><td>2014</td><td>Lei 13.021/2014 sancionada</td><td>Farmacêutico responsável por todos os serviços farmacêuticos</td></tr>
+      <tr><td>2018</td><td>Res. CFF 689 (procedimentos farmacêuticos)</td><td>Aferição de PA, glicemia capilar, etc.</td></tr>
+      <tr><td>2020-2023</td><td>Atualizações pós-pandemia (Res. 738/2023, 765/2024)</td><td>Telefarmácia, vacinação na farmácia, prescrição em USF</td></tr>
+    </table>
+
+    <div class="subsecao">Conceito de Prescrição Farmacêutica</div>
+    <p>De acordo com a <strong>Res. CFF 586/2013, art. 2º</strong>: "Considera-se prescrição farmacêutica o ato pelo qual o farmacêutico seleciona e documenta terapias farmacológicas e não farmacológicas, e outras intervenções relativas ao cuidado à saúde do paciente, visando à promoção, proteção e recuperação da saúde, e à prevenção de doenças e de outros problemas de saúde". A prescrição é, portanto, <em>ato profissional codificado</em>, não simples sugestão.</p>
+
+    <div class="subsecao">Diferenças entre Dispensação, AF, Cuidado e Prescrição</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Dispensação</div>
+        <p>Entrega ao paciente do medicamento conforme prescrição válida + orientação técnica. Privativa do farmacêutico (Lei 13.021/2014). É <em>etapa</em>, não a totalidade do cuidado.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Atenção Farmacêutica</div>
+        <p>Modelo de prática centrado no paciente, com identificação, prevenção e resolução de PRMs. Inclui anamnese, planejamento, intervenção, monitoramento. Conceito Hepler &amp; Strand (1990); Consenso 2002.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Cuidado Farmacêutico (atual)</div>
+        <p>Termo guarda-chuva preferido pelo CFF a partir de 2014. Engloba AF + serviços farmacêuticos clínicos diretos (consulta, prescrição, seguimento, conciliação, educação em saúde). Foco: resultados clínicos.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Prescrição Farmacêutica</div>
+        <p>Ato clínico autônomo dentro de limites legais — selecionar e documentar terapia. Subconjunto do cuidado. Requer habilidade clínica, conhecimento farmacológico, raciocínio diagnóstico e respeito ético.</p>
+      </div>
+    </div>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> não confundir dispensação com prescrição. A dispensação <em>existe há séculos</em>; a prescrição farmacêutica autônoma é construção de 2013. A ENARE 2025 distinguiu explicitamente nas alternativas — confundir os termos é erro clássico.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-CLIN · Prescrição Farmacêutica</span><span>Extensivo ENARE 2026</span><span class="pg">2 / 10</span></div>
+</div>
+
+<!-- ========== PÁGINA 3 — RES. 585/2013 ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div>
+    <div class="header-info"><div class="disciplina">Farmácia — FARM-CLIN</div><div class="aula-ref">Bloco B5 · Aula 07 · Res. CFF 585/2013</div></div>
+  </div>
+  <div class="body">
+    <div class="secao-titulo">Resolução CFF 585/2013 — Atribuições Clínicas Privativas</div>
+
+    <p>A <strong>Res. CFF 585/2013</strong> regulamenta as atribuições clínicas do farmacêutico. Conhecer suas categorias é diferencial em prova. A ENARE 2025 cobrou em Q24 (atribuições privativas — exames laboratoriais, farmacêutico hospitalar) e Q25 (farmacêutico em UPA).</p>
+
+    <div class="subsecao">Categorias de Atribuições (art. 11–24)</div>
+    <table>
+      <tr><th>Categoria</th><th>Exemplos</th></tr>
+      <tr><td><strong>I. Cuidado integral à saúde</strong></td><td>Consulta farmacêutica; revisão da farmacoterapia; conciliação; seguimento; rastreamento em saúde; gestão de condição crônica; cuidado domiciliar</td></tr>
+      <tr><td><strong>II. Comunicação e educação</strong></td><td>Educação em saúde; orientação farmacêutica; comunicação interprofissional; produção de materiais educativos</td></tr>
+      <tr><td><strong>III. Prescrição farmacêutica</strong></td><td>Conforme Res. 586/2013 (autônoma e colaborativa)</td></tr>
+      <tr><td><strong>IV. Solicitação e avaliação de exames laboratoriais</strong></td><td>Exames para acompanhamento e ajuste terapêutico, no escopo dos procedimentos protocolados</td></tr>
+      <tr><td><strong>V. Procedimentos clínicos</strong></td><td>Aferição de PA; glicemia capilar; teste rápido; vacinação (regulamentação específica); curativo</td></tr>
+      <tr><td><strong>VI. Investigação e gestão clínica</strong></td><td>Identificação e resolução de PRMs; farmacovigilância; gestão de riscos</td></tr>
+      <tr><td><strong>VII. Gestão</strong></td><td>Coordenação de serviços de farmácia; participação em comissões (CFT, CCIH, gestão de antimicrobianos)</td></tr>
+      <tr><td><strong>VIII. Pesquisa e educação permanente</strong></td><td>Produção de evidências locais; preceptoria de residentes; participação em ensaios clínicos</td></tr>
+    </table>
+
+    <div class="subsecao">Exclusividade: Quais Atribuições São Privativas?</div>
+    <p>A maioria das atribuições da Res. 585 é <em>privativa</em> do farmacêutico — ou seja, somente o farmacêutico legalmente habilitado pode exercê-las. Isso inclui:</p>
+    <ul class="lista">
+      <li>Conduzir consulta farmacêutica em consultório próprio ou serviço de saúde</li>
+      <li>Realizar revisão farmacoterapêutica e conciliação medicamentosa de admissão e alta hospitalar</li>
+      <li>Solicitar exames laboratoriais para acompanhamento terapêutico</li>
+      <li>Prescrever fármacos isentos de prescrição médica (MIPs) e os de prescrição farmacêutica conforme Res. 586</li>
+      <li>Coordenar serviços de farmácia hospitalar e comunitária</li>
+      <li>Manipular preparações farmacêuticas em farmácia magistral</li>
+      <li>Dispensar medicamentos com avaliação técnica</li>
+    </ul>
+
+    <div class="subsecao">Cuidado Farmacêutico — Etapas (Método SOAP adaptado)</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">S — Subjetivo</div>
+        <p>Anamnese farmacêutica: queixa atual, história medicamentosa, alergias, adesão, fitoterápicos e MIPs, hábitos. Genograma familiar quando relevante. Documentar em prontuário ou ficha.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">O — Objetivo</div>
+        <p>Exame físico orientado: PA, FC, glicemia capilar, peso, altura, IMC; exames laboratoriais disponíveis. Quando possível, ausculta cardiopulmonar para acompanhamento — sempre em escopo do papel.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">A — Avaliação</div>
+        <p>Identificação dos PRMs: indicação (sub-prescrição), efetividade, segurança (RAM, interação) e adesão. Classificação Granada/PCNE. Hierarquização das intervenções por prioridade clínica.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">P — Plano</div>
+        <p>Intervenções farmacêuticas: prescrição (quando cabível), encaminhamento ao médico, educação ao paciente, ajuste de adesão, materiais complementares. Definir desfecho e data de retorno.</p>
+      </div>
+    </div>
+
+    <div class="alerta">
+      <p><strong>Atenção FGV — Atribuições privativas:</strong> aplicar a Res. 585/2013 em ambiente hospitalar implica que toda revisão farmacoterapêutica e seguimento devem ser conduzidos por farmacêutico — não delegáveis a técnico em farmácia. O farmacêutico residente deve documentar todas as intervenções em prontuário (carimbo, número CRF, data).</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-CLIN · Prescrição Farmacêutica</span><span>Extensivo ENARE 2026</span><span class="pg">3 / 10</span></div>
+</div>
+
+<!-- ========== PÁGINA 4 — RES. 586/2013 ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div>
+    <div class="header-info"><div class="disciplina">Farmácia — FARM-CLIN</div><div class="aula-ref">Bloco B5 · Aula 07 · Res. CFF 586/2013</div></div>
+  </div>
+  <div class="body">
+    <div class="secao-titulo">Resolução CFF 586/2013 — A Prescrição Farmacêutica</div>
+
+    <p>A <strong>Res. CFF 586/2013</strong> regulamenta a prescrição farmacêutica. ENARE 2025 cobrou em Q28 (duas modalidades), Q29 (componentes mínimos obrigatórios) e Q30 (vedações — controle especial).</p>
+
+    <div class="subsecao">Duas Modalidades</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">1. Prescrição Autônoma (art. 4º)</div>
+        <p>Realizada pelo farmacêutico sem necessidade de prescrição prévia de outro profissional. Limitada a:<br>
+        • <strong>MIPs</strong> (medicamentos isentos de prescrição médica — RDC 98/2016);<br>
+        • <strong>Fitoterápicos</strong> de venda livre;<br>
+        • <strong>Dispositivos médicos</strong> (curativos, glicosímetros, ortopédicos simples);<br>
+        • Outras prescrições estabelecidas em <em>protocolos clínicos pactuados</em> com a equipe assistencial (ex.: contraceptivos hormonais em alguns serviços).</p>
+      </div>
+      <div class="card">
+        <div class="card-title">2. Prescrição Colaborativa (art. 5º)</div>
+        <p>Mediante <em>acordo de colaboração escrito</em> com a equipe assistencial ou em <em>protocolos clínicos</em>. Permite:<br>
+        • Iniciar, manter ou ajustar farmacoterapia<br>
+        • Solicitar exames laboratoriais<br>
+        • Avaliar e adequar a prescrição médica prévia<br>
+        Comum em ambulatórios de anticoagulação, manejo de HAS/DM, oncologia, IC, antimicrobianos.</p>
+      </div>
+    </div>
+
+    <div class="subsecao">Componentes Obrigatórios da Prescrição (art. 8º)</div>
+    <ul class="lista">
+      <li><strong>1. Identificação do farmacêutico</strong>: nome completo, número de inscrição no CRF, endereço profissional;</li>
+      <li><strong>2. Identificação do paciente</strong>: nome completo, idade, sexo, peso (quando relevante para dose);</li>
+      <li><strong>3. Local e data da prescrição</strong>;</li>
+      <li><strong>4. Diagnóstico ou condição que justifica a prescrição</strong> (CID quando aplicável);</li>
+      <li><strong>5. Identificação do medicamento</strong>: DCB/DCI (nome genérico); concentração; forma farmacêutica;</li>
+      <li><strong>6. Posologia</strong>: dose, via de administração, intervalo, duração;</li>
+      <li><strong>7. Orientações ao paciente</strong>: cuidados, RAMs esperadas, sinais de alerta;</li>
+      <li><strong>8. Assinatura e carimbo</strong> do farmacêutico responsável;</li>
+      <li><strong>9. Cópia mantida no prontuário</strong> do paciente.</li>
+    </ul>
+
+    <div class="subsecao">Limites e Vedações (art. 6º)</div>
+    <p>É <strong>vedado</strong> ao farmacêutico prescrever:</p>
+    <ul class="lista">
+      <li><strong>Substâncias sujeitas a controle especial</strong> (Portaria SVS/MS 344/1998) — listas A1, A2, A3 (entorpecentes, psicotrópicos); B1, B2 (psicotrópicos); C1 (controle especial — anticonvulsivantes, antidepressivos, antipsicóticos); C2 (retinoides); C3 (imunossupressores), C4 (antirretrovirais), C5 (anabolizantes);</li>
+      <li><strong>Antimicrobianos sistêmicos</strong> exceto em protocolos colaborativos específicos (a regra geral é não prescrever);</li>
+      <li><strong>Medicamentos para uso parenteral hospitalar</strong> sem protocolo colaborativo;</li>
+      <li>Qualquer prescrição que <em>requeira diagnóstico médico</em> de patologia complexa.</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Pegadinha FGV — Vedação clássica:</strong> paciente em farmácia comunitária pede "ansiolítico para dormir". O farmacêutico, mesmo identificando o quadro, <em>não pode prescrever</em> benzodiazepínico (lista B1 — controle especial). Conduta: orientação não farmacológica para insônia (higiene do sono, exposição solar matinal, evitar telas), encaminhamento ao médico ou USF, considerar fitoterápico aprovado em prescrição autônoma (valeriana, melissa) com cautela.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-CLIN · Prescrição Farmacêutica</span><span>Extensivo ENARE 2026</span><span class="pg">4 / 10</span></div>
+</div>
+
+<!-- ========== PÁGINA 5 — APLICAÇÃO PRÁTICA ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div>
+    <div class="header-info"><div class="disciplina">Farmácia — FARM-CLIN</div><div class="aula-ref">Bloco B5 · Aula 07 · Aplicação Prática</div></div>
+  </div>
+  <div class="body">
+    <div class="secao-titulo">Aplicação Prática — Cenários da Prescrição Farmacêutica</div>
+
+    <div class="subsecao">Lista de Casos Cabíveis em Prescrição Autônoma</div>
+    <table>
+      <tr><th>Cenário</th><th>Prescrição farmacêutica adequada</th></tr>
+      <tr><td>Cefaleia tensional ocasional</td><td>Paracetamol 750 mg VO, 8/8h se dor, máx 3 g/dia; orientações sobre triggers</td></tr>
+      <tr><td>Pirose ocasional sem alarme</td><td>Antiácido (hidróxido de alumínio + magnésio); ranitidina ou famotidina; orientar evitar alimentos triggers</td></tr>
+      <tr><td>Coriza sem febre</td><td>Loratadina 10 mg/dia; soro fisiológico nasal; orientar evitar sedativos em motoristas</td></tr>
+      <tr><td>Dor muscular leve</td><td>Paracetamol VO ± gel tópico de diclofenaco; cautela com AINE oral em HAS/DRC</td></tr>
+      <tr><td>Constipação leve</td><td>Fibra (Plantago ovata); osmótico (lactulose) por curto período; orientar dieta + atividade</td></tr>
+      <tr><td>Diarreia aguda autolimitada</td><td>Soro de reidratação oral; orientar hidratação. Loperamida apenas em adulto sem febre/sangue</td></tr>
+      <tr><td>Aftas e gengivite leve</td><td>Bochecho de clorexidina 0,12% ou bicarbonato; orientar higiene oral</td></tr>
+      <tr><td>Insônia ocasional (não controlada por hábitos)</td><td>Higiene do sono + fitoterápico (valeriana, melissa, passiflora) — sem BZD</td></tr>
+      <tr><td>Resfriado comum</td><td>Sintomáticos (paracetamol, soro nasal); evitar antibiótico desnecessário</td></tr>
+      <tr><td>Cuidado a feridas crônicas</td><td>Curativos, hidratantes, cicatrizantes tópicos; encaminhar se sinais de infecção</td></tr>
+    </table>
+
+    <div class="subsecao">Cenários NÃO Cabíveis em Prescrição Autônoma</div>
+    <ul class="lista">
+      <li><strong>Infecção urinária:</strong> não prescrever antibiótico autonomamente — encaminhar para USF/médico. Apenas <em>orientar hidratação</em> enquanto aguarda atendimento</li>
+      <li><strong>Crise de ansiedade aguda:</strong> nunca prescrever benzodiazepínico — orientar acolhimento, técnicas respiratórias, encaminhar a SAMU/USF</li>
+      <li><strong>Crise hipertensiva</strong>: não prescrever anti-hipertensivos isoladamente — encaminhar a serviço de emergência</li>
+      <li><strong>Dor abdominal súbita</strong>: contraindicação a sintomáticos que mascarem abdome agudo — encaminhar a PS</li>
+      <li><strong>Síndrome respiratória aguda grave</strong>: encaminhamento imediato — não dispensar tampouco prescrever sem avaliação médica</li>
+    </ul>
+
+    <div class="subsecao">Fluxo da Consulta Farmacêutica (Res. 585/2013 + 586/2013)</div>
+    <table>
+      <tr><th>Etapa</th><th>Conteúdo</th></tr>
+      <tr><td>1. Acolhimento</td><td>Apresentação; identificação profissional; consentimento; documentação do encontro</td></tr>
+      <tr><td>2. Anamnese</td><td>Queixa, história medicamentosa completa, alergias, fitoterápicos, MIPs, álcool/tabaco, adesão</td></tr>
+      <tr><td>3. Exame físico</td><td>PA, FC, glicemia capilar, peso/IMC; testes rápidos quando aplicáveis</td></tr>
+      <tr><td>4. Avaliação</td><td>Identificação de PRMs; classificação Granada/PCNE; hierarquização das intervenções</td></tr>
+      <tr><td>5. Plano</td><td>Prescrição farmacêutica (se cabível) + encaminhamento + educação + plano de seguimento</td></tr>
+      <tr><td>6. Documentação</td><td>Prontuário (papel ou eletrônico); cópia da prescrição farmacêutica; carimbo + CRF</td></tr>
+      <tr><td>7. Retorno</td><td>Definir data; avaliar desfechos; ajustar plano</td></tr>
+    </table>
+
+    <div class="alerta">
+      <p><strong>Aspecto ético:</strong> a prescrição farmacêutica é ato responsável. O Código de Ética (Res. CFF 724/2022) reforça: o farmacêutico deve agir dentro de sua competência técnica, sem invadir a esfera de outras profissões e sem omitir cuidado. Documentar tudo é proteção tanto do paciente quanto do profissional.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-CLIN · Prescrição Farmacêutica</span><span>Extensivo ENARE 2026</span><span class="pg">5 / 10</span></div>
+</div>
+
+<!-- ========== PÁGINA 6 — FITOTERÁPICOS, MIPS, ATUALIZAÇÕES ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div>
+    <div class="header-info"><div class="disciplina">Farmácia — FARM-CLIN</div><div class="aula-ref">Bloco B5 · Aula 07 · Fitoterápicos e Atualizações</div></div>
+  </div>
+  <div class="body">
+    <div class="secao-titulo">Fitoterápicos, MIPs e Atualizações Recentes</div>
+
+    <div class="subsecao">Fitoterápicos em Prescrição Farmacêutica</div>
+    <p>A prescrição farmacêutica de fitoterápicos é regulamentada pela <strong>Res. CFF 477/2008 e atualizações</strong>, em conjunto com a Política Nacional de Práticas Integrativas e Complementares (PNPIC — Portaria MS 971/2006). A <em>RENAFITO</em> e a <em>RENAME</em> são as listas oficiais de fitoterápicos disponíveis no SUS.</p>
+
+    <table>
+      <tr><th>Fitoterápico</th><th>Indicação aceita em prescrição farmacêutica</th></tr>
+      <tr><td>Mikania glomerata (guaco)</td><td>Expectorante</td></tr>
+      <tr><td>Maytenus ilicifolia (espinheira-santa)</td><td>Dispepsia funcional</td></tr>
+      <tr><td>Phyllanthus niruri (quebra-pedra)</td><td>Coadjuvante em cálculos urinários (com monitoramento)</td></tr>
+      <tr><td>Valeriana officinalis</td><td>Insônia leve e ansiedade leve (cuidado com sedação aditiva)</td></tr>
+      <tr><td>Passiflora incarnata</td><td>Ansiedade leve, insônia ocasional</td></tr>
+      <tr><td>Mentha piperita</td><td>Distúrbios digestivos (SII funcional)</td></tr>
+      <tr><td>Cynara scolymus (alcachofra)</td><td>Dispepsia, distúrbios hepatobiliares funcionais</td></tr>
+      <tr><td>Allium sativum (alho)</td><td>HAS leve (não substitui anti-hipertensivo)</td></tr>
+      <tr><td>Cassia angustifolia (sene)</td><td>Constipação ocasional — uso por curtos períodos</td></tr>
+      <tr><td>Plantago ovata (psyllium)</td><td>Fibra em constipação e dislipidemia</td></tr>
+    </table>
+
+    <p><strong>Cautela com Hypericum perforatum (erva de São João):</strong> apesar de eficácia em depressão leve a moderada, é <em>indutor potente de CYP3A4 e P-gp</em> — não prescrever a paciente em varfarina, contraceptivos hormonais, ciclosporina, ARVs, tacrolimo.</p>
+
+    <div class="subsecao">MIPs — RDC ANVISA 98/2016</div>
+    <p>Os medicamentos isentos de prescrição médica (MIPs) estão listados na <em>RDC 98/2016</em> e atualizações. São de venda livre, com avaliação técnica do farmacêutico. Categorias principais:</p>
+    <ul class="lista">
+      <li>Analgésicos/antitérmicos (paracetamol até 750 mg, dipirona até 500 mg, AAS até 500 mg)</li>
+      <li>AINEs OTC (ibuprofeno até 400 mg, naproxeno até 220 mg) — uso limitado a 5 dias</li>
+      <li>Antiácidos (hidróxidos, bicarbonato, calcários)</li>
+      <li>Antieméticos sintomáticos (dimenidrato, meclizina)</li>
+      <li>Antihistamínicos não sedativos (loratadina 10 mg, fexofenadina 60 mg)</li>
+      <li>Descongestionantes nasais tópicos (oximetazolina por curto período)</li>
+      <li>Antitussígenos não opioides (dextrometorfano em alguns países; no Brasil é controlado)</li>
+      <li>Laxativos osmóticos e estimulantes (lactulose, bisacodil, sene)</li>
+      <li>Vitaminas e suplementos minerais em doses fisiológicas</li>
+      <li>Antifúngicos tópicos (clotrimazol, miconazol, terbinafina)</li>
+      <li>Cicatrizantes, antissépticos, anti-hemorroidários tópicos</li>
+      <li>Mucolíticos (acetilcisteína, ambroxol)</li>
+    </ul>
+
+    <div class="subsecao">Atualizações Pós-Pandemia</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Vacinação na Farmácia (Res. CFF 654/2018)</div>
+        <p>Permite ao farmacêutico capacitado administrar vacinas em estabelecimento farmacêutico após treinamento, com sala de aplicação adequada, plano de emergência (anafilaxia) e fluxo com sistema oficial de saúde. Aceleração do tema na pandemia COVID-19.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Telefarmácia e Prescrição Eletrônica</div>
+        <p>Res. CFF 765/2024 atualiza a telefarmácia: consulta remota, prescrição farmacêutica eletrônica com assinatura digital ICP-Brasil. Inclui dispensação remota com validação eletrônica de receita médica. RDC ANVISA 471/2021 + LGPD para registro e proteção de dados.</p>
+      </div>
+    </div>
+
+    <div class="alerta">
+      <p><strong>Tendência ENARE 2026:</strong> esperar 5–8 questões sobre prescrição farmacêutica (Res. 585/586), com ênfase em <em>limites</em> (controle especial, sem antimicrobianos sem protocolo) e <em>componentes obrigatórios</em> da prescrição. Questões podem aprofundar atualizações pós-pandemia: telefarmácia, vacinação, prescrição eletrônica.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-CLIN · Prescrição Farmacêutica</span><span>Extensivo ENARE 2026</span><span class="pg">6 / 10</span></div>
+</div>
+
+<!-- ========== PÁGINA 7 — QUESTÃO 01 ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div>
+    <div class="header-info"><div class="disciplina">Farmácia — FARM-CLIN</div><div class="aula-ref">Bloco B5 · Aula 07 · Questões ENARE</div></div>
+  </div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 01</span><span class="fonte">Res. 585/2013 · Atribuições · NC: Compreensão</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Em hospital terciário, farmacêutico residente atende paciente internado em enfermaria clínica. Identifica em prontuário discrepância entre prescrição médica e medicamentos da admissão (paciente trazia 8 medicamentos de uso domiciliar). Sobre as atribuições privativas do farmacêutico clínico segundo Res. CFF 585/2013, é correto afirmar que:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>A revisão e reconciliação de medicamentos pode ser realizada por técnico em farmácia treinado, sob supervisão do farmacêutico.</span></li>
+        <li class="correta"><span class="letra">B</span><span>A reconciliação medicamentosa é atribuição privativa do farmacêutico, que deve documentar a intervenção em prontuário e comunicar a equipe assistencial sobre as discrepâncias identificadas.</span></li>
+        <li><span class="letra">C</span><span>Não há respaldo legal para o farmacêutico realizar conciliação medicamentosa hospitalar; trata-se de função do médico assistente.</span></li>
+        <li><span class="letra">D</span><span>O farmacêutico pode apenas dispensar conforme prescrição vigente, sem questionar discrepâncias.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> a Res. CFF 585/2013 estabelece que a <em>revisão farmacoterapêutica</em>, incluindo a reconciliação medicamentosa de admissão e alta, é <strong>atribuição clínica privativa do farmacêutico</strong>. O processo envolve: (1) obter a lista completa de medicamentos pré-admissão (anamnese com paciente e/ou familiar, verificação de embalagens trazidas, contato com farmácia comunitária); (2) comparar com a prescrição hospitalar; (3) identificar discrepâncias intencionais ou não-intencionais; (4) comunicar com a equipe médica para resolução; (5) documentar a intervenção em prontuário com data, hora, carimbo e CRF. É também eixo do JCI e da Meta Internacional de Segurança 8 (medicamentos).</p>
+      <p><strong>Por que as outras erram:</strong> A — atividade clínica não é delegável a técnico em farmácia · C — o farmacêutico tem competência e atribuição legais explícitas · D — restrição passiva é o oposto do papel clínico definido pelas Res. 585/586.</p>
+      <p><strong>Conceito-chave:</strong> reconciliação medicamentosa é cobrada também por sua importância em segurança do paciente (ENARE 2025 Q59 — reconciliação oncológica). Discrepâncias não-intencionais ocorrem em 50–70% das admissões hospitalares; identificá-las é função farmacêutica primária.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-CLIN · Prescrição Farmacêutica</span><span>Extensivo ENARE 2026</span><span class="pg">7 / 10</span></div>
+</div>
+
+<!-- ========== PÁGINA 8 — QUESTÃO 02 ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div>
+    <div class="header-info"><div class="disciplina">Farmácia — FARM-CLIN</div><div class="aula-ref">Bloco B5 · Aula 07 · Questões ENARE</div></div>
+  </div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 02</span><span class="fonte">Res. 586/2013 · Vedação · NC: Aplicação</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Paciente de 32 anos comparece à farmácia comunitária queixando-se de insônia há 5 noites consecutivas, sem outros sintomas. Pede que o farmacêutico "passe um remédio para dormir, igual o que minha amiga toma — clonazepam". Considerando a Resolução CFF 586/2013, qual a conduta correta?</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Prescrever clonazepam 0,5 mg em dose única noturna por 7 dias, pois o farmacêutico pode prescrever benzodiazepínicos em protocolo autônomo.</span></li>
+        <li><span class="letra">B</span><span>Prescrever zolpidem 10 mg, pois não é controlado pela Portaria 344/1998.</span></li>
+        <li class="correta"><span class="letra">C</span><span>Não prescrever clonazepam (vedação expressa para substâncias da lista B1 — Portaria 344/1998); realizar consulta farmacêutica orientando higiene do sono e técnicas não farmacológicas; se persistir, considerar fitoterápico de prescrição autônoma (valeriana, passiflora) ou encaminhar à USF/médico.</span></li>
+        <li><span class="letra">D</span><span>Dispensar clonazepam sem receita médica, registrando a venda no SNGPC.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — C</div>
+      <p><strong>Por que C está correta:</strong> a Res. CFF 586/2013, art. 6º, é <em>explicitamente vedativa</em>: o farmacêutico <strong>não pode prescrever substâncias sujeitas a controle especial</strong> (Portaria SVS/MS 344/1998). Clonazepam é <em>benzodiazepínico de lista B1</em> (psicotrópicos) — prescrição é privativa de profissionais médicos (e odontólogos para uso odontológico). O farmacêutico, mesmo identificando o quadro de insônia, deve atuar dentro de sua competência: (1) consulta farmacêutica com investigação de causas (estresse, cafeína, álcool, telas, comorbidades); (2) educação em higiene do sono; (3) prescrição autônoma apenas de fitoterápicos aprovados (valeriana, passiflora, melissa) com cautela e por curto período; (4) encaminhamento a USF/médico se persistência.</p>
+      <p><strong>Por que as outras erram:</strong> A — vedação expressa da Res. 586 · B — zolpidem é <em>Z-drug</em> também controlado (lista B1 da Portaria 344/1998, similar a BZD) — vedação aplica-se igualmente · D — dispensar sem receita é infração sanitária (Lei 5.991/1973) e tipifica em conduta antiética; sequer há dispensação possível sem prescrição médica para Lista B1.</p>
+      <p><strong>Lições adicionais:</strong> insônia &gt; 3 meses sem controle não farmacológico é indicação de avaliação médica; uso crônico de BZD/Z-drug em paciente jovem é fator de risco para dependência. O farmacêutico tem papel central em <em>educar sobre alternativas seguras</em> e em <em>desestimular automedicação por sugestão de terceiros</em>.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-CLIN · Prescrição Farmacêutica</span><span>Extensivo ENARE 2026</span><span class="pg">8 / 10</span></div>
+</div>
+
+<!-- ========== PÁGINA 9 — QUESTÃO 03 + GABARITO INTEGRADO ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div>
+    <div class="header-info"><div class="disciplina">Farmácia — FARM-CLIN</div><div class="aula-ref">Bloco B5 · Aula 07 · Gabarito Integrado</div></div>
+  </div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 03</span><span class="fonte">Componentes da Prescrição · NC: Compreensão</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">No ambulatório de Anticoagulação Oral, o farmacêutico atende paciente em uso de varfarina e, com base em protocolo colaborativo com o serviço, ajusta a dose. Para que o documento de prescrição farmacêutica seja válido conforme Res. CFF 586/2013, art. 8º, é <em>obrigatório</em> conter:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Apenas o nome do medicamento e a dose.</span></li>
+        <li><span class="letra">B</span><span>Apenas a identificação do paciente e a assinatura do farmacêutico.</span></li>
+        <li class="correta"><span class="letra">C</span><span>Identificação do farmacêutico (nome + CRF + endereço), do paciente (nome + idade), local e data, diagnóstico ou condição justificadora, medicamento (DCB + concentração + forma farmacêutica), posologia, orientações ao paciente, e assinatura/carimbo.</span></li>
+        <li><span class="letra">D</span><span>É necessário também CID e informações da família.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — C</div>
+      <p><strong>Por que C está correta:</strong> a Res. CFF 586/2013, art. 8º, lista os 9 elementos obrigatórios da prescrição farmacêutica: (1) identificação do farmacêutico (nome + CRF + endereço); (2) identificação do paciente (nome + idade); (3) local e data; (4) diagnóstico ou condição que justifica (CID quando aplicável); (5) medicamento em DCB com concentração e forma farmacêutica; (6) posologia completa (dose, via, intervalo, duração); (7) orientações; (8) assinatura + carimbo; (9) cópia em prontuário.</p>
+      <p><strong>Por que as outras erram:</strong> A — informação insuficiente (sem rastreabilidade do profissional ou do paciente); B — sem medicamento e posologia, o documento não tem efeito clínico; D — CID é desejável quando aplicável, mas não é citado como item independente obrigatório em todo caso (a "condição que justifica" pode ser descrita de outra forma — ex.: "ajuste de anticoagulação"). Informações da família não são exigidas formalmente, embora possam constar na anamnese.</p>
+    </div>
+
+    <div class="subsecao" style="margin-top:6px;">Gabarito Comentado — Análise Integrada</div>
+    <table>
+      <tr><th>Questão</th><th>Gabarito</th><th>Tema</th><th>Conceito-Chave</th></tr>
+      <tr><td><strong>01</strong></td><td><span class="destaque">B</span></td><td>Res. 585/2013 — Reconciliação</td><td>Atribuição privativa; documentar em prontuário; comunicar equipe</td></tr>
+      <tr><td><strong>02</strong></td><td><span class="destaque">C</span></td><td>Res. 586/2013 — Vedação BZD</td><td>Controle especial = não prescrever; fitoterápico autônomo + encaminhamento</td></tr>
+      <tr><td><strong>03</strong></td><td><span class="destaque">C</span></td><td>Componentes Obrigatórios (art. 8º)</td><td>9 itens: identificação + diagnóstico + medicamento + posologia + orientações + carimbo</td></tr>
+    </table>
+  </div>
+  <div class="footer"><span>FARM-CLIN · Prescrição Farmacêutica</span><span>Extensivo ENARE 2026</span><span class="pg">9 / 10</span></div>
+</div>
+
+<!-- ========== PÁGINA 10 — SÍNTESE ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div>
+    <div class="header-info"><div class="disciplina">Farmácia — FARM-CLIN</div><div class="aula-ref">Bloco B5 · Aula 07 · Síntese</div></div>
+  </div>
+  <div class="body">
+    <div class="secao-titulo">Síntese — Prescrição Farmacêutica</div>
+    <div class="sintese-grid">
+      <div class="sintese-item">
+        <div class="si-label">Res. CFF 585/2013</div>
+        <p>Atribuições clínicas privativas: cuidado integral (consulta, revisão, conciliação, seguimento, gestão crônica); comunicação/educação; prescrição; solicitação de exames; procedimentos clínicos; investigação de PRMs; gestão; pesquisa.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Res. CFF 586/2013 — Modalidades</div>
+        <p>(1) Autônoma: MIPs (RDC 98/2016), fitoterápicos, dispositivos. (2) Colaborativa: por protocolo/acordo escrito (HAS, DM, anticoagulação, antimicrobianos). Vedação total a controle especial (Lista A, B1, B2, C1–C5 — Portaria 344/1998).</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">9 Itens Obrigatórios (art. 8º)</div>
+        <p>Identificação farmacêutico (CRF) + paciente; local/data; diagnóstico/condição; medicamento DCB + concentração + forma; posologia (dose, via, intervalo, duração); orientações; assinatura/carimbo; cópia em prontuário.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Vedações Críticas</div>
+        <p>Não prescrever benzodiazepínicos (clonazepam, alprazolam, diazepam), Z-drugs (zolpidem, zopiclona), opioides, antidepressivos, antipsicóticos, anticonvulsivantes — todos lista B/C. Antimicrobianos sem protocolo colaborativo. Encaminhar a USF/médico.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Casos Cabíveis em Autônoma</div>
+        <p>Cefaleia leve (paracetamol), pirose ocasional (antiácido), constipação leve (lactulose, fibra), coriza/alergia (loratadina), aftas (bochechos), insônia leve (higiene + fitoterápico), feridas crônicas (curativos). Sempre documentar.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Próxima Aula</div>
+        <p><strong>Aula 08 — Atenção Farmacêutica.</strong> Conceito (Hepler &amp; Strand, 1990; Consenso 2002), objetivo, ciclo, etapas exclusivas, Farmácia Clínica vs AF, classificação PCNE/Granada de PRMs.</p>
+      </div>
+    </div>
+    <div class="alerta" style="margin-top:5px;">
+      <p><strong>Regra de ouro — Prescrição Farmacêutica:</strong> Res. 585 = atribuições clínicas; Res. 586 = prescrição. Autônoma (MIPs, fitoterápicos) vs Colaborativa (protocolo escrito). Vedação ABSOLUTA a controle especial. 9 elementos da prescrição. Documentar em prontuário sempre. Carimbo + CRF.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-CLIN · Prescrição Farmacêutica</span><span>Extensivo ENARE 2026</span><span class="pg">10 / 10</span></div>
+</div>
+
+</body>
+</html>

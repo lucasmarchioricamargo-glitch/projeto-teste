@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Farmácia — Bloco B5 Aula 06 | Extensivo ENARE 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap');
+  :root { --creme: #F6F4ED; --verde: #1F5C23; --amarelo: #C6D834; --escuro: #0C2B0E; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #d0d0d0; font-family: 'Bricolage Grotesque', sans-serif; }
+  .page { width: 210mm; height: 297mm; background: var(--creme); margin: 0 auto 12px; position: relative; overflow: hidden; page-break-after: always; }
+  .header { background: var(--verde); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .header-logo { display: flex; align-items: center; gap: 8px; }
+  .header-logo svg { width: 32px; height: 32px; }
+  .header-brand { display: flex; flex-direction: column; line-height: 1; }
+  .header-brand .marca { font-family: 'Playfair Display', serif; font-style: italic; color: #fff; font-size: 13px; letter-spacing: 0.5px; }
+  .header-brand .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 7px; letter-spacing: 1.5px; text-transform: uppercase; }
+  .header-info { text-align: right; }
+  .header-info .disciplina { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
+  .header-info .aula-ref { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.7); font-size: 8px; letter-spacing: 0.5px; }
+  .footer { position: absolute; bottom: 0; left: 0; right: 0; background: var(--verde); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .footer span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.6); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .footer .pg { color: var(--amarelo); font-weight: 400; }
+  .body { padding: 14px 18px 30px; height: calc(297mm - 52px - 22px); overflow: hidden; }
+  .capa-page { background: var(--verde); }
+  .capa-header { background: var(--creme); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .capa-header .marca { font-family: 'Playfair Display', serif; font-style: italic; color: var(--verde); font-size: 14px; }
+  .capa-header .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--verde); font-size: 7.5px; letter-spacing: 2px; text-transform: uppercase; }
+  .capa-body { padding: 28px 24px 0; display: flex; flex-direction: column; height: calc(297mm - 52px - 22px); }
+  .capa-eyebrow { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; }
+  .capa-titulo { font-family: 'Barlow Condensed', sans-serif; color: #fff; font-size: 50px; line-height: 0.95; text-transform: uppercase; letter-spacing: -0.5px; margin-bottom: 6px; }
+  .capa-titulo span { color: var(--amarelo); }
+  .capa-subtitulo { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; color: rgba(255,255,255,0.65); font-size: 12px; letter-spacing: 0.3px; margin-bottom: 22px; line-height: 1.5; }
+  .capa-badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+  .capa-badge { background: rgba(198,216,52,0.15); border: 1px solid var(--amarelo); color: var(--amarelo); font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 8px; border-radius: 2px; }
+  .capa-divider { width: 40px; height: 3px; background: var(--amarelo); margin-bottom: 20px; }
+  .capa-topicos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .capa-topico { display: flex; align-items: flex-start; gap: 7px; }
+  .capa-topico-num { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 18px; line-height: 1; min-width: 18px; }
+  .capa-topico-txt { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 400; color: rgba(255,255,255,0.8); font-size: 9.5px; line-height: 1.4; }
+  .capa-footer-strip { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.25); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .capa-footer-strip span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.45); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .secao-titulo { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 18px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid var(--amarelo); padding-bottom: 3px; margin-bottom: 9px; line-height: 1; }
+  .subsecao { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.5px; margin: 7px 0 3px; }
+  p { font-size: 9px; line-height: 1.55; color: #1a1a1a; margin-bottom: 4px; font-weight: 400; }
+  .destaque { background: var(--amarelo); color: var(--escuro); font-weight: 600; padding: 1px 4px; border-radius: 2px; font-size: 8.5px; }
+  .alerta { background: rgba(198,216,52,0.18); border-left: 3px solid var(--amarelo); padding: 5px 8px; margin: 5px 0; border-radius: 0 3px 3px 0; }
+  .alerta p { margin: 0; font-size: 8.5px; }
+  .alerta strong { color: var(--verde); }
+  table { width: 100%; border-collapse: collapse; margin: 5px 0; font-size: 8px; }
+  th { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; padding: 4px 6px; text-align: left; }
+  td { padding: 3px 6px; border-bottom: 1px solid rgba(31,92,35,0.12); vertical-align: top; line-height: 1.4; color: #1a1a1a; }
+  tr:nth-child(even) td { background: rgba(31,92,35,0.04); }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 5px 0; }
+  .card { background: rgba(31,92,35,0.06); border: 1px solid rgba(31,92,35,0.15); border-radius: 4px; padding: 7px 8px; }
+  .card-title { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 11px; text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 3px; }
+  .card p { font-size: 8px; line-height: 1.5; }
+  .questao-header { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; padding: 4px 10px; border-radius: 3px 3px 0 0; display: flex; justify-content: space-between; align-items: center; }
+  .questao-header .fonte { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; color: var(--amarelo); letter-spacing: 0.5px; }
+  .questao-body { border: 1px solid rgba(31,92,35,0.2); border-top: none; border-radius: 0 0 3px 3px; padding: 7px 10px; margin-bottom: 7px; }
+  .questao-enunciado { font-size: 8.5px; line-height: 1.55; color: #111; margin-bottom: 5px; font-weight: 500; }
+  .alternativas { list-style: none; }
+  .alternativas li { font-size: 8px; line-height: 1.5; padding: 2px 0; color: #222; display: flex; gap: 5px; }
+  .alternativas li .letra { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: var(--verde); font-size: 9px; min-width: 10px; }
+  .alternativas li.correta .letra { color: var(--amarelo); }
+  .alternativas li.correta { background: rgba(198,216,52,0.15); border-left: 2px solid var(--amarelo); padding-left: 4px; }
+  .gabarito-box { background: var(--verde); border-radius: 4px; padding: 8px 12px; margin: 6px 0; }
+  .gabarito-box .gab-title { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+  .gabarito-box p { color: rgba(255,255,255,0.9); font-size: 8px; line-height: 1.55; }
+  .gabarito-box strong { color: var(--amarelo); }
+  .sintese-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-top: 6px; }
+  .sintese-item { background: rgba(31,92,35,0.07); border-left: 3px solid var(--verde); padding: 5px 7px; border-radius: 0 3px 3px 0; }
+  .sintese-item .si-label { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px; }
+  .sintese-item p { font-size: 7.5px; line-height: 1.5; }
+  ul.lista { padding-left: 14px; margin: 3px 0; }
+  ul.lista li { font-size: 8.5px; line-height: 1.55; color: #1a1a1a; margin-bottom: 1px; }
+  @media print { body { background: none; } .page { margin: 0; box-shadow: none; } }
+</style>
+</head>
+<body>
+
+<!-- ========== PÁGINA 1 — CAPA ========== -->
+<div class="page capa-page">
+  <div class="capa-header">
+    <div style="display:flex;align-items:center;gap:8px;">
+      <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#1F5C23"/>
+      </svg>
+      <div>
+        <div class="marca">Elite Treinamentos</div>
+        <div class="tagline">Extensivo ENARE 2026</div>
+      </div>
+    </div>
+    <div style="text-align:right;">
+      <div style="font-family:'Barlow Condensed',sans-serif;color:var(--verde);font-size:11px;letter-spacing:1px;text-transform:uppercase;">Bloco B5 · Aula 06</div>
+      <div style="font-family:'Space Grotesk',sans-serif;font-weight:300;color:#888;font-size:7.5px;letter-spacing:0.5px;">Farmácia</div>
+    </div>
+  </div>
+  <div class="capa-body">
+    <div class="capa-eyebrow">Bloco B5 · FARM-INTERACT · Aula 06 de 22</div>
+    <div class="capa-titulo">Intera-<br>ções <span>Medi-<br>camen-<br>tosas</span></div>
+    <div class="capa-subtitulo">Mecanismos farmacodinâmicos vs. farmacocinéticos:<br>CYP450, P-glicoproteína, sinergismo e casos clássicos ENARE</div>
+    <div class="capa-badge-row">
+      <div class="capa-badge">FARM-INTERACT</div>
+      <div class="capa-badge">CYP3A4 · 2D6 · 2C9</div>
+      <div class="capa-badge">Sinergismo · Antagonismo</div>
+      <div class="capa-badge">QT · Hipercalemia</div>
+    </div>
+    <div class="capa-divider"></div>
+    <div class="capa-topicos">
+      <div class="capa-topico"><div class="capa-topico-num">01</div><div class="capa-topico-txt">Classificação: farmacodinâmica vs farmacocinética</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">02</div><div class="capa-topico-txt">Absorção: quelação, pH, motilidade gástrica</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">03</div><div class="capa-topico-txt">CYP450: inibidores e indutores enzimáticos</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">04</div><div class="capa-topico-txt">Transportadores: P-glicoproteína (P-gp)</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">05</div><div class="capa-topico-txt">Prolongamento de QT: amiodarona + cipro/macrolídeo</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">06</div><div class="capa-topico-txt">Hipercalemia: IECA + espironolactona + AINE</div></div>
+    </div>
+  </div>
+  <div class="capa-footer-strip">
+    <span>Extensivo ENARE 2026</span>
+    <span>Elite Treinamentos em Saúde</span>
+    <span>Página 1 de 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 2 — CLASSIFICAÇÃO ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div>
+    </div>
+    <div class="header-info"><div class="disciplina">Farmácia — FARM-INTERACT</div><div class="aula-ref">Bloco B5 · Aula 06 · Classificação</div></div>
+  </div>
+  <div class="body">
+    <div class="secao-titulo">Interações Medicamentosas — Classificação</div>
+    <p>Uma <strong>interação medicamentosa</strong> é a modificação do efeito de um fármaco pela presença de outro (medicamento, alimento, fitoterápico, suplemento) ou por uma condição clínica. A FGV cobrou interações em ENARE 2025 (Q46, Q47, Q89, Q100) com forte ênfase em mecanismo (NC Análise). O farmacêutico deve identificar não apenas <em>se</em> há interação, mas <em>por que</em> e <em>como manejar</em>.</p>
+
+    <div class="subsecao">Classificação Conceitual</div>
+    <table>
+      <tr>
+        <th>Categoria</th>
+        <th>O que muda</th>
+        <th>Exemplos clássicos</th>
+      </tr>
+      <tr>
+        <td><strong>Farmacocinética</strong></td>
+        <td>Concentração plasmática do fármaco (ADME)</td>
+        <td>Quelação de fluoroquinolona com cálcio (absorção); rifampicina + varfarina (CYP2C9 — metabolismo)</td>
+      </tr>
+      <tr>
+        <td><strong>Farmacodinâmica</strong></td>
+        <td>Ação no receptor/efetor — sem mudar concentração</td>
+        <td>Captopril + espironolactona (hipercalemia); ISRS + tramadol (síndrome serotoninérgica); BZD + opioide (depressão SNC aditiva)</td>
+      </tr>
+      <tr>
+        <td>Farmacêutica</td>
+        <td>Incompatibilidade físico-química <em>in vitro</em></td>
+        <td>Cálcio + ceftriaxona IV (precipitado); insulina regular + NPH (mistura técnica); anfotericina + NaCl (precipitação)</td>
+      </tr>
+    </table>
+
+    <div class="subsecao">Sinergismo, Antagonismo, Aditivo (Farmacodinâmica)</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Sinergismo</div>
+        <p>Efeito combinado <em>maior que a soma</em> dos efeitos individuais (1+1 &gt; 2). Pode ser <em>benéfico</em> (β-lactâmico + aminoglicosídeo em enterococo) ou <em>tóxico</em> (captopril + espironolactona → hipercalemia; AINE + IECA + diurético → IRA).</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Aditivo</div>
+        <p>Efeito combinado igual à soma (1+1 = 2). Ex.: paracetamol + dipirona em dor; vários sedativos somando depressão SNC; combinação de anti-hipertensivos com mecanismos complementares (IECA + tiazídico).</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Antagonismo</div>
+        <p>Um fármaco <em>reduz ou anula</em> o efeito do outro. Pode ser competitivo (mesmo receptor: naloxona ↔ morfina), não-competitivo (sítio alostérico), ou funcional (efeitos opostos: epinefrina ↔ β-bloqueador). Inclui interações fisiológicas como AINE ↓ efeito anti-hipertensivo de IECA.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Potenciação</div>
+        <p>Termo às vezes usado como sinônimo de sinergismo; classicamente, quando um fármaco sem efeito próprio aumenta o efeito de outro (ex.: probenecida bloqueia secreção tubular de penicilina, elevando seus níveis sem efeito antibacteriano direto).</p>
+      </div>
+    </div>
+
+    <div class="subsecao">Mapa das 4 Etapas Farmacocinéticas (ADME)</div>
+    <ul class="lista">
+      <li><strong>A — Absorção:</strong> pH gástrico (omeprazol ↓ absorção de cetoconazol); quelação (Ca²⁺/Fe²⁺/Al³⁺ + fluoroquinolonas, tetraciclinas); motilidade GI (metoclopramida acelera, anticolinérgicos retardam); presença de alimento</li>
+      <li><strong>D — Distribuição:</strong> deslocamento de proteínas plasmáticas (sulfa desloca varfarina); volume de distribuição alterado em obesidade, edema, ascite</li>
+      <li><strong>M — Metabolismo:</strong> indução/inibição de CYP450 e UGT; o mecanismo mais cobrado em provas</li>
+      <li><strong>E — Excreção:</strong> competição por transportadores tubulares (probenecida-penicilina); alteração do pH urinário (bicarbonato alcaliniza → ↑ excreção de salicilatos); transportadores hepáticos OATP (estatinas)</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Pegadinha FGV:</strong> diferenciar interação farmacodinâmica (mesmo efeito, sem alterar concentração) de farmacocinética (concentração alterada). Captopril + espironolactona = hipercalemia <em>farmacodinâmica</em> (ambos retêm potássio). Rifampicina + varfarina = ↓ INR <em>farmacocinética</em> (indução CYP2C9). Esta distinção foi pedida explicitamente em Q100/2025.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-INTERACT · Interações</span><span>Extensivo ENARE 2026</span><span class="pg">2 / 10</span></div>
+</div>
+
+<!-- ========== PÁGINA 3 — CYP450 ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div>
+    </div>
+    <div class="header-info"><div class="disciplina">Farmácia — FARM-INTERACT</div><div class="aula-ref">Bloco B5 · Aula 06 · CYP450</div></div>
+  </div>
+  <div class="body">
+    <div class="secao-titulo">CYP450 — Indutores e Inibidores</div>
+    <p>As enzimas <strong>CYP450</strong> (especialmente CYP3A4, 2D6, 2C9, 2C19 e 1A2) metabolizam ~75% dos medicamentos prescritos. <em>Inibidores</em> aumentam a concentração do fármaco substrato (risco de toxicidade); <em>indutores</em> aumentam a expressão da enzima e <em>reduzem</em> a concentração (risco de falha terapêutica).</p>
+
+    <div class="subsecao">Substratos, Inibidores e Indutores por CYP</div>
+    <table>
+      <tr>
+        <th>CYP</th>
+        <th>Substratos sensíveis</th>
+        <th>Inibidores fortes</th>
+        <th>Indutores fortes</th>
+      </tr>
+      <tr>
+        <td><strong>3A4</strong></td>
+        <td>Ciclosporina, tacrolimo, sinvastatina, atorvastatina, midazolam, sildenafil, dronedarona, alguns BCC, opioides (fentanil, metadona), DOACs (rivaroxabana, apixabana)</td>
+        <td>Claritromicina, eritromicina, cetoconazol, fluconazol, ritonavir/cobicistat, voriconazol, diltiazem, verapamil, suco de toranja</td>
+        <td>Rifampicina, fenitoína, fenobarbital, carbamazepina, erva de São João, efavirenz</td>
+      </tr>
+      <tr>
+        <td><strong>2D6</strong></td>
+        <td>Codeína, tramadol (pró-fármacos), metoprolol, propranolol, antipsicóticos (haloperidol, risperidona), TCA (amitriptilina, nortriptilina), ISRS (fluoxetina, paroxetina), dextrometorfano, tamoxifeno</td>
+        <td>Fluoxetina, paroxetina, bupropiona, quinidina, terbinafina</td>
+        <td>Não-indutível (regulação genética; UM têm múltiplas cópias)</td>
+      </tr>
+      <tr>
+        <td><strong>2C9</strong></td>
+        <td><em>Varfarina</em>, fenitoína, AINEs (ibuprofeno, diclofenaco), losartana, glipizida, glibenclamida</td>
+        <td>Fluconazol, amiodarona, sulfametoxazol, metronidazol, fluvoxamina</td>
+        <td>Rifampicina, carbamazepina</td>
+      </tr>
+      <tr>
+        <td><strong>2C19</strong></td>
+        <td>Clopidogrel (pró-fármaco), omeprazol, esomeprazol, citalopram, voriconazol, diazepam</td>
+        <td>Omeprazol, esomeprazol, fluvoxamina, fluoxetina</td>
+        <td>Rifampicina, carbamazepina</td>
+      </tr>
+      <tr>
+        <td><strong>1A2</strong></td>
+        <td>Cafeína, teofilina, clozapina, olanzapina, ciprofloxacino</td>
+        <td>Ciprofloxacino, fluvoxamina, cimetidina</td>
+        <td>Tabagismo (fumar &gt; 10 cigarros/dia), brócolis, char-broiled foods</td>
+      </tr>
+    </table>
+
+    <div class="subsecao">Cinco Casos Clássicos no ENARE</div>
+    <ul class="lista">
+      <li><strong>Clopidogrel + Omeprazol/Esomeprazol:</strong> clopidogrel é pró-fármaco ativado por CYP2C19; IBPs que inibem 2C19 reduzem ativação → ↓ antiagregação plaquetária → risco de evento isquêmico. Preferir pantoprazol (menor inibição) em pacientes em dupla antiagregação</li>
+      <li><strong>Estatinas + Macrolídeo/Antifúngico azólico:</strong> sinvastatina e atorvastatina são substratos CYP3A4; claritromicina + sinvastatina → ↑↑ exposição → rabdomiólise. Suspender estatina durante o curso ou trocar por pravastatina (sem 3A4)</li>
+      <li><strong>Varfarina + SMX-TMP:</strong> SMX inibe CYP2C9 + desloca proteína; INR pode subir 2–3× em uma semana. Reduzir varfarina ~50% empiricamente e monitorar INR a cada 2–3 dias</li>
+      <li><strong>Rifampicina + Contraceptivo Oral:</strong> indução CYP3A4 → ↓ etinilestradiol → falha contraceptiva. Orientar barreira ou DIU durante e por 4 semanas após</li>
+      <li><strong>Tamoxifeno + Fluoxetina/Paroxetina:</strong> tamoxifeno é pró-fármaco ativado por CYP2D6; inibidores de 2D6 (fluoxetina, paroxetina) reduzem endoxifeno → ↓ eficácia no câncer de mama. Preferir venlafaxina ou sertralina em mulheres em tamoxifeno</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Suco de toranja (grapefruit):</strong> inibe CYP3A4 intestinal de forma <em>irreversível</em> por 24–72h. Pode multiplicar por 2–10× a exposição a sinvastatina, felodipino, ciclosporina, midazolam, sildenafil. Orientar evitar consumo concomitante. Outros fitoterápicos: <em>erva de São João</em> é indutor forte de 3A4 — reduz contraceptivos, varfarina, ciclosporina, ARVs.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-INTERACT · Interações</span><span>Extensivo ENARE 2026</span><span class="pg">3 / 10</span></div>
+</div>
+
+<!-- ========== PÁGINA 4 — TRANSPORTADORES + ABSORÇÃO ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div>
+    </div>
+    <div class="header-info"><div class="disciplina">Farmácia — FARM-INTERACT</div><div class="aula-ref">Bloco B5 · Aula 06 · Transportadores e Absorção</div></div>
+  </div>
+  <div class="body">
+    <div class="secao-titulo">P-Glicoproteína e Interações de Absorção</div>
+
+    <p>A <strong>P-glicoproteína (P-gp; gene ABCB1/MDR1)</strong> é uma bomba de efluxo que protege o enterócito, o BBB, o túbulo renal proximal e o hepatócito da entrada de xenobióticos. Inibição da P-gp aumenta a biodisponibilidade do substrato; indução reduz.</p>
+
+    <div class="subsecao">P-gp — Substratos, Inibidores e Indutores</div>
+    <table>
+      <tr>
+        <th>Categoria</th>
+        <th>Exemplos representativos</th>
+      </tr>
+      <tr>
+        <td><strong>Substratos</strong></td>
+        <td>Digoxina, DOACs (dabigatrana, rivaroxabana, apixabana, edoxabana), tacrolimo, ciclosporina, alguns antineoplásicos (paclitaxel, doxorrubicina), loperamida, fexofenadina</td>
+      </tr>
+      <tr>
+        <td><strong>Inibidores</strong></td>
+        <td>Verapamil, claritromicina, eritromicina, amiodarona, dronedarona, quinidina, ciclosporina, cetoconazol, ritonavir</td>
+      </tr>
+      <tr>
+        <td><strong>Indutores</strong></td>
+        <td>Rifampicina, erva de São João, fenobarbital</td>
+      </tr>
+    </table>
+
+    <p><strong>Exemplo crítico — Dabigatrana + Verapamil:</strong> verapamil inibe P-gp intestinal e a biodisponibilidade da dabigatrana pode subir 60–100% — recomenda-se redução de dose ou separar administração por 2h em pacientes com risco hemorrágico aumentado (IR, idoso, baixo peso). <strong>Digoxina + Amiodarona:</strong> amiodarona inibe P-gp e CYP3A4 — exposição à digoxina pode aumentar 50–70% → reduzir digoxina em 50%.</p>
+
+    <div class="subsecao">Interações de Absorção</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">pH gástrico</div>
+        <p><strong>IBPs e antiácidos ↑ pH:</strong> reduzem absorção de <em>cetoconazol, itraconazol, atazanavir, dasatinibe</em> (precisam de meio ácido). Solução: administrar com bebida ácida (Coca-Cola, refrigerante de cola) ou trocar antifúngico (fluconazol não depende de pH ácido).</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Quelação</div>
+        <p>Cátions di/trivalentes (Ca²⁺, Mg²⁺, Al³⁺, Fe²⁺, Zn²⁺) formam complexos inabsorvíveis com <em>fluoroquinolonas (ciprofloxacino, levofloxacino), tetraciclinas (doxiciclina, minociclina), bifosfonatos (alendronato)</em>. Solução: espaçar 2h antes ou 6h depois (fluoroquinolona) ou 30 min antes da primeira refeição em jejum (alendronato).</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Motilidade GI</div>
+        <p><strong>Metoclopramida</strong> acelera esvaziamento gástrico → reduz absorção de fármacos que precisam de tempo de contato (digoxina dragea, levodopa). <strong>Anticolinérgicos</strong> reduzem motilidade → atrasam absorção de paracetamol IV. Opioides retardam esvaziamento.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Resinas e Sequestrantes</div>
+        <p>Colestiramina e colestipol ligam-se a varfarina, levotiroxina, digoxina e tiazídicos — reduzem absorção. Sevelamer (quelante de fósforo em DRC) reduz absorção de levotiroxina, ciprofloxacino. Espaçar 1h antes ou 4h depois.</p>
+      </div>
+    </div>
+
+    <div class="subsecao">Indução vs Inibição — Cronologia da Interação</div>
+    <p><strong>Inibição:</strong> efeito <em>rápido</em> (horas a dias) — depende da meia-vida do inibidor e do substrato. Cessa rapidamente ao retirar o inibidor.</p>
+    <p><strong>Indução:</strong> efeito <em>lento</em> (1–2 semanas para alcançar pico) — requer síntese protéica de novo. Persiste 1–2 semanas após retirada do indutor. <em>Risco residual</em>: paciente que terminou ciclo de rifampicina e retomou varfarina sem ajuste pode ter sobre-anticoagulação semanas depois da indução cessar.</p>
+
+    <div class="alerta">
+      <p><strong>Atribuição farmacêutica:</strong> usar sistematicamente softwares de interação (Lexicomp, Micromedex, UpToDate, base ANVISA) na conciliação medicamentosa. Documentar interações relevantes na prescrição e nas notas farmacêuticas. Em transição de cuidado, alertar sobre indução residual de CYP3A4 após cursos curtos de rifampicina ou rifapentina.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-INTERACT · Interações</span><span>Extensivo ENARE 2026</span><span class="pg">4 / 10</span></div>
+</div>
+
+<!-- ========== PÁGINA 5 — QT E HIPERCALEMIA ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div>
+    </div>
+    <div class="header-info"><div class="disciplina">Farmácia — FARM-INTERACT</div><div class="aula-ref">Bloco B5 · Aula 06 · QT e Hipercalemia</div></div>
+  </div>
+  <div class="body">
+    <div class="secao-titulo">Prolongamento de QT e Hipercalemia — Duas Combinações de Alto Risco</div>
+
+    <div class="subsecao">Síndrome do QT Longo Induzida por Fármacos</div>
+    <p>O prolongamento do intervalo QTc &gt; 500 ms ou aumento &gt; 60 ms em relação ao basal aumenta o risco de <strong>torsades de pointes</strong> (taquicardia ventricular polimórfica) e morte súbita. A FGV cobrou em ENARE 2024 (Q43, Q82) — combinação amiodarona + ciprofloxacino.</p>
+
+    <table>
+      <tr>
+        <th>Classe</th>
+        <th>Exemplos representativos</th>
+      </tr>
+      <tr>
+        <td>Antiarrítmicos</td>
+        <td>Amiodarona, sotalol, quinidina, procainamida, dronedarona</td>
+      </tr>
+      <tr>
+        <td>Antibióticos</td>
+        <td>Macrolídeos (azitromicina, claritromicina, eritromicina); fluoroquinolonas (moxifloxacino &gt; ciprofloxacino, levofloxacino)</td>
+      </tr>
+      <tr>
+        <td>Antipsicóticos</td>
+        <td>Haloperidol, ziprasidona, tioridazina, quetiapina (alta dose), clozapina, pimozide</td>
+      </tr>
+      <tr>
+        <td>Antidepressivos</td>
+        <td>Citalopram (&gt; 40 mg, &gt; 20 mg em idoso), escitalopram, TCA (amitriptilina, imipramina)</td>
+      </tr>
+      <tr>
+        <td>Antieméticos</td>
+        <td>Ondansetrona (IV alta dose), domperidona, metoclopramida</td>
+      </tr>
+      <tr>
+        <td>Antifúngicos</td>
+        <td>Fluconazol, voriconazol, posaconazol</td>
+      </tr>
+      <tr>
+        <td>Antimaláricos</td>
+        <td>Hidroxicloroquina, cloroquina, quinina, lumefantrina</td>
+      </tr>
+      <tr>
+        <td>Opioides</td>
+        <td>Metadona (mais relevante), tramadol (modesto)</td>
+      </tr>
+    </table>
+
+    <p><strong>Fatores agravantes:</strong> bradicardia, hipocalemia, hipomagnesemia, hipocalcemia, sexo feminino, idade avançada, IC, IH, IR, QT congênito. <strong>Conduta:</strong> ECG basal, evitar combinar &gt; 2 fármacos QT-prolongadores, corrigir distúrbios eletrolíticos (K &gt; 4 mEq/L, Mg &gt; 2 mEq/L), monitorar ECG seriado em uso obrigatório.</p>
+
+    <div class="subsecao">Hipercalemia Iatrogênica</div>
+    <p>O cluster de fármacos que <em>retêm potássio</em> é uma das interações farmacodinâmicas mais cobradas. ENARE 2025 (Q100): captopril + espironolactona → hipercalemia sinérgica.</p>
+
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Mecanismos e Fármacos</div>
+        <p><strong>Inibição da aldosterona:</strong> IECA (captopril, enalapril), BRA (losartana), inibidores da renina (alisquireno).<br>
+        <strong>Antagonistas da aldosterona:</strong> espironolactona, eplerenona, finerenona (DRC + DM).<br>
+        <strong>Inibição da Na+/K+ ATPase:</strong> digital (digoxina) em intoxicação.<br>
+        <strong>Liberação celular:</strong> succinilcolina (em queimados, neuropatia).<br>
+        <strong>Redução da excreção tubular:</strong> AINEs (↓ prostaglandinas → ↓ fluxo renal e aldosterona), heparina (↓ aldosterona), trimetoprima (bloqueia canal ENaC — efeito poupador de K+ semelhante a amilorida).</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Combinações de Risco</div>
+        <p><strong>IECA + espironolactona:</strong> base do tratamento de IC, mas em DRC ou idoso → hipercalemia. Adicionar AINE = aumento crítico do risco.<br>
+        <strong>SMX-TMP em paciente IECA:</strong> hipercalemia adicional pela ação anti-aldosterona do TMP.<br>
+        <strong>Heparina + IECA + AINE + DM:</strong> "perfect storm" para K &gt; 6 mEq/L; monitorar em internação. <em>K &gt; 6,5 = emergência</em>: gluconato de cálcio (estabiliza miocárdio), insulina + glicose (entrada celular), salbutamol, bicarbonato (em acidose), sevelamer/patiromer/SPS (excreção GI), diálise se refratário.</p>
+      </div>
+    </div>
+
+    <div class="alerta">
+      <p><strong>Trio renal a evitar:</strong> IECA/BRA + diurético + AINE = "triplo whammy". Triplica risco de IRA aguda. AINE elimina prostaglandinas renais → vasoconstrição da arteríola aferente; IECA dilata eferente; diurético depleta volume. Combinação especialmente perigosa em idoso, desidratado, diarreia/vômitos. Atribuição farmacêutica: identificar e propor descontinuação de AINE crônico em primeiro lugar.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-INTERACT · Interações</span><span>Extensivo ENARE 2026</span><span class="pg">5 / 10</span></div>
+</div>
+
+<!-- ========== PÁGINA 6 — VARFARINA, ALIMENTOS, FITOTERÁPICOS ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div>
+    </div>
+    <div class="header-info"><div class="disciplina">Farmácia — FARM-INTERACT</div><div class="aula-ref">Bloco B5 · Aula 06 · Varfarina, Alimentos, Fitoterápicos</div></div>
+  </div>
+  <div class="body">
+    <div class="secao-titulo">Varfarina, Alimentos e Fitoterápicos — Vigilância Farmacêutica</div>
+
+    <p>A <strong>varfarina</strong> é o medicamento <em>com mais interações documentadas</em> na história da farmacologia. ITE estreito + metabolismo polifacial (CYP2C9, 1A2, 3A4) + ligação proteica + ciclo da vitamina K = ambiente perfeito para interações. Cobrado em ENARE 2024 (Q79, Q83 — varfarina + AAS no CIM).</p>
+
+    <div class="subsecao">Interações Cruciais com Varfarina</div>
+    <table>
+      <tr>
+        <th>Sentido</th>
+        <th>Fármacos / Alimentos</th>
+        <th>Mecanismo</th>
+      </tr>
+      <tr>
+        <td><strong>↑ INR (aumenta efeito)</strong></td>
+        <td>Amiodarona, sulfametoxazol-trimetoprima, metronidazol, fluconazol, ciprofloxacino, isoniazida, omeprazol (modesto), AAS, AINEs</td>
+        <td>Inibição CYP2C9 (varfarina S é mais potente); deslocamento proteico; AAS/AINEs ↑ risco hemorrágico sem alterar INR</td>
+      </tr>
+      <tr>
+        <td><strong>↓ INR (reduz efeito)</strong></td>
+        <td>Rifampicina, rifapentina, fenitoína, carbamazepina, fenobarbital, erva de São João, dieta rica em vitamina K (couve, brócolis, espinafre)</td>
+        <td>Indução CYP2C9; antagonismo direto da vitamina K</td>
+      </tr>
+      <tr>
+        <td>Outros</td>
+        <td>Álcool agudo ↑ INR; uso crônico ↓; gengibre, ginkgo, alho em altas doses ↑ sangramento (antiagregação)</td>
+        <td>Alteração metabólica + risco hemorrágico aditivo</td>
+      </tr>
+    </table>
+
+    <p><strong>Orientação ao paciente:</strong> <em>não restringir vitamina K, mas mantê-la consistente</em>. Manter consumo estável de vegetais verdes. Comunicar qualquer mudança de medicação ao farmacêutico/médico do anticoagulação. INR mensal estável; semanal em mudanças. Vitamina K1 (fitomenadiona) oral ou IV em INR elevado sem sangramento; CCP + vitamina K em sangramento maior.</p>
+
+    <div class="subsecao">Interações com Fitoterápicos — Mais Frequentes</div>
+    <table>
+      <tr>
+        <th>Fitoterápico</th>
+        <th>Interação relevante</th>
+      </tr>
+      <tr>
+        <td><strong>Erva de São João (Hypericum perforatum)</strong></td>
+        <td>Indutor potente CYP3A4 e P-gp → ↓ ciclosporina, varfarina, contraceptivos, ARVs (inibidores de protease), tacrolimo, digoxina</td>
+      </tr>
+      <tr>
+        <td>Ginkgo biloba</td>
+        <td>Antiagregante plaquetário; ↑ risco hemorrágico com AAS, varfarina, AINEs</td>
+      </tr>
+      <tr>
+        <td>Ginseng</td>
+        <td>↓ INR com varfarina; ↑ glicemia (atenção em DM)</td>
+      </tr>
+      <tr>
+        <td>Alho (Allium sativum)</td>
+        <td>Antiagregante em altas doses; risco com varfarina e cirurgia</td>
+      </tr>
+      <tr>
+        <td>Echinacea</td>
+        <td>Imunomoduladora; cautela em imunossuprimidos (tacrolimo, ciclosporina)</td>
+      </tr>
+      <tr>
+        <td>Coenzima Q10</td>
+        <td>↓ efeito da varfarina (estrutura similar à vitamina K)</td>
+      </tr>
+    </table>
+
+    <div class="subsecao">Interações com Alimentos — Outras Relevantes</div>
+    <ul class="lista">
+      <li><strong>Suco de toranja:</strong> inibe CYP3A4 intestinal → ↑ sinvastatina, atorvastatina, ciclosporina, felodipino, sildenafil, midazolam, amiodarona</li>
+      <li><strong>Queijos curados + IMAO:</strong> tiramina → crise hipertensiva (queijos azuis, vinho tinto, embutidos, fava)</li>
+      <li><strong>Leite + tetraciclinas/quinolonas:</strong> quelação por cálcio</li>
+      <li><strong>Café/chá + ferro oral:</strong> taninos reduzem absorção do ferro; espaçar 2h</li>
+      <li><strong>Suplementos de cálcio + levotiroxina:</strong> espaçar 4h</li>
+      <li><strong>Banana, abacate, espinafre + IECA + espironolactona:</strong> dieta rica em potássio + farmacoterapia poupadora → hipercalemia</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Consulta farmacêutica em uso de varfarina:</strong> conferir todas as introduções/retiradas; orientar dieta consistente; orientar sinais de hemorragia (gengivorragia, hematomas, hematúria, melena, cefaleia intensa); INR alvo individualizado (2–3 na maioria; 2,5–3,5 em prótese mecânica mitral). Hoje, em FA não valvar, DOACs são alternativa preferida em &gt; 65 anos sem DRC grave, eliminando a maioria dessas interações.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-INTERACT · Interações</span><span>Extensivo ENARE 2026</span><span class="pg">6 / 10</span></div>
+</div>
+
+<!-- ========== PÁGINA 7 — QUESTÃO 01 ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div>
+    </div>
+    <div class="header-info"><div class="disciplina">Farmácia — FARM-INTERACT</div><div class="aula-ref">Bloco B5 · Aula 06 · Questões ENARE</div></div>
+  </div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 01</span><span class="fonte">QT · Amiodarona + Cipro · NC: Análise</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Paciente de 70 anos com FA permanente, em uso crônico de amiodarona 200 mg/dia, é internada por ITU complicada e a prescrição inicia ciprofloxacino 400 mg IV 12/12h. Sobre essa combinação, é correto afirmar:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Combinação sem interação clinicamente relevante; manter as duas drogas e a dose padrão.</span></li>
+        <li class="correta"><span class="letra">B</span><span>Ambos prolongam o QTc; risco de torsades de pointes em paciente idoso. Sugerir antibiótico alternativo (cefalosporina, fosfomicina, nitrofurantoína se urocultura permitir) e, se ciprofloxacino for indispensável, monitorar ECG, corrigir K+ e Mg+ e considerar suspensão temporária da amiodarona.</span></li>
+        <li><span class="letra">C</span><span>Interação apenas farmacocinética; reduzir a amiodarona pela metade.</span></li>
+        <li><span class="letra">D</span><span>Adicionar metoclopramida para prevenir náusea da amiodarona.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> amiodarona é um dos antiarrítmicos com maior prolongamento de QT — efeito da própria classe III. Fluoroquinolonas (moxifloxacino &gt; ciprofloxacino, levofloxacino) também prolongam QT por bloqueio de canais hERG. A combinação em idosa, frequentemente com hipocalemia (uso de tiazídico para HAS), eleva risco de torsades. Conduta segura: trocar para antibiótico de baixo risco (β-lactâmico, fosfomicina, nitrofurantoína se trato urinário inferior e cultura compatível), corrigir K+ e Mg+, e, em casos sem alternativa, monitorar ECG seriado (QTc) e considerar suspensão temporária da amiodarona (meia-vida longa, ~58 dias — efeito residual).</p>
+      <p><strong>Por que as outras erram:</strong> A — minimizar é erro clinicamente grave · C — não é apenas farmacocinética; é farmacodinâmica (somatório de efeito em canais iônicos) — embora amiodarona também iniba P-gp e CYP3A4 · D — metoclopramida agrava o QT (também prolonga); piora a situação.</p>
+      <p><strong>Conceito-chave:</strong> em paciente em amiodarona, manter K+ &gt; 4 e Mg+ &gt; 2 e checar TODA nova prescrição contra a lista de QT-prolongadores (crediblemeds.org é referência aberta).</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-INTERACT · Interações</span><span>Extensivo ENARE 2026</span><span class="pg">7 / 10</span></div>
+</div>
+
+<!-- ========== PÁGINA 8 — QUESTÃO 02 ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div>
+    </div>
+    <div class="header-info"><div class="disciplina">Farmácia — FARM-INTERACT</div><div class="aula-ref">Bloco B5 · Aula 06 · Questões ENARE</div></div>
+  </div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 02</span><span class="fonte">Hipercalemia · IECA + espironolactona · NC: Análise</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Paciente de 68 anos, com IC com FE reduzida (HFrEF), em uso de enalapril 10 mg 12/12h + bisoprolol 5 mg/dia + espironolactona 25 mg/dia + dapagliflozina 10 mg/dia + furosemida 40 mg/dia. Inicia tratamento para osteoartrite com diclofenaco 50 mg 8/8h há 5 dias e evolui com astenia, parestesias e bradicardia. Exames: K 6,8 mEq/L; creatinina 2,3 mg/dL (basal 1,1); ECG com onda T apiculada. Sobre a interação subjacente, é correto:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Trata-se de interação puramente farmacocinética: o diclofenaco inibe o CYP2C9 do enalapril.</span></li>
+        <li class="correta"><span class="letra">B</span><span>Interação farmacodinâmica sinérgica: enalapril e espironolactona retêm potássio; diclofenaco reduz prostaglandinas renais e perfusão da arteríola aferente, agravando IRA aguda. Manejo: suspender diclofenaco, suspender temporariamente espironolactona + IECA, corrigir hipercalemia (cálcio + insulina/glicose + salbutamol + diálise se refratário) e reavaliar dose de furosemida.</span></li>
+        <li><span class="letra">C</span><span>Furosemida deve ser suspensa imediatamente pois é o principal causador da hipercalemia.</span></li>
+        <li><span class="letra">D</span><span>Bisoprolol é o causador da hipercalemia por bloqueio β2 — substituir por carvedilol resolve o quadro.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> a hipercalemia neste paciente é resultado de <em>combinação sinérgica farmacodinâmica</em> + IRA aguda induzida por AINE:</p>
+      <p>• <strong>Enalapril (IECA)</strong>: bloqueia conversão de ang I em ang II → ↓ aldosterona → retenção de K+.<br>
+      • <strong>Espironolactona</strong>: bloqueia receptor mineralocorticoide → mesmo efeito de retenção de K+.<br>
+      • <strong>Diclofenaco (AINE)</strong>: bloqueia prostaglandinas renais → ↓ vasodilatação da arteríola aferente → ↓ TFG → IRA aguda (triplo whammy renal somado à furosemida).<br>
+      • A creatinina dobrou (1,1 → 2,3), confirmando o componente de IRA.</p>
+      <p><strong>Manejo da hipercalemia &gt; 6,5 com alteração ECG (T apiculada):</strong> (1) gluconato de cálcio 10% 10 mL IV em 5 min (estabilização da membrana — não baixa K+ mas previne arritmia); (2) insulina regular 10 UI IV + glicose 25 g IV (entrada celular do K+); (3) salbutamol nebulizado 10–20 mg; (4) bicarbonato se acidose; (5) suspender enalapril + espironolactona + diclofenaco; (6) sevelamer/patiromer VO para excreção fecal; (7) hemodiálise se refratário ou K &gt; 7.</p>
+      <p><strong>Por que as outras erram:</strong> A — diclofenaco não inibe CYP2C9 significativamente; a interação é farmacodinâmica + nefrotoxicidade · C — furosemida é, paradoxalmente, <em>protetora</em> contra hipercalemia (perdedora de K+); não é a causa · D — bloqueio β2 contribui marginalmente para hipercalemia (afeta entrada celular de K+), mas não é o principal mecanismo aqui; trocar por carvedilol não resolve.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-INTERACT · Interações</span><span>Extensivo ENARE 2026</span><span class="pg">8 / 10</span></div>
+</div>
+
+<!-- ========== PÁGINA 9 — QUESTÃO 03 + GABARITO INTEGRADO ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div>
+    </div>
+    <div class="header-info"><div class="disciplina">Farmácia — FARM-INTERACT</div><div class="aula-ref">Bloco B5 · Aula 06 · Gabarito Integrado</div></div>
+  </div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 03</span><span class="fonte">Varfarina + SMX-TMP · NC: Análise</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Paciente de 75 anos em uso de varfarina 5 mg/dia para FA não valvar (INR estável em 2,3) recebe prescrição de sulfametoxazol + trimetoprima 800/160 mg 12/12h por 10 dias para ITU. Sobre a interação e a conduta farmacêutica, analise:</p>
+      <p class="questao-enunciado" style="font-style:italic;">I. Reduzir empiricamente a dose de varfarina em ~30–50% e solicitar INR em 3–5 dias.<br>
+      II. A interação é puramente farmacocinética por indução do CYP2C9 pela sulfa.<br>
+      III. Sulfametoxazol-trimetoprima pode também elevar potássio em paciente em IECA — relevante no idoso.</p>
+      <p class="questao-enunciado">Está(ão) correta(s):</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Apenas I.</span></li>
+        <li><span class="letra">B</span><span>Apenas II e III.</span></li>
+        <li class="correta"><span class="letra">C</span><span>I e III.</span></li>
+        <li><span class="letra">D</span><span>I, II e III.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — C</div>
+      <p><strong>I — Correta:</strong> sulfametoxazol é <em>inibidor</em> do CYP2C9 — enzima responsável pelo metabolismo da varfarina-S (forma 3–5× mais potente). A inibição eleva o INR significativamente em 3–5 dias. Recomenda-se redução empírica de 25–50% e monitorização frequente do INR (a cada 2–3 dias até estabilização).</p>
+      <p><strong>II — Incorreta:</strong> a interação é farmacocinética por <em>inibição</em>, não indução do CYP2C9 (indução reduziria o efeito; inibição aumenta). Indutores do CYP2C9 são rifampicina e carbamazepina (efeito oposto: reduzem INR).</p>
+      <p><strong>III — Correta:</strong> a trimetoprima bloqueia canais ENaC no túbulo distal (efeito poupador de K+ similar à amilorida) — combinada a IECA/BRA em idoso, pode causar hipercalemia clinicamente relevante. Monitorar K+ no idoso, especialmente em DRC, e considerar nitrofurantoína ou fosfomicina como alternativas em ITU não complicada.</p>
+    </div>
+
+    <div class="subsecao" style="margin-top:6px;">Gabarito Comentado — Análise Integrada</div>
+    <table>
+      <tr><th>Questão</th><th>Gabarito</th><th>Tema</th><th>Conceito-Chave</th></tr>
+      <tr><td><strong>01</strong></td><td><span class="destaque">B</span></td><td>QT — Amiodarona + Ciprofloxacino</td><td>Farmacodinâmica + farmacocinética (amio inibe CYP3A4 e P-gp); risco de torsades</td></tr>
+      <tr><td><strong>02</strong></td><td><span class="destaque">B</span></td><td>Hipercalemia — Triplo whammy + espironolactona</td><td>Farmacodinâmica sinérgica + IRA aguda; manejo: Ca + insulina/glicose + suspensão</td></tr>
+      <tr><td><strong>03</strong></td><td><span class="destaque">C</span></td><td>Varfarina + SMX-TMP</td><td>Inibição CYP2C9 + bloqueio ENaC (K+); reduzir varfarina 25–50%; monitorar K+ no idoso</td></tr>
+    </table>
+  </div>
+  <div class="footer"><span>FARM-INTERACT · Interações</span><span>Extensivo ENARE 2026</span><span class="pg">9 / 10</span></div>
+</div>
+
+<!-- ========== PÁGINA 10 — SÍNTESE ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div>
+    </div>
+    <div class="header-info"><div class="disciplina">Farmácia — FARM-INTERACT</div><div class="aula-ref">Bloco B5 · Aula 06 · Síntese</div></div>
+  </div>
+  <div class="body">
+    <div class="secao-titulo">Síntese — Interações Medicamentosas</div>
+    <div class="sintese-grid">
+      <div class="sintese-item">
+        <div class="si-label">Classificação</div>
+        <p>Farmacocinética = altera concentração (ADME). Farmacodinâmica = altera efeito sem alterar concentração. Farmacêutica = incompatibilidade in vitro. Sinergismo (1+1&gt;2), aditivo (1+1=2), antagonismo (anula), potenciação.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">CYP450</div>
+        <p>3A4: estatinas, midazolam, BCC, DOACs, fentanil — inibidores (claritro, fluconazol, ritonavir, toranja), indutores (rifampicina, anticonvulsivantes, S. João). 2D6: tramadol, codeína, TCA, β-bloqueador, tamoxifeno. 2C9: varfarina. 2C19: clopidogrel, IBPs.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">P-glicoproteína</div>
+        <p>Bomba de efluxo intestinal/BBB/renal. Substratos: digoxina, DOACs, tacrolimo, paclitaxel. Inibidores: verapamil, claritro, amiodarona, ciclosporina. Reduzir digoxina 50% se amiodarona; cautela com dabigatrana + verapamil.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">QT Longo Iatrogênico</div>
+        <p>Antiarrítmicos III, macrolídeos, fluoroquinolonas, haloperidol/ziprasidona, citalopram alta dose, ondansetrona IV, metadona. Fator agravante: K&lt;4, Mg&lt;2, sexo feminino, idoso. Risco máximo: torsades. Corrigir eletrólitos, evitar combinações ≥ 2.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Hipercalemia Iatrogênica</div>
+        <p>IECA/BRA + espironolactona + AINE + SMX-TMP + heparina + DM/DRC. Triplo whammy: IECA + diurético + AINE → IRA. K &gt; 6,5 com ECG = emergência: Ca + insulina/glicose + salbutamol + bicarbonato + sevelamer/patiromer + diálise.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Próxima Aula</div>
+        <p><strong>Aula 07 — Prescrição Farmacêutica (Res. 585/586/2013).</strong> Cluster novo de 7 questões em ENARE 2025. Atribuições privativas, modalidades, componentes obrigatórios da prescrição farmacêutica, vedações (controle especial), prescrição de fitoterápicos.</p>
+      </div>
+    </div>
+    <div class="alerta" style="margin-top:5px;">
+      <p><strong>Regra de ouro — Interações no ENARE:</strong> diferenciar mecanismo (farmacocinética vs farmacodinâmica) é o que a FGV mais pede em NC Análise; saber 2 listas curtas (5 inibidores e 5 indutores fortes de CYP3A4); decorar 3 combinações de QT (macrolídeo + fluoroquinolona + amiodarona/antipsicótico); reconhecer triplo whammy renal e hipercalemia iatrogênica.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-INTERACT · Interações</span><span>Extensivo ENARE 2026</span><span class="pg">10 / 10</span></div>
+</div>
+
+</body>
+</html>

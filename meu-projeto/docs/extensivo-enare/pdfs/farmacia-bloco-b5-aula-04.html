@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Farmácia — Bloco B5 Aula 04 | Extensivo ENARE 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap');
+
+  :root {
+    --creme: #F6F4ED;
+    --verde: #1F5C23;
+    --amarelo: #C6D834;
+    --escuro: #0C2B0E;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #d0d0d0;
+    font-family: 'Bricolage Grotesque', sans-serif;
+  }
+
+  .page {
+    width: 210mm;
+    height: 297mm;
+    background: var(--creme);
+    margin: 0 auto 12px;
+    position: relative;
+    overflow: hidden;
+    page-break-after: always;
+  }
+
+  .header {
+    background: var(--verde);
+    padding: 10px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .header-logo { display: flex; align-items: center; gap: 8px; }
+  .header-logo svg { width: 32px; height: 32px; }
+  .header-brand { display: flex; flex-direction: column; line-height: 1; }
+  .header-brand .marca {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: #fff;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+  }
+  .header-brand .tagline {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    color: var(--amarelo);
+    font-size: 7px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+  .header-info { text-align: right; }
+  .header-info .disciplina {
+    font-family: 'Barlow Condensed', sans-serif;
+    color: var(--amarelo);
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .header-info .aula-ref {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    color: rgba(255,255,255,0.7);
+    font-size: 8px;
+    letter-spacing: 0.5px;
+  }
+
+  .footer {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: var(--verde);
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 18px;
+  }
+  .footer span {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    color: rgba(255,255,255,0.6);
+    font-size: 7px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+  }
+  .footer .pg { color: var(--amarelo); font-weight: 400; }
+
+  .body {
+    padding: 14px 18px 30px;
+    height: calc(297mm - 52px - 22px);
+    overflow: hidden;
+  }
+
+  .capa-page { background: var(--verde); }
+  .capa-header {
+    background: var(--creme);
+    padding: 10px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .capa-header .marca {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: var(--verde);
+    font-size: 14px;
+  }
+  .capa-header .tagline {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    color: var(--verde);
+    font-size: 7.5px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .capa-body {
+    padding: 28px 24px 0;
+    display: flex;
+    flex-direction: column;
+    height: calc(297mm - 52px - 22px);
+  }
+  .capa-eyebrow {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    color: var(--amarelo);
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .capa-titulo {
+    font-family: 'Barlow Condensed', sans-serif;
+    color: #fff;
+    font-size: 50px;
+    line-height: 0.95;
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
+    margin-bottom: 6px;
+  }
+  .capa-titulo span { color: var(--amarelo); }
+  .capa-subtitulo {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 300;
+    color: rgba(255,255,255,0.65);
+    font-size: 12px;
+    letter-spacing: 0.3px;
+    margin-bottom: 22px;
+    line-height: 1.5;
+  }
+  .capa-badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+  .capa-badge {
+    background: rgba(198,216,52,0.15);
+    border: 1px solid var(--amarelo);
+    color: var(--amarelo);
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    font-size: 7.5px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+  }
+  .capa-divider { width: 40px; height: 3px; background: var(--amarelo); margin-bottom: 20px; }
+  .capa-topicos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .capa-topico { display: flex; align-items: flex-start; gap: 7px; }
+  .capa-topico-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    color: var(--amarelo);
+    font-size: 18px;
+    line-height: 1;
+    min-width: 18px;
+  }
+  .capa-topico-txt {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 400;
+    color: rgba(255,255,255,0.8);
+    font-size: 9.5px;
+    line-height: 1.4;
+  }
+  .capa-footer-strip {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: rgba(0,0,0,0.25);
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 18px;
+  }
+  .capa-footer-strip span {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    color: rgba(255,255,255,0.45);
+    font-size: 7px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+  }
+
+  .secao-titulo {
+    font-family: 'Barlow Condensed', sans-serif;
+    color: var(--verde);
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid var(--amarelo);
+    padding-bottom: 3px;
+    margin-bottom: 9px;
+    line-height: 1;
+  }
+  .subsecao {
+    font-family: 'Barlow Condensed', sans-serif;
+    color: var(--verde);
+    font-size: 12.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 7px 0 3px;
+  }
+  p {
+    font-size: 9px;
+    line-height: 1.55;
+    color: #1a1a1a;
+    margin-bottom: 4px;
+    font-weight: 400;
+  }
+  .destaque {
+    background: var(--amarelo);
+    color: var(--escuro);
+    font-weight: 600;
+    padding: 1px 4px;
+    border-radius: 2px;
+    font-size: 8.5px;
+  }
+  .alerta {
+    background: rgba(198,216,52,0.18);
+    border-left: 3px solid var(--amarelo);
+    padding: 5px 8px;
+    margin: 5px 0;
+    border-radius: 0 3px 3px 0;
+  }
+  .alerta p { margin: 0; font-size: 8.5px; }
+  .alerta strong { color: var(--verde); }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 5px 0;
+    font-size: 8px;
+  }
+  th {
+    background: var(--verde);
+    color: #fff;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 4px 6px;
+    text-align: left;
+  }
+  td {
+    padding: 3px 6px;
+    border-bottom: 1px solid rgba(31,92,35,0.12);
+    vertical-align: top;
+    line-height: 1.4;
+    color: #1a1a1a;
+  }
+  tr:nth-child(even) td { background: rgba(31,92,35,0.04); }
+
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 5px 0; }
+  .card {
+    background: rgba(31,92,35,0.06);
+    border: 1px solid rgba(31,92,35,0.15);
+    border-radius: 4px;
+    padding: 7px 8px;
+  }
+  .card-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    color: var(--verde);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    margin-bottom: 3px;
+  }
+  .card p { font-size: 8px; line-height: 1.5; }
+
+  .questao-header {
+    background: var(--verde);
+    color: #fff;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 4px 10px;
+    border-radius: 3px 3px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .questao-header .fonte {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    font-size: 7.5px;
+    color: var(--amarelo);
+    letter-spacing: 0.5px;
+  }
+  .questao-body {
+    border: 1px solid rgba(31,92,35,0.2);
+    border-top: none;
+    border-radius: 0 0 3px 3px;
+    padding: 7px 10px;
+    margin-bottom: 7px;
+  }
+  .questao-enunciado {
+    font-size: 8.5px;
+    line-height: 1.55;
+    color: #111;
+    margin-bottom: 5px;
+    font-weight: 500;
+  }
+  .alternativas { list-style: none; }
+  .alternativas li {
+    font-size: 8px;
+    line-height: 1.5;
+    padding: 2px 0;
+    color: #222;
+    display: flex;
+    gap: 5px;
+  }
+  .alternativas li .letra {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    color: var(--verde);
+    font-size: 9px;
+    min-width: 10px;
+  }
+  .alternativas li.correta .letra { color: var(--amarelo); }
+  .alternativas li.correta {
+    background: rgba(198,216,52,0.15);
+    border-left: 2px solid var(--amarelo);
+    padding-left: 4px;
+  }
+
+  .gabarito-box {
+    background: var(--verde);
+    border-radius: 4px;
+    padding: 8px 12px;
+    margin: 6px 0;
+  }
+  .gabarito-box .gab-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    color: var(--amarelo);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
+  .gabarito-box p { color: rgba(255,255,255,0.9); font-size: 8px; line-height: 1.55; }
+  .gabarito-box strong { color: var(--amarelo); }
+
+  .sintese-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 7px;
+    margin-top: 6px;
+  }
+  .sintese-item {
+    background: rgba(31,92,35,0.07);
+    border-left: 3px solid var(--verde);
+    padding: 5px 7px;
+    border-radius: 0 3px 3px 0;
+  }
+  .sintese-item .si-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    color: var(--verde);
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+  .sintese-item p { font-size: 7.5px; line-height: 1.5; }
+
+  ul.lista { padding-left: 14px; margin: 3px 0; }
+  ul.lista li {
+    font-size: 8.5px;
+    line-height: 1.55;
+    color: #1a1a1a;
+    margin-bottom: 1px;
+  }
+
+  @media print {
+    body { background: none; }
+    .page { margin: 0; box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ========== PÁGINA 1 — CAPA ========== -->
+<div class="page capa-page">
+  <div class="capa-header">
+    <div style="display:flex;align-items:center;gap:8px;">
+      <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#1F5C23"/>
+      </svg>
+      <div>
+        <div class="marca">Elite Treinamentos</div>
+        <div class="tagline">Extensivo ENARE 2026</div>
+      </div>
+    </div>
+    <div style="text-align:right;">
+      <div style="font-family:'Barlow Condensed',sans-serif;color:var(--verde);font-size:11px;letter-spacing:1px;text-transform:uppercase;">Bloco B5 · Aula 04</div>
+      <div style="font-family:'Space Grotesk',sans-serif;font-weight:300;color:#888;font-size:7.5px;letter-spacing:0.5px;">Farmácia</div>
+    </div>
+  </div>
+
+  <div class="capa-body">
+    <div class="capa-eyebrow">Bloco B5 · FARM-FARMACOTERAP · Aula 04 de 22</div>
+    <div class="capa-titulo">Popula-<br>ções <span>Espe-<br>ciais</span></div>
+    <div class="capa-subtitulo">Farmacoterapia IV: pediatria, gestação, lactação, idoso,<br>nefropata e hepatopata — ajustes farmacocinéticos críticos</div>
+
+    <div class="capa-badge-row">
+      <div class="capa-badge">FARM-FARMACOTERAP</div>
+      <div class="capa-badge">Gestação · FDA A–X</div>
+      <div class="capa-badge">TFG · Child-Pugh</div>
+      <div class="capa-badge">Pediatria · Idoso</div>
+    </div>
+
+    <div class="capa-divider"></div>
+
+    <div class="capa-topicos">
+      <div class="capa-topico">
+        <div class="capa-topico-num">01</div>
+        <div class="capa-topico-txt">Pediatria: dose por kg, SC, fórmulas de Clark e Young</div>
+      </div>
+      <div class="capa-topico">
+        <div class="capa-topico-num">02</div>
+        <div class="capa-topico-txt">Gestação: categorias FDA, teratógenos clássicos</div>
+      </div>
+      <div class="capa-topico">
+        <div class="capa-topico-num">03</div>
+        <div class="capa-topico-txt">Lactação: compatibilidade (L1–L5), exposição lactente</div>
+      </div>
+      <div class="capa-topico">
+        <div class="capa-topico-num">04</div>
+        <div class="capa-topico-txt">Insuficiência renal: ajuste por ClCr e TFG</div>
+      </div>
+      <div class="capa-topico">
+        <div class="capa-topico-num">05</div>
+        <div class="capa-topico-txt">Insuficiência hepática: Child-Pugh e fármacos seguros</div>
+      </div>
+      <div class="capa-topico">
+        <div class="capa-topico-num">06</div>
+        <div class="capa-topico-txt">Idoso: alterações farmacocinéticas/dinâmicas e Beers</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="capa-footer-strip">
+    <span>Extensivo ENARE 2026</span>
+    <span>Elite Treinamentos em Saúde</span>
+    <span>Página 1 de 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 2 — PEDIATRIA ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Farmácia — FARM-FARMACOTERAP</div>
+      <div class="aula-ref">Bloco B5 · Aula 04 · Pediatria</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="secao-titulo">Pediatria — Farmacocinética e Cálculo de Dose</div>
+
+    <p>A criança <em>não é um adulto pequeno</em>: cada faixa etária tem particularidades farmacocinéticas que alteram drasticamente a resposta. Recém-nascido (RN) e prematuro têm maior fragilidade. O <strong>cálculo de dose pediátrica</strong> baseia-se em <em>peso corporal</em> (mg/kg) ou em <em>superfície corporal</em> (mg/m²) — esta última preferida em oncologia e em fármacos com janela estreita.</p>
+
+    <div class="subsecao">Particularidades Farmacocinéticas por Idade</div>
+    <table>
+      <tr>
+        <th>Parâmetro</th>
+        <th>Prematuro / RN</th>
+        <th>Lactente (1–24m)</th>
+        <th>Pré-escolar / escolar</th>
+      </tr>
+      <tr>
+        <td><strong>Absorção</strong></td>
+        <td>pH gástrico ↑ (até 3 anos para alcançar adulto); esvaziamento gástrico lento; absorção retal aumentada</td>
+        <td>Aumento progressivo da motilidade GI</td>
+        <td>Padrão semelhante ao adulto</td>
+      </tr>
+      <tr>
+        <td><strong>Distribuição</strong></td>
+        <td>Maior água corporal total (75–80%); menor ligação proteica → maior fração livre</td>
+        <td>Redução progressiva da água total; aumento da albumina</td>
+        <td>Composição corporal converge ao adulto a partir dos 2 anos</td>
+      </tr>
+      <tr>
+        <td><strong>Metabolismo</strong></td>
+        <td>Imaturidade CYP450 e UGT (síndrome do bebê cinzento com cloranfenicol); alguns CYP imaturos até 6 meses</td>
+        <td>Atividade do CYP3A4 pode <em>superar</em> adulto entre 1–3 anos (clearance acelerado)</td>
+        <td>Normaliza progressivamente até adolescência</td>
+      </tr>
+      <tr>
+        <td><strong>Excreção</strong></td>
+        <td>TFG muito reduzida no RN; atinge nível adulto aos 8–12 meses</td>
+        <td>Função renal próxima ao adulto após 12 meses</td>
+        <td>Função renal adulta</td>
+      </tr>
+    </table>
+
+    <div class="subsecao">Fórmulas para Cálculo de Dose Pediátrica</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Por peso (recomendado)</div>
+        <p><strong>Dose = dose mg/kg × peso (kg)</strong>. Exemplo: amoxicilina 50 mg/kg/dia em criança de 18 kg → 900 mg/dia divididos em 3 tomadas (300 mg 8/8h). Conferir <em>dose máxima</em> diária e por administração. Em obesos, considerar peso ajustado para alguns fármacos.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Fórmulas históricas</div>
+        <p><strong>Young (idade):</strong> Dose = D<sub>adulto</sub> × idade/(idade+12) — desuso clínico, ainda cobrado.<br>
+        <strong>Clark (peso):</strong> Dose = D<sub>adulto</sub> × peso (kg)/70 — útil em emergências sem bula pediátrica.<br>
+        <strong>Superfície corporal (Mosteller):</strong> SC = √(altura × peso / 3600); dose = D<sub>adulto</sub> × SC/1,73 — padrão em onco-hematologia pediátrica.</p>
+      </div>
+    </div>
+
+    <div class="subsecao">Medicamentos a Evitar em Pediatria</div>
+    <ul class="lista">
+      <li><strong>Tetraciclinas</strong> &lt; 8 anos: descoloração dentária permanente, hipoplasia de esmalte, distúrbios de crescimento ósseo</li>
+      <li><strong>Quinolonas</strong> &lt; 18 anos (uso prolongado): risco teórico de artropatia; uso pontual aceitável em infecções graves sem alternativa</li>
+      <li><strong>AAS em viroses</strong>: risco de síndrome de Reye (encefalopatia + esteatose hepática)</li>
+      <li><strong>Sulfas em RN</strong>: kernicterus por deslocamento da bilirrubina da albumina</li>
+      <li><strong>Cloranfenicol em RN</strong>: síndrome do bebê cinzento (imaturidade UGT)</li>
+      <li><strong>Codeína e tramadol</strong> &lt; 12 anos (CYP2D6 UM): depressão respiratória</li>
+      <li><strong>Loperamida</strong> &lt; 6 anos: risco de íleo paralítico, sedação SNC</li>
+      <li><strong>Promethazina</strong> &lt; 2 anos: depressão respiratória; FDA Black Box</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Atribuição farmacêutica em pediatria:</strong> conferir cálculo de dose em prescrição (dupla checagem é exigência ISMP em pediatria); fracionar comprimidos quando necessário (manipulação magistral em farmácia hospitalar; uso de seringas dosadoras para soluções orais); orientar pais sobre estabilidade após reconstituição (suspensões de antibióticos: refrigerar por 7–14 dias).</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>FARM-FARMACOTERAP · Populações Especiais</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">2 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 3 — GESTAÇÃO ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Farmácia — FARM-FARMACOTERAP</div>
+      <div class="aula-ref">Bloco B5 · Aula 04 · Gestação</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="secao-titulo">Gestação — Categorias FDA e Teratogênese</div>
+
+    <p>As <strong>categorias FDA</strong> (A, B, C, D, X) foram substituídas em 2015 pelo sistema <em>PLLR</em> (<em>Pregnancy and Lactation Labeling Rule</em>), mas continuam amplamente cobradas em provas brasileiras. A classificação ainda é usada como referência na ANVISA. <strong>Período crítico</strong>: organogênese (3–8 semanas pós-concepção, ou ~5–10 semanas de idade gestacional) — exposição neste período tem maior risco de malformação estrutural. Após esse período, riscos predominantes são de toxicidade fetal funcional.</p>
+
+    <div class="subsecao">Categorias FDA Tradicionais</div>
+    <table>
+      <tr>
+        <th>Categoria</th>
+        <th>Significado</th>
+        <th>Exemplos</th>
+      </tr>
+      <tr>
+        <td><strong>A</strong></td>
+        <td>Estudos controlados em humanos sem risco</td>
+        <td>Ácido fólico em dose suplementar, levotiroxina em hipotireoidismo</td>
+      </tr>
+      <tr>
+        <td><strong>B</strong></td>
+        <td>Estudos animais sem risco, sem dados humanos suficientes</td>
+        <td>Amoxicilina, cefalosporinas, paracetamol, metildopa, insulina, metformina</td>
+      </tr>
+      <tr>
+        <td><strong>C</strong></td>
+        <td>Estudos animais com risco ou ausência de estudos; benefício potencial pode justificar uso</td>
+        <td>Hidroclorotiazida, propranolol, ranitidina, omeprazol, fluconazol, sertralina</td>
+      </tr>
+      <tr>
+        <td><strong>D</strong></td>
+        <td>Evidência de risco em humanos; benefício pode justificar em situações específicas</td>
+        <td>Fenitoína, valproato, lítio, benzodiazepínicos, aminoglicosídeos</td>
+      </tr>
+      <tr>
+        <td><strong>X</strong></td>
+        <td>Risco supera qualquer benefício; <em>contraindicação absoluta</em></td>
+        <td>Isotretinoína, talidomida, varfarina (1º trim.), metotrexato, IECA/BRA (2º/3º trim.), misoprostol fora indicação obstétrica autorizada, estatinas, ribavirina</td>
+      </tr>
+    </table>
+
+    <div class="subsecao">Teratógenos Clássicos — Pegadinhas FGV</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Anti-hipertensivos</div>
+        <p><strong>IECA e BRA</strong> = <em>contraindicados em todos os trimestres</em>; risco de oligoidrâmnio, displasia renal, ossificação craniana, óbito fetal (2º/3º trim. — classe X). Alternativas seguras: <em>metildopa, nifedipino, labetalol, hidralazina</em>. Atenolol pode causar restrição de crescimento.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Anticonvulsivantes</div>
+        <p><strong>Valproato = pior</strong>: tubo neural (espinha bífida), QI reduzido, dismorfismo facial — contraindicado em mulher em idade fértil sem contracepção eficaz. <strong>Carbamazepina, fenitoína, fenobarbital</strong>: malformações orofaciais, cardíacas, tubo neural. <em>Lamotrigina e levetiracetam</em> têm perfil mais seguro em gestação planejada.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Antibióticos</div>
+        <p><strong>Tetraciclinas, doxiciclina</strong>: descoloração dentária, hepatotoxicidade materna (2º/3º trim.). <strong>Aminoglicosídeos</strong>: ototoxicidade fetal. <strong>Quinolonas</strong>: artropatia experimental. <strong>Sulfas no termo</strong>: kernicterus. <em>Seguros</em>: penicilinas, cefalosporinas, eritromicina (não estolato), azitromicina, fosfomicina (ITU), nitrofurantoína (exceto termo).</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Outros teratógenos críticos</div>
+        <p><strong>Isotretinoína</strong>: programa rigoroso de prevenção da gravidez (iPLEDGE). <strong>Misoprostol</strong> fora do uso obstétrico autorizado: síndrome de Möbius. <strong>Talidomida</strong>: focomelia (no Brasil regulamentada para hanseníase com controle estrito — RDC 11/2011). <strong>Varfarina</strong> 1º trim.: síndrome fetal varfarínica (hipoplasia nasal, condrodisplasia). <strong>Lítio</strong>: anomalia de Ebstein. <strong>Metotrexato</strong>: abortivo + teratogênico.</p>
+      </div>
+    </div>
+
+    <div class="subsecao">Hipertensão na Gestação</div>
+    <p>Aferição em consulta ginecológica é mandatória. Crises hipertensivas e pré-eclâmpsia exigem tratamento imediato. <strong>Fármacos de escolha</strong>: <em>metildopa</em> (1ª linha histórica — Categoria B), <em>nifedipino</em> (BCC, eficaz em pré-eclâmpsia), <em>labetalol</em> (β-bloqueador α/β, indisponibilidade variável no SUS), <em>hidralazina IV</em> (crise hipertensiva). Sulfato de magnésio é o anticonvulsivante de escolha em <em>eclâmpsia</em> (não fenitoína).</p>
+
+    <div class="alerta">
+      <p><strong>Padrão FGV — gestação:</strong> identificar IECA/BRA ou valproato em mulher em idade fértil é erro grave a ser corrigido pelo farmacêutico. Em emergência obstétrica: sulfato de magnésio (dose de ataque 4 g IV em 20 min + manutenção 1 g/h). Folato 0,4 mg/dia em todas as mulheres em idade fértil; 4–5 mg/dia se uso de anticonvulsivante ou histórico de tubo neural.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>FARM-FARMACOTERAP · Populações Especiais</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">3 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 4 — LACTAÇÃO ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Farmácia — FARM-FARMACOTERAP</div>
+      <div class="aula-ref">Bloco B5 · Aula 04 · Lactação</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="secao-titulo">Lactação — Compatibilidade e Exposição</div>
+
+    <p>A <strong>amamentação</strong> oferece benefícios irreplicáveis. A interrupção desnecessária por medicações é prejudicial. A maioria dos fármacos é compatível com aleitamento, mas alguns exigem suspensão temporária ou substituição. A <em>classificação de Hale</em> (L1–L5) e a base de dados <em>LactMed (NIH)</em> são referências internacionais. No Brasil, o <em>Caderno do MS — Amamentação e Uso de Medicamentos e Outras Substâncias</em> é a referência operativa.</p>
+
+    <div class="subsecao">Classificação de Hale (L1–L5)</div>
+    <table>
+      <tr>
+        <th>Categoria</th>
+        <th>Significado</th>
+        <th>Exemplos</th>
+      </tr>
+      <tr>
+        <td><strong>L1 — Compatível</strong></td>
+        <td>Uso seguro; estudos em lactantes sem RAM no lactente</td>
+        <td>Paracetamol, ibuprofeno, amoxicilina, dipirona, cefalexina, insulina, levotiroxina</td>
+      </tr>
+      <tr>
+        <td>L2 — Provavelmente compatível</td>
+        <td>Sem estudos controlados mas evidência é favorável</td>
+        <td>Sertralina, fluoxetina (alerta neonatal), metformina, omeprazol, loratadina</td>
+      </tr>
+      <tr>
+        <td>L3 — Provavelmente compatível</td>
+        <td>Dados limitados; risco baixo após pesar benefícios</td>
+        <td>Codeína (cautela), hidroclorotiazida, prednisona, atenolol</td>
+      </tr>
+      <tr>
+        <td><strong>L4 — Risco possível</strong></td>
+        <td>Evidências de risco; usar se benefício superar risco</td>
+        <td>Aspirina dose alta, lítio (cautela), atenolol em altas doses</td>
+      </tr>
+      <tr>
+        <td><strong>L5 — Contraindicado</strong></td>
+        <td>Risco documentado; suspensão da amamentação</td>
+        <td>Quimioterápicos, isótopos radiativos (suspensão temporária ou definitiva conforme meia-vida), drogas ilícitas, retinoides sistêmicos (isotretinoína), amiodarona</td>
+      </tr>
+    </table>
+
+    <div class="subsecao">Fatores Determinantes da Exposição do Lactente</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Características Farmacocinéticas</div>
+        <p><strong>Lipofilicidade</strong>: alta → mais passagem para o leite (psicofármacos, opioides). <strong>Ligação proteica</strong>: alta → menor passagem (varfarina, ibuprofeno). <strong>Peso molecular</strong>: &gt; 800 Da → pouca passagem (heparina, insulina, anticorpos). <strong>pKa</strong>: bases fracas concentram-se no leite (pH levemente mais ácido). <strong>Meia-vida</strong>: curta favorece compatibilidade.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Estratégias de Minimização</div>
+        <p>Administrar a dose <em>imediatamente após</em> a mamada (para que o pico no leite ocorra entre mamadas). Preferir fármacos de meia-vida curta. Em doses únicas/curtas: considerar suspensão temporária e ordenha + descarte. Bebê prematuro ou RN: maior cautela (clearance reduzido). Reservar fármacos com perfil L4-L5 só para indicação compelativa, com substituto formulado.</p>
+      </div>
+    </div>
+
+    <div class="subsecao">Casos Comuns na Drogaria — Conduta</div>
+    <ul class="lista">
+      <li><strong>Cefaleia / dor:</strong> paracetamol e ibuprofeno (L1) — preferir sobre dipirona em alguns países; AAS dose analgésica isolada é aceitável, mas evitar uso crônico</li>
+      <li><strong>Infecção pulmonar:</strong> amoxicilina, cefalexina (L1); azitromicina (L2)</li>
+      <li><strong>Depressão pós-parto:</strong> sertralina e paroxetina são preferidas (L2); fluoxetina tem meia-vida longa e metabólito ativo — alerta neonatal</li>
+      <li><strong>Contracepção:</strong> apenas progestágenos (desogestrel, levonorgestrel) nas primeiras 6 semanas; combinados após estabilização da lactação (≥ 6 semanas)</li>
+      <li><strong>Alergia / coriza:</strong> loratadina e cetirizina (L2) — preferir sobre difenidramina (L3, sedação no lactente)</li>
+      <li><strong>Refluxo:</strong> omeprazol e ranitidina (L2)</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Conduta farmacêutica:</strong> ao dispensar a uma lactante, sempre questionar se está amamentando antes de orientar sobre o fármaco. Em dúvida: consultar LactMed (NIH) e Caderno MS. Nunca interromper a amamentação preventivamente sem evidência. Atenção a fármacos OTC (anti-histamínicos sedativos, descongestionantes — pseudoefedrina pode reduzir produção de leite).</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>FARM-FARMACOTERAP · Populações Especiais</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">4 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 5 — INSUFICIÊNCIA RENAL ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Farmácia — FARM-FARMACOTERAP</div>
+      <div class="aula-ref">Bloco B5 · Aula 04 · Insuficiência Renal</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="secao-titulo">Insuficiência Renal — Ajuste por TFG</div>
+
+    <p>A doença renal crônica (DRC) é a comorbidade que mais altera o ajuste farmacoterapêutico. A FGV cobrou em ENARE 2025 (Q49 — TFG e ajuste posológico). O farmacêutico deve <strong>calcular a TFG estimada</strong> a cada admissão hospitalar e revisar todos os fármacos eliminados por via renal.</p>
+
+    <div class="subsecao">Estágios da DRC (KDIGO 2024)</div>
+    <table>
+      <tr>
+        <th>Estágio</th>
+        <th>TFG (mL/min/1,73 m²)</th>
+        <th>Descrição</th>
+      </tr>
+      <tr>
+        <td>G1</td>
+        <td>≥ 90</td>
+        <td>Normal ou aumentada (com lesão renal — albuminúria, hematúria, imagem)</td>
+      </tr>
+      <tr>
+        <td>G2</td>
+        <td>60–89</td>
+        <td>Leve diminuição (com lesão renal)</td>
+      </tr>
+      <tr>
+        <td>G3a</td>
+        <td>45–59</td>
+        <td>Leve a moderada diminuição</td>
+      </tr>
+      <tr>
+        <td>G3b</td>
+        <td>30–44</td>
+        <td>Moderada a severa diminuição</td>
+      </tr>
+      <tr>
+        <td><strong>G4</strong></td>
+        <td>15–29</td>
+        <td>Severa diminuição — preparar TRS</td>
+      </tr>
+      <tr>
+        <td><strong>G5</strong></td>
+        <td>&lt; 15 ou diálise</td>
+        <td>Falência renal</td>
+      </tr>
+    </table>
+
+    <div class="subsecao">Fórmulas para Estimar a TFG</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Cockcroft-Gault (ClCr)</div>
+        <p>ClCr = [(140 − idade) × peso] / (72 × Cr) × (0,85 se mulher).<br>
+        Estima clearance da creatinina, não TFG. Útil em <em>ajuste de dose</em> (bulas referenciam Cockcroft historicamente). Cuidado: superestima em obesos (usar peso ideal/ajustado).</p>
+      </div>
+      <div class="card">
+        <div class="card-title">CKD-EPI 2021 (preferida)</div>
+        <p>Equação contemporânea, validada, sem ajuste por raça (versão 2021). É a recomendada pela <em>KDIGO 2024</em> para classificação de DRC. Reporta em mL/min/<strong>1,73 m²</strong> (normalizada para superfície corporal). Diferentemente da Cockcroft, fornece TFG verdadeira.</p>
+      </div>
+    </div>
+
+    <div class="subsecao">Fármacos Críticos para Ajuste por TFG</div>
+    <table>
+      <tr>
+        <th>Fármaco</th>
+        <th>Ajuste</th>
+      </tr>
+      <tr>
+        <td>Vancomicina</td>
+        <td>Reduzir intervalo e dose por TFG; alvo nivel-vale 15–20 mg/L em infecção grave</td>
+      </tr>
+      <tr>
+        <td>Aminoglicosídeos</td>
+        <td>Dose única diária; intervalo prolongado em ClCr &lt; 60; monitorar nível pico/vale</td>
+      </tr>
+      <tr>
+        <td>Carbapenêmicos</td>
+        <td>Reduzir dose em ClCr &lt; 50; meropenem 1 g 8/8h → 500 mg 12/12h em ClCr 25–50</td>
+      </tr>
+      <tr>
+        <td>Metformina</td>
+        <td>Contraindicada se TFG &lt; 30; suspender em estresse agudo, contrastes</td>
+      </tr>
+      <tr>
+        <td>iSGLT-2</td>
+        <td>Permitidos a partir de TFG ≥ 20 (DM/IC/DRC, conforme DAPA-CKD); revisar uso na alta de unidade</td>
+      </tr>
+      <tr>
+        <td>Digoxina</td>
+        <td>Reduzir dose por idade e TFG (0,125 mg/dia ou em dias alternados em ClCr baixa)</td>
+      </tr>
+      <tr>
+        <td>HBPM (enoxaparina)</td>
+        <td>Ajustar para ClCr &lt; 30; monitorar anti-Xa em obesos, IRA, gestantes</td>
+      </tr>
+      <tr>
+        <td>DOACs</td>
+        <td>Dabigatrana contraindicada se ClCr &lt; 30; rivaroxabana e apixabana: ajuste por ClCr e idade</td>
+      </tr>
+      <tr>
+        <td>Lítio</td>
+        <td>Eliminação 100% renal; ajustar e monitorar em TFG &lt; 60</td>
+      </tr>
+      <tr>
+        <td>AINEs</td>
+        <td>Evitar em TFG &lt; 30; cautela em DRC G3 — agravam IRA</td>
+      </tr>
+      <tr>
+        <td>IECA/BRA</td>
+        <td>Monitorar potássio e creatinina; ↑ creatinina até 30% aceitável</td>
+      </tr>
+    </table>
+
+    <div class="alerta">
+      <p><strong>Triplo whammy renal:</strong> IECA/BRA + diurético (tiazídico ou alça) + AINE = combinação clássica de IRA aguda, especialmente em desidratado, idoso ou em diarreia/vômitos. Atribuição farmacêutica: identificar e propor descontinuação do AINE em primeiro lugar.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>FARM-FARMACOTERAP · Populações Especiais</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">5 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 6 — INSUFICIÊNCIA HEPÁTICA ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Farmácia — FARM-FARMACOTERAP</div>
+      <div class="aula-ref">Bloco B5 · Aula 04 · Insuficiência Hepática</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="secao-titulo">Insuficiência Hepática — Child-Pugh e Ajuste</div>
+
+    <p>Diferente da função renal, <em>não há um marcador laboratorial único</em> para avaliar a depuração hepática. Bulas raramente trazem ajuste preciso. Utiliza-se o <strong>escore de Child-Pugh</strong> ou o <em>MELD</em> para estratificar gravidade e basear decisões.</p>
+
+    <div class="subsecao">Escore Child-Pugh</div>
+    <table>
+      <tr>
+        <th>Parâmetro</th>
+        <th>1 ponto</th>
+        <th>2 pontos</th>
+        <th>3 pontos</th>
+      </tr>
+      <tr>
+        <td>Bilirrubina total (mg/dL)</td>
+        <td>&lt; 2</td>
+        <td>2–3</td>
+        <td>&gt; 3</td>
+      </tr>
+      <tr>
+        <td>Albumina (g/dL)</td>
+        <td>&gt; 3,5</td>
+        <td>2,8–3,5</td>
+        <td>&lt; 2,8</td>
+      </tr>
+      <tr>
+        <td>INR</td>
+        <td>&lt; 1,7</td>
+        <td>1,7–2,3</td>
+        <td>&gt; 2,3</td>
+      </tr>
+      <tr>
+        <td>Ascite</td>
+        <td>Ausente</td>
+        <td>Leve / controlada</td>
+        <td>Refratária</td>
+      </tr>
+      <tr>
+        <td>Encefalopatia</td>
+        <td>Ausente</td>
+        <td>Grau I–II</td>
+        <td>Grau III–IV</td>
+      </tr>
+    </table>
+
+    <p><strong>Classes:</strong> <span class="destaque">A</span> 5–6 pontos (bem compensado); <span class="destaque">B</span> 7–9 pontos (compensação parcial); <span class="destaque">C</span> 10–15 pontos (descompensado, candidato a transplante). Em Child-Pugh C, fármacos com extração hepática elevada (propranolol, lidocaína, morfina) podem ter aumento de biodisponibilidade de 100–300%.</p>
+
+    <div class="subsecao">Fármacos a Evitar ou Ajustar em Hepatopatia</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Evitar ou doses mínimas</div>
+        <p><strong>Paracetamol &gt; 2 g/dia</strong> (limite usual em hepatopata; toxicidade dose-dependente). <strong>AINEs</strong>: agravam IRA hepatorrenal, sangramento. <strong>Estatinas em Child C</strong>: cautela. <strong>Metronidazol</strong> doses altas e prolongadas. <strong>Amiodarona</strong>: hepatotoxicidade. <strong>Valproato e nimesulida</strong>: hepatotóxicos.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Riscos farmacocinéticos</div>
+        <p>Fármacos com <em>alta extração hepática</em> e biotransformação dependente: propranolol, morfina, lidocaína, verapamil, midazolam — biodisponibilidade aumentada em hepatopatia. Reduzir dose oral. Fármacos com extração baixa (varfarina, diazepam): clearance reduzido se houver hipoalbuminemia.</p>
+      </div>
+    </div>
+
+    <div class="subsecao">Hepatotoxicidade Medicamentosa (DILI)</div>
+    <ul class="lista">
+      <li><strong>Intrínseca (dose-dependente):</strong> paracetamol em overdose &gt; 7,5 g; previsível e reproduzível</li>
+      <li><strong>Idiossincrática:</strong> isoniazida, amoxicilina-clavulanato (causa mais comum nos países desenvolvidos), nitrofurantoína, metildopa, valproato, halotano</li>
+      <li><strong>Padrões:</strong> hepatocelular (↑↑ ALT &gt; FA), colestático (↑↑ FA + bilirrubina), misto. Classificar pelo R ratio</li>
+      <li><strong>Lei de Hy:</strong> ALT &gt; 3× LSN + bilirrubina &gt; 2× LSN sem obstrução → mortalidade até 10%; indicação de suspender o fármaco</li>
+      <li><strong>Antídoto específico:</strong> N-acetilcisteína para intoxicação por paracetamol (ideal &lt; 8h da ingesta)</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Conduta farmacêutica em hepatopata:</strong> evitar combinações hepatotóxicas (paracetamol + álcool; isoniazida + rifampicina sem monitoração); preferir fármacos com depuração renal em Child C; lembrar que <em>opioides são potencializados</em>; reduzir dose de benzodiazepínicos (preferir lorazepam, oxazepam, temazepam — metabolização extra-hepática). Vacina contra hepatite B em todo paciente com DRC, DM e hepatopata crônico.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>FARM-FARMACOTERAP · Populações Especiais</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">6 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 7 — QUESTÃO 01 ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Farmácia — FARM-FARMACOTERAP</div>
+      <div class="aula-ref">Bloco B5 · Aula 04 · Questões ENARE</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="questao-header">
+      <span>Questão 01</span>
+      <span class="fonte">Gestação · IECA · NC: Análise</span>
+    </div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Paciente de 28 anos, hipertensa crônica em uso de enalapril 20 mg/dia, descobre estar grávida (10 semanas) na primeira consulta de pré-natal. A farmacêutica responsável pela conciliação medicamentosa identifica o uso do IECA. Sobre a conduta:</p>
+      <p class="questao-enunciado" style="font-style:italic;">I. Suspender o enalapril imediatamente e propor metildopa como alternativa em comunicação com o pré-natalista.<br>
+      II. Manter o enalapril até o 2º trimestre, pois os principais efeitos teratogênicos são apenas após 20 semanas.<br>
+      III. Orientar a paciente sobre os riscos de displasia renal, oligoidrâmnio e ossificação craniana fetais associados a IECA.</p>
+      <p class="questao-enunciado">Está(ão) correta(s) apenas:</p>
+      <ul class="alternativas">
+        <li>
+          <span class="letra">A</span>
+          <span>I.</span>
+        </li>
+        <li>
+          <span class="letra">B</span>
+          <span>II.</span>
+        </li>
+        <li class="correta">
+          <span class="letra">C</span>
+          <span>I e III.</span>
+        </li>
+        <li>
+          <span class="letra">D</span>
+          <span>I, II e III.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — C</div>
+      <p><strong>I — Correta:</strong> IECA é contraindicado em todos os trimestres de gestação (categoria D no 1º trimestre, X no 2º/3º, conforme bulas e ANVISA). A descoberta de gestação em paciente em uso é indicação imediata de suspensão e substituição. <em>Metildopa</em> é primeira escolha histórica em hipertensão crônica na gestação (categoria B; segura comprovada).</p>
+      <p><strong>II — Incorreta:</strong> os principais efeitos descritos em IECA durante a gestação são <em>tardios</em> (2º/3º trimestre — fetopatia por IECA: displasia renal, oligoidrâmnio, hipoplasia pulmonar, ossificação craniana incompleta), mas há crescente evidência de risco também no 1º trimestre (malformações cardiovasculares e SNC). Manter o IECA é conduta inaceitável.</p>
+      <p><strong>III — Correta:</strong> a paciente deve ser informada sobre os riscos para que decida com autonomia esclarecida, especialmente porque já houve exposição em 10 semanas. Orientar acompanhamento ecográfico detalhado e referenciar à equipe de medicina fetal.</p>
+      <p><strong>Conceito-chave:</strong> mulher em idade fértil com HAS crônica deve ter contracepção efetiva ou estar em terapia gestação-segura (metildopa, nifedipino, labetalol). O farmacêutico em farmácia clínica/pré-natal tem papel central na revisão proativa.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>FARM-FARMACOTERAP · Populações Especiais</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">7 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 8 — QUESTÃO 02 ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Farmácia — FARM-FARMACOTERAP</div>
+      <div class="aula-ref">Bloco B5 · Aula 04 · Questões ENARE</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="questao-header">
+      <span>Questão 02</span>
+      <span class="fonte">Insuficiência Renal · TFG · NC: Aplicação</span>
+    </div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Paciente do sexo masculino, 72 anos, 62 kg, internado com pielonefrite por <em>E. coli</em> sensível ao meropenem. Creatinina sérica = 2,1 mg/dL. A prescrição inicial é meropenem 1 g IV 8/8h. Calculando a TFG pela equação de Cockcroft-Gault e ajustando o esquema, qual conduta é a mais adequada?</p>
+      <ul class="alternativas">
+        <li>
+          <span class="letra">A</span>
+          <span>Manter 1 g IV 8/8h, pois ainda há reserva renal residual.</span>
+        </li>
+        <li class="correta">
+          <span class="letra">B</span>
+          <span>Reduzir para 500 mg IV 12/12h, pois a ClCr calculada está entre 25–50 mL/min e exige redução de dose.</span>
+        </li>
+        <li>
+          <span class="letra">C</span>
+          <span>Aumentar para 2 g IV 8/8h, dado o quadro de pielonefrite com sepse iminente.</span>
+        </li>
+        <li>
+          <span class="letra">D</span>
+          <span>Substituir meropenem por ertapenem 1 g IV/dia sem necessidade de ajuste renal.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> aplicando Cockcroft-Gault para o caso → ClCr = [(140 − 72) × 62] / (72 × 2,1) = (68 × 62) / 151,2 ≈ <strong>28 mL/min</strong>. Para meropenem em ClCr 25–50, a recomendação é <em>reduzir a dose pela metade mantendo o intervalo</em> ou <em>aumentar o intervalo</em>: 500 mg 12/12h ou 1 g 12/12h são esquemas aceitos pela bula. A redução é especialmente importante em idoso pela maior sensibilidade neurológica (risco de convulsão, mioclonia).</p>
+      <p><strong>Por que as outras erram:</strong> A — manter dose plena em ClCr 28 expõe o paciente a toxicidade SNC e renal sem benefício adicional · C — aumentar dose em paciente com clearance reduzido é erro; pielonefrite responde a dose padrão ajustada, não a dose ampliada · D — ertapenem é alternativa atraente pela posologia (1×/dia), mas <em>não cobre Pseudomonas</em>; se a cultura confirmou apenas E. coli sensível, é uma opção válida, mas a bula também recomenda ajuste em ClCr &lt; 30 (500 mg/dia); a afirmação "sem necessidade de ajuste renal" é falsa.</p>
+      <p><strong>Conceito-chave:</strong> idoso + creatinina aparentemente "limítrofe" frequentemente esconde TFG significativamente reduzida pelo declínio fisiológico da massa muscular. Calcular sempre Cockcroft-Gault (ou CKD-EPI) antes de prescrever fármacos de eliminação renal.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>FARM-FARMACOTERAP · Populações Especiais</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">8 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 9 — QUESTÃO 03 + GABARITO INTEGRADO ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Farmácia — FARM-FARMACOTERAP</div>
+      <div class="aula-ref">Bloco B5 · Aula 04 · Gabarito Integrado</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="questao-header">
+      <span>Questão 03</span>
+      <span class="fonte">Pediatria · Cálculo de dose · NC: Aplicação</span>
+    </div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Criança de 4 anos, 16 kg, é internada por pneumonia adquirida na comunidade. A prescrição é amoxicilina 80 mg/kg/dia VO, dividida em 3 tomadas. A apresentação disponível é suspensão oral 250 mg/5 mL após reconstituição. Qual o volume (mL) a ser administrado em cada tomada?</p>
+      <ul class="alternativas">
+        <li>
+          <span class="letra">A</span>
+          <span>2,5 mL.</span>
+        </li>
+        <li>
+          <span class="letra">B</span>
+          <span>5,0 mL.</span>
+        </li>
+        <li>
+          <span class="letra">C</span>
+          <span>7,5 mL.</span>
+        </li>
+        <li class="correta">
+          <span class="letra">D</span>
+          <span>8,5 mL.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — D</div>
+      <p><strong>Cálculo passo a passo:</strong></p>
+      <p>• <strong>Dose diária:</strong> 80 mg/kg/dia × 16 kg = 1.280 mg/dia.<br>
+      • <strong>Dose por tomada:</strong> 1.280 ÷ 3 ≈ 426,7 mg/dose.<br>
+      • <strong>Concentração:</strong> 250 mg/5 mL = 50 mg/mL.<br>
+      • <strong>Volume por tomada:</strong> 426,7 mg ÷ 50 mg/mL ≈ 8,53 mL → <strong>8,5 mL</strong>.</p>
+      <p><strong>Por que as outras erram:</strong> A (2,5 mL) corresponderia a 125 mg/dose, subdose grave em PAC · B (5,0 mL) = 250 mg/dose, ainda insuficiente · C (7,5 mL) = 375 mg/dose, subdose · D (8,5 mL) é a resposta correta arredondada.</p>
+      <p><strong>Orientação farmacêutica:</strong> reconstituir adicionando água destilada no nível indicado (agitar até completa suspensão); refrigerar 2–8 °C após reconstituição (estabilidade típica 14 dias); agitar antes de cada uso; medir com seringa dosadora (não com colher de cozinha); orientar tomada com refeição para reduzir desconforto GI; completar o tratamento mesmo após melhora dos sintomas.</p>
+    </div>
+
+    <div class="subsecao" style="margin-top:6px;">Gabarito Comentado — Análise Integrada</div>
+    <table>
+      <tr>
+        <th>Questão</th>
+        <th>Gabarito</th>
+        <th>Tema</th>
+        <th>Conceito-Chave</th>
+      </tr>
+      <tr>
+        <td><strong>01</strong></td>
+        <td><span class="destaque">C</span></td>
+        <td>Gestação — IECA</td>
+        <td>IECA categoria D/X; suspender + trocar por metildopa; orientação sobre riscos</td>
+      </tr>
+      <tr>
+        <td><strong>02</strong></td>
+        <td><span class="destaque">B</span></td>
+        <td>Idoso + ClCr reduzido — Meropenem</td>
+        <td>Cockcroft-Gault = 28 mL/min; reduzir para 500 mg 12/12h ou 1 g 12/12h</td>
+      </tr>
+      <tr>
+        <td><strong>03</strong></td>
+        <td><span class="destaque">D</span></td>
+        <td>Pediatria — Cálculo de Amoxicilina</td>
+        <td>80 mg/kg/dia × 16 kg ÷ 3 = 426,7 mg/dose; 250 mg/5 mL → 8,5 mL/dose</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="footer">
+    <span>FARM-FARMACOTERAP · Populações Especiais</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">9 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 10 — SÍNTESE ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Farmácia — FARM-FARMACOTERAP</div>
+      <div class="aula-ref">Bloco B5 · Aula 04 · Síntese</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="secao-titulo">Síntese — Populações Especiais</div>
+
+    <div class="sintese-grid">
+      <div class="sintese-item">
+        <div class="si-label">Pediatria</div>
+        <p>Calcular dose por peso (mg/kg) ou SC (Mosteller). Particularidades farmacocinéticas: RN com TFG baixa, imaturidade CYP/UGT. Evitar tetraciclinas (&lt; 8a), quinolonas, AAS em viroses (Reye), codeína/tramadol (&lt; 12a), cloranfenicol (RN), promethazina (&lt; 2a).</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Gestação — FDA</div>
+        <p>A/B = seguros; D = risco com benefício potencial; X = contraindicado. Teratógenos clássicos: IECA/BRA, valproato, lítio, varfarina (1º), isotretinoína, talidomida, metotrexato, tetraciclinas. Crise hipertensiva: hidralazina; eclâmpsia: sulfato de Mg.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Lactação (Hale L1–L5)</div>
+        <p>L1 compatíveis (paracetamol, amoxicilina, dipirona); L5 contraindicados (quimioterápicos, isótopos, isotretinoína, amiodarona). Reduzir exposição: dose após mamada; preferir meia-vida curta; fluoxetina tem alerta neonatal. LactMed (NIH) é referência.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Insuficiência Renal</div>
+        <p>Estágios G1–G5 (KDIGO 2024). Cockcroft-Gault para ajuste posológico; CKD-EPI para classificação. Metformina (TFG &lt; 30 → suspender), AINE (evitar &lt; 30), HBPM/DOACs (ajuste), aminoglicosídeo/vancomicina (monitorar). Triplo whammy: IECA + diurético + AINE = IRA.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Insuficiência Hepática</div>
+        <p>Child-Pugh A (5–6), B (7–9), C (10–15). Paracetamol &lt; 2 g/dia. Hepatotóxicos comuns: amoxi-clav, isoniazida, valproato, nimesulida. Lei de Hy: ↑ALT + ↑bilirrubina → suspender. N-acetilcisteína = antídoto paracetamol. BZD seguros em hepatopata: lorazepam, oxazepam.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Próxima Aula</div>
+        <p><strong>Aula 05 — Farmacoterapia V: Cálculos e Diagnóstico Laboratorial.</strong> TFG (Cockcroft-Gault, CKD-EPI), gasometria (Henderson-Hasselbalch, distúrbios ácido-base), dosagem de fentanil, HbA1c, cálculos de infusão.</p>
+      </div>
+    </div>
+
+    <div class="alerta" style="margin-top:5px;">
+      <p><strong>Regra de ouro — Populações Especiais:</strong> sempre calcular dose pediátrica por peso ou SC; em gestante checar categoria FDA e teratogênese conhecida; em lactação consultar Hale/LactMed; em IR aplicar Cockcroft-Gault para ajuste; em IH usar Child-Pugh. Triplo whammy renal e DILI são pegadinhas recorrentes.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>FARM-FARMACOTERAP · Populações Especiais</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">10 / 10</span>
+  </div>
+</div>
+
+</body>
+</html>

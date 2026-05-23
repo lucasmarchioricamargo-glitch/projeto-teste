@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Farmácia — Bloco B5 Aula 17 | Extensivo ENARE 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap');
+  :root { --creme: #F6F4ED; --verde: #1F5C23; --amarelo: #C6D834; --escuro: #0C2B0E; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #d0d0d0; font-family: 'Bricolage Grotesque', sans-serif; }
+  .page { width: 210mm; height: 297mm; background: var(--creme); margin: 0 auto 12px; position: relative; overflow: hidden; page-break-after: always; }
+  .header { background: var(--verde); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .header-logo { display: flex; align-items: center; gap: 8px; }
+  .header-logo svg { width: 32px; height: 32px; }
+  .header-brand { display: flex; flex-direction: column; line-height: 1; }
+  .header-brand .marca { font-family: 'Playfair Display', serif; font-style: italic; color: #fff; font-size: 13px; letter-spacing: 0.5px; }
+  .header-brand .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 7px; letter-spacing: 1.5px; text-transform: uppercase; }
+  .header-info { text-align: right; }
+  .header-info .disciplina { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
+  .header-info .aula-ref { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.7); font-size: 8px; letter-spacing: 0.5px; }
+  .footer { position: absolute; bottom: 0; left: 0; right: 0; background: var(--verde); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .footer span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.6); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .footer .pg { color: var(--amarelo); font-weight: 400; }
+  .body { padding: 14px 18px 30px; height: calc(297mm - 52px - 22px); overflow: hidden; }
+  .capa-page { background: var(--verde); }
+  .capa-header { background: var(--creme); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .capa-header .marca { font-family: 'Playfair Display', serif; font-style: italic; color: var(--verde); font-size: 14px; }
+  .capa-header .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--verde); font-size: 7.5px; letter-spacing: 2px; text-transform: uppercase; }
+  .capa-body { padding: 28px 24px 0; display: flex; flex-direction: column; height: calc(297mm - 52px - 22px); }
+  .capa-eyebrow { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; }
+  .capa-titulo { font-family: 'Barlow Condensed', sans-serif; color: #fff; font-size: 50px; line-height: 0.95; text-transform: uppercase; letter-spacing: -0.5px; margin-bottom: 6px; }
+  .capa-titulo span { color: var(--amarelo); }
+  .capa-subtitulo { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; color: rgba(255,255,255,0.65); font-size: 12px; letter-spacing: 0.3px; margin-bottom: 22px; line-height: 1.5; }
+  .capa-badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+  .capa-badge { background: rgba(198,216,52,0.15); border: 1px solid var(--amarelo); color: var(--amarelo); font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 8px; border-radius: 2px; }
+  .capa-divider { width: 40px; height: 3px; background: var(--amarelo); margin-bottom: 20px; }
+  .capa-topicos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .capa-topico { display: flex; align-items: flex-start; gap: 7px; }
+  .capa-topico-num { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 18px; line-height: 1; min-width: 18px; }
+  .capa-topico-txt { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 400; color: rgba(255,255,255,0.8); font-size: 9.5px; line-height: 1.4; }
+  .capa-footer-strip { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.25); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .capa-footer-strip span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.45); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .secao-titulo { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 18px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid var(--amarelo); padding-bottom: 3px; margin-bottom: 9px; line-height: 1; }
+  .subsecao { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.5px; margin: 7px 0 3px; }
+  p { font-size: 9px; line-height: 1.55; color: #1a1a1a; margin-bottom: 4px; font-weight: 400; }
+  .destaque { background: var(--amarelo); color: var(--escuro); font-weight: 600; padding: 1px 4px; border-radius: 2px; font-size: 8.5px; }
+  .alerta { background: rgba(198,216,52,0.18); border-left: 3px solid var(--amarelo); padding: 5px 8px; margin: 5px 0; border-radius: 0 3px 3px 0; }
+  .alerta p { margin: 0; font-size: 8.5px; }
+  .alerta strong { color: var(--verde); }
+  table { width: 100%; border-collapse: collapse; margin: 5px 0; font-size: 8px; }
+  th { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; padding: 4px 6px; text-align: left; }
+  td { padding: 3px 6px; border-bottom: 1px solid rgba(31,92,35,0.12); vertical-align: top; line-height: 1.4; color: #1a1a1a; }
+  tr:nth-child(even) td { background: rgba(31,92,35,0.04); }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 5px 0; }
+  .card { background: rgba(31,92,35,0.06); border: 1px solid rgba(31,92,35,0.15); border-radius: 4px; padding: 7px 8px; }
+  .card-title { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 11px; text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 3px; }
+  .card p { font-size: 8px; line-height: 1.5; }
+  .questao-header { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; padding: 4px 10px; border-radius: 3px 3px 0 0; display: flex; justify-content: space-between; align-items: center; }
+  .questao-header .fonte { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; color: var(--amarelo); letter-spacing: 0.5px; }
+  .questao-body { border: 1px solid rgba(31,92,35,0.2); border-top: none; border-radius: 0 0 3px 3px; padding: 7px 10px; margin-bottom: 7px; }
+  .questao-enunciado { font-size: 8.5px; line-height: 1.55; color: #111; margin-bottom: 5px; font-weight: 500; }
+  .alternativas { list-style: none; }
+  .alternativas li { font-size: 8px; line-height: 1.5; padding: 2px 0; color: #222; display: flex; gap: 5px; }
+  .alternativas li .letra { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: var(--verde); font-size: 9px; min-width: 10px; }
+  .alternativas li.correta .letra { color: var(--amarelo); }
+  .alternativas li.correta { background: rgba(198,216,52,0.15); border-left: 2px solid var(--amarelo); padding-left: 4px; }
+  .gabarito-box { background: var(--verde); border-radius: 4px; padding: 8px 12px; margin: 6px 0; }
+  .gabarito-box .gab-title { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+  .gabarito-box p { color: rgba(255,255,255,0.9); font-size: 8px; line-height: 1.55; }
+  .gabarito-box strong { color: var(--amarelo); }
+  .sintese-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-top: 6px; }
+  .sintese-item { background: rgba(31,92,35,0.07); border-left: 3px solid var(--verde); padding: 5px 7px; border-radius: 0 3px 3px 0; }
+  .sintese-item .si-label { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px; }
+  .sintese-item p { font-size: 7.5px; line-height: 1.5; }
+  ul.lista { padding-left: 14px; margin: 3px 0; }
+  ul.lista li { font-size: 8.5px; line-height: 1.55; color: #1a1a1a; margin-bottom: 1px; }
+  @media print { body { background: none; } .page { margin: 0; box-shadow: none; } }
+</style>
+</head>
+<body>
+
+<div class="page capa-page">
+  <div class="capa-header">
+    <div style="display:flex;align-items:center;gap:8px;"><svg width="34" height="34" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#1F5C23"/></svg><div><div class="marca">Elite Treinamentos</div><div class="tagline">Extensivo ENARE 2026</div></div></div>
+    <div style="text-align:right;"><div style="font-family:'Barlow Condensed',sans-serif;color:var(--verde);font-size:11px;letter-spacing:1px;text-transform:uppercase;">Bloco B5 · Aula 17</div><div style="font-family:'Space Grotesk',sans-serif;font-weight:300;color:#888;font-size:7.5px;letter-spacing:0.5px;">Farmácia</div></div>
+  </div>
+  <div class="capa-body">
+    <div class="capa-eyebrow">Bloco B5 · FARM-FARMACOVIGIL · Aula 17 de 22</div>
+    <div class="capa-titulo">Farmaco-<br>vigi-<br>lância <span>·<br>RAM</span></div>
+    <div class="capa-subtitulo">RDC 406/2020, VigiMed, classificação Rawlins-Thompson,<br>Naranjo e o papel do farmacêutico na notificação</div>
+    <div class="capa-badge-row">
+      <div class="capa-badge">FARM-FARMACOVIGIL ★★</div>
+      <div class="capa-badge">RDC 406/2020</div>
+      <div class="capa-badge">VigiMed · ANVISA</div>
+      <div class="capa-badge">RAM A-B-C-D-E-F</div>
+    </div>
+    <div class="capa-divider"></div>
+    <div class="capa-topicos">
+      <div class="capa-topico"><div class="capa-topico-num">01</div><div class="capa-topico-txt">Farmacovigilância: conceito, OMS, ANVISA</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">02</div><div class="capa-topico-txt">RDC 406/2020 e notificação obrigatória</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">03</div><div class="capa-topico-txt">Classificação Rawlins-Thompson (A-F)</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">04</div><div class="capa-topico-txt">Tipo A vs B: previsível vs idiossincrático</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">05</div><div class="capa-topico-txt">Sinal de farmacovigilância e VigiBase</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">06</div><div class="capa-topico-txt">Naranjo e imputabilidade</div></div>
+    </div>
+  </div>
+  <div class="capa-footer-strip"><span>Extensivo ENARE 2026</span><span>Elite Treinamentos em Saúde</span><span>Página 1 de 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-FARMACOVIGIL</div><div class="aula-ref">Bloco B5 · Aula 17 · Conceito e RDC</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Farmacovigilância — Conceito e Estrutura</div>
+    <p>A <strong>farmacovigilância</strong> é a ciência e atividades relacionadas à detecção, avaliação, compreensão e prevenção de efeitos adversos e outros problemas relacionados a medicamentos. Definição OMS 2002. No Brasil, a regulamentação é dada pela <strong>RDC ANVISA 406/2020</strong> (substituiu a RDC 4/2009).</p>
+
+    <div class="subsecao">Cobertura da Farmacovigilância</div>
+    <ul class="lista">
+      <li>Reações adversas a medicamentos (RAMs) em condições aprovadas</li>
+      <li>RAMs em uso off-label, sobredose ou interação</li>
+      <li>Falha terapêutica</li>
+      <li>Erros de medicação que resultaram em dano (interface com PCIH/NSP)</li>
+      <li>Desvios de qualidade do produto (queixa técnica)</li>
+      <li>Exposição ocupacional a medicamento (especialmente antineoplásicos)</li>
+      <li>Abuso e dependência</li>
+      <li>Eventos relacionados a vacinas (sistema próprio — ESAVI)</li>
+    </ul>
+
+    <div class="subsecao">RDC ANVISA 406/2020 — Pontos-Chave</div>
+    <table>
+      <tr><th>Tópico</th><th>Conteúdo</th></tr>
+      <tr><td>Quem deve notificar</td><td>Detentores de Registro (laboratórios farmacêuticos); profissionais de saúde; pacientes; serviços de saúde via Núcleos de Segurança do Paciente</td></tr>
+      <tr><td>Prazo para RAM grave</td><td>15 dias corridos a partir do conhecimento (detentor de registro)</td></tr>
+      <tr><td>Prazo para RAM não-grave</td><td>90 dias corridos para detentores; o quanto antes para serviços e profissionais</td></tr>
+      <tr><td>Onde notificar</td><td>Sistema VigiMed (substituiu o Notivisa-Medicamentos a partir de 2018)</td></tr>
+      <tr><td>RAM grave (definição)</td><td>Causa morte; risco de morte; hospitalização ou prolongamento; incapacidade significativa; anomalia congênita; outros eventos clinicamente importantes</td></tr>
+      <tr><td>Plano de Gerenciamento de Riscos (RMP/PGR)</td><td>Obrigatório para novos registros; medicamentos com risco identificado; atualização periódica</td></tr>
+      <tr><td>PSUR/RPS</td><td>Relatório Periódico de Segurança; intervalos definidos (6 meses iniciais; anual depois)</td></tr>
+    </table>
+
+    <div class="subsecao">Estrutura no Brasil</div>
+    <ul class="lista">
+      <li><strong>ANVISA / GFARM (Gerência de Farmacovigilância)</strong>: coordena sistema nacional</li>
+      <li><strong>VigiMed</strong>: sistema eletrônico de notificação (substituiu Notivisa em 2018)</li>
+      <li><strong>Rede Sentinela</strong>: hospitais que voluntariamente notificam RAMs de forma estruturada (200+ hospitais brasileiros)</li>
+      <li><strong>Hospitais com NSP (RDC 36/2013)</strong>: integram a notificação ao sistema institucional</li>
+      <li><strong>Centros estaduais de farmacovigilância</strong> (CEFAR)</li>
+      <li><strong>Internacionalmente</strong>: VigiBase (Uppsala Monitoring Centre — Suécia; OMS Programme for International Drug Monitoring)</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Importante:</strong> a farmacovigilância não pretende imputar culpa, mas <em>aprender com o evento</em>. Notificação é dever ético e contribui para a segurança global. O farmacêutico residente é frequentemente o profissional com formação mais consistente em notificação no hospital.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-FARMACOVIGIL · RAM</span><span>Extensivo ENARE 2026</span><span class="pg">2 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-FARMACOVIGIL</div><div class="aula-ref">Bloco B5 · Aula 17 · Classificação RAM</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Classificação Rawlins-Thompson — RAM Tipo A a F</div>
+    <p>A FGV cobrou explicitamente em ENARE 2025 (Q90, Q91) a classificação das RAMs em <em>tipo A vs B</em> com justificativa mecanística. Esta é a classificação mais clássica e prevalente.</p>
+
+    <table>
+      <tr><th>Tipo</th><th>Nome</th><th>Características</th><th>Exemplo</th></tr>
+      <tr><td><strong>A</strong></td><td>Augmented (Aumentada)</td><td>Previsível; dose-dependente; relacionada à farmacologia; frequente; reversível com ajuste; mortalidade baixa</td><td>Hipoglicemia por sulfonilureia; sangramento por anticoagulante; bradicardia por β-bloqueador; xerostomia por anticolinérgico</td></tr>
+      <tr><td><strong>B</strong></td><td>Bizarre (Bizarra)</td><td>Imprevisível; <em>não</em> relacionada à dose; idiossincrática ou imune-mediada; rara; mortalidade alta</td><td>Anafilaxia por penicilina; Stevens-Johnson por carbamazepina; agranulocitose por clozapina; hepatotoxicidade idiossincrática</td></tr>
+      <tr><td><strong>C</strong></td><td>Chronic (Crônica/Continuada)</td><td>Relacionada à <em>dose total cumulativa</em>; após uso prolongado</td><td>Síndrome de Cushing por corticoide crônico; nefrotoxicidade analgésica; discinesia tardia por antipsicóticos</td></tr>
+      <tr><td><strong>D</strong></td><td>Delayed (Retardada)</td><td>Manifesta-se anos após a exposição; teratogênese; carcinogênese</td><td>Mielossupressão tardia por quimio; câncer secundário por radioterapia; teratogênese (talidomida → focomelia)</td></tr>
+      <tr><td><strong>E</strong></td><td>End-of-use (Retirada)</td><td>Síndrome de abstinência ou efeito rebote após suspensão</td><td>Hipertensão rebote por suspensão de clonidina; insuficiência adrenal por suspensão abrupta de corticoide; convulsão por suspensão de BZD; rebote ácido por suspensão de IBP</td></tr>
+      <tr><td><strong>F</strong></td><td>Failure (Falha terapêutica inesperada)</td><td>Inefetividade quando esperada eficácia; uso inadequado; interação; resistência</td><td>Falha de contraceptivo oral em uso de rifampicina; falha de varfarina em consumo dietético elevado de vit K; falha de levotiroxina em má absorção</td></tr>
+    </table>
+
+    <div class="subsecao">Aplicação Mecanística — A vs B (cobrado em ENARE 2025)</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Tipo A — Exemplos Clássicos</div>
+        <p><strong>Digoxina:</strong> intoxicação por nível sérico alto = bradicardia, BAV, arritmia, xantopsia. Previsível pelo mecanismo (inibição Na/K-ATPase) e pela cinética. Reversível com redução de dose ou Fab.<br>
+        <strong>Varfarina:</strong> sangramento por INR elevado. Dose-dependente. Reversível com vit K1.<br>
+        <strong>AINE:</strong> hemorragia GI, IRA. Mecanismo conhecido (PGs). Cumulativo.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Tipo B — Exemplos Clássicos</div>
+        <p><strong>Stevens-Johnson / TEN por carbamazepina:</strong> reação imune-mediada (HLA-B*1502 em asiáticos); imprevisível pela dose; mortalidade alta. Suspensão definitiva.<br>
+        <strong>Anafilaxia por penicilina:</strong> hipersensibilidade tipo I (IgE); dose-independente. Suspensão e dessensibilização se essencial.<br>
+        <strong>Agranulocitose por clozapina:</strong> idiossincrásico; ~0,8%. Monitorização semanal obrigatória.<br>
+        <strong>Hepatotoxicidade idiossincrásica por amoxi-clav:</strong> imune-mediada; reversível com suspensão.</p>
+      </div>
+    </div>
+
+    <div class="alerta">
+      <p><strong>Pegadinha FGV:</strong> tipo A = "augmented" (relacionado à dose e mecanismo); tipo B = "bizarre" (idiossincrásico, não-dose-dependente). Não confundir A com A "alérgico" — A é AUGMENTADO. Reações alérgicas são tipo B.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-FARMACOVIGIL · RAM</span><span>Extensivo ENARE 2026</span><span class="pg">3 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-FARMACOVIGIL</div><div class="aula-ref">Bloco B5 · Aula 17 · Naranjo</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Algoritmo de Naranjo — Imputabilidade</div>
+
+    <p>O <strong>algoritmo de Naranjo</strong> é o método mais utilizado para estabelecer a probabilidade de uma RAM ser causada por um fármaco específico. Soma de pontos em 10 perguntas; resultado em 4 categorias.</p>
+
+    <div class="subsecao">As 10 Perguntas e Pontuação</div>
+    <table>
+      <tr><th>#</th><th>Pergunta</th><th>Sim</th><th>Não</th><th>Sem info</th></tr>
+      <tr><td>1</td><td>Existem relatos prévios conclusivos sobre essa reação?</td><td>+1</td><td>0</td><td>0</td></tr>
+      <tr><td>2</td><td>A RAM apareceu após a administração do fármaco suspeito?</td><td>+2</td><td>−1</td><td>0</td></tr>
+      <tr><td>3</td><td>A RAM melhorou ao suspender o fármaco ou ao administrar um antagonista?</td><td>+1</td><td>0</td><td>0</td></tr>
+      <tr><td>4</td><td>A RAM reapareceu com a re-administração do fármaco?</td><td>+2</td><td>−1</td><td>0</td></tr>
+      <tr><td>5</td><td>Existem causas alternativas que poderiam explicar a RAM?</td><td>−1</td><td>+2</td><td>0</td></tr>
+      <tr><td>6</td><td>A RAM reapareceu com administração de placebo?</td><td>−1</td><td>+1</td><td>0</td></tr>
+      <tr><td>7</td><td>O fármaco foi detectado no sangue em concentrações tóxicas?</td><td>+1</td><td>0</td><td>0</td></tr>
+      <tr><td>8</td><td>A RAM foi mais grave com dose maior ou menor com dose menor?</td><td>+1</td><td>0</td><td>0</td></tr>
+      <tr><td>9</td><td>O paciente teve reação semelhante ao mesmo fármaco ou similar em exposição anterior?</td><td>+1</td><td>0</td><td>0</td></tr>
+      <tr><td>10</td><td>A RAM foi confirmada por evidência objetiva?</td><td>+1</td><td>0</td><td>0</td></tr>
+    </table>
+
+    <div class="subsecao">Interpretação</div>
+    <table>
+      <tr><th>Soma</th><th>Imputabilidade</th></tr>
+      <tr><td>≥ 9</td><td>Definida</td></tr>
+      <tr><td>5–8</td><td>Provável</td></tr>
+      <tr><td>1–4</td><td>Possível</td></tr>
+      <tr><td>≤ 0</td><td>Duvidosa</td></tr>
+    </table>
+
+    <div class="subsecao">Outras Escalas de Imputabilidade</div>
+    <ul class="lista">
+      <li><strong>WHO-UMC</strong>: certo / provável / possível / improvável / condicional / não classificável</li>
+      <li><strong>Karch-Lasagna</strong>: similar; menos usado atualmente</li>
+      <li><strong>Begaud</strong>: imputabilidade cronológica + semiológica + bibliográfica</li>
+    </ul>
+
+    <div class="subsecao">Caso Prático — Aplicação do Naranjo</div>
+    <p>Paciente em uso de carbamazepina há 14 dias evolui com rash maculopapular generalizado em 24h, com posterior progressão para vesículas em mucosa oral e ocular. Antecedentes: sem outros fármacos novos; sem viroses ativas; sem alergias prévias. Suspensão da carbamazepina seguida de melhora gradual em 7 dias. Re-introdução não realizada.</p>
+    <table>
+      <tr><th>Pergunta</th><th>Resposta</th><th>Pontos</th></tr>
+      <tr><td>1. Relatos prévios? (SJS por carbamazepina é descrito)</td><td>Sim</td><td>+1</td></tr>
+      <tr><td>2. Cronologia coerente?</td><td>Sim (2 semanas é típico)</td><td>+2</td></tr>
+      <tr><td>3. Melhora com suspensão?</td><td>Sim</td><td>+1</td></tr>
+      <tr><td>4. Re-administração</td><td>Não realizada</td><td>0</td></tr>
+      <tr><td>5. Outras causas?</td><td>Não (sem viroses, sem outros fármacos)</td><td>+2</td></tr>
+      <tr><td>6. Placebo?</td><td>Não aplicável</td><td>0</td></tr>
+      <tr><td>7. Nível sérico tóxico?</td><td>Não aplicável (RAM tipo B)</td><td>0</td></tr>
+      <tr><td>8. Dose-dependente?</td><td>Não (tipo B)</td><td>0</td></tr>
+      <tr><td>9. Reação prévia ao mesmo?</td><td>Não</td><td>0</td></tr>
+      <tr><td>10. Evidência objetiva (lesão clínica + biópsia se feita)?</td><td>Sim</td><td>+1</td></tr>
+    </table>
+    <p><strong>Soma = 7 pontos → Provável.</strong> Notificação obrigatória ao VigiMed; suspensão definitiva da carbamazepina; contraindicação documentada em prontuário; alerta na pulseira do paciente; orientação familiar.</p>
+
+    <div class="alerta">
+      <p><strong>Tendência ENARE 2026:</strong> aplicação prática do Naranjo em cenário clínico, esperando que o residente <em>calcule a soma</em> e classifique. Saber as 10 perguntas e os 4 níveis é prática quase obrigatória.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-FARMACOVIGIL · RAM</span><span>Extensivo ENARE 2026</span><span class="pg">4 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-FARMACOVIGIL</div><div class="aula-ref">Bloco B5 · Aula 17 · Sinal e VigiBase</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Sinal de Farmacovigilância e VigiBase</div>
+
+    <p>Um <strong>sinal de farmacovigilância</strong> é "informação reportada sobre uma possível relação causal entre um evento adverso e um fármaco, sendo a relação previamente desconhecida ou incompletamente documentada" (definição OMS).</p>
+
+    <div class="subsecao">Origens e Detecção do Sinal</div>
+    <ul class="lista">
+      <li><strong>Notificações espontâneas</strong>: profissionais e pacientes — base mais frequente</li>
+      <li><strong>Bancos de dados grandes</strong>: VigiBase (UMC/OMS); FAERS (FDA); EudraVigilance (EMA); bases nacionais</li>
+      <li><strong>Estudos pós-marketing</strong>: ensaios clínicos fase IV; coortes pós-comercialização</li>
+      <li><strong>Literatura médica</strong>: relatos e séries de casos</li>
+      <li><strong>Dados de dispensação e prescrição</strong>: aumento súbito de uso ou de eventos correlacionados</li>
+      <li><strong>Análise de séries temporais</strong>: detecção de aumentos de incidência</li>
+    </ul>
+
+    <div class="subsecao">Métodos Estatísticos de Detecção</div>
+    <table>
+      <tr><th>Método</th><th>Princípio</th></tr>
+      <tr><td>PRR (Proportional Reporting Ratio)</td><td>Razão de proporcionalidade entre o evento e o fármaco vs background — &gt; 2 indica possível sinal</td></tr>
+      <tr><td>ROR (Reporting Odds Ratio)</td><td>Odds ratio aplicado a notificações</td></tr>
+      <tr><td>IC95 (BCPNN)</td><td>Bayesian Confidence Propagation Neural Network — usado no VigiBase/UMC</td></tr>
+      <tr><td>EBGM (Empirical Bayes Geometric Mean)</td><td>Usado no FAERS/FDA</td></tr>
+    </table>
+
+    <div class="subsecao">Etapas da Avaliação do Sinal</div>
+    <ol>
+      <li><strong>Detecção</strong>: aumento desproporcional de notificações</li>
+      <li><strong>Validação</strong>: confirmar a observação; revisar dados; descartar erros de codificação</li>
+      <li><strong>Análise</strong>: investigar plausibilidade biológica, dose-resposta, perfil temporal</li>
+      <li><strong>Avaliação</strong>: revisão da literatura, dados de ensaios, dados pré-clínicos</li>
+      <li><strong>Comunicação</strong>: alerta a profissionais (DHCP — Dear Healthcare Professional Letter); atualização de bula</li>
+      <li><strong>Ação regulatória</strong>: retirada do mercado, restrição de uso, contraindicação adicional, exigência de RMP</li>
+    </ol>
+
+    <div class="subsecao">Exemplos Históricos de Sinais Importantes</div>
+    <ul class="lista">
+      <li><strong>Talidomida</strong> (1961): focomelia em &gt; 10.000 crianças — origem da farmacovigilância moderna</li>
+      <li><strong>Cerivastatina</strong> (2001): rabdomiólise fatal — retirada do mercado</li>
+      <li><strong>Rofecoxibe (Vioxx)</strong> (2004): aumento de eventos cardiovasculares — retirada do mercado</li>
+      <li><strong>Rosiglitazona</strong> (2010): aumento de eventos CV — restrição de uso</li>
+      <li><strong>Valproato em gestação</strong> (2015–18): atualização de risco teratogênico e cognitivo; plano de prevenção da gravidez</li>
+      <li><strong>Ranitidina</strong> (2019–20): contaminação por NDMA (nitrosamina); retirada do mercado</li>
+      <li><strong>Vacinas COVID</strong> (2021+): trombose com trombocitopenia (TTS); miocardite — sinalizados e gerenciados</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Sinal ≠ causalidade comprovada:</strong> sinal é hipótese a investigar. A maioria dos sinais detectados <em>não</em> se confirma após análise. Mas o sistema deve ser sensível para detectar precocemente os verdadeiros sinais — daí a importância da notificação espontânea consistente.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-FARMACOVIGIL · RAM</span><span>Extensivo ENARE 2026</span><span class="pg">5 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-FARMACOVIGIL</div><div class="aula-ref">Bloco B5 · Aula 17 · Aplicação Prática</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Aplicação Prática — Notificação e RMP</div>
+
+    <div class="subsecao">Como Notificar via VigiMed</div>
+    <ol>
+      <li>Acessar plataforma VigiMed (https://www.gov.br/anvisa/pt-br/sistemas/vigimed)</li>
+      <li>Cadastro institucional (NSP), profissional ou cidadão</li>
+      <li>Preencher formulário com: identificação do paciente (anônima ou pseudonimizada), descrição do evento (semiologia, gravidade), fármaco(s) suspeito(s) (lote, fabricante, indicação), cronologia, comorbidades, outras causas consideradas</li>
+      <li>Anexar exames quando relevante</li>
+      <li>Receber número de protocolo</li>
+      <li>Comunicar à equipe; documentar em prontuário</li>
+    </ol>
+
+    <div class="subsecao">Quem Pode Notificar</div>
+    <ul class="lista">
+      <li>Profissionais de saúde (médico, enfermeiro, farmacêutico, odontologista, fisioterapeuta, fonoaudiólogo, psicólogo, biomédico)</li>
+      <li>Pacientes / cuidadores diretamente</li>
+      <li>Pesquisadores em estudos clínicos</li>
+      <li>Detentores de Registro (DR) — obrigação regulatória</li>
+      <li>Distribuidores e atacadistas (queixa técnica)</li>
+    </ul>
+
+    <div class="subsecao">Plano de Gerenciamento de Riscos (RMP / PGR)</div>
+    <p>Exigido pela RDC 406/2020 para novos registros e renovações. Componentes:</p>
+    <ul class="lista">
+      <li><strong>Especificação de segurança</strong>: lista de riscos identificados (RAMs conhecidas); riscos potenciais (RAMs suspeitas); informação ausente (populações não estudadas — gestantes, pediatria)</li>
+      <li><strong>Atividades de farmacovigilância</strong>: rotina (notificação espontânea, PSUR) + adicionais (estudos pós-aprovação, registros, vigilância ativa)</li>
+      <li><strong>Atividades de minimização de risco</strong>: rotina (bula, posologia) + adicionais (programas de educação, registro de uso, distribuição controlada — ex.: isotretinoína iPLEDGE; talidomida no Brasil)</li>
+      <li>Atualização periódica</li>
+    </ul>
+
+    <div class="subsecao">PSUR — Periodic Safety Update Report</div>
+    <p>Relatório periódico submetido pelos detentores de registro à ANVISA. Conteúdo: resumo de RAMs no período; análise integrada; alterações na bula; impacto na relação risco-benefício. Frequência: 6 meses inicial, 1 ano após 2 anos, 3 anos depois (geralmente). Pode ser intensificado em caso de sinais.</p>
+
+    <div class="subsecao">Atividades do Farmacêutico Residente em Farmacovigilância</div>
+    <ul class="lista">
+      <li><strong>Identificação ativa</strong> de RAMs (durante validação de prescrição e seguimento)</li>
+      <li><strong>Notificação ao VigiMed</strong> e ao NSP</li>
+      <li><strong>Educação</strong> da equipe assistencial sobre RAMs comuns e graves</li>
+      <li><strong>Análise institucional</strong>: identificar padrões, propor mudanças de protocolo</li>
+      <li><strong>Estudos locais</strong> de farmacovigilância (DUR + RAMs)</li>
+      <li><strong>Parceria com CCIH</strong> em situações como RAMs por antimicrobianos com impacto nos protocolos</li>
+      <li><strong>Comunicação ao paciente</strong> sobre eventos relevantes; documentar alergias</li>
+    </ul>
+
+    <div class="subsecao">Causas de Sub-notificação</div>
+    <ul class="lista">
+      <li>Falta de tempo</li>
+      <li>Desconhecimento do sistema</li>
+      <li>Medo de implicações legais</li>
+      <li>Crença de que "já é conhecido"</li>
+      <li>Falta de feedback institucional</li>
+      <li>Ausência de cultura justa</li>
+      <li>Burocracia percebida</li>
+    </ul>
+    <p>Estima-se que apenas <strong>5–10% das RAMs</strong> sejam efetivamente notificadas. Aumentar a taxa de notificação é prioridade do sistema nacional.</p>
+
+    <div class="alerta">
+      <p><strong>Mensagem central:</strong> a notificação é dever ético e profissional. Não é "denúncia" — é contribuição ao conhecimento. O sistema é confidencial e protege o profissional. Cada RAM notificada melhora a segurança coletiva dos pacientes.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-FARMACOVIGIL · RAM</span><span>Extensivo ENARE 2026</span><span class="pg">6 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-FARMACOVIGIL</div><div class="aula-ref">Bloco B5 · Aula 17 · Questões ENARE</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 01</span><span class="fonte">Classificação · A vs B · NC: Análise</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Paciente em uso de digoxina apresenta bradicardia, BAV e xantopsia com nível sérico de 3,2 ng/mL. Em paciente diferente, uso recente de carbamazepina há 2 semanas evoluiu com SJS. Sobre a classificação Rawlins-Thompson das duas RAMs:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Ambas são tipo A (relacionadas à dose).</span></li>
+        <li class="correta"><span class="letra">B</span><span>Intoxicação digitálica = tipo A (augmented, previsível, dose-dependente); SJS por carbamazepina = tipo B (bizarre, imune-mediado, idiossincrásico, sem relação clara com a dose).</span></li>
+        <li><span class="letra">C</span><span>Ambas são tipo B.</span></li>
+        <li><span class="letra">D</span><span>Intoxicação digitálica é tipo E (end-of-use).</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong></p>
+      <p>• <strong>Intoxicação digitálica</strong>: previsível pelo mecanismo (inibição Na/K-ATPase) e pela cinética (nível sérico tóxico &gt; 2 ng/mL). Dose-dependente. Reversível com suspensão e Fab. Tipo A.<br>
+      • <strong>Stevens-Johnson por carbamazepina</strong>: reação imune-mediada (HLA-B*1502 em asiáticos); imprevisível pela dose; aparece após exposição típica de 2–8 semanas; mortalidade alta. Tipo B.</p>
+      <p>Cobrado exatamente em ENARE 2025 (Q90, Q91) com pedido de classificação mecanística.</p>
+      <p><strong>Por que as outras erram:</strong> A — SJS não é dose-dependente · C — digoxina é claramente tipo A · D — tipo E é abstinência/rebote pós-suspensão, não é o caso.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-FARMACOVIGIL · RAM</span><span>Extensivo ENARE 2026</span><span class="pg">7 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-FARMACOVIGIL</div><div class="aula-ref">Bloco B5 · Aula 17 · Questões ENARE</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 02</span><span class="fonte">RDC 406/2020 · NC: Compreensão</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Sobre a notificação de RAMs no Brasil segundo a RDC ANVISA 406/2020, é CORRETO afirmar:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Apenas o detentor de registro pode notificar.</span></li>
+        <li class="correta"><span class="letra">B</span><span>A notificação pode ser feita por profissionais de saúde, pacientes/cuidadores, serviços de saúde (NSP) e detentores de registro através do sistema VigiMed; RAMs graves devem ser notificadas pelo detentor em até 15 dias corridos.</span></li>
+        <li><span class="letra">C</span><span>O sistema utilizado é o Notivisa-Medicamentos, ainda em uso a partir de 2018.</span></li>
+        <li><span class="letra">D</span><span>O farmacêutico não tem competência para notificar.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> a RDC 406/2020 estabelece que a notificação no Brasil é multi-stakeholder: profissionais de saúde, pacientes, serviços (NSP) e detentores de registro. O sistema oficial é o <strong>VigiMed</strong> (substituiu o Notivisa-Medicamentos a partir de 2018). RAMs graves devem ser notificadas pelo detentor em até 15 dias corridos do conhecimento; não-graves em 90 dias.</p>
+      <p><strong>Por que as outras erram:</strong> A — todos podem notificar · C — Notivisa-Medicamentos foi <em>substituído</em> pelo VigiMed em 2018; o Notivisa continua para outros tipos de notificação (produtos para saúde, eventos adversos a transfusão, etc.) · D — farmacêutico não apenas pode como tem dever ético-profissional de notificar.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-FARMACOVIGIL · RAM</span><span>Extensivo ENARE 2026</span><span class="pg">8 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-FARMACOVIGIL</div><div class="aula-ref">Bloco B5 · Aula 17 · Gabarito Integrado</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 03</span><span class="fonte">Naranjo · NC: Aplicação</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Paciente em uso de captopril 50 mg 12/12h há 2 meses evolui com tosse seca persistente. Análise: existe relato prévio (sim, tosse por IECA é descrita); cronologia coerente; melhora com suspensão; sem outras causas; sem placebo; sem nível sérico tóxico; sem dose-dependência clara; sem reação prévia; tosse confirmada clinicamente. Aplicando o Naranjo, a imputabilidade é:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Duvidosa.</span></li>
+        <li><span class="letra">B</span><span>Possível.</span></li>
+        <li class="correta"><span class="letra">C</span><span>Provável.</span></li>
+        <li><span class="letra">D</span><span>Definida.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — C</div>
+      <p><strong>Cálculo:</strong> +1 (relato prévio) + 2 (cronologia) + 1 (melhora ao suspender) + 0 (sem re-administração) + 2 (sem outras causas) + 0 (sem placebo) + 0 (sem nível tóxico) + 0 (não dose-dependente) + 0 (sem reação prévia) + 1 (objetivamente confirmada) = <strong>7 pontos</strong>.</p>
+      <p><strong>Imputabilidade: Provável (5–8 pontos).</strong> Conduta: notificar VigiMed; suspender captopril; substituir por BRA (losartana) — mesmo efeito anti-hipertensivo sem o efeito bradicinina da IECA; documentar alergia/intolerância em prontuário.</p>
+    </div>
+
+    <div class="subsecao" style="margin-top:6px;">Gabarito Comentado — Análise Integrada</div>
+    <table>
+      <tr><th>Questão</th><th>Gabarito</th><th>Tema</th><th>Conceito-Chave</th></tr>
+      <tr><td><strong>01</strong></td><td><span class="destaque">B</span></td><td>Rawlins-Thompson — A vs B</td><td>Digitálica = A (previsível, dose); SJS = B (imune, idiossincrásico)</td></tr>
+      <tr><td><strong>02</strong></td><td><span class="destaque">B</span></td><td>RDC 406/2020 — VigiMed</td><td>Notificação multi-stakeholder; VigiMed substituiu Notivisa em 2018; RAM grave 15 dias</td></tr>
+      <tr><td><strong>03</strong></td><td><span class="destaque">C</span></td><td>Naranjo</td><td>Tosse por IECA: soma 7 → Provável; suspender + trocar por BRA</td></tr>
+    </table>
+  </div>
+  <div class="footer"><span>FARM-FARMACOVIGIL · RAM</span><span>Extensivo ENARE 2026</span><span class="pg">9 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-FARMACOVIGIL</div><div class="aula-ref">Bloco B5 · Aula 17 · Síntese</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Síntese — Farmacovigilância e RAM</div>
+    <div class="sintese-grid">
+      <div class="sintese-item">
+        <div class="si-label">Conceito</div>
+        <p>OMS 2002: ciência de detecção, avaliação, compreensão e prevenção de eventos adversos. RDC ANVISA 406/2020 regulamenta. VigiMed (2018) substituiu Notivisa-Medicamentos. RAM grave: 15 dias para detentor.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Classificação RAM (Rawlins-Thompson)</div>
+        <p>A (augmented, previsível, dose-dep — digoxina, AINE, varfarina). B (bizarre, idiossincrásico — SJS, anafilaxia, agranulocitose). C (crônica — cushing). D (delayed — teratogênese). E (end-of-use — abstinência, rebote). F (failure — interação, resistência).</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Naranjo</div>
+        <p>10 perguntas; soma 0 a 13. ≥ 9 definida; 5–8 provável; 1–4 possível; ≤ 0 duvidosa. WHO-UMC é alternativa: certo/provável/possível/improvável/condicional. Avalia imputabilidade entre fármaco e RAM.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Sinal e VigiBase</div>
+        <p>Sinal = relação causal suspeita não estabelecida. Métodos: PRR, ROR, BCPNN (VigiBase/UMC), EBGM (FAERS/FDA). Etapas: detecção → validação → análise → ação regulatória. Casos históricos: talidomida, Vioxx, cerivastatina, valproato.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Aplicação Prática</div>
+        <p>RMP/PGR obrigatório (riscos identificados, potenciais, info ausente). PSUR periódico. Notificação: VigiMed; multi-stakeholder; protegida e confidencial. Farmacêutico residente é peça-chave em notificação ativa.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Próxima Aula</div>
+        <p><strong>Aula 18 — PNAF e Políticas Farmacêuticas.</strong> Res. CNS 338/2004 (PNAF), componentes básico/especializado/estratégico, CEAF, DCNs, licitações, Lei 5.991/1973, Lei 9.787/1999.</p>
+      </div>
+    </div>
+    <div class="alerta" style="margin-top:5px;">
+      <p><strong>Regra de ouro — Farmacovigilância no ENARE:</strong> classificação A-F com exemplos mecanísticos (digitálica = A; SJS = B; rebote BZD = E); Naranjo soma 5–8 = provável; RDC 406/2020 + VigiMed; quem pode notificar = todos. Em 2026 esperar &gt; 2 questões pelo histórico (2024 teve 5 questões; 2025 zerou; tema cíclico).</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-FARMACOVIGIL · RAM</span><span>Extensivo ENARE 2026</span><span class="pg">10 / 10</span></div>
+</div>
+
+</body>
+</html>

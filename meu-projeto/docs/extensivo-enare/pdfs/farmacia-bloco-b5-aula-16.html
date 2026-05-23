@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Farmácia — Bloco B5 Aula 16 | Extensivo ENARE 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap');
+  :root { --creme: #F6F4ED; --verde: #1F5C23; --amarelo: #C6D834; --escuro: #0C2B0E; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #d0d0d0; font-family: 'Bricolage Grotesque', sans-serif; }
+  .page { width: 210mm; height: 297mm; background: var(--creme); margin: 0 auto 12px; position: relative; overflow: hidden; page-break-after: always; }
+  .header { background: var(--verde); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .header-logo { display: flex; align-items: center; gap: 8px; }
+  .header-logo svg { width: 32px; height: 32px; }
+  .header-brand { display: flex; flex-direction: column; line-height: 1; }
+  .header-brand .marca { font-family: 'Playfair Display', serif; font-style: italic; color: #fff; font-size: 13px; letter-spacing: 0.5px; }
+  .header-brand .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 7px; letter-spacing: 1.5px; text-transform: uppercase; }
+  .header-info { text-align: right; }
+  .header-info .disciplina { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
+  .header-info .aula-ref { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.7); font-size: 8px; letter-spacing: 0.5px; }
+  .footer { position: absolute; bottom: 0; left: 0; right: 0; background: var(--verde); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .footer span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.6); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .footer .pg { color: var(--amarelo); font-weight: 400; }
+  .body { padding: 14px 18px 30px; height: calc(297mm - 52px - 22px); overflow: hidden; }
+  .capa-page { background: var(--verde); }
+  .capa-header { background: var(--creme); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .capa-header .marca { font-family: 'Playfair Display', serif; font-style: italic; color: var(--verde); font-size: 14px; }
+  .capa-header .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--verde); font-size: 7.5px; letter-spacing: 2px; text-transform: uppercase; }
+  .capa-body { padding: 28px 24px 0; display: flex; flex-direction: column; height: calc(297mm - 52px - 22px); }
+  .capa-eyebrow { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; }
+  .capa-titulo { font-family: 'Barlow Condensed', sans-serif; color: #fff; font-size: 50px; line-height: 0.95; text-transform: uppercase; letter-spacing: -0.5px; margin-bottom: 6px; }
+  .capa-titulo span { color: var(--amarelo); }
+  .capa-subtitulo { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; color: rgba(255,255,255,0.65); font-size: 12px; letter-spacing: 0.3px; margin-bottom: 22px; line-height: 1.5; }
+  .capa-badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+  .capa-badge { background: rgba(198,216,52,0.15); border: 1px solid var(--amarelo); color: var(--amarelo); font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 8px; border-radius: 2px; }
+  .capa-divider { width: 40px; height: 3px; background: var(--amarelo); margin-bottom: 20px; }
+  .capa-topicos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .capa-topico { display: flex; align-items: flex-start; gap: 7px; }
+  .capa-topico-num { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 18px; line-height: 1; min-width: 18px; }
+  .capa-topico-txt { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 400; color: rgba(255,255,255,0.8); font-size: 9.5px; line-height: 1.4; }
+  .capa-footer-strip { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.25); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .capa-footer-strip span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.45); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .secao-titulo { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 18px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid var(--amarelo); padding-bottom: 3px; margin-bottom: 9px; line-height: 1; }
+  .subsecao { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.5px; margin: 7px 0 3px; }
+  p { font-size: 9px; line-height: 1.55; color: #1a1a1a; margin-bottom: 4px; font-weight: 400; }
+  .destaque { background: var(--amarelo); color: var(--escuro); font-weight: 600; padding: 1px 4px; border-radius: 2px; font-size: 8.5px; }
+  .alerta { background: rgba(198,216,52,0.18); border-left: 3px solid var(--amarelo); padding: 5px 8px; margin: 5px 0; border-radius: 0 3px 3px 0; }
+  .alerta p { margin: 0; font-size: 8.5px; }
+  .alerta strong { color: var(--verde); }
+  table { width: 100%; border-collapse: collapse; margin: 5px 0; font-size: 8px; }
+  th { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; padding: 4px 6px; text-align: left; }
+  td { padding: 3px 6px; border-bottom: 1px solid rgba(31,92,35,0.12); vertical-align: top; line-height: 1.4; color: #1a1a1a; }
+  tr:nth-child(even) td { background: rgba(31,92,35,0.04); }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 5px 0; }
+  .card { background: rgba(31,92,35,0.06); border: 1px solid rgba(31,92,35,0.15); border-radius: 4px; padding: 7px 8px; }
+  .card-title { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 11px; text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 3px; }
+  .card p { font-size: 8px; line-height: 1.5; }
+  .questao-header { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; padding: 4px 10px; border-radius: 3px 3px 0 0; display: flex; justify-content: space-between; align-items: center; }
+  .questao-header .fonte { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; color: var(--amarelo); letter-spacing: 0.5px; }
+  .questao-body { border: 1px solid rgba(31,92,35,0.2); border-top: none; border-radius: 0 0 3px 3px; padding: 7px 10px; margin-bottom: 7px; }
+  .questao-enunciado { font-size: 8.5px; line-height: 1.55; color: #111; margin-bottom: 5px; font-weight: 500; }
+  .alternativas { list-style: none; }
+  .alternativas li { font-size: 8px; line-height: 1.5; padding: 2px 0; color: #222; display: flex; gap: 5px; }
+  .alternativas li .letra { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: var(--verde); font-size: 9px; min-width: 10px; }
+  .alternativas li.correta .letra { color: var(--amarelo); }
+  .alternativas li.correta { background: rgba(198,216,52,0.15); border-left: 2px solid var(--amarelo); padding-left: 4px; }
+  .gabarito-box { background: var(--verde); border-radius: 4px; padding: 8px 12px; margin: 6px 0; }
+  .gabarito-box .gab-title { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+  .gabarito-box p { color: rgba(255,255,255,0.9); font-size: 8px; line-height: 1.55; }
+  .gabarito-box strong { color: var(--amarelo); }
+  .sintese-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-top: 6px; }
+  .sintese-item { background: rgba(31,92,35,0.07); border-left: 3px solid var(--verde); padding: 5px 7px; border-radius: 0 3px 3px 0; }
+  .sintese-item .si-label { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px; }
+  .sintese-item p { font-size: 7.5px; line-height: 1.5; }
+  ul.lista { padding-left: 14px; margin: 3px 0; }
+  ul.lista li { font-size: 8.5px; line-height: 1.55; color: #1a1a1a; margin-bottom: 1px; }
+  @media print { body { background: none; } .page { margin: 0; box-shadow: none; } }
+</style>
+</head>
+<body>
+
+<div class="page capa-page">
+  <div class="capa-header">
+    <div style="display:flex;align-items:center;gap:8px;"><svg width="34" height="34" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#1F5C23"/></svg><div><div class="marca">Elite Treinamentos</div><div class="tagline">Extensivo ENARE 2026</div></div></div>
+    <div style="text-align:right;"><div style="font-family:'Barlow Condensed',sans-serif;color:var(--verde);font-size:11px;letter-spacing:1px;text-transform:uppercase;">Bloco B5 · Aula 16</div><div style="font-family:'Space Grotesk',sans-serif;font-weight:300;color:#888;font-size:7.5px;letter-spacing:0.5px;">Farmácia</div></div>
+  </div>
+  <div class="capa-body">
+    <div class="capa-eyebrow">Bloco B5 · FARM-SEGSAUDE · Aula 16 de 22</div>
+    <div class="capa-titulo">IRAS <span>·<br>Antimi-<br>crobianos<br>no Hosp.</span></div>
+    <div class="capa-subtitulo">Atribuições do farmacêutico no controle das IRAS, uso racional<br>de antimicrobianos e relação com CCIH e PGA</div>
+    <div class="capa-badge-row">
+      <div class="capa-badge">FARM-SEGSAUDE ★★</div>
+      <div class="capa-badge">CCIH · PGA</div>
+      <div class="capa-badge">Descalonamento</div>
+      <div class="capa-badge">5 Momentos OMS</div>
+    </div>
+    <div class="capa-divider"></div>
+    <div class="capa-topicos">
+      <div class="capa-topico"><div class="capa-topico-num">01</div><div class="capa-topico-txt">Definição e principais IRAS (CDC NHSN)</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">02</div><div class="capa-topico-txt">CCIH: composição e função</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">03</div><div class="capa-topico-txt">Farmacêutico no PGA: atribuições</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">04</div><div class="capa-topico-txt">Descalonamento e protocolos clínicos</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">05</div><div class="capa-topico-txt">5 momentos de higienização das mãos (OMS)</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">06</div><div class="capa-topico-txt">Precauções padrão e específicas</div></div>
+    </div>
+  </div>
+  <div class="capa-footer-strip"><span>Extensivo ENARE 2026</span><span>Elite Treinamentos em Saúde</span><span>Página 1 de 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-SEGSAUDE</div><div class="aula-ref">Bloco B5 · Aula 16 · Definição IRAS</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">IRAS — Infecções Relacionadas à Assistência à Saúde</div>
+    <p>As <strong>IRAS</strong> (antiga "infecção hospitalar") são infecções adquiridas em estabelecimento de saúde, manifestadas durante a internação ou após a alta, relacionadas à assistência prestada. Definição CDC NHSN: infecção ausente ou em incubação na admissão, ocorrendo &gt; 48h após admissão (ou outros critérios específicos). A FGV cobrou IRAS em ENARE 2025 (Q63 — atribuição INCORRETA do farmacêutico).</p>
+
+    <div class="subsecao">Principais Tipos (CDC NHSN)</div>
+    <table>
+      <tr><th>IRAS</th><th>Sigla</th><th>Causa principal</th></tr>
+      <tr><td>Pneumonia associada a ventilação</td><td>PAV / VAP</td><td>Intubação prolongada; biofilme em tubo; aspiração</td></tr>
+      <tr><td>Infecção primária de corrente sanguínea</td><td>IPCS / BSI / CLABSI (associada a cateter central)</td><td>Cateter venoso central; manipulação inadequada</td></tr>
+      <tr><td>Infecção do trato urinário associada a sonda</td><td>ITU / CAUTI</td><td>Sondagem vesical de demora; manipulação</td></tr>
+      <tr><td>Infecção de sítio cirúrgico</td><td>ISC / SSI</td><td>Procedimento; profilaxia inadequada; preparo de pele</td></tr>
+      <tr><td>Infecção por <em>C. difficile</em> associada à saúde</td><td>CDI</td><td>Uso prolongado de antibiótico; ambiente esporulado</td></tr>
+      <tr><td>Outras: traqueostomia, gastrostomia, sítios variados</td><td>—</td><td>Diversa</td></tr>
+    </table>
+
+    <div class="subsecao">Epidemiologia Brasileira</div>
+    <p>No Brasil, a ANVISA mantém o <strong>Sistema Nacional de Vigilância de IRAS</strong> e publica boletins anuais com taxas por unidade. UTIs adultas reportam:</p>
+    <ul class="lista">
+      <li>PAV: 4–10/1.000 ventilador-dia (varia por região e porte)</li>
+      <li>CLABSI: 1–4/1.000 cateter-dia</li>
+      <li>CAUTI: 1–5/1.000 sonda-dia</li>
+      <li>Microrganismos prevalentes: <em>Klebsiella pneumoniae</em> (ESBL e KPC), <em>Acinetobacter baumannii</em>, <em>Pseudomonas aeruginosa</em>, <em>Staphylococcus aureus</em> (MRSA), <em>Candida</em> spp., <em>Clostridioides difficile</em></li>
+    </ul>
+
+    <div class="subsecao">Impacto Clínico e Econômico</div>
+    <ul class="lista">
+      <li>Aumenta mortalidade hospitalar em 2–3× (mediana)</li>
+      <li>Prolonga tempo de internação em 7–20 dias por IRAS</li>
+      <li>Custo adicional: USD 15.000–45.000 por caso (estudos internacionais)</li>
+      <li>Carga global estimada: 7% das internações em países desenvolvidos; até 15% em países em desenvolvimento (OMS)</li>
+      <li>Frequente associação com multirresistência bacteriana, limitando opções terapêuticas</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Lei nº 9.431/1997</strong>: cria a obrigatoriedade do Programa de Controle de Infecções Hospitalares (PCIH) em todo hospital brasileiro. <strong>Portaria 2.616/1998</strong> regulamenta o PCIH e o CCIH. A IRAS é prioridade nacional e internacional de saúde pública.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-SEGSAUDE · IRAS</span><span>Extensivo ENARE 2026</span><span class="pg">2 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-SEGSAUDE</div><div class="aula-ref">Bloco B5 · Aula 16 · CCIH</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">CCIH — Comissão de Controle de Infecção Hospitalar</div>
+    <p>A <strong>CCIH</strong> (Comissão) e o <strong>SCIH</strong> (Serviço de Controle de Infecção Hospitalar) são as estruturas organizacionais responsáveis pelo PCIH. Regulamentação: Lei 9.431/1997 e Portaria MS 2.616/1998.</p>
+
+    <div class="subsecao">Composição Mínima do SCIH</div>
+    <p>O SCIH/CCIH deve ter <em>equipe técnica</em> dedicada, composta por (Portaria 2.616/1998):</p>
+    <ul class="lista">
+      <li><strong>Médico</strong> (preferencialmente infectologista; pode ser intensivista, clínico, microbiologista com formação em controle de infecções)</li>
+      <li><strong>Enfermeiro</strong> com formação ou experiência em controle de infecção</li>
+      <li>Profissionais membros consultivos: <strong>farmacêutico</strong>, microbiologista, cirurgião, administrador hospitalar, representante de enfermagem assistencial, técnico de microbiologia, representante da gerência de risco</li>
+      <li>Em hospitais &gt; 200 leitos, recomenda-se equipe maior e dedicação exclusiva</li>
+    </ul>
+
+    <div class="subsecao">Função da CCIH</div>
+    <table>
+      <tr><th>Atribuição</th><th>Detalhe</th></tr>
+      <tr><td>Elaborar PCIH</td><td>Plano institucional; revisado anualmente</td></tr>
+      <tr><td>Vigilância epidemiológica</td><td>Notificar IRAS conforme NHSN/ANVISA; calcular taxas; identificar surtos</td></tr>
+      <tr><td>Investigar surtos</td><td>Análise molecular, transmissão; barreiras emergenciais</td></tr>
+      <tr><td>Elaborar protocolos</td><td>Bundles de prevenção (PAV, CLABSI, CAUTI); protocolos de profilaxia cirúrgica; isolamento</td></tr>
+      <tr><td>Capacitação</td><td>Educação contínua de equipe assistencial; higienização das mãos; precauções</td></tr>
+      <tr><td>Auditoria</td><td>Conformidade com protocolos; uso de antimicrobianos (em parceria com PGA)</td></tr>
+      <tr><td>Articulação com PGA</td><td>Otimização do uso de antimicrobianos é parte central do controle</td></tr>
+    </table>
+
+    <div class="subsecao">Bundles de Prevenção (CDC / IHI)</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Bundle PAV</div>
+        <p>Cabeceira elevada a 30–45°; higiene oral com clorexidina 0,12%; descontinuação diária da sedação para avaliar extubação; profilaxia de TVP e de úlcera de estresse; teste de respiração espontânea diária; cuidado com aspiração.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Bundle CLABSI</div>
+        <p>Higienização das mãos antes da inserção; preparo de pele com clorexidina 2% alcoólica; barreira máxima (gorro, máscara, capote, luvas estéreis, campo grande); sítio preferencial subclávia; retirada precoce quando indicação cessa.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Bundle CAUTI</div>
+        <p>Indicação restrita; técnica asséptica na inserção; sistema fechado de drenagem; remoção precoce; revisão diária; protocolo de troca; cuidados de manutenção.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Bundle ISC</div>
+        <p>Profilaxia antimicrobiana 30–60 min pré-incisão; descontinuar &lt; 24h pós-cirurgia (alguns &lt; 48h em ortopedia); controle glicêmico perioperatório; normotermia; tricotomia com tricotomizador (não navalha); preparo de pele adequado.</p>
+      </div>
+    </div>
+
+    <div class="subsecao">Surtos: Investigação e Resposta</div>
+    <ol>
+      <li>Detectar e confirmar surto (aumento &gt; basal)</li>
+      <li>Caracterizar casos (definição operacional)</li>
+      <li>Buscar fonte comum (procedimento, equipamento, profissional, contaminação ambiental)</li>
+      <li>Implementar barreiras emergenciais (cohort, isolamento, descontaminação)</li>
+      <li>Educar e revisar protocolos</li>
+      <li>Notificar ANVISA (NOTIVISA / RDC 36/2013)</li>
+      <li>Monitorar resolução</li>
+    </ol>
+
+    <div class="alerta">
+      <p><strong>Posição do farmacêutico:</strong> consultor permanente da CCIH, especialmente em discussões sobre antimicrobianos, profilaxia cirúrgica, manejo de surtos por agentes multirresistentes. Em hospitais maiores, integra a equipe de stewardship (PGA) com dedicação parcial ao SCIH. RDC ANVISA 36/2013 reforça o papel.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-SEGSAUDE · IRAS</span><span>Extensivo ENARE 2026</span><span class="pg">3 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-SEGSAUDE</div><div class="aula-ref">Bloco B5 · Aula 16 · Farmacêutico no PGA</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Farmacêutico no PGA — Atribuições</div>
+
+    <div class="subsecao">Atribuições do Farmacêutico no Stewardship</div>
+    <p>O <strong>farmacêutico</strong> é membro <em>obrigatório</em> da equipe de gerenciamento de antimicrobianos (PGA / ASP) pela RDC ANVISA 36/2013, ANVISA "Diretrizes para PGA Hospitalar" (2017) e CDC Core Elements. Suas atribuições centrais:</p>
+
+    <table>
+      <tr><th>Atribuição</th><th>Atividade</th></tr>
+      <tr><td>Pré-autorização</td><td>Validar prescrições de antimicrobianos restritos (carbapenêmicos, polimixinas, daptomicina, linezolida, tigeciclina)</td></tr>
+      <tr><td>Auditoria prospectiva com retorno (PAF)</td><td>Revisar prescrições diariamente; sugerir descalonamento, suspensão, ajuste de dose</td></tr>
+      <tr><td>Optimização farmacocinética</td><td>Calcular dose por peso/SC; ajuste por TFG/IH; TDM (vancomicina, aminoglicosídeo)</td></tr>
+      <tr><td>Conversão IV → VO</td><td>Identificar paciente apto a desescalada para oral (sequencial); promove redução de custo, infecção de cateter, tempo internação</td></tr>
+      <tr><td>Indicadores</td><td>Monitorar DOT, DDD, descalonamento, resistência institucional</td></tr>
+      <tr><td>Educação</td><td>Treinamento contínuo de equipe assistencial; produção de materiais</td></tr>
+      <tr><td>Participação em CFT</td><td>Seleção/avaliação de antimicrobianos do formulário institucional</td></tr>
+      <tr><td>Investigação de surtos</td><td>Em parceria com SCIH</td></tr>
+      <tr><td>Análise farmacoeconômica</td><td>Custo-efetividade de protocolos; impacto financeiro do PGA</td></tr>
+    </table>
+
+    <div class="subsecao">Atribuições NÃO-EXCLUSIVAS do Farmacêutico no PGA (ENARE 2025 Q63 — alternativa incorreta)</div>
+    <p>Algumas atividades são <em>compartilhadas</em> e <strong>não exclusivas</strong> do farmacêutico:</p>
+    <ul class="lista">
+      <li><strong>Diagnóstico microbiológico</strong>: responsabilidade do laboratório de microbiologia/médico microbiologista; o farmacêutico interpreta resultados, não os emite</li>
+      <li><strong>Decisão clínica final sobre antimicrobiano</strong>: prerrogativa do médico assistente; o farmacêutico propõe e justifica</li>
+      <li><strong>Isolamento de paciente</strong>: definição pela CCIH/médico</li>
+      <li><strong>Indicar antibiograma</strong>: prescrição médica; farmacêutico pode <em>solicitar</em> em alguns protocolos colaborativos, mas não é privativo</li>
+      <li><strong>Realizar coleta de cultura</strong>: enfermagem/laboratório</li>
+    </ul>
+
+    <div class="subsecao">Indicadores do PGA</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Indicadores de Processo</div>
+        <p>% prescrições com pré-autorização; % aceitação de recomendações de PAF; tempo médio até descalonamento; conversão IV→VO; aderência a guidelines.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Indicadores de Resultado</div>
+        <p>Consumo DOT/DDD por classe; resistência institucional (% MRSA, KPC, ESBL); mortalidade por sepse; tempo de internação; custo de antimicrobianos per capita; CDI por 10.000 pacientes-dia.</p>
+      </div>
+    </div>
+
+    <div class="subsecao">Conversão IV → VO — Critérios PEACH</div>
+    <ul class="lista">
+      <li><strong>P</strong>rovendo bem clinicamente — paciente estável</li>
+      <li><strong>E</strong>m via oral funcional — sem vômitos, mau absorção</li>
+      <li><strong>A</strong>fastando-se febre — afebril nas últimas 24h</li>
+      <li><strong>C</strong>ontagem de leucócitos em melhora</li>
+      <li><strong>H</strong>á boa biodisponibilidade oral do antimicrobiano (ciprofloxacino, levofloxacino, linezolida, fluconazol, metronidazol, doxiciclina, SMX-TMP têm biodisponibilidade ≥ 90%)</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Resultados do PGA bem estruturado:</strong> redução de consumo de antimicrobianos em 20–40%; queda de resistência em organismos institucionais; redução de mortalidade por sepse; ROI positivo dentro de 12–24 meses. O farmacêutico residente que atua no PGA tem oportunidade ímpar de gerar evidência local e aprimorar prática.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-SEGSAUDE · IRAS</span><span>Extensivo ENARE 2026</span><span class="pg">4 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-SEGSAUDE</div><div class="aula-ref">Bloco B5 · Aula 16 · Descalonamento</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Descalonamento — Conceito e Aplicação</div>
+
+    <p>O <strong>descalonamento</strong> é a <em>redução do espectro</em> ou substituição do antimicrobiano empírico por outro de espectro mais estreito, com base na cultura e antibiograma e/ou na melhora clínica. Não confundir com suspensão (parar o tratamento). É a estratégia mais cobrada em PGA.</p>
+
+    <div class="subsecao">Etapas do Descalonamento</div>
+    <ol>
+      <li>Coleta de cultura antes do início do antimicrobiano empírico (sempre que viável)</li>
+      <li>Início empírico baseado em diretrizes locais (mapa microbiológico institucional)</li>
+      <li>Reavaliação em 48–72h com cultura e antibiograma</li>
+      <li>Se patógeno identificado com sensibilidade clara: <strong>descalonar</strong> para espectro mais estreito</li>
+      <li>Se cultura negativa mas paciente clinicamente melhorando: considerar suspensão ou descalonamento conservador</li>
+      <li>Se persistência ou piora: rever espectro, dose, foco infeccioso (drenagem cirúrgica?), agente oculto</li>
+    </ol>
+
+    <div class="subsecao">Exemplos de Descalonamento</div>
+    <table>
+      <tr><th>Inicial empírico</th><th>Cultura/Antibiograma</th><th>Descalonamento</th></tr>
+      <tr><td>Meropenem + vanco + colistina (UTI sepse foco indefinido)</td><td>Hemocultura: E. coli ESBL sensível a meropenem; sem MRSA</td><td>Manter meropenem; suspender vanco e colistina</td></tr>
+      <tr><td>Pipe-tazo + linezolida (PAV)</td><td>Cultura traqueal: K. pneumoniae sensível a cefepime; sem MRSA</td><td>Trocar para cefepime; suspender linezolida</td></tr>
+      <tr><td>Ceftriaxona + azitromicina (PAC grave)</td><td>Hemocultura: S. pneumoniae sensível a penicilina</td><td>Trocar para penicilina G ou ampicilina; suspender azitromicina</td></tr>
+      <tr><td>Cefepime (ITU complicada)</td><td>Urocultura: E. coli sensível a cipro</td><td>Trocar para cipro VO (conversão IV→VO + descalonamento)</td></tr>
+      <tr><td>Vancomicina IV (celulite)</td><td>Cultura S. aureus MSSA</td><td>Trocar para oxacilina IV; ou cefazolina; suspender vancomicina (mais efetiva e menos tóxica para MSSA)</td></tr>
+    </table>
+
+    <div class="subsecao">Duração de Tratamento (Diretrizes IDSA)</div>
+    <table>
+      <tr><th>Infecção</th><th>Duração padrão</th></tr>
+      <tr><td>ITU baixa (cistite)</td><td>3 dias (nitrofurantoína 5 dias)</td></tr>
+      <tr><td>Pielonefrite não-complicada</td><td>7 dias (cipro), 5 dias (levofloxacino), 10–14 (β-lactâmico)</td></tr>
+      <tr><td>PAC ambulatorial</td><td>5 dias se paciente clinicamente melhor com 48h afebril (PCT-guided)</td></tr>
+      <tr><td>PAC hospitalar</td><td>5–7 dias</td></tr>
+      <tr><td>PAV</td><td>7 dias (não-NF Gram−); até 14 em P. aeruginosa</td></tr>
+      <tr><td>Bacteremia por S. aureus</td><td>14 dias (não-complicada) — 28 dias (complicada, endocardite)</td></tr>
+      <tr><td>Endocardite</td><td>4–6 semanas</td></tr>
+      <tr><td>Osteomielite vertebral</td><td>6–12 semanas (parenteral inicial + oral)</td></tr>
+      <tr><td>Celulite não-purulenta</td><td>5–6 dias (mais se não respondendo)</td></tr>
+    </table>
+
+    <div class="subsecao">Profilaxia Cirúrgica</div>
+    <p>Aspecto frequente em PGA. Regra geral:</p>
+    <ul class="lista">
+      <li>Antibiótico 30–60 min pré-incisão (1ª dose)</li>
+      <li>Re-dosar durante cirurgia se duração &gt; 2× meia-vida ou perda &gt; 1.500 mL sangue</li>
+      <li>Descontinuar &lt; 24h pós-cirurgia (em alguns casos 48h em ortopedia)</li>
+      <li>Cefazolina é a 1ª escolha para a maioria das cirurgias limpa-contaminadas</li>
+      <li>Vancomicina em pacientes alérgicos a β-lactâmico ou em centros com alta prevalência de MRSA</li>
+      <li>Em cirurgias colorretais: adicionar metronidazol (anaeróbio) ou usar pipe-tazo</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Princípio "Start smart, then focus":</strong> empírico amplo nas primeiras 48–72h baseado no cenário clínico (gravidade, foco provável, perfil institucional); reavaliar com cultura disponível; descalonar e/ou converter IV→VO; documentar duração planejada. Esta é a essência do stewardship moderno.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-SEGSAUDE · IRAS</span><span>Extensivo ENARE 2026</span><span class="pg">5 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-SEGSAUDE</div><div class="aula-ref">Bloco B5 · Aula 16 · Higiene e Precauções</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Higienização das Mãos e Precauções</div>
+
+    <div class="subsecao">5 Momentos da Higienização (OMS)</div>
+    <ol>
+      <li><strong>Antes</strong> do contato com o paciente</li>
+      <li><strong>Antes</strong> de procedimento asséptico/limpo</li>
+      <li><strong>Após</strong> risco de exposição a fluidos corporais</li>
+      <li><strong>Após</strong> contato com o paciente</li>
+      <li><strong>Após</strong> contato com áreas próximas ao paciente (cama, mesa, equipamentos)</li>
+    </ol>
+
+    <p>Método: <em>preparação alcoólica</em> (preferencial quando mãos visualmente limpas) ou <em>sabão e água</em> (quando sujas, contato com C. difficile, esporos, viroses).</p>
+
+    <div class="subsecao">Precauções Padrão (Antiga "Padronizadas")</div>
+    <p>Aplicáveis a <strong>todos os pacientes</strong>, independentemente do diagnóstico, em todas as interações que envolvam contato com sangue ou outros fluidos:</p>
+    <ul class="lista">
+      <li>Higienização das mãos antes e após</li>
+      <li>EPI conforme exposição (luvas para contato com fluidos; máscara em procedimentos com aerossol; óculos/face shield em respingos)</li>
+      <li>Manejo seguro de perfurocortantes (caixa rígida amarela; não reencapar agulhas)</li>
+      <li>Desinfecção de equipamentos e ambiente</li>
+      <li>Etiqueta respiratória (tossir em lenço/cotovelo)</li>
+      <li>Manuseio adequado de resíduos</li>
+    </ul>
+
+    <div class="subsecao">Precauções Específicas (Adicionais)</div>
+    <table>
+      <tr><th>Tipo</th><th>Indicações</th><th>EPI/Cuidado</th></tr>
+      <tr><td>Contato</td><td>Microrganismos MDR (KPC, ESBL, VRE, MRSA, Acinetobacter); CDI; escabiose</td><td>Luva + capote impermeável; quarto individual ou cohort; equipamentos exclusivos</td></tr>
+      <tr><td>Gotículas</td><td>Influenza, meningococo, pertussis, rubéola, caxumba</td><td>Máscara cirúrgica ao entrar; distância &gt; 1 m; quarto individual</td></tr>
+      <tr><td>Aerossóis</td><td>Tuberculose, sarampo, varicela, COVID em procedimentos com aerossol</td><td>Máscara N95/PFF2; quarto com pressão negativa; porta fechada; treinamento</td></tr>
+    </table>
+
+    <div class="subsecao">C. difficile (CDI) — Cuidados Específicos</div>
+    <ul class="lista">
+      <li><strong>Esporulado</strong>: álcool gel <em>não é eficaz</em>; usar sabão e água</li>
+      <li><strong>Precaução de contato</strong>: luva + capote; quarto individual; equipamentos exclusivos</li>
+      <li><strong>Limpeza ambiental</strong>: hipoclorito de sódio (cloro) é esporicida; quaternários de amônio não são</li>
+      <li><strong>Tratamento</strong>: vancomicina VO (1ª escolha em CDI moderada-grave); fidaxomicina (preferida em recidiva); metronidazol VO em casos leves; transplante fecal em CDI recorrente</li>
+      <li><strong>Prevenção</strong>: PGA é a principal estratégia (redução de antimicrobianos amplos é a única intervenção comprovadamente reducer de CDI)</li>
+    </ul>
+
+    <div class="subsecao">Resíduos e Limpeza Hospitalar</div>
+    <p>Já visto em Aula 13. Grupos: A (biológico), B (químico), C (radioativo), D (comum), E (perfurocortante). Limpeza concorrente e terminal por enfermagem/equipe de limpeza com supervisão da CCIH.</p>
+
+    <div class="alerta">
+      <p><strong>Adesão à higiene das mãos:</strong> indicador de qualidade institucional. Auditorias diretas e indiretas. Metas: &gt; 60% em hospitais públicos (alvo OMS), &gt; 80% em centros excelência. Educação contínua, feedback positivo, suprimento de álcool gel em todos os pontos de cuidado, lideranças engajadas.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-SEGSAUDE · IRAS</span><span>Extensivo ENARE 2026</span><span class="pg">6 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-SEGSAUDE</div><div class="aula-ref">Bloco B5 · Aula 16 · Questões ENARE</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 01</span><span class="fonte">Atribuição INCORRETA · NC: Compreensão</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Sobre as atribuições do farmacêutico no controle de IRAS e no PGA hospitalar, é INCORRETO afirmar:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Validar prescrições de antimicrobianos restritos (pré-autorização).</span></li>
+        <li><span class="letra">B</span><span>Realizar auditoria prospectiva com retorno (PAF) sugerindo descalonamento e ajuste de dose.</span></li>
+        <li class="correta"><span class="letra">C</span><span>Emitir laudo microbiológico definitivo e decidir o esquema antimicrobiano sem participação do médico assistente.</span></li>
+        <li><span class="letra">D</span><span>Participar da Comissão de Farmácia e Terapêutica para seleção/avaliação do formulário institucional de antimicrobianos.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — C (afirmativa INCORRETA)</div>
+      <p><strong>Por que C está incorreta:</strong> a emissão do laudo microbiológico é atribuição do <em>médico microbiologista / patologista clínico</em>; o farmacêutico interpreta resultados e propõe condutas baseadas em antibiograma, mas <em>não emite laudos</em>. A decisão clínica final sobre o esquema antimicrobiano é do <em>médico assistente</em>; o farmacêutico propõe e justifica intervenções farmacêuticas. Foi exatamente a pegadinha cobrada em ENARE 2025 (Q63 — atribuição INCORRETA).</p>
+      <p><strong>Por que as outras estão corretas:</strong> A — pré-autorização é atribuição clássica do PGA · B — PAF é "core action" CDC · D — participação na CFT é Res. 585/2013.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-SEGSAUDE · IRAS</span><span>Extensivo ENARE 2026</span><span class="pg">7 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-SEGSAUDE</div><div class="aula-ref">Bloco B5 · Aula 16 · Questões ENARE</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 02</span><span class="fonte">Descalonamento · NC: Aplicação</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Paciente em UTI com sepse pulmonar, em uso empírico de meropenem + vancomicina + colistina por 48h. Cultura de aspirado traqueal: Klebsiella pneumoniae sensível a meropenem (sem ESBL/KPC); cultura de sangue: negativa; sem evidência de MRSA. Qual a conduta de descalonamento?</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Manter os três antimicrobianos por 14 dias.</span></li>
+        <li class="correta"><span class="letra">B</span><span>Manter meropenem; suspender vancomicina (sem MRSA) e colistina (sem patógeno resistente identificado); reavaliar duração total conforme resposta clínica (alvo: 7 dias se PAV em Gram-negativo não-NF).</span></li>
+        <li><span class="letra">C</span><span>Trocar meropenem por colistina como monoterapia.</span></li>
+        <li><span class="letra">D</span><span>Suspender meropenem e iniciar amoxicilina-clavulanato VO.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> com cultura demonstrando Klebsiella sensível a meropenem, sem ESBL/KPC, e ausência de MRSA, a conduta de descalonamento é manter o agente eficaz mais estreito (meropenem) e <em>suspender vanco (não há gram+ identificado) e colistina (não há resistência identificada)</em>. Duração: 7 dias é padrão IDSA para PAV em gram-negativo não-fermentador; reavaliar em 7 dias com resposta clínica e biomarcadores (PCT).</p>
+      <p><strong>Por que as outras erram:</strong> A — manter tripla sem justificativa = exposição desnecessária, custo, RAM, pressão seletiva, CDI · C — colistina como monoterapia em paciente sem resistência identificada é inadequada (mais tóxica, menos eficaz) · D — amoxi-clav VO em UTI séptico é insuficiente; meropenem deve ser mantido (o Klebsiella já está sensível, e a transição IV→VO requer estabilidade clínica).</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-SEGSAUDE · IRAS</span><span>Extensivo ENARE 2026</span><span class="pg">8 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-SEGSAUDE</div><div class="aula-ref">Bloco B5 · Aula 16 · Gabarito Integrado</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 03</span><span class="fonte">CDI · Higiene · NC: Análise</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Em paciente internado com infecção por <em>Clostridioides difficile</em>, o farmacêutico orientador da equipe deve recomendar:</p>
+      <p class="questao-enunciado" style="font-style:italic;">I. Higienização das mãos com sabão e água — preparação alcoólica é insuficiente contra esporos.<br>
+      II. Precaução de contato com luva e capote.<br>
+      III. Quarto individual ou cohort.<br>
+      IV. Limpeza ambiental com hipoclorito de sódio.<br>
+      V. Tratamento de 1ª escolha em CDI moderada-grave: vancomicina VO.</p>
+      <p class="questao-enunciado">Está(ão) CORRETA(S):</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Apenas I, II e III.</span></li>
+        <li><span class="letra">B</span><span>Apenas I, IV e V.</span></li>
+        <li><span class="letra">C</span><span>Apenas II, III, IV e V.</span></li>
+        <li class="correta"><span class="letra">D</span><span>I, II, III, IV e V.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — D</div>
+      <p><strong>Todas as 5 afirmações estão corretas:</strong></p>
+      <p>• <strong>I:</strong> esporos de C. difficile são <em>resistentes ao álcool</em>; apenas sabão + água + fricção mecânica removem fisicamente. Álcool gel é insuficiente.<br>
+      • <strong>II:</strong> precaução de contato com luva e capote impermeável é padrão para CDI.<br>
+      • <strong>III:</strong> quarto individual; cohort apenas se vários pacientes com mesma cepa confirmada.<br>
+      • <strong>IV:</strong> hipoclorito de sódio (cloro) é esporicida; quaternários de amônio NÃO. Substituição de produto de limpeza é exigida em surtos.<br>
+      • <strong>V:</strong> diretrizes ACG 2021 / IDSA: vancomicina VO 125 mg 6/6h por 10 dias é primeira escolha em CDI inicial moderada-grave. Fidaxomicina (preferida em recidiva); metronidazol VO apenas em casos leves quando vanco indisponível.</p>
+    </div>
+
+    <div class="subsecao" style="margin-top:6px;">Gabarito Comentado — Análise Integrada</div>
+    <table>
+      <tr><th>Questão</th><th>Gabarito</th><th>Tema</th><th>Conceito-Chave</th></tr>
+      <tr><td><strong>01</strong></td><td><span class="destaque">C</span></td><td>Atribuição INCORRETA</td><td>Laudo microbiológico = médico microbiologista; decisão clínica = médico assistente</td></tr>
+      <tr><td><strong>02</strong></td><td><span class="destaque">B</span></td><td>Descalonamento</td><td>Manter o mais estreito eficaz; suspender empíricos sem evidência; reavaliar duração</td></tr>
+      <tr><td><strong>03</strong></td><td><span class="destaque">D</span></td><td>CDI — Precauções e tratamento</td><td>Sabão+água (não álcool); contato; hipoclorito; vanco VO 1ª escolha</td></tr>
+    </table>
+  </div>
+  <div class="footer"><span>FARM-SEGSAUDE · IRAS</span><span>Extensivo ENARE 2026</span><span class="pg">9 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-SEGSAUDE</div><div class="aula-ref">Bloco B5 · Aula 16 · Síntese</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Síntese — IRAS e Antimicrobianos</div>
+    <div class="sintese-grid">
+      <div class="sintese-item">
+        <div class="si-label">IRAS Principais</div>
+        <p>PAV, CLABSI/IPCS, CAUTI/ITU, ISC, CDI. CDC NHSN classifica. Lei 9.431/1997 + Portaria 2.616/1998 obrigam PCIH no Brasil. ANVISA monitora taxas nacionais.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">CCIH/SCIH</div>
+        <p>Composição: médico + enfermeiro técnicos; farmacêutico, micro, cirurgião, gestor consultivos. Funções: PCIH, vigilância, bundles, capacitação, surtos. RDC ANVISA 36/2013.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Farmacêutico no PGA</div>
+        <p>Pré-autorização; PAF; otimização PK; conversão IV→VO; indicadores DOT/DDD; educação; CFT. NÃO emite laudo microbiológico; NÃO decide esquema sem médico (cobrado em Q63/2025).</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Descalonamento</div>
+        <p>Reduzir espectro com cultura/antibiograma após 48–72h. PEACH para conversão IV→VO. Durações IDSA: ITU 3–14 dias; PAC 5–7; PAV 7; bacteremia S. aureus 14–28; endocardite 4–6 sem.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Higiene + Precauções</div>
+        <p>5 momentos OMS. Padrão (universal) + Contato (MDR/CDI) + Gotícula (flu, meningo, pertussis) + Aerossol (TB, sarampo, COVID procedimento). CDI: sabão+água, hipoclorito, vanco VO. Adesão ≥ 60% (meta hospital público).</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Próxima Aula</div>
+        <p><strong>Aula 17 — Farmacovigilância e Classificação de RAM.</strong> RDC 406/2020, VigiMed, tipo A (previsível) vs B (imune), C/D/E, Naranjo, sinal de farmacovigilância. Apesar de ausente em 2025, é tema estrutural.</p>
+      </div>
+    </div>
+    <div class="alerta" style="margin-top:5px;">
+      <p><strong>Regra de ouro — IRAS no ENARE:</strong> CCIH é estrutura; PGA é o programa; farmacêutico é membro <em>obrigatório</em> mas com escopo definido (NÃO emite laudo, NÃO decide sem médico). Descalonamento = base do PGA; conversão IV→VO = critérios PEACH. CDI = sabão+água + hipoclorito + vanco VO. 5 momentos OMS.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-SEGSAUDE · IRAS</span><span>Extensivo ENARE 2026</span><span class="pg">10 / 10</span></div>
+</div>
+
+</body>
+</html>

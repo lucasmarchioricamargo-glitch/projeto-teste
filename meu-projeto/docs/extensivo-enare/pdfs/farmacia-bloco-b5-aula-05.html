@@ -1,0 +1,1291 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Farmácia — Bloco B5 Aula 05 | Extensivo ENARE 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap');
+
+  :root {
+    --creme: #F6F4ED;
+    --verde: #1F5C23;
+    --amarelo: #C6D834;
+    --escuro: #0C2B0E;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #d0d0d0;
+    font-family: 'Bricolage Grotesque', sans-serif;
+  }
+
+  .page {
+    width: 210mm;
+    height: 297mm;
+    background: var(--creme);
+    margin: 0 auto 12px;
+    position: relative;
+    overflow: hidden;
+    page-break-after: always;
+  }
+
+  .header {
+    background: var(--verde);
+    padding: 10px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .header-logo { display: flex; align-items: center; gap: 8px; }
+  .header-logo svg { width: 32px; height: 32px; }
+  .header-brand { display: flex; flex-direction: column; line-height: 1; }
+  .header-brand .marca {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: #fff;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+  }
+  .header-brand .tagline {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    color: var(--amarelo);
+    font-size: 7px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+  .header-info { text-align: right; }
+  .header-info .disciplina {
+    font-family: 'Barlow Condensed', sans-serif;
+    color: var(--amarelo);
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .header-info .aula-ref {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    color: rgba(255,255,255,0.7);
+    font-size: 8px;
+    letter-spacing: 0.5px;
+  }
+
+  .footer {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: var(--verde);
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 18px;
+  }
+  .footer span {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    color: rgba(255,255,255,0.6);
+    font-size: 7px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+  }
+  .footer .pg { color: var(--amarelo); font-weight: 400; }
+
+  .body {
+    padding: 14px 18px 30px;
+    height: calc(297mm - 52px - 22px);
+    overflow: hidden;
+  }
+
+  .capa-page { background: var(--verde); }
+  .capa-header {
+    background: var(--creme);
+    padding: 10px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .capa-header .marca {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: var(--verde);
+    font-size: 14px;
+  }
+  .capa-header .tagline {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    color: var(--verde);
+    font-size: 7.5px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .capa-body {
+    padding: 28px 24px 0;
+    display: flex;
+    flex-direction: column;
+    height: calc(297mm - 52px - 22px);
+  }
+  .capa-eyebrow {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    color: var(--amarelo);
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .capa-titulo {
+    font-family: 'Barlow Condensed', sans-serif;
+    color: #fff;
+    font-size: 50px;
+    line-height: 0.95;
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
+    margin-bottom: 6px;
+  }
+  .capa-titulo span { color: var(--amarelo); }
+  .capa-subtitulo {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 300;
+    color: rgba(255,255,255,0.65);
+    font-size: 12px;
+    letter-spacing: 0.3px;
+    margin-bottom: 22px;
+    line-height: 1.5;
+  }
+  .capa-badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+  .capa-badge {
+    background: rgba(198,216,52,0.15);
+    border: 1px solid var(--amarelo);
+    color: var(--amarelo);
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    font-size: 7.5px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+  }
+  .capa-divider { width: 40px; height: 3px; background: var(--amarelo); margin-bottom: 20px; }
+  .capa-topicos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .capa-topico { display: flex; align-items: flex-start; gap: 7px; }
+  .capa-topico-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    color: var(--amarelo);
+    font-size: 18px;
+    line-height: 1;
+    min-width: 18px;
+  }
+  .capa-topico-txt {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 400;
+    color: rgba(255,255,255,0.8);
+    font-size: 9.5px;
+    line-height: 1.4;
+  }
+  .capa-footer-strip {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: rgba(0,0,0,0.25);
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 18px;
+  }
+  .capa-footer-strip span {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    color: rgba(255,255,255,0.45);
+    font-size: 7px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+  }
+
+  .secao-titulo {
+    font-family: 'Barlow Condensed', sans-serif;
+    color: var(--verde);
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid var(--amarelo);
+    padding-bottom: 3px;
+    margin-bottom: 9px;
+    line-height: 1;
+  }
+  .subsecao {
+    font-family: 'Barlow Condensed', sans-serif;
+    color: var(--verde);
+    font-size: 12.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 7px 0 3px;
+  }
+  p {
+    font-size: 9px;
+    line-height: 1.55;
+    color: #1a1a1a;
+    margin-bottom: 4px;
+    font-weight: 400;
+  }
+  .destaque {
+    background: var(--amarelo);
+    color: var(--escuro);
+    font-weight: 600;
+    padding: 1px 4px;
+    border-radius: 2px;
+    font-size: 8.5px;
+  }
+  .alerta {
+    background: rgba(198,216,52,0.18);
+    border-left: 3px solid var(--amarelo);
+    padding: 5px 8px;
+    margin: 5px 0;
+    border-radius: 0 3px 3px 0;
+  }
+  .alerta p { margin: 0; font-size: 8.5px; }
+  .alerta strong { color: var(--verde); }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 5px 0;
+    font-size: 8px;
+  }
+  th {
+    background: var(--verde);
+    color: #fff;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 4px 6px;
+    text-align: left;
+  }
+  td {
+    padding: 3px 6px;
+    border-bottom: 1px solid rgba(31,92,35,0.12);
+    vertical-align: top;
+    line-height: 1.4;
+    color: #1a1a1a;
+  }
+  tr:nth-child(even) td { background: rgba(31,92,35,0.04); }
+
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 5px 0; }
+  .card {
+    background: rgba(31,92,35,0.06);
+    border: 1px solid rgba(31,92,35,0.15);
+    border-radius: 4px;
+    padding: 7px 8px;
+  }
+  .card-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    color: var(--verde);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    margin-bottom: 3px;
+  }
+  .card p { font-size: 8px; line-height: 1.5; }
+
+  .questao-header {
+    background: var(--verde);
+    color: #fff;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 4px 10px;
+    border-radius: 3px 3px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .questao-header .fonte {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    font-size: 7.5px;
+    color: var(--amarelo);
+    letter-spacing: 0.5px;
+  }
+  .questao-body {
+    border: 1px solid rgba(31,92,35,0.2);
+    border-top: none;
+    border-radius: 0 0 3px 3px;
+    padding: 7px 10px;
+    margin-bottom: 7px;
+  }
+  .questao-enunciado {
+    font-size: 8.5px;
+    line-height: 1.55;
+    color: #111;
+    margin-bottom: 5px;
+    font-weight: 500;
+  }
+  .alternativas { list-style: none; }
+  .alternativas li {
+    font-size: 8px;
+    line-height: 1.5;
+    padding: 2px 0;
+    color: #222;
+    display: flex;
+    gap: 5px;
+  }
+  .alternativas li .letra {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    color: var(--verde);
+    font-size: 9px;
+    min-width: 10px;
+  }
+  .alternativas li.correta .letra { color: var(--amarelo); }
+  .alternativas li.correta {
+    background: rgba(198,216,52,0.15);
+    border-left: 2px solid var(--amarelo);
+    padding-left: 4px;
+  }
+
+  .gabarito-box {
+    background: var(--verde);
+    border-radius: 4px;
+    padding: 8px 12px;
+    margin: 6px 0;
+  }
+  .gabarito-box .gab-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    color: var(--amarelo);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
+  .gabarito-box p { color: rgba(255,255,255,0.9); font-size: 8px; line-height: 1.55; }
+  .gabarito-box strong { color: var(--amarelo); }
+
+  .sintese-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 7px;
+    margin-top: 6px;
+  }
+  .sintese-item {
+    background: rgba(31,92,35,0.07);
+    border-left: 3px solid var(--verde);
+    padding: 5px 7px;
+    border-radius: 0 3px 3px 0;
+  }
+  .sintese-item .si-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    color: var(--verde);
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+  .sintese-item p { font-size: 7.5px; line-height: 1.5; }
+
+  ul.lista { padding-left: 14px; margin: 3px 0; }
+  ul.lista li {
+    font-size: 8.5px;
+    line-height: 1.55;
+    color: #1a1a1a;
+    margin-bottom: 1px;
+  }
+
+  .formula {
+    background: rgba(31,92,35,0.08);
+    border: 1px dashed var(--verde);
+    border-radius: 4px;
+    padding: 5px 8px;
+    margin: 4px 0;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 8.5px;
+    color: var(--escuro);
+  }
+  .formula strong { color: var(--verde); }
+
+  @media print {
+    body { background: none; }
+    .page { margin: 0; box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ========== PÁGINA 1 — CAPA ========== -->
+<div class="page capa-page">
+  <div class="capa-header">
+    <div style="display:flex;align-items:center;gap:8px;">
+      <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#1F5C23"/>
+      </svg>
+      <div>
+        <div class="marca">Elite Treinamentos</div>
+        <div class="tagline">Extensivo ENARE 2026</div>
+      </div>
+    </div>
+    <div style="text-align:right;">
+      <div style="font-family:'Barlow Condensed',sans-serif;color:var(--verde);font-size:11px;letter-spacing:1px;text-transform:uppercase;">Bloco B5 · Aula 05</div>
+      <div style="font-family:'Space Grotesk',sans-serif;font-weight:300;color:#888;font-size:7.5px;letter-spacing:0.5px;">Farmácia</div>
+    </div>
+  </div>
+
+  <div class="capa-body">
+    <div class="capa-eyebrow">Bloco B5 · FARM-FARMACOTERAP · Aula 05 de 22</div>
+    <div class="capa-titulo">Cálcu-<br>los <span>&amp;<br>Labora-<br>tório</span></div>
+    <div class="capa-subtitulo">Farmacoterapia V: TFG, infusões, gasometria,<br>HbA1c e conversões opioides — toda a matemática clínica</div>
+
+    <div class="capa-badge-row">
+      <div class="capa-badge">FARM-FARMACOTERAP</div>
+      <div class="capa-badge">Cockcroft · CKD-EPI</div>
+      <div class="capa-badge">Gasometria · pH</div>
+      <div class="capa-badge">Conversões Opioides</div>
+    </div>
+
+    <div class="capa-divider"></div>
+
+    <div class="capa-topicos">
+      <div class="capa-topico">
+        <div class="capa-topico-num">01</div>
+        <div class="capa-topico-txt">TFG: Cockcroft-Gault, CKD-EPI 2021 e MDRD</div>
+      </div>
+      <div class="capa-topico">
+        <div class="capa-topico-num">02</div>
+        <div class="capa-topico-txt">Infusões: mL/h, mcg/kg/min, gotejamento</div>
+      </div>
+      <div class="capa-topico">
+        <div class="capa-topico-num">03</div>
+        <div class="capa-topico-txt">Pediatria: Holliday-Segar para hidratação</div>
+      </div>
+      <div class="capa-topico">
+        <div class="capa-topico-num">04</div>
+        <div class="capa-topico-txt">Gasometria: pH, distúrbios ácido-base, compensação</div>
+      </div>
+      <div class="capa-topico">
+        <div class="capa-topico-num">05</div>
+        <div class="capa-topico-txt">HbA1c: equivalência com glicemia média (eAG)</div>
+      </div>
+      <div class="capa-topico">
+        <div class="capa-topico-num">06</div>
+        <div class="capa-topico-txt">Conversão opioide: morfina, fentanil, metadona</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="capa-footer-strip">
+    <span>Extensivo ENARE 2026</span>
+    <span>Elite Treinamentos em Saúde</span>
+    <span>Página 1 de 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 2 — TFG ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Farmácia — FARM-FARMACOTERAP</div>
+      <div class="aula-ref">Bloco B5 · Aula 05 · TFG</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="secao-titulo">Estimativa da Função Renal — Equações</div>
+
+    <p>A creatinina plasmática isolada é <em>insuficiente</em> para avaliar função renal — depende de massa muscular, idade, raça e sexo. As <strong>equações de estimativa</strong> da TFG são padrão de cuidado. O ENARE 2025 cobrou o conceito em Q49 (TFG e ajuste posológico). O farmacêutico deve dominar as três equações principais e suas indicações.</p>
+
+    <div class="subsecao">Cockcroft-Gault — Para Ajuste de Dose</div>
+    <div class="formula">
+      <strong>ClCr</strong> = [ (140 − idade) × peso (kg) ] / [ 72 × Cr (mg/dL) ]<br>
+      Em mulheres, multiplicar por <strong>0,85</strong>
+    </div>
+    <p>É a equação <em>historicamente usada nas bulas</em> para ajuste posológico de antimicrobianos, DOACs, digoxina e quimioterápicos. Reporta o <em>clearance da creatinina</em> em mL/min (não normalizado por superfície corporal). Em obesos, usar <em>peso ideal</em> (Devine) ou <em>peso ajustado</em>; em magros extremos, peso real.</p>
+
+    <div class="subsecao">CKD-EPI 2021 — Padrão Atual de Classificação</div>
+    <p>A equação <strong>CKD-EPI 2021</strong> (sem ajuste racial) é a recomendada pela KDIGO 2024 para <em>classificação do estágio de DRC</em>. Resulta em mL/min/1,73 m² (normalizada para superfície corporal). É baseada em creatinina e/ou cistatina C. Mais acurada que MDRD em TFG &gt; 60 e sem subestimativa em pacientes negros, conforme atualização 2021.</p>
+
+    <div class="subsecao">Holliday-Segar — Pediatria (Manutenção)</div>
+    <div class="formula">
+      <strong>Líquido de manutenção / dia</strong><br>
+      Primeiros 10 kg: 100 mL/kg/dia<br>
+      11–20 kg: 1.000 mL + 50 mL/kg/dia × (peso − 10)<br>
+      &gt; 20 kg: 1.500 mL + 20 mL/kg/dia × (peso − 20)
+    </div>
+    <p>Exemplo: criança de 22 kg → 1.500 + 20×2 = <strong>1.540 mL/dia</strong>. Em pediatria, evitar soluções hipotônicas isoladas (risco de hiponatremia hospitalar) — preferir SF 0,9% ou Ringer Lactato como base.</p>
+
+    <div class="subsecao">Equação MDRD — Histórica</div>
+    <p>A MDRD-4 (Levey 1999) foi padrão por anos mas subestima TFG em valores normais (&gt; 60). Foi substituída pelo CKD-EPI. Ainda pode ser cobrada em provas, com a fórmula:</p>
+    <div class="formula">
+      TFG = 186 × (Cr)<sup>−1,154</sup> × (idade)<sup>−0,203</sup> × 0,742 (se mulher) × 1,212 (se negro)
+    </div>
+
+    <div class="alerta">
+      <p><strong>Quando usar cada equação:</strong> <em>Ajuste de dose</em> (carbapenêmico, vancomicina, DOAC, digoxina) → Cockcroft-Gault (bulas históricas). <em>Classificação de DRC e diagnóstico</em> → CKD-EPI 2021. <em>Pediatria</em> → Schwartz (creatinina + altura). <em>Reposição hídrica pediátrica</em> → Holliday-Segar. <em>Em obesos</em>: Cockcroft com peso ideal/ajustado para evitar superestimativa.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>FARM-FARMACOTERAP · Cálculos e Laboratório</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">2 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 3 — INFUSÕES ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Farmácia — FARM-FARMACOTERAP</div>
+      <div class="aula-ref">Bloco B5 · Aula 05 · Cálculos de Infusão</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="secao-titulo">Cálculos de Infusão Parenteral</div>
+
+    <p>Cálculos de infusão são <em>habilidade técnica obrigatória</em> em farmácia hospitalar e na área crítica. O farmacêutico residente em saúde multiprofissional deve validar a prescrição médica e auxiliar a equipe de enfermagem nas conversões.</p>
+
+    <div class="subsecao">Conversões Básicas</div>
+    <div class="formula">
+      <strong>Concentração final (mg/mL):</strong> dose total (mg) ÷ volume total (mL)<br>
+      <strong>Velocidade (mL/h):</strong> volume (mL) ÷ tempo (h)<br>
+      <strong>Gotas/min (equipo macro = 20 gotas/mL):</strong> mL/h ÷ 3<br>
+      <strong>Gotas/min (equipo micro = 60 gotas/mL):</strong> mL/h (1:1 com microgotas/min)
+    </div>
+
+    <div class="subsecao">Drogas Vasoativas — mcg/kg/min</div>
+    <p>A velocidade em mcg/kg/min é o padrão para vasoativos (noradrenalina, dopamina, nitroprussiato). Conversão para mL/h:</p>
+    <div class="formula">
+      <strong>mL/h</strong> = [ dose (mcg/kg/min) × peso (kg) × 60 ] / concentração (mcg/mL)
+    </div>
+    <p><strong>Exemplo prático:</strong> Noradrenalina 16 mg em 250 mL de SF (concentração = 16.000 mcg ÷ 250 mL = 64 mcg/mL). Paciente de 70 kg, prescrição = 0,1 mcg/kg/min.<br>
+    mL/h = (0,1 × 70 × 60) / 64 = 420 / 64 = <strong>6,56 mL/h</strong>.</p>
+
+    <div class="subsecao">Reconstituição e Diluição — Antimicrobianos</div>
+    <table>
+      <tr>
+        <th>Antimicrobiano</th>
+        <th>Reconstituição</th>
+        <th>Diluição final</th>
+        <th>Tempo</th>
+      </tr>
+      <tr>
+        <td>Vancomicina 1 g</td>
+        <td>20 mL AD</td>
+        <td>250 mL SF/SG 5%</td>
+        <td>≥ 60 min (evitar síndrome do homem vermelho)</td>
+      </tr>
+      <tr>
+        <td>Meropenem 1 g</td>
+        <td>20 mL AD</td>
+        <td>100 mL SF</td>
+        <td>15–30 min (bolus) ou 3h (infusão estendida)</td>
+      </tr>
+      <tr>
+        <td>Piperacilina-Tazobactam 4,5 g</td>
+        <td>20 mL AD</td>
+        <td>100 mL SF</td>
+        <td>30 min (bolus) ou 4h (infusão estendida)</td>
+      </tr>
+      <tr>
+        <td>Anfotericina B desoxicolato</td>
+        <td>10 mL AD</td>
+        <td>SG 5% (incompatível com NaCl)</td>
+        <td>2–6h (proteger da luz)</td>
+      </tr>
+      <tr>
+        <td>Ampicilina 1 g</td>
+        <td>3,5 mL AD ou SF</td>
+        <td>100 mL SF (estável 1h)</td>
+        <td>15–30 min</td>
+      </tr>
+      <tr>
+        <td>Aciclovir IV</td>
+        <td>10 mL AD</td>
+        <td>100 mL SF (5–7 mg/mL)</td>
+        <td>≥ 1h (nefrotoxicidade por cristalização)</td>
+      </tr>
+    </table>
+
+    <div class="subsecao">Cálculo de NPT — Nutrição Parenteral Total</div>
+    <p><strong>Macronutrientes:</strong> aminoácidos 1,2–2,0 g/kg/dia; glicose 3–5 mg/kg/min (não exceder 7 mg/kg/min — risco de hiperglicemia e esteatose); lipídio 1–1,5 g/kg/dia (máx 2,5 g/kg/dia em adultos). <strong>Caloria:</strong> 25–30 kcal/kg/dia (estresse leve), 30–40 kcal/kg/dia (estresse alto). <strong>Osmolaridade:</strong> &gt; 900 mOsm/L exige acesso central. <strong>Eletrólitos:</strong> Na 1–2 mEq/kg, K 1–2 mEq/kg, Ca 5–15 mEq/dia, P 20–40 mmol/dia, Mg 8–20 mEq/dia. <strong>Síndrome de realimentação</strong>: monitorar P, K, Mg em pacientes desnutridos no início da nutrição — repor antes de iniciar e nos primeiros 5–7 dias.</p>
+
+    <div class="alerta">
+      <p><strong>Atribuições do farmacêutico em NPT:</strong> validar a prescrição, conferir compatibilidades cálcio-fosfato (precipitação se produto Ca×P alto), verificar estabilidade da emulsão lipídica (não usar bolsas separadas com cor amarelada/separada), conferir osmolaridade para via correta, garantir manipulação em CMI com fluxo laminar horizontal (Classe ISO 5). Cobrado em ENARE 2024 (Q85–87).</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>FARM-FARMACOTERAP · Cálculos e Laboratório</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">3 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 4 — CONVERSÕES OPIOIDES ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Farmácia — FARM-FARMACOTERAP</div>
+      <div class="aula-ref">Bloco B5 · Aula 05 · Conversão Opioide</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="secao-titulo">Conversão e Rotação Opioide</div>
+
+    <p>A <strong>rotação opioide</strong> é necessária quando há toxicidade, tolerância, perda de eficácia ou indisponibilidade. A conversão segura exige conhecer a <em>razão de equipotência</em> e aplicar <em>redução de 25–50%</em> pela <em>tolerância cruzada incompleta</em> entre opioides.</p>
+
+    <div class="subsecao">Tabela de Equivalência Aproximada (Dose Oral Diária Equianalgésica)</div>
+    <table>
+      <tr>
+        <th>Opioide</th>
+        <th>Via</th>
+        <th>Dose equivalente a Morfina 30 mg VO</th>
+      </tr>
+      <tr>
+        <td>Morfina VO</td>
+        <td>VO</td>
+        <td><strong>30 mg</strong> (referência)</td>
+      </tr>
+      <tr>
+        <td>Morfina IV/SC</td>
+        <td>IV/SC</td>
+        <td>10 mg (razão VO:IV = 3:1)</td>
+      </tr>
+      <tr>
+        <td>Codeína</td>
+        <td>VO</td>
+        <td>200 mg (potência ~1/6 da morfina)</td>
+      </tr>
+      <tr>
+        <td>Tramadol</td>
+        <td>VO</td>
+        <td>150–300 mg (razão variável; teto ~400 mg/dia)</td>
+      </tr>
+      <tr>
+        <td>Oxicodona</td>
+        <td>VO</td>
+        <td>20 mg (potência 1,5× morfina VO)</td>
+      </tr>
+      <tr>
+        <td>Hidromorfona</td>
+        <td>VO</td>
+        <td>7,5 mg (potência ~4× morfina VO)</td>
+      </tr>
+      <tr>
+        <td><strong>Fentanil transdérmico</strong></td>
+        <td>TD</td>
+        <td>12 mcg/h (≈ morfina 30 mg/dia VO)</td>
+      </tr>
+      <tr>
+        <td>Metadona</td>
+        <td>VO</td>
+        <td>Não-linear; variável conforme dose total (consultar tabela específica — risco de superdose)</td>
+      </tr>
+      <tr>
+        <td>Buprenorfina TD</td>
+        <td>TD</td>
+        <td>5 mcg/h (uso em dor crônica leve a moderada)</td>
+      </tr>
+    </table>
+
+    <div class="subsecao">Fentanil Transdérmico — Conversão e Cuidados</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Conversão Morfina VO → Fentanil TD</div>
+        <p>Regra prática (Janssen): <strong>morfina oral diária (mg/dia) ÷ 2,4 = mcg/h de fentanil</strong>. Exemplo: paciente em morfina 60 mg/dia VO → fentanil 25 mcg/h. Para conversão de fentanil → morfina: <strong>mcg/h × 2,4 = mg/dia VO</strong>.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Cuidados Críticos</div>
+        <p>Início de ação lento (12–18h após colocação); pico em 24h. <em>Nunca cortar adesivos</em> (sistemas reservatório). Aplicar em pele íntegra, depilar com tesoura, rotacionar locais. Evitar fontes de calor (banho quente, cobertores elétricos) — aumentam liberação. Indicado apenas em <em>pacientes opioide-tolerantes</em> (≥ 60 mg morfina/dia há ≥ 1 semana).</p>
+      </div>
+    </div>
+
+    <div class="subsecao">Cálculo de Dose de Resgate</div>
+    <p>A dose de resgate em dor crônica oncológica corresponde a <strong>10–20% da dose total diária</strong>, administrada de hora em hora se necessário. Se &gt; 3 resgates/dia, aumentar a dose basal pelo equivalente consumido.</p>
+    <p><strong>Exemplo:</strong> paciente em morfina LP 30 mg 12/12h (60 mg/dia VO). Dose de resgate = 6–12 mg morfina LI VO 1/1h SOS. Se usou 3 doses de 10 mg em 24h (30 mg) → próxima dose basal: 90 mg/dia (45 mg 12/12h).</p>
+
+    <div class="alerta">
+      <p><strong>Conduta farmacêutica em rotação opioide:</strong> calcular dose equivalente, <em>aplicar redução de 25–50%</em> por tolerância cruzada incompleta, dividir nova dose conforme intervalo posológico, manter dose de resgate, reavaliar em 24–48h. Em metadona, consultar tabela específica e iniciar com dose baixa (acúmulo por meia-vida longa e variável). Naloxona deve estar disponível em pacientes em altas doses ou com fatores de risco (apneia do sono, BZD concomitante).</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>FARM-FARMACOTERAP · Cálculos e Laboratório</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">4 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 5 — GASOMETRIA ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Farmácia — FARM-FARMACOTERAP</div>
+      <div class="aula-ref">Bloco B5 · Aula 05 · Gasometria</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="secao-titulo">Gasometria Arterial e Distúrbios Ácido-Base</div>
+
+    <p>A FGV cobrou gasometria em ENARE 2025 (Q62 — interpretação de distúrbio). O farmacêutico precisa saber identificar o distúrbio primário, a compensação esperada e os fármacos envolvidos (causadores ou usados no tratamento).</p>
+
+    <div class="subsecao">Valores de Referência</div>
+    <table>
+      <tr>
+        <th>Parâmetro</th>
+        <th>Valor normal arterial</th>
+        <th>Significado</th>
+      </tr>
+      <tr>
+        <td>pH</td>
+        <td>7,35–7,45</td>
+        <td>&lt; 7,35 = acidemia; &gt; 7,45 = alcalemia</td>
+      </tr>
+      <tr>
+        <td>PaCO₂</td>
+        <td>35–45 mmHg</td>
+        <td>Componente respiratório (varia inversamente ao pH)</td>
+      </tr>
+      <tr>
+        <td>HCO₃⁻</td>
+        <td>22–26 mEq/L</td>
+        <td>Componente metabólico (varia diretamente com o pH)</td>
+      </tr>
+      <tr>
+        <td>BE (base excess)</td>
+        <td>−2 a +2</td>
+        <td>Quanto base falta/sobra</td>
+      </tr>
+      <tr>
+        <td>PaO₂</td>
+        <td>80–100 mmHg</td>
+        <td>Avaliar oxigenação (relação PaO₂/FiO₂ &lt; 300 = SARA)</td>
+      </tr>
+      <tr>
+        <td>SatO₂</td>
+        <td>≥ 95%</td>
+        <td>Saturação de hemoglobina</td>
+      </tr>
+      <tr>
+        <td>Lactato</td>
+        <td>&lt; 2 mmol/L</td>
+        <td>Marcador de hipoperfusão tecidual</td>
+      </tr>
+    </table>
+
+    <div class="subsecao">Roteiro Diagnóstico em 4 Passos</div>
+    <ul class="lista">
+      <li><strong>1.</strong> O pH está alterado? &lt; 7,35 = acidemia; &gt; 7,45 = alcalemia</li>
+      <li><strong>2.</strong> Qual o distúrbio primário? Olhar PaCO₂ e HCO₃⁻ — o que se moveu na mesma direção do pH é o primário</li>
+      <li><strong>3.</strong> Há compensação? Calcular a esperada e comparar com o medido</li>
+      <li><strong>4.</strong> Calcular o <em>ânion gap</em> (AG = Na − [Cl + HCO₃]; normal 8–12) em acidoses metabólicas</li>
+    </ul>
+
+    <div class="subsecao">Acidose Metabólica — Causas</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">AG Aumentado (MUDPILES)</div>
+        <p><strong>M</strong>etanol, <strong>U</strong>remia (IRA/DRC), <strong>D</strong>iabetes (cetoacidose diabética), <strong>P</strong>araldeído/Propilenoglicol, <strong>I</strong>soniazida/Ferro, <strong>L</strong>ácticoacidose (sepse, metformina, álcool), <strong>E</strong>tilenoglicol, <strong>S</strong>alicilatos.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">AG Normal (Hiperclorêmica)</div>
+        <p>Diarreia, fístula gastrointestinal, acidose tubular renal, drenagem ureteral, IECA/BRA + espironolactona (hipoaldosteronismo iatrogênico). Reposição com solução salina 0,9% causa acidose hiperclorêmica leve.</p>
+      </div>
+    </div>
+
+    <div class="subsecao">Compensação Esperada (Fórmulas)</div>
+    <table>
+      <tr>
+        <th>Distúrbio primário</th>
+        <th>Compensação esperada</th>
+      </tr>
+      <tr>
+        <td>Acidose metabólica</td>
+        <td>PaCO₂ esperado = (1,5 × HCO₃⁻) + 8 ± 2 (Winters)</td>
+      </tr>
+      <tr>
+        <td>Alcalose metabólica</td>
+        <td>PaCO₂ aumenta 0,6 mmHg por 1 mEq/L de aumento de HCO₃⁻</td>
+      </tr>
+      <tr>
+        <td>Acidose respiratória aguda</td>
+        <td>HCO₃⁻ aumenta 1 mEq/L por 10 mmHg de aumento de PaCO₂</td>
+      </tr>
+      <tr>
+        <td>Acidose respiratória crônica</td>
+        <td>HCO₃⁻ aumenta 4 mEq/L por 10 mmHg de aumento de PaCO₂</td>
+      </tr>
+      <tr>
+        <td>Alcalose respiratória aguda</td>
+        <td>HCO₃⁻ reduz 2 mEq/L por 10 mmHg de redução de PaCO₂</td>
+      </tr>
+      <tr>
+        <td>Alcalose respiratória crônica</td>
+        <td>HCO₃⁻ reduz 5 mEq/L por 10 mmHg de redução de PaCO₂</td>
+      </tr>
+    </table>
+
+    <div class="alerta">
+      <p><strong>Repercussão farmacológica:</strong> acidose metabólica reduz a atividade de catecolaminas exógenas (noradrenalina, dopamina) — corrigir pH antes da escalada vasoativa. Alcalose alcaliniza a urina e altera depuração de bases fracas (anfetaminas, fenciclidina). Em intoxicação por salicilatos: bicarbonato IV para alcalinizar urina e acelerar excreção. Em acidose lática por metformina + IRA: hemodiálise é tratamento.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>FARM-FARMACOTERAP · Cálculos e Laboratório</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">5 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 6 — HBA1C E CORRELAÇÕES ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Farmácia — FARM-FARMACOTERAP</div>
+      <div class="aula-ref">Bloco B5 · Aula 05 · HbA1c e Laboratório</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="secao-titulo">HbA1c, Glicemia Média e Outros Correlatos</div>
+
+    <p>A <strong>HbA1c</strong> reflete a glicemia média dos últimos 2–3 meses (vida do eritrócito ~120 dias). A SBD 2024 e a ADA recomendam manter HbA1c &lt; 7% para a maioria dos diabéticos (alvo individualizado entre 6,5 e 8,0%).</p>
+
+    <div class="subsecao">Conversão HbA1c → Glicemia Média Estimada (eAG)</div>
+    <div class="formula">
+      <strong>eAG (mg/dL) = 28,7 × HbA1c (%) − 46,7</strong>
+    </div>
+    <table>
+      <tr>
+        <th>HbA1c (%)</th>
+        <th>Glicemia média (mg/dL)</th>
+      </tr>
+      <tr><td>5</td><td>97</td></tr>
+      <tr><td>6</td><td>126</td></tr>
+      <tr><td>7</td><td>154</td></tr>
+      <tr><td>8</td><td>183</td></tr>
+      <tr><td>9</td><td>212</td></tr>
+      <tr><td>10</td><td>240</td></tr>
+      <tr><td>11</td><td>269</td></tr>
+      <tr><td>12</td><td>298</td></tr>
+    </table>
+
+    <div class="subsecao">Limitações da HbA1c</div>
+    <ul class="lista">
+      <li><strong>Anemia hemolítica / esferocitose:</strong> reduz HbA1c (turnover acelerado)</li>
+      <li><strong>Anemia ferropriva:</strong> aumenta HbA1c (turnover lentificado)</li>
+      <li><strong>DRC avançada / hemoglobinopatias (HbS, HbC, HbE):</strong> alteram resultado; método cromatográfico pode dar valores discrepantes</li>
+      <li><strong>Gravidez:</strong> não é o exame de escolha para controle (frutosamina ou monitorização glicêmica)</li>
+      <li><strong>Pós-transfusão sanguínea recente</strong>: dilui HbA1c</li>
+      <li><strong>Glicação variável entre indivíduos:</strong> "alta glicação" → HbA1c desproporcional à glicemia média</li>
+    </ul>
+
+    <div class="subsecao">Outros Exames Críticos em Farmácia Clínica</div>
+    <table>
+      <tr>
+        <th>Exame</th>
+        <th>Faixa normal</th>
+        <th>Aplicação farmacêutica</th>
+      </tr>
+      <tr>
+        <td>INR</td>
+        <td>0,9–1,2 (sem anticoag); 2–3 (alvo varfarina)</td>
+        <td>Monitorização da varfarina; reversão com vitamina K + CCP em sangramento</td>
+      </tr>
+      <tr>
+        <td>TTPa</td>
+        <td>25–35 s</td>
+        <td>Monitorização de heparina não fracionada</td>
+      </tr>
+      <tr>
+        <td>Anti-Xa</td>
+        <td>0,5–1,0 UI/mL (dose terapêutica HBPM)</td>
+        <td>Monitorização de enoxaparina em obesos, gestantes, IR; rivaroxabana off-label</td>
+      </tr>
+      <tr>
+        <td>Vancocinemia (vale)</td>
+        <td>10–15 mg/L (infecções não graves); 15–20 mg/L (graves, MRSA)</td>
+        <td>Coleta antes da 4ª dose (estado estacionário); ajuste por nomograma ou software</td>
+      </tr>
+      <tr>
+        <td>Digoxinemia</td>
+        <td>0,5–0,9 ng/mL (IC); &lt; 2 ng/mL (FA)</td>
+        <td>Coleta 6–8h após dose; risco de toxicidade &gt; 2 ng/mL</td>
+      </tr>
+      <tr>
+        <td>Litemia</td>
+        <td>0,6–1,2 mEq/L</td>
+        <td>Coleta 12h após dose; tóxico &gt; 1,5 mEq/L</td>
+      </tr>
+      <tr>
+        <td>K+ sérico</td>
+        <td>3,5–5,0 mEq/L</td>
+        <td>Hipocalemia (diurético, vômitos) e hipercalemia (IECA/BRA, espironolactona, IRC, digital)</td>
+      </tr>
+      <tr>
+        <td>Creatinina</td>
+        <td>0,7–1,2 mg/dL (homens); 0,5–1,0 (mulheres)</td>
+        <td>Calcular TFG; ajustar fármacos</td>
+      </tr>
+      <tr>
+        <td>ALT/AST</td>
+        <td>&lt; 40 U/L</td>
+        <td>Hepatotoxicidade medicamentosa (Lei de Hy); padrão hepatocelular vs colestático</td>
+      </tr>
+    </table>
+
+    <div class="alerta">
+      <p><strong>Mensagem central:</strong> o farmacêutico clínico deve correlacionar <em>laboratório com farmacoterapia</em>. Por exemplo, queda de Na+ em paciente em ISRS + tiazídico → suspeitar SIADH iatrogênico; aumento de K+ em IECA + espironolactona + AINE → suspender o trio; alteração de transaminases em isoniazida → solicitar reavaliação. Esse é o cerne da farmácia clínica em hospital.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>FARM-FARMACOTERAP · Cálculos e Laboratório</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">6 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 7 — QUESTÃO 01 ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Farmácia — FARM-FARMACOTERAP</div>
+      <div class="aula-ref">Bloco B5 · Aula 05 · Questões ENARE</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="questao-header">
+      <span>Questão 01</span>
+      <span class="fonte">Infusão · Noradrenalina · NC: Aplicação</span>
+    </div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Paciente de 80 kg, internado em UTI com choque séptico, recebe noradrenalina por bomba de infusão na concentração de 4 mg em 250 mL de SF 0,9%. A prescrição é 0,2 mcg/kg/min. A velocidade de infusão (mL/h) correta é:</p>
+      <ul class="alternativas">
+        <li>
+          <span class="letra">A</span>
+          <span>30 mL/h.</span>
+        </li>
+        <li>
+          <span class="letra">B</span>
+          <span>45 mL/h.</span>
+        </li>
+        <li class="correta">
+          <span class="letra">C</span>
+          <span>60 mL/h.</span>
+        </li>
+        <li>
+          <span class="letra">D</span>
+          <span>120 mL/h.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — C</div>
+      <p><strong>Passo a passo:</strong></p>
+      <p>• <strong>Concentração final</strong>: 4 mg = 4.000 mcg em 250 mL → 4.000 ÷ 250 = <strong>16 mcg/mL</strong>.<br>
+      • <strong>Dose requerida</strong>: 0,2 mcg/kg/min × 80 kg = <strong>16 mcg/min</strong>.<br>
+      • <strong>Conversão para mL/h</strong>: 16 mcg/min ÷ 16 mcg/mL = 1 mL/min × 60 = <strong>60 mL/h</strong>.</p>
+      <p>Aplicando a fórmula direta:<br>
+      mL/h = [ dose × peso × 60 ] / concentração = [ 0,2 × 80 × 60 ] / 16 = 960 / 16 = <strong>60 mL/h</strong>.</p>
+      <p><strong>Por que as outras erram:</strong> A (30) corresponderia a 0,1 mcg/kg/min, metade da dose · B (45) corresponde a ~0,15 mcg/kg/min · D (120) corresponderia a 0,4 mcg/kg/min, dose dobrada — risco de hipertensão, arritmia, isquemia distal.</p>
+      <p><strong>Conduta farmacêutica em vasoativos:</strong> conferir prescrição (mcg/kg/min é o padrão; alguns serviços usam mcg/min isolada), validar diluição e cálculo da velocidade, garantir acesso venoso central (extravasamento periférico → necrose), monitorar resposta hemodinâmica e ajustar conforme PAM (alvo ≥ 65 mmHg em sepse).</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>FARM-FARMACOTERAP · Cálculos e Laboratório</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">7 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 8 — QUESTÃO 02 ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Farmácia — FARM-FARMACOTERAP</div>
+      <div class="aula-ref">Bloco B5 · Aula 05 · Questões ENARE</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="questao-header">
+      <span>Questão 02</span>
+      <span class="fonte">Gasometria · Distúrbio ácido-base · NC: Análise</span>
+    </div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Paciente diabético tipo 1, 22 anos, é levado ao PS com poliúria, polidipsia, taquipneia (FR 32 ipm), náuseas e hálito cetônico. Gasometria arterial: pH 7,18 · PaCO₂ 22 mmHg · HCO₃⁻ 10 mEq/L · Na 138 · Cl 100 · K 5,5. Considerando os achados, qual é o distúrbio ácido-base e a conduta farmacêutica auxiliar mais apropriada?</p>
+      <ul class="alternativas">
+        <li>
+          <span class="letra">A</span>
+          <span>Acidose metabólica com ânion gap normal; reposição de bicarbonato 1 mEq/kg em bolus.</span>
+        </li>
+        <li class="correta">
+          <span class="letra">B</span>
+          <span>Acidose metabólica com ânion gap aumentado (28), compatível com cetoacidose diabética; hidratação com SF 0,9%, insulinoterapia em infusão contínua (0,1 U/kg/h), reposição cuidadosa de potássio e adiar bicarbonato (reservado a pH &lt; 6,9).</span>
+        </li>
+        <li>
+          <span class="letra">C</span>
+          <span>Alcalose respiratória primária por hiperventilação; tranquilizar e oferecer máscara para reinalar CO₂.</span>
+        </li>
+        <li>
+          <span class="letra">D</span>
+          <span>Acidose respiratória descompensada; iniciar ventilação mecânica imediatamente.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong></p>
+      <p>• <strong>pH = 7,18</strong> → acidemia (primária).<br>
+      • <strong>HCO₃⁻ = 10</strong> ↓ (acidose metabólica primária — mesma direção do pH).<br>
+      • <strong>PaCO₂ = 22</strong> ↓ (compensação respiratória — Kussmaul).<br>
+      • <strong>Verificação Winters</strong>: PaCO₂ esperado = (1,5 × 10) + 8 = 23 ± 2 → compensação adequada.<br>
+      • <strong>Ânion Gap</strong> = Na − (Cl + HCO₃) = 138 − (100 + 10) = <strong>28</strong> (↑↑, normal &lt; 12) → acidose metabólica com AG aumentado.<br>
+      • Quadro clínico + AG aumentado em diabético tipo 1 = <em>cetoacidose diabética (CAD)</em>.</p>
+      <p><strong>Conduta correta em CAD:</strong> (1) hidratação com SF 0,9% 15–20 mL/kg na primeira hora; (2) insulinoterapia em infusão contínua a 0,1 U/kg/h (após confirmar K ≥ 3,3 mEq/L); (3) reposição de potássio mesmo se sérico aparentemente "normal", pois o potássio total corporal está depletado (acidose desloca K+ extracelular — corrigido pH, hipocalemia se manifesta); (4) bicarbonato só se pH &lt; 6,9 — uso rotineiro está contraindicado (pode piorar acidose intracelular e cetogênese).</p>
+      <p><strong>Por que as outras erram:</strong> A — AG é alto (28), não normal; bicarbonato em bolus está contraindicado · C — pH ácido descarta alcalose · D — não é distúrbio respiratório primário; PaCO₂ baixo é resposta compensatória.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>FARM-FARMACOTERAP · Cálculos e Laboratório</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">8 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 9 — QUESTÃO 03 + GABARITO INTEGRADO ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Farmácia — FARM-FARMACOTERAP</div>
+      <div class="aula-ref">Bloco B5 · Aula 05 · Gabarito Integrado</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="questao-header">
+      <span>Questão 03</span>
+      <span class="fonte">Conversão Opioide · Morfina → Fentanil TD · NC: Aplicação</span>
+    </div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Paciente oncológico em uso de morfina 60 mg de 12/12h VO (formulação de liberação prolongada) com analgesia adequada, porém com constipação refratária e episódios de náusea. A equipe decide rotacionar para fentanil transdérmico. Aplicando a regra de conversão de Janssen (morfina oral diária ÷ 2,4 = mcg/h de fentanil) e a redução de 25–50% por tolerância cruzada incompleta, qual a dose inicial de fentanil TD mais apropriada?</p>
+      <ul class="alternativas">
+        <li>
+          <span class="letra">A</span>
+          <span>25 mcg/h, mantendo a mesma dose equianalgésica.</span>
+        </li>
+        <li class="correta">
+          <span class="letra">B</span>
+          <span>37,5 mcg/h aproximadamente — clinicamente arredondado para 25 mcg/h, com dose de resgate disponível.</span>
+        </li>
+        <li>
+          <span class="letra">C</span>
+          <span>75 mcg/h, dobrando a equivalência para garantir analgesia.</span>
+        </li>
+        <li>
+          <span class="letra">D</span>
+          <span>12 mcg/h, reduzindo em 75% por segurança.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Passo a passo:</strong></p>
+      <p>• Dose diária de morfina oral: 60 + 60 = 120 mg/dia.<br>
+      • Equivalência em fentanil TD: 120 ÷ 2,4 = <strong>50 mcg/h</strong>.<br>
+      • Redução por tolerância cruzada incompleta (25–50%): 50 × 0,75 = 37,5 mcg/h ou 50 × 0,5 = 25 mcg/h.<br>
+      • Arredondando para sistema disponível (12, 25, 50, 75, 100 mcg/h): a opção clínica mais segura é <strong>25 mcg/h</strong> + manter morfina LI 10 mg VO 1/1h SOS como resgate; reavaliar em 48h para titulação.</p>
+      <p><strong>Por que as outras erram:</strong> A — manter a dose equianalgésica integral em rotação é considerado <em>risco de superdose</em> pelas tolerâncias cruzadas incompletas; FDA recomenda redução · C — dobrar é erro grave; risco de depressão respiratória letal · D — redução de 75% é excessiva e expõe a dor incidental e crise álgica — perde-se controle adquirido.</p>
+      <p><strong>Cuidados na transição:</strong> aplicar fentanil TD e manter morfina LP por mais uma dose (12h) pela demora do pico transdérmico (12–24h); orientar família sobre sinais de toxicidade (sedação excessiva, miose, FR &lt; 8); evitar fontes de calor; rotacionar local; consultor farmacêutico/médico em 48h para nova titulação.</p>
+    </div>
+
+    <div class="subsecao" style="margin-top:6px;">Gabarito Comentado — Análise Integrada</div>
+    <table>
+      <tr>
+        <th>Questão</th>
+        <th>Gabarito</th>
+        <th>Tema</th>
+        <th>Conceito-Chave</th>
+      </tr>
+      <tr>
+        <td><strong>01</strong></td>
+        <td><span class="destaque">C</span></td>
+        <td>Cálculo de Noradrenalina</td>
+        <td>mL/h = (mcg/kg/min × peso × 60) / conc; 0,2 × 80 × 60 / 16 = 60</td>
+      </tr>
+      <tr>
+        <td><strong>02</strong></td>
+        <td><span class="destaque">B</span></td>
+        <td>Cetoacidose Diabética</td>
+        <td>AG ↑ (28); SF + insulina 0,1 U/kg/h; bicarbonato só se pH &lt; 6,9; repor K+</td>
+      </tr>
+      <tr>
+        <td><strong>03</strong></td>
+        <td><span class="destaque">B</span></td>
+        <td>Conversão Morfina → Fentanil TD</td>
+        <td>÷ 2,4 + redução 25–50% por tolerância cruzada incompleta = 25 mcg/h</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="footer">
+    <span>FARM-FARMACOTERAP · Cálculos e Laboratório</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">9 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 10 — SÍNTESE ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Farmácia — FARM-FARMACOTERAP</div>
+      <div class="aula-ref">Bloco B5 · Aula 05 · Síntese</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="secao-titulo">Síntese — Cálculos e Laboratório</div>
+
+    <div class="sintese-grid">
+      <div class="sintese-item">
+        <div class="si-label">TFG — Equações</div>
+        <p>Cockcroft-Gault: [(140 − idade) × peso] / (72 × Cr) × 0,85 mulher — ajuste de dose. CKD-EPI 2021: padrão de classificação KDIGO. Holliday-Segar: 100/50/20 mL/kg/dia (faixas 0–10/10–20/&gt;20). Schwartz para pediatria.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Infusões</div>
+        <p>mL/h = (mcg/kg/min × peso × 60) / concentração. Macroequipo: gotas/min = mL/h ÷ 3. Microequipo: 1:1. NPT: aminoácidos 1,2–2 g/kg; glicose &lt; 7 mg/kg/min; lipídio 1–1,5 g/kg; osmolaridade &gt; 900 mOsm = central.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Conversão Opioide</div>
+        <p>Morfina VO 30 mg = morfina IV 10 mg = oxicodona 20 mg = fentanil 12 mcg/h TD. Regra Janssen: morfina mg/dia ÷ 2,4 = fentanil mcg/h. <em>Redução de 25–50% por tolerância cruzada incompleta</em> em qualquer rotação. Resgate = 10–20% da dose total/dia.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Gasometria</div>
+        <p>pH 7,35–7,45 · PaCO₂ 35–45 · HCO₃ 22–26. AG = Na − (Cl + HCO₃); normal 8–12. MUDPILES = causa de AG↑. Winters: PaCO₂ esperado = (1,5 × HCO₃) + 8 ± 2. Bicarbonato em CAD só se pH &lt; 6,9.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">HbA1c e Correlações</div>
+        <p>eAG (mg/dL) = 28,7 × HbA1c − 46,7. HbA1c 7% ≈ 154 mg/dL; 8% ≈ 183. Alvo &lt; 7% para maioria. Limitações: hemoglobinopatias, anemia hemolítica/ferropriva, gravidez, DRC. Frutosamina é alternativa em gestante.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Próxima Aula</div>
+        <p><strong>Aula 06 — Interações Medicamentosas.</strong> Mecanismos farmacodinâmicos vs farmacocinéticos (CYP450, transportadores P-gp), sinergismo, antagonismo, casos clássicos (amiodarona + ciprofloxacino, captopril + espironolactona).</p>
+      </div>
+    </div>
+
+    <div class="alerta" style="margin-top:5px;">
+      <p><strong>Regra de ouro — Cálculos e Laboratório:</strong> sempre validar prescrição com cálculo independente; Cockcroft para dose, CKD-EPI para classificação; eAG = 28,7 × HbA1c − 46,7; conversão opioide com redução de 25–50%; AG = Na − (Cl + HCO₃); pH alterado → identificar primário → calcular compensação → calcular AG.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>FARM-FARMACOTERAP · Cálculos e Laboratório</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">10 / 10</span>
+  </div>
+</div>
+
+</body>
+</html>

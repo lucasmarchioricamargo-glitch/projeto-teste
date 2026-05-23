@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Farmácia — Bloco B5 Aula 20 | Extensivo ENARE 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap');
+  :root { --creme: #F6F4ED; --verde: #1F5C23; --amarelo: #C6D834; --escuro: #0C2B0E; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #d0d0d0; font-family: 'Bricolage Grotesque', sans-serif; }
+  .page { width: 210mm; height: 297mm; background: var(--creme); margin: 0 auto 12px; position: relative; overflow: hidden; page-break-after: always; }
+  .header { background: var(--verde); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .header-logo { display: flex; align-items: center; gap: 8px; }
+  .header-logo svg { width: 32px; height: 32px; }
+  .header-brand { display: flex; flex-direction: column; line-height: 1; }
+  .header-brand .marca { font-family: 'Playfair Display', serif; font-style: italic; color: #fff; font-size: 13px; letter-spacing: 0.5px; }
+  .header-brand .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 7px; letter-spacing: 1.5px; text-transform: uppercase; }
+  .header-info { text-align: right; }
+  .header-info .disciplina { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
+  .header-info .aula-ref { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.7); font-size: 8px; letter-spacing: 0.5px; }
+  .footer { position: absolute; bottom: 0; left: 0; right: 0; background: var(--verde); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .footer span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.6); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .footer .pg { color: var(--amarelo); font-weight: 400; }
+  .body { padding: 14px 18px 30px; height: calc(297mm - 52px - 22px); overflow: hidden; }
+  .capa-page { background: var(--verde); }
+  .capa-header { background: var(--creme); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .capa-header .marca { font-family: 'Playfair Display', serif; font-style: italic; color: var(--verde); font-size: 14px; }
+  .capa-header .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--verde); font-size: 7.5px; letter-spacing: 2px; text-transform: uppercase; }
+  .capa-body { padding: 28px 24px 0; display: flex; flex-direction: column; height: calc(297mm - 52px - 22px); }
+  .capa-eyebrow { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; }
+  .capa-titulo { font-family: 'Barlow Condensed', sans-serif; color: #fff; font-size: 50px; line-height: 0.95; text-transform: uppercase; letter-spacing: -0.5px; margin-bottom: 6px; }
+  .capa-titulo span { color: var(--amarelo); }
+  .capa-subtitulo { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; color: rgba(255,255,255,0.65); font-size: 12px; letter-spacing: 0.3px; margin-bottom: 22px; line-height: 1.5; }
+  .capa-badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+  .capa-badge { background: rgba(198,216,52,0.15); border: 1px solid var(--amarelo); color: var(--amarelo); font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 8px; border-radius: 2px; }
+  .capa-divider { width: 40px; height: 3px; background: var(--amarelo); margin-bottom: 20px; }
+  .capa-topicos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .capa-topico { display: flex; align-items: flex-start; gap: 7px; }
+  .capa-topico-num { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 18px; line-height: 1; min-width: 18px; }
+  .capa-topico-txt { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 400; color: rgba(255,255,255,0.8); font-size: 9.5px; line-height: 1.4; }
+  .capa-footer-strip { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.25); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .capa-footer-strip span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.45); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .secao-titulo { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 18px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid var(--amarelo); padding-bottom: 3px; margin-bottom: 9px; line-height: 1; }
+  .subsecao { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.5px; margin: 7px 0 3px; }
+  p { font-size: 9px; line-height: 1.55; color: #1a1a1a; margin-bottom: 4px; font-weight: 400; }
+  .destaque { background: var(--amarelo); color: var(--escuro); font-weight: 600; padding: 1px 4px; border-radius: 2px; font-size: 8.5px; }
+  .alerta { background: rgba(198,216,52,0.18); border-left: 3px solid var(--amarelo); padding: 5px 8px; margin: 5px 0; border-radius: 0 3px 3px 0; }
+  .alerta p { margin: 0; font-size: 8.5px; }
+  .alerta strong { color: var(--verde); }
+  table { width: 100%; border-collapse: collapse; margin: 5px 0; font-size: 8px; }
+  th { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; padding: 4px 6px; text-align: left; }
+  td { padding: 3px 6px; border-bottom: 1px solid rgba(31,92,35,0.12); vertical-align: top; line-height: 1.4; color: #1a1a1a; }
+  tr:nth-child(even) td { background: rgba(31,92,35,0.04); }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 5px 0; }
+  .card { background: rgba(31,92,35,0.06); border: 1px solid rgba(31,92,35,0.15); border-radius: 4px; padding: 7px 8px; }
+  .card-title { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 11px; text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 3px; }
+  .card p { font-size: 8px; line-height: 1.5; }
+  .questao-header { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; padding: 4px 10px; border-radius: 3px 3px 0 0; display: flex; justify-content: space-between; align-items: center; }
+  .questao-header .fonte { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; color: var(--amarelo); letter-spacing: 0.5px; }
+  .questao-body { border: 1px solid rgba(31,92,35,0.2); border-top: none; border-radius: 0 0 3px 3px; padding: 7px 10px; margin-bottom: 7px; }
+  .questao-enunciado { font-size: 8.5px; line-height: 1.55; color: #111; margin-bottom: 5px; font-weight: 500; }
+  .alternativas { list-style: none; }
+  .alternativas li { font-size: 8px; line-height: 1.5; padding: 2px 0; color: #222; display: flex; gap: 5px; }
+  .alternativas li .letra { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: var(--verde); font-size: 9px; min-width: 10px; }
+  .alternativas li.correta .letra { color: var(--amarelo); }
+  .alternativas li.correta { background: rgba(198,216,52,0.15); border-left: 2px solid var(--amarelo); padding-left: 4px; }
+  .gabarito-box { background: var(--verde); border-radius: 4px; padding: 8px 12px; margin: 6px 0; }
+  .gabarito-box .gab-title { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+  .gabarito-box p { color: rgba(255,255,255,0.9); font-size: 8px; line-height: 1.55; }
+  .gabarito-box strong { color: var(--amarelo); }
+  .sintese-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-top: 6px; }
+  .sintese-item { background: rgba(31,92,35,0.07); border-left: 3px solid var(--verde); padding: 5px 7px; border-radius: 0 3px 3px 0; }
+  .sintese-item .si-label { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px; }
+  .sintese-item p { font-size: 7.5px; line-height: 1.5; }
+  ul.lista { padding-left: 14px; margin: 3px 0; }
+  ul.lista li { font-size: 8.5px; line-height: 1.55; color: #1a1a1a; margin-bottom: 1px; }
+  @media print { body { background: none; } .page { margin: 0; box-shadow: none; } }
+</style>
+</head>
+<body>
+
+<div class="page capa-page">
+  <div class="capa-header">
+    <div style="display:flex;align-items:center;gap:8px;"><svg width="34" height="34" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#1F5C23"/></svg><div><div class="marca">Elite Treinamentos</div><div class="tagline">Extensivo ENARE 2026</div></div></div>
+    <div style="text-align:right;"><div style="font-family:'Barlow Condensed',sans-serif;color:var(--verde);font-size:11px;letter-spacing:1px;text-transform:uppercase;">Bloco B5 · Aula 20</div><div style="font-family:'Space Grotesk',sans-serif;font-weight:300;color:#888;font-size:7.5px;letter-spacing:0.5px;">Farmácia</div></div>
+  </div>
+  <div class="capa-body">
+    <div class="capa-eyebrow">Bloco B5 · FARM-ETICA · Aula 20 de 22</div>
+    <div class="capa-titulo">Ética <span>·<br>Código<br>CFF<br>724/2022</span></div>
+    <div class="capa-subtitulo">Vedações da publicidade, prescrição digital,<br>indução de troca, fotos antes/depois e dispensação ética</div>
+    <div class="capa-badge-row">
+      <div class="capa-badge">FARM-ETICA ★★</div>
+      <div class="capa-badge">Res. CFF 724/2022</div>
+      <div class="capa-badge">Publicidade · Mídia</div>
+      <div class="capa-badge">Vedações</div>
+    </div>
+    <div class="capa-divider"></div>
+    <div class="capa-topicos">
+      <div class="capa-topico"><div class="capa-topico-num">01</div><div class="capa-topico-txt">Histórico: do Cód. 1971 ao 724/2022</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">02</div><div class="capa-topico-txt">Princípios fundamentais</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">03</div><div class="capa-topico-txt">Vedações: publicidade, fotos, prescrição digital</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">04</div><div class="capa-topico-txt">Indução de troca de genérico e cosméticos</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">05</div><div class="capa-topico-txt">Sigilo, conflito de interesses</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">06</div><div class="capa-topico-txt">Processo ético-disciplinar e penalidades</div></div>
+    </div>
+  </div>
+  <div class="capa-footer-strip"><span>Extensivo ENARE 2026</span><span>Elite Treinamentos em Saúde</span><span>Página 1 de 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-ETICA</div><div class="aula-ref">Bloco B5 · Aula 20 · Histórico</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Histórico e Princípios do Código de Ética</div>
+
+    <p>A <strong>Resolução CFF 724/2022</strong> é o atual Código de Ética do Farmacêutico no Brasil. Substituiu a Res. 596/2014. Cobrado em ENARE 2025 em múltiplas questões (Q21, Q22, Q23, Q39, Q40) — bloco temático de 5 questões. Tendência clara de aumento de peso na prova.</p>
+
+    <div class="subsecao">Evolução Histórica</div>
+    <table>
+      <tr><th>Ano</th><th>Norma</th><th>Marco</th></tr>
+      <tr><td>1971</td><td>Res. CFF 14/1971</td><td>Primeiro Código de Ética estruturado</td></tr>
+      <tr><td>2004</td><td>Res. CFF 417/2004</td><td>Modernização; foco no cuidado</td></tr>
+      <tr><td>2014</td><td>Res. CFF 596/2014</td><td>Cuidado farmacêutico como princípio; alinhamento à Lei 13.021/2014</td></tr>
+      <tr><td><strong>2022</strong></td><td><strong>Res. CFF 724/2022</strong></td><td>Atual; incorpora dispensação digital, telefarmácia, mídias sociais, vacinação na farmácia, LGPD; alinha-se ao Estatuto do Idoso, da Pessoa com Deficiência, da Pessoa com Câncer, da Criança e Adolescente</td></tr>
+    </table>
+
+    <div class="subsecao">Estrutura da Res. CFF 724/2022</div>
+    <p>O Código está organizado em:</p>
+    <ul class="lista">
+      <li><strong>Capítulo I</strong> — Princípios fundamentais</li>
+      <li><strong>Capítulo II</strong> — Direitos do farmacêutico</li>
+      <li><strong>Capítulo III</strong> — Deveres</li>
+      <li><strong>Capítulo IV</strong> — Sigilo profissional</li>
+      <li><strong>Capítulo V</strong> — Relações com pessoas atendidas</li>
+      <li><strong>Capítulo VI</strong> — Relações com outros profissionais</li>
+      <li><strong>Capítulo VII</strong> — Relações com a instituição empregadora</li>
+      <li><strong>Capítulo VIII</strong> — Relações com o CFF/CRF</li>
+      <li><strong>Capítulo IX</strong> — Honorários profissionais</li>
+      <li><strong>Capítulo X</strong> — Publicidade e divulgação</li>
+      <li><strong>Capítulo XI</strong> — Inovações tecnológicas (telefarmácia, mídias)</li>
+      <li><strong>Capítulo XII</strong> — Pesquisa</li>
+      <li><strong>Capítulo XIII</strong> — Disposições gerais e penalidades</li>
+    </ul>
+
+    <div class="subsecao">Princípios Fundamentais (Cap. I)</div>
+    <ol>
+      <li>O exercício da farmácia tem como objetivo o cuidado à saúde e a vida humana</li>
+      <li>O farmacêutico atua em prol do uso racional e seguro de medicamentos</li>
+      <li>Deve respeitar a vida, a dignidade, a autonomia e o sigilo das pessoas atendidas</li>
+      <li>Aprimorar-se profissionalmente continuamente</li>
+      <li>Atuar com competência técnica, honestidade, prudência e responsabilidade</li>
+      <li>Não exercer a profissão se houver impedimento legal ou técnico</li>
+      <li>Recusar atos que violem a dignidade humana, a saúde ou o ambiente</li>
+      <li>Cooperar com a fiscalização do CRF/CFF</li>
+      <li>Atuar com integridade frente a conflitos de interesse</li>
+      <li>Respeitar a diversidade humana sem discriminação</li>
+    </ol>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> a Res. 724/2022 é o documento atual. Cobrança frequente em vedações específicas (publicidade, prescrição via WhatsApp, fotos antes/depois) e em princípios (cuidado, sigilo). Saber que Lei 13.021/2014 fundamenta a perspectiva ética da farmácia como estabelecimento de saúde.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-ETICA · Código CFF 724/2022</span><span>Extensivo ENARE 2026</span><span class="pg">2 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-ETICA</div><div class="aula-ref">Bloco B5 · Aula 20 · Vedações Principais</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Vedações — Publicidade, Mídia e Conduta</div>
+
+    <p>A FGV cobrou explicitamente vedações em <strong>4 questões</strong> da ENARE 2025 (Q21, Q22, Q23, Q39, Q40). É a área mais cobrada da ética farmacêutica.</p>
+
+    <div class="subsecao">Vedações em Publicidade (Cap. X)</div>
+    <ul class="lista">
+      <li><strong>Anunciar serviços profissionais com sensacionalismo ou promessas</strong></li>
+      <li><strong>Garantir resultado terapêutico</strong> ("emagrecimento garantido", "cura definitiva")</li>
+      <li><strong>Anunciar especialidade não reconhecida</strong> pelo CFF</li>
+      <li><strong>Comparar-se a outros profissionais</strong> de forma desvantajosa</li>
+      <li><strong>Permitir uso de imagem em publicidade enganosa</strong></li>
+      <li><strong>Anunciar valores ou descontos</strong> de forma a induzir consumo desnecessário</li>
+      <li><strong>Usar título acadêmico ou profissional não comprovado</strong></li>
+      <li><strong>Veicular antes/depois sem evidência científica</strong> e sem autorização do paciente</li>
+      <li><strong>Conteúdo divulgado em mídias sociais</strong> deve seguir o Manual de Publicidade do CFF</li>
+    </ul>
+
+    <div class="subsecao">Fotos Antes/Depois — ENARE 2025 (Q21)</div>
+    <p>A FGV cobrou explicitamente: o farmacêutico esteticista <em>não pode divulgar fotos antes/depois</em> de pacientes nas redes sociais ou em qualquer mídia, mesmo com autorização, exceto em contextos científicos/educativos com finalidade comprovada, sem identificação e com consentimento livre e esclarecido por escrito. A publicidade comercial com antes/depois é <strong>vedada</strong>.</p>
+
+    <div class="subsecao">Cosméticos "100% Seguros" / "Sem Reações" — ENARE 2025 (Q23)</div>
+    <p>É vedado afirmar que um produto cosmético é "100% seguro", "totalmente natural", "sem reações adversas" — não existe produto absolutamente seguro; sempre há possibilidade de reações idiossincráticas. A propaganda induz o consumidor a erro e configura propaganda enganosa (também violação ao Código de Defesa do Consumidor — CDC, Lei 8.078/1990).</p>
+
+    <div class="subsecao">Prescrição via WhatsApp / Dispensação por Foto de Receita</div>
+    <p>ENARE 2025 (Q22) abordou o tema da prescrição farmacêutica/dispensação por meios digitais informais. A Res. CFF 738/2023 e atualizações regulamentam a <em>telefarmácia</em> e a <em>prescrição farmacêutica eletrônica</em>:</p>
+    <ul class="lista">
+      <li>Prescrição farmacêutica eletrônica exige <strong>assinatura digital ICP-Brasil</strong> ou plataforma certificada</li>
+      <li><strong>WhatsApp comum</strong> não é meio legal para prescrição/dispensação — sem rastreabilidade, sem assinatura válida, sem garantia de identidade do emissor</li>
+      <li>A dispensação remota com base em <em>foto de receita</em> é permitida apenas se a receita original tem assinatura válida e é confirmada eletronicamente; caso de receita comum em papel via foto = não atende a requisitos legais</li>
+      <li>Aplicativos de teleorientação farmacêutica devem seguir Res. CFF 765/2024 + LGPD</li>
+    </ul>
+
+    <div class="subsecao">Indução de Troca de Genérico — ENARE 2025 (Q39)</div>
+    <p>É vedado ao farmacêutico (ou ao estabelecimento) <em>induzir o consumidor</em> a trocar o medicamento prescrito por outro, com base em <em>comissão, bonificação ou interesse comercial</em>. A intercambialidade entre referência e genérico é prevista pela Lei 9.787/1999, mas a substituição deve ser:</p>
+    <ul class="lista">
+      <li>Tecnicamente equivalente (mesmo princípio ativo, dose, forma, via)</li>
+      <li>Bioequivalente (genérico com BE comprovada)</li>
+      <li>Não baseada em incentivo comercial ao profissional</li>
+      <li>Comunicada ao paciente como opção</li>
+      <li>Excepcional quando há orientação do prescritor em contrário</li>
+    </ul>
+    <p>"Forçar" o paciente a aceitar a marca X (por margem) é violação ética. O Código de Ética veda compactuar com práticas que coloquem em risco a saúde por interesse comercial.</p>
+
+    <div class="alerta">
+      <p><strong>Pegadinha FGV:</strong> várias vedações são "casos do dia a dia da drogaria" — promessa de cura, antes/depois, "100% seguro", venda forçada de marca. Saber identificar é tarefa direta na prova.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-ETICA · Código CFF 724/2022</span><span>Extensivo ENARE 2026</span><span class="pg">3 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-ETICA</div><div class="aula-ref">Bloco B5 · Aula 20 · Sigilo e Conflito</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Sigilo Profissional e Conflito de Interesses</div>
+
+    <div class="subsecao">Sigilo Profissional (Cap. IV)</div>
+    <p>O farmacêutico tem dever de sigilo sobre tudo que souber em razão do exercício profissional (consulta, anamnese, prescrição, dispensação). Decorre da Constituição Federal (CF/88, art. 5º, X — privacidade) e do CC (art. 144 — sigilo de profissionais). Aplica-se mesmo após o fim da relação profissional ou morte do paciente.</p>
+
+    <ul class="lista">
+      <li><strong>Conteúdo do sigilo:</strong> dados clínicos, diagnósticos, condutas, medicamentos em uso, hábitos, condições financeiras, vida pessoal</li>
+      <li><strong>Equipe</strong>: toda equipe da farmácia/serviço também tem dever (técnico em farmácia, atendente, administrativo, estagiário, residente)</li>
+      <li><strong>Exceções legais</strong>: (1) consentimento do paciente; (2) imposição legal (notificação compulsória — TB, sífilis em gestante, violência, suicídio); (3) requisição judicial fundamentada; (4) proteção da vida do próprio paciente ou de terceiros (suicídio iminente, abuso)</li>
+      <li><strong>LGPD (Lei 13.709/2018)</strong>: dados pessoais sensíveis (saúde) só podem ser tratados com consentimento ou hipóteses legais específicas; o farmacêutico responde como agente de tratamento</li>
+    </ul>
+
+    <div class="subsecao">Casos Práticos de Sigilo</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Cenário Permitido</div>
+        <p>Comunicar à equipe assistencial (médico, enfermagem) informações relevantes para o cuidado integrado do paciente, no contexto da equipe multiprofissional, é <em>parte do exercício profissional</em>. Documentar em prontuário compartilhado.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Cenário Vedado</div>
+        <p>Comentar com colegas fora do contexto profissional sobre paciente conhecido; postar caso em redes sociais (mesmo "anonimizado"); fornecer dados a familiares sem autorização do paciente capaz; vender dados ou estatísticas individualizadas a terceiros.</p>
+      </div>
+    </div>
+
+    <div class="subsecao">Conflito de Interesses</div>
+    <p>O Código veda que o farmacêutico compactue com práticas que tenham interesse comercial em detrimento da saúde:</p>
+    <ul class="lista">
+      <li>Receber comissão, bonificação, descontos ou outras vantagens da indústria farmacêutica</li>
+      <li>Aceitar viagens, presentes, jantares que comprometam a independência técnica</li>
+      <li>Participar de "clubes" de prescrição ou dispensação atrelados a marcas</li>
+      <li>Direcionar o paciente a estabelecimento por interesse pessoal/comercial</li>
+      <li>Especificar marca de forma a beneficiar fornecedor sem justificativa técnica</li>
+      <li>Atuar em conflito com empregador sem declaração</li>
+    </ul>
+
+    <div class="subsecao">Honorários Profissionais (Cap. IX)</div>
+    <p>O farmacêutico tem direito a remuneração digna pelos seus serviços. É vedado:</p>
+    <ul class="lista">
+      <li>Cobrar honorário fora dos valores estabelecidos pelo CRF/CFF (referência)</li>
+      <li>Dividir honorário com profissional que não participou da assistência</li>
+      <li>Receber por consultoria sem o devido contrato</li>
+      <li>"Vender" prescrição farmacêutica como produto comercial sem cuidado clínico associado</li>
+    </ul>
+
+    <div class="subsecao">Relação com Outros Profissionais (Cap. VI)</div>
+    <ul class="lista">
+      <li>Respeitar a autonomia profissional dos demais (médico, enfermeiro, etc.)</li>
+      <li>Comunicar interações, RAMs, conduta sugerida com base técnica e respeitosa</li>
+      <li>Não criticar publicamente outros profissionais; em divergência, usar canais técnicos/instituicionais</li>
+      <li>Cooperar em equipes multiprofissionais (modelo da residência multi)</li>
+      <li>Atuar dentro do escopo de sua competência, sem invadir esferas de outras profissões</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Mensagem-chave:</strong> o farmacêutico não é "vendedor" — é profissional de saúde com obrigação fiduciária para com o paciente. Toda decisão deve passar pelo crivo "isso beneficia o paciente?" antes do "isso beneficia comercialmente o estabelecimento?". O CRF é o órgão fiscalizador, com poder de aplicar penalidades disciplinares.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-ETICA · Código CFF 724/2022</span><span>Extensivo ENARE 2026</span><span class="pg">4 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-ETICA</div><div class="aula-ref">Bloco B5 · Aula 20 · Processo Ético</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Processo Ético-Disciplinar</div>
+
+    <div class="subsecao">Penalidades Aplicáveis (Art. 86)</div>
+    <table>
+      <tr><th>Penalidade</th><th>Aplicação</th></tr>
+      <tr><td><strong>Advertência</strong></td><td>Confidencial; falta leve sem prejuízo grave</td></tr>
+      <tr><td><strong>Censura confidencial</strong></td><td>Em carta reservada</td></tr>
+      <tr><td><strong>Censura pública</strong></td><td>Publicação em imprensa oficial ou meios de divulgação do CFF/CRF</td></tr>
+      <tr><td><strong>Suspensão do exercício profissional</strong></td><td>De 1 mês a 1 ano; falta grave</td></tr>
+      <tr><td><strong>Cassação do exercício</strong></td><td>Mais grave; impede o exercício; aplicada em crimes contra a profissão, repetição de faltas graves, reincidência</td></tr>
+    </table>
+
+    <div class="subsecao">Fases do Processo Ético-Disciplinar</div>
+    <ol>
+      <li><strong>Recebimento da denúncia / representação</strong>: por pessoa, profissional, CRF, ouvidoria</li>
+      <li><strong>Análise preliminar</strong>: comissão de ética avalia se há indícios suficientes</li>
+      <li><strong>Instauração</strong>: processo formal com nº de protocolo</li>
+      <li><strong>Defesa do indiciado</strong>: ampla defesa e contraditório (CF/88, art. 5º, LV)</li>
+      <li><strong>Instrução</strong>: oitiva de testemunhas, perícias, juntada de documentos</li>
+      <li><strong>Julgamento</strong>: sessão do CRF, com voto de relator e plenário</li>
+      <li><strong>Recurso</strong>: ao Plenário do CRF e em segunda instância ao CFF</li>
+      <li><strong>Execução</strong>: aplicação da penalidade; publicação se for o caso</li>
+    </ol>
+
+    <div class="subsecao">Direitos do Indiciado</div>
+    <ul class="lista">
+      <li>Ser comunicado formalmente da denúncia</li>
+      <li>Ter acesso aos autos</li>
+      <li>Apresentar defesa por escrito + verbal</li>
+      <li>Constituir advogado</li>
+      <li>Apresentar testemunhas e provas</li>
+      <li>Recurso à decisão</li>
+      <li>Sigilo do processo durante a tramitação</li>
+    </ul>
+
+    <div class="subsecao">Crimes Profissionais Frequentes</div>
+    <ul class="lista">
+      <li><strong>Falsificação de receituário ou registro</strong> (Código Penal, art. 297–298)</li>
+      <li><strong>Exercício ilegal da profissão</strong> (CP, art. 282)</li>
+      <li><strong>Dispensação de medicamento controlado sem receita</strong> (Lei 6.368/1976 → Lei 11.343/2006)</li>
+      <li><strong>Adulteração de medicamento</strong> (Lei 6.437/1977; ANVISA)</li>
+      <li><strong>Negligência profissional com dano ao paciente</strong> (Código Civil, art. 186 e 927; CP, art. 121 §3 e 129 §6 em casos graves)</li>
+      <li><strong>Violação de sigilo</strong> (CP, art. 154)</li>
+    </ul>
+
+    <div class="subsecao">Habilitação e Responsabilidade Técnica</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Habilitação Profissional</div>
+        <p>Registro no CRF é obrigatório (Lei 3.820/1960). Anuidade em dia. Atualização cadastral. Especialização reconhecida pelo CFF gera RQE (Registro de Qualificação de Especialidade) — Res. CFF 590/2014.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Responsabilidade Técnica</div>
+        <p>O farmacêutico responsável técnico (RT) é o profissional registrado no CRF que responde pelo estabelecimento. Lei 13.021/2014 exige presença em horário integral. RT responde solidariamente por irregularidades técnicas; pode haver RT principal e substituto registrados.</p>
+      </div>
+    </div>
+
+    <div class="subsecao">Limites da Atuação Profissional</div>
+    <p>O Código de Ética orienta atuar dentro do escopo de competência:</p>
+    <ul class="lista">
+      <li>Não exercer atividade para a qual não tem qualificação técnica (ex.: prescrever benzodiazepínico, vedado pela Res. 586/2013)</li>
+      <li>Não delegar a profissional não habilitado atividade privativa</li>
+      <li>Não emitir laudo, diagnóstico ou parecer fora do escopo profissional</li>
+      <li>Manter-se atualizado (educação continuada)</li>
+      <li>Recusar atividades que comprometam a segurança ou a dignidade</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> conhecer as 5 penalidades (advertência → censura confidencial → censura pública → suspensão → cassação). Saber que o processo segue rito de ampla defesa. Distinguir infração ética (CFF/CRF) de crime (Justiça comum); muitos atos configuram ambos.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-ETICA · Código CFF 724/2022</span><span>Extensivo ENARE 2026</span><span class="pg">5 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-ETICA</div><div class="aula-ref">Bloco B5 · Aula 20 · Aplicações em Mídias Digitais</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Mídias Digitais, Telefarmácia e LGPD</div>
+
+    <div class="subsecao">Manual de Publicidade do CFF</div>
+    <p>O CFF publica regularmente o <strong>Manual de Boas Práticas para Publicidade e Divulgação Profissional</strong>, com orientações específicas para redes sociais e plataformas digitais. Princípios:</p>
+    <ul class="lista">
+      <li>Identificação clara como farmacêutico (nome, CRF, endereço profissional)</li>
+      <li>Conteúdo técnico baseado em evidência; sem promessas</li>
+      <li>Sem sensacionalismo; sem fotos antes/depois com finalidade comercial</li>
+      <li>Sem comercialização direta nas redes sem registro como estabelecimento</li>
+      <li>Respeitar direitos autorais</li>
+      <li>Não usar imagem de paciente sem consentimento livre e esclarecido por escrito</li>
+      <li>Não fazer publicidade comparativa desvantajosa</li>
+      <li>Não divulgar especialidade não reconhecida pelo CFF</li>
+    </ul>
+
+    <div class="subsecao">Telefarmácia (Res. CFF 738/2023 + 765/2024)</div>
+    <table>
+      <tr><th>Modalidade</th><th>Definição</th></tr>
+      <tr><td>Teleorientação</td><td>Orientação farmacêutica remota; orientações de uso, automedicação, dúvidas; sem prescrição</td></tr>
+      <tr><td>Telerregulação</td><td>Apoio à equipe de saúde local; matriciamento à distância</td></tr>
+      <tr><td>Teletriagem</td><td>Identificação de risco; encaminhamento a serviço presencial</td></tr>
+      <tr><td>Telemonitoramento</td><td>Acompanhamento de seguimento farmacoterapêutico (HAS, DM, anticoagulação)</td></tr>
+      <tr><td>Teleconsultoria farmacêutica</td><td>Consultoria entre profissionais ou serviços</td></tr>
+      <tr><td>Telediagnóstico</td><td>NÃO se aplica ao farmacêutico (escopo médico)</td></tr>
+    </table>
+
+    <p><strong>Requisitos para telefarmácia:</strong> registro do farmacêutico responsável; plataforma com segurança (LGPD); identificação do paciente; consentimento informado; documentação em prontuário eletrônico; possibilidade de presencial quando necessário; emissão de prescrição com assinatura digital ICP-Brasil quando aplicável.</p>
+
+    <div class="subsecao">LGPD (Lei 13.709/2018) e Farmácia</div>
+    <p>Dados de saúde são <em>dados pessoais sensíveis</em> (LGPD, art. 5º, II). O farmacêutico responde como <strong>agente de tratamento</strong> (controlador ou operador) e deve:</p>
+    <ul class="lista">
+      <li>Obter base legal para tratamento (consentimento, execução de contrato, proteção da vida, exercício de atribuição legal/regulatória)</li>
+      <li>Garantir segurança técnica (sistemas com controle de acesso, criptografia)</li>
+      <li>Não compartilhar dados sem consentimento ou base legal específica</li>
+      <li>Permitir acesso, correção, portabilidade e eliminação pelo titular</li>
+      <li>Notificar incidentes de segurança à ANPD (Autoridade Nacional de Proteção de Dados)</li>
+      <li>Designar Encarregado (DPO) em instituições maiores</li>
+    </ul>
+
+    <div class="subsecao">Casos Práticos — Mídia Social</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Permitido</div>
+        <p>Compartilhar conteúdo educativo sobre uso correto de medicamentos; explicar interações; promover vacinas; alertar sobre RAMs comuns; mostrar atendimento (estrutura) sem identificação de pacientes; identificar-se com CRF e endereço; dar entrevista a veículos de comunicação.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Vedado</div>
+        <p>Postar antes/depois de procedimento estético; postar foto de receita ou de paciente; afirmar "100% seguro"; "garanto cura"; vender on-line sem autorização sanitária; publicar dados clínicos identificáveis; promover desconto agressivo de fármaco sob prescrição.</p>
+      </div>
+    </div>
+
+    <div class="alerta">
+      <p><strong>Tendência 2026:</strong> a FGV ampliará o tema com prescrição digital, telefarmácia, LGPD e mídias sociais. Em 2025 já cobrou 5 questões em ética/digital. Esperar conteúdo semelhante ou aprofundado em 2026.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-ETICA · Código CFF 724/2022</span><span>Extensivo ENARE 2026</span><span class="pg">6 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-ETICA</div><div class="aula-ref">Bloco B5 · Aula 20 · Questões ENARE</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 01</span><span class="fonte">Publicidade · Fotos · NC: Compreensão</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Farmacêutico esteticista divulga em redes sociais fotos "antes e depois" de pacientes que fizeram tratamento facial em sua clínica, com a finalidade de captação de clientela. Considerando a Res. CFF 724/2022, esse comportamento é:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Permitido, pois há autorização verbal dos pacientes.</span></li>
+        <li><span class="letra">B</span><span>Permitido, pois publica nas redes sociais pessoais e não nas profissionais.</span></li>
+        <li class="correta"><span class="letra">C</span><span>VEDADO. A publicidade comercial com fotos "antes e depois" é proibida pelo Código de Ética; tais imagens só podem ser usadas em contextos científicos/educativos, com consentimento livre e esclarecido por escrito, e sem finalidade comercial.</span></li>
+        <li><span class="letra">D</span><span>Permitido, desde que faça blur (borrão) no rosto dos pacientes.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — C</div>
+      <p><strong>Por que C está correta:</strong> a Res. CFF 724/2022 (Capítulo X — Publicidade) veda a divulgação de imagens "antes/depois" com finalidade comercial ou de captação de clientela. A justificativa é dupla: (a) sensacionalismo e indução de expectativa de resultado garantido, em violação aos princípios éticos; (b) exposição da imagem do paciente em contexto comercial. Mesmo com consentimento, a publicação comercial é vedada — o consentimento legítima apenas o uso científico/educativo. Cobrado em ENARE 2025 (Q21).</p>
+      <p><strong>Por que as outras erram:</strong> A — autorização verbal é insuficiente; o consentimento exigido é por escrito e para fim específico não-comercial · B — não há distinção entre redes "pessoais" e "profissionais" para fim ético quando o profissional se identifica como farmacêutico · D — blur não retira o caráter comercial e de captação.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-ETICA · Código CFF 724/2022</span><span>Extensivo ENARE 2026</span><span class="pg">7 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-ETICA</div><div class="aula-ref">Bloco B5 · Aula 20 · Questões ENARE</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 02</span><span class="fonte">Indução de Troca · NC: Análise</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Em drogaria comunitária, o atendente farmacêutico recebe um cliente com prescrição para sinvastatina 20 mg. Em estoque, há o medicamento de referência (Zocor®) e os genéricos. O laboratório do genérico X paga bonificação ao estabelecimento por unidades vendidas. O farmacêutico orienta o cliente: "esse genérico X é o melhor; é com ele que eu sempre dispenso. Os outros nem são confiáveis." Esse comportamento configura:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Conduta correta; o farmacêutico tem autonomia para escolher a marca.</span></li>
+        <li class="correta"><span class="letra">B</span><span>VIOLAÇÃO ética — indução de troca por interesse comercial, sem base técnica; o Código de Ética veda compactuar com práticas comerciais que comprometam a relação com o paciente. A intercambialidade prevista na Lei 9.787/1999 exige equivalência técnica e BE, não direcionamento por bonificação.</span></li>
+        <li><span class="letra">C</span><span>Conduta correta, desde que a bonificação seja transparente.</span></li>
+        <li><span class="letra">D</span><span>Permitida apenas se o cliente concordar.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> a Res. CFF 724/2022 veda explicitamente práticas que envolvam <em>indução de consumo por interesse comercial</em> em detrimento do paciente. Mesmo que a intercambialidade entre genéricos seja prevista pela Lei 9.787/1999, ela deve basear-se em equivalência técnica (mesmo princípio ativo, dose, forma, via, BE comprovada) — não em bonificação ao estabelecimento ou ao profissional. Adicionalmente, afirmar que "os outros nem são confiáveis" é desinformação falsa (todos os genéricos registrados são bioequivalentes pela ANVISA) e configura propaganda enganosa.</p>
+      <p><strong>Por que as outras erram:</strong> A — autonomia profissional não inclui direcionamento por interesse comercial · C — bonificação transparente continua sendo conflito de interesse · D — concordância do cliente após informação distorcida não legitima a prática.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-ETICA · Código CFF 724/2022</span><span>Extensivo ENARE 2026</span><span class="pg">8 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-ETICA</div><div class="aula-ref">Bloco B5 · Aula 20 · Gabarito Integrado</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 03</span><span class="fonte">Penalidades · NC: Compreensão</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Sobre as penalidades disciplinares previstas no Código de Ética (Res. CFF 724/2022), assinale a sequência CORRETA, da mais leve à mais grave:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Suspensão → Cassação → Advertência → Censura.</span></li>
+        <li class="correta"><span class="letra">B</span><span>Advertência → Censura confidencial → Censura pública → Suspensão do exercício → Cassação do exercício.</span></li>
+        <li><span class="letra">C</span><span>Cassação → Suspensão → Censura → Advertência.</span></li>
+        <li><span class="letra">D</span><span>Advertência → Suspensão → Censura → Cassação.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Sequência correta (da mais leve à mais grave):</strong></p>
+      <ol>
+        <li><strong>Advertência</strong> — confidencial; falta leve</li>
+        <li><strong>Censura confidencial</strong> — em carta reservada</li>
+        <li><strong>Censura pública</strong> — divulgação em meios oficiais</li>
+        <li><strong>Suspensão do exercício profissional</strong> — de 1 mês a 1 ano</li>
+        <li><strong>Cassação do exercício profissional</strong> — impede o exercício permanentemente</li>
+      </ol>
+      <p>Aplicação considera: gravidade da infração, dano causado, antecedentes do profissional, dolo ou culpa, reincidência, circunstâncias atenuantes/agravantes. Toda penalidade segue rito de ampla defesa e contraditório, com possibilidade de recurso.</p>
+    </div>
+
+    <div class="subsecao" style="margin-top:6px;">Gabarito Comentado — Análise Integrada</div>
+    <table>
+      <tr><th>Questão</th><th>Gabarito</th><th>Tema</th><th>Conceito-Chave</th></tr>
+      <tr><td><strong>01</strong></td><td><span class="destaque">C</span></td><td>Fotos antes/depois</td><td>Vedação comercial; uso só científico/educativo com consentimento escrito</td></tr>
+      <tr><td><strong>02</strong></td><td><span class="destaque">B</span></td><td>Indução de Troca</td><td>Bonificação configura conflito de interesse; afirmar "outros não são confiáveis" é desinformação</td></tr>
+      <tr><td><strong>03</strong></td><td><span class="destaque">B</span></td><td>Penalidades</td><td>Advertência → Censura conf. → Censura pública → Suspensão → Cassação</td></tr>
+    </table>
+  </div>
+  <div class="footer"><span>FARM-ETICA · Código CFF 724/2022</span><span>Extensivo ENARE 2026</span><span class="pg">9 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-ETICA</div><div class="aula-ref">Bloco B5 · Aula 20 · Síntese</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Síntese — Ética Profissional</div>
+    <div class="sintese-grid">
+      <div class="sintese-item">
+        <div class="si-label">Código CFF 724/2022</div>
+        <p>Atual Código de Ética; substituiu Res. 596/2014. 13 capítulos. Princípios: cuidado à vida, uso racional, dignidade, autonomia, sigilo, aprimoramento, competência técnica, integridade, diversidade. Inclui telefarmácia e mídias.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Vedações em Publicidade</div>
+        <p>Não anunciar com sensacionalismo; não garantir resultado; não comparar-se desvantajosamente; não usar antes/depois comercial; não anunciar "100% seguro"; não usar título não comprovado; respeitar Manual de Publicidade CFF.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Vedações em Conduta</div>
+        <p>Não prescrever controlado (Res. 586); não dispensar via WhatsApp informal; não induzir troca por bonificação; não dispensar sem receita; não desvalorizar genéricos para favorecer marca; não dividir honorário sem participação.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Sigilo + LGPD</div>
+        <p>Sigilo profissional perpetua-se após o fim da relação. Exceções: consentimento, dever legal, proteção da vida. LGPD: dados sensíveis; base legal; segurança; ANPD para incidentes. DPO em instituições.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Penalidades</div>
+        <p>Advertência → Censura confidencial → Censura pública → Suspensão (1 mês a 1 ano) → Cassação. Ampla defesa + contraditório. Recurso ao CFF.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Próxima Aula</div>
+        <p><strong>Aula 21 — Vigilância Sanitária e Tecnovigilância.</strong> ANVISA, Rede Sentinela, Tecnovigilância, notificação de eventos adversos com produtos para saúde, queixa técnica.</p>
+      </div>
+    </div>
+    <div class="alerta" style="margin-top:5px;">
+      <p><strong>Regra de ouro — Ética no ENARE:</strong> Res. CFF 724/2022 é o atual; substituiu 596/2014. Vedações cobradas em 2025: antes/depois (Q21), prescrição digital (Q22), "100% seguro" (Q23), indução genérico (Q39), publicidade (Q40). 5 penalidades em ordem crescente. LGPD = dados sensíveis. Telefarmácia regulamentada (Res. 738/2023 + 765/2024).</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-ETICA · Código CFF 724/2022</span><span>Extensivo ENARE 2026</span><span class="pg">10 / 10</span></div>
+</div>
+
+</body>
+</html>

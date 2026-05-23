@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Farmácia — Bloco B5 Aula 13 | Extensivo ENARE 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap');
+  :root { --creme: #F6F4ED; --verde: #1F5C23; --amarelo: #C6D834; --escuro: #0C2B0E; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #d0d0d0; font-family: 'Bricolage Grotesque', sans-serif; }
+  .page { width: 210mm; height: 297mm; background: var(--creme); margin: 0 auto 12px; position: relative; overflow: hidden; page-break-after: always; }
+  .header { background: var(--verde); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .header-logo { display: flex; align-items: center; gap: 8px; }
+  .header-logo svg { width: 32px; height: 32px; }
+  .header-brand { display: flex; flex-direction: column; line-height: 1; }
+  .header-brand .marca { font-family: 'Playfair Display', serif; font-style: italic; color: #fff; font-size: 13px; letter-spacing: 0.5px; }
+  .header-brand .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 7px; letter-spacing: 1.5px; text-transform: uppercase; }
+  .header-info { text-align: right; }
+  .header-info .disciplina { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
+  .header-info .aula-ref { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.7); font-size: 8px; letter-spacing: 0.5px; }
+  .footer { position: absolute; bottom: 0; left: 0; right: 0; background: var(--verde); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .footer span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.6); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .footer .pg { color: var(--amarelo); font-weight: 400; }
+  .body { padding: 14px 18px 30px; height: calc(297mm - 52px - 22px); overflow: hidden; }
+  .capa-page { background: var(--verde); }
+  .capa-header { background: var(--creme); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .capa-header .marca { font-family: 'Playfair Display', serif; font-style: italic; color: var(--verde); font-size: 14px; }
+  .capa-header .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--verde); font-size: 7.5px; letter-spacing: 2px; text-transform: uppercase; }
+  .capa-body { padding: 28px 24px 0; display: flex; flex-direction: column; height: calc(297mm - 52px - 22px); }
+  .capa-eyebrow { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; }
+  .capa-titulo { font-family: 'Barlow Condensed', sans-serif; color: #fff; font-size: 50px; line-height: 0.95; text-transform: uppercase; letter-spacing: -0.5px; margin-bottom: 6px; }
+  .capa-titulo span { color: var(--amarelo); }
+  .capa-subtitulo { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; color: rgba(255,255,255,0.65); font-size: 12px; letter-spacing: 0.3px; margin-bottom: 22px; line-height: 1.5; }
+  .capa-badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+  .capa-badge { background: rgba(198,216,52,0.15); border: 1px solid var(--amarelo); color: var(--amarelo); font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 8px; border-radius: 2px; }
+  .capa-divider { width: 40px; height: 3px; background: var(--amarelo); margin-bottom: 20px; }
+  .capa-topicos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .capa-topico { display: flex; align-items: flex-start; gap: 7px; }
+  .capa-topico-num { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 18px; line-height: 1; min-width: 18px; }
+  .capa-topico-txt { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 400; color: rgba(255,255,255,0.8); font-size: 9.5px; line-height: 1.4; }
+  .capa-footer-strip { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.25); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .capa-footer-strip span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.45); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .secao-titulo { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 18px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid var(--amarelo); padding-bottom: 3px; margin-bottom: 9px; line-height: 1; }
+  .subsecao { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.5px; margin: 7px 0 3px; }
+  p { font-size: 9px; line-height: 1.55; color: #1a1a1a; margin-bottom: 4px; font-weight: 400; }
+  .destaque { background: var(--amarelo); color: var(--escuro); font-weight: 600; padding: 1px 4px; border-radius: 2px; font-size: 8.5px; }
+  .alerta { background: rgba(198,216,52,0.18); border-left: 3px solid var(--amarelo); padding: 5px 8px; margin: 5px 0; border-radius: 0 3px 3px 0; }
+  .alerta p { margin: 0; font-size: 8.5px; }
+  .alerta strong { color: var(--verde); }
+  table { width: 100%; border-collapse: collapse; margin: 5px 0; font-size: 8px; }
+  th { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; padding: 4px 6px; text-align: left; }
+  td { padding: 3px 6px; border-bottom: 1px solid rgba(31,92,35,0.12); vertical-align: top; line-height: 1.4; color: #1a1a1a; }
+  tr:nth-child(even) td { background: rgba(31,92,35,0.04); }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 5px 0; }
+  .card { background: rgba(31,92,35,0.06); border: 1px solid rgba(31,92,35,0.15); border-radius: 4px; padding: 7px 8px; }
+  .card-title { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 11px; text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 3px; }
+  .card p { font-size: 8px; line-height: 1.5; }
+  .questao-header { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; padding: 4px 10px; border-radius: 3px 3px 0 0; display: flex; justify-content: space-between; align-items: center; }
+  .questao-header .fonte { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; color: var(--amarelo); letter-spacing: 0.5px; }
+  .questao-body { border: 1px solid rgba(31,92,35,0.2); border-top: none; border-radius: 0 0 3px 3px; padding: 7px 10px; margin-bottom: 7px; }
+  .questao-enunciado { font-size: 8.5px; line-height: 1.55; color: #111; margin-bottom: 5px; font-weight: 500; }
+  .alternativas { list-style: none; }
+  .alternativas li { font-size: 8px; line-height: 1.5; padding: 2px 0; color: #222; display: flex; gap: 5px; }
+  .alternativas li .letra { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: var(--verde); font-size: 9px; min-width: 10px; }
+  .alternativas li.correta .letra { color: var(--amarelo); }
+  .alternativas li.correta { background: rgba(198,216,52,0.15); border-left: 2px solid var(--amarelo); padding-left: 4px; }
+  .gabarito-box { background: var(--verde); border-radius: 4px; padding: 8px 12px; margin: 6px 0; }
+  .gabarito-box .gab-title { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+  .gabarito-box p { color: rgba(255,255,255,0.9); font-size: 8px; line-height: 1.55; }
+  .gabarito-box strong { color: var(--amarelo); }
+  .sintese-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-top: 6px; }
+  .sintese-item { background: rgba(31,92,35,0.07); border-left: 3px solid var(--verde); padding: 5px 7px; border-radius: 0 3px 3px 0; }
+  .sintese-item .si-label { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px; }
+  .sintese-item p { font-size: 7.5px; line-height: 1.5; }
+  ul.lista { padding-left: 14px; margin: 3px 0; }
+  ul.lista li { font-size: 8.5px; line-height: 1.55; color: #1a1a1a; margin-bottom: 1px; }
+  @media print { body { background: none; } .page { margin: 0; box-shadow: none; } }
+</style>
+</head>
+<body>
+
+<div class="page capa-page">
+  <div class="capa-header">
+    <div style="display:flex;align-items:center;gap:8px;"><svg width="34" height="34" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#1F5C23"/></svg><div><div class="marca">Elite Treinamentos</div><div class="tagline">Extensivo ENARE 2026</div></div></div>
+    <div style="text-align:right;"><div style="font-family:'Barlow Condensed',sans-serif;color:var(--verde);font-size:11px;letter-spacing:1px;text-transform:uppercase;">Bloco B5 · Aula 13</div><div style="font-family:'Space Grotesk',sans-serif;font-weight:300;color:#888;font-size:7.5px;letter-spacing:0.5px;">Farmácia</div></div>
+  </div>
+  <div class="capa-body">
+    <div class="capa-eyebrow">Bloco B5 · FARM-FARMTEC · Aula 13 de 22</div>
+    <div class="capa-titulo">CMI <span>·<br>Áreas<br>Limpas<br>Hospita-<br>lares</span></div>
+    <div class="capa-subtitulo">Farmacotécnica II: CMIs, ISO 14644-1, pressão positiva/negativa,<br>segregação NP vs quimioterápicos e fluxo de trabalho</div>
+    <div class="capa-badge-row">
+      <div class="capa-badge">FARM-FARMTEC ★★</div>
+      <div class="capa-badge">ISO 14644-1</div>
+      <div class="capa-badge">RDC 220/2004</div>
+      <div class="capa-badge">CMI · Pressão Pos./Neg.</div>
+    </div>
+    <div class="capa-divider"></div>
+    <div class="capa-topicos">
+      <div class="capa-topico"><div class="capa-topico-num">01</div><div class="capa-topico-txt">Classes de áreas limpas: ISO 14644-1</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">02</div><div class="capa-topico-txt">CMI: fluxo laminar horizontal vs vertical</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">03</div><div class="capa-topico-txt">Pressão positiva (NP) vs negativa (quimio)</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">04</div><div class="capa-topico-txt">RDC 220/2004 — Manipulação de antineoplásicos</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">05</div><div class="capa-topico-txt">Paramentação, fluxos e segurança ocupacional</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">06</div><div class="capa-topico-txt">Resíduos químicos e descarte</div></div>
+    </div>
+  </div>
+  <div class="capa-footer-strip"><span>Extensivo ENARE 2026</span><span>Elite Treinamentos em Saúde</span><span>Página 1 de 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-FARMTEC</div><div class="aula-ref">Bloco B5 · Aula 13 · Classes ISO</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Áreas Limpas — Classificação ISO 14644-1</div>
+
+    <p>A <strong>ISO 14644-1</strong> classifica as áreas limpas pela <em>concentração máxima de partículas</em> por m³ de ar, baseada em tamanhos de partícula. O farmacêutico hospitalar deve dominar as classes mais relevantes para preparações estéreis e antineoplásicas. ENARE 2025 (Q48, Q50, Q85) cobrou explicitamente o tema.</p>
+
+    <div class="subsecao">Classes Mais Relevantes em Farmácia</div>
+    <table>
+      <tr><th>Classe ISO</th><th>Partículas (≥ 0,5 µm/m³)</th><th>Padrão antigo (FED 209E)</th><th>Aplicação</th></tr>
+      <tr><td><strong>ISO 5</strong></td><td>≤ 3.520</td><td>Classe 100</td><td>Zona crítica — área de trabalho da CMI (manipulação estéril direta)</td></tr>
+      <tr><td><strong>ISO 7</strong></td><td>≤ 352.000</td><td>Classe 10.000</td><td>Sala onde a CMI está instalada (antessala / área limpa secundária)</td></tr>
+      <tr><td><strong>ISO 8</strong></td><td>≤ 3.520.000</td><td>Classe 100.000</td><td>Antecâmara / vestiário; ambiente farmacêutico geral em estéreis</td></tr>
+    </table>
+
+    <div class="subsecao">Fundamentos das Áreas Limpas</div>
+    <ul class="lista">
+      <li><strong>Filtros HEPA (High Efficiency Particulate Air)</strong>: retêm 99,97% de partículas ≥ 0,3 µm. Padrão H13 ou H14 em farmácia</li>
+      <li><strong>Filtros ULPA</strong> (Ultra Low Penetration Air): retêm 99,999% — uso em áreas mais críticas</li>
+      <li><strong>Trocas de ar/hora</strong>: ISO 7 = 60–90 trocas/h; ISO 8 = 20–40 trocas/h</li>
+      <li><strong>Diferencial de pressão</strong>: ≥ 10 Pa entre áreas adjacentes (estabilidade dinâmica)</li>
+      <li><strong>Temperatura e umidade</strong>: T 18–22 °C; UR 45–65%</li>
+      <li><strong>Monitorização periódica</strong>: contagem de partículas, esterilidade, integridade dos filtros (DOP test)</li>
+    </ul>
+
+    <div class="subsecao">Layout Padrão de Área Limpa Hospitalar</div>
+    <p>Sequência espacial típica: <strong>ambiente externo → vestiário (ISO 8) → antessala (ISO 8 ou 7) → sala da CMI (ISO 7) → CMI (ISO 5 zona crítica)</strong>. O fluxo deve ser unidirecional: matéria-prima entra → produto sai por porta separada quando possível. Pessoal entra e sai por vestiário com paramentação progressiva.</p>
+
+    <div class="subsecao">Por Que Tanta Rigorosidade?</div>
+    <p>Cada classe ISO mais permissiva aumenta drasticamente o risco de contaminação. Em preparações injetáveis (NPT, antibiótico IV, quimio), a contaminação microbiológica resulta em sepse no paciente — desfecho catastrófico. Em antineoplásicos, contaminação <em>cruzada</em> (entre fármacos) causa erro de dose com toxicidade grave. Por isso, áreas limpas estruturadas + paramentação + validação contínua.</p>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> ISO 5 = zona crítica da CMI; ISO 7 = sala onde fica a CMI; ISO 8 = antecâmara/vestiário. Diferencial de pressão padrão = 10 Pa entre adjacentes. Filtros HEPA H13/H14.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-FARMTEC · CMI</span><span>Extensivo ENARE 2026</span><span class="pg">2 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-FARMTEC</div><div class="aula-ref">Bloco B5 · Aula 13 · CMI</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Cabine de Manipulação de Injetáveis (CMI)</div>
+
+    <p>A <strong>CMI</strong> é o equipamento central da manipulação estéril hospitalar. Pode ser de fluxo laminar <em>horizontal</em> (LFH — uso em preparações estéreis "limpas", ex.: NPT) ou <em>vertical</em> (LFV / cabine de segurança biológica CSB — uso em preparações que oferecem risco de exposição ao manipulador, ex.: antineoplásicos, antibióticos perigosos).</p>
+
+    <div class="subsecao">Fluxo Laminar Horizontal (LFH)</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Princípio</div>
+        <p>Ar filtrado por HEPA flui <strong>horizontalmente</strong> do fundo para a frente da cabine, varrendo a área de trabalho. Pressão <strong>positiva</strong> em relação ao ambiente externo. Protege o <em>produto</em>, mas NÃO protege o <em>manipulador</em>.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Aplicação</div>
+        <p>Preparações estéreis <strong>não-perigosas</strong>: NPT (nutrição parenteral total), antibióticos IV, ressuspensão de vacinas, manipulação de soluções salinas. NÃO usar para antineoplásicos.</p>
+      </div>
+    </div>
+
+    <div class="subsecao">Fluxo Laminar Vertical (LFV) — Cabine de Segurança Biológica</div>
+    <table>
+      <tr><th>Classe</th><th>Característica</th><th>Aplicação</th></tr>
+      <tr><td>Classe I</td><td>Pressão negativa; ar entra pela frente; saída por exaustor com filtro HEPA. Protege manipulador e ambiente; NÃO protege produto</td><td>Manuseio com risco biológico, sem necessidade de proteção do produto</td></tr>
+      <tr><td><strong>Classe II A2</strong></td><td>Pressão negativa interna; fluxo laminar vertical; 70% recirculação + 30% exaustão. Protege os três (produto, manipulador e ambiente)</td><td>Padrão atual para manipulação de antineoplásicos — recomendada pela ANVISA</td></tr>
+      <tr><td>Classe II B2</td><td>100% exaustão externa (sem recirculação); maior segurança, mas alto custo energético</td><td>Manipulação de agentes voláteis (formaldeído, alguns quimio)</td></tr>
+      <tr><td>Classe III</td><td>Isolada (luvas longas integradas); pressão negativa máxima</td><td>Agentes biológicos NB-4 (ebola, marburg); raro em farmácia</td></tr>
+    </table>
+
+    <div class="subsecao">Cuidados Operacionais da CMI</div>
+    <ul class="lista">
+      <li>Ligar a cabine pelo menos <strong>15 minutos antes</strong> da operação para purga</li>
+      <li>Limpar internamente com álcool 70% (ou peróxido) no início e fim do turno</li>
+      <li>Não obstruir o fluxo de ar com materiais grandes ou na entrada de ar</li>
+      <li>Trabalhar pelo menos 15 cm de distância da borda frontal</li>
+      <li>Movimentos lentos e suaves para não desestabilizar o fluxo</li>
+      <li>Validação periódica: contagem de partículas (anual); integridade HEPA (anual); velocidade do ar (mensal); pressão diferencial (contínua)</li>
+      <li>Manutenção preventiva por equipe técnica habilitada (RDC 17/2010)</li>
+    </ul>
+
+    <div class="subsecao">Capela de Exaustão Química — diferença da CMI</div>
+    <p>A <strong>capela química</strong> é destinada à manipulação de reagentes voláteis em laboratório (não em farmácia hospitalar estéril). Possui exaustão para externo, mas sem filtro HEPA padrão e sem fluxo laminar — protege manipulador, NÃO o produto. Não confundir com CMI.</p>
+
+    <div class="alerta">
+      <p><strong>Decisão rápida:</strong> NPT → LFH (horizontal, pressão positiva). Quimio/antineoplásico → CSB Classe II A2 (vertical, pressão negativa interna, protege os três). Capela química não substitui CMI em farmácia estéril.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-FARMTEC · CMI</span><span>Extensivo ENARE 2026</span><span class="pg">3 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-FARMTEC</div><div class="aula-ref">Bloco B5 · Aula 13 · Pressão e Segregação</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Pressão Positiva, Pressão Negativa e Segregação Física</div>
+
+    <p>A <strong>pressão diferencial</strong> determina a direção do fluxo de ar entre ambientes. Cobrado em ENARE 2025 (Q48, Q50) — afirmativas I/II/III sobre CMI hospitalar.</p>
+
+    <div class="subsecao">Pressão Positiva</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Conceito</div>
+        <p>O ambiente tem pressão <em>maior</em> que os adjacentes. O ar <em>sai</em> da sala — impede entrada de contaminantes do exterior. Protege o produto/preparação.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Aplicação em Farmácia</div>
+        <p><strong>Sala de manipulação de NPT</strong>: pressão positiva da sala em relação ao corredor; ar limpo é "empurrado" para fora, impedindo entrada de partículas. CMI LFH com pressão positiva interna em relação à sala.</p>
+      </div>
+    </div>
+
+    <div class="subsecao">Pressão Negativa</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Conceito</div>
+        <p>O ambiente tem pressão <em>menor</em> que os adjacentes. O ar <em>entra</em> na sala — impede saída de contaminantes para o exterior. Protege manipulador e meio ambiente.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Aplicação em Farmácia</div>
+        <p><strong>Sala de manipulação de antineoplásicos</strong>: pressão negativa em relação ao corredor; aerossóis tóxicos não escapam. CSB Classe II A2 também tem pressão negativa interna em relação à sala. Em isolamento de pacientes com TB ou COVID, princípio similar.</p>
+      </div>
+    </div>
+
+    <div class="subsecao">Segregação Física Obrigatória — NP × Quimioterápicos</div>
+    <p>Pela <strong>RDC ANVISA 220/2004</strong> (atualizada e referenciada em normas posteriores), a manipulação de <strong>antineoplásicos</strong> deve ser feita em <em>sala separada</em> da manipulação de outras preparações estéreis (especialmente NPT). Justificativas:</p>
+    <ul class="lista">
+      <li><strong>Risco de contaminação cruzada</strong> entre fármacos — antineoplásicos podem contaminar bolsas de NPT com risco grave ao paciente</li>
+      <li><strong>Diferença de pressão</strong>: NPT exige positiva; quimio exige negativa — não compatível no mesmo ambiente</li>
+      <li><strong>Diferença de equipamento</strong>: NPT pode usar LFH; quimio exige CSB Classe II</li>
+      <li><strong>Segurança ocupacional</strong>: aerossóis de quimio com exposição cumulativa têm risco carcinogênico, mutagênico e teratogênico para o manipulador</li>
+      <li><strong>Resíduos</strong>: descarte separado por classe de risco</li>
+    </ul>
+
+    <div class="subsecao">Fluxo Padrão para Antineoplásicos (RDC 220/2004)</div>
+    <table>
+      <tr><th>Etapa</th><th>Local / pressão / classe ISO</th></tr>
+      <tr><td>Recepção da prescrição</td><td>Antessala / ISO 8</td></tr>
+      <tr><td>Preparação dos materiais</td><td>Antessala / ISO 8 / pressão positiva relativa</td></tr>
+      <tr><td>Paramentação completa</td><td>Vestiário / ISO 8</td></tr>
+      <tr><td>Manipulação</td><td>Sala da CSB / ISO 7 / pressão <em>negativa</em></td></tr>
+      <tr><td>CSB Classe II A2</td><td>Zona crítica / ISO 5</td></tr>
+      <tr><td>Saída do produto</td><td>Pass-through ou porta dedicada</td></tr>
+      <tr><td>Descarte de resíduos</td><td>Contêiner rígido específico para resíduos quimioterápicos (grupo B — químicos)</td></tr>
+    </table>
+
+    <div class="alerta">
+      <p><strong>Pegadinha FGV:</strong> NP exige <em>positiva</em>; quimio exige <em>negativa</em> — manipular juntos é violação grave da RDC 220/2004. Mesmo em hospitais pequenos, é necessário compartimentar com cabines distintas em salas separadas. Cobrado em ENARE 2025 com afirmativas confusas sobre pressão.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-FARMTEC · CMI</span><span>Extensivo ENARE 2026</span><span class="pg">4 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-FARMTEC</div><div class="aula-ref">Bloco B5 · Aula 13 · Paramentação</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Paramentação e Fluxo de Trabalho</div>
+
+    <p>A <strong>paramentação</strong> protege o produto (em estéreis limpos) e/ou o manipulador (em quimioterápicos). Segue sequência rigorosa, com diferenciação por tipo de preparação.</p>
+
+    <div class="subsecao">Paramentação para NPT (não-perigosa)</div>
+    <ol>
+      <li>Retirar adornos e maquiagem; recolher cabelos</li>
+      <li>Higienizar mãos e antebraços com sabão antisséptico</li>
+      <li>Calçar propé (sapatilha) ainda na zona "suja"</li>
+      <li>Passar para zona "limpa" (vestiário ISO 8)</li>
+      <li>Vestir macacão (jaleco descartável) sobre uniforme</li>
+      <li>Colocar gorro (touca) cobrindo todo o cabelo</li>
+      <li>Colocar máscara cirúrgica</li>
+      <li>Higienizar mãos novamente com álcool 70%</li>
+      <li>Calçar luvas estéreis (somente após entrar na sala da CMI)</li>
+    </ol>
+
+    <div class="subsecao">Paramentação para Antineoplásicos (perigosa)</div>
+    <p>Adiciona-se proteção respiratória reforçada e dupla camada de proteção corporal:</p>
+    <ol>
+      <li>Mesma sequência inicial (retirar adornos, higiene)</li>
+      <li>Propés impermeáveis</li>
+      <li>Macacão descartável <em>impermeável</em>, fechado nos punhos e tornozelos</li>
+      <li>Gorro cobrindo cabelo e orelhas</li>
+      <li><strong>Máscara N95 ou PFF2</strong> (em vez de máscara cirúrgica)</li>
+      <li><strong>Óculos de proteção</strong> ou face shield</li>
+      <li><strong>Luva interna</strong> (látex ou nitrila); higiene das mãos; <strong>luva externa</strong> (nitrila ou butila) — dupla luva</li>
+      <li>Em alguns casos: avental impermeável adicional</li>
+    </ol>
+
+    <div class="subsecao">Sequência de Retirada (Pós-Manipulação)</div>
+    <ul class="lista">
+      <li>Inverter a ordem da paramentação; retirar luvas externas primeiro, antes de tocar superfícies</li>
+      <li>Higiene das mãos a cada retirada de peça</li>
+      <li>Descartar EPIs em contêiner específico (resíduos químicos para quimio)</li>
+      <li>Banho após turno de quimio (recomendação)</li>
+    </ul>
+
+    <div class="subsecao">Validação Técnica e Acidentes</div>
+    <ul class="lista">
+      <li>Validação de fluxo de ar e integridade da cabine: mensal/semestral por equipe técnica</li>
+      <li><strong>Acidente com quimioterápico (derrame)</strong>: kit de derramamento (spill kit) deve estar disponível com EPI extra, materiais absorventes, hipoclorito de sódio, sacos vermelhos rígidos. Treinamento periódico da equipe</li>
+      <li><strong>Punção acidental</strong>: lavar imediatamente com água em abundância; relatar ao SESMT; iniciar protocolo de exposição (sorologias se aplicável; acompanhamento médico ocupacional)</li>
+      <li><strong>Exposição ocular</strong>: chuveiro lava-olhos por &gt; 15 min; avaliação oftalmológica</li>
+      <li>Notificar todos os acidentes em sistema institucional (PCMSO) e à ANVISA quando aplicável</li>
+    </ul>
+
+    <div class="subsecao">Resíduos Hospitalares — RDC 222/2018 (PGRSS)</div>
+    <table>
+      <tr><th>Grupo</th><th>Descrição</th><th>Embalagem</th></tr>
+      <tr><td>A</td><td>Biológicos</td><td>Saco branco leitoso</td></tr>
+      <tr><td>B</td><td>Químicos (medicamentos vencidos, quimio, hormônios)</td><td>Saco/contêiner laranja ou específico</td></tr>
+      <tr><td>C</td><td>Radioativos</td><td>Símbolo radioativo</td></tr>
+      <tr><td>D</td><td>Comuns</td><td>Saco preto</td></tr>
+      <tr><td>E</td><td>Perfurocortantes</td><td>Caixa rígida amarela (Descarpack)</td></tr>
+    </table>
+
+    <div class="alerta">
+      <p><strong>Acidente com quimioterápico = NR-32:</strong> Brasil tem norma específica de saúde e segurança em serviços de saúde. EPI obrigatório; capacitação anual; PCMSO e PPRA; espaço para guarda separada; descarte conforme PGRSS. Farmacêutico responsável por treinamento da equipe.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-FARMTEC · CMI</span><span>Extensivo ENARE 2026</span><span class="pg">5 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-FARMTEC</div><div class="aula-ref">Bloco B5 · Aula 13 · Estabilidade e NPT</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Estabilidade, Compatibilidade e Outros Cuidados</div>
+
+    <div class="subsecao">Estabilidade Após Reconstituição (Antimicrobianos)</div>
+    <table>
+      <tr><th>Antimicrobiano</th><th>Reconstituição</th><th>Estabilidade temperatura ambiente</th><th>Estabilidade 2–8 °C</th></tr>
+      <tr><td>Vancomicina 1 g</td><td>20 mL AD</td><td>24h</td><td>48h–14 dias (conforme bula)</td></tr>
+      <tr><td>Meropenem 1 g</td><td>20 mL AD</td><td>2h (mais sensível)</td><td>12h</td></tr>
+      <tr><td>Piperacilina-Tazobactam 4,5 g</td><td>20 mL AD</td><td>24h em SF</td><td>48h</td></tr>
+      <tr><td>Imipenem-Cilastatina 500 mg</td><td>100 mL SF</td><td>4h</td><td>24h</td></tr>
+      <tr><td>Ampicilina-Sulbactam 3 g</td><td>15 mL AD ou SF</td><td>1h</td><td>4h</td></tr>
+      <tr><td>Cefepime 1 g</td><td>10 mL AD</td><td>24h</td><td>7 dias</td></tr>
+      <tr><td>Anfotericina B desoxicolato</td><td>10 mL AD</td><td>24h após reconst.</td><td>7 dias (frasco)</td></tr>
+    </table>
+
+    <div class="subsecao">NPT — Compatibilidade Cálcio-Fosfato</div>
+    <p>O risco mais cobrado em NPT é a <strong>precipitação cálcio-fosfato</strong>. Forma-se quando o produto solubilidade ([Ca²⁺] × [HPO₄²⁻]) excede o limite. O precipitado em pulmão = morte. Fatores que aumentam o risco:</p>
+    <ul class="lista">
+      <li>Alta concentração de cálcio ou fosfato</li>
+      <li>pH alto (alcalino favorece o sal dibásico HPO₄²⁻)</li>
+      <li>Temperatura elevada (precipitação acelera)</li>
+      <li>Tempo prolongado na bolsa</li>
+      <li>Adição de aminoácidos com baixa capacidade tamponante</li>
+    </ul>
+    <p><strong>Mitigação:</strong> usar gluconato de cálcio (não cloreto — menos disponibilidade); fosfato sódico ou potássico em vez de fosfato monobásico; manter pH 5,0–6,5; aminoácido pediátrico (melhor tamponante); preparar com aminoácidos antes do cálcio/fosfato (sequência de adição importa); filtro 0,22 µm na linha.</p>
+
+    <div class="subsecao">Sequência Padrão de Adição em NPT</div>
+    <ol>
+      <li>Aminoácidos</li>
+      <li>Eletrólitos (potássio, magnésio, sódio)</li>
+      <li>Glicose</li>
+      <li>Oligoelementos</li>
+      <li>Vitaminas (lipo + hidrossolúveis) — adicionar próximo à infusão</li>
+      <li>Lipídio (último — emulsão se mistura "all-in-one")</li>
+      <li>Cálcio e fosfato em <em>posições afastadas</em> da sequência para evitar precipitação direta</li>
+    </ol>
+    <p>Validar produto final visualmente — qualquer "creaming", separação ou turvação = descarte.</p>
+
+    <div class="subsecao">Outros Cuidados em Manipulação Estéril</div>
+    <ul class="lista">
+      <li>Antibiótico em SG5%: cuidado com penicilinas e aminoglicosídeos — instáveis em meio ácido glicosado; preferir SF 0,9%</li>
+      <li>Anfotericina B desoxicolato: <em>incompatível com NaCl</em> (precipita); diluir em SG5%</li>
+      <li>Dipirona em soros: estabilidade limitada em SG; usar imediatamente</li>
+      <li>Bicarbonato + cálcio: precipitam — não misturar na mesma linha</li>
+      <li>Lipossolúveis (anfotericina lipossomal, propofol): proteção da luz e cuidado com agitação</li>
+      <li>Quimio com vesicantes (doxorrubicina, vincristina): cuidado com extravasamento; protocolos de antídoto local</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Atribuição do farmacêutico em estéreis:</strong> validar prescrição (paciente, dose, via, intervalo), conferir compatibilidades (cálcio-fosfato, antimicrobiano-veículo, lipossolúveis), preparar em CMI adequada, sinalizar bolsa com identificação dupla (paciente + lote + composição + horário), monitorar estabilidade após preparação.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-FARMTEC · CMI</span><span>Extensivo ENARE 2026</span><span class="pg">6 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-FARMTEC</div><div class="aula-ref">Bloco B5 · Aula 13 · Questões ENARE</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 01</span><span class="fonte">Pressão · NP vs Quimio · NC: Aplicação</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Sobre a manipulação de preparações estéreis em farmácia hospitalar, analise:</p>
+      <p class="questao-enunciado" style="font-style:italic;">I. Antineoplásicos devem ser manipulados em sala com pressão negativa e CSB Classe II A2.<br>
+      II. NPT deve ser preparada em sala com pressão positiva, podendo utilizar CMI de fluxo laminar horizontal.<br>
+      III. Antineoplásicos e NPT podem ser preparados na mesma sala, desde que utilizem CMIs distintas.</p>
+      <p class="questao-enunciado">Está(ão) correta(s):</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Apenas I.</span></li>
+        <li class="correta"><span class="letra">B</span><span>I e II.</span></li>
+        <li><span class="letra">C</span><span>II e III.</span></li>
+        <li><span class="letra">D</span><span>I, II e III.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>I — Correta:</strong> antineoplásicos requerem pressão negativa (protege manipulador/ambiente) e CSB Classe II A2 (fluxo laminar vertical com recirculação 70% + exaustão 30%; protege produto, manipulador e ambiente). Padrão da ANVISA (RDC 220/2004).</p>
+      <p><strong>II — Correta:</strong> NPT é preparação estéril <em>não-perigosa</em>; pode ser preparada em sala com pressão positiva utilizando CMI de fluxo laminar horizontal (que protege o produto).</p>
+      <p><strong>III — Incorreta:</strong> a RDC 220/2004 exige <em>salas separadas</em> para manipulação de antineoplásicos e demais estéreis (NPT), pelas diferenças de pressão (positiva vs negativa), risco de contaminação cruzada e segurança ocupacional. Mesmo com CMIs distintas no mesmo ambiente, a contaminação cruzada e a incompatibilidade de pressão tornam a prática inaceitável.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-FARMTEC · CMI</span><span>Extensivo ENARE 2026</span><span class="pg">7 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-FARMTEC</div><div class="aula-ref">Bloco B5 · Aula 13 · Questões ENARE</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 02</span><span class="fonte">ISO 14644-1 · NC: Compreensão</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Na manipulação de preparações estéreis em farmácia hospitalar, a zona crítica (interior da CMI, onde ocorre a manipulação direta) deve atender à classe ISO:</p>
+      <ul class="alternativas">
+        <li class="correta"><span class="letra">A</span><span>ISO 5 — máximo de 3.520 partículas ≥ 0,5 µm/m³.</span></li>
+        <li><span class="letra">B</span><span>ISO 7 — máximo de 352.000 partículas/m³.</span></li>
+        <li><span class="letra">C</span><span>ISO 8 — máximo de 3.520.000 partículas/m³.</span></li>
+        <li><span class="letra">D</span><span>ISO 9 — sem limite específico.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — A</div>
+      <p><strong>Por que A está correta:</strong> a zona crítica (interior da CMI / zona de trabalho direto) deve manter classe <strong>ISO 5</strong> conforme ISO 14644-1, com máximo de 3.520 partículas ≥ 0,5 µm/m³ — equivalente à antiga Classe 100 do padrão Federal 209E. A sala onde a CMI está instalada deve ser ISO 7, e a antecâmara/vestiário ISO 8.</p>
+      <p><strong>Por que as outras erram:</strong> B — ISO 7 é a classe da sala que contém a CMI, não da zona crítica interna · C — ISO 8 é da antecâmara · D — ISO 9 não é usada em farmácia estéril.</p>
+      <p><strong>Conceito-chave:</strong> a hierarquia espacial vai do mais limpo (ISO 5 na zona crítica) ao mais permissivo (ISO 8 na antecâmara), com diferenciais de pressão entre as áreas.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-FARMTEC · CMI</span><span>Extensivo ENARE 2026</span><span class="pg">8 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-FARMTEC</div><div class="aula-ref">Bloco B5 · Aula 13 · Gabarito Integrado</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 03</span><span class="fonte">NPT · Estabilidade · NC: Análise</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Em NPT preparada pela farmácia hospitalar, o risco de precipitação cálcio-fosfato é minimizado por quais condutas técnicas?</p>
+      <p class="questao-enunciado" style="font-style:italic;">I. Utilizar gluconato de cálcio em vez de cloreto de cálcio.<br>
+      II. Adicionar cálcio antes dos aminoácidos.<br>
+      III. Manter pH da bolsa próximo a 5,0–6,5.<br>
+      IV. Usar fosfato monobásico em vez de dibásico em altas concentrações.</p>
+      <p class="questao-enunciado">Estão CORRETAS:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>I e II apenas.</span></li>
+        <li class="correta"><span class="letra">B</span><span>I e III apenas.</span></li>
+        <li><span class="letra">C</span><span>II, III e IV.</span></li>
+        <li><span class="letra">D</span><span>I, II, III e IV.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>I — Correta:</strong> o gluconato de cálcio libera menos íons cálcio livres (Ca²⁺) que o cloreto, reduzindo o produto de solubilidade com fosfato. Padrão em NPT.</p>
+      <p><strong>II — Incorreta:</strong> os <em>aminoácidos devem ser adicionados antes</em> do cálcio para garantir tamponamento adequado e diluição inicial. Adicionar cálcio antes ou em sequência errada aumenta risco de precipitação.</p>
+      <p><strong>III — Correta:</strong> pH 5,0–6,5 favorece a forma monobásica H₂PO₄⁻ (menos reativa com Ca²⁺); pH mais alcalino favorece HPO₄²⁻ e fosfato tribásico, que precipitam mais facilmente.</p>
+      <p><strong>IV — Incorreta:</strong> o fosfato monobásico é menos reativo, mas em altas concentrações em uma NPT específica pode não ser tampão suficiente; a recomendação não é simplesmente "trocar entre as formas", mas controlar pH e concentração total.</p>
+    </div>
+
+    <div class="subsecao" style="margin-top:6px;">Gabarito Comentado — Análise Integrada</div>
+    <table>
+      <tr><th>Questão</th><th>Gabarito</th><th>Tema</th><th>Conceito-Chave</th></tr>
+      <tr><td><strong>01</strong></td><td><span class="destaque">B</span></td><td>Pressão e CMI</td><td>NPT positiva + LFH; quimio negativa + CSB IIA2; salas separadas obrigatórias</td></tr>
+      <tr><td><strong>02</strong></td><td><span class="destaque">A</span></td><td>ISO 14644-1</td><td>Zona crítica = ISO 5 (≤ 3.520 partículas ≥ 0,5 µm/m³)</td></tr>
+      <tr><td><strong>03</strong></td><td><span class="destaque">B</span></td><td>NPT — Ca-fosfato</td><td>Gluconato Ca + pH 5,0–6,5 reduzem precipitação</td></tr>
+    </table>
+  </div>
+  <div class="footer"><span>FARM-FARMTEC · CMI</span><span>Extensivo ENARE 2026</span><span class="pg">9 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-FARMTEC</div><div class="aula-ref">Bloco B5 · Aula 13 · Síntese</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Síntese — CMI e Áreas Limpas</div>
+    <div class="sintese-grid">
+      <div class="sintese-item">
+        <div class="si-label">ISO 14644-1</div>
+        <p>ISO 5 = zona crítica CMI (≤ 3.520 part./m³); ISO 7 = sala da CMI; ISO 8 = antecâmara/vestiário. Filtros HEPA H13/H14. Diferencial pressão ≥ 10 Pa. T 18–22 °C; UR 45–65%.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">CMI: LFH vs CSB</div>
+        <p>LFH (laminar horizontal) + pressão positiva = NPT e estéreis não-perigosos. CSB Classe II A2 (laminar vertical) + pressão negativa = quimioterápicos. Capela química ≠ CMI (não estéril).</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Pressão e Segregação</div>
+        <p>Positiva: ar sai (protege produto); para NPT. Negativa: ar entra (protege manipulador/ambiente); para quimio. RDC 220/2004 exige SALAS SEPARADAS para antineoplásicos e demais estéreis.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Paramentação</div>
+        <p>NPT: macacão, gorro, máscara cirúrgica, luva estéril. Quimio: macacão impermeável, máscara N95/PFF2, óculos, dupla luva (interna látex/nitrila + externa nitrila/butila). Retirada inversa.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">NPT — Compatibilidade</div>
+        <p>Gluconato de cálcio (não cloreto); pH 5,0–6,5; aminoácidos antes; sequência padrão (aa → eletrólitos → glicose → oligoelementos → vitaminas → lipídio). Ca e fosfato afastados. Filtro 0,22 µm.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Próxima Aula</div>
+        <p><strong>Aula 14 — Segurança do Paciente e Alta Vigilância.</strong> Vincristina, enoxaparina, erros sistêmicos, dupla checagem; classes ISMP de fármacos de alta vigilância; reconciliação como ferramenta de prevenção.</p>
+      </div>
+    </div>
+    <div class="alerta" style="margin-top:5px;">
+      <p><strong>Regra de ouro — CMI no ENARE:</strong> ISO 5 zona crítica → ISO 7 sala → ISO 8 antecâmara. NPT = positiva + LFH; quimio = negativa + CSB IIA2; salas obrigatoriamente separadas. RDC 220/2004 e 67/2007. Resíduos: A (bio), B (químico/quimio), D (comum), E (perfurocortantes). NR-32 para segurança ocupacional.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-FARMTEC · CMI</span><span>Extensivo ENARE 2026</span><span class="pg">10 / 10</span></div>
+</div>
+
+</body>
+</html>

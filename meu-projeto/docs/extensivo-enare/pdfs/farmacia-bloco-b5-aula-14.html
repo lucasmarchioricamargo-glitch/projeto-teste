@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Farmácia — Bloco B5 Aula 14 | Extensivo ENARE 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap');
+  :root { --creme: #F6F4ED; --verde: #1F5C23; --amarelo: #C6D834; --escuro: #0C2B0E; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #d0d0d0; font-family: 'Bricolage Grotesque', sans-serif; }
+  .page { width: 210mm; height: 297mm; background: var(--creme); margin: 0 auto 12px; position: relative; overflow: hidden; page-break-after: always; }
+  .header { background: var(--verde); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .header-logo { display: flex; align-items: center; gap: 8px; }
+  .header-logo svg { width: 32px; height: 32px; }
+  .header-brand { display: flex; flex-direction: column; line-height: 1; }
+  .header-brand .marca { font-family: 'Playfair Display', serif; font-style: italic; color: #fff; font-size: 13px; letter-spacing: 0.5px; }
+  .header-brand .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 7px; letter-spacing: 1.5px; text-transform: uppercase; }
+  .header-info { text-align: right; }
+  .header-info .disciplina { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
+  .header-info .aula-ref { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.7); font-size: 8px; letter-spacing: 0.5px; }
+  .footer { position: absolute; bottom: 0; left: 0; right: 0; background: var(--verde); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .footer span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.6); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .footer .pg { color: var(--amarelo); font-weight: 400; }
+  .body { padding: 14px 18px 30px; height: calc(297mm - 52px - 22px); overflow: hidden; }
+  .capa-page { background: var(--verde); }
+  .capa-header { background: var(--creme); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .capa-header .marca { font-family: 'Playfair Display', serif; font-style: italic; color: var(--verde); font-size: 14px; }
+  .capa-header .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--verde); font-size: 7.5px; letter-spacing: 2px; text-transform: uppercase; }
+  .capa-body { padding: 28px 24px 0; display: flex; flex-direction: column; height: calc(297mm - 52px - 22px); }
+  .capa-eyebrow { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; }
+  .capa-titulo { font-family: 'Barlow Condensed', sans-serif; color: #fff; font-size: 50px; line-height: 0.95; text-transform: uppercase; letter-spacing: -0.5px; margin-bottom: 6px; }
+  .capa-titulo span { color: var(--amarelo); }
+  .capa-subtitulo { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; color: rgba(255,255,255,0.65); font-size: 12px; letter-spacing: 0.3px; margin-bottom: 22px; line-height: 1.5; }
+  .capa-badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+  .capa-badge { background: rgba(198,216,52,0.15); border: 1px solid var(--amarelo); color: var(--amarelo); font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 8px; border-radius: 2px; }
+  .capa-divider { width: 40px; height: 3px; background: var(--amarelo); margin-bottom: 20px; }
+  .capa-topicos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .capa-topico { display: flex; align-items: flex-start; gap: 7px; }
+  .capa-topico-num { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 18px; line-height: 1; min-width: 18px; }
+  .capa-topico-txt { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 400; color: rgba(255,255,255,0.8); font-size: 9.5px; line-height: 1.4; }
+  .capa-footer-strip { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.25); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .capa-footer-strip span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.45); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .secao-titulo { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 18px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid var(--amarelo); padding-bottom: 3px; margin-bottom: 9px; line-height: 1; }
+  .subsecao { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.5px; margin: 7px 0 3px; }
+  p { font-size: 9px; line-height: 1.55; color: #1a1a1a; margin-bottom: 4px; font-weight: 400; }
+  .destaque { background: var(--amarelo); color: var(--escuro); font-weight: 600; padding: 1px 4px; border-radius: 2px; font-size: 8.5px; }
+  .alerta { background: rgba(198,216,52,0.18); border-left: 3px solid var(--amarelo); padding: 5px 8px; margin: 5px 0; border-radius: 0 3px 3px 0; }
+  .alerta p { margin: 0; font-size: 8.5px; }
+  .alerta strong { color: var(--verde); }
+  table { width: 100%; border-collapse: collapse; margin: 5px 0; font-size: 8px; }
+  th { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; padding: 4px 6px; text-align: left; }
+  td { padding: 3px 6px; border-bottom: 1px solid rgba(31,92,35,0.12); vertical-align: top; line-height: 1.4; color: #1a1a1a; }
+  tr:nth-child(even) td { background: rgba(31,92,35,0.04); }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 5px 0; }
+  .card { background: rgba(31,92,35,0.06); border: 1px solid rgba(31,92,35,0.15); border-radius: 4px; padding: 7px 8px; }
+  .card-title { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 11px; text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 3px; }
+  .card p { font-size: 8px; line-height: 1.5; }
+  .questao-header { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; padding: 4px 10px; border-radius: 3px 3px 0 0; display: flex; justify-content: space-between; align-items: center; }
+  .questao-header .fonte { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; color: var(--amarelo); letter-spacing: 0.5px; }
+  .questao-body { border: 1px solid rgba(31,92,35,0.2); border-top: none; border-radius: 0 0 3px 3px; padding: 7px 10px; margin-bottom: 7px; }
+  .questao-enunciado { font-size: 8.5px; line-height: 1.55; color: #111; margin-bottom: 5px; font-weight: 500; }
+  .alternativas { list-style: none; }
+  .alternativas li { font-size: 8px; line-height: 1.5; padding: 2px 0; color: #222; display: flex; gap: 5px; }
+  .alternativas li .letra { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: var(--verde); font-size: 9px; min-width: 10px; }
+  .alternativas li.correta .letra { color: var(--amarelo); }
+  .alternativas li.correta { background: rgba(198,216,52,0.15); border-left: 2px solid var(--amarelo); padding-left: 4px; }
+  .gabarito-box { background: var(--verde); border-radius: 4px; padding: 8px 12px; margin: 6px 0; }
+  .gabarito-box .gab-title { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+  .gabarito-box p { color: rgba(255,255,255,0.9); font-size: 8px; line-height: 1.55; }
+  .gabarito-box strong { color: var(--amarelo); }
+  .sintese-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-top: 6px; }
+  .sintese-item { background: rgba(31,92,35,0.07); border-left: 3px solid var(--verde); padding: 5px 7px; border-radius: 0 3px 3px 0; }
+  .sintese-item .si-label { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px; }
+  .sintese-item p { font-size: 7.5px; line-height: 1.5; }
+  ul.lista { padding-left: 14px; margin: 3px 0; }
+  ul.lista li { font-size: 8.5px; line-height: 1.55; color: #1a1a1a; margin-bottom: 1px; }
+  @media print { body { background: none; } .page { margin: 0; box-shadow: none; } }
+</style>
+</head>
+<body>
+
+<div class="page capa-page">
+  <div class="capa-header">
+    <div style="display:flex;align-items:center;gap:8px;"><svg width="34" height="34" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#1F5C23"/></svg><div><div class="marca">Elite Treinamentos</div><div class="tagline">Extensivo ENARE 2026</div></div></div>
+    <div style="text-align:right;"><div style="font-family:'Barlow Condensed',sans-serif;color:var(--verde);font-size:11px;letter-spacing:1px;text-transform:uppercase;">Bloco B5 · Aula 14</div><div style="font-family:'Space Grotesk',sans-serif;font-weight:300;color:#888;font-size:7.5px;letter-spacing:0.5px;">Farmácia</div></div>
+  </div>
+  <div class="capa-body">
+    <div class="capa-eyebrow">Bloco B5 · FARM-SEGSAUDE · Aula 14 de 22</div>
+    <div class="capa-titulo">Segu-<br>rança <span>·<br>Alta Vigi-<br>lância</span></div>
+    <div class="capa-subtitulo">Erros de medicação, ISMP, vincristina, enoxaparina,<br>dupla checagem e cultura justa</div>
+    <div class="capa-badge-row">
+      <div class="capa-badge">FARM-SEGSAUDE ★★★</div>
+      <div class="capa-badge">ISMP · IPVR</div>
+      <div class="capa-badge">RDC 36/2013</div>
+      <div class="capa-badge">Just Culture</div>
+    </div>
+    <div class="capa-divider"></div>
+    <div class="capa-topicos">
+      <div class="capa-topico"><div class="capa-topico-num">01</div><div class="capa-topico-txt">Conceitos: erro, RAM, EA, quase-falha</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">02</div><div class="capa-topico-txt">Lista ISMP de medicamentos de alta vigilância</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">03</div><div class="capa-topico-txt">Vincristina e a regra IT-Never (NEVER intratecal)</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">04</div><div class="capa-topico-txt">Enoxaparina e erros de dose (caso ENARE 2024)</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">05</div><div class="capa-topico-txt">Dupla checagem, barreiras e cultura justa</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">06</div><div class="capa-topico-txt">9 Metas IBSP / Metas JCI / RDC 36/2013</div></div>
+    </div>
+  </div>
+  <div class="capa-footer-strip"><span>Extensivo ENARE 2026</span><span>Elite Treinamentos em Saúde</span><span>Página 1 de 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-SEGSAUDE</div><div class="aula-ref">Bloco B5 · Aula 14 · Conceitos</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Conceitos Fundamentais — Erro × RAM × EA</div>
+    <p>A confusão entre os conceitos é frequente. A FGV cobrou diferenciação em ENARE 2025 (Q92, Q93). Domínio dos termos é exigência básica.</p>
+
+    <table>
+      <tr><th>Termo</th><th>Definição</th><th>Exemplo</th></tr>
+      <tr><td><strong>Erro de medicação</strong></td><td>Qualquer ato falho na prescrição, dispensação, administração ou monitorização — <em>evitável</em></td><td>Prescrever penicilina em paciente alérgico documentado</td></tr>
+      <tr><td><strong>RAM — Reação Adversa a Medicamento</strong></td><td>Resposta nociva e não-intencional ao fármaco usado em dose habitual — <em>não-evitável</em> em RAM tipo B</td><td>Rash por carbamazepina (SJS — idiossincrático)</td></tr>
+      <tr><td><strong>EA — Evento Adverso</strong></td><td>Qualquer ocorrência médica indesejada durante o tratamento; pode ou não ser causada pelo fármaco</td><td>Queda no banheiro durante internação (pode ser por BZD, hipotensão postural, ou cenário)</td></tr>
+      <tr><td><strong>Evento adverso medicamentoso (EAM)</strong></td><td>Dano causado pelo uso de medicamento — engloba RAM + erro com dano</td><td>Hemorragia por overdose de varfarina</td></tr>
+      <tr><td><strong>Quase falha (near miss)</strong></td><td>Erro identificado <em>antes</em> de atingir o paciente; sem dano</td><td>Farmacêutico identifica prescrição com dose 10× e suspende dispensação</td></tr>
+      <tr><td><strong>Circunstância de risco</strong></td><td>Condição com potencial de erro mas que não ocorreu</td><td>Frascos de vincristina e morfina em estoque com etiqueta similar</td></tr>
+    </table>
+
+    <div class="subsecao">Classificação por Gravidade — NCC MERP</div>
+    <p>O <em>National Coordinating Council for Medication Error Reporting and Prevention</em> classifica em 9 categorias (A–I):</p>
+    <table>
+      <tr><th>Categoria</th><th>Descrição</th></tr>
+      <tr><td>A</td><td>Circunstância de risco (sem erro)</td></tr>
+      <tr><td>B</td><td>Erro, sem alcançar o paciente</td></tr>
+      <tr><td>C</td><td>Erro alcançou paciente, sem dano</td></tr>
+      <tr><td>D</td><td>Erro, exigiu monitorização, sem dano</td></tr>
+      <tr><td>E</td><td>Erro com dano temporário, exigindo intervenção</td></tr>
+      <tr><td>F</td><td>Erro com dano temporário, exigindo hospitalização ou prolongando-a</td></tr>
+      <tr><td>G</td><td>Erro com dano permanente</td></tr>
+      <tr><td>H</td><td>Erro com necessidade de suporte vital para evitar morte</td></tr>
+      <tr><td>I</td><td>Erro contribuiu para morte</td></tr>
+    </table>
+
+    <div class="subsecao">Outras Definições Operacionais</div>
+    <ul class="lista">
+      <li><strong>Erro latente</strong>: falha sistêmica (processo mal desenhado, treinamento inadequado, sobrecarga); ainda não causou dano</li>
+      <li><strong>Erro ativo</strong>: erro pontual no momento do ato (esquecer dose; trocar paciente)</li>
+      <li><strong>Sentinel event</strong>: erro que causa dano grave, óbito ou condição que ameaça vida — gatilho para Investigação de Causa Raiz (ICR)</li>
+      <li><strong>Cultura justa (Just Culture)</strong>: equilíbrio entre responsabilização individual e abordagem sistêmica; não punição reflexa do erro humano</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Pegadinha FGV (Q92/2025):</strong> diferenciar <em>quase-falha</em> (sem alcançar paciente) de <em>erro com dano evitável</em>. Quase-falha é resultado positivo da barreira — indica que o sistema funcionou. Erro com dano é falha da cadeia de prevenção.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-SEGSAUDE · Alta Vigilância</span><span>Extensivo ENARE 2026</span><span class="pg">2 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-SEGSAUDE</div><div class="aula-ref">Bloco B5 · Aula 14 · Lista ISMP</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Medicamentos de Alta Vigilância — Lista ISMP</div>
+    <p>O <strong>Institute for Safe Medication Practices (ISMP)</strong> elabora a lista internacionalmente aceita de <em>medicamentos potencialmente perigosos / de alta vigilância</em> (high-alert medications). No Brasil, o <strong>ISMP-Brasil</strong> publica a versão local. A FGV cobrou em ENARE 2025 (Q42, Q63, Q92, Q93 — alta vigilância e erros sistêmicos).</p>
+
+    <div class="subsecao">Classes Principais — Alta Vigilância</div>
+    <table>
+      <tr><th>Classe</th><th>Representantes</th><th>Por que perigoso</th></tr>
+      <tr><td><strong>Anticoagulantes</strong></td><td>Heparina (HNF e HBPM), varfarina, DOACs</td><td>Risco de sangramento grave; ITE; necessidade de monitorização</td></tr>
+      <tr><td><strong>Insulinas</strong></td><td>Todas as formulações (regular, NPH, análogos)</td><td>Hipoglicemia grave; troca de "U" por zero; alta-baixa potência confunde</td></tr>
+      <tr><td><strong>Opioides</strong></td><td>Morfina, fentanil, metadona, oxicodona</td><td>Depressão respiratória; concentrações múltiplas; vias múltiplas</td></tr>
+      <tr><td><strong>Antineoplásicos</strong></td><td>Vincristina, doxorrubicina, ciclofosfamida, metotrexato</td><td>Janela tóxica estreita; dose por SC; vias específicas (vincristina NUNCA IT)</td></tr>
+      <tr><td><strong>Eletrólitos concentrados</strong></td><td>Cloreto de potássio concentrado (KCl 19,1%), sulfato de magnésio 50%, gluconato de cálcio 10%</td><td>Cardiotoxicidade fatal se administrado direto sem diluição</td></tr>
+      <tr><td><strong>Anestésicos / Sedativos IV</strong></td><td>Midazolam, propofol, fentanil, dexmedetomidina, succinilcolina, vecurônio</td><td>Erros de via, dose; paralisia/depressão respiratória</td></tr>
+      <tr><td><strong>Vasopressores / inotrópicos</strong></td><td>Noradrenalina, dopamina, epinefrina, nitroprussiato</td><td>Janela estreita; extravasamento causa necrose; cálculos complexos</td></tr>
+      <tr><td><strong>Soluções de NPT</strong></td><td>NPT 3-em-1, soluções de aminoácidos</td><td>Erros de composição; precipitados; via central</td></tr>
+      <tr><td><strong>Hipoglicemiantes orais (sulfonilureia)</strong></td><td>Glibenclamida, glimepirida</td><td>Hipoglicemia grave em idoso</td></tr>
+      <tr><td><strong>Imunossupressores</strong></td><td>Ciclosporina, tacrolimo, micofenolato</td><td>ITE; rejeição se subdose; toxicidade se sobredose</td></tr>
+      <tr><td><strong>Magnésio injetável</strong></td><td>Sulfato de magnésio</td><td>Bloqueio neuromuscular; hipotensão grave</td></tr>
+    </table>
+
+    <div class="subsecao">Estratégias de Mitigação (ISMP Brasil)</div>
+    <ul class="lista">
+      <li><strong>Padronização</strong>: limitar concentrações disponíveis (ex.: apenas uma concentração de heparina em estoque)</li>
+      <li><strong>Etiquetagem diferenciada</strong>: rótulo "ALTA VIGILÂNCIA" em vermelho/amarelo</li>
+      <li><strong>Armazenamento separado</strong>: KCl concentrado fora das enfermarias (apenas em farmácia centralizada)</li>
+      <li><strong>Dupla checagem independente</strong>: dois profissionais conferem prescrição, dose, paciente, via — sem influência mútua</li>
+      <li><strong>Sistema de dose unitária</strong> da farmácia (reduz cálculos no leito)</li>
+      <li><strong>Prescrição eletrônica com CDS</strong> (Clinical Decision Support) — alertas de dose máxima, alergia, duplicação</li>
+      <li><strong>Educação contínua</strong> da equipe</li>
+      <li><strong>Padronização de bomba de infusão</strong> com biblioteca de fármacos (smart pumps)</li>
+    </ul>
+
+    <div class="subsecao">Sound-alike, Look-alike (SALA / LASA)</div>
+    <p>Medicamentos com nomes ou embalagens parecidos causam confusão. Exemplos clássicos:</p>
+    <ul class="lista">
+      <li>Hidroxizina × Hidralazina; Vincristina × Vinblastina; Metotrexato × Metolazona</li>
+      <li>Dopamina × Dobutamina; Adrenalina × Noradrenalina</li>
+      <li>Heparina 1.000 UI/mL × Heparina 5.000 UI/mL × Heparina 25.000 UI/frasco</li>
+    </ul>
+    <p><strong>Estratégia "Tall Man Lettering"</strong>: usar caixa alta para diferenciar a parte distintiva — <em>hidrAlAZina</em> vs <em>hidrOXIzina</em>; <em>vinCRIStina</em> vs <em>vinBLAStina</em>.</p>
+
+    <div class="alerta">
+      <p><strong>Foco institucional:</strong> a Comissão de Farmácia e Terapêutica (CFT) e o Núcleo de Segurança do Paciente devem revisar continuamente o estoque, identificar SALA/LASA, padronizar e implementar barreiras. O farmacêutico residente é peça-chave nesse processo — pode liderar audit local e propor mudanças.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-SEGSAUDE · Alta Vigilância</span><span>Extensivo ENARE 2026</span><span class="pg">3 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-SEGSAUDE</div><div class="aula-ref">Bloco B5 · Aula 14 · Vincristina e Enoxaparina</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Casos Sentinela — Vincristina e Enoxaparina</div>
+
+    <div class="subsecao">Vincristina — A Regra "Never IT"</div>
+    <p>A vincristina (alcaloide da vinca, antimitótico) é <strong>letal se administrada por via intratecal</strong>. Erro fatal documentado em diversos países (mais de 100 casos relatados desde 1968). Quando a infusão lombar é planejada para outro citotóxico (metotrexato IT), a vincristina pode ser confundida e injetada — paciente desenvolve mielopatia ascendente em 24–48h, com morte em &lt; 14 dias na maioria dos casos.</p>
+
+    <div class="subsecao">Barreiras ISMP / OMS para Vincristina</div>
+    <ul class="lista">
+      <li><strong>Diluir em mini-bag de 50 mL de SF</strong> — não em seringa pequena (visualmente impossível por IT — calibre não cabe)</li>
+      <li><strong>Etiqueta destacada</strong>: "PARA INFUSÃO IV — NÃO USAR INTRATECAL" em vermelho</li>
+      <li><strong>Não preparar vincristina e quimio IT simultaneamente</strong> na mesma área de manipulação</li>
+      <li><strong>Sistemas light-block</strong> em saco protegido da luz com identificação</li>
+      <li><strong>Dupla checagem independente</strong> antes da administração</li>
+      <li><strong>Protocolos institucionais</strong> aprovados pela CFT e Núcleo de Segurança</li>
+    </ul>
+
+    <div class="subsecao">Enoxaparina — Erros Cobrados (ENARE 2024)</div>
+    <p>A enoxaparina (HBPM) é frequente causa de erro pela apresentação em <em>múltiplas concentrações</em> e <em>seringa pré-cheia</em>. ENARE 2024 (Q73, Q74) cobrou caso de erro de leitura "20 mg" vs "200 mg" por prescrição ilegível.</p>
+
+    <table>
+      <tr><th>Apresentação comum</th><th>Indicação</th></tr>
+      <tr><td>20 mg / 0,2 mL (seringa)</td><td>Profilaxia de TVP</td></tr>
+      <tr><td>40 mg / 0,4 mL</td><td>Profilaxia em alto risco</td></tr>
+      <tr><td>60 mg / 0,6 mL</td><td>Tratamento (dose ajustada 1 mg/kg 12/12h)</td></tr>
+      <tr><td>80 mg / 0,8 mL</td><td>Tratamento</td></tr>
+      <tr><td>100 mg / 1,0 mL</td><td>Tratamento</td></tr>
+      <tr><td>120 mg / 0,8 mL</td><td>Tratamento alta concentração</td></tr>
+      <tr><td>150 mg / 1,0 mL</td><td>Tratamento alta concentração</td></tr>
+    </table>
+
+    <div class="subsecao">Cuidados Especiais com Enoxaparina</div>
+    <ul class="lista">
+      <li><strong>Prescrição completa</strong>: peso do paciente, dose calculada, frequência (1× ou 2×/dia), via (SC)</li>
+      <li><strong>Validação farmacêutica</strong>: conferir cálculo (1 mg/kg 12/12h = tratamento; 40 mg/dia = profilaxia padrão)</li>
+      <li><strong>Ajuste em IR (ClCr &lt; 30)</strong>: reduzir dose ou estender intervalo (24h); considerar HNF em diálise</li>
+      <li><strong>Monitorização anti-Xa</strong> em gestantes, obesos (&gt; 150 kg), IR — alvo 0,5–1,0 UI/mL para tratamento</li>
+      <li><strong>Local de aplicação SC</strong>: abdome (afastar &gt; 5 cm da cicatriz umbilical); rotacionar locais</li>
+      <li><strong>Não esfregar</strong> após aplicação (aumenta hematoma)</li>
+      <li><strong>Plaquetopenia induzida por heparina (HIT)</strong>: monitorar plaquetas; se queda &gt; 50% em 5–14 dias, suspender e substituir por argatrobana ou fondaparinux</li>
+    </ul>
+
+    <div class="subsecao">Outros Casos Sentinela Frequentes</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">KCl Concentrado</div>
+        <p>Frasco de KCl 19,1% nunca deve estar disponível em enfermarias. Diluição obrigatória antes da administração IV (10 mEq em 100 mL SF em &gt; 60 min em acesso periférico; 20 mEq em 100 mL em acesso central). Infusão "push" direta de KCl concentrado = parada cardíaca.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Insulina 100 UI vs 10 UI</div>
+        <p>"10U" em prescrição pode ser lido como "100 UI" se a letra U for confundida com zero. <em>Sempre escrever "unidades" por extenso</em> em prescrição. Sistema de bombas de insulina IV em UTI deve ter biblioteca padronizada com limites superiores.</p>
+      </div>
+    </div>
+
+    <div class="alerta">
+      <p><strong>Cultura justa (Just Culture):</strong> erro com dano grave (sentinel event) exige investigação de causa raiz (ICR/RCA). Foco: identificar <em>causas sistêmicas</em> (sobrecarga, treinamento, design de processo) em vez de punir indivíduos. Punição reflexa aumenta sub-notificação e não previne novos erros. Padrão internacional desde 2000 (To Err Is Human — Institute of Medicine).</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-SEGSAUDE · Alta Vigilância</span><span>Extensivo ENARE 2026</span><span class="pg">4 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-SEGSAUDE</div><div class="aula-ref">Bloco B5 · Aula 14 · Metas e Barreiras</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Metas Internacionais de Segurança e RDC 36/2013</div>
+
+    <div class="subsecao">Metas Internacionais (JCI / IBSP Brasil)</div>
+    <table>
+      <tr><th>Meta</th><th>Tema</th></tr>
+      <tr><td>1</td><td>Identificação correta do paciente (dois identificadores, nunca leito)</td></tr>
+      <tr><td>2</td><td>Comunicação efetiva (passagem de plantão estruturada — SBAR)</td></tr>
+      <tr><td>3</td><td><strong>Segurança na prescrição, uso e administração de medicamentos</strong> (alta vigilância, dupla checagem, conciliação)</td></tr>
+      <tr><td>4</td><td>Cirurgia segura (checklist OMS, marcação de sítio)</td></tr>
+      <tr><td>5</td><td>Higienização das mãos (5 momentos OMS)</td></tr>
+      <tr><td>6</td><td>Prevenção de quedas</td></tr>
+      <tr><td>7</td><td>Prevenção de lesão por pressão</td></tr>
+      <tr><td>8</td><td>Reconciliação medicamentosa em transições de cuidado</td></tr>
+      <tr><td>9</td><td>Notificação de eventos adversos (cultura justa)</td></tr>
+    </table>
+
+    <div class="subsecao">RDC ANVISA 36/2013 — Núcleo de Segurança do Paciente</div>
+    <p>Estabelece a obrigatoriedade do <strong>Núcleo de Segurança do Paciente (NSP)</strong> em todo estabelecimento de saúde. Composição mínima:</p>
+    <ul class="lista">
+      <li>Coordenador do núcleo (preferencialmente com formação em qualidade/gestão)</li>
+      <li>Profissional médico</li>
+      <li>Profissional de enfermagem</li>
+      <li><strong>Farmacêutico</strong> — obrigatório</li>
+      <li>Outros profissionais conforme porte da instituição</li>
+    </ul>
+
+    <p><strong>Atribuições do NSP:</strong> elaborar plano de segurança do paciente; promover ações para gestão de risco; monitorar eventos adversos; promover cultura de segurança; integrar com a CFT e CCIH; reportar à ANVISA pelos canais oficiais (NOTIVISA, RDC 406/2020 para farmacovigilância).</p>
+
+    <div class="subsecao">Barreiras de Defesa (Modelo do Queijo Suíço — James Reason)</div>
+    <p>O modelo do "queijo suíço" mostra que sistemas seguros têm <em>múltiplas barreiras sequenciais</em>; o erro ocorre quando "os buracos se alinham". Cada barreira reduz a probabilidade de o erro chegar ao paciente.</p>
+    <table>
+      <tr><th>Etapa</th><th>Barreira ativa</th></tr>
+      <tr><td>Prescrição</td><td>Prescrição eletrônica com CDS (alertas de alergia, dose máxima, duplicação, interação); validação por farmacêutico</td></tr>
+      <tr><td>Dispensação</td><td>Sistema de dose unitária; verificação dupla; código de barras (BCMA)</td></tr>
+      <tr><td>Preparação</td><td>POPs; uso de tecnologia (smart pump); manipulação em CMI quando aplicável</td></tr>
+      <tr><td>Administração</td><td>Cinco certos (paciente, fármaco, dose, via, horário) + dois extras (registro, alergia); BCMA; dupla checagem em alta vigilância</td></tr>
+      <tr><td>Monitorização</td><td>Acompanhamento clínico; TDM; sinais vitais; alta segura</td></tr>
+      <tr><td>Notificação</td><td>Sistema institucional de notificação de eventos; NOTIVISA-ANVISA</td></tr>
+    </table>
+
+    <div class="subsecao">Investigação de Causa Raiz (RCA)</div>
+    <p>Aplicada após evento sentinel ou EA grave. Etapas:</p>
+    <ol>
+      <li>Definir o evento e linha do tempo</li>
+      <li>Análise dos 5 Porquês ou diagrama de Ishikawa</li>
+      <li>Identificar causas próximas e raízes (sistêmicas, não pessoais)</li>
+      <li>Propor barreiras estruturais (não apenas "treinar mais")</li>
+      <li>Implementar e monitorar eficácia</li>
+    </ol>
+
+    <div class="alerta">
+      <p><strong>Comunicação aberta de erros:</strong> políticas de "disclosure" recomendam comunicar erro ao paciente/família com honestidade, expressar pesar genuíno, descrever o que foi feito para evitar repetição. Estudos mostram que comunicação aberta <em>reduz</em>, não aumenta, processos judiciais. Cultura justa é base para isso funcionar.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-SEGSAUDE · Alta Vigilância</span><span>Extensivo ENARE 2026</span><span class="pg">5 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-SEGSAUDE</div><div class="aula-ref">Bloco B5 · Aula 14 · Dupla Checagem</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Dupla Checagem Independente</div>
+
+    <p>A <strong>dupla checagem independente</strong> é a barreira clínica mais cobrada pela FGV em segurança (ENARE 2025 Q42). Definição: dois profissionais conferem <em>de forma independente</em> (sem influência mútua) os elementos críticos da medicação antes da administração.</p>
+
+    <div class="subsecao">Quando é Indicada</div>
+    <ul class="lista">
+      <li>Medicamentos de <strong>alta vigilância</strong> (lista ISMP): heparina, insulina, opioides em infusão, antineoplásicos, NPT, KCl IV, vasopressores</li>
+      <li>Pacientes <strong>pediátricos</strong> e <strong>neonatais</strong> (cálculo por peso/SC; doses pequenas com alto impacto)</li>
+      <li>Cálculos complexos (dose por kg, infusão contínua, gota IV)</li>
+      <li>Mudança de prescrição em paciente crítico</li>
+      <li>Administração via parenteral em paciente fora de monitoramento</li>
+      <li>Quando o profissional tem dúvida sobre o cálculo ou interpretação</li>
+    </ul>
+
+    <div class="subsecao">Cinco "Certos" + Dois Adicionais</div>
+    <table>
+      <tr><th>Cinco Certos clássicos</th><th>Conteúdo</th></tr>
+      <tr><td>Paciente certo</td><td>2 identificadores; preferencialmente nome completo + data nascimento + pulseira</td></tr>
+      <tr><td>Medicamento certo</td><td>Conferir nome (genérico, sound-alike), lote, validade</td></tr>
+      <tr><td>Dose certa</td><td>Conferir cálculo; unidades (mg vs mcg vs g); concentração</td></tr>
+      <tr><td>Via certa</td><td>Especialmente em vincristina (NUNCA IT); heparina (SC vs IV); penicilina benzatina (IM, NUNCA IV)</td></tr>
+      <tr><td>Horário certo</td><td>Conforme prescrição e janela posológica</td></tr>
+      <tr><th>Dois adicionais</th><th>Conteúdo</th></tr>
+      <tr><td>Registro certo</td><td>Documentação em prontuário no momento da administração; assinatura do profissional</td></tr>
+      <tr><td>Histórico certo (Alergias e Interações)</td><td>Verificar alergias antes; checar interações relevantes; sinais antes/depois (HR, PA, SatO2 conforme fármaco)</td></tr>
+    </table>
+
+    <div class="subsecao">Erros Sistêmicos Mais Frequentes (ISMP Brasil 2024)</div>
+    <table>
+      <tr><th>Categoria</th><th>Exemplo</th></tr>
+      <tr><td>Prescrição ilegível</td><td>Trocar dose ou medicamento por leitura ambígua</td></tr>
+      <tr><td>Abreviações perigosas</td><td>"U" para unidades (confunde com 0); "QD" para 1×/dia; "MgSO4" e "MSO4" (Mg vs morfina)</td></tr>
+      <tr><td>Cálculo errado</td><td>Dose por peso em pediatria; mcg/kg/min em vasoativo</td></tr>
+      <tr><td>Troca de fármacos LASA</td><td>Vincristina × vinblastina; hidroxizina × hidralazina</td></tr>
+      <tr><td>Erro de via</td><td>Vincristina IT; KCl IV push direto; penicilina benzatina IV</td></tr>
+      <tr><td>Falha de identificação do paciente</td><td>Administrar ao paciente errado por leito; troca de pulseira</td></tr>
+      <tr><td>Omissão ou atraso de dose</td><td>Dose perdida em transição de plantão; reconciliação não realizada</td></tr>
+    </table>
+
+    <div class="subsecao">Tecnologia como Barreira</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">BCMA — Bar-Code Medication Administration</div>
+        <p>Verificação eletrônica via leitor de código de barras: pulseira do paciente + etiqueta do medicamento. Reduz erros de identificação em até 80%. Padrão JCI e exigência em hospitais brasileiros acreditados.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Smart Pump (Bomba Inteligente)</div>
+        <p>Biblioteca de fármacos com limites superiores/inferiores; alerta antes de programação fora dos limites; reduz erros em vasoativos e infusões em UTI.</p>
+      </div>
+    </div>
+
+    <div class="alerta">
+      <p><strong>Comportamento profissional:</strong> a dupla checagem só funciona se feita de forma <em>realmente independente</em> — sem que o segundo profissional veja a conferência do primeiro. Conferir "por cima" cria falsa segurança. O farmacêutico clínico deve modelar a prática correta no plantão.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-SEGSAUDE · Alta Vigilância</span><span>Extensivo ENARE 2026</span><span class="pg">6 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-SEGSAUDE</div><div class="aula-ref">Bloco B5 · Aula 14 · Questões ENARE</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 01</span><span class="fonte">Alta Vigilância · ISMP · NC: Compreensão</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Sobre medicamentos de alta vigilância (high-alert medications) segundo o ISMP, é INCORRETO afirmar:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Vincristina, heparina e insulina são exemplos clássicos.</span></li>
+        <li><span class="letra">B</span><span>São fármacos que, quando usados em erro, têm alto risco de causar dano grave.</span></li>
+        <li><span class="letra">C</span><span>Requerem barreiras adicionais: padronização, etiquetagem, dupla checagem independente.</span></li>
+        <li class="correta"><span class="letra">D</span><span>São fármacos com baixa frequência de uso clínico, por isso considerados perigosos.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — D (afirmativa INCORRETA)</div>
+      <p><strong>Por que D está incorreta:</strong> medicamentos de alta vigilância <em>não são definidos pela baixa frequência de uso</em>. Pelo contrário, muitos são <em>amplamente utilizados</em> (insulina, heparina, opioides, KCl, vasoativos) — sua periculosidade vem do <em>alto potencial de dano em caso de erro</em>, não da raridade. A insulina, por exemplo, é uma das classes mais prescritas no mundo e ao mesmo tempo entre as mais perigosas se mal administrada.</p>
+      <p><strong>Por que as outras estão corretas:</strong> A — exemplos canônicos · B — definição operacional ISMP · C — estratégias padronizadas de mitigação (RDC 36/2013, ANVISA, ISMP Brasil).</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-SEGSAUDE · Alta Vigilância</span><span>Extensivo ENARE 2026</span><span class="pg">7 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-SEGSAUDE</div><div class="aula-ref">Bloco B5 · Aula 14 · Questões ENARE</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 02</span><span class="fonte">Vincristina · Via · NC: Análise</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Em unidade de oncoematologia pediátrica, paciente com LLA em protocolo terapêutico recebe metotrexato intratecal e vincristina IV no mesmo dia. Para prevenir o erro fatal de administração de vincristina por via intratecal, qual das medidas é CORRETA?</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Preparar vincristina em seringa de 1 mL para facilitar a administração.</span></li>
+        <li class="correta"><span class="letra">B</span><span>Diluir a vincristina em mini-bag de 50 mL de SF, identificar com etiqueta destacada "PARA INFUSÃO IV — NÃO USAR INTRATECAL" e separar fisicamente da preparação de quimio IT; aplicar dupla checagem independente antes da administração.</span></li>
+        <li><span class="letra">C</span><span>Manter a vincristina e o metotrexato IT na mesma bandeja de transporte para facilitar o trabalho da enfermagem.</span></li>
+        <li><span class="letra">D</span><span>Administrar vincristina antes do metotrexato IT, pois assim não há confusão.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> a recomendação OMS/ISMP/ANVISA para vincristina é diluir em mini-bag de 50 mL de SF — torna-se <em>fisicamente impossível</em> conectar a um conjunto de punção lombar (calibre incompatível) e visualmente diferente das seringas de quimio IT. Adicionalmente: etiqueta destacada em vermelho, separação física na preparação e transporte, dupla checagem independente antes da administração. Esses são os "5 Rights" + barreiras institucionais (RDC 36/2013).</p>
+      <p><strong>Por que as outras erram:</strong> A — preparar em seringa de 1 mL é o erro fatal clássico (a seringa cabe no kit IT) · C — manter junto facilita a troca · D — ordem não é barreira; permanece a possibilidade de troca.</p>
+      <p><strong>Conceito-chave:</strong> Boas práticas em quimio IT exigem separação espacial e temporal da preparação, embalagem distinta (mini-bag em vez de seringa), etiquetagem visual destacada, dupla checagem. Cultura justa após qualquer evento sentinela: ICR/RCA, sem punição reflexa.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-SEGSAUDE · Alta Vigilância</span><span>Extensivo ENARE 2026</span><span class="pg">8 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-SEGSAUDE</div><div class="aula-ref">Bloco B5 · Aula 14 · Gabarito Integrado</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 03</span><span class="fonte">Conceitos · Quase-falha · NC: Aplicação</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Farmacêutico hospitalar identifica, em validação de prescrição, que paciente de 70 kg foi prescrito enoxaparina 200 mg SC (em vez de 70 mg para tratamento). A dispensação é suspensa, o prescritor é contactado e a prescrição corrigida. Como classificar este evento?</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Reação adversa a medicamento (RAM).</span></li>
+        <li class="correta"><span class="letra">B</span><span>Quase-falha (near miss) — erro identificado antes de atingir o paciente; sem dano. Categoria B do NCC MERP (erro sem alcançar paciente).</span></li>
+        <li><span class="letra">C</span><span>Evento adverso medicamentoso grave (EAM grave).</span></li>
+        <li><span class="letra">D</span><span>Circunstância de risco apenas — não houve erro.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> houve um <em>erro de prescrição</em> (dose 3× acima da indicação clínica), mas a barreira farmacêutica funcionou e o erro foi corrigido <em>antes</em> de chegar ao paciente. Isso configura <strong>quase-falha (near miss)</strong> — categoria B do NCC MERP. Notificar o evento ao sistema institucional (mesmo sem dano) é fundamental para análise sistêmica e melhoria.</p>
+      <p><strong>Por que as outras erram:</strong> A — RAM seria resposta nociva ao fármaco em dose habitual; aqui houve <em>erro</em> evitável · C — EAM grave exigiria dano efetivo ao paciente · D — circunstância de risco é situação com potencial de erro sem que ele tenha ocorrido; aqui o erro <em>aconteceu</em> (a prescrição foi feita errada), apenas não chegou ao paciente.</p>
+    </div>
+
+    <div class="subsecao" style="margin-top:6px;">Gabarito Comentado — Análise Integrada</div>
+    <table>
+      <tr><th>Questão</th><th>Gabarito</th><th>Tema</th><th>Conceito-Chave</th></tr>
+      <tr><td><strong>01</strong></td><td><span class="destaque">D</span></td><td>Alta Vigilância ISMP (incorreta)</td><td>Definidos por <em>risco de dano</em>, não por baixa frequência</td></tr>
+      <tr><td><strong>02</strong></td><td><span class="destaque">B</span></td><td>Vincristina — Never IT</td><td>Mini-bag 50 mL + etiqueta destacada + separação + dupla checagem</td></tr>
+      <tr><td><strong>03</strong></td><td><span class="destaque">B</span></td><td>Quase-falha (near miss)</td><td>Erro identificado antes de chegar ao paciente = NCC MERP categoria B; notificar mesmo sem dano</td></tr>
+    </table>
+  </div>
+  <div class="footer"><span>FARM-SEGSAUDE · Alta Vigilância</span><span>Extensivo ENARE 2026</span><span class="pg">9 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-SEGSAUDE</div><div class="aula-ref">Bloco B5 · Aula 14 · Síntese</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Síntese — Segurança e Alta Vigilância</div>
+    <div class="sintese-grid">
+      <div class="sintese-item">
+        <div class="si-label">Conceitos</div>
+        <p>Erro (evitável) ≠ RAM (resposta nociva, dose habitual) ≠ EA (qualquer evento) ≠ EAM (dano por medicamento). Quase-falha = erro antes do paciente. NCC MERP A–I por gravidade. Sentinel = grave/morte → RCA.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Lista ISMP</div>
+        <p>Anticoagulantes, insulinas, opioides, antineoplásicos, eletrólitos concentrados (KCl), anestésicos IV, vasopressores, NPT, sulfonilureia, imunossupressores. Estratégias: padronização, etiqueta, armazenamento separado, dupla checagem, smart pump, BCMA.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Vincristina — Never IT</div>
+        <p>Diluir em mini-bag 50 mL SF; etiqueta destacada "PARA IV — NÃO IT"; separação espacial/temporal da quimio IT; dupla checagem. Erro IT = mortalidade próxima a 100%. Tall Man Lettering: vinCRIStina vs vinBLAStina.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Enoxaparina e KCl</div>
+        <p>Enoxaparina: múltiplas concentrações (20–150 mg/seringa); validar dose por peso (1 mg/kg 12/12h = tratamento; 40 mg/dia = profilaxia); HIT em queda &gt; 50% plaquetas. KCl 19,1%: armazenamento separado; diluição obrigatória; nunca push direto.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Metas e Barreiras</div>
+        <p>9 Metas IBSP (identificação, comunicação, medicamentos, cirurgia, mãos, queda, lesão por pressão, conciliação, notificação). RDC 36/2013 → NSP obrigatório com farmacêutico. Modelo queijo suíço (Reason). Cultura justa, não punição reflexa.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Próxima Aula</div>
+        <p><strong>Aula 15 — Reconciliação Medicamentosa.</strong> Admissão hospitalar, alta, oncologia, fitoterápicos não declarados; discrepâncias intencionais vs não-intencionais; ferramenta de prevenção em transições de cuidado.</p>
+      </div>
+    </div>
+    <div class="alerta" style="margin-top:5px;">
+      <p><strong>Regra de ouro — Segurança no ENARE:</strong> diferenciar conceitos (erro vs RAM vs EA vs quase-falha); decorar lista ISMP de alta vigilância; vincristina = mini-bag + etiqueta + dupla checagem; KCl não em enfermaria; reconciliação em transições; cultura justa = RCA, não punição.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-SEGSAUDE · Alta Vigilância</span><span>Extensivo ENARE 2026</span><span class="pg">10 / 10</span></div>
+</div>
+
+</body>
+</html>

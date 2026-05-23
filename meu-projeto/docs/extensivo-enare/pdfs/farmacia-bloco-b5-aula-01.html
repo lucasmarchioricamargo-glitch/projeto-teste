@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Farmácia — Bloco B5 Aula 01 | Extensivo ENARE 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap');
+
+  :root {
+    --creme: #F6F4ED;
+    --verde: #1F5C23;
+    --amarelo: #C6D834;
+    --escuro: #0C2B0E;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #d0d0d0;
+    font-family: 'Bricolage Grotesque', sans-serif;
+  }
+
+  .page {
+    width: 210mm;
+    height: 297mm;
+    background: var(--creme);
+    margin: 0 auto 12px;
+    position: relative;
+    overflow: hidden;
+    page-break-after: always;
+  }
+
+  .header {
+    background: var(--verde);
+    padding: 10px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .header-logo { display: flex; align-items: center; gap: 8px; }
+  .header-logo svg { width: 32px; height: 32px; }
+  .header-brand { display: flex; flex-direction: column; line-height: 1; }
+  .header-brand .marca {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: #fff;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+  }
+  .header-brand .tagline {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    color: var(--amarelo);
+    font-size: 7px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+  .header-info { text-align: right; }
+  .header-info .disciplina {
+    font-family: 'Barlow Condensed', sans-serif;
+    color: var(--amarelo);
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .header-info .aula-ref {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    color: rgba(255,255,255,0.7);
+    font-size: 8px;
+    letter-spacing: 0.5px;
+  }
+
+  .footer {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: var(--verde);
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 18px;
+  }
+  .footer span {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    color: rgba(255,255,255,0.6);
+    font-size: 7px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+  }
+  .footer .pg { color: var(--amarelo); font-weight: 400; }
+
+  .body {
+    padding: 14px 18px 30px;
+    height: calc(297mm - 52px - 22px);
+    overflow: hidden;
+  }
+
+  .capa-page { background: var(--verde); }
+  .capa-header {
+    background: var(--creme);
+    padding: 10px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .capa-header .marca {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: var(--verde);
+    font-size: 14px;
+  }
+  .capa-header .tagline {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    color: var(--verde);
+    font-size: 7.5px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .capa-body {
+    padding: 28px 24px 0;
+    display: flex;
+    flex-direction: column;
+    height: calc(297mm - 52px - 22px);
+  }
+  .capa-eyebrow {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    color: var(--amarelo);
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .capa-titulo {
+    font-family: 'Barlow Condensed', sans-serif;
+    color: #fff;
+    font-size: 50px;
+    line-height: 0.95;
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
+    margin-bottom: 6px;
+  }
+  .capa-titulo span { color: var(--amarelo); }
+  .capa-subtitulo {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 300;
+    color: rgba(255,255,255,0.65);
+    font-size: 12px;
+    letter-spacing: 0.3px;
+    margin-bottom: 22px;
+    line-height: 1.5;
+  }
+  .capa-badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+  .capa-badge {
+    background: rgba(198,216,52,0.15);
+    border: 1px solid var(--amarelo);
+    color: var(--amarelo);
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    font-size: 7.5px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+  }
+  .capa-divider { width: 40px; height: 3px; background: var(--amarelo); margin-bottom: 20px; }
+  .capa-topicos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .capa-topico { display: flex; align-items: flex-start; gap: 7px; }
+  .capa-topico-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    color: var(--amarelo);
+    font-size: 18px;
+    line-height: 1;
+    min-width: 18px;
+  }
+  .capa-topico-txt {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 400;
+    color: rgba(255,255,255,0.8);
+    font-size: 9.5px;
+    line-height: 1.4;
+  }
+  .capa-footer-strip {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: rgba(0,0,0,0.25);
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 18px;
+  }
+  .capa-footer-strip span {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    color: rgba(255,255,255,0.45);
+    font-size: 7px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+  }
+
+  .secao-titulo {
+    font-family: 'Barlow Condensed', sans-serif;
+    color: var(--verde);
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid var(--amarelo);
+    padding-bottom: 3px;
+    margin-bottom: 9px;
+    line-height: 1;
+  }
+  .subsecao {
+    font-family: 'Barlow Condensed', sans-serif;
+    color: var(--verde);
+    font-size: 12.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 7px 0 3px;
+  }
+  p {
+    font-size: 9px;
+    line-height: 1.55;
+    color: #1a1a1a;
+    margin-bottom: 4px;
+    font-weight: 400;
+  }
+  .destaque {
+    background: var(--amarelo);
+    color: var(--escuro);
+    font-weight: 600;
+    padding: 1px 4px;
+    border-radius: 2px;
+    font-size: 8.5px;
+  }
+  .alerta {
+    background: rgba(198,216,52,0.18);
+    border-left: 3px solid var(--amarelo);
+    padding: 5px 8px;
+    margin: 5px 0;
+    border-radius: 0 3px 3px 0;
+  }
+  .alerta p { margin: 0; font-size: 8.5px; }
+  .alerta strong { color: var(--verde); }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 5px 0;
+    font-size: 8px;
+  }
+  th {
+    background: var(--verde);
+    color: #fff;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 4px 6px;
+    text-align: left;
+  }
+  td {
+    padding: 3px 6px;
+    border-bottom: 1px solid rgba(31,92,35,0.12);
+    vertical-align: top;
+    line-height: 1.4;
+    color: #1a1a1a;
+  }
+  tr:nth-child(even) td { background: rgba(31,92,35,0.04); }
+
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 5px 0; }
+  .card {
+    background: rgba(31,92,35,0.06);
+    border: 1px solid rgba(31,92,35,0.15);
+    border-radius: 4px;
+    padding: 7px 8px;
+  }
+  .card-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    color: var(--verde);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    margin-bottom: 3px;
+  }
+  .card p { font-size: 8px; line-height: 1.5; }
+
+  .questao-header {
+    background: var(--verde);
+    color: #fff;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 4px 10px;
+    border-radius: 3px 3px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .questao-header .fonte {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    font-size: 7.5px;
+    color: var(--amarelo);
+    letter-spacing: 0.5px;
+  }
+  .questao-body {
+    border: 1px solid rgba(31,92,35,0.2);
+    border-top: none;
+    border-radius: 0 0 3px 3px;
+    padding: 7px 10px;
+    margin-bottom: 7px;
+  }
+  .questao-enunciado {
+    font-size: 8.5px;
+    line-height: 1.55;
+    color: #111;
+    margin-bottom: 5px;
+    font-weight: 500;
+  }
+  .alternativas { list-style: none; }
+  .alternativas li {
+    font-size: 8px;
+    line-height: 1.5;
+    padding: 2px 0;
+    color: #222;
+    display: flex;
+    gap: 5px;
+  }
+  .alternativas li .letra {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    color: var(--verde);
+    font-size: 9px;
+    min-width: 10px;
+  }
+  .alternativas li.correta .letra { color: var(--amarelo); }
+  .alternativas li.correta {
+    background: rgba(198,216,52,0.15);
+    border-left: 2px solid var(--amarelo);
+    padding-left: 4px;
+  }
+
+  .gabarito-box {
+    background: var(--verde);
+    border-radius: 4px;
+    padding: 8px 12px;
+    margin: 6px 0;
+  }
+  .gabarito-box .gab-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    color: var(--amarelo);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
+  .gabarito-box p { color: rgba(255,255,255,0.9); font-size: 8px; line-height: 1.55; }
+  .gabarito-box strong { color: var(--amarelo); }
+
+  .sintese-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 7px;
+    margin-top: 6px;
+  }
+  .sintese-item {
+    background: rgba(31,92,35,0.07);
+    border-left: 3px solid var(--verde);
+    padding: 5px 7px;
+    border-radius: 0 3px 3px 0;
+  }
+  .sintese-item .si-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    color: var(--verde);
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+  .sintese-item p { font-size: 7.5px; line-height: 1.5; }
+
+  ul.lista { padding-left: 14px; margin: 3px 0; }
+  ul.lista li {
+    font-size: 8.5px;
+    line-height: 1.55;
+    color: #1a1a1a;
+    margin-bottom: 1px;
+  }
+
+  @media print {
+    body { background: none; }
+    .page { margin: 0; box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ========== PÁGINA 1 — CAPA ========== -->
+<div class="page capa-page">
+  <div class="capa-header">
+    <div style="display:flex;align-items:center;gap:8px;">
+      <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#1F5C23"/>
+      </svg>
+      <div>
+        <div class="marca">Elite Treinamentos</div>
+        <div class="tagline">Extensivo ENARE 2026</div>
+      </div>
+    </div>
+    <div style="text-align:right;">
+      <div style="font-family:'Barlow Condensed',sans-serif;color:var(--verde);font-size:11px;letter-spacing:1px;text-transform:uppercase;">Bloco B5 · Aula 01</div>
+      <div style="font-family:'Space Grotesk',sans-serif;font-weight:300;color:#888;font-size:7.5px;letter-spacing:0.5px;">Farmácia</div>
+    </div>
+  </div>
+
+  <div class="capa-body">
+    <div class="capa-eyebrow">Bloco B5 · FARM-FARMACOTERAP · Aula 01 de 22</div>
+    <div class="capa-titulo">Anti-<br>micro-<br>bianos <span>&amp;<br>Anti-<br>parasi-<br>tários</span></div>
+    <div class="capa-subtitulo">Farmacoterapia I: PGA, DOT, mecanismos de ação,<br>resistência bacteriana e Strongyloides no SUS</div>
+
+    <div class="capa-badge-row">
+      <div class="capa-badge">FARM-FARMACOTERAP</div>
+      <div class="capa-badge">PGA · DOT</div>
+      <div class="capa-badge">Betalactâmicos · Glicopeptídeos</div>
+      <div class="capa-badge">Strongyloides · Ivermectina</div>
+    </div>
+
+    <div class="capa-divider"></div>
+
+    <div class="capa-topicos">
+      <div class="capa-topico">
+        <div class="capa-topico-num">01</div>
+        <div class="capa-topico-txt">Classificação dos antimicrobianos: cidas vs estáticos, espectro</div>
+      </div>
+      <div class="capa-topico">
+        <div class="capa-topico-num">02</div>
+        <div class="capa-topico-txt">Betalactâmicos: penicilinas, cefalosporinas, carbapenêmicos</div>
+      </div>
+      <div class="capa-topico">
+        <div class="capa-topico-num">03</div>
+        <div class="capa-topico-txt">Fluoroquinolonas, aminoglicosídeos, glicopeptídeos</div>
+      </div>
+      <div class="capa-topico">
+        <div class="capa-topico-num">04</div>
+        <div class="capa-topico-txt">Antiparasitários: ivermectina, albendazol, praziquantel</div>
+      </div>
+      <div class="capa-topico">
+        <div class="capa-topico-num">05</div>
+        <div class="capa-topico-txt">PGA, DOT e indicadores de uso racional de antimicrobianos</div>
+      </div>
+      <div class="capa-topico">
+        <div class="capa-topico-num">06</div>
+        <div class="capa-topico-txt">Resistência bacteriana: ESBL, KPC, MRSA, VRE — mecanismos</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="capa-footer-strip">
+    <span>Extensivo ENARE 2026</span>
+    <span>Elite Treinamentos em Saúde</span>
+    <span>Página 1 de 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 2 — CLASSIFICAÇÃO E PRINCÍPIOS ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Farmácia — FARM-FARMACOTERAP</div>
+      <div class="aula-ref">Bloco B5 · Aula 01 · Antimicrobianos e Antiparasitários</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="secao-titulo">Princípios da Terapia Antimicrobiana</div>
+
+    <p>A escolha do antimicrobiano racional segue quatro pilares: <strong>(1) identificação do agente etiológico</strong> presumido ou confirmado, <strong>(2) espectro de ação</strong> compatível, <strong>(3) farmacocinética</strong> adequada ao sítio de infecção (penetração tecidual, ligação proteica, depuração), e <strong>(4) características do paciente</strong> (função renal/hepática, gravidez, alergias, interações). Antibioticoterapia <em>empírica</em> usa o agente mais provável antes da identificação; <em>direcionada</em> baseia-se em cultura + antibiograma.</p>
+
+    <div class="subsecao">Bactericidas vs Bacteriostáticos</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Bactericidas (CIM = CBM)</div>
+        <p><strong>Matam</strong> a bactéria. Preferidos em infecções graves, imunossuprimidos, endocardite, meningite, neutropenia febril, osteomielite.<br>
+        Classes: betalactâmicos (penicilinas, cefalosporinas, carbapenêmicos), glicopeptídeos (vancomicina), aminoglicosídeos, fluoroquinolonas, metronidazol, polimixinas, daptomicina.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Bacteriostáticos (CIM &lt; CBM)</div>
+        <p><strong>Inibem o crescimento</strong> — dependem do sistema imune para eliminação. Suficientes em infecções não graves.<br>
+        Classes: macrolídeos (azitromicina, claritromicina), tetraciclinas, sulfonamidas, trimetoprima, clindamicina, linezolida (estática para a maioria, cida para alguns estreptococos), cloranfenicol.</p>
+      </div>
+    </div>
+
+    <div class="subsecao">Mecanismos de Ação — Visão Geral</div>
+    <table>
+      <tr>
+        <th>Alvo bacteriano</th>
+        <th>Classes</th>
+        <th>Mecanismo</th>
+      </tr>
+      <tr>
+        <td><strong>Parede celular</strong></td>
+        <td>Betalactâmicos, glicopeptídeos, fosfomicina, bacitracina</td>
+        <td>Inibição da síntese de peptidoglicano (PBPs ou D-ala-D-ala)</td>
+      </tr>
+      <tr>
+        <td><strong>Membrana</strong></td>
+        <td>Polimixinas (colistina), daptomicina</td>
+        <td>Disrupção da integridade da membrana citoplasmática</td>
+      </tr>
+      <tr>
+        <td><strong>Ribossomo 30S</strong></td>
+        <td>Aminoglicosídeos, tetraciclinas, tigeciclina</td>
+        <td>Bloqueio da leitura/ligação do tRNA</td>
+      </tr>
+      <tr>
+        <td><strong>Ribossomo 50S</strong></td>
+        <td>Macrolídeos, clindamicina, linezolida, cloranfenicol</td>
+        <td>Inibição da translocação peptídica e iniciação</td>
+      </tr>
+      <tr>
+        <td><strong>DNA-girase / topoisomerase</strong></td>
+        <td>Fluoroquinolonas</td>
+        <td>Inibição da replicação do DNA bacteriano</td>
+      </tr>
+      <tr>
+        <td><strong>RNA polimerase</strong></td>
+        <td>Rifampicina, rifabutina, rifaximina</td>
+        <td>Bloqueio da transcrição</td>
+      </tr>
+      <tr>
+        <td><strong>Síntese de folato</strong></td>
+        <td>Sulfonamidas + trimetoprima</td>
+        <td>Inibição sequencial da diidropteroato sintetase e diidrofolato redutase</td>
+      </tr>
+    </table>
+
+    <div class="alerta">
+      <p><strong>Atenção FGV:</strong> bactericida em sítio de imunossupressão (neutropenia febril, endocardite, meningite) é exigência clássica. Combinação <em>bacteriostático + bactericida</em> pode ser antagônica quando o cida depende de bactéria em crescimento (ex.: tetraciclina + penicilina). Em alguns contextos (DOT em IRAS), a métrica é dias de terapia — não doses administradas.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>FARM-FARMACOTERAP · Antimicrobianos</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">2 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 3 — BETALACTÂMICOS ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Farmácia — FARM-FARMACOTERAP</div>
+      <div class="aula-ref">Bloco B5 · Aula 01 · Betalactâmicos</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="secao-titulo">Betalactâmicos — A Espinha Dorsal da Antibioticoterapia</div>
+
+    <p>Todos os betalactâmicos compartilham o <strong>anel β-lactâmico</strong> que se liga às PBPs (proteínas ligadoras de penicilina) bloqueando a transpeptidação na síntese do peptidoglicano. São <em>bactericidas tempo-dependentes</em> — eficácia correlaciona-se com o tempo acima da CIM (T &gt; CIM). Por isso, infusão estendida ou contínua é estratégia farmacodinâmica racional para piperacilina-tazobactam e meropenem em infecções graves.</p>
+
+    <div class="subsecao">Penicilinas</div>
+    <table>
+      <tr>
+        <th>Subgrupo</th>
+        <th>Representantes</th>
+        <th>Espectro principal</th>
+      </tr>
+      <tr>
+        <td>Naturais</td>
+        <td>Penicilina G (parenteral), V (oral), benzatina</td>
+        <td>Streptococcus, sífilis, anaeróbios orais, enterococos (algumas cepas)</td>
+      </tr>
+      <tr>
+        <td>Antiestafilocócicas</td>
+        <td>Oxacilina, nafcilina</td>
+        <td>MSSA — NÃO cobrem MRSA (resistência por PBP2a)</td>
+      </tr>
+      <tr>
+        <td>Aminopenicilinas</td>
+        <td>Ampicilina, amoxicilina</td>
+        <td>Espectro ampliado: Gram+ + alguns Gram− (E. coli sensível, H. influenzae, Listeria, Enterococcus)</td>
+      </tr>
+      <tr>
+        <td>Antipseudomonas</td>
+        <td>Piperacilina, ticarcilina</td>
+        <td>Inclui Pseudomonas aeruginosa, Enterobacter, Serratia</td>
+      </tr>
+      <tr>
+        <td>+ Inibidor de β-lactamase</td>
+        <td>Amoxi-clav, ampi-sulb, pipe-tazo</td>
+        <td>Recupera atividade contra produtores de β-lactamase (S. aureus, anaeróbios, BGN)</td>
+      </tr>
+    </table>
+
+    <div class="subsecao">Cefalosporinas — Lógica das Gerações</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">1ª e 2ª Gerações</div>
+        <p><strong>1ª (cefazolina, cefalexina):</strong> ótima cobertura Gram+ (S. aureus MSSA, estreptococos). Cefazolina é padrão-ouro em profilaxia cirúrgica.<br>
+        <strong>2ª (cefuroxima, cefoxitina, cefaclor):</strong> Gram+ moderada; ganho contra alguns Gram− e H. influenzae. Cefoxitina cobre anaeróbios (B. fragilis) — exceção da geração.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">3ª, 4ª e 5ª Gerações</div>
+        <p><strong>3ª (ceftriaxona, cefotaxima, ceftazidima):</strong> Gram− amplo, atravessam BHE → meningites bacterianas. Ceftazidima cobre Pseudomonas.<br>
+        <strong>4ª (cefepime):</strong> Gram+ + Gram− + Pseudomonas; resistente a β-lactamases cromossômicas (AmpC).<br>
+        <strong>5ª (ceftarolina):</strong> cobre MRSA (raro entre β-lactâmicos).</p>
+      </div>
+    </div>
+
+    <div class="subsecao">Carbapenêmicos e Monobactâmicos</div>
+    <p><strong>Carbapenêmicos</strong> (imipenem, meropenem, ertapenem, doripenem): espectro mais amplo entre β-lactâmicos — Gram+ (exceto MRSA, VRE), Gram− (incluindo produtores de ESBL), anaeróbios. <em>Ertapenem não cobre Pseudomonas</em>. Meropenem é o de escolha em meningite por BGN multirresistente. <strong>Resistência crescente:</strong> carbapenemases (KPC, NDM, OXA-48). <strong>Monobactâmico</strong> (aztreonam): único β-lactâmico seguro em alergia grave à penicilina; espectro <em>apenas Gram−</em> incluindo Pseudomonas.</p>
+
+    <div class="alerta">
+      <p><strong>Pegadinhas FGV — Betalactâmicos:</strong> oxacilina não cobre MRSA (este define-se pela <em>resistência</em> à oxacilina/meticilina). Cefoxitina é cefalosporina de 2ª geração que cobre anaeróbios — exceção. Cefazolina = profilaxia cirúrgica padrão (não ceftriaxona). Aztreonam é a opção em paciente com anafilaxia documentada à penicilina e infecção por BGN. Carbapenêmicos induzem convulsão (imipenem &gt; meropenem) e devem ser usados com cautela em nefropatas — meropenem é o de escolha em SNC.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>FARM-FARMACOTERAP · Antimicrobianos</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">3 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 4 — OUTRAS CLASSES ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Farmácia — FARM-FARMACOTERAP</div>
+      <div class="aula-ref">Bloco B5 · Aula 01 · Outras Classes</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="secao-titulo">Macrolídeos, Quinolonas, Aminoglicosídeos e Glicopeptídeos</div>
+
+    <div class="subsecao">Macrolídeos (50S)</div>
+    <p><strong>Azitromicina, claritromicina, eritromicina</strong> — bacteriostáticos. Cobertura: Gram+ (Streptococcus, alguns S. aureus), atípicos (Mycoplasma, Chlamydia, Legionella), Bordetella, Campylobacter. Azitromicina é a 1ª escolha em PAC ambulatorial associada a β-lactâmico. <strong>Interação crítica:</strong> inibição do CYP3A4 (claritromicina &gt; eritromicina &gt;&gt; azitromicina). <strong>Prolongam QTc</strong> — associação com fluoroquinolonas (ciprofloxacino, levofloxacino) → arritmia (cobrado em ENARE 2024 Q43 e Q82: amiodarona+ciprofloxacino).</p>
+
+    <div class="subsecao">Fluoroquinolonas (DNA-girase)</div>
+    <table>
+      <tr>
+        <th>Subgrupo</th>
+        <th>Representantes</th>
+        <th>Particularidades</th>
+      </tr>
+      <tr>
+        <td>2ª geração</td>
+        <td>Ciprofloxacino, norfloxacino</td>
+        <td>Gram− incluindo Pseudomonas; ITU; gastrenterites; antraz</td>
+      </tr>
+      <tr>
+        <td>Respiratórias</td>
+        <td>Levofloxacino, moxifloxacino, gemifloxacino</td>
+        <td>Acrescentam cobertura para Streptococcus pneumoniae (PAC)</td>
+      </tr>
+    </table>
+    <p><strong>RAMs e cuidados:</strong> ruptura tendínea (especialmente Aquiles em &gt; 60 anos e usuários de corticoide), alargamento de QTc, aneurisma/dissecção de aorta, hipoglicemia, neuropatia periférica. <strong>Interação clássica</strong> (ENARE 2024 Q37): cátions di/trivalentes (Ca²⁺, Mg²⁺, Al³⁺, Fe²⁺, Zn²⁺) <em>quelam</em> a quinolona oral → reduzem biodisponibilidade em até 90%. Espaçar antiácidos, leite e suplementos por 2h antes ou 6h depois.</p>
+
+    <div class="subsecao">Aminoglicosídeos (30S)</div>
+    <p><strong>Gentamicina, amicacina, tobramicina, estreptomicina:</strong> bactericidas concentração-dependentes (PAE — efeito pós-antibiótico prolongado). Cobertura: Gram− aeróbios, inclusive Pseudomonas; <em>sinergia</em> com β-lactâmicos contra enterococos e estreptococos viridans. Toxicidade dose-dependente: <strong>nefrotoxicidade</strong> (reversível, tubular) e <strong>ototoxicidade</strong> (irreversível, coclear/vestibular). Esquema 1×/dia (dose única diária) maximiza eficácia (Cmax/CIM) e reduz toxicidade vs múltiplas doses — exceto em endocardite enterocócica (manter 3×/dia para sinergia).</p>
+
+    <div class="subsecao">Glicopeptídeos e Lipopeptídeos</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Vancomicina</div>
+        <p>Bactericida tempo-dependente. Espectro <em>apenas Gram+</em>: MRSA, MRSE, enterococos sensíveis, C. difficile (VO em colite). Monitorar nível sérico vale (alvo 15–20 mg/L para infecções graves). RAM clássica: <em>síndrome do homem vermelho</em> — liberação de histamina por infusão rápida (não é alergia; corrigir com infusão em &gt;60 min).</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Daptomicina, Teicoplanina, Linezolida</div>
+        <p><strong>Daptomicina:</strong> lipopeptídeo, depende de CaCl₂; NÃO usar em pneumonia (inativada por surfactante). RAM: rabdomiólise → monitorar CK semanal.<br>
+        <strong>Teicoplanina:</strong> alternativa à vanco — meia-vida longa, 1×/dia.<br>
+        <strong>Linezolida (oxazolidinona):</strong> Gram+ inclusive VRE; biodisponibilidade VO ≈ 100%. RAMs: trombocitopenia, neuropatia, acidose lática, síndrome serotoninérgica com ISRS (IMAO fraca).</p>
+      </div>
+    </div>
+
+    <div class="alerta">
+      <p><strong>Polimixinas:</strong> colistina (polimixina E) e polimixina B — última linha para Gram− multirresistentes (Acinetobacter, Klebsiella KPC). Nefro/neurotoxicidade marcantes. <strong>Tigeciclina</strong> (glicilciclina): amplo espectro inclusive Acinetobacter e ESBL — NÃO atinge níveis séricos eficazes; <em>não usar em pneumonia ou bacteremia primária</em>.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>FARM-FARMACOTERAP · Antimicrobianos</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">4 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 5 — ANTIPARASITÁRIOS ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Farmácia — FARM-FARMACOTERAP</div>
+      <div class="aula-ref">Bloco B5 · Aula 01 · Antiparasitários</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="secao-titulo">Antiparasitários — Estrongiloidíase em Destaque</div>
+
+    <p>A FGV introduziu a estrongiloidíase como tema em 2025 (Q70/2025). O <em>Strongyloides stercoralis</em> é nematódeo intestinal endêmico no Brasil, com particularidade clínica crítica: <strong>autoinfecção</strong> que permite ciclo persistente por décadas. Em <em>imunossuprimidos</em> (corticoide, HTLV-1, transplante, neoplasia) pode evoluir para <strong>síndrome de hiperinfecção</strong> e <strong>estrongiloidíase disseminada</strong> — com sepse polimicrobiana por translocação intestinal. <em>Rastreio prévio</em> antes de imunossupressão é mandatório em áreas endêmicas.</p>
+
+    <div class="subsecao">Anti-helmínticos — Tabela de Decisão</div>
+    <table>
+      <tr>
+        <th>Fármaco</th>
+        <th>Indicação</th>
+        <th>Dose adulto</th>
+        <th>Observações</th>
+      </tr>
+      <tr>
+        <td><strong>Ivermectina</strong></td>
+        <td>Estrongiloidíase (1ª escolha), escabiose, oncocercose, larva migrans</td>
+        <td>200 µg/kg VO 1×/dia por 1–2 dias; estendido na hiperinfecção</td>
+        <td>Atravessa BHE em &lt; 5 anos / &lt; 15 kg — evitar; segura na gestação após 1º trimestre (B)</td>
+      </tr>
+      <tr>
+        <td><strong>Albendazol</strong></td>
+        <td>Ascaridíase, ancilostomose, oxiuríase, tricuríase, neurocisticercose, hidatidose</td>
+        <td>400 mg VO dose única (geo-helmintos); 15 mg/kg/dia (cisticercose)</td>
+        <td>Hepatotoxicidade; teratogênico (categoria D — contraindicado na gestação); alternativa para estrongiloidíase quando ivermectina indisponível (3 dias)</td>
+      </tr>
+      <tr>
+        <td><strong>Mebendazol</strong></td>
+        <td>Geo-helmintíases (PNAH/PNIH)</td>
+        <td>100 mg 2×/dia × 3 dias OU 500 mg dose única</td>
+        <td>Baixa absorção sistêmica; menos eficaz que albendazol em ancilostomose</td>
+      </tr>
+      <tr>
+        <td><strong>Praziquantel</strong></td>
+        <td>Esquistossomose mansônica, teníase, neurocisticercose</td>
+        <td>50–60 mg/kg dose única (esquisto); 50 mg/kg/dia × 14 dias (NCC)</td>
+        <td>Atravessa BHE; pode desencadear reação inflamatória aguda em neurocisticercose (associar corticoide)</td>
+      </tr>
+      <tr>
+        <td><strong>Nitazoxanida</strong></td>
+        <td>Giardíase, criptosporidiose, Hymenolepis nana</td>
+        <td>500 mg VO 12/12h × 3 dias</td>
+        <td>Coloração amarelada da esclera (transitória); aprovado em pediatria a partir de 1 ano</td>
+      </tr>
+      <tr>
+        <td><strong>Dietilcarbamazina (DEC)</strong></td>
+        <td>Filariose linfática (PCFL — MS)</td>
+        <td>6 mg/kg/dia × 12 dias</td>
+        <td>Reação de Mazzotti — administração com cuidado se coinfecção com Loa loa</td>
+      </tr>
+    </table>
+
+    <div class="subsecao">Antiprotozoários Selecionados</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Metronidazol / Tinidazol / Secnidazol</div>
+        <p>Amebíase invasiva, giardíase, tricomoníase, vaginose bacteriana, anaeróbios (B. fragilis, C. difficile alternativa). <em>Efeito dissulfiram-símile</em> com etanol — orientar abstenção alcoólica durante e 48h após. Hepatotoxicidade dose-dependente.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Benznidazol e Nifurtimox</div>
+        <p>Doença de Chagas — fase aguda e congênita (mandatório). Fase crônica indeterminada e cardiopatia leve: tratar idealmente. Benznidazol é 1ª escolha no Brasil (Protocolo MS). RAMs: rash, neuropatia periférica, plaquetopenia.</p>
+      </div>
+    </div>
+
+    <div class="alerta">
+      <p><strong>Estrongiloidíase em imunossuprimido — fluxo cobrado:</strong> rastreio sorológico (ELISA) e/ou parasitológico (Baermann ×3 amostras) antes de iniciar corticoide/transplante/quimioterapia em paciente de área endêmica. Se positivo: tratar com ivermectina 200 µg/kg/dia × 2 dias e repetir em 14 dias. Na <em>hiperinfecção</em>: ivermectina diária até clearance parasitológico por 2 semanas + cobertura antibiótica para BGN (translocação).</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>FARM-FARMACOTERAP · Antimicrobianos</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">5 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 6 — PGA, DOT E RESISTÊNCIA ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Farmácia — FARM-FARMACOTERAP</div>
+      <div class="aula-ref">Bloco B5 · Aula 01 · PGA, DOT e Resistência</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="secao-titulo">Programa de Gerenciamento de Antimicrobianos (PGA)</div>
+
+    <p>O <strong>PGA</strong> (em inglês, <em>Antimicrobial Stewardship Program — ASP</em>) é um conjunto de ações multiprofissionais para promover o uso racional de antimicrobianos. No Brasil, é exigência da <strong>RDC ANVISA 36/2013</strong> (Núcleo de Segurança do Paciente) e detalhado em <em>Diretrizes para Gerenciamento de Antimicrobianos em Hospitais</em> (ANVISA 2017). O farmacêutico hospitalar é integrante <strong>obrigatório</strong> da equipe de stewardship, ao lado de infectologista, microbiologista, enfermeiro de SCIH e gestor.</p>
+
+    <div class="subsecao">Quatro Pilares do PGA</div>
+    <ul class="lista">
+      <li><strong>Pilar 1 — Pré-autorização e formulário restritivo:</strong> uso de antimicrobianos de amplo espectro (carbapenêmicos, polimixinas, daptomicina, tigeciclina, linezolida) condicionado a aprovação prévia da equipe de stewardship</li>
+      <li><strong>Pilar 2 — Auditoria prospectiva com retorno (PAF):</strong> revisão diária das prescrições por farmacêutico/infectologista com sugestões formais ao prescritor (descalonamento, suspensão, ajuste posológico)</li>
+      <li><strong>Pilar 3 — Educação e protocolos:</strong> diretrizes locais por sítio infeccioso, calibradas pelo perfil de sensibilidade microbiológica institucional (mapa microbiológico)</li>
+      <li><strong>Pilar 4 — Indicadores:</strong> mensuração contínua de uso (DOT, DDD), resistência (taxa de KPC, MRSA, ESBL) e desfechos (mortalidade por sepse, IRAS por organismo MDR)</li>
+    </ul>
+
+    <div class="subsecao">DOT vs DDD — Métricas de Consumo</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">DOT — Days of Therapy</div>
+        <p>Conta <strong>dias em que o paciente recebeu pelo menos uma dose</strong> daquele antimicrobiano, independente do número de doses ou da dose diária. Preferido em <em>ambiente hospitalar</em> por refletir o tempo de exposição real e ser comparável entre populações pediátrica/adulta. Unidade: DOT por 1.000 pacientes-dia.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">DDD — Defined Daily Dose</div>
+        <p>Dose diária <em>presumida</em> de manutenção para a indicação principal em adulto, definida pela OMS (sistema ATC/DDD). Calcula-se: DDD = total de gramas consumidas ÷ DDD da OMS. Útil para comparação <em>entre instituições e países</em> e para análise ambulatorial. Limitação: subestima consumo em pediatria e em ajustes para função renal.</p>
+      </div>
+    </div>
+
+    <div class="secao-titulo" style="margin-top:8px;">Resistência Bacteriana — Padrões e Mecanismos</div>
+
+    <table>
+      <tr>
+        <th>Sigla</th>
+        <th>Organismo / mecanismo</th>
+        <th>Implicação terapêutica</th>
+      </tr>
+      <tr>
+        <td><strong>MRSA</strong></td>
+        <td>S. aureus resistente à meticilina — PBP2a alterada (gene mecA)</td>
+        <td>Vancomicina, linezolida, daptomicina, ceftarolina</td>
+      </tr>
+      <tr>
+        <td><strong>VRE</strong></td>
+        <td>Enterococcus resistente à vancomicina — alteração de D-ala-D-ala para D-ala-D-lac (vanA/B)</td>
+        <td>Linezolida, daptomicina, tigeciclina</td>
+      </tr>
+      <tr>
+        <td><strong>ESBL</strong></td>
+        <td>β-lactamase de espectro estendido — hidrolisa cefalosporinas de 3ª/4ª e monobactâmicos</td>
+        <td>Carbapenêmicos; piperacilina-tazobactam apenas em cenários selecionados (MERINO)</td>
+      </tr>
+      <tr>
+        <td><strong>KPC</strong></td>
+        <td>Klebsiella pneumoniae carbapenemase — hidrolisa carbapenêmicos (classe A de Ambler)</td>
+        <td>Polimixina, ceftazidima-avibactam, meropenem-vaborbactam, tigeciclina</td>
+      </tr>
+      <tr>
+        <td><strong>NDM / OXA-48</strong></td>
+        <td>Metalo-β-lactamase (classe B) / classe D</td>
+        <td>NDM: polimixina + aztreonam-avibactam; OXA-48: ceftazidima-avibactam</td>
+      </tr>
+      <tr>
+        <td><strong>AmpC</strong></td>
+        <td>β-lactamase cromossômica indutível (SPACE: Serratia, Pseudomonas, Acinetobacter, Citrobacter, Enterobacter)</td>
+        <td>Cefepime ou carbapenêmico; evitar cefalosporinas de 3ª geração</td>
+      </tr>
+    </table>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> a métrica preferida em PGA hospitalar é <em>DOT</em>, não DDD (DOT por 1.000 pacientes-dia). A pré-autorização e a auditoria com retorno são <em>core actions</em> da CDC/IDSA. O farmacêutico atua em <em>todos</em> os pilares — desde a definição do formulário até a auditoria diária. Descalonamento ≠ suspensão: é a redução de espectro com base em cultura/desfecho clínico.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>FARM-FARMACOTERAP · Antimicrobianos</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">6 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 7 — QUESTÃO 01 ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Farmácia — FARM-FARMACOTERAP</div>
+      <div class="aula-ref">Bloco B5 · Aula 01 · Questões ENARE</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="questao-header">
+      <span>Questão 01</span>
+      <span class="fonte">PGA · Métricas DOT/DDD · NC: Aplicação</span>
+    </div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Em um hospital terciário, o farmacêutico responsável pelo Programa de Gerenciamento de Antimicrobianos (PGA) precisa apresentar à comissão de SCIH o consumo de meropenem em uma unidade de terapia intensiva (UTI) adulto durante o trimestre. A unidade adota a dose padrão de 1 g a cada 8 horas, mas há pacientes com função renal alterada recebendo 500 mg a cada 12 horas. A diretriz local recomenda a métrica que melhor reflete o <em>tempo de exposição</em> dos pacientes ao antimicrobiano, independentemente da dose administrada. Qual indicador deve ser utilizado?</p>
+      <ul class="alternativas">
+        <li>
+          <span class="letra">A</span>
+          <span>DDD por 100 leitos-mês, pois reflete a dose padrão estabelecida pela OMS.</span>
+        </li>
+        <li class="correta">
+          <span class="letra">B</span>
+          <span>DOT por 1.000 pacientes-dia, pois contabiliza dias de terapia independentemente da dose.</span>
+        </li>
+        <li>
+          <span class="letra">C</span>
+          <span>Custo per capita em reais, pois traduz o impacto financeiro do consumo.</span>
+        </li>
+        <li>
+          <span class="letra">D</span>
+          <span>Número absoluto de gramas dispensadas, pois é a métrica mais objetiva e direta.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> a DOT (<em>Days of Therapy</em>) por 1.000 pacientes-dia conta o número de <em>dias em que o paciente recebeu pelo menos uma dose</em>, independentemente da dose total. Quando há heterogeneidade de doses (500 mg 12/12h em renais, 1 g 8/8h em demais), a DDD subestimaria o consumo nos pacientes ajustados. A DOT preserva o tempo de exposição como variável-chave para correlacionar com pressão seletiva e desfechos (resistência, IRAS). É a métrica preferida pela CDC/IDSA em stewardship hospitalar.</p>
+      <p><strong>Por que as outras erram:</strong> A — a DDD parte da dose presumida pela OMS para um adulto-padrão; em UTI com ajustes renais e pediatria, distorce o consumo real · C — custo é métrica financeira, não de exposição; pode aumentar com mudança de fornecedor sem alterar o uso clínico · D — gramas dispensadas confundem dose com tempo: 1 g 1×/dia × 7 dias = 7 g; 0,5 g 2×/dia × 7 dias = 7 g — mesmo consumo em gramas, mesma DOT (7), mas dois cenários clinicamente equivalentes em <em>tempo de exposição</em>, que é o que importa para resistência.</p>
+      <p><strong>Conceito-chave:</strong> a DOT mede <em>tempo</em>; a DDD mede <em>dose-equivalente</em>. Em ambiente hospitalar com variação posológica frequente (renal, peso, pediatria), DOT é mais fiel ao tempo de exposição real.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>FARM-FARMACOTERAP · Antimicrobianos</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">7 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 8 — QUESTÃO 02 ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Farmácia — FARM-FARMACOTERAP</div>
+      <div class="aula-ref">Bloco B5 · Aula 01 · Questões ENARE</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="questao-header">
+      <span>Questão 02</span>
+      <span class="fonte">Interação · Fluoroquinolona · NC: Análise</span>
+    </div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Paciente de 58 anos, com hipertensão controlada por enalapril, é diagnosticado com infecção do trato urinário complicada por <em>E. coli</em> sensível ao ciprofloxacino. A prescrição é ciprofloxacino 500 mg VO 12/12h por 7 dias. Na dispensação, o farmacêutico identifica que o paciente faz uso crônico de carbonato de cálcio 1.250 mg VO 2×/dia para osteopenia e antiácido de hidróxido de alumínio em SOS para pirose. Qual orientação farmacêutica é a mais adequada para garantir a eficácia do antibiótico?</p>
+      <ul class="alternativas">
+        <li>
+          <span class="letra">A</span>
+          <span>Suspender o carbonato de cálcio e o antiácido durante o tratamento por risco de hipocalcemia.</span>
+        </li>
+        <li>
+          <span class="letra">B</span>
+          <span>Substituir ciprofloxacino por nitrofurantoína por incompatibilidade absoluta com cálcio oral.</span>
+        </li>
+        <li class="correta">
+          <span class="letra">C</span>
+          <span>Administrar o ciprofloxacino pelo menos 2 horas antes ou 6 horas depois do cálcio e antiácidos, pois cátions di/trivalentes quelam a fluoroquinolona e reduzem sua biodisponibilidade.</span>
+        </li>
+        <li>
+          <span class="letra">D</span>
+          <span>Aumentar a dose do ciprofloxacino para 750 mg 12/12h para compensar a redução de absorção pelo cálcio.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — C</div>
+      <p><strong>Por que C está correta:</strong> fluoroquinolonas (ciprofloxacino, levofloxacino, moxifloxacino) formam <em>complexos de quelação não absorvíveis</em> com cátions di/trivalentes (Ca²⁺, Mg²⁺, Al³⁺, Fe²⁺, Zn²⁺). A biodisponibilidade do ciprofloxacino oral pode cair de ~70% para &lt;20% quando coadministrado com cálcio ou antiácidos. O manejo correto é o <em>espaçamento temporal</em>: tomar a fluoroquinolona <strong>2h antes ou 6h depois</strong> dos cátions — janela suficiente para absorção intestinal completa antes da quelação. Essa orientação é função privativa do farmacêutico na dispensação (Res. CFF 585/2013) e exemplo clássico de seguimento farmacoterapêutico.</p>
+      <p><strong>Por que as outras erram:</strong> A — suspender carbonato de cálcio crônico em paciente com osteopenia não é justificado e pode comprometer terapia óssea; o problema é farmacocinético (quelação), não farmacodinâmico · B — nitrofurantoína é alternativa para ITU não complicada, mas <em>não cobre adequadamente ITU complicada</em> com risco de bacteremia (concentração tecidual baixa fora do trato urinário); a substituição não é justificada pela interação, que é manejável com espaçamento · D — aumentar a dose para compensar má absorção é prática inaceitável: aumenta toxicidade (tendinopatia, QT) sem garantir eficácia consistente; a solução farmacêutica é resolver a interação, não escalar dose.</p>
+      <p><strong>Conceito-chave:</strong> interação <em>farmacocinética de absorção</em> por quelação. Solução prática: espaçar &gt;2h. Cobrado em ENARE 2024 Q37 — pegadinha clássica da FGV.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>FARM-FARMACOTERAP · Antimicrobianos</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">8 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 9 — QUESTÃO 03 + GABARITO INTEGRADO ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Farmácia — FARM-FARMACOTERAP</div>
+      <div class="aula-ref">Bloco B5 · Aula 01 · Questões e Gabarito Integrado</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="questao-header">
+      <span>Questão 03</span>
+      <span class="fonte">Estrongiloidíase · Imunossupressão · NC: Análise</span>
+    </div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Paciente de 62 anos, procedente de área rural do interior do Maranhão, será submetido a transplante renal e iniciará indução com timoglobulina e corticoide em alta dose. A triagem pré-transplante revela sorologia ELISA positiva para <em>Strongyloides stercoralis</em>. Qual a conduta farmacoterapêutica recomendada para prevenir hiperinfecção?</p>
+      <ul class="alternativas">
+        <li>
+          <span class="letra">A</span>
+          <span>Albendazol 400 mg VO dose única, pois cobre todos os geo-helmintos.</span>
+        </li>
+        <li>
+          <span class="letra">B</span>
+          <span>Postergar o tratamento parasitológico para após o transplante, dada a estabilidade da infecção crônica.</span>
+        </li>
+        <li class="correta">
+          <span class="letra">C</span>
+          <span>Ivermectina 200 µg/kg/dia por dois dias, com repetição em 14 dias e nova sorologia após 3 meses.</span>
+        </li>
+        <li>
+          <span class="letra">D</span>
+          <span>Praziquantel 50 mg/kg em dose única, pois é o anti-helmíntico de escolha para imunossuprimidos.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — C</div>
+      <p><strong>Por que C está correta:</strong> a ivermectina é o anti-helmíntico de <em>primeira escolha</em> para estrongiloidíase. A dose padronizada de 200 µg/kg VO por 1–2 dias erradica a infecção intestinal; a repetição em 14 dias cobre o ciclo de autoinfecção (que dura ~14 dias da larva rabditoide à filarioide). Em pré-transplante, o objetivo é zerar a carga parasitária <em>antes</em> da imunossupressão para evitar hiperinfecção — quadro de mortalidade até 87% quando não diagnosticado precocemente. A sorologia de controle em 3 meses confirma erradicação.</p>
+      <p><strong>Por que as outras erram:</strong> A — albendazol cobre estrongiloidíase apenas com esquema de 3 dias (eficácia ~38–95% vs ivermectina ~94–100%); dose única é insuficiente para Strongyloides · B — postergar é o erro clínico clássico: imunossupressão converte infecção intestinal crônica em hiperinfecção/disseminação com sepse polimicrobiana por translocação de BGN intestinais; rastreio e tratamento são <em>pré-imunossupressão</em> · D — praziquantel é o fármaco de escolha para <em>esquistossomose e teníase</em>, não para nematódeos intestinais; estrutura química e mecanismo distintos.</p>
+    </div>
+
+    <div class="subsecao" style="margin-top:6px;">Gabarito Comentado — Análise Integrada</div>
+    <table>
+      <tr>
+        <th>Questão</th>
+        <th>Gabarito</th>
+        <th>Tema</th>
+        <th>Conceito-Chave</th>
+      </tr>
+      <tr>
+        <td><strong>01</strong></td>
+        <td><span class="destaque">B</span></td>
+        <td>PGA — métricas de consumo</td>
+        <td>DOT mede tempo de exposição; DDD mede dose-equivalente</td>
+      </tr>
+      <tr>
+        <td><strong>02</strong></td>
+        <td><span class="destaque">C</span></td>
+        <td>Interação fluoroquinolona × cátions</td>
+        <td>Quelação reduz biodisponibilidade — espaçar 2h antes ou 6h depois</td>
+      </tr>
+      <tr>
+        <td><strong>03</strong></td>
+        <td><span class="destaque">C</span></td>
+        <td>Estrongiloidíase pré-imunossupressão</td>
+        <td>Ivermectina 200 µg/kg × 2 dias, repetir em 14 dias (ciclo de autoinfecção)</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="footer">
+    <span>FARM-FARMACOTERAP · Antimicrobianos</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">9 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 10 — SÍNTESE ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Farmácia — FARM-FARMACOTERAP</div>
+      <div class="aula-ref">Bloco B5 · Aula 01 · Síntese</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="secao-titulo">Síntese — Antimicrobianos e Antiparasitários</div>
+
+    <div class="sintese-grid">
+      <div class="sintese-item">
+        <div class="si-label">Betalactâmicos</div>
+        <p>Bactericidas tempo-dependentes (T &gt; CIM). Penicilinas (G, naturais, antipseudo, antiestafilo), cefalosporinas (1ª–5ª gerações, sendo 5ª ceftarolina = MRSA), carbapenêmicos (amplo, exceto MRSA/VRE; ertapenem não cobre Pseudomonas) e monobactâmico (aztreonam — só Gram−, opção em alergia à penicilina).</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Macrolídeos e Quinolonas</div>
+        <p>Macrolídeos (azitromicina, claritro) — bacteriostáticos 50S, atípicos, prolongam QT, inibem CYP3A4. Quinolonas (cipro, levo, moxi) — bactericidas, DNA-girase; quelação com cátions (Ca, Mg, Al, Fe) — espaçar 2h/6h; ruptura tendínea e prolongamento de QT.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Aminoglicosídeos e Glicopeptídeos</div>
+        <p>Aminoglicosídeos: bactericidas concentração-dependentes; nefro/ototoxicidade; dose única diária. Vancomicina: tempo-dependente; só Gram+ (MRSA, MRSE, C. difficile VO); síndrome do homem vermelho (infundir &gt;60 min); monitorar vale 15–20 mg/L.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Antiparasitários — Mapa</div>
+        <p>Ivermectina: estrongiloidíase (1ª escolha), escabiose. Albendazol/mebendazol: geo-helmintos (Ascaris, ancilóstomos, oxiúros, tricuríase). Praziquantel: esquistossomose, teníase, neurocisticercose. Metronidazol/secnidazol: amebíase, giardíase, tricomoníase, anaeróbios — evitar álcool (efeito dissulfiram).</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">PGA + DOT</div>
+        <p>4 pilares: pré-autorização, auditoria com retorno (PAF), educação/protocolos, indicadores. Métricas: DOT (dias de terapia; preferida em hospital) e DDD (OMS; comparação entre instituições). Farmacêutico = membro obrigatório da equipe de stewardship (RDC 36/2013 + ANVISA 2017).</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Próxima Aula</div>
+        <p><strong>Aula 02 — Farmacoterapia II: Cardiometabólicos.</strong> DM (diagnóstico SBD 2024, metformina, glibenclamida, GLP-1 — semaglutida/tirzepatida), HAS, IC, digoxina (ITE), anticoagulantes orais (varfarina, DOACs). Foco nos clusters de 2025: GLP-1 em uso não supervisionado e cálculos de TFG para ajuste posológico.</p>
+      </div>
+    </div>
+
+    <div class="alerta" style="margin-top:5px;">
+      <p><strong>Regra de ouro — Antimicrobianos no ENARE:</strong> escolha empírica = agente provável + sítio + perfil local; descalonamento = redução de espectro pós-cultura; PGA = farmacêutico em todos os pilares (RDC 36/2013); DOT &gt; DDD em hospital; estrongiloidíase em imunossuprimido = rastreio pré-imunossupressão + ivermectina 200 µg/kg × 2 dias + repetição em 14 dias.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>FARM-FARMACOTERAP · Antimicrobianos</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">10 / 10</span>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Farmácia — Bloco B5 Aula 12 | Extensivo ENARE 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap');
+  :root { --creme: #F6F4ED; --verde: #1F5C23; --amarelo: #C6D834; --escuro: #0C2B0E; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #d0d0d0; font-family: 'Bricolage Grotesque', sans-serif; }
+  .page { width: 210mm; height: 297mm; background: var(--creme); margin: 0 auto 12px; position: relative; overflow: hidden; page-break-after: always; }
+  .header { background: var(--verde); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .header-logo { display: flex; align-items: center; gap: 8px; }
+  .header-logo svg { width: 32px; height: 32px; }
+  .header-brand { display: flex; flex-direction: column; line-height: 1; }
+  .header-brand .marca { font-family: 'Playfair Display', serif; font-style: italic; color: #fff; font-size: 13px; letter-spacing: 0.5px; }
+  .header-brand .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 7px; letter-spacing: 1.5px; text-transform: uppercase; }
+  .header-info { text-align: right; }
+  .header-info .disciplina { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
+  .header-info .aula-ref { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.7); font-size: 8px; letter-spacing: 0.5px; }
+  .footer { position: absolute; bottom: 0; left: 0; right: 0; background: var(--verde); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .footer span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.6); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .footer .pg { color: var(--amarelo); font-weight: 400; }
+  .body { padding: 14px 18px 30px; height: calc(297mm - 52px - 22px); overflow: hidden; }
+  .capa-page { background: var(--verde); }
+  .capa-header { background: var(--creme); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .capa-header .marca { font-family: 'Playfair Display', serif; font-style: italic; color: var(--verde); font-size: 14px; }
+  .capa-header .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--verde); font-size: 7.5px; letter-spacing: 2px; text-transform: uppercase; }
+  .capa-body { padding: 28px 24px 0; display: flex; flex-direction: column; height: calc(297mm - 52px - 22px); }
+  .capa-eyebrow { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; }
+  .capa-titulo { font-family: 'Barlow Condensed', sans-serif; color: #fff; font-size: 50px; line-height: 0.95; text-transform: uppercase; letter-spacing: -0.5px; margin-bottom: 6px; }
+  .capa-titulo span { color: var(--amarelo); }
+  .capa-subtitulo { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; color: rgba(255,255,255,0.65); font-size: 12px; letter-spacing: 0.3px; margin-bottom: 22px; line-height: 1.5; }
+  .capa-badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+  .capa-badge { background: rgba(198,216,52,0.15); border: 1px solid var(--amarelo); color: var(--amarelo); font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 8px; border-radius: 2px; }
+  .capa-divider { width: 40px; height: 3px; background: var(--amarelo); margin-bottom: 20px; }
+  .capa-topicos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .capa-topico { display: flex; align-items: flex-start; gap: 7px; }
+  .capa-topico-num { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 18px; line-height: 1; min-width: 18px; }
+  .capa-topico-txt { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 400; color: rgba(255,255,255,0.8); font-size: 9.5px; line-height: 1.4; }
+  .capa-footer-strip { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.25); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .capa-footer-strip span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.45); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .secao-titulo { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 18px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid var(--amarelo); padding-bottom: 3px; margin-bottom: 9px; line-height: 1; }
+  .subsecao { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.5px; margin: 7px 0 3px; }
+  p { font-size: 9px; line-height: 1.55; color: #1a1a1a; margin-bottom: 4px; font-weight: 400; }
+  .destaque { background: var(--amarelo); color: var(--escuro); font-weight: 600; padding: 1px 4px; border-radius: 2px; font-size: 8.5px; }
+  .alerta { background: rgba(198,216,52,0.18); border-left: 3px solid var(--amarelo); padding: 5px 8px; margin: 5px 0; border-radius: 0 3px 3px 0; }
+  .alerta p { margin: 0; font-size: 8.5px; }
+  .alerta strong { color: var(--verde); }
+  table { width: 100%; border-collapse: collapse; margin: 5px 0; font-size: 8px; }
+  th { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; padding: 4px 6px; text-align: left; }
+  td { padding: 3px 6px; border-bottom: 1px solid rgba(31,92,35,0.12); vertical-align: top; line-height: 1.4; color: #1a1a1a; }
+  tr:nth-child(even) td { background: rgba(31,92,35,0.04); }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 5px 0; }
+  .card { background: rgba(31,92,35,0.06); border: 1px solid rgba(31,92,35,0.15); border-radius: 4px; padding: 7px 8px; }
+  .card-title { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 11px; text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 3px; }
+  .card p { font-size: 8px; line-height: 1.5; }
+  .questao-header { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; padding: 4px 10px; border-radius: 3px 3px 0 0; display: flex; justify-content: space-between; align-items: center; }
+  .questao-header .fonte { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; color: var(--amarelo); letter-spacing: 0.5px; }
+  .questao-body { border: 1px solid rgba(31,92,35,0.2); border-top: none; border-radius: 0 0 3px 3px; padding: 7px 10px; margin-bottom: 7px; }
+  .questao-enunciado { font-size: 8.5px; line-height: 1.55; color: #111; margin-bottom: 5px; font-weight: 500; }
+  .alternativas { list-style: none; }
+  .alternativas li { font-size: 8px; line-height: 1.5; padding: 2px 0; color: #222; display: flex; gap: 5px; }
+  .alternativas li .letra { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: var(--verde); font-size: 9px; min-width: 10px; }
+  .alternativas li.correta .letra { color: var(--amarelo); }
+  .alternativas li.correta { background: rgba(198,216,52,0.15); border-left: 2px solid var(--amarelo); padding-left: 4px; }
+  .gabarito-box { background: var(--verde); border-radius: 4px; padding: 8px 12px; margin: 6px 0; }
+  .gabarito-box .gab-title { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+  .gabarito-box p { color: rgba(255,255,255,0.9); font-size: 8px; line-height: 1.55; }
+  .gabarito-box strong { color: var(--amarelo); }
+  .sintese-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-top: 6px; }
+  .sintese-item { background: rgba(31,92,35,0.07); border-left: 3px solid var(--verde); padding: 5px 7px; border-radius: 0 3px 3px 0; }
+  .sintese-item .si-label { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px; }
+  .sintese-item p { font-size: 7.5px; line-height: 1.5; }
+  ul.lista { padding-left: 14px; margin: 3px 0; }
+  ul.lista li { font-size: 8.5px; line-height: 1.55; color: #1a1a1a; margin-bottom: 1px; }
+  @media print { body { background: none; } .page { margin: 0; box-shadow: none; } }
+</style>
+</head>
+<body>
+
+<div class="page capa-page">
+  <div class="capa-header">
+    <div style="display:flex;align-items:center;gap:8px;"><svg width="34" height="34" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#1F5C23"/></svg><div><div class="marca">Elite Treinamentos</div><div class="tagline">Extensivo ENARE 2026</div></div></div>
+    <div style="text-align:right;"><div style="font-family:'Barlow Condensed',sans-serif;color:var(--verde);font-size:11px;letter-spacing:1px;text-transform:uppercase;">Bloco B5 · Aula 12</div><div style="font-family:'Space Grotesk',sans-serif;font-weight:300;color:#888;font-size:7.5px;letter-spacing:0.5px;">Farmácia</div></div>
+  </div>
+  <div class="capa-body">
+    <div class="capa-eyebrow">Bloco B5 · FARM-FARMTEC · Aula 12 de 22</div>
+    <div class="capa-titulo">ITE <span>·<br>Índice<br>Terapêu-<br>tico<br>Estreito</span></div>
+    <div class="capa-subtitulo">Farmacotécnica I: RDC 742/2022, RDC 67/2007, BPM,<br>fármacos de baixo ITE e monitorização sérica terapêutica</div>
+    <div class="capa-badge-row">
+      <div class="capa-badge">FARM-FARMTEC ★★</div>
+      <div class="capa-badge">RDC 742/2022</div>
+      <div class="capa-badge">RDC 67/2007 BPM</div>
+      <div class="capa-badge">TDM · Bioequivalência</div>
+    </div>
+    <div class="capa-divider"></div>
+    <div class="capa-topicos">
+      <div class="capa-topico"><div class="capa-topico-num">01</div><div class="capa-topico-txt">Índice terapêutico: definição e cálculo</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">02</div><div class="capa-topico-txt">RDC 742/2022 — definição oficial de ITE</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">03</div><div class="capa-topico-txt">Lista de fármacos de baixo ITE</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">04</div><div class="capa-topico-txt">RDC 67/2007 — BPM e exigências de manipulação</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">05</div><div class="capa-topico-txt">Monitorização Sérica Terapêutica (TDM)</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">06</div><div class="capa-topico-txt">Bioequivalência e intercambialidade</div></div>
+    </div>
+  </div>
+  <div class="capa-footer-strip"><span>Extensivo ENARE 2026</span><span>Elite Treinamentos em Saúde</span><span>Página 1 de 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-FARMTEC</div><div class="aula-ref">Bloco B5 · Aula 12 · Conceito de ITE</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Índice Terapêutico — Conceito e Importância Clínica</div>
+    <p>O <strong>Índice Terapêutico (IT)</strong> é a razão entre a dose tóxica e a dose terapêutica de um fármaco — quanto maior o IT, maior a "margem de segurança". Fármacos com <strong>IT estreito (ITE)</strong> têm a dose tóxica próxima da dose terapêutica, exigindo <em>controle rigoroso da formulação, monitorização sérica e cuidado na intercambialidade</em>. A FGV cobrou ITE em ENARE 2025 (Q33, Q48, Q85–87) e introduziu como cluster relevante.</p>
+
+    <div class="subsecao">Definição Matemática</div>
+    <p>Em farmacologia, o IT é definido como: <em>IT = DL₅₀ / DE₅₀</em>, onde DL₅₀ é a dose letal mediana (50% da população morre) e DE₅₀ é a dose efetiva mediana (50% da população responde). Clinicamente, usa-se a <em>janela terapêutica</em>: concentração mínima eficaz vs concentração mínima tóxica.</p>
+
+    <div class="subsecao">Definição Regulatória — RDC ANVISA 742/2022</div>
+    <p>A <strong>RDC 742/2022</strong> da ANVISA define oficialmente Medicamentos de Índice Terapêutico Estreito (MITE) e estabelece exigências para registro, intercambialidade e controle de qualidade. Critérios de classificação:</p>
+    <ul class="lista">
+      <li>Pequena diferença entre a dose mínima efetiva e a dose máxima segura (janela &lt; 2×)</li>
+      <li>Pequenas variações na dose ou concentração plasmática causam falha terapêutica ou eventos adversos graves</li>
+      <li>Cinética não linear (saturação enzimática ou de ligação proteica)</li>
+      <li>Necessidade de monitorização sérica (TDM) na prática clínica de rotina</li>
+      <li>Curva concentração-resposta íngreme</li>
+    </ul>
+
+    <div class="subsecao">Fármacos Classificados como Baixo ITE (RDC 742/2022 e literatura)</div>
+    <table>
+      <tr><th>Classe</th><th>Fármacos</th><th>Janela terapêutica</th></tr>
+      <tr><td>Anticonvulsivantes</td><td>Fenitoína; carbamazepina; ácido valproico; fenobarbital; lamotrigina</td><td>Fenitoína 10–20 µg/mL; carbamazepina 4–12 µg/mL; valproato 50–100 µg/mL</td></tr>
+      <tr><td>Cardiovasculares</td><td><strong>Digoxina</strong>; amiodarona; lidocaína; quinidina</td><td>Digoxina 0,5–0,9 ng/mL em IC</td></tr>
+      <tr><td>Anticoagulantes</td><td><strong>Varfarina</strong></td><td>INR 2–3 (FA) ou 2,5–3,5 (prótese mecânica)</td></tr>
+      <tr><td>Imunossupressores</td><td>Ciclosporina; tacrolimo; sirolimo; everolimo</td><td>Ciclo: 100–400 ng/mL; tacro: 5–15 ng/mL</td></tr>
+      <tr><td>Antibióticos</td><td>Aminoglicosídeos (gentamicina, amicacina); vancomicina</td><td>Vanco vale 15–20 mg/L em infecção grave</td></tr>
+      <tr><td>Antineoplásicos</td><td>Metotrexato dose alta; bussulfano</td><td>Variável; TDM em transplante</td></tr>
+      <tr><td>Estabilizadores de humor</td><td><strong>Lítio</strong></td><td>0,6–1,2 mEq/L</td></tr>
+      <tr><td>Broncodilatadores</td><td>Teofilina, aminofilina</td><td>5–20 µg/mL</td></tr>
+      <tr><td>Hormônios</td><td>Levotiroxina</td><td>TSH alvo individualizado</td></tr>
+      <tr><td>Benzodiazepínicos (uso epiléptico)</td><td><strong>Clonazepam</strong></td><td>TDM raramente, mas janela estreita</td></tr>
+    </table>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> a FGV pode pedir identificação de um fármaco de baixo ITE em alternativa. Decorar o "core list": <em>digoxina, varfarina, lítio, fenitoína, carbamazepina, ciclosporina, tacrolimo, levotiroxina, aminoglicosídeos, vancomicina, teofilina, metotrexato, clonazepam</em>. Mais geral: qualquer fármaco com TDM rotineiro tem ITE.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-FARMTEC · ITE</span><span>Extensivo ENARE 2026</span><span class="pg">2 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-FARMTEC</div><div class="aula-ref">Bloco B5 · Aula 12 · BPM</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">RDC 67/2007 — Boas Práticas de Manipulação</div>
+    <p>A <strong>RDC ANVISA 67/2007</strong> estabelece as Boas Práticas de Manipulação de Preparações Magistrais e Oficinais para uso humano em farmácias. Cobrada em ENARE 2025 (Q87 — manipulação em controle de qualidade). A RDC 67 é central para farmácia magistral e hospitalar.</p>
+
+    <div class="subsecao">Categorias de Preparações Magistrais</div>
+    <table>
+      <tr><th>Grupo</th><th>Exemplo</th></tr>
+      <tr><td>Grupo 1 — Líquidas para uso oral, externo e ginecológico</td><td>Xaropes, soluções, suspensões</td></tr>
+      <tr><td>Grupo 2 — Sólidas para uso oral, externo e ginecológico</td><td>Cápsulas, sachês, granulados</td></tr>
+      <tr><td>Grupo 3 — Semi-sólidas</td><td>Pomadas, cremes, géis</td></tr>
+      <tr><td>Grupo 4 — Estéreis</td><td>Injetáveis, oftálmicos, NPT</td></tr>
+      <tr><td>Grupo 5 — Outros (preparações homeopáticas, fitoterápicas, antineoplásicos)</td><td>Considerar Anexos específicos</td></tr>
+    </table>
+
+    <div class="subsecao">Infraestrutura Mínima</div>
+    <ul class="lista">
+      <li>Sala de manipulação separada por tipo de preparação (sólidas; líquidas; estéreis)</li>
+      <li>Área limpa para preparações estéreis: <em>Classe ISO 5</em> em CMI (Cabine de Manipulação de Injetáveis); Classe ISO 7 ou 8 no ambiente circundante</li>
+      <li>Sistema de ventilação com filtros HEPA</li>
+      <li>Balança calibrada (verificação periódica obrigatória)</li>
+      <li>Equipamentos: capela de exaustão, manta aquecedora, agitador, pHmetro, viscosímetro</li>
+      <li>Pia para higienização; vestiário com paramentação adequada</li>
+    </ul>
+
+    <div class="subsecao">Documentação Obrigatória</div>
+    <ul class="lista">
+      <li>Procedimentos Operacionais Padrão (POPs) escritos para cada preparação</li>
+      <li>Fichas de manipulação (memórias de operação) com todos os dados de lote</li>
+      <li>Controle de qualidade: análise de matéria-prima (Certificado de Análise), do processo e do produto final</li>
+      <li>Registro de temperatura e umidade das áreas</li>
+      <li>Plano de limpeza e validação</li>
+      <li>Lista de medicamentos manipulados disponibilizada ao cliente</li>
+    </ul>
+
+    <div class="subsecao">Controle de Qualidade para Preparações</div>
+    <table>
+      <tr><th>Teste</th><th>O que avalia</th></tr>
+      <tr><td>Uniformidade de massa</td><td>Variação de peso entre cápsulas/comprimidos (Farmacopeia Brasileira)</td></tr>
+      <tr><td>Dissolução</td><td>Liberação do princípio ativo em meio padronizado (% no tempo)</td></tr>
+      <tr><td>Doseamento</td><td>Quantificação do princípio ativo (HPLC, espectrofotometria) — geralmente terceirizado em farmácia magistral</td></tr>
+      <tr><td>pH</td><td>Para preparações líquidas; deve estar na faixa especificada</td></tr>
+      <tr><td>Limites microbianos</td><td>Para preparações não-estéreis (Farmacopeia 6ª ed.)</td></tr>
+      <tr><td>Esterilidade</td><td>Preparações injetáveis: ausência de contaminação microbiana</td></tr>
+      <tr><td>Endotoxinas</td><td>Teste LAL para injetáveis</td></tr>
+    </table>
+
+    <div class="subsecao">Cuidados Específicos para Fármacos de Baixo ITE em Magistral</div>
+    <p>A RDC 67/2007 e atualizações exigem para <strong>fármacos de baixo ITE em manipulação magistral</strong>:</p>
+    <ul class="lista">
+      <li>Doseamento quantitativo do princípio ativo na cápsula final (não apenas uniformidade de massa)</li>
+      <li>Análise de homogeneidade da mistura</li>
+      <li>Teste de dissolução obrigatório em alguns casos</li>
+      <li>Lote menor para minimizar erros de pesagem</li>
+      <li>Sinalização especial no rótulo: "USO PROIBIDO EM CASO DE INTOLERÂNCIA AO PRINCÍPIO ATIVO"</li>
+      <li>Para fármacos como <em>varfarina, lítio, levotiroxina, fenitoína</em>: preferência por industrializado em uso crônico, evitando manipulação se possível</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Pegadinha FGV:</strong> a manipulação magistral de fármacos de baixo ITE é tecnicamente possível mas pouco recomendada para uso crônico — a variabilidade da formulação magistral pode comprometer o controle terapêutico em cinética íngreme. Em ENARE, foi cobrada questão sobre <em>doseamento + uniformidade</em> para garantia de homogeneidade em ITE.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-FARMTEC · ITE</span><span>Extensivo ENARE 2026</span><span class="pg">3 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-FARMTEC</div><div class="aula-ref">Bloco B5 · Aula 12 · TDM</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Monitorização Sérica Terapêutica (TDM)</div>
+
+    <p>A <strong>TDM (Therapeutic Drug Monitoring)</strong> é o uso da dosagem sérica do fármaco para guiar ajustes posológicos. Indicada principalmente em ITE, mas também em populações especiais (pediatria, idoso, IRC), em RAM suspeitada, em falha terapêutica e em adesão duvidosa. O farmacêutico clínico participa <em>interpretando o nível sérico</em>, conforme variabilidade individual.</p>
+
+    <div class="subsecao">Princípios de Coleta para TDM</div>
+    <ul class="lista">
+      <li><strong>Estado estacionário (steady state)</strong>: alcançado em 4–5 meias-vidas. Coletar TDM nesse ponto, salvo em intoxicação aguda</li>
+      <li><strong>Vale (trough)</strong>: imediatamente antes da próxima dose — valor mais baixo. Reflete clearance e adesão. Usado em vanco, anticonvulsivantes, ciclosporina, tacrolimo</li>
+      <li><strong>Pico (peak)</strong>: tempo da absorção; aminoglicosídeos 30 min após infusão (Cmax)</li>
+      <li><strong>Tempo após dose padronizado</strong>: digoxina 6–8h após dose; lítio 12h (vale); levotiroxina pela manhã antes da dose</li>
+    </ul>
+
+    <div class="subsecao">Janelas Terapêuticas — Resumo</div>
+    <table>
+      <tr><th>Fármaco</th><th>Janela terapêutica</th><th>Coleta</th></tr>
+      <tr><td>Digoxina</td><td>0,5–0,9 ng/mL (IC); &lt; 2 (FA)</td><td>6–8h após dose; equilíbrio entre tecido e plasma</td></tr>
+      <tr><td>Varfarina (INR)</td><td>2–3 (FA); 2,5–3,5 (prótese mecânica)</td><td>Mensal estável; semanal em mudanças</td></tr>
+      <tr><td>Lítio</td><td>0,6–1,2 mEq/L (até 1,0 em manutenção; 0,4–0,6 em idoso)</td><td>12h pós-dose; semanal no início, depois 6–6 meses + TSH/Cr</td></tr>
+      <tr><td>Fenitoína</td><td>10–20 µg/mL (total); livre 1–2 µg/mL</td><td>Pico em 4–6h VO; vale antes da dose seguinte</td></tr>
+      <tr><td>Carbamazepina</td><td>4–12 µg/mL</td><td>Vale; ajustar autoindução em 1ª semana</td></tr>
+      <tr><td>Valproato</td><td>50–100 µg/mL</td><td>Vale</td></tr>
+      <tr><td>Vancomicina</td><td>Vale 10–15 (infecção comum); 15–20 (grave/MRSA)</td><td>Antes da 4ª dose; ajustar por nomograma ou software (Bayesian)</td></tr>
+      <tr><td>Aminoglicosídeos</td><td>Gentamicina: pico 5–10 (3×/dia) ou pico 20+ (dose única diária); vale &lt; 1 mg/L</td><td>Pico 30 min após infusão; vale antes da próxima</td></tr>
+      <tr><td>Ciclosporina</td><td>100–400 ng/mL (varia por indicação)</td><td>Vale (C0) ou pico C2 (2h pós-dose)</td></tr>
+      <tr><td>Tacrolimo</td><td>5–15 ng/mL (varia por indicação)</td><td>Vale</td></tr>
+      <tr><td>Teofilina</td><td>5–20 µg/mL</td><td>Vale</td></tr>
+    </table>
+
+    <div class="subsecao">Causas de Resultado Inesperado</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Nível baixo</div>
+        <p>Adesão inadequada; dose insuficiente; biodisponibilidade reduzida (alimento, interação); clearance aumentado (jovem, indutor enzimático, hipertireoidismo); volume de distribuição aumentado (obesidade, edema); coleta antes do steady state.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Nível alto</div>
+        <p>Dose excessiva; sobredose acidental; clearance reduzido (idoso, IR, IH, inibidor enzimático); interação farmacocinética (verapamil + digoxina); coleta logo após dose (pico em vez de vale); hipoalbuminemia (frações livres elevadas, ex.: fenitoína).</p>
+      </div>
+    </div>
+
+    <div class="alerta">
+      <p><strong>Atribuição do farmacêutico:</strong> validar coleta (tempo e via correto), interpretar à luz do paciente (peso, IR, IH, idade, adesão), sugerir ajuste de dose ao prescritor. Em uso de vancomicina em hospital, é prática farmacêutica avançada calcular dose individualizada por software Bayesiano (RxKinetics, DoseMeRx).</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-FARMTEC · ITE</span><span>Extensivo ENARE 2026</span><span class="pg">4 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-FARMTEC</div><div class="aula-ref">Bloco B5 · Aula 12 · Bioequivalência</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Bioequivalência e Intercambialidade</div>
+
+    <p>A <strong>bioequivalência</strong> é a equivalência de biodisponibilidade entre dois produtos farmacêuticos (referência vs teste) — medida por <em>AUC (área sob a curva)</em>, <em>Cmax</em> (concentração máxima) e <em>Tmax</em> (tempo até Cmax) em estudo de farmacocinética humana. Resultado: razão de médias geométricas com IC 90% dentro de <strong>80%–125%</strong> para AUC e Cmax (FDA, EMA, ANVISA).</p>
+
+    <div class="subsecao">Tipos de Medicamentos no Brasil — RDC ANVISA</div>
+    <table>
+      <tr><th>Categoria</th><th>Definição</th></tr>
+      <tr><td>Referência</td><td>Inovador com eficácia e segurança comprovadas. Cabeçalho do registro</td></tr>
+      <tr><td><strong>Genérico</strong></td><td>Bioequivalente ao referência; intercambiável; tarja em cor padrão; identificado pela DCB/DCI; preço regulado</td></tr>
+      <tr><td>Similar</td><td>Mesmo princípio ativo, dose, indicação; antes não exigia bioequivalência; <em>desde 2014 todo similar registrado deve ser bioequivalente</em> ao referência (RDC 134/2003 + atualizações)</td></tr>
+      <tr><td>Manipulado / magistral</td><td>Preparado em farmácia; não é bioequivalente em sentido estrito</td></tr>
+      <tr><td>Notificado / fitoterápico</td><td>Categorias específicas com requisitos próprios</td></tr>
+    </table>
+
+    <div class="subsecao">Intercambialidade</div>
+    <p>Pela <strong>Lei 9.787/1999 (Lei dos Genéricos)</strong> e regulamentações posteriores, o farmacêutico pode <em>substituir o medicamento de referência pelo genérico correspondente</em> na dispensação, salvo orientação expressa em contrário do prescritor. A substituição entre similares e referência exige autorização explícita.</p>
+
+    <div class="subsecao">Bioequivalência em Fármacos de Baixo ITE</div>
+    <p>Para MITEs, a ANVISA (e FDA) aplica <strong>critérios mais restritivos</strong> de bioequivalência:</p>
+    <ul class="lista">
+      <li>Faixa mais estreita: AUC e Cmax dentro de 90%–111% (em alguns países)</li>
+      <li>Necessidade de avaliação adicional de Cmin (concentração mínima)</li>
+      <li>Em alguns casos, exige-se equivalência farmacêutica completa (forma cristalina, polimorfismo, excipientes)</li>
+      <li>Recomendação clínica de <em>manter a marca</em> em uso crônico: trocas frequentes entre referência e genérico podem desestabilizar levotiroxina, varfarina, anticonvulsivantes em alguns pacientes</li>
+    </ul>
+
+    <div class="subsecao">Equivalência Farmacêutica vs Equivalência Terapêutica</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Equivalência Farmacêutica</div>
+        <p>Mesmo princípio ativo, dose, forma farmacêutica, via de administração. Avaliada <em>in vitro</em> (doseamento, dissolução, uniformidade). Pré-requisito para bioequivalência.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Bioequivalência (Equivalência Terapêutica)</div>
+        <p>Avaliada <em>in vivo</em> em estudo cruzado randomizado; AUC e Cmax com IC 90% dentro de 80–125%. Garante mesma exposição sistêmica. <em>Permite intercambialidade</em>.</p>
+      </div>
+    </div>
+
+    <div class="subsecao">Manuseio em Hospital — Comissão de Farmácia e Terapêutica</div>
+    <p>A CFT seleciona, para o formulário hospitalar, fármacos com base em: (1) eficácia e segurança comprovadas; (2) custo-efetividade; (3) disponibilidade; (4) bioequivalência demonstrada (genéricos/similares). Para MITEs, geralmente mantém-se a marca utilizada inicialmente em uso crônico, evitando troca durante internação.</p>
+
+    <div class="alerta">
+      <p><strong>Conduta farmacêutica:</strong> em dispensação, orientar paciente sobre direito à substituição por genérico (Lei 9.787/1999) e sobre cuidado especial em ITE — não trocar sem orientação. Em hospital, alertar equipe sobre interferência da troca em fármacos de baixo ITE (especialmente levotiroxina e anticonvulsivantes).</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-FARMTEC · ITE</span><span>Extensivo ENARE 2026</span><span class="pg">5 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-FARMTEC</div><div class="aula-ref">Bloco B5 · Aula 12 · Aplicações Práticas</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Aplicações Práticas em Hospital</div>
+
+    <div class="subsecao">Caso 1 — Vancomicina em ClCr Reduzido</div>
+    <p>Paciente 75 anos, 60 kg, MRSA bacteremia. ClCr 32 mL/min. Prescrição inicial: 15 mg/kg de ataque (900 mg) → manutenção a definir. Conduta farmacêutica:</p>
+    <ul class="lista">
+      <li>Coletar vale antes da 4ª dose</li>
+      <li>Alvo 15–20 mg/L (infecção grave/MRSA)</li>
+      <li>Calcular dose individualizada com software (RxKinetics, DoseMeRx) — método Bayesiano superior ao nomograma</li>
+      <li>Reajustar conforme nível alcançado; AUC₂₄/MIC alvo 400–600 mg·h/L (recomendação IDSA 2020)</li>
+      <li>Monitorar função renal (Cr a cada 48h) e ototoxicidade clinicamente</li>
+    </ul>
+
+    <div class="subsecao">Caso 2 — Levotiroxina e Cálcio + Ferro</div>
+    <p>Paciente em levotiroxina 75 mcg/dia há 6 meses, TSH alvo 1–2, mas resultado 8,5 (hipotireoidismo descontrolado). Investigação:</p>
+    <ul class="lista">
+      <li>Início recente de carbonato de cálcio 1.250 mg + sulfato ferroso para osteopenia/anemia</li>
+      <li>Cálcio e ferro reduzem absorção da levotiroxina em até 40%</li>
+      <li>Conduta: orientar tomar levotiroxina <em>em jejum, 30–60 min antes do café da manhã</em>; espaçar cálcio e ferro &gt; 4h; checar TSH em 6–8 semanas; aumento de dose se necessário após troca de cronograma</li>
+    </ul>
+
+    <div class="subsecao">Caso 3 — Anticonvulsivante em Gestação</div>
+    <p>Mulher com epilepsia generalizada em uso de valproato 1.000 mg/dia engravida em uso. Risco fetal de defeito de tubo neural e QI reduzido (categoria X funcional). Conduta multidisciplinar:</p>
+    <ul class="lista">
+      <li>Suspender valproato é arriscado (status epilepticus em gestante)</li>
+      <li>Substituição planejada para lamotrigina ou levetiracetam (categoria C, perfis mais seguros)</li>
+      <li>Suplementar folato 4–5 mg/dia (alta dose) antes e durante a gestação</li>
+      <li>Monitorar nível sérico do anticonvulsivante: na gestação o clearance aumenta, podendo exigir aumento de dose</li>
+      <li>Acompanhamento conjunto neurologista + obstetra + farmacêutico</li>
+    </ul>
+
+    <div class="subsecao">Caso 4 — Intoxicação por Lítio</div>
+    <p>Paciente em lítio para TB, litemia atual 3,2 mEq/L, sintomas de tremor grosseiro, ataxia, confusão, IR aguda. Conduta:</p>
+    <ul class="lista">
+      <li>Suspender imediatamente o lítio</li>
+      <li>Hidratação com soro fisiológico 0,9% (não SG5% — lítio não responde a glicose)</li>
+      <li>Suspender tiazídicos, IECA, BRA, AINEs</li>
+      <li>Hemodiálise se: litemia &gt; 4,0; ou &gt; 2,5 com sintomas neurológicos graves; ou IR significativa; ou tentativa de suicídio com ingesta massiva</li>
+      <li>Acompanhar litemia 6/6h até &lt; 1,0 sem sintomas</li>
+      <li>Após resolução, reiniciar com dose menor e reabertura cuidadosa</li>
+    </ul>
+
+    <div class="subsecao">Caso 5 — Manipulação Magistral em Pediatria</div>
+    <p>Médico solicita propranolol 6 mg cápsulas para criança de 8 kg (hemangioma infantil). A formulação industrial é 10/40 mg comprimidos. Não há solução oral comercial. Conduta da farmácia magistral:</p>
+    <ul class="lista">
+      <li>Verificar estabilidade da forma magistral em cápsula</li>
+      <li>Cumprir RDC 67/2007: doseamento, uniformidade de massa, sinalização de uso pediátrico</li>
+      <li>Considerar formulação líquida (xarope) para melhor aceitação e dosagem fracionada</li>
+      <li>Documentar receita magistral, lote, validade, instruções de armazenamento</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Conduta padrão em ITE:</strong> sempre validar coleta, interpretar com peso/idade/IR/IH, sugerir ajuste estruturado. Documentar intervenção em prontuário. Em uso crônico, evitar troca desnecessária de marca/formulação. Em manipulação magistral, doseamento + uniformidade são exigências.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-FARMTEC · ITE</span><span>Extensivo ENARE 2026</span><span class="pg">6 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-FARMTEC</div><div class="aula-ref">Bloco B5 · Aula 12 · Questões ENARE</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 01</span><span class="fonte">ITE · NC: Compreensão</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Segundo a RDC ANVISA 742/2022, é INCORRETO afirmar que medicamentos de Índice Terapêutico Estreito (MITE):</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Apresentam pequena diferença entre dose mínima efetiva e dose máxima segura.</span></li>
+        <li><span class="letra">B</span><span>Frequentemente requerem monitorização sérica terapêutica em prática clínica de rotina.</span></li>
+        <li><span class="letra">C</span><span>Podem apresentar cinética não-linear ou curva concentração-resposta íngreme.</span></li>
+        <li class="correta"><span class="letra">D</span><span>São totalmente equivalentes aos seus respectivos genéricos sem necessidade de avaliação clínica adicional.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — D (afirmativa INCORRETA)</div>
+      <p><strong>Por que D está incorreta:</strong> para MITEs, a ANVISA aplica critérios mais restritivos de bioequivalência (faixa de 90–111% em vez de 80–125%), e a recomendação clínica é manter a marca utilizada em uso crônico, evitando troca durante o tratamento. Trocas frequentes entre referência e genérico (mesmo bioequivalentes) podem desestabilizar pacientes em uso crônico de fármacos como levotiroxina, varfarina, anticonvulsivantes.</p>
+      <p><strong>Por que as outras estão corretas:</strong> A — define-se MITE como aquele com janela estreita entre dose efetiva e tóxica · B — TDM rotineira é critério para classificação como MITE · C — cinética não-linear (fenitoína em altas doses) e curva concentração-resposta íngreme são critérios complementares.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-FARMTEC · ITE</span><span>Extensivo ENARE 2026</span><span class="pg">7 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-FARMTEC</div><div class="aula-ref">Bloco B5 · Aula 12 · Questões ENARE</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 02</span><span class="fonte">ITE · Identificação · NC: Aplicação</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Qual dos fármacos abaixo é classificado como de Índice Terapêutico Estreito (ITE)?</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Amoxicilina.</span></li>
+        <li><span class="letra">B</span><span>Paracetamol.</span></li>
+        <li class="correta"><span class="letra">C</span><span>Clonazepam.</span></li>
+        <li><span class="letra">D</span><span>Loratadina.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — C</div>
+      <p><strong>Por que C está correta:</strong> o clonazepam, conforme a RDC 742/2022 e literatura, é classificado entre fármacos de ITE pelas características: (a) janela estreita entre dose terapêutica (mg) e dose com risco de depressão respiratória ou sedação excessiva; (b) variabilidade interindividual significativa (CYP3A4); (c) potencial de dependência e síndrome de abstinência; (d) recomendação de uso crônico estável. A FGV cobrou explicitamente em ENARE 2025 (Q86) que clonazepam é fármaco de baixo ITE.</p>
+      <p><strong>Por que as outras erram:</strong> A (amoxicilina), B (paracetamol em dose habitual), D (loratadina) têm janelas terapêuticas <em>amplas</em>; doses 5–10× superiores não causam toxicidade aguda na maioria dos casos — não são MITE.</p>
+      <p><strong>Conceito-chave:</strong> Lista mental de MITE clássicos para a prova: digoxina, varfarina, lítio, fenitoína, carbamazepina, ciclosporina, tacrolimo, levotiroxina, aminoglicosídeos, vancomicina, teofilina, metotrexato, clonazepam.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-FARMTEC · ITE</span><span>Extensivo ENARE 2026</span><span class="pg">8 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-FARMTEC</div><div class="aula-ref">Bloco B5 · Aula 12 · Gabarito Integrado</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 03</span><span class="fonte">BPM · RDC 67/2007 · NC: Aplicação</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">A RDC ANVISA 67/2007 estabelece as Boas Práticas de Manipulação. Sobre a manipulação magistral de fármacos de baixo ITE, qual a conduta CORRETA?</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Pode ser manipulado sem necessidade de doseamento quantitativo do princípio ativo, bastando uniformidade de massa.</span></li>
+        <li class="correta"><span class="letra">B</span><span>Exige doseamento quantitativo do princípio ativo na cápsula final, análise de homogeneidade da mistura e teste de dissolução quando aplicável; em uso crônico, preferir industrializado se possível.</span></li>
+        <li><span class="letra">C</span><span>A RDC 67/2007 proíbe a manipulação magistral de fármacos de ITE em qualquer cenário.</span></li>
+        <li><span class="letra">D</span><span>Apenas exige rótulo com nome do paciente e prescritor, sem necessidade de POPs.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> para fármacos de baixo ITE, a RDC 67/2007 e atualizações exigem doseamento quantitativo (não apenas uniformidade de massa), análise de homogeneidade da mistura, teste de dissolução quando aplicável, lotes menores e sinalização especial. Em uso crônico estável, a recomendação clínica é preferir o industrializado, evitando variabilidade adicional da formulação magistral.</p>
+      <p><strong>Por que as outras erram:</strong> A — uniformidade de massa sozinha é insuficiente para ITE (massa correta não garante homogeneidade nem dose correta de princípio ativo) · C — a RDC 67 <em>não proíbe</em> manipulação magistral, apenas impõe controles mais rigorosos · D — POPs são obrigatórios para todas as preparações.</p>
+    </div>
+
+    <div class="subsecao" style="margin-top:6px;">Gabarito Comentado — Análise Integrada</div>
+    <table>
+      <tr><th>Questão</th><th>Gabarito</th><th>Tema</th><th>Conceito-Chave</th></tr>
+      <tr><td><strong>01</strong></td><td><span class="destaque">D</span></td><td>ITE — RDC 742/2022 (incorreta)</td><td>MITEs exigem cuidados extras (não são "totalmente intercambiáveis")</td></tr>
+      <tr><td><strong>02</strong></td><td><span class="destaque">C</span></td><td>Identificação de ITE</td><td>Clonazepam = MITE; amoxicilina/paracetamol/loratadina = janela ampla</td></tr>
+      <tr><td><strong>03</strong></td><td><span class="destaque">B</span></td><td>BPM em ITE</td><td>Doseamento + homogeneidade + dissolução; preferir industrializado em uso crônico</td></tr>
+    </table>
+  </div>
+  <div class="footer"><span>FARM-FARMTEC · ITE</span><span>Extensivo ENARE 2026</span><span class="pg">9 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Farmácia — FARM-FARMTEC</div><div class="aula-ref">Bloco B5 · Aula 12 · Síntese</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Síntese — ITE</div>
+    <div class="sintese-grid">
+      <div class="sintese-item">
+        <div class="si-label">Conceito de ITE</div>
+        <p>Razão DL₅₀/DE₅₀; janela estreita entre eficácia e toxicidade; cinética não-linear; curva íngreme. RDC ANVISA 742/2022 define oficialmente MITEs no Brasil.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Fármacos de Baixo ITE</div>
+        <p>Digoxina, varfarina, lítio, fenitoína, carbamazepina, valproato, ciclosporina, tacrolimo, levotiroxina, aminoglicosídeos, vancomicina, teofilina, metotrexato, clonazepam.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">RDC 67/2007 — BPM</div>
+        <p>5 grupos de preparações magistrais. Estrutura por tipo. Sala estéril ISO 5 (CMI) + ISO 7/8 ambiente. POPs obrigatórios. Para ITE: doseamento + homogeneidade + dissolução. Preferir industrializado em uso crônico.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">TDM</div>
+        <p>Coleta no steady state (4–5 meias-vidas). Vale antes da próxima dose. Janelas: digoxina 0,5–0,9 (IC); INR 2–3; lítio 0,6–1,2; fenitoína 10–20; vanco vale 15–20 (grave); aminoglicosídeo: pico/vale. Interpretar à luz do paciente.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Bioequivalência</div>
+        <p>AUC e Cmax IC 90% dentro de 80–125% (geral); 90–111% para MITEs. Genérico (Lei 9.787/1999) é intercambiável; similar precisa autorização explícita. Em MITE em uso crônico, evitar troca desnecessária.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Próxima Aula</div>
+        <p><strong>Aula 13 — Farmacotécnica II: CMI e Áreas Limpas.</strong> Cabine de Manipulação de Injetáveis; pressão positiva/negativa; ISO 14644-1; segregação NP vs quimioterápicos; gestão de fluxos.</p>
+      </div>
+    </div>
+    <div class="alerta" style="margin-top:5px;">
+      <p><strong>Regra de ouro — ITE no ENARE:</strong> RDC 742/2022 + RDC 67/2007 + lista de MITEs + TDM + bioequivalência mais restritiva. Janelas terapêuticas decoradas; coleta no vale (regra geral); manter marca em uso crônico; doseamento + homogeneidade em manipulação magistral.</p>
+    </div>
+  </div>
+  <div class="footer"><span>FARM-FARMTEC · ITE</span><span>Extensivo ENARE 2026</span><span class="pg">10 / 10</span></div>
+</div>
+
+</body>
+</html>

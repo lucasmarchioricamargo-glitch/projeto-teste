@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Farmácia — Bloco B5 Aula 02 | Extensivo ENARE 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap');
+
+  :root {
+    --creme: #F6F4ED;
+    --verde: #1F5C23;
+    --amarelo: #C6D834;
+    --escuro: #0C2B0E;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #d0d0d0;
+    font-family: 'Bricolage Grotesque', sans-serif;
+  }
+
+  .page {
+    width: 210mm;
+    height: 297mm;
+    background: var(--creme);
+    margin: 0 auto 12px;
+    position: relative;
+    overflow: hidden;
+    page-break-after: always;
+  }
+
+  .header {
+    background: var(--verde);
+    padding: 10px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .header-logo { display: flex; align-items: center; gap: 8px; }
+  .header-logo svg { width: 32px; height: 32px; }
+  .header-brand { display: flex; flex-direction: column; line-height: 1; }
+  .header-brand .marca {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: #fff;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+  }
+  .header-brand .tagline {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    color: var(--amarelo);
+    font-size: 7px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+  .header-info { text-align: right; }
+  .header-info .disciplina {
+    font-family: 'Barlow Condensed', sans-serif;
+    color: var(--amarelo);
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .header-info .aula-ref {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    color: rgba(255,255,255,0.7);
+    font-size: 8px;
+    letter-spacing: 0.5px;
+  }
+
+  .footer {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: var(--verde);
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 18px;
+  }
+  .footer span {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    color: rgba(255,255,255,0.6);
+    font-size: 7px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+  }
+  .footer .pg { color: var(--amarelo); font-weight: 400; }
+
+  .body {
+    padding: 14px 18px 30px;
+    height: calc(297mm - 52px - 22px);
+    overflow: hidden;
+  }
+
+  .capa-page { background: var(--verde); }
+  .capa-header {
+    background: var(--creme);
+    padding: 10px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .capa-header .marca {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: var(--verde);
+    font-size: 14px;
+  }
+  .capa-header .tagline {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    color: var(--verde);
+    font-size: 7.5px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .capa-body {
+    padding: 28px 24px 0;
+    display: flex;
+    flex-direction: column;
+    height: calc(297mm - 52px - 22px);
+  }
+  .capa-eyebrow {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    color: var(--amarelo);
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .capa-titulo {
+    font-family: 'Barlow Condensed', sans-serif;
+    color: #fff;
+    font-size: 50px;
+    line-height: 0.95;
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
+    margin-bottom: 6px;
+  }
+  .capa-titulo span { color: var(--amarelo); }
+  .capa-subtitulo {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 300;
+    color: rgba(255,255,255,0.65);
+    font-size: 12px;
+    letter-spacing: 0.3px;
+    margin-bottom: 22px;
+    line-height: 1.5;
+  }
+  .capa-badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+  .capa-badge {
+    background: rgba(198,216,52,0.15);
+    border: 1px solid var(--amarelo);
+    color: var(--amarelo);
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    font-size: 7.5px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+  }
+  .capa-divider { width: 40px; height: 3px; background: var(--amarelo); margin-bottom: 20px; }
+  .capa-topicos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .capa-topico { display: flex; align-items: flex-start; gap: 7px; }
+  .capa-topico-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    color: var(--amarelo);
+    font-size: 18px;
+    line-height: 1;
+    min-width: 18px;
+  }
+  .capa-topico-txt {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 400;
+    color: rgba(255,255,255,0.8);
+    font-size: 9.5px;
+    line-height: 1.4;
+  }
+  .capa-footer-strip {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: rgba(0,0,0,0.25);
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 18px;
+  }
+  .capa-footer-strip span {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    color: rgba(255,255,255,0.45);
+    font-size: 7px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+  }
+
+  .secao-titulo {
+    font-family: 'Barlow Condensed', sans-serif;
+    color: var(--verde);
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid var(--amarelo);
+    padding-bottom: 3px;
+    margin-bottom: 9px;
+    line-height: 1;
+  }
+  .subsecao {
+    font-family: 'Barlow Condensed', sans-serif;
+    color: var(--verde);
+    font-size: 12.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 7px 0 3px;
+  }
+  p {
+    font-size: 9px;
+    line-height: 1.55;
+    color: #1a1a1a;
+    margin-bottom: 4px;
+    font-weight: 400;
+  }
+  .destaque {
+    background: var(--amarelo);
+    color: var(--escuro);
+    font-weight: 600;
+    padding: 1px 4px;
+    border-radius: 2px;
+    font-size: 8.5px;
+  }
+  .alerta {
+    background: rgba(198,216,52,0.18);
+    border-left: 3px solid var(--amarelo);
+    padding: 5px 8px;
+    margin: 5px 0;
+    border-radius: 0 3px 3px 0;
+  }
+  .alerta p { margin: 0; font-size: 8.5px; }
+  .alerta strong { color: var(--verde); }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 5px 0;
+    font-size: 8px;
+  }
+  th {
+    background: var(--verde);
+    color: #fff;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 4px 6px;
+    text-align: left;
+  }
+  td {
+    padding: 3px 6px;
+    border-bottom: 1px solid rgba(31,92,35,0.12);
+    vertical-align: top;
+    line-height: 1.4;
+    color: #1a1a1a;
+  }
+  tr:nth-child(even) td { background: rgba(31,92,35,0.04); }
+
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 5px 0; }
+  .card {
+    background: rgba(31,92,35,0.06);
+    border: 1px solid rgba(31,92,35,0.15);
+    border-radius: 4px;
+    padding: 7px 8px;
+  }
+  .card-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    color: var(--verde);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    margin-bottom: 3px;
+  }
+  .card p { font-size: 8px; line-height: 1.5; }
+
+  .questao-header {
+    background: var(--verde);
+    color: #fff;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 4px 10px;
+    border-radius: 3px 3px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .questao-header .fonte {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    font-size: 7.5px;
+    color: var(--amarelo);
+    letter-spacing: 0.5px;
+  }
+  .questao-body {
+    border: 1px solid rgba(31,92,35,0.2);
+    border-top: none;
+    border-radius: 0 0 3px 3px;
+    padding: 7px 10px;
+    margin-bottom: 7px;
+  }
+  .questao-enunciado {
+    font-size: 8.5px;
+    line-height: 1.55;
+    color: #111;
+    margin-bottom: 5px;
+    font-weight: 500;
+  }
+  .alternativas { list-style: none; }
+  .alternativas li {
+    font-size: 8px;
+    line-height: 1.5;
+    padding: 2px 0;
+    color: #222;
+    display: flex;
+    gap: 5px;
+  }
+  .alternativas li .letra {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    color: var(--verde);
+    font-size: 9px;
+    min-width: 10px;
+  }
+  .alternativas li.correta .letra { color: var(--amarelo); }
+  .alternativas li.correta {
+    background: rgba(198,216,52,0.15);
+    border-left: 2px solid var(--amarelo);
+    padding-left: 4px;
+  }
+
+  .gabarito-box {
+    background: var(--verde);
+    border-radius: 4px;
+    padding: 8px 12px;
+    margin: 6px 0;
+  }
+  .gabarito-box .gab-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    color: var(--amarelo);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
+  .gabarito-box p { color: rgba(255,255,255,0.9); font-size: 8px; line-height: 1.55; }
+  .gabarito-box strong { color: var(--amarelo); }
+
+  .sintese-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 7px;
+    margin-top: 6px;
+  }
+  .sintese-item {
+    background: rgba(31,92,35,0.07);
+    border-left: 3px solid var(--verde);
+    padding: 5px 7px;
+    border-radius: 0 3px 3px 0;
+  }
+  .sintese-item .si-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    color: var(--verde);
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+  .sintese-item p { font-size: 7.5px; line-height: 1.5; }
+
+  ul.lista { padding-left: 14px; margin: 3px 0; }
+  ul.lista li {
+    font-size: 8.5px;
+    line-height: 1.55;
+    color: #1a1a1a;
+    margin-bottom: 1px;
+  }
+
+  @media print {
+    body { background: none; }
+    .page { margin: 0; box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ========== PÁGINA 1 — CAPA ========== -->
+<div class="page capa-page">
+  <div class="capa-header">
+    <div style="display:flex;align-items:center;gap:8px;">
+      <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#1F5C23"/>
+      </svg>
+      <div>
+        <div class="marca">Elite Treinamentos</div>
+        <div class="tagline">Extensivo ENARE 2026</div>
+      </div>
+    </div>
+    <div style="text-align:right;">
+      <div style="font-family:'Barlow Condensed',sans-serif;color:var(--verde);font-size:11px;letter-spacing:1px;text-transform:uppercase;">Bloco B5 · Aula 02</div>
+      <div style="font-family:'Space Grotesk',sans-serif;font-weight:300;color:#888;font-size:7.5px;letter-spacing:0.5px;">Farmácia</div>
+    </div>
+  </div>
+
+  <div class="capa-body">
+    <div class="capa-eyebrow">Bloco B5 · FARM-FARMACOTERAP · Aula 02 de 22</div>
+    <div class="capa-titulo">Cardio-<br>meta-<br>bólicos <span>·<br>DM, HAS<br>e IC</span></div>
+    <div class="capa-subtitulo">Farmacoterapia II: SBD 2024, GLP-1, iSGLT-2,<br>digoxina (ITE), anticoagulantes e DCV no SUS</div>
+
+    <div class="capa-badge-row">
+      <div class="capa-badge">FARM-FARMACOTERAP</div>
+      <div class="capa-badge">SBD 2024 · GLP-1</div>
+      <div class="capa-badge">Digoxina · ITE</div>
+      <div class="capa-badge">DOACs · Varfarina</div>
+    </div>
+
+    <div class="capa-divider"></div>
+
+    <div class="capa-topicos">
+      <div class="capa-topico">
+        <div class="capa-topico-num">01</div>
+        <div class="capa-topico-txt">DM: diagnóstico SBD 2024, metformina e sulfonilureias</div>
+      </div>
+      <div class="capa-topico">
+        <div class="capa-topico-num">02</div>
+        <div class="capa-topico-txt">GLP-1 e iSGLT-2: semaglutida, tirzepatida, dapagliflozina</div>
+      </div>
+      <div class="capa-topico">
+        <div class="capa-topico-num">03</div>
+        <div class="capa-topico-txt">Insulinas: perfis, mistura, ajustes e hipoglicemia</div>
+      </div>
+      <div class="capa-topico">
+        <div class="capa-topico-num">04</div>
+        <div class="capa-topico-txt">HAS: IECA, BRA, BCC, diuréticos e betabloqueadores</div>
+      </div>
+      <div class="capa-topico">
+        <div class="capa-topico-num">05</div>
+        <div class="capa-topico-txt">IC e digoxina: HFpEF/HFrEF, ITE 0,8–2 ng/mL</div>
+      </div>
+      <div class="capa-topico">
+        <div class="capa-topico-num">06</div>
+        <div class="capa-topico-txt">Anticoagulação: varfarina (INR), rivaroxabana, apixabana</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="capa-footer-strip">
+    <span>Extensivo ENARE 2026</span>
+    <span>Elite Treinamentos em Saúde</span>
+    <span>Página 1 de 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 2 — DM DIAGNÓSTICO + ANTIDIABÉTICOS ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Farmácia — FARM-FARMACOTERAP</div>
+      <div class="aula-ref">Bloco B5 · Aula 02 · Diabetes Mellitus</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="secao-titulo">Diabetes Mellitus — Diagnóstico SBD 2024</div>
+
+    <p>A <strong>Diretriz SBD 2024</strong> consolidou critérios diagnósticos atualizados para DM no Brasil. A FGV cobrou o tema na ENARE 2025 (Q49 — diagnóstico em paciente assintomático). O ponto crítico: <em>diagnóstico em paciente assintomático exige confirmação por dois exames alterados</em> (mesmo teste em momentos distintos ou dois testes diferentes). Em sintomático com glicemia aleatória ≥ 200 mg/dL, basta um exame.</p>
+
+    <div class="subsecao">Critérios Diagnósticos (SBD 2024)</div>
+    <table>
+      <tr>
+        <th>Parâmetro</th>
+        <th>Normal</th>
+        <th>Pré-diabetes</th>
+        <th>Diabetes</th>
+      </tr>
+      <tr>
+        <td>Glicemia jejum (mg/dL)</td>
+        <td>&lt; 100</td>
+        <td>100–125</td>
+        <td>≥ 126</td>
+      </tr>
+      <tr>
+        <td>Glicemia 2h pós-TOTG 75 g</td>
+        <td>&lt; 140</td>
+        <td>140–199</td>
+        <td>≥ 200</td>
+      </tr>
+      <tr>
+        <td>HbA1c (%)</td>
+        <td>&lt; 5,7</td>
+        <td>5,7–6,4</td>
+        <td>≥ 6,5</td>
+      </tr>
+      <tr>
+        <td>Glicemia aleatória + sintomas (4 P)</td>
+        <td>—</td>
+        <td>—</td>
+        <td>≥ 200</td>
+      </tr>
+    </table>
+
+    <p><strong>Importante:</strong> em assintomáticos, são necessários <em>dois exames alterados</em> (a mesma análise em momentos distintos ou dois exames diferentes na mesma amostra). Em sintomáticos (4 Ps — poliúria, polidipsia, polifagia, perda de peso) com glicemia aleatória ≥ 200 mg/dL, o diagnóstico é estabelecido em uma única medida.</p>
+
+    <div class="subsecao">Metformina — Pedra Angular do Tratamento</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Mecanismo e Eficácia</div>
+        <p>Reduz a gliconeogênese hepática (ativação de AMPK) e aumenta a sensibilidade periférica à insulina. Não causa hipoglicemia em monoterapia. Redução de HbA1c: 1,0–2,0%. Benefícios cardiovasculares (UKPDS), peso neutro/leve perda, baixo custo, disponível na RENAME.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Cuidados e Contraindicações</div>
+        <p><strong>Acidose lática</strong> (rara mas grave): contraindicada se TFG &lt; 30 mL/min/1,73 m²; ajustar entre 30–45; suspender em contrastes iodados se TFG &lt; 60 ou hidratação prejudicada (RDC ANVISA). RAM mais comum: <em>distúrbios gastrintestinais</em> (diarreia, náusea) — atenuados com versão XR e administração com refeição.</p>
+      </div>
+    </div>
+
+    <div class="subsecao">Sulfonilureias e Glinidas — Secretagogos</div>
+    <p><strong>Sulfonilureias (glibenclamida, gliclazida, glimepirida):</strong> bloqueiam canais de K+ ATP-dependentes da célula beta, despolarizam e liberam insulina. <em>Risco de hipoglicemia</em> elevado, especialmente no idoso (glibenclamida tem meia-vida longa e metabólito ativo — evitar em &gt; 65 anos; Critérios Beers). Glimepirida e gliclazida têm perfil mais seguro. Ganho de peso. <strong>Glinidas (repaglinida, nateglinida):</strong> mesmo mecanismo, ação rápida e curta — dose pré-prandial; menor risco de hipoglicemia entre refeições.</p>
+
+    <div class="alerta">
+      <p><strong>Atenção FGV — DM:</strong> glibenclamida no idoso é erro clássico (risco de hipoglicemia, especialmente noturna). Metformina é base para DM2; suspender se TFG &lt; 30. Em hospitalização, manter metformina apenas com TFG estável e estado de hidratação adequado — risco de acidose lática em estresse agudo. Para DM1 ou DM2 com falência beta: insulina obrigatória.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>FARM-FARMACOTERAP · Cardiometabólicos</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">2 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 3 — GLP-1 E iSGLT-2 ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Farmácia — FARM-FARMACOTERAP</div>
+      <div class="aula-ref">Bloco B5 · Aula 02 · GLP-1 e iSGLT-2</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="secao-titulo">Análogos de GLP-1 e Inibidores de SGLT-2</div>
+
+    <p>Os agonistas do receptor de GLP-1 e os inibidores de SGLT-2 são <strong>os principais clusters novos da ENARE 2025</strong>. A FGV cobrou semaglutida e tirzepatida em contexto de uso não supervisionado e orientação de risco (Q41, Q43–45/2025). O farmacêutico residente precisa dominar mecanismo, benefícios cardiorrenais e os <em>riscos específicos</em> dessas classes.</p>
+
+    <div class="subsecao">Agonistas do Receptor de GLP-1</div>
+    <table>
+      <tr>
+        <th>Fármaco</th>
+        <th>Via</th>
+        <th>Posologia</th>
+        <th>Benefícios e RAMs</th>
+      </tr>
+      <tr>
+        <td>Liraglutida</td>
+        <td>SC diária</td>
+        <td>0,6 → 1,8 mg/dia (DM); 3 mg (obesidade — Saxenda®)</td>
+        <td>Redução de eventos CV (LEADER); RAMs: náusea, vômito, pancreatite (raro)</td>
+      </tr>
+      <tr>
+        <td>Semaglutida</td>
+        <td>SC semanal / VO diária</td>
+        <td>0,25 → 1,0–2,0 mg SC/semana (Ozempic®); 14 mg VO/dia (Rybelsus®); 2,4 mg semanal (Wegovy® obesidade)</td>
+        <td>Redução de eventos CV (SUSTAIN-6); &lt;15% perda de peso; uso off-label em obesidade sem DM cresce</td>
+      </tr>
+      <tr>
+        <td><strong>Tirzepatida</strong></td>
+        <td>SC semanal</td>
+        <td>2,5 → 5–15 mg/semana (Mounjaro®; Zepbound® para obesidade)</td>
+        <td><strong>Duplo agonista GLP-1/GIP</strong> — perda de peso até 20%; redução de HbA1c &gt; 2%; mesmas RAMs gastrintestinais</td>
+      </tr>
+      <tr>
+        <td>Dulaglutida</td>
+        <td>SC semanal</td>
+        <td>0,75 → 1,5–4,5 mg/semana</td>
+        <td>Benefício CV (REWIND); risco de retinopatia em controle glicêmico rápido</td>
+      </tr>
+    </table>
+
+    <p><strong>Contraindicações absolutas dos GLP-1:</strong> história pessoal ou familiar de carcinoma medular de tireoide e neoplasia endócrina múltipla tipo 2 (NEM-2). Cautela em gastroparesia e pancreatite prévia. <strong>Orientação farmacêutica:</strong> rotacionar locais de aplicação SC, descartar em coletor de pérfuro-cortantes, refrigerar a caneta não aberta (2–8 °C) e manter em temperatura ambiente até 28 dias após o primeiro uso. <em>Não há indicação aprovada para uso recreativo em emagrecimento sem prescrição médica</em>.</p>
+
+    <div class="subsecao">Inibidores de SGLT-2</div>
+    <p><strong>Dapagliflozina, empagliflozina, canagliflozina</strong> inibem o cotransportador SGLT-2 no túbulo proximal renal, aumentando glicosúria. Redução de HbA1c: 0,5–1,0%. Os benefícios <em>extra-glicêmicos</em> tornaram-se a indicação principal: insuficiência cardíaca (HFrEF e HFpEF — DAPA-HF, EMPEROR), doença renal crônica (DAPA-CKD, EMPA-KIDNEY), redução de morte CV (EMPA-REG OUTCOME). <strong>RAMs:</strong> infecções genitais micóticas (vulvovaginite candidiásica, balanite — &gt; em mulheres e diabéticos), ITU, depleção volêmica, <em>cetoacidose euglicêmica</em> (atenção em jejum/cirurgia — suspender 3 dias antes), risco de amputação (canagliflozina — CANVAS) e Fournier (raro).</p>
+
+    <div class="alerta">
+      <p><strong>Pegadinha FGV — GLP-1 e iSGLT-2:</strong> ambos têm <em>benefícios cardiovasculares e renais comprovados</em> em DM2, indicados em pacientes com risco CV elevado ou DRC mesmo sem necessidade glicêmica adicional. Em DM1: <em>iSGLT-2 contraindicado</em> pelo risco de cetoacidose euglicêmica. Tirzepatida = agonista dual GLP-1/GIP — não confundir com semaglutida (apenas GLP-1). Carcinoma medular de tireoide é vedação absoluta para todos os GLP-1.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>FARM-FARMACOTERAP · Cardiometabólicos</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">3 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 4 — INSULINAS ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Farmácia — FARM-FARMACOTERAP</div>
+      <div class="aula-ref">Bloco B5 · Aula 02 · Insulinoterapia</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="secao-titulo">Insulinas — Perfis Farmacocinéticos</div>
+
+    <p>A escolha da insulina depende do <strong>perfil temporal</strong> (início, pico, duração) e da estratégia (basal-bolus, esquema misto, infusão contínua). DM1 requer reposição basal-bolus completa. DM2 pode iniciar com basal (NPH ou análogo) associada a antidiabético oral antes de progredir para esquema intensivo.</p>
+
+    <table>
+      <tr>
+        <th>Categoria</th>
+        <th>Insulina</th>
+        <th>Início</th>
+        <th>Pico</th>
+        <th>Duração</th>
+      </tr>
+      <tr>
+        <td><strong>Ultrarrápida</strong></td>
+        <td>Lispro, Asparte, Glulisina, Faster Aspart</td>
+        <td>5–15 min</td>
+        <td>30–90 min</td>
+        <td>3–5 h</td>
+      </tr>
+      <tr>
+        <td><strong>Rápida (regular)</strong></td>
+        <td>Regular (R)</td>
+        <td>30 min</td>
+        <td>2–4 h</td>
+        <td>5–8 h</td>
+      </tr>
+      <tr>
+        <td><strong>Intermediária</strong></td>
+        <td>NPH</td>
+        <td>1–2 h</td>
+        <td>4–10 h</td>
+        <td>10–18 h</td>
+      </tr>
+      <tr>
+        <td><strong>Longa</strong></td>
+        <td>Glargina U100, Detemir</td>
+        <td>1–2 h</td>
+        <td>Sem pico clínico</td>
+        <td>18–24 h</td>
+      </tr>
+      <tr>
+        <td><strong>Ultralonga</strong></td>
+        <td>Glargina U300, Degludeca</td>
+        <td>1–6 h</td>
+        <td>Sem pico</td>
+        <td>&gt; 24–42 h</td>
+      </tr>
+    </table>
+
+    <div class="subsecao">Mistura e Aspectos Práticos</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Mistura e Sequência</div>
+        <p><strong>Regular + NPH</strong> podem ser misturadas; aspirar primeiro a <em>regular (clara)</em> e depois a <em>NPH (turva)</em> para evitar contaminação do frasco de regular com protamina. <strong>Análogos longos (glargina, detemir, degludeca) NÃO devem ser misturados</strong> com outras insulinas. Análogos ultrarrápidos podem ser misturados com NPH (mesma seringa, uso imediato).</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Conservação</div>
+        <p>Frasco/caneta fechados: <strong>2–8 °C</strong> (geladeira, longe do congelador). Após aberto: temperatura ambiente (até 30 °C), ao abrigo da luz, por <em>até 28–42 dias</em> dependendo do produto (consultar bula). Nunca congelar. Após congelamento ou exposição a &gt;40 °C: descartar.</p>
+      </div>
+    </div>
+
+    <div class="subsecao">Hipoglicemia — Manejo Farmacêutico</div>
+    <ul class="lista">
+      <li><strong>Nível 1</strong> (glicemia &lt; 70 mg/dL e ≥ 54): paciente consciente — regra dos 15 (15 g de carboidrato simples — 1 colher de sopa de açúcar OU 150 mL de suco; reavaliar em 15 min)</li>
+      <li><strong>Nível 2</strong> (glicemia &lt; 54 mg/dL): emergência clínica — risco de coma</li>
+      <li><strong>Nível 3</strong> (alteração neurológica grave): glicose 50% IV (50 mL) hospitalar; glucagon 1 mg IM/SC domiciliar — orientar familiares</li>
+      <li><strong>Após resolução:</strong> refeição contendo carboidrato complexo + proteína para prevenir recidiva; revisar causa (dose, alimentação, álcool, exercício)</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Cuidados na prescrição:</strong> escrever sempre "<em>unidades</em>" por extenso — abreviação "U" pode ser confundida com zero (10U → 100). NPH 2×/dia (manhã e antes do jantar) ou análogo longo 1×/dia. Em DM1 hospitalizado: infusão contínua de regular conforme protocolo Yale ou Markovitz. Insulina é fármaco de <strong>alta vigilância (ISMP)</strong>. Dupla checagem é exigência.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>FARM-FARMACOTERAP · Cardiometabólicos</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">4 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 5 — HAS ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Farmácia — FARM-FARMACOTERAP</div>
+      <div class="aula-ref">Bloco B5 · Aula 02 · Hipertensão Arterial</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="secao-titulo">Hipertensão Arterial — Classes Farmacológicas</div>
+
+    <p>A <strong>Diretriz Brasileira de Hipertensão (DBH 2020 — SBC)</strong> orienta o tratamento. As cinco classes de primeira linha são: <em>IECA, BRA, BCC di-hidropiridínicos, diuréticos tiazídicos e betabloqueadores</em> (estes últimos quando há indicação compelativa: cardiopatia isquêmica, IC, arritmia). Para HAS estágio 2 ou com risco CV alto: <em>combinação inicial</em> em dose fixa (ex.: IECA + BCC ou IECA + tiazídico).</p>
+
+    <div class="subsecao">Classes de Primeira Linha</div>
+    <table>
+      <tr>
+        <th>Classe</th>
+        <th>Representantes</th>
+        <th>Mecanismo</th>
+        <th>RAMs / cuidados</th>
+      </tr>
+      <tr>
+        <td><strong>IECA</strong></td>
+        <td>Enalapril, captopril, lisinopril, ramipril</td>
+        <td>Inibe ECA → ↓ angiotensina II e aldosterona</td>
+        <td>Tosse seca (bradicinina), hipercalemia, angioedema, ↑ creatinina (até 30% aceitável); <strong>contraindicado na gestação</strong></td>
+      </tr>
+      <tr>
+        <td><strong>BRA</strong></td>
+        <td>Losartana, valsartana, olmesartana, telmisartana</td>
+        <td>Bloqueio do receptor AT1 da angiotensina II</td>
+        <td>Mesmas reações renais/hipercalemia que IECA, sem tosse; mesma contraindicação na gestação</td>
+      </tr>
+      <tr>
+        <td><strong>BCC di-hidropiridínico</strong></td>
+        <td>Anlodipino, nifedipino, lercanidipino</td>
+        <td>Bloqueio do canal de cálcio vascular → vasodilatação</td>
+        <td>Edema maleolar, cefaleia, flushing, taquicardia reflexa (nifedipino IR)</td>
+      </tr>
+      <tr>
+        <td><strong>BCC não-DHP</strong></td>
+        <td>Verapamil, diltiazem</td>
+        <td>Bloqueio também cardíaco — ↓ FC e contratilidade</td>
+        <td>Bradicardia, bloqueio AV; <em>evitar associar a betabloqueador</em> — risco de BAV total</td>
+      </tr>
+      <tr>
+        <td><strong>Tiazídico</strong></td>
+        <td>Hidroclorotiazida, clortalidona, indapamida</td>
+        <td>Bloqueia Na+/Cl− no túbulo distal → diurese leve</td>
+        <td>Hipocalemia, hiperuricemia (gota), hiperglicemia, hiponatremia</td>
+      </tr>
+      <tr>
+        <td><strong>Betabloqueador</strong></td>
+        <td>Metoprolol, carvedilol, bisoprolol, propranolol</td>
+        <td>Bloqueio β1 (FC, contratilidade) ± β2 / α1</td>
+        <td>Bradicardia, broncoespasmo (não cardiosseletivo), mascaramento de hipoglicemia, fadiga, disfunção sexual</td>
+      </tr>
+    </table>
+
+    <div class="subsecao">Combinações Lógicas e Compelativas</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Combinações Racionais</div>
+        <p><strong>IECA/BRA + BCC</strong> — sinérgico em hipertensos com SM ou DM. <strong>IECA/BRA + tiazídico</strong> — controle eficaz e custo baixo (RENAME). <strong>Tripla terapia:</strong> IECA/BRA + BCC + tiazídico. Hipertensão resistente: adicionar espironolactona.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Indicações Compelativas</div>
+        <p><strong>IC com FE reduzida:</strong> IECA/BRA/sacubitril-valsartana + betabloqueador (carvedilol/bisoprolol/metoprolol succinato) + espironolactona + iSGLT-2. <strong>DRC:</strong> IECA/BRA. <strong>DAC pós-IAM:</strong> betabloqueador. <strong>Pós-AVC:</strong> diurético ± IECA.</p>
+      </div>
+    </div>
+
+    <div class="alerta">
+      <p><strong>Pegadinhas FGV — HAS:</strong> tosse seca em IECA é razão para troca por BRA (mesmo efeito sem bradicinina). Gestação: <em>IECA e BRA contraindicados</em> (teratogênicos no 2º/3º trimestre); preferir metildopa, nifedipino, labetalol. Verapamil + betabloqueador → bradicardia/BAV. Tiazídico + AINE → redução do efeito anti-hipertensivo + nefrotoxicidade. Espironolactona + IECA + suplemento de potássio → hipercalemia (cobrado em ENARE 2025).</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>FARM-FARMACOTERAP · Cardiometabólicos</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">5 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 6 — IC, DIGOXINA E ANTICOAGULAÇÃO ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Farmácia — FARM-FARMACOTERAP</div>
+      <div class="aula-ref">Bloco B5 · Aula 02 · IC e Anticoagulação</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="secao-titulo">Insuficiência Cardíaca, Digoxina e Anticoagulação</div>
+
+    <div class="subsecao">Quatro Pilares da IC com FE Reduzida (HFrEF)</div>
+    <ul class="lista">
+      <li><strong>1. IECA / BRA / Sacubitril-Valsartana (ARNI):</strong> sacubitril-valsartana (PARADIGM-HF) é superior ao enalapril em mortalidade; substituir IECA após washout de 36h</li>
+      <li><strong>2. Betabloqueador HF-específico:</strong> carvedilol, bisoprolol, metoprolol succinato — única classe com benefício comprovado em IC</li>
+      <li><strong>3. Antagonista da aldosterona:</strong> espironolactona ou eplerenona — monitorar potássio e creatinina</li>
+      <li><strong>4. iSGLT-2:</strong> dapagliflozina, empagliflozina — benefício em HFrEF e HFpEF (FE preservada)</li>
+    </ul>
+
+    <p>Para <strong>IC com fração de ejeção preservada (HFpEF)</strong>, o avanço terapêutico mais importante é o iSGLT-2 (EMPEROR-Preserved, DELIVER) — primeira classe com benefício consistente. Diuréticos de alça (furosemida) tratam congestão sintomática, mas <em>não mudam mortalidade</em>.</p>
+
+    <div class="subsecao">Digoxina — Fármaco de Estreito Índice Terapêutico (ITE)</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Janela Terapêutica e Posologia</div>
+        <p>Nível sérico terapêutico: <strong>0,5–0,9 ng/mL</strong> em IC; até 2 ng/mL aceitável em controle de FC na FA. Acima de 2 ng/mL → toxicidade. Dose de manutenção: 0,125–0,25 mg/dia VO; ajustar em idosos e nefropatas (eliminação renal). Tempo até steady-state: ~7 dias (meia-vida 36–48h).</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Intoxicação Digitálica</div>
+        <p><strong>Sintomas:</strong> náusea/vômito, visão amarela (xantopsia), arritmias (bradicardia, BAV, taquicardia atrial com bloqueio, extrassístoles ventriculares, FV). <strong>Fator agravante mais comum: hipocalemia</strong> (potencializa toxicidade — diurético tiazídico/de alça associado). Antídoto: <em>fragmentos Fab antidigoxina</em> (DigiFab) em toxicidade grave. Cobrado em ENARE 2025 (Q46-47).</p>
+      </div>
+    </div>
+
+    <div class="subsecao">Anticoagulação</div>
+    <table>
+      <tr>
+        <th>Fármaco</th>
+        <th>Mecanismo</th>
+        <th>Monitorização</th>
+        <th>Antídoto / observações</th>
+      </tr>
+      <tr>
+        <td><strong>Varfarina</strong></td>
+        <td>Antagonista da vitamina K (inibe γ-carboxilação de II, VII, IX, X)</td>
+        <td>INR (alvo 2,0–3,0 na maioria; 2,5–3,5 em prótese mitral mecânica)</td>
+        <td>Vitamina K1 (fitomenadiona); CCP em sangramento maior; ITE; numerosas interações alimentares e medicamentosas</td>
+      </tr>
+      <tr>
+        <td>HNF (heparina)</td>
+        <td>Potencializa antitrombina III</td>
+        <td>TTPa (alvo 1,5–2,5×); anti-Xa</td>
+        <td>Protamina IV; risco de HIT</td>
+      </tr>
+      <tr>
+        <td>HBPM (enoxaparina)</td>
+        <td>Anti-Xa preferencial</td>
+        <td>Anti-Xa em obesos, nefropatas, gestantes</td>
+        <td>Protamina (reversão parcial); ajustar se ClCr &lt; 30</td>
+      </tr>
+      <tr>
+        <td><strong>Rivaroxabana</strong></td>
+        <td>Inibidor direto do Xa (oral)</td>
+        <td>Sem monitorização de rotina</td>
+        <td>Andexanet alfa (off-label no Brasil); CCP; suspender 24–48h pré-cirurgia</td>
+      </tr>
+      <tr>
+        <td><strong>Apixabana</strong></td>
+        <td>Inibidor direto do Xa</td>
+        <td>Sem monitorização de rotina</td>
+        <td>Mesma reversão; menor risco de sangramento GI vs rivaroxabana</td>
+      </tr>
+      <tr>
+        <td><strong>Dabigatrana</strong></td>
+        <td>Inibidor direto da trombina (IIa)</td>
+        <td>TTPa pode indicar atividade</td>
+        <td>Idarucizumabe (anticorpo monoclonal) — antídoto específico</td>
+      </tr>
+    </table>
+
+    <div class="alerta">
+      <p><strong>Varfarina — interações críticas:</strong> alimentos ricos em vitamina K (folhas verdes — couve, espinafre, brócolis) <em>reduzem</em> o efeito (orientar consumo regular, não restritivo). Amiodarona, sulfametoxazol-trimetoprima, metronidazol e fluconazol <em>aumentam</em> o efeito (inibição de CYP2C9). Rifampicina e fenitoína <em>reduzem</em> (indução enzimática). AAS e AINEs aumentam o risco de sangramento sem alterar INR.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>FARM-FARMACOTERAP · Cardiometabólicos</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">6 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 7 — QUESTÃO 01 ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Farmácia — FARM-FARMACOTERAP</div>
+      <div class="aula-ref">Bloco B5 · Aula 02 · Questões ENARE</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="questao-header">
+      <span>Questão 01</span>
+      <span class="fonte">Diabetes · SBD 2024 · NC: Aplicação</span>
+    </div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Paciente de 54 anos, assintomática, com IMC de 32 kg/m² e história familiar de DM2, comparece à USF para avaliação. Resultados laboratoriais: glicemia em jejum 132 mg/dL; HbA1c 6,7%. De acordo com a Diretriz SBD 2024, qual a conduta diagnóstica adequada para confirmar diabetes mellitus tipo 2 nesta paciente?</p>
+      <ul class="alternativas">
+        <li>
+          <span class="letra">A</span>
+          <span>O diagnóstico está estabelecido por um único exame alterado de glicemia em jejum.</span>
+        </li>
+        <li class="correta">
+          <span class="letra">B</span>
+          <span>O diagnóstico está confirmado: dois exames distintos alterados (glicemia em jejum ≥ 126 e HbA1c ≥ 6,5%) na mesma coleta atendem ao critério SBD 2024.</span>
+        </li>
+        <li>
+          <span class="letra">C</span>
+          <span>Solicitar TOTG 75 g imediatamente, pois é o único exame confirmatório aceito em assintomáticos.</span>
+        </li>
+        <li>
+          <span class="letra">D</span>
+          <span>Repetir HbA1c em 12 semanas; até lá, considerar pré-diabetes.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> em paciente <em>assintomática</em>, a Diretriz SBD 2024 exige dois exames alterados para diagnóstico de DM2. Esses dois exames podem ser: (i) o mesmo teste em duas ocasiões distintas <em>ou</em> (ii) dois testes diferentes coletados na mesma amostra. No caso, glicemia em jejum (132 ≥ 126) e HbA1c (6,7% ≥ 6,5%) realizadas na mesma coleta cumprem o critério e selam o diagnóstico — não há necessidade de nova coleta.</p>
+      <p><strong>Por que as outras erram:</strong> A — em assintomáticos, um único exame não confirma o diagnóstico (regra anti-falso-positivo da SBD/ADA) · C — o TOTG é uma opção, mas não é obrigatório: HbA1c e glicemia jejum são igualmente aceitos como testes diagnósticos confirmatórios · D — pré-diabetes corresponde a glicemia em jejum 100–125 ou HbA1c 5,7–6,4%; ambos os valores apresentados ultrapassam os limites, configurando DM2 e não pré-diabetes; postergar 12 semanas é erro clínico.</p>
+      <p><strong>Conceito-chave:</strong> em assintomático, são necessários dois exames alterados — podem ser realizados na <em>mesma coleta</em> se forem testes diferentes (glicemia + HbA1c, por exemplo). Em sintomático com glicemia aleatória ≥ 200 mg/dL, basta uma medida.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>FARM-FARMACOTERAP · Cardiometabólicos</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">7 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 8 — QUESTÃO 02 ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Farmácia — FARM-FARMACOTERAP</div>
+      <div class="aula-ref">Bloco B5 · Aula 02 · Questões ENARE</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="questao-header">
+      <span>Questão 02</span>
+      <span class="fonte">Digoxina · ITE · NC: Análise</span>
+    </div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Paciente de 78 anos, com IC e FA, em uso crônico de digoxina 0,25 mg/dia, furosemida 40 mg/dia e enalapril 20 mg/dia, é internado por náuseas, vômitos, "visão amarelada" e bradicardia. Exames: K+ 3,1 mEq/L; creatinina 1,6 mg/dL (basal 1,1); digoxinemia 3,2 ng/mL. Sobre as condutas farmacêuticas, analise:</p>
+      <p class="questao-enunciado" style="font-style:italic;">I. Suspender imediatamente a digoxina e considerar fragmentos Fab antidigoxina (DigiFab) em sintomatologia grave.<br>
+      II. Corrigir a hipocalemia, pois ela potencializa a toxicidade digitálica em qualquer concentração sérica de digoxina.<br>
+      III. Manter a furosemida, pois a piora da função renal exige mais diurético para acelerar a depuração da digoxina.</p>
+      <p class="questao-enunciado">Está(ão) correta(s) apenas:</p>
+      <ul class="alternativas">
+        <li>
+          <span class="letra">A</span>
+          <span>I.</span>
+        </li>
+        <li>
+          <span class="letra">B</span>
+          <span>II.</span>
+        </li>
+        <li class="correta">
+          <span class="letra">C</span>
+          <span>I e II.</span>
+        </li>
+        <li>
+          <span class="letra">D</span>
+          <span>I, II e III.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — C</div>
+      <p><strong>I — Correta:</strong> digoxinemia &gt; 2 ng/mL associada a sintomas (xantopsia, GI, bradicardia) caracteriza <em>intoxicação digitálica grave</em>. Conduta: suspensão imediata + suporte (atropina em bradicardia, marca-passo se necessário) + Fab antidigoxina em arritmia grave, hipercalemia &gt; 5 mEq/L, ingestão &gt; 10 mg adulto / 4 mg criança, digoxinemia &gt; 10 ng/mL ou instabilidade hemodinâmica.</p>
+      <p><strong>II — Correta:</strong> a hipocalemia potencializa o efeito tóxico da digoxina pela competição com K+ no sítio de ligação da bomba Na+/K+ ATPase — mesmo com digoxinemia formalmente "terapêutica" (0,8–2 ng/mL), o paciente com K+ &lt; 3,5 pode apresentar arritmia. Corrigir K+ é prioridade. O caso ainda associa hipomagnesemia frequente em diurético — repor Mg também.</p>
+      <p><strong>III — Incorreta:</strong> manter ou aumentar furosemida <em>agrava</em> o quadro: (a) piora a hipocalemia e a hipomagnesemia, potencializando toxicidade digitálica; (b) reduz volume circulante e perfusão renal, dificultando a excreção da digoxina (eliminação renal); (c) não é diurético osmótico que aumente clearance da digoxina. Conduta correta: reduzir/suspender furosemida temporariamente e otimizar volemia/eletrólitos.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>FARM-FARMACOTERAP · Cardiometabólicos</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">8 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 9 — QUESTÃO 03 + GABARITO INTEGRADO ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Farmácia — FARM-FARMACOTERAP</div>
+      <div class="aula-ref">Bloco B5 · Aula 02 · Gabarito Integrado</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="questao-header">
+      <span>Questão 03</span>
+      <span class="fonte">GLP-1 · Tirzepatida · NC: Análise</span>
+    </div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Paciente de 38 anos, IMC 36 kg/m², sem diabetes, procura o farmacêutico na drogaria pedindo orientação sobre "Mounjaro® semanal", que comprou em um marketplace para "emagrecer". Apresenta receita médica antiga (de outro paciente). Que orientação farmacêutica está alinhada à Resolução CFF 585/2013, ao Código de Ética do Farmacêutico e à segurança do paciente?</p>
+      <ul class="alternativas">
+        <li>
+          <span class="letra">A</span>
+          <span>Dispensar e orientar sobre a técnica de aplicação, pois o medicamento já foi adquirido.</span>
+        </li>
+        <li>
+          <span class="letra">B</span>
+          <span>Vender mais canetas para garantir continuidade do tratamento.</span>
+        </li>
+        <li class="correta">
+          <span class="letra">C</span>
+          <span>Não dispensar; orientar a paciente sobre os riscos de uso sem prescrição médica vigente, encaminhar para avaliação clínica e, se confirmada irregularidade na origem do produto, considerar notificação à ANVISA.</span>
+        </li>
+        <li>
+          <span class="letra">D</span>
+          <span>Substituir a tirzepatida por liraglutida 3 mg, pois tem perfil de segurança equivalente.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — C</div>
+      <p><strong>Por que C está correta:</strong> a tirzepatida (Mounjaro®/Zepbound®) é medicamento sob prescrição e requer <em>prescrição médica vigente</em> emitida em nome da paciente em uso. Dispensar com receita antiga de terceiro viola a Lei 5.991/1973 (dispensação) e a Res. CFF 585/2013 (atribuições privativas — verificação de receita válida). O Código de Ética do Farmacêutico (Res. CFF 724/2022) veda compactuar com práticas que coloquem em risco a saúde. Marketplaces sem autorização ANVISA podem comercializar produtos falsificados ou conservados inadequadamente (cadeia fria). Conduta: não dispensar, orientar riscos, encaminhar para avaliação médica e considerar notificação sanitária.</p>
+      <p><strong>Por que as outras erram:</strong> A — dispensar contra receita válida é infração ética e sanitária; o "já comprou" não legitima dispensação · B — vender mais é agravar a infração · D — substituição entre análogos de GLP-1 não é prerrogativa farmacêutica sem prescrição específica; e a paciente sequer tem prescrição válida para qualquer dos dois.</p>
+    </div>
+
+    <div class="subsecao" style="margin-top:6px;">Gabarito Comentado — Análise Integrada</div>
+    <table>
+      <tr>
+        <th>Questão</th>
+        <th>Gabarito</th>
+        <th>Tema</th>
+        <th>Conceito-Chave</th>
+      </tr>
+      <tr>
+        <td><strong>01</strong></td>
+        <td><span class="destaque">B</span></td>
+        <td>DM2 — Diagnóstico SBD 2024</td>
+        <td>Assintomático: dois exames alterados (podem ser na mesma coleta se forem testes diferentes)</td>
+      </tr>
+      <tr>
+        <td><strong>02</strong></td>
+        <td><span class="destaque">C</span></td>
+        <td>Digoxina — Intoxicação</td>
+        <td>Hipocalemia potencializa toxicidade; suspender digoxina + Fab + corrigir K+/Mg+ + reduzir furosemida</td>
+      </tr>
+      <tr>
+        <td><strong>03</strong></td>
+        <td><span class="destaque">C</span></td>
+        <td>GLP-1 — Dispensação Ética</td>
+        <td>Sem prescrição válida → não dispensar; CFF 585/2013 + Código de Ética + notificação sanitária</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="footer">
+    <span>FARM-FARMACOTERAP · Cardiometabólicos</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">9 / 10</span>
+  </div>
+</div>
+
+<!-- ========== PÁGINA 10 — SÍNTESE ========== -->
+<div class="page">
+  <div class="header">
+    <div class="header-logo">
+      <svg width="28" height="28" viewBox="0 0 34 34" fill="none">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/>
+        <circle cx="17" cy="17" r="7" fill="#F6F4ED"/>
+      </svg>
+      <div class="header-brand">
+        <span class="marca">Elite Treinamentos</span>
+        <span class="tagline">Extensivo ENARE 2026</span>
+      </div>
+    </div>
+    <div class="header-info">
+      <div class="disciplina">Farmácia — FARM-FARMACOTERAP</div>
+      <div class="aula-ref">Bloco B5 · Aula 02 · Síntese</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="secao-titulo">Síntese — Cardiometabólicos</div>
+
+    <div class="sintese-grid">
+      <div class="sintese-item">
+        <div class="si-label">DM — Diagnóstico e Metformina</div>
+        <p>SBD 2024: assintomático = 2 exames alterados; sintomático + glicemia aleatória ≥ 200 = 1 exame. Metformina = base do tratamento DM2 (não causa hipoglicemia); evitar TFG &lt; 30 (acidose lática). Glibenclamida = evitar em idoso (Beers).</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">GLP-1 e iSGLT-2</div>
+        <p>GLP-1 (semaglutida, liraglutida, tirzepatida — dual GLP-1/GIP): perda de peso, benefício CV; contraindicados em CMT/NEM-2; pancreatite. iSGLT-2 (dapagli, empagli): benefício IC + DRC; cetoacidose euglicêmica (suspender pré-cirurgia/jejum), infecções genitais.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Insulinas</div>
+        <p>Ultrarrápidas (lispro, asparte) = bolus pré-prandial. NPH = basal 2×/dia. Glargina/degludeca = basal 1×/dia. Misturar regular + NPH (R primeiro). Conservar 2–8 °C fechado; 28 dias temperatura ambiente após aberto. Hipoglicemia: regra dos 15g; glucagon IM no nível 3.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">HAS — 5 Classes</div>
+        <p>IECA/BRA (tosse seca só IECA; ambos contraindicados gestação); BCC-DHP (edema maleolar); tiazídico (hipocalemia, hiperuricemia); betabloqueador (em IC, DAC, arritmia). Combinações: IECA+BCC ou IECA+tiazídico. Resistente: + espironolactona.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">IC + Digoxina + Anticoagulação</div>
+        <p>HFrEF: 4 pilares (IECA/ARNI + βB + espirono + iSGLT-2). HFpEF: iSGLT-2. Digoxina ITE 0,5–2 ng/mL; hipocalemia potencializa toxicidade; Fab em intoxicação grave. Varfarina (INR 2–3); DOACs (rivaroxabana, apixabana, dabigatrana — idarucizumabe).</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Próxima Aula</div>
+        <p><strong>Aula 03 — Farmacoterapia III: Neuropsiquiatria.</strong> Lítio (ITE 0,6–1,2 mEq/L), sertralina + álcool/zolpidem, tramadol (CYP2D6, ENARE 2025), polifarmácia no idoso (Beers 2023), anticonvulsivantes e antipsicóticos.</p>
+      </div>
+    </div>
+
+    <div class="alerta" style="margin-top:5px;">
+      <p><strong>Regra de ouro — Cardiometabólicos no ENARE:</strong> SBD 2024 = 2 exames em assintomático; tirzepatida = dual GLP-1/GIP (não confundir); digoxina = ITE com K+ como variável crítica; varfarina = INR + interações (amiodarona, SMX-TMP, dieta); IC HFrEF = 4 pilares; iSGLT-2 = benefício além da glicemia (IC, DRC); CFF 585/2013 protege a dispensação ética.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>FARM-FARMACOTERAP · Cardiometabólicos</span>
+    <span>Extensivo ENARE 2026</span>
+    <span class="pg">10 / 10</span>
+  </div>
+</div>
+
+</body>
+</html>
