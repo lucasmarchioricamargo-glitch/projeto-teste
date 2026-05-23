@@ -239,7 +239,7 @@ function carregarBanco(dataDir) {
         for (const programa of (inst.programas || [])) {
           for (const vaga of (programa.vagas || [])) {
             const area = vaga.area;
-            const qtd = vaga.quantidade || 0;
+            const qtd = Number(vaga.quantidade) || 0;
             if (qtd <= 0) continue;
 
             // Resolve a profissão-pai: area exata OU subspec mapeada.
