@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Serviço Social — Bloco B13 Aula 02 | Extensivo ENARE 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap');
+  :root { --creme: #F6F4ED; --verde: #1F5C23; --amarelo: #C6D834; --escuro: #0C2B0E; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #d0d0d0; font-family: 'Bricolage Grotesque', sans-serif; }
+  .page { width: 210mm; height: 297mm; background: var(--creme); margin: 0 auto 12px; position: relative; overflow: hidden; page-break-after: always; }
+  .header { background: var(--verde); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .header-logo { display: flex; align-items: center; gap: 8px; }
+  .header-logo svg { width: 32px; height: 32px; }
+  .header-brand { display: flex; flex-direction: column; line-height: 1; }
+  .header-brand .marca { font-family: 'Playfair Display', serif; font-style: italic; color: #fff; font-size: 13px; letter-spacing: 0.5px; }
+  .header-brand .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 7px; letter-spacing: 1.5px; text-transform: uppercase; }
+  .header-info { text-align: right; }
+  .header-info .disciplina { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
+  .header-info .aula-ref { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.7); font-size: 8px; letter-spacing: 0.5px; }
+  .footer { position: absolute; bottom: 0; left: 0; right: 0; background: var(--verde); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .footer span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.6); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .footer .pg { color: var(--amarelo); font-weight: 400; }
+  .body { padding: 14px 18px 30px; height: calc(297mm - 52px - 22px); overflow: hidden; }
+  .capa-page { background: var(--verde); }
+  .capa-header { background: var(--creme); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .capa-header .marca { font-family: 'Playfair Display', serif; font-style: italic; color: var(--verde); font-size: 14px; }
+  .capa-header .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--verde); font-size: 7.5px; letter-spacing: 2px; text-transform: uppercase; }
+  .capa-body { padding: 28px 24px 0; display: flex; flex-direction: column; height: calc(297mm - 52px - 22px); }
+  .capa-eyebrow { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; }
+  .capa-titulo { font-family: 'Barlow Condensed', sans-serif; color: #fff; font-size: 50px; line-height: 0.95; text-transform: uppercase; letter-spacing: -0.5px; margin-bottom: 6px; }
+  .capa-titulo span { color: var(--amarelo); }
+  .capa-subtitulo { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; color: rgba(255,255,255,0.65); font-size: 12px; letter-spacing: 0.3px; margin-bottom: 22px; line-height: 1.5; }
+  .capa-badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+  .capa-badge { background: rgba(198,216,52,0.15); border: 1px solid var(--amarelo); color: var(--amarelo); font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 8px; border-radius: 2px; }
+  .capa-divider { width: 40px; height: 3px; background: var(--amarelo); margin-bottom: 20px; }
+  .capa-topicos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .capa-topico { display: flex; align-items: flex-start; gap: 7px; }
+  .capa-topico-num { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 18px; line-height: 1; min-width: 18px; }
+  .capa-topico-txt { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 400; color: rgba(255,255,255,0.8); font-size: 9.5px; line-height: 1.4; }
+  .capa-footer-strip { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.25); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .capa-footer-strip span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.45); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .secao-titulo { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 18px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid var(--amarelo); padding-bottom: 3px; margin-bottom: 9px; line-height: 1; }
+  .subsecao { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.5px; margin: 7px 0 3px; }
+  p { font-size: 9px; line-height: 1.55; color: #1a1a1a; margin-bottom: 4px; font-weight: 400; }
+  .destaque { background: var(--amarelo); color: var(--escuro); font-weight: 600; padding: 1px 4px; border-radius: 2px; font-size: 8.5px; }
+  .alerta { background: rgba(198,216,52,0.18); border-left: 3px solid var(--amarelo); padding: 5px 8px; margin: 5px 0; border-radius: 0 3px 3px 0; }
+  .alerta p { margin: 0; font-size: 8.5px; }
+  .alerta strong { color: var(--verde); }
+  table { width: 100%; border-collapse: collapse; margin: 5px 0; font-size: 8px; }
+  th { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; padding: 4px 6px; text-align: left; }
+  td { padding: 3px 6px; border-bottom: 1px solid rgba(31,92,35,0.12); vertical-align: top; line-height: 1.4; color: #1a1a1a; }
+  tr:nth-child(even) td { background: rgba(31,92,35,0.04); }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 5px 0; }
+  .card { background: rgba(31,92,35,0.06); border: 1px solid rgba(31,92,35,0.15); border-radius: 4px; padding: 7px 8px; }
+  .card-title { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 11px; text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 3px; }
+  .card p { font-size: 8px; line-height: 1.5; }
+  .questao-header { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; padding: 4px 10px; border-radius: 3px 3px 0 0; display: flex; justify-content: space-between; align-items: center; }
+  .questao-header .fonte { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; color: var(--amarelo); letter-spacing: 0.5px; }
+  .questao-body { border: 1px solid rgba(31,92,35,0.2); border-top: none; border-radius: 0 0 3px 3px; padding: 7px 10px; margin-bottom: 7px; }
+  .questao-enunciado { font-size: 8.5px; line-height: 1.55; color: #111; margin-bottom: 5px; font-weight: 500; }
+  .alternativas { list-style: none; }
+  .alternativas li { font-size: 8px; line-height: 1.5; padding: 2px 0; color: #222; display: flex; gap: 5px; }
+  .alternativas li .letra { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: var(--verde); font-size: 9px; min-width: 10px; }
+  .alternativas li.correta .letra { color: var(--amarelo); }
+  .alternativas li.correta { background: rgba(198,216,52,0.15); border-left: 2px solid var(--amarelo); padding-left: 4px; }
+  .gabarito-box { background: var(--verde); border-radius: 4px; padding: 8px 12px; margin: 6px 0; }
+  .gabarito-box .gab-title { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+  .gabarito-box p { color: rgba(255,255,255,0.9); font-size: 8px; line-height: 1.55; }
+  .gabarito-box strong { color: var(--amarelo); }
+  .sintese-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-top: 6px; }
+  .sintese-item { background: rgba(31,92,35,0.07); border-left: 3px solid var(--verde); padding: 5px 7px; border-radius: 0 3px 3px 0; }
+  .sintese-item .si-label { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px; }
+  .sintese-item p { font-size: 7.5px; line-height: 1.5; }
+  ul.lista { padding-left: 14px; margin: 3px 0; }
+  ul.lista li { font-size: 8.5px; line-height: 1.55; color: #1a1a1a; margin-bottom: 1px; }
+  @media print { body { background: none; } .page { margin: 0; box-shadow: none; } }
+</style>
+</head>
+<body>
+
+<div class="page capa-page">
+  <div class="capa-header">
+    <div style="display:flex;align-items:center;gap:8px;"><svg width="34" height="34" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#1F5C23"/></svg><div><div class="marca">Elite Treinamentos</div><div class="tagline">Extensivo ENARE 2026</div></div></div>
+    <div style="text-align:right;"><div style="font-family:'Barlow Condensed',sans-serif;color:var(--verde);font-size:11px;letter-spacing:1px;text-transform:uppercase;">Bloco B13 · Aula 02</div><div style="font-family:'Space Grotesk',sans-serif;font-weight:300;color:#888;font-size:7.5px;letter-spacing:0.5px;">Serviço Social</div></div>
+  </div>
+  <div class="capa-body">
+    <div class="capa-eyebrow">Bloco B13 · SS-FUND · Aula 02 de 21</div>
+    <div class="capa-titulo">Renova-<br>ção <span>&<br>Reconcei-<br>tuação</span></div>
+    <div class="capa-subtitulo">Movimento latino-americano (1965–1975), três perspectivas<br>e o Congresso da Virada (1979) como marco hegemônico</div>
+    <div class="capa-badge-row">
+      <div class="capa-badge">SS-FUND ★★★</div>
+      <div class="capa-badge">Araxá 1967 · Teresópolis 1970</div>
+      <div class="capa-badge">III CBAS 1979</div>
+      <div class="capa-badge">3 Perspectivas</div>
+    </div>
+    <div class="capa-divider"></div>
+    <div class="capa-topicos">
+      <div class="capa-topico"><div class="capa-topico-num">01</div><div class="capa-topico-txt">Período pré-conceitual: SS confessional</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">02</div><div class="capa-topico-txt">Movimento de Reconceituação (1965–1975)</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">03</div><div class="capa-topico-txt">Perspectiva Modernizadora — Araxá e Teresópolis</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">04</div><div class="capa-topico-txt">Reatualização do conservadorismo (fenomenologia)</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">05</div><div class="capa-topico-txt">Intenção de Ruptura — Netto e a "virada"</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">06</div><div class="capa-topico-txt">III CBAS 1979 e a hegemonia marxista</div></div>
+    </div>
+  </div>
+  <div class="capa-footer-strip"><span>Extensivo ENARE 2026</span><span>Elite Treinamentos em Saúde</span><span>Página 1 de 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-FUND</div><div class="aula-ref">Bloco B13 · Aula 02 · Pré-conceitual</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">SS Pré-Reconceituação — O Período Confessional e Tecnicista</div>
+
+    <p>Para compreender o Movimento de Reconceituação (1965–1975), é fundamental conhecer o que ele <em>rompeu</em>. O SS brasileiro pré-1965 articulava-se em três perspectivas anteriores: <strong>doutrina social da Igreja (confessional)</strong>, <strong>desenvolvimentismo</strong> e <strong>tecnicismo positivista importado</strong>. Cobrado em ENARE 2024 (Q21, Q33, Q39, Q44, Q57, Q88) e 2025 (Q73, Q83).</p>
+
+    <div class="subsecao">Período Confessional (1936–1947)</div>
+    <table>
+      <tr><th>Marco</th><th>Evento</th></tr>
+      <tr><td>1936</td><td>Fundação da primeira Escola de Serviço Social em São Paulo, por iniciativa católica (Centro de Estudos e Ação Social — CEAS); modelo da Escola de Bruxelas</td></tr>
+      <tr><td>1937</td><td>Fundação da Escola de SS do Rio de Janeiro</td></tr>
+      <tr><td>1944</td><td>Reconhecimento oficial do curso de SS</td></tr>
+      <tr><td>1947</td><td>Regulamentação da profissão (Decreto-Lei 994)</td></tr>
+    </table>
+
+    <p><strong>Características:</strong> influência da Encíclica Rerum Novarum (Leão XIII, 1891) e Quadragesimo Anno (Pio XI, 1931); doutrina social da Igreja; "ajuste do indivíduo à sociedade"; combate aos males do capitalismo industrial sem questionar a estrutura; assistência caritativa; perfil feminino burguês das primeiras assistentes sociais; aplicação do <em>Caso, Grupo e Comunidade</em> (importação norte-americana).</p>
+
+    <div class="subsecao">Período Desenvolvimentista (1947–1965)</div>
+    <p>Com a industrialização brasileira (Kubitschek, "50 anos em 5"), o SS articula-se ao projeto de modernização capitalista. Importação dos modelos norte-americanos (Mary Richmond) e seu instrumental: Caso (1917), Grupo, Comunidade.</p>
+
+    <ul class="lista">
+      <li><strong>Mary Richmond</strong> (1917): "Social Diagnosis" — fundadora do Caso Social Individual</li>
+      <li><strong>Caso Social Individual</strong>: atendimento personalizado, com avaliação psicossocial, plano de tratamento, intervenção e seguimento</li>
+      <li><strong>Serviço Social de Grupo</strong>: intervenção em pequenos grupos com objetivos definidos (Konopka, Kisnerman)</li>
+      <li><strong>Serviço Social de Comunidade</strong>: organização e desenvolvimento comunitário; importação do Community Organization e do <em>Desenvolvimento de Comunidade</em> da CEPAL/ONU</li>
+      <li>SESC, SESI, SENAC, SENAI: criação dos serviços sociais paraestatais (1946+)</li>
+      <li>Influência funcionalista-positivista (Talcott Parsons, Merton); ajuste indivíduo-sociedade</li>
+    </ul>
+
+    <div class="subsecao">Crítica ao SS Tradicional</div>
+    <p>O modelo "Caso, Grupo, Comunidade" foi acusado pela Reconceituação de:</p>
+    <ul class="lista">
+      <li><strong>Funcionalismo</strong>: assumir como dada a estrutura social, ajustando indivíduos a ela</li>
+      <li><strong>Apoliticismo</strong>: pretensa neutralidade; despolitização do trabalho</li>
+      <li><strong>Importação acrítica</strong>: aplicação de modelos do hemisfério norte sem mediação latino-americana</li>
+      <li><strong>Tecnicismo</strong>: técnica sem teoria social robusta</li>
+      <li><strong>Conservadorismo</strong>: alinhamento com elites e Estado autoritário</li>
+      <li><strong>Caridade modernizada</strong>: na prática, missão religiosa com vocabulário técnico</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> a Reconceituação rompe com o SS "Caso-Grupo-Comunidade" tradicional. Tomar cuidado: ENARE pode cobrar Mary Richmond (Caso Social Individual, 1917) como autora pré-Reconceituação. O Brasil iniciou com escolas confessionais (CEAS São Paulo, 1936) — modelo europeu/Bruxelas.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-FUND · Reconceituação</span><span>Extensivo ENARE 2026</span><span class="pg">2 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-FUND</div><div class="aula-ref">Bloco B13 · Aula 02 · Reconceituação</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Movimento de Reconceituação (1965–1975)</div>
+
+    <p>O <strong>Movimento de Reconceituação</strong> é o processo latino-americano (não exclusivamente brasileiro) de crítica ao SS tradicional. Inicia-se na Argentina e Uruguai (1965), expande-se para Chile, Peru, Brasil, México. Marca a transição do SS "técnico" para o SS comprometido com transformação social.</p>
+
+    <div class="subsecao">Contexto Histórico Latino-Americano</div>
+    <ul class="lista">
+      <li><strong>Revolução Cubana (1959)</strong>: marco político-ideológico; alternativa anti-imperialista</li>
+      <li><strong>Aliança para o Progresso (1961)</strong>: resposta dos EUA — política de cooperação técnica e modernização</li>
+      <li><strong>Teologia da Libertação (anos 60)</strong>: Gustavo Gutiérrez, Leonardo Boff; opção preferencial pelos pobres</li>
+      <li><strong>Pedagogia do Oprimido (Paulo Freire, 1968)</strong>: educação como prática da liberdade</li>
+      <li><strong>Marxismo latino-americano</strong>: leitura crítica das ditaduras militares e do imperialismo</li>
+      <li><strong>Ditaduras militares</strong>: Brasil 1964; Chile 1973; Argentina 1976. Reconceituação foi <em>perseguida</em> em muitos países</li>
+    </ul>
+
+    <div class="subsecao">Os Três Documentos da Reconceituação Latino-Americana</div>
+    <table>
+      <tr><th>Documento</th><th>Ano</th><th>Local</th><th>Conteúdo</th></tr>
+      <tr><td>Araxá</td><td>1967</td><td>Brasil — Minas Gerais</td><td>Modernização do SS; ajuste e desenvolvimento; perspectiva modernizadora</td></tr>
+      <tr><td>Teresópolis</td><td>1970</td><td>Brasil — Rio de Janeiro</td><td>Aprofundamento da modernização; positivismo metodológico</td></tr>
+      <tr><td>Sumaré e Alto da Boa Vista</td><td>1978–1984</td><td>Brasil — Rio de Janeiro</td><td>Crítica à modernização; abertura à teoria social crítica (Marx, Gramsci)</td></tr>
+    </table>
+
+    <p>Documentos análogos em outros países: <em>Concepción</em> (Chile 1972), <em>Tucumán</em> (Argentina 1968).</p>
+
+    <div class="subsecao">As Três Vertentes Internas da Reconceituação Brasileira (Netto)</div>
+    <p>José Paulo Netto, em <em>Ditadura e Serviço Social</em> (1991), identifica que a Reconceituação no Brasil não foi homogênea — foi <em>plural</em>, com três perspectivas que conviveram (e se enfrentaram):</p>
+
+    <table>
+      <tr><th>Perspectiva</th><th>Período</th><th>Base teórica</th><th>Caracterização</th></tr>
+      <tr><td><strong>Modernizadora</strong></td><td>1965–1975 (1ª onda)</td><td>Funcionalismo / desenvolvimentismo CEPAL</td><td>Aprimorar o SS dentro do projeto modernizador; tecnologia, planejamento, eficiência. Documentos de Araxá e Teresópolis</td></tr>
+      <tr><td><strong>Reatualização do Conservadorismo</strong></td><td>1970+</td><td>Fenomenologia, neotomismo, personalismo</td><td>Recolocar o "humano" no centro; recuperar valores cristãos; pessoa em sua singularidade; aparentemente "progressista" mas conservadora na essência</td></tr>
+      <tr><td><strong>Intenção de Ruptura</strong></td><td>1975+ (consolida-se em 1979)</td><td>Marxismo (matriz lukacsiana via Netto)</td><td>Romper com o conservadorismo; vincular SS à classe trabalhadora; análise estrutural da questão social; práxis transformadora</td></tr>
+    </table>
+
+    <div class="subsecao">Avanços e Limites da Reconceituação</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Avanços</div>
+        <p>Quebra do paradigma confessional; entrada da teoria social no SS; reconhecimento da dimensão política da profissão; vinculação a movimentos sociais; surgimento da pesquisa em SS; criação da pós-graduação (mestrado PUC-SP 1972); ampliação da formação profissional.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Limites</div>
+        <p>Eclismo teórico em alguns momentos; importação às vezes mecânica de Marx (sem mediações); leitura althusseriana inicial (depois superada pela lukacsiana); insulação acadêmica; resistência institucional; perseguição pela ditadura militar.</p>
+      </div>
+    </div>
+
+    <div class="alerta">
+      <p><strong>Pegadinha FGV:</strong> não confundir <em>Reconceituação</em> (1965–1975, processo latino-americano) com <em>Renovação</em> (termo de Netto para o pós-1975 brasileiro). A Reconceituação tem três vertentes internas; a Renovação consolida a hegemonia da Intenção de Ruptura. Documentos: <em>Araxá 1967</em> e <em>Teresópolis 1970</em> = perspectiva modernizadora.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-FUND · Reconceituação</span><span>Extensivo ENARE 2026</span><span class="pg">3 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-FUND</div><div class="aula-ref">Bloco B13 · Aula 02 · Três Perspectivas</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">As Três Perspectivas em Detalhe</div>
+
+    <div class="subsecao">1. Perspectiva Modernizadora — Araxá (1967) e Teresópolis (1970)</div>
+    <p>Documento de <strong>Araxá (1967)</strong>: realizado em seminário do CBCISS (Centro Brasileiro de Cooperação e Intercâmbio de Serviços Sociais), com participação de assistentes sociais, sociólogos, economistas. Propõe um SS modernizado, voltado para o desenvolvimento, com instrumental técnico-científico.</p>
+
+    <p>Documento de <strong>Teresópolis (1970)</strong>: aprofunda o modelo. Vincula o SS ao paradigma metodológico positivista. Estabelece um "método" único do SS, com etapas sequenciais (diagnóstico, plano, execução, avaliação).</p>
+
+    <ul class="lista">
+      <li><strong>Base teórica</strong>: estrutural-funcionalismo (Parsons); teoria do desenvolvimento (CEPAL)</li>
+      <li><strong>Visão de questão social</strong>: disfunção que pode ser corrigida com integração e desenvolvimento</li>
+      <li><strong>Papel do AS</strong>: agente do desenvolvimento, técnico modernizador</li>
+      <li><strong>Método</strong>: positivista, sequencial, com técnica unificada</li>
+      <li><strong>Relação com Estado</strong>: cooperação e integração; aparente ausência de conflito</li>
+      <li><strong>Limite</strong>: mantém estrutura social como dada; ajusta indivíduos; não enxerga a contradição capital-trabalho</li>
+    </ul>
+
+    <div class="subsecao">2. Reatualização do Conservadorismo</div>
+    <p>Vertente que, paradoxalmente, parece "progressista" no nível discursivo mas é conservadora em essência. Recoloca valores humanistas religiosos como centro, fundamentada em <strong>fenomenologia</strong>, <strong>neotomismo</strong>, <strong>personalismo (Mounier)</strong>.</p>
+
+    <ul class="lista">
+      <li><strong>Base teórica</strong>: Husserl, Heidegger (fenomenologia); Sto. Tomás (neotomismo); Mounier (personalismo); Karl Wojtyla (futuro Papa João Paulo II — personalismo)</li>
+      <li><strong>Visão de pessoa</strong>: dimensão metafísica/transcendente; pessoa como ser único e irrepetível</li>
+      <li><strong>Foco</strong>: relação interpessoal terapêutica; "encontro" entre pessoas; AS como ajudante existencial</li>
+      <li><strong>Crítica feita pela Intenção de Ruptura</strong>: despolitiza; recoloca a questão social como questão individual/existencial; tem efeito conservador apesar da retórica humanista</li>
+      <li><strong>Autoras representativas brasileiras</strong>: Marília Diniz Carvalho, Anna Augusta de Almeida (escolas católicas), embora elas também tenham produzido obras críticas</li>
+    </ul>
+
+    <div class="subsecao">3. Intenção de Ruptura — A Construção do Paradigma Crítico</div>
+    <p>É a vertente que pretende <em>romper com o conservadorismo</em> em todas as suas formas. Inicia-se no final da Reconceituação (1975+) e consolida-se a partir de 1979 (III CBAS — Congresso da Virada).</p>
+
+    <ul class="lista">
+      <li><strong>Base teórica inicial</strong>: marxismo althusseriano (anos 70 — superado depois)</li>
+      <li><strong>Base teórica madura</strong>: marxismo lukacsiano (anos 80+); Netto, Iamamoto</li>
+      <li><strong>Visão de QS</strong>: produto estrutural do capitalismo; sem solução dentro da ordem</li>
+      <li><strong>Papel do AS</strong>: trabalhador assalariado; vínculo com classe trabalhadora; práxis transformadora</li>
+      <li><strong>Método</strong>: dialético histórico (Marx); totalidade; mediação; categorias críticas</li>
+      <li><strong>Marcos institucionais</strong>: III CBAS 1979 ("Saraiva"); Currículo de 1982; Código de Ética 1986; Currículo de 1996 (ABEPSS); Código de Ética 1993</li>
+    </ul>
+
+    <div class="subsecao">Comparativo das Três Perspectivas</div>
+    <table>
+      <tr><th>Aspecto</th><th>Modernizadora</th><th>Conservadora atualizada</th><th>Intenção de Ruptura</th></tr>
+      <tr><td>QS</td><td>Disfunção corrigível</td><td>Sofrimento individual</td><td>Contradição estrutural</td></tr>
+      <tr><td>AS</td><td>Técnico modernizador</td><td>Ajudante existencial</td><td>Trabalhador comprometido</td></tr>
+      <tr><td>Método</td><td>Positivista/funcionalista</td><td>Fenomenológico</td><td>Dialético/marxista</td></tr>
+      <tr><td>Resultado</td><td>Integração funcional</td><td>Realização pessoal</td><td>Emancipação social</td></tr>
+      <tr><td>Posição política</td><td>Conservadora (estrutura)</td><td>Conservadora (oculta)</td><td>Transformadora</td></tr>
+    </table>
+
+    <div class="alerta">
+      <p><strong>Pegadinha FGV:</strong> a fenomenologia/reatualização do conservadorismo é uma "armadilha" — soa progressista mas é conservadora. Cobrada em ENARE 2024 (Q21) e em provas de outras bancas. Saber identificar autores: fenomenologia ≠ teoria crítica.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-FUND · Reconceituação</span><span>Extensivo ENARE 2026</span><span class="pg">4 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-FUND</div><div class="aula-ref">Bloco B13 · Aula 02 · Congresso da Virada</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">III CBAS — O Congresso da Virada (1979)</div>
+
+    <p>O <strong>III Congresso Brasileiro de Assistentes Sociais (CBAS)</strong>, realizado em São Paulo em <strong>setembro de 1979</strong>, é o marco fundador da hegemonia crítica no SS brasileiro. Ficou conhecido como "Congresso da Virada" ou "Congresso da Saraiva" (referência ao hotel onde ocorreu).</p>
+
+    <div class="subsecao">Contexto Político</div>
+    <ul class="lista">
+      <li>Brasil em final de ditadura militar (Geisel iniciara abertura "lenta, gradual e segura")</li>
+      <li>Anistia política aprovada em agosto de 1979 (Lei 6.683)</li>
+      <li>Crescimento de movimentos sociais (Movimento Estudantil; Movimento Negro; Movimento Feminista; CEBs — Comunidades Eclesiais de Base)</li>
+      <li>Grandes greves do ABC (1978–1980); ascensão do "novo sindicalismo"</li>
+      <li>Reorganização da esquerda brasileira</li>
+      <li>SS academicamente já em mestrado (PUC-SP 1972, UFRJ 1976)</li>
+    </ul>
+
+    <div class="subsecao">O Que Aconteceu no III CBAS</div>
+    <ul class="lista">
+      <li>Categoria recebeu a mesa solene oficial — composta por representantes do governo militar e dos serviços oficiais</li>
+      <li>Em assembleia, profissionais decidiram <em>recusar</em> a mesa oficial</li>
+      <li>Substituíram-na por representantes dos movimentos sociais, sindicatos, oposição</li>
+      <li>Aprovaram resoluções que comprometiam o SS com a classe trabalhadora</li>
+      <li>Marco simbólico de virada na profissão</li>
+    </ul>
+
+    <div class="subsecao">Significado Histórico</div>
+    <p>O III CBAS sinaliza:</p>
+    <ul class="lista">
+      <li><strong>Hegemonia da Intenção de Ruptura</strong>: a perspectiva crítica marxista torna-se majoritária na categoria</li>
+      <li><strong>Vinculação à classe trabalhadora</strong>: opção ético-política explícita</li>
+      <li><strong>Crítica ao conservadorismo</strong>: rompimento com o paradigma "modernizador" e com o "neoconservadorismo fenomenológico"</li>
+      <li><strong>Politização da profissão</strong>: SS como ato político, não técnica neutra</li>
+      <li><strong>Articulação com movimentos sociais</strong>: alianças com sindicatos, MNU, MST, feministas, MNDH</li>
+    </ul>
+
+    <div class="subsecao">Marcos Pós-1979</div>
+    <table>
+      <tr><th>Ano</th><th>Marco</th></tr>
+      <tr><td>1980</td><td>Fundação da CFAS (Confederação Federal de Assistentes Sociais) — depois CFESS</td></tr>
+      <tr><td>1982</td><td>Currículo Mínimo (Conselho Federal de Educação) — primeira tentativa de organizar formação</td></tr>
+      <tr><td>1986</td><td><strong>Código de Ética de 1986</strong> — primeiro de matriz marxista; rompe com perspectiva moralista anterior</td></tr>
+      <tr><td>1988</td><td>Constituição Federal — seguridade social como direito (SS, Previdência, Saúde)</td></tr>
+      <tr><td>1990</td><td>Lei 8.080/1990 (SUS); Lei 8.069/1990 (ECA)</td></tr>
+      <tr><td>1993</td><td><strong>Código de Ética 1993</strong> (Res. CFESS 273/1993) — vigente; aprimora o de 1986. Lei 8.662/1993 (regulamenta profissão)</td></tr>
+      <tr><td>1996</td><td>ABEPSS — Diretrizes Curriculares Nacionais</td></tr>
+      <tr><td>1999</td><td>Sergio Lessa, José Paulo Netto, Iamamoto consolidam a produção teórica crítica</td></tr>
+      <tr><td>2002</td><td>MEC/CNE — Resolução 15/2002, com base nas DCNs ABEPSS</td></tr>
+      <tr><td>2014–presente</td><td>Conjunto CFESS/CRESS atualiza Códigos, Resoluções; consolida PEP em prática nacional</td></tr>
+    </table>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> III CBAS 1979 = Congresso da Virada = marco da hegemonia crítica. Cobrado em ENARE 2024 (Q22, Q43, Q44 — vertentes da renovação). Pós-1979 = "Renovação" (termo de Netto para o período de consolidação). Distinguir <em>Reconceituação</em> (1965–1975, latino-americano) de <em>Renovação</em> (1975+, hegemonia marxista no Brasil).</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-FUND · Reconceituação</span><span>Extensivo ENARE 2026</span><span class="pg">5 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-FUND</div><div class="aula-ref">Bloco B13 · Aula 02 · Pós-Reconceituação</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Pós-Reconceituação — Consolidação do Projeto Crítico</div>
+
+    <div class="subsecao">Documento de Sumaré e Alto da Boa Vista (1978–1984)</div>
+    <p>Diferentemente de Araxá e Teresópolis, os documentos de <strong>Sumaré</strong> e <strong>Alto da Boa Vista</strong> (RJ) abandonam a perspectiva modernizadora e abrem espaço para a teoria social crítica. Marcam a transição interna da Reconceituação brasileira.</p>
+
+    <ul class="lista">
+      <li>Abandono do método positivista único</li>
+      <li>Incorporação de Marx, Gramsci, Lukács, Lefebvre</li>
+      <li>Reconhecimento das múltiplas matrizes teóricas no SS</li>
+      <li>Crítica à racionalidade instrumental</li>
+      <li>Discussão sobre a indissociabilidade entre teoria e prática</li>
+    </ul>
+
+    <div class="subsecao">Currículo Mínimo de 1982</div>
+    <p>O Conselho Federal de Educação aprovou em 1982 o primeiro Currículo Mínimo dos cursos de SS no Brasil. Embora ainda transição, marca a inserção da formação teórica crítica:</p>
+    <ul class="lista">
+      <li>Disciplinas de Filosofia, Economia Política, Sociologia, Teoria do SS</li>
+      <li>Permanência ainda de "Caso, Grupo e Comunidade" — mas com leitura crítica</li>
+      <li>Estágio supervisionado obrigatório</li>
+      <li>Inserção de pesquisa</li>
+    </ul>
+
+    <div class="subsecao">Código de Ética 1986 — Primeiro de Matriz Marxista</div>
+    <p>O Código de 1986 (Res. CFAS 195/1986) é frequentemente referido como o <em>"primeiro código verdadeiramente do SS"</em>, em oposição aos códigos confessionais anteriores (1947, 1965, 1975). Cobrado em ENARE 2025 (Q81).</p>
+
+    <ul class="lista">
+      <li>Primeira vez que o SS brasileiro explicita compromisso com a classe trabalhadora</li>
+      <li>Princípios alinhados ao III CBAS</li>
+      <li>Crítica ao conservadorismo</li>
+      <li>Reconhecimento dos limites da prática em sociedade desigual</li>
+      <li>Bases para o Código de 1993 (atual) — uma evolução, não ruptura</li>
+    </ul>
+
+    <div class="subsecao">DCNs ABEPSS 1996 — A Formação Atual</div>
+    <p>Em 1996, a ABEPSS (Associação Brasileira de Ensino e Pesquisa em SS — anteriormente ABESS desde 1946; atual desde 1998) aprova as Diretrizes Curriculares Nacionais que orientam a formação até hoje. Cobrado em ENARE 2025 (Q31, Q33, Q35).</p>
+
+    <table>
+      <tr><th>Núcleo</th><th>Conteúdo</th></tr>
+      <tr><td>Núcleo 1 — Fundamentos teórico-metodológicos da vida social</td><td>Filosofia, Economia Política, Sociologia, Antropologia, Ciência Política, Psicologia, Direito</td></tr>
+      <tr><td>Núcleo 2 — Fundamentos da formação sócio-histórica da sociedade brasileira</td><td>Formação social brasileira, política e movimentos sociais, classes sociais, questão social</td></tr>
+      <tr><td>Núcleo 3 — Fundamentos do trabalho profissional</td><td>História do SS, ética profissional, política social, pesquisa, estágio supervisionado, instrumentalidade</td></tr>
+    </table>
+
+    <p><strong>Aspectos centrais:</strong></p>
+    <ul class="lista">
+      <li>Tridimensionalidade (teórico-metodológica + ético-política + técnico-operativa)</li>
+      <li>Estágio supervisionado obrigatório (Lei 11.788/2008; Res. CFESS 533/2008)</li>
+      <li>Indissociabilidade entre ensino, pesquisa e extensão</li>
+      <li>TCC obrigatório</li>
+      <li>Crítica ao EaD na formação de SS (CFESS/CRESS/ABEPSS posicionam-se contra EaD para SS pela natureza do estágio)</li>
+    </ul>
+
+    <div class="subsecao">Resolução MEC/CNE 15/2002</div>
+    <p>Em 2002, o MEC/CNE incorpora as DCNs ABEPSS via Resolução CNE/CES 15/2002. Marco institucional de reconhecimento das diretrizes da categoria pela política educacional nacional.</p>
+
+    <div class="alerta">
+      <p><strong>EaD em SS — debate atual:</strong> a categoria (CFESS/CRESS/ABEPSS/ENESSO) posiciona-se contra EaD para SS pelo argumento da <em>indissociabilidade</em> entre ensino, pesquisa, extensão e estágio supervisionado presencial. Posicionamento explícito em diversas resoluções e manifestos. Cobrado em ENARE 2025 (Q35).</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-FUND · Reconceituação</span><span>Extensivo ENARE 2026</span><span class="pg">6 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-FUND</div><div class="aula-ref">Bloco B13 · Aula 02 · Questões ENARE</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 01</span><span class="fonte">Reconceituação · Vertentes · NC: Compreensão</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">José Paulo Netto identifica três vertentes internas ao Movimento de Reconceituação no Brasil. Sobre elas, é CORRETO afirmar:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>As três vertentes representam um mesmo projeto teórico-político.</span></li>
+        <li class="correta"><span class="letra">B</span><span>Modernizadora (funcionalismo, Documentos de Araxá 1967 e Teresópolis 1970), Reatualização do Conservadorismo (fenomenologia, neotomismo, personalismo) e Intenção de Ruptura (marxismo lukacsiano, hegemônica pós-III CBAS 1979).</span></li>
+        <li><span class="letra">C</span><span>Reconceituação foi um movimento exclusivamente brasileiro sem articulação latino-americana.</span></li>
+        <li><span class="letra">D</span><span>A fenomenologia (Reatualização do Conservadorismo) é classificada como vertente da teoria social crítica do SS.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> Netto identifica 3 vertentes em <em>Ditadura e Serviço Social</em> (1991): (1) Modernizadora — Araxá e Teresópolis, base funcionalista; (2) Reatualização do Conservadorismo — fenomenologia, neotomismo, aparentemente progressista mas conservadora; (3) Intenção de Ruptura — marxismo, vencedora a partir do III CBAS 1979.</p>
+      <p><strong>Por que as outras erram:</strong> A — vertentes <em>conflitam</em>, não convergem · C — Reconceituação é movimento <em>latino-americano</em> (Argentina, Uruguai, Chile, Brasil, México, Peru) · D — fenomenologia/reatualização é conservadorismo, não teoria crítica (pegadinha clássica).</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-FUND · Reconceituação</span><span>Extensivo ENARE 2026</span><span class="pg">7 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-FUND</div><div class="aula-ref">Bloco B13 · Aula 02 · Questões ENARE</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 02</span><span class="fonte">III CBAS · Congresso da Virada · NC: Compreensão</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">O III Congresso Brasileiro de Assistentes Sociais (III CBAS), realizado em setembro de 1979, ficou conhecido como "Congresso da Virada". O evento marcou:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>A oficialização da perspectiva modernizadora como hegemônica.</span></li>
+        <li class="correta"><span class="letra">B</span><span>A consolidação da hegemonia da perspectiva da Intenção de Ruptura, com vinculação explícita do SS à classe trabalhadora e recusa de articulações com o governo militar; abre caminho para o Código de Ética 1986, a CF/1988 e a profissionalização democrática pós-ditadura.</span></li>
+        <li><span class="letra">C</span><span>A criação do Conselho Federal de Serviço Social (CFESS).</span></li>
+        <li><span class="letra">D</span><span>O retorno do SS à perspectiva confessional.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> O III CBAS 1979 — Congresso da Virada — é o marco simbólico da virada hegemônica do SS brasileiro. Os profissionais recusam a mesa oficial composta por representantes do governo militar e a substituem por representantes dos movimentos sociais. Após esse evento, a perspectiva crítica marxista (Intenção de Ruptura) torna-se majoritária. Daí decorrem: Código de Ética 1986, profissionalização democrática, CF/88, DCNs 1996, Lei 8.662/1993, Código 1993, conjunto CFESS/CRESS atuante.</p>
+      <p><strong>Por que as outras erram:</strong> A — exatamente o oposto: marca a derrota da modernizadora · C — CFESS é resultado de evolução da CFAS, criada em 1980; o III CBAS é evento anterior · D — confessional foi superado nos anos 60 com Reconceituação.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-FUND · Reconceituação</span><span>Extensivo ENARE 2026</span><span class="pg">8 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-FUND</div><div class="aula-ref">Bloco B13 · Aula 02 · Gabarito Integrado</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 03</span><span class="fonte">Documentos · Araxá e Teresópolis · NC: Análise</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Sobre os Documentos de Araxá (1967) e Teresópolis (1970), assinale a afirmação CORRETA:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Marcam o início do compromisso do SS com a classe trabalhadora.</span></li>
+        <li class="correta"><span class="letra">B</span><span>Inscrevem-se na perspectiva modernizadora da Reconceituação — propõem aprimoramento técnico-científico do SS dentro do paradigma desenvolvimentista (CEPAL); Teresópolis aprofunda o positivismo metodológico, com tentativa de unificar um "método" do SS por etapas sequenciais. Posteriormente, foram criticados pela Intenção de Ruptura por manter a estrutura social como dada.</span></li>
+        <li><span class="letra">C</span><span>São documentos de orientação marxista do SS.</span></li>
+        <li><span class="letra">D</span><span>Sumaré e Alto da Boa Vista os anteciparam temporalmente.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p>Araxá (1967) e Teresópolis (1970) inscrevem-se na <strong>perspectiva modernizadora</strong> da Reconceituação. Base teórica: funcionalismo (Parsons), desenvolvimentismo (CEPAL), positivismo metodológico. Propõem um SS técnico-científico, com método unificado por etapas. Foram posteriormente criticados pela Intenção de Ruptura por <em>aceitar a estrutura social como dada</em>, ajustando indivíduos à ordem. Sumaré e Alto da Boa Vista (1978–1984) são <em>posteriores</em> e fazem crítica à modernização, abrindo para teoria social crítica.</p>
+    </div>
+
+    <div class="subsecao" style="margin-top:6px;">Gabarito Comentado — Análise Integrada</div>
+    <table>
+      <tr><th>Questão</th><th>Gabarito</th><th>Tema</th><th>Conceito-Chave</th></tr>
+      <tr><td><strong>01</strong></td><td><span class="destaque">B</span></td><td>3 Vertentes da Reconceituação</td><td>Modernizadora + Conservadora atualizada + Intenção de Ruptura</td></tr>
+      <tr><td><strong>02</strong></td><td><span class="destaque">B</span></td><td>III CBAS 1979 — Congresso da Virada</td><td>Hegemonia da Intenção de Ruptura; vinculação à classe trabalhadora</td></tr>
+      <tr><td><strong>03</strong></td><td><span class="destaque">B</span></td><td>Documentos Modernizadores</td><td>Araxá 1967 + Teresópolis 1970 = funcionalismo, desenvolvimentismo, positivismo</td></tr>
+    </table>
+  </div>
+  <div class="footer"><span>SS-FUND · Reconceituação</span><span>Extensivo ENARE 2026</span><span class="pg">9 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-FUND</div><div class="aula-ref">Bloco B13 · Aula 02 · Síntese</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Síntese — Renovação e Reconceituação</div>
+    <div class="sintese-grid">
+      <div class="sintese-item">
+        <div class="si-label">Períodos do SS no Brasil</div>
+        <p>Confessional (1936–1947) → Tecnicista/Desenvolvimentista (1947–1965) → Reconceituação latino-americana (1965–1975) → Renovação brasileira (1975+) → Hegemonia crítica pós-III CBAS 1979.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Pré-Reconceituação</div>
+        <p>Mary Richmond (1917) — Caso Social Individual. Importação norte-americana. "Caso, Grupo e Comunidade" como modelo. Doutrina social da Igreja (Rerum Novarum, Quadragesimo Anno). Funcionalismo, ajuste, apoliticismo.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">3 Vertentes da Reconceituação</div>
+        <p>1. Modernizadora — Araxá 1967 e Teresópolis 1970 (funcionalismo, CEPAL). 2. Reatualização do Conservadorismo — fenomenologia, neotomismo, personalismo (aparente progressismo, conservador). 3. Intenção de Ruptura — marxismo lukacsiano (Netto), vencedora pós-1979.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">III CBAS 1979</div>
+        <p>Congresso da Virada / Saraiva. Recusa da mesa oficial; substituição por representantes da classe trabalhadora; marco da hegemonia crítica. Abre caminho para Código 1986, CF/1988, Lei 8.662/1993, Código 1993, DCN ABEPSS 1996.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Marcos Pós-1979</div>
+        <p>1982 Currículo Mínimo; 1986 Código matriz marxista; 1988 CF (seguridade); 1990 LOAS/SUS; 1993 Lei 8.662 + Código vigente; 1996 DCN ABEPSS (3 núcleos, tridimensionalidade); 2002 MEC/CNE Res. 15.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Próxima Aula</div>
+        <p><strong>Aula 03 — SS no Capitalismo Contemporâneo.</strong> Neoconservadorismo, precarização, instrumentalidade (Yolanda Guerra) ampliada, rotinização e burocratização, plataformização do trabalho do AS.</p>
+      </div>
+    </div>
+    <div class="alerta" style="margin-top:5px;">
+      <p><strong>Regra de ouro — Reconceituação no ENARE:</strong> Reconceituação ≠ Renovação. Reconceituação (1965–1975, latino-americana, 3 vertentes — Netto). Renovação (1975+, consolidação brasileira). Documentos: Araxá 1967 e Teresópolis 1970 = modernizadora. III CBAS 1979 = Congresso da Virada. Pós-1979 = hegemonia crítica. Cuidado: fenomenologia = reatualização do conservadorismo, NÃO teoria crítica.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-FUND · Reconceituação</span><span>Extensivo ENARE 2026</span><span class="pg">10 / 10</span></div>
+</div>
+
+</body>
+</html>

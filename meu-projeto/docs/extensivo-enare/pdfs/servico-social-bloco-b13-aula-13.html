@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Serviço Social — Bloco B13 Aula 13 | Extensivo ENARE 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap');
+  :root { --creme: #F6F4ED; --verde: #1F5C23; --amarelo: #C6D834; --escuro: #0C2B0E; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #d0d0d0; font-family: 'Bricolage Grotesque', sans-serif; }
+  .page { width: 210mm; height: 297mm; background: var(--creme); margin: 0 auto 12px; position: relative; overflow: hidden; page-break-after: always; }
+  .header { background: var(--verde); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .header-logo { display: flex; align-items: center; gap: 8px; }
+  .header-logo svg { width: 32px; height: 32px; }
+  .header-brand { display: flex; flex-direction: column; line-height: 1; }
+  .header-brand .marca { font-family: 'Playfair Display', serif; font-style: italic; color: #fff; font-size: 13px; letter-spacing: 0.5px; }
+  .header-brand .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 7px; letter-spacing: 1.5px; text-transform: uppercase; }
+  .header-info { text-align: right; }
+  .header-info .disciplina { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
+  .header-info .aula-ref { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.7); font-size: 8px; letter-spacing: 0.5px; }
+  .footer { position: absolute; bottom: 0; left: 0; right: 0; background: var(--verde); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .footer span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.6); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .footer .pg { color: var(--amarelo); font-weight: 400; }
+  .body { padding: 14px 18px 30px; height: calc(297mm - 52px - 22px); overflow: hidden; }
+  .capa-page { background: var(--verde); }
+  .capa-header { background: var(--creme); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .capa-header .marca { font-family: 'Playfair Display', serif; font-style: italic; color: var(--verde); font-size: 14px; }
+  .capa-header .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--verde); font-size: 7.5px; letter-spacing: 2px; text-transform: uppercase; }
+  .capa-body { padding: 28px 24px 0; display: flex; flex-direction: column; height: calc(297mm - 52px - 22px); }
+  .capa-eyebrow { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; }
+  .capa-titulo { font-family: 'Barlow Condensed', sans-serif; color: #fff; font-size: 50px; line-height: 0.95; text-transform: uppercase; letter-spacing: -0.5px; margin-bottom: 6px; }
+  .capa-titulo span { color: var(--amarelo); }
+  .capa-subtitulo { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; color: rgba(255,255,255,0.65); font-size: 12px; letter-spacing: 0.3px; margin-bottom: 22px; line-height: 1.5; }
+  .capa-badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+  .capa-badge { background: rgba(198,216,52,0.15); border: 1px solid var(--amarelo); color: var(--amarelo); font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 8px; border-radius: 2px; }
+  .capa-divider { width: 40px; height: 3px; background: var(--amarelo); margin-bottom: 20px; }
+  .capa-topicos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .capa-topico { display: flex; align-items: flex-start; gap: 7px; }
+  .capa-topico-num { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 18px; line-height: 1; min-width: 18px; }
+  .capa-topico-txt { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 400; color: rgba(255,255,255,0.8); font-size: 9.5px; line-height: 1.4; }
+  .capa-footer-strip { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.25); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .capa-footer-strip span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.45); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .secao-titulo { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 18px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid var(--amarelo); padding-bottom: 3px; margin-bottom: 9px; line-height: 1; }
+  .subsecao { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.5px; margin: 7px 0 3px; }
+  p { font-size: 9px; line-height: 1.55; color: #1a1a1a; margin-bottom: 4px; font-weight: 400; }
+  .destaque { background: var(--amarelo); color: var(--escuro); font-weight: 600; padding: 1px 4px; border-radius: 2px; font-size: 8.5px; }
+  .alerta { background: rgba(198,216,52,0.18); border-left: 3px solid var(--amarelo); padding: 5px 8px; margin: 5px 0; border-radius: 0 3px 3px 0; }
+  .alerta p { margin: 0; font-size: 8.5px; }
+  .alerta strong { color: var(--verde); }
+  table { width: 100%; border-collapse: collapse; margin: 5px 0; font-size: 8px; }
+  th { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; padding: 4px 6px; text-align: left; }
+  td { padding: 3px 6px; border-bottom: 1px solid rgba(31,92,35,0.12); vertical-align: top; line-height: 1.4; color: #1a1a1a; }
+  tr:nth-child(even) td { background: rgba(31,92,35,0.04); }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 5px 0; }
+  .card { background: rgba(31,92,35,0.06); border: 1px solid rgba(31,92,35,0.15); border-radius: 4px; padding: 7px 8px; }
+  .card-title { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 11px; text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 3px; }
+  .card p { font-size: 8px; line-height: 1.5; }
+  .questao-header { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; padding: 4px 10px; border-radius: 3px 3px 0 0; display: flex; justify-content: space-between; align-items: center; }
+  .questao-header .fonte { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; color: var(--amarelo); letter-spacing: 0.5px; }
+  .questao-body { border: 1px solid rgba(31,92,35,0.2); border-top: none; border-radius: 0 0 3px 3px; padding: 7px 10px; margin-bottom: 7px; }
+  .questao-enunciado { font-size: 8.5px; line-height: 1.55; color: #111; margin-bottom: 5px; font-weight: 500; }
+  .alternativas { list-style: none; }
+  .alternativas li { font-size: 8px; line-height: 1.5; padding: 2px 0; color: #222; display: flex; gap: 5px; }
+  .alternativas li .letra { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: var(--verde); font-size: 9px; min-width: 10px; }
+  .alternativas li.correta .letra { color: var(--amarelo); }
+  .alternativas li.correta { background: rgba(198,216,52,0.15); border-left: 2px solid var(--amarelo); padding-left: 4px; }
+  .gabarito-box { background: var(--verde); border-radius: 4px; padding: 8px 12px; margin: 6px 0; }
+  .gabarito-box .gab-title { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+  .gabarito-box p { color: rgba(255,255,255,0.9); font-size: 8px; line-height: 1.55; }
+  .gabarito-box strong { color: var(--amarelo); }
+  .sintese-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-top: 6px; }
+  .sintese-item { background: rgba(31,92,35,0.07); border-left: 3px solid var(--verde); padding: 5px 7px; border-radius: 0 3px 3px 0; }
+  .sintese-item .si-label { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px; }
+  .sintese-item p { font-size: 7.5px; line-height: 1.5; }
+  ul.lista { padding-left: 14px; margin: 3px 0; }
+  ul.lista li { font-size: 8.5px; line-height: 1.55; color: #1a1a1a; margin-bottom: 1px; }
+  @media print { body { background: none; } .page { margin: 0; box-shadow: none; } }
+</style>
+</head>
+<body>
+
+<div class="page capa-page">
+  <div class="capa-header">
+    <div style="display:flex;align-items:center;gap:8px;"><svg width="34" height="34" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#1F5C23"/></svg><div><div class="marca">Elite Treinamentos</div><div class="tagline">Extensivo ENARE 2026</div></div></div>
+    <div style="text-align:right;"><div style="font-family:'Barlow Condensed',sans-serif;color:var(--verde);font-size:11px;letter-spacing:1px;text-transform:uppercase;">Bloco B13 · Aula 13</div><div style="font-family:'Space Grotesk',sans-serif;font-weight:300;color:#888;font-size:7.5px;letter-spacing:0.5px;">Serviço Social</div></div>
+  </div>
+  <div class="capa-body">
+    <div class="capa-eyebrow">Bloco B13 · SS-SAUDE · Aula 13 de 21</div>
+    <div class="capa-titulo">Saúde Mental <span>&amp; Reforma<br>Psiquiátrica</span></div>
+    <div class="capa-subtitulo">Fanon, Basaglia, Lei 10.216/2001, RAPS,<br>CAPS, Redução de Danos e o SS na saúde mental</div>
+    <div class="capa-badge-row">
+      <div class="capa-badge">SS-SAUDE ★★★★</div>
+      <div class="capa-badge">Lei 10.216/2001</div>
+      <div class="capa-badge">RAPS · CAPS · SRT</div>
+      <div class="capa-badge">RD · Lei 11.343/2006</div>
+    </div>
+    <div class="capa-divider"></div>
+    <div class="capa-topicos">
+      <div class="capa-topico"><div class="capa-topico-num">01</div><div class="capa-topico-txt">História da loucura (Pinel, Foucault, Goffman)</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">02</div><div class="capa-topico-txt">Basaglia, Fanon e crítica colonial</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">03</div><div class="capa-topico-txt">Reforma Psiquiátrica brasileira (Bauru 1987)</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">04</div><div class="capa-topico-txt">Lei 10.216/2001 e seus dispositivos</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">05</div><div class="capa-topico-txt">RAPS — CAPS, SRT, Consultório na Rua</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">06</div><div class="capa-topico-txt">Álcool, drogas e Redução de Danos</div></div>
+    </div>
+  </div>
+  <div class="capa-footer-strip"><span>Extensivo ENARE 2026</span><span>Elite Treinamentos em Saúde</span><span>Página 1 de 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-SAUDE</div><div class="aula-ref">Bloco B13 · Aula 13 · História da Loucura</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">História da Loucura e Crítica ao Modelo Asilar</div>
+
+    <p>Compreender a Reforma Psiquiátrica exige situá-la na <strong>história das relações entre sociedade e loucura</strong>. A loucura não é um dado natural — é uma construção histórica e social. O AS é peça-chave do "campo psicossocial" hoje hegemônico. Tema com alta probabilidade de cobrança na ENARE.</p>
+
+    <div class="subsecao">Periodização (Foucault)</div>
+    <table>
+      <tr><th>Período</th><th>Concepção</th></tr>
+      <tr><td>Idade Média</td><td>Loucura como experiência cósmica/divina; loucos integrados à comunidade; "nau dos insensatos"</td></tr>
+      <tr><td>Séc. XVII (Grande Internação)</td><td>"Idade clássica" (Foucault, História da Loucura). Hôpital Général de Paris (1656). Loucos confinados com pobres, prostitutas, libertinos — "internação" da pobreza</td></tr>
+      <tr><td>Séc. XVIII-XIX</td><td>Loucura como "doença mental"; medicalização; alienismo de Pinel; nascimento do hospital psiquiátrico</td></tr>
+      <tr><td>Séc. XX</td><td>Crítica ao modelo asilar; psicofármacos (anos 1950); antipsiquiatria; comunidades terapêuticas; psiquiatria democrática (Basaglia); Reforma Psiquiátrica</td></tr>
+      <tr><td>Séc. XXI</td><td>Modelo psicossocial; territorialidade; redução de danos; crítica à medicalização e patologização da vida</td></tr>
+    </table>
+
+    <div class="subsecao">Pinel e o Alienismo (1793)</div>
+    <p>Philippe Pinel, médico francês, foi diretor do Hospital de Bicêtre (Paris) em 1793. Considerado o "fundador da psiquiatria":</p>
+    <ul class="lista">
+      <li>Mito da "<em>libertação dos loucos das correntes</em>" — separou loucos dos criminosos e pobres</li>
+      <li>"Tratamento moral" — disciplinarização pelo trabalho, isolamento, regime hospitalar</li>
+      <li>Loucura como "alienação" — perda da razão; sujeito sem responsabilidade</li>
+      <li>Crítica posterior: o tratamento moral substituiu correntes físicas por <em>correntes simbólicas</em> (Foucault)</li>
+      <li>Modelo asilar disseminou-se na Europa e nas Américas no séc. XIX</li>
+      <li>Brasil: Hospício D. Pedro II (1852) — primeiro hospital psiquiátrico brasileiro</li>
+    </ul>
+
+    <div class="subsecao">Críticos do Modelo Asilar</div>
+    <table>
+      <tr><th>Autor</th><th>Obra/Contribuição</th></tr>
+      <tr><td><strong>Michel Foucault</strong></td><td>"História da Loucura" (1961). A internação como dispositivo de poder. Crítica à medicalização. A psiquiatria como tecnologia de governo dos corpos.</td></tr>
+      <tr><td><strong>Erving Goffman</strong></td><td>"Manicômios, Prisões e Conventos" (Asylums, 1961). Conceito de <em>instituições totais</em> — manicômio, prisão, convento; produção da "mortificação do eu"; despersonalização do interno.</td></tr>
+      <tr><td><strong>Thomas Szasz</strong></td><td>"O Mito da Doença Mental" (1961). Crítica psiquiatria como controle social; doença mental como "mito" — sofrimentos da vida medicalizados.</td></tr>
+      <tr><td><strong>Ronald Laing / David Cooper</strong></td><td>Antipsiquiatria britânica. "Esquizofrenia divida" (Laing) — interpretação existencial e familiar.</td></tr>
+      <tr><td><strong>Franco Basaglia</strong></td><td>Itália. "A Instituição Negada" (1968). Movimento Psiquiatria Democrática. Trieste 1971. Lei 180 (Lei Basaglia, 1978) — fim do manicômio na Itália. Inspirou a Reforma Brasileira.</td></tr>
+      <tr><td><strong>Robert Castel</strong></td><td>"A Ordem Psiquiátrica" (1976). Trajetórias institucionais da doença mental.</td></tr>
+      <tr><td><strong>Frantz Fanon</strong></td><td>"Pele Negra, Máscaras Brancas" (1952), "Os Condenados da Terra" (1961). Psiquiatra martiniquense. Articula colonialidade, racismo e adoecimento mental. Trabalhou no Hospital Blida-Joinville (Argélia, anos 1950).</td></tr>
+    </table>
+
+    <div class="subsecao">Foucault e as Instituições</div>
+    <ul class="lista">
+      <li>"Doença Mental e Psicologia" (1954); "História da Loucura" (1961); "Microfísica do Poder"; "Vigiar e Punir" (1975)</li>
+      <li>Loucura como construção histórica, não dado natural</li>
+      <li>Manicômio = dispositivo de saber-poder; produz o louco enquanto o "cuida"</li>
+      <li>Crítica ao positivismo psiquiátrico (Lombroso, Kraepelin)</li>
+      <li>"Biopoder" e "biopolítica" — governo das populações por meio da saúde</li>
+    </ul>
+
+    <div class="subsecao">Goffman e Instituições Totais</div>
+    <p>Conceito-chave: <strong>instituição total</strong> = "<em>local de residência e trabalho onde um grande número de indivíduos com situação semelhante, separados da sociedade mais ampla por um período considerável de tempo, leva uma vida fechada e formalmente administrada</em>" (Goffman, 1961).</p>
+    <ul class="lista">
+      <li>Exemplos: manicômios, prisões, conventos, asilos, quartéis, internatos, navios em alto-mar</li>
+      <li>Quebra das esferas vida/lar/trabalho/lazer</li>
+      <li>Mortificação do eu: ritual de entrada, perda de objetos pessoais, uniformização, despersonalização</li>
+      <li>"Carreira moral" do interno — adaptações, resistências, conformação</li>
+      <li>Crítica radical à hospitalização psiquiátrica prolongada</li>
+    </ul>
+
+    <div class="subsecao">Basaglia e a Psiquiatria Democrática Italiana</div>
+    <p>O psiquiatra italiano <strong>Franco Basaglia</strong> é a referência mais influente para a Reforma Brasileira:</p>
+    <ul class="lista">
+      <li>Diretor do Hospital Psiquiátrico de Gorizia (1961) — tentativa de comunidade terapêutica</li>
+      <li>Diretor do Hospital Psiquiátrico de Trieste (1971) — desinstitucionalização efetiva; fechamento progressivo</li>
+      <li>Fundador da <strong>Psiquiatria Democrática</strong> (1973)</li>
+      <li>"A Instituição Negada" (1968) — coletivo de Gorizia</li>
+      <li>Visitou o Brasil em 1979 (Colônia Juliano Moreira-RJ e Hospital Colônia de Barbacena-MG)</li>
+      <li><strong>Lei 180/1978</strong> ("Lei Basaglia") — extinção dos manicômios na Itália; transformação em Centros de Saúde Mental territoriais</li>
+      <li>"<em>Desinstitucionalização</em>" não é desospitalização — é desmontagem do paradigma manicomial e construção de outra clínica</li>
+      <li>Cidadania ativa do "louco" — restituição de direitos civis e políticos</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> Pinel ("fundou" a psiquiatria moderna mas com "tratamento moral" criticado). Foucault: História da Loucura — loucura como construção histórica. Goffman: instituições totais. Basaglia: Trieste, Psiquiatria Democrática, Lei 180/1978; influência direta sobre a Reforma Brasileira.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-SAUDE · Saúde Mental</span><span>Extensivo ENARE 2026</span><span class="pg">2 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-SAUDE</div><div class="aula-ref">Bloco B13 · Aula 13 · Frantz Fanon</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Frantz Fanon — Colonialidade e Saúde Mental</div>
+
+    <p><strong>Frantz Fanon (1925-1961)</strong>, psiquiatra martiniquense, é referência incontornável para o SS no Brasil contemporâneo — articula <em>racismo, colonialidade e adoecimento mental</em>. Cobrado em ENARE com tendência crescente; FGV tem incluído autores antirracistas e descoloniais nas análises.</p>
+
+    <div class="subsecao">Biografia</div>
+    <ul class="lista">
+      <li>Nascido em Fort-de-France, Martinica (Caribe francês), 1925</li>
+      <li>Combateu na 2ª Guerra Mundial pela França Livre</li>
+      <li>Estudou Medicina em Lyon (1947-1951); especialização em Psiquiatria</li>
+      <li>Influenciado por Sartre, Merleau-Ponty, Tosquelles (psiquiatria institucional)</li>
+      <li>Trabalhou no Hospital Psiquiátrico de Blida-Joinville (Argélia), 1953-1956</li>
+      <li>Engajou-se na Frente de Libertação Nacional (FLN) da Argélia (Guerra de Independência 1954-1962)</li>
+      <li>Demitiu-se da função de psiquiatra colonial em carta pública (1956)</li>
+      <li>Morreu em 1961, aos 36 anos, de leucemia, antes da independência argelina (1962)</li>
+    </ul>
+
+    <div class="subsecao">Obras Centrais</div>
+    <table>
+      <tr><th>Obra</th><th>Tema</th></tr>
+      <tr><td>"Pele Negra, Máscaras Brancas" (1952)</td><td>Psicopatologia da relação Branco-Negro no contexto colonial; subjetivação racializada; desejo de ser branco; alienação racial</td></tr>
+      <tr><td>"O Ano V da Revolução Argelina" (1959)</td><td>Análise sociológica da Argélia em revolução</td></tr>
+      <tr><td>"Os Condenados da Terra" (1961)</td><td>Texto fundador da descolonização; violência colonial e contraviolência libertadora; psicopatologia do colonialismo</td></tr>
+      <tr><td>"Pela Revolução Africana" (1964, póstumo)</td><td>Escritos políticos diversos</td></tr>
+    </table>
+
+    <div class="subsecao">Tese Central: O Colonialismo Adoece</div>
+    <p>Fanon demonstra que o <strong>colonialismo é, em si, fator patogênico</strong>. Não há saúde mental possível em condições coloniais. Análise em três níveis:</p>
+    <ul class="lista">
+      <li><strong>Estruturas sociais coloniais</strong>: violência, expropriação, racismo institucional</li>
+      <li><strong>Cultura e linguagem</strong>: a colonização inscreve-se na subjetividade; "o negro deseja ser branco"; reconhecimento negado</li>
+      <li><strong>Patologias específicas</strong>: descreve quadros clínicos relacionados a tortura, violência colonial, alienação cultural — não são "psicoses tropicais" essencialistas, mas produto da situação</li>
+    </ul>
+
+    <div class="subsecao">Conceitos-Chave</div>
+    <table>
+      <tr><th>Conceito</th><th>Significado</th></tr>
+      <tr><td><strong>Sociogênese</strong></td><td>Doença não é fenômeno apenas individual (ontogênese) ou filogenético — tem origem social. Crítica à psicanálise universalista de Freud que ignora raça/classe.</td></tr>
+      <tr><td><strong>Alienação Colonial</strong></td><td>Subjetividade colonizada — interiorização da inferioridade; "máscara branca" sobre "pele negra"</td></tr>
+      <tr><td><strong>Violência Colonial</strong></td><td>Não é desvio mas constitutiva; expropriação, racismo, exploração</td></tr>
+      <tr><td><strong>Contraviolência libertadora</strong></td><td>A descolonização exige um certo nível de confronto; restitui dignidade ao colonizado</td></tr>
+      <tr><td><strong>Novo Humanismo</strong></td><td>Projeto descolonial — humanidade não-eurocêntrica; ruptura com modelos coloniais de pensamento</td></tr>
+      <tr><td><strong>Zona do Não-Ser</strong></td><td>Condição existencial dos racializados — fora da racionalidade colonial; "abismo ontológico"</td></tr>
+    </table>
+
+    <div class="subsecao">Fanon na Prática Clínica</div>
+    <p>Fanon não foi apenas teórico — implementou em Blida-Joinville (Argélia) e Saint-Alban (França) inovações terapêuticas:</p>
+    <ul class="lista">
+      <li><strong>Sociaterapia</strong>: tratamento por meio do trabalho social, do contato com a comunidade, da reaproximação à cultura local</li>
+      <li>Rompeu com o método colonialista da psiquiatria francesa que tratava argelinos como "primitivos"</li>
+      <li>Contestou as teorias da "psicologia do colonizado" (Carothers, Antoine Porot) que naturalizavam déficits cognitivos em africanos</li>
+      <li>Práticas culturalmente situadas — uso da língua árabe, respeito a tradições muçulmanas, presença de mediadores culturais</li>
+    </ul>
+
+    <div class="subsecao">Recepção de Fanon no SS Brasileiro</div>
+    <ul class="lista">
+      <li>Articulação com pensamento brasileiro: Lélia Gonzalez, Milton Santos, Sueli Carneiro, Silvio Almeida</li>
+      <li>Crítica da "luso-tropicalidade" e do mito da democracia racial (Freyre)</li>
+      <li>Saúde mental da população negra: maior incidência de transtornos depressivos, ansiosos, somatizações</li>
+      <li>Racismo estrutural como determinante social da saúde mental</li>
+      <li>Política Nacional de Saúde Integral da População Negra (PNSIPN, Portaria 992/2009)</li>
+      <li>Articulação com luta antimanicomial: críticas à internação compulsória de jovens negros em CTs</li>
+      <li>Cobrança em ENARE 2025: Fanon entrou no campo (estudo de banca)</li>
+    </ul>
+
+    <div class="subsecao">Frase Famosa</div>
+    <div class="alerta">
+      <p><em>"Toda vez que um homem fez triunfar a dignidade do espírito, toda vez que um homem disse não a uma tentativa de subjugar seus semelhantes, eu me senti solidário ao seu ato. De modo algum minha cor deve ser sentida como uma deficiência."</em> — Frantz Fanon, <em>Pele Negra, Máscaras Brancas</em></p>
+    </div>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> Fanon = psiquiatra martiniquense; articula <em>raça + colonialidade + saúde mental</em>. Obras: "Pele Negra, Máscaras Brancas" (1952) e "Os Condenados da Terra" (1961). Conceitos: sociogênese, alienação colonial, contraviolência, novo humanismo, zona do não-ser. Inspira saúde mental antirracista no Brasil. Tendência crescente de cobrança.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-SAUDE · Saúde Mental</span><span>Extensivo ENARE 2026</span><span class="pg">3 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-SAUDE</div><div class="aula-ref">Bloco B13 · Aula 13 · Reforma Psiquiátrica</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Reforma Psiquiátrica Brasileira</div>
+
+    <p>A <strong>Reforma Psiquiátrica Brasileira (RPB)</strong> é movimento articulado de transformação do modelo de cuidado em saúde mental, em curso desde os anos 1970. Articula-se com a Reforma Sanitária (Aula 11), com o Movimento dos Trabalhadores em Saúde Mental (MTSM, 1978) e com a luta antimanicomial. Culmina com a <strong>Lei 10.216/2001</strong>.</p>
+
+    <div class="subsecao">Contexto e Atores</div>
+    <ul class="lista">
+      <li>Décadas de 1960-70: lucratividade do "negócio da loucura" privado (DINSAM, depois INAMPS); manicômios privados conveniados; tratamento desumano</li>
+      <li><strong>1978 — Crise da DINSAM</strong>: denúncia pública de violações nos hospitais psiquiátricos federais; demissão coletiva de trabalhadores; nasce o MTSM</li>
+      <li><strong>1979 — Visita de Basaglia ao Brasil</strong>: Colônia Juliano Moreira (RJ) e Hospital Colônia de Barbacena (MG); Basaglia compara Barbacena a "campo de concentração"</li>
+      <li>Movimento articula trabalhadores, usuários, familiares, intelectuais (Pedro Gabriel Delgado, Paulo Amarante, Domingos Sávio)</li>
+      <li>"Holocausto brasileiro" — denúncia da jornalista Daniela Arbex sobre Barbacena (60 mil mortos)</li>
+    </ul>
+
+    <div class="subsecao">Marcos Históricos</div>
+    <table>
+      <tr><th>Ano</th><th>Marco</th></tr>
+      <tr><td>1978</td><td>Crise da DINSAM; fundação do MTSM</td></tr>
+      <tr><td>1979</td><td>I Congresso de Saúde Mental do MTSM; visita de Basaglia</td></tr>
+      <tr><td>1986</td><td>Primeiro CAPS — CAPS Prof. Luiz da Rocha Cerqueira (SP)</td></tr>
+      <tr><td>1987</td><td>I Conferência Nacional de Saúde Mental; <strong>II Congresso de Trabalhadores em Saúde Mental — Bauru</strong>; criação do "Movimento da Luta Antimanicomial"; lema "Por uma sociedade sem manicômios"</td></tr>
+      <tr><td>1989</td><td>Projeto de Lei Paulo Delgado (PL 3.657/1989) — tramitou por 12 anos</td></tr>
+      <tr><td>1989</td><td>Intervenção do MS na Casa de Saúde Anchieta (Santos-SP) — primeira desativação completa de hospital psiquiátrico no Brasil; programa SAMS — Sistema de Atenção à Saúde Mental de Santos</td></tr>
+      <tr><td>1990</td><td>Declaração de Caracas (OPAS/OMS) — reestruturação da atenção psiquiátrica na América Latina; descentralização e participação</td></tr>
+      <tr><td>1992</td><td>II Conferência Nacional de Saúde Mental</td></tr>
+      <tr><td>2001</td><td><strong>Lei 10.216/2001 — Lei da Reforma Psiquiátrica</strong> (aprovada após 12 anos de tramitação)</td></tr>
+      <tr><td>2001</td><td>III Conferência Nacional de Saúde Mental — "Cuidar sim, excluir não"</td></tr>
+      <tr><td>2002</td><td>Portaria GM/MS nº 336/2002 — define CAPS I, II, III, AD, IJ</td></tr>
+      <tr><td>2003</td><td>Programa De Volta para Casa (Lei 10.708/2003) — auxílio-reabilitação psicossocial para egressos de longa internação</td></tr>
+      <tr><td>2004</td><td>IV Conferência Nacional de Saúde Mental Intersetorial</td></tr>
+      <tr><td>2010</td><td>IV Conferência Nacional Intersetorial</td></tr>
+      <tr><td>2011</td><td><strong>RAPS</strong> — Portaria GM/MS nº 3.088/2011 (Rede de Atenção Psicossocial)</td></tr>
+      <tr><td>2017-2019</td><td>Retrocessos: Portaria 3.588/2017 (Nova Política de Saúde Mental); financiamento de hospital psiquiátrico; ampliação das Comunidades Terapêuticas (CTs)</td></tr>
+      <tr><td>2023</td><td>Revogação de portarias retrocessoras pelo governo Lula 3; reafirmação do modelo antimanicomial</td></tr>
+    </table>
+
+    <div class="subsecao">Lei 10.216/2001 — "Lei Paulo Delgado"</div>
+    <p>Dispõe sobre a proteção e os direitos das pessoas portadoras de transtornos mentais e redireciona o modelo assistencial em saúde mental. Pontos centrais:</p>
+
+    <p><strong>Art. 1º:</strong> Os direitos e a proteção das pessoas acometidas de transtorno mental, de que trata esta Lei, são assegurados sem qualquer forma de discriminação quanto à raça, cor, sexo, orientação sexual, religião, opção política, nacionalidade, idade, família, recursos econômicos e ao grau de gravidade ou tempo de evolução de seu transtorno, ou qualquer outra.</p>
+
+    <p><strong>Art. 2º (direitos da pessoa com transtorno mental):</strong></p>
+    <ul class="lista">
+      <li>Ter acesso ao melhor tratamento, de acordo com suas necessidades</li>
+      <li>Ser tratada com humanidade e respeito</li>
+      <li>Ser protegida contra qualquer forma de abuso e exploração</li>
+      <li>Ter garantia de sigilo nas informações prestadas</li>
+      <li>Ter direito à presença médica para esclarecer a necessidade de hospitalização</li>
+      <li>Ter livre acesso aos meios de comunicação disponíveis</li>
+      <li>Receber o maior número de informações sobre sua doença e seu tratamento</li>
+      <li>Ser tratada em ambiente terapêutico pelos meios menos invasivos possíveis</li>
+      <li>Ser tratada, preferencialmente, em serviços comunitários de saúde mental</li>
+    </ul>
+
+    <p><strong>Art. 4º:</strong> A internação só será indicada quando os recursos extra-hospitalares se mostrarem insuficientes. Veda internação em instituições com características asilares.</p>
+
+    <p><strong>Art. 6º — Modalidades de Internação:</strong></p>
+    <ul class="lista">
+      <li><strong>Voluntária</strong>: com o consentimento do usuário (assina termo)</li>
+      <li><strong>Involuntária</strong>: a pedido de terceiro, sem consentimento; deve ser comunicada ao MP em até 72h</li>
+      <li><strong>Compulsória</strong>: determinada pela Justiça</li>
+    </ul>
+
+    <p><strong>Art. 9º:</strong> A internação compulsória deve ser determinada por juiz competente, depois de manifestação de laudo médico circunstanciado.</p>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> Lei 10.216/2001 redirecionou o modelo. Internação é último recurso. 3 modalidades: voluntária, involuntária (MP em 72h), compulsória (juiz). Veda hospital com características asilares. Tratamento preferencial em serviços comunitários (CAPS, SRT). Pedro Gabriel Delgado é o "Paulo Delgado" — confundir é erro grave (Paulo Delgado é o autor do PL).</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-SAUDE · Saúde Mental</span><span>Extensivo ENARE 2026</span><span class="pg">4 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-SAUDE</div><div class="aula-ref">Bloco B13 · Aula 13 · RAPS</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Rede de Atenção Psicossocial (RAPS)</div>
+
+    <p>A <strong>RAPS — Rede de Atenção Psicossocial</strong> foi instituída pela Portaria GM/MS nº 3.088/2011 e integra a Política Nacional de Saúde Mental no SUS. Articula 7 componentes em múltiplos pontos de cuidado, organizados em rede territorial. Cobrança certa na ENARE.</p>
+
+    <div class="subsecao">Princípios e Diretrizes da RAPS</div>
+    <ul class="lista">
+      <li>Respeito aos DH; cidadania e autonomia</li>
+      <li>Combate ao estigma e preconceitos</li>
+      <li>Garantia do acesso, integralidade e equidade</li>
+      <li>Atenção humanizada e centrada nas necessidades</li>
+      <li>Diversificação das estratégias de cuidado</li>
+      <li>Trabalho em rede; intersetorialidade</li>
+      <li>Reabilitação psicossocial; protagonismo dos usuários e familiares</li>
+      <li>Promoção da estratégia de Redução de Danos</li>
+    </ul>
+
+    <div class="subsecao">Os 7 Componentes da RAPS</div>
+    <table>
+      <tr><th>Componente</th><th>Serviços</th></tr>
+      <tr><td>1. Atenção Básica em Saúde</td><td>UBS, ESF, eMulti, Consultório na Rua, NASF (extinto), apoio matricial em saúde mental, Centro de Convivência e Cultura</td></tr>
+      <tr><td>2. Atenção Psicossocial Especializada</td><td>CAPS (I, II, III, AD I/II/III, IJ)</td></tr>
+      <tr><td>3. Atenção de Urgência e Emergência</td><td>SAMU 192, sala de estabilização, UPA, Pronto-Socorro, leitos em hospital geral</td></tr>
+      <tr><td>4. Atenção Residencial de Caráter Transitório</td><td>Unidade de Acolhimento (UA — adulta ou infanto-juvenil); Serviço de Atenção em Regime Residencial (incluindo Comunidades Terapêuticas — controverso)</td></tr>
+      <tr><td>5. Atenção Hospitalar</td><td>Enfermaria especializada em hospital geral; serviço hospitalar de referência</td></tr>
+      <tr><td>6. Estratégias de Desinstitucionalização</td><td>Serviços Residenciais Terapêuticos (SRT) — Tipo I (até 8 moradores) e Tipo II (até 10, com maior suporte); Programa De Volta para Casa</td></tr>
+      <tr><td>7. Reabilitação Psicossocial</td><td>Iniciativas de geração de trabalho e renda, cooperativas, empreendimentos solidários, economia solidária</td></tr>
+    </table>
+
+    <div class="subsecao">CAPS — Centros de Atenção Psicossocial</div>
+    <p>Núcleo da reforma. Definidos pela Portaria 336/2002 (revogada e atualizada por outras). Tipos:</p>
+    <table>
+      <tr><th>Tipo</th><th>Características</th></tr>
+      <tr><td><strong>CAPS I</strong></td><td>Municípios 15-70 mil habitantes. Atende todas as faixas etárias. Funcionamento de 2ª a 6ª, 8h às 18h.</td></tr>
+      <tr><td><strong>CAPS II</strong></td><td>Municípios 70-200 mil habitantes. Atende adultos. Funcionamento de 2ª a 6ª.</td></tr>
+      <tr><td><strong>CAPS III</strong></td><td>Municípios &gt; 200 mil. Funcionamento 24h, 7 dias por semana; até 5 leitos de acolhimento noturno. Adultos.</td></tr>
+      <tr><td><strong>CAPS AD</strong> (Álcool e Drogas)</td><td>Foco em álcool e outras drogas. CAPS AD II (8h às 18h) e CAPS AD III (24h, com leitos).</td></tr>
+      <tr><td><strong>CAPS IJ</strong> (Infanto-Juvenil)</td><td>Crianças e adolescentes (até 18 anos) com transtornos mentais.</td></tr>
+    </table>
+
+    <p><strong>Equipe mínima do CAPS</strong>: psiquiatra, enfermeiro, psicólogo, assistente social, terapeuta ocupacional, técnico/auxiliar de enfermagem (composição varia por tipo).</p>
+
+    <div class="subsecao">Modalidades de Atenção no CAPS</div>
+    <ul class="lista">
+      <li><strong>Intensivo</strong>: usuário diariamente; situações agudas</li>
+      <li><strong>Semi-intensivo</strong>: 2 a 3 dias/semana; situações em estabilização</li>
+      <li><strong>Não-intensivo</strong>: 1 dia/semana ou menos; manutenção; usuários autônomos</li>
+    </ul>
+
+    <div class="subsecao">Outros Dispositivos da RAPS</div>
+    <table>
+      <tr><th>Serviço</th><th>Função</th></tr>
+      <tr><td>SRT (Serviço Residencial Terapêutico)</td><td>Moradias para egressos de longa internação. Tipo I (até 8 moradores) e Tipo II (até 10, maior suporte).</td></tr>
+      <tr><td>UA — Unidade de Acolhimento</td><td>Acolhimento residencial transitório (até 6 meses); adultos ou infanto-juvenis (UAI); usuários de álcool e drogas em situação de vulnerabilidade.</td></tr>
+      <tr><td>Consultório na Rua</td><td>Equipe itinerante para população em situação de rua. PNAB. Saúde mental integra cuidado a PSR.</td></tr>
+      <tr><td>Centro de Convivência e Cultura</td><td>Espaços de cuidado e socialização articulados ao território (CSC).</td></tr>
+      <tr><td>De Volta para Casa</td><td>Auxílio-reabilitação psicossocial (Lei 10.708/2003) — egressos de internações longas.</td></tr>
+      <tr><td>Comunidades Terapêuticas (CTs)</td><td>Serviços residenciais privados (frequentemente religiosos); controvérsia: o movimento antimanicomial as critica como retrocesso; ampliadas pelo governo Bolsonaro 2017-2022.</td></tr>
+    </table>
+
+    <div class="subsecao">Apoio Matricial em Saúde Mental</div>
+    <p>O <strong>matriciamento</strong> articula equipes especializadas (CAPS, eMulti) e equipes de APS (ESF):</p>
+    <ul class="lista">
+      <li>Discussão de casos; consultoria; suporte técnico-pedagógico</li>
+      <li>Aumenta a resolutividade da APS na saúde mental</li>
+      <li>Reduz encaminhamentos desnecessários</li>
+      <li>Promove educação permanente entre profissionais</li>
+      <li>Sustenta a noção de "saúde mental no território"</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> RAPS = Portaria 3.088/2011. 7 componentes. CAPS é o núcleo: tipos I, II, III, AD, IJ. SRT e De Volta para Casa = desinstitucionalização. Consultório na Rua e UA para PSR. Comunidades Terapêuticas são polêmicas — movimento antimanicomial critica. Apoio matricial articula CAPS-APS.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-SAUDE · Saúde Mental</span><span>Extensivo ENARE 2026</span><span class="pg">5 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-SAUDE</div><div class="aula-ref">Bloco B13 · Aula 13 · Álcool e Drogas</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Política sobre Álcool e Outras Drogas</div>
+
+    <p>O cuidado a usuários de álcool e drogas (AD) é tema central de saúde mental, com forte intersecção com determinantes sociais (pobreza, racismo, situação de rua). Tema com cobrança recente em ENARE: Redução de Danos, papel das CTs, Plano Ruas Visíveis.</p>
+
+    <div class="subsecao">Marcos Legais e Políticos</div>
+    <table>
+      <tr><th>Ano</th><th>Marco</th></tr>
+      <tr><td>2003</td><td>Política do MS para a Atenção Integral a Usuários de Álcool e Outras Drogas</td></tr>
+      <tr><td>2005</td><td>Política Nacional sobre Drogas (PNAD) — Resolução CONAD nº 03/2005</td></tr>
+      <tr><td>2006</td><td>Lei 11.343/2006 — Lei de Drogas (Sisnad)</td></tr>
+      <tr><td>2010</td><td>"Crack, é possível vencer" (programa governamental)</td></tr>
+      <tr><td>2011</td><td>RAPS — Portaria 3.088 inclui CAPS AD e UA</td></tr>
+      <tr><td>2019</td><td>Decreto 9.761/2019 (PNAD revisada) — ênfase em abstinência e CTs (Bolsonaro)</td></tr>
+      <tr><td>2023</td><td>Reorientação da política antimanicomial; revogação parcial dos decretos retrocessores</td></tr>
+      <tr><td>2023</td><td>Plano Ruas Visíveis (Decreto 11.472/2023) — saúde mental e AD na atenção a PSR</td></tr>
+    </table>
+
+    <div class="subsecao">Lei 11.343/2006 (Lei de Drogas)</div>
+    <ul class="lista">
+      <li>Instituiu o <strong>Sisnad — Sistema Nacional de Políticas Públicas sobre Drogas</strong></li>
+      <li>Distingue <em>usuário</em> de <em>traficante</em> (art. 28 e art. 33)</li>
+      <li>Art. 28 — usuário: NÃO há pena privativa de liberdade; medidas: advertência, prestação de serviços, comparecimento a programa educativo</li>
+      <li>Art. 33 — traficante: pena de 5 a 15 anos</li>
+      <li>Diferenciação concreta entre usuário e traficante (quantidade, local, circunstâncias) é discricionária — gera <em>seletividade penal racial</em></li>
+      <li>Crítica: 70% dos presos por tráfico são jovens negros — racismo estrutural na execução da lei</li>
+      <li>STF discute descriminalização do porte para uso pessoal (RE 635.659 — em 2024 reconheceu descriminalização da maconha para uso pessoal, com critério provisório de 40g)</li>
+    </ul>
+
+    <div class="subsecao">Redução de Danos (RD)</div>
+    <p>Estratégia internacional de saúde pública adotada pelo Brasil (Portaria 1.028/2005):</p>
+    <ul class="lista">
+      <li>Origem: década de 1980 na Europa (Liverpool, Amsterdã) — resposta à epidemia de HIV/AIDS entre usuários de drogas injetáveis</li>
+      <li>No Brasil: programa pioneiro em Santos-SP (1989), pela Secretaria Municipal de Saúde</li>
+      <li>Não exige abstinência como pré-requisito do cuidado</li>
+      <li>Atua sobre os <em>danos</em> associados ao uso, não sobre o uso em si</li>
+      <li>Direitos humanos e cidadania como princípios</li>
+      <li>Reconhece autonomia do usuário</li>
+      <li>Estratégias: distribuição de insumos (seringas, cachimbos, preservativos); educação; acolhimento incondicional; vínculo</li>
+      <li>Aplicações: prevenção de overdose (naloxona), prevenção de HIV/HCV, redução de danos no álcool</li>
+      <li>Reconhecida pela OMS, ONU (UNAIDS, UNODC), MS</li>
+    </ul>
+
+    <div class="subsecao">Modelo de Abstinência × Redução de Danos</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Abstinência Obrigatória</div>
+        <p>Foco no fim do uso como única meta. Modelo proibicionista, moralista, religioso. Comunidades Terapêuticas (CTs) frequentemente operam neste paradigma. Pode <em>excluir</em> usuários que não conseguem ou não querem parar.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Redução de Danos</div>
+        <p>Foco em diminuir consequências negativas. Aceita o usuário onde ele está. Cuidado em liberdade. Articula saúde mental e direitos humanos. Adotado oficialmente pelo SUS desde 2003 (Política do MS).</p>
+      </div>
+    </div>
+
+    <div class="subsecao">Comunidades Terapêuticas (CTs) — Controvérsia</div>
+    <ul class="lista">
+      <li>Serviços residenciais privados (geralmente filantrópicos/religiosos)</li>
+      <li>Internação por período prolongado (6 a 12 meses)</li>
+      <li>Tratamento por abstinência, trabalho, oração</li>
+      <li>Resolução CONAD 03/2020 regulamentou financiamento e expansão (governo Bolsonaro)</li>
+      <li>2023+: nova política tenta limitar CTs e priorizar RAPS pública</li>
+      <li>Críticas do movimento antimanicomial: violações de DH; trabalho compulsório; ausência de equipe técnica adequada; modelo manicomial reciclado</li>
+      <li>Defesa: pluralidade de modelos; complementaridade ao SUS</li>
+    </ul>
+
+    <div class="subsecao">Plano Ruas Visíveis (2023-2026)</div>
+    <p>Conforme já abordado na Aula 07. Articulação saúde + assistência + habitação para PSR. Foco em CAPS AD, Consultório na Rua, Centros POP, UA, articulação intersetorial. Critério principal: cuidado em liberdade, RD, acesso à RAPS sem condicionamento à abstinência.</p>
+
+    <div class="subsecao">Crise das Drogas no Brasil — Quadro</div>
+    <ul class="lista">
+      <li>Crack: epidemia desde 2005-2010; atinge especialmente PSR e populações em vulnerabilidade</li>
+      <li>Cracolândias urbanas: SP, RJ, Salvador, Recife — territórios de violação reiterada de DH (limpeza social, ações truculentas)</li>
+      <li>Álcool: principal droga de impacto sanitário no Brasil; correlação com violência doméstica, acidentes de trânsito, doenças hepáticas</li>
+      <li>Tabaco: declínio devido a política antitabagismo bem-sucedida (Lei 12.546/2011)</li>
+      <li>Maconha: descriminalização em curso (STF 2024)</li>
+      <li>Drogas sintéticas, opioides (epidemia inicial)</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> Lei 11.343/2006 (Lei de Drogas) — usuário (art. 28, sem prisão) × traficante (art. 33). Redução de Danos é política do SUS desde 2003. CTs são polêmicas — movimento antimanicomial critica. STF descriminalizou maconha para uso pessoal (RE 635.659, 2024). Cracolândias = violações de DH.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-SAUDE · Saúde Mental</span><span>Extensivo ENARE 2026</span><span class="pg">6 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-SAUDE</div><div class="aula-ref">Bloco B13 · Aula 13 · O AS na Saúde Mental</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">O Assistente Social na Saúde Mental</div>
+
+    <p>O AS é profissional originário do "campo psicossocial". Antes da Reforma Psiquiátrica, o AS atuava em hospitais psiquiátricos com função basicamente burocrática (alta, fichas). Pós-Reforma, sua função se ampliou e se aprofundou — passou a articular cuidado, território, direitos.</p>
+
+    <div class="subsecao">Atuação do AS por Componente da RAPS</div>
+    <table>
+      <tr><th>Componente</th><th>Atuação típica do AS</th></tr>
+      <tr><td>CAPS</td><td>Acolhimento; atendimento individual e familiar; PTS; grupos socioeducativos; visita domiciliar; orientação sobre direitos; articulação intersetorial; matriciamento na APS</td></tr>
+      <tr><td>SRT</td><td>Acompanhamento do morador; mediação familiar; articulação com programas de transferência de renda; reinserção social progressiva</td></tr>
+      <tr><td>UA</td><td>Atendimento e PTS; articulação com rede; encaminhamentos para outros serviços</td></tr>
+      <tr><td>Hospital geral (leitos saúde mental)</td><td>Atendimento durante internação; preparação para alta; articulação com CAPS de referência</td></tr>
+      <tr><td>Consultório na Rua</td><td>Vínculo com PSR; redução de danos; articulação com CRAS/Centro POP/CAPS AD</td></tr>
+      <tr><td>APS / eMulti</td><td>Matriciamento; ações na comunidade; grupos; visitas domiciliares</td></tr>
+      <tr><td>De Volta para Casa</td><td>Acompanhamento de beneficiários; articulação com SRT, família, território</td></tr>
+    </table>
+
+    <div class="subsecao">Particularidades do Trabalho do AS em Saúde Mental</div>
+    <ul class="lista">
+      <li>Lê o sofrimento mental em sua dimensão social — não apenas como "doença"</li>
+      <li>Confronta a medicalização e patologização da vida</li>
+      <li>Combate ao estigma e à exclusão</li>
+      <li>Articula direitos: BPC, INSS, PCD, isenções, transporte</li>
+      <li>Trabalho de "construção do território" — visitas, mapeamentos, rodas de conversa</li>
+      <li>Mediação com famílias e cuidadores</li>
+      <li>Educação permanente sobre direitos da pessoa com transtorno mental</li>
+      <li>Participação no controle social — Conselho Municipal de Saúde Mental</li>
+      <li>Defesa do PEP e do movimento antimanicomial</li>
+      <li>Posicionamento crítico à internação compulsória de jovens negros (questão de saúde mental + racismo)</li>
+    </ul>
+
+    <div class="subsecao">Cuidado em Crise</div>
+    <ul class="lista">
+      <li>Postura ética de escuta e responsabilização</li>
+      <li>Diferenciar crise psicótica, surto, descompensação, ideação/tentativa de suicídio</li>
+      <li>NÃO chamar imediatamente a polícia — buscar SAMU 192 ou CAPS</li>
+      <li>Evitar internação como primeiro recurso (Lei 10.216)</li>
+      <li>Acolhimento na rede comunitária e CAPS</li>
+      <li>Articulação com familiares/rede de apoio</li>
+      <li>Garantir direitos (sigilo, informação, vínculo)</li>
+    </ul>
+
+    <div class="subsecao">Suicídio e Autolesão (NSSI)</div>
+    <p>O suicídio é a 4ª causa de morte entre jovens 15-29 anos no Brasil (DATASUS, 2022). Brasil tem ~14.000 suicídios/ano.</p>
+
+    <table>
+      <tr><th>Conceito</th><th>Definição</th></tr>
+      <tr><td>Ideação suicida</td><td>Pensamentos sobre tirar a própria vida; pode ser passiva ou ativa</td></tr>
+      <tr><td>Tentativa de suicídio</td><td>Ato com intenção de morrer; não fatal</td></tr>
+      <tr><td>Suicídio consumado</td><td>Morte autoinfligida intencional</td></tr>
+      <tr><td>NSSI (autolesão não-suicida)</td><td>Comportamento autolesivo sem intenção de morte (cortes, queimaduras) — frequente em adolescentes</td></tr>
+      <tr><td>Comportamento suicida</td><td>Conceito amplo que inclui ideação, planejamento, tentativa, ato</td></tr>
+    </table>
+
+    <p><strong>Mitos × Realidades sobre suicídio:</strong></p>
+    <ul class="lista">
+      <li>Mito: "quem ameaça não comete" — Falso. Maioria dos suicidas dá sinais prévios.</li>
+      <li>Mito: "falar de suicídio incentiva" — Falso. Conversar abre canal de cuidado (Efeito Papageno).</li>
+      <li>Mito: "é decisão pessoal, não deve interferir" — Falso. É emergência de saúde pública.</li>
+      <li>Mito: "só ocorre em deprimidos" — Falso. Múltiplas condições mentais e sociais.</li>
+    </ul>
+
+    <p><strong>Política de prevenção:</strong></p>
+    <ul class="lista">
+      <li>Setembro Amarelo — campanha anual (CFM/ABP, desde 2015)</li>
+      <li>Lei 13.819/2019 — Política Nacional de Prevenção da Automutilação e do Suicídio; CVV (Centro de Valorização da Vida) 188; notificação compulsória de tentativas</li>
+      <li>Linhas de cuidado em saúde mental; postvenção (cuidado a sobreviventes)</li>
+      <li>Restrição de meios (controle de medicamentos, vigilância em pontes)</li>
+    </ul>
+
+    <div class="subsecao">Saúde Mental Infanto-Juvenil</div>
+    <ul class="lista">
+      <li>Aumento expressivo pós-pandemia (autismo, ansiedade, depressão, TDAH)</li>
+      <li>CAPSi — atende crianças e adolescentes até 18 anos</li>
+      <li>Articulação com escola, Conselho Tutelar, CRAS</li>
+      <li>Crítica à medicalização e patologização da infância (Conselho Federal de Psicologia, Movimento de Despatologização)</li>
+      <li>Diagnósticos amplos (TEA) e direito a apoio educacional</li>
+      <li>Bullying, cyberbullying, automutilação adolescente — fenômenos contemporâneos</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> AS na saúde mental — leitura social, antimedicalização, antimanicomial. Atua em todos os componentes da RAPS. Cuidado em crise: SAMU/CAPS, não polícia. Suicídio = emergência de saúde pública; Lei 13.819/2019. Setembro Amarelo. Mito: "falar de suicídio incentiva" é FALSO.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-SAUDE · Saúde Mental</span><span>Extensivo ENARE 2026</span><span class="pg">7 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-SAUDE</div><div class="aula-ref">Bloco B13 · Aula 13 · Questões ENARE</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 01</span><span class="fonte">Lei 10.216/2001 · NC: Compreensão</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Sobre a Lei 10.216/2001 (Lei da Reforma Psiquiátrica), assinale a afirmação CORRETA:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Estabelece a internação em hospital psiquiátrico como modalidade preferencial de cuidado.</span></li>
+        <li><span class="letra">B</span><span>Permite a internação compulsória sem qualquer envolvimento do Poder Judiciário.</span></li>
+        <li class="correta"><span class="letra">C</span><span>Redireciona o modelo assistencial, garantindo direitos às pessoas com transtorno mental; estabelece a internação como último recurso, quando os meios extra-hospitalares se mostrarem insuficientes; reconhece três modalidades de internação — voluntária (com consentimento), involuntária (a pedido de terceiros, com comunicação ao MP em até 72h) e compulsória (determinada por juiz); veda instituições com características asilares.</span></li>
+        <li><span class="letra">D</span><span>Suprime os Centros de Atenção Psicossocial (CAPS) e mantém o modelo manicomial.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — C</div>
+      <p><strong>Por que C está correta:</strong> Lei 10.216/2001 redireciona o modelo (preâmbulo). Art. 4º: internação como último recurso. Art. 6º: três modalidades. Involuntária deve ser comunicada ao MP em até 72h (parágrafo único). Compulsória exige juiz. Hospital com características asilares vedado. CAPS são serviços-chave da reforma (Portaria 336/2002).</p>
+      <p><strong>Por que as outras erram:</strong> A — preferência é serviço comunitário · B — compulsória exige juiz · D — Lei criou cenário para CAPS, não suprimiu.</p>
+    </div>
+
+    <div class="questao-header"><span>Questão 02</span><span class="fonte">RAPS · NC: Aplicação</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Sobre a Rede de Atenção Psicossocial (RAPS — Portaria 3.088/2011), é CORRETO afirmar:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Compreende apenas hospitais psiquiátricos, sem participação da Atenção Básica.</span></li>
+        <li class="correta"><span class="letra">B</span><span>Articula 7 componentes — Atenção Básica, Atenção Psicossocial Especializada (CAPS), Atenção de Urgência e Emergência, Atenção Residencial de Caráter Transitório (UA), Atenção Hospitalar (leitos em hospital geral), Estratégias de Desinstitucionalização (SRT, De Volta para Casa) e Reabilitação Psicossocial — em rede territorial, com Redução de Danos como estratégia.</span></li>
+        <li><span class="letra">C</span><span>Exige abstinência completa do usuário como condição de acesso aos serviços, mesmo na atenção de urgência.</span></li>
+        <li><span class="letra">D</span><span>Foi revogada em 2017 e substituída pela política dos hospitais psiquiátricos.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> RAPS — 7 componentes. Articulação em rede territorial. RD é estratégia oficial. Cuidado em liberdade, não condicionado à abstinência.</p>
+      <p><strong>Por que as outras erram:</strong> A — APS é o 1º componente · C — RD não exige abstinência · D — RAPS NÃO foi revogada (a Portaria 3.588/2017 trouxe retrocessos, parcialmente revogados em 2023).</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-SAUDE · Saúde Mental</span><span>Extensivo ENARE 2026</span><span class="pg">8 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-SAUDE</div><div class="aula-ref">Bloco B13 · Aula 13 · Questões ENARE</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 03</span><span class="fonte">Fanon · NC: Análise</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Frantz Fanon, psiquiatra martiniquense, autor de "Pele Negra, Máscaras Brancas" (1952) e "Os Condenados da Terra" (1961), é referência para a articulação contemporânea entre racismo, colonialidade e saúde mental. Sua contribuição teórica e clínica caracteriza-se por:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Defender a tese de "primitivismo cognitivo" dos povos colonizados como base para a psiquiatria africana.</span></li>
+        <li class="correta"><span class="letra">B</span><span>Propor que o colonialismo é, em si, fator patogênico; trabalhar a "sociogênese" do adoecimento (a doença mental como resultado de relações sociais, não apenas de fatores biológicos ou intrapsíquicos); criticar a alienação colonial e o desejo do colonizado de "ser branco"; demitir-se da função de psiquiatra colonial em 1956 e engajar-se na luta de libertação argelina.</span></li>
+        <li><span class="letra">C</span><span>Defender o reforço da segregação racial nos hospitais psiquiátricos como medida terapêutica.</span></li>
+        <li><span class="letra">D</span><span>Negar a existência do racismo estrutural e atribuir o adoecimento a fatores individuais ou genéticos.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> Fanon articula raça + colonialidade + saúde mental. Sociogênese ≠ ontogênese/filogênese (Freud). "Pele Negra, Máscaras Brancas": alienação colonial; "Os Condenados da Terra": violência colonial e descolonização. Demissão como psiquiatra em Blida-Joinville (carta pública de 1956). Engajamento na FLN.</p>
+      <p><strong>Por que as outras erram:</strong> A — contestou as teses racistas da "psicologia do colonizado" (Carothers, Porot) · C — combateu a segregação · D — atribuição ao racismo estrutural é exatamente sua tese.</p>
+    </div>
+
+    <div class="questao-header"><span>Questão 04</span><span class="fonte">Redução de Danos · NC: Aplicação</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">A estratégia de Redução de Danos (RD), adotada pela Política Nacional de Saúde Mental e pela RAPS, caracteriza-se por:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Exigir abstinência completa como pré-requisito para o cuidado.</span></li>
+        <li><span class="letra">B</span><span>Restringir o atendimento a usuários de drogas a ambientes carcerários.</span></li>
+        <li class="correta"><span class="letra">C</span><span>Reconhecer a autonomia do usuário; atuar sobre os danos associados ao uso (não sobre o uso em si); incluir estratégias como distribuição de insumos (seringas, cachimbos, preservativos), acolhimento incondicional, vínculo e cuidado em liberdade; ser política oficial do SUS desde 2003 (Portaria 1.028/2005); compatível com a Lei 10.216/2001 e com a defesa intransigente dos direitos humanos no Código de Ética do AS.</span></li>
+        <li><span class="letra">D</span><span>Operar exclusivamente em Comunidades Terapêuticas residenciais privadas, com foco em abstinência e disciplina pelo trabalho.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — C</div>
+      <p><strong>Por que C está correta:</strong> RD adota saúde como direito; cuidado em liberdade; sem condicionamento à abstinência; insumos como dispositivo de cuidado; vínculo e acolhimento incondicional. Política do MS desde 2003. Convergente com Lei 10.216 (preferência por serviços comunitários) e Código de Ética do AS (defesa de DH).</p>
+      <p><strong>Por que as outras erram:</strong> A — não exige abstinência · B — RD não é cárcere · D — CTs operam em paradigma contrário (abstinência).</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-SAUDE · Saúde Mental</span><span>Extensivo ENARE 2026</span><span class="pg">9 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-SAUDE</div><div class="aula-ref">Bloco B13 · Aula 13 · Síntese</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Síntese — Saúde Mental e Reforma Psiquiátrica</div>
+
+    <p>Última aula do módulo SS-SAUDE. Articula determinantes sociais (Aula 11), SUS na prática (Aula 12) com saúde mental como campo de inserção do AS. Próxima aula: Código de Ética do AS — eixo do bloco B13.</p>
+
+    <div class="sintese-grid">
+      <div class="sintese-item"><div class="si-label">História da Loucura</div><p>Pinel 1793 (alienismo, tratamento moral) → críticos do séc. XX: Foucault (saber-poder), Goffman (instituições totais), Szasz (mito da doença mental), Basaglia (Lei 180/1978, Itália), Fanon (colonialidade, sociogênese).</p></div>
+      <div class="sintese-item"><div class="si-label">Reforma Brasileira</div><p>MTSM (1978); visita Basaglia (1979); Bauru 1987 (Movimento Antimanicomial); SAMS Santos 1989; Lei 10.216/2001 (Lei Paulo Delgado). Holocausto de Barbacena denunciado por Arbex.</p></div>
+      <div class="sintese-item"><div class="si-label">Lei 10.216/2001</div><p>Modelo redirecionado; internação como último recurso; 3 modalidades (voluntária, involuntária com MP em 72h, compulsória por juiz); veda hospital asilar; direitos da pessoa com transtorno mental.</p></div>
+      <div class="sintese-item"><div class="si-label">RAPS (Portaria 3.088/2011)</div><p>7 componentes. CAPS (I, II, III, AD, IJ). SRT, UA, Consultório na Rua. De Volta para Casa. Apoio matricial. RD como estratégia.</p></div>
+      <div class="sintese-item"><div class="si-label">Álcool e Drogas</div><p>Lei 11.343/2006 (usuário ≠ traficante); Redução de Danos (Portaria 1.028/2005); STF descriminalizou maconha uso pessoal (RE 635.659, 2024); CTs polêmicas; Plano Ruas Visíveis 2023.</p></div>
+      <div class="sintese-item"><div class="si-label">Próxima Aula</div><p><strong>Aula 14 — SS-ETICA: Código de Ética 1993 e Lei 8.662/1993.</strong> Peso ★★★★ na ENARE. Princípios fundamentais, deveres e vedações, sigilo, infrações disciplinares.</p></div>
+    </div>
+
+    <div class="alerta" style="margin-top:5px;">
+      <p><strong>Regra de ouro — Saúde Mental no ENARE:</strong> Lei 10.216/2001 (Paulo Delgado, autor; Pedro Gabriel Delgado, militante); RAPS (Portaria 3.088/2011) com 7 componentes; CAPS é núcleo (5 tipos); SRT e De Volta para Casa = desinstitucionalização; RD é política do SUS desde 2003; CTs são controversas; Fanon articula colonialidade e saúde mental.</p>
+    </div>
+
+    <div class="alerta" style="margin-top:5px;background:rgba(31,92,35,0.1);border-left-color:var(--verde);">
+      <p><strong>Conexão crítica:</strong> a Reforma Psiquiátrica é parte integrante do Projeto Ético-Político do SS (Aula 01) — defesa intransigente dos DH; ruptura com o conservadorismo; aposta na cidadania ativa. O AS antimanicomial é também antirracista (Fanon, Aula 04 e 17), antimedicalista, defensor do SUS público (Aula 11-12) e da cidadania para todos os sujeitos (Aula 10, DUDH).</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-SAUDE · Saúde Mental</span><span>Extensivo ENARE 2026</span><span class="pg">10 / 10</span></div>
+</div>
+
+</body>
+</html>

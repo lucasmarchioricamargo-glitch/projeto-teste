@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Serviço Social — Bloco B13 Aula 07 | Extensivo ENARE 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap');
+  :root { --creme: #F6F4ED; --verde: #1F5C23; --amarelo: #C6D834; --escuro: #0C2B0E; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #d0d0d0; font-family: 'Bricolage Grotesque', sans-serif; }
+  .page { width: 210mm; height: 297mm; background: var(--creme); margin: 0 auto 12px; position: relative; overflow: hidden; page-break-after: always; }
+  .header { background: var(--verde); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .header-logo { display: flex; align-items: center; gap: 8px; }
+  .header-logo svg { width: 32px; height: 32px; }
+  .header-brand { display: flex; flex-direction: column; line-height: 1; }
+  .header-brand .marca { font-family: 'Playfair Display', serif; font-style: italic; color: #fff; font-size: 13px; letter-spacing: 0.5px; }
+  .header-brand .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 7px; letter-spacing: 1.5px; text-transform: uppercase; }
+  .header-info { text-align: right; }
+  .header-info .disciplina { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
+  .header-info .aula-ref { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.7); font-size: 8px; letter-spacing: 0.5px; }
+  .footer { position: absolute; bottom: 0; left: 0; right: 0; background: var(--verde); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .footer span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.6); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .footer .pg { color: var(--amarelo); font-weight: 400; }
+  .body { padding: 14px 18px 30px; height: calc(297mm - 52px - 22px); overflow: hidden; }
+  .capa-page { background: var(--verde); }
+  .capa-header { background: var(--creme); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .capa-header .marca { font-family: 'Playfair Display', serif; font-style: italic; color: var(--verde); font-size: 14px; }
+  .capa-header .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--verde); font-size: 7.5px; letter-spacing: 2px; text-transform: uppercase; }
+  .capa-body { padding: 28px 24px 0; display: flex; flex-direction: column; height: calc(297mm - 52px - 22px); }
+  .capa-eyebrow { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; }
+  .capa-titulo { font-family: 'Barlow Condensed', sans-serif; color: #fff; font-size: 50px; line-height: 0.95; text-transform: uppercase; letter-spacing: -0.5px; margin-bottom: 6px; }
+  .capa-titulo span { color: var(--amarelo); }
+  .capa-subtitulo { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; color: rgba(255,255,255,0.65); font-size: 12px; letter-spacing: 0.3px; margin-bottom: 22px; line-height: 1.5; }
+  .capa-badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+  .capa-badge { background: rgba(198,216,52,0.15); border: 1px solid var(--amarelo); color: var(--amarelo); font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 8px; border-radius: 2px; }
+  .capa-divider { width: 40px; height: 3px; background: var(--amarelo); margin-bottom: 20px; }
+  .capa-topicos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .capa-topico { display: flex; align-items: flex-start; gap: 7px; }
+  .capa-topico-num { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 18px; line-height: 1; min-width: 18px; }
+  .capa-topico-txt { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 400; color: rgba(255,255,255,0.8); font-size: 9.5px; line-height: 1.4; }
+  .capa-footer-strip { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.25); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .capa-footer-strip span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.45); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .secao-titulo { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 18px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid var(--amarelo); padding-bottom: 3px; margin-bottom: 9px; line-height: 1; }
+  .subsecao { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.5px; margin: 7px 0 3px; }
+  p { font-size: 9px; line-height: 1.55; color: #1a1a1a; margin-bottom: 4px; font-weight: 400; }
+  .destaque { background: var(--amarelo); color: var(--escuro); font-weight: 600; padding: 1px 4px; border-radius: 2px; font-size: 8.5px; }
+  .alerta { background: rgba(198,216,52,0.18); border-left: 3px solid var(--amarelo); padding: 5px 8px; margin: 5px 0; border-radius: 0 3px 3px 0; }
+  .alerta p { margin: 0; font-size: 8.5px; }
+  .alerta strong { color: var(--verde); }
+  table { width: 100%; border-collapse: collapse; margin: 5px 0; font-size: 8px; }
+  th { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; padding: 4px 6px; text-align: left; }
+  td { padding: 3px 6px; border-bottom: 1px solid rgba(31,92,35,0.12); vertical-align: top; line-height: 1.4; color: #1a1a1a; }
+  tr:nth-child(even) td { background: rgba(31,92,35,0.04); }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 5px 0; }
+  .card { background: rgba(31,92,35,0.06); border: 1px solid rgba(31,92,35,0.15); border-radius: 4px; padding: 7px 8px; }
+  .card-title { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 11px; text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 3px; }
+  .card p { font-size: 8px; line-height: 1.5; }
+  .questao-header { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; padding: 4px 10px; border-radius: 3px 3px 0 0; display: flex; justify-content: space-between; align-items: center; }
+  .questao-header .fonte { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; color: var(--amarelo); letter-spacing: 0.5px; }
+  .questao-body { border: 1px solid rgba(31,92,35,0.2); border-top: none; border-radius: 0 0 3px 3px; padding: 7px 10px; margin-bottom: 7px; }
+  .questao-enunciado { font-size: 8.5px; line-height: 1.55; color: #111; margin-bottom: 5px; font-weight: 500; }
+  .alternativas { list-style: none; }
+  .alternativas li { font-size: 8px; line-height: 1.5; padding: 2px 0; color: #222; display: flex; gap: 5px; }
+  .alternativas li .letra { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: var(--verde); font-size: 9px; min-width: 10px; }
+  .alternativas li.correta .letra { color: var(--amarelo); }
+  .alternativas li.correta { background: rgba(198,216,52,0.15); border-left: 2px solid var(--amarelo); padding-left: 4px; }
+  .gabarito-box { background: var(--verde); border-radius: 4px; padding: 8px 12px; margin: 6px 0; }
+  .gabarito-box .gab-title { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+  .gabarito-box p { color: rgba(255,255,255,0.9); font-size: 8px; line-height: 1.55; }
+  .gabarito-box strong { color: var(--amarelo); }
+  .sintese-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-top: 6px; }
+  .sintese-item { background: rgba(31,92,35,0.07); border-left: 3px solid var(--verde); padding: 5px 7px; border-radius: 0 3px 3px 0; }
+  .sintese-item .si-label { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px; }
+  .sintese-item p { font-size: 7.5px; line-height: 1.5; }
+  ul.lista { padding-left: 14px; margin: 3px 0; }
+  ul.lista li { font-size: 8.5px; line-height: 1.55; color: #1a1a1a; margin-bottom: 1px; }
+  @media print { body { background: none; } .page { margin: 0; box-shadow: none; } }
+</style>
+</head>
+<body>
+
+<div class="page capa-page">
+  <div class="capa-header">
+    <div style="display:flex;align-items:center;gap:8px;"><svg width="34" height="34" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#1F5C23"/></svg><div><div class="marca">Elite Treinamentos</div><div class="tagline">Extensivo ENARE 2026</div></div></div>
+    <div style="text-align:right;"><div style="font-family:'Barlow Condensed',sans-serif;color:var(--verde);font-size:11px;letter-spacing:1px;text-transform:uppercase;">Bloco B13 · Aula 07</div><div style="font-family:'Space Grotesk',sans-serif;font-weight:300;color:#888;font-size:7.5px;letter-spacing:0.5px;">Serviço Social</div></div>
+  </div>
+  <div class="capa-body">
+    <div class="capa-eyebrow">Bloco B13 · SS-ASSISTENCIA · Aula 07 de 21</div>
+    <div class="capa-titulo">SUAS <span>·<br>Financia-<br>mento &amp;<br>Vigência</span></div>
+    <div class="capa-subtitulo">FNAS, blocos de financiamento, EC 95/2016, Prontuário Eletrônico<br>e Plano Nacional Ruas Visíveis 2023-2026</div>
+    <div class="capa-badge-row">
+      <div class="capa-badge">SS-ASSISTENCIA ★★★★</div>
+      <div class="capa-badge">FNAS · Blocos</div>
+      <div class="capa-badge">EC 95/2016</div>
+      <div class="capa-badge">Ruas Visíveis 2023-26</div>
+    </div>
+    <div class="capa-divider"></div>
+    <div class="capa-topicos">
+      <div class="capa-topico"><div class="capa-topico-num">01</div><div class="capa-topico-txt">Estrutura de financiamento: FNAS, FEAS, FMAS</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">02</div><div class="capa-topico-txt">Co-financiamento e repasses por blocos</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">03</div><div class="capa-topico-txt">EC 95/2016: impacto no SUAS</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">04</div><div class="capa-topico-txt">Prontuário Eletrônico do SUAS</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">05</div><div class="capa-topico-txt">Plano Nacional Ruas Visíveis 2023-2026</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">06</div><div class="capa-topico-txt">SISC, RMA, vigilância socioassistencial</div></div>
+    </div>
+  </div>
+  <div class="capa-footer-strip"><span>Extensivo ENARE 2026</span><span>Elite Treinamentos em Saúde</span><span>Página 1 de 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-ASSISTENCIA</div><div class="aula-ref">Bloco B13 · Aula 07 · FNAS</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Estrutura de Financiamento — Tripartite Tripartido</div>
+    <p>O SUAS é financiado de forma <strong>tripartite</strong>: União + Estados + Municípios. Cada esfera tem seu Fundo de Assistência Social. A LOAS (art. 30) e a NOB-SUAS estabelecem o desenho. A FGV cobrou em ENARE 2025 (Q34 — FNAS, V/F; Q47 — EC 95/2016; Q56 — repasses por pactuações; Q82 — parâmetros AS).</p>
+
+    <div class="subsecao">Os Fundos de Assistência Social</div>
+    <table>
+      <tr><th>Fundo</th><th>Esfera</th><th>Marco legal</th></tr>
+      <tr><td><strong>FNAS — Fundo Nacional</strong></td><td>União</td><td>Lei 8.742/1993, art. 28; Decreto 1.605/1995</td></tr>
+      <tr><td>FEAS — Fundo Estadual</td><td>Estados</td><td>Leis estaduais específicas</td></tr>
+      <tr><td>FMAS — Fundo Municipal</td><td>Municípios</td><td>Leis municipais</td></tr>
+      <tr><td>FDF — Fundo Distrital</td><td>DF</td><td>Lei distrital</td></tr>
+    </table>
+
+    <p><strong>Características comuns aos Fundos:</strong></p>
+    <ul class="lista">
+      <li>Vinculados ao órgão gestor da assistência (MDS na União; Secretarias estaduais/municipais)</li>
+      <li>Geridos com participação do Conselho (CNAS, CEAS, CMAS)</li>
+      <li>Recursos exclusivos para assistência social — vedada a transferência para outras finalidades</li>
+      <li>Saldo do exercício transfere para o ano seguinte (não há devolução ao tesouro)</li>
+      <li>Movimentação por <em>blocos de financiamento</em> a partir de 2017 (Portaria MDS 113/2015 e atualizações)</li>
+    </ul>
+
+    <div class="subsecao">Fontes de Recursos do FNAS</div>
+    <ul class="lista">
+      <li>Recursos da União destinados à Seguridade Social (arts. 195 e 204, CF/1988)</li>
+      <li>Transferências do orçamento federal</li>
+      <li>Doações</li>
+      <li>Receitas de aplicação financeira de seus saldos</li>
+      <li>Multas e penalidades pelo descumprimento de obrigações em programas socioassistenciais</li>
+      <li>Outras receitas conforme legislação específica</li>
+    </ul>
+
+    <div class="subsecao">Conselhos e Controle Social</div>
+    <p>Os conselhos são <strong>órgãos colegiados de caráter permanente, deliberativo, com composição paritária</strong> entre representantes do governo e da sociedade civil:</p>
+    <table>
+      <tr><th>Conselho</th><th>Esfera</th><th>Função</th></tr>
+      <tr><td>CNAS — Conselho Nacional</td><td>União</td><td>Aprova PNAS, NOB-SUAS, Tipificação; fiscaliza FNAS; aprova orçamento; convoca Conferência Nacional</td></tr>
+      <tr><td>CEAS — Conselho Estadual</td><td>Estado</td><td>Fiscaliza FEAS; convoca Conferência Estadual</td></tr>
+      <tr><td>CMAS — Conselho Municipal</td><td>Município</td><td>Fiscaliza FMAS; convoca Conferência Municipal; aprova Plano Municipal</td></tr>
+    </table>
+
+    <p><strong>Conferências de Assistência Social</strong>: realizadas a cada 4 anos no nível nacional, com etapas municipal, estadual e nacional. Espaço deliberativo máximo do SUAS. Conferência Nacional: ciclo 2024-2025.</p>
+
+    <div class="alerta">
+      <p><strong>Pontos cobrados (Q34/2025 — V/F):</strong> FNAS é o fundo da União; recursos exclusivos para AS; saldo transferível ao exercício seguinte; geridos com participação do CNAS; movimentação por blocos. Não há repasse "fundo a fundo" no sentido antigo desde 2018 (substituído por blocos).</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-ASSISTENCIA · SUAS Financiamento</span><span>Extensivo ENARE 2026</span><span class="pg">2 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-ASSISTENCIA</div><div class="aula-ref">Bloco B13 · Aula 07 · Blocos de Financiamento</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Blocos de Financiamento — Reforma de 2017</div>
+
+    <p>Desde 2017 (Portaria MDS 113/2015 e atualizações, com vigência a partir de 2018), o repasse do FNAS aos demais entes federativos não é mais "fundo a fundo" para cada serviço isolado, mas por <strong>blocos de financiamento</strong>. A reforma busca simplificação, autonomia e flexibilidade gerencial. Cobrado em ENARE 2025 (Q34, Q56).</p>
+
+    <div class="subsecao">Estrutura dos Blocos de Financiamento</div>
+    <table>
+      <tr><th>Bloco</th><th>Conteúdo</th></tr>
+      <tr><td><strong>1. Bloco da Proteção Social Básica</strong></td><td>Recursos para PAIF, SCFV, IGD-SUAS, equipes volantes, lanchas, Programa Criança Feliz, Programa Primeira Infância no SUAS, manutenção do CRAS</td></tr>
+      <tr><td><strong>2. Bloco da Proteção Social Especial — Média Complexidade</strong></td><td>Recursos para PAEFI, SEPREDI (abordagem social), Serviço Especializado para PCD/Idosos, manutenção do CREAS</td></tr>
+      <tr><td><strong>3. Bloco da Proteção Social Especial — Alta Complexidade</strong></td><td>Recursos para acolhimento institucional, casa-lar, república, família acolhedora, casa de passagem, ILPI</td></tr>
+      <tr><td><strong>4. Bloco do Programa de Erradicação do Trabalho Infantil</strong> (PETI)</td><td>Ações estratégicas integradas a Proteção Básica e Especial</td></tr>
+      <tr><td><strong>5. Bloco da Gestão do SUAS</strong></td><td>IGD-SUAS (Índice de Gestão Descentralizada), capacitação, vigilância socioassistencial</td></tr>
+      <tr><td><strong>6. Bloco da Gestão do Programa Bolsa Família/Auxílio Brasil</strong></td><td>IGD-PBF — gestão do CadÚnico, condicionalidades, busca ativa</td></tr>
+    </table>
+
+    <div class="subsecao">Princípios da Lógica dos Blocos</div>
+    <ul class="lista">
+      <li><strong>Autonomia gerencial</strong>: gestor municipal/estadual remaneja recursos dentro do mesmo bloco, conforme priorização</li>
+      <li><strong>Flexibilidade</strong>: redução da fragmentação dos repasses anteriores</li>
+      <li><strong>Continuidade dos serviços</strong>: recursos seguem para a manutenção da rede instalada</li>
+      <li><strong>Pactuação anual</strong>: CIT/CIB definem metas e cronogramas</li>
+      <li><strong>Prestação de contas integrada</strong>: por bloco, não por serviço isolado</li>
+      <li><strong>Conta única por bloco</strong>: cada município/estado mantém conta específica para cada bloco</li>
+    </ul>
+
+    <div class="subsecao">Co-financiamento — Distribuição entre Entes</div>
+    <p>Os 3 entes co-financiam, com proporções diferenciadas:</p>
+    <table>
+      <tr><th>Esfera</th><th>Proporção típica</th><th>Observação</th></tr>
+      <tr><td>União (FNAS)</td><td>Maior parte do co-financiamento dos serviços continuados</td><td>Pisos da Proteção Básica e Especial; benefícios eventuais não são federais</td></tr>
+      <tr><td>Estados (FEAS)</td><td>Co-financiamento dos serviços regionalizados e estratégicos</td><td>Variabilidade alta entre estados</td></tr>
+      <tr><td>Municípios (FMAS)</td><td>Contrapartida obrigatória; gestão local; pessoal; instalações</td><td>Maior parte do gasto direto com manutenção e pessoal</td></tr>
+    </table>
+
+    <div class="subsecao">Pisos da Proteção</div>
+    <p>Os recursos federais transferidos via FNAS são organizados em <strong>pisos</strong> — valores mensais por unidade de serviço/usuário:</p>
+    <ul class="lista">
+      <li><strong>Piso Básico Fixo (PBF)</strong>: PAIF — valor mensal por CRAS conforme porte municipal</li>
+      <li><strong>Piso Básico Variável I e II</strong>: SCFV, equipes volantes</li>
+      <li><strong>Piso Mineiro</strong>: serviços específicos em MG (variação histórica)</li>
+      <li><strong>Piso Fixo de Média Complexidade (PFMC)</strong>: PAEFI — valor mensal por CREAS</li>
+      <li><strong>Piso Variável de Média Complexidade</strong>: Centro POP, SEPREDI, medidas socioeducativas</li>
+      <li><strong>Piso de Alta Complexidade I e II</strong>: acolhimentos institucionais, casa-lar, república</li>
+      <li><strong>Piso de Transição</strong>: serviços em fase de reordenamento</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> SUAS é tripartite; recursos federais via FNAS organizados em <em>blocos</em> (Proteção Básica, Média, Alta, PETI, Gestão SUAS, Gestão PBF). Cada bloco tem conta única. Pisos = valores mensais por unidade. Não há mais repasse "serviço a serviço" desde 2018.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-ASSISTENCIA · SUAS Financiamento</span><span>Extensivo ENARE 2026</span><span class="pg">3 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-ASSISTENCIA</div><div class="aula-ref">Bloco B13 · Aula 07 · EC 95/2016</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">EC 95/2016 — Teto de Gastos e Desmonte do SUAS</div>
+
+    <p>A <strong>Emenda Constitucional nº 95, de 15 de dezembro de 2016</strong> ("Novo Regime Fiscal" ou "Teto de Gastos") foi a principal investida neoliberal contra a Seguridade Social brasileira nos últimos 30 anos. Cobrada explicitamente em ENARE 2025 (Q47) com perspectiva crítica esperada.</p>
+
+    <div class="subsecao">O Que a EC 95/2016 Estabeleceu</div>
+    <ul class="lista">
+      <li>Criou novo regime fiscal por <strong>20 anos</strong> (2017-2036)</li>
+      <li>Limitou o <strong>crescimento dos gastos primários da União</strong> à <strong>inflação do ano anterior</strong> (IPCA)</li>
+      <li>Aplicou-se a praticamente todas as despesas: saúde, educação, assistência social, segurança, previdência</li>
+      <li>Vedou aumento real per capita dos investimentos sociais</li>
+      <li>Excepcionou apenas alguns gastos (juros da dívida, despesas judiciais específicas)</li>
+      <li>Em 2023, parcialmente substituída pelo Novo Arcabouço Fiscal (Lei Complementar 200/2023)</li>
+    </ul>
+
+    <div class="subsecao">Impactos no SUAS</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Direto — Repasses do FNAS</div>
+        <p>Estagnação dos repasses em termos reais. Pisos congelados. Defasagem em relação ao crescimento populacional, das demandas e da inflação setorial. Municípios reduziram cobertura.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Indireto — Demanda</div>
+        <p>Estagnação econômica + aumento do desemprego + desmonte de outras políticas (educação, saúde) elevaram a demanda por SUAS. Tesoura: demanda sobe + recursos congelam = desproteção.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">BPC e Benefícios</div>
+        <p>BPC ficou no orçamento da Previdência (não congelado plenamente), mas teve <em>endurecimento de critérios</em> (Lei 13.846/2019) e ataques recorrentes. Reforma da Previdência (EC 103/2019) ampliou idade do BPC.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Bolsa Família / Auxílio</div>
+        <p>Sofreu instabilidade política e instrumental. Em 2021, Bolsa Família foi substituído pelo Auxílio Brasil. Em 2023, novamente reformulado em Bolsa Família 2.0 (Lula III). Cadúnico modernizado.</p>
+      </div>
+    </div>
+
+    <div class="subsecao">Crítica do Conjunto CFESS-CRESS</div>
+    <p>O Conselho Federal de Serviço Social, junto com a ABEPSS e movimentos sociais, posicionou-se desde 2016 contra a EC 95/2016:</p>
+    <ul class="lista">
+      <li>Desmonte da Seguridade Social estabelecida pela CF/1988</li>
+      <li>Inconstitucionalidade material (afeta direitos fundamentais)</li>
+      <li>Política de classe a serviço do capital financeiro</li>
+      <li>Aprofundamento das desigualdades sociais</li>
+      <li>Ataque à cidadania construída pós-1988</li>
+      <li>Articulação com Reforma Trabalhista 2017 e Reforma Previdenciária 2019 — pacote de desmonte</li>
+    </ul>
+
+    <div class="subsecao">Novo Arcabouço Fiscal (2023)</div>
+    <p>Em 2023, com o governo Lula III, o Congresso aprovou a Lei Complementar 200/2023 — Novo Arcabouço Fiscal — que substituiu a EC 95/2016. Características:</p>
+    <ul class="lista">
+      <li>Crescimento dos gastos primários: 70% do crescimento da receita do ano anterior</li>
+      <li>Limite mínimo: inflação + 0,6%</li>
+      <li>Limite máximo: inflação + 2,5%</li>
+      <li>Preserva pisos mínimos constitucionais para saúde (15% da RCL) e educação (18% da RCL)</li>
+      <li>Mais flexível que o teto rígido da EC 95, mas ainda assim contracionista</li>
+      <li>Permite retomada parcial das políticas sociais; insuficiente para reverter perdas acumuladas</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Posicionamento crítico esperado na prova:</strong> a FGV cobra a perspectiva crítica do SS. EC 95/2016 é vista como desmonte das políticas sociais; foi parcialmente revertida em 2023 mas seus efeitos permanecem. O AS deve articular esse debate com a categoria SS no enfrentamento da austeridade fiscal. Crítica explicitamente esperada (Q47/2025).</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-ASSISTENCIA · SUAS Financiamento</span><span>Extensivo ENARE 2026</span><span class="pg">4 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-ASSISTENCIA</div><div class="aula-ref">Bloco B13 · Aula 07 · Prontuário Eletrônico</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Prontuário Eletrônico do SUAS</div>
+
+    <p>O <strong>Prontuário Eletrônico do SUAS</strong> foi cobrado explicitamente em ENARE 2025 (Q52). É instrumento de registro e gestão do atendimento socioassistencial, parte do processo de informatização do SUAS.</p>
+
+    <div class="subsecao">Definição e Finalidade</div>
+    <p>Instrumento técnico-operativo, em formato digital, para registro padronizado dos atendimentos individuais e familiares prestados pelos serviços do SUAS. Adota-se como ferramenta de:</p>
+    <ul class="lista">
+      <li><strong>Registro</strong>: documentação sistematizada dos atendimentos</li>
+      <li><strong>Acompanhamento</strong>: histórico longitudinal de famílias/indivíduos</li>
+      <li><strong>Articulação intersetorial</strong>: integração com CadÚnico, Bolsa Família, Sistema de Garantia de Direitos</li>
+      <li><strong>Gestão do trabalho profissional</strong>: subsidiar o plano de acompanhamento</li>
+      <li><strong>Vigilância socioassistencial</strong>: dados agregados para análise territorial</li>
+      <li><strong>Continuidade</strong>: garantir que o usuário seja acompanhado mesmo com troca de profissional/equipe</li>
+    </ul>
+
+    <div class="subsecao">Estrutura do Prontuário (versão CRAS e CREAS)</div>
+    <table>
+      <tr><th>Bloco</th><th>Conteúdo</th></tr>
+      <tr><td>Identificação da família/indivíduo</td><td>Dados pessoais; NIS; CadÚnico; composição familiar</td></tr>
+      <tr><td>Histórico de acessos aos serviços</td><td>Cronologia das atendimentos; equipamentos envolvidos</td></tr>
+      <tr><td>Condições de vida</td><td>Renda; moradia; trabalho; saúde; educação; vínculos comunitários</td></tr>
+      <tr><td>Vulnerabilidades identificadas</td><td>Riscos sociais; violências sofridas; demandas; potencialidades</td></tr>
+      <tr><td>Plano de acompanhamento</td><td>Objetivos; ações; prazos; profissionais responsáveis</td></tr>
+      <tr><td>Registros de atendimento</td><td>Data, hora, profissional, modalidade (entrevista, visita, grupo); evolução</td></tr>
+      <tr><td>Encaminhamentos</td><td>Para outras políticas (saúde, educação, justiça) ou serviços SUAS</td></tr>
+      <tr><td>Benefícios e programas</td><td>BPC, Bolsa Família, BE, articulação com CadÚnico</td></tr>
+      <tr><td>Evolução do acompanhamento</td><td>Mudanças, conquistas, desafios; revisão do plano</td></tr>
+      <tr><td>Desligamento</td><td>Quando aplicável: motivo, encaminhamentos finais, garantia de continuidade</td></tr>
+    </table>
+
+    <div class="subsecao">Princípios do Prontuário</div>
+    <ul class="lista">
+      <li><strong>Padronização nacional</strong>: garantia de comparabilidade e qualidade</li>
+      <li><strong>Sigilo profissional</strong>: acesso restrito; LGPD; ética</li>
+      <li><strong>Integridade dos dados</strong>: preservação e backup; LGPD art. 6º</li>
+      <li><strong>Acessibilidade pelo usuário</strong>: direito do usuário acessar seus dados</li>
+      <li><strong>Não-substituição</strong>: não substitui o registro técnico crítico do AS; é instrumento adicional</li>
+      <li><strong>Subsídio à vigilância socioassistencial</strong>: dados agregados anonimizados</li>
+    </ul>
+
+    <div class="subsecao">Crítica Profissional ao Prontuário</div>
+    <p>Apesar dos avanços, há tensões que o SS reflete:</p>
+    <ul class="lista">
+      <li><strong>Risco de tecnicização</strong>: reduzir o atendimento ao preenchimento</li>
+      <li><strong>Tempo escasso</strong>: AS gasta muito tempo com formulário em detrimento da escuta</li>
+      <li><strong>Padronização x singularidade</strong>: campos predefinidos podem reduzir a complexidade do caso</li>
+      <li><strong>Burocratização</strong>: risco do "preencher por preencher" sem reflexão</li>
+      <li><strong>Sigilo digital</strong>: vulnerabilidades de segurança; treinamento em LGPD</li>
+      <li><strong>Desigualdade de implementação</strong>: nem todos os municípios têm infraestrutura</li>
+    </ul>
+
+    <div class="subsecao">SISC e RMA — Outros Sistemas</div>
+    <p>Além do Prontuário, o SUAS opera com sistemas complementares:</p>
+    <ul class="lista">
+      <li><strong>SISC — Sistema de Informações do Serviço de Convivência</strong>: cadastra usuários do SCFV</li>
+      <li><strong>RMA — Registro Mensal de Atendimentos</strong>: dados agregados mensais dos atendimentos (CRAS e CREAS)</li>
+      <li><strong>CECAD — Consulta, Seleção e Extração de Informações do CadÚnico</strong></li>
+      <li><strong>SUASWeb</strong>: portal de gestão do SUAS</li>
+      <li><strong>Censo SUAS</strong>: pesquisa anual sobre equipamentos, equipes, ofertas (obrigatório)</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> Prontuário Eletrônico do SUAS = instrumento de registro digital padronizado; finalidade = qualificar acompanhamento, vigilância socioassistencial; respeita sigilo + LGPD. NÃO substitui registro crítico. Cobrado em Q52/2025.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-ASSISTENCIA · SUAS Financiamento</span><span>Extensivo ENARE 2026</span><span class="pg">5 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-ASSISTENCIA</div><div class="aula-ref">Bloco B13 · Aula 07 · Ruas Visíveis</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Plano Nacional Ruas Visíveis (2023-2026)</div>
+
+    <p>O <strong>Plano Nacional Ruas Visíveis</strong>, lançado em 2023 pelo governo Lula III (Decreto 11.474/2023), é o principal marco recente em política para população em situação de rua. Cobrado em ENARE 2025 (Q58). Sucede a Política Nacional para a População em Situação de Rua (PNPR, 2009, Decreto 7.053/2009).</p>
+
+    <div class="subsecao">Contexto e Necessidade</div>
+    <ul class="lista">
+      <li>Estima-se 280.000+ pessoas em situação de rua no Brasil (IPEA 2023)</li>
+      <li>Crescimento de 211% entre 2012 e 2022; intensificou pós-pandemia COVID-19</li>
+      <li>Concentração nas grandes capitais; maioria homens jovens, negros, com histórias de violação</li>
+      <li>Múltiplos motivos: ruptura familiar, dependência química, desemprego, transtornos mentais, migração</li>
+      <li>Vulnerabilidade extrema: violência policial e civil, falta de acesso a direitos básicos</li>
+      <li>STF declarou "estado de coisas inconstitucional" da situação (ADPF 976)</li>
+    </ul>
+
+    <div class="subsecao">Eixos do Plano Ruas Visíveis</div>
+    <table>
+      <tr><th>Eixo</th><th>Conteúdo</th></tr>
+      <tr><td><strong>1. Assistência Social</strong></td><td>Ampliação de Centros POP, abordagem social (SEPREDI), serviços de acolhimento, articulação com PAIF/PAEFI</td></tr>
+      <tr><td><strong>2. Saúde</strong></td><td>Consultório na Rua (eCR) ampliado; acesso a SUS; redução de danos; saúde mental</td></tr>
+      <tr><td><strong>3. Cultura</strong></td><td>Programas culturais; "Cidades Educadoras"; reconhecimento de saberes</td></tr>
+      <tr><td><strong>4. Direitos Humanos e Cidadania</strong></td><td>Documentação civil; combate à violência institucional; orientação jurídica</td></tr>
+      <tr><td><strong>5. Educação</strong></td><td>Alfabetização e EJA; programas profissionalizantes</td></tr>
+      <tr><td><strong>6. Habitação</strong></td><td>Programa Minha Casa Minha Vida — Faixa 1; Programa Moradia Primeiro (Housing First)</td></tr>
+      <tr><td><strong>7. Direito à Cidade e Mobilidade Urbana</strong></td><td>Acesso a equipamentos públicos; banheiros públicos; bebedouros; transporte</td></tr>
+      <tr><td><strong>8. Renda e Trabalho</strong></td><td>Inclusão no Bolsa Família; Auxílio Gás; programas de geração de renda; cooperativas</td></tr>
+      <tr><td><strong>9. Alimentação e Nutrição</strong></td><td>Restaurantes populares; cozinhas comunitárias; PAA — Programa de Aquisição de Alimentos</td></tr>
+      <tr><td><strong>10. Atendimento à Mulher em Situação de Rua</strong></td><td>Casa da Mulher Brasileira; abordagem específica a vulnerabilidades de gênero</td></tr>
+    </table>
+
+    <div class="subsecao">Marco Jurídico Anterior</div>
+    <ul class="lista">
+      <li><strong>Decreto 7.053/2009</strong>: institui a Política Nacional para a População em Situação de Rua (PNPR) e seu Comitê Intersetorial de Acompanhamento e Monitoramento (CIAMP-Rua)</li>
+      <li><strong>Resolução CNAS 109/2009 — Tipificação Nacional</strong>: serviço de acolhimento institucional para adultos; Centro POP; abordagem social</li>
+      <li><strong>STF ADPF 976 (2023)</strong>: declaração de "estado de coisas inconstitucional"; decisões liminares; obrigação de planos</li>
+    </ul>
+
+    <div class="subsecao">Princípios da Política para PSR</div>
+    <ul class="lista">
+      <li><strong>Respeito à dignidade humana</strong> — princípio I do Código de Ética do AS</li>
+      <li><strong>Acesso aos direitos</strong> — universalização</li>
+      <li><strong>Não internação compulsória</strong> como regra; uso restrito (Lei 10.216/2001)</li>
+      <li><strong>Acolhimento voluntário</strong>; abordagem com escuta</li>
+      <li><strong>Não-criminalização</strong> da situação de rua</li>
+      <li><strong>Articulação intersetorial</strong> — saúde, educação, habitação, trabalho</li>
+      <li><strong>Protagonismo da PSR</strong> — Movimento Nacional da População em Situação de Rua (MNPR)</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Pegadinha da prova:</strong> a internação compulsória NÃO é a regra nem é desejável para PSR. Política do SUAS articula <em>acolhimento voluntário</em>, escuta, vínculo. Operações de "limpeza urbana" que removem PSR forçadamente são <em>violência institucional</em> condenada. Cobrado em ENARE 2025 (Q58 — Plano Ruas Visíveis 2023-2026).</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-ASSISTENCIA · SUAS Financiamento</span><span>Extensivo ENARE 2026</span><span class="pg">6 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-ASSISTENCIA</div><div class="aula-ref">Bloco B13 · Aula 07 · Vigilância e Gestão</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Vigilância Socioassistencial e Gestão</div>
+
+    <p>A <strong>vigilância socioassistencial</strong> foi incorporada à LOAS pela Lei 12.435/2011 (art. 2º, VI) como objetivo da assistência social. Não é serviço, mas <strong>função estratégica de gestão</strong>.</p>
+
+    <div class="subsecao">Definição (LOAS art. 2º, VI)</div>
+    <p>"<em>A vigilância socioassistencial visa a analisar territorialmente a capacidade protetiva das famílias e nela a ocorrência de vulnerabilidades, ameaças, vitimizações e danos.</em>"</p>
+
+    <div class="subsecao">Funções da Vigilância Socioassistencial</div>
+    <table>
+      <tr><th>Função</th><th>Conteúdo</th></tr>
+      <tr><td>Vigilância de riscos e vulnerabilidades</td><td>Monitorar onde estão as famílias em risco; mapeamento territorial</td></tr>
+      <tr><td>Vigilância de padrões de serviços</td><td>Avaliar a cobertura dos serviços; identificar áreas desatendidas</td></tr>
+      <tr><td>Análise de demandas</td><td>Cruzar oferta com necessidades; subsidiar planejamento</td></tr>
+      <tr><td>Produção de dados</td><td>Indicadores territoriais; subsidiar Conselhos e Conferências</td></tr>
+      <tr><td>Suporte ao trabalho profissional</td><td>Apoio aos equipamentos da rede com informações qualificadas</td></tr>
+    </table>
+
+    <div class="subsecao">Instrumentos da Vigilância</div>
+    <ul class="lista">
+      <li><strong>CadÚnico</strong>: base de dados das famílias de baixa renda</li>
+      <li><strong>Censo SUAS</strong>: pesquisa anual obrigatória de equipamentos, equipes, ofertas, gestão</li>
+      <li><strong>Prontuário Eletrônico</strong>: dados agregados anonimizados</li>
+      <li><strong>RMA</strong>: registro mensal de atendimentos</li>
+      <li><strong>SISC</strong>: sistema do SCFV</li>
+      <li><strong>SAGI/MDS</strong>: portal de dados estatísticos da Secretaria de Avaliação e Gestão da Informação</li>
+      <li><strong>Cartografias e mapas territoriais</strong></li>
+      <li><strong>IBGE, DataSUS, INEP</strong>: bases secundárias</li>
+    </ul>
+
+    <div class="subsecao">IGD-SUAS — Índice de Gestão Descentralizada</div>
+    <p>Avalia a qualidade da gestão do SUAS em cada município. Fórmula composta por:</p>
+    <ul class="lista">
+      <li>Indicadores de cobertura dos serviços</li>
+      <li>Atualização cadastral</li>
+      <li>Atendimentos registrados</li>
+      <li>Funcionamento dos Conselhos</li>
+      <li>Frequência de Conferências</li>
+    </ul>
+    <p>O município com IGD melhor recebe maior repasse no bloco da Gestão do SUAS. Incentivo financeiro à boa gestão.</p>
+
+    <div class="subsecao">Trabalhadores Rurais e SUAS (cobrado Q100/2025)</div>
+    <p>A questão social no campo é dimensão historicamente subatendida pelo SUAS. ENARE 2025 cobrou em Q100. Aspectos:</p>
+    <ul class="lista">
+      <li>Trabalhadores rurais (assalariados temporários, posseiros, agricultores familiares, quilombolas, indígenas, ribeirinhos) têm cobertura desigual</li>
+      <li>Distâncias geográficas e demanda dispersa dificultam serviços convencionais</li>
+      <li>CRAS com equipes volantes; lanchas; veículos para grandes distâncias</li>
+      <li>Articulação com Ater (Assistência Técnica e Extensão Rural), Funai, Incra</li>
+      <li>Mecanização agrícola desemprega massivamente; questão social específica do campo</li>
+      <li>Conflitos fundiários (Movimento Sem Terra, comunidades quilombolas, indígenas)</li>
+      <li>Direitos previdenciários rurais especiais (aposentadoria por idade rural)</li>
+    </ul>
+
+    <div class="subsecao">Censo SUAS — Dados Recentes</div>
+    <table>
+      <tr><th>Indicador (2023)</th><th>Aproximado</th></tr>
+      <tr><td>CRAS implementados no Brasil</td><td>~8.500</td></tr>
+      <tr><td>CREAS</td><td>~2.700</td></tr>
+      <tr><td>Centros POP</td><td>~260</td></tr>
+      <tr><td>Unidades de acolhimento</td><td>~4.700</td></tr>
+      <tr><td>Famílias acompanhadas pelo PAIF/mês</td><td>~3 milhões</td></tr>
+      <tr><td>Pessoas em situação de rua atendidas</td><td>~280 mil</td></tr>
+      <tr><td>Cobertura municipal</td><td>~100% (todos os municípios têm pelo menos 1 CRAS)</td></tr>
+    </table>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> vigilância socioassistencial é função de gestão (não serviço); usa CadÚnico, Censo SUAS, Prontuário Eletrônico, RMA. IGD-SUAS é índice de qualidade da gestão. Trabalhadores rurais têm cobertura específica (Q100/2025).</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-ASSISTENCIA · SUAS Financiamento</span><span>Extensivo ENARE 2026</span><span class="pg">7 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-ASSISTENCIA</div><div class="aula-ref">Bloco B13 · Aula 07 · Questões ENARE</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 01</span><span class="fonte">EC 95/2016 · NC: Análise</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Sobre a EC 95/2016 ("Novo Regime Fiscal" ou "Teto de Gastos") e seus impactos na política de assistência social, é CORRETO afirmar:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Aumentou os repasses do FNAS aos municípios em valores reais.</span></li>
+        <li class="correta"><span class="letra">B</span><span>Limitou o crescimento dos gastos primários da União à inflação por 20 anos; estagnou em termos reais os repasses do FNAS; foi alvo de crítica do conjunto CFESS-CRESS por desmontar a Seguridade Social; em 2023 foi parcialmente substituída pelo Novo Arcabouço Fiscal (LC 200/2023), mais flexível mas ainda contracionista.</span></li>
+        <li><span class="letra">C</span><span>Excluiu da limitação as despesas com Bolsa Família.</span></li>
+        <li><span class="letra">D</span><span>Foi celebrada pelo Conselho Nacional de Assistência Social.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> a EC 95/2016 congelou os gastos primários à inflação por 20 anos. Aplicou-se à assistência social (FNAS), com efeitos diretos (estagnação real dos repasses) e indiretos (aumento da demanda por desemprego e desmonte de outras políticas). O conjunto CFESS-CRESS criticou desde 2016; STF discutiu inconstitucionalidade material. Em 2023, parcialmente substituída pela LC 200/2023 (Novo Arcabouço), mais flexível. Cobrado em ENARE 2025 (Q47).</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-ASSISTENCIA · SUAS Financiamento</span><span>Extensivo ENARE 2026</span><span class="pg">8 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-ASSISTENCIA</div><div class="aula-ref">Bloco B13 · Aula 07 · Questões ENARE</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 02</span><span class="fonte">Blocos · FNAS · NC: Compreensão</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Sobre o financiamento do SUAS via blocos de financiamento, analise:</p>
+      <p class="questao-enunciado" style="font-style:italic;">I. O FNAS repassa recursos aos demais entes em "blocos" desde 2018, com autonomia gerencial para o município remanejar recursos dentro de cada bloco.<br>
+      II. São 6 blocos principais: Proteção Básica, Proteção Especial Média, Proteção Especial Alta, PETI, Gestão SUAS, Gestão Bolsa Família.<br>
+      III. Cada bloco tem conta única no município, com prestação de contas integrada.<br>
+      IV. Pisos da Proteção (PBF, PFMC etc.) são valores mensais por unidade de serviço.</p>
+      <p class="questao-enunciado">Estão CORRETAS:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Apenas I e II.</span></li>
+        <li><span class="letra">B</span><span>Apenas III e IV.</span></li>
+        <li class="correta"><span class="letra">C</span><span>I, II, III e IV — todas estão corretas.</span></li>
+        <li><span class="letra">D</span><span>Apenas I.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — C</div>
+      <p><strong>Todas as afirmações estão corretas:</strong></p>
+      <p>• <strong>I:</strong> blocos vigoram desde 2018 (Portaria MDS 113/2015); autonomia gerencial dentro do mesmo bloco — característica central da reforma.<br>
+      • <strong>II:</strong> 6 blocos principais — todos corretamente listados.<br>
+      • <strong>III:</strong> cada bloco com conta única + prestação integrada — característica da Portaria.<br>
+      • <strong>IV:</strong> pisos são valores mensais por unidade de serviço/usuário (PBF para PAIF; PFMC para PAEFI; pisos da Alta para acolhimentos).</p>
+      <p>Cobrado em ENARE 2025 (Q34 — V/F sobre FNAS e blocos; Q56 — repasses).</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-ASSISTENCIA · SUAS Financiamento</span><span>Extensivo ENARE 2026</span><span class="pg">9 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-ASSISTENCIA</div><div class="aula-ref">Bloco B13 · Aula 07 · Gabarito e Síntese</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 03</span><span class="fonte">Plano Ruas Visíveis · NC: Análise</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Sobre o Plano Nacional Ruas Visíveis (2023-2026), instituído pelo Decreto 11.474/2023, é CORRETO afirmar:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Substitui integralmente o Decreto 7.053/2009 (PNPR).</span></li>
+        <li><span class="letra">B</span><span>Tem como eixo central a internação compulsória da PSR.</span></li>
+        <li class="correta"><span class="letra">C</span><span>É plano intersetorial com 10 eixos (Assistência Social, Saúde, Cultura, Direitos Humanos, Educação, Habitação, Cidade, Renda/Trabalho, Alimentação, Mulher) para implementação 2023-2026; complementa a PNPR de 2009 (Decreto 7.053); fundamenta-se no respeito à dignidade, na não-criminalização e no acolhimento voluntário; responde também ao "estado de coisas inconstitucional" reconhecido pelo STF (ADPF 976/2023).</span></li>
+        <li><span class="letra">D</span><span>É voltado apenas a operações de remoção forçada da PSR de áreas centrais.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — C</div>
+      <p><strong>Por que C está correta:</strong> o Plano Ruas Visíveis (Decreto 11.474/2023) é intersetorial com 10 eixos. Complementa — não substitui — a Política Nacional para a População em Situação de Rua (PNPR — Decreto 7.053/2009). Princípios: dignidade, não-criminalização, acolhimento voluntário, articulação intersetorial. Responde à ADPF 976 do STF (2023) que declarou "estado de coisas inconstitucional". Cobrado em Q58/2025.</p>
+      <p><strong>Por que as outras erram:</strong> A — complementa, não substitui · B — internação compulsória NÃO é eixo do plano (princípio é acolhimento voluntário) · D — não é "limpeza urbana"; ao contrário, condena remoções forçadas.</p>
+    </div>
+
+    <div class="subsecao">Síntese — SUAS Financiamento e Vigência</div>
+    <div class="sintese-grid">
+      <div class="sintese-item"><div class="si-label">Fundos e Co-financiamento</div><p>FNAS (União) + FEAS (Estados) + FMAS (Municípios). Recursos exclusivos para AS. Geridos com participação dos Conselhos. Saldo transferível ao exercício seguinte.</p></div>
+      <div class="sintese-item"><div class="si-label">Blocos de Financiamento (2018+)</div><p>6 blocos: Proteção Básica, Especial Média, Especial Alta, PETI, Gestão SUAS, Gestão PBF. Autonomia gerencial. Conta única por bloco. Pisos = valores mensais por unidade.</p></div>
+      <div class="sintese-item"><div class="si-label">EC 95/2016</div><p>Teto de Gastos por 20 anos; congelou gastos primários à inflação; desmontou Seguridade Social; criticada pelo conjunto CFESS-CRESS. Substituída parcialmente pela LC 200/2023 (Novo Arcabouço Fiscal).</p></div>
+      <div class="sintese-item"><div class="si-label">Prontuário Eletrônico</div><p>Instrumento digital padronizado de registro do atendimento socioassistencial. Não substitui o registro crítico. Sigilo + LGPD. Cobrado em Q52/2025.</p></div>
+      <div class="sintese-item"><div class="si-label">Ruas Visíveis (2023-2026)</div><p>Plano intersetorial com 10 eixos. Complementa PNPR 2009. Princípios: dignidade, não-criminalização, acolhimento voluntário. Resposta ao "estado de coisas inconstitucional" (STF ADPF 976/2023).</p></div>
+      <div class="sintese-item"><div class="si-label">Próxima Aula</div><p><strong>Aula 08 — Parâmetros Profissionais na Assistência Social.</strong> CFESS 2011; CadÚnico; BPC; PAIF e PAEFI em detalhe; trabalhadores rurais no SUAS.</p></div>
+    </div>
+
+    <div class="alerta" style="margin-top:5px;">
+      <p><strong>Regra de ouro — SUAS Financiamento no ENARE:</strong> 6 blocos desde 2018; FNAS tripartite + Conselhos; EC 95/2016 = desmonte criticado pelo SS; Prontuário Eletrônico = qualifica acompanhamento; Plano Ruas Visíveis = 10 eixos + dignidade + não-criminalização. IGD-SUAS = índice de gestão.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-ASSISTENCIA · SUAS Financiamento</span><span>Extensivo ENARE 2026</span><span class="pg">10 / 10</span></div>
+</div>
+
+</body>
+</html>

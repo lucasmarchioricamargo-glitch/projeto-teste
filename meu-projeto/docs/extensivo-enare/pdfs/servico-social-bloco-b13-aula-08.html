@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Serviço Social — Bloco B13 Aula 08 | Extensivo ENARE 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap');
+  :root { --creme: #F6F4ED; --verde: #1F5C23; --amarelo: #C6D834; --escuro: #0C2B0E; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #d0d0d0; font-family: 'Bricolage Grotesque', sans-serif; }
+  .page { width: 210mm; height: 297mm; background: var(--creme); margin: 0 auto 12px; position: relative; overflow: hidden; page-break-after: always; }
+  .header { background: var(--verde); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .header-logo { display: flex; align-items: center; gap: 8px; }
+  .header-logo svg { width: 32px; height: 32px; }
+  .header-brand { display: flex; flex-direction: column; line-height: 1; }
+  .header-brand .marca { font-family: 'Playfair Display', serif; font-style: italic; color: #fff; font-size: 13px; letter-spacing: 0.5px; }
+  .header-brand .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 7px; letter-spacing: 1.5px; text-transform: uppercase; }
+  .header-info { text-align: right; }
+  .header-info .disciplina { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
+  .header-info .aula-ref { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.7); font-size: 8px; letter-spacing: 0.5px; }
+  .footer { position: absolute; bottom: 0; left: 0; right: 0; background: var(--verde); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .footer span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.6); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .footer .pg { color: var(--amarelo); font-weight: 400; }
+  .body { padding: 14px 18px 30px; height: calc(297mm - 52px - 22px); overflow: hidden; }
+  .capa-page { background: var(--verde); }
+  .capa-header { background: var(--creme); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .capa-header .marca { font-family: 'Playfair Display', serif; font-style: italic; color: var(--verde); font-size: 14px; }
+  .capa-header .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--verde); font-size: 7.5px; letter-spacing: 2px; text-transform: uppercase; }
+  .capa-body { padding: 28px 24px 0; display: flex; flex-direction: column; height: calc(297mm - 52px - 22px); }
+  .capa-eyebrow { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; }
+  .capa-titulo { font-family: 'Barlow Condensed', sans-serif; color: #fff; font-size: 50px; line-height: 0.95; text-transform: uppercase; letter-spacing: -0.5px; margin-bottom: 6px; }
+  .capa-titulo span { color: var(--amarelo); }
+  .capa-subtitulo { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; color: rgba(255,255,255,0.65); font-size: 12px; letter-spacing: 0.3px; margin-bottom: 22px; line-height: 1.5; }
+  .capa-badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+  .capa-badge { background: rgba(198,216,52,0.15); border: 1px solid var(--amarelo); color: var(--amarelo); font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 8px; border-radius: 2px; }
+  .capa-divider { width: 40px; height: 3px; background: var(--amarelo); margin-bottom: 20px; }
+  .capa-topicos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .capa-topico { display: flex; align-items: flex-start; gap: 7px; }
+  .capa-topico-num { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 18px; line-height: 1; min-width: 18px; }
+  .capa-topico-txt { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 400; color: rgba(255,255,255,0.8); font-size: 9.5px; line-height: 1.4; }
+  .capa-footer-strip { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.25); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .capa-footer-strip span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.45); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .secao-titulo { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 18px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid var(--amarelo); padding-bottom: 3px; margin-bottom: 9px; line-height: 1; }
+  .subsecao { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.5px; margin: 7px 0 3px; }
+  p { font-size: 9px; line-height: 1.55; color: #1a1a1a; margin-bottom: 4px; font-weight: 400; }
+  .destaque { background: var(--amarelo); color: var(--escuro); font-weight: 600; padding: 1px 4px; border-radius: 2px; font-size: 8.5px; }
+  .alerta { background: rgba(198,216,52,0.18); border-left: 3px solid var(--amarelo); padding: 5px 8px; margin: 5px 0; border-radius: 0 3px 3px 0; }
+  .alerta p { margin: 0; font-size: 8.5px; }
+  .alerta strong { color: var(--verde); }
+  table { width: 100%; border-collapse: collapse; margin: 5px 0; font-size: 8px; }
+  th { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; padding: 4px 6px; text-align: left; }
+  td { padding: 3px 6px; border-bottom: 1px solid rgba(31,92,35,0.12); vertical-align: top; line-height: 1.4; color: #1a1a1a; }
+  tr:nth-child(even) td { background: rgba(31,92,35,0.04); }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 5px 0; }
+  .card { background: rgba(31,92,35,0.06); border: 1px solid rgba(31,92,35,0.15); border-radius: 4px; padding: 7px 8px; }
+  .card-title { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 11px; text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 3px; }
+  .card p { font-size: 8px; line-height: 1.5; }
+  .questao-header { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; padding: 4px 10px; border-radius: 3px 3px 0 0; display: flex; justify-content: space-between; align-items: center; }
+  .questao-header .fonte { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; color: var(--amarelo); letter-spacing: 0.5px; }
+  .questao-body { border: 1px solid rgba(31,92,35,0.2); border-top: none; border-radius: 0 0 3px 3px; padding: 7px 10px; margin-bottom: 7px; }
+  .questao-enunciado { font-size: 8.5px; line-height: 1.55; color: #111; margin-bottom: 5px; font-weight: 500; }
+  .alternativas { list-style: none; }
+  .alternativas li { font-size: 8px; line-height: 1.5; padding: 2px 0; color: #222; display: flex; gap: 5px; }
+  .alternativas li .letra { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: var(--verde); font-size: 9px; min-width: 10px; }
+  .alternativas li.correta .letra { color: var(--amarelo); }
+  .alternativas li.correta { background: rgba(198,216,52,0.15); border-left: 2px solid var(--amarelo); padding-left: 4px; }
+  .gabarito-box { background: var(--verde); border-radius: 4px; padding: 8px 12px; margin: 6px 0; }
+  .gabarito-box .gab-title { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+  .gabarito-box p { color: rgba(255,255,255,0.9); font-size: 8px; line-height: 1.55; }
+  .gabarito-box strong { color: var(--amarelo); }
+  .sintese-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-top: 6px; }
+  .sintese-item { background: rgba(31,92,35,0.07); border-left: 3px solid var(--verde); padding: 5px 7px; border-radius: 0 3px 3px 0; }
+  .sintese-item .si-label { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px; }
+  .sintese-item p { font-size: 7.5px; line-height: 1.5; }
+  ul.lista { padding-left: 14px; margin: 3px 0; }
+  ul.lista li { font-size: 8.5px; line-height: 1.55; color: #1a1a1a; margin-bottom: 1px; }
+  @media print { body { background: none; } .page { margin: 0; box-shadow: none; } }
+</style>
+</head>
+<body>
+
+<div class="page capa-page">
+  <div class="capa-header">
+    <div style="display:flex;align-items:center;gap:8px;"><svg width="34" height="34" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#1F5C23"/></svg><div><div class="marca">Elite Treinamentos</div><div class="tagline">Extensivo ENARE 2026</div></div></div>
+    <div style="text-align:right;"><div style="font-family:'Barlow Condensed',sans-serif;color:var(--verde);font-size:11px;letter-spacing:1px;text-transform:uppercase;">Bloco B13 · Aula 08</div><div style="font-family:'Space Grotesk',sans-serif;font-weight:300;color:#888;font-size:7.5px;letter-spacing:0.5px;">Serviço Social</div></div>
+  </div>
+  <div class="capa-body">
+    <div class="capa-eyebrow">Bloco B13 · SS-ASSISTENCIA · Aula 08 de 21</div>
+    <div class="capa-titulo">Parâ-<br>metros <span>na<br>Assist.<br>Social</span></div>
+    <div class="capa-subtitulo">CFESS 2011, CadÚnico, BPC, PAIF e PAEFI:<br>o trabalho do AS na ponta dos equipamentos do SUAS</div>
+    <div class="capa-badge-row">
+      <div class="capa-badge">SS-ASSISTENCIA ★★★</div>
+      <div class="capa-badge">CFESS 2011</div>
+      <div class="capa-badge">CadÚnico · BPC</div>
+      <div class="capa-badge">PAIF · PAEFI</div>
+    </div>
+    <div class="capa-divider"></div>
+    <div class="capa-topicos">
+      <div class="capa-topico"><div class="capa-topico-num">01</div><div class="capa-topico-txt">Parâmetros CFESS 2011 — Atuação no SUAS</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">02</div><div class="capa-topico-txt">Competências e atribuições privativas</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">03</div><div class="capa-topico-txt">CadÚnico — Decreto 11.016/2022</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">04</div><div class="capa-topico-txt">BPC — critérios e operacionalização</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">05</div><div class="capa-topico-txt">PAIF — protocolo detalhado</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">06</div><div class="capa-topico-txt">PAEFI — atendimento especializado</div></div>
+    </div>
+  </div>
+  <div class="capa-footer-strip"><span>Extensivo ENARE 2026</span><span>Elite Treinamentos em Saúde</span><span>Página 1 de 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-ASSISTENCIA</div><div class="aula-ref">Bloco B13 · Aula 08 · CFESS 2011</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Parâmetros para Atuação de AS — CFESS 2011</div>
+
+    <p>O documento <strong>"Parâmetros para Atuação de Assistentes Sociais na Política de Assistência Social"</strong>, publicado pelo CFESS em 2011, é referência central para o trabalho profissional do AS no SUAS. Junto com os Parâmetros na Saúde (CFESS 2010 e atualizado 2013), forma o quadro orientador da prática profissional em políticas públicas. Cobrado em ENARE 2025 (Q82).</p>
+
+    <div class="subsecao">Contexto da Publicação</div>
+    <ul class="lista">
+      <li>Publicação em 2011, após consolidação inicial do SUAS</li>
+      <li>Demanda da categoria por orientação técnico-ético-política</li>
+      <li>Resposta à crescente inserção do AS no SUAS pós-PNAS 2004</li>
+      <li>Articula PEP do SS com diretrizes do SUAS</li>
+      <li>Marco para diferenciar atuação técnica do AS da prática assistencialista</li>
+    </ul>
+
+    <div class="subsecao">Estrutura do Documento</div>
+    <table>
+      <tr><th>Parte</th><th>Conteúdo</th></tr>
+      <tr><td>I — Marco jurídico-político da AS</td><td>CF/1988, LOAS, PNAS, NOB-SUAS</td></tr>
+      <tr><td>II — Marco do trabalho profissional</td><td>Lei 8.662/1993, Código de Ética, DCNs ABEPSS</td></tr>
+      <tr><td>III — Espaços sócio-ocupacionais</td><td>CRAS, CREAS, Centro POP, acolhimentos, gestão</td></tr>
+      <tr><td>IV — Competências e atribuições do AS no SUAS</td><td>Núcleo central do documento</td></tr>
+      <tr><td>V — Princípios e diretrizes técnicas</td><td>Aplicações práticas; PRMs; intervenções</td></tr>
+      <tr><td>VI — Articulação com outras políticas</td><td>Intersetorialidade SUS, educação, justiça</td></tr>
+    </table>
+
+    <div class="subsecao">Princípios Orientadores do Trabalho</div>
+    <ul class="lista">
+      <li><strong>Defesa intransigente dos direitos sociais</strong></li>
+      <li><strong>Compromisso com a perspectiva do PEP</strong> (Código de Ética, Lei 8.662, DCNs)</li>
+      <li><strong>Reconhecimento da AS como direito</strong> — não como benemerência</li>
+      <li><strong>Visão de totalidade da questão social</strong> — leitura estrutural</li>
+      <li><strong>Indissociabilidade entre as 4 dimensões</strong> do trabalho (teórico-metodológica, ético-política, técnico-operativa, investigativa)</li>
+      <li><strong>Trabalho interdisciplinar</strong> com respeito às autonomias profissionais</li>
+      <li><strong>Defesa do trabalho do AS contra precarização</strong></li>
+      <li><strong>Compromisso com usuários</strong> e protagonismo deles</li>
+    </ul>
+
+    <div class="subsecao">Espaços Sócio-Ocupacionais do AS no SUAS</div>
+    <table>
+      <tr><th>Espaço</th><th>Função</th></tr>
+      <tr><td>CRAS</td><td>Proteção Básica; PAIF; SCFV; CadÚnico</td></tr>
+      <tr><td>CREAS</td><td>Proteção Especial Média; PAEFI; medidas socioeducativas; SEPREDI</td></tr>
+      <tr><td>Centro POP</td><td>Atendimento à PSR</td></tr>
+      <tr><td>Acolhimento Institucional</td><td>Atendimento de Alta Complexidade — abrigos, casas-lar, repúblicas</td></tr>
+      <tr><td>Gestão (SEAS / SMAS / DF)</td><td>Coordenação local; gestão de recursos; vigilância socioassistencial</td></tr>
+      <tr><td>Conselhos (CNAS/CEAS/CMAS)</td><td>Controle social, deliberação, fiscalização</td></tr>
+      <tr><td>Entidades de Assistência Social</td><td>Organizações sociais credenciadas; co-execução de serviços</td></tr>
+      <tr><td>INSS (BPC)</td><td>Avaliação social do BPC; perícia social</td></tr>
+    </table>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> Parâmetros CFESS 2011 são <em>documento orientador da categoria</em>, não lei. Reforçam o PEP e orientam o trabalho no SUAS. Cobrado em Q82/2025. Distinguir Parâmetros 2011 (SUAS) de Parâmetros 2010/2013 (Saúde).</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-ASSISTENCIA · Parâmetros</span><span>Extensivo ENARE 2026</span><span class="pg">2 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-ASSISTENCIA</div><div class="aula-ref">Bloco B13 · Aula 08 · Atribuições</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Competências e Atribuições Privativas do AS no SUAS</div>
+
+    <p>A distinção entre <strong>competências</strong> (atividades compartilhadas com outros profissionais) e <strong>atribuições privativas</strong> (exclusivas do AS conforme Lei 8.662/1993, art. 5º) é exigência da prova. Cobrado em ENARE 2024 (Q42, Q48, Q60, Q68, Q72, Q75, Q77, Q91, Q96, Q99) e 2025 (várias questões).</p>
+
+    <div class="subsecao">Atribuições Privativas do AS (Lei 8.662/1993, art. 5º)</div>
+    <p>Exclusivas — outros profissionais NÃO podem exercer:</p>
+    <ul class="lista">
+      <li>I — Coordenar, elaborar, executar, supervisionar e avaliar estudos, pesquisas, planos, programas e projetos na área de Serviço Social</li>
+      <li>II — Planejar, organizar e administrar benefícios e Serviços Sociais</li>
+      <li>III — Planejar, executar e avaliar pesquisas que possam contribuir para a análise da realidade social e para subsidiar ações profissionais</li>
+      <li>IV — Prestar assessoria e consultoria a órgãos da administração pública direta e indireta, empresas privadas e outras entidades, com relação às matérias relacionadas ao item II</li>
+      <li>V — Prestar assessoria e apoio aos movimentos sociais em matéria relacionada às políticas sociais, no exercício e na defesa dos direitos civis, políticos e sociais da coletividade</li>
+      <li>VI — Planejamento, organização e administração de Serviços Sociais e de Unidade de Serviço Social</li>
+      <li>VII — Realizar estudos socioeconômicos com os usuários para fins de benefícios e serviços sociais junto a órgãos da administração pública direta e indireta, empresas privadas e outras entidades</li>
+      <li>VIII — Treinamento, avaliação e supervisão direta de estagiários de Serviço Social</li>
+      <li>IX — Direção e coordenação de Unidades de ensino e Cursos de Serviço Social</li>
+      <li>X — Coordenação de seminários, encontros, congressos e eventos assemelhados sobre assuntos de Serviço Social</li>
+      <li>XI — Fiscalização do exercício profissional através dos Conselhos Federal e Regionais</li>
+    </ul>
+
+    <div class="subsecao">Competências do AS (Lei 8.662/1993, art. 4º)</div>
+    <p>Compartilhadas — podem ser exercidas também por outros profissionais habilitados:</p>
+    <ul class="lista">
+      <li>I — Elaborar, implementar, executar e avaliar políticas sociais junto a órgãos da administração pública, direta ou indireta, empresas, entidades e organizações populares</li>
+      <li>II — Elaborar, coordenar, executar e avaliar planos, programas e projetos que sejam do âmbito de atuação do Serviço Social com participação da sociedade civil</li>
+      <li>III — Encaminhar providências e prestar orientação social a indivíduos, grupos e à população</li>
+      <li>IV — Orientar indivíduos e grupos de diferentes segmentos sociais no sentido de identificar recursos e de fazer uso dos mesmos no atendimento e na defesa de seus direitos</li>
+      <li>V — Planejar, organizar e administrar serviços e Unidades de Serviço Social</li>
+      <li>VI — Planejar, executar e avaliar pesquisas que possam contribuir para a análise da realidade social e para subsidiar ações profissionais</li>
+      <li>VII — Prestar assessoria e consultoria a órgãos da administração pública direta e indireta, empresas privadas e outras entidades, com relação às matérias relacionadas ao inciso II</li>
+      <li>VIII — Prestar assessoria e apoio aos movimentos sociais em matéria relacionada às políticas sociais</li>
+    </ul>
+
+    <div class="subsecao">Confusão Frequente — Atribuição × Competência</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Atividades Privativas (Art. 5º)</div>
+        <p>Estudo socioeconômico para benefícios; supervisão de estágio; coordenação de cursos de SS; fiscalização da profissão. NENHUM outro profissional pode realizar.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Atividades Compartilhadas (Art. 4º)</div>
+        <p>Elaborar políticas sociais; encaminhamentos; orientação social; pesquisa de política social. Outros profissionais (psicólogos, educadores sociais) também podem participar.</p>
+      </div>
+    </div>
+
+    <div class="subsecao">Estudo Socioeconômico — Privativo (cobrado em ENARE)</div>
+    <p>O <strong>estudo socioeconômico</strong> (Lei 8.662/1993, art. 5º, VII) é atividade <em>exclusiva</em> do AS para fins de benefícios e serviços sociais. Usado para:</p>
+    <ul class="lista">
+      <li>Avaliação para BPC (Decreto 6.214/2007)</li>
+      <li>Inserção no CadÚnico e concessão do Bolsa Família</li>
+      <li>Estudo para acolhimento institucional</li>
+      <li>Avaliação para isenção de tarifas (energia, transporte)</li>
+      <li>Estudo para programas habitacionais</li>
+      <li>Avaliação para acesso a programas em saúde</li>
+    </ul>
+    <p>NÃO pode ser substituído por questionário aplicado por outro profissional. Mesmo o "questionário do CadÚnico" exige supervisão e análise pelo AS responsável pelo CRAS.</p>
+
+    <div class="alerta">
+      <p><strong>Pegadinha FGV:</strong> a FGV frequentemente confunde "atribuição privativa" com "competência compartilhada". Saber que <strong>estudo socioeconômico é privativo</strong> do AS (Lei 8.662/1993, art. 5º, VII), enquanto orientação social genérica pode ser compartilhada. Cobrado em ENARE 2025 (Q72, Q84, Q91, Q97).</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-ASSISTENCIA · Parâmetros</span><span>Extensivo ENARE 2026</span><span class="pg">3 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-ASSISTENCIA</div><div class="aula-ref">Bloco B13 · Aula 08 · CadÚnico</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">CadÚnico — Cadastro Único para Programas Sociais</div>
+
+    <p>O <strong>CadÚnico</strong> é o instrumento de identificação e caracterização socioeconômica das famílias de baixa renda no Brasil. Base para mais de 30 programas sociais federais. Regulamentado pelo <strong>Decreto 6.135/2007</strong> e atualizações; novo decreto em 2022 (Decreto 11.016/2022) modernizou a gestão.</p>
+
+    <div class="subsecao">Público do CadÚnico</div>
+    <ul class="lista">
+      <li><strong>Famílias com renda mensal per capita até 1/2 salário mínimo</strong>, ou</li>
+      <li><strong>Renda mensal familiar total até 3 salários mínimos</strong>, ou</li>
+      <li><strong>Renda superior</strong>, quando o cadastramento esteja vinculado à seleção/acompanhamento de programas sociais (ex.: BPC, programas estaduais/municipais com critérios próprios)</li>
+    </ul>
+
+    <div class="subsecao">Programas Sociais com Uso do CadÚnico</div>
+    <table>
+      <tr><th>Programa</th><th>Vinculação</th></tr>
+      <tr><td>Bolsa Família / Auxílio Brasil / Bolsa Família 2023+</td><td>Transferência de renda condicional</td></tr>
+      <tr><td>BPC</td><td>Benefício de Prestação Continuada (idoso 65+, PCD)</td></tr>
+      <tr><td>Tarifa Social de Energia Elétrica</td><td>Desconto na conta de luz</td></tr>
+      <tr><td>Auxílio Gás</td><td>Subsídio para botijão de gás</td></tr>
+      <tr><td>Minha Casa Minha Vida Faixa 1</td><td>Habitação popular</td></tr>
+      <tr><td>ID Jovem / Bilhete Único Jovem</td><td>Benefícios para jovens de baixa renda</td></tr>
+      <tr><td>Pronatec/Bolsa-Formação</td><td>Educação profissional</td></tr>
+      <tr><td>Programa Cisternas</td><td>Acesso à água no semiárido</td></tr>
+      <tr><td>Carteira do Idoso</td><td>Gratuidade em transporte interestadual</td></tr>
+      <tr><td>Programas estaduais e municipais</td><td>Bolsas, vale-gás, leite, alimentação</td></tr>
+    </table>
+
+    <div class="subsecao">Operação do CadÚnico no CRAS</div>
+    <p>O CRAS é a porta de entrada principal:</p>
+    <ul class="lista">
+      <li><strong>Identificação</strong>: equipe (incluindo AS) cadastra a família</li>
+      <li><strong>Atualização</strong>: cadastro deve ser atualizado <em>a cada 2 anos</em> ou sempre que houver mudança significativa (renda, composição, endereço)</li>
+      <li><strong>Composição familiar</strong>: pessoas que vivem sob o mesmo teto e compartilham renda/despesas</li>
+      <li><strong>Renda per capita</strong>: soma das rendas dividida pelo número de pessoas</li>
+      <li><strong>NIS — Número de Identificação Social</strong>: gerado para cada pessoa cadastrada; instrumento de identificação no INSS, programas sociais</li>
+      <li><strong>Folha-resumo</strong>: documento emitido após cadastramento</li>
+      <li><strong>Busca ativa</strong>: o CRAS deve buscar famílias elegíveis não cadastradas</li>
+    </ul>
+
+    <div class="subsecao">Mudanças do Decreto 11.016/2022</div>
+    <ul class="lista">
+      <li>Estabelece princípios de qualidade dos dados</li>
+      <li>Reforça a integração com outras políticas (saúde, educação, trabalho)</li>
+      <li>Maior controle sobre exclusões indevidas</li>
+      <li>Atualização cadastral em duas etapas: averbação e revisão</li>
+      <li>LGPD aplicada aos dados do CadÚnico (Lei 13.709/2018)</li>
+      <li>Cadastros online (eCadÚnico) — autoatendimento parcial</li>
+      <li>Implementação de aplicativo "Cadastro Único"</li>
+    </ul>
+
+    <div class="subsecao">Bolsa Família 2023+ (Lula III)</div>
+    <p>Reformulado em 2023 (Lei 14.601/2023):</p>
+    <ul class="lista">
+      <li>Benefício base de R$ 142,00 por pessoa + adicional de R$ 150,00 por criança até 6 anos + R$ 50,00 por gestante/criança 7-18 anos</li>
+      <li>Valor mínimo de R$ 600,00 por família</li>
+      <li>Condicionalidades: vacinação em dia, frequência escolar (acima de 4 anos), acompanhamento pré-natal</li>
+      <li>Reforço da busca ativa (Auxílio Gás, BPC integrado)</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> CadÚnico = base para 30+ programas; público é renda per capita até 1/2 SM. Decreto 11.016/2022 atualiza. CRAS é porta de entrada principal. Atualização a cada 2 anos. NIS = identificador. Cobrado em diversos contextos.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-ASSISTENCIA · Parâmetros</span><span>Extensivo ENARE 2026</span><span class="pg">4 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-ASSISTENCIA</div><div class="aula-ref">Bloco B13 · Aula 08 · BPC</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">BPC — Benefício de Prestação Continuada</div>
+
+    <p>O <strong>BPC — Benefício de Prestação Continuada</strong> é benefício constitucional (CF/1988 art. 203, V), regulamentado pela LOAS (art. 20) e pelo Decreto 6.214/2007. Foi mantido como direito não contributivo mesmo diante de reformas. Cobrado em diversos contextos da ENARE.</p>
+
+    <div class="subsecao">Definição</div>
+    <p>"<em>O BPC consiste no pagamento de 1 (um) salário-mínimo mensal à pessoa com deficiência ou ao idoso (65 anos ou mais) que comprovem não possuir meios para prover a própria manutenção e nem de tê-la provida por sua família.</em>"</p>
+
+    <div class="subsecao">Critérios de Acesso</div>
+    <table>
+      <tr><th>Requisito</th><th>Conteúdo</th></tr>
+      <tr><td><strong>Pessoa com deficiência</strong></td><td>Impedimento de longo prazo (mínimo 2 anos) de natureza física, mental, intelectual ou sensorial que obstrua participação em condições de igualdade</td></tr>
+      <tr><td><strong>Idoso</strong></td><td>65 anos ou mais</td></tr>
+      <tr><td><strong>Renda familiar per capita</strong></td><td><strong>1/4 do salário mínimo</strong> (critério original); ampliações em casos específicos (decisões judiciais ampliaram para 1/2 em alguns casos)</td></tr>
+      <tr><td><strong>Cidadania</strong></td><td>Brasileiro nato/naturalizado; estrangeiro residente (com documentação)</td></tr>
+      <tr><td><strong>Cadastro</strong></td><td>Inscrição no CadÚnico atualizada</td></tr>
+      <tr><td><strong>Caráter</strong></td><td>Não contributivo (não exige contribuição prévia ao INSS); intransferível; intransferível em vida; sem 13º</td></tr>
+    </table>
+
+    <div class="subsecao">Processo de Requisição do BPC</div>
+    <ol>
+      <li><strong>Inscrição no CadÚnico</strong>: porta de entrada — CRAS ou Centro de Referência</li>
+      <li><strong>Solicitação ao INSS</strong>: agendamento via Meu INSS, 135 ou agências</li>
+      <li><strong>Avaliação social</strong>: realizada por <em>assistente social</em> do INSS — atribuição privativa (Lei 8.662/1993, art. 5º; Decreto 6.214/2007)</li>
+      <li><strong>Avaliação biopsicossocial</strong> (PCD): combina perspectiva social do AS com biomédica (avaliação médica)</li>
+      <li><strong>Análise de renda</strong>: confere critério dos 1/4 SM per capita</li>
+      <li><strong>Concessão</strong>: pagamento mensal pelo INSS</li>
+      <li><strong>Revisão biennal</strong>: pode ser realizada; alterações cadastrais podem motivar revisão</li>
+    </ol>
+
+    <div class="subsecao">Avaliação Social do BPC — Função Privativa do AS</div>
+    <p>O <strong>estudo social</strong> para fins de BPC é privativo do AS (Lei 8.662/1993, art. 5º, VII). Inclui:</p>
+    <ul class="lista">
+      <li>Análise socioeconômica da família (renda, composição, despesas)</li>
+      <li>Identificação de vulnerabilidades sociais</li>
+      <li>Análise das barreiras enfrentadas pelo PCD (sociais, ambientais, atitudinais — Convenção da ONU 2007)</li>
+      <li>Articulação com rede de proteção social</li>
+      <li>Documentação técnica padronizada do INSS</li>
+      <li>Em casos judiciais (negativa do INSS): perícia social pode ser solicitada</li>
+    </ul>
+
+    <div class="subsecao">Outros Benefícios e Programas — Distinção</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">BPC vs Aposentadoria</div>
+        <p>BPC = não contributivo, 1 SM, idoso 65+, vinculado à renda. Aposentadoria = contributivo, valor variável conforme contribuição, idade conforme regra previdenciária (homem 65; mulher 62 com regras de transição EC 103/2019).</p>
+      </div>
+      <div class="card">
+        <div class="card-title">BPC vs Bolsa Família</div>
+        <p>BPC = direito constitucional, 1 SM, vitalício enquanto persistir condição. Bolsa Família = transferência de renda condicional, valor variável, sujeito a cumprimento de condicionalidades (saúde, educação).</p>
+      </div>
+      <div class="card">
+        <div class="card-title">BPC vs Benefícios Eventuais</div>
+        <p>BPC = continuado (mensal). Benefícios eventuais (auxílio natalidade, funeral, calamidade, vulnerabilidade temporária — LOAS art. 22) = provisórios, pontuais; competência do município.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Renda Per Capita Calculada</div>
+        <p>(Renda total da família) ÷ (número de pessoas da família). O cálculo segue regras específicas do Decreto 6.214 e atualizações. Diferentes programas têm cortes diferentes (BPC = 1/4; Bolsa Família = R$ 218; CadÚnico amplo = 1/2 SM).</p>
+      </div>
+    </div>
+
+    <div class="subsecao">Lei 13.146/2015 — Estatuto da Pessoa com Deficiência</div>
+    <p>O Estatuto reforça direitos da PCD e impacta o BPC:</p>
+    <ul class="lista">
+      <li>Adoção da definição da ONU (deficiência = impedimento + barreira)</li>
+      <li>Avaliação biopsicossocial obrigatória (não só biomédica)</li>
+      <li>Acessibilidade plena como direito</li>
+      <li>Cota em concursos públicos e ensino superior</li>
+      <li>Reforço da inclusão social</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> BPC = 1 SM, idoso 65+, PCD, renda per capita 1/4 SM, não contributivo, CadÚnico, avaliação social privativa do AS. Decreto 6.214/2007 regulamenta. Lei 13.146/2015 (Estatuto da PCD) altera definição. EC 103/2019 (Reforma da Previdência) elevou idade do BPC do idoso para 65 anos.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-ASSISTENCIA · Parâmetros</span><span>Extensivo ENARE 2026</span><span class="pg">5 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-ASSISTENCIA</div><div class="aula-ref">Bloco B13 · Aula 08 · PAIF e PAEFI</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">PAIF e PAEFI — Protocolos Detalhados</div>
+
+    <div class="subsecao">PAIF — Serviço de Proteção e Atendimento Integral à Família</div>
+    <p>Principal serviço da Proteção Social Básica. Tipificado pela Res. CNAS 109/2009. Aprofundamento dos elementos vistos na Aula 06.</p>
+
+    <table>
+      <tr><th>Dimensão</th><th>Conteúdo</th></tr>
+      <tr><td>Público</td><td>Famílias residentes no território de abrangência do CRAS; em situação de vulnerabilidade decorrente da pobreza, fragilização ou ruptura de vínculos, discriminação, vivência de outras formas de violação</td></tr>
+      <tr><td>Objetivos gerais</td><td>Fortalecer a função protetiva da família; prevenir ruptura de vínculos; promover acesso a direitos; potencializar a função protetiva</td></tr>
+      <tr><td>Modos de oferta</td><td>Acompanhamento familiar; atendimento particularizado; oficinas com famílias; visita domiciliar; encaminhamentos para rede; articulação com programas (PBF, BPC); busca ativa</td></tr>
+      <tr><td>Tempo de acompanhamento</td><td>Continuado, com revisão periódica do plano de atendimento</td></tr>
+      <tr><td>Modalidades de atendimento</td><td>(a) Acompanhamento familiar (mais sistemático, com PIA); (b) Atendimento eventual (orientações, encaminhamentos)</td></tr>
+      <tr><td>Recursos materiais</td><td>Sala para atendimento particularizado; espaço para oficinas; recursos para visita domiciliar</td></tr>
+      <tr><td>Articulação com outros serviços</td><td>SCFV, CREAS, rede de saúde, educação, justiça, Sistema de Garantia de Direitos</td></tr>
+    </table>
+
+    <div class="subsecao">Plano de Acompanhamento Familiar (PAIF)</div>
+    <ul class="lista">
+      <li><strong>Diagnóstico</strong>: análise da situação da família, vulnerabilidades, potencialidades</li>
+      <li><strong>Objetivos</strong>: específicos, mensuráveis, realistas, temporais</li>
+      <li><strong>Ações</strong>: o que será feito; por quem; quando</li>
+      <li><strong>Encaminhamentos</strong>: serviços, benefícios, articulações</li>
+      <li><strong>Indicadores</strong>: como se avalia o progresso</li>
+      <li><strong>Periodicidade de revisão</strong>: trimestral ou conforme necessidade</li>
+      <li><strong>Participação da família</strong>: protagonismo na construção do plano</li>
+    </ul>
+
+    <div class="subsecao">PAEFI — Serviço de Proteção e Atendimento Especializado a Famílias e Indivíduos</div>
+    <p>Principal serviço da Proteção Social Especial de Média Complexidade. Tipificado pela Res. CNAS 109/2009.</p>
+
+    <table>
+      <tr><th>Dimensão</th><th>Conteúdo</th></tr>
+      <tr><td>Público</td><td>Famílias e indivíduos com direitos violados ou ameaçados de violação, mas COM vínculos familiares e comunitários preservados (não rompidos)</td></tr>
+      <tr><td>Situações atendidas</td><td>Violência física, psicológica, negligência grave, abuso e exploração sexual, abandono, retorno do acolhimento institucional, trabalho infantil, situação de rua, discriminação, vulnerabilidade pós-adoecimento mental severo, conflito com a lei</td></tr>
+      <tr><td>Objetivos</td><td>Oferecer atendimento especializado; fortalecer função protetiva familiar; promover acesso ao Sistema de Garantia de Direitos; contribuir para superação da situação de violação</td></tr>
+      <tr><td>Atendimento</td><td>Individual (Plano Individual de Atendimento — PIA); familiar (Plano Familiar); em grupo (oficinas); visita domiciliar</td></tr>
+      <tr><td>Equipe especializada</td><td>Coordenador NS; AS, psicólogo, advogado (CREAS com PSC/LA); educador social; equipe ampliada conforme demanda</td></tr>
+      <tr><td>Articulação fundamental</td><td>Conselho Tutelar, Defensoria Pública, MP, Justiça, Saúde, Educação, Polícia, Centro de Referência da Mulher</td></tr>
+    </table>
+
+    <div class="subsecao">Sistema de Garantia de Direitos (SGD)</div>
+    <p>Rede articulada de instituições e serviços que asseguram direitos. Para crianças e adolescentes, está estruturado em 3 eixos (Resolução CONANDA 113/2006):</p>
+    <ul class="lista">
+      <li><strong>Eixo de Defesa</strong>: Defensoria, MP, Justiça da Infância, Conselho Tutelar</li>
+      <li><strong>Eixo de Promoção</strong>: SUAS (CRAS, CREAS), SUS, Educação</li>
+      <li><strong>Eixo de Controle</strong>: Conselhos de Direitos (CMDCA, CEDCA, CONANDA), Ouvidorias</li>
+    </ul>
+
+    <div class="subsecao">Articulação CREAS-CRAS</div>
+    <p>Quando a violação cessa e a família estabiliza, pode haver "contra-referência" para o CRAS (Proteção Básica) para acompanhamento continuado. Quando a vulnerabilidade no CRAS evolui para violação, há "referência" ao CREAS. A articulação é fluxo bidirecional.</p>
+
+    <div class="alerta">
+      <p><strong>Pegadinha FGV:</strong> PAIF (Proteção Básica, CRAS, vulnerabilidade SEM violação) vs PAEFI (Proteção Especial Média, CREAS, COM violação e COM vínculos preservados). Distinguir o público é exigência recorrente. Acolhimento institucional = ROMPIMENTO de vínculos (Alta Complexidade).</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-ASSISTENCIA · Parâmetros</span><span>Extensivo ENARE 2026</span><span class="pg">6 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-ASSISTENCIA</div><div class="aula-ref">Bloco B13 · Aula 08 · Trabalhadores Rurais</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Trabalhadores Rurais e SUAS</div>
+
+    <p>A inclusão dos trabalhadores rurais no SUAS foi cobrada explicitamente em <strong>ENARE 2025 (Q100)</strong>. Tema historicamente subdimensionado mas com relevância crescente.</p>
+
+    <div class="subsecao">Caracterização da População Rural</div>
+    <ul class="lista">
+      <li>~30 milhões de pessoas vivem em áreas rurais no Brasil (IBGE 2022)</li>
+      <li>Categorias: agricultores familiares; assalariados rurais temporários e permanentes; ribeirinhos; quilombolas; indígenas; povos e comunidades tradicionais (PCT)</li>
+      <li>Renda média menor; trabalho informal predominante; pouca cobertura previdenciária</li>
+      <li>Maior incidência de pobreza extrema na zona rural</li>
+      <li>Mecanização agrícola desempregou milhões nas últimas décadas</li>
+      <li>Conflitos fundiários (Movimento Sem Terra, comunidades quilombolas, indígenas)</li>
+      <li>Acesso desigual a serviços de saúde, educação, assistência</li>
+    </ul>
+
+    <div class="subsecao">Estratégias do SUAS para o Rural</div>
+    <table>
+      <tr><th>Estratégia</th><th>Conteúdo</th></tr>
+      <tr><td><strong>CRAS Itinerante / Equipes Volantes</strong></td><td>Equipes que se deslocam aos territórios rurais; visitam comunidades isoladas; aplicam CadÚnico em campo</td></tr>
+      <tr><td><strong>Lanchas/Embarcações</strong></td><td>Em municípios ribeirinhos (Amazônia); atendimento por via aquática</td></tr>
+      <tr><td><strong>Veículos para grandes distâncias</strong></td><td>Caminhonetes 4x4 em sertões e áreas remotas</td></tr>
+      <tr><td><strong>Articulação com Ater</strong></td><td>Assistência Técnica e Extensão Rural (Lei 12.188/2010); Embrater, Emater estaduais</td></tr>
+      <tr><td><strong>Articulação com Funai</strong></td><td>Fundação Nacional dos Povos Indígenas — proteção e direitos territoriais</td></tr>
+      <tr><td><strong>Articulação com Incra</strong></td><td>Reforma agrária; regularização fundiária</td></tr>
+      <tr><td><strong>Articulação com Fundação Cultural Palmares</strong></td><td>Quilombolas — reconhecimento, regularização</td></tr>
+      <tr><td><strong>Cisternas</strong></td><td>Programa Cisternas (semiárido) — acesso à água</td></tr>
+    </table>
+
+    <div class="subsecao">Programas Específicos para Rurais</div>
+    <ul class="lista">
+      <li><strong>Aposentadoria Rural por Idade Especial</strong>: 60 anos (homem) ou 55 (mulher) com 180 meses de atividade rural; regime especial INSS</li>
+      <li><strong>Salário-maternidade rural</strong>: para seguradas especiais</li>
+      <li><strong>Programa Nacional de Fortalecimento da Agricultura Familiar (Pronaf)</strong>: crédito subsidiado</li>
+      <li><strong>Programa de Aquisição de Alimentos (PAA)</strong>: compra direta do agricultor familiar</li>
+      <li><strong>Programa Nacional de Alimentação Escolar (PNAE)</strong>: 30% de compras da agricultura familiar</li>
+      <li><strong>Programa Cisternas</strong>: acesso à água no semiárido</li>
+      <li><strong>Bolsa Verde / Garantia Safra</strong>: programas específicos rurais</li>
+    </ul>
+
+    <div class="subsecao">Quilombolas, Indígenas e Povos Tradicionais</div>
+    <p>Populações com proteção constitucional específica (CF/1988 arts. 215, 216, 231, 232; ADCT art. 68 — quilombolas). O SUAS deve atender com perspectiva intercultural:</p>
+    <ul class="lista">
+      <li>Respeitar saberes, práticas e formas de organização próprias</li>
+      <li>Não impor padrões culturais externos</li>
+      <li>Atuar com tradutores quando necessário (indígenas)</li>
+      <li>Articulação com lideranças comunitárias</li>
+      <li>BPC e benefícios devem chegar aos territórios</li>
+      <li>Atenção a conflitos fundiários e violações específicas (invasões, garimpos ilegais, etc.)</li>
+      <li>Convenção 169 da OIT (consulta livre, prévia e informada)</li>
+    </ul>
+
+    <div class="subsecao">Educação no Campo e Educação Indígena</div>
+    <p>Articulação importante: a educação rural específica (Educação do Campo, Lei 11.947/2009) e a Educação Escolar Indígena (CF/1988 art. 210) são direitos. O AS pode atuar:</p>
+    <ul class="lista">
+      <li>Identificando crianças/adolescentes fora da escola</li>
+      <li>Articulando transporte escolar</li>
+      <li>Apoiando matrículas e permanência</li>
+      <li>Articulando merenda (PNAE)</li>
+      <li>Atuando contra trabalho infantil rural</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Cobrado em ENARE 2025 (Q100):</strong> trabalhadores rurais no SUAS — questão social do campo; mecanização e desemprego; equipes volantes; lanchas; articulação com Ater, Funai, Incra; programas específicos. Distinguir agricultor familiar (com aposentadoria especial) de assalariado rural (CLT).</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-ASSISTENCIA · Parâmetros</span><span>Extensivo ENARE 2026</span><span class="pg">7 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-ASSISTENCIA</div><div class="aula-ref">Bloco B13 · Aula 08 · Questões ENARE</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 01</span><span class="fonte">Atribuições Privativas · NC: Compreensão</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Sobre atribuições privativas do assistente social (Lei 8.662/1993, art. 5º) no SUAS, é CORRETO afirmar que:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Todas as atividades do AS no CRAS são privativas.</span></li>
+        <li class="correta"><span class="letra">B</span><span>O estudo socioeconômico para fins de benefícios e serviços sociais é atribuição PRIVATIVA (art. 5º, VII) — não pode ser realizado por outros profissionais. Outras atividades, como orientação social e encaminhamentos, são COMPETÊNCIAS compartilhadas (art. 4º) com outros profissionais.</span></li>
+        <li><span class="letra">C</span><span>Supervisão de estágio em Serviço Social pode ser realizada por psicólogos.</span></li>
+        <li><span class="letra">D</span><span>O AS NÃO pode coordenar a equipe do CRAS.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> a Lei 8.662/1993 distingue art. 4º (competências compartilhadas) de art. 5º (atribuições PRIVATIVAS — exclusivas do AS). O estudo socioeconômico (art. 5º, VII) é atividade EXCLUSIVA — fundamento para BPC, Bolsa Família, acesso a serviços. Cobrado em ENARE 2025 (Q72, Q84, Q91, Q97).</p>
+      <!-- ⚠️ REVISAR (CodeRabbit PR#7): "função clínica é privativa do AS" — verificar conceito vs Lei 8.662/1993 (art. 4º/5º). Confirmar com produtor de SS. -->
+      <p><strong>Por que as outras erram:</strong> A — nem todas; algumas são compartilhadas · C — supervisão de estágio em SS é PRIVATIVA do AS (art. 5º, VIII) · D — o AS PODE coordenar CRAS (cargo de coordenação compartilhado, mas a função clínica é privativa do AS quando exercida).</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-ASSISTENCIA · Parâmetros</span><span>Extensivo ENARE 2026</span><span class="pg">8 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-ASSISTENCIA</div><div class="aula-ref">Bloco B13 · Aula 08 · Questões ENARE</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 02</span><span class="fonte">BPC · NC: Aplicação</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Senhor de 67 anos chega ao CRAS pleiteando BPC. Renda mensal familiar: R$ 800,00, composta de 1 idoso e sua esposa (60 anos, sem renda). Salário mínimo atual: R$ 1.412,00. Conduta da AS:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Negar o BPC pois a renda total é alta.</span></li>
+        <li class="correta"><span class="letra">B</span><span>Calcular renda per capita (R$ 800 ÷ 2 = R$ 400/pessoa); confirmar critério (1/4 SM = R$ 353,00; portanto R$ 400 está acima); orientar inscrição no CadÚnico; informar sobre direito; encaminhar ao INSS para solicitação; explicar avaliação social pela AS do INSS; orientar sobre recurso administrativo ou judicial caso indeferido.</span></li>
+        <li><span class="letra">C</span><span>Encaminhar diretamente para aposentadoria contributiva.</span></li>
+        <li><span class="letra">D</span><span>Realizar perícia médica pelo AS para confirmar deficiência.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> a conduta correta é técnica e respeitosa da autonomia: calcular renda per capita (R$ 400), comparar com critério (1/4 SM = ~R$ 353). Como está acima, o BPC pode ser INDEFERIDO administrativamente, mas:</p>
+      <p>• A AS deve <em>orientar sobre o direito</em>, não negar de antemão (vedado pelo Código de Ética).<br>
+      • Há ampliações em casos específicos (decisões judiciais ampliam para 1/2 SM em alguns contextos — TST decisões).<br>
+      • Cabe recurso administrativo (Conselho de Recursos do INSS).<br>
+      • Em última instância, pode-se ajuizar ação na Justiça Federal.<br>
+      • A função do CRAS é informar, orientar, articular — não decidir o BPC (a decisão é do INSS).</p>
+      <p><strong>Por que as outras erram:</strong> A — não cabe ao CRAS negar; orientar o caminho · C — o senhor pode pleitear BPC se preenchido critério socioeconômico, mesmo sem contribuição · D — perícia médica é função privativa do médico perito; AS faz avaliação SOCIAL.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-ASSISTENCIA · Parâmetros</span><span>Extensivo ENARE 2026</span><span class="pg">9 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-ASSISTENCIA</div><div class="aula-ref">Bloco B13 · Aula 08 · Gabarito e Síntese</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 03</span><span class="fonte">PAIF vs PAEFI · NC: Análise</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Em CRAS, AS atende família composta por mãe (35 anos), três filhos (14, 11 e 7 anos) e avó (60 anos). Mãe perdeu o emprego há 4 meses; renda exclusiva da avó (aposentadoria 1 SM). Os filhos estão na escola; sem violência ou negligência. Qual o serviço adequado?</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>PAEFI no CREAS.</span></li>
+        <li class="correta"><span class="letra">B</span><span>PAIF no CRAS — família em vulnerabilidade SEM violação de direitos; vínculos familiares preservados. Acompanhamento familiar com plano; articulação com PBF, busca ativa de trabalho, SCFV para crianças, encaminhamentos. Acolhimento institucional NÃO se justifica.</span></li>
+        <li><span class="letra">C</span><span>Acolhimento institucional para as crianças.</span></li>
+        <li><span class="letra">D</span><span>Apenas orientação genérica sem acompanhamento.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> trata-se de vulnerabilidade socioeconômica (perda de renda) SEM violação de direitos. Família com vínculos preservados. O serviço é o <strong>PAIF no CRAS</strong> (Proteção Básica). Conduta: acompanhamento familiar continuado; articulação com Bolsa Família/CadÚnico; SCFV para crianças e adolescentes; busca ativa de trabalho (CRAS articula com Sistema Público de Emprego); orientação sobre direitos previdenciários (BPC para avó se renda muito baixa, seguro-desemprego para mãe se cabível).</p>
+    </div>
+
+    <div class="subsecao">Síntese — Parâmetros Profissionais na Assistência Social</div>
+    <div class="sintese-grid">
+      <div class="sintese-item"><div class="si-label">CFESS 2011</div><p>"Parâmetros para Atuação de AS na Política de Assistência Social". Documento orientador da categoria; articula PEP do SS com SUAS.</p></div>
+      <div class="sintese-item"><div class="si-label">Atribuições Privativas (art. 5º)</div><p>Estudo socioeconômico para benefícios; supervisão de estágio em SS; coordenação de cursos; fiscalização da profissão. EXCLUSIVAS do AS.</p></div>
+      <div class="sintese-item"><div class="si-label">CadÚnico</div><p>Decreto 11.016/2022. Renda per capita até 1/2 SM. Porta para 30+ programas. NIS = identificador. Atualização a cada 2 anos. CRAS = porta de entrada principal.</p></div>
+      <div class="sintese-item"><div class="si-label">BPC</div><p>1 SM, idoso 65+, PCD, renda per capita 1/4 SM, não contributivo. Decreto 6.214/2007. EC 103/2019. Lei 13.146/2015 (Estatuto da PCD). Avaliação social PRIVATIVA do AS.</p></div>
+      <div class="sintese-item"><div class="si-label">PAIF e PAEFI</div><p>PAIF = Proteção Básica, CRAS, vulnerabilidade SEM violação, vínculos preservados, foco em prevenção. PAEFI = Proteção Especial Média, CREAS, COM violação, COM vínculos, foco em superação da violação.</p></div>
+      <div class="sintese-item"><div class="si-label">Próxima Aula</div><p><strong>Aula 09 — Seguridade Social e Políticas Sociais.</strong> CF/1988 tripé, seletividade/distributividade, controle social, conferências, filantrocapitalismo.</p></div>
+    </div>
+
+    <div class="alerta" style="margin-top:5px;">
+      <p><strong>Regra de ouro — Parâmetros no ENARE:</strong> CFESS 2011 orienta; Lei 8.662/1993 art. 5º = privativo; art. 4º = competência; estudo socioeconômico = exclusivo do AS; CadÚnico = porta de acesso; BPC = direito não contributivo; PAIF (CRAS) ≠ PAEFI (CREAS); trabalhadores rurais têm cobertura específica via equipes volantes.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-ASSISTENCIA · Parâmetros</span><span>Extensivo ENARE 2026</span><span class="pg">10 / 10</span></div>
+</div>
+
+</body>
+</html>

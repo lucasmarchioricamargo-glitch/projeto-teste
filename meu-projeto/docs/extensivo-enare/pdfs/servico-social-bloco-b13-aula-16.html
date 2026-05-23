@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Serviço Social — Bloco B13 Aula 16 | Extensivo ENARE 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap');
+  :root { --creme: #F6F4ED; --verde: #1F5C23; --amarelo: #C6D834; --escuro: #0C2B0E; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #d0d0d0; font-family: 'Bricolage Grotesque', sans-serif; }
+  .page { width: 210mm; height: 297mm; background: var(--creme); margin: 0 auto 12px; position: relative; overflow: hidden; page-break-after: always; }
+  .header { background: var(--verde); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .header-logo { display: flex; align-items: center; gap: 8px; }
+  .header-logo svg { width: 32px; height: 32px; }
+  .header-brand { display: flex; flex-direction: column; line-height: 1; }
+  .header-brand .marca { font-family: 'Playfair Display', serif; font-style: italic; color: #fff; font-size: 13px; letter-spacing: 0.5px; }
+  .header-brand .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 7px; letter-spacing: 1.5px; text-transform: uppercase; }
+  .header-info { text-align: right; }
+  .header-info .disciplina { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
+  .header-info .aula-ref { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.7); font-size: 8px; letter-spacing: 0.5px; }
+  .footer { position: absolute; bottom: 0; left: 0; right: 0; background: var(--verde); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .footer span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.6); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .footer .pg { color: var(--amarelo); font-weight: 400; }
+  .body { padding: 14px 18px 30px; height: calc(297mm - 52px - 22px); overflow: hidden; }
+  .capa-page { background: var(--verde); }
+  .capa-header { background: var(--creme); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .capa-header .marca { font-family: 'Playfair Display', serif; font-style: italic; color: var(--verde); font-size: 14px; }
+  .capa-header .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--verde); font-size: 7.5px; letter-spacing: 2px; text-transform: uppercase; }
+  .capa-body { padding: 28px 24px 0; display: flex; flex-direction: column; height: calc(297mm - 52px - 22px); }
+  .capa-eyebrow { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; }
+  .capa-titulo { font-family: 'Barlow Condensed', sans-serif; color: #fff; font-size: 50px; line-height: 0.95; text-transform: uppercase; letter-spacing: -0.5px; margin-bottom: 6px; }
+  .capa-titulo span { color: var(--amarelo); }
+  .capa-subtitulo { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; color: rgba(255,255,255,0.65); font-size: 12px; letter-spacing: 0.3px; margin-bottom: 22px; line-height: 1.5; }
+  .capa-badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+  .capa-badge { background: rgba(198,216,52,0.15); border: 1px solid var(--amarelo); color: var(--amarelo); font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 8px; border-radius: 2px; }
+  .capa-divider { width: 40px; height: 3px; background: var(--amarelo); margin-bottom: 20px; }
+  .capa-topicos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .capa-topico { display: flex; align-items: flex-start; gap: 7px; }
+  .capa-topico-num { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 18px; line-height: 1; min-width: 18px; }
+  .capa-topico-txt { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 400; color: rgba(255,255,255,0.8); font-size: 9.5px; line-height: 1.4; }
+  .capa-footer-strip { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.25); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .capa-footer-strip span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.45); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .secao-titulo { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 18px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid var(--amarelo); padding-bottom: 3px; margin-bottom: 9px; line-height: 1; }
+  .subsecao { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.5px; margin: 7px 0 3px; }
+  p { font-size: 9px; line-height: 1.55; color: #1a1a1a; margin-bottom: 4px; font-weight: 400; }
+  .destaque { background: var(--amarelo); color: var(--escuro); font-weight: 600; padding: 1px 4px; border-radius: 2px; font-size: 8.5px; }
+  .alerta { background: rgba(198,216,52,0.18); border-left: 3px solid var(--amarelo); padding: 5px 8px; margin: 5px 0; border-radius: 0 3px 3px 0; }
+  .alerta p { margin: 0; font-size: 8.5px; }
+  .alerta strong { color: var(--verde); }
+  table { width: 100%; border-collapse: collapse; margin: 5px 0; font-size: 8px; }
+  th { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; padding: 4px 6px; text-align: left; }
+  td { padding: 3px 6px; border-bottom: 1px solid rgba(31,92,35,0.12); vertical-align: top; line-height: 1.4; color: #1a1a1a; }
+  tr:nth-child(even) td { background: rgba(31,92,35,0.04); }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 5px 0; }
+  .card { background: rgba(31,92,35,0.06); border: 1px solid rgba(31,92,35,0.15); border-radius: 4px; padding: 7px 8px; }
+  .card-title { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 11px; text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 3px; }
+  .card p { font-size: 8px; line-height: 1.5; }
+  .questao-header { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; padding: 4px 10px; border-radius: 3px 3px 0 0; display: flex; justify-content: space-between; align-items: center; }
+  .questao-header .fonte { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; color: var(--amarelo); letter-spacing: 0.5px; }
+  .questao-body { border: 1px solid rgba(31,92,35,0.2); border-top: none; border-radius: 0 0 3px 3px; padding: 7px 10px; margin-bottom: 7px; }
+  .questao-enunciado { font-size: 8.5px; line-height: 1.55; color: #111; margin-bottom: 5px; font-weight: 500; }
+  .alternativas { list-style: none; }
+  .alternativas li { font-size: 8px; line-height: 1.5; padding: 2px 0; color: #222; display: flex; gap: 5px; }
+  .alternativas li .letra { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: var(--verde); font-size: 9px; min-width: 10px; }
+  .alternativas li.correta .letra { color: var(--amarelo); }
+  .alternativas li.correta { background: rgba(198,216,52,0.15); border-left: 2px solid var(--amarelo); padding-left: 4px; }
+  .gabarito-box { background: var(--verde); border-radius: 4px; padding: 8px 12px; margin: 6px 0; }
+  .gabarito-box .gab-title { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+  .gabarito-box p { color: rgba(255,255,255,0.9); font-size: 8px; line-height: 1.55; }
+  .gabarito-box strong { color: var(--amarelo); }
+  .sintese-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-top: 6px; }
+  .sintese-item { background: rgba(31,92,35,0.07); border-left: 3px solid var(--verde); padding: 5px 7px; border-radius: 0 3px 3px 0; }
+  .sintese-item .si-label { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px; }
+  .sintese-item p { font-size: 7.5px; line-height: 1.5; }
+  ul.lista { padding-left: 14px; margin: 3px 0; }
+  ul.lista li { font-size: 8.5px; line-height: 1.55; color: #1a1a1a; margin-bottom: 1px; }
+  @media print { body { background: none; } .page { margin: 0; box-shadow: none; } }
+</style>
+</head>
+<body>
+
+<div class="page capa-page">
+  <div class="capa-header">
+    <div style="display:flex;align-items:center;gap:8px;"><svg width="34" height="34" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#1F5C23"/></svg><div><div class="marca">Elite Treinamentos</div><div class="tagline">Extensivo ENARE 2026</div></div></div>
+    <div style="text-align:right;"><div style="font-family:'Barlow Condensed',sans-serif;color:var(--verde);font-size:11px;letter-spacing:1px;text-transform:uppercase;">Bloco B13 · Aula 16</div><div style="font-family:'Space Grotesk',sans-serif;font-weight:300;color:#888;font-size:7.5px;letter-spacing:0.5px;">Serviço Social</div></div>
+  </div>
+  <div class="capa-body">
+    <div class="capa-eyebrow">Bloco B13 · SS-TRABALHO · Aula 16 de 21</div>
+    <div class="capa-titulo">Trabalho <span>Profissional<br>do Assistente<br>Social</span></div>
+    <div class="capa-subtitulo">Instrumentalidade (Iamamoto, Guerra),<br>instrumentos, técnicas e documentos do SS</div>
+    <div class="capa-badge-row">
+      <div class="capa-badge">SS-TRABALHO ★★★★</div>
+      <div class="capa-badge">Iamamoto · Guerra · Netto</div>
+      <div class="capa-badge">Res. CFESS 568/2010</div>
+      <div class="capa-badge">Dimensões</div>
+    </div>
+    <div class="capa-divider"></div>
+    <div class="capa-topicos">
+      <div class="capa-topico"><div class="capa-topico-num">01</div><div class="capa-topico-txt">SS como trabalho assalariado (Iamamoto)</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">02</div><div class="capa-topico-txt">Instrumentalidade (Yolanda Guerra)</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">03</div><div class="capa-topico-txt">Três dimensões: teórico, ético, técnico</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">04</div><div class="capa-topico-txt">Instrumentos e técnicas</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">05</div><div class="capa-topico-txt">Documentos profissionais (Res. 568/2010)</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">06</div><div class="capa-topico-txt">TICs, indicadores e teletrabalho</div></div>
+    </div>
+  </div>
+  <div class="capa-footer-strip"><span>Extensivo ENARE 2026</span><span>Elite Treinamentos em Saúde</span><span>Página 1 de 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-TRABALHO</div><div class="aula-ref">Bloco B13 · Aula 16 · SS como Trabalho</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Serviço Social como Trabalho — Iamamoto</div>
+
+    <p>A obra de <strong>Marilda Vilela Iamamoto</strong>, especialmente "<em>Relações Sociais e Serviço Social no Brasil</em>" (1982, com Raul de Carvalho) e "<em>O Serviço Social na Contemporaneidade</em>" (1998), estabelece o marco da concepção do SS como <strong>trabalho profissional assalariado</strong>, em condições determinadas pela divisão sociotécnica do trabalho no capitalismo. Eixo da teoria do trabalho profissional brasileira contemporânea.</p>
+
+    <div class="subsecao">A Tese de Iamamoto</div>
+    <p>O AS é <em>trabalhador assalariado</em> inserido nas relações de produção e reprodução do capital. Não é "agente moral", "vocacionado", "missionário". É um profissional cuja inserção é determinada pelas condições históricas do capitalismo brasileiro. Como trabalhador assalariado:</p>
+    <ul class="lista">
+      <li>Vende sua força de trabalho a empregadores (Estado, ONG, empresa)</li>
+      <li>Trabalha sob relações de assalariamento (CLT, estatutário, terceirizado, autônomo)</li>
+      <li>Submete-se a controles institucionais sobre seu trabalho</li>
+      <li>Produz "serviços" para a reprodução das relações sociais</li>
+      <li>Participa da reprodução do capital E pode contribuir para a luta dos trabalhadores</li>
+      <li>Tem autonomia relativa — não absoluta — no exercício profissional</li>
+    </ul>
+
+    <div class="subsecao">A "Síntese Iamamoto"</div>
+    <p>"<em>O Serviço Social é uma especialização do trabalho da sociedade, inscrita na divisão sociotécnica do trabalho coletivo, que tem na questão social — em suas várias expressões — a base de sua fundação como especialização do trabalho.</em>" (Iamamoto, 1998)</p>
+
+    <ul class="lista">
+      <li>SS = especialização do trabalho coletivo</li>
+      <li>Inserido na divisão sociotécnica do trabalho</li>
+      <li>Tem como base material a questão social</li>
+      <li>Realiza-se em condições assalariadas (heterônomas)</li>
+      <li>Constrói autonomia profissional <em>relativa</em></li>
+    </ul>
+
+    <div class="subsecao">Processo de Trabalho do AS</div>
+    <p>Aplicando a categoria marxiana de processo de trabalho ao SS, Iamamoto e Raul de Carvalho identificam os elementos:</p>
+    <table>
+      <tr><th>Elemento</th><th>No Serviço Social</th></tr>
+      <tr><td><strong>Objeto/matéria-prima</strong></td><td>Questão social em suas múltiplas expressões — pobreza, violência, desigualdades de raça/gênero, etc.</td></tr>
+      <tr><td><strong>Meios/instrumentos de trabalho</strong></td><td>Conhecimentos, instrumentos técnico-operativos, recursos institucionais; <em>instrumentalidade</em></td></tr>
+      <tr><td><strong>Atividade/finalidade</strong></td><td>Intervenção profissional voltada à efetivação de direitos e ao fortalecimento das classes trabalhadoras</td></tr>
+      <tr><td><strong>Produto</strong></td><td>"Serviços" sociais — atendimentos, encaminhamentos, mediações, articulações de redes; reprodução/transformação das relações sociais</td></tr>
+    </table>
+
+    <div class="subsecao">Condicionantes do Trabalho Profissional</div>
+    <ul class="lista">
+      <li><strong>Estado e instituições</strong>: definem espaços, demandas, recursos, controles</li>
+      <li><strong>Mercado de trabalho</strong>: precarização, terceirização, intermitência, pejotização</li>
+      <li><strong>Conjuntura política</strong>: avanços e retrocessos (CF/1988 × EC 95/2016)</li>
+      <li><strong>Necessidades dos usuários</strong>: demandas concretas dos trabalhadores</li>
+      <li><strong>Projeto Ético-Político</strong>: orientação contra-hegemônica</li>
+      <li><strong>Equipe e gestão</strong>: trabalho coletivo, hierarquias institucionais</li>
+    </ul>
+
+    <div class="subsecao">Autonomia Relativa do AS</div>
+    <p>Conceito-chave em Iamamoto. O AS é trabalhador assalariado, mas tem <em>autonomia técnica relativa</em>:</p>
+    <ul class="lista">
+      <li>Decisão sobre como executar o trabalho (procedimentos, abordagem, vínculos)</li>
+      <li>Independência teórico-metodológica para análise das demandas</li>
+      <li>Posicionamento ético-político na resposta às demandas institucionais</li>
+      <li>Limites: hierarquia institucional, recursos disponíveis, condições de trabalho</li>
+      <li>O AS pode (e deve) tensionar as demandas institucionais quando estas violam o PEP</li>
+      <li>O Código de Ética e a Lei 8.662 protegem essa autonomia (Aula 14)</li>
+    </ul>
+
+    <div class="subsecao">A Crítica ao "Endogenismo"</div>
+    <p>Iamamoto critica a tradição interpretativa que via o SS como "evolução interna" da profissão (sucessão de teorias e métodos):</p>
+    <ul class="lista">
+      <li>O SS deve ser analisado em sua determinação histórico-social</li>
+      <li>Surge no capitalismo monopolista (Netto), não como "natural" caridade</li>
+      <li>Articulado com as estratégias do Estado de enfrentamento à questão social</li>
+      <li>Profissão filha do capitalismo, não anterior a ele</li>
+      <li>Análise sócio-histórica, não internalista</li>
+    </ul>
+
+    <div class="subsecao">Iamamoto e a Pós-CF/1988</div>
+    <ul class="lista">
+      <li>"O Serviço Social na Contemporaneidade" (1998) atualiza a leitura</li>
+      <li>Análise da contrarreforma do Estado neoliberal (anos 1990)</li>
+      <li>Precarização do trabalho (terceirização, OSs, OSSs, pejotização)</li>
+      <li>Crise do Welfare State; ataques aos direitos sociais</li>
+      <li>Necessidade de "atualização" do PEP às novas condições</li>
+      <li>Defesa da unidade entre formação, exercício e organização política</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> Iamamoto = SS como trabalho. Síntese: "especialização do trabalho coletivo, inscrita na divisão sociotécnica do trabalho, com a questão social como base". Processo de trabalho: objeto (QS), meios (instrumentalidade), finalidade (efetivação de direitos), produto (serviços). Autonomia relativa. Crítica ao endogenismo.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-TRABALHO · Iamamoto</span><span>Extensivo ENARE 2026</span><span class="pg">2 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-TRABALHO</div><div class="aula-ref">Bloco B13 · Aula 16 · Instrumentalidade</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Instrumentalidade — Yolanda Guerra</div>
+
+    <p>A categoria <strong>instrumentalidade</strong> foi sistematizada por <strong>Yolanda Guerra</strong> em "<em>A Instrumentalidade do Serviço Social</em>" (1995). Diferencia-se de "instrumentos e técnicas" (estes são apenas <em>parte</em> da instrumentalidade). É a categoria que articula teoria-prática no fazer profissional. Cobrança quase certa.</p>
+
+    <div class="subsecao">Definição de Instrumentalidade</div>
+    <p>"<em>A instrumentalidade do exercício profissional refere-se à capacidade de modificar as condições objetivas do trabalho, tomando-as como mediação para a obtenção de finalidades sociais.</em>" (Guerra, 1995)</p>
+
+    <p>Ou seja: é a <em>capacidade do trabalho profissional</em> de servir como mediação entre teoria e prática, entre projeto profissional e demanda concreta, entre saber profissional e realidade social. NÃO é apenas "uso de ferramentas". É a totalidade do fazer profissional pensado dialeticamente.</p>
+
+    <div class="subsecao">Instrumentos × Instrumentalidade — Diferenciação</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Instrumentos e Técnicas</div>
+        <p>Ferramentas concretas: entrevista, visita, parecer social, reunião, grupo. São <em>parte</em> da instrumentalidade, mas não sua totalidade. Sem teoria, técnica é vazia.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Instrumentalidade</div>
+        <p>Capacidade de articular teoria-prática; mediação dialética entre demanda imediata e projeto societário; juízo profissional crítico sobre o uso dos instrumentos. Inclui as dimensões teórica, ética e técnica.</p>
+      </div>
+    </div>
+
+    <div class="subsecao">As Três Dimensões do Trabalho Profissional</div>
+    <p>Conceito central da concepção contemporânea. O trabalho profissional articula três dimensões inseparáveis (Iamamoto, Guerra, Netto):</p>
+
+    <table>
+      <tr><th>Dimensão</th><th>Conteúdo</th></tr>
+      <tr><td><strong>1. Teórico-Metodológica</strong></td><td>Domínio de teorias sociais críticas; método de análise da realidade (materialismo histórico-dialético, principalmente); capacidade de leitura crítica das demandas e da conjuntura</td></tr>
+      <tr><td><strong>2. Ético-Política</strong></td><td>Direção social do trabalho profissional; compromisso com o PEP; posicionamento diante das contradições; defesa intransigente dos DH; recusa à neutralidade</td></tr>
+      <tr><td><strong>3. Técnico-Operativa</strong></td><td>Instrumentalidade do exercício; domínio dos instrumentos e técnicas; capacidade de operacionalizar as outras dimensões; "como fazer"</td></tr>
+    </table>
+
+    <div class="subsecao">Articulação das Dimensões</div>
+    <ul class="lista">
+      <li>NÃO existe técnica sem teoria — uso instrumental dos meios reproduz a alienação</li>
+      <li>NÃO existe teoria sem prática — teorização sem materialização perde efetividade</li>
+      <li>NÃO existe técnica neutra — toda escolha técnica é ético-política</li>
+      <li>Hierarquia interna: a dimensão ético-política dá direção; a teórico-metodológica dá compreensão; a técnico-operativa dá operacionalização</li>
+      <li>Articulam-se na <em>instrumentalidade</em> — a capacidade de mediar dialeticamente</li>
+    </ul>
+
+    <div class="subsecao">Crítica ao "Tecnicismo"</div>
+    <p>Guerra denuncia a redução do SS à dimensão técnico-operativa, comum em concursos, capacitações empresariais, "manuais de procedimento":</p>
+    <ul class="lista">
+      <li>"Como fazer" sem "por que fazer" = tecnicismo</li>
+      <li>Profissão reduzida a executora de programas (papel "burocrático")</li>
+      <li>Despolitização do trabalho profissional</li>
+      <li>Subordinação às demandas institucionais sem mediação crítica</li>
+      <li>Alheamento das contradições da realidade</li>
+      <li>Crítica recorrente em concursos: "como qualificar uma demanda" exige teoria + ética + técnica, não apenas procedimentos</li>
+    </ul>
+
+    <div class="subsecao">Crítica ao "Teoricismo"</div>
+    <p>Inversamente, há também o risco do "teoricismo":</p>
+    <ul class="lista">
+      <li>Discurso teórico desligado da prática concreta</li>
+      <li>Citações de Marx sem mediação para a realidade local</li>
+      <li>Desprezo pela dimensão técnica</li>
+      <li>"Críticas pelo alto" sem propostas operacionais</li>
+      <li>Distância dos usuários e dos espaços ocupacionais</li>
+    </ul>
+
+    <div class="subsecao">Mediação como Categoria-Chave</div>
+    <p>A mediação (categoria hegeliana, retomada por Lukács) é central na instrumentalidade. Mediar é estabelecer relações dialéticas entre singular-particular-universal:</p>
+    <ul class="lista">
+      <li><strong>Singular</strong>: situação imediata, caso concreto, indivíduo</li>
+      <li><strong>Particular</strong>: contexto institucional, território, política social específica</li>
+      <li><strong>Universal</strong>: totalidade social, modo de produção, classes sociais</li>
+      <li>Trabalho profissional articula esses três níveis</li>
+      <li>Sem mediação, o singular vira "ajuda individual"; o universal vira "discurso abstrato"</li>
+    </ul>
+
+    <div class="subsecao">Pluralismo Profissional</div>
+    <p>Apesar da hegemonia marxista no SS brasileiro, há pluralidade:</p>
+    <ul class="lista">
+      <li>Tradições: marxismo (hegemônica), fenomenologia, sistêmica, sócio-clínica, antiopressivas (decoloniais, feministas, antirracistas)</li>
+      <li>Princípio VII do CE/1993: garantia do pluralismo democrático</li>
+      <li>Pluralismo NÃO é ecletismo (mistura sem critério)</li>
+      <li>Pluralismo NÃO é relativismo (todas as teorias valem igual)</li>
+      <li>Pluralismo SIM: respeito a correntes democráticas; debate teórico aberto</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> Yolanda Guerra = instrumentalidade ≠ instrumentos. 3 dimensões: teórico-metodológica + ético-política + técnico-operativa (inseparáveis). Mediação (singular-particular-universal). Crítica ao tecnicismo e ao teoricismo. Pluralismo democrático (princípio VII do CE).</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-TRABALHO · Instrumentalidade</span><span>Extensivo ENARE 2026</span><span class="pg">3 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-TRABALHO</div><div class="aula-ref">Bloco B13 · Aula 16 · Instrumentos</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Instrumentos e Técnicas do AS</div>
+
+    <p>Os <strong>instrumentos técnico-operativos</strong> são os meios concretos de operacionalização do trabalho profissional. Não são neutros — escolha do instrumento expressa direção teórico-metodológica e ético-política. FGV pode cobrar conhecimento de cada instrumento e situações de uso adequado.</p>
+
+    <div class="subsecao">Os Instrumentos Tradicionais</div>
+    <table>
+      <tr><th>Instrumento</th><th>Finalidade · Características</th></tr>
+      <tr><td><strong>Entrevista</strong></td><td>Diálogo qualificado para conhecer a situação, demandas, recursos. Tipos: aberta, semiestruturada, estruturada; individual ou familiar; episódica ou continuada. Escuta qualificada, sem julgamento.</td></tr>
+      <tr><td><strong>Visita Domiciliar</strong></td><td>Conhecimento do contexto familiar/territorial; articulação com o cotidiano. Acordada com a família (não-fiscalizatória). Cuidado para não tornar-se "vigilância" (criticada por Iamamoto).</td></tr>
+      <tr><td><strong>Visita Institucional</strong></td><td>Articulação com instituições parceiras (escola, abrigo, MP, Defensoria). Conhecimento de fluxos e recursos.</td></tr>
+      <tr><td><strong>Reunião</strong></td><td>Trabalho coletivo: com famílias, equipes, instituições, movimentos sociais. Tipos: deliberativa, informativa, de trabalho, de planejamento.</td></tr>
+      <tr><td><strong>Grupo</strong></td><td>Atendimento coletivo: socioeducativo, terapêutico, de geração de renda, de mobilização. Tipos: tarefa, encontro, terapêutico, socioeducativo.</td></tr>
+      <tr><td><strong>Observação</strong></td><td>Sistemática ou assistemática; participante ou não-participante. Registro de dados qualitativos.</td></tr>
+      <tr><td><strong>Documentação</strong></td><td>Análise documental — leis, prontuários, processos, registros. Pesquisa documental.</td></tr>
+      <tr><td><strong>Encaminhamento</strong></td><td>Ato técnico-operativo de articular usuário a outro serviço. Deve ser <em>qualificado</em>: contato prévio, documento por escrito, retorno.</td></tr>
+      <tr><td><strong>Plantão Social</strong></td><td>Atendimento de demandas espontâneas; sem agendamento. Crítica: pode reduzir o trabalho a apagamento de fogo (Parâmetros CFESS 2010 — Aula 12).</td></tr>
+    </table>
+
+    <div class="subsecao">Instrumentos da Pesquisa Social</div>
+    <ul class="lista">
+      <li><strong>Diagnóstico social</strong>: caracterização da realidade do território/instituição</li>
+      <li><strong>Estudo socioeconômico</strong>: levantamento de informações para análise técnica</li>
+      <li><strong>Pesquisa-ação</strong>: pesquisa articulada com intervenção (Thiollent)</li>
+      <li><strong>Pesquisa qualitativa</strong>: entrevistas semiestruturadas, grupos focais, etnografia</li>
+      <li><strong>Pesquisa quantitativa</strong>: questionários, análise estatística</li>
+      <li><strong>Sistematização da prática</strong>: registro analítico-crítico da prática profissional</li>
+      <li><strong>Etnografia</strong>: observação participante prolongada</li>
+    </ul>
+
+    <div class="subsecao">Instrumentos da Mobilização e Organização</div>
+    <ul class="lista">
+      <li><strong>Assessoria a movimentos sociais</strong>: apoio técnico-político</li>
+      <li><strong>Articulação intersetorial</strong>: rede de serviços e instituições</li>
+      <li><strong>Educação popular</strong>: rodas, oficinas, grupos (Paulo Freire)</li>
+      <li><strong>Mobilização comunitária</strong>: convocação de assembleias, plenárias</li>
+      <li><strong>Conselhos e Conferências</strong>: gestão democrática</li>
+      <li><strong>Comissões</strong>: participação técnica em fóruns</li>
+    </ul>
+
+    <div class="subsecao">Os Instrumentos no Contexto da Prática</div>
+    <p>O Iamamoto-Guerra-Netto destaca que os instrumentos:</p>
+    <ul class="lista">
+      <li>Devem ser escolhidos conforme a situação, não como rotina</li>
+      <li>Não são neutros — refletem teoria/método/direção ético-política</li>
+      <li>Devem combinar-se (visita + entrevista + grupo + encaminhamento, etc.)</li>
+      <li>Estão articulados às dimensões teórica e ética</li>
+      <li>Não substituem reflexão crítica sobre a situação concreta</li>
+    </ul>
+
+    <div class="subsecao">Tipologias de Atendimento</div>
+    <table>
+      <tr><th>Tipo</th><th>Características</th></tr>
+      <tr><td>Atendimento individualizado</td><td>Foco em um sujeito/família; entrevista; orientação; encaminhamento</td></tr>
+      <tr><td>Atendimento grupal</td><td>Foco em coletivo; grupo socioeducativo, terapêutico, de mobilização</td></tr>
+      <tr><td>Atendimento territorial</td><td>Foco em uma comunidade/território; matriciamento; ações intersetoriais</td></tr>
+      <tr><td>Atendimento institucional</td><td>Foco na instituição em si; planejamento, gestão, supervisão</td></tr>
+      <tr><td>Atendimento à equipe</td><td>Educação permanente, supervisão, matriciamento</td></tr>
+      <tr><td>Atendimento à direção/gestão</td><td>Assessoria técnica, análise de demanda institucional</td></tr>
+    </table>
+
+    <div class="subsecao">Erros Frequentes no Uso de Instrumentos</div>
+    <ul class="lista">
+      <li>Visita domiciliar como "fiscalização" — viola autonomia</li>
+      <li>Encaminhamento sem articulação prévia — usuário "rebatido" pelos serviços</li>
+      <li>Entrevista invasiva, com perguntas inúteis (formulários padronizados sem reflexão)</li>
+      <li>Plantão como única forma de atenção — invisibiliza o trabalho coletivo</li>
+      <li>Documentação inadequada — termos morais, juízos pessoais, ausência de dados</li>
+      <li>Grupo sem planejamento prévio — improvisação prejudicial</li>
+      <li>Observação sem registro sistemático</li>
+      <li>"Atendimento" sem escuta — só protocolos</li>
+    </ul>
+
+    <div class="subsecao">A Linguagem do AS</div>
+    <p>A escolha das palavras é parte do trabalho. Cuidados:</p>
+    <ul class="lista">
+      <li>Substituir termos pejorativos ou medicalizados — "população de rua" em vez de "morador de rua"; "pessoa com deficiência" em vez de "deficiente"</li>
+      <li>Linguagem inclusiva — gênero (uso de "/a"), racial, geracional</li>
+      <li>Evitar termos moralizantes — "depravado", "irresponsável", "viciado"</li>
+      <li>Cuidado com formalismo excessivo que afasta o usuário</li>
+      <li>Cuidado com infantilização (em adultos) ou adultização (em crianças)</li>
+      <li>Linguagem clara, acessível, sem jargões institucionais</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> instrumentos clássicos = entrevista, visita, reunião, grupo, observação, documentação, encaminhamento, plantão. Não são neutros. Devem combinar-se conforme a situação. Cuidado com visita-fiscalização, encaminhamento sem articulação, plantão como única forma. Linguagem inclusiva e não-moralizante.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-TRABALHO · Instrumentos</span><span>Extensivo ENARE 2026</span><span class="pg">4 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-TRABALHO</div><div class="aula-ref">Bloco B13 · Aula 16 · Documentos</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Documentos Profissionais — Resolução CFESS 568/2010</div>
+
+    <p>Os <strong>documentos técnico-operativos</strong> do AS — estudo social, laudo social, parecer social, perícia social — são <em>atribuições privativas</em> (Lei 8.662/1993 art. 5º, IV). Sua produção é regulamentada pela <strong>Resolução CFESS 568/2010 — "Manual de Orientação para a elaboração de Estudo Social, Laudo Social e Parecer Social"</strong>. Cobrança frequente em ENARE.</p>
+
+    <div class="subsecao">Diferenciação Conceitual</div>
+    <table>
+      <tr><th>Documento</th><th>Definição</th></tr>
+      <tr><td><strong>Estudo Social</strong></td><td>Processo metodológico — sequência de procedimentos investigativos (entrevista, visita, observação, documentação) para conhecer uma situação. NÃO é documento conclusivo, é processo.</td></tr>
+      <tr><td><strong>Laudo Social</strong></td><td>Documento técnico-conclusivo do estudo social. Apresenta os achados, fundamentação teórica e conclusão. Mais aprofundado que o parecer.</td></tr>
+      <tr><td><strong>Parecer Social</strong></td><td>Opinião técnica fundamentada do AS sobre questão específica. Pode ser parte de laudo (parecer conclusivo) ou documento autônomo.</td></tr>
+      <tr><td><strong>Perícia Social</strong></td><td>Exame técnico-investigativo solicitado por autoridade competente (Justiça, MP, Defensoria, instituição) sobre matéria social específica. Inclui o estudo social, o laudo e o parecer.</td></tr>
+      <tr><td><strong>Relatório Social</strong></td><td>Documento descritivo de atividade ou acompanhamento. Não tem caráter conclusivo necessariamente.</td></tr>
+      <tr><td><strong>Pronunciamento Social</strong></td><td>Posicionamento técnico sobre matéria social, geralmente em audiência ou reunião.</td></tr>
+    </table>
+
+    <div class="subsecao">Estrutura do Laudo Social</div>
+    <p>Estrutura sugerida pela Res. CFESS 568/2010:</p>
+    <ul class="lista">
+      <li><strong>Identificação</strong>: dados do processo, do solicitante, do AS, das pessoas estudadas</li>
+      <li><strong>Objetivo do laudo</strong>: o que está sendo avaliado/respondido</li>
+      <li><strong>Metodologia</strong>: instrumentos utilizados, prazos, locais, número de atendimentos</li>
+      <li><strong>Descrição da situação</strong>: análise dos dados coletados (sem juízos morais)</li>
+      <li><strong>Análise/Fundamentação</strong>: articulação com teoria social, legislação, conjuntura</li>
+      <li><strong>Conclusão/Parecer</strong>: opinião técnica fundamentada do AS</li>
+      <li><strong>Assinatura</strong>: AS, número de inscrição no CRESS, local e data</li>
+    </ul>
+
+    <div class="subsecao">Princípios da Produção de Documentos</div>
+    <ul class="lista">
+      <li>Sigilo profissional preservado (Aula 14)</li>
+      <li>Linguagem técnica, sem juízos morais</li>
+      <li>Fundamentação teórica explicitada</li>
+      <li>Articulação com a legislação e normativas</li>
+      <li>Respeito à autonomia e dignidade do sujeito</li>
+      <li>Cuidado com termos estigmatizantes</li>
+      <li>Não emitir parecer sobre matéria que não tenha investigado pessoalmente</li>
+      <li>Embasamento empírico e teórico</li>
+    </ul>
+
+    <div class="subsecao">Documentos no Cotidiano Institucional</div>
+    <ul class="lista">
+      <li><strong>Registro em prontuário</strong>: contínuo, atualizado, técnico</li>
+      <li><strong>Encaminhamento</strong>: por escrito, articulado, com retorno</li>
+      <li><strong>Relatório de acompanhamento</strong>: descrição do trabalho realizado em determinado período</li>
+      <li><strong>Plano de intervenção</strong>: planejamento técnico antecipado</li>
+      <li><strong>Sistematização de atendimento</strong>: análise crítica do trabalho realizado</li>
+      <li><strong>Indicadores sociais</strong>: dados quantitativos/qualitativos do trabalho</li>
+      <li><strong>Avaliação institucional</strong>: análise crítica da política/programa</li>
+      <li><strong>Comunicação interna</strong>: ofícios, memorandos, atas</li>
+    </ul>
+
+    <div class="subsecao">Vedação: Outros Profissionais Não Podem Emitir Parecer Social</div>
+    <p>A Lei 8.662/1993 (art. 5º, IV) reserva ao AS o "realizar vistorias, perícias técnicas, laudos periciais, informações e pareceres sobre matéria de Serviço Social". Logo:</p>
+    <ul class="lista">
+      <li>Psicólogo emite parecer psicológico — não social</li>
+      <li>Enfermeiro emite parecer de enfermagem — não social</li>
+      <li>Médico emite parecer médico — não social</li>
+      <li>"Parecer social" só pode ser emitido por AS</li>
+      <li>Em equipe interprofissional, podem produzir documentos compartilhados (sem nome de "social"), com contribuição de cada categoria</li>
+    </ul>
+
+    <div class="subsecao">Documentos na Esfera Sociojurídica</div>
+    <p>Na atuação em Juízo, MP, Defensoria, Sistema Prisional, Socioeducativo:</p>
+    <ul class="lista">
+      <li><strong>Estudo de família</strong>: análise sociofamiliar para decisão judicial (guarda, adoção, destituição do poder familiar)</li>
+      <li><strong>Estudo psicossocial</strong>: produzido em conjunto AS + psicólogo (instituições com equipe interdisciplinar)</li>
+      <li><strong>Acompanhamento de medidas socioeducativas</strong>: relatório de acompanhamento de adolescente em conflito com a lei</li>
+      <li><strong>Perícia em situações de violência</strong>: estudo social de vítimas e agressores</li>
+      <li><strong>Avaliação em pedidos de benefícios</strong>: BPC, NIS, etc.</li>
+    </ul>
+
+    <div class="subsecao">Avaliação de BPC — Critério Biopsicossocial</div>
+    <ul class="lista">
+      <li>Benefício de Prestação Continuada (Lei 10.741/2003; LOAS art. 20)</li>
+      <li>Pessoa idosa (65+) OU pessoa com deficiência</li>
+      <li>Renda familiar per capita até 1/4 SM (aumentado para 1/2 em situações específicas)</li>
+      <li><strong>PCD</strong>: avaliação biopsicossocial = AS + médico perito do INSS</li>
+      <li>Modelo: avaliação social (AS) + avaliação clínica (médico) — composição</li>
+      <li>AS analisa barreiras, limitações funcionais, contexto sociofamiliar, território</li>
+      <li>Mudança paradigmática (Convenção PCD 2006, Lei 13.146/2015): modelo social, não apenas médico</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> estudo (processo) ≠ laudo (documento conclusivo) ≠ parecer (opinião técnica) ≠ perícia (solicitada por autoridade). Res. CFESS 568/2010 regulamenta. Parecer social = atribuição privativa do AS (Lei 8.662 art. 5º, IV). BPC PCD = avaliação biopsicossocial (AS + médico).</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-TRABALHO · Documentos</span><span>Extensivo ENARE 2026</span><span class="pg">5 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-TRABALHO</div><div class="aula-ref">Bloco B13 · Aula 16 · Espaços e Mercado</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Espaços Sócio-Ocupacionais do AS</div>
+
+    <p>O AS atua em <strong>diversos espaços sócio-ocupacionais</strong>. A análise dos espaços articula condições de trabalho, demandas específicas e desafios profissionais. Estudo sistemático em ABEPSS (2009): "<em>Serviço Social: direitos sociais e competências profissionais</em>".</p>
+
+    <div class="subsecao">Mapeamento dos Espaços</div>
+    <table>
+      <tr><th>Área</th><th>Espaços Típicos</th></tr>
+      <tr><td>Saúde</td><td>SUS (UBS, ESF, eMulti, CAPS, hospitais, UPA, SAMU); planos privados; vigilância em saúde; Conselhos; Aula 12-13</td></tr>
+      <tr><td>Assistência Social</td><td>SUAS (CRAS, CREAS, Centro POP, UA, SCFV, Acolhimento); Aula 06-08</td></tr>
+      <tr><td>Previdência</td><td>INSS, perícia médica federal, perícia social, RPPS estaduais e municipais</td></tr>
+      <tr><td>Educação</td><td>Escolas (Lei 13.935/2019 — psicólogo e AS na educação básica); CRAS escola; assistência estudantil universitária</td></tr>
+      <tr><td>Sociojurídica</td><td>Tribunais, MP, Defensoria, Varas (família, infância, criminal); Sistema Prisional; CRESS Comissão Sociojurídica</td></tr>
+      <tr><td>Socioeducativo</td><td>Centros de internação (Lei 12.594/2012 — SINASE); meio aberto (LA, PSC, ECA)</td></tr>
+      <tr><td>Habitação</td><td>Programas habitacionais (MCMV, Habite Seguro); ocupações; reassentamentos</td></tr>
+      <tr><td>Trabalho</td><td>Sindicatos; CIPA (NR-5); RH; SST; Lei 8.213/1991</td></tr>
+      <tr><td>Empresa</td><td>SESI, SESC, SEBRAE; RH em empresas; programas de qualidade de vida</td></tr>
+      <tr><td>Terceiro Setor</td><td>ONGs, OS, OSCIPs, fundações; financiamento via convênios</td></tr>
+      <tr><td>Esporte e Cultura</td><td>Programas integrados de cultura, esporte; ações intersetoriais</td></tr>
+      <tr><td>Ambiente</td><td>Reassentamentos ambientais, populações atingidas por empreendimentos</td></tr>
+      <tr><td>Gestão pública</td><td>Coordenações, gerências, secretarias; planejamento, monitoramento, avaliação</td></tr>
+      <tr><td>Ensino e Pesquisa</td><td>Docência em IES públicas e privadas; pesquisa em universidades; CRESS</td></tr>
+    </table>
+
+    <div class="subsecao">Condições de Trabalho — Precarização</div>
+    <p>Tema central da contemporaneidade. A categoria denuncia a precarização do trabalho do AS:</p>
+    <ul class="lista">
+      <li>Terceirização — AS contratado por empresas prestadoras, sem vínculo direto com a instituição</li>
+      <li>Pejotização — AS forçado a abrir PJ; perda de direitos trabalhistas</li>
+      <li>Intermitência — Lei 13.467/2017 (Reforma Trabalhista) ampliou</li>
+      <li>Salários baixos — disparidade entre categorias profissionais</li>
+      <li>Cargas excessivas — AS responsável por milhares de famílias em CRAS, milhares de leitos em hospitais</li>
+      <li>Ausência de condições éticas e técnicas — espaços inadequados, sem sigilo</li>
+      <li>Adoecimento profissional — burnout, depressão, ansiedade (saúde do trabalhador)</li>
+      <li>Vínculos institucionais frágeis — contratos temporários, "pra agora", projetos</li>
+    </ul>
+
+    <div class="subsecao">Articulações Sindicais e Categoria</div>
+    <ul class="lista">
+      <li>Sindicatos por categoria municipal ou estadual; vinculação à CUT, Conlutas, Intersindical</li>
+      <li>Lei 14.452/2022 — alteração no piso salarial discutida; debate em curso</li>
+      <li>Não há piso salarial nacional dos AS (PL 6.213/2019 em tramitação)</li>
+      <li>FENAS — Federação Nacional dos Assistentes Sociais</li>
+      <li>Lutas: 30h sem redução salarial (Lei 12.317/2010 — jornada de 30h)</li>
+      <li>Carga horária: <strong>30 horas semanais</strong> (Lei 12.317/2010); aplicável a todos os AS, sem redução salarial</li>
+    </ul>
+
+    <div class="subsecao">Lei 12.317/2010 — Jornada de 30 horas</div>
+    <p>Inclui o art. 5º-A na Lei 8.662/1993:</p>
+    <p><strong>"Art. 5º-A. A duração do trabalho do Assistente Social é de 30 (trinta) horas semanais."</strong></p>
+
+    <ul class="lista">
+      <li>Aplicável a todos os AS, com vínculo CLT ou estatutário</li>
+      <li>Sem redução salarial — sentença unânime do STJ</li>
+      <li>Aplicação extensiva a residentes (Resolução CFESS 637/2013)</li>
+      <li>Aplicação no setor privado: ainda enfrenta resistência empresarial</li>
+      <li>Conquista de mais de 25 anos da categoria</li>
+    </ul>
+
+    <div class="subsecao">Lei 13.935/2019 — AS e Psicólogo na Educação Básica</div>
+    <ul class="lista">
+      <li>Garante AS e psicólogo nas escolas de educação básica</li>
+      <li>Prazo de implementação progressiva — discutido</li>
+      <li>Atuação em redes municipais de educação</li>
+      <li>Aproximação saúde-educação na lógica intersetorial</li>
+      <li>Crítica: ainda implementação tímida na maioria dos municípios</li>
+    </ul>
+
+    <div class="subsecao">Teletrabalho e TICs — Res. CFESS 1.008/2022</div>
+    <p>Pós-pandemia, regulamentação do teletrabalho do AS:</p>
+    <ul class="lista">
+      <li>Manutenção do sigilo profissional em ambiente domiciliar</li>
+      <li>Condições éticas e técnicas preservadas (espaço, equipamento, internet)</li>
+      <li>Tempo de trabalho respeitado (30h semanais)</li>
+      <li>Plataformas de teleatendimento — cuidado com vazamento de dados (LGPD)</li>
+      <li>Direito à desconexão</li>
+      <li>Equipamento e custos por conta do empregador (Lei 14.442/2022)</li>
+      <li>Resolução CFESS 1.008/2022 fixa critérios</li>
+    </ul>
+
+    <div class="subsecao">TICs no SS — Tecnologias da Informação e Comunicação</div>
+    <ul class="lista">
+      <li>Prontuário eletrônico (e-SUS, Prontuário SUAS)</li>
+      <li>Sistemas: CadÚnico, SISVAN, SIS-SUS, e-Social</li>
+      <li>Plataformas digitais (Google Forms, SurveyMonkey) para pesquisa</li>
+      <li>Redes sociais para mobilização e comunicação com usuários</li>
+      <li>Telessaúde (Programa Telessaúde Brasil Redes — desde 2011)</li>
+      <li>Risco: redução do trabalho a "preencher sistemas"</li>
+      <li>Crítica: TIC pode despolitizar e burocratizar o cuidado</li>
+      <li>Defesa: TIC como apoio, não substituição do trabalho profissional</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> espaços sócio-ocupacionais diversos. Precarização do trabalho. Lei 12.317/2010 = 30 horas semanais. Lei 13.935/2019 = AS e psicólogo na educação básica. Res. CFESS 1.008/2022 = teletrabalho. TICs como apoio, não substituição.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-TRABALHO · Espaços</span><span>Extensivo ENARE 2026</span><span class="pg">6 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-TRABALHO</div><div class="aula-ref">Bloco B13 · Aula 16 · Indicadores</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Indicadores Sociais e Avaliação</div>
+
+    <p>Os <strong>indicadores sociais</strong> são parâmetros para mensurar realidades sociais. Cobrança crescente em SS, especialmente em concursos que envolvem políticas sociais. Trabalho com indicadores articula a dimensão técnico-operativa com a teórico-metodológica.</p>
+
+    <div class="subsecao">Conceito de Indicador Social</div>
+    <p>"<em>Recurso metodológico, empiricamente referido, que informa algo sobre um aspecto da realidade social ou sobre mudanças que estão se processando na mesma.</em>" (Jannuzzi, 2001)</p>
+
+    <div class="subsecao">Tipos de Indicadores</div>
+    <table>
+      <tr><th>Tipo</th><th>Característica</th></tr>
+      <tr><td><strong>Por natureza</strong></td><td>Quantitativos (números) e qualitativos (descrições, categorias)</td></tr>
+      <tr><td><strong>Por dimensão</strong></td><td>Econômicos, sociais, ambientais, demográficos, educacionais, de saúde</td></tr>
+      <tr><td><strong>Por área temática</strong></td><td>Saúde, educação, segurança pública, assistência, habitação</td></tr>
+      <tr><td><strong>Por construção</strong></td><td>Simples (1 variável); compostos (várias variáveis); sintéticos (índices)</td></tr>
+      <tr><td><strong>Por uso</strong></td><td>Diagnóstico (caracterização); monitoramento (acompanhamento); avaliação (resultado)</td></tr>
+    </table>
+
+    <div class="subsecao">Indicadores-Síntese Brasileiros</div>
+    <ul class="lista">
+      <li><strong>IDH</strong> — Índice de Desenvolvimento Humano (PNUD); renda, educação, longevidade</li>
+      <li><strong>IDHM</strong> — IDH Municipal; mesma metodologia, aplicada a municípios</li>
+      <li><strong>Gini</strong> — desigualdade de renda (0 = igualdade total; 1 = concentração total)</li>
+      <li><strong>Curva de Lorenz</strong> — representação gráfica da distribuição de renda</li>
+      <li><strong>Linha da pobreza/extrema pobreza</strong> — critérios IBGE, Banco Mundial</li>
+      <li><strong>PIB e PIB per capita</strong> — produção econômica</li>
+      <li><strong>Índice de Vulnerabilidade Social (IVS-IPEA)</strong></li>
+      <li><strong>Índice de Bem-Estar Urbano (IBEU)</strong></li>
+      <li><strong>Atlas do Desenvolvimento Humano</strong> (PNUD)</li>
+    </ul>
+
+    <div class="subsecao">Indicadores de Saúde</div>
+    <p>Já abordados na Aula 11. Síntese:</p>
+    <ul class="lista">
+      <li>Mortalidade (geral, infantil, materna, neonatal)</li>
+      <li>Morbidade (incidência, prevalência)</li>
+      <li>Letalidade</li>
+      <li>Esperança de vida</li>
+      <li>Cobertura vacinal</li>
+      <li>Cobertura da APS</li>
+      <li>Anos de vida perdidos (AVPP, DALY, QALY)</li>
+    </ul>
+
+    <div class="subsecao">Indicadores no SUAS</div>
+    <ul class="lista">
+      <li>Renda familiar per capita (1/4 SM, 1/2 SM)</li>
+      <li>Famílias inscritas no CadÚnico</li>
+      <li>Cobertura do PBF / Auxílio Brasil / Bolsa Família</li>
+      <li>Cobertura do BPC</li>
+      <li>IGD-SUAS — Índice de Gestão Descentralizada</li>
+      <li>IDCRAS — Indicador de Desenvolvimento dos CRAS</li>
+      <li>IDCREAS — Indicador de Desenvolvimento dos CREAS</li>
+      <li>Famílias em SCFV</li>
+      <li>Pessoas em acolhimento institucional</li>
+    </ul>
+
+    <div class="subsecao">Indicadores Sociais Internacionais</div>
+    <ul class="lista">
+      <li><strong>ODS</strong> — Objetivos de Desenvolvimento Sustentável (ONU, 2015-2030); 17 objetivos, 169 metas</li>
+      <li><strong>Agenda 2030</strong> — sucede os ODM (2000-2015)</li>
+      <li>Indicadores para cada ODS: erradicação da pobreza, saúde, educação, gênero, água, energia, trabalho, etc.</li>
+      <li>Brasil monitora via IBGE e ENCE</li>
+    </ul>
+
+    <div class="subsecao">Monitoramento e Avaliação de Políticas Sociais</div>
+    <table>
+      <tr><th>Conceito</th><th>Definição</th></tr>
+      <tr><td>Monitoramento</td><td>Acompanhamento sistemático e contínuo da implementação. Foco em processo.</td></tr>
+      <tr><td>Avaliação ex-ante</td><td>Antes da implementação. Diagnóstico, viabilidade.</td></tr>
+      <tr><td>Avaliação durante/em meio</td><td>Concomitante à implementação. Correção de rumos.</td></tr>
+      <tr><td>Avaliação ex-post</td><td>Após o ciclo. Avalia impacto e resultados.</td></tr>
+      <tr><td>Avaliação de impacto</td><td>Mede mudanças causadas pela política. Métodos quase-experimentais.</td></tr>
+      <tr><td>Avaliação de processo</td><td>Como a política foi implementada. Eficácia operacional.</td></tr>
+      <tr><td>Avaliação de resultado</td><td>O que foi alcançado. Efetividade.</td></tr>
+      <tr><td>Eficiência × Eficácia × Efetividade</td><td>Eficiência (recursos otimizados) · Eficácia (atinge metas) · Efetividade (impacta a realidade)</td></tr>
+    </table>
+
+    <div class="subsecao">Limites dos Indicadores</div>
+    <ul class="lista">
+      <li>Indicador é redução da complexidade — não esgota a realidade</li>
+      <li>Indicador depende de qualidade dos dados — viés de coleta</li>
+      <li>Indicador pode despolitizar (fetichismo numérico)</li>
+      <li>"O que conta nem sempre é o que pode ser contado" (Einstein)</li>
+      <li>Necessidade de complementação com análise qualitativa</li>
+      <li>Crítica à "gestão por resultados" puramente quantitativa</li>
+    </ul>
+
+    <div class="subsecao">Crítica Marxista aos Indicadores</div>
+    <ul class="lista">
+      <li>Indicadores frequentemente normalizam pobreza ("redução de 50% é avanço, mesmo se 30 milhões continuam pobres")</li>
+      <li>Indicadores podem mascarar desigualdades (média alta com desigualdade)</li>
+      <li>Indicadores não captam dimensões qualitativas (dignidade, autonomia, sofrimento)</li>
+      <li>Importância do uso crítico: indicador como meio, não como fim</li>
+      <li>Articulação com pesquisa qualitativa para apreensão da totalidade</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> indicadores = recurso metodológico; quantitativos e qualitativos; diagnóstico/monitoramento/avaliação. IDH, IDHM, Gini, IVS-IPEA. Avaliação ex-ante/durante/ex-post; eficiência (recursos) × eficácia (metas) × efetividade (impacto). Indicadores têm limites; complementar com qualitativo.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-TRABALHO · Indicadores</span><span>Extensivo ENARE 2026</span><span class="pg">7 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-TRABALHO</div><div class="aula-ref">Bloco B13 · Aula 16 · Questões ENARE</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 01</span><span class="fonte">Iamamoto · NC: Compreensão</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Marilda Iamamoto sintetiza o Serviço Social como "uma especialização do trabalho da sociedade, inscrita na divisão sociotécnica do trabalho coletivo, que tem na questão social — em suas várias expressões — a base de sua fundação como especialização do trabalho". Essa formulação implica:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Conceber o AS como agente neutro, sem inserção nas relações de produção e reprodução do capital.</span></li>
+        <li class="correta"><span class="letra">B</span><span>Conceber o AS como trabalhador assalariado, inserido na divisão sociotécnica do trabalho, com autonomia relativa no exercício profissional, cuja matéria-prima é a questão social; rejeitar a tese da "evolução interna" (endogenismo) e situar o SS como profissão filha do capitalismo (especialmente monopolista, segundo Netto); articular a teoria do processo de trabalho de Marx aplicada ao SS.</span></li>
+        <li><span class="letra">C</span><span>Adotar a tese vocacional-missionária, segundo a qual o AS é "chamado" pela ordem divina à profissão.</span></li>
+        <li><span class="letra">D</span><span>Reduzir o SS à dimensão técnica, sem articulação com dimensões teórica e ética.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> síntese da tese de Iamamoto. SS = trabalho assalariado; divisão sociotécnica; questão social como matéria-prima; autonomia relativa. Crítica ao endogenismo. SS como profissão do capitalismo (Netto: "Capitalismo Monopolista e Serviço Social", 1992).</p>
+      <p><strong>Por que as outras erram:</strong> A — AS NÃO é neutro · C — tese vocacional foi superada nos anos 1970-80 · D — tecnicismo é exatamente o que Iamamoto critica.</p>
+    </div>
+
+    <div class="questao-header"><span>Questão 02</span><span class="fonte">Instrumentalidade · NC: Análise</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Yolanda Guerra, em "A Instrumentalidade do Serviço Social" (1995), diferencia "instrumentalidade" de "instrumentos e técnicas". A distinção pode ser caracterizada como:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Sinônimos: instrumentalidade é o mesmo que conjunto de instrumentos.</span></li>
+        <li class="correta"><span class="letra">B</span><span>Instrumentos e técnicas são ferramentas concretas (entrevista, visita, parecer), que são parte da instrumentalidade, mas não a esgotam. Instrumentalidade é a capacidade dialética de articular teoria-prática, mediar singular-particular-universal e articular as três dimensões do trabalho (teórico-metodológica, ético-política, técnico-operativa). Sem teoria, técnica vira tecnicismo; sem técnica, teoria vira teoricismo.</span></li>
+        <li><span class="letra">C</span><span>Instrumentalidade é exclusivamente a habilidade de utilizar tecnologias da informação (TICs).</span></li>
+        <li><span class="letra">D</span><span>Instrumentos e técnicas são neutros e independentes de qualquer fundamentação teórica.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> diferenciação de Guerra. Instrumentalidade = capacidade dialética; abrange (mas não se reduz a) instrumentos. Articula 3 dimensões. Crítica ao tecnicismo (técnica sem teoria) e ao teoricismo (teoria sem técnica). Categoria de mediação singular-particular-universal.</p>
+      <p><strong>Por que as outras erram:</strong> A — não são sinônimos · C — TIC é apenas dimensão técnica · D — instrumentos não são neutros.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-TRABALHO · Trabalho Profissional</span><span>Extensivo ENARE 2026</span><span class="pg">8 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-TRABALHO</div><div class="aula-ref">Bloco B13 · Aula 16 · Questões ENARE</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 03</span><span class="fonte">Documentos · NC: Aplicação</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">A Resolução CFESS 568/2010 ("Manual de Orientação para a elaboração de Estudo Social, Laudo Social e Parecer Social") diferencia os documentos técnico-operativos. Assinale a CORRETA:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Estudo, laudo e parecer social são sinônimos e podem ser usados intercambiavelmente.</span></li>
+        <li class="correta"><span class="letra">B</span><span>Estudo social é o processo metodológico (sequência de procedimentos investigativos: entrevista, visita, observação, análise documental); laudo social é o documento técnico-conclusivo resultante do estudo, com fundamentação teórica e legal explicitadas; parecer social é a opinião técnica fundamentada do AS sobre questão específica; perícia social é o exame técnico-investigativo solicitado por autoridade competente. Tais documentos constituem atribuição privativa do AS (Lei 8.662/1993 art. 5º, IV).</span></li>
+        <li><span class="letra">C</span><span>Laudo social e parecer social podem ser emitidos por qualquer profissional da equipe interdisciplinar, sem reserva legal.</span></li>
+        <li><span class="letra">D</span><span>Estudo social é documento conclusivo de aplicação imediata; laudo e parecer são processos.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> Res. CFESS 568/2010 diferencia rigorosamente. Estudo = processo; laudo = documento conclusivo; parecer = opinião técnica; perícia = exame por solicitação. Reserva legal pela Lei 8.662 art. 5º, IV.</p>
+      <p><strong>Por que as outras erram:</strong> A — não são sinônimos · C — atribuição privativa: outros profissionais não podem emitir · D — inverte os conceitos (estudo é processo, laudo é conclusivo).</p>
+    </div>
+
+    <div class="questao-header"><span>Questão 04</span><span class="fonte">Lei 12.317/2010 · NC: Aplicação</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Sobre a jornada de trabalho do AS no Brasil, é CORRETO afirmar:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>É de 44 horas semanais, igual à dos demais profissionais regulados pela CLT.</span></li>
+        <li class="correta"><span class="letra">B</span><span>É de 30 horas semanais, conforme art. 5º-A da Lei 8.662/1993 (incluído pela Lei 12.317/2010), aplicável a todos os AS — sob vínculo CLT, estatutário, em residência multiprofissional ou em outras formas de contratação — sem redução salarial (jurisprudência do STJ).</span></li>
+        <li><span class="letra">C</span><span>É de 40 horas semanais e há redução proporcional do salário para quem cumpre menos.</span></li>
+        <li><span class="letra">D</span><span>Não há regulamentação específica; a jornada é definida exclusivamente pela instituição empregadora.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> Lei 12.317/2010 incluiu o art. 5º-A na Lei 8.662/1993. 30h semanais, sem redução salarial. Conquista da categoria após mais de 25 anos de luta. STJ confirmou unânime.</p>
+      <p><strong>Por que as outras erram:</strong> A — não é 44h · C — não há redução salarial · D — há regulamentação federal específica.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-TRABALHO · Trabalho Profissional</span><span>Extensivo ENARE 2026</span><span class="pg">9 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-TRABALHO</div><div class="aula-ref">Bloco B13 · Aula 16 · Síntese</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Síntese — Trabalho Profissional do AS</div>
+
+    <p>Aula central — articula as elaborações teóricas sobre a profissão (Iamamoto, Guerra, Netto, Barroco) com o exercício prático (instrumentos, documentos, espaços). Conecta-se à Aula 15 (Formação) e à Aula 17 (Questão Social).</p>
+
+    <div class="sintese-grid">
+      <div class="sintese-item"><div class="si-label">SS como Trabalho (Iamamoto)</div><p>Especialização do trabalho coletivo; divisão sociotécnica; questão social como matéria-prima; trabalho assalariado; autonomia relativa. Processo de trabalho: objeto (QS), meios (instrumentalidade), finalidade (direitos), produto (serviços).</p></div>
+      <div class="sintese-item"><div class="si-label">Instrumentalidade (Guerra)</div><p>≠ instrumentos. Capacidade dialética de articulação teoria-prática. Mediação singular-particular-universal. Crítica ao tecnicismo e ao teoricismo. Pluralismo democrático (princípio VII).</p></div>
+      <div class="sintese-item"><div class="si-label">3 Dimensões</div><p>Teórico-metodológica (compreensão) · Ético-política (direção) · Técnico-operativa (operacionalização). Articuladas, inseparáveis. Não há técnica sem teoria nem teoria sem prática.</p></div>
+      <div class="sintese-item"><div class="si-label">Instrumentos e Documentos</div><p>Entrevista, visita, reunião, grupo, observação, encaminhamento. Estudo (processo) ≠ laudo (conclusivo) ≠ parecer (opinião técnica) ≠ perícia (solicitada). Res. CFESS 568/2010.</p></div>
+      <div class="sintese-item"><div class="si-label">Mercado e Condições</div><p>Espaços sócio-ocupacionais diversos. Precarização (terceirização, pejotização). 30h semanais (Lei 12.317/2010). Educação básica (Lei 13.935/2019). Teletrabalho (Res. CFESS 1.008/2022). TICs como apoio.</p></div>
+      <div class="sintese-item"><div class="si-label">Próxima Aula</div><p><strong>Aula 17 — SS-QUESTSOC: Questão Social Contemporânea.</strong> Plataformização do trabalho; racismo estrutural (Silvio Almeida); patriarcado (Saffioti); novas expressões da questão social.</p></div>
+    </div>
+
+    <div class="alerta" style="margin-top:5px;">
+      <p><strong>Regra de ouro — Trabalho Profissional no ENARE:</strong> Iamamoto (SS como trabalho) + Guerra (instrumentalidade) + 3 dimensões (teórico, ético, técnico) + Res. CFESS 568/2010 (documentos) + Lei 12.317/2010 (30h) + Res. CFESS 1.008/2022 (teletrabalho) + Lei 13.935/2019 (educação básica). Mediação como categoria-chave: singular-particular-universal.</p>
+    </div>
+
+    <div class="alerta" style="margin-top:5px;background:rgba(31,92,35,0.1);border-left-color:var(--verde);">
+      <p><strong>Conexão metodológica:</strong> o trabalho profissional do AS opera sempre em condições contraditórias — entre demandas institucionais (assalariamento) e demandas dos usuários (classe trabalhadora). O PEP fornece a direção; a instrumentalidade fornece a capacidade; os instrumentos fornecem os meios. Compreender essa articulação é compreender a especificidade do SS contemporâneo.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-TRABALHO · Trabalho Profissional</span><span>Extensivo ENARE 2026</span><span class="pg">10 / 10</span></div>
+</div>
+
+</body>
+</html>

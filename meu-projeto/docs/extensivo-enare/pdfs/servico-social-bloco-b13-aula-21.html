@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Serviço Social — Bloco B13 Aula 21 | Extensivo ENARE 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap');
+  :root { --creme: #F6F4ED; --verde: #1F5C23; --amarelo: #C6D834; --escuro: #0C2B0E; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #d0d0d0; font-family: 'Bricolage Grotesque', sans-serif; }
+  .page { width: 210mm; height: 297mm; background: var(--creme); margin: 0 auto 12px; position: relative; overflow: hidden; page-break-after: always; }
+  .header { background: var(--verde); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .header-logo { display: flex; align-items: center; gap: 8px; }
+  .header-logo svg { width: 32px; height: 32px; }
+  .header-brand { display: flex; flex-direction: column; line-height: 1; }
+  .header-brand .marca { font-family: 'Playfair Display', serif; font-style: italic; color: #fff; font-size: 13px; letter-spacing: 0.5px; }
+  .header-brand .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 7px; letter-spacing: 1.5px; text-transform: uppercase; }
+  .header-info { text-align: right; }
+  .header-info .disciplina { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
+  .header-info .aula-ref { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.7); font-size: 8px; letter-spacing: 0.5px; }
+  .footer { position: absolute; bottom: 0; left: 0; right: 0; background: var(--verde); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .footer span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.6); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .footer .pg { color: var(--amarelo); font-weight: 400; }
+  .body { padding: 14px 18px 30px; height: calc(297mm - 52px - 22px); overflow: hidden; }
+  .capa-page { background: var(--verde); }
+  .capa-header { background: var(--creme); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .capa-header .marca { font-family: 'Playfair Display', serif; font-style: italic; color: var(--verde); font-size: 14px; }
+  .capa-header .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--verde); font-size: 7.5px; letter-spacing: 2px; text-transform: uppercase; }
+  .capa-body { padding: 28px 24px 0; display: flex; flex-direction: column; height: calc(297mm - 52px - 22px); }
+  .capa-eyebrow { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; }
+  .capa-titulo { font-family: 'Barlow Condensed', sans-serif; color: #fff; font-size: 50px; line-height: 0.95; text-transform: uppercase; letter-spacing: -0.5px; margin-bottom: 6px; }
+  .capa-titulo span { color: var(--amarelo); }
+  .capa-subtitulo { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; color: rgba(255,255,255,0.65); font-size: 12px; letter-spacing: 0.3px; margin-bottom: 22px; line-height: 1.5; }
+  .capa-badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+  .capa-badge { background: rgba(198,216,52,0.15); border: 1px solid var(--amarelo); color: var(--amarelo); font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 8px; border-radius: 2px; }
+  .capa-divider { width: 40px; height: 3px; background: var(--amarelo); margin-bottom: 20px; }
+  .capa-topicos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .capa-topico { display: flex; align-items: flex-start; gap: 7px; }
+  .capa-topico-num { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 18px; line-height: 1; min-width: 18px; }
+  .capa-topico-txt { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 400; color: rgba(255,255,255,0.8); font-size: 9.5px; line-height: 1.4; }
+  .capa-footer-strip { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.25); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .capa-footer-strip span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.45); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .secao-titulo { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 18px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid var(--amarelo); padding-bottom: 3px; margin-bottom: 9px; line-height: 1; }
+  .subsecao { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.5px; margin: 7px 0 3px; }
+  p { font-size: 9px; line-height: 1.55; color: #1a1a1a; margin-bottom: 4px; font-weight: 400; }
+  .destaque { background: var(--amarelo); color: var(--escuro); font-weight: 600; padding: 1px 4px; border-radius: 2px; font-size: 8.5px; }
+  .alerta { background: rgba(198,216,52,0.18); border-left: 3px solid var(--amarelo); padding: 5px 8px; margin: 5px 0; border-radius: 0 3px 3px 0; }
+  .alerta p { margin: 0; font-size: 8.5px; }
+  .alerta strong { color: var(--verde); }
+  table { width: 100%; border-collapse: collapse; margin: 5px 0; font-size: 8px; }
+  th { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; padding: 4px 6px; text-align: left; }
+  td { padding: 3px 6px; border-bottom: 1px solid rgba(31,92,35,0.12); vertical-align: top; line-height: 1.4; color: #1a1a1a; }
+  tr:nth-child(even) td { background: rgba(31,92,35,0.04); }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 5px 0; }
+  .card { background: rgba(31,92,35,0.06); border: 1px solid rgba(31,92,35,0.15); border-radius: 4px; padding: 7px 8px; }
+  .card-title { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 11px; text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 3px; }
+  .card p { font-size: 8px; line-height: 1.5; }
+  .questao-header { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; padding: 4px 10px; border-radius: 3px 3px 0 0; display: flex; justify-content: space-between; align-items: center; }
+  .questao-header .fonte { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; color: var(--amarelo); letter-spacing: 0.5px; }
+  .questao-body { border: 1px solid rgba(31,92,35,0.2); border-top: none; border-radius: 0 0 3px 3px; padding: 7px 10px; margin-bottom: 7px; }
+  .questao-enunciado { font-size: 8.5px; line-height: 1.55; color: #111; margin-bottom: 5px; font-weight: 500; }
+  .alternativas { list-style: none; }
+  .alternativas li { font-size: 8px; line-height: 1.5; padding: 2px 0; color: #222; display: flex; gap: 5px; }
+  .alternativas li .letra { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: var(--verde); font-size: 9px; min-width: 10px; }
+  .alternativas li.correta .letra { color: var(--amarelo); }
+  .alternativas li.correta { background: rgba(198,216,52,0.15); border-left: 2px solid var(--amarelo); padding-left: 4px; }
+  .gabarito-box { background: var(--verde); border-radius: 4px; padding: 8px 12px; margin: 6px 0; }
+  .gabarito-box .gab-title { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+  .gabarito-box p { color: rgba(255,255,255,0.9); font-size: 8px; line-height: 1.55; }
+  .gabarito-box strong { color: var(--amarelo); }
+  .sintese-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-top: 6px; }
+  .sintese-item { background: rgba(31,92,35,0.07); border-left: 3px solid var(--verde); padding: 5px 7px; border-radius: 0 3px 3px 0; }
+  .sintese-item .si-label { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px; }
+  .sintese-item p { font-size: 7.5px; line-height: 1.5; }
+  ul.lista { padding-left: 14px; margin: 3px 0; }
+  ul.lista li { font-size: 8.5px; line-height: 1.55; color: #1a1a1a; margin-bottom: 1px; }
+  blockquote { background: rgba(31,92,35,0.06); border-left: 3px solid var(--verde); padding: 6px 9px; margin: 5px 0; font-style: italic; font-size: 8.5px; line-height: 1.55; }
+  @media print { body { background: none; } .page { margin: 0; box-shadow: none; } }
+</style>
+</head>
+<body>
+
+<div class="page capa-page">
+  <div class="capa-header">
+    <div style="display:flex;align-items:center;gap:8px;"><svg width="34" height="34" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#1F5C23"/></svg><div><div class="marca">Elite Treinamentos</div><div class="tagline">Extensivo ENARE 2026</div></div></div>
+    <div style="text-align:right;"><div style="font-family:'Barlow Condensed',sans-serif;color:var(--verde);font-size:11px;letter-spacing:1px;text-transform:uppercase;">Bloco B13 · Aula 21</div><div style="font-family:'Space Grotesk',sans-serif;font-weight:300;color:#888;font-size:7.5px;letter-spacing:0.5px;">Serviço Social</div></div>
+  </div>
+  <div class="capa-body">
+    <div class="capa-eyebrow">Bloco B13 · Simulado Final · Aula 21 de 21</div>
+    <div class="capa-titulo">Simulado <span>Final<br>Bloco B13</span></div>
+    <div class="capa-subtitulo">10 questões integradas + gabarito comentado<br>+ mapa de conhecimento + plano de estudos final</div>
+    <div class="capa-badge-row">
+      <div class="capa-badge">Simulado Final</div>
+      <div class="capa-badge">10 Questões</div>
+      <div class="capa-badge">Gabarito + Mapa</div>
+      <div class="capa-badge">Plano de Estudos</div>
+    </div>
+    <div class="capa-divider"></div>
+    <div class="capa-topicos">
+      <div class="capa-topico"><div class="capa-topico-num">01</div><div class="capa-topico-txt">10 questões integradas no padrão FGV</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">02</div><div class="capa-topico-txt">Gabarito comentado em profundidade</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">03</div><div class="capa-topico-txt">Mapa de conhecimento do Bloco B13</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">04</div><div class="capa-topico-txt">Plano de estudos para últimas semanas</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">05</div><div class="capa-topico-txt">Checklist Final ENARE 2026</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">06</div><div class="capa-topico-txt">Encerramento do bloco — 21 aulas concluídas</div></div>
+    </div>
+  </div>
+  <div class="capa-footer-strip"><span>Extensivo ENARE 2026</span><span>Elite Treinamentos em Saúde</span><span>Página 1 de 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — Simulado</div><div class="aula-ref">Bloco B13 · Aula 21 · Q01-Q02</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 01</span><span class="fonte">PEP · Aula 01 · NC: Compreensão</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">O Projeto Ético-Político (PEP) do Serviço Social brasileiro, consolidado a partir dos anos 1980, articula a tradição marxista renovada com a defesa da democracia e dos direitos humanos. Seu eixo é:</p>
+      <ul class="alternativas">
+        <li class="correta"><span class="letra">A</span><span>A liberdade como valor ético central (Princípio I do CE/1993), a defesa intransigente dos direitos humanos (II), a opção por uma "nova ordem societária, sem dominação, exploração de classe, etnia e gênero" (VIII); materializado no Código de Ética/1993, na Lei 8.662/1993, nas DCN/ABEPSS 1996 e no conjunto CFESS-CRESS-ABEPSS-ENESSO.</span></li>
+        <li><span class="letra">B</span><span>A neutralidade técnica e a obediência institucional, em conformidade com a tradição funcionalista.</span></li>
+        <li><span class="letra">C</span><span>A vocação cristã e o apostolado, conforme a tradição neotomista dos primeiros códigos do AS.</span></li>
+        <li><span class="letra">D</span><span>O empreendedorismo individual e a meritocracia, em consonância com o neoliberalismo.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — A</div>
+      <p><strong>Por que A está correta:</strong> síntese do PEP. Princípios I, II e VIII do CE/1993. Materialização no Código (1993), Lei 8.662 (1993), DCN/ABEPSS (1996). Conjunto CFESS-CRESS-ABEPSS-ENESSO.</p>
+    </div>
+
+    <div class="questao-header"><span>Questão 02</span><span class="fonte">Reconceituação · Aula 02 · NC: Análise</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Considere o fragmento:</p>
+      <blockquote>"<em>O III Congresso Brasileiro de Assistentes Sociais (CBAS), realizado em 1979 em São Paulo, é conhecido como 'Congresso da Virada'. Foi o momento em que a categoria rompe com o conservadorismo e assume publicamente o compromisso com os trabalhadores e com a classe operária.</em>"</p>
+
+      <p class="questao-enunciado">A "virada" caracterizada pelo III CBAS articula-se com:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>A consolidação do modelo funcionalista anglo-saxônico no SS brasileiro.</span></li>
+        <li class="correta"><span class="letra">B</span><span>O movimento de Reconceituação latino-americano (Araxá 1967, Teresópolis 1970), o processo de redemocratização brasileira, a tradição marxista (Iamamoto, Netto), e o "Código da Virada" (1986); culmina com o CE/1993, a Lei 8.662/1993 e as DCN/ABEPSS 1996. Representa a ruptura com a tradição conservadora-vocacional e o início do PEP contemporâneo.</span></li>
+        <li><span class="letra">C</span><span>A retomada das tradições caritativas e filantrópicas do Serviço Social.</span></li>
+        <li><span class="letra">D</span><span>A submissão da profissão à Ditadura Militar e à tecnocracia desenvolvimentista.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> contextualização histórica completa. III CBAS = "Virada"; Reconceituação latino-americana; redemocratização; marxismo renovado; CE/1986 (Virada) e CE/1993 (consolidação).</p>
+    </div>
+  </div>
+  <div class="footer"><span>Simulado · Questões 01-02</span><span>Extensivo ENARE 2026</span><span class="pg">2 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — Simulado</div><div class="aula-ref">Bloco B13 · Aula 21 · Q03-Q04</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 03</span><span class="fonte">SUAS · Aula 06-07 · NC: Aplicação</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Uma família composta por mãe e dois filhos, beneficiária do Bolsa Família, em situação de vulnerabilidade social, mas sem violação de direitos, será acompanhada por qual serviço do SUAS?</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Pelo CREAS (Centro de Referência Especializado de Assistência Social), em Proteção Social Especial de Alta Complexidade.</span></li>
+        <li class="correta"><span class="letra">B</span><span>Pelo CRAS (Centro de Referência de Assistência Social), em Proteção Social Básica, por meio do PAIF (Serviço de Proteção e Atendimento Integral à Família); o BPC, o BF e o CadÚnico são também instrumentos disponíveis; o CRAS atua na PREVENÇÃO de violações de direitos e na proteção integral da família como sujeito de direitos.</span></li>
+        <li><span class="letra">C</span><span>Por instituição filantrópica privada, sem articulação com o SUS ou o SUAS.</span></li>
+        <li><span class="letra">D</span><span>Pelo Conselho Tutelar, em razão da composição familiar com crianças.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> CRAS = Proteção Básica = PAIF. Sem violação de direitos = Básica (CRAS). Com violação = Especial (CREAS). PAIF é serviço continuado de acompanhamento sociofamiliar. Articulação com BF, BPC, CadÚnico.</p>
+    </div>
+
+    <div class="questao-header"><span>Questão 04</span><span class="fonte">DUDH · Aula 10 · NC: Análise</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">A Declaração Universal dos Direitos Humanos (DUDH, 1948), adotada pela Assembleia Geral da ONU sob a presidência de Eleanor Roosevelt, caracteriza-se por:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Ser documento vinculante imediato, com sanções automáticas para os Estados violadores.</span></li>
+        <li class="correta"><span class="letra">B</span><span>Documento fundador do sistema internacional de DH; 30 artigos + preâmbulo; universalidade, indivisibilidade, interdependência; inicialmente "soft law" (não-vinculante) — tornou-se direito costumeiro pela prática; Art. 13 (locomoção, dentro do país + sair e regressar); Art. 16 (família como núcleo natural e fundamental); Art. 22-27 (DESC). Foi complementada pelos Pactos de 1966 (PIDCP e PIDESC, vinculantes desde 1976; Brasil aderiu 1992) e pela Declaração de Viena (1993). Cluster novo na ENARE 2025 (4 questões — Q61, Q64, Q69, Q78).</span></li>
+        <li><span class="letra">C</span><span>Documento apenas regional, restrito à Europa Ocidental.</span></li>
+        <li><span class="letra">D</span><span>Documento de natureza estritamente religiosa, vinculado à Igreja Católica.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> síntese completa da DUDH. 30 artigos + preâmbulo. Soft law que se tornou direito costumeiro. Pactos 1966 (PIDCP/PIDESC) vinculantes. Viena 1993. Cluster novo ENARE 2025.</p>
+    </div>
+  </div>
+  <div class="footer"><span>Simulado · Questões 03-04</span><span>Extensivo ENARE 2026</span><span class="pg">3 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — Simulado</div><div class="aula-ref">Bloco B13 · Aula 21 · Q05-Q06</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 05</span><span class="fonte">SUS · Aula 11-12 · NC: Compreensão</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">A Lei 8.080/1990 (Lei Orgânica da Saúde), em seu art. 7º, estabelece os princípios e diretrizes do SUS. Assinale a alternativa INCORRETA:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Universalidade de acesso aos serviços de saúde em todos os níveis de assistência.</span></li>
+        <li><span class="letra">B</span><span>Integralidade de assistência — conjunto articulado e contínuo das ações e serviços preventivos e curativos, individuais e coletivos.</span></li>
+        <li class="correta"><span class="letra">C</span><span>Centralização político-administrativa, com direção única na União, restringindo a participação dos estados e municípios na gestão e operação cotidiana do sistema. (Esta é a alternativa INCORRETA — busque marcar esta).</span></li>
+        <li><span class="letra">D</span><span>Participação da comunidade, detalhada pela Lei 8.142/1990 (Conselhos e Conferências de Saúde).</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — C (a INCORRETA)</div>
+      <p><strong>Por que C está INCORRETA:</strong> o SUS é organizado por DESCENTRALIZAÇÃO (e não centralização) político-administrativa, com direção ÚNICA em cada esfera de governo (municipalização). A União coordena, mas o município é gestor principal da APS. As demais (A, B, D) correspondem aos princípios doutrinários e organizativos.</p>
+    </div>
+
+    <div class="questao-header"><span>Questão 06</span><span class="fonte">Reforma Psiquiátrica · Aula 13 · NC: Análise</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">A Lei 10.216/2001 ("Lei Paulo Delgado") redirecionou o modelo assistencial em saúde mental. Sobre suas modalidades de internação, é CORRETO afirmar:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Apenas uma modalidade existe — a internação compulsória, determinada por médico assistente.</span></li>
+        <li class="correta"><span class="letra">B</span><span>Três modalidades: VOLUNTÁRIA (com consentimento do usuário, mediante termo), INVOLUNTÁRIA (a pedido de terceiros, sem consentimento — deve ser comunicada ao MP em até 72h) e COMPULSÓRIA (determinada por juiz, mediante laudo médico circunstanciado); em todas, a internação é último recurso (art. 4º — apenas quando os meios extra-hospitalares se mostrarem insuficientes); vedada a internação em instituições com características asilares; tratamento preferencial em serviços comunitários (CAPS, SRT) da RAPS (Portaria 3.088/2011).</span></li>
+        <li><span class="letra">C</span><span>A internação é a primeira escolha de cuidado em transtornos mentais; o modelo psiquiátrico-asilar é prioritário.</span></li>
+        <li><span class="letra">D</span><span>A internação compulsória dispensa qualquer manifestação do Judiciário, sendo decidida apenas pela família.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> síntese completa da Lei 10.216. 3 modalidades: voluntária, involuntária (MP em 72h), compulsória (juiz). Internação é exceção. Serviços comunitários (RAPS — Portaria 3.088/2011) são prioridade. Reforma Psiquiátrica brasileira.</p>
+    </div>
+  </div>
+  <div class="footer"><span>Simulado · Questões 05-06</span><span>Extensivo ENARE 2026</span><span class="pg">4 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — Simulado</div><div class="aula-ref">Bloco B13 · Aula 21 · Q07-Q08</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 07</span><span class="fonte">CE/1993 e Sigilo · Aula 14 · NC: Aplicação</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Uma adolescente de 14 anos atendida em UBS por dor abdominal relata ao AS, em sigilo, que sofreu violência sexual pelo padrasto há 3 meses. Não quer que a mãe saiba — receia que ela "não acredite" ou "expulse" a adolescente de casa. A conduta CORRETA do AS, articulando Código de Ética (1993), ECA, Lei 13.431/2017 e PEP, é:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Guardar sigilo absoluto, respeitando a vontade da adolescente, sem qualquer notificação aos órgãos protetivos.</span></li>
+        <li class="correta"><span class="letra">B</span><span>Acolher com escuta qualificada e sem julgamento moral; respeitar a autonomia (princípio I do CE) sem deixar de cumprir a notificação compulsória (ECA art. 13 e Portaria MS 1.968/2001 — violência contra criança/adolescente é notificação obrigatória ao Conselho Tutelar; Lei 13.431/2017 — SGD-Vítima); explicar o procedimento à adolescente; aplicar escuta especializada (não revitimização — uma única entrevista, sala adequada); articular com a rede (CRAS, CREAS-PAEFI, MP, Defensoria, IML para coleta de provas se em prazo legal); resguardar sigilo no estritamente necessário (art. 17 CE); construir plano de proteção com a adolescente e (se possível, na rede) com a mãe — encaminhar para serviço de acolhimento se houver risco.</span></li>
+        <li><span class="letra">C</span><span>Convocar imediatamente o padrasto para uma "conversa de família" como tentativa de mediação.</span></li>
+        <li><span class="letra">D</span><span>Reduzir o atendimento à anotação no prontuário e encaminhamento médico, sem articulação intersetorial.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> articula múltiplas normas. Notificação compulsória (ECA art. 13, Portaria MS 1.968/2001) é exceção à confidencialidade (CE art. 17). Lei 13.431/2017 = escuta especializada não-revitimizadora. Articulação intersetorial. Plano de proteção. As outras erram porque: A — violência exige notificação · C — Res. CFESS 569/2010 veda mediação familiar (especialmente em violência) · D — omissão é infração legal.</p>
+    </div>
+
+    <div class="questao-header"><span>Questão 08</span><span class="fonte">Atribuição privativa · Aula 12-14 · NC: Aplicação</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Um juiz da Vara da Infância solicita ao hospital universitário um "parecer social" para subsidiar decisão sobre destituição do poder familiar. Esse documento, sua elaboração e assinatura:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Pode ser produzido por qualquer profissional da equipe interdisciplinar, sem reserva legal.</span></li>
+        <li class="correta"><span class="letra">B</span><span>É ATRIBUIÇÃO PRIVATIVA do Assistente Social (Lei 8.662/1993, art. 5º, IV — "realizar vistorias, perícias técnicas, laudos periciais, informações e pareceres sobre matéria de Serviço Social"), regulamentada pela Resolução CFESS 568/2010 (Manual de Orientação para Estudo Social, Laudo Social e Parecer Social); deve seguir estrutura: identificação, objetivo, metodologia, descrição, análise/fundamentação, conclusão/parecer, assinatura com nº CRESS; respeitar sigilo profissional no estritamente necessário (art. 17 CE); fundamentar-se em método e teoria social críticos.</span></li>
+        <li><span class="letra">C</span><span>É atribuição privativa do médico, dado tratar-se de procedimento clínico.</span></li>
+        <li><span class="letra">D</span><span>É atividade puramente administrativa, sem exigência de fundamentação técnica.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> parecer social é atribuição privativa do AS (Lei 8.662 art. 5º, IV). Res. CFESS 568/2010 regulamenta. Estrutura definida. Articulação com CE/1993 (sigilo, fundamentação). Outros profissionais NÃO podem emitir parecer social.</p>
+    </div>
+  </div>
+  <div class="footer"><span>Simulado · Questões 07-08</span><span>Extensivo ENARE 2026</span><span class="pg">5 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — Simulado</div><div class="aula-ref">Bloco B13 · Aula 21 · Q09-Q10</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 09</span><span class="fonte">Racismo Estrutural · Aula 04-05, 17 · NC: Análise</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Considere o fragmento:</p>
+      <blockquote>"<em>O racismo estrutural reproduz-se nas instituições mesmo quando dirigidas por pessoas negras ou bem-intencionadas — ele é elemento constitutivo das sociedades modernas, articulado ao capitalismo. Confundi-lo com 'comportamento individual de pessoas racistas' é insuficiente: a transformação exige ação política coletiva, não apenas mudança individual.</em>" (parafraseando Silvio Almeida, 2018)</p>
+
+      <p class="questao-enunciado">A análise crítica desse fragmento, articulada com a tradição teórica do SS brasileiro contemporâneo, implica:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Reduzir o combate ao racismo à mudança individual de comportamento de pessoas "racistas".</span></li>
+        <li class="correta"><span class="letra">B</span><span>Compreender o racismo como elemento STRUCTURAL — articulado ao modo de produção capitalista (Marx-Iamamoto), à formação social brasileira colonial-escravista (Aula 05) e ao "nó patriarcado-capitalismo-racismo" (Saffioti, Aula 17); diferenciar das concepções individualista (insuficiente) e institucional (parcial); reconhecer a articulação com Fanon (Aula 13 — sociogênese, colonialidade), Lélia Gonzalez (amefricanidade), Sueli Carneiro (feminismo negro), Movimento Negro brasileiro; combate como ação política coletiva — políticas afirmativas (Lei 12.711/2012, Lei 12.990/2014), PNSIPN (2009), Estatuto da Igualdade Racial (Lei 12.288/2010); afasta o mito da democracia racial (Freyre, criticado por Florestan, Hasenbalg).</span></li>
+        <li><span class="letra">C</span><span>Negar a existência do racismo no Brasil, em consonância com a tese da democracia racial.</span></li>
+        <li><span class="letra">D</span><span>Considerar todas as concepções de racismo (individualista, institucional, estrutural) como equivalentes.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> articulação rica. Almeida (Aula 17) + Saffioti (Aula 17 — nó) + Fanon (Aula 13 — sociogênese) + formação social (Aula 05) + políticas afirmativas. Combate ao mito da democracia racial. Tradição crítica do SS = antirracista por princípio.</p>
+    </div>
+
+    <div class="questao-header"><span>Questão 10</span><span class="fonte">Caso integrativo final · Todas as aulas · NC: Análise</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Em um CAPS-AD III, uma mulher trans, negra, 28 anos, em situação de rua, sem documentação, com transtorno mental e uso problemático de crack, é atendida pelo AS pela primeira vez. Articulando o conjunto do bloco B13 (Aulas 1-20) — PEP, RAPS, Reforma Psiquiátrica, Plano Ruas Visíveis, princípios do CE/1993, racismo estrutural, identidade de gênero e Redução de Danos — a conduta CORRETA do AS é:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Condicionar o atendimento à abstinência total das drogas e à apresentação de documento de identidade.</span></li>
+        <li class="correta"><span class="letra">B</span><span>Acolher com escuta qualificada e sem julgamento moral; usar o nome social da usuária (princípio XI do CE/1993 com identidade de gênero — Res. CFESS 615/2011; Decreto 8.727/2016; STF criminalizou LGBTfobia em 2019); operar na lógica da Redução de Danos (Portaria 1.028/2005, Lei 11.343/2006) sem condicionar o cuidado à abstinência; articular com o Plano Ruas Visíveis 2023, Consultório na Rua, Centro POP e SAE/CTA (saúde da PCD/HIV); orientar sobre direitos (acesso ao SUS independentemente de documentação, ainda que precária, conforme Portaria SUS 940/2011 e Decreto 7.053/2009 sobre PSR); construir PTS interprofissional articulando saúde mental, saúde da mulher trans, redução de danos, articulação com SUAS (CRAS, Centro POP) e Defensoria; reconhecer no atendimento as múltiplas determinações (raça, gênero, classe, sexualidade, território) — interseccionalidade na prática.</span></li>
+        <li><span class="letra">C</span><span>Encaminhar a usuária diretamente para uma Comunidade Terapêutica para tratamento por abstinência.</span></li>
+        <li><span class="letra">D</span><span>Negar o uso do nome social e exigir o uso do nome do registro civil em todos os procedimentos.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> integra TODO o Bloco B13. PEP + CE/1993 (princípios XI, II) + Lei 10.216 + RAPS + Redução de Danos + Plano Ruas Visíveis + LGBTI+ + saúde da mulher trans + interseccionalidade (Crenshaw/Saffioti) + racismo estrutural (Almeida) + decoloniedade (Fanon). Resposta complexa, articulada, antimanicomial, antirracista, antitransfóbica, antimercantilista. As outras erram: A — condicionar viola RD · C — CT é polêmica e contrária ao modelo antimanicomial · D — uso do nome social é direito.</p>
+    </div>
+  </div>
+  <div class="footer"><span>Simulado · Questões 09-10</span><span>Extensivo ENARE 2026</span><span class="pg">6 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — Simulado</div><div class="aula-ref">Bloco B13 · Aula 21 · Mapa</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Mapa de Conhecimento — Bloco B13</div>
+
+    <p>Resumo conceitual do bloco. Use como guia de revisão final nas últimas semanas antes da prova.</p>
+
+    <div class="subsecao">Módulo SS-FUND (Aulas 01-05) — Fundamentos</div>
+    <table>
+      <tr><th>Aula</th><th>Tópico</th><th>Conceitos-chave</th></tr>
+      <tr><td>01</td><td>Teoria Crítica do SS</td><td>Netto, Iamamoto, Instrumentalidade (Guerra), PEP</td></tr>
+      <tr><td>02</td><td>Renovação e Reconceituação</td><td>Araxá 1967, Teresópolis 1970, III CBAS 1979</td></tr>
+      <tr><td>03</td><td>SS no Capitalismo Contemporâneo</td><td>Neoliberalismo, EC 95/2016, plataformização</td></tr>
+      <tr><td>04</td><td>Teoria Social</td><td>Marx (materialismo histórico-dialético), Durkheim, Weber</td></tr>
+      <tr><td>05</td><td>Formação Social Brasileira</td><td>Freyre (criticado), Sérgio Buarque, Florestan, Darcy (cluster novo)</td></tr>
+    </table>
+
+    <div class="subsecao">Módulo SS-ASSISTENCIA (Aulas 06-08)</div>
+    <table>
+      <tr><th>Aula</th><th>Tópico</th><th>Conceitos-chave</th></tr>
+      <tr><td>06</td><td>SUAS Estrutura e Proteção Social</td><td>CF/1988, LOAS, CRAS, CREAS (cluster NOVO 2025: 0→9q)</td></tr>
+      <tr><td>07</td><td>SUAS Financiamento</td><td>FNAS, blocos, EC 95/2016, Prontuário Eletrônico, Ruas Visíveis</td></tr>
+      <tr><td>08</td><td>Parâmetros Profissionais AS</td><td>CFESS 2011, Lei 8.662 art. 5º, CadÚnico, BPC, PAIF, PAEFI</td></tr>
+    </table>
+
+    <div class="subsecao">Módulo SS-POLITICA (Aulas 09-10)</div>
+    <table>
+      <tr><th>Aula</th><th>Tópico</th><th>Conceitos-chave</th></tr>
+      <tr><td>09</td><td>Seguridade Social e Políticas Sociais</td><td>CF/1988, Welfare State, controle social, filantrocapitalismo</td></tr>
+      <tr><td>10</td><td>DUDH e Direitos Humanos</td><td>DUDH 1948 (cluster novo 4q), Pactos 1966, Viena 1993, Pacto San José, Conv. PCD</td></tr>
+    </table>
+
+    <div class="subsecao">Módulo SS-SAUDE (Aulas 11-13)</div>
+    <table>
+      <tr><th>Aula</th><th>Tópico</th><th>Conceitos-chave</th></tr>
+      <tr><td>11</td><td>Saúde Coletiva Fundamentos</td><td>Lei 8.080 art. 3º, 8ª CNS, DSS Dahlgren-Whitehead, RSB</td></tr>
+      <tr><td>12</td><td>SUS na Prática e o SS na Saúde</td><td>APS Starfield, ESF/PNAB, eMulti, RAS Decreto 7.508/2011, PNH, Parâmetros CFESS 2010</td></tr>
+      <tr><td>13</td><td>Saúde Mental e Reforma Psiquiátrica</td><td>Pinel, Foucault, Goffman, Basaglia, Fanon, Lei 10.216/2001, RAPS, Redução de Danos</td></tr>
+    </table>
+
+    <div class="subsecao">Módulo SS-ETICA (Aulas 14-15)</div>
+    <table>
+      <tr><th>Aula</th><th>Tópico</th><th>Conceitos-chave</th></tr>
+      <tr><td>14</td><td>Código de Ética 1993 e Lei 8.662/1993</td><td>XI princípios, sigilo, atribuições privativas, CFESS/CRESS, penalidades</td></tr>
+      <tr><td>15</td><td>Formação Profissional</td><td>DCN/ABEPSS 1996, 3 núcleos, Lei 11.788/2008, crítica à EaD</td></tr>
+    </table>
+
+    <div class="subsecao">Módulos Complementares (Aulas 16-19)</div>
+    <table>
+      <tr><th>Aula</th><th>Tópico</th><th>Conceitos-chave</th></tr>
+      <tr><td>16</td><td>Trabalho Profissional</td><td>Iamamoto, instrumentalidade (Guerra), 3 dimensões, Res. CFESS 568/2010, Lei 12.317/2010 (30h)</td></tr>
+      <tr><td>17</td><td>Questão Social Contemporânea</td><td>Netto, plataformização (Antunes), racismo (Almeida), patriarcado (Saffioti)</td></tr>
+      <tr><td>18</td><td>Família, Gênero e Populações</td><td>Engels, Saffioti, Sarti, ECA, Estatuto Idoso, LBI, LGBTI+, indígenas, quilombolas</td></tr>
+      <tr><td>19</td><td>Biossegurança e NR-32</td><td>Riscos ocupacionais, EPI/EPC, CAT, CIPA, PNSTT, CEREST, LGPD, COVID-19 ocupacional</td></tr>
+    </table>
+
+    <div class="subsecao">Aulas Finais (Aulas 20-21)</div>
+    <table>
+      <tr><th>Aula</th><th>Tópico</th><th>Conceitos-chave</th></tr>
+      <tr><td>20</td><td>Análise de Texto FGV</td><td>NC An +12,4pp em 2025, técnicas de leitura crítica, fragmentos teóricos</td></tr>
+      <tr><td>21</td><td>Simulado Integrativo Final</td><td>10 questões + gabarito + mapa + plano de estudos</td></tr>
+    </table>
+
+    <div class="alerta">
+      <p><strong>Big picture do Bloco B13:</strong> articulação completa entre teoria (Aulas 1-5), legislação (Aulas 6-10), atuação prática (Aulas 11-15), trabalho profissional (Aulas 16-19) e treino para a prova (Aulas 20-21). Três clusters novos identificados em 2025: <strong>SUAS</strong> (9 questões — Aulas 6-7), <strong>DUDH</strong> (4 questões — Aula 10), <strong>formação social brasileira</strong> (4 questões — Aula 5). Plataformização, racismo estrutural e Fanon = tendências emergentes.</p>
+    </div>
+  </div>
+  <div class="footer"><span>Simulado · Mapa</span><span>Extensivo ENARE 2026</span><span class="pg">7 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — Simulado</div><div class="aula-ref">Bloco B13 · Aula 21 · Plano</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Plano de Estudos para as Últimas Semanas</div>
+
+    <p>Recomendação de uso intensivo do material das últimas 4-6 semanas antes da prova ENARE. Articula leitura, prática e revisão.</p>
+
+    <div class="subsecao">Semanas 1-2: Imersão Conceitual</div>
+    <ul class="lista">
+      <li>Reler PDF Aula 01 (PEP), Aula 14 (CE/1993) e Aula 11 (Saúde Coletiva) — eixos teóricos</li>
+      <li>Resumir os XI princípios do CE/1993 em fichas curtas</li>
+      <li>Estudar Lei 8.662/1993 (art. 4 × art. 5) e Lei 8.080/1990 (art. 3 e art. 7)</li>
+      <li>Treinar a distinção competência × atribuição privativa</li>
+      <li>Estudar a Lei 10.216/2001 (Aula 13) — 3 modalidades de internação</li>
+    </ul>
+
+    <div class="subsecao">Semanas 3-4: Clusters Novos</div>
+    <ul class="lista">
+      <li>SUAS aprofundamento (Aulas 6-7-8) — cluster novo 2025</li>
+      <li>DUDH e Convenção PCD (Aula 10) — 4 questões em 2025</li>
+      <li>Formação social brasileira (Aula 5) — Freyre criticado, Florestan, Darcy</li>
+      <li>Plataformização (Aula 17) + racismo estrutural (Aulas 4 e 17) — tendências</li>
+      <li>Treinar fragmentos de Iamamoto, Netto, Guerra, Saffioti, Almeida, Antunes (Aula 20)</li>
+    </ul>
+
+    <div class="subsecao">Semanas 5-6: Treino e Revisão Final</div>
+    <ul class="lista">
+      <li>Resolver as 21 questões dos PDFs (4 por aula × 20 aulas + 10 do simulado = ~90 questões)</li>
+      <li>Releitura das aulas mais cobradas (Aulas 6, 11-13, 14)</li>
+      <li>Revisão de mnemônicos e fórmulas mentais</li>
+      <li>Simulado final completo (Aula 21)</li>
+      <li>Identificação de pontos fracos para revisão pontual</li>
+      <li>Cuidado com saúde mental — descanso, sono, alimentação, atividade física</li>
+    </ul>
+
+    <div class="subsecao">Quadro de Prioridades por Peso</div>
+    <table>
+      <tr><th>Aula</th><th>Peso</th><th>Prioridade</th></tr>
+      <tr><td>06 (SUAS Estrutura)</td><td>★★★★★ (9 questões cluster 2025)</td><td>Máxima</td></tr>
+      <tr><td>11-13 (Saúde Coletiva, SUS, Saúde Mental)</td><td>★★★★★ (15-25q em SS)</td><td>Máxima</td></tr>
+      <tr><td>14 (CE/1993 + Lei 8.662)</td><td>★★★★</td><td>Alta</td></tr>
+      <tr><td>10 (DUDH)</td><td>★★★ (cluster novo 4q)</td><td>Alta</td></tr>
+      <tr><td>16 (Trabalho Profissional)</td><td>★★★★</td><td>Alta</td></tr>
+      <tr><td>17 (Questão Social)</td><td>★★★★</td><td>Alta</td></tr>
+      <tr><td>01-05 (Fundamentos)</td><td>★★★</td><td>Média</td></tr>
+      <tr><td>07-09 (Financiamento, Parâmetros, Seguridade)</td><td>★★★</td><td>Média</td></tr>
+      <tr><td>15, 18, 19 (Formação, Família, Biossegurança)</td><td>★★★</td><td>Média</td></tr>
+      <tr><td>20-21 (Análise, Simulado)</td><td>★★★★★</td><td>Máxima (preparação)</td></tr>
+    </table>
+
+    <div class="subsecao">Checklist Final ENARE 2026</div>
+    <p>Verifique se domina:</p>
+    <ul class="lista">
+      <li>☐ XI Princípios do CE/1993 (literalmente)</li>
+      <li>☐ Lei 8.662 art. 4 (competências) × art. 5 (atribuições privativas)</li>
+      <li>☐ Lei 8.080 art. 3 (determinantes/condicionantes) e art. 7 (princípios)</li>
+      <li>☐ Lei 10.216/2001 — 3 modalidades de internação</li>
+      <li>☐ LOAS — princípios; público; benefícios (BPC); PAIF/PAEFI</li>
+      <li>☐ DUDH — Art. 1, 13, 16, 22-27</li>
+      <li>☐ Pactos 1966 (PIDCP/PIDESC) e Viena 1993</li>
+      <li>☐ ECA — proteção integral; SGD; Conselho Tutelar; medidas (101, 112)</li>
+      <li>☐ Estatuto Idoso + Lei 14.423/2022 (pessoa idosa)</li>
+      <li>☐ LBI Lei 13.146/2015 — modelo social, barreiras, BPC PCD</li>
+      <li>☐ Iamamoto (SS como trabalho) × Netto (questão social no capital monopolista)</li>
+      <li>☐ Guerra (instrumentalidade — 3 dimensões)</li>
+      <li>☐ Saffioti (nó patriarcado-capitalismo-racismo)</li>
+      <li>☐ Almeida (racismo estrutural — 3 concepções)</li>
+      <li>☐ Antunes (plataformização, classe-que-vive-do-trabalho)</li>
+      <li>☐ Fanon (sociogênese, alienação colonial)</li>
+      <li>☐ Parâmetros CFESS 2010 (4 eixos do SS na Saúde)</li>
+      <li>☐ DCN/ABEPSS 1996 (3 núcleos)</li>
+      <li>☐ Crítica à EaD (CFESS-CRESS-ABEPSS-ENESSO 2007+)</li>
+      <li>☐ EC 95/2016 e contrarreforma do SUS</li>
+      <li>☐ RAPS (Portaria 3.088/2011) — 7 componentes</li>
+      <li>☐ APS Starfield — 4 atributos + atributos derivados</li>
+      <li>☐ PNH (HumanizaSUS, 2003) — princípios e dispositivos</li>
+      <li>☐ NR-32 — riscos biológicos, vacinação, perfurocortantes</li>
+      <li>☐ Lei 12.317/2010 — 30 horas semanais</li>
+      <li>☐ Conjunto CFESS-CRESS-ABEPSS-ENESSO — funções</li>
+      <li>☐ Sigilo profissional (CE arts. 15-18) + notificação compulsória</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Mensagem final:</strong> dedicação, calma e estratégia. A prova ENARE não é "decoreba" — é articulação. Quem dominar os eixos do PEP, conseguir articular autores e leis, e treinar análise textual, sairá bem. Você tem todas as ferramentas. Confie no estudo realizado. Boa prova!</p>
+    </div>
+  </div>
+  <div class="footer"><span>Simulado · Plano</span><span>Extensivo ENARE 2026</span><span class="pg">8 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — Simulado</div><div class="aula-ref">Bloco B13 · Aula 21 · Gabarito Final</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Gabarito Resumido do Simulado</div>
+
+    <table>
+      <tr><th>Questão</th><th>Gabarito</th><th>Tema/Aula</th></tr>
+      <tr><td>01</td><td>A</td><td>PEP — Aula 01, 14</td></tr>
+      <tr><td>02</td><td>B</td><td>Reconceituação — Aula 02</td></tr>
+      <tr><td>03</td><td>B</td><td>SUAS/CRAS/PAIF — Aula 06</td></tr>
+      <tr><td>04</td><td>B</td><td>DUDH — Aula 10</td></tr>
+      <tr><td>05</td><td>C (INCORRETA)</td><td>SUS princípios — Aula 11</td></tr>
+      <tr><td>06</td><td>B</td><td>Lei 10.216 — Aula 13</td></tr>
+      <tr><td>07</td><td>B</td><td>Sigilo + violência criança — Aula 14, 18</td></tr>
+      <tr><td>08</td><td>B</td><td>Parecer social — Aulas 12, 14, 16</td></tr>
+      <tr><td>09</td><td>B</td><td>Racismo estrutural — Aulas 04-05, 17</td></tr>
+      <tr><td>10</td><td>B</td><td>Caso integrativo — Bloco B13 inteiro</td></tr>
+    </table>
+
+    <div class="subsecao">Análise de Desempenho</div>
+    <ul class="lista">
+      <li>9-10 acertos: domínio excelente — continue revisando os pontos das demais aulas; foque em aprimoramento</li>
+      <li>7-8 acertos: bom domínio — identifique os erros e estude os tópicos específicos</li>
+      <li>5-6 acertos: domínio razoável — releia as aulas dos erros e faça mais questões</li>
+      <li>&lt;5 acertos: revisão geral necessária — leia novamente os PDFs em sequência</li>
+    </ul>
+
+    <div class="subsecao">Pontos Críticos para Confirmar</div>
+    <table>
+      <tr><th>Se errou Q...</th><th>Releia...</th></tr>
+      <tr><td>1, 2</td><td>Aulas 01 (PEP), 02 (Reconceituação), 14 (CE)</td></tr>
+      <tr><td>3</td><td>Aulas 06-08 (SUAS)</td></tr>
+      <tr><td>4</td><td>Aula 10 (DUDH)</td></tr>
+      <tr><td>5</td><td>Aula 11 (Saúde Coletiva)</td></tr>
+      <tr><td>6</td><td>Aula 13 (Reforma Psiquiátrica)</td></tr>
+      <tr><td>7</td><td>Aulas 14 (Sigilo) + 18 (ECA)</td></tr>
+      <tr><td>8</td><td>Aulas 12, 14, 16 (Parecer Social, atribuições privativas)</td></tr>
+      <tr><td>9</td><td>Aulas 04-05 (Marx/Florestan) + 17 (Racismo)</td></tr>
+      <tr><td>10</td><td>Bloco B13 inteiro — questão integrativa</td></tr>
+    </table>
+
+    <div class="alerta">
+      <p><strong>Estratégia de revisão final:</strong> não tente reler tudo. Faça revisão dirigida: identifique os erros, releia somente o tópico específico, faça questões similares, marque como dominado. Use os mapas mentais (Aulas 20 e 21) para fixar.</p>
+    </div>
+  </div>
+  <div class="footer"><span>Simulado · Gabarito</span><span>Extensivo ENARE 2026</span><span class="pg">9 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — Simulado</div><div class="aula-ref">Bloco B13 · Aula 21 · Encerramento</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Encerramento do Bloco B13</div>
+
+    <p>Você acaba de concluir o Bloco B13 de Serviço Social do Extensivo ENARE 2026. Foram 21 aulas que percorreram o conjunto da formação profissional: dos fundamentos teóricos críticos à atuação concreta em saúde, assistência, políticas sociais, ética, trabalho e populações específicas.</p>
+
+    <div class="sintese-grid">
+      <div class="sintese-item"><div class="si-label">21 Aulas Concluídas</div><p>5 SS-FUND + 3 SS-ASSISTENCIA + 2 SS-POLITICA + 3 SS-SAUDE + 2 SS-ETICA + 1 SS-TRABALHO + 1 SS-QUESTSOC + 1 SS-FAMILIA + 1 SS-SAUDE Biossegurança + 1 Análise + 1 Simulado</p></div>
+      <div class="sintese-item"><div class="si-label">Marcos do Bloco</div><p>3 clusters novos cobertos (SUAS, DUDH, formação social brasileira). Atualização de Fanon, plataformização, racismo estrutural. Articulação completa do PEP com novas tradições críticas (decolonial, antirracista, feminista materialista).</p></div>
+      <div class="sintese-item"><div class="si-label">Domínio Construído</div><p>Teoria social crítica (Marx, Iamamoto, Netto, Saffioti, Almeida, Antunes, Fanon, Mbembe, Quijano) + Legislação (CE/1993, Lei 8.662, Lei 8.080, Lei 10.216, ECA, LOAS, LBI, Estatuto Idoso, NR-32) + Prática profissional (Parâmetros CFESS, RAPS, SUAS, PNH).</p></div>
+      <div class="sintese-item"><div class="si-label">Habilidades Treinadas</div><p>Análise textual (Aula 20). Aplicação de casos (vários). Articulação entre autores. Diferenciação entre conceitos próximos. Reconhecimento de marcas linguísticas. Estratégia de resolução de prova.</p></div>
+      <div class="sintese-item"><div class="si-label">PEP Internalizado</div><p>Liberdade como valor central. Defesa intransigente dos DH. Cidadania ampliada. Pluralismo democrático. Antirracismo. Antipatriarcado. Anti-LGBTfobia. Anticarcerário. Antimanicomial. Defesa do SUS público. Compromisso com a classe trabalhadora.</p></div>
+      <div class="sintese-item"><div class="si-label">Conjunto CFESS-CRESS-ABEPSS-ENESSO</div><p>Você agora compreende a articulação entre as 4 entidades. Compreende seus papéis distintos e complementares. Reconhece-os como referência teórica e política da categoria. Sabe que é parte do conjunto da categoria — não apenas profissional isolado.</p></div>
+    </div>
+
+    <div class="alerta" style="margin-top:5px;">
+      <p><strong>Mensagem final do extensivo:</strong> a formação não termina no ENARE. O AS é trabalhador em constante construção. O princípio X do CE/1993 — "compromisso com a qualidade dos serviços prestados à população e com o aprimoramento intelectual" — é convite à educação permanente ao longo da vida profissional. A ENARE é portal de uma nova etapa: a residência multiprofissional ou outras frentes de aprofundamento. Que esta jornada continue! Boa prova, bom trabalho, boa luta.</p>
+    </div>
+
+    <div class="alerta" style="margin-top:5px;background:rgba(31,92,35,0.1);border-left-color:var(--verde);">
+      <p style="text-align:center;font-style:italic;"><strong>"Toda vez que um homem fez triunfar a dignidade do espírito, toda vez que um homem disse não a uma tentativa de subjugar seus semelhantes, eu me senti solidário ao seu ato."</strong><br>— Frantz Fanon, Pele Negra, Máscaras Brancas (1952)</p>
+    </div>
+
+    <div style="text-align:center;margin-top:15px;">
+      <div style="font-family:'Playfair Display',serif;font-style:italic;color:var(--verde);font-size:20px;margin-bottom:5px;">Elite Treinamentos em Saúde</div>
+      <div style="font-family:'Space Grotesk',sans-serif;font-weight:300;color:#888;font-size:9px;letter-spacing:2px;text-transform:uppercase;">Extensivo ENARE 2026 — Bloco B13 Serviço Social</div>
+      <div style="font-family:'Barlow Condensed',sans-serif;color:var(--amarelo);background:var(--verde);display:inline-block;padding:5px 14px;margin-top:10px;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;">Boa Prova!</div>
+    </div>
+  </div>
+  <div class="footer"><span>Simulado · Encerramento</span><span>Extensivo ENARE 2026</span><span class="pg">10 / 10</span></div>
+</div>
+
+</body>
+</html>

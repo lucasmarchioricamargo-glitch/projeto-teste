@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Serviço Social — Bloco B13 Aula 14 | Extensivo ENARE 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap');
+  :root { --creme: #F6F4ED; --verde: #1F5C23; --amarelo: #C6D834; --escuro: #0C2B0E; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #d0d0d0; font-family: 'Bricolage Grotesque', sans-serif; }
+  .page { width: 210mm; height: 297mm; background: var(--creme); margin: 0 auto 12px; position: relative; overflow: hidden; page-break-after: always; }
+  .header { background: var(--verde); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .header-logo { display: flex; align-items: center; gap: 8px; }
+  .header-logo svg { width: 32px; height: 32px; }
+  .header-brand { display: flex; flex-direction: column; line-height: 1; }
+  .header-brand .marca { font-family: 'Playfair Display', serif; font-style: italic; color: #fff; font-size: 13px; letter-spacing: 0.5px; }
+  .header-brand .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 7px; letter-spacing: 1.5px; text-transform: uppercase; }
+  .header-info { text-align: right; }
+  .header-info .disciplina { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
+  .header-info .aula-ref { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.7); font-size: 8px; letter-spacing: 0.5px; }
+  .footer { position: absolute; bottom: 0; left: 0; right: 0; background: var(--verde); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .footer span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.6); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .footer .pg { color: var(--amarelo); font-weight: 400; }
+  .body { padding: 14px 18px 30px; height: calc(297mm - 52px - 22px); overflow: hidden; }
+  .capa-page { background: var(--verde); }
+  .capa-header { background: var(--creme); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .capa-header .marca { font-family: 'Playfair Display', serif; font-style: italic; color: var(--verde); font-size: 14px; }
+  .capa-header .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--verde); font-size: 7.5px; letter-spacing: 2px; text-transform: uppercase; }
+  .capa-body { padding: 28px 24px 0; display: flex; flex-direction: column; height: calc(297mm - 52px - 22px); }
+  .capa-eyebrow { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; }
+  .capa-titulo { font-family: 'Barlow Condensed', sans-serif; color: #fff; font-size: 50px; line-height: 0.95; text-transform: uppercase; letter-spacing: -0.5px; margin-bottom: 6px; }
+  .capa-titulo span { color: var(--amarelo); }
+  .capa-subtitulo { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; color: rgba(255,255,255,0.65); font-size: 12px; letter-spacing: 0.3px; margin-bottom: 22px; line-height: 1.5; }
+  .capa-badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+  .capa-badge { background: rgba(198,216,52,0.15); border: 1px solid var(--amarelo); color: var(--amarelo); font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 8px; border-radius: 2px; }
+  .capa-divider { width: 40px; height: 3px; background: var(--amarelo); margin-bottom: 20px; }
+  .capa-topicos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .capa-topico { display: flex; align-items: flex-start; gap: 7px; }
+  .capa-topico-num { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 18px; line-height: 1; min-width: 18px; }
+  .capa-topico-txt { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 400; color: rgba(255,255,255,0.8); font-size: 9.5px; line-height: 1.4; }
+  .capa-footer-strip { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.25); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .capa-footer-strip span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.45); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .secao-titulo { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 18px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid var(--amarelo); padding-bottom: 3px; margin-bottom: 9px; line-height: 1; }
+  .subsecao { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.5px; margin: 7px 0 3px; }
+  p { font-size: 9px; line-height: 1.55; color: #1a1a1a; margin-bottom: 4px; font-weight: 400; }
+  .destaque { background: var(--amarelo); color: var(--escuro); font-weight: 600; padding: 1px 4px; border-radius: 2px; font-size: 8.5px; }
+  .alerta { background: rgba(198,216,52,0.18); border-left: 3px solid var(--amarelo); padding: 5px 8px; margin: 5px 0; border-radius: 0 3px 3px 0; }
+  .alerta p { margin: 0; font-size: 8.5px; }
+  .alerta strong { color: var(--verde); }
+  table { width: 100%; border-collapse: collapse; margin: 5px 0; font-size: 8px; }
+  th { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; padding: 4px 6px; text-align: left; }
+  td { padding: 3px 6px; border-bottom: 1px solid rgba(31,92,35,0.12); vertical-align: top; line-height: 1.4; color: #1a1a1a; }
+  tr:nth-child(even) td { background: rgba(31,92,35,0.04); }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 5px 0; }
+  .card { background: rgba(31,92,35,0.06); border: 1px solid rgba(31,92,35,0.15); border-radius: 4px; padding: 7px 8px; }
+  .card-title { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 11px; text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 3px; }
+  .card p { font-size: 8px; line-height: 1.5; }
+  .questao-header { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; padding: 4px 10px; border-radius: 3px 3px 0 0; display: flex; justify-content: space-between; align-items: center; }
+  .questao-header .fonte { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; color: var(--amarelo); letter-spacing: 0.5px; }
+  .questao-body { border: 1px solid rgba(31,92,35,0.2); border-top: none; border-radius: 0 0 3px 3px; padding: 7px 10px; margin-bottom: 7px; }
+  .questao-enunciado { font-size: 8.5px; line-height: 1.55; color: #111; margin-bottom: 5px; font-weight: 500; }
+  .alternativas { list-style: none; }
+  .alternativas li { font-size: 8px; line-height: 1.5; padding: 2px 0; color: #222; display: flex; gap: 5px; }
+  .alternativas li .letra { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: var(--verde); font-size: 9px; min-width: 10px; }
+  .alternativas li.correta .letra { color: var(--amarelo); }
+  .alternativas li.correta { background: rgba(198,216,52,0.15); border-left: 2px solid var(--amarelo); padding-left: 4px; }
+  .gabarito-box { background: var(--verde); border-radius: 4px; padding: 8px 12px; margin: 6px 0; }
+  .gabarito-box .gab-title { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+  .gabarito-box p { color: rgba(255,255,255,0.9); font-size: 8px; line-height: 1.55; }
+  .gabarito-box strong { color: var(--amarelo); }
+  .sintese-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-top: 6px; }
+  .sintese-item { background: rgba(31,92,35,0.07); border-left: 3px solid var(--verde); padding: 5px 7px; border-radius: 0 3px 3px 0; }
+  .sintese-item .si-label { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px; }
+  .sintese-item p { font-size: 7.5px; line-height: 1.5; }
+  ul.lista { padding-left: 14px; margin: 3px 0; }
+  ul.lista li { font-size: 8.5px; line-height: 1.55; color: #1a1a1a; margin-bottom: 1px; }
+  @media print { body { background: none; } .page { margin: 0; box-shadow: none; } }
+</style>
+</head>
+<body>
+
+<div class="page capa-page">
+  <div class="capa-header">
+    <div style="display:flex;align-items:center;gap:8px;"><svg width="34" height="34" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#1F5C23"/></svg><div><div class="marca">Elite Treinamentos</div><div class="tagline">Extensivo ENARE 2026</div></div></div>
+    <div style="text-align:right;"><div style="font-family:'Barlow Condensed',sans-serif;color:var(--verde);font-size:11px;letter-spacing:1px;text-transform:uppercase;">Bloco B13 · Aula 14</div><div style="font-family:'Space Grotesk',sans-serif;font-weight:300;color:#888;font-size:7.5px;letter-spacing:0.5px;">Serviço Social</div></div>
+  </div>
+  <div class="capa-body">
+    <div class="capa-eyebrow">Bloco B13 · SS-ETICA · Aula 14 de 21</div>
+    <div class="capa-titulo">Código <span>de Ética<br>1993<br>&amp; Lei 8.662</span></div>
+    <div class="capa-subtitulo">XI Princípios Fundamentais, deveres e vedações,<br>sigilo profissional e infrações disciplinares</div>
+    <div class="capa-badge-row">
+      <div class="capa-badge">SS-ETICA ★★★★</div>
+      <div class="capa-badge">Res. CFESS 273/1993</div>
+      <div class="capa-badge">Lei 8.662/1993</div>
+      <div class="capa-badge">Sistema CFESS/CRESS</div>
+    </div>
+    <div class="capa-divider"></div>
+    <div class="capa-topicos">
+      <div class="capa-topico"><div class="capa-topico-num">01</div><div class="capa-topico-txt">Histórico — códigos 1947, 1965, 1975, 1986, 1993</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">02</div><div class="capa-topico-txt">XI Princípios Fundamentais do CE/1993</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">03</div><div class="capa-topico-txt">Direitos, deveres e vedações</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">04</div><div class="capa-topico-txt">Sigilo profissional (arts. 15-18)</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">05</div><div class="capa-topico-txt">Lei 8.662/1993 — regulamentação</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">06</div><div class="capa-topico-txt">Penalidades e Conselhos CFESS/CRESS</div></div>
+    </div>
+  </div>
+  <div class="capa-footer-strip"><span>Extensivo ENARE 2026</span><span>Elite Treinamentos em Saúde</span><span>Página 1 de 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-ETICA</div><div class="aula-ref">Bloco B13 · Aula 14 · Histórico</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Histórico dos Códigos de Ética do AS</div>
+
+    <p>A <strong>ética profissional</strong> do AS expressa o estágio de desenvolvimento da profissão e seu projeto societário. Cada código de ética é "carta de princípios" que reflete uma conjuntura histórica e uma direção político-profissional. A análise dos cinco códigos (1947, 1965, 1975, 1986, 1993) revela a trajetória da ruptura com o conservadorismo. Cobrança ALTA na ENARE — peso ★★★★.</p>
+
+    <div class="subsecao">Os Cinco Códigos de Ética</div>
+    <table>
+      <tr><th>Ano</th><th>Influência</th><th>Características</th></tr>
+      <tr><td><strong>1947</strong></td><td>Neotomismo / Doutrina Social da Igreja</td><td>Primeiro código profissional. Inspirado em valores cristãos. Ênfase em "bem comum", "ordem natural", "perfeição moral". Caridade. Profissão como apostolado.</td></tr>
+      <tr><td><strong>1965</strong></td><td>Personalismo cristão (Maritain, Mounier)</td><td>Pequena atualização. Mantém matriz cristã. Valoriza "pessoa humana" e "dignidade". Recepciona a tradição francesa do humanismo cristão.</td></tr>
+      <tr><td><strong>1975</strong></td><td>Funcionalismo / Tecnocratismo (Ditadura)</td><td>Sob a Ditadura Militar. Código mais técnico, asséptico, "neutro". Hegemonia do funcionalismo norte-americano. Despolitização aparente. "Profissão a serviço do desenvolvimento" (autoritário).</td></tr>
+      <tr><td><strong>1986</strong></td><td>Marxismo / Movimento de Reconceituação</td><td>"Código da Virada". Pós-III CBAS 1979 (Aula 02). Rompe com o conservadorismo. Compromisso com a classe trabalhadora. Crítica aos códigos anteriores. Influência marxista mas com fragilidade na operacionalização (princípios sem mediação prática).</td></tr>
+      <tr><td><strong>1993</strong></td><td>Marxismo / PEP / Maturação teórica</td><td>Código vigente. Resolução CFESS 273/1993. Aprofunda o de 1986 com maior densidade teórica. Articula princípios com deveres/vedações operacionais. Eixo do PEP. Construído coletivamente. Pequenas alterações posteriores (Res. CFESS 290/1994, 293/1994, 333/1996 — atualizações terminológicas).</td></tr>
+    </table>
+
+    <div class="subsecao">A Mudança de Paradigma — 1965 → 1986</div>
+    <p>A mais radical transformação é entre os códigos de 1975 e 1986:</p>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">CE 1975 (Conservador-Tecnicista)</div>
+        <p>"Profissão a serviço do desenvolvimento nacional"; ênfase em deveres administrativos; submissão à instituição; valores liberal-cristãos; tecnicismo; despolitização aparente; serviço social como integrador social.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">CE 1986 (Virada)</div>
+        <p>"Compromisso com a classe trabalhadora"; ruptura explícita com a ditadura; explicita posicionamento de classe; afirma a dimensão política do trabalho profissional; cita "interesses populares"; influência marxista.</p>
+      </div>
+    </div>
+
+    <div class="subsecao">Por que o CE 1993 foi necessário (revisão do CE 1986)?</div>
+    <p>Apesar de marco histórico, o CE 1986 apresentava limites operacionais. O CE 1993 foi construído para:</p>
+    <ul class="lista">
+      <li>Operacionalizar os princípios em <em>deveres e vedações</em> concretas (o CE 1986 era programático)</li>
+      <li>Dar resposta às demandas profissionais pós-CF/1988 (novos espaços, novas legislações)</li>
+      <li>Aprofundar a fundamentação teórica marxista (Iamamoto, Netto, Barroco)</li>
+      <li>Articular princípios e mediações práticas</li>
+      <li>Atualizar terminologia (substituiu "classe trabalhadora" por "trabalhadores" em alguns trechos; preservou eixo de classe)</li>
+      <li>Integrar a Lei 8.662/1993 (regulamentação aprovada quase simultaneamente)</li>
+    </ul>
+
+    <div class="subsecao">Contextualização Política</div>
+    <ul class="lista">
+      <li>CF/1988 institui Estado Democrático de Direito</li>
+      <li>LOAS (1993) e Lei 8.080 (1990) abrem novos espaços profissionais</li>
+      <li>Neoliberalismo dos anos 1990 (Collor, FHC) — contrarreforma do Estado</li>
+      <li>Setor saúde mental (Lei 10.216) em construção</li>
+      <li>Profissão atinge maturidade teórica com base no método materialista histórico-dialético</li>
+      <li>Marilda Vilela Iamamoto, José Paulo Netto, Carlos Montaño, Maria Lúcia Barroco como referências</li>
+    </ul>
+
+    <div class="subsecao">Estrutura do Código de Ética 1993</div>
+    <table>
+      <tr><th>Componente</th><th>Conteúdo</th></tr>
+      <tr><td>Apresentação</td><td>Contextualização histórica do código</td></tr>
+      <tr><td>Introdução</td><td>Justificativa da elaboração; processo coletivo</td></tr>
+      <tr><td>Princípios Fundamentais</td><td>XI princípios — base axiológica</td></tr>
+      <tr><td>Título I — Disposições Gerais (arts. 1-2)</td><td>Objetivos do código</td></tr>
+      <tr><td>Título II — Direitos e Responsabilidades Gerais (arts. 2-3)</td><td>Direitos do AS; deveres gerais</td></tr>
+      <tr><td>Título III — Relações Profissionais (arts. 4-10)</td><td>Com usuários, AS, profissionais, instituição</td></tr>
+      <tr><td>Título IV — Sigilo Profissional (arts. 15-18)</td><td>Tratamento próprio</td></tr>
+      <tr><td>Título V — Relações com a Justiça (arts. 19-20)</td><td>Perícias, laudos, testemunho</td></tr>
+      <tr><td>Título VI — Observância, Penalidades, Aplicação e Cumprimento (arts. 21-23)</td><td>Operacionalização</td></tr>
+      <tr><td>Título VII — Disposições Gerais (arts. 24-25)</td><td>Vigência</td></tr>
+    </table>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> 5 códigos (1947, 1965, 1975, 1986, 1993). Inspirações: cristã → cristã/personalista → funcionalista (Ditadura) → marxista (Virada) → marxista PEP. CE 1986 = "Código da Virada"; CE 1993 = aprofundamento. Vigência atual: Resolução CFESS 273/1993 (com atualizações).</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-ETICA · CE/1993</span><span>Extensivo ENARE 2026</span><span class="pg">2 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-ETICA</div><div class="aula-ref">Bloco B13 · Aula 14 · XI Princípios</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Os XI Princípios Fundamentais do CE/1993</div>
+
+    <p>Os <strong>Princípios Fundamentais</strong> são a base axiológica do Código de Ética. Expressam o projeto profissional do AS — o PEP. Cobrança DIRETA na ENARE — é necessário <strong>saber a literalidade</strong> dos princípios. Numeração de I a XI:</p>
+
+    <div class="subsecao">Princípios I a IV — Valores Centrais</div>
+    <table>
+      <tr><th>Nº</th><th>Princípio</th></tr>
+      <tr><td><strong>I</strong></td><td>Reconhecimento da liberdade como valor ético central e das demandas políticas a ela inerentes — autonomia, emancipação e plena expansão dos indivíduos sociais</td></tr>
+      <tr><td><strong>II</strong></td><td>Defesa intransigente dos direitos humanos e recusa do arbítrio e do autoritarismo</td></tr>
+      <tr><td><strong>III</strong></td><td>Ampliação e consolidação da cidadania, considerada tarefa primordial de toda sociedade, com vistas à garantia dos direitos civis sociais e políticos das classes trabalhadoras</td></tr>
+      <tr><td><strong>IV</strong></td><td>Defesa do aprofundamento da democracia, enquanto socialização da participação política e da riqueza socialmente produzida</td></tr>
+    </table>
+
+    <div class="subsecao">Princípios V a VIII — Posicionamento e Compromissos</div>
+    <table>
+      <tr><th>Nº</th><th>Princípio</th></tr>
+      <tr><td><strong>V</strong></td><td>Posicionamento em favor da equidade e justiça social, que assegure universalidade de acesso aos bens e serviços relativos aos programas e políticas sociais, bem como sua gestão democrática</td></tr>
+      <tr><td><strong>VI</strong></td><td>Empenho na eliminação de todas as formas de preconceito, incentivando o respeito à diversidade, à participação de grupos socialmente discriminados e à discussão das diferenças</td></tr>
+      <tr><td><strong>VII</strong></td><td>Garantia do pluralismo, através do respeito às correntes profissionais democráticas existentes e suas expressões teóricas, e compromisso com o constante aprimoramento intelectual</td></tr>
+      <tr><td><strong>VIII</strong></td><td>Opção por um projeto profissional vinculado ao processo de construção de uma nova ordem societária, sem dominação, exploração de classe, etnia e gênero</td></tr>
+    </table>
+
+    <div class="subsecao">Princípios IX a XI — Articulações e Solidariedades</div>
+    <table>
+      <tr><th>Nº</th><th>Princípio</th></tr>
+      <tr><td><strong>IX</strong></td><td>Articulação com os movimentos de outras categorias profissionais que partilhem dos princípios deste Código e com a luta geral dos/as trabalhadores/as</td></tr>
+      <tr><td><strong>X</strong></td><td>Compromisso com a qualidade dos serviços prestados à população e com o aprimoramento intelectual, na perspectiva da competência profissional</td></tr>
+      <tr><td><strong>XI</strong></td><td>Exercício do Serviço Social sem ser discriminado/a, nem discriminar, por questões de inserção de classe social, gênero, etnia, religião, nacionalidade, orientação sexual, identidade de gênero, idade e condição física (Res. CFESS 615/2011 — incluiu "identidade de gênero")</td></tr>
+    </table>
+
+    <div class="subsecao">Análise dos Princípios — Síntese Crítica</div>
+    <table>
+      <tr><th>Núcleo</th><th>Princípios</th><th>Conteúdo</th></tr>
+      <tr><td>Valor ético central</td><td>I</td><td><strong>Liberdade</strong> como núcleo. Não é liberdade liberal (de mercado), mas liberdade como autonomia, emancipação, "plena expansão dos indivíduos sociais"</td></tr>
+      <tr><td>Articulação ética-política</td><td>II, III, IV</td><td>DH (II), cidadania (III), democracia (IV) — eixo da ação profissional cotidiana</td></tr>
+      <tr><td>Justiça social</td><td>V, VI</td><td>Universalidade de acesso (V); combate a preconceitos (VI) — diversidade</td></tr>
+      <tr><td>Pluralismo e qualidade</td><td>VII, X</td><td>Pluralismo intra-profissional (VII); qualidade técnica (X)</td></tr>
+      <tr><td>Projeto societário</td><td>VIII</td><td><strong>"Nova ordem societária, sem dominação, exploração de classe, etnia e gênero"</strong> — frase clássica do PEP</td></tr>
+      <tr><td>Solidariedade de classe</td><td>IX</td><td>Vinculação com luta dos/as trabalhadores/as</td></tr>
+      <tr><td>Não-discriminação</td><td>XI</td><td>Princípio operacionalizado em deveres/vedações; ampliado em 2011 (identidade de gênero)</td></tr>
+    </table>
+
+    <div class="subsecao">Conceitos-Chave dos Princípios</div>
+    <ul class="lista">
+      <li><strong>Liberdade</strong> (I): não confundir com liberdade liberal. É autonomia, emancipação, "plena expansão dos indivíduos sociais"</li>
+      <li><strong>Defesa intransigente dos DH</strong> (II): "intransigente" = não negociável; conexão com Aula 10</li>
+      <li><strong>Cidadania ampliada</strong> (III): direitos civis, sociais e políticos das <em>classes trabalhadoras</em></li>
+      <li><strong>Democracia</strong> (IV): socialização da participação <em>e</em> da riqueza — não apenas democracia política</li>
+      <li><strong>Equidade</strong> (V): tratar desiguais de forma desigual; universalidade de acesso</li>
+      <li><strong>Diversidade</strong> (VI): respeito a grupos discriminados; promoção da inclusão</li>
+      <li><strong>Pluralismo</strong> (VII): no interior da profissão — respeito a correntes democráticas; NÃO é "vale tudo" (limites do projeto democrático-popular)</li>
+      <li><strong>Nova ordem societária</strong> (VIII): projeto socialista; sem dominação de classe, etnia e gênero</li>
+      <li><strong>Articulação com trabalhadores</strong> (IX): luta de classes em movimento</li>
+      <li><strong>Qualidade do serviço</strong> (X): competência técnico-política</li>
+      <li><strong>Não-discriminação</strong> (XI): exercício e atendimento sem preconceitos</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> os XI princípios são <em>literalidade</em> — saber a redação. <strong>I — liberdade</strong> (valor ético central); <strong>II — DH intransigente</strong>; <strong>VIII — nova ordem societária sem dominação de classe, etnia e gênero</strong>; <strong>XI — não discriminação</strong> (incluiu identidade de gênero em 2011). Os princípios são o eixo do PEP.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-ETICA · CE/1993</span><span>Extensivo ENARE 2026</span><span class="pg">3 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-ETICA</div><div class="aula-ref">Bloco B13 · Aula 14 · Direitos e Deveres</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Direitos, Deveres e Vedações</div>
+
+    <p>Após os princípios, o CE/1993 estabelece <strong>direitos do AS</strong> (art. 2º) e <strong>deveres e vedações</strong> (arts. 3-14, 19-20). A prova cobra estes dispositivos em situações concretas. Estrutura por relações: gerais, com usuários, com AS, com instituições, com a Justiça.</p>
+
+    <div class="subsecao">Direitos do AS (Art. 2º)</div>
+    <ul class="lista">
+      <li>Garantia e defesa de suas atribuições e prerrogativas, estabelecidas na Lei de Regulamentação da Profissão e dos princípios firmados neste Código</li>
+      <li>Livre exercício das atividades inerentes à Profissão</li>
+      <li>Participação na elaboração e gerenciamento das políticas sociais e na formulação e implementação de programas sociais</li>
+      <li>Inviolabilidade do local de trabalho e respectivos arquivos e documentação</li>
+      <li>Desagravo público por ofensa que atinja a sua honra profissional</li>
+      <li>Aprimoramento profissional de forma contínua, colocando-o a serviço dos princípios deste Código</li>
+      <li>Pronunciamento em matéria de sua especialidade, sobretudo quando se tratar de assuntos de interesse da população</li>
+      <li>Ampla autonomia no exercício da Profissão, não sendo obrigado a prestar serviços profissionais incompatíveis com as suas atribuições, cargos ou funções</li>
+      <li>Liberdade na realização de seus estudos e pesquisas, resguardados os direitos de participação de indivíduos ou grupos envolvidos em seus trabalhos</li>
+    </ul>
+
+    <div class="subsecao">Deveres Gerais do AS (Art. 3º)</div>
+    <ul class="lista">
+      <li>Desempenhar suas atividades profissionais, com eficiência e responsabilidade, observando a legislação em vigor</li>
+      <li>Utilizar seu número de registro no CRESS no exercício da Profissão</li>
+      <li>Abster-se, no exercício da Profissão, de práticas que caracterizem a censura, o cerceamento da liberdade, o policiamento dos comportamentos, denunciando sua ocorrência aos órgãos competentes</li>
+      <li>Participar de programas de socorro à população em situação de calamidade pública, no atendimento e defesa de seus interesses e necessidades</li>
+    </ul>
+
+    <p><strong>Art. 3º também veda ao AS</strong> (proibições):</p>
+    <ul class="lista">
+      <li>Transgredir qualquer preceito deste Código, bem como da Lei de Regulamentação da Profissão</li>
+      <li>Praticar e ser conivente com condutas antiéticas, crimes ou contravenções, levando os respectivos casos à apreciação do CRESS, quando referente a Assistentes Sociais</li>
+      <li>Permitir ou exercer a supervisão de aluno/a de Serviço Social em Instituições Públicas ou Privadas que não tenham em seu quadro funcional Assistente Social que faça co-supervisão</li>
+      <li>Acatar determinação institucional que fira os princípios e diretrizes deste Código</li>
+    </ul>
+
+    <div class="subsecao">Relações com os/as Usuários/as (Art. 5º)</div>
+    <p>Aqui está o núcleo da ética profissional. <strong>Deveres do AS perante o usuário:</strong></p>
+    <ul class="lista">
+      <li>Contribuir para a viabilização da participação efetiva da população usuária nas decisões institucionais</li>
+      <li>Garantir a plena informação e discussão sobre as possibilidades e consequências das situações apresentadas</li>
+      <li>Democratizar as informações e o acesso aos programas disponíveis no espaço institucional</li>
+      <li>Devolver as informações colhidas nos estudos e pesquisas aos/às usuários/as, no sentido de que estes possam usá-los para o fortalecimento dos seus interesses</li>
+      <li>Informar à população usuária sobre a utilização de materiais de registro audiovisual e pesquisas a elas referentes e a forma de sistematização dos dados obtidos</li>
+      <li>Esclarecer aos/às usuários/as, ao iniciar o trabalho, sobre os objetivos e a amplitude de sua atuação profissional</li>
+    </ul>
+
+    <div class="subsecao">Vedações em Relação aos/às Usuários/as (Art. 6º)</div>
+    <p>É vedado ao AS:</p>
+    <ul class="lista">
+      <li>Exercer sua autoridade de maneira a limitar ou cercear o direito do/a usuário/a a participar e decidir livremente sobre seus interesses</li>
+      <li>Aproveitar-se de situações decorrentes da relação Assistente Social-usuário/a, para obter vantagens pessoais</li>
+      <li>Bloquear o acesso dos/as usuários/as aos serviços oferecidos pelas instituições, através de atitudes que venham coagir e/ou desrespeitar aqueles que buscam orientação e atendimento</li>
+    </ul>
+
+    <div class="subsecao">Relações entre Assistentes Sociais (Arts. 7-10)</div>
+    <ul class="lista">
+      <li>Ser solidário/a com outros profissionais, sem conivência com a negligência ou erros que firam princípios e diretrizes deste Código (art. 7º)</li>
+      <li>Repassar conhecimentos e informações aos/às colegas, salvo quando se tratar de matéria objeto de investigação ou pesquisa</li>
+      <li>É vedado prejudicar deliberadamente o trabalho de outro AS, no exercício de cargo de gestão ou direção (art. 8º)</li>
+      <li>Substituir um/a colega afastado/a por motivos políticos, religiosos, étnicos, de gênero etc. = vedado (art. 9º)</li>
+      <li>É vedado pleitear cargo ocupado por outro AS por meio de concorrência desleal (art. 10)</li>
+    </ul>
+
+    <div class="subsecao">Relações com Instituições Empregadoras (Arts. 8-11)</div>
+    <ul class="lista">
+      <li>Direito de receber, da instituição, informações sobre alterações nas políticas institucionais que afetem o exercício profissional</li>
+      <li>Direito a condições adequadas para a prática profissional</li>
+      <li>Dever de denunciar falhas das instituições que firam princípios deste Código</li>
+      <li>Vedado emprestar seu nome ou função a entidades para "salvar a face" institucional</li>
+      <li>Vedado realizar tarefas e funções que firam princípios deste Código</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> direitos do AS = ampla autonomia, inviolabilidade do local, pronunciamento em matéria de especialidade. Deveres com usuários = participação, informação, devolução. Vedações com usuários = limitar autonomia, vantagens pessoais, bloquear acesso. Entre AS = solidariedade SEM conivência com erros. Não substituir colega afastado por motivos discriminatórios.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-ETICA · CE/1993</span><span>Extensivo ENARE 2026</span><span class="pg">4 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-ETICA</div><div class="aula-ref">Bloco B13 · Aula 14 · Sigilo</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Sigilo Profissional (Arts. 15-18)</div>
+
+    <p>O <strong>sigilo profissional</strong> é um dos eixos mais cobrados em provas. Articula-se com o princípio da autonomia do usuário (art. 5º) e com o respeito aos DH. É <em>regulado em detalhes</em> pelo CE/1993. Tema-chave em situações de equipe multiprofissional, perícia, depoimento em Justiça.</p>
+
+    <div class="subsecao">Art. 15 — Definição do Sigilo</div>
+    <p>"<em>Constitui direito do/a Assistente Social manter o sigilo profissional.</em>"</p>
+
+    <p>Como bem afirma Iamamoto, o sigilo é, simultaneamente, <strong>direito</strong> do profissional e <strong>dever</strong> em relação ao usuário. É um direito que viabiliza um dever de não-divulgação.</p>
+
+    <div class="subsecao">Art. 16 — Definição do Conteúdo Sigiloso</div>
+    <p>"<em>O sigilo protegerá o/a usuário/a em tudo aquilo de que o/a Assistente Social tome conhecimento, como decorrência do exercício da atividade profissional.</em>"</p>
+
+    <ul class="lista">
+      <li>Tudo que o AS soube no exercício profissional</li>
+      <li>Não apenas declarações verbais — inclui documentos, observações, deduções</li>
+      <li>Vincula-se à condição profissional do AS, não à pessoa civil</li>
+    </ul>
+
+    <p><strong>Parágrafo único:</strong> "Em trabalho multidisciplinar só poderão ser prestadas informações dentro dos limites do estritamente necessário."</p>
+
+    <ul class="lista">
+      <li>Sigilo COMPARTILHADO na equipe — apenas no estritamente necessário</li>
+      <li>Não significa "todos sabem tudo" — exige juízo profissional sobre necessidade</li>
+      <li>Prontuário compartilhado deve refletir esse princípio</li>
+      <li>Conteúdos sensíveis (HIV, abuso sexual, drogas, abortos) exigem cuidado especial</li>
+    </ul>
+
+    <div class="subsecao">Art. 17 — Quebra do Sigilo</div>
+    <p>"<em>É vedado ao/à Assistente Social revelar sigilo profissional.</em>"</p>
+
+    <p><strong>Exceções (parágrafo único):</strong> a quebra do sigilo só é admissível quando se tratarem de situações cuja gravidade possa, envolvendo ou não fato delituoso, trazer prejuízo aos interesses do/a usuário/a, de terceiros/as e da coletividade. A revelação será feita dentro do <strong>estritamente necessário</strong>, quer em relação ao assunto revelado, quer ao grau e número de pessoas que dele devam tomar conhecimento.</p>
+
+    <div class="subsecao">Critérios para Quebra de Sigilo</div>
+    <table>
+      <tr><th>Critério</th><th>Conteúdo</th></tr>
+      <tr><td>Gravidade</td><td>Situação grave que envolva risco real</td></tr>
+      <tr><td>Prejuízo</td><td>Aos interesses do usuário, de terceiros ou da coletividade</td></tr>
+      <tr><td>Necessidade estrita</td><td>Apenas o necessário (não tudo)</td></tr>
+      <tr><td>Quem pode saber</td><td>Apenas quem precisa saber</td></tr>
+      <tr><td>Avaliação técnica</td><td>Juízo profissional do AS, não opinião pessoal</td></tr>
+    </table>
+
+    <div class="subsecao">Hipóteses Legais de Quebra Compulsória</div>
+    <p>A legislação prevê <strong>obrigatoriedade</strong> de notificação em algumas situações:</p>
+    <ul class="lista">
+      <li><strong>Violência contra criança e adolescente</strong>: notificação ao Conselho Tutelar (ECA art. 13; Portaria MS 1.968/2001; Lei 13.431/2017 — SGD-Vítima)</li>
+      <li><strong>Violência contra idoso</strong>: notificação ao Conselho do Idoso ou MP (Estatuto do Idoso, Lei 10.741/2003 art. 19)</li>
+      <li><strong>Violência contra a mulher</strong>: orientação (não obrigação) de articulação com rede; respeito à vontade da mulher; Lei 11.340/2006 — Maria da Penha</li>
+      <li><strong>Doenças de notificação compulsória</strong>: SINAN; envio anônimo</li>
+      <li><strong>Tentativas de suicídio e violência autoprovocada</strong>: Lei 13.819/2019</li>
+      <li><strong>Acidente de trabalho</strong>: CAT (Comunicação de Acidente de Trabalho)</li>
+      <li><strong>Crimes</strong>: dever cívico de qualquer cidadão (CP art. 66) — mas para AS, articulado com o sigilo</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Importante:</strong> mesmo em casos de notificação compulsória, o sigilo é preservado no <em>estritamente necessário</em>. Notifica-se o fato (ex: "suspeita de violência sexual"), não detalhes pessoais sensíveis. Conduta deve ser orientada pelo Código e pela legislação.</p>
+    </div>
+
+    <div class="subsecao">Art. 18 — Sigilo em Depoimento em Justiça</div>
+    <p>"<em>A quebra do sigilo só é admissível quando se tratarem de situações cuja gravidade possa, envolvendo ou não fato delituoso, trazer prejuízo aos interesses do/a usuário/a, de terceiros/as e da coletividade.</em>"</p>
+
+    <p>No CP brasileiro, AS é equiparado a outras profissões com sigilo profissional (médico, advogado, sacerdote) — pode recusar testemunho em juízo sobre fatos protegidos pelo sigilo (CPP art. 207; CC art. 154).</p>
+
+    <div class="subsecao">Casos Práticos do Sigilo</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Caso 1: usuário relata uso de drogas</div>
+        <p>AS NÃO denuncia. Direito do usuário. Acolhimento, articulação com CAPS AD se necessário. Tratamento em RD.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Caso 2: HIV/AIDS</div>
+        <p>Sigilo absoluto. Atendimento sem discriminação. Articulação com SAE/CTA. Lei 12.984/2014 (discriminação a HIV+).</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Caso 3: violência contra criança</div>
+        <p>NOTIFICAÇÃO COMPULSÓRIA — ECA + Portaria MS 1.968/2001 + Lei 13.431/2017. Articulação com Conselho Tutelar. Mas detalhes íntimos preservados.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Caso 4: tentativa de suicídio</div>
+        <p>Notificação compulsória (Lei 13.819/2019). Cuidado e PTS. Acolhimento. Não há quebra de sigilo para colegas, família, mídia.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Caso 5: aborto</div>
+        <p>Aborto ilegal não obriga denúncia (STJ; CFM Res. 1.931/2009). AS deve acolhimento, orientar saúde da mulher. Não há denúncia.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Caso 6: empregador exige informações</div>
+        <p>Vedado fornecer relatório individualizado com conteúdo sigiloso. AS pode produzir relatório técnico em conformidade com Resolução CFESS 559/2009 (laudos/pareceres).</p>
+      </div>
+    </div>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> sigilo = direito do AS e proteção do usuário. Equipe multi: apenas o estritamente necessário (art. 16 par. único). Quebra: gravidade + prejuízo + necessidade estrita (art. 17). Notificação compulsória ≠ quebra livre de sigilo. ECA art. 13 (criança), Estatuto do Idoso art. 19, Lei 13.819/2019 (suicídio).</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-ETICA · CE/1993</span><span>Extensivo ENARE 2026</span><span class="pg">5 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-ETICA</div><div class="aula-ref">Bloco B13 · Aula 14 · Lei 8.662/1993</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Lei 8.662/1993 — Regulamentação da Profissão</div>
+
+    <p>A <strong>Lei nº 8.662, de 7 de junho de 1993</strong>, dispõe sobre a profissão de AS e seu exercício. É a "lei orgânica" da categoria — complementa o Código de Ética. Aprovada quase simultaneamente. Articulada com a Constituição de 1988. Cobrança frequente — especialmente arts. 4º (competências), 5º (atribuições privativas), 8º (CFESS/CRESS).</p>
+
+    <div class="subsecao">Estrutura da Lei 8.662/1993</div>
+    <table>
+      <tr><th>Capítulo</th><th>Conteúdo</th></tr>
+      <tr><td>Cap. I — Disposições Preliminares (arts. 1-3)</td><td>Definição da profissão; exigência de diploma</td></tr>
+      <tr><td>Cap. II — Competências (art. 4º)</td><td>Lista de competências NÃO-privativas (XI incisos)</td></tr>
+      <tr><td>Cap. III — Atribuições Privativas (art. 5º)</td><td>XIII incisos — somente AS pode realizar</td></tr>
+      <tr><td>Cap. IV — Registro Profissional (arts. 6-7)</td><td>Registro nos CRESS</td></tr>
+      <tr><td>Cap. V — Estrutura dos Conselhos (arts. 8-13)</td><td>CFESS e CRESS</td></tr>
+      <tr><td>Cap. VI — Eleições, Mandato, Posse (arts. 14-18)</td><td>Eleições dos Conselhos</td></tr>
+      <tr><td>Cap. VII — Penalidades (art. 19-22)</td><td>Infrações e sanções</td></tr>
+      <tr><td>Cap. VIII — Disposições Gerais (arts. 23-27)</td><td>Vigência, revogações</td></tr>
+    </table>
+
+    <div class="subsecao">Art. 1º — Definição da Profissão</div>
+    <p>"<em>É livre o exercício da profissão de Assistente Social em todo o território nacional, observadas as condições estabelecidas nesta lei.</em>"</p>
+
+    <div class="subsecao">Art. 2º — Exigência de Diploma</div>
+    <p>"<em>Somente poderão exercer a profissão de Assistente Social:</em>
+    <br>I — os possuidores de diploma em curso de graduação em Serviço Social, oficialmente reconhecido, expedido por estabelecimento de ensino superior existente no País, devidamente registrado no órgão competente;
+    <br>II — os possuidores de diploma de curso superior em Serviço Social, em nível de graduação ou equivalente, expedido por estabelecimento de ensino sediado em países estrangeiros, conveniado ou não com o governo brasileiro, desde que devidamente revalidado e registrado em órgão competente no Brasil;
+    <br>III — os agentes sociais, qualquer que seja sua denominação com funções nos vários órgãos públicos, segundo o disposto no art. 14 e seu parágrafo único da Lei nº 1.889, de 13 de junho de 1953."</p>
+
+    <p><strong>Parágrafo único:</strong> O exercício da profissão de Assistente Social requer prévio registro nos Conselhos Regionais (CRESS) que tenham jurisdição sobre a área de atuação do interessado.</p>
+
+    <div class="subsecao">Art. 4º — Competências (NÃO-privativas)</div>
+    <p>Constituem competências do AS:</p>
+    <ul class="lista">
+      <li>I — Elaborar, implementar, executar e avaliar políticas sociais junto a órgãos da administração pública direta ou indireta, empresas, entidades e organizações populares</li>
+      <li>II — Elaborar, coordenar, executar e avaliar planos, programas e projetos que sejam do âmbito de atuação do Serviço Social com participação da sociedade civil</li>
+      <li>III — Encaminhar providências, e prestar orientação social a indivíduos, grupos e à população</li>
+      <li>IV — (Vetado)</li>
+      <li>V — Orientar indivíduos e grupos de diferentes segmentos sociais no sentido de identificar recursos e de fazer uso dos mesmos no atendimento e na defesa de seus direitos</li>
+      <li>VI — Planejar, organizar e administrar benefícios e Serviços Sociais</li>
+      <li>VII — Planejar, executar e avaliar pesquisas que possam contribuir para a análise da realidade social e para subsidiar ações profissionais</li>
+      <li>VIII — Prestar assessoria e consultoria a órgãos da administração pública direta e indireta, empresas privadas e outras entidades, com relação às matérias relacionadas ao inciso II deste artigo</li>
+      <li>IX — Prestar assessoria e apoio aos movimentos sociais em matéria relacionada às políticas sociais, no exercício e na defesa dos direitos civis, políticos e sociais da coletividade</li>
+      <li>X — Planejamento, organização e administração de Serviços Sociais e de Unidade de Serviço Social</li>
+      <li>XI — Realizar estudos socioeconômicos com os usuários para fins de benefícios e serviços sociais junto a órgãos da administração pública direta e indireta, empresas privadas e outras entidades</li>
+    </ul>
+
+    <div class="subsecao">Art. 5º — Atribuições Privativas</div>
+    <p>Já abordado na Aula 12. Síntese: XIII incisos. Apenas o AS pode realizar:</p>
+    <ul class="lista">
+      <li>Coordenar, elaborar, executar, supervisionar e avaliar estudos, pesquisas, planos, programas e projetos NA ÁREA DE SS</li>
+      <li>Planejar, organizar e administrar programas e projetos em Unidade de Serviço Social</li>
+      <li>Assessoria e consultoria EM SS</li>
+      <li>Realizar vistorias, perícias técnicas, laudos periciais, informações e pareceres SOBRE MATÉRIA DE SS</li>
+      <li>Magistério e supervisão de estagiários</li>
+      <li>Dirigir cursos e Unidades de Ensino de SS</li>
+      <li>Compor bancas de concursos</li>
+      <li>Fiscalizar o exercício profissional pelos CRESS</li>
+      <li>Dirigir serviços técnicos de SS</li>
+    </ul>
+
+    <p><strong>Diferença Competência × Atribuição Privativa:</strong></p>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Competência (art. 4º)</div>
+        <p>O AS pode realizar; mas <em>outros profissionais também</em> podem (assistente social, pedagogo, psicólogo etc. — cada um conforme suas atribuições). Há concorrência profissional legítima.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Atribuição Privativa (art. 5º)</div>
+        <p>Somente o AS pode realizar. Outros profissionais NÃO podem. Reserva legal de mercado de trabalho. Exemplos: parecer social, laudo social, perícia social, supervisão de estágio de SS.</p>
+      </div>
+    </div>
+
+    <div class="subsecao">Sistema CFESS / CRESS</div>
+    <ul class="lista">
+      <li><strong>CFESS</strong> — Conselho Federal de Serviço Social. Sede em Brasília. Função: orientar, disciplinar, fiscalizar e defender o exercício da profissão; instância recursal em processos disciplinares; normatização (Resoluções)</li>
+      <li><strong>CRESS</strong> — Conselhos Regionais de Serviço Social. Um por unidade federativa (27 CRESS). Função: fiscalização cotidiana; emissão do CRESS-Carteira; instauração de processos disciplinares; comissões temáticas</li>
+      <li>Sistema autárquico federal (Lei 8.662 art. 8º)</li>
+      <li>Mandato de 3 anos, eleitos pela categoria</li>
+      <li>CFESS publica revistas e materiais: revista Serviço Social e Sociedade (Cortez), série "Pelas Lentes da Ética"</li>
+      <li>ENESSO — entidade estudantil; ABEPSS — entidade acadêmica (próxima Aula 15)</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> Lei 8.662/1993 regulamenta a profissão. Art. 1º = livre exercício. Art. 2º = diploma. Art. 4º = competências (XI incisos, compartilháveis). Art. 5º = atribuições privativas (XIII incisos, exclusivas). Art. 8º = CFESS/CRESS. Sistema autárquico. Resoluções do CFESS regulamentam detalhes (laudo social, residência, etc.).</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-ETICA · Lei 8.662</span><span>Extensivo ENARE 2026</span><span class="pg">6 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-ETICA</div><div class="aula-ref">Bloco B13 · Aula 14 · Penalidades e Resoluções</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Penalidades e Resoluções do CFESS</div>
+
+    <p>As infrações ao Código de Ética e à Lei 8.662 são apuradas em <strong>processo ético-disciplinar</strong> pelo CRESS, com possibilidade de recurso ao CFESS. Penalidades vão de advertência reservada a cassação do registro profissional.</p>
+
+    <div class="subsecao">Penalidades (Art. 23 do CE + Lei 8.662 art. 22)</div>
+    <table>
+      <tr><th>Pena</th><th>Características</th></tr>
+      <tr><td>Multa</td><td>Conforme tabela do CFESS</td></tr>
+      <tr><td>Advertência reservada</td><td>Em sigilo</td></tr>
+      <tr><td>Advertência pública</td><td>Pela imprensa</td></tr>
+      <tr><td>Suspensão temporária do exercício profissional</td><td>Até 1 ano</td></tr>
+      <tr><td>Cassação do registro</td><td>Cancelamento do registro no CRESS</td></tr>
+    </table>
+
+    <div class="subsecao">Processo Ético-Disciplinar</div>
+    <ul class="lista">
+      <li>Instaurado pelo CRESS, mediante denúncia ou de ofício</li>
+      <li>Direito ao contraditório e à ampla defesa (CF/1988 art. 5º LV)</li>
+      <li>Comissão Permanente de Ética (CPE) do CRESS instrui</li>
+      <li>Defesa por escrito; produção de provas; audiência</li>
+      <li>Decisão fundamentada; recurso ao plenário do CRESS</li>
+      <li>Recurso final ao CFESS (efeito suspensivo)</li>
+      <li>Procedimento detalhado na Resolução CFESS 660/2013 (Código Processual de Ética)</li>
+    </ul>
+
+    <div class="subsecao">Principais Resoluções do CFESS</div>
+    <table>
+      <tr><th>Resolução</th><th>Tema</th></tr>
+      <tr><td>CFESS 273/1993</td><td>Código de Ética vigente</td></tr>
+      <tr><td>CFESS 290/1994</td><td>Atualização terminológica do CE</td></tr>
+      <tr><td>CFESS 333/1996</td><td>Atualização do CE</td></tr>
+      <tr><td>CFESS 489/2006</td><td>Norma sobre publicidade profissional</td></tr>
+      <tr><td>CFESS 493/2006</td><td>Condições éticas e técnicas do exercício profissional (espaços, equipamentos, sigilo)</td></tr>
+      <tr><td>CFESS 533/2008</td><td>Supervisão direta de estágio</td></tr>
+      <tr><td>CFESS 543/2008</td><td>Dispõe sobre os Conselhos Regionais (CRESS)</td></tr>
+      <tr><td>CFESS 559/2009</td><td>Atuação do AS, mesmo na qualidade de professor universitário e/ou de coordenador de curso, em relação à perícia social</td></tr>
+      <tr><td>CFESS 568/2010</td><td>Manual de orientação para a elaboração de laudo social, parecer social</td></tr>
+      <tr><td>CFESS 569/2010</td><td>Veda o exercício de funções técnicas, científicas, jurídicas e ético-políticas no campo da Mediação Familiar pelo AS</td></tr>
+      <tr><td>CFESS 615/2011</td><td>Inclui "identidade de gênero" no princípio XI do CE</td></tr>
+      <tr><td>CFESS 637/2013</td><td>Diretrizes sobre a residência multiprofissional em saúde</td></tr>
+      <tr><td>CFESS 660/2013</td><td>Código Processual de Ética — disciplina o procedimento processual ético</td></tr>
+      <tr><td>CFESS 845/2018</td><td>Vedação ao exercício pelo AS de atividades de polígrafo, justiça restaurativa e mediação penal</td></tr>
+      <tr><td>CFESS 869/2018</td><td>Aprova o Código Eleitoral</td></tr>
+      <tr><td>CFESS 1.008/2022</td><td>Dispõe sobre o trabalho em teletrabalho ou em home office</td></tr>
+    </table>
+
+    <div class="subsecao">Resolução 489/2006 e a Publicidade Profissional</div>
+    <ul class="lista">
+      <li>Veda anúncios sensacionalistas, eufemismos enganosos</li>
+      <li>Estabelece normas para uso do nome profissional</li>
+      <li>Vedação a "AS sociais miraculosas" — orienta abordagem científica</li>
+    </ul>
+
+    <div class="subsecao">Resolução 493/2006 — Condições Éticas e Técnicas</div>
+    <p>Eixo importantíssimo para a fiscalização profissional:</p>
+    <ul class="lista">
+      <li>Espaço físico privativo — porta com fechadura, sigilo nas conversas</li>
+      <li>Sala arejada, iluminada, com acomodação para usuário</li>
+      <li>Mobiliário e materiais adequados (mesa, cadeiras, armário com fechadura)</li>
+      <li>Sistema seguro de guarda de prontuários (vedado prontuários espalhados)</li>
+      <li>Vedado AS atuar em espaço comum sem condições mínimas</li>
+      <li>Vedado profissional ser obrigado a atender em lugar sem privacidade</li>
+      <li>CRESS fiscaliza e pode acionar instituições</li>
+    </ul>
+
+    <div class="subsecao">Resolução 568/2010 — Laudo e Parecer Social</div>
+    <ul class="lista">
+      <li>Define laudo social, parecer social, perícia social, estudo social</li>
+      <li>Distingue: estudo social (processo investigativo); laudo social (documento conclusivo); parecer social (opinião técnica fundamentada)</li>
+      <li>Veda emissão de documentos por outros profissionais que não AS</li>
+      <li>Estabelece estrutura mínima dos documentos</li>
+    </ul>
+
+    <div class="subsecao">CFESS Manifesta — Posições Políticas</div>
+    <p>O CFESS publica regularmente notas e cartilhas posicionando-se sobre temas polêmicos:</p>
+    <ul class="lista">
+      <li>Aborto: "AS pelo aborto legal, seguro e gratuito" (CFESS Manifesta sobre aborto)</li>
+      <li>LGBTI+: posições antidiscriminação; uso do nome social; combate à LGBTfobia</li>
+      <li>Antimanicomial: defesa da Reforma Psiquiátrica</li>
+      <li>Antirracismo: combate ao racismo estrutural; pauta racial nas políticas</li>
+      <li>Anticarcerária: crítica ao encarceramento em massa; pauta racial no sistema penal</li>
+      <li>Defesa dos territórios indígenas, quilombolas, ribeirinhos</li>
+      <li>Defesa da educação pública e da formação presencial (crítica EaD)</li>
+      <li>Defesa do SUS, SUAS, LOAS</li>
+      <li>Crítica à EC 95/2016</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> 5 penalidades (multa, advertência reservada, advertência pública, suspensão até 1 ano, cassação). Processo com contraditório e ampla defesa. Resoluções do CFESS regulamentam detalhes (laudo social — Res. 568/2010; condições éticas — Res. 493/2006). CRESS fiscaliza; CFESS normatiza. Posições políticas do CFESS articuladas com PEP.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-ETICA · CE/1993</span><span>Extensivo ENARE 2026</span><span class="pg">7 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-ETICA</div><div class="aula-ref">Bloco B13 · Aula 14 · Questões ENARE</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 01</span><span class="fonte">CE/1993 · NC: Compreensão</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Sobre os Princípios Fundamentais do Código de Ética do Assistente Social (1993), é CORRETO afirmar:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>O Código reconhece como valor ético central a propriedade privada, em consonância com a tradição liberal.</span></li>
+        <li class="correta"><span class="letra">B</span><span>Reconhece a liberdade como valor ético central — "autonomia, emancipação e plena expansão dos indivíduos sociais" (princípio I); defende intransigentemente os direitos humanos (II); aposta na ampliação da cidadania e na democracia (III, IV); posiciona-se em favor da equidade e justiça social (V); empenha-se na eliminação de todas as formas de preconceito (VI); opta por um "projeto profissional vinculado ao processo de construção de uma nova ordem societária, sem dominação, exploração de classe, etnia e gênero" (VIII).</span></li>
+        <li><span class="letra">C</span><span>Estabelece que o AS deve manter neutralidade política e técnica, sem se posicionar diante das desigualdades sociais.</span></li>
+        <li><span class="letra">D</span><span>Define como princípio a primazia da instituição empregadora sobre os direitos do usuário.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> síntese dos princípios I, II, III, IV, V, VI e VIII do CE/1993. Liberdade como valor ético central NÃO é liberdade liberal — é autonomia/emancipação. Princípio VIII = frase-chave do PEP ("nova ordem societária sem dominação, exploração de classe, etnia e gênero").</p>
+      <p><strong>Por que as outras erram:</strong> A — propriedade privada não é valor ético central · C — neutralidade é incompatível com o PEP · D — primazia da instituição é vedada (art. 11 do CE — vedado realizar tarefas que firam princípios deste Código).</p>
+    </div>
+
+    <div class="questao-header"><span>Questão 02</span><span class="fonte">Sigilo · NC: Aplicação</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">No atendimento em uma UBS, um adolescente de 17 anos relata ao AS, em sigilo, que faz uso recreativo ocasional de maconha. A conduta CORRETA do AS, segundo o CE/1993, é:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Denunciar imediatamente à polícia, em cumprimento ao dever cívico.</span></li>
+        <li><span class="letra">B</span><span>Informar à equipe completa, ao Conselho Tutelar e à mãe do adolescente para "proteção".</span></li>
+        <li class="correta"><span class="letra">C</span><span>Manter o sigilo profissional (art. 15 e 16 do CE); acolher sem julgamento moral; oferecer orientação sobre redução de danos; articular eventual encaminhamento ao CAPS AD se houver indicação clínica; trabalhar em equipe interprofissional respeitando o "estritamente necessário" das informações compartilhadas (art. 16 par. único); não revelar o conteúdo, pois não se enquadra nas hipóteses do art. 17 (gravidade + prejuízo + necessidade estrita).</span></li>
+        <li><span class="letra">D</span><span>Quebrar o sigilo em depoimento espontâneo em juízo, "para colaborar com a justiça".</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — C</div>
+      <p><strong>Por que C está correta:</strong> uso recreativo ocasional não configura gravidade nem prejuízo a terceiros que justifique quebra de sigilo (art. 17). Acolhimento sem julgamento moral (princípio II do CE — recusa do arbítrio). RD é política do SUS (Aula 13). O adolescente é sujeito de direitos (ECA). Articulação com CAPS AD apenas se indicação clínica e com consentimento.</p>
+      <p><strong>Por que as outras erram:</strong> A — uso pessoal não é crime (Lei 11.343/2006 art. 28) · B — não há hipótese legal · D — depoimento espontâneo viola sigilo (CPP art. 207).</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-ETICA · CE/1993</span><span>Extensivo ENARE 2026</span><span class="pg">8 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-ETICA</div><div class="aula-ref">Bloco B13 · Aula 14 · Questões ENARE</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 03</span><span class="fonte">Lei 8.662 · NC: Análise</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Sobre a Lei 8.662/1993 (Lei de Regulamentação do Serviço Social), assinale a CORRETA:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Estabelece o livre exercício da profissão sem qualquer exigência de diploma.</span></li>
+        <li><span class="letra">B</span><span>Trata exclusivamente de penalidades disciplinares, sem versar sobre competências profissionais.</span></li>
+        <li class="correta"><span class="letra">C</span><span>Define competências (art. 4º, compartilháveis com outras profissões) e atribuições privativas do AS (art. 5º, exclusivas — perícia social, parecer social, laudo social, supervisão de estagiários de SS); exige diploma de curso de Serviço Social (art. 2º); requer registro nos CRESS (art. 6º); regulamenta o sistema CFESS/CRESS (art. 8º); estabelece penalidades (multa, advertência reservada e pública, suspensão e cassação do registro).</span></li>
+        <li><span class="letra">D</span><span>É anterior à CF/1988 e foi recepcionada como lei complementar à seguridade social.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — C</div>
+      <p><strong>Por que C está correta:</strong> síntese da Lei 8.662/1993. Art. 4º (competências, XI incisos), art. 5º (atribuições privativas, XIII incisos), art. 2º (diploma), art. 6º (registro), art. 8º (sistema CFESS/CRESS), arts. 22 (penalidades). Atribuições privativas envolvem perícia/laudo/parecer social — únicas ao AS.</p>
+      <p><strong>Por que as outras erram:</strong> A — exige diploma · B — trata de muito mais que penalidades · D — é de 7/6/1993, posterior à CF/1988.</p>
+    </div>
+
+    <div class="questao-header"><span>Questão 04</span><span class="fonte">Atribuição Privativa · NC: Aplicação</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Em um hospital universitário, é solicitado um documento técnico contendo análise socioeconômica e familiar de paciente em vias de receber alta hospitalar, com indicação dos recursos sociais disponíveis e da capacidade de cuidado da rede de apoio. Esse documento, sua elaboração e assinatura caracteriza-se como:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Atividade administrativa, sem exigência de profissional específico.</span></li>
+        <li><span class="letra">B</span><span>Competência do enfermeiro, conforme Lei do Exercício Profissional da Enfermagem.</span></li>
+        <li class="correta"><span class="letra">C</span><span>Atribuição privativa do Assistente Social, prevista no art. 5º, IV da Lei 8.662/1993 ("realizar vistorias, perícias técnicas, laudos periciais, informações e pareceres sobre matéria de Serviço Social") e regulamentada pela Resolução CFESS 568/2010 (Manual de Orientação para Laudo Social, Parecer Social, Estudo Social).</span></li>
+        <li><span class="letra">D</span><span>Tarefa que pode ser realizada por qualquer profissional da equipe sem normatização específica.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — C</div>
+      <p><strong>Por que C está correta:</strong> documento técnico de análise sociofamiliar para tomada de decisão clínica/social = parecer social. Atribuição privativa do AS (Lei 8.662 art. 5º, IV). Regulamentada pela Res. CFESS 568/2010. Outros profissionais NÃO podem emitir parecer social — reserva legal.</p>
+      <p><strong>Por que as outras erram:</strong> A — não é mera atividade administrativa · B — enfermagem não emite parecer social · D — há normatização específica.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-ETICA · CE/1993</span><span>Extensivo ENARE 2026</span><span class="pg">9 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-ETICA</div><div class="aula-ref">Bloco B13 · Aula 14 · Síntese</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Síntese — Código de Ética 1993 e Lei 8.662/1993</div>
+
+    <p>Aula central — peso ★★★★ na ENARE. Articula PEP (Aula 01), Reconceituação (Aula 02), Parâmetros CFESS (Aula 12) e DH (Aula 10). Conecta-se à Aula 15 (Formação Profissional) e a todas as práticas do AS.</p>
+
+    <div class="sintese-grid">
+      <div class="sintese-item"><div class="si-label">5 Códigos Históricos</div><p>1947 (cristão) → 1965 (personalismo) → 1975 (tecnicismo, Ditadura) → 1986 (Virada marxista) → 1993 (PEP maduro, vigente). CE/1993 = Res. CFESS 273/1993, com atualizações.</p></div>
+      <div class="sintese-item"><div class="si-label">XI Princípios</div><p>I liberdade · II DH intransigente · III cidadania · IV democracia · V equidade · VI diversidade · VII pluralismo · VIII nova ordem societária · IX classe trabalhadora · X qualidade · XI não-discriminação (incluiu identidade de gênero em 2011).</p></div>
+      <div class="sintese-item"><div class="si-label">Direitos, Deveres, Vedações</div><p>Art. 2º (direitos do AS — autonomia, inviolabilidade); art. 5º (deveres com usuários — participação, informação); art. 6º (vedações — limitar autonomia, vantagens, bloquear acesso). Arts. 7-10 entre AS.</p></div>
+      <div class="sintese-item"><div class="si-label">Sigilo (Arts. 15-18)</div><p>Direito do AS + dever em relação ao usuário. Em equipe: estritamente necessário. Quebra: gravidade + prejuízo + necessidade estrita. Notificação compulsória (criança, idoso, suicídio) ≠ quebra livre.</p></div>
+      <div class="sintese-item"><div class="si-label">Lei 8.662/1993</div><p>Art. 1º livre exercício · Art. 2º diploma · Art. 4º competências (XI incisos, compartilháveis) · Art. 5º atribuições privativas (XIII incisos, exclusivas) · Art. 6º registro · Art. 8º CFESS/CRESS · Arts. 19-22 penalidades.</p></div>
+      <div class="sintese-item"><div class="si-label">Próxima Aula</div><p><strong>Aula 15 — SS-ETICA: Formação Profissional.</strong> DCN/ABEPSS 1996/2001 (núcleos), supervisão de estágio, ABEPSS/ENESSO/CFESS/CRESS, crítica à EaD.</p></div>
+    </div>
+
+    <div class="alerta" style="margin-top:5px;">
+      <p><strong>Regra de ouro — Ética no ENARE:</strong> XI princípios literalmente (I liberdade, II DH intransigente, VIII nova ordem societária). Lei 8.662 art. 4º (competências) × art. 5º (privativas). Sigilo no estritamente necessário em equipe (art. 16 par. único). Atribuição privativa = laudo/parecer/perícia social. 5 penalidades. Resolução CFESS 273/1993 (CE) e 568/2010 (laudos/pareceres) — leituras-chave.</p>
+    </div>
+
+    <div class="alerta" style="margin-top:5px;background:rgba(31,92,35,0.1);border-left-color:var(--verde);">
+      <p><strong>Conexão eixo do PEP:</strong> o CE/1993 é o instrumento normativo do PEP — articula direção ético-política (princípios), competência técnica (Lei 8.662 art. 4º-5º) e fiscalização institucional (CFESS/CRESS). Não é "lista de regras", é projeto profissional materializado em direitos, deveres e vedações. Trabalhar com o CE = trabalhar com PEP.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-ETICA · CE/1993</span><span>Extensivo ENARE 2026</span><span class="pg">10 / 10</span></div>
+</div>
+
+</body>
+</html>

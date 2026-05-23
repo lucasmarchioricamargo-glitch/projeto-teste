@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Serviço Social — Bloco B13 Aula 03 | Extensivo ENARE 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap');
+  :root { --creme: #F6F4ED; --verde: #1F5C23; --amarelo: #C6D834; --escuro: #0C2B0E; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #d0d0d0; font-family: 'Bricolage Grotesque', sans-serif; }
+  .page { width: 210mm; height: 297mm; background: var(--creme); margin: 0 auto 12px; position: relative; overflow: hidden; page-break-after: always; }
+  .header { background: var(--verde); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .header-logo { display: flex; align-items: center; gap: 8px; }
+  .header-logo svg { width: 32px; height: 32px; }
+  .header-brand { display: flex; flex-direction: column; line-height: 1; }
+  .header-brand .marca { font-family: 'Playfair Display', serif; font-style: italic; color: #fff; font-size: 13px; letter-spacing: 0.5px; }
+  .header-brand .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 7px; letter-spacing: 1.5px; text-transform: uppercase; }
+  .header-info { text-align: right; }
+  .header-info .disciplina { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
+  .header-info .aula-ref { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.7); font-size: 8px; letter-spacing: 0.5px; }
+  .footer { position: absolute; bottom: 0; left: 0; right: 0; background: var(--verde); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .footer span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.6); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .footer .pg { color: var(--amarelo); font-weight: 400; }
+  .body { padding: 14px 18px 30px; height: calc(297mm - 52px - 22px); overflow: hidden; }
+  .capa-page { background: var(--verde); }
+  .capa-header { background: var(--creme); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .capa-header .marca { font-family: 'Playfair Display', serif; font-style: italic; color: var(--verde); font-size: 14px; }
+  .capa-header .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--verde); font-size: 7.5px; letter-spacing: 2px; text-transform: uppercase; }
+  .capa-body { padding: 28px 24px 0; display: flex; flex-direction: column; height: calc(297mm - 52px - 22px); }
+  .capa-eyebrow { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; }
+  .capa-titulo { font-family: 'Barlow Condensed', sans-serif; color: #fff; font-size: 50px; line-height: 0.95; text-transform: uppercase; letter-spacing: -0.5px; margin-bottom: 6px; }
+  .capa-titulo span { color: var(--amarelo); }
+  .capa-subtitulo { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; color: rgba(255,255,255,0.65); font-size: 12px; letter-spacing: 0.3px; margin-bottom: 22px; line-height: 1.5; }
+  .capa-badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+  .capa-badge { background: rgba(198,216,52,0.15); border: 1px solid var(--amarelo); color: var(--amarelo); font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 8px; border-radius: 2px; }
+  .capa-divider { width: 40px; height: 3px; background: var(--amarelo); margin-bottom: 20px; }
+  .capa-topicos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .capa-topico { display: flex; align-items: flex-start; gap: 7px; }
+  .capa-topico-num { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 18px; line-height: 1; min-width: 18px; }
+  .capa-topico-txt { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 400; color: rgba(255,255,255,0.8); font-size: 9.5px; line-height: 1.4; }
+  .capa-footer-strip { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.25); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .capa-footer-strip span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.45); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .secao-titulo { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 18px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid var(--amarelo); padding-bottom: 3px; margin-bottom: 9px; line-height: 1; }
+  .subsecao { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.5px; margin: 7px 0 3px; }
+  p { font-size: 9px; line-height: 1.55; color: #1a1a1a; margin-bottom: 4px; font-weight: 400; }
+  .destaque { background: var(--amarelo); color: var(--escuro); font-weight: 600; padding: 1px 4px; border-radius: 2px; font-size: 8.5px; }
+  .alerta { background: rgba(198,216,52,0.18); border-left: 3px solid var(--amarelo); padding: 5px 8px; margin: 5px 0; border-radius: 0 3px 3px 0; }
+  .alerta p { margin: 0; font-size: 8.5px; }
+  .alerta strong { color: var(--verde); }
+  table { width: 100%; border-collapse: collapse; margin: 5px 0; font-size: 8px; }
+  th { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; padding: 4px 6px; text-align: left; }
+  td { padding: 3px 6px; border-bottom: 1px solid rgba(31,92,35,0.12); vertical-align: top; line-height: 1.4; color: #1a1a1a; }
+  tr:nth-child(even) td { background: rgba(31,92,35,0.04); }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 5px 0; }
+  .card { background: rgba(31,92,35,0.06); border: 1px solid rgba(31,92,35,0.15); border-radius: 4px; padding: 7px 8px; }
+  .card-title { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 11px; text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 3px; }
+  .card p { font-size: 8px; line-height: 1.5; }
+  .questao-header { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; padding: 4px 10px; border-radius: 3px 3px 0 0; display: flex; justify-content: space-between; align-items: center; }
+  .questao-header .fonte { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; color: var(--amarelo); letter-spacing: 0.5px; }
+  .questao-body { border: 1px solid rgba(31,92,35,0.2); border-top: none; border-radius: 0 0 3px 3px; padding: 7px 10px; margin-bottom: 7px; }
+  .questao-enunciado { font-size: 8.5px; line-height: 1.55; color: #111; margin-bottom: 5px; font-weight: 500; }
+  .alternativas { list-style: none; }
+  .alternativas li { font-size: 8px; line-height: 1.5; padding: 2px 0; color: #222; display: flex; gap: 5px; }
+  .alternativas li .letra { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: var(--verde); font-size: 9px; min-width: 10px; }
+  .alternativas li.correta .letra { color: var(--amarelo); }
+  .alternativas li.correta { background: rgba(198,216,52,0.15); border-left: 2px solid var(--amarelo); padding-left: 4px; }
+  .gabarito-box { background: var(--verde); border-radius: 4px; padding: 8px 12px; margin: 6px 0; }
+  .gabarito-box .gab-title { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+  .gabarito-box p { color: rgba(255,255,255,0.9); font-size: 8px; line-height: 1.55; }
+  .gabarito-box strong { color: var(--amarelo); }
+  .sintese-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-top: 6px; }
+  .sintese-item { background: rgba(31,92,35,0.07); border-left: 3px solid var(--verde); padding: 5px 7px; border-radius: 0 3px 3px 0; }
+  .sintese-item .si-label { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px; }
+  .sintese-item p { font-size: 7.5px; line-height: 1.5; }
+  ul.lista { padding-left: 14px; margin: 3px 0; }
+  ul.lista li { font-size: 8.5px; line-height: 1.55; color: #1a1a1a; margin-bottom: 1px; }
+  @media print { body { background: none; } .page { margin: 0; box-shadow: none; } }
+</style>
+</head>
+<body>
+
+<div class="page capa-page">
+  <div class="capa-header">
+    <div style="display:flex;align-items:center;gap:8px;"><svg width="34" height="34" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#1F5C23"/></svg><div><div class="marca">Elite Treinamentos</div><div class="tagline">Extensivo ENARE 2026</div></div></div>
+    <div style="text-align:right;"><div style="font-family:'Barlow Condensed',sans-serif;color:var(--verde);font-size:11px;letter-spacing:1px;text-transform:uppercase;">Bloco B13 · Aula 03</div><div style="font-family:'Space Grotesk',sans-serif;font-weight:300;color:#888;font-size:7.5px;letter-spacing:0.5px;">Serviço Social</div></div>
+  </div>
+  <div class="capa-body">
+    <div class="capa-eyebrow">Bloco B13 · SS-FUND · Aula 03 de 21</div>
+    <div class="capa-titulo">SS no <span>Capita-<br>lismo<br>Contemp.</span></div>
+    <div class="capa-subtitulo">Neoliberalismo, precarização, instrumentalidade ampliada,<br>rotinização e plataformização do trabalho profissional</div>
+    <div class="capa-badge-row">
+      <div class="capa-badge">SS-FUND ★★★</div>
+      <div class="capa-badge">Neoliberalismo</div>
+      <div class="capa-badge">Precarização</div>
+      <div class="capa-badge">Plataformização</div>
+    </div>
+    <div class="capa-divider"></div>
+    <div class="capa-topicos">
+      <div class="capa-topico"><div class="capa-topico-num">01</div><div class="capa-topico-txt">Neoliberalismo: gênese, vetores e Brasil</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">02</div><div class="capa-topico-txt">Reestruturação produtiva e novo padrão de trabalho</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">03</div><div class="capa-topico-txt">Precarização do trabalho do AS</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">04</div><div class="capa-topico-txt">Instrumentalidade ampliada e desafios</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">05</div><div class="capa-topico-txt">Rotinização e burocratização</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">06</div><div class="capa-topico-txt">Plataformização e trabalho digital do AS</div></div>
+    </div>
+  </div>
+  <div class="capa-footer-strip"><span>Extensivo ENARE 2026</span><span>Elite Treinamentos em Saúde</span><span>Página 1 de 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-FUND</div><div class="aula-ref">Bloco B13 · Aula 03 · Neoliberalismo</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Neoliberalismo — Gênese, Vetores e Brasil</div>
+
+    <p>O <strong>neoliberalismo</strong> é a forma social, política e econômica hegemônica do capitalismo desde a década de 1970. Reestruturação que afeta diretamente o trabalho profissional do AS e as políticas sociais. Cobrado em ENARE 2024 (Q29, Q41, Q87, Q90, Q98) — perspectiva crítica é esperada na prova.</p>
+
+    <div class="subsecao">Gênese Histórica</div>
+    <ul class="lista">
+      <li><strong>Crise do capitalismo (1973+)</strong>: crise do petróleo, esgotamento do "trinta gloriosos" pós-guerra, queda da taxa de lucro</li>
+      <li><strong>Friedrich Hayek e Milton Friedman</strong>: bases teóricas (Mont Pelerin Society 1947); Chicago Boys</li>
+      <li><strong>1973 — Chile</strong>: primeiro experimento neoliberal sob ditadura Pinochet</li>
+      <li><strong>1979 — Margaret Thatcher (UK)</strong>: primeira eleição neoliberal democrática</li>
+      <li><strong>1980 — Ronald Reagan (EUA)</strong>: Reaganomics</li>
+      <li><strong>1989 — Consenso de Washington</strong>: 10 pontos definidos pelo FMI/BM/Tesouro EUA para reformas estruturais</li>
+      <li><strong>Brasil — 1990</strong>: governo Collor inicia abertura neoliberal; consolida-se nos governos FHC (1995–2002)</li>
+    </ul>
+
+    <div class="subsecao">Vetores do Neoliberalismo (cobrado em ENARE 2024 Q29 e Q41)</div>
+    <table>
+      <tr><th>Vetor</th><th>Descrição</th></tr>
+      <tr><td><strong>1. Desregulação</strong></td><td>Redução de normas trabalhistas, ambientais, financeiras; flexibilização</td></tr>
+      <tr><td><strong>2. Privatização</strong></td><td>Venda de empresas estatais; concessões; saúde, educação, previdência sob lógica de mercado</td></tr>
+      <tr><td><strong>3. Abertura comercial e financeira</strong></td><td>Livre fluxo de mercadorias e capitais; subordinação financeira a centros internacionais</td></tr>
+      <tr><td><strong>4. Estado mínimo (para o social)</strong></td><td>Redução de gasto público; teto de gastos (EC 95/2016 no Brasil); ajuste fiscal</td></tr>
+      <tr><td><strong>5. Estado máximo (para o capital)</strong></td><td>Garantias e subsídios ao capital; segurança jurídica; salvamentos bancários</td></tr>
+      <tr><td><strong>6. Flexibilização do trabalho</strong></td><td>Terceirização, PJ, MEI, plataformização; corrosão de direitos trabalhistas</td></tr>
+      <tr><td><strong>7. Individualização do social</strong></td><td>Questão social como responsabilidade individual; meritocracia; empreendedorismo</td></tr>
+      <tr><td><strong>8. Mercantilização da vida</strong></td><td>Saúde, educação, lazer, segurança como mercadorias</td></tr>
+      <tr><td><strong>9. Despolitização</strong></td><td>Tecnicismo, fim das ideologias, gestão por resultados</td></tr>
+      <tr><td><strong>10. Filantrocapitalismo</strong></td><td>Filantropia empresarial substitui responsabilidade pública (cobrado em ENARE 2025 Q42)</td></tr>
+    </table>
+
+    <div class="subsecao">Neoliberalismo no Brasil — Marcos</div>
+    <ul class="lista">
+      <li><strong>1990–1992 (Collor)</strong>: abertura comercial; plano Brasil Novo; renúncia ao papel desenvolvimentista</li>
+      <li><strong>1995–2002 (FHC)</strong>: Plano Diretor da Reforma do Aparelho do Estado (Bresser); privatizações (Telebrás, Vale); Lei de Responsabilidade Fiscal (LRF 2000)</li>
+      <li><strong>2003–2015 (Lula/Dilma)</strong>: neodesenvolvimentismo com transferência de renda (Bolsa Família, BPC); coexistência de neoliberalismo macroeconômico e expansão social</li>
+      <li><strong>2016–2022 (Temer/Bolsonaro)</strong>: reformas (Trabalhista 2017 — Lei 13.467; Previdenciária 2019); EC 95/2016 (teto de gastos por 20 anos); desmonte progressivo das políticas sociais</li>
+      <li><strong>2023+ (Lula III)</strong>: tentativa de retomar políticas sociais; novo marco fiscal substitui parcialmente EC 95/2016; recriação de ministérios</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>EC 95/2016 — Teto de Gastos (cobrado em ENARE 2025 Q47):</strong> Emenda Constitucional 95 de dezembro de 2016 instituiu o "Novo Regime Fiscal" — limita o crescimento dos gastos primários da União à inflação por 20 anos. Resultado: estrangulamento das políticas sociais (saúde, educação, assistência social). Crítica feita por CFESS e movimentos sociais. Em 2023, novo marco fiscal substituiu parcialmente.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-FUND · Capitalismo Contemporâneo</span><span>Extensivo ENARE 2026</span><span class="pg">2 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-FUND</div><div class="aula-ref">Bloco B13 · Aula 03 · Reestruturação Produtiva</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Reestruturação Produtiva e Mundo do Trabalho</div>
+
+    <p>A <strong>reestruturação produtiva</strong> é o conjunto de transformações do trabalho e da produção no capitalismo a partir dos anos 1970/1980. Substitui o paradigma fordista-taylorista (produção em massa, trabalho estável, regulação estatal) pelo modelo flexível (toyotismo, just-in-time, terceirização).</p>
+
+    <div class="subsecao">Do Fordismo ao Toyotismo</div>
+    <table>
+      <tr><th>Aspecto</th><th>Fordismo (1910–1970)</th><th>Toyotismo (1970+)</th></tr>
+      <tr><td>Produção</td><td>Em massa; linha de montagem</td><td>Just-in-time; lotes pequenos sob demanda</td></tr>
+      <tr><td>Estoque</td><td>Alto (estoque de segurança)</td><td>Zero estoque ("ohnoísmo")</td></tr>
+      <tr><td>Trabalho</td><td>Fragmentado; especialização rígida</td><td>Multifuncional; "team work"; qualidade total (TQC)</td></tr>
+      <tr><td>Contrato</td><td>Estável; vitalício (Japão); regulação trabalhista</td><td>Flexível; terceirizado; precário; "PJ"</td></tr>
+      <tr><td>Sindicatos</td><td>Fortes; negociação coletiva</td><td>Enfraquecidos; sindicatos por empresa</td></tr>
+      <tr><td>Estado</td><td>Regulador; Welfare</td><td>Mínimo; neoliberal</td></tr>
+      <tr><td>Empresa</td><td>Verticalizada; integrada</td><td>Horizontalizada; rede de terceiros</td></tr>
+    </table>
+
+    <div class="subsecao">Consequências para o Mundo do Trabalho</div>
+    <ul class="lista">
+      <li><strong>Precarização</strong>: redução de direitos trabalhistas; PJ, MEI, intermitente</li>
+      <li><strong>Terceirização</strong>: empresas terceiras substituem trabalho direto; corrosão de direitos</li>
+      <li><strong>Trabalho informal</strong>: cresce; sem direitos previdenciários</li>
+      <li><strong>Desemprego estrutural</strong>: mecanização, IA, automação reduzem postos</li>
+      <li><strong>Fragmentação da classe trabalhadora</strong>: dificuldade de unidade política</li>
+      <li><strong>Trabalho imaterial</strong>: serviços, cuidados, conhecimento — categorias novas</li>
+      <li><strong>Plataformização</strong>: uberização do trabalho (motoristas, entregadores, freelancers digitais)</li>
+      <li><strong>Trabalho remoto e híbrido</strong>: pós-pandemia, intensificação da jornada</li>
+      <li><strong>Workaholismo e adoecimento mental</strong>: burnout, ansiedade, depressão</li>
+    </ul>
+
+    <div class="subsecao">Categorias Conceituais</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Ricardo Antunes — Os Sentidos do Trabalho</div>
+        <p>"Nova morfologia do trabalho": mais precarizada, fragmentada, feminizada, terceirizada, digital. Trabalho material + imaterial. "Classe-que-vive-do-trabalho" — categoria ampliada para incluir os trabalhadores precarizados modernos.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">David Harvey — Acumulação Flexível</div>
+        <p>"Condição pós-moderna": flexibilidade dos mercados de trabalho, produção, consumo. Acumulação por despossessão (privatização, financerização). Marcos teóricos para entender neoliberalismo.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Pierre Dardot e Christian Laval — Nova Razão do Mundo</div>
+        <p>Neoliberalismo como racionalidade subjetiva — "empresário de si mesmo"; transformação das subjetividades, não só da economia. Empreendedorismo individualizado como ideologia.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Wendy Brown — Undoing the Demos</div>
+        <p>Neoliberalismo erode a própria democracia liberal; transforma cidadãos em "capital humano" competindo; economiciza todas as esferas da vida.</p>
+      </div>
+    </div>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> reestruturação produtiva é o substrato do neoliberalismo no trabalho. Termos cobrados em ENARE: "nova morfologia do trabalho" (Antunes), "flexibilização", "terceirização", "plataformização", "uberização", "trabalho intermitente" (Lei 13.467/2017). Saber criticar a Reforma Trabalhista 2017 do ponto de vista da categoria SS.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-FUND · Capitalismo Contemporâneo</span><span>Extensivo ENARE 2026</span><span class="pg">3 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-FUND</div><div class="aula-ref">Bloco B13 · Aula 03 · Precarização do AS</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Precarização do Trabalho do Assistente Social</div>
+
+    <p>O trabalho do AS, como qualquer outro trabalho assalariado, sofre os efeitos da precarização contemporânea. CFESS, ABEPSS e CRESS denunciam sistematicamente esse processo. Pesquisa "Quem é o/a Assistente Social?" (CFESS 2022) — fonte primária cobrada em ENARE 2025 (Q93, Q96).</p>
+
+    <div class="subsecao">Indicadores da Precarização do Trabalho do AS</div>
+    <ul class="lista">
+      <li><strong>Vínculos precários</strong>: contratos temporários, PJ, terceirização, RPA, OS/OSCIP</li>
+      <li><strong>Baixos salários</strong>: piso salarial Lei 12.317/2010 não é totalmente respeitado</li>
+      <li><strong>Carga horária ampliada</strong>: a Lei 12.317/2010 estabelece 30h semanais — em muitos locais, descumprida</li>
+      <li><strong>Acúmulo de funções</strong>: AS faz "tudo" no equipamento (gestão, atendimento, pesquisa, formação)</li>
+      <li><strong>Falta de equipe</strong>: número insuficiente de AS por equipamento; CRAS com 1 AS para milhares de famílias</li>
+      <li><strong>Falta de condições materiais</strong>: salas inadequadas, sem privacidade; falta de transporte para visitas; falta de equipamentos</li>
+      <li><strong>Pressão por produtividade</strong>: metas quantitativas em detrimento da qualidade</li>
+      <li><strong>Adoecimento profissional</strong>: burnout, ansiedade, depressão, fadiga por compaixão</li>
+      <li><strong>Violência institucional e simbólica</strong>: assédio, falta de reconhecimento, deslegitimação profissional</li>
+    </ul>
+
+    <div class="subsecao">Lei 12.317/2010 — Jornada de 30h Semanais</div>
+    <p>Estabelece a jornada de 30 horas semanais para AS, sem redução salarial. Marca conquista da categoria. Embora vigente, frequentemente descumprida em municípios, com cargas de 36h, 40h ou mais. CFESS e CRESS atuam pela implementação efetiva.</p>
+
+    <div class="subsecao">Pesquisa CFESS 2022 — Quem é o/a Assistente Social?</div>
+    <table>
+      <tr><th>Perfil</th><th>Dado</th></tr>
+      <tr><td>Gênero</td><td>~90% mulheres (feminização da profissão histórica)</td></tr>
+      <tr><td>Raça/cor</td><td>Crescimento da identificação como negra (preta+parda); ainda predominante branca, mas mudando</td></tr>
+      <tr><td>Faixa etária</td><td>Maioria 30–49 anos</td></tr>
+      <tr><td>Vínculo principal</td><td>Setor público predominante (federal + estadual + municipal); ainda assim 30%+ vínculo privado/terceiro setor</td></tr>
+      <tr><td>Renda</td><td>Maioria entre 3–6 salários mínimos; faixa inferior cresceu (precarização)</td></tr>
+      <tr><td>Formação continuada</td><td>~50% com especialização; cresceu mestrado/doutorado</td></tr>
+      <tr><td>Sindicalização</td><td>Baixa; reflexo da fragmentação contemporânea</td></tr>
+      <tr><td>Espaços</td><td>Saúde (SUS) &gt; Assistência social (SUAS) &gt; Educação &gt; Justiça &gt; Outros</td></tr>
+    </table>
+
+    <div class="subsecao">Adoecimento do AS — Saúde do Trabalhador</div>
+    <p>Pesquisas recentes apontam adoecimento mental do AS:</p>
+    <ul class="lista">
+      <li><strong>Síndrome de Burnout</strong>: exaustão emocional, despersonalização, redução da realização profissional (Maslach)</li>
+      <li><strong>Fadiga por compaixão</strong>: efeito acumulativo de lidar com sofrimento humano constante</li>
+      <li><strong>Estresse traumático secundário</strong>: AS expostos a relatos de violência, abuso, morte</li>
+      <li><strong>Sofrimento moral</strong>: quando o que se quer fazer (PEP) entra em conflito com o que é possível (condições)</li>
+      <li><strong>Anestesia ética</strong>: defesa psíquica ante o excesso; risco de adesão acrítica à rotina</li>
+    </ul>
+
+    <p><strong>Estratégias de cuidado:</strong> supervisão de equipe, intervisão, formação continuada, sindicalização, fortalecimento coletivo, autocuidado individual, terapia, atividade física, descanso adequado. CFESS publica documentos sobre <em>saúde do/a assistente social</em>.</p>
+
+    <div class="alerta">
+      <p><strong>Pesquisa CFESS 2022</strong> é fonte primária da FGV. Saber dados centrais (~90% mulheres; maioria no setor público; maioria com renda 3-6 SM). Cobrado em ENARE 2025 (Q93, Q96).</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-FUND · Capitalismo Contemporâneo</span><span>Extensivo ENARE 2026</span><span class="pg">4 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-FUND</div><div class="aula-ref">Bloco B13 · Aula 03 · Rotinização</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Rotinização, Burocratização e Tecnicismo</div>
+
+    <p>Três fenômenos correlacionados que afetam o trabalho profissional no capitalismo contemporâneo, despolitizando-o. São <em>tendências</em> a serem combatidas — não destinos inevitáveis.</p>
+
+    <div class="subsecao">Rotinização</div>
+    <p>Repetição mecânica de procedimentos sem reflexão crítica. O AS torna-se "executor" de procedimentos padronizados, sem mediação teórica. Sinais:</p>
+    <ul class="lista">
+      <li>Atendimentos cronometrados; "produtividade" como meta única</li>
+      <li>Aplicação de formulários sem escuta qualificada</li>
+      <li>Encaminhamentos automáticos sem análise da rede</li>
+      <li>Ausência de tempo para sistematização e estudo</li>
+      <li>Substituição do estudo social pelo questionário automatizado</li>
+    </ul>
+
+    <div class="subsecao">Burocratização</div>
+    <p>Predomínio da forma sobre o conteúdo; submissão à norma sem mediação ético-política. Sinais:</p>
+    <ul class="lista">
+      <li>Foco em preenchimento de planilhas e relatórios para "prestação de contas"</li>
+      <li>Categorização rígida dos sujeitos (status; classe; código)</li>
+      <li>Atendimento como triagem para benefícios padronizados, sem singularização</li>
+      <li>Falta de questionamento das regras institucionais</li>
+      <li>"Lei é lei" — sem compreensão dos limites e contradições da norma</li>
+    </ul>
+
+    <div class="subsecao">Tecnicismo</div>
+    <p>Predomínio da técnica sobre a teoria; "o que funciona" em detrimento da análise crítica. Sinais:</p>
+    <ul class="lista">
+      <li>Investimento em "metodologias" sem base teórica</li>
+      <li>Adoção acrítica de modismos profissionais</li>
+      <li>Despolitização do trabalho: "o pessoal é só psicossocial"</li>
+      <li>Adesão a saberes da gestão de qualidade (TQC, ISO) sem mediação</li>
+      <li>Pragmatismo: "ajudar quem aparece, sem perguntar muito"</li>
+    </ul>
+
+    <div class="subsecao">Como Combater?</div>
+    <p>A categoria CFESS/CRESS/ABEPSS propõe:</p>
+    <ul class="lista">
+      <li><strong>Formação continuada</strong>: cursos, mestrado, doutorado; leitura sistemática</li>
+      <li><strong>Supervisão técnica</strong>: análise coletiva de casos com perspectiva PEP</li>
+      <li><strong>Sistematização da prática</strong>: escrita, reflexão, produção de conhecimento</li>
+      <li><strong>Participação política</strong>: sindicalização, conselhos, associações</li>
+      <li><strong>Articulação com movimentos sociais</strong>: vinculação à classe trabalhadora</li>
+      <li><strong>Pesquisa institucional</strong>: produzir dados sobre o serviço; subsidiar mudanças</li>
+      <li><strong>Cuidado coletivo</strong>: combater individualismo e isolamento profissional</li>
+    </ul>
+
+    <div class="subsecao">Instrumentalidade Ampliada (Yolanda Guerra hoje)</div>
+    <p>Yolanda Guerra atualiza o conceito de instrumentalidade para o capitalismo contemporâneo. A instrumentalidade <em>amplia-se</em> para incluir:</p>
+    <ul class="lista">
+      <li>Capacidade crítica frente às demandas institucionais (saber dizer "não" a procedimentos que ferem o PEP)</li>
+      <li>Reflexão sobre as condições objetivas do trabalho (precarização) e sobre as finalidades (PEP)</li>
+      <li>Mediação entre o singular (caso) e o universal (sociedade) — não reduzir um ao outro</li>
+      <li>Recuperação da dimensão investigativa do trabalho</li>
+      <li>Pesquisa-ação como antídoto à rotinização</li>
+      <li>Defesa coletiva da profissão (sindicatos, conselhos, associações)</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Mensagem central:</strong> rotinização, burocratização e tecnicismo são <em>processos a serem enfrentados</em>, não destinos. A instrumentalidade reflexiva (Guerra) é antídoto. Cobrado em ENARE 2024 (Q83) e 2025 (Q83) — Yolanda Guerra é autora central, ao lado de Netto e Iamamoto.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-FUND · Capitalismo Contemporâneo</span><span>Extensivo ENARE 2026</span><span class="pg">5 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-FUND</div><div class="aula-ref">Bloco B13 · Aula 03 · Plataformização</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Plataformização do Trabalho — Realidade Digital</div>
+
+    <p>A <strong>plataformização</strong> (ou "uberização") é o uso de plataformas digitais para intermediar trabalho, transformando trabalhadores em "parceiros" sem vínculo. Cobrada em ENARE 2025 (Q30, Q48). Tema emergente em SS.</p>
+
+    <div class="subsecao">Conceito e Características</div>
+    <ul class="lista">
+      <li><strong>Plataformas digitais</strong> como Uber, iFood, Rappi, 99 — intermediam serviços</li>
+      <li>Trabalhadores classificados como "autônomos", "parceiros", "MEI" — não empregados</li>
+      <li>Sem CLT, sem férias, sem 13º, sem FGTS, sem aposentadoria</li>
+      <li>Algoritmo decide quem recebe pedidos, qual remuneração, qual avaliação</li>
+      <li>"Gerência algorítmica" substitui supervisor humano — opaca, sem direito de defesa</li>
+      <li>Trabalhador assume custos (veículo, manutenção, combustível, celular, app)</li>
+      <li>Risco do negócio transferido ao trabalhador</li>
+      <li>Renda variável e imprevisível</li>
+    </ul>
+
+    <div class="subsecao">Trabalho do AS em Plataformas Digitais</div>
+    <p>Não só os entregadores são plataformizados. O AS também sofre processos análogos:</p>
+    <ul class="lista">
+      <li>Plataformas de teleassistência social</li>
+      <li>"Coachings" e mentorias remotas</li>
+      <li>Consultorias por marketplace</li>
+      <li>Webinários e cursos online (formação contínua mercantilizada)</li>
+      <li>Atendimento por aplicativo em algumas instituições privadas</li>
+      <li>Trabalho remoto pós-pandemia com intensificação</li>
+    </ul>
+
+    <div class="subsecao">Posicionamento do CFESS sobre Trabalho Remoto/Digital</div>
+    <p>O CFESS regulamentou o trabalho remoto em algumas situações via Resolução CFESS 813/2018 (atualizada) e debate constante sobre teleatendimento, teleconsulta. Princípios:</p>
+    <ul class="lista">
+      <li>Trabalho do AS exige <strong>relação humana qualificada</strong> — não substituível por aplicativo</li>
+      <li>Teleatendimento em SS é admitido em situações específicas (emergência sanitária, distância geográfica), nunca como modelo principal</li>
+      <li>Sigilo profissional + LGPD — exigências técnicas</li>
+      <li>Visita domiciliar virtual <em>não substitui</em> presencial</li>
+      <li>Estágio supervisionado é presencial (DCNs ABEPSS)</li>
+    </ul>
+
+    <div class="subsecao">Plataformização e Questão Social</div>
+    <p>A plataformização <em>expande a questão social</em>:</p>
+    <ul class="lista">
+      <li>Cria uma nova "classe-que-vive-do-trabalho" (Antunes): trabalhadores precarizados digitais</li>
+      <li>Aprofunda desigualdades: maioria dos entregadores é jovem, negro, periférico</li>
+      <li>Risca direitos previdenciários (sem contribuição = sem aposentadoria)</li>
+      <li>Sobrecarga: jornadas de 14h+; acidentes de trabalho não cobertos</li>
+      <li>Adoecimento mental: isolamento, ansiedade, depressão</li>
+      <li>Movimento de organização: "Breque dos Apps" (2020); sindicatos em construção</li>
+    </ul>
+
+    <div class="subsecao">Demandas para o SS no Trabalho Plataformizado</div>
+    <ul class="lista">
+      <li>Atender trabalhadores plataformizados em CRAS, CREAS, ambulatórios</li>
+      <li>Encaminhar para benefícios assistenciais (BPC, Bolsa Família/Auxílio)</li>
+      <li>Atuar em saúde do trabalhador (CEREST) com plataformizados</li>
+      <li>Participar de discussões com sindicatos e movimentos</li>
+      <li>Apoiar regulamentação trabalhista (PL em tramitação)</li>
+      <li>Refletir sobre as relações algorítmicas que rompem laços sociais</li>
+      <li>Posicionar-se publicamente contra a "uberização" como modelo aceitável</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Tema emergente — vigilância para ENARE 2026:</strong> plataformização cresce no debate público com regulamentação em PL no Congresso (PL 12/2024 e outros). Provável manutenção ou aumento da cobrança. Saber relacionar plataformização com: nova morfologia do trabalho (Antunes), terceirização, desigualdade racial, saúde do trabalhador.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-FUND · Capitalismo Contemporâneo</span><span>Extensivo ENARE 2026</span><span class="pg">6 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-FUND</div><div class="aula-ref">Bloco B13 · Aula 03 · Questões ENARE</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 01</span><span class="fonte">Neoliberalismo · EC 95/2016 · NC: Análise</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">A Emenda Constitucional 95/2016 ("Novo Regime Fiscal" ou "Teto de Gastos") foi cobrada em ENARE 2025 como expressão concreta do neoliberalismo no Brasil contemporâneo. Sobre seus impactos no SUAS e nas políticas sociais, é CORRETO afirmar:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Aumentou os investimentos em assistência social.</span></li>
+        <li class="correta"><span class="letra">B</span><span>Limitou o crescimento dos gastos primários da União à inflação por 20 anos, resultando em estrangulamento das políticas sociais (saúde, educação, assistência); foi alvo de crítica da categoria SS, do CFESS e dos movimentos sociais; em 2023 foi parcialmente substituída pelo novo marco fiscal.</span></li>
+        <li><span class="letra">C</span><span>Reduziu o teto apenas para gastos com pessoal civil.</span></li>
+        <li><span class="letra">D</span><span>Foi revogada em 2017 pelo Congresso.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> EC 95/2016 (Novo Regime Fiscal) congelou o crescimento dos gastos primários da União à inflação por 20 anos. Resultado prático: redução real per capita dos investimentos em saúde, educação, assistência social, justiça e segurança ao longo do tempo. CFESS, ABEPSS e movimentos sociais criticaram a medida como desmonte do projeto de seguridade social da CF/88. Em 2023, novo marco fiscal substituiu parcialmente o teto. Cobrado em ENARE 2025 (Q47).</p>
+      <p><strong>Por que as outras erram:</strong> A — aumentou foi o desmonte, não o investimento · C — foi para todos os gastos primários · D — segue vigente até 2023 quando substituída parcialmente.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-FUND · Capitalismo Contemporâneo</span><span>Extensivo ENARE 2026</span><span class="pg">7 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-FUND</div><div class="aula-ref">Bloco B13 · Aula 03 · Questões ENARE</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 02</span><span class="fonte">Plataformização · NC: Análise</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Sobre a plataformização do trabalho e sua relação com a questão social contemporânea, analise:</p>
+      <p class="questao-enunciado" style="font-style:italic;">I. Transforma trabalhadores em "parceiros" sem vínculo empregatício, transferindo riscos do negócio e retirando direitos trabalhistas.<br>
+      II. Cria nova fração da "classe-que-vive-do-trabalho" (Antunes), com perfil predominantemente jovem, negro e periférico.<br>
+      III. A "gerência algorítmica" substitui supervisão humana e impede defesa do trabalhador, configurando uma forma opaca de controle.<br>
+      IV. Não afeta o SS, que é profissão regulamentada com vínculo CLT exclusivo.</p>
+      <p class="questao-enunciado">Está(ão) CORRETA(S):</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Apenas I e II.</span></li>
+        <li><span class="letra">B</span><span>I, II e IV.</span></li>
+        <li class="correta"><span class="letra">C</span><span>I, II e III.</span></li>
+        <li><span class="letra">D</span><span>Todas estão corretas.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — C</div>
+      <p><strong>I — Correta:</strong> traço definidor da plataformização — transferência de risco e retirada de direitos.<br>
+      <strong>II — Correta:</strong> conceito de Ricardo Antunes; perfil sociodemográfico confirmado em pesquisas (DIEESE, IBGE, "Breque dos Apps").<br>
+      <strong>III — Correta:</strong> gerência algorítmica = controle opaco, sem direito de defesa; demissão automática pelo app, sem direito ao contraditório.<br>
+      <strong>IV — Incorreta:</strong> o SS NÃO é imune. Existe trabalho profissional plataformizado (consultoria por app, atendimento remoto comercializado), e o AS atende crescentemente trabalhadores plataformizados em sua prática. Vínculos do AS são predominantemente públicos, mas há terceirização, PJ, MEI no SS também.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-FUND · Capitalismo Contemporâneo</span><span>Extensivo ENARE 2026</span><span class="pg">8 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-FUND</div><div class="aula-ref">Bloco B13 · Aula 03 · Gabarito Integrado</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 03</span><span class="fonte">Instrumentalidade Ampliada · Yolanda Guerra · NC: Análise</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">A "instrumentalidade ampliada" (Yolanda Guerra) inclui qual conjunto de práticas como antídoto à rotinização, burocratização e tecnicismo no SS contemporâneo?</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Apenas o domínio técnico dos instrumentos.</span></li>
+        <li class="correta"><span class="letra">B</span><span>Capacidade crítica frente a demandas institucionais; reflexão sobre condições objetivas do trabalho (precarização) e finalidades (PEP); mediação singular ↔ universal; recuperação da dimensão investigativa; pesquisa-ação; defesa coletiva da profissão (sindicalização, conselhos).</span></li>
+        <li><span class="letra">C</span><span>Cumprimento mecânico dos procedimentos institucionais.</span></li>
+        <li><span class="letra">D</span><span>Substituição da teoria pela técnica.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> a instrumentalidade ampliada (Guerra hoje) abrange capacidade crítica, reflexão, mediação, investigação, pesquisa-ação e defesa coletiva. <em>Não é apenas técnica</em>. Diferencia-se da técnica vazia (tecnicismo) e do cumprimento de norma vazia (burocratização). A instrumentalidade reflete as 3 dimensões do trabalho do AS (teórico-metodológica + ético-política + técnico-operativa) integradas.</p>
+      <p><strong>Por que as outras erram:</strong> A, C, D — descrevem precisamente o que Yolanda Guerra <em>combate</em> com a instrumentalidade ampliada.</p>
+    </div>
+
+    <div class="subsecao" style="margin-top:6px;">Gabarito Comentado — Análise Integrada</div>
+    <table>
+      <tr><th>Questão</th><th>Gabarito</th><th>Tema</th><th>Conceito-Chave</th></tr>
+      <tr><td><strong>01</strong></td><td><span class="destaque">B</span></td><td>EC 95/2016 — Teto de Gastos</td><td>Limita gastos à inflação por 20 anos; desmonta políticas sociais; substituído parcialmente em 2023</td></tr>
+      <tr><td><strong>02</strong></td><td><span class="destaque">C</span></td><td>Plataformização</td><td>Transfere risco, retira direitos, cria nova classe trabalhadora precarizada, gerência algorítmica opaca</td></tr>
+      <tr><td><strong>03</strong></td><td><span class="destaque">B</span></td><td>Instrumentalidade Ampliada</td><td>Crítica + reflexão + mediação + investigação + defesa coletiva — Yolanda Guerra</td></tr>
+    </table>
+  </div>
+  <div class="footer"><span>SS-FUND · Capitalismo Contemporâneo</span><span>Extensivo ENARE 2026</span><span class="pg">9 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-FUND</div><div class="aula-ref">Bloco B13 · Aula 03 · Síntese</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Síntese — SS no Capitalismo Contemporâneo</div>
+    <div class="sintese-grid">
+      <div class="sintese-item">
+        <div class="si-label">Neoliberalismo</div>
+        <p>Gênese 1973+ (Pinochet, Thatcher, Reagan). Consenso de Washington 1989. Brasil: Collor 1990 → FHC 1995 → governos posteriores. 10 vetores: desregulação, privatização, abertura, Estado mínimo p/ social, máximo p/ capital, flexibilização, individualização, mercantilização, despolitização, filantrocapitalismo.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Reestruturação Produtiva</div>
+        <p>Fordismo → Toyotismo. Antunes: "nova morfologia do trabalho"; classe-que-vive-do-trabalho. Harvey: acumulação flexível. Dardot e Laval: nova razão do mundo; empresário de si. Brown: erosão da democracia.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Precarização do AS</div>
+        <p>Vínculos precários (PJ, MEI, terceirização). Lei 12.317/2010 (jornada 30h frequentemente descumprida). Pesquisa CFESS 2022: ~90% mulheres, predominância público, renda 3-6 SM. Adoecimento: burnout, fadiga compaixão, sofrimento moral. Cuidado coletivo.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Rotinização, Burocratização, Tecnicismo</div>
+        <p>Três processos a combater. Rotinização (repetição mecânica), burocratização (forma sobre conteúdo), tecnicismo (técnica sem teoria). Antídoto: instrumentalidade ampliada (Yolanda Guerra) — crítica, reflexão, mediação, investigação, defesa coletiva.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Plataformização</div>
+        <p>"Uberização" do trabalho. Trabalhadores como "parceiros" sem vínculo. Gerência algorítmica opaca. Cria nova fração da classe trabalhadora (jovem, negro, periférico). Tema emergente em ENARE (Q30/Q48 em 2025). CFESS regulamenta trabalho remoto em SS.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Próxima Aula</div>
+        <p><strong>Aula 04 — Teoria Social: Marx, Durkheim, Weber.</strong> Matrizes teóricas no SS, modo de produção, anomia, dominação racional-legal. Cluster novo cobrado em ENARE 2025 (Q38, Q73, Q83, Q94).</p>
+      </div>
+    </div>
+    <div class="alerta" style="margin-top:5px;">
+      <p><strong>Regra de ouro — Capitalismo Contemporâneo no ENARE:</strong> neoliberalismo = perspectiva crítica obrigatória; EC 95/2016 = teto de gastos; reestruturação produtiva = nova morfologia (Antunes); precarização atinge o AS; instrumentalidade ampliada (Guerra) = antídoto à rotinização; plataformização = tema emergente; pesquisa CFESS 2022 = fonte primária.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-FUND · Capitalismo Contemporâneo</span><span>Extensivo ENARE 2026</span><span class="pg">10 / 10</span></div>
+</div>
+
+</body>
+</html>

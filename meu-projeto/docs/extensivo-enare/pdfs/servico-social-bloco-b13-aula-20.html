@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Serviço Social — Bloco B13 Aula 20 | Extensivo ENARE 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap');
+  :root { --creme: #F6F4ED; --verde: #1F5C23; --amarelo: #C6D834; --escuro: #0C2B0E; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #d0d0d0; font-family: 'Bricolage Grotesque', sans-serif; }
+  .page { width: 210mm; height: 297mm; background: var(--creme); margin: 0 auto 12px; position: relative; overflow: hidden; page-break-after: always; }
+  .header { background: var(--verde); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .header-logo { display: flex; align-items: center; gap: 8px; }
+  .header-logo svg { width: 32px; height: 32px; }
+  .header-brand { display: flex; flex-direction: column; line-height: 1; }
+  .header-brand .marca { font-family: 'Playfair Display', serif; font-style: italic; color: #fff; font-size: 13px; letter-spacing: 0.5px; }
+  .header-brand .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 7px; letter-spacing: 1.5px; text-transform: uppercase; }
+  .header-info { text-align: right; }
+  .header-info .disciplina { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
+  .header-info .aula-ref { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.7); font-size: 8px; letter-spacing: 0.5px; }
+  .footer { position: absolute; bottom: 0; left: 0; right: 0; background: var(--verde); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .footer span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.6); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .footer .pg { color: var(--amarelo); font-weight: 400; }
+  .body { padding: 14px 18px 30px; height: calc(297mm - 52px - 22px); overflow: hidden; }
+  .capa-page { background: var(--verde); }
+  .capa-header { background: var(--creme); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .capa-header .marca { font-family: 'Playfair Display', serif; font-style: italic; color: var(--verde); font-size: 14px; }
+  .capa-header .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--verde); font-size: 7.5px; letter-spacing: 2px; text-transform: uppercase; }
+  .capa-body { padding: 28px 24px 0; display: flex; flex-direction: column; height: calc(297mm - 52px - 22px); }
+  .capa-eyebrow { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; }
+  .capa-titulo { font-family: 'Barlow Condensed', sans-serif; color: #fff; font-size: 50px; line-height: 0.95; text-transform: uppercase; letter-spacing: -0.5px; margin-bottom: 6px; }
+  .capa-titulo span { color: var(--amarelo); }
+  .capa-subtitulo { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; color: rgba(255,255,255,0.65); font-size: 12px; letter-spacing: 0.3px; margin-bottom: 22px; line-height: 1.5; }
+  .capa-badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+  .capa-badge { background: rgba(198,216,52,0.15); border: 1px solid var(--amarelo); color: var(--amarelo); font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 8px; border-radius: 2px; }
+  .capa-divider { width: 40px; height: 3px; background: var(--amarelo); margin-bottom: 20px; }
+  .capa-topicos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .capa-topico { display: flex; align-items: flex-start; gap: 7px; }
+  .capa-topico-num { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 18px; line-height: 1; min-width: 18px; }
+  .capa-topico-txt { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 400; color: rgba(255,255,255,0.8); font-size: 9.5px; line-height: 1.4; }
+  .capa-footer-strip { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.25); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .capa-footer-strip span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.45); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .secao-titulo { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 18px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid var(--amarelo); padding-bottom: 3px; margin-bottom: 9px; line-height: 1; }
+  .subsecao { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.5px; margin: 7px 0 3px; }
+  p { font-size: 9px; line-height: 1.55; color: #1a1a1a; margin-bottom: 4px; font-weight: 400; }
+  .destaque { background: var(--amarelo); color: var(--escuro); font-weight: 600; padding: 1px 4px; border-radius: 2px; font-size: 8.5px; }
+  .alerta { background: rgba(198,216,52,0.18); border-left: 3px solid var(--amarelo); padding: 5px 8px; margin: 5px 0; border-radius: 0 3px 3px 0; }
+  .alerta p { margin: 0; font-size: 8.5px; }
+  .alerta strong { color: var(--verde); }
+  table { width: 100%; border-collapse: collapse; margin: 5px 0; font-size: 8px; }
+  th { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; padding: 4px 6px; text-align: left; }
+  td { padding: 3px 6px; border-bottom: 1px solid rgba(31,92,35,0.12); vertical-align: top; line-height: 1.4; color: #1a1a1a; }
+  tr:nth-child(even) td { background: rgba(31,92,35,0.04); }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 5px 0; }
+  .card { background: rgba(31,92,35,0.06); border: 1px solid rgba(31,92,35,0.15); border-radius: 4px; padding: 7px 8px; }
+  .card-title { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 11px; text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 3px; }
+  .card p { font-size: 8px; line-height: 1.5; }
+  .questao-header { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; padding: 4px 10px; border-radius: 3px 3px 0 0; display: flex; justify-content: space-between; align-items: center; }
+  .questao-header .fonte { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; color: var(--amarelo); letter-spacing: 0.5px; }
+  .questao-body { border: 1px solid rgba(31,92,35,0.2); border-top: none; border-radius: 0 0 3px 3px; padding: 7px 10px; margin-bottom: 7px; }
+  .questao-enunciado { font-size: 8.5px; line-height: 1.55; color: #111; margin-bottom: 5px; font-weight: 500; }
+  .alternativas { list-style: none; }
+  .alternativas li { font-size: 8px; line-height: 1.5; padding: 2px 0; color: #222; display: flex; gap: 5px; }
+  .alternativas li .letra { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: var(--verde); font-size: 9px; min-width: 10px; }
+  .alternativas li.correta .letra { color: var(--amarelo); }
+  .alternativas li.correta { background: rgba(198,216,52,0.15); border-left: 2px solid var(--amarelo); padding-left: 4px; }
+  .gabarito-box { background: var(--verde); border-radius: 4px; padding: 8px 12px; margin: 6px 0; }
+  .gabarito-box .gab-title { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+  .gabarito-box p { color: rgba(255,255,255,0.9); font-size: 8px; line-height: 1.55; }
+  .gabarito-box strong { color: var(--amarelo); }
+  .sintese-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-top: 6px; }
+  .sintese-item { background: rgba(31,92,35,0.07); border-left: 3px solid var(--verde); padding: 5px 7px; border-radius: 0 3px 3px 0; }
+  .sintese-item .si-label { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px; }
+  .sintese-item p { font-size: 7.5px; line-height: 1.5; }
+  ul.lista { padding-left: 14px; margin: 3px 0; }
+  ul.lista li { font-size: 8.5px; line-height: 1.55; color: #1a1a1a; margin-bottom: 1px; }
+  blockquote { background: rgba(31,92,35,0.06); border-left: 3px solid var(--verde); padding: 6px 9px; margin: 5px 0; font-style: italic; font-size: 8.5px; line-height: 1.55; }
+  @media print { body { background: none; } .page { margin: 0; box-shadow: none; } }
+</style>
+</head>
+<body>
+
+<div class="page capa-page">
+  <div class="capa-header">
+    <div style="display:flex;align-items:center;gap:8px;"><svg width="34" height="34" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#1F5C23"/></svg><div><div class="marca">Elite Treinamentos</div><div class="tagline">Extensivo ENARE 2026</div></div></div>
+    <div style="text-align:right;"><div style="font-family:'Barlow Condensed',sans-serif;color:var(--verde);font-size:11px;letter-spacing:1px;text-transform:uppercase;">Bloco B13 · Aula 20</div><div style="font-family:'Space Grotesk',sans-serif;font-weight:300;color:#888;font-size:7.5px;letter-spacing:0.5px;">Serviço Social</div></div>
+  </div>
+  <div class="capa-body">
+    <div class="capa-eyebrow">Bloco B13 · Análise · Aula 20 de 21</div>
+    <div class="capa-titulo">Análise <span>de Texto<br>FGV<br>Treino Final</span></div>
+    <div class="capa-subtitulo">NC Análise triplicou em 2025 (+12,4 pp).<br>Técnicas de leitura crítica + fragmentos comentados</div>
+    <div class="capa-badge-row">
+      <div class="capa-badge">NC Análise ★★★★</div>
+      <div class="capa-badge">+12,4 pp em 2025</div>
+      <div class="capa-badge">Treino Específico</div>
+      <div class="capa-badge">FGV Padrão</div>
+    </div>
+    <div class="capa-divider"></div>
+    <div class="capa-topicos">
+      <div class="capa-topico"><div class="capa-topico-num">01</div><div class="capa-topico-txt">Por que análise textual cresceu em 2025</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">02</div><div class="capa-topico-txt">Tipos de questões de análise (FGV)</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">03</div><div class="capa-topico-txt">Técnicas de leitura crítica de fragmentos</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">04</div><div class="capa-topico-txt">Análise de Iamamoto e Netto</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">05</div><div class="capa-topico-txt">Análise de Saffioti e Almeida</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">06</div><div class="capa-topico-txt">Análise de dispositivos legais</div></div>
+    </div>
+  </div>
+  <div class="capa-footer-strip"><span>Extensivo ENARE 2026</span><span>Elite Treinamentos em Saúde</span><span>Página 1 de 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — Análise</div><div class="aula-ref">Bloco B13 · Aula 20 · Por quê?</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Por que a análise textual cresceu na FGV em 2025?</div>
+
+    <p>A FGV vem alterando o perfil das suas provas. Em SS, as questões de <strong>análise de texto e contexto</strong> ("NC An" — Nível Cognitivo de Análise) triplicaram em 2025 em comparação com 2024 — aumento de <strong>+12,4 pontos percentuais</strong>. Compreender essa tendência é decisivo para a prova.</p>
+
+    <div class="subsecao">O Que Mudou na FGV</div>
+    <table>
+      <tr><th>2024 (perfil antigo)</th><th>2025 (perfil novo)</th></tr>
+      <tr><td>Maioria de questões de Compreensão (recordar conceitos, identificar definições)</td><td>Crescimento massivo de questões de Análise (interpretar fragmentos, articular autores, contextualizar)</td></tr>
+      <tr><td>Maior peso em conteúdos clássicos da profissão</td><td>Inclusão de "clusters novos" (SUAS, DUDH, formação social, plataformização, Fanon)</td></tr>
+      <tr><td>Enunciados curtos (até 3 linhas)</td><td>Enunciados longos com fragmento extenso (5-10 linhas)</td></tr>
+      <tr><td>Resposta direta na alternativa</td><td>Necessidade de articulação entre alternativa e fragmento</td></tr>
+    </table>
+
+    <div class="subsecao">Taxonomia de Bloom — Níveis Cognitivos</div>
+    <p>A FGV usa explicitamente os níveis cognitivos da Taxonomia de Bloom (revisada por Anderson e Krathwohl, 2001) nas questões:</p>
+    <table>
+      <tr><th>Nível</th><th>Verbo</th><th>Exemplos</th></tr>
+      <tr><td><strong>Lembrar/Recordar</strong></td><td>Identificar, definir, listar</td><td>"O conceito X significa..."</td></tr>
+      <tr><td><strong>Compreender</strong></td><td>Explicar, classificar, exemplificar</td><td>"O autor Y defende que..."</td></tr>
+      <tr><td><strong>Aplicar</strong></td><td>Implementar, executar, utilizar</td><td>Caso concreto: "Qual conduta adequada?"</td></tr>
+      <tr><td><strong>Analisar</strong> ★★★</td><td>Diferenciar, organizar, atribuir, comparar</td><td>"Articule o fragmento X com o autor Y"</td></tr>
+      <tr><td>Avaliar</td><td>Verificar, criticar, julgar</td><td>"Qual posição é mais consistente?"</td></tr>
+      <tr><td>Criar</td><td>Gerar, planejar, produzir</td><td>(Raro em prova objetiva)</td></tr>
+    </table>
+
+    <div class="subsecao">Análise — Características da Questão FGV 2025</div>
+    <ul class="lista">
+      <li>Fragmento longo de autor relevante (Iamamoto, Netto, Saffioti, Almeida, Antunes)</li>
+      <li>Necessidade de identificar pressupostos teóricos</li>
+      <li>Articulação com outros autores ou conjunturas</li>
+      <li>Distinção entre teses semelhantes mas distintas</li>
+      <li>Identificação de marcas linguísticas do projeto teórico</li>
+      <li>Distinção entre o que o autor diz × o que se pode inferir × o que se pode opor</li>
+      <li>Frequente uso de "EXCETO", "INCORRETA", "NÃO está em conformidade"</li>
+      <li>Cuidado com palavras absolutas: "sempre", "nunca", "todo", "exclusivamente"</li>
+    </ul>
+
+    <div class="subsecao">Tipos Específicos de Questões de Análise em SS</div>
+    <table>
+      <tr><th>Tipo</th><th>O Que Pede</th></tr>
+      <tr><td>Análise de fragmento teórico</td><td>Identificar autor + tese + pressupostos epistemológicos</td></tr>
+      <tr><td>Análise de fragmento legal</td><td>Aplicar artigo de lei (CE/1993, Lei 8.662, ECA, Lei 10.216, LOAS etc.) a situação</td></tr>
+      <tr><td>Análise de gráfico/dado</td><td>Interpretar indicadores; articular com conjuntura social</td></tr>
+      <tr><td>Análise de caso clínico-social</td><td>Conduta profissional articulando PEP + legislação + Parâmetros CFESS</td></tr>
+      <tr><td>Comparação entre autores</td><td>Distinguir Iamamoto/Netto, Saffioti/Lugones, Almeida/Hasenbalg</td></tr>
+      <tr><td>Análise de conjuntura</td><td>EC 95/2016, plataformização, contrarreforma — articulação histórica</td></tr>
+      <tr><td>Análise de documento institucional</td><td>Parâmetros CFESS 2010, PNAS, PNAB, Manifestos</td></tr>
+    </table>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> análise textual triplicou em 2025 (+12,4 pp). Implica leitura cuidadosa do fragmento, articulação com autores e legislação. Cuidado com palavras absolutas. Distinguir o que o autor diz × o que está implícito. Hierarquia de Bloom: Análise &gt; Compreensão &gt; Recordar. Foco no método, não na decoração.</p>
+    </div>
+  </div>
+  <div class="footer"><span>Análise · Por que cresceu</span><span>Extensivo ENARE 2026</span><span class="pg">2 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — Análise</div><div class="aula-ref">Bloco B13 · Aula 20 · Técnicas</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Técnicas de Leitura Crítica</div>
+
+    <p>Para enfrentar questões de análise, é fundamental dominar técnicas de leitura de fragmentos teóricos densos. As técnicas a seguir são aplicáveis a qualquer fragmento de SS — sociólogos, filósofos, juristas, normativos.</p>
+
+    <div class="subsecao">7 Passos para Analisar um Fragmento</div>
+    <table>
+      <tr><th>Passo</th><th>Ação</th></tr>
+      <tr><td>1. Leitura panorâmica</td><td>Ler todo o fragmento de uma vez para captar o sentido geral</td></tr>
+      <tr><td>2. Identificação do autor</td><td>Pelo vocabulário, pela conjuntura, pelo estilo — quem provavelmente escreveu?</td></tr>
+      <tr><td>3. Identificação da tese central</td><td>O que o autor afirma essencialmente? Em uma frase, qual é o ponto principal?</td></tr>
+      <tr><td>4. Mapeamento das categorias-chave</td><td>Quais palavras-conceito aparecem? "Trabalho", "capital", "raça", "gênero", "Estado", "ideologia"...</td></tr>
+      <tr><td>5. Análise do método</td><td>O autor é marxista, weberiano, feminista, decolonial, fenomenológico? Cada método tem marcas linguísticas próprias</td></tr>
+      <tr><td>6. Identificação dos contrastes</td><td>O autor opõe a quê? Critica que outra concepção?</td></tr>
+      <tr><td>7. Avaliação das alternativas</td><td>Voltar às alternativas com a tese clara em mente; eliminar erros e contrastes</td></tr>
+    </table>
+
+    <div class="subsecao">Marcas Linguísticas dos Autores Marxistas</div>
+    <ul class="lista">
+      <li>"Capitalismo", "modo de produção", "classe trabalhadora"</li>
+      <li>"Contradição", "totalidade", "mediação", "concreto-abstrato"</li>
+      <li>"Materialismo histórico", "dialético"</li>
+      <li>"Burguesia × proletariado", "exploração", "alienação"</li>
+      <li>"Forças produtivas e relações de produção"</li>
+      <li>"Ideologia", "hegemonia" (Gramsci)</li>
+      <li>"Reificação", "fetichismo da mercadoria"</li>
+      <li>Estrutura argumentativa: tese da determinação social; crítica ao "naturalismo"</li>
+    </ul>
+
+    <div class="subsecao">Marcas Linguísticas dos Autores Feministas</div>
+    <ul class="lista">
+      <li>"Patriarcado", "gênero", "sexismo"</li>
+      <li>"Divisão sexual do trabalho", "trabalho reprodutivo"</li>
+      <li>"Interseccionalidade", "matriz de opressão"</li>
+      <li>"Mulher" (em pluralidade), "feminilidade", "masculinidade"</li>
+      <li>Saffioti: "patriarcado-capitalismo-racismo"</li>
+      <li>Crenshaw, Hill Collins: "interseccionalidade"</li>
+      <li>Gonzalez, Carneiro: "feminismo afro-latino-americano"</li>
+    </ul>
+
+    <div class="subsecao">Marcas Linguísticas dos Autores Decoloniais</div>
+    <ul class="lista">
+      <li>"Colonialidade", "modernidade colonial"</li>
+      <li>"Sul global", "epistemologias do Sul"</li>
+      <li>"Sujeito subalterno", "outro epistêmico"</li>
+      <li>"Racialização", "racialismo"</li>
+      <li>Quijano: "colonialidade do poder"; "raça como invenção colonial"</li>
+      <li>Mignolo: "desobediência epistêmica"</li>
+      <li>Fanon: "sociogênese", "alienação colonial", "zona do não-ser"</li>
+      <li>Almeida: "racismo estrutural"</li>
+    </ul>
+
+    <div class="subsecao">Marcas Linguísticas dos Autores Pós-Estruturalistas</div>
+    <ul class="lista">
+      <li>"Discurso", "biopolítica", "biopoder"</li>
+      <li>"Dispositivo", "saber-poder"</li>
+      <li>"Subjetividade", "produção de subjetividades"</li>
+      <li>"Disciplinarização", "governamentalidade"</li>
+      <li>Foucault: "História da Loucura", "Vigiar e Punir"</li>
+      <li>Mbembe: "necropolítica"</li>
+      <li>Butler: "performatividade", "matriz heterossexual"</li>
+    </ul>
+
+    <div class="subsecao">Cuidado com Marcas Conservadoras (Distratores)</div>
+    <p>Quando o fragmento parece "natural" ou "comum-senso", desconfie. Conservadorismo opera com marcas como:</p>
+    <ul class="lista">
+      <li>"Natural", "biológico", "humano por essência"</li>
+      <li>"Liberdade individual", "meritocracia", "autoresponsabilização"</li>
+      <li>"Família tradicional", "valores morais"</li>
+      <li>"Caridade", "ajuda ao próximo"</li>
+      <li>"Ordem", "segurança", "civilizado"</li>
+      <li>"Bem comum" sem mediação histórica</li>
+      <li>Frequente nas alternativas erradas — para fazer "armadilha"</li>
+    </ul>
+
+    <div class="subsecao">Sinais Linguísticos a Atentar</div>
+    <table>
+      <tr><th>Sinal</th><th>Efeito</th></tr>
+      <tr><td>"Sempre", "todo", "exclusivamente", "apenas"</td><td>Marca de alternativa absolutista — frequentemente ERRADA</td></tr>
+      <tr><td>"Pode", "tende a", "frequentemente"</td><td>Marca de alternativa modalizada — frequentemente CORRETA</td></tr>
+      <tr><td>"Por exemplo"</td><td>Concretiza; pode estar correta</td></tr>
+      <tr><td>"EXCETO", "INCORRETA"</td><td>Inversão da lógica — atenção para escolher a "errada"</td></tr>
+      <tr><td>"De acordo com", "Segundo o autor X"</td><td>Apela à fidelidade ao texto/autor</td></tr>
+      <tr><td>"Articula", "compreende-se que"</td><td>Inferência — sustenta-se na lógica do texto</td></tr>
+    </table>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> 7 passos da análise (leitura panorâmica → identificação do autor → tese central → categorias-chave → método → contrastes → avaliação das alternativas). Marcas linguísticas por escola. Cuidado com palavras absolutas. Identificar marcas conservadoras nos distratores.</p>
+    </div>
+  </div>
+  <div class="footer"><span>Análise · Técnicas</span><span>Extensivo ENARE 2026</span><span class="pg">3 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — Análise</div><div class="aula-ref">Bloco B13 · Aula 20 · Iamamoto</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Análise — Fragmento de Iamamoto</div>
+
+    <div class="questao-header"><span>Treino 01</span><span class="fonte">Fragmento de Iamamoto · NC: Análise</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Considere o fragmento:</p>
+      <blockquote>"<em>O Serviço Social é uma especialização do trabalho da sociedade, inscrita na divisão sociotécnica do trabalho coletivo, que tem na questão social — em suas várias expressões — a base de sua fundação como especialização do trabalho. (...) O exercício profissional é necessariamente polarizado pelos interesses de suas classes sociais, tendo possibilidades de responder a ambos, no movimento das contradições da realidade.</em>" (Marilda Iamamoto, "O Serviço Social na Contemporaneidade", 1998)</p>
+
+      <p class="questao-enunciado">Com base no fragmento, é CORRETO afirmar que a autora:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Concebe o SS como missão vocacional desvinculada das relações sociais de produção.</span></li>
+        <li class="correta"><span class="letra">B</span><span>Inscreve o SS na divisão sociotécnica do trabalho — profissão historicamente determinada pelo capitalismo — e reconhece a questão social como objeto/matéria-prima da profissão; afirma ainda a polarização do exercício profissional pelas classes em disputa, evidenciando a autonomia relativa do AS e a possibilidade dialética de responder a interesses contraditórios.</span></li>
+        <li><span class="letra">C</span><span>Defende a neutralidade do exercício profissional, desvinculado de projetos societários.</span></li>
+        <li><span class="letra">D</span><span>Reduz o trabalho profissional à execução de tarefas administrativas, sem dimensão político-ética.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito comentado — B</div>
+      <p><strong>Identificação do autor:</strong> vocabulário típico marxista de Iamamoto — "divisão sociotécnica do trabalho", "especialização do trabalho coletivo", "questão social", "classes sociais", "movimento das contradições".</p>
+      <p><strong>Tese central:</strong> SS é trabalho assalariado, profissão historicamente determinada pelo capitalismo, tem a QS como base.</p>
+      <p><strong>Categorias-chave:</strong> trabalho, divisão sociotécnica, questão social, classes, contradições, autonomia.</p>
+      <p><strong>Por que B está correta:</strong> sintetiza fielmente o fragmento. Por que as outras erram: A — "vocação" e "missão" contrariam a leitura sócio-histórica · C — Iamamoto rejeita explicitamente a neutralidade · D — reduzir a execução administrativa é o tecnicismo criticado.</p>
+    </div>
+
+    <div class="questao-header"><span>Treino 02</span><span class="fonte">Fragmento Netto · NC: Análise</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Considere o fragmento:</p>
+      <blockquote>"<em>A 'questão social' não é senão a expressão do processo de formação e desenvolvimento da classe operária e de seu ingresso no cenário político da sociedade. (...) A consideração da 'questão social' como objeto do trabalho do Serviço Social, na ordem do capital monopolista, exige o redimensionamento da própria profissão na sociedade contemporânea.</em>" (José Paulo Netto, "Capitalismo Monopolista e Serviço Social", 1992)</p>
+
+      <p class="questao-enunciado">Com base no fragmento, o autor:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Defende a "questão social" como dado natural, alheio à dinâmica do capitalismo.</span></li>
+        <li><span class="letra">B</span><span>Reduz a "questão social" a aspectos morais e comportamentais da pobreza individual.</span></li>
+        <li class="correta"><span class="letra">C</span><span>Compreende a "questão social" como produto histórico da formação e desenvolvimento da classe operária e de seu ingresso na cena política; identifica-a como objeto do trabalho do SS na ordem do capitalismo monopolista — capitalismo do séc. XX em diante, com seu Estado social e suas políticas sociais; aponta a necessidade de redimensionamento da profissão na contemporaneidade, especialmente diante das transformações neoliberais.</span></li>
+        <li><span class="letra">D</span><span>Concebe a "questão social" como variável independente do modo de produção, com causas puramente psicossociais.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito comentado — C</div>
+      <p><strong>Identificação do autor:</strong> Netto — "capital monopolista", "redimensionamento da profissão", "classe operária no cenário político". Obra de 1992 (importante a data — situa a profissão pós-1988 e pré-neoliberalismo).</p>
+      <p><strong>Tese central:</strong> questão social = produto do desenvolvimento da classe operária; SS no capitalismo monopolista exige redimensionamento.</p>
+      <p><strong>Por que C está correta:</strong> sintetiza fielmente o fragmento. As outras erram: A — naturalização contraria · B — moralização é exatamente o que se critica · D — psicossocial sem economia política também não.</p>
+    </div>
+  </div>
+  <div class="footer"><span>Análise · Iamamoto/Netto</span><span>Extensivo ENARE 2026</span><span class="pg">4 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — Análise</div><div class="aula-ref">Bloco B13 · Aula 20 · Saffioti/Almeida</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Treino 03</span><span class="fonte">Fragmento Saffioti · NC: Análise</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Considere o fragmento:</p>
+      <blockquote>"<em>O patriarcado não é apenas um sistema de ideias, valores e práticas; é uma estrutura econômico-social. Ele se entrelaça com o capitalismo e o racismo, formando um nó de dominação que se reforça mutuamente. A divisão sexual do trabalho — homem produtor, mulher reprodutora — é mecanismo central que se naturaliza, mas é histórica.</em>" (parafraseando Heleieth Saffioti, "O Poder do Macho", 1987)</p>
+
+      <p class="questao-enunciado">A autora caracteriza o patriarcado por:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Ser um sistema cultural superficial, sem materialidade econômica.</span></li>
+        <li><span class="letra">B</span><span>Ser uma criação recente do capitalismo, sem existência prévia.</span></li>
+        <li class="correta"><span class="letra">C</span><span>Ser estrutura econômico-social ARTICULADA com o capitalismo e o racismo, em um "nó" indissociável de dominação; tendo como mecanismo central a divisão sexual do trabalho (homem produtor / mulher reprodutora); reconhecer essa divisão como histórica (e portanto transformável), apesar da sua naturalização ideológica.</span></li>
+        <li><span class="letra">D</span><span>Ser fenômeno individual de personalidades autoritárias, sem dimensão coletiva.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito comentado — C</div>
+      <p><strong>Identificação do autor:</strong> Saffioti — "patriarcado", "nó", "capitalismo + racismo + patriarcado", "divisão sexual do trabalho".</p>
+      <p><strong>Tese central:</strong> patriarcado é estrutura econômico-social articulada ao capitalismo e racismo; divisão sexual do trabalho é mecanismo.</p>
+      <p><strong>Por que C está correta:</strong> sintetiza fielmente. As outras erram: A — Saffioti enfatiza materialidade · B — patriarcado é anterior ao capitalismo (Engels) · D — fenômeno coletivo, não individual.</p>
+    </div>
+
+    <div class="questao-header"><span>Treino 04</span><span class="fonte">Fragmento Almeida · NC: Análise</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Considere o fragmento:</p>
+      <blockquote>"<em>O racismo é uma forma de racionalidade que prescreve os modos de pensar e agir das pessoas, dos grupos sociais e das instituições. (...) Reduzir o racismo à categoria de comportamento individual ou a um problema de instituições mal-administradas é insuficiente. O racismo estrutural não é uma 'patologia' que aflige a sociedade, mas dimensão constitutiva de sua organização — articula-se com o capitalismo e está presente na economia, na política, na cultura.</em>" (parafraseando Silvio Almeida, "Racismo Estrutural", 2018)</p>
+
+      <p class="questao-enunciado">O autor diferencia o "racismo estrutural" das concepções individualista e institucional por:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Considerar todas as concepções equivalentes, sem diferenças teóricas relevantes.</span></li>
+        <li><span class="letra">B</span><span>Reduzir o racismo a problema individual de pessoas mal-intencionadas.</span></li>
+        <li class="correta"><span class="letra">C</span><span>Compreender o racismo como elemento ESTRUTURADOR das sociedades modernas — articulado ao capitalismo, presente na economia, política, cultura — diferenciando-se da concepção individualista (que reduz a comportamento isolado) e da concepção institucional (que reconhece instituições mas as trata como abstrações); o racismo estrutural reproduz-se independentemente da intenção dos indivíduos ou do perfil dos gestores institucionais — combate exige ação política coletiva, não apenas mudança de comportamentos.</span></li>
+        <li><span class="letra">D</span><span>Negar a existência do racismo no Brasil, em consonância com o mito da democracia racial de Freyre.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito comentado — C</div>
+      <p><strong>Identificação do autor:</strong> Almeida — "racismo estrutural", "racionalidade", "dimensão constitutiva", crítica à individualista e institucional.</p>
+      <p><strong>Tese central:</strong> racismo estrutural ≠ individual ≠ institucional; é estruturador da sociedade moderna; articulado com capitalismo.</p>
+      <p><strong>Por que C está correta:</strong> sintetiza fielmente as três concepções e privilegia a estrutural. As outras erram: A — as concepções não são equivalentes · B — individualismo é insuficiente · D — Almeida combate o mito da democracia racial.</p>
+    </div>
+  </div>
+  <div class="footer"><span>Análise · Saffioti/Almeida</span><span>Extensivo ENARE 2026</span><span class="pg">5 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — Análise</div><div class="aula-ref">Bloco B13 · Aula 20 · Antunes/Fanon</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Treino 05</span><span class="fonte">Fragmento Antunes · NC: Análise</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Considere o fragmento:</p>
+      <blockquote>"<em>A nova morfologia do trabalho está articulada à 'classe-que-vive-do-trabalho'. O trabalho em plataformas digitais é exemplo emblemático: o algoritmo é o novo 'patrão', invisível mas onipresente; o trabalhador é formalmente 'autônomo' (MEI, parceiro), mas materialmente subordinado; opera-se a individualização do risco; e paradoxalmente o trabalhador agradece o 'privilégio' da exploração — 'o privilégio da servidão'.</em>" (parafraseando Ricardo Antunes, "O Privilégio da Servidão", 2018)</p>
+
+      <p class="questao-enunciado">O autor caracteriza o trabalho em plataformas como:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Trabalho qualificado, com autonomia plena, sem subordinação.</span></li>
+        <li><span class="letra">B</span><span>Trabalho intelectual restrito a profissionais de TI, sem relação com a maioria dos trabalhadores.</span></li>
+        <li class="correta"><span class="letra">C</span><span>Trabalho mediado por algoritmo (novo "patrão" invisível); com formal "autonomia" jurídica (MEI, parceiro) mas material subordinação técnica; individualização do risco (acidente, doença, prejuízo = problema do trabalhador); "privilégio da servidão" como paradoxo da gratidão pela exploração; integra a "classe-que-vive-do-trabalho" em sua expressão contemporânea, refutando a tese do "fim do trabalho".</span></li>
+        <li><span class="letra">D</span><span>Trabalho transitório que será extinto na próxima década pela automação completa.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito comentado — C</div>
+      <p><strong>Identificação do autor:</strong> Antunes — "nova morfologia do trabalho", "classe-que-vive-do-trabalho", "privilégio da servidão", "algoritmo como patrão".</p>
+      <p><strong>Tese central:</strong> plataformização é forma contemporânea de trabalho subordinado, mascarado como autônomo; classe trabalhadora reconfigurada, não desaparecida.</p>
+      <p><strong>Por que C está correta:</strong> sintetiza fielmente. As outras erram: A — não é "autonomia plena" · B — atinge motoristas, entregadores — não só TI · D — Antunes nega a tese do "fim do trabalho".</p>
+    </div>
+
+    <div class="questao-header"><span>Treino 06</span><span class="fonte">Fragmento Fanon · NC: Análise</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Considere o fragmento:</p>
+      <blockquote>"<em>O colonialismo, em si, é fator patogênico. A psiquiatria europeia não pode tratar o argelino com seus próprios pressupostos — naturalizar a 'inferioridade' do colonizado é cumplicidade. A sociogênese do adoecimento exige reconhecer que o ambiente social, a violência colonial, a alienação racial e a expropriação cultural são causas concretas de sofrimento mental.</em>" (parafraseando Frantz Fanon, "Pele Negra, Máscaras Brancas", 1952)</p>
+
+      <p class="questao-enunciado">A obra fanoniana caracteriza-se por:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Naturalizar a "inferioridade" do colonizado em conformidade com a "psicologia colonial" oficial.</span></li>
+        <li class="correta"><span class="letra">B</span><span>Conceber o colonialismo como fator patogênico em si; propor a "sociogênese" do adoecimento (origem social, não puramente individual ou genética); criticar a psiquiatria colonial europeia que naturalizava a "inferioridade" do colonizado; articular raça, colonialidade e saúde mental — a violência colonial, a alienação racial e a expropriação cultural são causas concretas de sofrimento; demitir-se da função de psiquiatra colonial em 1956 e engajar-se na luta de libertação argelina.</span></li>
+        <li><span class="letra">C</span><span>Defender a separação rigorosa entre psiquiatria e sociedade, mantendo a neutralidade técnica.</span></li>
+        <li><span class="letra">D</span><span>Considerar o colonialismo neutro, sem efeitos sobre a saúde mental dos povos colonizados.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito comentado — B</div>
+      <p><strong>Identificação do autor:</strong> Fanon — "colonialismo como fator patogênico", "sociogênese", "psiquiatria europeia", "alienação racial", "expropriação cultural".</p>
+      <p><strong>Tese central:</strong> colonialismo adoece; sociogênese ≠ ontogênese; psiquiatria não-colonial é projeto necessário.</p>
+      <p><strong>Por que B está correta:</strong> sintetiza fielmente. As outras erram: A — Fanon combate a psicologia colonial · C — articulação saúde-sociedade é central · D — colonialismo é causa concreta.</p>
+    </div>
+  </div>
+  <div class="footer"><span>Análise · Antunes/Fanon</span><span>Extensivo ENARE 2026</span><span class="pg">6 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — Análise</div><div class="aula-ref">Bloco B13 · Aula 20 · Análise legal</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Análise de Dispositivos Legais</div>
+
+    <div class="questao-header"><span>Treino 07</span><span class="fonte">Lei 10.216/2001 · NC: Análise</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Considere o art. 4º da Lei 10.216/2001:</p>
+      <blockquote>"<em>A internação, em qualquer de suas modalidades, só será indicada quando os recursos extra-hospitalares se mostrarem insuficientes. (...) É vedada a internação de pacientes portadores de transtornos mentais em instituições com características asilares, ou seja, aquelas desprovidas dos recursos mencionados no § 2º (...).</em>"</p>
+
+      <p class="questao-enunciado">A leitura crítica do dispositivo permite afirmar:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>A internação é a primeira indicação no tratamento de transtornos mentais.</span></li>
+        <li class="correta"><span class="letra">B</span><span>A internação é medida de EXCEÇÃO — só indicada quando os recursos extra-hospitalares se mostram insuficientes; veda explicitamente a internação em instituições com características asilares; expressa a direção da Reforma Psiquiátrica brasileira (Aula 13) — desinstitucionalização e atendimento prioritário em serviços comunitários (CAPS) da RAPS (Portaria 3.088/2011); articula-se com o Movimento Antimanicomial e com a Lei Basaglia (italiana, 1978).</span></li>
+        <li><span class="letra">C</span><span>O dispositivo permite internação em qualquer modelo institucional, inclusive asilar.</span></li>
+        <li><span class="letra">D</span><span>O hospital psiquiátrico clássico é o modelo prioritário do SUS para transtornos mentais.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito comentado — B</div>
+      <p><strong>Tese da lei:</strong> internação é exceção; serviços comunitários são prioridade. Articula com Reforma Psiquiátrica brasileira (Bauru 1987, MTSM 1978, Lei 10.216/2001).</p>
+      <p><strong>Por que B está correta:</strong> síntese da reforma. As outras erram: A — é exceção, não primeira indicação · C — institutos asilares vedados · D — modelo prioritário é comunitário.</p>
+    </div>
+
+    <div class="questao-header"><span>Treino 08</span><span class="fonte">CE/1993 Princípio VIII · NC: Análise</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Considere o princípio VIII do Código de Ética do Assistente Social (1993):</p>
+      <blockquote>"<em>Opção por um projeto profissional vinculado ao processo de construção de uma nova ordem societária, sem dominação, exploração de classe, etnia e gênero.</em>"</p>
+
+      <p class="questao-enunciado">A análise do princípio permite afirmar que:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>O princípio defende a manutenção da ordem societária vigente, com pequenas reformas.</span></li>
+        <li><span class="letra">B</span><span>O CE adota posição "neutra" em relação a projetos societários, sem comprometimento.</span></li>
+        <li class="correta"><span class="letra">C</span><span>O princípio expressa o eixo do Projeto Ético-Político (PEP) do SS brasileiro — opção por projeto socialista (uma "nova ordem societária"), articulando luta de classes, luta antirracista e luta antipatriarcal ("sem dominação, exploração de classe, etnia e gênero"); converge com Saffioti (nó patriarcado-capitalismo-racismo), com a tradição marxista e com a interseccionalidade contemporânea; afasta tanto o conservadorismo quanto o liberalismo do "projeto" profissional.</span></li>
+        <li><span class="letra">D</span><span>O princípio defende a separação rigorosa entre as lutas de classe, étnico-raciais e de gênero, hierarquizando-as.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito comentado — C</div>
+      <p><strong>Tese do princípio:</strong> nova ordem societária; sem dominação de classe, etnia, gênero. Articula PEP com tradição marxista E feminismo materialista (Saffioti) E pensamento antirracista (Lélia, Almeida).</p>
+      <p><strong>Por que C está correta:</strong> síntese do PEP. As outras erram: A — não defende reformismo · B — explicitamente compromisso · D — articula, não hierarquiza.</p>
+    </div>
+  </div>
+  <div class="footer"><span>Análise · Dispositivos legais</span><span>Extensivo ENARE 2026</span><span class="pg">7 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — Análise</div><div class="aula-ref">Bloco B13 · Aula 20 · Análise de Caso</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Análise de Caso Clínico-Social</div>
+
+    <div class="questao-header"><span>Treino 09</span><span class="fonte">Caso integrativo · NC: Análise + Aplicação</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Considere o caso:</p>
+      <blockquote>"<em>Maria, 38 anos, mulher negra, faz parte de uma família monoparental feminina com três filhos (8, 12 e 16 anos). Trabalha como entregadora de aplicativo (~12h/dia), sem CLT, ganhando abaixo do SM após descontados custos. Vive em ocupação irregular em periferia da capital. Procura o CRAS após o filho de 16 anos relatar sofrimento por bullying transfóbico na escola e sintomas de ansiedade.</em>"</p>
+
+      <p class="questao-enunciado">A análise crítica desse caso pelo AS, articulando teoria, política e direitos, deve identificar:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Apenas uma questão clínica individualizada do adolescente, encaminhada para psicologia.</span></li>
+        <li class="correta"><span class="letra">B</span><span>Articulação concreta de múltiplas determinações da questão social contemporânea: (a) plataformização do trabalho (Antunes — "privilégio da servidão"); (b) racismo estrutural (Almeida) — mulher negra majoritariamente em trabalhos precarizados; (c) feminização da pobreza e divisão sexual do trabalho (Saffioti) — chefe de família monoparental; (d) violação do direito à moradia (ocupação irregular); (e) vulnerabilidade habitacional (CF Art. 6º); (f) LGBTfobia (criminalizada pelo STF 2019, ADO 26); (g) Lei 13.431/2017 — proteção contra violência institucional na escola; (h) intersecção raça-gênero-classe-sexualidade — exige articulação intersetorial (CRAS, CAPSi, escola, Conselho Tutelar, Defensoria, sindicato).</span></li>
+        <li><span class="letra">C</span><span>Falta de competência da mãe em "gerenciar" a vida familiar, devendo ser orientada a "melhorar".</span></li>
+        <li><span class="letra">D</span><span>Necessidade de encaminhamento para "terapia de reorientação sexual" do adolescente.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito comentado — B</div>
+      <p><strong>Análise integrativa:</strong> articula 7 dimensões — trabalho (Antunes), raça (Almeida), gênero (Saffioti), moradia, sexualidade (LGBTfobia STF 2019), proteção (Lei 13.431/2017), intersetorialidade (SS contemporâneo).</p>
+      <p><strong>Por que B está correta:</strong> demonstra leitura crítica concreta da realidade. As outras erram: A — individualização desconecta · C — moralização da pobreza · D — terapia de reorientação vedada pelo CFP.</p>
+    </div>
+
+    <div class="questao-header"><span>Treino 10</span><span class="fonte">Análise integrativa · NC: Análise final</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Considere a afirmação:</p>
+      <blockquote>"<em>O Projeto Ético-Político do Serviço Social brasileiro (1993+) articula direção ético-política (princípios fundamentais do CE/1993), competência técnico-operativa (Lei 8.662/1993 art. 5º — atribuições privativas) e formação qualificada (DCN/ABEPSS 1996 — três núcleos), tendo como horizonte uma 'nova ordem societária, sem dominação, exploração de classe, etnia e gênero' (Princípio VIII).</em>"</p>
+
+      <p class="questao-enunciado">Com base na afirmação e nas elaborações teóricas estudadas (Aulas 1-19), é CORRETO afirmar que:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>O PEP é mero "programa partidário" sem ligação com a prática profissional cotidiana.</span></li>
+        <li><span class="letra">B</span><span>O PEP é exclusivamente teórico, não materializado em legislação ou normativa profissional.</span></li>
+        <li class="correta"><span class="letra">C</span><span>O PEP articula dimensões éticas (Código 1993), técnicas (Lei 8.662/1993, Parâmetros CFESS 2010 e 2011) e formativas (DCN/ABEPSS 1996), materializando-se simultaneamente como projeto de profissão e como instrumento de luta por uma sociedade emancipada — articula com a Reforma Sanitária (Aula 11-12), com a Reforma Psiquiátrica (Aula 13), com o SUAS (Aula 06-08), com a defesa dos DH (Aula 10), com o feminismo crítico (Aula 17-18) e com a luta antirracista (Aula 04-05 e 17); converge com a tradição teórica marxista renovada (Iamamoto, Netto, Guerra, Barroco) e dialoga com tradições antirracistas (Almeida, Fanon, Lélia, Carneiro), feministas materialistas (Saffioti) e decoloniais (Quijano, Mbembe, Krenak).</span></li>
+        <li><span class="letra">D</span><span>O PEP foi superado pelos novos códigos profissionais europeus, devendo ser substituído.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito comentado — C</div>
+      <p><strong>Análise síntese:</strong> PEP = direção ético-política + competência técnico-operativa + formação. Materializado em: CE/1993, Lei 8.662/1993, Parâmetros CFESS 2010/2011, DCN/ABEPSS 1996. Articula-se com Reforma Sanitária + Reforma Psiquiátrica + SUAS + DH + feminismo + antirracismo + tradições crítico-decoloniais.</p>
+      <p><strong>Por que C está correta:</strong> síntese rica do bloco B13 inteiro. As outras erram: A — não é "programa partidário" · B — é materializado em normas · D — não foi superado, está em desenvolvimento.</p>
+    </div>
+  </div>
+  <div class="footer"><span>Análise · Casos integrativos</span><span>Extensivo ENARE 2026</span><span class="pg">8 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — Análise</div><div class="aula-ref">Bloco B13 · Aula 20 · Estratégia</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Estratégia de Resolução — Tempo na Prova</div>
+
+    <p>Além da técnica de análise, a estratégia de resolução é decisiva. A prova da ENARE tem tempo limitado e cobrança crescente de análise — exige planejamento.</p>
+
+    <div class="subsecao">Distribuição de Tempo na Prova</div>
+    <table>
+      <tr><th>Atividade</th><th>Tempo Recomendado</th></tr>
+      <tr><td>Total da prova</td><td>4h30 (no caso da ENARE)</td></tr>
+      <tr><td>Por questão (média)</td><td>2,7 min</td></tr>
+      <tr><td>Leitura inicial do bloco</td><td>5 min</td></tr>
+      <tr><td>Resolução das questões "fáceis" (Recordar/Compreender)</td><td>60% do tempo (1,5 min/questão)</td></tr>
+      <tr><td>Questões de Análise/Aplicação</td><td>30% do tempo (4 min/questão)</td></tr>
+      <tr><td>Revisão final</td><td>15 min</td></tr>
+    </table>
+
+    <div class="subsecao">Ordem de Resolução Recomendada</div>
+    <ol style="padding-left:18px;">
+      <li><strong>Faça leitura panorâmica</strong> — passe rapidamente por toda a prova, marcando questões fáceis e difíceis</li>
+      <li><strong>Resolva primeiro as "garantidas"</strong> — questões de definição direta, dispositivos legais conhecidos</li>
+      <li><strong>Em seguida, as de "análise rápida"</strong> — fragmentos com autores claramente identificáveis</li>
+      <li><strong>Deixe as "complicadas" por último</strong> — análises longas, casos clínicos com múltiplas variáveis</li>
+      <li><strong>Revise as marcadas em dúvida</strong> — use o tempo final para retomar</li>
+    </ol>
+
+    <div class="subsecao">Como Eliminar Alternativas</div>
+    <ul class="lista">
+      <li><strong>Eliminação por absoluto</strong>: alternativas com "sempre", "nunca", "todo", "exclusivamente" frequentemente erradas</li>
+      <li><strong>Eliminação por contradição com o fragmento</strong>: confronte cada alternativa com o que o autor diz</li>
+      <li><strong>Eliminação por anacronismo</strong>: termos ou conceitos fora da época do autor/lei</li>
+      <li><strong>Eliminação por marca conservadora</strong>: descritores naturalizantes, moralizantes — frequentemente erradas em SS</li>
+      <li><strong>Eliminação por falha lógica</strong>: alternativa que se contradiz internamente</li>
+      <li><strong>Eliminação por extensão excessiva</strong>: alternativa que cobre tudo demais (genérica) ou nada (restrita)</li>
+    </ul>
+
+    <div class="subsecao">Quando o Fragmento NÃO Identifica o Autor</div>
+    <p>Estratégia para "fragmentos anônimos":</p>
+    <ul class="lista">
+      <li>Identificar a <strong>tradição teórica</strong> pelo vocabulário (marxista, weberiano, feminista, decolonial)</li>
+      <li>Avaliar se o fragmento dialoga com tradição crítica do SS (PEP) ou conservadora</li>
+      <li>Eliminar alternativas incompatíveis com a tradição identificada</li>
+      <li>Buscar pistas: data, lugar, conjuntura, citações implícitas</li>
+    </ul>
+
+    <div class="subsecao">Erros Frequentes a Evitar</div>
+    <ul class="lista">
+      <li>Decorar conceitos sem articulação (memorização cega)</li>
+      <li>Confundir autor (Iamamoto × Netto × Guerra) — saber pelo menos a "Tese principal" de cada um</li>
+      <li>Confundir leis (Lei 8.080 × 8.662 × 10.216 × 8.069) — saber pelo menos o ano e o objeto</li>
+      <li>Confundir programas (PAIF × PAEFI; CAPS × CRAS; SCFV × PAIF)</li>
+      <li>Confundir nomes técnicos parecidos (LOAS × LBI; PNAS × PNAB × PNAF)</li>
+      <li>Não ler o enunciado completo (perder palavras como "EXCETO", "INCORRETA")</li>
+      <li>Apostar em "achismo" sem fundamentação</li>
+      <li>Não articular questões da prova com o que estudou — tratar como casos isolados</li>
+    </ul>
+
+    <div class="subsecao">Mnemônicos Úteis</div>
+    <table>
+      <tr><th>Mnemônico</th><th>Lembra</th></tr>
+      <tr><td>"L-Princípios" do SUS</td><td>Universalidade, Integralidade, Equidade (doutrinários) + Descentralização, Hierarquização, Participação (organizativos)</td></tr>
+      <tr><td>"DIPID" da Saúde</td><td>Determinantes: alimentação, moradia, saneamento, meio ambiente, trabalho, renda, educação, ATIVIDADE FÍSICA, transporte, lazer, acesso a bens e serviços</td></tr>
+      <tr><td>"LICED IDDE-NN" dos Princípios do CE</td><td>Liberdade, DH, Cidadania, Democracia, Equidade, Diversidade, Pluralismo, Nova ordem, Outros (artic. com trabalhadores, qualidade, NÃO-discriminação)</td></tr>
+      <tr><td>"7C" da APS (Starfield)</td><td>Contato, Continuidade (longitudinalidade), Coordenação, abrangência (integralidade) — também família, comunidade, cultura</td></tr>
+    </table>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> distribuição de tempo (60% fáceis, 30% análise, 10% mais difíceis). Ordem: fáceis primeiro → análise → revisão. Eliminação por absolutos, contradição, anacronismo, marca conservadora. Cuidado com confusões entre autores, leis, programas. Mnemônicos podem ajudar.</p>
+    </div>
+  </div>
+  <div class="footer"><span>Análise · Estratégia</span><span>Extensivo ENARE 2026</span><span class="pg">9 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — Análise</div><div class="aula-ref">Bloco B13 · Aula 20 · Síntese</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Síntese — Análise de Texto e Estratégia</div>
+
+    <p>Aula prepara para o Simulado Final (Aula 21). NC An triplicou em 2025 — exige treino específico em análise textual.</p>
+
+    <div class="sintese-grid">
+      <div class="sintese-item"><div class="si-label">Por que cresceu</div><p>+12,4 pp em 2025 vs 2024. FGV migra de Compreensão para Análise. Enunciados longos. Necessidade de articulação. Clusters novos: SUAS, DUDH, plataformização, racismo estrutural, Fanon.</p></div>
+      <div class="sintese-item"><div class="si-label">7 Passos da Análise</div><p>(1) Leitura panorâmica; (2) Identificar autor pelo vocabulário; (3) Tese central; (4) Categorias-chave; (5) Método teórico; (6) Contrastes; (7) Avaliar alternativas.</p></div>
+      <div class="sintese-item"><div class="si-label">Marcas Linguísticas</div><p>Marxistas (capitalismo, classe, contradição); feministas (patriarcado, gênero); decoloniais (colonialidade, sociogênese); pós-estruturalistas (biopolítica, dispositivo). Conservadoras (natural, mérito).</p></div>
+      <div class="sintese-item"><div class="si-label">Sinais Linguísticos</div><p>Absolutos ("sempre", "nunca") = frequentemente erradas. Modalizados ("pode", "tende") = corretas. "EXCETO" e "INCORRETA" exigem atenção redobrada.</p></div>
+      <div class="sintese-item"><div class="si-label">Estratégia</div><p>Tempo: 60% fáceis, 30% análise, 10% complexas. Eliminação por absoluto, contradição, anacronismo, marca conservadora. Mnemônicos. Foco em método, não decoração.</p></div>
+      <div class="sintese-item"><div class="si-label">Próxima Aula</div><p><strong>Aula 21 — Simulado Integrativo Final.</strong> 10 questões integrando todo o bloco B13 + gabarito comentado + mapa de conhecimento + plano de estudos final.</p></div>
+    </div>
+
+    <div class="alerta" style="margin-top:5px;">
+      <p><strong>Regra de ouro — Análise no ENARE 2026:</strong> a FGV cobra <em>articulação</em>, não memorização. Treinar leitura de fragmentos teóricos (Iamamoto, Netto, Guerra, Saffioti, Almeida, Antunes, Fanon, Mbembe). Treinar leitura de dispositivos legais (CE/1993, Lei 8.662, Lei 8.080, Lei 10.216, ECA, LOAS, LBI). Treinar análise de casos clínico-sociais. Distinguir marcas linguísticas das escolas teóricas. Eliminar alternativas por absolutos e marcas conservadoras.</p>
+    </div>
+
+    <div class="alerta" style="margin-top:5px;background:rgba(31,92,35,0.1);border-left-color:var(--verde);">
+      <p><strong>Conexão final:</strong> a análise textual não é "técnica" isolada — é forma de pensamento crítico. O AS que domina a análise textual é o que domina a articulação teoria-prática (instrumentalidade — Guerra), que articula as três dimensões do trabalho profissional (teórico, ético, técnico), e que materializa o PEP no cotidiano. A prova é apenas a verificação dessa capacidade — desenvolvida ao longo da formação e refinada no aprimoramento contínuo (princípio X do CE/1993).</p>
+    </div>
+  </div>
+  <div class="footer"><span>Análise · Síntese</span><span>Extensivo ENARE 2026</span><span class="pg">10 / 10</span></div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Serviço Social — Bloco B13 Aula 01 | Extensivo ENARE 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap');
+  @page { size: A4; margin: 0; }
+  :root { --creme: #F6F4ED; --verde: #1F5C23; --amarelo: #C6D834; --escuro: #0C2B0E; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #d0d0d0; font-family: 'Bricolage Grotesque', sans-serif; }
+  .page { width: 210mm; height: 297mm; background: var(--creme); margin: 0 auto 12px; position: relative; overflow: hidden; page-break-after: always; }
+  .header { background: var(--verde); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .header-logo { display: flex; align-items: center; gap: 8px; }
+  .header-logo svg { width: 32px; height: 32px; }
+  .header-brand { display: flex; flex-direction: column; line-height: 1; }
+  .header-brand .marca { font-family: 'Playfair Display', serif; font-style: italic; color: #fff; font-size: 13px; letter-spacing: 0.5px; }
+  .header-brand .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 7px; letter-spacing: 1.5px; text-transform: uppercase; }
+  .header-info { text-align: right; }
+  .header-info .disciplina { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
+  .header-info .aula-ref { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.7); font-size: 8px; letter-spacing: 0.5px; }
+  .footer { position: absolute; bottom: 0; left: 0; right: 0; background: var(--verde); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .footer span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.6); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .footer .pg { color: var(--amarelo); font-weight: 400; }
+  .body { padding: 14px 18px 30px; height: calc(297mm - 52px - 22px); overflow: hidden; }
+  .capa-page { background: var(--verde); }
+  .capa-header { background: var(--creme); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .capa-header .marca { font-family: 'Playfair Display', serif; font-style: italic; color: var(--verde); font-size: 14px; }
+  .capa-header .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--verde); font-size: 7.5px; letter-spacing: 2px; text-transform: uppercase; }
+  .capa-body { padding: 28px 24px 0; display: flex; flex-direction: column; height: calc(297mm - 52px - 22px); }
+  .capa-eyebrow { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; }
+  .capa-titulo { font-family: 'Barlow Condensed', sans-serif; color: #fff; font-size: 50px; line-height: 0.95; text-transform: uppercase; letter-spacing: -0.5px; margin-bottom: 6px; }
+  .capa-titulo span { color: var(--amarelo); }
+  .capa-subtitulo { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; color: rgba(255,255,255,0.65); font-size: 12px; letter-spacing: 0.3px; margin-bottom: 22px; line-height: 1.5; }
+  .capa-badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+  .capa-badge { background: rgba(198,216,52,0.15); border: 1px solid var(--amarelo); color: var(--amarelo); font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 8px; border-radius: 2px; }
+  .capa-divider { width: 40px; height: 3px; background: var(--amarelo); margin-bottom: 20px; }
+  .capa-topicos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .capa-topico { display: flex; align-items: flex-start; gap: 7px; }
+  .capa-topico-num { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 18px; line-height: 1; min-width: 18px; }
+  .capa-topico-txt { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 400; color: rgba(255,255,255,0.8); font-size: 9.5px; line-height: 1.4; }
+  .capa-footer-strip { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.25); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .capa-footer-strip span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.45); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .secao-titulo { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 18px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid var(--amarelo); padding-bottom: 3px; margin-bottom: 9px; line-height: 1; }
+  .subsecao { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.5px; margin: 7px 0 3px; }
+  p { font-size: 9px; line-height: 1.55; color: #1a1a1a; margin-bottom: 4px; font-weight: 400; }
+  .destaque { background: var(--amarelo); color: var(--escuro); font-weight: 600; padding: 1px 4px; border-radius: 2px; font-size: 8.5px; }
+  .alerta { background: rgba(198,216,52,0.18); border-left: 3px solid var(--amarelo); padding: 5px 8px; margin: 5px 0; border-radius: 0 3px 3px 0; }
+  .alerta p { margin: 0; font-size: 8.5px; }
+  .alerta strong { color: var(--verde); }
+  table { width: 100%; border-collapse: collapse; margin: 5px 0; font-size: 8px; }
+  th { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; padding: 4px 6px; text-align: left; }
+  td { padding: 3px 6px; border-bottom: 1px solid rgba(31,92,35,0.12); vertical-align: top; line-height: 1.4; color: #1a1a1a; }
+  tr:nth-child(even) td { background: rgba(31,92,35,0.04); }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 5px 0; }
+  .card { background: rgba(31,92,35,0.06); border: 1px solid rgba(31,92,35,0.15); border-radius: 4px; padding: 7px 8px; }
+  .card-title { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 11px; text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 3px; }
+  .card p { font-size: 8px; line-height: 1.5; }
+  .questao-header { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; padding: 4px 10px; border-radius: 3px 3px 0 0; display: flex; justify-content: space-between; align-items: center; }
+  .questao-header .fonte { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; color: var(--amarelo); letter-spacing: 0.5px; }
+  .questao-body { border: 1px solid rgba(31,92,35,0.2); border-top: none; border-radius: 0 0 3px 3px; padding: 7px 10px; margin-bottom: 7px; }
+  .questao-enunciado { font-size: 8.5px; line-height: 1.55; color: #111; margin-bottom: 5px; font-weight: 500; }
+  .alternativas { list-style: none; }
+  .alternativas li { font-size: 8px; line-height: 1.5; padding: 2px 0; color: #222; display: flex; gap: 5px; }
+  .alternativas li .letra { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: var(--verde); font-size: 9px; min-width: 10px; }
+  .alternativas li.correta .letra { color: var(--amarelo); }
+  .alternativas li.correta { background: rgba(198,216,52,0.15); border-left: 2px solid var(--amarelo); padding-left: 4px; }
+  .gabarito-box { background: var(--verde); border-radius: 4px; padding: 8px 12px; margin: 6px 0; }
+  .gabarito-box .gab-title { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+  .gabarito-box p { color: rgba(255,255,255,0.9); font-size: 8px; line-height: 1.55; }
+  .gabarito-box strong { color: var(--amarelo); }
+  .sintese-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-top: 6px; }
+  .sintese-item { background: rgba(31,92,35,0.07); border-left: 3px solid var(--verde); padding: 5px 7px; border-radius: 0 3px 3px 0; }
+  .sintese-item .si-label { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px; }
+  .sintese-item p { font-size: 7.5px; line-height: 1.5; }
+  ul.lista { padding-left: 14px; margin: 3px 0; }
+  ul.lista li { font-size: 8.5px; line-height: 1.55; color: #1a1a1a; margin-bottom: 1px; }
+  @media print { body { background: none; } .page { margin: 0; box-shadow: none; } }
+</style>
+</head>
+<body>
+
+<div class="page capa-page">
+  <div class="capa-header">
+    <div style="display:flex;align-items:center;gap:8px;"><svg width="34" height="34" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#1F5C23"/></svg><div><div class="marca">Elite Treinamentos</div><div class="tagline">Extensivo ENARE 2026</div></div></div>
+    <div style="text-align:right;"><div style="font-family:'Barlow Condensed',sans-serif;color:var(--verde);font-size:11px;letter-spacing:1px;text-transform:uppercase;">Bloco B13 · Aula 01</div><div style="font-family:'Space Grotesk',sans-serif;font-weight:300;color:#888;font-size:7.5px;letter-spacing:0.5px;">Serviço Social</div></div>
+  </div>
+  <div class="capa-body">
+    <div class="capa-eyebrow">Bloco B13 · SS-FUND · Aula 01 de 21</div>
+    <div class="capa-titulo">Teoria <span>Crítica<br>do SS</span></div>
+    <div class="capa-subtitulo">Netto e Iamamoto: ser social, questão social, instrumentalidade,<br>mercadoria força de trabalho e Projeto Ético-Político</div>
+    <div class="capa-badge-row">
+      <div class="capa-badge">SS-FUND ★★★★</div>
+      <div class="capa-badge">Netto · Iamamoto</div>
+      <div class="capa-badge">Lukács · Marx</div>
+      <div class="capa-badge">PEP · Tridimensional</div>
+    </div>
+    <div class="capa-divider"></div>
+    <div class="capa-topicos">
+      <div class="capa-topico"><div class="capa-topico-num">01</div><div class="capa-topico-txt">Tradição marxista e teoria social crítica</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">02</div><div class="capa-topico-txt">Ser social e ontologia (Lukács, Netto)</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">03</div><div class="capa-topico-txt">Questão social: gênese e expressões</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">04</div><div class="capa-topico-txt">Trabalho profissional e força de trabalho assalariada</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">05</div><div class="capa-topico-txt">Instrumentalidade (Yolanda Guerra)</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">06</div><div class="capa-topico-txt">Projeto Ético-Político (PEP) e sua tríade legal</div></div>
+    </div>
+  </div>
+  <div class="capa-footer-strip"><span>Extensivo ENARE 2026</span><span>Elite Treinamentos em Saúde</span><span>Página 1 de 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-FUND</div><div class="aula-ref">Bloco B13 · Aula 01 · Teoria Crítica</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Marxismo como Matriz Teórica do SS Brasileiro</div>
+    <p>O Serviço Social brasileiro tem na <strong>tradição marxista de matriz lukacsiana</strong> sua principal fundamentação teórica desde o Movimento de Reconceituação (1965–1975) e, mais consistentemente, desde o Congresso da Virada (1979). José Paulo Netto e Marilda Iamamoto são as duas figuras centrais dessa elaboração no Brasil. Cobrado intensamente em ENARE 2024 (Q43–Q45, Q88–Q89, Q100) e 2025 (Q73, Q83, Q94, Q96).</p>
+
+    <div class="subsecao">Fundamentos Ontológicos — A Ontologia do Ser Social (Lukács)</div>
+    <p>Georg Lukács, em <em>Para uma Ontologia do Ser Social</em>, desenvolve a perspectiva de que o ser humano e a sociedade são <strong>seres em devir</strong>, constituídos socialmente. O ser social é o <em>nível ontológico</em> em que se realizam as relações sociais — fundadas pelo <strong>trabalho</strong>, categoria que distingue o ser humano dos demais seres. Lukács afirma que o trabalho é a <em>protoforma</em> da práxis: <em>"é pelo trabalho que o homem se constitui como ser social"</em>.</p>
+
+    <ul class="lista">
+      <li><strong>Trabalho</strong> = atividade pela qual o ser humano transforma a natureza para satisfazer necessidades — <em>teleologicamente posta</em> (com finalidade consciente)</li>
+      <li><strong>Práxis</strong> = ação humana transformadora consciente, mais ampla que o trabalho (engloba também a política, a arte, a teoria)</li>
+      <li><strong>Ser social</strong> = nível ontológico fundado pela práxis social — distinto do ser natural (inorgânico e orgânico)</li>
+      <li><strong>Totalidade</strong> = categoria metodológica — compreender as partes na conexão com o todo concreto</li>
+      <li><strong>Mediação</strong> = relações entre elementos do real; o assistente social opera mediações entre o singular (caso) e o universal (sociedade)</li>
+    </ul>
+
+    <div class="subsecao">Marx como Base do Pensamento Crítico no SS</div>
+    <p>Karl Marx é a referência fundamental. Conceitos centrais aplicados ao SS:</p>
+    <table>
+      <tr><th>Conceito</th><th>Significado</th><th>Aplicação no SS</th></tr>
+      <tr><td>Modo de produção</td><td>Conjunto das forças produtivas e relações sociais de produção que organizam a vida material</td><td>Capitalismo é a base que produz a questão social</td></tr>
+      <tr><td>Mercadoria força de trabalho</td><td>Capacidade de trabalho do trabalhador, vendida ao capitalista por salário</td><td>O AS é trabalhador assalariado; vende sua força de trabalho — premissa central de Iamamoto</td></tr>
+      <tr><td>Mais-valia</td><td>Trabalho não-pago, fonte do lucro capitalista</td><td>Base da desigualdade e da exploração</td></tr>
+      <tr><td>Fetichismo da mercadoria</td><td>Inversão pela qual relações sociais aparecem como relações entre coisas</td><td>O SS combate a naturalização e a culpabilização individual</td></tr>
+      <tr><td>Alienação</td><td>Estranhamento do trabalhador em relação ao produto, ao processo, ao gênero humano e a si mesmo</td><td>Atuar contra processos de despotencialização e culpabilização</td></tr>
+      <tr><td>Luta de classes</td><td>Motor da história — antagonismo entre capital e trabalho</td><td>SS vincula-se à classe trabalhadora; PEP é tomada de posição</td></tr>
+    </table>
+
+    <div class="alerta">
+      <p><strong>Marxismo no SS é matriz teórica, não doutrina política partidária.</strong> O SS adota a perspectiva marxista crítica como fundamento de análise, sem se reduzir a um partido específico. A ortodoxia marxista no SS brasileiro é lukacsiana — diferente do marxismo-estruturalismo (Althusser) e do marxismo analítico.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-FUND · Teoria Crítica</span><span>Extensivo ENARE 2026</span><span class="pg">2 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-FUND</div><div class="aula-ref">Bloco B13 · Aula 01 · Questão Social</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Questão Social — Gênese e Expressões</div>
+
+    <p>O conceito de <strong>questão social</strong> é categoria-chave do SS. Netto e Iamamoto definem-na como o <em>conjunto das expressões das desigualdades da sociedade capitalista, que tem uma raiz comum: a contradição capital × trabalho</em>. Não é apenas um problema "social" isolado — é uma <em>relação social</em> com origem estrutural.</p>
+
+    <div class="subsecao">Definição Operacional (Iamamoto, 2001)</div>
+    <p>"<em>Questão social — concebida como conjunto das expressões das desigualdades sociais engendradas na sociedade capitalista madura, impensáveis sem a intermediação do Estado.</em>"</p>
+
+    <p>Os elementos centrais da definição:</p>
+    <ul class="lista">
+      <li><strong>Expressões</strong> — manifestações concretas (pobreza, desemprego, fome, racismo, violência, falta de moradia)</li>
+      <li><strong>Desigualdades</strong> — produzidas pelas relações capitalistas, não por acidente individual</li>
+      <li><strong>Engendradas pelo capitalismo</strong> — origem estrutural, não cultural ou individual</li>
+      <li><strong>Intermediação do Estado</strong> — só se torna "questão" quando o conflito capital-trabalho é mediado por políticas públicas; antes era "caso de polícia"</li>
+      <li><strong>Sociedade capitalista madura</strong> — surge com o capitalismo monopolista (final do séc. XIX)</li>
+    </ul>
+
+    <div class="subsecao">Gênese Histórica</div>
+    <table>
+      <tr><th>Período</th><th>Conceito da época</th><th>Marco</th></tr>
+      <tr><td>Pré-capitalismo</td><td>Pobreza = destino divino, naturalizada</td><td>Caridade religiosa; vagabundagem como crime</td></tr>
+      <tr><td>Revolução Industrial (séc. XVIII–XIX)</td><td>Pobreza = "questão social" emergente</td><td>Aglomeração proletária; condições insalubres; Coligny, Engels</td></tr>
+      <tr><td>Capitalismo monopolista (final XIX)</td><td>Questão social como conflito estrutural</td><td>Estado intervencionista; políticas sociais; primeiro Welfare State alemão (Bismarck 1881)</td></tr>
+      <tr><td>Pós-1945 (Welfare europeu)</td><td>Estado de Bem-Estar Social</td><td>Plano Beveridge (UK 1942); Constituição alemã (1949)</td></tr>
+      <tr><td>Neoliberalismo (1973+)</td><td>Reconfiguração; assistencialização da seguridade</td><td>Crise do welfare; ajuste estrutural; consenso de Washington</td></tr>
+      <tr><td>Brasil — CF 1988</td><td>Seguridade social como direito</td><td>SUS, Previdência, Assistência Social como tripé</td></tr>
+    </table>
+
+    <div class="subsecao">Expressões Contemporâneas da Questão Social</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Centrais</div>
+        <p>Desemprego estrutural; precarização; pobreza; fome (Insegurança alimentar); falta de moradia; má distribuição de renda; baixo acesso à educação e saúde de qualidade.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Contemporâneas (cobradas 2025)</div>
+        <p>Plataformização do trabalho (uberização); precarização juvenil; racismo estrutural; violência de gênero; LGBTIfobia; capacitismo; migração forçada; refugio; populações em situação de rua; desinformação digital.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Estruturais Brasileiras</div>
+        <p>Concentração fundiária; herança escravocrata; patriarcado; desigualdade regional; trabalho informal; ausência de cidadania plena para amplas parcelas; "homem cordial" e relações patrimonialistas.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Subjetivas</div>
+        <p>Despotencialização; alienação; sofrimento psíquico; quebra de vínculos comunitários; tutelarização e culpabilização individual nas políticas sociais.</p>
+      </div>
+    </div>
+
+    <div class="alerta">
+      <p><strong>Iamamoto e a "Dupla Armadilha" (cobrado em Q56/2024):</strong> reduzir a questão social ao terceiro setor (filantropia) <em>ou</em> tratá-la apenas como demanda burocrática do Estado são as duas armadilhas que despolitizam o SS. A perspectiva crítica exige <em>reconhecer a estrutura</em> e <em>vinculá-la ao trabalho profissional</em>.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-FUND · Teoria Crítica</span><span>Extensivo ENARE 2026</span><span class="pg">3 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-FUND</div><div class="aula-ref">Bloco B13 · Aula 01 · Trabalho do AS</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Trabalho Profissional — Iamamoto e a Mercadoria Força de Trabalho</div>
+
+    <p>Marilda Iamamoto desenvolve em <em>O Serviço Social na Contemporaneidade</em> (1998) e <em>Trabalho e Indivíduo Social</em> (2001) a tese central: o assistente social é <strong>trabalhador assalariado</strong> que vende sua força de trabalho — não é simplesmente "missionário" ou "voluntário". Essa formulação rompe com o paradigma confessional/caritativo do SS pré-1960.</p>
+
+    <div class="subsecao">As 4 Dimensões do Trabalho do AS (Iamamoto)</div>
+    <table>
+      <tr><th>Dimensão</th><th>Conteúdo</th></tr>
+      <tr><td><strong>Teórico-metodológica</strong></td><td>Domínio do referencial teórico (matriz marxista, sociologia, ciências sociais); apreensão crítica da realidade; categorias de análise</td></tr>
+      <tr><td><strong>Ético-política</strong></td><td>Tomada de posição com a classe trabalhadora; PEP; valores do Código de Ética (liberdade, equidade, justiça social, defesa intransigente dos direitos humanos)</td></tr>
+      <tr><td><strong>Técnico-operativa</strong></td><td>Instrumentos e técnicas (entrevista, visita domiciliar, parecer, estudo de situação, relatórios, ficha social, encaminhamentos)</td></tr>
+      <tr><td><strong>Investigativa</strong></td><td>Pesquisa como dimensão constitutiva do trabalho — sistematização, produção de conhecimento, leitura crítica da realidade institucional</td></tr>
+    </table>
+
+    <p>As 4 dimensões são <em>indissociáveis</em>. Não há técnica sem teoria, não há ética sem técnica, não há pesquisa sem prática. O esquema ABEPSS (Diretrizes Curriculares 1996) opera com esses quatro eixos formativos.</p>
+
+    <div class="subsecao">Atributos do Trabalho do AS</div>
+    <ul class="lista">
+      <li><strong>Trabalhador assalariado</strong>: vende força de trabalho a empregadores (Estado, ONGs, empresas)</li>
+      <li><strong>Vínculo institucional</strong>: trabalha em organizações; tem contradição entre demandas institucionais e PEP</li>
+      <li><strong>Autonomia relativa</strong>: tem autonomia técnico-profissional (Lei 8.662/1993; Código de Ética), mas dentro da organização</li>
+      <li><strong>Função executiva terminal</strong> (Netto): executa políticas elaboradas em outras instâncias; entrega o serviço na ponta — mas <em>com criatividade e crítica</em>, não apenas burocraticamente</li>
+      <li><strong>Mediação</strong>: opera entre o particular (paciente, usuário) e o universal (políticas, normas, Estado)</li>
+      <li><strong>Sigilo profissional</strong>: garantia ético-legal (Código + Lei 8.662)</li>
+    </ul>
+
+    <div class="subsecao">Espaços Sócio-ocupacionais (cobrado em ENARE)</div>
+    <p>O AS atua em múltiplos espaços. Hoje há quatro grandes campos:</p>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Setor Público</div>
+        <p>SUS (hospital, UBS, CAPS, vigilância); SUAS (CRAS, CREAS, gestão); Educação; Sistema Judiciário; Sistema Prisional; INSS; Defesa civil; Conselhos tutelares.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Terceiro Setor</div>
+        <p>ONGs; OS; OSCIPs; entidades filantrópicas. Expansão pós-anos 1990; risco de assistencialização (Iamamoto: "dupla armadilha").</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Setor Privado</div>
+        <p>Recursos Humanos; Saúde suplementar; Educação privada; Consultoria; Plataformas digitais (caminho contemporâneo). Não é sócio-assistência por essência — varia conforme o cargo.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Movimentos Sociais</div>
+        <p>Vinculação histórica do SS aos movimentos sociais e à classe trabalhadora. Plataforma do PEP. Assessoria política a sindicatos, movimentos pela reforma agrária, urbana, feminista.</p>
+      </div>
+    </div>
+
+    <div class="alerta">
+      <p><strong>Trabalho do AS:</strong> Iamamoto explicitamente posiciona o SS no debate marxista do trabalho — não é "profissão de ajuda" nem "missão". É <em>trabalho concreto especializado</em> que executa políticas sociais e produz mediações entre necessidades sociais e respostas institucionais.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-FUND · Teoria Crítica</span><span>Extensivo ENARE 2026</span><span class="pg">4 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-FUND</div><div class="aula-ref">Bloco B13 · Aula 01 · Instrumentalidade</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Instrumentalidade do Serviço Social — Yolanda Guerra</div>
+
+    <p>Yolanda Guerra, em <em>A Instrumentalidade do Serviço Social</em> (1995), aprofunda o conceito-chave que articula teoria e prática profissional: a <strong>instrumentalidade</strong>. Não confundir com "instrumentos" (técnicas).</p>
+
+    <div class="subsecao">Definição Operacional</div>
+    <p><strong>Instrumentalidade</strong> = qualidade que o trabalho profissional adquire ao se converter em meio de realização de finalidades. É a <em>mediação entre as condições objetivas e as finalidades</em> do trabalho profissional. Permite ao AS modificar o real conforme valores e projetos.</p>
+
+    <table>
+      <tr><th>Conceito</th><th>O que é</th></tr>
+      <tr><td>Instrumento</td><td>Técnica específica: entrevista, visita, estudo de caso, parecer, relatório</td></tr>
+      <tr><td>Instrumentalidade</td><td>Qualidade do trabalho que permite usar instrumentos para fins coerentes com o PEP</td></tr>
+      <tr><td>Práxis</td><td>Ação humana transformadora consciente; a instrumentalidade é a condição da práxis profissional</td></tr>
+      <tr><td>Mediação</td><td>Conexão entre singular (caso) e universal (políticas, sociedade); instrumentalidade opera mediações</td></tr>
+    </table>
+
+    <div class="subsecao">3 Dimensões da Instrumentalidade (Guerra)</div>
+    <ul class="lista">
+      <li><strong>Dimensão técnico-operativa</strong>: domínio dos instrumentos (entrevista, visita, parecer, relatório, ficha social)</li>
+      <li><strong>Dimensão teórico-metodológica</strong>: compreender o uso dos instrumentos à luz da teoria social crítica</li>
+      <li><strong>Dimensão ético-política</strong>: usar os instrumentos com finalidade coerente com o PEP — não como técnica neutra</li>
+    </ul>
+
+    <div class="subsecao">Riscos da Não-instrumentalidade</div>
+    <ul class="lista">
+      <li><strong>Pragmatismo</strong>: reduzir o trabalho ao "o que funciona", sem reflexão teórica</li>
+      <li><strong>Tecnicismo</strong>: dominar técnicas sem perspectiva crítica</li>
+      <li><strong>Rotinização</strong>: repetição mecânica de procedimentos burocráticos sem sentido</li>
+      <li><strong>Burocratização</strong>: substituir a relação humana pelo formulário</li>
+      <li><strong>Despolitização</strong>: ocultar a dimensão estrutural da questão social</li>
+    </ul>
+
+    <div class="subsecao">Iamamoto e o "Imperativo de Construir uma Atuação"</div>
+    <p>Iamamoto (2001) sintetiza: <em>"O assistente social precisa decifrar as situações com as quais se confronta, lendo-as à luz dos processos sociais que as geram, e construir respostas profissionais que articulem a competência teórico-metodológica, a competência ético-política e a competência técnico-operativa."</em></p>
+
+    <p>A frase clássica encapsula a <em>tridimensionalidade indissociável</em> do trabalho do AS. Cobrada em ENARE 2025 (Q83 — instrumentalidade) e várias outras edições.</p>
+
+    <div class="subsecao">Aplicação Prática — Caso Modelo</div>
+    <p>AS na UBS atende mulher de 30 anos, mãe solo, em situação de extrema pobreza, com filha em desnutrição.</p>
+    <ul class="lista">
+      <li><strong>Técnico-operativa</strong>: realiza estudo social, visita domiciliar, articula CRAS, gera relatório</li>
+      <li><strong>Teórico-metodológica</strong>: lê o caso à luz da feminização da pobreza, divisão sexual do trabalho, racismo estrutural (se for mulher negra), determinantes sociais da saúde</li>
+      <li><strong>Ético-política</strong>: garante direitos (BPC, Bolsa Família, SUAS); participa de conselho local; denuncia violação; defende a usuária; orienta sobre serviços</li>
+      <li><strong>Investigativa</strong>: sistematiza a experiência, identifica padrão de demandas, propõe melhoria do serviço</li>
+    </ul>
+
+    <p>A combinação das 4 dimensões = <em>instrumentalidade</em>. Sem ela, o trabalho seria <em>técnica neutra</em> (anti-PEP) ou <em>discurso sem prática</em> (anti-mediação).</p>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> a FGV cobra a distinção entre <em>instrumentos</em> (técnicas) e <em>instrumentalidade</em> (qualidade reflexiva do uso). A frase "instrumentalidade é a qualidade que o SS adquire ao se converter em meio de realização de finalidades" é da Yolanda Guerra. Cobrada explicitamente em 2025.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-FUND · Teoria Crítica</span><span>Extensivo ENARE 2026</span><span class="pg">5 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-FUND</div><div class="aula-ref">Bloco B13 · Aula 01 · Projeto Ético-Político</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Projeto Ético-Político (PEP) do Serviço Social</div>
+
+    <p>O <strong>PEP</strong> é o conjunto de valores, princípios e diretrizes que orientam o exercício profissional do SS brasileiro pós-1979. Articula a profissão a um <em>projeto de sociedade</em> emancipatório, vinculado à classe trabalhadora.</p>
+
+    <div class="subsecao">A "Tripé Legal" do PEP</div>
+    <p>O PEP se expressa em três instrumentos legais-normativos centrais:</p>
+    <table>
+      <tr><th>Instrumento</th><th>Ano</th><th>Conteúdo</th></tr>
+      <tr><td><strong>Código de Ética do Assistente Social</strong></td><td>Res. CFESS 273/1993 (atualizado)</td><td>Princípios ético-políticos; direitos e deveres; sigilo; relações profissionais; pesquisa; vedações</td></tr>
+      <tr><td><strong>Lei 8.662/1993</strong></td><td>1993</td><td>Lei de regulamentação da profissão; atribuições privativas e competências; CFESS/CRESS</td></tr>
+      <tr><td><strong>Diretrizes Curriculares (DCN) ABEPSS</strong></td><td>1996, MEC/CNE 2002</td><td>Orientam formação acadêmica; tridimensionalidade (teórico-metodológica + ético-política + técnico-operativa); estágio supervisionado obrigatório</td></tr>
+    </table>
+
+    <div class="subsecao">Os 11 Princípios do Código de Ética (Res. 273/1993)</div>
+    <ol>
+      <li>Reconhecimento da liberdade como valor ético central</li>
+      <li>Defesa intransigente dos direitos humanos</li>
+      <li>Ampliação e consolidação da cidadania</li>
+      <li>Defesa do aprofundamento da democracia (econômica, política, social)</li>
+      <li>Posicionamento em favor da equidade e justiça social</li>
+      <li>Empenho na eliminação de todas as formas de preconceito</li>
+      <li>Garantia do pluralismo</li>
+      <li>Opção por um projeto profissional vinculado ao processo de construção de uma nova ordem societária</li>
+      <li>Articulação com movimentos de outras categorias profissionais</li>
+      <li>Compromisso com a qualidade dos serviços prestados</li>
+      <li>Exercício profissional sem ser discriminado/discriminar por questões de inserção de classe, gênero, etnia, religião, nacionalidade, orientação sexual, idade, condição física</li>
+    </ol>
+
+    <div class="subsecao">PEP — Princípios Filosóficos Centrais</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Liberdade como Valor Ético Central</div>
+        <p>Liberdade no sentido marxista: capacidade humana de escolher e transformar a realidade, condicionada pelas condições materiais. Não é liberdade abstrata; é histórica e social. Princípio "ético" porque pauta as relações profissionais.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Defesa Intransigente dos Direitos Humanos</div>
+        <p>"Intransigente" — não negociável. Inclui direitos civis, políticos, econômicos, sociais, culturais (PIDESC). Fundamento da DUDH. Opôe-se ao "humanismo abstrato" e ao moralismo conservador.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Posicionamento em Favor da Equidade e Justiça</div>
+        <p>Equidade ≠ igualdade. Equidade = tratamento diferenciado para grupos em situações desiguais. Justiça social = distribuição que reduza desigualdades estruturais.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Opção por Nova Ordem Societária</div>
+        <p>Sem opressões de classe, gênero, etnia. Vinculação histórica do SS à classe trabalhadora — não é "imparcialidade" pretensamente neutra. PEP é declaração explícita de posição.</p>
+      </div>
+    </div>
+
+    <div class="subsecao">Atribuições Privativas (Lei 8.662/1993, art. 5º)</div>
+    <ul class="lista">
+      <li>Coordenar, elaborar, executar, supervisionar e avaliar estudos, pesquisas, planos, programas e projetos na área de Serviço Social</li>
+      <li>Planejar, organizar e administrar benefícios e Serviços Sociais</li>
+      <li>Realizar estudos sócio-econômicos com os usuários para fins de benefícios e serviços sociais</li>
+      <li>Atendimento e orientação à classe trabalhadora e seus dependentes</li>
+      <li>Treinamento, avaliação e supervisão direta de estagiários de Serviço Social</li>
+      <li>Direção e coordenação de Unidades de ensino e Cursos de Serviço Social</li>
+      <li>Coordenação de seminários, encontros, congressos e eventos assemelhados sobre assuntos de Serviço Social</li>
+      <li>Fiscalização do exercício profissional através dos Conselhos Federal e Regionais</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> o PEP não é "código moral" — é projeto profissional explícito com tripé legal (Código + Lei 8.662 + DCN). A frase "liberdade como valor ético central" é primeiro princípio. Atribuições privativas são <em>exclusivas</em> do AS — outros profissionais não podem realizar (Lei 8.662/1993, art. 5º).</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-FUND · Teoria Crítica</span><span>Extensivo ENARE 2026</span><span class="pg">6 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-FUND</div><div class="aula-ref">Bloco B13 · Aula 01 · Aplicação</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Aplicação Prática — Análise de Casos</div>
+
+    <div class="subsecao">Caso 1 — AS em CAPS atendendo Usuário com Adicção</div>
+    <p>Maria, 45 anos, usuária de crack há 10 anos, sem moradia fixa. Família a procura para "internação compulsória". O médico psiquiatra propõe internação em comunidade terapêutica religiosa contratada pelo município.</p>
+
+    <p><strong>Análise tridimensional pelo AS:</strong></p>
+    <ul class="lista">
+      <li><strong>Teórico-metodológica</strong>: leitura crítica da medicalização da pobreza; questão social como pano de fundo; discussão sobre dignidade e autonomia; reforma psiquiátrica (Lei 10.216/2001); modelo de redução de danos</li>
+      <li><strong>Ético-política</strong>: defender autonomia da usuária (princípio 1 do Código — liberdade); orientar família sobre direitos; <em>não compactuar</em> com internação compulsória sem critérios estritos da Lei 10.216</li>
+      <li><strong>Técnico-operativa</strong>: entrevista com Maria (escuta), reunião familiar, encaminhamento a Consultório na Rua, articulação com CAPS-AD, CRAS, CAS</li>
+      <li><strong>Investigativa</strong>: sistematizar o caso; identificar padrão (provavelmente outras "Marias" no território); subsidiar discussão na equipe sobre protocolos institucionais</li>
+    </ul>
+
+    <p>A combinação revela <strong>instrumentalidade</strong>: usa instrumentos (entrevista, encaminhamento, articulação) com finalidade coerente ao PEP (autonomia, dignidade, redução de danos, anti-medicalização).</p>
+
+    <div class="subsecao">Caso 2 — Estudo Social no SUS para Concessão de BPC</div>
+    <p>Joaquim, 67 anos, baixa renda familiar, sem documentação completa, vive de bicos no comércio informal, suspeita de transtorno cognitivo leve. Pleiteia BPC (Benefício de Prestação Continuada — LOAS) no CRAS.</p>
+
+    <p><strong>Atuação do AS:</strong></p>
+    <ul class="lista">
+      <li>Realiza <strong>estudo social</strong> com avaliação da condição socioeconômica (Lei 8.742/1993; renda per capita &lt; 1/4 salário mínimo)</li>
+      <li>Articula com sistema judiciário se documentação for problema (ação de regularização)</li>
+      <li>Encaminha para avaliação clínica complementar (psiquiatra, neuro)</li>
+      <li>Orienta sobre <em>recurso administrativo</em> em caso de indeferimento pelo INSS</li>
+      <li>Articula com Defensoria Pública se necessário</li>
+      <li>Documenta em ficha social, relatório, parecer técnico fundamentado</li>
+    </ul>
+
+    <div class="subsecao">Conceitos-chave Repaginados</div>
+    <table>
+      <tr><th>Conceito</th><th>Autor</th><th>Aplicação</th></tr>
+      <tr><td>Ser social</td><td>Lukács / Netto</td><td>Fundamento ontológico; trabalho como protoforma</td></tr>
+      <tr><td>Questão social</td><td>Marx / Netto / Iamamoto</td><td>Expressões das desigualdades capitalistas com intermediação do Estado</td></tr>
+      <tr><td>Mercadoria força de trabalho</td><td>Marx / Iamamoto</td><td>AS é trabalhador assalariado, não missionário</td></tr>
+      <tr><td>4 dimensões do trabalho</td><td>Iamamoto / ABEPSS</td><td>Teórico-metodológica + ético-política + técnico-operativa + investigativa</td></tr>
+      <tr><td>Instrumentalidade</td><td>Yolanda Guerra</td><td>Qualidade reflexiva do uso de instrumentos com finalidade</td></tr>
+      <tr><td>Função executiva terminal</td><td>Netto</td><td>AS executa políticas elaboradas em outras instâncias, com criticidade</td></tr>
+      <tr><td>Dupla armadilha</td><td>Iamamoto 2002</td><td>Reduzir QS ao terceiro setor OU à burocracia estatal — ambas despolitizam</td></tr>
+      <tr><td>PEP — Projeto Ético-Político</td><td>SS brasileiro pós-1979</td><td>Tripé: Código + Lei 8.662 + DCN; vinculação à classe trabalhadora</td></tr>
+      <tr><td>Liberdade como valor ético central</td><td>Código 1993</td><td>Primeiro princípio do Código; sentido marxista</td></tr>
+      <tr><td>Atribuições privativas</td><td>Lei 8.662/1993, art. 5º</td><td>Exclusivas do AS — estudos socioeconômicos, supervisão de estágio etc.</td></tr>
+    </table>
+
+    <div class="alerta">
+      <p><strong>Pegadinha FGV:</strong> diferenciar Netto (matriz teórica + função executiva + capital monopolista) de Iamamoto (trabalho do AS + Projeto Ético-Político + dupla armadilha). Diferenciar instrumento (técnica) de instrumentalidade (qualidade reflexiva — Guerra). Atribuição privativa ≠ competência (esta é compartilhada com outras categorias).</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-FUND · Teoria Crítica</span><span>Extensivo ENARE 2026</span><span class="pg">7 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-FUND</div><div class="aula-ref">Bloco B13 · Aula 01 · Questões ENARE</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 01</span><span class="fonte">Iamamoto · Questão Social · NC: Compreensão</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Marilda Iamamoto (2001) define a questão social como "conjunto das expressões das desigualdades sociais engendradas na sociedade capitalista madura, impensáveis sem a intermediação do Estado". Sobre o conceito, é CORRETO afirmar:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Refere-se a problemas individuais decorrentes de fragilidade moral ou cultural dos sujeitos.</span></li>
+        <li class="correta"><span class="letra">B</span><span>Tem origem ESTRUTURAL — engendrada nas relações sociais capitalistas — e se manifesta em múltiplas expressões (pobreza, desemprego, racismo, desigualdade) que só se tornam "questão social" propriamente dita quando o conflito capital × trabalho é mediado pelo Estado.</span></li>
+        <li><span class="letra">C</span><span>É sinônimo de "problemas sociais" do terceiro setor.</span></li>
+        <li><span class="letra">D</span><span>Resolve-se com filantropia e mobilização individual.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> Iamamoto define a questão social como categoria <em>estrutural</em>, com origem nas contradições capital-trabalho, manifesta em <em>expressões plurais</em> (não um problema único). O Estado intervém — torna-se "questão" política quando há mediação estatal via políticas sociais. Antes do Estado intervir, era "caso de polícia" (visão liberal do séc. XIX). A "dupla armadilha" (Iamamoto 2002) é reduzir QS ao terceiro setor ou à burocracia.</p>
+      <p><strong>Por que as outras erram:</strong> A — reduz à perspectiva moralizadora/individualista, oposta ao SS · C — restringe a um setor; QS é mais ampla · D — filantropia é a "dupla armadilha"; QS exige resposta estrutural/política.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-FUND · Teoria Crítica</span><span>Extensivo ENARE 2026</span><span class="pg">8 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-FUND</div><div class="aula-ref">Bloco B13 · Aula 01 · Questões ENARE</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 02</span><span class="fonte">Instrumentalidade · Yolanda Guerra · NC: Análise</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Yolanda Guerra distingue "instrumento" de "instrumentalidade". Relacione os termos:</p>
+      <p class="questao-enunciado" style="font-style:italic;">I. Visita domiciliar realizada para investigar denúncia.<br>
+      II. Qualidade que o trabalho profissional adquire ao se converter em meio de realização de finalidades coerentes com o PEP.<br>
+      III. Entrevista, parecer, relatório, ficha social.<br>
+      IV. Articulação entre teoria social crítica e prática profissional na escolha e uso dos instrumentos.</p>
+      <p class="questao-enunciado">Os termos referem-se respectivamente a:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>I e II = instrumentos; III e IV = instrumentalidade.</span></li>
+        <li class="correta"><span class="letra">B</span><span>I e III = instrumentos (técnicas); II e IV = instrumentalidade (qualidade reflexiva e mediada do uso dos instrumentos com finalidade coerente com o PEP).</span></li>
+        <li><span class="letra">C</span><span>Todas as quatro afirmações referem-se a "instrumentos".</span></li>
+        <li><span class="letra">D</span><span>Todas referem-se a "instrumentalidade".</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> a distinção fundamental de Yolanda Guerra é:</p>
+      <p>• <strong>Instrumentos</strong> (I, III): técnicas concretas — visita domiciliar, entrevista, parecer, relatório, estudo de situação. Ferramentas operativas.<br>
+      • <strong>Instrumentalidade</strong> (II, IV): qualidade reflexiva do trabalho profissional que articula 3 dimensões (teórico-metodológica + ético-política + técnico-operativa). É a capacidade de usar instrumentos com finalidade emancipatória, não pragmaticamente neutra.</p>
+      <p>Cobrado em ENARE 2025 (Q83 e Q87) com formato análise.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-FUND · Teoria Crítica</span><span>Extensivo ENARE 2026</span><span class="pg">9 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-FUND</div><div class="aula-ref">Bloco B13 · Aula 01 · Síntese</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 03</span><span class="fonte">PEP · Tripé Legal · NC: Compreensão</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">O Projeto Ético-Político (PEP) do Serviço Social brasileiro contemporâneo se materializa em três instrumentos legais-normativos centrais. Quais são?</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Código de Ética; Lei 5.991/1973; DCNs ABEPSS.</span></li>
+        <li class="correta"><span class="letra">B</span><span>Código de Ética (Res. CFESS 273/1993); Lei 8.662/1993 (regulamenta a profissão); Diretrizes Curriculares Nacionais (ABEPSS/1996 e MEC/CNE 2002).</span></li>
+        <li><span class="letra">C</span><span>Constituição Federal 1988; ECA; LOAS.</span></li>
+        <li><span class="letra">D</span><span>SUS Lei 8.080; SUAS Lei 12.435; Lei 13.146.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p>O tripé legal-normativo do PEP é exatamente: (1) <em>Código de Ética</em> Res. CFESS 273/1993 com 11 princípios fundamentais; (2) <em>Lei 8.662/1993</em> que regulamenta a profissão, define atribuições privativas e cria CFESS/CRESS; (3) <em>Diretrizes Curriculares Nacionais</em> da ABEPSS (1996) e MEC/CNE (2002), que orientam a formação acadêmica com tridimensionalidade.</p>
+    </div>
+
+    <div class="subsecao">Síntese — Teoria Crítica do SS</div>
+    <div class="sintese-grid">
+      <div class="sintese-item"><div class="si-label">Matriz Teórica</div><p>Marxismo de matriz lukacsiana. Netto (capitalismo monopolista, função executiva terminal) + Iamamoto (trabalho do AS, dupla armadilha) + Yolanda Guerra (instrumentalidade).</p></div>
+      <div class="sintese-item"><div class="si-label">Conceitos Centrais</div><p>Ser social (Lukács), questão social (Marx/Netto/Iamamoto), mercadoria força de trabalho (Marx/Iamamoto), totalidade, mediação, práxis.</p></div>
+      <div class="sintese-item"><div class="si-label">4 Dimensões</div><p>Teórico-metodológica + ético-política + técnico-operativa + investigativa. Indissociáveis. Base da formação ABEPSS.</p></div>
+      <div class="sintese-item"><div class="si-label">Instrumentalidade</div><p>Yolanda Guerra. Distinção instrumento (técnica) × instrumentalidade (qualidade reflexiva do uso com finalidade PEP). Articula as 3 dimensões.</p></div>
+      <div class="sintese-item"><div class="si-label">PEP — Tripé Legal</div><p>Código de Ética 1993 (11 princípios; liberdade como valor central) + Lei 8.662/1993 (atribuições privativas) + DCNs ABEPSS/MEC. Vinculação à classe trabalhadora.</p></div>
+      <div class="sintese-item"><div class="si-label">Próxima Aula</div><p><strong>Aula 02 — Renovação e Reconceituação do SS.</strong> Intenção de ruptura, modernizadora, fenomenológica; Documentos de Araxá (1967) e Teresópolis (1970); Congresso da Virada (1979).</p></div>
+    </div>
+
+    <div class="alerta" style="margin-top:5px;">
+      <p><strong>Regra de ouro — Teoria Crítica no ENARE:</strong> Marxismo lukacsiano é matriz. Netto (capitalismo monopolista + função executiva terminal) e Iamamoto (trabalho do AS + dupla armadilha). 4 dimensões indissociáveis. Instrumentalidade (Guerra) ≠ instrumento. PEP = Código + Lei 8.662 + DCN. Liberdade = primeiro princípio.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-FUND · Teoria Crítica</span><span>Extensivo ENARE 2026</span><span class="pg">10 / 10</span></div>
+</div>
+
+</body>
+</html>

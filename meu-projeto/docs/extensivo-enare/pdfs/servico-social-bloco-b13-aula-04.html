@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Serviço Social — Bloco B13 Aula 04 | Extensivo ENARE 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap');
+  :root { --creme: #F6F4ED; --verde: #1F5C23; --amarelo: #C6D834; --escuro: #0C2B0E; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #d0d0d0; font-family: 'Bricolage Grotesque', sans-serif; }
+  .page { width: 210mm; height: 297mm; background: var(--creme); margin: 0 auto 12px; position: relative; overflow: hidden; page-break-after: always; }
+  .header { background: var(--verde); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .header-logo { display: flex; align-items: center; gap: 8px; }
+  .header-logo svg { width: 32px; height: 32px; }
+  .header-brand { display: flex; flex-direction: column; line-height: 1; }
+  .header-brand .marca { font-family: 'Playfair Display', serif; font-style: italic; color: #fff; font-size: 13px; letter-spacing: 0.5px; }
+  .header-brand .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 7px; letter-spacing: 1.5px; text-transform: uppercase; }
+  .header-info { text-align: right; }
+  .header-info .disciplina { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
+  .header-info .aula-ref { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.7); font-size: 8px; letter-spacing: 0.5px; }
+  .footer { position: absolute; bottom: 0; left: 0; right: 0; background: var(--verde); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .footer span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.6); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .footer .pg { color: var(--amarelo); font-weight: 400; }
+  .body { padding: 14px 18px 30px; height: calc(297mm - 52px - 22px); overflow: hidden; }
+  .capa-page { background: var(--verde); }
+  .capa-header { background: var(--creme); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .capa-header .marca { font-family: 'Playfair Display', serif; font-style: italic; color: var(--verde); font-size: 14px; }
+  .capa-header .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--verde); font-size: 7.5px; letter-spacing: 2px; text-transform: uppercase; }
+  .capa-body { padding: 28px 24px 0; display: flex; flex-direction: column; height: calc(297mm - 52px - 22px); }
+  .capa-eyebrow { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; }
+  .capa-titulo { font-family: 'Barlow Condensed', sans-serif; color: #fff; font-size: 50px; line-height: 0.95; text-transform: uppercase; letter-spacing: -0.5px; margin-bottom: 6px; }
+  .capa-titulo span { color: var(--amarelo); }
+  .capa-subtitulo { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; color: rgba(255,255,255,0.65); font-size: 12px; letter-spacing: 0.3px; margin-bottom: 22px; line-height: 1.5; }
+  .capa-badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+  .capa-badge { background: rgba(198,216,52,0.15); border: 1px solid var(--amarelo); color: var(--amarelo); font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 8px; border-radius: 2px; }
+  .capa-divider { width: 40px; height: 3px; background: var(--amarelo); margin-bottom: 20px; }
+  .capa-topicos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .capa-topico { display: flex; align-items: flex-start; gap: 7px; }
+  .capa-topico-num { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 18px; line-height: 1; min-width: 18px; }
+  .capa-topico-txt { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 400; color: rgba(255,255,255,0.8); font-size: 9.5px; line-height: 1.4; }
+  .capa-footer-strip { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.25); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .capa-footer-strip span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.45); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .secao-titulo { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 18px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid var(--amarelo); padding-bottom: 3px; margin-bottom: 9px; line-height: 1; }
+  .subsecao { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.5px; margin: 7px 0 3px; }
+  p { font-size: 9px; line-height: 1.55; color: #1a1a1a; margin-bottom: 4px; font-weight: 400; }
+  .destaque { background: var(--amarelo); color: var(--escuro); font-weight: 600; padding: 1px 4px; border-radius: 2px; font-size: 8.5px; }
+  .alerta { background: rgba(198,216,52,0.18); border-left: 3px solid var(--amarelo); padding: 5px 8px; margin: 5px 0; border-radius: 0 3px 3px 0; }
+  .alerta p { margin: 0; font-size: 8.5px; }
+  .alerta strong { color: var(--verde); }
+  table { width: 100%; border-collapse: collapse; margin: 5px 0; font-size: 8px; }
+  th { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; padding: 4px 6px; text-align: left; }
+  td { padding: 3px 6px; border-bottom: 1px solid rgba(31,92,35,0.12); vertical-align: top; line-height: 1.4; color: #1a1a1a; }
+  tr:nth-child(even) td { background: rgba(31,92,35,0.04); }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 5px 0; }
+  .card { background: rgba(31,92,35,0.06); border: 1px solid rgba(31,92,35,0.15); border-radius: 4px; padding: 7px 8px; }
+  .card-title { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 11px; text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 3px; }
+  .card p { font-size: 8px; line-height: 1.5; }
+  .questao-header { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; padding: 4px 10px; border-radius: 3px 3px 0 0; display: flex; justify-content: space-between; align-items: center; }
+  .questao-header .fonte { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; color: var(--amarelo); letter-spacing: 0.5px; }
+  .questao-body { border: 1px solid rgba(31,92,35,0.2); border-top: none; border-radius: 0 0 3px 3px; padding: 7px 10px; margin-bottom: 7px; }
+  .questao-enunciado { font-size: 8.5px; line-height: 1.55; color: #111; margin-bottom: 5px; font-weight: 500; }
+  .alternativas { list-style: none; }
+  .alternativas li { font-size: 8px; line-height: 1.5; padding: 2px 0; color: #222; display: flex; gap: 5px; }
+  .alternativas li .letra { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: var(--verde); font-size: 9px; min-width: 10px; }
+  .alternativas li.correta .letra { color: var(--amarelo); }
+  .alternativas li.correta { background: rgba(198,216,52,0.15); border-left: 2px solid var(--amarelo); padding-left: 4px; }
+  .gabarito-box { background: var(--verde); border-radius: 4px; padding: 8px 12px; margin: 6px 0; }
+  .gabarito-box .gab-title { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+  .gabarito-box p { color: rgba(255,255,255,0.9); font-size: 8px; line-height: 1.55; }
+  .gabarito-box strong { color: var(--amarelo); }
+  .sintese-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-top: 6px; }
+  .sintese-item { background: rgba(31,92,35,0.07); border-left: 3px solid var(--verde); padding: 5px 7px; border-radius: 0 3px 3px 0; }
+  .sintese-item .si-label { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px; }
+  .sintese-item p { font-size: 7.5px; line-height: 1.5; }
+  ul.lista { padding-left: 14px; margin: 3px 0; }
+  ul.lista li { font-size: 8.5px; line-height: 1.55; color: #1a1a1a; margin-bottom: 1px; }
+  @media print { body { background: none; } .page { margin: 0; box-shadow: none; } }
+</style>
+</head>
+<body>
+
+<div class="page capa-page">
+  <div class="capa-header">
+    <div style="display:flex;align-items:center;gap:8px;"><svg width="34" height="34" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#1F5C23"/></svg><div><div class="marca">Elite Treinamentos</div><div class="tagline">Extensivo ENARE 2026</div></div></div>
+    <div style="text-align:right;"><div style="font-family:'Barlow Condensed',sans-serif;color:var(--verde);font-size:11px;letter-spacing:1px;text-transform:uppercase;">Bloco B13 · Aula 04</div><div style="font-family:'Space Grotesk',sans-serif;font-weight:300;color:#888;font-size:7.5px;letter-spacing:0.5px;">Serviço Social</div></div>
+  </div>
+  <div class="capa-body">
+    <div class="capa-eyebrow">Bloco B13 · SS-FUND · Aula 04 de 21</div>
+    <div class="capa-titulo">Marx <span>·<br>Durkheim<br>· Weber</span></div>
+    <div class="capa-subtitulo">As três matrizes teóricas das ciências sociais clássicas<br>e sua relação com o Serviço Social brasileiro</div>
+    <div class="capa-badge-row">
+      <div class="capa-badge">SS-FUND ★★★</div>
+      <div class="capa-badge">Matrizes Teóricas</div>
+      <div class="capa-badge">Sociologia Clássica</div>
+      <div class="capa-badge">Cluster Novo 2025</div>
+    </div>
+    <div class="capa-divider"></div>
+    <div class="capa-topicos">
+      <div class="capa-topico"><div class="capa-topico-num">01</div><div class="capa-topico-txt">Surgimento da sociologia como ciência</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">02</div><div class="capa-topico-txt">Karl Marx: materialismo histórico-dialético</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">03</div><div class="capa-topico-txt">Émile Durkheim: positivismo sociológico</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">04</div><div class="capa-topico-txt">Max Weber: sociologia compreensiva</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">05</div><div class="capa-topico-txt">Quadro comparativo: 3 matrizes</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">06</div><div class="capa-topico-txt">Aplicação ao SS e debate atual</div></div>
+    </div>
+  </div>
+  <div class="capa-footer-strip"><span>Extensivo ENARE 2026</span><span>Elite Treinamentos em Saúde</span><span>Página 1 de 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-FUND</div><div class="aula-ref">Bloco B13 · Aula 04 · Sociologia</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Surgimento da Sociologia — Contexto Histórico</div>
+
+    <p>A <strong>sociologia</strong> como ciência específica surge no século XIX, ligada às transformações da Revolução Industrial e da Revolução Francesa. O capitalismo industrial criou novos problemas sociais (operariado, pobreza urbana, miséria, conflitos de classe) que exigiam explicação científica. A sociologia clássica — Marx, Durkheim, Weber — fundamenta três respostas teóricas que ainda hoje dialogam no Serviço Social. Cluster novo cobrado em ENARE 2025 (Q38, Q73, Q83, Q94).</p>
+
+    <div class="subsecao">Antecedentes Filosóficos</div>
+    <ul class="lista">
+      <li><strong>Auguste Comte (1798–1857)</strong>: cunha o termo "sociologia" (1839); positivismo; Lei dos 3 estados (teológico, metafísico, positivo); ordem e progresso</li>
+      <li><strong>Saint-Simon (1760–1825)</strong>: socialismo utópico; planejamento social</li>
+      <li><strong>Tocqueville (1805–1859)</strong>: democracia na América; sociedade civil</li>
+      <li><strong>Spencer (1820–1903)</strong>: darwinismo social; evolução social</li>
+    </ul>
+
+    <div class="subsecao">Os Três Clássicos — Visão Geral</div>
+    <table>
+      <tr><th>Autor</th><th>País</th><th>Obras centrais</th><th>Visão</th></tr>
+      <tr><td>Karl Marx (1818–1883)</td><td>Alemanha</td><td>Manifesto Comunista (1848), O Capital (1867)</td><td>Crítica radical do capitalismo; materialismo histórico-dialético; luta de classes; transformação revolucionária</td></tr>
+      <tr><td>Émile Durkheim (1858–1917)</td><td>França</td><td>Da Divisão do Trabalho Social (1893), As Regras do Método Sociológico (1895), O Suicídio (1897)</td><td>Positivismo sociológico; ordem e coesão; fato social; solidariedade; anomia</td></tr>
+      <tr><td>Max Weber (1864–1920)</td><td>Alemanha</td><td>A Ética Protestante e o Espírito do Capitalismo (1905), Economia e Sociedade (póstumo 1922)</td><td>Sociologia compreensiva; ação social; tipos ideais; racionalização; dominação</td></tr>
+    </table>
+
+    <div class="subsecao">Por Que São Importantes para o SS</div>
+    <ul class="lista">
+      <li><strong>Marx</strong> é a matriz hegemônica do SS pós-Reconceituação (Netto, Iamamoto). Fundamento crítico.</li>
+      <li><strong>Durkheim</strong> aparece criticamente — é a matriz do <em>funcionalismo</em>, que dominou o SS pré-Reconceituação. Conhecer para refutar.</li>
+      <li><strong>Weber</strong> aparece em leituras institucionalistas e na análise de dominações; menos hegemônico mas relevante para entender Estado e burocracia.</li>
+      <li>As DCNs ABEPSS 1996 incluem "Fundamentos teórico-metodológicos da vida social" — núcleo que exige domínio das três matrizes.</li>
+      <li>FGV cobrou em ENARE 2025 (Q38 — relacione matrizes teóricas) com NC análise.</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> a FGV pode pedir distinção entre as três matrizes ou identificação de autores de obras. A perspectiva crítica do SS é <em>marxiana</em>, mas o residente deve conhecer Durkheim e Weber para diferenciar — não para igualar. As matrizes <em>conflitam</em>, não convergem em síntese eclética.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-FUND · Sociologia Clássica</span><span>Extensivo ENARE 2026</span><span class="pg">2 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-FUND</div><div class="aula-ref">Bloco B13 · Aula 04 · Marx</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Karl Marx — Materialismo Histórico-Dialético</div>
+
+    <p><strong>Karl Marx (1818–1883)</strong> e Friedrich Engels desenvolveram a crítica mais radical do capitalismo. Sua obra é a base do SS brasileiro pós-1979.</p>
+
+    <div class="subsecao">Pressupostos Filosóficos</div>
+    <ul class="lista">
+      <li><strong>Materialismo</strong>: a matéria é primária; ideias são reflexo das condições materiais (contra Hegel/idealismo)</li>
+      <li><strong>Dialética</strong>: o real é processo de transformação por contradições internas (tese → antítese → síntese)</li>
+      <li><strong>Historicismo</strong>: a sociedade é histórica; cada modo de produção tem suas leis específicas</li>
+      <li><strong>Práxis</strong>: o pensamento se materializa na ação transformadora ("Os filósofos interpretaram o mundo de várias maneiras; trata-se agora de transformá-lo" — XI Tese sobre Feuerbach)</li>
+    </ul>
+
+    <div class="subsecao">Conceitos Centrais</div>
+    <table>
+      <tr><th>Conceito</th><th>Definição</th></tr>
+      <tr><td><strong>Modo de produção</strong></td><td>Conjunto das forças produtivas (trabalho + meios de produção) + relações sociais de produção</td></tr>
+      <tr><td><strong>Forças produtivas</strong></td><td>Capacidade humana de transformar a natureza: força de trabalho + meios de produção (instrumentos, tecnologia, recursos)</td></tr>
+      <tr><td><strong>Relações de produção</strong></td><td>Como se organizam socialmente a produção e a propriedade dos meios — escravista, feudal, capitalista, socialista</td></tr>
+      <tr><td><strong>Mercadoria</strong></td><td>Produto do trabalho que tem valor de uso (utilidade) e valor de troca (quantidade de trabalho socialmente necessário)</td></tr>
+      <tr><td><strong>Força de trabalho</strong></td><td>Mercadoria peculiar: capacidade humana de trabalhar; única mercadoria que produz mais valor do que custa</td></tr>
+      <tr><td><strong>Mais-valia</strong></td><td>Diferença entre o valor produzido pelo trabalhador e o salário pago — fonte do lucro capitalista</td></tr>
+      <tr><td><strong>Trabalho</strong></td><td>Atividade humana fundamental; mediação entre ser humano e natureza; "protoforma da práxis" (Lukács)</td></tr>
+      <tr><td><strong>Alienação</strong></td><td>Estranhamento do trabalhador em relação a 4 aspectos: produto, processo, gênero humano, si mesmo</td></tr>
+      <tr><td><strong>Fetichismo da mercadoria</strong></td><td>Inversão pela qual relações sociais aparecem como relações entre coisas; relações entre pessoas ocultadas</td></tr>
+      <tr><td><strong>Ideologia</strong></td><td>Conjunto de representações que justificam a ordem dominante (ou a contestam — ideologia revolucionária)</td></tr>
+      <tr><td><strong>Luta de classes</strong></td><td>Motor da história — antagonismo entre exploradores e explorados em cada modo de produção</td></tr>
+      <tr><td><strong>Infraestrutura × Superestrutura</strong></td><td>Base econômica (modo de produção) determina superestrutura (direito, política, ideologia) com relativa autonomia</td></tr>
+      <tr><td><strong>Revolução</strong></td><td>Transformação radical das relações de produção; passagem para socialismo/comunismo</td></tr>
+    </table>
+
+    <div class="subsecao">Obras Centrais (relevantes para SS)</div>
+    <ul class="lista">
+      <li><strong>Manuscritos Econômico-Filosóficos (1844)</strong>: alienação, gênero humano, trabalho</li>
+      <li><strong>A Ideologia Alemã (1845)</strong>: materialismo histórico; superação de Feuerbach</li>
+      <li><strong>Manifesto do Partido Comunista (1848)</strong>: luta de classes; programa político</li>
+      <li><strong>Contribuição à Crítica da Economia Política (1859)</strong>: prefácio é referência metodológica clássica</li>
+      <li><strong>O Capital (Vol. 1, 1867)</strong>: análise sistemática do capitalismo; mercadoria, dinheiro, capital, mais-valia</li>
+    </ul>
+
+    <div class="subsecao">Marxismo no SS</div>
+    <p>O SS brasileiro adota o marxismo de matriz <strong>lukacsiana</strong> (via Lukács, Iamamoto, Netto). Não é a única leitura do marxismo (também há althusseriana, gramsciana, estruturalista, analítica) — mas é a hegemônica na profissão. Características:</p>
+    <ul class="lista">
+      <li>Centralidade da categoria <em>trabalho</em> como fundadora do ser social</li>
+      <li>Ontologia do ser social (Lukács)</li>
+      <li>Crítica do irracionalismo e do positivismo</li>
+      <li>Articulação teoria-prática (práxis)</li>
+      <li>Compromisso com a classe trabalhadora</li>
+      <li>Distância do "marxismo de manuais" simplificador</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> Marx é a referência fundamental do SS contemporâneo. Saber conceitos centrais (mais-valia, alienação, ideologia, luta de classes, modo de produção). Leitura lukacsiana (Netto, Iamamoto) é a hegemônica. Frase clássica: "Os filósofos só interpretaram o mundo; é preciso transformá-lo" (XI Tese sobre Feuerbach).</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-FUND · Sociologia Clássica</span><span>Extensivo ENARE 2026</span><span class="pg">3 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-FUND</div><div class="aula-ref">Bloco B13 · Aula 04 · Durkheim</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Émile Durkheim — Positivismo Sociológico</div>
+
+    <p><strong>Émile Durkheim (1858–1917)</strong> é considerado o "fundador" da sociologia francesa como disciplina universitária. Adota perspectiva positivista, científica, focada na ordem social.</p>
+
+    <div class="subsecao">Pressupostos Filosóficos</div>
+    <ul class="lista">
+      <li><strong>Positivismo</strong> (herança de Comte): a sociedade deve ser estudada com método científico análogo às ciências naturais</li>
+      <li><strong>Funcionalismo</strong>: sociedade como organismo; cada elemento tem função para o todo</li>
+      <li><strong>Objetividade</strong>: o sociólogo deve deixar de lado pré-noções; observar fatos sociais como "coisas"</li>
+      <li><strong>Ordem e progresso</strong>: foco na coesão social; o conflito é patológico, sinal de anomia</li>
+      <li><strong>Holismo</strong>: o todo é mais que a soma das partes; consciência coletiva &gt; consciência individual</li>
+    </ul>
+
+    <div class="subsecao">Conceitos Centrais</div>
+    <table>
+      <tr><th>Conceito</th><th>Definição</th></tr>
+      <tr><td><strong>Fato social</strong></td><td>Modo de agir, pensar ou sentir, externo ao indivíduo, dotado de coercitividade e generalidade. Estudo como "coisa"</td></tr>
+      <tr><td><strong>Consciência coletiva</strong></td><td>Conjunto de crenças e sentimentos comuns aos membros de uma sociedade — exterior aos indivíduos</td></tr>
+      <tr><td><strong>Solidariedade mecânica</strong></td><td>Característica das sociedades tradicionais; coesão baseada em semelhança; consciência coletiva forte; sanções repressivas</td></tr>
+      <tr><td><strong>Solidariedade orgânica</strong></td><td>Característica das sociedades modernas; coesão baseada na diferenciação e interdependência; divisão do trabalho social; sanções restitutivas</td></tr>
+      <tr><td><strong>Divisão do trabalho social</strong></td><td>Especialização de funções; gera solidariedade orgânica; pode ser <em>normal</em> ou <em>anômica/forçada</em></td></tr>
+      <tr><td><strong>Anomia</strong></td><td>Ausência ou enfraquecimento de regras sociais; estado patológico; explica suicídio, desorganização, crise</td></tr>
+      <tr><td><strong>Suicídio</strong> (1897)</td><td>Tipos: egoísta (excesso de individualismo), altruísta (excesso de coletividade), anômico (crise de normas), fatalista (excesso de regulação)</td></tr>
+      <tr><td><strong>Coercitividade</strong></td><td>Característica do fato social — sociedade impõe formas de agir/sentir aos indivíduos</td></tr>
+      <tr><td><strong>Religião e moral</strong></td><td>Funções de coesão; sagrado/profano (As Formas Elementares da Vida Religiosa, 1912)</td></tr>
+    </table>
+
+    <div class="subsecao">Método Sociológico (As Regras do Método Sociológico, 1895)</div>
+    <ol>
+      <li>Tratar os fatos sociais como coisas</li>
+      <li>Afastar pré-noções e preconceitos</li>
+      <li>Distinguir normal (regularmente presente) e patológico (anômico)</li>
+      <li>Estudar fatos sociais por suas <em>causas</em> e <em>funções</em></li>
+      <li>Comparar sociedades para identificar leis sociológicas</li>
+    </ol>
+
+    <div class="subsecao">Durkheim no SS — Posição Crítica</div>
+    <p>O SS pós-Reconceituação <em>critica</em> a perspectiva durkheimiana porque ela:</p>
+    <ul class="lista">
+      <li>Naturaliza a ordem social; <em>anomia</em> é desvio, não consequência estrutural do capitalismo</li>
+      <li>Despolitiza o conflito; conflito é patologia, não motor histórico</li>
+      <li>Fundamentou o <strong>funcionalismo</strong> (Talcott Parsons, Robert Merton) que dominou o SS pré-1965 com o paradigma "Caso-Grupo-Comunidade"</li>
+      <li>Trata indivíduos como peças a serem "ajustadas" à sociedade — perspectiva conservadora</li>
+      <li>Apesar das críticas, Durkheim é importante para entender solidariedade, integração social, sociologia da educação, religião e moral</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Pegadinha FGV:</strong> Durkheim NÃO é matriz crítica do SS. É a matriz do <em>funcionalismo</em> que o SS criticou na Reconceituação. Anomia é conceito durkheimiano (sociedades modernas com crise de regras). Solidariedade mecânica = tradicional; orgânica = moderna. Suicídio = obra clássica com 4 tipos.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-FUND · Sociologia Clássica</span><span>Extensivo ENARE 2026</span><span class="pg">4 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-FUND</div><div class="aula-ref">Bloco B13 · Aula 04 · Weber</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Max Weber — Sociologia Compreensiva</div>
+
+    <p><strong>Max Weber (1864–1920)</strong> é considerado o "terceiro pilar" da sociologia clássica, ao lado de Marx e Durkheim. Diferencia-se de ambos por uma abordagem <em>compreensiva</em> (Verstehende Soziologie): o sociólogo deve compreender o sentido subjetivo da ação social.</p>
+
+    <div class="subsecao">Pressupostos Filosóficos</div>
+    <ul class="lista">
+      <li><strong>Compreensão (Verstehen)</strong>: o sociólogo capta o significado subjetivo das ações</li>
+      <li><strong>Individualismo metodológico</strong>: ponto de partida é a ação individual significativa</li>
+      <li><strong>Tipos ideais</strong>: construções analíticas, exageradas, para comparar com a realidade — não descrição empírica</li>
+      <li><strong>Neutralidade axiológica</strong>: ciência deve separar fatos e valores (ideal, debatido)</li>
+      <li><strong>Pluralismo causal</strong>: múltiplas causalidades, não monocausalidade econômica como em Marx</li>
+      <li><strong>Racionalização</strong>: tendência histórica das sociedades modernas à racionalidade instrumental</li>
+    </ul>
+
+    <div class="subsecao">Conceitos Centrais</div>
+    <table>
+      <tr><th>Conceito</th><th>Definição</th></tr>
+      <tr><td><strong>Ação social</strong></td><td>Conduta humana dotada de sentido subjetivo orientado para outros</td></tr>
+      <tr><td><strong>4 tipos de ação social</strong></td><td>(1) Racional com relação a fins; (2) Racional com relação a valores; (3) Afetiva; (4) Tradicional</td></tr>
+      <tr><td><strong>Tipo ideal</strong></td><td>Construção conceitual que isola e enfatiza traços para análise comparativa</td></tr>
+      <tr><td><strong>Burocracia</strong></td><td>Forma de organização racional-legal moderna; hierarquia, regras impessoais, especialização, escrita, carreira meritocrática</td></tr>
+      <tr><td><strong>Dominação</strong></td><td>Probabilidade de obediência. Três tipos legítimos:</td></tr>
+      <tr><td>— <em>Racional-legal</em></td><td>Baseada em regras impessoais; Estado moderno, burocracia</td></tr>
+      <tr><td>— <em>Tradicional</em></td><td>Baseada no costume; monarquias, patriarcado, patrimonialismo</td></tr>
+      <tr><td>— <em>Carismática</em></td><td>Baseada nos dotes excepcionais do líder; profetas, revolucionários, líderes religiosos</td></tr>
+      <tr><td><strong>Racionalização</strong></td><td>Processo histórico de substituição da tradição/afeto pela racionalidade técnica/instrumental</td></tr>
+      <tr><td><strong>Desencantamento do mundo</strong></td><td>Modernização = perda de sentido sagrado; tudo torna-se calculável, previsível</td></tr>
+      <tr><td><strong>Espírito do capitalismo</strong></td><td>Ascese intramundana; ética protestante (calvinismo) como precursora ideológica do capitalismo</td></tr>
+      <tr><td><strong>Classes vs estamentos</strong></td><td>Para Weber, há mais dimensões além da econômica: classe (econômica), estamento (status/prestígio), partido (poder)</td></tr>
+      <tr><td><strong>Estado</strong></td><td>Comunidade humana que reivindica o monopólio do uso legítimo da força física dentro de um território</td></tr>
+    </table>
+
+    <div class="subsecao">Obras Centrais</div>
+    <ul class="lista">
+      <li><strong>A Ética Protestante e o Espírito do Capitalismo (1905)</strong>: papel da religião na gênese do capitalismo moderno</li>
+      <li><strong>Economia e Sociedade (póstumo 1922)</strong>: sistema teórico-conceitual; tipos de dominação</li>
+      <li><strong>A Política como Vocação</strong> e <strong>A Ciência como Vocação</strong> (conferências 1918–1919): ética da convicção × ética da responsabilidade; vocação do cientista/político</li>
+    </ul>
+
+    <div class="subsecao">Weber no SS</div>
+    <p>Weber é menos hegemônico no SS brasileiro, mas relevante para:</p>
+    <ul class="lista">
+      <li>Análise de instituições e burocracias (Estado, hospital, escola)</li>
+      <li>Compreensão da legitimação da dominação no capitalismo</li>
+      <li>Estudo das ações sociais no atendimento direto</li>
+      <li>Análise da racionalização e desencantamento como tendência da modernidade</li>
+      <li>Crítica à racionalidade instrumental no SS contemporâneo (rotinização, tecnicismo)</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> Weber tem 3 tipos de dominação (racional-legal, tradicional, carismática); 4 tipos de ação social; conceito de burocracia; tipos ideais como método. Não confundir com Marx (luta de classes) nem com Durkheim (anomia, fato social).</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-FUND · Sociologia Clássica</span><span>Extensivo ENARE 2026</span><span class="pg">5 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-FUND</div><div class="aula-ref">Bloco B13 · Aula 04 · Comparativo</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Quadro Comparativo — Marx × Durkheim × Weber</div>
+
+    <table>
+      <tr><th>Aspecto</th><th>Marx</th><th>Durkheim</th><th>Weber</th></tr>
+      <tr><td>Visão da sociedade</td><td>Conflito estrutural (capital × trabalho)</td><td>Ordem e coesão</td><td>Multidimensional (econ, social, político)</td></tr>
+      <tr><td>Objeto</td><td>Modos de produção e relações de produção</td><td>Fato social, consciência coletiva</td><td>Ação social significativa</td></tr>
+      <tr><td>Método</td><td>Materialismo histórico-dialético</td><td>Positivismo; método "objetivo"</td><td>Compreensão (Verstehen) + tipos ideais</td></tr>
+      <tr><td>Visão do conflito</td><td>Motor histórico; positivo</td><td>Patológico; anômico</td><td>Inevitável; entre dominantes e dominados</td></tr>
+      <tr><td>Visão do trabalho</td><td>Categoria central; alienação no capitalismo</td><td>Divisão do trabalho social → solidariedade orgânica</td><td>Vocação; ética protestante; racionalização</td></tr>
+      <tr><td>Visão do Estado</td><td>Aparelho da classe dominante</td><td>Cérebro da sociedade; coesão</td><td>Monopólio legítimo da força em território</td></tr>
+      <tr><td>Estratificação</td><td>Classes sociais (econômica)</td><td>Diferenciação funcional</td><td>Classes + estamentos + partidos</td></tr>
+      <tr><td>Religião</td><td>"Ópio do povo"; ideologia</td><td>Função integradora; sagrado/profano</td><td>Ética protestante: motor cultural do capitalismo</td></tr>
+      <tr><td>Visão do futuro</td><td>Revolução; comunismo</td><td>Solidariedade orgânica estabilizada</td><td>"Jaula de ferro"; pessimismo da racionalização</td></tr>
+      <tr><td>Posição política do autor</td><td>Engajado (revolucionário)</td><td>Reformista (II República francesa)</td><td>Liberal (com pessimismo)</td></tr>
+      <tr><td>Influência no SS contemporâneo</td><td>Matriz hegemônica</td><td>Criticada (funcionalismo)</td><td>Periférica mas relevante</td></tr>
+    </table>
+
+    <div class="subsecao">Aplicação ao SS — Caso Modelo</div>
+    <p>Cena: usuário em situação de rua chega ao CREAS solicitando documentação para benefício.</p>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Leitura Marxiana</div>
+        <p>Situação de rua é expressão da <em>questão social</em> — produto da contradição capital-trabalho, desemprego estrutural, mercantilização da moradia, ausência do Estado em direitos sociais. Resposta: garantir direito + denunciar estrutura + articulação política.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Leitura Durkheimiana</div>
+        <p>Situação de rua é "anomia" — falta de integração social; quebra de laços. Resposta: reintegrar o indivíduo via vínculos comunitários, família, trabalho. Foco em reabilitar a coesão. Tendência a culpabilizar individual ou contextualmente, sem questionar estrutura.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Leitura Weberiana</div>
+        <p>Situação é resultado de processo de racionalização (perda de vínculos tradicionais) + falha de ações sociais (rejeição familiar, ruptura laboral). Foco compreensivo no <em>sentido</em> da trajetória individual. Atenção à burocracia do CREAS como dominação racional-legal.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Resposta do SS (PEP)</div>
+        <p>A perspectiva crítica do SS (marxiana lukacsiana) é hegemônica: ler como expressão da questão social estrutural; garantir direito; articular rede; politizar; respeitar autonomia. Não cair na leitura durkheimiana de "anomia individual a corrigir" nem na weberiana de "ação individual sem mediação estrutural".</p>
+      </div>
+    </div>
+
+    <div class="alerta">
+      <p><strong>Pegadinha FGV:</strong> a questão social NÃO é "anomia" (Durkheim). É produto estrutural do capitalismo (Marx/SS). Confundir as duas categorias é erro grave. ENARE 2025 (Q38, Q73, Q83) cobrou explicitamente a distinção.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-FUND · Sociologia Clássica</span><span>Extensivo ENARE 2026</span><span class="pg">6 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-FUND</div><div class="aula-ref">Bloco B13 · Aula 04 · Questões ENARE</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 01</span><span class="fonte">Marx · Conceitos · NC: Compreensão</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Sobre os conceitos centrais do materialismo histórico-dialético de Karl Marx, é INCORRETO afirmar que:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Modo de produção = forças produtivas + relações de produção.</span></li>
+        <li><span class="letra">B</span><span>Mais-valia é o trabalho não-pago apropriado pelo capitalista; fonte do lucro.</span></li>
+        <li class="correta"><span class="letra">C</span><span>Anomia é categoria central do marxismo, definindo a situação dos trabalhadores no capitalismo.</span></li>
+        <li><span class="letra">D</span><span>Luta de classes é o motor da história em cada modo de produção.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — C (afirmativa INCORRETA)</div>
+      <p><strong>Por que C está incorreta:</strong> "Anomia" é conceito de <strong>Émile Durkheim</strong> (positivismo sociológico), NÃO de Marx. Para Marx, a categoria que se aproxima é "<em>alienação</em>" (estranhamento do trabalhador em relação ao produto, processo, gênero humano e si mesmo). Anomia = ausência de regras (Durkheim); alienação = estranhamento de si e do trabalho (Marx). Confundir esses dois conceitos é erro clássico cobrado pela FGV em ENARE 2025 (Q38, Q73).</p>
+      <p><strong>Por que as outras estão corretas:</strong> A — definição básica de modo de produção · B — definição de mais-valia em O Capital · D — frase do Manifesto Comunista, conceito central do marxismo.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-FUND · Sociologia Clássica</span><span>Extensivo ENARE 2026</span><span class="pg">7 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-FUND</div><div class="aula-ref">Bloco B13 · Aula 04 · Questões ENARE</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 02</span><span class="fonte">Weber · Dominação · NC: Análise</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Max Weber descreve três tipos puros de dominação legítima. Relacione cada tipo à sua característica predominante:</p>
+      <p class="questao-enunciado" style="font-style:italic;">I. Dominação racional-legal.<br>
+      II. Dominação tradicional.<br>
+      III. Dominação carismática.<br>
+      <br>
+      ( ) Baseia-se em dotes excepcionais e na devoção pessoal ao líder.<br>
+      ( ) Fundamenta-se em regras impessoais, na hierarquia burocrática e na competência técnica.<br>
+      ( ) Repousa em costumes históricos, patriarcado ou patrimonialismo.</p>
+      <p class="questao-enunciado">Sequência correta:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>I, II, III.</span></li>
+        <li class="correta"><span class="letra">B</span><span>III, I, II.</span></li>
+        <li><span class="letra">C</span><span>II, III, I.</span></li>
+        <li><span class="letra">D</span><span>III, II, I.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Correspondência:</strong></p>
+      <p>• 1ª descrição (dotes excepcionais, devoção pessoal) = <strong>III. Carismática</strong> — profeta, revolucionário, líder religioso<br>
+      • 2ª descrição (regras impessoais, hierarquia burocrática, competência) = <strong>I. Racional-legal</strong> — Estado moderno, burocracia<br>
+      • 3ª descrição (costumes, patriarcado, patrimonialismo) = <strong>II. Tradicional</strong> — monarquia, ordens feudais</p>
+      <p>Sequência: III, I, II → alternativa B.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-FUND · Sociologia Clássica</span><span>Extensivo ENARE 2026</span><span class="pg">8 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-FUND</div><div class="aula-ref">Bloco B13 · Aula 04 · Gabarito Integrado</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 03</span><span class="fonte">Durkheim × Marx · NC: Análise</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Sobre as diferenças entre as perspectivas de Marx e Durkheim no tratamento da questão social, é CORRETO afirmar:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Marx e Durkheim concordam: a questão social é desvio individual (anomia) corrigível por integração.</span></li>
+        <li class="correta"><span class="letra">B</span><span>Para Marx, a questão social tem origem ESTRUTURAL nas contradições capital-trabalho; para Durkheim, é manifestação de anomia (ruptura da consciência coletiva), tratável pela restauração da coesão social via solidariedade orgânica. As perspectivas conflitam: Marx politiza, Durkheim despolitiza.</span></li>
+        <li><span class="letra">C</span><span>Durkheim é a matriz teórica hegemônica do SS pós-1979 no Brasil.</span></li>
+        <li><span class="letra">D</span><span>Marx desenvolve o conceito de "fato social como coisa".</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> as duas matrizes <em>conflitam</em> radicalmente:</p>
+      <p>• <strong>Marx</strong>: questão social como produto estrutural do capitalismo; conflito como motor; transformação revolucionária. Politização.<br>
+      • <strong>Durkheim</strong>: questão social como "anomia"; conflito como patologia; reintegração via solidariedade. Despolitização.</p>
+      <p>O SS contemporâneo adota perspectiva marxiana (Iamamoto: questão social como expressões da contradição capital-trabalho mediadas pelo Estado). Não usa "anomia" como categoria explicativa central.</p>
+      <p><strong>Por que as outras erram:</strong> A — Marx e Durkheim conflitam, não concordam · C — Marx (não Durkheim) é matriz hegemônica · D — "fato social como coisa" é frase de Durkheim, não de Marx.</p>
+    </div>
+
+    <div class="subsecao" style="margin-top:6px;">Gabarito Comentado — Análise Integrada</div>
+    <table>
+      <tr><th>Questão</th><th>Gabarito</th><th>Tema</th><th>Conceito-Chave</th></tr>
+      <tr><td><strong>01</strong></td><td><span class="destaque">C</span></td><td>Marx (afirmativa INCORRETA)</td><td>Anomia é Durkheim, não Marx; Marx usa "alienação"</td></tr>
+      <tr><td><strong>02</strong></td><td><span class="destaque">B</span></td><td>Weber — 3 Dominações</td><td>Carismática (dons), Racional-legal (regras), Tradicional (costume)</td></tr>
+      <tr><td><strong>03</strong></td><td><span class="destaque">B</span></td><td>Marx × Durkheim</td><td>Marx: estrutural/politizado; Durkheim: anomia/despolitizado</td></tr>
+    </table>
+  </div>
+  <div class="footer"><span>SS-FUND · Sociologia Clássica</span><span>Extensivo ENARE 2026</span><span class="pg">9 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-FUND</div><div class="aula-ref">Bloco B13 · Aula 04 · Síntese</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Síntese — Sociologia Clássica</div>
+    <div class="sintese-grid">
+      <div class="sintese-item">
+        <div class="si-label">Marx (1818–1883)</div>
+        <p>Materialismo histórico-dialético. Modo de produção; mais-valia; alienação (4 dimensões); fetichismo; ideologia; luta de classes; infraestrutura → superestrutura. Obras: Manuscritos 1844, Manifesto 1848, O Capital 1867. <strong>Matriz hegemônica do SS contemporâneo</strong> (via Lukács, Netto, Iamamoto).</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Durkheim (1858–1917)</div>
+        <p>Positivismo sociológico. Fato social como coisa; consciência coletiva; solidariedade mecânica × orgânica; divisão do trabalho social; anomia; suicídio (4 tipos). Obras: Da Divisão do Trabalho 1893, Regras 1895, Suicídio 1897. <strong>Matriz do funcionalismo</strong> — criticada pela Reconceituação.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Weber (1864–1920)</div>
+        <p>Sociologia compreensiva. Ação social (4 tipos); tipo ideal; burocracia; dominação (racional-legal, tradicional, carismática); racionalização; desencantamento; ética protestante. Obras: Ética Protestante 1905, Economia e Sociedade 1922. Influência periférica mas relevante no SS.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Comparativo</div>
+        <p>Marx = conflito estrutural + revolução. Durkheim = ordem e coesão + reformismo. Weber = compreensão e racionalização + pessimismo liberal. Para o SS contemporâneo: hegemônica Marx; criticadas/auxiliares Durkheim e Weber.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Pegadinhas FGV</div>
+        <p>Anomia = Durkheim (NÃO Marx). Tipos de dominação = Weber. Mais-valia = Marx. Fato social como coisa = Durkheim. Tipos ideais = Weber. Alienação = Marx. Solidariedade mecânica/orgânica = Durkheim.</p>
+      </div>
+      <div class="sintese-item">
+        <div class="si-label">Próxima Aula</div>
+        <p><strong>Aula 05 — Formação Social Brasileira.</strong> Freyre, Florestan Fernandes, Darcy Ribeiro, Sérgio Buarque de Holanda. Cluster novo cobrado em 2025 (4 questões) — interpretações críticas da desigualdade no Brasil.</p>
+      </div>
+    </div>
+    <div class="alerta" style="margin-top:5px;">
+      <p><strong>Regra de ouro — Sociologia Clássica no ENARE:</strong> três matrizes conflitam, não convergem. Marx é a matriz crítica hegemônica do SS contemporâneo. Conhecer Durkheim e Weber para diferenciar, não para igualar. Anomia ≠ alienação; fato social ≠ luta de classes; tipo ideal ≠ análise estrutural.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-FUND · Sociologia Clássica</span><span>Extensivo ENARE 2026</span><span class="pg">10 / 10</span></div>
+</div>
+
+</body>
+</html>

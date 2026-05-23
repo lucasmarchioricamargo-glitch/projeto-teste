@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Serviço Social — Bloco B13 Aula 18 | Extensivo ENARE 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap');
+  :root { --creme: #F6F4ED; --verde: #1F5C23; --amarelo: #C6D834; --escuro: #0C2B0E; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #d0d0d0; font-family: 'Bricolage Grotesque', sans-serif; }
+  .page { width: 210mm; height: 297mm; background: var(--creme); margin: 0 auto 12px; position: relative; overflow: hidden; page-break-after: always; }
+  .header { background: var(--verde); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .header-logo { display: flex; align-items: center; gap: 8px; }
+  .header-logo svg { width: 32px; height: 32px; }
+  .header-brand { display: flex; flex-direction: column; line-height: 1; }
+  .header-brand .marca { font-family: 'Playfair Display', serif; font-style: italic; color: #fff; font-size: 13px; letter-spacing: 0.5px; }
+  .header-brand .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 7px; letter-spacing: 1.5px; text-transform: uppercase; }
+  .header-info { text-align: right; }
+  .header-info .disciplina { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
+  .header-info .aula-ref { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.7); font-size: 8px; letter-spacing: 0.5px; }
+  .footer { position: absolute; bottom: 0; left: 0; right: 0; background: var(--verde); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .footer span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.6); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .footer .pg { color: var(--amarelo); font-weight: 400; }
+  .body { padding: 14px 18px 30px; height: calc(297mm - 52px - 22px); overflow: hidden; }
+  .capa-page { background: var(--verde); }
+  .capa-header { background: var(--creme); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .capa-header .marca { font-family: 'Playfair Display', serif; font-style: italic; color: var(--verde); font-size: 14px; }
+  .capa-header .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--verde); font-size: 7.5px; letter-spacing: 2px; text-transform: uppercase; }
+  .capa-body { padding: 28px 24px 0; display: flex; flex-direction: column; height: calc(297mm - 52px - 22px); }
+  .capa-eyebrow { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; }
+  .capa-titulo { font-family: 'Barlow Condensed', sans-serif; color: #fff; font-size: 50px; line-height: 0.95; text-transform: uppercase; letter-spacing: -0.5px; margin-bottom: 6px; }
+  .capa-titulo span { color: var(--amarelo); }
+  .capa-subtitulo { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; color: rgba(255,255,255,0.65); font-size: 12px; letter-spacing: 0.3px; margin-bottom: 22px; line-height: 1.5; }
+  .capa-badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+  .capa-badge { background: rgba(198,216,52,0.15); border: 1px solid var(--amarelo); color: var(--amarelo); font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 8px; border-radius: 2px; }
+  .capa-divider { width: 40px; height: 3px; background: var(--amarelo); margin-bottom: 20px; }
+  .capa-topicos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .capa-topico { display: flex; align-items: flex-start; gap: 7px; }
+  .capa-topico-num { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 18px; line-height: 1; min-width: 18px; }
+  .capa-topico-txt { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 400; color: rgba(255,255,255,0.8); font-size: 9.5px; line-height: 1.4; }
+  .capa-footer-strip { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.25); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .capa-footer-strip span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.45); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .secao-titulo { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 18px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid var(--amarelo); padding-bottom: 3px; margin-bottom: 9px; line-height: 1; }
+  .subsecao { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.5px; margin: 7px 0 3px; }
+  p { font-size: 9px; line-height: 1.55; color: #1a1a1a; margin-bottom: 4px; font-weight: 400; }
+  .destaque { background: var(--amarelo); color: var(--escuro); font-weight: 600; padding: 1px 4px; border-radius: 2px; font-size: 8.5px; }
+  .alerta { background: rgba(198,216,52,0.18); border-left: 3px solid var(--amarelo); padding: 5px 8px; margin: 5px 0; border-radius: 0 3px 3px 0; }
+  .alerta p { margin: 0; font-size: 8.5px; }
+  .alerta strong { color: var(--verde); }
+  table { width: 100%; border-collapse: collapse; margin: 5px 0; font-size: 8px; }
+  th { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; padding: 4px 6px; text-align: left; }
+  td { padding: 3px 6px; border-bottom: 1px solid rgba(31,92,35,0.12); vertical-align: top; line-height: 1.4; color: #1a1a1a; }
+  tr:nth-child(even) td { background: rgba(31,92,35,0.04); }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 5px 0; }
+  .card { background: rgba(31,92,35,0.06); border: 1px solid rgba(31,92,35,0.15); border-radius: 4px; padding: 7px 8px; }
+  .card-title { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 11px; text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 3px; }
+  .card p { font-size: 8px; line-height: 1.5; }
+  .questao-header { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; padding: 4px 10px; border-radius: 3px 3px 0 0; display: flex; justify-content: space-between; align-items: center; }
+  .questao-header .fonte { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; color: var(--amarelo); letter-spacing: 0.5px; }
+  .questao-body { border: 1px solid rgba(31,92,35,0.2); border-top: none; border-radius: 0 0 3px 3px; padding: 7px 10px; margin-bottom: 7px; }
+  .questao-enunciado { font-size: 8.5px; line-height: 1.55; color: #111; margin-bottom: 5px; font-weight: 500; }
+  .alternativas { list-style: none; }
+  .alternativas li { font-size: 8px; line-height: 1.5; padding: 2px 0; color: #222; display: flex; gap: 5px; }
+  .alternativas li .letra { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: var(--verde); font-size: 9px; min-width: 10px; }
+  .alternativas li.correta .letra { color: var(--amarelo); }
+  .alternativas li.correta { background: rgba(198,216,52,0.15); border-left: 2px solid var(--amarelo); padding-left: 4px; }
+  .gabarito-box { background: var(--verde); border-radius: 4px; padding: 8px 12px; margin: 6px 0; }
+  .gabarito-box .gab-title { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+  .gabarito-box p { color: rgba(255,255,255,0.9); font-size: 8px; line-height: 1.55; }
+  .gabarito-box strong { color: var(--amarelo); }
+  .sintese-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-top: 6px; }
+  .sintese-item { background: rgba(31,92,35,0.07); border-left: 3px solid var(--verde); padding: 5px 7px; border-radius: 0 3px 3px 0; }
+  .sintese-item .si-label { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px; }
+  .sintese-item p { font-size: 7.5px; line-height: 1.5; }
+  ul.lista { padding-left: 14px; margin: 3px 0; }
+  ul.lista li { font-size: 8.5px; line-height: 1.55; color: #1a1a1a; margin-bottom: 1px; }
+  @media print { body { background: none; } .page { margin: 0; box-shadow: none; } }
+</style>
+</head>
+<body>
+
+<div class="page capa-page">
+  <div class="capa-header">
+    <div style="display:flex;align-items:center;gap:8px;"><svg width="34" height="34" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#1F5C23"/></svg><div><div class="marca">Elite Treinamentos</div><div class="tagline">Extensivo ENARE 2026</div></div></div>
+    <div style="text-align:right;"><div style="font-family:'Barlow Condensed',sans-serif;color:var(--verde);font-size:11px;letter-spacing:1px;text-transform:uppercase;">Bloco B13 · Aula 18</div><div style="font-family:'Space Grotesk',sans-serif;font-weight:300;color:#888;font-size:7.5px;letter-spacing:0.5px;">Serviço Social</div></div>
+  </div>
+  <div class="capa-body">
+    <div class="capa-eyebrow">Bloco B13 · SS-FAMILIA · Aula 18 de 21</div>
+    <div class="capa-titulo">Família, <span>Gênero<br>&amp; Populações</span></div>
+    <div class="capa-subtitulo">Pluralidade de arranjos familiares, populações<br>específicas (LGBTI+, PCD, idoso, criança, migrantes)</div>
+    <div class="capa-badge-row">
+      <div class="capa-badge">SS-FAMILIA ★★★</div>
+      <div class="capa-badge">ECA · Estatuto Idoso</div>
+      <div class="capa-badge">LBI · Lei Migração</div>
+      <div class="capa-badge">PAIF · PAEFI</div>
+    </div>
+    <div class="capa-divider"></div>
+    <div class="capa-topicos">
+      <div class="capa-topico"><div class="capa-topico-num">01</div><div class="capa-topico-txt">Conceitos de família (Engels, Saffioti, Sarti)</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">02</div><div class="capa-topico-txt">Pluralidade de arranjos; matrifocais</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">03</div><div class="capa-topico-txt">ECA, SINASE, Lei 13.431/2017</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">04</div><div class="capa-topico-txt">Pessoa idosa (Estatuto, Lei 14.423/2022)</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">05</div><div class="capa-topico-txt">LGBTI+ e PCD (LBI)</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">06</div><div class="capa-topico-txt">Migrantes, indígenas, quilombolas</div></div>
+    </div>
+  </div>
+  <div class="capa-footer-strip"><span>Extensivo ENARE 2026</span><span>Elite Treinamentos em Saúde</span><span>Página 1 de 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-FAMILIA</div><div class="aula-ref">Bloco B13 · Aula 18 · Família</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Conceitos e Concepções de Família</div>
+
+    <p>A <strong>família</strong> é unidade central no trabalho do AS — atendida em CRAS (PAIF), CREAS (PAEFI), Saúde da Família, escolas, hospitais. NÃO é dado natural, é construção histórico-social. Compreender suas transformações é essencial para o trabalho ético-político.</p>
+
+    <div class="subsecao">Engels — Origem Histórica da Família</div>
+    <p><strong>Friedrich Engels</strong>, em "<em>A Origem da Família, da Propriedade Privada e do Estado</em>" (1884), formula a tese clássica:</p>
+    <ul class="lista">
+      <li>Família NÃO é dado natural — tem origem histórica</li>
+      <li>Família monogâmica nasce com a propriedade privada (transmissão de herança)</li>
+      <li>Subordinação das mulheres como mecanismo de garantia da paternidade legítima</li>
+      <li>"Derrota histórica do sexo feminino" — quando a propriedade privada se consolidou</li>
+      <li>Tipos históricos: comunismo primitivo (matrilinear) → família consanguínea → família punaluana → família sindiásmica → família monogâmica</li>
+      <li>Família monogâmica = forma típica do capitalismo</li>
+      <li>Possibilidade de transformação: superação do capitalismo abre espaço para novas formas familiares</li>
+    </ul>
+
+    <div class="subsecao">Saffioti — Crítica Feminista Materialista</div>
+    <p>Como visto na Aula 17, Saffioti articula:</p>
+    <ul class="lista">
+      <li>Família patriarcal como locus de reprodução do "nó" patriarcado-capitalismo-racismo</li>
+      <li>Divisão sexual do trabalho como mecanismo central</li>
+      <li>Família como espaço de reprodução da força de trabalho</li>
+      <li>Família também como espaço de resistência e contradição</li>
+    </ul>
+
+    <div class="subsecao">Cynthia Sarti — Famílias Populares</div>
+    <p><strong>Cynthia Sarti</strong>, em "<em>A Família como Espelho</em>" (1996, 2005), é referência brasileira:</p>
+    <ul class="lista">
+      <li>Famílias populares têm dinâmicas próprias — não são "déficit" do modelo nuclear</li>
+      <li>"Rede de obrigações morais" — apoio mútuo entre parentes, vizinhos, compadres</li>
+      <li>Família popular é mais ampliada que nuclear (avó, tio, agregados, padrinhos)</li>
+      <li>Importância de pessoas-chave: "matriarcas" (avós) sustentam materialmente e simbolicamente</li>
+      <li>Crítica aos AS que tratam famílias populares como "incompetentes" ou "desestruturadas"</li>
+      <li>Trabalho profissional deve compreender a lógica da família, não impor modelo externo</li>
+    </ul>
+
+    <div class="subsecao">Família como Sujeito de Direitos × Família como Executora</div>
+    <p>Crítica importante da bibliografia contemporânea:</p>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Concepção Liberal/Neoliberal</div>
+        <p>Família como "primeira responsável" pela proteção; Estado só intervém em falência familiar. Familismo. Refamilização das políticas. Carga sobre as mulheres (cuidadoras). Crítica do CFESS.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Concepção Crítica</div>
+        <p>Família como sujeito de direitos; ESTADO como responsável principal. Apoio (não-substituição) às funções familiares. Reconhecimento da pluralidade de arranjos. Articulação com políticas universais. Defendida pelo SS brasileiro.</p>
+      </div>
+    </div>
+
+    <div class="subsecao">Pluralidade de Arranjos Familiares</div>
+    <p>O Brasil contemporâneo apresenta enorme pluralidade de arranjos:</p>
+    <table>
+      <tr><th>Arranjo</th><th>Características</th></tr>
+      <tr><td>Nuclear</td><td>Casal heterossexual + filhos. Modelo "tradicional", em diminuição estatística.</td></tr>
+      <tr><td>Matrifocal/monoparental feminina</td><td>Mãe-chefe-de-família + filhos. 40%+ das famílias brasileiras. Maioria em camadas populares.</td></tr>
+      <tr><td>Monoparental masculina</td><td>Pai-chefe-de-família + filhos. Em crescimento.</td></tr>
+      <tr><td>Recomposta</td><td>Casal com filhos de relacionamentos anteriores; "padrasto", "madrasta", meio-irmãos.</td></tr>
+      <tr><td>Estendida/extensa</td><td>Avós, tios, agregados convivendo. Frequente em famílias populares e indígenas.</td></tr>
+      <tr><td>Homoafetiva</td><td>Casal de mesmo sexo + filhos. Reconhecida pelo STF (2011).</td></tr>
+      <tr><td>Unipessoal</td><td>Pessoa sozinha. Crescimento entre idosos e jovens urbanos.</td></tr>
+      <tr><td>Casal sem filhos</td><td>"DINK" (double income, no kids). Em crescimento.</td></tr>
+      <tr><td>Famílias acolhedoras</td><td>Famílias que acolhem crianças e adolescentes em situação de medida protetiva (ECA).</td></tr>
+      <tr><td>Tutelar</td><td>Avós ou outros parentes como guardiões legais.</td></tr>
+    </table>
+
+    <div class="subsecao">Conceito Constitucional de Família — CF/1988 Art. 226</div>
+    <ul class="lista">
+      <li>"A família, base da sociedade, tem especial proteção do Estado"</li>
+      <li>§ 1º Reconhece união estável (heteroafetiva)</li>
+      <li>§ 4º Reconhece família monoparental — "a entendida pelos descendentes de qualquer dos pais"</li>
+      <li>STF (2011) ampliou a interpretação: união homoafetiva tem mesma proteção</li>
+      <li>Princípio da pluralidade familiar consagrado na jurisprudência</li>
+    </ul>
+
+    <div class="subsecao">Política Nacional de Assistência Social (PNAS 2004) e Família</div>
+    <p>A PNAS (Aula 06) reconhece família como sujeito de direitos:</p>
+    <ul class="lista">
+      <li>Matricialidade sociofamiliar como princípio</li>
+      <li>NÃO é familismo — não responsabiliza família por proteção que cabe ao Estado</li>
+      <li>Reconhece pluralidade de arranjos</li>
+      <li>Atende família, não apenas indivíduos</li>
+      <li>Articula com territorialidade — família no território</li>
+    </ul>
+
+    <div class="subsecao">PAIF (Aula 06)</div>
+    <ul class="lista">
+      <li>Proteção e Atendimento Integral à Família</li>
+      <li>Vinculado ao CRAS (proteção básica)</li>
+      <li>Acompanhamento familiar continuado</li>
+      <li>Atividades coletivas e individuais</li>
+      <li>Articulação com benefícios (BF, BPC)</li>
+      <li>Indicadores: número de famílias acompanhadas, ações territoriais</li>
+    </ul>
+
+    <div class="subsecao">PAEFI (Aula 06)</div>
+    <ul class="lista">
+      <li>Proteção e Atendimento Especializado à Família e Indivíduos</li>
+      <li>Vinculado ao CREAS (proteção especial de média complexidade)</li>
+      <li>Famílias e indivíduos em situação de violação de direitos</li>
+      <li>Trabalho com violência intrafamiliar, exploração sexual, violência contra criança/idoso/PCD</li>
+      <li>Articulação com Sistema de Garantia de Direitos (SGD)</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> família = construção histórico-social, não natural. Engels (origem da família monogâmica + propriedade privada); Saffioti (família como reprodução do nó); Sarti (família popular tem lógica própria). Pluralidade reconhecida. CF/1988 art. 226. PNAS 2004 + PAIF + PAEFI. Crítica ao familismo neoliberal.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-FAMILIA · Conceitos</span><span>Extensivo ENARE 2026</span><span class="pg">2 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-FAMILIA</div><div class="aula-ref">Bloco B13 · Aula 18 · Criança e Adolescente</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Crianças e Adolescentes — ECA e SINASE</div>
+
+    <p>O <strong>Estatuto da Criança e do Adolescente (ECA)</strong> — Lei 8.069/1990 — é marco internacional reconhecido. Inspira-se na CRC/UNCRC (Convenção sobre os Direitos da Criança, 1989). Foi precedido pelo Código de Menores (1979) — paradigma autoritário/repressivo. Cobrança recorrente em ENARE.</p>
+
+    <div class="subsecao">Princípios do ECA</div>
+    <table>
+      <tr><th>Princípio</th><th>Conteúdo</th></tr>
+      <tr><td><strong>Proteção Integral</strong></td><td>Art. 1º — criança/adolescente são sujeitos de direitos em peculiar fase de desenvolvimento; merecem proteção integral (não apenas tutelar)</td></tr>
+      <tr><td><strong>Prioridade Absoluta</strong></td><td>Art. 4º — primazia no atendimento, na destinação de recursos públicos, na proteção</td></tr>
+      <tr><td><strong>Melhor Interesse</strong></td><td>Decisões devem considerar o melhor interesse da criança/adolescente, ouvindo-os quando possível</td></tr>
+      <tr><td><strong>Triplice Responsabilidade</strong></td><td>Família + Sociedade + Estado — responsabilidade compartilhada (não exclusiva da família)</td></tr>
+      <tr><td><strong>Não-Discriminação</strong></td><td>Independente de raça, cor, classe, deficiência, etc.</td></tr>
+    </table>
+
+    <div class="subsecao">Conceitos do ECA</div>
+    <ul class="lista">
+      <li><strong>Criança</strong>: até 12 anos incompletos</li>
+      <li><strong>Adolescente</strong>: 12 a 18 anos</li>
+      <li><strong>Jovem</strong>: 15 a 29 anos (Estatuto da Juventude — Lei 12.852/2013)</li>
+    </ul>
+
+    <div class="subsecao">Direitos Fundamentais — Capítulos do ECA</div>
+    <table>
+      <tr><th>Capítulo</th><th>Conteúdo</th></tr>
+      <tr><td>Vida e saúde</td><td>Atendimento à saúde; SUS; vacinação obrigatória; bematernidade</td></tr>
+      <tr><td>Liberdade, respeito e dignidade</td><td>Vedação a tratamentos vexatórios; respeito como sujeitos</td></tr>
+      <tr><td>Convivência familiar e comunitária</td><td>Direito de viver em família; respeito a vínculos; institucionalização como exceção</td></tr>
+      <tr><td>Educação, cultura, esporte e lazer</td><td>Educação obrigatória; combate ao trabalho infantil; programas culturais</td></tr>
+      <tr><td>Profissionalização e proteção no trabalho</td><td>Vedado trabalho a menores de 14 anos; jovem aprendiz (14-18 anos)</td></tr>
+    </table>
+
+    <div class="subsecao">Sistema de Garantia de Direitos (SGD)</div>
+    <p>Articula instâncias para garantir direitos das crianças e adolescentes:</p>
+    <ul class="lista">
+      <li><strong>Promoção</strong>: políticas sociais (SUS, SUAS, MEC) que asseguram direitos universais</li>
+      <li><strong>Defesa</strong>: Conselho Tutelar, Defensoria, MP, Delegacias da Criança e Adolescente, Juizado</li>
+      <li><strong>Controle Social</strong>: Conselhos de Direitos (CMDCA, CEDCA, CONANDA)</li>
+    </ul>
+
+    <div class="subsecao">Conselho Tutelar</div>
+    <ul class="lista">
+      <li>Órgão permanente e autônomo (Art. 131 do ECA)</li>
+      <li>5 conselheiros eleitos por mandato de 4 anos</li>
+      <li>NÃO julga — aplica medidas de proteção</li>
+      <li>Atende denúncias de violação de direitos</li>
+      <li>Encaminha para serviços (saúde, assistência, educação)</li>
+      <li>Articula com Justiça da Infância e MP quando necessário</li>
+      <li>Notificação compulsória de violência (Aula 14)</li>
+    </ul>
+
+    <div class="subsecao">Medidas Protetivas (Art. 101 do ECA)</div>
+    <p>Aplicáveis quando direitos forem violados/ameaçados:</p>
+    <ul class="lista">
+      <li>I — Encaminhamento aos pais/responsáveis, com termo de responsabilidade</li>
+      <li>II — Orientação, apoio e acompanhamento temporários</li>
+      <li>III — Matrícula e frequência obrigatórias em estabelecimento oficial de ensino fundamental</li>
+      <li>IV — Inclusão em programa comunitário ou oficial de auxílio à família, criança e adolescente</li>
+      <li>V — Requisição de tratamento médico, psicológico ou psiquiátrico, em regime hospitalar ou ambulatorial</li>
+      <li>VI — Inclusão em programa oficial ou comunitário de auxílio, orientação e tratamento a alcoólatras e toxicômanos</li>
+      <li>VII — Acolhimento institucional (excepcional; ECA Art. 19; Lei 12.010/2009 — Lei Nacional da Adoção)</li>
+      <li>VIII — Inclusão em programa de acolhimento familiar (família acolhedora)</li>
+      <li>IX — Colocação em família substituta — guarda, tutela, adoção</li>
+    </ul>
+
+    <div class="subsecao">Adoção (Lei 12.010/2009 — Lei Nacional da Adoção)</div>
+    <ul class="lista">
+      <li>Acolhimento institucional como medida excepcional, com prazo máximo de 18 meses</li>
+      <li>Reavaliação a cada 6 meses</li>
+      <li>Cadastro Nacional de Adoção (CNA)</li>
+      <li>Adotantes habilitados em fila nacional</li>
+      <li>Adoção por casais homoafetivos reconhecida (STF 2015)</li>
+      <li>Adoção tardia (crianças maiores) priorizada</li>
+      <li>Inclusão de adolescentes</li>
+    </ul>
+
+    <div class="subsecao">SINASE — Lei 12.594/2012</div>
+    <p>Sistema Nacional de Atendimento Socioeducativo. Para adolescentes em conflito com a lei (12-18 anos, com até 21 nos casos de internação):</p>
+    <ul class="lista">
+      <li>Ato infracional = análogo a crime/contravenção (ECA Art. 103)</li>
+      <li>Adolescente NÃO é "menor infrator" — terminologia ECA</li>
+      <li>Medidas socioeducativas (Art. 112):
+        <ul>
+          <li>Advertência</li>
+          <li>Obrigação de reparar o dano</li>
+          <li>Prestação de serviços à comunidade (PSC)</li>
+          <li>Liberdade Assistida (LA)</li>
+          <li>Semiliberdade</li>
+          <li>Internação (privação de liberdade — máximo 3 anos; podem permanecer até 21 anos)</li>
+        </ul>
+      </li>
+      <li>Centros de internação (controvérsia: condições análogas a presídios)</li>
+      <li>Defesa: PRINCÍPIO PROTETIVO + EDUCATIVO, não punitivo</li>
+      <li>Crítica do CFESS: maioria dos internos é negra, periférica; reproduz lógica carcerária</li>
+    </ul>
+
+    <div class="subsecao">Lei 13.431/2017 — SGD-Vítima ou Testemunha de Violência</div>
+    <p>Sistema de Garantia de Direitos da Criança e do Adolescente Vítima ou Testemunha de Violência:</p>
+    <ul class="lista">
+      <li>Escuta especializada e depoimento especial (não-revitimização)</li>
+      <li>Sala adequada; profissional capacitado; uma única vez (idealmente)</li>
+      <li>Articulação com escola, saúde, segurança</li>
+      <li>Notificação compulsória (Aula 14)</li>
+      <li>5 tipos de violência: física, psicológica, sexual, institucional, exposição</li>
+      <li>Decreto 9.603/2018 — regulamenta</li>
+    </ul>
+
+    <div class="subsecao">Trabalho do AS com Crianças e Adolescentes</div>
+    <ul class="lista">
+      <li>CRAS (PAIF) — atendimento sociofamiliar; SCFV</li>
+      <li>CREAS (PAEFI) — violações de direitos</li>
+      <li>SUS (ESF, CAPSi, hospitais)</li>
+      <li>Educação (Lei 13.935/2019 — AS na educação básica)</li>
+      <li>Sistema socioeducativo (SINASE)</li>
+      <li>Conselho Tutelar (servidor ou apoio técnico)</li>
+      <li>Atuação intersetorial — SGD</li>
+      <li>Defesa da convivência familiar e comunitária</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> ECA (Lei 8.069/1990) = proteção integral, prioridade absoluta. Criança até 12 incompletos; adolescente 12-18. SGD: promoção + defesa + controle. Conselho Tutelar = não julga. Lei 12.010/2009 (adoção); Lei 12.594/2012 (SINASE); Lei 13.431/2017 (SGD-Vítima). 6 medidas socioeducativas. Notificação compulsória.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-FAMILIA · ECA</span><span>Extensivo ENARE 2026</span><span class="pg">3 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-FAMILIA</div><div class="aula-ref">Bloco B13 · Aula 18 · Pessoa Idosa</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Pessoa Idosa — Estatuto e Direitos</div>
+
+    <p>O <strong>Estatuto da Pessoa Idosa (Lei 10.741/2003)</strong>, alterado pela <strong>Lei 14.423/2022</strong> (substituiu "idoso" por "pessoa idosa"), é marco legal. Brasil vive transição demográfica acelerada — envelhecimento populacional crescente. AS atua com pessoas idosas em saúde, assistência, sociojurídico, instituições de longa permanência.</p>
+
+    <div class="subsecao">Quem é a Pessoa Idosa?</div>
+    <ul class="lista">
+      <li>Pessoa com 60 anos ou mais (Estatuto, art. 1º)</li>
+      <li>OMS: 60+ em países em desenvolvimento; 65+ em desenvolvidos</li>
+      <li>Envelhecimento populacional: 15,8% da população (IBGE 2022) — projeção 25% em 2050</li>
+      <li>Mulheres em maioria (feminilização da velhice)</li>
+      <li>Idosos negros têm pior acesso a serviços e renda (interseccionalidade)</li>
+    </ul>
+
+    <div class="subsecao">Direitos Fundamentais — Estatuto</div>
+    <table>
+      <tr><th>Direito</th><th>Conteúdo</th></tr>
+      <tr><td>Vida e saúde</td><td>SUS prioritário; atenção integral; geriatria; idoso fragilizado</td></tr>
+      <tr><td>Liberdade, respeito e dignidade</td><td>Vedação a tratamentos vexatórios; respeito à autonomia</td></tr>
+      <tr><td>Alimentação</td><td>Acesso adequado; saúde nutricional</td></tr>
+      <tr><td>Convivência familiar e comunitária</td><td>Direito de viver em família; institucionalização como exceção</td></tr>
+      <tr><td>Profissionalização e trabalho</td><td>Vedação a discriminação por idade no trabalho</td></tr>
+      <tr><td>Previdência social</td><td>Aposentadoria; pensão; reajustes</td></tr>
+      <tr><td>Assistência social</td><td>BPC; serviços do SUAS</td></tr>
+      <tr><td>Habitação</td><td>Acesso a programa habitacional; reserva de 3% em programas habitacionais</td></tr>
+      <tr><td>Educação, cultura, esporte, lazer</td><td>Universidades Abertas à Terceira Idade; programas culturais</td></tr>
+      <tr><td>Transporte</td><td>Gratuidade no transporte coletivo urbano (60+); meia-passagem interestadual</td></tr>
+    </table>
+
+    <div class="subsecao">Sistema de Garantia de Direitos da Pessoa Idosa</div>
+    <ul class="lista">
+      <li><strong>Conselho da Pessoa Idosa</strong>: nacional (CNDI), estaduais, municipais</li>
+      <li><strong>Delegacia Especializada</strong>: em algumas capitais</li>
+      <li><strong>MP</strong>: defesa do idoso</li>
+      <li><strong>Defensoria Pública</strong>: assistência jurídica</li>
+      <li><strong>Disque 100</strong>: denúncias de violação</li>
+      <li><strong>SAS</strong> (Serviços de Assistência Social): CRAS, CREAS, ILPI</li>
+    </ul>
+
+    <div class="subsecao">Violência Contra a Pessoa Idosa</div>
+    <p>Brasil tem alta incidência. Mais de 75% praticadas por familiares:</p>
+    <table>
+      <tr><th>Tipo</th><th>Descrição</th></tr>
+      <tr><td>Física</td><td>Agressões, restrição forçada de movimento</td></tr>
+      <tr><td>Psicológica</td><td>Insultos, ameaças, isolamento</td></tr>
+      <tr><td>Sexual</td><td>Abuso sexual; idoso institucionalizado é vulnerável</td></tr>
+      <tr><td>Financeira/Patrimonial</td><td>Apropriação de bens, dinheiro, benefícios — muito frequente</td></tr>
+      <tr><td>Negligência</td><td>Abandono; não-cuidado; recusa de tratamento</td></tr>
+      <tr><td>Autonegligência</td><td>Recusa de autocuidado (transtornos mentais, depressão)</td></tr>
+      <tr><td>Violência institucional</td><td>Em hospitais, ILPI, plantão de saúde</td></tr>
+    </table>
+
+    <p><strong>Notificação compulsória</strong> de violência ao MP/Conselho do Idoso (Estatuto art. 19, ver Aula 14).</p>
+
+    <div class="subsecao">Instituições de Longa Permanência para Idosos (ILPI)</div>
+    <ul class="lista">
+      <li>Antigos "asilos"; agora ILPI</li>
+      <li>Devem ser regulamentadas pela ANVISA (RDC 502/2021)</li>
+      <li>Tipos: pública, privada, filantrópica</li>
+      <li>Equipe técnica: AS, médico, enfermeiro, terapeuta ocupacional, fisioterapeuta, nutricionista, cuidador</li>
+      <li>Maior demanda devido a envelhecimento, urbanização, mulher no mercado de trabalho</li>
+      <li>Crítica: institucionalização precoce, condições precárias em muitas ILPIs</li>
+      <li>CFESS posiciona-se pela manutenção da convivência familiar e comunitária</li>
+    </ul>
+
+    <div class="subsecao">Atenção à Pessoa Idosa no SUS</div>
+    <ul class="lista">
+      <li>Política Nacional de Saúde da Pessoa Idosa (PNSPI, Portaria 2.528/2006)</li>
+      <li>Linhas de cuidado: idoso ativo, idoso frágil, idoso muito frágil</li>
+      <li>Caderneta de Saúde da Pessoa Idosa</li>
+      <li>RAS — atendimento articulado</li>
+      <li>Atenção domiciliar (SAD/Melhor em Casa)</li>
+      <li>Cuidados paliativos</li>
+      <li>Saúde mental do idoso — depressão é subdiagnosticada</li>
+      <li>Quedas e fraturas; demências (Alzheimer); doenças cardiovasculares</li>
+    </ul>
+
+    <div class="subsecao">Aposentadoria e Previdência</div>
+    <ul class="lista">
+      <li>Reforma da Previdência (EC 103/2019, governo Bolsonaro/Guedes)</li>
+      <li>Aposentadoria por idade: 62 anos (mulher) e 65 anos (homem) — regra geral</li>
+      <li>Aposentadoria especial mantida em parte</li>
+      <li>Capitalização não foi aprovada (resistência)</li>
+      <li>Pensão por morte: maior restrição</li>
+      <li>BPC mantido (Aula 06)</li>
+      <li>Crítica: reforma agravou desigualdade etária e de gênero</li>
+    </ul>
+
+    <div class="subsecao">Lei 14.423/2022 — Substituição de "Idoso" por "Pessoa Idosa"</div>
+    <ul class="lista">
+      <li>Aprovada em julho/2022</li>
+      <li>Substituiu o termo "idoso" por "pessoa idosa" em toda a legislação federal</li>
+      <li>Inspiração: Convenção PCD (modelo "pessoa com deficiência")</li>
+      <li>Substitui também "menor" por "criança ou adolescente" (ECA já usa)</li>
+      <li>Reconhecimento da pessoa como sujeito de direitos, não como condição</li>
+    </ul>
+
+    <div class="subsecao">Movimentos e Direitos</div>
+    <ul class="lista">
+      <li>Plano de Ação Internacional sobre Envelhecimento (Madri 2002)</li>
+      <li>Década do Envelhecimento Saudável da OMS (2021-2030)</li>
+      <li>Convenção Interamericana sobre os Direitos da Pessoa Idosa (OEA 2015)</li>
+      <li>Frente Parlamentar Mista em Defesa da Pessoa Idosa</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> Pessoa idosa = 60+ (Estatuto, Lei 10.741/2003). Lei 14.423/2022 alterou nomenclatura. Direitos: convivência familiar, saúde, previdência, transporte gratuito, BPC. Violência: 75% intrafamiliar; notificação compulsória ao MP. ILPI regulamentadas pela ANVISA. PNSPI 2006. EC 103/2019 (Reforma da Previdência).</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-FAMILIA · Pessoa Idosa</span><span>Extensivo ENARE 2026</span><span class="pg">4 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-FAMILIA</div><div class="aula-ref">Bloco B13 · Aula 18 · LGBTI+ e PCD</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">População LGBTI+</div>
+
+    <p>A população <strong>LGBTI+</strong> (lésbicas, gays, bissexuais, travestis, transexuais, intersexuais e outras identidades) enfrenta múltiplas formas de discriminação. AS no campo psicossocial articula com PEP, princípio XI do CE/1993 (vedação à discriminação por orientação sexual e identidade de gênero — inclusão de identidade de gênero pela Res. CFESS 615/2011).</p>
+
+    <div class="subsecao">Marcos Jurídicos</div>
+    <table>
+      <tr><th>Ano</th><th>Marco</th></tr>
+      <tr><td>2008</td><td>1ª Conferência Nacional GLBT (sob governo Lula)</td></tr>
+      <tr><td>2009</td><td>Política Nacional de Promoção da Cidadania e Direitos Humanos de LGBT (Decreto 7.037/2009)</td></tr>
+      <tr><td>2011</td><td>STF reconhece a união homoafetiva como entidade familiar (ADI 4.277)</td></tr>
+      <tr><td>2011</td><td>Política Nacional de Saúde Integral LGBT (Portaria 2.836/2011)</td></tr>
+      <tr><td>2013</td><td>CNJ Resolução 175 — autoriza casamento civil entre pessoas do mesmo sexo</td></tr>
+      <tr><td>2015</td><td>STF reconhece adoção por casais homoafetivos</td></tr>
+      <tr><td>2016</td><td>Decreto 8.727/2016 — uso do nome social em órgãos federais</td></tr>
+      <tr><td>2018</td><td>STF: pessoa trans pode mudar nome e gênero no registro civil sem cirurgia (ADI 4.275)</td></tr>
+      <tr><td>2019</td><td>STF criminaliza LGBTfobia (ADO 26 e MI 4733) — equiparada a racismo (Lei 7.716/1989)</td></tr>
+      <tr><td>2019</td><td>OMS retira "transtorno de identidade de gênero" da CID-11 (passa a ser "incongruência de gênero", em capítulo de "condições relacionadas à saúde sexual")</td></tr>
+      <tr><td>2023</td><td>STF: doação de sangue por homens que fazem sexo com homens (HSH) sem restrição (ADI 5.543)</td></tr>
+    </table>
+
+    <div class="subsecao">Política Nacional de Saúde Integral LGBT (2011)</div>
+    <ul class="lista">
+      <li>Atendimento sem discriminação no SUS</li>
+      <li>Uso do nome social no cartão SUS e prontuário</li>
+      <li>Cuidado integral: saúde sexual, mental, hormonioterapia, cirurgias</li>
+      <li>Cirurgia de redesignação de gênero pelo SUS (Portarias 2.803/2013 e 1.707/2008)</li>
+      <li>Direito a acompanhante de mesmo sexo</li>
+      <li>Atenção à saúde da população transexual (Processo Transexualizador)</li>
+      <li>Combate à violência transfóbica</li>
+      <li>Notificação obrigatória de violência (SINAN)</li>
+    </ul>
+
+    <div class="subsecao">Dados e Indicadores</div>
+    <ul class="lista">
+      <li>Brasil é o país que mais mata pessoas trans no mundo (ANTRA 2023: 145 mortes)</li>
+      <li>Expectativa de vida de pessoa trans no Brasil: 35 anos (Antra)</li>
+      <li>Exclusão escolar; vulnerabilidade no mercado de trabalho</li>
+      <li>Profissionais do sexo (segmento que concentra pessoas trans)</li>
+      <li>Demanda crescente nos CAPS por sofrimento por LGBTfobia internalizada</li>
+    </ul>
+
+    <div class="subsecao">Atuação do AS</div>
+    <ul class="lista">
+      <li>Atendimento sem discriminação (princípio XI do CE)</li>
+      <li>Uso correto do nome social e pronome</li>
+      <li>Articulação com Centros de Cidadania LGBTI+ (em algumas capitais)</li>
+      <li>Combate à violência intrafamiliar (expulsão de adolescentes LGBTI+)</li>
+      <li>Acolhimento em casos de violação de direitos</li>
+      <li>Notificação compulsória de violência transfóbica</li>
+      <li>Posicionamento crítico à "terapia de reorientação sexual" (vedada pelo CFP)</li>
+      <li>Defesa de famílias homoafetivas (adoção, guarda, herança)</li>
+    </ul>
+
+    <div class="secao-titulo">Pessoa com Deficiência (PCD)</div>
+
+    <p>Já abordada nas Aulas 10 (Convenção PCD/ONU) e 18 (LBI). Síntese aqui:</p>
+
+    <div class="subsecao">Marco Legal</div>
+    <ul class="lista">
+      <li>Convenção sobre os Direitos das Pessoas com Deficiência (ONU 2006) — Brasil aderiu com status de Emenda Constitucional (Decreto Legislativo 186/2008)</li>
+      <li><strong>Lei Brasileira de Inclusão (LBI) — Lei 13.146/2015</strong> — Estatuto da PCD</li>
+      <li>Decreto 5.296/2004 — acessibilidade</li>
+      <li>Lei 8.213/1991 — cotas para PCD em empresas (3% a 5%, conforme tamanho)</li>
+      <li>Lei 13.409/2016 — cota PCD em ensino superior federal</li>
+      <li>Lei 14.171/2021 — passe livre PCD em transporte interestadual</li>
+    </ul>
+
+    <div class="subsecao">Modelo Social da Deficiência</div>
+    <p>A LBI adota o <strong>modelo social</strong>, em substituição ao modelo médico:</p>
+    <table>
+      <tr><th>Modelo Médico (antes)</th><th>Modelo Social (LBI 2015)</th></tr>
+      <tr><td>Deficiência = limitação individual; "doença"</td><td>Deficiência = interação entre impedimento e barreiras (sociais, atitudinais, físicas)</td></tr>
+      <tr><td>Tratamento: medicalização, reabilitação</td><td>Tratamento: remoção de barreiras; acessibilidade</td></tr>
+      <tr><td>Pessoa precisa se "adequar"</td><td>Sociedade precisa se adequar à pessoa</td></tr>
+    </table>
+
+    <div class="subsecao">Tipos de Barreiras (LBI)</div>
+    <ul class="lista">
+      <li><strong>Urbanísticas</strong>: vias, calçadas, escadas, transportes</li>
+      <li><strong>Arquitetônicas</strong>: edifícios, banheiros, portas</li>
+      <li><strong>Nos transportes</strong>: ônibus, metrô, taxi</li>
+      <li><strong>Comunicacionais e na informação</strong>: ausência de Libras, Braille, audiodescrição</li>
+      <li><strong>Atitudinais</strong>: preconceitos, estigmatização, desrespeito</li>
+      <li><strong>Tecnológicas</strong>: tecnologias inacessíveis</li>
+    </ul>
+
+    <div class="subsecao">Direitos da PCD (LBI)</div>
+    <ul class="lista">
+      <li>Igualdade e não-discriminação (capítulo I)</li>
+      <li>Atendimento prioritário (Lei 10.048/2000)</li>
+      <li>Vida (capítulo II) — vedação a esterilização forçada</li>
+      <li>Habilitação e reabilitação (capítulo III)</li>
+      <li>Saúde (capítulo IV) — SUS, equipe multiprofissional</li>
+      <li>Educação inclusiva (capítulo V) — escola comum com apoio</li>
+      <li>Moradia (capítulo VI) — adaptada e acessível</li>
+      <li>Trabalho (capítulo VII) — cotas, inclusão</li>
+      <li>Assistência social (capítulo VIII) — BPC; CRAS, CREAS</li>
+      <li>Previdência (capítulo IX)</li>
+      <li>Cultura, esporte, turismo e lazer (capítulo X)</li>
+      <li>Transporte e mobilidade (capítulo XI)</li>
+      <li>Capacidade civil (TJTU 2015) — superada a "incapacidade absoluta"; agora apoio para decisão (Tomada de Decisão Apoiada)</li>
+    </ul>
+
+    <div class="subsecao">Acessibilidade — Princípio Norteador</div>
+    <ul class="lista">
+      <li>Desenho universal — todos os ambientes acessíveis a todas as pessoas</li>
+      <li>Tecnologia assistiva</li>
+      <li>Comunicação (Libras, Braille)</li>
+      <li>Audiodescrição em conteúdos audiovisuais</li>
+      <li>Adaptação razoável — adaptações específicas para indivíduos</li>
+    </ul>
+
+    <div class="subsecao">Atuação do AS com PCD</div>
+    <ul class="lista">
+      <li>CRAS, CREAS — incluir PCD em programas sociais</li>
+      <li>BPC PCD (avaliação biopsicossocial — Aula 16)</li>
+      <li>Educação inclusiva (Lei 13.935/2019)</li>
+      <li>SUS — atenção integral (CAPS PCD, NASF/eMulti)</li>
+      <li>Habilitação/reabilitação — Centros Especializados de Reabilitação (CER)</li>
+      <li>Articulação com escolas, instituições, família</li>
+      <li>Combate ao capacitismo (princípio XI do CE)</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> LGBTI+ — princípio XI do CE (incluiu identidade de gênero em 2011); STF criminalizou LGBTfobia em 2019. PCD — LBI/Lei 13.146/2015; modelo social; barreiras (atitudinal, arquitetônica, urbanística etc.); cotas Lei 8.213/1991. Brasil mata mais pessoas trans no mundo. BPC PCD = avaliação biopsicossocial.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-FAMILIA · LGBTI+ · PCD</span><span>Extensivo ENARE 2026</span><span class="pg">5 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-FAMILIA</div><div class="aula-ref">Bloco B13 · Aula 18 · Populações Específicas</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Populações Específicas</div>
+
+    <div class="subsecao">Indígenas</div>
+    <ul class="lista">
+      <li>~1,7 milhão de indígenas no Brasil (305 povos, 274 línguas) — IBGE 2022</li>
+      <li>Constituição (Arts. 231-232): direitos sobre terras tradicionalmente ocupadas; reconhecimento da organização social, costumes, crenças, tradições</li>
+      <li>Lei 6.001/1973 — Estatuto do Índio (parcialmente revogada; em discussão substituição)</li>
+      <li>Convenção 169 da OIT (Aula 10) — consulta livre, prévia e informada</li>
+      <li>FUNAI — responsabilidade tutelar do Estado; gestor</li>
+      <li>SESAI — Secretaria Especial de Saúde Indígena (SUS específico)</li>
+      <li>DSEIs — Distritos Sanitários Especiais Indígenas (34 no Brasil)</li>
+      <li>PNGATI — Política Nacional de Gestão Territorial e Ambiental de Terras Indígenas (Decreto 7.747/2012)</li>
+      <li>Demarcação de terras — pendente em muitos casos</li>
+      <li>Crise dos Yanomami (2023) — desnutrição, garimpo ilegal, mortes</li>
+      <li>Marco Temporal — STF 2023 (PL 2.903/2023 — vetado, mas Congresso derrubou veto)</li>
+      <li>Brasil sentado em ações na Corte Interamericana sobre violações indígenas (Xucuru, etc.)</li>
+    </ul>
+
+    <div class="subsecao">Quilombolas</div>
+    <ul class="lista">
+      <li>Comunidades remanescentes de quilombos — descendentes de escravizados, com identidade própria e território coletivo</li>
+      <li>CF/1988 Art. 68 (ADCT): "Aos remanescentes das comunidades dos quilombos que estejam ocupando suas terras é reconhecida a propriedade definitiva"</li>
+      <li>Decreto 4.887/2003 — regulamenta titulação</li>
+      <li>INCRA + Fundação Cultural Palmares — competência</li>
+      <li>~3 mil comunidades quilombolas; só 7% tituladas</li>
+      <li>Política Nacional de Saúde Integral da População Negra inclui quilombolas</li>
+      <li>Programa Brasil Quilombola (2004)</li>
+      <li>SS atua em CRAS rurais, ESF de saúde indígena/quilombola</li>
+    </ul>
+
+    <div class="subsecao">Ribeirinhos e Povos de Comunidades Tradicionais</div>
+    <ul class="lista">
+      <li>Decreto 6.040/2007 — Política Nacional de Desenvolvimento Sustentável dos Povos e Comunidades Tradicionais</li>
+      <li>Inclui: ribeirinhos, pomeranos, ciganos, caiçaras, faxinaleses, fundo de pasto, geraizeiros, vazanteiros, comunidades de terreiro, retireiros, varjeiros, marisqueiros, pescadores artesanais, pantaneiros</li>
+      <li>Reconhecimento de direitos territoriais e culturais</li>
+      <li>Demandas atendidas pelo SS articulam saúde, assistência, território</li>
+    </ul>
+
+    <div class="subsecao">Migrantes e Refugiados</div>
+    <ul class="lista">
+      <li>Aula 17 (síntese). Aprofundamento:</li>
+      <li>Lei 13.445/2017 — Lei de Migração (substitui Estatuto do Estrangeiro/1980)</li>
+      <li>Princípios: garantia dos DH; não-criminalização; acolhida humanitária; igualdade de direitos</li>
+      <li>Tipos de visto: temporário, permanente, diplomático, fronteiriço, residência</li>
+      <li>Operação Acolhida (2018+) — venezuelanos; FFAA + ACNUR + ONU</li>
+      <li>CONARE (Comitê Nacional para os Refugiados) — Lei 9.474/1997</li>
+      <li>Demandas: documentação, CPF, CTPS, acesso a SUS/SUAS/educação, validação de diplomas</li>
+      <li>Discriminação étnico-racial; xenofobia</li>
+      <li>SS articula com Cáritas Brasileira, IMDH, ACNUR, MPF, Defensoria</li>
+    </ul>
+
+    <div class="subsecao">Pessoas em Situação de Rua (PSR)</div>
+    <p>Aula 07 — abordagem aprofundada. Síntese:</p>
+    <ul class="lista">
+      <li>~250 mil pessoas (CadÚnico 2023)</li>
+      <li>Decreto 7.053/2009 — Política Nacional para a PSR</li>
+      <li>Plano Ruas Visíveis (Decreto 11.472/2023)</li>
+      <li>STF (ADO 56, 2023) — Estado deve adotar plano de proteção integral à PSR</li>
+      <li>Consultório na Rua (RAPS/PNAB) — Aula 13</li>
+      <li>Centros POP (CREAS para PSR)</li>
+      <li>Abordagem Social</li>
+      <li>Atendimento sem condicionamento à abstinência (RD)</li>
+    </ul>
+
+    <div class="subsecao">Mulheres em Situação de Violência</div>
+    <p>Aulas 10, 14, 17. Síntese:</p>
+    <ul class="lista">
+      <li>Lei Maria da Penha (Lei 11.340/2006) — proteção integral</li>
+      <li>Lei do Feminicídio (Lei 13.104/2015) — qualificadora</li>
+      <li>5 tipos: física, psicológica, sexual, patrimonial, moral</li>
+      <li>Medidas protetivas de urgência (afastamento, restrição)</li>
+      <li>DEAMs — Delegacias Especializadas</li>
+      <li>Casas da Mulher Brasileira</li>
+      <li>Lei 14.541/2023 — atendimento psicológico e social</li>
+      <li>Patrulhas Maria da Penha</li>
+      <li>1.398 feminicídios em 2024 (FBSP); maioria mulher negra</li>
+    </ul>
+
+    <div class="subsecao">Pessoas em Conflito com a Lei (Adultas)</div>
+    <ul class="lista">
+      <li>Sistema prisional: ~840 mil; 67% negros</li>
+      <li>Lei de Execução Penal (LEP — Lei 7.210/1984)</li>
+      <li>SS no sistema prisional: comissões técnicas, assistência social, mediação familiar (vedação CFESS Res. 569/2010 a mediação)</li>
+      <li>Audiência de Custódia (Resolução 213/2015 do CNJ) — apresentação em até 24h</li>
+      <li>Crítica do CFESS: SS no sistema prisional reproduz lógica carcerária</li>
+      <li>Reincidência alta — relacionada à ausência de políticas pós-egresso</li>
+    </ul>
+
+    <div class="subsecao">Famílias Vulnerabilizadas em Geral</div>
+    <ul class="lista">
+      <li>Cadastro Único (CadÚnico) — instrumento central</li>
+      <li>Bolsa Família/PBF — transferência de renda condicionada</li>
+      <li>BPC (LOAS)</li>
+      <li>Programa Pé-de-Meia (estudante de baixa renda)</li>
+      <li>Auxílio-Gás dos Brasileiros</li>
+      <li>Cisternas, Bolsa Verde, Garantia-Safra</li>
+      <li>Programa Auxílio Brasil (extinto em 2023; sucedido pelo PBF)</li>
+    </ul>
+
+    <div class="subsecao">Princípios Transversais</div>
+    <ul class="lista">
+      <li>Sujeitos de direitos (não "tutelados")</li>
+      <li>Pluralidade — respeitar diferenças</li>
+      <li>Não-discriminação (princípio XI do CE)</li>
+      <li>Interseccionalidade — articular raça, gênero, classe, sexualidade</li>
+      <li>Articulação intersetorial</li>
+      <li>Defesa intransigente dos DH (princípio II)</li>
+      <li>Ampliação da cidadania (princípio III)</li>
+      <li>Combate à criminalização da pobreza</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> indígenas (FUNAI, SESAI, DSEIs, Convenção 169 OIT); quilombolas (CF Art. 68 ADCT, INCRA, Palmares); migrantes (Lei 13.445/2017, CONARE); PSR (Aula 07); mulheres em violência (Aula 17); PCD (LBI); LGBTI+ (criminalização LGBTfobia STF 2019). Princípios transversais: pluralidade, interseccionalidade, intersetorialidade.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-FAMILIA · Populações</span><span>Extensivo ENARE 2026</span><span class="pg">6 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-FAMILIA</div><div class="aula-ref">Bloco B13 · Aula 18 · Trabalho com Famílias</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Trabalho do AS com Famílias</div>
+
+    <p>O <strong>trabalho com famílias</strong> é uma das frentes principais do AS. Articula-se com a perspectiva da matricialidade sociofamiliar (PNAS) e com a defesa da família como sujeito de direitos. Cobrança recorrente em ENARE com situações concretas.</p>
+
+    <div class="subsecao">Dimensões do Trabalho com Famílias</div>
+    <table>
+      <tr><th>Dimensão</th><th>Conteúdo</th></tr>
+      <tr><td><strong>Atendimento individualizado</strong></td><td>Entrevista, escuta, orientação, encaminhamento, vinculação</td></tr>
+      <tr><td><strong>Atendimento familiar</strong></td><td>Reunião familiar, mediação, plano de cuidado</td></tr>
+      <tr><td><strong>Grupos com famílias</strong></td><td>Grupos socioeducativos, terapêuticos, de geração de renda, de mobilização</td></tr>
+      <tr><td><strong>Visita domiciliar</strong></td><td>Conhecimento contextual; articulação com território — não-fiscalização</td></tr>
+      <tr><td><strong>Articulação em rede</strong></td><td>Intersetorial (saúde, educação, assistência, justiça); intrasetorial (CRAS-CREAS, CAPS-UBS)</td></tr>
+      <tr><td><strong>Acompanhamento longitudinal</strong></td><td>Continuidade do cuidado ao longo do tempo</td></tr>
+    </table>
+
+    <div class="subsecao">Equilíbrios no Trabalho com Famílias</div>
+    <p>O trabalho com famílias exige delicado equilíbrio entre diversos eixos:</p>
+    <ul class="lista">
+      <li>Respeito à autonomia × proteção de direitos (especialmente em violações)</li>
+      <li>Confidencialidade × notificação obrigatória (Aula 14)</li>
+      <li>Apoio à família × responsabilização do Estado</li>
+      <li>Acompanhamento × institucionalização (last resort)</li>
+      <li>Trabalho com sujeitos individuais × com família como unidade</li>
+    </ul>
+
+    <div class="subsecao">Plano de Atendimento Familiar — PAEFI</div>
+    <ul class="lista">
+      <li>Plano construído com a família (não imposto)</li>
+      <li>Diagnóstico inicial — avaliação de potencialidades e vulnerabilidades</li>
+      <li>Metas pactuadas e prazos</li>
+      <li>Divisão de responsabilidades (equipe + família + rede)</li>
+      <li>Revisão periódica (a cada 3 ou 6 meses)</li>
+      <li>Articulação com SUS, escola, assistência, judiciário se necessário</li>
+      <li>Documentação no prontuário SUAS</li>
+    </ul>
+
+    <div class="subsecao">Pegadas Históricas do "Familismo"</div>
+    <p>Crítica importante da bibliografia contemporânea:</p>
+    <ul class="lista">
+      <li>"Familismo" = responsabilizar a família por funções de proteção que cabem ao Estado</li>
+      <li>Sobrecarga das mulheres (cuidadoras "naturais")</li>
+      <li>Refamilização das políticas (anos 1990 neoliberal)</li>
+      <li>Crítica do SS: defender que cuidado é responsabilidade pública</li>
+      <li>Articulação com feminismo materialista (Aula 17)</li>
+      <li>Necessidade de políticas universais que apoiem (não substituam) a família</li>
+    </ul>
+
+    <div class="subsecao">Visita Domiciliar — Cuidados</div>
+    <ul class="lista">
+      <li>SEMPRE agendada com a família — respeito à autonomia</li>
+      <li>NÃO é fiscalização nem vigilância</li>
+      <li>Objetivos claros pactuados previamente</li>
+      <li>Registro técnico — descrição sem juízo moral</li>
+      <li>Cuidado ao adentrar a residência — pedir permissão para acessar cômodos</li>
+      <li>Preservação do sigilo profissional (vizinhos não devem saber motivo da visita)</li>
+      <li>Em casos de violência, articular com SGD; não enfrentar isoladamente o agressor</li>
+      <li>Vedação a "visita-surpresa" exceto em emergência justificada</li>
+    </ul>
+
+    <div class="subsecao">Genograma e Ecomapa — Instrumentos</div>
+    <table>
+      <tr><th>Instrumento</th><th>Características</th></tr>
+      <tr><td><strong>Genograma</strong></td><td>Representação gráfica de 3+ gerações da família — relações de parentesco, vínculos, doenças, conflitos. Originário da terapia familiar; adotado no SS para mapear vínculos.</td></tr>
+      <tr><td><strong>Ecomapa</strong></td><td>Representação gráfica das relações da família com instituições, recursos comunitários (escola, igreja, vizinhança, trabalho). Identifica recursos e conflitos sociais.</td></tr>
+      <tr><td><strong>Cronograma familiar</strong></td><td>Linha temporal com eventos significativos da família</td></tr>
+      <tr><td><strong>Mapa territorial</strong></td><td>Localização da família no território; serviços disponíveis</td></tr>
+    </table>
+
+    <div class="subsecao">Situações de Conflito Familiar</div>
+    <p>O AS frequentemente enfrenta situações em que membros da família apresentam interesses contraditórios:</p>
+    <ul class="lista">
+      <li>Adolescente que quer sair da família por conflito (gênero, sexualidade, identidade)</li>
+      <li>Idoso que se recusa a deixar a casa apesar de descuido familiar</li>
+      <li>Mãe que protege parceiro acusado de violência sexual contra criança</li>
+      <li>Família que se opõe ao tratamento em saúde mental do membro adoecido</li>
+      <li>Crianças em conflito com guarda compartilhada</li>
+    </ul>
+
+    <p><strong>Princípios para mediação:</strong></p>
+    <ul class="lista">
+      <li>Centrar no melhor interesse (especialmente de crianças, idosos)</li>
+      <li>Não tomar partido pessoal — neutralidade técnica (não política)</li>
+      <li>Articulação com SGD quando há violação de direitos</li>
+      <li>Vedação a mediação penal/familiar pelo AS (Res. CFESS 569/2010)</li>
+      <li>Encaminhamento a mediação especializada quando necessário</li>
+    </ul>
+
+    <div class="subsecao">CFESS Res. 569/2010 — Mediação Familiar/Penal</div>
+    <p>Veda ao AS o exercício de funções de mediação penal e familiar. Argumentos do CFESS:</p>
+    <ul class="lista">
+      <li>Mediação penal/familiar é função de outra categoria profissional</li>
+      <li>Risco de despolitização das relações de violência</li>
+      <li>Reprodução de assimetria de poder em violências (Maria da Penha)</li>
+      <li>Diferenciação de "estudo social", "trabalho com famílias" (atribuições privativas) × mediação (vedada)</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> trabalho com famílias = matricialidade sociofamiliar (PNAS); equilíbrio autonomia × proteção; visita domiciliar agendada e respeitosa; genograma e ecomapa como instrumentos; plano de atendimento familiar pactuado. Crítica ao familismo. Res. CFESS 569/2010 veda mediação familiar/penal pelo AS.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-FAMILIA · Trabalho</span><span>Extensivo ENARE 2026</span><span class="pg">7 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-FAMILIA</div><div class="aula-ref">Bloco B13 · Aula 18 · Questões ENARE</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 01</span><span class="fonte">ECA · NC: Compreensão</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Sobre o Estatuto da Criança e do Adolescente (Lei 8.069/1990) e seu Sistema de Garantia de Direitos (SGD), assinale a CORRETA:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>O Conselho Tutelar é órgão judicial que julga e aplica penas a crianças e adolescentes.</span></li>
+        <li class="correta"><span class="letra">B</span><span>O ECA adota o princípio da proteção integral (art. 1º), da prioridade absoluta (art. 4º) e da tríplice responsabilidade (família + sociedade + Estado). O SGD articula três eixos: promoção (políticas universais), defesa (Conselho Tutelar, MP, Defensoria, Judiciário) e controle social (Conselhos de Direitos — CMDCA, CEDCA, CONANDA). O Conselho Tutelar é órgão permanente, autônomo e não-jurisdicional — não julga, mas aplica medidas de proteção e articula com a rede.</span></li>
+        <li><span class="letra">C</span><span>O acolhimento institucional é medida prioritária, devendo ser aplicada antes das demais medidas protetivas.</span></li>
+        <li><span class="letra">D</span><span>A "doutrina do menor em situação irregular" segue vigente, em substituição à proteção integral.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> síntese do ECA. Proteção integral, prioridade absoluta, tríplice responsabilidade. SGD: 3 eixos. Conselho Tutelar = não-jurisdicional (não julga). Medidas protetivas (art. 101) — acolhimento é excepcional.</p>
+      <p><strong>Por que as outras erram:</strong> A — Conselho Tutelar não julga · C — acolhimento é excepcional · D — doutrina do menor irregular (Código de Menores 1979) foi superada pelo ECA.</p>
+    </div>
+
+    <div class="questao-header"><span>Questão 02</span><span class="fonte">Lei 10.216 · NC: Aplicação</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Em uma situação atendida em UBS, uma mãe de adolescente trans (15 anos) procura o Assistente Social relatando que o adolescente está sofrendo violência psicológica e tentativa de expulsão pelo pai biológico, ferindo o respeito à identidade de gênero. A conduta CORRETA do AS, em articulação com o ECA, a Lei 13.431/2017 e o CE/1993, é:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Aconselhar o adolescente a "abandonar a transição de gênero" para "preservar a paz familiar".</span></li>
+        <li><span class="letra">B</span><span>Encaminhar diretamente a procedimento de "terapia de reorientação sexual".</span></li>
+        <li class="correta"><span class="letra">C</span><span>Acolher mãe e adolescente com escuta qualificada e sem julgamento moral; respeitar identidade de gênero e nome social do adolescente (princípio XI do CE/1993, incluído pela Res. CFESS 615/2011); notificar a violência ao Conselho Tutelar (notificação compulsória — ECA art. 13; Lei 13.431/2017); articular com a rede (escola, CAPSi, Centro de Cidadania LGBTI+ se disponível, Defensoria); orientar sobre direitos do adolescente; construir, com a família, plano de atendimento que assegure a proteção integral.</span></li>
+        <li><span class="letra">D</span><span>Manter sigilo absoluto e não notificar nenhum órgão, deixando a situação para resolver-se internamente na família.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — C</div>
+      <p><strong>Por que C está correta:</strong> articula múltiplas normas. Princípio XI do CE/1993 (não-discriminação, identidade de gênero incluída em 2011); ECA art. 13 (notificação compulsória); Lei 13.431/2017 (SGD-Vítima); Política LGBTI+. Acolhimento sem julgamento; nome social respeitado; articulação intersetorial. Combate à LGBTfobia (criminalizada pelo STF em 2019).</p>
+      <p><strong>Por que as outras erram:</strong> A — viola princípios · B — terapia de reorientação vedada pelo CFP/CFESS · D — notificação é compulsória.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-FAMILIA · Família e Populações</span><span>Extensivo ENARE 2026</span><span class="pg">8 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-FAMILIA</div><div class="aula-ref">Bloco B13 · Aula 18 · Questões ENARE</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 03</span><span class="fonte">Família · NC: Análise</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">A perspectiva crítica do Serviço Social brasileiro contemporâneo acerca da família caracteriza-se por:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Considerar a família nuclear heterossexual como modelo natural e único legítimo, devendo ser preservado pelas políticas sociais.</span></li>
+        <li class="correta"><span class="letra">B</span><span>Reconhecer a pluralidade de arranjos familiares (nuclear, matrifocal, recomposta, estendida, homoafetiva, unipessoal); compreender a família como construção histórico-social — Engels (1884) já identificara sua relação com a propriedade privada; criticar o "familismo" (responsabilização da família por funções que cabem ao Estado, com sobrecarga das mulheres); defender a família como sujeito de direitos, com apoio (não-substituição) pelo Estado; articular com a matricialidade sociofamiliar da PNAS (2004).</span></li>
+        <li><span class="letra">C</span><span>Reduzir o trabalho com famílias a fiscalização de comportamentos, "moralizando" práticas das classes populares.</span></li>
+        <li><span class="letra">D</span><span>Defender a esterilização compulsória de mulheres pobres como forma de "controle social".</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> síntese da perspectiva crítica. Pluralidade reconhecida pela CF (art. 226), pela jurisprudência (STF 2011), pelas políticas (PNAS 2004). Engels = origem histórica. Crítica ao familismo (Mioto, Behring). Matricialidade sociofamiliar = família como sujeito, não como objeto.</p>
+      <p><strong>Por que as outras erram:</strong> A — naturalização da família é exatamente o que se critica · C — moralização criticada · D — esterilização compulsória é violação de DH.</p>
+    </div>
+
+    <div class="questao-header"><span>Questão 04</span><span class="fonte">PCD · NC: Aplicação</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">A Lei Brasileira de Inclusão (Lei 13.146/2015), em consonância com a Convenção sobre os Direitos das Pessoas com Deficiência (ONU 2006, com status de Emenda Constitucional no Brasil), adota um conceito específico de deficiência. Esse conceito caracteriza-se por:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Modelo médico — deficiência como doença ou limitação individual a ser tratada e corrigida.</span></li>
+        <li class="correta"><span class="letra">B</span><span>Modelo social — deficiência como interação entre impedimento (de natureza física, mental, intelectual ou sensorial) e BARREIRAS (atitudinais, urbanísticas, arquitetônicas, comunicacionais, nos transportes, tecnológicas) que obstruem a participação plena e efetiva da pessoa na sociedade em igualdade com as demais; mudança paradigmática: a sociedade deve se adequar à pessoa, não o contrário.</span></li>
+        <li><span class="letra">C</span><span>Modelo caritativo — deficiência como condição de "infelicidade" a ser tratada com caridade individual.</span></li>
+        <li><span class="letra">D</span><span>Modelo eugênico — deficiência como traço a ser eliminado pela seleção genética.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> LBI adota o modelo social da Convenção PCD. Deficiência = impedimento + barreira. 6 tipos de barreiras: atitudinais, urbanísticas, arquitetônicas, comunicacionais, nos transportes, tecnológicas. Sociedade deve se adequar (não o inverso).</p>
+      <p><strong>Por que as outras erram:</strong> A — modelo médico foi superado · C — caridade não é direito · D — eugenia é violação de DH.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-FAMILIA · Família e Populações</span><span>Extensivo ENARE 2026</span><span class="pg">9 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-FAMILIA</div><div class="aula-ref">Bloco B13 · Aula 18 · Síntese</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Síntese — Família, Gênero e Populações</div>
+
+    <p>Articula com Aula 06-08 (SUAS), Aula 09 (Seguridade), Aula 10 (DUDH/Convenção PCD), Aula 14 (Sigilo/notificação), Aula 17 (Questão social, patriarcado). Conecta-se à Aula 19 (Biossegurança/NR-32).</p>
+
+    <div class="sintese-grid">
+      <div class="sintese-item"><div class="si-label">Família</div><p>Construção histórico-social (Engels 1884). Pluralidade reconhecida (CF Art. 226, STF 2011). Saffioti — nó patriarcado-capitalismo-racismo. Sarti — famílias populares têm lógica própria. Crítica ao familismo. Matricialidade (PNAS 2004).</p></div>
+      <div class="sintese-item"><div class="si-label">Criança/Adolescente</div><p>ECA (Lei 8.069/1990) — proteção integral, prioridade absoluta. SGD: promoção + defesa + controle. Conselho Tutelar não julga. Lei 12.594/2012 (SINASE). Lei 12.010/2009 (adoção). Lei 13.431/2017 (SGD-Vítima).</p></div>
+      <div class="sintese-item"><div class="si-label">Pessoa Idosa</div><p>Estatuto (Lei 10.741/2003); Lei 14.423/2022 (alterou nomenclatura). 60+. Violência 75% intrafamiliar. ILPI (ANVISA RDC 502/2021). PNSPI 2006. EC 103/2019 (Reforma Previdência).</p></div>
+      <div class="sintese-item"><div class="si-label">LGBTI+ e PCD</div><p>Princípio XI do CE (identidade de gênero incluída em 2011); STF criminalizou LGBTfobia (2019). LBI (Lei 13.146/2015); modelo social; 6 tipos de barreiras. BPC PCD = biopsicossocial.</p></div>
+      <div class="sintese-item"><div class="si-label">Outras Populações</div><p>Indígenas (FUNAI, SESAI, Convenção 169 OIT, Yanomami 2023); quilombolas (CF Art. 68 ADCT); migrantes (Lei 13.445/2017, CONARE); PSR (Ruas Visíveis); mulheres em violência (Maria da Penha).</p></div>
+      <div class="sintese-item"><div class="si-label">Próxima Aula</div><p><strong>Aula 19 — SS-SAUDE: Biossegurança e NR-32.</strong> Normas Regulamentadoras 32; EPI/EPC; saúde do trabalhador; CAT; PCMSO; CIPA; vacinação ocupacional.</p></div>
+    </div>
+
+    <div class="alerta" style="margin-top:5px;">
+      <p><strong>Regra de ouro — Família e Populações no ENARE:</strong> ECA (proteção integral, SGD, Conselho Tutelar); Estatuto Idoso + Lei 14.423/2022; LBI (modelo social, barreiras); Princípio XI do CE (identidade de gênero, 2011); STF criminalizou LGBTfobia (2019); Convenção 169 OIT (indígenas); Lei 13.445/2017 (migração); CF Art. 68 ADCT (quilombolas). Pluralidade + interseccionalidade + intersetorialidade.</p>
+    </div>
+
+    <div class="alerta" style="margin-top:5px;background:rgba(31,92,35,0.1);border-left-color:var(--verde);">
+      <p><strong>Conexão crítica:</strong> trabalhar com famílias e populações específicas é trabalhar com a complexidade do social — articular raça, gênero, classe, idade, sexualidade, território, etnia. Sem esta articulação, o trabalho profissional torna-se abstrato e ineficaz. A defesa intransigente dos DH (princípio II do CE) materializa-se no cuidado concreto com cada sujeito em sua singularidade plural.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-FAMILIA · Família e Populações</span><span>Extensivo ENARE 2026</span><span class="pg">10 / 10</span></div>
+</div>
+
+</body>
+</html>

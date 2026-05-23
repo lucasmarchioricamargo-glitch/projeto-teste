@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Serviço Social — Bloco B13 Aula 06 | Extensivo ENARE 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Bricolage+Grotesque:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Space+Grotesk:wght@300&display=swap');
+  :root { --creme: #F6F4ED; --verde: #1F5C23; --amarelo: #C6D834; --escuro: #0C2B0E; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #d0d0d0; font-family: 'Bricolage Grotesque', sans-serif; }
+  .page { width: 210mm; height: 297mm; background: var(--creme); margin: 0 auto 12px; position: relative; overflow: hidden; page-break-after: always; }
+  .header { background: var(--verde); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .header-logo { display: flex; align-items: center; gap: 8px; }
+  .header-logo svg { width: 32px; height: 32px; }
+  .header-brand { display: flex; flex-direction: column; line-height: 1; }
+  .header-brand .marca { font-family: 'Playfair Display', serif; font-style: italic; color: #fff; font-size: 13px; letter-spacing: 0.5px; }
+  .header-brand .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 7px; letter-spacing: 1.5px; text-transform: uppercase; }
+  .header-info { text-align: right; }
+  .header-info .disciplina { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
+  .header-info .aula-ref { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.7); font-size: 8px; letter-spacing: 0.5px; }
+  .footer { position: absolute; bottom: 0; left: 0; right: 0; background: var(--verde); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .footer span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.6); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .footer .pg { color: var(--amarelo); font-weight: 400; }
+  .body { padding: 14px 18px 30px; height: calc(297mm - 52px - 22px); overflow: hidden; }
+  .capa-page { background: var(--verde); }
+  .capa-header { background: var(--creme); padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .capa-header .marca { font-family: 'Playfair Display', serif; font-style: italic; color: var(--verde); font-size: 14px; }
+  .capa-header .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--verde); font-size: 7.5px; letter-spacing: 2px; text-transform: uppercase; }
+  .capa-body { padding: 28px 24px 0; display: flex; flex-direction: column; height: calc(297mm - 52px - 22px); }
+  .capa-eyebrow { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: var(--amarelo); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; }
+  .capa-titulo { font-family: 'Barlow Condensed', sans-serif; color: #fff; font-size: 50px; line-height: 0.95; text-transform: uppercase; letter-spacing: -0.5px; margin-bottom: 6px; }
+  .capa-titulo span { color: var(--amarelo); }
+  .capa-subtitulo { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; color: rgba(255,255,255,0.65); font-size: 12px; letter-spacing: 0.3px; margin-bottom: 22px; line-height: 1.5; }
+  .capa-badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+  .capa-badge { background: rgba(198,216,52,0.15); border: 1px solid var(--amarelo); color: var(--amarelo); font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 8px; border-radius: 2px; }
+  .capa-divider { width: 40px; height: 3px; background: var(--amarelo); margin-bottom: 20px; }
+  .capa-topicos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .capa-topico { display: flex; align-items: flex-start; gap: 7px; }
+  .capa-topico-num { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 18px; line-height: 1; min-width: 18px; }
+  .capa-topico-txt { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 400; color: rgba(255,255,255,0.8); font-size: 9.5px; line-height: 1.4; }
+  .capa-footer-strip { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.25); height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+  .capa-footer-strip span { font-family: 'Space Grotesk', sans-serif; font-weight: 300; color: rgba(255,255,255,0.45); font-size: 7px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .secao-titulo { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 18px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid var(--amarelo); padding-bottom: 3px; margin-bottom: 9px; line-height: 1; }
+  .subsecao { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.5px; margin: 7px 0 3px; }
+  p { font-size: 9px; line-height: 1.55; color: #1a1a1a; margin-bottom: 4px; font-weight: 400; }
+  .destaque { background: var(--amarelo); color: var(--escuro); font-weight: 600; padding: 1px 4px; border-radius: 2px; font-size: 8.5px; }
+  .alerta { background: rgba(198,216,52,0.18); border-left: 3px solid var(--amarelo); padding: 5px 8px; margin: 5px 0; border-radius: 0 3px 3px 0; }
+  .alerta p { margin: 0; font-size: 8.5px; }
+  .alerta strong { color: var(--verde); }
+  table { width: 100%; border-collapse: collapse; margin: 5px 0; font-size: 8px; }
+  th { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; padding: 4px 6px; text-align: left; }
+  td { padding: 3px 6px; border-bottom: 1px solid rgba(31,92,35,0.12); vertical-align: top; line-height: 1.4; color: #1a1a1a; }
+  tr:nth-child(even) td { background: rgba(31,92,35,0.04); }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 5px 0; }
+  .card { background: rgba(31,92,35,0.06); border: 1px solid rgba(31,92,35,0.15); border-radius: 4px; padding: 7px 8px; }
+  .card-title { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 11px; text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 3px; }
+  .card p { font-size: 8px; line-height: 1.5; }
+  .questao-header { background: var(--verde); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; padding: 4px 10px; border-radius: 3px 3px 0 0; display: flex; justify-content: space-between; align-items: center; }
+  .questao-header .fonte { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 7.5px; color: var(--amarelo); letter-spacing: 0.5px; }
+  .questao-body { border: 1px solid rgba(31,92,35,0.2); border-top: none; border-radius: 0 0 3px 3px; padding: 7px 10px; margin-bottom: 7px; }
+  .questao-enunciado { font-size: 8.5px; line-height: 1.55; color: #111; margin-bottom: 5px; font-weight: 500; }
+  .alternativas { list-style: none; }
+  .alternativas li { font-size: 8px; line-height: 1.5; padding: 2px 0; color: #222; display: flex; gap: 5px; }
+  .alternativas li .letra { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; color: var(--verde); font-size: 9px; min-width: 10px; }
+  .alternativas li.correta .letra { color: var(--amarelo); }
+  .alternativas li.correta { background: rgba(198,216,52,0.15); border-left: 2px solid var(--amarelo); padding-left: 4px; }
+  .gabarito-box { background: var(--verde); border-radius: 4px; padding: 8px 12px; margin: 6px 0; }
+  .gabarito-box .gab-title { font-family: 'Barlow Condensed', sans-serif; color: var(--amarelo); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+  .gabarito-box p { color: rgba(255,255,255,0.9); font-size: 8px; line-height: 1.55; }
+  .gabarito-box strong { color: var(--amarelo); }
+  .sintese-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-top: 6px; }
+  .sintese-item { background: rgba(31,92,35,0.07); border-left: 3px solid var(--verde); padding: 5px 7px; border-radius: 0 3px 3px 0; }
+  .sintese-item .si-label { font-family: 'Barlow Condensed', sans-serif; color: var(--verde); font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px; }
+  .sintese-item p { font-size: 7.5px; line-height: 1.5; }
+  ul.lista { padding-left: 14px; margin: 3px 0; }
+  ul.lista li { font-size: 8.5px; line-height: 1.55; color: #1a1a1a; margin-bottom: 1px; }
+  @media print { body { background: none; } .page { margin: 0; box-shadow: none; } }
+</style>
+</head>
+<body>
+
+<div class="page capa-page">
+  <div class="capa-header">
+    <div style="display:flex;align-items:center;gap:8px;"><svg width="34" height="34" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#F6F4ED" stroke="#1F5C23" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#1F5C23"/></svg><div><div class="marca">Elite Treinamentos</div><div class="tagline">Extensivo ENARE 2026</div></div></div>
+    <div style="text-align:right;"><div style="font-family:'Barlow Condensed',sans-serif;color:var(--verde);font-size:11px;letter-spacing:1px;text-transform:uppercase;">Bloco B13 · Aula 06</div><div style="font-family:'Space Grotesk',sans-serif;font-weight:300;color:#888;font-size:7.5px;letter-spacing:0.5px;">Serviço Social</div></div>
+  </div>
+  <div class="capa-body">
+    <div class="capa-eyebrow">Bloco B13 · SS-ASSISTENCIA · Aula 06 de 21</div>
+    <div class="capa-titulo">SUAS <span>·<br>Estrutura<br>&amp; Proteção<br>Social</span></div>
+    <div class="capa-subtitulo">CF/1988, LOAS, NOB-SUAS, CRAS e CREAS:<br>cluster novo que cresceu de zero para 9 questões em 2025</div>
+    <div class="capa-badge-row">
+      <div class="capa-badge">SS-ASSISTENCIA ★★★★</div>
+      <div class="capa-badge">Cluster NOVO 2025 — 9q</div>
+      <div class="capa-badge">LOAS · PNAS · NOB</div>
+      <div class="capa-badge">CRAS · CREAS</div>
+    </div>
+    <div class="capa-divider"></div>
+    <div class="capa-topicos">
+      <div class="capa-topico"><div class="capa-topico-num">01</div><div class="capa-topico-txt">CF/1988 — Arts. 203 e 204: assistência como direito</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">02</div><div class="capa-topico-txt">LOAS (Lei 8.742/1993) e Lei 12.435/2011</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">03</div><div class="capa-topico-txt">PNAS 2004 e NOB-SUAS 2005/2012</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">04</div><div class="capa-topico-txt">SUAS: princípios, diretrizes, federativo</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">05</div><div class="capa-topico-txt">Proteção Social Básica e Especial; CRAS/CREAS</div></div>
+      <div class="capa-topico"><div class="capa-topico-num">06</div><div class="capa-topico-txt">Paternalismo vs Assistencialismo vs Direito</div></div>
+    </div>
+  </div>
+  <div class="capa-footer-strip"><span>Extensivo ENARE 2026</span><span>Elite Treinamentos em Saúde</span><span>Página 1 de 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-ASSISTENCIA</div><div class="aula-ref">Bloco B13 · Aula 06 · CF/1988</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">CF/1988 — Assistência Social como Direito</div>
+
+    <p>A Constituição Federal de 1988 marcou ruptura histórica: <strong>a assistência social deixou de ser caridade/benemerência e tornou-se direito social</strong>. Compõe, junto com a Saúde e a Previdência, o tripé da <em>Seguridade Social</em> (CF/1988, art. 194). Cobrado em ENARE 2025 (Q21, Q28, Q29, Q32, Q42, Q47, Q52, Q56, Q58, Q82, Q100) — 9 questões dedicadas a SUAS/Assistência Social. Tema mais cresceu da prova.</p>
+
+    <div class="subsecao">CF/1988 — Artigos 203 e 204 (literais)</div>
+    <p><strong>Art. 203.</strong> "A assistência social será prestada a quem dela necessitar, independentemente de contribuição à seguridade social, e tem por objetivos:</p>
+    <ul class="lista">
+      <li>I — a proteção à família, à maternidade, à infância, à adolescência e à velhice;</li>
+      <li>II — o amparo às crianças e adolescentes carentes;</li>
+      <li>III — a promoção da integração ao mercado de trabalho;</li>
+      <li>IV — a habilitação e reabilitação das pessoas com deficiência e a promoção de sua integração à vida comunitária;</li>
+      <li>V — a garantia de um salário mínimo de benefício mensal à pessoa com deficiência e ao idoso que comprovem não possuir meios de prover à própria manutenção ou de tê-la provida por sua família, conforme dispuser a lei. (<strong>BPC</strong>)"</li>
+    </ul>
+
+    <p><strong>Art. 204.</strong> "As ações governamentais na área da assistência social serão realizadas com recursos do orçamento da seguridade social, previstos no art. 195, além de outras fontes, e organizadas com base nas seguintes diretrizes:</p>
+    <ul class="lista">
+      <li>I — descentralização político-administrativa, cabendo a coordenação e as normas gerais à esfera federal e a coordenação e a execução dos respectivos programas às esferas estadual e municipal, bem como a entidades beneficentes e de assistência social;</li>
+      <li>II — participação da população, por meio de organizações representativas, na formulação das políticas e no controle das ações em todos os níveis."</li>
+    </ul>
+
+    <div class="subsecao">Marco Conceitual — Rompimento com a Tradição</div>
+    <table>
+      <tr><th>Pré-CF/1988</th><th>Pós-CF/1988</th></tr>
+      <tr><td>Assistência como caridade/benemerência</td><td>Assistência como <strong>direito social</strong></td></tr>
+      <tr><td>Beneficente: para "necessitados"</td><td>Universal para quem dela necessitar</td></tr>
+      <tr><td>Conditional à contribuição prévia (modelo bismarckiano)</td><td>Independe de contribuição — <strong>não contributiva</strong></td></tr>
+      <tr><td>Centralização federal (LBA)</td><td>Descentralização tripartite + participação</td></tr>
+      <tr><td>Política residual</td><td>Política pública estruturada</td></tr>
+      <tr><td>Pobreza como falta moral</td><td>Pobreza como expressão da questão social</td></tr>
+    </table>
+
+    <div class="subsecao">Antecedentes da LBA</div>
+    <p>Antes da CF/1988, a assistência social era operacionalizada pela <strong>Legião Brasileira de Assistência (LBA)</strong>, criada em 1942 por Darcy Vargas (primeira-dama). Características:</p>
+    <ul class="lista">
+      <li>Concepção benemerente / primeiro-damista</li>
+      <li>Vinculação à Igreja Católica e a entidades filantrópicas</li>
+      <li>Ações focalizadas; clientelismo político</li>
+      <li>Personificação na esposa do presidente / governador / prefeito</li>
+      <li>Ausência de critérios técnicos universais</li>
+      <li>Extinta em 1995 pelo governo FHC; substituída progressivamente pelo SUAS</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Marco Constitucional:</strong> a CF/1988 é a "Constituição Cidadã". Estabelece a Seguridade Social como tripé (Saúde + Previdência + Assistência Social) — art. 194. A assistência é direito não contributivo. Antes da CF/1988, era caridade discricionária. Cobrado em ENARE 2025 (Q21 e Q29).</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-ASSISTENCIA · SUAS</span><span>Extensivo ENARE 2026</span><span class="pg">2 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-ASSISTENCIA</div><div class="aula-ref">Bloco B13 · Aula 06 · LOAS</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">LOAS — Lei Orgânica da Assistência Social (Lei 8.742/1993)</div>
+
+    <p>A <strong>LOAS — Lei 8.742, de 7 de dezembro de 1993</strong>, regulamenta os arts. 203 e 204 da CF/1988. Atualizada pela <strong>Lei 12.435/2011</strong> (institui formalmente o SUAS) e por leis posteriores. É o marco legal fundador do sistema. Conhecer literalmente o texto da LOAS é exigência da prova.</p>
+
+    <div class="subsecao">Conceito de Assistência Social (LOAS, art. 1º)</div>
+    <p>"A assistência social, direito do cidadão e dever do Estado, é Política de Seguridade Social não contributiva, que provê os mínimos sociais, realizada através de um conjunto integrado de ações de iniciativa pública e da sociedade, para garantir o atendimento às necessidades básicas."</p>
+
+    <p><strong>Elementos da definição:</strong></p>
+    <ul class="lista">
+      <li><strong>Direito do cidadão e dever do Estado</strong> — natureza jurídica</li>
+      <li><strong>Política de Seguridade Social</strong> — integra tripé constitucional</li>
+      <li><strong>Não contributiva</strong> — independe de pagamento prévio</li>
+      <li><strong>Mínimos sociais</strong> — categoria-chave (Sposati): direitos mínimos para vida digna</li>
+      <li><strong>Conjunto integrado</strong> — Estado + sociedade civil organizada</li>
+      <li><strong>Necessidades básicas</strong> — abrange múltiplas dimensões da reprodução social</li>
+    </ul>
+
+    <div class="subsecao">Objetivos da Assistência Social (LOAS, art. 2º)</div>
+    <ol>
+      <li><strong>A proteção à família</strong>, à maternidade, à infância, à adolescência e à velhice;</li>
+      <li><strong>O amparo às crianças e aos adolescentes carentes</strong>;</li>
+      <li>A promoção da integração ao mercado de trabalho;</li>
+      <li>A habilitação e reabilitação das pessoas com deficiência e a promoção de sua integração à vida comunitária;</li>
+      <li>A <strong>garantia de 1 (um) salário-mínimo de benefício mensal</strong> à pessoa com deficiência e ao idoso que comprovem não possuir meios de prover a própria manutenção ou de tê-la provida por sua família (<strong>BPC</strong>);</li>
+      <li>A <strong>vigilância socioassistencial</strong>, que visa a analisar territorialmente a capacidade protetiva das famílias e nela a ocorrência de vulnerabilidades, ameaças, vitimizações e danos (incluído pela Lei 12.435/2011);</li>
+      <li>A <strong>defesa de direitos</strong>, que visa a garantir o pleno acesso aos direitos no conjunto das provisões socioassistenciais (incluído pela Lei 12.435/2011).</li>
+    </ol>
+
+    <div class="subsecao">Princípios (LOAS, art. 4º)</div>
+    <ul class="lista">
+      <li><strong>I — Supremacia do atendimento</strong> às necessidades sociais sobre as exigências de rentabilidade econômica;</li>
+      <li><strong>II — Universalização</strong> dos direitos sociais, a fim de tornar o destinatário da ação assistencial alcançável pelas demais políticas públicas;</li>
+      <li><strong>III — Respeito à dignidade do cidadão</strong>, à sua autonomia e ao seu direito a benefícios e serviços de qualidade, bem como à convivência familiar e comunitária, vedando-se qualquer comprovação vexatória de necessidade;</li>
+      <li><strong>IV — Igualdade de direitos</strong> no acesso ao atendimento, sem discriminação de qualquer natureza, garantindo-se equivalência às populações urbanas e rurais;</li>
+      <li><strong>V — Divulgação ampla</strong> dos benefícios, serviços, programas e projetos assistenciais.</li>
+    </ul>
+
+    <div class="subsecao">Diretrizes (LOAS, art. 5º)</div>
+    <ul class="lista">
+      <li><strong>I — Descentralização político-administrativa</strong>, cabendo a coordenação e as normas gerais à esfera federal e a coordenação e a execução às esferas estadual e municipal;</li>
+      <li><strong>II — Participação da população</strong>, por meio de organizações representativas, na formulação das políticas e no controle das ações em todos os níveis;</li>
+      <li><strong>III — Primazia da responsabilidade do Estado</strong> na condução da política de assistência social em cada esfera de governo;</li>
+      <li><strong>IV — Centralidade na família</strong> para concepção e implementação dos benefícios, serviços, programas e projetos.</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Padrão da prova:</strong> a FGV cobra o texto literal da LOAS (objetivos, princípios, diretrizes). Saber as 4 diretrizes na ordem é diferencial. <em>Centralidade na família</em> é diretriz IV — mas tem leitura crítica: corre risco de privatizar a proteção social. Vigilância socioassistencial e defesa de direitos foram <em>acrescentados</em> pela Lei 12.435/2011.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-ASSISTENCIA · SUAS</span><span>Extensivo ENARE 2026</span><span class="pg">3 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-ASSISTENCIA</div><div class="aula-ref">Bloco B13 · Aula 06 · PNAS e NOB</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">PNAS 2004 e NOB-SUAS</div>
+
+    <p>A <strong>Política Nacional de Assistência Social (PNAS)</strong>, aprovada pela Resolução CNAS 145/2004, e a <strong>Norma Operacional Básica (NOB-SUAS)</strong>, Resolução CNAS 130/2005 e atualizações (NOB-SUAS 2012), estruturam o SUAS — Sistema Único de Assistência Social. A PNAS define a política; a NOB-SUAS operacionaliza.</p>
+
+    <div class="subsecao">Histórico Cronológico</div>
+    <table>
+      <tr><th>Ano</th><th>Marco</th></tr>
+      <tr><td>1988</td><td>CF/1988 — assistência social no tripé da seguridade</td></tr>
+      <tr><td>1993</td><td>LOAS (Lei 8.742/1993)</td></tr>
+      <tr><td>1995</td><td>Extinção da LBA; criação do CNAS (Conselho Nacional de Assistência Social)</td></tr>
+      <tr><td>2003</td><td>IV Conferência Nacional aprova diretrizes para SUAS</td></tr>
+      <tr><td>2004</td><td>Aprovação da <strong>PNAS</strong> (Res. CNAS 145/2004)</td></tr>
+      <tr><td>2005</td><td>Primeira <strong>NOB-SUAS</strong> (Res. CNAS 130/2005)</td></tr>
+      <tr><td>2009</td><td>Tipificação Nacional dos Serviços Socioassistenciais (Res. CNAS 109/2009)</td></tr>
+      <tr><td>2011</td><td>Lei 12.435 — formalmente institui o SUAS; altera a LOAS</td></tr>
+      <tr><td>2012</td><td>Nova <strong>NOB-SUAS</strong> (Res. CNAS 33/2012) — atualizada</td></tr>
+      <tr><td>2014</td><td>NOB-RH-SUAS (recursos humanos)</td></tr>
+      <tr><td>2016</td><td>EC 95/2016 — teto de gastos impacta financiamento</td></tr>
+      <tr><td>2018</td><td>Bolsa Família reformulado; CadÚnico evolui</td></tr>
+      <tr><td>2023</td><td>Lula III — retomada da pauta; Plano Ruas Visíveis 2023–2026</td></tr>
+    </table>
+
+    <div class="subsecao">Estrutura do SUAS</div>
+    <p>O <strong>SUAS — Sistema Único de Assistência Social</strong> é a operacionalização do direito à assistência. Inspirado no SUS (sistema único, descentralizado, hierarquizado, com participação social). Estrutura:</p>
+    <ul class="lista">
+      <li><strong>Sistema único, descentralizado, federativo</strong>: União + Estados + Municípios + DF</li>
+      <li><strong>Tripartite</strong>: pactuação entre os 3 entes federados via CIT (Comissão Intergestores Tripartite) e CIB (Bipartite)</li>
+      <li><strong>Participação social</strong>: Conselhos (CNAS, CEAS, CMAS); conferências bianuais</li>
+      <li><strong>Hierarquizado em níveis de proteção</strong>: Básica, Especial de Média Complexidade, Especial de Alta Complexidade</li>
+      <li><strong>Financiamento</strong>: Fundo Nacional (FNAS) + Fundos Estaduais (FEAS) + Municipais (FMAS); transferência regular e automática</li>
+      <li><strong>Vigilância Socioassistencial</strong>: monitoramento territorial de vulnerabilidades</li>
+    </ul>
+
+    <div class="subsecao">PNAS 2004 — Princípios e Diretrizes Principais</div>
+    <table>
+      <tr><th>Princípios da PNAS</th><th>Diretrizes da PNAS</th></tr>
+      <tr><td>I. Supremacia do atendimento sobre rentabilidade</td><td>I. Descentralização político-administrativa</td></tr>
+      <tr><td>II. Universalização dos direitos sociais</td><td>II. Participação da população via organizações</td></tr>
+      <tr><td>III. Respeito à dignidade do cidadão</td><td>III. Primazia da responsabilidade do Estado</td></tr>
+      <tr><td>IV. Igualdade de direitos no atendimento</td><td>IV. Centralidade na família</td></tr>
+      <tr><td>V. Divulgação ampla dos benefícios</td><td>—</td></tr>
+    </table>
+
+    <div class="subsecao">Modelos Socioassistenciais</div>
+    <p>A PNAS define o <strong>modelo socioterritorial</strong>: a política se organiza a partir do território onde vivem as famílias, não por programas isolados. Mapeamento territorial das vulnerabilidades. Atendimento integral à família (não apenas indivíduos).</p>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> distinguir LOAS (lei) de PNAS (política) de NOB-SUAS (norma operacional). A PNAS 2004 aprovou o SUAS conceitualmente; a Lei 12.435/2011 formalizou. Tipificação Nacional 2009 lista os serviços socioassistenciais por nível de proteção.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-ASSISTENCIA · SUAS</span><span>Extensivo ENARE 2026</span><span class="pg">4 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-ASSISTENCIA</div><div class="aula-ref">Bloco B13 · Aula 06 · Proteção Básica</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Proteção Social Básica — CRAS e PAIF</div>
+
+    <p>A <strong>Proteção Social Básica</strong> é o primeiro nível do SUAS. Tem caráter <em>preventivo, protetivo e proativo</em>. Voltada a famílias e indivíduos em situação de <em>vulnerabilidade social</em> — antes da violação de direitos. Sua porta de entrada é o <strong>CRAS</strong>.</p>
+
+    <div class="subsecao">CRAS — Centro de Referência de Assistência Social</div>
+    <table>
+      <tr><th>Característica</th><th>Conteúdo</th></tr>
+      <tr><td>Definição</td><td>Equipamento estatal local, descentralizado, base da Proteção Básica do SUAS</td></tr>
+      <tr><td>Cobertura</td><td>2.500 famílias (Pequeno Porte I), 3.500 (PPII), 5.000 (Médio Porte), até 5.000 (Grande Porte/Metrópole)</td></tr>
+      <tr><td>Localização</td><td>Em territórios com famílias em vulnerabilidade; vinculado ao SUS, escolas, área comunitária</td></tr>
+      <tr><td>Composição mínima de equipe</td><td>Coordenador (nível superior); 2 técnicos de nível superior (1 AS + 1 psicólogo); técnicos de nível médio</td></tr>
+      <tr><td>Serviço principal</td><td><strong>PAIF</strong> — Serviço de Proteção e Atendimento Integral à Família</td></tr>
+      <tr><td>Outros serviços</td><td>SCFV (Convivência), Serviço de Proteção em Calamidades</td></tr>
+      <tr><td>Cadastro</td><td>CadÚnico — instrumento principal para acesso a benefícios</td></tr>
+    </table>
+
+    <div class="subsecao">PAIF — Serviço de Proteção e Atendimento Integral à Família</div>
+    <p>O <strong>PAIF</strong> é o principal serviço da Proteção Básica. Está tipificado na Tipificação Nacional dos Serviços Socioassistenciais (Res. CNAS 109/2009).</p>
+
+    <ul class="lista">
+      <li><strong>Público:</strong> famílias em situação de vulnerabilidade social</li>
+      <li><strong>Objetivos:</strong> fortalecer função protetiva das famílias; prevenir ruptura de vínculos; promover acesso a direitos; potencializar a função protetiva</li>
+      <li><strong>Atividades:</strong> acolhida, escuta, oficinas, grupos socioeducativos, encaminhamentos para rede, visitas domiciliares, articulação com benefícios (BPC, Bolsa Família/Auxílio), busca ativa</li>
+      <li><strong>Foco</strong>: <em>família</em> como unidade, em seu território</li>
+      <li><strong>Caráter:</strong> protetivo, preventivo, proativo (busca ativa)</li>
+    </ul>
+
+    <div class="subsecao">SCFV — Serviço de Convivência e Fortalecimento de Vínculos</div>
+    <p>Complementar ao PAIF. Oferta de oficinas, atividades em grupo, esporte, cultura, lazer. Voltado a faixas etárias específicas:</p>
+    <ul class="lista">
+      <li><strong>Crianças até 6 anos</strong>: estimulação, brincadeiras, vínculo familiar</li>
+      <li><strong>Crianças 7–14 anos</strong>: atividades lúdicas, educativas, esportivas</li>
+      <li><strong>Adolescentes 15–17 anos</strong>: projetos de vida, juventude</li>
+      <li><strong>Jovens 18–29 anos</strong>: protagonismo e profissionalização</li>
+      <li><strong>Pessoas idosas (60+)</strong>: convivência, prevenção de isolamento</li>
+    </ul>
+
+    <div class="subsecao">Benefícios Eventuais e BPC</div>
+    <p>A Proteção Básica articula o acesso aos benefícios:</p>
+    <ul class="lista">
+      <li><strong>BPC — Benefício de Prestação Continuada</strong> (LOAS, art. 20): 1 salário mínimo mensal a pessoa com deficiência ou idoso (65+) com renda familiar per capita &lt; 1/4 do SM. Não contributivo. Pago pelo INSS</li>
+      <li><strong>Benefícios eventuais</strong>: auxílio natalidade, auxílio funeral, vulnerabilidade temporária, calamidade pública (LOAS, art. 22)</li>
+      <li><strong>Bolsa Família/Auxílio Brasil/Bolsa Família 2023+</strong>: transferência de renda condicional (educação, saúde, saúde da família); cadastro via CadÚnico</li>
+      <li><strong>CadÚnico</strong>: instrumento de cadastramento das famílias de baixa renda; porta de entrada para múltiplos programas</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Para a prova:</strong> CRAS = porta de entrada da Proteção Básica. PAIF = principal serviço, focado na FAMÍLIA. SCFV = convivência. BPC = benefício no valor de 1 SM. CadÚnico = porta para benefícios. Equipe mínima do CRAS = coordenador + 2 técnicos NS (AS+psi) + NM. Cobrado em ENARE 2024 (Q53–55).</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-ASSISTENCIA · SUAS</span><span>Extensivo ENARE 2026</span><span class="pg">5 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-ASSISTENCIA</div><div class="aula-ref">Bloco B13 · Aula 06 · Proteção Especial</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Proteção Social Especial — CREAS, Centro POP e Acolhimento</div>
+
+    <p>A <strong>Proteção Social Especial</strong> é o segundo nível do SUAS. Destina-se a famílias e indivíduos que <em>já tiveram direitos violados</em> ou estão em situação de risco pessoal e social. Divide-se em <strong>Média Complexidade</strong> (CREAS) e <strong>Alta Complexidade</strong> (acolhimentos).</p>
+
+    <div class="subsecao">Proteção Social Especial de Média Complexidade — CREAS</div>
+    <table>
+      <tr><th>Característica</th><th>Conteúdo</th></tr>
+      <tr><td>Definição</td><td>Centro de Referência Especializado de Assistência Social — equipamento estatal, regional ou municipal</td></tr>
+      <tr><td>Público</td><td>Famílias e indivíduos com direitos violados (NÃO em situação de rompimento total de vínculos)</td></tr>
+      <tr><td>Cobertura</td><td>Mínimo de 1 CREAS por município de Grande Porte ou Metrópole; municípios menores podem ter CREAS regional</td></tr>
+      <tr><td>Equipe mínima</td><td>Coordenador NS; 1 AS, 1 psicólogo, 1 advogado (em CREAS de regiões mais complexas); equipe ampliada conforme demanda</td></tr>
+      <tr><td>Serviço principal</td><td><strong>PAEFI</strong> — Serviço de Proteção e Atendimento Especializado a Famílias e Indivíduos</td></tr>
+    </table>
+
+    <div class="subsecao">PAEFI — Principal Serviço do CREAS</div>
+    <ul class="lista">
+      <li><strong>Público</strong>: vítimas de violência (doméstica, sexual, abuso); abandono; trabalho infantil; exploração; situação de rua; LGBTI+ em situação de violência</li>
+      <li><strong>Objetivos</strong>: oferecer atendimento especializado; fortalecer função protetiva; contribuir para reparação</li>
+      <li><strong>Foco</strong>: <em>violação de direitos</em> com vínculos preservados; busca de superação</li>
+      <li><strong>Articulação</strong>: Sistema de Garantia de Direitos (CT, MP, Defensoria, Justiça, Saúde)</li>
+    </ul>
+
+    <div class="subsecao">Outros Serviços de Média Complexidade</div>
+    <ul class="lista">
+      <li><strong>SEPREDI</strong> — Serviço Especializado em Abordagem Social (para pessoas em situação de rua)</li>
+      <li><strong>Serviço Especializado para PCD, Idosos e Famílias</strong></li>
+      <li><strong>Medidas socioeducativas em meio aberto</strong> (LA — Liberdade Assistida; PSC — Prestação de Serviços à Comunidade) para adolescentes que cometeram ato infracional</li>
+      <li><strong>Centro POP</strong> — Centro de Referência Especializado para População em Situação de Rua: unidade pública estatal; município com 100k+ habitantes; equipe técnica multiprofissional; alimentação, higiene, encaminhamentos</li>
+    </ul>
+
+    <div class="subsecao">Proteção Social Especial de Alta Complexidade — Acolhimentos</div>
+    <table>
+      <tr><th>Tipo de acolhimento</th><th>Público</th></tr>
+      <tr><td>Abrigo institucional</td><td>Crianças e adolescentes; afastados temporariamente da família por medida protetiva</td></tr>
+      <tr><td>Casa-lar</td><td>Crianças e adolescentes; ambiente mais residencial (até 10 acolhidos)</td></tr>
+      <tr><td>Casa de passagem</td><td>Pessoas em trânsito (migrantes, refugiados, situação de rua emergencial)</td></tr>
+      <tr><td>República</td><td>Jovens egressos de acolhimento institucional; transição para autonomia</td></tr>
+      <tr><td>Família acolhedora</td><td>Crianças e adolescentes acolhidas por famílias cadastradas (alternativa ao institucional)</td></tr>
+      <tr><td>Instituições de longa permanência</td><td>Pessoas idosas; PCD com dependência total — ILPI</td></tr>
+      <tr><td>Albergue / abrigo institucional adultos</td><td>População em situação de rua</td></tr>
+    </table>
+
+    <div class="subsecao">Medida Protetiva e Acolhimento Institucional (cobrado Q44/2025)</div>
+    <p>O acolhimento institucional de crianças e adolescentes é <strong>medida protetiva excepcional e provisória</strong> (ECA, arts. 92 e 101). Princípios:</p>
+    <ul class="lista">
+      <li>Excepcionalidade — apenas quando esgotadas outras possibilidades</li>
+      <li>Provisoriedade — máximo 18 meses (em revisão judicial)</li>
+      <li>Preservação de vínculos sempre que possível</li>
+      <li>Não separar grupos de irmãos</li>
+      <li>Prioridade absoluta à colocação em família substituta (guarda, tutela, adoção)</li>
+      <li>Plano Individual de Atendimento (PIA) elaborado em equipe técnica</li>
+    </ul>
+
+    <div class="alerta">
+      <p><strong>Distinção crítica:</strong> Proteção Básica (CRAS) = vulnerabilidade SEM violação. Proteção Especial Média (CREAS) = violação COM vínculos. Proteção Especial Alta (acolhimentos) = ROMPIMENTO de vínculos. Cobrado em ENARE 2024 e 2025.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-ASSISTENCIA · SUAS</span><span>Extensivo ENARE 2026</span><span class="pg">6 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-ASSISTENCIA</div><div class="aula-ref">Bloco B13 · Aula 06 · Paternalismo</div></div></div>
+  <div class="body">
+    <div class="secao-titulo">Paternalismo, Assistencialismo e Direito — Distinções</div>
+
+    <p>A FGV cobrou explicitamente em ENARE 2025 (Q28) a distinção entre <em>prática paternalista</em>, <em>assistencialista</em> e <em>direito social</em>. Distinção crucial e frequentemente confundida.</p>
+
+    <div class="subsecao">Quadro Comparativo</div>
+    <table>
+      <tr><th>Categoria</th><th>Lógica</th><th>Relação</th><th>Sujeito</th></tr>
+      <tr><td><strong>Paternalismo</strong></td><td>Substituição da autonomia do sujeito pela vontade da autoridade que "sabe o que é melhor"</td><td>Vertical, hierárquica, infantilizante</td><td>Tutelado, dependente</td></tr>
+      <tr><td><strong>Assistencialismo</strong></td><td>Concessão pontual de favor, sem direito; "ajuda" sem continuidade nem critério universal</td><td>Vertical, descontínua, eleitoreira</td><td>Beneficiário, agradecido</td></tr>
+      <tr><td><strong>Caridade/Benemerência</strong></td><td>Doação por compaixão; vínculo religioso ou moral; sem direito</td><td>Vertical, moralizante</td><td>Necessitado, devedor</td></tr>
+      <tr><td><strong>Direito Social</strong></td><td>Garantia universal de cidadania pelo Estado</td><td>Horizontal, contínua, regulada</td><td>Cidadão portador de direitos</td></tr>
+    </table>
+
+    <div class="subsecao">Paternalismo na Prática</div>
+    <ul class="lista">
+      <li>"Tomar decisões pela família" sem ouvi-la</li>
+      <li>Decidir o "melhor" para a usuária sem participação</li>
+      <li>Não respeitar autonomia (princípio I do Código de Ética: "liberdade")</li>
+      <li>Tratar usuários como incapazes de decidir</li>
+      <li>Avaliação "vexatória" de necessidade — vedada pela LOAS (princípio III)</li>
+      <li>Conduta moralizante: julgar comportamento da usuária</li>
+    </ul>
+
+    <div class="subsecao">Assistencialismo na Prática</div>
+    <ul class="lista">
+      <li>Distribuir cesta básica de forma esporádica, sem critério, sem inscrição</li>
+      <li>"Programa social" do governo de plantão, sem institucionalização</li>
+      <li>Clientelismo: troca de "favor" por voto</li>
+      <li>Filantropia patronal sem articulação com política pública</li>
+      <li>"Caridade laica": ajuda esporádica sem direito</li>
+      <li>Foco em <em>indivíduos</em> sem leitura da questão social estrutural</li>
+    </ul>
+
+    <div class="subsecao">Direito Social na Prática</div>
+    <ul class="lista">
+      <li>Universalização (todos com mesmo direito têm acesso)</li>
+      <li>Critérios técnicos objetivos para acesso (renda per capita, idade, vulnerabilidade)</li>
+      <li>Continuidade e regularidade (benefício mensal, atendimento programado)</li>
+      <li>Cidadania: quem recebe é <em>portador de direito</em>, não devedor de gratidão</li>
+      <li>Controle social via conselhos</li>
+      <li>Articulação com outras políticas (Saúde, Educação, Trabalho)</li>
+      <li>Respeito à autonomia e protagonismo do usuário</li>
+      <li>Vedação à "comprovação vexatória" de necessidade</li>
+    </ul>
+
+    <div class="subsecao">Casos Práticos — Distinguir as Lógicas</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Caso Paternalista</div>
+        <p>AS no CRAS decide que a usuária deve "se separar do marido violento" e ameaça suspender o benefício se ela não obedecer. Substitui a autonomia da mulher pela vontade técnica.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Caso Assistencialista</div>
+        <p>Prefeito distribui kits de Natal pessoalmente nas favelas, com sua foto na embalagem, sem inscrição no CadÚnico, sem critério, em dezembro de ano eleitoral. Filantropia política.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Caso de Direito Social</div>
+        <p>Família é cadastrada no CadÚnico; tem direito ao Bolsa Família com critérios definidos em lei; AS atua orientando direitos, fortalecendo função protetiva, articulando com a rede; participa de Conselho Municipal de Assistência Social.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Caso Misto / Crítico</div>
+        <p>SUAS pode ser executado com lógica paternalista (AS impondo "soluções"). É preciso vigilância profissional permanente para que <em>política pública</em> não se reduza a <em>prática paternalista revestida de tecnicidade</em>. Isso depende do PEP e da formação crítica.</p>
+      </div>
+    </div>
+
+    <div class="alerta">
+      <p><strong>Pegadinha FGV (Q28/2025):</strong> distinguir paternalismo (substituição da autonomia) de assistencialismo (concessão pontual sem direito) de direito social (universalização, critério, cidadania). Confundir os termos é erro grave. O SUAS é política <em>de direito social</em>, NÃO de assistencialismo. O Código de Ética do AS (princípios I e III — liberdade e respeito à dignidade) é base para combater paternalismo.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-ASSISTENCIA · SUAS</span><span>Extensivo ENARE 2026</span><span class="pg">7 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-ASSISTENCIA</div><div class="aula-ref">Bloco B13 · Aula 06 · Questões ENARE</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 01</span><span class="fonte">CF/1988 · Assistência Social · NC: Compreensão</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Sobre a Assistência Social na Constituição Federal de 1988, é CORRETO afirmar que:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>É condicional à contribuição prévia, como a Previdência.</span></li>
+        <li class="correta"><span class="letra">B</span><span>É política de Seguridade Social, NÃO contributiva, prestada a quem dela necessitar, organizada com base em descentralização político-administrativa e participação popular (CF/1988, arts. 203 e 204). Integra, com a Saúde e a Previdência, o tripé da Seguridade Social.</span></li>
+        <li><span class="letra">C</span><span>É política focalizada apenas em crianças e adolescentes.</span></li>
+        <li><span class="letra">D</span><span>Foi mantida sob a Legião Brasileira de Assistência (LBA) após 1988.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> a CF/1988 (arts. 203 e 204) define a assistência social como (1) política de Seguridade Social, (2) NÃO contributiva, (3) universal "a quem dela necessitar", (4) descentralizada, (5) com participação popular. Forma o tripé da Seguridade com Saúde e Previdência (art. 194). É o marco do rompimento com o modelo da LBA, extinta em 1995. Cobrado em ENARE 2025 (Q21 e Q29).</p>
+      <p><strong>Por que as outras erram:</strong> A — assistência é NÃO contributiva (Previdência é contributiva) · C — destina-se a quem dela necessitar, em sentido amplo (família, idoso, PCD, etc.) · D — LBA foi extinta em 1995 pelo governo FHC.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-ASSISTENCIA · SUAS</span><span>Extensivo ENARE 2026</span><span class="pg">8 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-ASSISTENCIA</div><div class="aula-ref">Bloco B13 · Aula 06 · Questões ENARE</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 02</span><span class="fonte">CRAS vs CREAS · NC: Análise</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Relacione corretamente os equipamentos do SUAS ao nível de proteção, público e serviço principal:</p>
+      <p class="questao-enunciado" style="font-style:italic;">I. CRAS — Centro de Referência de Assistência Social.<br>
+      II. CREAS — Centro de Referência Especializado de Assistência Social.<br>
+      III. Abrigo Institucional.<br>
+      <br>
+      ( ) Proteção Social Especial de Alta Complexidade; público com rompimento de vínculos; oferta moradia provisória.<br>
+      ( ) Proteção Social Básica; famílias em vulnerabilidade SEM violação de direitos; serviço principal PAIF.<br>
+      ( ) Proteção Social Especial de Média Complexidade; famílias COM violação de direitos e vínculos preservados; serviço principal PAEFI.</p>
+      <p class="questao-enunciado">Sequência correta:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>I, II, III.</span></li>
+        <li class="correta"><span class="letra">B</span><span>III, I, II.</span></li>
+        <li><span class="letra">C</span><span>II, III, I.</span></li>
+        <li><span class="letra">D</span><span>III, II, I.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Correspondência:</strong></p>
+      <p>• 1ª descrição (Alta Complexidade; rompimento de vínculos; moradia) = <strong>III. Abrigo Institucional</strong><br>
+      • 2ª descrição (Proteção Básica; vulnerabilidade SEM violação; PAIF) = <strong>I. CRAS</strong><br>
+      • 3ª descrição (Proteção Especial Média; violação COM vínculos; PAEFI) = <strong>II. CREAS</strong></p>
+      <p>Sequência: III, I, II → alternativa B. A distinção entre os 3 níveis (Básica/Média/Alta) é eixo central do SUAS e cobrança recorrente da FGV.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-ASSISTENCIA · SUAS</span><span>Extensivo ENARE 2026</span><span class="pg">9 / 10</span></div>
+</div>
+
+<div class="page">
+  <div class="header"><div class="header-logo"><svg width="28" height="28" viewBox="0 0 34 34" fill="none"><polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="#1F5C23" stroke="#C6D834" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="#F6F4ED"/></svg><div class="header-brand"><span class="marca">Elite Treinamentos</span><span class="tagline">Extensivo ENARE 2026</span></div></div><div class="header-info"><div class="disciplina">Serviço Social — SS-ASSISTENCIA</div><div class="aula-ref">Bloco B13 · Aula 06 · Gabarito e Síntese</div></div></div>
+  <div class="body">
+    <div class="questao-header"><span>Questão 03</span><span class="fonte">Paternalismo vs Direito · NC: Análise</span></div>
+    <div class="questao-body">
+      <p class="questao-enunciado">Em CRAS, assistente social atende mulher em situação de violência doméstica que pleiteia BPC para sua filha com deficiência. A AS condiciona a tramitação do benefício à "decisão da usuária de separar-se do marido", afirmando que isso é "para seu próprio bem". Essa conduta caracteriza:</p>
+      <ul class="alternativas">
+        <li><span class="letra">A</span><span>Direito social bem aplicado.</span></li>
+        <li class="correta"><span class="letra">B</span><span>PATERNALISMO — substituição da autonomia da usuária pela vontade do/a profissional, que decide o "melhor" sem respeitar o protagonismo; viola o princípio I do Código de Ética (liberdade como valor central) e o princípio III da LOAS (respeito à dignidade, vedação à comprovação vexatória). O BPC é direito vinculado a critérios técnicos (renda, deficiência), NÃO a comportamento moral da usuária.</span></li>
+        <li><span class="letra">C</span><span>Assistencialismo justificado pelo contexto.</span></li>
+        <li><span class="letra">D</span><span>Caridade legítima do CRAS.</span></li>
+      </ul>
+    </div>
+    <div class="gabarito-box">
+      <div class="gab-title">Gabarito — B</div>
+      <p><strong>Por que B está correta:</strong> condicionar acesso a um direito (BPC) à decisão pessoal/moral da usuária (separar-se do marido) é <em>paternalismo</em> clássico — substituição da autonomia. Viola: (1) CF/1988 art. 203 (BPC tem critérios técnicos); (2) LOAS princípio III (vedação de comprovação vexatória); (3) Código de Ética princípio I (liberdade como valor ético central). A AS deve garantir o acesso ao direito independentemente de seus juízos morais sobre a vida da usuária. Pode oferecer informação, acolhimento, articulação com a rede de proteção (CREAS, polícia, Maria da Penha) — mas SEMPRE respeitando a autonomia.</p>
+    </div>
+
+    <div class="subsecao">Síntese — SUAS: Estrutura e Proteção Social</div>
+    <div class="sintese-grid">
+      <div class="sintese-item"><div class="si-label">CF/1988 (arts. 203-204)</div><p>Assistência social = direito social, não contributivo, organizada por descentralização + participação popular. Tripé com Saúde e Previdência.</p></div>
+      <div class="sintese-item"><div class="si-label">LOAS (8.742/1993 + 12.435/2011)</div><p>Política não contributiva. 7 objetivos (incluindo BPC); 5 princípios; 4 diretrizes (descentralização, participação, primazia do Estado, centralidade na família).</p></div>
+      <div class="sintese-item"><div class="si-label">SUAS — Estrutura</div><p>PNAS 2004 + NOB-SUAS 2005/2012 + Tipificação 2009. Sistema único, descentralizado, hierarquizado, federativo, com participação social. Inspirado no SUS.</p></div>
+      <div class="sintese-item"><div class="si-label">Proteção Básica — CRAS + PAIF</div><p>Vulnerabilidade SEM violação. Equipe mínima coordenador + 2 NS (AS+psi) + NM. PAIF como principal. SCFV. BPC. CadÚnico. Caráter preventivo.</p></div>
+      <div class="sintese-item"><div class="si-label">Proteção Especial — CREAS, Centro POP, Acolhimentos</div><p>Média (CREAS/PAEFI) = violação COM vínculos. Alta (acolhimentos) = ROMPIMENTO. Princípios do acolhimento: excepcionalidade, provisoriedade, preservação de vínculos.</p></div>
+      <div class="sintese-item"><div class="si-label">Próxima Aula</div><p><strong>Aula 07 — SUAS: Financiamento.</strong> FNAS, repasses por blocos, EC 95/2016, Prontuário Eletrônico SUAS, Plano Ruas Visíveis 2023–2026. Cluster novo 2025.</p></div>
+    </div>
+
+    <div class="alerta" style="margin-top:5px;">
+      <p><strong>Regra de ouro — SUAS no ENARE:</strong> CF/1988 + LOAS + PNAS 2004 + NOB-SUAS + Lei 12.435/2011 = quadro normativo. 2 níveis de proteção (Básica = CRAS/PAIF; Especial = CREAS/PAEFI + Acolhimentos). Paternalismo ≠ Assistencialismo ≠ Direito Social. BPC = 1 SM, idoso 65+ ou PCD, sem contribuição. CadÚnico = porta de acesso.</p>
+    </div>
+  </div>
+  <div class="footer"><span>SS-ASSISTENCIA · SUAS</span><span>Extensivo ENARE 2026</span><span class="pg">10 / 10</span></div>
+</div>
+
+</body>
+</html>
